@@ -4,7 +4,7 @@ ATTACHMENTS_VERSION = "0.80"
   Lua-controlled Frankenstein Attachments Library by BMD
 
   Installation
-  -"require" this file inside your code in order to gain access to the StartAnmiation and EndAnimation global.
+  -"require" this file inside your code in order to gain access to the StartAnimation and EndAnimation global.
   -Optionally require "libraries/notifications" before this file so that the Attachment Configuration GUI can display messages via the Notifications library.
   -Additionally, ensure that this file is placed in the vscripts/libraries path and that the vscripts/libraries/modifiers/modifier_animation_freeze.lua file exists and is in the correct path
   -Additionally, ensure that you have the barebones_attachments.xml, barebones_attachments.js, and barebones_attachments.css files in your panorama content folder to use the GUI.
