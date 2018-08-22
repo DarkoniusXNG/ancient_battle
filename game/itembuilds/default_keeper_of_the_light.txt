@@ -24,6 +24,7 @@
 		"#DOTA_Item_Build_Core_Items"
 		{
 			"item"		"item_power_treads"
+			"item"		"item_helm_of_the_dominator"
 			"item"		"item_ancient_janggo"
 			"item"		"item_vladmir"
 			"item"		"item_necronomicon_3"
@@ -31,10 +32,8 @@
 		
 		"#DOTA_Item_Build_Luxury"
 		{
-			"item"		"item_atma"						// new (1100)
-			"item"		"item_slippers_of_halcyon"		// new (2000)
-			"item"		"item_custom_rod_of_atos"		// new (3200)
-			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_atma"
+			"item"		"item_custom_rod_of_atos"
 			"item"		"item_mekansm"
 			"item"		"item_pipe"
 			"item"		"item_ghost"
@@ -47,9 +46,8 @@
 			"item"		"item_sheepstick"
 			"item"		"item_refresher"
 			"item"		"item_radiance"
-			"item"		"item_orb_of_reflection"		// new (7300)
-			"item"		"item_master_staff"				// new (7800)
-			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_orb_of_reflection"
+			"item"		"item_master_staff"
 		}
 	}
 }

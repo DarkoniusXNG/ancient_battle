@@ -22,7 +22,7 @@
 			"item"	 	"item_magic_wand"
 			"item"		"item_urn_of_shadows"
 			"item"		"item_orb_of_venom"
-			"item"		"item_drum_of_vitality"		// new (985)
+			"item"		"item_drum_of_vitality"
 			"item"		"item_lifesteal"
 		}
 		
@@ -37,9 +37,9 @@
 		
 		"#DOTA_Item_Build_Luxury"
 		{
-			"item"		"item_atma"						// new (1100)
+			"item"		"item_atma"
 			"item"	 	"item_ultimate_scepter"
-			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_infused_robe"
 			"item"		"item_radiance"
 			"item"	 	"item_heavens_halberd"
 			"item"		"item_greater_crit"
@@ -50,10 +50,10 @@
 			"item"		"item_mjollnir"
 			"item"		"item_refresher"
 			"item"		"item_shivas_guard"
-			"item"		"item_blink_sword"				// new (5700)
-			"item"		"item_orb_of_reflection"		// new (7300)
-			"item"		"item_master_staff"				// new (7800)
-			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_blink_sword"
+			"item"		"item_orb_of_reflection"
+			"item"		"item_master_staff"
+			"item"		"item_ultimate_king_bar"
 		}
 	}
 }

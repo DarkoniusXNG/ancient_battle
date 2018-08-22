@@ -18,7 +18,7 @@
 			"item"		"item_boots"
 			"item"		"item_magic_wand"
 			"item"		"item_orb_of_venom"
-			"item"		"item_drum_of_vitality"		// new (985)
+			"item"		"item_drum_of_vitality"
 		}
 		
 		"#DOTA_Item_Build_Core_Items"
@@ -35,8 +35,7 @@
 			"item"		"item_hand_of_midas"
 			"item"		"item_echo_sabre"
 			"item"		"item_desolator"
-			"item"		"item_custom_mask_of_madness"	// new (2000)
-			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_custom_mask_of_madness"
 			"item"		"item_heart"
 			"item"		"item_satanic"
 			"item"		"item_skadi"
@@ -47,11 +46,10 @@
 			"item"		"item_sphere"
 			"item"		"item_heavens_halberd"
 			"item"		"item_silver_edge"
-			"item"		"item_dagon_5"
-			"item"		"item_blink_sword"				// new (5700)
-			"item"		"item_master_staff"				// new (7800)
-			"item"		"item_ultimate_king_bar"		// new (7950)
-			"item"		"item_staff_of_negation"		// new (8650)
+			"item"		"item_blink_sword"
+			"item"		"item_master_staff"
+			"item"		"item_ultimate_king_bar"
+			"item"		"item_staff_of_negation"
 		}
 	}
 }

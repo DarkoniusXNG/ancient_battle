@@ -25,17 +25,17 @@
 		
 		"#DOTA_Item_Build_Core_Items"
 		{
-			"item"		"item_infused_robe"				// new (4500)
-			"item"		"item_orb_of_reflection"		// new (7300)
-			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_infused_robe"
+			"item"		"item_orb_of_reflection"
+			"item"		"item_blink_sword"
 			"item"		"item_assault"
 		}
 		
 		"#DOTA_Item_Build_Luxury"
 		{
-			"item"		"item_drum_of_vitality"			// new (985)
-			"item"		"item_atma"						// new (1100)
-			"item"		"item_slippers_of_halcyon"		// new (2000)
+			"item"		"item_drum_of_vitality"
+			"item"		"item_atma"
+			"item"		"item_slippers_of_halcyon"
 			"item"		"item_crimson_guard"
 			"item"		"item_heart"
 			"item"		"item_pipe"	

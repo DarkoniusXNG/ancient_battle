@@ -39,8 +39,8 @@
 	
 		"#DOTA_Item_Build_Other_Items"
 		{
-			"item"		"item_atma"						// new (1100)
-			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_atma"
+			"item"		"item_custom_mask_of_madness"
 			"item"		"item_sange_and_yasha"
 			"item"		"item_echo_sabre"
 			"item"		"item_mjollnir"
@@ -53,10 +53,10 @@
 			"item"		"item_heavens_halberd"
 			"item"		"item_radiance"
 			"item"		"item_moon_shard"
-			"item"		"item_blink_sword"				// new (5700)
-			"item"		"item_orb_of_reflection"		// new (7300)
-			"item"		"item_master_staff"				// new (7800)
-			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_blink_sword"
+			"item"		"item_orb_of_reflection"
+			"item"		"item_master_staff"
+			"item"		"item_ultimate_king_bar"
 		}
 	}
 }

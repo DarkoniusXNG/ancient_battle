@@ -31,9 +31,8 @@
 		"#DOTA_Item_Build_Luxury"
 		{
 			"item"		"item_helm_of_the_dominator"
-			"item"		"item_atma"						// new (1100)
-			"item"		"item_slippers_of_halcyon"		// new (2000)
-			"item"		"item_custom_rod_of_atos"		// new (3200)
+			"item"		"item_atma"
+			"item"		"item_custom_rod_of_atos"
 			"item"		"item_force_staff"
 			"item"		"item_cyclone"
 			"item"		"item_ghost"
@@ -43,11 +42,10 @@
 			"item"		"item_radiance"
 			"item"		"item_ethereal_blade"
 			"item"		"item_refresher"
-			"item"		"item_orb_of_reflection"		// new (7300)
-			"item"		"item_master_staff"				// new (7800)
-			"item"		"item_ultimate_king_bar"		// new (7950)
-			"item"		"item_staff_of_negation"		// new (8650)
-			
+			"item"		"item_orb_of_reflection"
+			"item"		"item_master_staff"
+			"item"		"item_ultimate_king_bar"
+			"item"		"item_staff_of_negation"
 		}
 	}
 }
