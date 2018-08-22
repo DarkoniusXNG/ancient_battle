@@ -1,282 +1,298 @@
 "dota_shops"
 {
-  // Consumables (14/14)
-  "consumables"
-  {
-    "item"    "item_clarity"
-	"item"    "item_enchanted_mango"		// Enchanted Mango
-	"item"    "item_tango"
-	"item"    "item_flask"
-	"item"	  "item_faerie_fire"			// Faerie Fire
-	"item"	  "item_cheese"					// Cheese
-	//"item"	"item_divine_potion"	
-	//"item"	"item_telescope"
-    "item"    "item_smoke_of_deceit"
-    //"item"    "item_blinders"
-    "item"    "item_tpscroll"
-    //"item"    "item_red_mist"
-    //"item"    "item_bounty_pact"
-    "item"    "item_dust"
-    "item"    "item_courier"
-    //"item"    "item_flying_courier"		// (temporary disabled until Valve fixes shop)
-    "item"    "item_ward_observer"
-    "item"    "item_ward_sentry"
-	"item"	  "item_tome_of_knowledge"		// Tome of Knowledge
-    "item"    "item_bottle"             
-  }
+	// Consumables (14/14)
+	"consumables"
+	{
+		"item"    "item_clarity"
+		"item"    "item_enchanted_mango"
+		"item"    "item_tango"
+		"item"    "item_flask"
+		"item"	  "item_faerie_fire"
+		"item"	  "item_cheese"
+		"item"    "item_smoke_of_deceit"
+		"item"    "item_tpscroll"
+		"item"    "item_dust"
+		"item"    "item_courier"
+		"item"    "item_ward_observer"
+		"item"    "item_ward_sentry"
+		"item"	  "item_tome_of_knowledge"
+		"item"    "item_bottle"             
+	}
 
-  // Attributes (14/14)
-  "attributes"
-  {
-    //"item"	"item_banana"
-	"item"    "item_branches"				//+1 to all
-	//"item"	"item_sturdy_vest"
-    "item"    "item_gauntlets"				//+2 to STR
-    "item"    "item_slippers"				//+2 to AGI
-    "item"    "item_mantle"					//+2 to INT
-    "item"    "item_circlet"				//+2 to all
+	// Attributes (13/14)
+	"attributes"
+	{
+		"item"    "item_branches"				// +1 to all
+	
+		"item"    "item_gauntlets"				// +2 to STR
+		"item"    "item_slippers"				// +2 to AGI
+		"item"    "item_mantle"					// +2 to INT
+		"item"    "item_circlet"				// +2 to all
+	
+		"item"    "item_belt_of_strength"		// +5 to STR
+		"item"    "item_boots_of_elves"			// +5 to AGI
+		"item"    "item_robe"					// +5 to INT
+		"item"	  "item_soul_gem"				// +5 to all
 
-    "item"    "item_belt_of_strength"		//+5 to STR
-    "item"    "item_boots_of_elves"			//+5 to AGI
-    "item"    "item_robe"					//+5 to INT
-	"item"	  "item_soul_gem"				// Soul Gem (+5 to all)
+		"item"    "item_ogre_axe"				//+10 to STR
+		"item"    "item_blade_of_alacrity"		//+10 to AGI
+		"item"    "item_staff_of_wizardry"		//+10 to INT
+		"item"    "item_ultimate_orb"			//+10 to all
+	
+	//	"item"	"item_cursed_necklace"		// Cursed Necklace (+20 to all, -1% HP regen, drops on death)
+	}
 
-    "item"    "item_ogre_axe"				//+10 to STR
-    "item"    "item_blade_of_alacrity"		//+10 to AGI
-    "item"    "item_staff_of_wizardry"		//+10 to INT
-	//"item"	"item_cursed_necklace"		// Cursed Necklace (+10 to all, -1% HP regen, drops on death)
-	"item"    "item_ultimate_orb"			//+10 to all (only in secret shop)
-	"item"	  "item_mystic_booster"			// Mystic Booster (Reaver + Mystic Staff)
-  }
-
-  // Weapons and armor (14/14)
-  "weapons_armor"
-  {
-    "item"    "item_ring_of_protection"		// bonus armor
-	"item"    "item_stout_shield"			// small damage block
-    "item"    "item_quelling_blade"			// small damage bonus
-	"item"	  "item_infused_raindrop"		// Infused Raindrops
-	"item"	  "item_blight_stone"			// Blight Stone
-    "item"    "item_orb_of_venom"			// Orb of Venom - slow
-    "item"    "item_blades_of_attack"		//+9 to damage
-    "item"    "item_chainmail"				//+5 to armor
-	"item"    "item_quarterstaff"			//+10 to dmg and attack speed
-    "item"    "item_helm_of_iron_will"		//+3 to HP regen and +5 to armor
-    "item"    "item_broadsword"				//+18 to damage
-    "item"    "item_claymore"				//+21 to damage
-    "item"    "item_javelin"				//+10(+21) to damage and pierce chance
-    "item"    "item_mithril_hammer"			//+24 to damage
-  }
+	// Weapons and armor (14/14)
+	"weapons_armor"
+	{
+		"item"    "item_ring_of_protection"
+		"item"    "item_stout_shield"
+		"item"    "item_quelling_blade"
+		"item"	  "item_infused_raindrop"
+		"item"	  "item_blight_stone"
+		"item"    "item_orb_of_venom"
+		"item"    "item_blades_of_attack"
+		"item"    "item_chainmail"
+		"item"    "item_quarterstaff"
+		"item"    "item_helm_of_iron_will"
+		"item"    "item_broadsword"
+		"item"    "item_claymore"
+		"item"    "item_javelin"
+		"item"    "item_mithril_hammer"
+	}
   
-  // Misc (14/14)
-  "misc"
-  {
-    "item"	  "item_wind_lace"				// Wind Lace
-	"item"    "item_magic_stick"
-    "item"    "item_sobi_mask"
-    "item"    "item_ring_of_regen"
-    //"item"    "item_ward_dispenser" 		// it doesn't need to be inside the shop
-    "item"    "item_boots"
-    //"item"    "item_whip"
-    //"item"    "item_telescope"
-    "item"    "item_gloves"
-    "item"    "item_cloak"
-	"item"    "item_ring_of_health"
-	"item"    "item_void_stone"
-	"item"    "item_gem"
-    "item"    "item_lifesteal"
-    "item"    "item_ghost"
-    "item"    "item_shadow_amulet"
-	"item"    "item_blink"					// Blink Dagger
-  } 
+	// Misc (14/14)
+	"misc"
+	{
+		"item"	  "item_wind_lace"
+		"item"    "item_magic_stick"
+		"item"    "item_sobi_mask"
+		"item"    "item_ring_of_regen"
+		"item"    "item_boots"
+		"item"    "item_gloves"
+		"item"    "item_cloak"
+		"item"    "item_ring_of_health"
+		"item"    "item_void_stone"
+		"item"    "item_gem"
+		"item"    "item_lifesteal"
+		"item"    "item_ghost"
+		"item"    "item_shadow_amulet"
+		"item"    "item_blink"
+	} 
   
-  // Level 1 - Green Recipes (14/14)
-  "basics"
-  {
-    "item"    "item_magic_wand"				// For all
-	"item"    "item_bracer"					// For STR
-	"item"    "item_wraith_band"			// For AGI
-	"item"    "item_null_talisman"			// For INT
-	//"item"	  "item_atma"				// For STR and INT (temporary disabled until Valve fixes shop)
-	//"item"    "item_poor_mans_shield"
-	//"item"    "item_iron_talon"				// Iron Talon
-    "item"    "item_soul_ring"
-    "item"    "item_phase_boots"
-    "item"    "item_power_treads"
-    "item"    "item_oblivion_staff"
-    "item"    "item_pers"
-    "item"    "item_hand_of_midas"
-    "item"    "item_travel_boots"   
-    "item"    "item_moon_shard"				// Moon Shard
-	//"item"    "item_soul_booster"			// Soul Booster (temporary disabled until Valve fixes shop)
-	//"item"	"item_shinigami_eyes"		// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
-  }
+	// Level 1 - Green Recipes (14/14)
+	"basics"
+	{
+		"item"    "item_magic_wand"			// For all
+		"item"    "item_bracer"				// For STR
+		"item"    "item_wraith_band"		// For AGI
+		"item"    "item_null_talisman"		// For INT
+		"item"	  "item_atma"				// For STR and INT
+		"item"    "item_soul_ring"
+		"item"    "item_phase_boots"
+		"item"    "item_power_treads"
+		"item"    "item_oblivion_staff"
+		"item"    "item_pers"
+		"item"    "item_hand_of_midas"
+		"item"    "item_travel_boots"   
+		"item"    "item_moon_shard"
+		"item"    "item_soul_booster"
+	//	"item"	  "item_shinigami_eyes"	// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
+	}
 
-  // Level 2 - Blue Recipes (14/14)
-  "support"
-  {
-    //"item"    "item_ring_of_basilius"		// (temporary disabled until Valve fixes shop)
-	"item"    "item_headdress"
-    "item"    "item_buckler"
-    "item"    "item_urn_of_shadows"
-    //"item"    "item_natures_mend"
-	"item"    "item_ring_of_aquila"			// Ring of Aquila (upgrade for Ring of Basilius)
-	"item"	  "item_drum_of_vitality"		// Drum of Vitality (upgrade for Bracer and Ring of Regen)
-    "item"    "item_tranquil_boots"			// Tranquil Boots
-	"item"    "item_arcane_boots"			// Arcane Boots 1
-	//"item"    "item_nightfall_striders"
-    "item"    "item_medallion_of_courage"
-	"item"    "item_ancient_janggo"			// Drums of Endurance
-	"item"    "item_helm_of_the_dominator"	// Helm of the Dominator
-	"item"    "item_vladmir"				// Vladmir (upgrade for Headdress and Ring of Basilius)
-    "item"    "item_mekansm"				// Mekansm (upgrade for Headdress and Buckler)
-    //"item"  "item_custom_slippers_of_halcyon"	// Slippers of Halcyon (upgrade for Tranquil boots) (temporary disabled until Valve fixes shop)
-	"item"    "item_guardian_greaves"		// Guardian Greaves (upgrade for Mekansm and Arcane boots)
-    "item"    "item_pipe"					// Pipe of Insight (upgrade for Hood of Defiance and Headdress)
-  }
+	// Level 2 - Blue Recipes (15/15)
+	"support"
+	{
+    //	"item"    "item_ring_of_basilius"		// temporary disabled until Valve fixes shop
+		"item"    "item_headdress"
+		"item"    "item_buckler"
+		"item"    "item_urn_of_shadows"
+		"item"    "item_ring_of_aquila"
+		"item"	  "item_drum_of_vitality"
+		"item"    "item_tranquil_boots"
+		"item"    "item_arcane_boots"
+		"item"    "item_medallion_of_courage"
+		"item"    "item_ancient_janggo"
+		"item"    "item_helm_of_the_dominator"
+		"item"    "item_vladmir"
+		"item"    "item_mekansm"
+		"item"	  "item_spirit_vessel"
+		"item"    "item_guardian_greaves"
+		"item"    "item_pipe"
+	}
   
-  // Arcane Recipes (14/14)
-  "magics"      
-  {
-    "item"    "item_force_staff"			// Force Staff
-	"item"    "item_glimmer_cape"			// Glimmer Cape
-	"item"    "item_veil_of_discord"		// Veil of Discord
-	"item"    "item_aether_lens"			// Aether Lens
-    "item"    "item_necronomicon"
-	"item"    "item_dagon"
-    "item"    "item_cyclone"
-	//"item"    "item_solar_crest"			// Solar Crest	(temporary disabled until Valve fixes shop)
-    //"item"    "item_rod_of_atos"			// Original Rod of Atos
-	"item"	  "item_custom_rod_of_atos"		// New Rod of Atos
-    //"item"    "item_rune_breaker"
-    //"item"	"item_aether_staff"
-	//"item"	"item_black_demon_book"		// Black Demon Book (Soul Gem + Wind Lace + Recipe; +5% MS; Soul Catch)
-    "item"    "item_orchid"					// Orchid Malevolence
-	"item"    "item_ultimate_scepter"		// Aghanim Scepter
-    "item"    "item_refresher"				// Refresher Orb
-    "item"    "item_sheepstick"				// Scythe of Vyse
-	"item"    "item_octarine_core"			// Octarine Core
-	"item"	  "item_master_staff"			// Master Staff (upgrade for Atma and Mystic Booster)
-	//"item"	"item_ares_soul"			// Ares Soul (upgrade for Eternal Orb, Soul Gem and Cloak; +60% damage aura; Bonus damage with all damage types)
-   }
+	// Arcane Recipes (14/14)
+	"magics"      
+	{
+		"item"    "item_force_staff"
+		"item"    "item_glimmer_cape"
+		"item"    "item_veil_of_discord"
+		"item"    "item_aether_lens"
+		"item"    "item_necronomicon"
+		"item"    "item_dagon"
+		"item"    "item_cyclone"
+		"item"    "item_solar_crest"			// temporary disabled until Valve fixes shop
+		"item"	  "item_custom_rod_of_atos"    
+	//	"item"	  "item_black_demon_book"		// Black Demon Book (Soul Gem + Wind Lace + Recipe; +5% MS; Soul Catch)
+		"item"    "item_orchid"
+		"item"    "item_ultimate_scepter"
+		"item"    "item_refresher"
+		"item"    "item_sheepstick"
+		"item"    "item_octarine_core"
+	//  "item"	  "item_nullifier"				// temporary disabled until Valve fixes shop
+		"item"	  "item_master_staff"
+	//	"item"	  "item_ares_soul"		// Ares Soul (upgrade for Eternal Orb, Soul Gem and Cloak; +60% damage aura; Bonus damage with all damage types)
+	}
     
-  // Level 3 - Purple Recipes (14/14)
-  "defense"
-  {
-    //"item"   "item_skybreaker"
-	"item"    "item_hood_of_defiance"		// Hood of Defiance
-	"item"    "item_vanguard"				// Vanguard
-    "item"    "item_blade_mail"				// Blade Mail
-	"item"	  "item_infused_robe"			// Infused Robe (upgrade for Vanguard and Hood of Defiance)
-    "item"    "item_crimson_guard"			// Crimson Guard
-    //"item"    "item_black_king_bar"		// BKB (temporary disabled until Valve fixes shop)
-	"item"	  "item_ultimate_king_bar"  	// Ultimate King Bar (upgrade for BKB)
-	"item"    "item_lotus_orb"				// Lotus Orb
-	"item"	  "item_orb_of_reflection"		// Orb of Reflection (upgrade for Blade Mail and Lotus Orb)
-    "item"    "item_shivas_guard"
-	"item"    "item_bloodstone"
-    "item"    "item_manta"					// Manta Style
-    "item"    "item_sphere"					// Linken's Sphere
-	"item"    "item_assault"				// Assault Cuirass
-    "item"    "item_heart"
-	//"item"	"item_eternal_orb"			// Eternal Orb (upgrade for Soul Booster and 2 Ultimate Orbs; 10% chance to disjoint)
-	//"item"	"item_spirit_helix"	
-  }
+	// Level 3 - Purple Recipes (15/15)
+	"defense"
+	{
+		"item"    "item_hood_of_defiance"
+		"item"    "item_vanguard"
+		"item"    "item_blade_mail"
+		"item"	  "item_infused_robe"
+		"item"    "item_crimson_guard"
+		"item"	  "item_aeon_disk"
+	//	"item"    "item_black_king_bar"			// temporary disabled until Valve fixes shop
+		"item"	  "item_ultimate_king_bar"
+		"item"    "item_lotus_orb"
+		"item"	  "item_orb_of_reflection"
+		"item"    "item_shivas_guard"
+		"item"    "item_bloodstone"
+		"item"    "item_manta"
+		"item"    "item_sphere"
+		"item"    "item_assault"
+		"item"    "item_heart"
+	//	"item"	  "item_eternal_orb"			// Eternal Orb (upgrade for Soul Booster and 2 Ultimate Orbs; 10% chance to disjoint)
+	}
   
-  // Weapon Recipes (14/14)
-  "weapons"
-  {
-    //"item"    "item_lesser_crit"			// Crystalys (temporary disabled until Valve fixes shop)
-	"item"	  "item_blink_sword"			// Blink Sword (upgrade for Blink Dagger)
-    "item"    "item_armlet"
-    "item"    "item_basher" 
-    //"item"    "item_invis_sword"			// Shadow Blade / Lothar's Edge (temporary disabled until Valve fixes shop)
-    "item"    "item_bfury"					// Battlefury
-	"item"    "item_dragon_lance"			// Dragon Lance
-    "item"    "item_silver_edge"			// Silver Edge (upgrade for Shadow Blade)
-    "item"    "item_ethereal_blade"
-    "item"    "item_radiance"
-    "item"    "item_monkey_king_bar"  
-    "item"    "item_greater_crit"			// Daedalus
-    "item"    "item_butterfly"
-    "item"    "item_rapier"					// Divine Rapier
-    "item"    "item_abyssal_blade"			// Abyssal Blade (upgrade for Basher)
-	"item"	  "item_bloodthorn"				// Bloodthorn
-   }
+	// Weapon Recipes (15/15)
+	"weapons"
+	{
+		"item"    "item_lesser_crit"			// temporary disabled until Valve fixes shop
+		"item"	  "item_blink_sword"
+		"item"    "item_armlet"
+		"item"    "item_basher"
+	//	"item"	  "item_meteor_hammer"			// temporary disabled until Valve fixes shop
+    //	"item"    "item_invis_sword"			// temporary disabled until Valve fixes shop
+		"item"    "item_bfury"
+		"item"    "item_dragon_lance"
+		"item"    "item_silver_edge"
+		"item"    "item_ethereal_blade"
+		"item"    "item_radiance"
+		"item"    "item_monkey_king_bar"
+		"item"    "item_greater_crit"
+		"item"    "item_butterfly"
+		"item"    "item_rapier"					// temporary disabled until Valve fixes shop
+		"item"    "item_abyssal_blade"
+		"item"	  "item_bloodthorn"
+	}
     
-  // Level 4 - Orange / Orb / Artifacts (14/14)  
-  "artifacts"
-  { 
-    //"item"    "item_venomous_shield"
-	//"item"    "item_mask_of_madness"			// Original Mask of Madness
-	"item"	  "item_custom_mask_of_madness"		// New Mask of Madness
-    "item"    "item_sange"
-    "item"    "item_yasha"
-	"item"	  "item_echo_sabre"
-    "item"    "item_maelstrom"					// Maelstrom
-    //"item"    "item_diffusal_blade"			// Original Diffusal Blade
-	"item"	  "item_custom_diffusal_blade"		// New Diffusal Blade
-    "item"    "item_desolator"
-    "item"    "item_heavens_halberd"
-    "item"    "item_sange_and_yasha"
-	"item"    "item_mjollnir"
-    "item"    "item_skadi" 
-    "item"    "item_satanic"
-	"item"	  "item_hurricane_pike"				// Hurricane Pike (upgrade for Force Staff and Dragon Lance)
-	"item"	  "item_staff_of_negation" 			// Staff of Negation (upgrade for New Rod of Atos and New Diffusal Blade)
-	//"item"	"item_true_manta"				// True Manta Style (upgrade for New Diffusal Blade and Manta Style)
-	//"item"	"item_jade_bow"	
-  }
+	// Level 4 - Orange / Orb / Artifacts (15/15)  
+	"artifacts"
+	{
+		"item"	  "item_custom_mask_of_madness"
+		"item"    "item_sange"
+		"item"    "item_yasha"
+		"item"	  "item_kaya"
+		"item"	  "item_echo_sabre"
+		"item"    "item_maelstrom"
+		"item"	  "item_custom_diffusal_blade"
+		"item"    "item_desolator"
+		"item"    "item_heavens_halberd"
+		"item"    "item_sange_and_yasha"
+		"item"    "item_mjollnir"
+		"item"    "item_skadi"
+		"item"    "item_satanic"
+		"item"	  "item_hurricane_pike"
+		"item"	  "item_staff_of_negation"
+	}
 
-  // Side Shop List 1 (13/14)
-  "sideshop1"
-  {
-    "item"    "item_tpscroll"
-    "item"    "item_magic_stick"
-	"item"    "item_orb_of_venom"
-    "item"    "item_sobi_mask"
-    "item"    "item_ring_of_regen"
-    "item"    "item_boots"
-    "item"    "item_cloak"
-    "item"    "item_ring_of_health"
-    "item"    "item_void_stone"     
-    "item"    "item_lifesteal"
-    "item"    "item_helm_of_iron_will"
-    "item"    "item_energy_booster"
-    "item"    "item_broadsword"
-  }
+	// Side Shop List 1 (12/14)
+	"sideshop1"
+	{
+		"item"    "item_tpscroll"
+		"item"	  "item_ring_of_protection"
+		"item"    "item_magic_stick"
+		"item"    "item_quelling_blade"
+		"item"    "item_orb_of_venom"			// added
+		"item"    "item_sobi_mask"				// added
+		"item"    "item_ring_of_regen"			// added
+		"item"    "item_boots"
+		"item"    "item_boots_of_elves"
+		"item"    "item_belt_of_strength"
+		"item"    "item_robe"
+		"item"    "item_ring_of_health"			// added
+	}
 
-  // Side Shop List 2 (13/14)
-  "sideshop2"
-  {
-    "item"    "item_slippers"
-	"item"    "item_stout_shield"
-	"item"    "item_quelling_blade"
-    "item"	  "item_blight_stone"
-    "item"    "item_blades_of_attack"
-    "item"    "item_boots_of_elves"
-    "item"    "item_belt_of_strength"
-    "item"    "item_robe"
-    "item"    "item_gloves"
-    "item"    "item_chainmail"
-	"item"	  "item_bottle"
-    "item"    "item_quarterstaff"
-    "item"    "item_blink"
-  }
+	// Side Shop List 2 (13/14)
+	"sideshop2"
+	{
+		"item"    "item_stout_shield"
+		"item"	  "item_blight_stone"			// added
+		"item"    "item_gloves"
+		"item"    "item_chainmail"
+		"item"    "item_cloak"
+		"item"    "item_void_stone"
+		"item"    "item_quarterstaff"			// added
+		"item"    "item_helm_of_iron_will"
+		"item"    "item_energy_booster"
+		"item"    "item_vitality_booster"
+		"item"    "item_lifesteal"
+		"item"    "item_broadsword"
+		"item"    "item_blink"
+	}
   
-  "secretshop"
-  {             
-    "item"    "item_energy_booster"
-    "item"    "item_vitality_booster"
-    "item"    "item_point_booster"
-    "item"    "item_platemail"
-    "item"    "item_talisman_of_evasion"
-    "item"    "item_hyperstone"
-    "item"    "item_ultimate_orb"
-    "item"    "item_demon_edge"
-    "item"    "item_mystic_staff"
-    "item"    "item_reaver"
-    "item"    "item_eagle"
-    "item"    "item_relic"
-  } 
+	"secretshop"
+	{
+		"item"		"item_bottle"
+		"item"		"item_ring_of_health"
+		"item"		"item_void_stone"
+		"item"		"item_energy_booster"
+		"item"		"item_vitality_booster"
+		"item"		"item_point_booster"
+		"item"		"item_platemail"
+		"item"		"item_talisman_of_evasion"
+		"item"		"item_hyperstone"
+		"item"		"item_ultimate_orb"
+		"item"		"item_demon_edge"
+		"item"		"item_mystic_staff"
+		"item"		"item_reaver"
+		"item"		"item_eagle"
+		"item"		"item_relic"
+	}
+	
+	"pregame"
+	{
+		"item"		"item_clarity"
+		"item"		"item_faerie_fire"
+		"item"		"item_enchanted_mango"
+		"item"		"item_tango"
+		"item"		"item_flask"
+		"item"		"item_smoke_of_deceit"
+		"item"		"item_dust"
+		"item"		"item_courier"
+		"item"		"item_ward_observer"
+		"item"		"item_ward_sentry"
+		"item"		"item_branches"
+		"item"		"item_gauntlets"
+		"item"		"item_slippers"
+		"item"		"item_mantle"
+		"item"		"item_circlet"
+		"item"		"item_ring_of_protection"
+		"item"		"item_stout_shield"
+		"item"		"item_quelling_blade"
+		"item"		"item_blight_stone"
+		"item"		"item_orb_of_venom"
+		"item"		"item_wind_lace"
+		"item"		"item_magic_stick"
+		"item"		"item_sobi_mask"
+		"item"		"item_ring_of_regen"
+		"item"		"item_boots"
+		"item"		"item_gloves"
+		"item"		"item_wraith_band"
+		"item"		"item_null_talisman"
+		"item"		"item_bracer"
+		"item"		"item_blades_of_attack"
+	}
 }
