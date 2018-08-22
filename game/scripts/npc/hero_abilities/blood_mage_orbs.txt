@@ -1,0 +1,50 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Blood Mage: Orbs - innate ability, just visual
+	// Author: Noya
+	// Notes: OK; 14.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"blood_mage_orbs"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"MaxLevel"                      "1"
+
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"precache"
+		{
+			"particle"  "particles/blood_mage/exort_orb.vpcf"
+		}
+		
+		"Modifiers"
+		{
+			"modifier_blood_mage_orbs" // doesn't need tooltip
+			{
+				"Passive"           "1"
+				"IsHidden"          "1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/blood_mage/orbs.lua"
+						"Function"      "AttachOrbs"
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/blood_mage/orbs.lua"
+						"Function"      "RemoveOrbs"
+					}
+				}
+			}
+		}
+	}
+}

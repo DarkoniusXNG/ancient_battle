@@ -1,0 +1,65 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_alchemist"
+	"Title"			"Recommended items for Alchemist"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_stout_shield"
+			"item"		"item_flask"
+			"item"		"item_branches"
+			"item"		"item_branches"
+			"item"		"item_branches"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"		"item_bottle"
+			"item"		"item_boots"
+			"item"		"item_helm_of_iron_will"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_drum_of_vitality"		// new (985)
+			"item"		"item_armlet"
+			"item"		"item_radiance"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"		"item_manta"
+			"item"		"item_octarine_core"
+			"item"		"item_assault"
+			"item"		"item_ultimate_scepter"
+		}
+		
+		"#DOTA_Item_Build_Other_Items"
+		{
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_mjollnir"
+			"item"		"item_abyssal_blade"
+			"item"		"item_heavens_halberd"
+			"item"		"item_heart"
+			"item"		"item_solar_crest"
+			"item"		"item_bfury"
+			"item"		"item_hand_of_midas"
+			"item"		"item_moon_shard"
+			"item"		"item_monkey_king_bar"
+			"item"		"item_shivas_guard"
+			"item"		"item_skadi"
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

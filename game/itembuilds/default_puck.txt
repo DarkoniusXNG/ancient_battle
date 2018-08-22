@@ -1,0 +1,52 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_puck"
+	"Title"			"Recommended items for Mana Eater"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_enchanted_mango"
+			"item"		"item_enchanted_mango"
+			"item"		"item_magic_stick"
+			"item"		"item_branches"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_magic_wand"
+			"item"		"item_soul_ring"
+			"item"		"item_energy_booster"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_arcane_boots"
+			"item"		"item_aether_lens"
+			"item"		"item_blink"
+			"item"		"item_enchanted_mango"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_drum_of_vitality"			// new (985)
+			"item"    	"item_ghost"
+			"item"    	"item_shadow_amulet"
+			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_ultimate_scepter"
+			"item"		"item_infused_robe"				// new (4500)
+			"item"    	"item_manta"
+			"item"		"item_assault"
+			"item"		"item_silver_edge"
+			"item"		"item_ethereal_blade"
+			"item"    	"item_butterfly"
+			"item"		"item_skadi"
+			"item"		"item_guardian_greaves"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+		}
+	}
+}

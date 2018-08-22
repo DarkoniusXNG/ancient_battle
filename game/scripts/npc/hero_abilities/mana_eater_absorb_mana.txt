@@ -1,0 +1,117 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Mana Eater: Absorb Mana (R) - New Spell, Transfers mana from the target to the caster
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 27.12.2016; Has Aghanim Scepter upgrade; Destroys illusions; DOTA_UNIT_TARGET_FLAG_MANA_ONLY doesn't work
+	// TO_DO: 
+	//=================================================================================================================
+	"mana_eater_absorb_mana"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"custom/mana_eater_absorb_mana"
+		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		
+		"HasScepterUpgrade" 			"1"
+		
+		"AbilityCastRange"				"550"
+		"AbilityCastPoint"				"0.35"
+		
+		"AbilityCooldown"				"90.0 70.0 50.0"
+		
+		"AbilityManaCost"				"0"
+		"AbilityProcsMagicStick"		"1"
+		
+		"AbilitySpecial"
+		{
+			"01" // used only here, not in tooltip
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"0.5"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"mana_transfered"			"40 50 60"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"mana_transfered_scepter"	"50 60 75"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_mana_scepter"		"500"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"buff_duration_scepter"		"5.0"
+			}
+		}
+		
+		"precache"
+		{
+			"particle" 	"particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_explode_e_warp_ti_5.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"heroes/mana_eater/absorb_mana.lua"
+				"Function"				"AbsorbMana"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_absorb_mana_target" // doesn't need tooltip, only has visual effect purpose
+			{
+				"IsHidden" 			"1"
+				"IsDebuff"			"1"
+				"IsPurgable"		"0"
+				
+				"Effectname" 		"particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_explode_e_warp_ti_5.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				
+				"Duration" 			"%duration"
+			}
+		
+			"modifier_absorb_mana_caster" // doesn't need tooltip, only visual purpose
+			{
+				"IsHidden" 			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"Effectname" 		"particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_explode_e_warp_ti_5.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				
+				"Duration" 			"%duration"
+			}
+			
+			"modifier_absorb_bonus_mana_scepter" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"Duration"			"%buff_duration_scepter"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana_scepter"
+				}
+			}
+		}
+	}
+}

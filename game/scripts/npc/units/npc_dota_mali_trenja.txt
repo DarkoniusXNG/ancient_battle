@@ -1,0 +1,73 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Mali Trenja - Level 2
+	// Notes: OK; 19.6.2017;
+	//=================================================================================
+	"npc_dota_mali_trenja"
+	{
+		"Model"				"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" 
+		"BaseClass"			"npc_dota_creature"
+		"ModelScale"		"1.2"
+		"SoundSet"			"Undying_Zombie"
+		"CanBeDominated"  	"1"
+		"Level"				"2"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"					"1"
+		"MagicalResistance"				"25"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"				"24"
+		"AttackDamageMax"				"25"
+		"AttackRate"					"1.0"
+		"AttackAnimationPoint"			"0.56"
+		"AttackAcquisitionRange"		"800"
+		"AttackRange"					"150"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"20"
+		"BountyGoldMin"				"15"
+		"BountyGoldMax"				"15"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"HealthBarOffset"			"140"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"550"
+		"MovementTurnRate"			"0.5"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"200"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"1800"
+	}
+}

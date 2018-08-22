@@ -1,0 +1,142 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 1274 - Recipe: Drum of Vitality
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_recipe_drum_of_vitality"
+	{
+		"ID"							"1274"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"110"
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_drum_of_vitality"
+		"ItemRequirements"
+		{
+			"01"						"item_bracer;item_ring_of_regen;item_faerie_fire"
+			"02"						"item_drum_of_vitality"
+		}
+	}
+	
+	//=================================================================================================================
+	// 1275 - Drum of Vitality - Bracer (465) + Ring of Regen (325) + Faerie Fire (70) + Recipe (110) = 970
+	// Notes: OK; 17.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"item_drum_of_vitality"
+	{
+		"ID"							"1275"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom/drum_of_vitality"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"5.0"
+		
+		"AbilityManaCost"				"0"
+		"ItemCost"						"970"
+		"ItemShopTags"					"str;agi;int;damage;regen_health;hard_to_tag"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"drum of vitality"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
+		
+		"ItemPermanent"					"1"
+		"ItemInitialCharges"			"8"
+		"ItemRequiresCharges"			"1"
+		"ItemDisplayCharges"			"1"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_str"				"9"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"3"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"3"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_dmg"				"10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_hp_regen"		"3.0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"100"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"Heal"
+			{
+				"HealAmount"	"%heal"
+				"Target"		"CASTER"
+			}
+			
+			"FireSound"
+			{
+				"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
+				"Target"		"CASTER"
+			}
+			
+			"FireEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+			
+			"SpendCharge"
+			{}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_drum_of_vitality_passives" // doesn't need tooltip
+			{
+				"Passive" 		"1"
+				"IsHidden" 		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
+				}
+			}
+		}
+	}
+}

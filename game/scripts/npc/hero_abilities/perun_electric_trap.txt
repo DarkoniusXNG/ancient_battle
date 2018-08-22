@@ -1,0 +1,72 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lightning Shaman: Electric Trap (E) - Similar to Techies Stasis Trap
+	// Author: Darkonius
+	// Notes: OK; 17.2.2017; Trap stuns in a radius;
+	// TO_DO: ALL
+	//=================================================================================================================
+	"perun_electric_trap"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/perun_electric_trap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.0"
+		"AoERadius"						"%radius"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"20.0 16.0 13.0 10.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"80 110 140 160"
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+			"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap.vpcf"
+			"particle"		"particles/units/heroes/hero_techies/techies_stasis_spring.vpcf"
+			"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+			"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+			"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+			"particle"		"particles/status_fx/status_effect_techies_stasis.vpcf"
+			"model"			"models/heroes/techies/fx_techiesfx_stasis.vmdl"	
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{		
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"400"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"stun_duration"				"1.0 1.5 2.0 2.5"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"activation_delay"			"1.0"
+			}	
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"360.0"
+			}
+		}
+	}
+}

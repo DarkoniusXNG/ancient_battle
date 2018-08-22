@@ -1,0 +1,189 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Lich: Ice Armor (W) - Datadriven Lich Frost Armor, increased slow values
+	// Author: Jastuchko + Darkonius
+	// Notes: OK; 10.6.2018;
+	// TO_DO: Ponekad na lich-u ne moze autocast lepo da radi ako je meta prebrzo dmg-ovana - not critical
+	//====================================================================================================
+	"lich_custom_frost_armor"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"lich_frost_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.4"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+		"AbilityProcsMagicStick"		"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_bonus"			"3 5 7 9"
+			}
+			"02" // original Lich had -50%
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_movement_speed"	"-10 -15 -25 -30"
+			}
+			"03" // original Lich had -25
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_attack_speed"		"-10 -15 -25 -30"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"2.0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"autocast_radius"		"800"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"armor_duration"		"40.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Lich.FrostArmor"
+				"Target"		"TARGET"
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_custom_lich_frost_armor_buff"
+				"Target"		"TARGET"
+				"Duration"		"%armor_duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_lich_frost_armor_buff"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				}
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/lich/frost_armor.lua"
+						"Function"      "FrostArmorParticle"	
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/lich/frost_armor.lua"
+						"Function"      "EndFrostArmorParticle"	
+					}
+				}
+
+				"StatusEffectName"		"particles/status_fx/status_effect_frost_armor.vpcf"
+				"StatusEffectPriority"	"10"
+
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_custom_lich_frost_armor_slow_debuff"
+						"Target"
+						{
+							"Center" 	"ATTACKER"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Duration"		"%slow_duration"
+					}
+
+					"FireSound"
+					{
+						"EffectName"	"Hero_Lich.FrostArmorDamage"
+						"Target"		"TARGET"
+					}
+				}
+			}
+
+			"modifier_custom_lich_frost_armor_slow_debuff"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+
+				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
+				"StatusEffectPriority"	"10"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+				}
+			}
+
+			"modifier_frost_armor_autocast_aura"	// doesn't need tooltip
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
+
+				"Aura" 				"modifier_frost_armor_autocast_attacked"
+				"Aura_Radius" 		"%autocast_radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO"
+				
+				"AllowIllusionDuplicate"	"0"
+			}
+
+			"modifier_frost_armor_autocast_attacked"	// doesn't need tooltip
+			{
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
+				
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/lich/frost_armor.lua"
+						"Function"      "FrostArmorAutocast"
+					}
+				}
+			}
+		}
+	}
+}

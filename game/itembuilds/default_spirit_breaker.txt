@@ -1,0 +1,55 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_spirit_breaker"
+	"Title"			"Recommended items for Astral Trekker"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_flask"
+			"item"		"item_stout_shield"
+			"item"		"item_ring_of_protection"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"		"item_boots"
+			"item"		"item_infused_raindrop"
+			"item"		"item_magic_wand"
+			"item"		"item_ring_of_basilius"
+			"item"		"item_soul_ring"
+			"item"		"item_helm_of_iron_will"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_drum_of_vitality"			// new (985)
+			"item"		"item_blink"
+			"item"		"item_armlet"
+			"item"		"item_heart"
+			"item"		"item_ultimate_scepter"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_urn_of_shadows"
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_slippers_of_halcyon"		// new (2000)
+			"item"		"item_echo_sabre"
+			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_assault"
+			"item"		"item_moon_shard"
+			"item"		"item_cyclone"
+			"item"		"item_sphere"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+		}
+	}
+}

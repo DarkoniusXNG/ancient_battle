@@ -1,0 +1,313 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Archmage: Summon Water Elemental (W) - New Spell, Creates 1 Water Elemental that has no abilities.
+	// Author: Darkonius
+	// Notes: OK; 31.1.2017;
+	// TO_DO: Make Water Elementals phased and give them free pathing if they are too weak or boring; increase mana cost accordingly
+	// ================================================================================================================
+	"archmage_summon_water_elemental"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/archmage_summon_water_elemental"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"40.0 38.0 35.0 30.0"
+	
+		"AbilityManaCost"				"75"
+		"AbilityProcsMagicStick"		"1"
+	
+		"precache"
+		{
+			"model"			"models/heroes/morphling/morphling.vmdl"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+			"particle" 		"particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+			"particle"		"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"60.0"
+			}
+			"02" // only in tooltip
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_tooltip"				"15 25 35 45"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"03" // only in tooltip
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hp_tooltip"				"200 300 400 500"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ms_tooltip"				"350"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lvl_1_count"				"1 0 0 0"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lvl_2_count"				"0 1 0 0"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lvl_3_count"				"0 0 1 0"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lvl_4_count"				"0 0 0 1"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spawn_distance"			"250"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Morphling.Replicate"
+				"Target"		"CASTER"
+			}		
+	
+			"SpawnUnit"
+			{
+				"UnitName"		"npc_dota_water_elemental_1"
+				"Target"		
+				{
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/archmage/summon.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
+				}
+				"Duration"		"%duration"
+				"UnitCount"		"%lvl_1_count"
+				"GrantsGold"	"1"
+				"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/summon.lua"
+						"Function"		"SetUnitsMoveForward"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}				
+	
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_phased"
+						"Target"		"TARGET"
+					}
+			
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_summoned"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+	
+			"SpawnUnit"
+			{
+				"UnitName"		"npc_dota_water_elemental_2"
+				"Target"		
+				{
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/archmage/summon.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
+				}
+				"Duration"		"%duration"
+				"UnitCount"		"%lvl_2_count"
+				"GrantsGold"	"1"
+				"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/summon.lua"
+						"Function"		"SetUnitsMoveForward"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}				
+	
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_phased"
+						"Target"		"TARGET"
+					}
+			
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_summoned"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+	
+			"SpawnUnit"
+			{
+				"UnitName"		"npc_dota_water_elemental_3"
+				"Target"
+				{
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/archmage/summon.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
+				}
+				
+				"Duration"		"%duration"
+				"UnitCount"		"%lvl_3_count"
+				"GrantsGold"	"1"
+				"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/summon.lua"
+						"Function"		"SetUnitsMoveForward"
+					}				
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}				
+	
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_phased"
+						"Target"		"TARGET"
+					}
+			
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_summoned"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+			
+			"SpawnUnit"
+			{
+				"UnitName"		"npc_dota_water_elemental_4"
+				"Target"
+				{
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/archmage/summon.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
+				}
+				
+				"Duration"		"%duration"
+				"UnitCount"		"%lvl_4_count"
+				"GrantsGold"	"1"
+				"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/summon.lua"
+						"Function"		"SetUnitsMoveForward"
+					}				
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}				
+	
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_phased"
+						"Target"		"TARGET"
+					}
+			
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_water_elemental_summoned"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_water_elemental_summoned" // doesn't need tooltip
+			{
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
+	
+				"States"
+				{
+					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_water_elemental_phased" // doesn't need tooltip
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+				
+				"Duration"		"1.0"
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

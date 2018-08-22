@@ -1,0 +1,240 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 1251 - Recipe: Slippers of Halcyon
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_recipe_custom_slippers_of_halcyon"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1251"
+		"BaseClass"						"item_recipe_tranquil_boots"
+		"AbilityTextureName"			"custom/custom_recipe"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_slippers_of_halcyon"
+		"ItemRequirements"
+		{
+			"01"						"item_tranquil_boots;item_vitality_booster"
+		}
+	}
+	
+	//=================================================================================================================
+	// 1252 - Slippers of Halcyon - Tranquil Boots (1050) + Vitality Booster (1100) = 2150
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_custom_slippers_of_halcyon"
+	{
+		"ID"							"1252"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityTextureName"			"custom/slippers_of_halcyon"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"40.0"
+		"AbilityChannelTime"			"3.5"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+		"ItemCost"						"2150"
+		"ItemShopTags"					"move_speed;regen_health"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ItemAlertable"					"1"
+		"ItemAliases"					"halcyon"
+		
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"70"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp"				"250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_hp_regen"		"4.0"
+			}
+			"04" // only here
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_per_tick"			"50"
+			}
+			"05" // only here
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_rate"				"0.5"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+			"07" // in tooltip only
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.0"
+			}
+			"08" // in tooltip only
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_per_second_tooltip"	"100"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName" 		"modifier_slippers_of_halcyon_caster"
+			}
+		}
+
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName" 		"modifier_slippers_of_halcyon_caster"
+			}
+		}
+		
+		"OnChannelInterrupted" // needed?
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName" 		"modifier_slippers_of_halcyon_caster"
+			}
+		}
+
+		"OnUnequip"
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName" 		"modifier_slippers_of_halcyon_caster"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_item_slippers_of_halcyon_passives" // doesn't need tooltip
+			{
+				"Passive"	 	"1"
+				"IsHidden"	 	"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"  		"%bonus_movement"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"					"%bonus_hp"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
+				}
+			}
+
+			"modifier_slippers_of_halcyon_caster" // needs tooltip, source of the heal
+			{
+				"IsHidden"		"0"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"TextureName"		"custom/slippers_of_halcyon"
+				
+				"Aura"					"modifier_slippers_of_halcyon_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target" 			"CASTER"
+						"EffectName"		"particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"EffectRadius"		"%radius"
+					}
+					
+					"FireSound"
+					{
+						"EffectName" 	"n_creep_ForestTrollHighPriest.Heal"
+						"Target"		"CASTER"
+					}
+				}
+				
+				"ThinkInterval"		"%tick_rate"
+				"OnIntervalThink"
+				{
+					"FireSound"
+					{
+						"EffectName" 	"n_creep_ForestTrollHighPriest.Heal"
+						"Target"		"CASTER"
+					}
+				}
+			}
+			
+			"modifier_slippers_of_halcyon_buff" // doesn't need tooltip
+			{
+				"IsHidden"		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"TextureName"		"custom/slippers_of_halcyon"
+				
+				"EffectName"		"particles/neutral_fx/troll_heal.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"OnCreated"
+				{
+					"Heal"
+					{
+						"HealAmount"	"%hp_per_tick"
+						"Target"		"TARGET"
+					}
+				}
+			
+				"ThinkInterval"		"%tick_rate"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"HealAmount"	"%hp_per_tick"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,125 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Astral Trekker: Entrapment (Q) - Datadriven Naga Siren Ensnare without illusion casting part
+	// Author: Darkonius
+	// Notes: OK; 27.12.2016; Just applies root and reveal; Doesn't disarm; Interrupts;
+	// Linkens: Blocks;
+	// TO_DO:
+	//=================================================================================================================
+	"astral_trekker_entrapment"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"    		"naga_siren_ensnare"
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation" 			"ACT_DOTA_ATTACK"
+		"AbilityCastPoint"				"0.65"
+		"AbilityCastRange" 				"650"	
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"               "12.0"
+		
+		// Mana Cost + Magic Stick/Wand
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"90 100 110 120"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+			"particle"					"particles/units/heroes/hero_siren/siren_net.vpcf"
+			"particle"					"particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{ 
+				"var_type"  		"FIELD_FLOAT"
+				"duration" 			"2.0 3.0 4.0 5.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"
+				{
+					"Center" 	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+				"EffectName"			"particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
+				"Dodgeable"				"1"
+				"ProvidesVision"		"1"
+				"VisionRadius"			"250"
+				"MoveSpeed"				"1100"
+				"SourceAttachment"		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_NagaSiren.Ensnare.Cast"
+				"Target"				"CASTER"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/astral_trekker/entrapment.lua"
+				"Function"		"EntrapmentStart"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_entrapment"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"0"
+				
+				"EffectName"		"particles/units/heroes/hero_siren/siren_net.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"Priority"          "MODIFIER_PRIORITY_ULTRA"
+				
+				"States"	
+				{
+					"MODIFIER_STATE_ROOTED" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_NagaSiren.Ensnare.Target"
+						"Target"
+						{
+							"Center" 	"TARGET"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
+			}
+		}
+	}
+}

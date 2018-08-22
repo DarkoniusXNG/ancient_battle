@@ -1,0 +1,172 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Mana Eater: Anti-Magic Field (W) - New Spell, Generates an anti magic field that grants magic immunity (not spell immunity!) to all heroes and buildings within and pseudo-silence to enemies.
+	// Author: Darkonius
+	// Notes: OK; 27.12.2016; Uses Order Filter;
+	// TO_DO: Fix sound length if Valve doesn't -> not critical
+	//=================================================================================================================
+	"mana_eater_anti_magic_field"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"    		"arc_warden_magnetic_field"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"20.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"140"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		"AOERadius"						"%radius"
+
+		"precache"
+		{
+			"particle" 		"particles/units/heroes/hero_arc_warden/arc_warden_magnetic.vpcf"
+			"particle"		"particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_arc_warden.vsndevts"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"	// Arc Warden Magnetic Field radius: 275
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"300"
+			}
+			"02"	// Arc Warden Magnetic Field duration: 3.5/4.5/5.5/6.5
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"4.0 6.0 8.0 10.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_ArcWarden.MagneticField.Cast"
+				"Target"		"CASTER"
+			}
+			
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_anti_magic_field_buff_applier"
+				"Target" 		"POINT"
+			}
+			
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_anti_magic_field_debuff_applier"
+				"Target" 		"POINT"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_anti_magic_field_buff_applier"
+			{
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_anti_magic_field_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%duration"
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_ArcWarden.MagneticField"
+						"Target"		"TARGET"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_arc_warden/arc_warden_magnetic.vpcf"   
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}
+				}
+			}
+			
+			"modifier_anti_magic_field_debuff_applier"
+			{
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_anti_magic_field_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%duration"
+			}
+			
+			"modifier_anti_magic_field_debuff" // needs tooltip, visible on enemies inside field
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"0"
+				
+				"Duration"				"0.01"
+				
+				"OnSpentMana"
+				{
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf"
+						"EffectAttachType"  "attach_origin"
+						"Target"            "UNIT"
+					}
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_MUTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_anti_magic_field_buff" // needs tooltip, visible on everyone inside field
+			{
+				"IsHidden"		"0"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+				}
+			}
+		}
+	}
+}

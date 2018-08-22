@@ -1,0 +1,51 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Primal Split Storm Spirit: Cyclone (W) - datadriven dota Primal Storm Split Cyclone
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 27.6.2017; Uses built-in modifier: modifier_brewmaster_storm_cyclone
+	// TO_DO: 
+	//====================================================================================================
+	"primal_split_storm_spirit_cyclone"
+	{
+	    "BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "custom/primal_split_storm_spirit_cyclone"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+	    "MaxLevel"                      "1"
+		
+	    "AbilityCastRange"              "600"
+		"AbilityCooldown"               "8.0"
+	    "AbilityCastPoint"              "0.4"
+	
+	    "AbilityManaCost"               "150"
+		"AbilityProcsMagicStick"		"1"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"				"FIELD_FLOAT"
+	            "duration_hero"			"6.0"
+	        }
+	        "02"
+	        {
+	            "var_type"				"FIELD_FLOAT"
+	            "duration_creeps"		"20.0"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+			{
+				"ScriptFile"	"heroes/brewmaster/primal_split_storm_spirit_cyclone.lua"
+				"Function"      "Cyclone"
+			}
+	    }
+	}
+}

@@ -1,0 +1,48 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_riki"
+	"Title"			"Recommended items for Stealth Assassin"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_poor_mans_shield"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_magic_wand"
+			"item"		"item_boots"
+			"item"		"item_orb_of_venom"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_manta"
+			"item"		"item_skadi"
+			"item"		"item_ultimate_scepter"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_sange_and_yasha"
+			"item"		"item_desolator"
+			"item"		"item_echo_sabre"
+			"item"		"item_butterfly"
+			"item"		"item_abyssal_blade"
+			"item"		"item_monkey_king_bar"
+			"item"		"item_bloodthorn"
+			"item"		"item_assault"
+			"item"		"item_satanic"
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

@@ -1,0 +1,57 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_life_stealer"
+	"Title"			"Recommended items for Lifestealer"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_quelling_blade"
+			"item"		"item_stout_shield"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_boots"
+			"item"		"item_magic_wand"
+			"item"		"item_orb_of_venom"
+			"item"		"item_drum_of_vitality"		// new (985)
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_sange_and_yasha"
+			"item"		"item_armlet"
+			"item"		"item_basher"
+			"item"		"item_assault"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_hand_of_midas"
+			"item"		"item_echo_sabre"
+			"item"		"item_desolator"
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_heart"
+			"item"		"item_satanic"
+			"item"		"item_skadi"
+			"item"		"item_mjollnir"
+			"item"		"item_abyssal_blade"
+			"item"		"item_bloodthorn"
+			"item"		"item_refresher"
+			"item"		"item_sphere"
+			"item"		"item_heavens_halberd"
+			"item"		"item_silver_edge"
+			"item"		"item_dagon_5"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

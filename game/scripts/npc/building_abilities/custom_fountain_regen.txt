@@ -1,0 +1,79 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Fountain: HP and MP Regeneration Aura
+	// Author: Darkonius
+	// Notes: OK; 31.12.2016;
+	// TO_DO:
+	//=================================================================================================================
+	"custom_fountain_regen"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"										"ability_datadriven"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"							"custom/custom_fountain_regen"
+		"MaxLevel"										"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"								"FIELD_INTEGER"
+				"regen_radius"							"700"
+			}
+			"02"
+			{
+				"var_type"								"FIELD_FLOAT"
+				"hp_regen"								"6.0"
+			}
+			"03"
+			{
+				"var_type"								"FIELD_FLOAT"
+				"mp_regen"								"6.0"
+			}
+			"04"
+			{
+				"var_type"								"FIELD_FLOAT"
+				"regen_stickyness"						"3.0"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_fountain_aura_applier" // doesn't need tooltip
+			{
+				"Passive"								"1"
+				"IsHidden"								"1"
+				"IsBuff"								"1"
+				"IsPurgable"							"0"
+
+				"Attributes"							"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+				"Aura"									"modifier_custom_fountain_regen"
+				"Aura_Radius"							"%regen_radius"
+				"Aura_Teams"							"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"							"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags"							"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD"
+				"Aura_ApplyToCaster"					"0"
+			}
+
+			"modifier_custom_fountain_regen" // needs tooltip
+			{
+				"IsHidden"								"0"
+				"IsBuff"								"1"
+				"IsPurgable"							"0"
+
+				"Duration"								"%regen_stickyness"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"			"%hp_regen"
+				    "MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"		"%mp_regen" 
+				}
+			}
+		}
+	}
+}

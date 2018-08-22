@@ -1,0 +1,81 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Blademaster; 11.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"npc_dota_hero_blademaster"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"override_hero"				"npc_dota_hero_juggernaut"
+		"ModelScale"				"1"										// Unique for Blademaster
+		"Team"						"Bad"
+		"BotImplemented"			"0"
+		"Role"						"Carry,Pusher,Escape"					// Roles
+		"Rolelevels"				"3,2,2"
+		"Complexity"				"1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"		"6"
+		"Ability1"			"blademaster_blade_storm"				// Q (4 levels)
+		"Ability2"			"blademaster_mirror_image"				// W, modified (4 levels)
+		"Ability3"			"blademaster_shadow_walk"				// E (4 levels)
+		"Ability4"			"blademaster_custom_blade_dance"		// T, passive (4 levels) 
+		"Ability5"			"blademaster_counter_attack"			// F, passive, modified (1 level)
+		"Ability6"			"juggernaut_omni_slash"					// R, Primary Ultimate, DOTA_VERSION (3 levels)	
+		
+		"Ability10"		"special_bonus_all_stats_5"					// lvl 10 talent; same as Juggernaut
+		"Ability11"		"special_bonus_movement_speed_20"			// lvl 10 talent; same as Juggernaut
+		"Ability12"		"special_bonus_attack_speed_25"				// lvl 15 talent: same as Juggernaut
+		"Ability13"		"special_bonus_strength_14"					// lvl 15 talent: unique
+		"Ability14"		"special_bonus_armor_10"					// lvl 20 talent; same as Juggernaut
+		"Ability15"		"special_bonus_magic_resistance_20"			// lvl 20 talent; unique
+		"Ability16"		"special_bonus_agility_20"					// lvl 25 talent; unique
+		"Ability17"		"special_bonus_unique_juggernaut_2"			// lvl 25 talent; same as Juggernaut
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// like Juggernaut
+		"MagicalResistance"			"25"									// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"22"									// like Juggernaut
+		"AttackDamageMax"			"26"									// like Juggernaut
+		"AttackRate"				"1.7"									// Naga Siren (1.7); Juggernaut (1.4); original (1.77);
+		"AttackAnimationPoint"		"0.33"									// like Juggernaut
+		"AttackAcquisitionRange"	"600"									// like Juggernaut
+		"AttackRange"				"150"									// like Juggernaut
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"290"									// Clinkz (295); Juggernaut (295); Naga Siren (315); original (320);
+		"MovementTurnRate"			"0.6"									// like Juggernaut
+		"HasAggressiveStance"		"1"										// like Juggernaut
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Default
+		"VisionNighttimeRange"		"800"									// Default
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"20"									// Juggernaut (21); Naga Siren (22); original (18); - don't change!
+		"AttributeStrengthGain"		"2.0"									// Juggernaut (2.2); Naga Siren (2.8); original (2.0);
+		"AttributeBaseIntelligence"	"15"									// Juggernaut (14); Naga Siren (21); original (16);
+		"AttributeIntelligenceGain"	"2.0"									// Juggernaut (1.4); Naga Siren (2.0); original (2.25);
+		"AttributeBaseAgility"		"26"									// Juggernaut (26); Naga Siren (21); original (24); - don't change!
+		"AttributeAgilityGain"		"2.4"									// Juggernaut (2.4); Naga Siren (3.2); original (1.75);
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"2.0"									// like Juggernaut
+		"StatusHealth"				"200"									// like Juggernaut
+		"StatusMana"				"75"									// like Juggernaut
+		"StatusManaRegen"			"0.9"									// like Juggernaut
+	}
+}

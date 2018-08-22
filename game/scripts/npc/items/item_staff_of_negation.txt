@@ -1,0 +1,200 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 1258 - Recipe: Staff of Negation
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_recipe_staff_of_negation"
+	{
+		"ID"							"1258"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_staff_of_negation"
+		"ItemRequirements"
+		{
+			"01"						"item_custom_rod_of_atos;item_oblivion_staff;item_custom_diffusal_blade"
+		}
+	}
+	
+	//=================================================================================================================
+	// 1259 - Staff of Negation - Custom Rod of Atos (3000) + Oblivion Staff (1650) + Custom Diffusal Blade (3500) = 8150
+	// Notes: OK; 17.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"item_staff_of_negation"
+	{
+		"ID"							"1259"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName" 			"custom/staff_of_negation"
+		
+		"ItemCost"						"8150"
+		"ItemShopTags"					"int;agi;str;regen_health;unique;hard_to_tag"
+		"ItemQuality"					"artifact"
+		"ItemAliases"					"staff of negation"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemSellable" 					"1"
+		"ItemDroppable" 				"1"
+		"ItemShareability" 				"ITEM_NOT_SHAREABLE"
+		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		
+		"AbilityCooldown"				"16.0"
+		"AbilitySharedCooldown"			"rod_of_atos"
+		"AbilityCastRange"				"1150"
+		"AbilityCastPoint"				"0.0"
+		"AoERadius" 					"%radius"
+		"AbilityManaCost"				"100"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{			
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"26"
+			}
+			"03"
+			{			
+				"var_type"				"FIELD_INTEGER"
+				"bonus_str"				"15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_dmg"				"10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"0.75"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_burn"				"50"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_burn_illusion_melee"	"15"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_burn_illusion_ranged"	"8"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_slow"				"-100"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.0"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"325"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/staff_of_negation.lua"
+				"Function"		"Negate"
+				"Target"		"POINT"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_staff_of_negation_passives" // doesn't need tooltip
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%bonus_str"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	    	"%bonus_mana_regen"
+				}
+			}
+			
+			"item_modifier_negate_slow"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"TextureName"		"custom/staff_of_negation"
+				
+				"Duration"			"%duration"
+				
+				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%move_slow"
+					"MODIFIER_PROPERTY_DISABLE_HEALING"					"1"
+					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"			"1"
+				}
+			}
+			
+			"modifier_item_staff_of_negation_mana_break" // doesn't need tooltip
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+		
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/staff_of_negation.lua"
+						"Function"			"Staff_Mana_Break"
+					}
+				}
+			}
+		}
+	}
+}

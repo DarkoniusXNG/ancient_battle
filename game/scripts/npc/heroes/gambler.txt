@@ -1,0 +1,85 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Gambler; 11.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"npc_dota_hero_custom_gambler"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_rubick"
+		"Team"						"Good"
+		"HeroSelectSoundEffect"		"Hero_Rubick.Pick"
+		"BotImplemented"			"0"
+		"Role"						"Carry,Nuker,Support,Initiator,Disabler"	// Roles
+		"Rolelevels"				"1,3,2,1,3"
+		"Complexity"				"3"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"6"
+		"Ability1"				"gambler_bet"								// Q (4 levels)
+		"Ability2"				"gambler_roll_the_dice"						// W (4 levels)
+		"Ability3"				"gambler_russian_roulette"					// E (4 levels)
+		"Ability4"				"gambler_lucky_stars"						// T, passive (4 levels)
+		"Ability5"				"gambler_chip_stack"						// F (1 level)
+		"Ability6"				"gambler_all_in"							// R, Primary Ultimate (3 levels)
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"generic_hidden"
+		
+		"Ability11"				"special_bonus_attack_damage_60"			// lvl 10 talent: same as Rubick
+		"Ability12"				"special_bonus_hp_200"						// lvl 10 talent: same as Rubick
+		"Ability13"				"special_bonus_intelligence_15"				// lvl 15 talent: unique
+		"Ability14"				"special_bonus_cast_range_100"				// lvl 15 talent: same as Rubick
+		"Ability15"				"special_bonus_spell_amplify_10"			// lvl 20 talent: unique
+		"Ability16"				"special_bonus_attack_speed_250"			// lvl 20 talent; unique
+		"Ability17"				"special_bonus_gold_income_70"				// lvl 25 talent; unique
+		"Ability18"				"special_bonus_cooldown_reduction_30"		// lvl 25 talent: unique
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Default
+		"MagicalResistance"			"25"									// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"19"									// like Rubick
+		"AttackDamageMax"			"29"									// like Rubick
+		"AttackRate"				"1.7"									// like Rubick
+		"AttackAnimationPoint"		"0.4"									// like Rubick
+		"AttackAcquisitionRange"	"800"									// like Rubick
+		"AttackRange"				"600"									// Rubick(550); original Gambler(500);
+		"ProjectileSpeed"			"1125"									// like Rubick
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"290"									// Rubick(290); original Gambler(320);
+		"MovementTurnRate"			"0.7"									// like Rubick
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Default
+		"VisionNighttimeRange"		"800"									// Default
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"18"								// Rubick (21); original Gambler (16); 
+		"AttributeStrengthGain"			"1.8"								// Rubick (1.8); worse than original Gambler
+		"AttributeBaseAgility"			"14"								// Rubick (14); worse than original Gambler
+		"AttributeAgilityGain"			"1.6"								// Rubick (1.6); worse than original Gambler
+		"AttributeBaseIntelligence"		"21"								// Rubick (25); original Gambler (21); 
+		"AttributeIntelligenceGain"		"2.4"								// Rubick (2.4); original Gambler (2.0);
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"1.5"									// like Rubick
+		"StatusHealth"				"200"									// like Rubick
+		"StatusMana"				"75"									// like Rubick
+		"StatusManaRegen"			"0.9"									// like Rubick
+	}
+}

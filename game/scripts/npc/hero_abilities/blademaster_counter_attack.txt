@@ -1,0 +1,51 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Blademaster: Counter Attack (F) - Modified Legion Commander Moment of Courage. 1 level and No Lifesteal!
+	// Author: Valve + Darkonius
+	// Notes: OK; 25.12.2016; Blademaster can crit on Counter-Attack; Decreased proc chance and decreased cooldown;
+	// Notes: Can counter-attack buildings;
+	// TO_DO:
+	//=================================================================================================================
+	"blademaster_counter_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"legion_commander_moment_of_courage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"MaxLevel"						"1"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.9"
+		
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+		  	"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_courage_tgt.vpcf" 
+			"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"trigger_chance"			"25"
+			}
+			"02" // not in tooltip
+			{
+				"var_type"					"FIELD_FLOAT"
+				"buff_duration"				"1.0"
+			}
+			"03" // not in tooltip
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hp_leech_percent"			"0"
+			}
+		}
+	}
+}

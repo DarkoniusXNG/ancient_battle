@@ -1,0 +1,101 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Primal Split Earth Spirit: Taunt (Q) - similar to Axe Berserker's Call
+	// Author: Darkonius
+	// Notes: OK; 27.5.2018;
+	// TO_DO: Sound
+	//====================================================================================================
+	"primal_split_earth_spirit_taunt"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "custom/primal_split_earth_spirit_taunt"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+	    "MaxLevel"                      "1"
+		
+	    "AbilityCastPoint"              "0.3"
+	    "AbilityCooldown"               "15.0"
+	
+	    "AbilityManaCost"               "50"
+		"AbilityProcsMagicStick"		"1"
+		
+	    "AbilitySpecial"
+	    {
+	        "01" // original: 450;
+	        {
+	            "var_type"			"FIELD_INTEGER"
+	            "radius"			"400"
+	        }
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+	            "duration"			"2.0"
+			}
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/custom/axe_beserkers_call_owner.vpcf"
+	            "EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+	            "ControlPointEntities"
+	            {
+	                "CASTER"    "attach_attack1"
+	            }
+	        }
+	
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/brewmaster/primal_split_earth_spirit_taunt.lua"
+	            "Function"      "TauntStart"
+	        }
+	    }
+		
+		"Modifiers"
+		{
+			"modifier_earth_spirit_custom_taunted" // needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsDebuff"		"1"
+				"IsStunDebuff"	"1"
+				"IsPurgable"	"1"
+				
+				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+				"StatusEffectPriority"  "10"
+				
+				"States"
+                {
+                    "MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+                }
+				
+				"ThinkInterval"		"0.3"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/brewmaster/primal_split_earth_spirit_taunt.lua"
+						"Function"			"TauntCheck"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/brewmaster/primal_split_earth_spirit_taunt.lua"
+						"Function"      "TauntEnd"
+					}
+				}
+			}
+		}
+	}
+}

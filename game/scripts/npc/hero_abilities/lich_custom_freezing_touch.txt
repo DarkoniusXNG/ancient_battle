@@ -1,0 +1,85 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
+	// Author: Jastuchko + Darkonius
+	// Notes: OK; 10.5.2018; Slow works on towers; Passive works on illusions.
+	// TO_DO:
+	//====================================================================================================
+	"lich_custom_freezing_touch"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"custom/lich_custom_freezing_touch"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+		"MaxLevel"               	"1"
+		"RequiredLevel"				"12"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"3.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_slow"		"-30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"-30"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_lich_custom_freezing_touch_passive" // doesn't need tooltip
+			{
+				"Passive"		"1"
+				"IsHidden"		"1"
+				"IsPurgable"    "0"
+				
+				"AllowIllusionDuplicate"	"1"
+
+				"OnDealDamage"
+				{
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Center"	"UNIT"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Types" 	"DOTA_UNIT_TARGET_ALL"
+						}
+						"ModifierName"		"modifier_lich_custom_freezing_touch_debuff"
+						"Duration"			"%duration"
+					}
+				}
+			}
+			
+			"modifier_lich_custom_freezing_touch_debuff" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				
+				"StatusEffectName"     "particles/status_fx/status_effect_frost_lich.vpcf"
+				"StatusEffectPriority" "12"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				}
+			}
+		}
+	}
+}

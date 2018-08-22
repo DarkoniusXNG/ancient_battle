@@ -1,0 +1,78 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Mana Eater: EMP (F) - New Spell, Similar to Invoker's EMP, burns percentage of max mana and EMP follows the caster
+	// Author: Darkonius
+	// Notes: OK; 31.1.2017; Destroys illusions; EMP cannot be dispelled from Mana Eater once activated;
+	// TO_DO: 
+	//=================================================================================================================
+	"mana_eater_emp"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"custom/mana_eater_emp"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+		"MaxLevel"               	"4"
+		"RequiredLevel"				"6"
+		"LevelsBetweenUpgrades"		"4"
+		
+		"AbilityCastPoint"				"0.0"
+		
+		"AbilityCooldown"				"30.0"
+		
+		"AbilityManaCost"				"125 100 75 50"
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_invoker/invoker_emp.vpcf"
+			"particle"			"particles/units/heroes/hero_invoker/invoker_emp_explode.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"700"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_burned"					"30 35 40 45"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage_per_mana_burned"		"0.75"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"mana_gained_per_mana_burned"	"50"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"delay"							"2.9"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"					"heroes/mana_eater/emp.lua"
+				"Function"						"ElectromagneticPulse"
+			}
+		}
+	}
+}

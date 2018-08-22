@@ -1,0 +1,114 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lifestealer: Rage (R) - New Spell, Spell immunity + bonus damage
+	// Author: Darkonius
+	// Notes: OK; 14.5.2018;
+	// TO_DO: Add growing mechanic OnSpellStart (Increases Lifestealer's size by 25% for its duration.);
+	//=================================================================================================================
+	"life_stealer_custom_rage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"            "life_stealer_rage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"MaxLevel"						"3"
+		"RequiredLevel"        			"6"
+		"LevelsBetweenUpgrades"  		"5"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+		"AbilityCastAnimation"			"ACT_DOTA_LIFESTEALER_RAGE"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"50.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 150 200"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_bonus"					"30 45 60"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"6.0 7.0 8.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_LifeStealer.Rage"
+				"Target"        "CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/lifestealer/custom_rage.lua"
+				"Function"      "RagePurge"
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_custom_rage_buff"
+				"Target"        "CASTER"
+				"Duration"      "%duration"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_custom_rage_buff" // needs tooltip
+			{
+				"IsHidden"          "0"
+				"IsBuff"          	"1"
+				"IsPurgable"		"0"
+
+				"StatusEffectName"         	"particles/status_fx/status_effect_life_stealer_rage.vpcf"        
+				"StatusEffectPriority"  	"10"
+		
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        	"particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+						"EffectAttachType"  	"attach_hitloc"
+						"Target"            	"CASTER"
+						"ControlPointEntities"
+						{
+							"CASTER"    "attach_hitloc"
+							"CASTER"    "attach_hitloc"
+							"CASTER"    "attach_hitloc"
+						}
+					}
+				}
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 			"%damage_bonus"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"        			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

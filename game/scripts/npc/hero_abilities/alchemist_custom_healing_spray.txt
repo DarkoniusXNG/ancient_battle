@@ -1,0 +1,141 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Alchemist: Healing Spray (Q) - New Spell, Creates a pool of healing spray that heals and decreases incoming damage
+	// Author: Darkonius
+	// Notes: OK; 9.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"alchemist_custom_healing_spray"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "custom/alchemist_custom_healing_spray"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		"AbilityCastRange"              "900"
+		"AbilityCastPoint"              "0.1"
+		"AbilityCooldown"               "20.0"
+
+		"AbilityManaCost"               "150 160 170 180"
+		"AbilityProcsMagicStick"		"1"
+		
+		"AOERadius"                     "%radius"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"radius"                "400 425 450 475"
+			}
+			"02"
+			{
+				"var_type"              "FIELD_FLOAT"
+				"duration"         		"15.0"
+			}       
+			"03"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"heal_per_wave"         "15 20 25 30"
+			}
+			"04"
+			{
+				"var_type"              "FIELD_FLOAT"
+				"wave_interval"         "1.0"
+			}
+			"05"
+			{
+				"var_type"              		"FIELD_INTEGER"
+				"damage_decrease"      			"-5 -10 -15 -20"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"CreateThinker"
+			{
+				"ModifierName"			"modifier_healing_spray_thinker"
+				"Target" 				"POINT"
+			}
+	    }
+	    
+		"Modifiers"
+	    {
+	        "modifier_healing_spray_thinker" // doesn't need tooltip
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+				
+				"Aura"					"modifier_healing_spray_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Duration"				"%duration"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/alchemist/healing_spray.lua"
+						"Function"		"HealingSpraySound"
+					}
+
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius 1 1"
+							"15" "25 150 25"
+							"16" "0 0 0"
+						}
+					}
+				}
+			}
+			
+			"modifier_healing_spray_buff" // needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"				"%damage_decrease"
+				}
+				
+				"OnCreated"
+				{
+					"Heal"
+					{
+						"Target"	 	"TARGET"
+						"HealAmount"	"%heal_per_wave"
+					}
+				}
+				
+				"ThinkInterval"		"%wave_interval"
+				"OnIntervalThink"
+				{
+					"FireSound"
+					{
+						"EffectName" 	"Hero_Alchemist.AcidSpray.Damage"
+						"Target"		"TARGET"
+					}
+					
+					"Heal"
+					{
+						"Target"	 	"TARGET"
+						"HealAmount"	"%heal_per_wave"
+					}
+				}
+			}
+		}              
+	}
+}

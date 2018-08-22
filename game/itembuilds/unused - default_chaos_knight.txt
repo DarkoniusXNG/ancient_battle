@@ -1,0 +1,37 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_chaos_knight"
+	"Title"			"Recommended items for "
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"		"item_boots"
+			"item"		"item_magic_wand"
+			"item"		"item_bracer"
+			"item"		"item_helm_of_the_dominator"
+			"item"		"item_soul_ring"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_phase_boots"
+			"item"		"item_armlet"
+			"item"		"item_sange_and_yasha"
+			"item"		"item_skadi"
+			"item"		"item_ultimate_scepter"			
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			
+		}
+	}
+}

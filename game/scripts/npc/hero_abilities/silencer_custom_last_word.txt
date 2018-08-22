@@ -1,0 +1,255 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Silencer: Last Word (E) - New Spell; Passive + Active; Old Last Word Aura + Old Last Word Active with disarm
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 20.2.2017; Weird interaction with Lotus orb but not critical. 
+	// TO_DO:
+	//=================================================================================================================
+	"silencer_custom_last_word"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"silencer_last_word"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"900"
+
+		"AbilityCooldown"				"30.0 24.0 18.0 12.0"
+		
+		"AbilityManaCost"				"120"
+		"AbilityProcsMagicStick"		"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"150 200 250 300"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"debuff_duration"				"5.0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"silence_duration_active"		"3.0 4.0 5.0 6.0"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"disarm_duration"				"2.5 3.0 3.5 4.0"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"aura_radius"					"500"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"silence_duration_passive"		"0.75 1.5 2.25 3.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Silencer.LastWord.Cast"
+				"Target"		"TARGET"
+			}	
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/silencer/last_word.lua"
+				"Function"		"LastWordStart"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_last_word_aura_applier" // this modifier is hidden passive, doesn't need tooltip
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"IsBuff"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura" 				"modifier_last_word_aura_effect"
+				"Aura_Radius" 		"%aura_radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				
+				"AllowIllusionDuplicate"	"1"
+			}
+			
+			"modifier_last_word_aura_effect" // needs tooltip
+			{
+				"IsHidden" 			"0"
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
+				
+				"OnSpentMana"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/silencer/last_word.lua"
+						"Function"		"SpellCastCheckPassive"
+					}
+				}
+			}
+			
+			"modifier_last_word_active" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				
+				"Duration"				"%debuff_duration"
+				
+				"EffectName"			"particles/units/heroes/hero_silencer/silencer_last_word_status.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"		"1"
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				
+				"ThinkInterval"			"%debuff_duration"
+				"OnIntervalThink"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_custom_last_word_disarm_debuff"
+						"Target"		"TARGET" 
+					}
+
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_last_word_silence_active"
+						"Target"		"TARGET"
+					}							
+				}			
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Silencer.LastWord.Target"
+						"Target"		"TARGET"
+					}
+				}
+
+				"OnSpentMana"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/silencer/last_word.lua"
+						"Function"		"SpellCastCheckActive"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/silencer/last_word.lua"
+						"Function"		"LastWordStopSound"
+						"Target"		"TARGET"
+					}
+				}
+			}
+
+			"modifier_last_word_silence_active" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"Duration"			"%silence_duration_active"
+				
+				"EffectName"		"particles/generic_gameplay/generic_silence.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Silencer.LastWord.Damage"
+						"Target"		"TARGET"
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/silencer/last_word.lua"
+						"Function"		"LastWordDamage"
+					}
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_last_word_silence_passive" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"Duration"			"%silence_duration_passive"
+				
+				"EffectName"		"particles/generic_gameplay/generic_silence.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+
+			"modifier_custom_last_word_disarm_debuff" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"Duration"			"%disarm_duration"
+				
+				"EffectName"		"particles/units/heroes/hero_silencer/silencer_last_word_disarm.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/silencer/last_word.lua"
+						"Function"		"LastWordDamage"
+					}
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"				
+				}
+			}
+		}
+	}
+}

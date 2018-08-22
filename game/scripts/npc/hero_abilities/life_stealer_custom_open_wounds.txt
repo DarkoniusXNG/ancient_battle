@@ -1,0 +1,48 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lifestealer: Open Wounds (W) - New Spell, like Open Wounds without slow + more damage while moving or doing stuff.
+	// Author: Darkonius
+	// Linkens: Blocks
+	// Notes: OK; 18.2.2017; OnUnitMoved; OnAbilityExecuted;
+	// TO_DO: ALL
+	//=================================================================================================================
+	"life_stealer_custom_open_wounds"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/life_stealer_custom_open_wounds"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"200 300 400 500"
+		
+		"AbilityCooldown"				"24 20 16 12"
+		
+		"AbilityManaCost"				"110"
+		"AbilityProcsMagicStick"		"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_increase"				"10 15 20 25"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+	}
+}

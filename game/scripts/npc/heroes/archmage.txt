@@ -1,0 +1,82 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Archmage; 11.5.2018;
+	// Notes: OK; Arcane Magic provides bonus mana regen;
+	// TO_DO:
+	//=================================================================================================================
+	"npc_dota_hero_archmage"
+	{
+		"override_hero"				"npc_dota_hero_keeper_of_the_light"
+		"HeroSelectSoundEffect"		"Hero_KeeperOfTheLight.Pick"
+		"BotImplemented"			"0"								
+		"Role"						"Support,Nuker,Disabler,Jungler,Pusher,Escape"
+		"Rolelevels"				"3,1,2,3,3,1"
+		"Complexity"				"3"
+		"Team"						"Good"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"6"
+		"Ability1"				"archmage_blizzard"							// Q (4 levels)
+		"Ability2"				"archmage_summon_water_elemental"			// W (4 levels)
+		"Ability3"				"archmage_arcane_magic"						// E (4 levels)
+		"Ability4"				"archmage_summon_earth_golem"				// T (4 levels)
+		"Ability5"				"archmage_conjure_image"					// F, Secondary Ultimate (1 level)
+		"Ability6"				"archmage_mass_teleport"					// R, Primary Ultimate (3 levels)
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"special_bonus_strength_6"					// lvl 10 talent; unique
+		"Ability11"				"special_bonus_movement_speed_25"			// lvl 10 talent; same as KOTL
+		"Ability12"				"special_bonus_exp_boost_40"				// lvl 15 talent; same as KOTL
+		"Ability13"				"special_bonus_intelligence_10"				// lvl 15 talent; unique
+		"Ability14"				"special_bonus_magic_resistance_40"			// lvl 20 talent; same as KOTL
+		"Ability15"				"special_bonus_armor_8"						// lvl 20 talent; unique
+		"Ability16"				"special_bonus_cooldown_reduction_15"		// lvl 25 talent; unique
+		"Ability17"				"special_bonus_all_stats_15"				// lvl 25 talent; unique
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"-1"									// like KOTL
+		"MagicalResistance"			"25"									// Default
+		
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// like KOTL
+		"AttackDamageMin"			"24"									// unique for Archmage
+		"AttackDamageMax"			"38"									// unique for Archmage
+		"AttackRate"				"1.7"									// Default
+		"AttackAnimationPoint"		"0.3"									// like KOTL
+		"AttackAcquisitionRange"	"800"									// like KOTL
+		"AttackRange"				"600"									// like KOTL
+		"ProjectileSpeed"			"900"									// like KOTL
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"315"									// KOTL (335); Furion (290); original (320); Sniper (285); Crystal Maiden (275);
+		"MovementTurnRate"			"0.5"									// like KOTL
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"			"1800"								// Default
+		"VisionNighttimeRange"			"800"								// Default
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"			// like KOTL
+		"AttributeBaseStrength"			"14"								// KOTL (16); original (14); Crystal Maiden (18); Furion (21); - don't change!
+		"AttributeStrengthGain"			"1.8"								// KOTL (2.1); original (1.8); Crystal Maiden (2.0); Furion (2.4); - don't change!
+		"AttributeBaseAgility"			"16"								// KOTL (15); original (17); Crystal Maiden (16); Furion (18);
+		"AttributeAgilityGain"			"1.6"								// KOTL (1.6); original (1.0); Crystal Maiden (1.6); Furion (1.9);
+		"AttributeBaseIntelligence"		"18"								// KOTL (23); original (19); Crystal Maiden (14); Furion (23);
+		"AttributeIntelligenceGain"		"2.8"								// KOTL (2.8); original (3.2); Crystal Maiden (2.9); Furion (2.9); - don't change!
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"1.5"									// like KOTL
+		"StatusHealth"				"200"									// like KOTL
+		"StatusMana"				"0"										// KOTL (75); Crystal Maiden (75);
+		"StatusManaRegen"			"0.9"									// like KOTL
+	}
+}

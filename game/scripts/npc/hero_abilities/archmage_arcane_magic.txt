@@ -1,0 +1,149 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
+	// Author: Darkonius
+	// Notes: OK; 10.6.2018;
+	// TO_DO: attach_hitloc effect is weird -> not critical
+	//=================================================================================================================
+	"archmage_arcane_magic"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/archmage_arcane_magic"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastPoint"				"0.3"						// like KOTL Chakra Magic
+		"AbilityCastRange"				"900"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"17.0 16.0 15.0 14.0"		// like KOTL Chakra Magic
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"25 35 45 55"				// KOTL Chakra Magic: 0
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+			"particle"		"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
+			"particle"		"particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
+			"particle"		"particles/items_fx/aura_shivas.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01" // Crystal Maiden Self Arcane Aura: 1.6/2.4/3.2/4.0 (aura_mana_regen+buff_mana_regen >> cm self regen)
+			{
+				"var_type"				"FIELD_FLOAT"
+				"buff_mana_regen"		"1.5 2.0 2.5 3.0"
+			}
+			"02" // KOTL Chakra Magic: 15 seconds
+			{
+				"var_type"				"FIELD_FLOAT"
+				"buff_duration"			"15.0"
+			}
+			"03" // Crystal Maiden (Global) Arcane Aura: 0.8/1/1.2/1.4
+			{
+				"var_type"				"FIELD_FLOAT"
+				"aura_mana_regen"		"1.0 1.2 1.4 1.6"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"900"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"TARGET"
+				"Duration"				"%buff_duration"
+				"ModifierName"			"modifier_arcane_regen_buff"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"			"Hero_KeeperOfTheLight.ChakraMagic.Target"
+				"Target"				"TARGET"
+			}
+			
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
+				"EffectAttachType"  "follow_origin"
+				
+				"ControlPointEntities"
+				{
+					"CASTER"	"attach_attack1" 	// ok
+					"TARGET"	"attach_hitloc" 	// follow_origin bi trebalo da bude ali javlja error
+				}
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_archmage_aura_applier"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"IsBuff"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_archmage_aura_effect"
+				"Aura_Radius"			"%aura_radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MANA_ONLY"
+				"Aura_ApplyToCaster"	"1"
+				
+				"AllowIllusionDuplicate"	"1"
+			}
+
+			"modifier_archmage_aura_effect" // needs tooltip
+			{
+				"IsHidden"					"0"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"EffectName"			"particles/items_fx/aura_shivas.vpcf"
+				"EffectAttachType" 		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%aura_mana_regen"
+				}
+			}
+
+			"modifier_arcane_regen_buff" // needs tooltip
+			{
+				"IsHidden"					"0"
+				"IsBuff"					"1"
+				"IsPurgable"				"1"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"					"particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
+						"EffectAttachType"				"follow_origin"
+						"Target"						"TARGET"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%buff_mana_regen"
+				}
+			}
+		}
+	}
+}

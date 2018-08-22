@@ -1,0 +1,124 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Brewmaster: Drunken Brawler (T) - like Brewmaster's Drunken Brawler but, no guaranteed crit and evasion
+	// Author: Darkonius
+	// Notes: OK; 10.5.2018; Chance to crit is pseudo-random;
+	// TO_DO:
+	//====================================================================================================
+	"brewmaster_custom_drunken_brawler"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/brewmaster_custom_drunken_brawler"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_brawler_crit.vpcf"
+			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunkenbrawler_evade.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // original: 7/14/21%
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion_chance"			"10 15 20 25"
+			}
+			"02" // original: 10%
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10 15 20 25"
+			}
+			"03" // original: 200/300/400
+			{
+				"var_type"						"FIELD_INTEGER"
+				"crit_damage"					"200 230 250 300"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_custom_drunken_brawler_passive" // doesn't need tooltip
+			{
+				"Passive"   				"1"
+				"IsHidden"  				"1"
+				"IsPurgable"				"0"
+				
+				"AllowIllusionDuplicate"	"1"
+
+				"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_drunkenbrawler_evade.vpcf"
+				"EffectAttachType"	"follow_origin"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT" 	"%evasion_chance"
+				}
+
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_custom_drunken_brawler_crit_buff"
+						"Target" 		"CASTER"
+					}
+
+					"Random"
+					{
+						"Chance" 		"%crit_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_BREWMASTER_CRIT"
+						
+						"OnSuccess"
+						{
+							"FireSound"
+							{
+								"EffectName"	"Hero_Brewmaster.Brawler.Crit"
+								"Target"		"CASTER"
+							}
+
+							"FireEffect"
+							{
+								"EffectName" 		"particles/units/heroes/hero_brewmaster/brewmaster_drunken_brawler_crit.vpcf"
+								"EffectAttachType"  "attach_attack1"
+								"Target"    		"CASTER"
+							}
+
+							"ApplyModifier"
+							{
+								"ModifierName" 	"modifier_custom_drunken_brawler_crit_buff"
+								"Target"    	"CASTER"    
+							}        
+						}
+					}
+				}
+			}
+
+			"modifier_custom_drunken_brawler_crit_buff" // doesn't need tooltip
+			{
+				"IsHidden"  	"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_damage"
+				}
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  	"modifier_custom_drunken_brawler_crit_buff"
+						"Target"   			"CASTER"    
+					}
+				}
+			}
+		}
+	}
+}

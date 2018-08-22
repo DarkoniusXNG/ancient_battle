@@ -1,0 +1,52 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_omniknight"
+	"Title"			"Recommended items for Paladin"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_enchanted_mango"
+			"item"		"item_stout_shield"
+			"item"		"item_branches"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_boots"
+			"item"		"item_magic_wand"
+			"item"		"item_ring_of_basilius"
+			"item"		"item_soul_ring"
+			"item"		"item_headdress"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_arcane_boots"
+			"item"		"item_blink"
+			"item"		"item_ultimate_scepter"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_drum_of_vitality"			// new (985)
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_cyclone"
+			"item"		"item_guardian_greaves"
+			"item"		"item_bloodstone"
+			"item"		"item_assault"
+			"item"		"item_radiance"
+			"item"		"item_rapier"
+			"item"		"item_moon_shard"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

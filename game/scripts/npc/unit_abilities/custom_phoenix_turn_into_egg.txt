@@ -1,0 +1,57 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Phoenix: Turn Into Egg After Death
+	// Author: Darkonius
+	// Notes: OK; 24.5.2018;
+	// TO_DO: 
+	//=================================================================================================================
+	"custom_phoenix_turn_into_egg"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "custom/custom_phoenix_reborn"
+		"MaxLevel"                      "1"
+
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"egg_duration"      "10.0"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_phoenix_reborn" // doesn't need tooltip
+			{
+				"Passive"		"1"
+				"IsHidden"		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+
+				//"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
+				//"EffectAttachType"  "follow_origin"
+
+				// "OnCreated"
+				// {
+					// "FireSound"
+					// {
+						// "EffectName"    "Hero_Phoenix.SuperNova.Begin"
+						// "Target"        "CASTER"
+					// }
+				// }
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+						"Function"      "PhoenixIntoEgg"
+					}
+				}
+			}
+		}
+	}
+}

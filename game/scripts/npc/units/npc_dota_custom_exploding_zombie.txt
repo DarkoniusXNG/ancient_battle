@@ -1,0 +1,93 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Exploding Zombie - Level 3
+	// Notes: OK; 17.5.2018;
+	//=================================================================================
+	"npc_dota_custom_exploding_zombie"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/undying/undying_minion.vmdl"
+		"SoundSet"					"Undying_Zombie"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"				"1.18"
+		"CanBeDominated"			"0"
+		"Level"						"3"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"exploding_zombie_acid_spray"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"3"
+		"MagicalResistance"			"33"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"37"
+		"AttackDamageMax"			"45"
+		"AttackRate"				"1.6"
+		"AttackAnimationPoint"		"0.3"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"60"
+		"BountyGoldMin"				"25"
+		"BountyGoldMax"				"25"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"70"
+		"HealthBarOffset"			"200"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"85"
+		"MovementTurnRate"			"0.5"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"360"
+		"StatusHealthRegen"			"0.25"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_BADGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+		
+		"Creature"
+        {
+            "ItemDrops"
+            {
+				"Trinkets"
+                {
+                    "Item"
+                    {
+                        "1"             "item_ogre_axe"
+                        "2"            	"item_blade_of_alacrity"
+                        "3"            	"item_staff_of_wizardry"
+                    }
+                    "Chance"            "8"
+                }
+            }
+        }
+	}
+}

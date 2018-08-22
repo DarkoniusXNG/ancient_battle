@@ -1,0 +1,35 @@
+.AddonLoadingRoot
+{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+	background-image: url("file://{images}/custom_game/loading_screen/loading.jpg");
+	background-position: center center;
+	background-size: cover;
+}
+
+#TitlePanel
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	margin-bottom: 150px;
+	margin-left: 100px;
+	flow-children: right;
+}
+
+#AddonTitle
+{
+	margin-bottom: -15px;
+	vertical-align: center;
+	text-transform: uppercase;
+	font-size: 80px;
+	color: #ff0000;
+	text-shadow: 2px 2px 2px #000000;
+}
+
+.ProBg
+{
+	background-repeat: repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+}

@@ -1,0 +1,118 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Astral Trekker: Pulverize (E) - New Spell; Passive; Chance to cleave 100% damage;
+	// Author: Darkonius
+	// Notes: OK; 27.5.2018; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
+	// TO_DO: fix console error atackmanager
+	//=================================================================================================================
+	"astral_trekker_pulverize"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"    		"custom/astral_trekker_pulverize"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                  	"FIELD_INTEGER"
+				"cleave_chance"             	"15 20 25 30"
+			}
+			"02"
+			{
+				"var_type"                  	"FIELD_INTEGER"
+				"cleave_damage"             	"100"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"03"
+			{
+				"var_type"                  	"FIELD_FLOAT"
+				"cleave_start_radius"        	"300.0"
+			}
+			"04"
+			{
+				"var_type"                  	"FIELD_FLOAT"
+				"cleave_distance"        		"625.0"
+			}
+			"05"
+			{
+				"var_type"                  	"FIELD_FLOAT"
+				"cleave_end_radius"        		"330.0"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_pulverize_passive" // doesn't need tooltip
+			{
+				"Passive"   	"1"
+				"IsHidden"  	"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"AllowIllusionDuplicate"	"0"
+				
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_custom_pulverize_buff"
+						"Target"        "CASTER"
+					}
+
+					"Random"
+					{
+						"Chance" 		"%cleave_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+						
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_custom_pulverize_buff"
+								"Target"        "CASTER"    
+							}        
+						}
+					}
+				}
+			}
+
+			"modifier_custom_pulverize_buff" // doesn't need tooltip
+			{
+				"IsHidden"  	"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/astral_trekker/pulverize.lua"
+						"Function"			"PulverizeProc"
+						"DamageOnAttack"	"%attack_damage"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"    "Hero_Spirit_Breaker.GreaterBash"
+						"Target"        "CASTER"
+					}
+					
+					"RemoveModifier"
+					{
+						"ModifierName"      "modifier_custom_pulverize_buff"
+						"Target"            "CASTER"    
+					}
+				}
+			}
+		}
+	}
+}

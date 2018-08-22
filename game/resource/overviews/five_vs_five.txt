@@ -1,0 +1,8 @@
+five_vs_five
+{
+	material materials/overviews/five_vs_five.vmat
+	pos_x -7600
+	pos_y 7600
+	scale 14.844
+}
+

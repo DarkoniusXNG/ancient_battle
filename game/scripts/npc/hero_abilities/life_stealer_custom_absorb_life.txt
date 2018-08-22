@@ -1,0 +1,73 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lifestealer: Absorb Life (F) - New Spell, Deals damage and absorbs percentage of current hp of affected enemies in a radius 
+	// Author: Darkonius
+	// Notes: OK; 14.10.2017;
+	// TO_DO:
+	//=================================================================================================================
+	"life_stealer_custom_absorb_life"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/life_stealer_custom_absorb_life"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"MaxLevel"						"1"
+		"RequiredLevel"					"3"
+		
+		"AbilityCastRange"				"400"
+		"AbilityCastPoint"				"0.45"
+		"AoERadius"						"%radius"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"75"
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_undying/undying_decay.vpcf"
+			"particle"		"particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay_fakeprojectile_glow.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"base_damage"					"75"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"hp_percent_damage"				"10"
+				"CalculateSpellDamageTooltip"	"0"
+			}	
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"325"
+			}			
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/lifestealer/absorb_life.lua"
+				"Function"      "AbsorbLife"
+				"Target"		"POINT"
+			}
+		}
+	}
+}

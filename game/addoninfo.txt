@@ -1,0 +1,21 @@
+"AddonInfo"
+{
+	"maps"					"two_vs_two five_vs_five holdout"
+	"IsPlayable"			"1"
+	"PenaltiesEnabled"  	"0"
+	"CheckAFKPlayers" 		"0" 
+	"HeroGuidesSupported" 	"1"
+	
+	"two_vs_two"
+	{
+		"MaxPlayers"		"4"
+	}
+	"five_vs_five"
+	{
+		"MaxPlayers"		"10"
+	}
+	"holdout"
+	{
+		"MaxPlayers"		"4"
+	}
+}

@@ -1,0 +1,101 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Axe: Cut from Above (R) - Modified Axe Culling Blade from Holdout Game Mode
+	// Author: Author of Valve Holdout Game Mode (Hardcoded)
+	// Linkens: Doesn't Block (INTENTIONAL); 
+	// Notes: 10.6.2017; Doesn't kill couriers. DON'T CHANGE THE NAME OF THE SPELL: holdout_culling_blade !!!
+	//=================================================================================================================
+	"holdout_culling_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityTextureName"				"custom/axe_custom_cut_from_above"
+		"AbilityType"						"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"				"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"					"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"				"SPELL_DISPELLABLE_YES"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500 700 900"
+		"AbilityCastPoint"				"0.0"
+		"AoERadius" 					"175 225 275"
+		"HasScepterUpgrade" 			"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"40"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 150 200"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"leap_distance"				"500 700 900"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"leap_speed"				"1000 1100 1200"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"leap_acceleration"			"7000.0"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"leap_radius"				"175 225 275"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"kill_threshold"			"250 350 450"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"150 250 350"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"speed_bonus"				"40"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"speed_duration"			"10.0"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"speed_aoe"					"900"
+			}
+			"10" // not anymore
+			{
+				"var_type"					"FIELD_FLOAT"
+				"cooldown_scepter"			"6.0"
+			}
+			"11" // not anymore
+			{
+				"var_type"					"FIELD_INTEGER"
+				"kill_threshold_scepter"	"350 450 550"
+			}
+			"12" // not anymore
+			{
+				"var_type"					"FIELD_FLOAT"
+				"speed_duration_scepter"	"10"
+			}
+		}
+	}
+}

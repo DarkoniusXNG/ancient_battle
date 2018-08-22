@@ -1,0 +1,209 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Lich: Death and Decay (T) - Datadriven Enigma's Midnight Pulse that works on buildings and ancients
+	// Author: Jastuchko + Darkonius
+	// Notes: OK; 31.1.2017;
+	// TO_DO:
+	//====================================================================================================
+	"lich_custom_death_and_decay"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"enigma_midnight_pulse"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.3"
+		
+		"AoERadius" 					"%radius"
+
+		"AbilityCooldown"				"35.0"
+
+		"AbilityManaCost"				"100 110 120 130"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"550"
+			}
+			
+			"02" // needs to be integer
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage"						"2 3 4 5"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			
+			"03" // needs to be integer
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_buildings"				"1"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_rate"				"1.0"
+			}
+			
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_custom_death_and_decay_thinker"
+				"Target" 		"POINT"
+			}
+			
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_custom_death_and_decay_buildings_thinker"
+				"Target" 		"POINT"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_custom_death_and_decay_thinker" // doesn't need tooltip -> thinker
+			{
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_custom_death_and_decay_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%duration"
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Enigma.Midnight_Pulse"
+						"Target"		"TARGET"
+					}
+					
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"   
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}
+				}
+			}
+			
+			"modifier_custom_death_and_decay_buildings_thinker" // doesn't need tooltip -> thinker
+			{
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_custom_death_and_decay_buildings_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_BUILDING"
+				"Duration"				"%duration"
+			}
+			
+			"modifier_custom_death_and_decay_debuff" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"0"
+				
+				"OnCreated"
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center" 	"TARGET"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Type"							"DAMAGE_TYPE_PURE"
+						"Damage"						"%damage"
+						"MaxHealthPercentBasedDamage" 	"1"					// doesn't work with float damage values
+					}
+				}
+
+				"ThinkInterval"			"%tick_rate"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center" 	"TARGET"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Type"							"DAMAGE_TYPE_PURE"
+						"Damage"						"%damage"
+						"MaxHealthPercentBasedDamage" 	"1"
+					}
+				}
+			}
+			
+			"modifier_custom_death_and_decay_buildings_debuff" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"0"
+				
+				"ThinkInterval"			"%tick_rate"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"						"TARGET"
+						"Type"							"DAMAGE_TYPE_PURE"
+						"Damage"						"%damage_buildings"
+						"MaxHealthPercentBasedDamage" 	"1"
+					}
+				}
+			}
+		}
+	}
+}

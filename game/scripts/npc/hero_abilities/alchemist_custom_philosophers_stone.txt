@@ -1,0 +1,164 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Alchemist: Philosopher's Stone (E) - New Spell,
+	// Author: Darkonius
+	// Notes: OK; 15.10.2017;
+	// TO_DO: 
+	//=================================================================================================================
+	"alchemist_custom_philosophers_stone"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "custom/alchemist_custom_philosophers_stone"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"AbilityCastRange"				"750"
+		"AbilityCastPoint"				"0.3"
+		
+		"AbilityCooldown"				"20.0"
+		"AbilityManaCost"				"100"
+		"AbilityProcsMagicStick"		"1"
+		
+		"AOERadius"                     "%radius"
+		
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_launch.vpcf"
+			"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" //
+			{
+				"var_type"          			"FIELD_INTEGER"
+				"base_damage" 					"75"
+			}
+			"02" //
+			{
+				"var_type"          			"FIELD_FLOAT"
+				"bonus_damage_multiplier" 		"0.5 1.0 1.5 2.0"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"03" // 
+			{
+				"var_type"          			"FIELD_INTEGER"
+				"radius"            			"250"
+			}
+			"04" // not showing in tooltip
+			{
+				"var_type"          			"FIELD_INTEGER"
+				"projectile_speed"            	"1000"
+			}
+			"05" // not showing in tooltip; it should be same as radius
+			{
+				"var_type"          			"FIELD_INTEGER"
+				"projectile_vision"				"300"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_int"						"5 10 15 20"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_WitchDoctor.Paralyzing_Cask_Cast"
+				"Target"			"CASTER"
+			}
+			
+			"LinearProjectile"
+			{
+				"Target"			"POINT"
+				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_launch.vpcf"
+				"MoveSpeed"			"%projectile_speed"
+				"StartPosition"		"attach_attack3"
+				"StartRadius"   	"100"
+				"EndRadius"     	"100"
+				"TargetTeams"   	"DOTA_UNIT_TARGET_TEAM_NONE"
+				"TargetTypes"   	"DOTA_UNIT_TARGET_NONE"
+				"TargetFlags"		"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"  	"0"
+				"ProvidesVision"	"1"
+				"VisionRadius"		"%projectile_vision"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"		"0"
+		}
+		
+		"OnProjectileFinish"
+		{
+			"FireEffect"
+			{
+				"TargetPoint"		"POINT"
+				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+				"EffectAttachType"	"world_origin"
+				
+				"ControlPoints"
+				{
+					"01" "%radius 0 0"
+				}
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/alchemist/philosopher_stone.lua"
+				"Function"		"PhilosopherStoneSound"
+				"Target"		"POINT"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
+					"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+				
+				"Action"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/alchemist/philosopher_stone.lua"
+						"Function"		"PhilosopherStoneDamage"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_philosophers_stone_passive_buff" // this modifier is hidden passive, doesn't need tooltip
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"AllowIllusionDuplicate"	"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_int"
+				}
+			}
+		}
+	}
+}

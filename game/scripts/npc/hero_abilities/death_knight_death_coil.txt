@@ -1,0 +1,103 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 3.7.2017; Can't cast on himself; Projectile is slower than in DotA;
+	// TO_DO: 
+	//=================================================================================================================
+	"death_knight_death_coil"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityTextureName"     		"custom/death_knight_death_coil"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+		"CastFilterRejectCaster" 		"1"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"4.5"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50 60 70 80"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"self_damage"			"75 100 125 150"
+			}
+			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"target_damage"			"150 200 250 300"
+			}
+			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"			"150 200 300 350"
+			}
+			
+			"04" // not in tooltip
+			{
+				"var_type"				"FIELD_INTEGER"
+				"projectile_speed"		"900"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf"
+				"Dodgeable"				"1"
+				"ProvidesVision"		"1"
+				"VisionRadius"			"250"
+				"MoveSpeed"				"%projectile_speed"
+				"SourceAttachment"		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Abaddon.DeathCoil.Cast"
+				"Target"				"CASTER"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/death_knight/death_coil.lua"
+				"Function"		"DeathCoilStart"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/death_knight/death_coil.lua"
+				"Function"		"DeathCoilProjectileHit"
+			}
+		}
+	}
+}

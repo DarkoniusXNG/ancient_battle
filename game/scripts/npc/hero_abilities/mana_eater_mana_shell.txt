@@ -1,0 +1,51 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Mana Eater: Mana Shell (T) - New Spell, Passive Spell; Percentage of the damage dealt to Mana Eater gives him mana.
+	// Author: Darkonius
+	// Notes: OK; 2.1.2017; Damage Taken is after mitigation/reductions.
+	// TO_DO:
+	//=================================================================================================================
+	"mana_eater_mana_shell"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              		"ability_datadriven"
+		"AbilityTextureName"     		"custom/mana_eater_mana_shell"
+		"AbilityBehavior"        		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+    		{ 
+        		"var_type"  				"FIELD_INTEGER"
+        		"mana_percentage" 			"50"
+    		}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_mana_shell_passive" // doesn't need tooltip
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"AllowIllusionDuplicate"	"0"
+				
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/mana_eater/mana_shell.lua"
+						"Function"			"ManaShellGiveMana"
+						"DamageTaken"		"%attack_damage"
+						"ManaGain"			"%mana_percentage"
+					}
+				}
+			}
+		}
+	}
+}

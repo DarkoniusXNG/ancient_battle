@@ -1,0 +1,37 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Custom units: Spell Immunity - passive, spell and magic immunity
+	// Author: Darkonius
+	// Notes: OK; 24.5.2018;
+	// TO_DO:
+	//====================================================================================================
+	"custom_unit_spell_immunity"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"    "custom/custom_unit_spell_immunity"
+	    "MaxLevel"              "1"
+	
+	    "Modifiers"
+	    {
+	        "modifier_custom_unit_custom_spell_immunity" // doesn't need tooltip
+	        {
+	            "Passive"		"1"
+	            "IsHidden"		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+				}
+	    
+	            "States"
+	            {
+	                "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
+	}
+}

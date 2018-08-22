@@ -1,0 +1,149 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
+	// Author: Jastuchko + Darkonius
+	// Notes: OK; 27.5.2018;
+	// TO_DO:
+	//====================================================================================================
+	"brewmaster_custom_breath_of_fire"
+	{
+		"BaseClass"           		 	"ability_datadriven"
+		"AbilityTextureName"            "custom/brewmaster_custom_breath_of_fire"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastRange"              "750"								// unique
+		"AbilityCastPoint"              "0.3"								// Dragon Knight: 0.2
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		
+		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 12 seconds
+		
+		"AbilityManaCost"               "90 100 110 120"					// original: 70; Dragon Knight: 100/110/120/130
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+			"particle" 			"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+			"particle"			"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01" // original: 65/125/170; Dragon Knight: 90/170/240/300
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"initial_damage"        			"80 125 170 240"
+			}
+			"02" // Dragon Knight: 1050
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"fire_breath_speed"        			"1100"
+			}
+			"03" // original: 150; Dragon Knight: 150
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"fire_breath_width_start"    		"150"
+			}
+			"04" // Dragon Knight: 250
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"fire_breath_width_end"      		"250"
+			}
+			"05" // Dragon Knight: 750;
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"fire_breath_distance"      		"750"
+			}
+			"06" // original: 5 seconds
+			{
+				"var_type"                  		"FIELD_FLOAT"
+				"burn_duration"      				"5.0"
+			}
+			"07" // original: 1 second
+			{
+				"var_type"                  		"FIELD_FLOAT"
+				"tick_interval"      				"0.2"
+			}
+			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps
+			{
+				"var_type"                  		"FIELD_INTEGER"
+				"burn_damage_per_second"     		"15 20 35 40"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"      		"POINT"
+				"EffectName"  		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+				"MoveSpeed"   		"%fire_breath_speed"
+				"StartRadius"   	"%fire_breath_width_start"
+				"StartPosition" 	"attach_origin"
+				"EndRadius"     	"%fire_breath_width_end"
+				"FixedDistance" 	"%fire_breath_distance"
+				"TargetTeams"   	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"   	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				"TargetFlags"    	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"HasFrontalCone"	"1"
+				"ProvidesVision" 	"1"
+				"VisionRadius"		"150"
+			}
+
+			"FireSound"
+			{
+				"EffectName"    "Hero_DragonKnight.BreathFire"
+				"Target"        "CASTER"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" 		"0"
+			
+			"Damage"
+			{
+				"Target"    "TARGET"
+				"Type"      "DAMAGE_TYPE_MAGICAL"
+				"Damage"    "%initial_damage"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/brewmaster/breath_of_fire.lua"
+				"Function"      "HazeBurnStart"
+			} 
+		}
+		
+		"Modifiers"
+		{
+			"modifier_breath_fire_haze_burn" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"  		"1"
+				"IsPurgable"		"1"
+				
+				"Duration"			"%burn_duration"
+
+				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"ThinkInterval"     "%tick_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/brewmaster/breath_of_fire.lua"
+						"Function"			"HazeBurnDamage"
+					}
+				}            
+			}
+		}
+	}
+}

@@ -1,0 +1,91 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Basic Zombie - Level 1
+	// Notes: OK; 21.6.2017;
+	//=================================================================================
+	"npc_dota_custom_basic_zombie"
+	{
+		"BaseClass"         		"npc_dota_creature"
+		"Model"           			"models/heroes/undying/undying_minion.vmdl"
+		"ModelScale"				"0.7"
+		"SoundSet"          		"Undying_Zombie"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"CanBeDominated"  			"1"
+		"Level"           			"1"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"          		""
+		"Ability2"          		""
+		"Ability3"          		""
+		"Ability4"          		""
+		
+		// Protection
+		//----------------------------------------------------------------
+		"ArmorPhysical"       		"1"
+		"MagicalResistance"       	"33"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"    	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"     		"26"
+		"AttackDamageMax"     		"27"
+		"AttackRate"        		"1.6"
+		"AttackAnimationPoint"    	"0.3"
+		"AttackAcquisitionRange"  	"800"
+		"AttackRange"       		"150"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"          		"50"
+		"BountyGoldMin"       		"15"
+		"BountyGoldMax"       		"15"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"      		"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"              	"70"
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"       		"120"
+		"MovementTurnRate"      	"0.5"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"        		"250"
+		"StatusHealthRegen"     	"0.25"
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0"
+		
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"     	"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"     	"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"   	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"    	"900"
+		"VisionNighttimeRange"    	"1800"
+		
+		"Creature"
+        {
+            "ItemDrops"
+            {
+                "Consumables"
+                {
+                    "Item"
+                    {
+                        "1"             "item_faerie_fire"
+                        "2"             "item_enchanted_mango"
+                        "3"             "item_tome_of_knowledge"
+                    }
+                    "Chance"            "10"
+                }
+            }
+        }
+	}
+}

@@ -1,0 +1,106 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Bane: Enfeeble (Q) - Reduces all of damage output of the enemy.
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 9.5.2018; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
+	// Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// TO_DO: Damage filter branch
+	//=================================================================================================================
+	"bane_custom_enfeeble"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"bane_enfeeble"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		"AbilityCastRange"				"900"						// dota Enfeeble: 1000
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ENFEEBLE"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15.0"						// dota Enfeeble: 8
+		"AbilityManaCost"				"95 105 115 125"			// dota Enfeeble: 95
+		"AbilityProcsMagicStick"		"1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // reduces attack damage by a percentage -> don't change!
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_damage_reduction"		"-35 -40 -45 -50"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			
+			"02" // reduces spell damage (but not item damage)
+			{
+				"var_type"						"FIELD_INTEGER"
+				"spell_damage_reduction"		"10 15 20 25"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			
+			"03" // dota Enfeeble: 14/16/18/20 seconds
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"10.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Bane.Enfeeble.Cast"
+				"Target"
+				{
+					"Center" 	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+
+			"FireSound"
+			{
+				"EffectName"	"Hero_Bane.Enfeeble"
+				"Target"
+				{
+					"Center" 	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/bane/enfeeble.lua"
+				"Function"		"EnfeebleStart"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_enfeeble_debuff"	// needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsDebuff"		"1"
+				"IsPurgable"	"0"
+				
+				"EffectName"		"particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
+				"EffectAttachType"	"follow_overhead"			
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		"%attack_damage_reduction"
+				}
+			}
+		}
+	}
+}

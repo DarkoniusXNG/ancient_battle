@@ -1,0 +1,114 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Mini Boss Kondor - Level 8
+	// Notes: OK; 17.5.2018; Add phased movement, Fix poop toss -> add AI
+	//=================================================================================
+	"npc_dota_kondor"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/courier/greevil/greevil.vmdl"
+		"GameSoundsFile"			"soundevents/game_sounds_roshan_halloween.vsndevts"
+		"SoundSet"					"Greevil"
+		"ModelScale"				"3.5"
+		"CanBeDominated"			"0"
+		"IsAncient"					"1"
+		"ConsideredHero"			"1"
+		"Level"						"8"
+		
+		"Ability1"					"kondor_poop_toss"
+		"Ability2"					"kondor_slam"
+		"Ability3"					"roshan_spell_block"
+		"Ability4"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"8"
+		"MagicalResistance"			"50"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"300"
+		"AttackDamageMax"			"300"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.7"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"100"
+		"BountyGoldMin"				"350"
+		"BountyGoldMax"				"350"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"60"
+		"HealthBarOffset"			"200"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"270"
+		"MovementTurnRate"			"1.0"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"8500"
+		"StatusHealthRegen"			"20"
+		"StatusMana"				"2000"
+		"StatusManaRegen"			"10"
+
+		// Team
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"DisableResistance"			"75.0"
+			
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+				}
+			}
+
+			"DefaultState"				"Invade"
+
+			"OffensiveAbilities"
+			{
+				"Ability1"				
+				{
+					"Name"				"kondor_poop_toss"
+					"AOE"				"1"
+					"Radius"			"900"
+					"MinimumTargets"	"1"
+				}
+				
+				"Ability2"
+				{
+					"Name"				"kondor_slam"
+					"AOE"				"1"
+					"Radius"			"300"
+					"MinimumTargets"	"2"
+				}
+			}
+		}
+	}
+}

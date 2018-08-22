@@ -1,0 +1,165 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 1262 - Recipe: Infused Robe
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_recipe_infused_robe"
+	{
+		"ID"							"1262"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"425"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_infused_robe"
+		"ItemRequirements"
+		{
+			"01"						"item_hood_of_defiance;item_vanguard;item_infused_raindrop"
+		}
+	}
+	
+	//=================================================================================================================
+	// 1263 - Infused Robe - Hood of Defiance (1700) + Vanguard (2150) + Infused Raindrop (225) + Recipe (400) = 4500
+	// Notes: OK; 17.5.2018; Uses damage filter;
+	//=================================================================================================================
+	"item_infused_robe"
+	{
+		"ID"              				"1263"
+		"BaseClass"           			"item_datadriven"
+		"AbilityTextureName"      		"custom/infused_robe"
+		
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"        		"0.0"
+		"AbilityCooldown"       		"55.0"
+		"AbilitySharedCooldown"			"hood_of_defiance"
+		"AbilityManaCost"       		"100"
+		
+		"ItemCost"            			"4500"
+		"ItemShopTags"					"regen_health;magic_resist;block;health_pool"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"infused robe"
+		"ItemSellable" 					"1"
+		"ItemDroppable" 				"1"
+		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
+		
+		"precache"
+		{
+			"particle"              "particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
+			"soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_block"				"35"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_magic_resist"		"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hp_regen"			"12"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_hp"					"250"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"bonus_mana_regen"			"0.5"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"barrier_block"				"325"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"barrier_duration"			"12.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_Abaddon.AphoticShield.Cast"
+				"Target"        "CASTER"
+			}
+			
+			"RemoveModifier"
+			{
+				"ModifierName"	"item_modifier_infused_robe_damage_barrier"
+				"Target" 		"CASTER"
+			}
+			
+			"ApplyModifier"
+			{
+				"ModifierName"  "item_modifier_infused_robe_damage_barrier"
+				"Target"        "CASTER"
+				"Duration"      "%barrier_duration"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_infused_robe_passives" // doesn't need tooltip
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"					"%bonus_hp"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	    	"%bonus_mana_regen"
+				}
+			}
+			
+			"item_modifier_infused_robe_damage_block" // doesn't need tooltip
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+			}
+			
+			"item_modifier_infused_robe_damage_barrier" // needs tooltip (anti-damage shell)
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"TextureName"		"custom/infused_robe"
+				
+				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+	}
+}

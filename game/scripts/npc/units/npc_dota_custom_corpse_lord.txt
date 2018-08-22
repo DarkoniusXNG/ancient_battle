@@ -1,0 +1,159 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Corpse Lord - Level 4
+	// Notes: OK; 17.5.2018;
+	//=================================================================================
+	"npc_dota_custom_corpse_lord"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/undying/undying.vmdl"
+		"SoundSet"					"Undying_Zombie"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"ModelScale"				"1.12"
+		"CanBeDominated"			"0"
+		"ConsideredHero"			"1"
+		"Level"						"4"
+		
+		"precache"
+		{
+			"particle_folder"		"particles/units/heroes/hero_undying"
+		}
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"corpse_lord_summon_undead"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"5"
+		"MagicalResistance"			"33"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"37"
+		"AttackDamageMax"			"45"
+		"AttackRate"				"1.6"
+		"AttackAnimationPoint"		"0.3"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"180"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"65"
+		"BountyGoldMin"				"150"
+		"BountyGoldMax"				"150"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"75"
+		"HealthBarOffset"			"235"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"125"
+		"MovementTurnRate"			"0.5"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1200"
+		"StatusHealthRegen"			"1"
+		"StatusMana"				"200"
+		"StatusManaRegen"			"5"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_BADGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"70.0"
+					"Avoidance"			"0.0"
+					"Support"			"70.0"
+				}
+			}
+			
+			"DefaultState"				"Invade"
+
+			//Level Up Parameters
+			//-----------------------------------------------------------------
+			"HPGain"					"75"
+			"DamageGain"				"5"
+			"ArmorGain"					"0.25"
+			"MagicResistGain"			"0.1"
+			"MoveSpeedGain"				"1"
+			"BountyGain"				"3"
+			"XPGain"					"13"
+
+			//Ability Usage Parameters
+			//-----------------------------------------------------------------
+			"DefensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"				"corpse_lord_summon_undead"
+					"Heal"				"1"
+					"AOE"				"1"
+					"Radius"			"650"
+					"MinimumTargets"	"3"
+				}
+			}
+			
+			"ItemDrops"
+            {
+                "Trinkets"
+                {
+                    "Item"
+                    {
+                        "1"             "item_broadsword"
+                        "2"             "item_claymore"
+                        "3"            	"item_mithril_hammer"
+						"4"				"item_platemail"
+                    }
+                    "Chance"            "8"
+                }
+            }
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"393"
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"392"
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"542"
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"616"
+				}
+			}
+		}
+	}
+}

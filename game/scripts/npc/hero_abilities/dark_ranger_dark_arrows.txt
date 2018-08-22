@@ -1,0 +1,346 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Dark Ranger: Dark Arrows (Q) - New Spell, Frost Arrows + adds extra damage to attacks. Units killed while under the effect of Dark Arrow will turn into Dark Minions.
+	// Author: Darkonius;
+	// Linkens: Doesn't Block (INTENTIONAL)
+	// Notes: OK; 12.10.2017; Bonus damage can damage buildings;
+	// Notes: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
+	// TO_DO: Make the physical damage go through spell immunity.
+	//================================================================================================================= 
+	"dark_ranger_dark_arrows"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/dark_ranger_dark_arrows"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastRange"				"600"
+		"AbilityManaCost"				"20"
+		"AbilityDamage"					"10 20 30 40"
+		"AbilityCooldown"				"0.0"
+	
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+			"particle"				"particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"minion_duration"			"40"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_minion_health"		"250 300 350 400"		
+			}
+			"03"
+			{
+				"var_type"          			"FIELD_INTEGER"
+				"dark_minion_damage"       		"16 18 20 22"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_minion_1_count"		"1 0 0 0"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_minion_2_count"		"0 1 0 0"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_minion_3_count"		"0 0 1 0"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_minion_4_count"		"0 0 0 1"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_speed_slow"		"-15 -30 -45 -60"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_speed_slow"			"-10 -20 -30 -40"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"hero_slow_duration"		"1.5"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"creep_slow_duration"		"3.0"
+			}
+		}
+	
+		"Modifiers"
+		{ 
+			"modifier_dark_arrow"		// doesn't need tooltip
+			{
+				"Passive"		"1"		// needed for applying when learned
+				"IsHidden"	 	"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+					"CastAttack"		"1"
+				}
+	
+				"OnOrbFire"
+				{
+					"SpendMana"
+					{
+						"Mana"    				"%AbilityManaCost"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"			"Hero_DrowRanger.FrostArrows"
+						"Target"				"CASTER"
+					}
+				}
+				
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_dark_arrow_spawn"
+						"Target"			"TARGET"
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_dark_arrow_slow"
+						"Target"
+						{
+							"Center"		"TARGET"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_BASIC"
+						}
+						"Duration"			"%creep_slow_duration"
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_dark_arrow_slow"
+						"Target"
+						{
+							"Center"		"TARGET"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_HERO"
+						}
+						"Duration"			"%hero_slow_duration"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"			"Hero_Medusa.MysticSnake.Target"
+						"Target"				"CASTER"
+					}
+					
+					"Damage"
+					{
+						"Type"          		"DAMAGE_TYPE_PHYSICAL"
+						"Damage"        		"%AbilityDamage"
+						"Target"
+						{
+							"Center"		"TARGET"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
+			}
+	
+			"modifier_dark_arrow_spawn" // doesn't need tooltip
+			{
+				"IsHidden"				"1"
+				"IsDebuff"				"1"
+				"IsPurgable"			"0"
+				
+				"Duration"				"0.3"
+				
+				"OnDeath"
+				{
+					"SpawnUnit"
+					{
+						"UnitName"		"npc_dota_dark_arrow_minion_1"
+						"UnitCount"		"%dark_minion_1_count"
+						"SpawnRadius"	"1"
+						"Duration"		"%minion_duration"
+						
+						"Target"
+						{
+							"Center" 	"UNIT"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+						
+						"GrantsGold"	"1"
+						"GrantsXP"		"1"
+						
+						"OnSpawn"
+						{
+							"FireSound"
+							{
+								"EffectName" "Hero_Medusa.MysticSnake.Return"
+								"Target"			"CASTER"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"		"modifier_dark_arrow_phased"
+								"Target"			"TARGET"
+							}
+						}
+					}
+	
+					"SpawnUnit"
+					{
+						"UnitName"		"npc_dota_dark_arrow_minion_2"
+						"UnitCount"		"%dark_minion_2_count"
+						"SpawnRadius"	"1"
+						"Duration"		"%minion_duration"
+						
+						"Target"
+						{
+							"Center" 	"UNIT"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+	
+						"GrantsGold"	"1"
+						"GrantsXP"		"1"
+						
+						"OnSpawn"
+						{
+							"FireSound"
+							{
+								"EffectName" 	"Hero_Medusa.MysticSnake.Target"
+								"Target"		"CASTER"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"		"modifier_dark_arrow_phased"
+								"Target"			"TARGET"
+							}
+						}
+					}
+					
+					"SpawnUnit"
+					{
+						"UnitName"		"npc_dota_dark_arrow_minion_3"
+						"UnitCount"		"%dark_minion_3_count"
+						"SpawnRadius"	"1"
+						"Duration"		"%minion_duration"
+						
+						"Target"
+						{
+							"Center" 	"UNIT"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+						
+						"GrantsGold"	"1"
+						"GrantsXP"		"1"
+						
+						"OnSpawn"
+						{
+							"FireSound"
+							{
+								"EffectName" 	"Hero_Medusa.MysticSnake.Target"
+								"Target"		"CASTER"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"		"modifier_dark_arrow_phased"
+								"Target"			"TARGET"
+							}
+						}
+					}
+					
+					"SpawnUnit"
+					{
+						"UnitName"		"npc_dota_dark_arrow_minion_4"
+						"UnitCount"		"%dark_minion_4_count"
+						"SpawnRadius"	"1"
+						"Duration"		"%minion_duration"
+						
+						"Target"
+						{
+							"Center" 	"UNIT"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}	
+						
+						"GrantsGold"	"1"
+						"GrantsXP"		"1"
+						
+						"OnSpawn"
+						{
+							"FireSound"
+							{
+								"EffectName" 	"Hero_Medusa.MysticSnake.Target"
+								"Target"		"CASTER"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"		"modifier_dark_arrow_phased"
+								"Target"			"TARGET"
+							}
+						}
+					}
+				}
+			}
+			
+			"modifier_dark_arrow_slow"	// needs tooltip
+			{
+				"IsHidden"						"0"
+				"IsDebuff"						"1"
+				"IsPurgable"					"1"
+			
+				"EffectName"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				}
+			}
+			
+			"modifier_dark_arrow_phased"	// doesn't need tooltip
+			{
+				"IsHidden"					"1"
+				"IsPurgable"				"0"
+				
+				"Duration"					"1.0"
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,75 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Roshling - Level 5
+	// Notes: OK; 9.5.2018;
+	//=================================================================================
+	"npc_dota_custom_roshling"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/creeps/baby_rosh_halloween/baby_rosh_radiant/baby_rosh_radiant.vmdl"
+		"SoundSet"					"n_creep_Ranged"
+		"MinimapIcon"				"minimap_siege"
+		"MinimapIconSize"			"350"
+		"ModelScale" 				"1.5"
+		"IsAncient"					"0"
+		"CanBeDominated"			"1"
+		"Level"						"5"
+		
+		"Ability1"					"roshan_spell_block"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		// Protection
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"5"
+		"MagicalResistance"			"33"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"125"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.26"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"55"
+		"BountyGoldMin"				"110"
+		"BountyGoldMax"				"110"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"RingRadius"				"80"
+		"HealthBarOffset"			"160"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"250"
+		"MovementTurnRate"			"0.5"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"700"
+		"StatusHealthRegen"			"0"
+		"StatusMana"				"500"
+		"StatusManaRegen"			"0"
+
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+	}
+}

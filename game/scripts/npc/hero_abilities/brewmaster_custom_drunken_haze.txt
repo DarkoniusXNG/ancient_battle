@@ -1,0 +1,142 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
+	// Author: Darkonius
+	// Linkens: Blocks;
+	// Notes: OK; 27.5.2018; Projectile can be disjointed;
+	// TO_DO: Animacija je cudna. Treba bude DOTA_PROJECTILE_ATTACHMENT_ATTACK_2.
+	//====================================================================================================
+	"brewmaster_custom_drunken_haze"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/brewmaster_custom_drunken_haze"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.4"									// ok; dota: 0.2;
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastRange"				"850"									// original had 550 cast range
+		
+		"AoERadius"						"%radius"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10.0 9.0 7.0 5.0"						// original had 12 seconds CD
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"25"									// original had 70 mana cost
+		"AbilityProcsMagicStick"		"1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // original: 200
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"200"
+			}
+			"02" // original: 5 seconds; dota: 4.5 seconds;
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_heroes"			"5.0"
+			}
+			"03" // original: 12 seconds; dota: 4.5 seconds;
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_creeps"			"12.0"
+			}
+			"04" // original: 15/30/50%; dota: 10/20/30/40%; optimal: 10/15/20/25%
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_slow"				"-10 -20 -30 -40"
+			}
+			"05" // original: 45/65/80%; dota: 70%
+			{
+				"var_type"					"FIELD_INTEGER"
+				"miss_chance"				"45 50 60 70"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"projectile_speed"			"1400"
+			}
+		}
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+			"particle" 	"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"           	"TARGET"
+				"EffectName"       	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+				"Dodgeable"        	"1"
+				"ProvidesVision"   	"0"
+				"MoveSpeed"        	"%projectile_speed"
+				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
+				"Target"		"CASTER"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/brewmaster/drunken_haze.lua"
+				"Function"		"DrunkenHazeStart"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_custom_drunken_haze_debuff" // needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"
+
+				"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+				"EffectAttachType"		"follow_origin"
+
+				"StatusEffectName"		"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+				"StatusEffectPriority"	"5"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"				"%miss_chance"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_slow"
+				}
+				
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Brewmaster.DrunkenHaze.Target"
+						"Target"		"TARGET"	
+					}
+				}
+			}
+		}
+	}
+}

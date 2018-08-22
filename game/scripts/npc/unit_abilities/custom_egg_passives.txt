@@ -1,0 +1,37 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Phoenix Egg: Passives
+	// Author: Darkonius
+	// Notes: OK; 24.5.2018;
+	// TO_DO: Immunity to cleave, splash; Not targetable with spells, like Phoenix Egg in dota
+	//=================================================================================================================
+  	"custom_egg_passives"
+	{
+		"AbilityBehavior"     			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"BaseClass"           			"ability_datadriven"
+		"AbilityTextureName"            "rubick_empty1"
+		"MaxLevel"                      "1"
+	
+		"Modifiers"
+		{
+			"modifier_custom_phoenix_egg_passives" // doesn't need tooltip
+			{
+				"Passive"                   "1"
+				"IsHidden"                  "1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+    }
+}

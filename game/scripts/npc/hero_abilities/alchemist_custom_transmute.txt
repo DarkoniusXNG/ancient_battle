@@ -1,0 +1,99 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
+	// Author: Darkonius
+	// Notes: OK; 9.5.2018; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// Linkens: Blocks;
+	// TO_DO:
+	//=================================================================================================================
+	"alchemist_custom_transmute"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/alchemist_custom_transmute"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+		"MaxLevel"						"1"
+		"RequiredLevel"        			"6"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"80.0"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"250"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		"AbilityProcsMagicStick"		"1"
+		"HasScepterUpgrade"				"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"stun_duration"				"3.0"
+			}
+			"02"
+			{
+				"var_type"                  "FIELD_FLOAT"
+				"gold_bounty_multiplier"    "2.5"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "DOTA_Item.Hand_Of_Midas"
+				"Target"
+				{
+					"Center" 	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"            "heroes/alchemist/transmute.lua"
+				"Function"              "TransmuteStart"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_custom_transmuted_hero" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsStunDebuff"			"1"
+				"IsPurgable"			"1"
+				
+				"EffectName"			"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"		"follow_overhead"
+				
+				"StatusEffectName"		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+				"StatusEffectPriority"	"12"
+				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,299 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Archmage: Blizzard (Q) - New Spell, Calls down waves of freezing ice shards that damage and slows units in a target area.
+	// Author: Darkonius
+	// Notes: OK; 15.5.2018; 25% of the damage is dealt to buildings;
+	// TO_DO:
+	//====================================================================================================
+	"archmage_blizzard"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/archmage_blizzard"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"
+		"AbilityCastRange"				"800"							// like original Archmage
+		"AbilityCastPoint"				"0.3"
+		
+		"AbilityCooldown"				"15.0"							// like old Sniper's Shrapnel
+		
+		"AbilityManaCost"				"100 120 140 160"
+		"AbilityProcsMagicStick"		"1"
+	
+		"AOERadius"     				"%radius"
+		
+		"AbilitySpecial"
+		{
+			"01" // (Abyssal Underlord Firestorm: 400; Archmage original: 200; Shrapnel: 450; Ice Vortex: 275)
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+			"02" // (Abyssal Underlord Firestorm: 6; Archmage original: 6/8/10; Shrapnel: 10)
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"6.0 7.0 8.0 9.0"
+			}
+			"03" // (Abyssal Underlord Firestorm: 25/40/55/70; Archmage original: 30/40/50; Shrapnel: 15/35/55/75)
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"25 40 55 70"
+			}
+			"04" // like original Archmage, Abyssal Underlord Firestorm and Sniper's Shrapnel
+			{
+				"var_type"				"FIELD_FLOAT"
+				"wave_interval"			"1.0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"1.0"
+			}
+			"06" // like Ice Vortex and Shrapnel
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_slow"			"-15 -20 -25 -30"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"-15 -20 -25 -30"
+			}
+			"08" // not in tooltip; only here; %radius*2 doesnt work 7.00
+			{
+				"var_type"				"FIELD_INTEGER"
+				"double_radius"			"800"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf"
+			"particle"	"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"SpawnUnit"
+			{
+				"UnitName" 			"npc_dota_thinker"
+				"Target" 			"POINT"
+				"UnitCount"			"1"
+				"Duration"			"%duration"
+				"GrantsGold"		"0"
+				"GrantsXP"			"0"
+				"OnSpawn"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_blizzard_thinker"
+						"Target"		"TARGET"
+						"Duration"		"%duration"
+					}
+				}
+			}
+			
+			"DestroyTrees"
+			{
+				"Target" 		"POINT"
+				"Radius"		"%radius"
+			}
+			
+			"FireEffect"
+			{
+				"TargetPoint"			"POINT"
+				"EffectName"			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+				"EffectAttachType"		"world_origin"
+				"ControlPoints"
+				{
+					"01"				"%radius 2 %double_radius"
+				}
+			}
+	    }
+	    
+		"Modifiers"
+	    {
+	        "modifier_blizzard_thinker"
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		   	"MODIFIER_STATE_VALUE_ENABLED"	
+				}
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/blizzard.lua"
+						"Function"		"BlizzardStart"
+						"Target"		"TARGET"
+					}
+					
+					"FireSound" 
+					{
+						"EffectName"	"hero_Crystal.freezingField.explosion"
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Types" 	"DOTA_UNIT_TARGET_ALL"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD"
+						}
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_blizzard_slow"
+						"Target"
+						{
+							"Center"  		"TARGET"
+							"Radius" 		"%radius"
+							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						}
+					}
+
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"  		"TARGET"
+							"Radius" 		"%radius"
+							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						}
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/archmage/blizzard.lua"
+						"Function"			"BlizzardDamageBuildings"
+					}
+				}
+				"ThinkInterval"  		"%wave_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/blizzard.lua"
+						"Function"		"BlizzardWave"
+						"Target"		"TARGET"
+					}
+					
+					"FireEffect"
+					{
+						"TargetPoint"			"TARGET"
+						"EffectName"			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+						"EffectAttachType"		"world_origin"
+						"ControlPoints"
+						{
+							"01"				"%radius 2 %double_radius"
+						}
+					}
+					
+					"FireSound"
+					{
+						"EffectName"	"hero_Crystal.freezingField.explosion"
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_ALL"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD"
+						}
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_blizzard_slow"
+						"Target"
+						{
+							"Center"  		"TARGET"
+							"Radius" 		"%radius"
+							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						}
+					}
+					
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"  		"TARGET"
+							"Radius" 		"%radius"
+							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						}
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/archmage/blizzard.lua"
+						"Function"			"BlizzardDamageBuildings"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/archmage/blizzard.lua"
+						"Function"		"BlizzardStopSound"
+					}
+				}
+			}
+	
+			"modifier_blizzard_slow" // needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"Duration"			"%slow_duration"
+				
+				"EffectName"			"particles/generic_gameplay/generic_slowed_cold.vpcf"
+				
+				"StatusEffectName"		"particles/status_fx/status_effect_frost_lich.vpcf"
+				"StatusEffectPriority"	"10"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%movement_slow" 
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed_slow"
+				}
+			}
+		}
+	}
+}

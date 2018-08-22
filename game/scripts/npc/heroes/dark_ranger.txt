@@ -1,0 +1,82 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Dark Ranger; 11.5.2018;
+	// Notes: OK; Dark Arrows provide bonus dmg, Precision aura provides bonus dmg proportional to agility; Marksmanship provides bonus agility
+	// TO_DO:
+	//=================================================================================================================
+	"npc_dota_hero_dark_ranger"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_drow_ranger"
+		"Team"						"Bad"
+		"ModelScale"				"1"										// Unique for Dark Ranger
+		"BotImplemented"			"0"
+		"Role"						"Carry,Disabler,Pusher,Jungler"			// Roles
+		"Rolelevels"				"3,2,3,1"
+		"Complexity"				"3"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"		"6"
+		"Ability1"			"dark_ranger_dark_arrows"				// Q (4 levels)
+		"Ability2"			"drow_ranger_wave_of_silence"			// W, DOTA_VERSION (4 levels)
+		"Ability3"			"drow_ranger_trueshot"					// E, DOTA_VERSION (4 levels)
+		"Ability4"			"dark_ranger_life_drain"				// T (4 levels)
+		"Ability5"			"dark_ranger_charm"						// F, Secondary Ultimate (1 level)
+		"Ability6" 			"dark_ranger_custom_marksmanship"		// R, Primary Ultimate (3 levels)
+		
+		"Ability10"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as Drow Ranger
+		"Ability11"			"special_bonus_all_stats_5"				// lvl 10 talent; same as Drow Ranger
+		"Ability12"			"special_bonus_unique_drow_ranger_2"	// lvl 15 talent; same as Drow Ranger
+		"Ability13"			"special_bonus_attack_speed_25"			// lvl 15 talent; same as Drow Ranger
+		"Ability14"			"special_bonus_unique_drow_ranger_4"	// lvl 20 talent; same as Drow Ranger
+		"Ability15"			"special_bonus_strength_14"				// lvl 20 talent; unique
+		"Ability16"			"special_bonus_unique_drow_ranger_1"	// lvl 25 talent; same as Drow Ranger
+		"Ability17"			"special_bonus_agility_25"				// lvl 25 talent; unique
+
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"-3"									// like Drow Ranger
+		"MagicalResistance"			"25"									// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// like Drow Ranger
+		"AttackDamageMin"			"22"									// Drow Ranger(14);
+		"AttackDamageMax"			"32"									// Drow Ranger(25);
+		"AttackRate"				"1.7"									// Default
+		"AttackAnimationPoint"		"0.7"									// like Drow Ranger
+		"AttackAcquisitionRange"	"800"									// like Drow Ranger
+		"AttackRange"				"550"									// Unique for Dark Ranger
+		"ProjectileSpeed"			"1250"									// like Drow Ranger
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"290"									// Drow Ranger(285);
+		"MovementTurnRate"			"0.7"									// like Drow Ranger
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Default
+		"VisionNighttimeRange"		"1800"									// Unique for Dark Ranger
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (18); - don't change!
+		"AttributeStrengthGain"			"1.9"								// original (1.9); Drow Ranger (1.9); - don't change!
+		"AttributeBaseIntelligence"		"15"								// original (15); Drow Ranger (15); - don't change!
+		"AttributeIntelligenceGain"		"2.6"								// original (2.6); Drow Ranger (1.4);
+		"AttributeBaseAgility"			"21"								// original (21); Drow Ranger (26);
+		"AttributeAgilityGain"			"1.9"								// original (1.5); Drow Ranger (1.9); - don't change!
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"200"									// like Drow Ranger
+		"StatusHealthRegen"			"1.5"									// like Drow Ranger
+		"StatusMana"				"75"									// like Drow Ranger
+		"StatusManaRegen"			"0.9"									// like Drow Ranger
+	}
+}

@@ -1,0 +1,55 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_nevermore"
+	"Title"			"Recommended items for Fire Lord"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_wraith_band"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_magic_wand"
+			"item"		"item_boots"
+			"item"		"item_ring_of_aquila"
+			"item"		"item_bottle"
+			"item"		"item_dragon_lance"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_orchid"
+			"item"		"item_manta"
+			"item"		"item_hurricane_pike"
+			"item"		"item_butterfly"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_sange_and_yasha"
+			"item"		"item_vladmir"
+			"item"		"item_necronomicon_3"
+			"item"		"item_silver_edge"
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_monkey_king_bar"
+			"item"		"item_bloodthorn"
+			"item"		"item_assault"
+			"item"		"item_radiance"
+			"item"		"item_ethereal_blade"
+			"item"		"item_skadi"
+			"item"		"item_refresher"
+			"item"		"item_octarine_core"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

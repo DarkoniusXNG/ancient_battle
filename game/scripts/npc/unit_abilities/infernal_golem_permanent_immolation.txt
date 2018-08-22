@@ -1,0 +1,36 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Silencer's Infernal Golem: Permanent Immolation
+	// Author: Valve + Darkonius
+	// Notes: OK; 10.5.2018;
+	// TO_DO:
+	//=================================================================================================================
+	"infernal_golem_permanent_immolation"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"warlock_golem_permanent_immolation"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_damage"			"50"
+			}
+		}
+	}
+}

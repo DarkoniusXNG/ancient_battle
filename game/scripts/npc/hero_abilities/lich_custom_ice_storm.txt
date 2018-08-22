@@ -1,0 +1,156 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Lich: Ice Storm (R) - New Spell, Ultimate, Damages and mini stuns all enemy heroes on the map
+	// Author: Jastuchko + Darkonius
+	// Notes: OK; 31.1.2017;
+	// TO_DO: 
+	//====================================================================================================
+	"lich_custom_ice_storm"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"            "custom/lich_custom_ice_storm"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_tusk.vsndevts"
+			"particle"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"              "0.4"
+
+		// Time     
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"               "110.0 100.0 90.0"
+	   
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"               "250 350 450"
+		"AbilityProcsMagicStick"		"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // not in tooltip;
+			{
+				"var_type"          "FIELD_FLOAT"
+				"tick_interval"   	"0.2"
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"damage_per_second" "150 175 200"
+			}
+			"03"
+			{
+				"var_type"          "FIELD_FLOAT"
+				"duration"   		"1.5 2.0 2.5"
+			}
+			"04"
+			{
+				"var_type"           "FIELD_FLOAT"
+				"mini_stun_duration" "0.2"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_Tusk.IceShards.Projectile"
+				"Target"        "CASTER"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"GLOBAL"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY" 
+					"Types" 	"DOTA_UNIT_TARGET_HERO"
+				}
+
+				"Action"
+				{
+					"FireSound"
+					{
+						"EffectName"    "hero_Crystal.frostbite"
+						"Target"        "TARGET"
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_lich_custom_ice_storm_mini_stun"
+						"Target"        "TARGET"
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_lich_custom_ice_storm_damage"
+						"Target"        "TARGET"
+					}
+				}
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_lich_custom_ice_storm_mini_stun"	// doesn't need tooltip
+			{
+				"IsHidden"				"1"
+				"IsDebuff"      		"1"
+				"IsStunDebuff"			"1"
+				"IsPurgable"			"1"
+				
+				"Duration"      		"%mini_stun_duration"
+				
+				"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+
+				"EffectName"    		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"  	"follow_overhead"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_lich_custom_ice_storm_damage"	// needs tooltip
+			{
+				"IsDebuff"  		"1"
+				"IsStunDebuff"		"1"
+				"IsPurgable"		"1"
+				
+				"Duration"  		"%duration"
+				
+				"EffectName"    	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+				
+				"ThinkInterval" 	"%tick_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/lich/ice_storm.lua"
+						"Function"			"IceStormDamage"
+					}
+				}
+			}
+		}
+	}
+}

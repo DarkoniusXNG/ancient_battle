@@ -1,0 +1,150 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lifestealer: Anabolic Frenzy (E) - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
+	// Author: Darkonius
+	// Linkens: Blocks
+	// Notes: OK; 11.5.2018;
+	// TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
+	//=================================================================================================================
+	"life_stealer_custom_anabolic_frenzy"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/life_stealer_custom_anabolic_frenzy"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		"AbilityCastPoint"				"0.2"
+		
+		// Cooldown		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"24.0 20.0 18.0 16.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"120 130 140 150"
+		"AbilityProcsMagicStick"		"1"
+
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"200 300 400 500"
+		
+		"precache"
+		{
+			"particle"		"particles/status_fx/status_effect_poison_dazzle.vpcf"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // same as the old spell
+			{
+				"var_type"							"FIELD_INTEGER"
+				"passive_bonus_movement_speed_pct"	"3 5 7 9"
+			}
+			"02" // same as the old spell
+			{
+				"var_type"							"FIELD_INTEGER"
+				"passive_bonus_attack_speed"		"10 20 30 40"
+			}
+			"03"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"active_bonus_movement_speed_pct"	"3 5 7 9"
+			}
+			"04"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"active_bonus_attack_speed"			"30"
+			}
+			"05"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"movement_speed_slow"				"-30"
+			}
+			"06"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"attack_speed_slow"					"-30"
+			}
+			"07" // Visage Grave Chill: 3/4/5/6 seconds; Empowering Haste: 6 seconds; Open Wounds: 8 seconds
+			{
+				"var_type"							"FIELD_FLOAT"
+				"duration"							"3.0 4.0 5.0 6.0"
+			}
+			"08"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"cast_range_tooltip"				"200 300 400 500"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_LifeStealer.OpenWounds.Cast"
+				"Target" 		"TARGET"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/lifestealer/anabolic_frenzy.lua"
+				"Function"		"AnabolicFrenzyStart"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_anabolic_frenzy_passive"	// doesn't need tooltip
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+
+				"AllowIllusionDuplicate"	"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%passive_bonus_movement_speed_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%passive_bonus_attack_speed"
+				}
+			}
+			
+			"modifier_anabolic_frenzy_active"	// needs tooltip
+			{
+				"IsHidden"					"0"
+				"IsBuff"					"1"
+				"IsPurgable"				"1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%active_bonus_movement_speed_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%active_bonus_attack_speed"
+				}
+			}
+			
+			"modifier_anabolic_frenzy_slow"		// needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				
+				"StatusEffectName" 		"particles/status_fx/status_effect_poison_dazzle.vpcf" 	   
+				"StatusEffectPriority"  "5"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,97 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 1268 - Recipe: Atma
+	// Notes: OK; 17.5.2018;
+	//=================================================================================================================
+	"item_recipe_atma"
+	{
+		"ID"							"1268"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"105"
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_atma"
+		"ItemRequirements"
+		{
+			"01"						"item_bracer;item_null_talisman;item_wraith_band"
+		}
+	}
+	
+	//=================================================================================================================
+	// 1269 - Atma - Bracer (465) + Null Talisman (465) + Wraith Band (465) + Recipe (105) = 1500
+	// Notes: OK; 17.5.2018; Suggested/rejected names: Collar of Viceroy
+	//=================================================================================================================
+	"item_atma"
+	{
+		"ID"              				"1269"
+		"BaseClass"           			"item_datadriven"
+		"AbilityTextureName"      		"custom/atma"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"ItemCost"						"1500"
+		"ItemShopTags"					"damage;int;str;agi"
+		"ItemQuality"					"common"
+		"ItemAliases"					"atma"
+		"ItemSellable" 					"1"
+		"ItemDroppable" 				"1"
+		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_str"				"13"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"13"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"13"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_dmg"				"2"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_atma_passives" // doesn't need tooltip
+			{
+				"Passive" 		"1"  
+				"IsHidden" 		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
+				}
+			}
+		}
+	}
+}

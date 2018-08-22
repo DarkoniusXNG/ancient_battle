@@ -1,0 +1,53 @@
+"itembuilds"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_queenofpain"
+	"Title"			"Recommended items for Queen of Pain"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_null_talisman"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_boots"
+			"item"		"item_bottle"
+			"item"		"item_magic_wand"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_aether_lens"
+			"item"		"item_orchid"
+			"item"		"item_ultimate_scepter"
+			"item"		"item_assault"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_veil_of_discord"
+			"item"		"item_desolator"
+			"item"		"item_custom_rod_of_atos"		// new (3200)
+			"item"		"item_sheepstick"
+			"item"		"item_monkey_king_bar"
+			"item"		"item_bloodthorn"
+			"item"		"item_shivas_guard"
+			"item"		"item_refresher"
+			"item"		"item_octarine_core"
+			"item"		"item_skadi"
+			"item"		"item_mjollnir"
+			"item"		"item_sphere"
+			"item"		"item_dagon_5"
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

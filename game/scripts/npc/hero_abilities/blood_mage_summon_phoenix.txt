@@ -1,0 +1,111 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Blood Mage: Summon Phoenix
+	// Author: Darkonius
+	// Notes: OK; 27.5.2018;
+	// TO_DO: Cast Animation
+	//=================================================================================================================
+	"blood_mage_summon_phoenix"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/blood_mage_summon_phoenix"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"              		"1"
+		"RequiredLevel"					"6"
+		
+		//"AbilityCastAnimation"			""
+		"AbilityCastPoint"				"0.2"
+		
+		"AbilityCooldown"				"180.0"
+		
+		"AbilityManaCost"				"175"
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf"
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_death.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+			"model"     "models/heroes/phoenix/phoenix_bird.vmdl"
+			"model"     "models/heroes/phoenix/phoenix_egg.vmdl"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                  "FIELD_FLOAT"
+				"phoenix_egg_duration"      "10.0"
+			}
+			"02" // not in tooltip
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"spawn_distance"            "250"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+				"Function"      "KillPhoenix"
+			}
+
+			"SpawnUnit"
+			{
+				"UnitName"      "npc_dota_custom_phoenix_summon"
+				"Target"
+				{
+					"Center"            "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+						"Function"      "GetSummonPoints"
+						"Target"        "CASTER"
+						"Count"         "1"
+						"distance"      "%spawn_distance"
+					}
+				}
+				"UnitCount"     "1"
+				"GrantsGold"    "1"
+				"GrantsXP"      "1"
+				"SpawnRadius"   "10"
+				
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+						"Function"      "SetUnitsMoveForward"
+					}               
+
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_custom_phoenix_phased"
+						"Target"        "TARGET"
+					}
+				}
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_custom_phoenix_phased" // doesn't need tooltip
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+				
+				"Duration"		"1.0"
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

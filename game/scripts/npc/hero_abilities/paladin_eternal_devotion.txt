@@ -1,0 +1,226 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Paladin: Eternal Devotion (T) - New Spell, passive, on death applies Guardian Angel (physical immunity) and summons an Angel
+	// Author: Darkonius
+	// Notes: OK; 31.1.2017; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
+	// TO_DO: Fix Angel Wings;
+	//=================================================================================================================
+	"paladin_eternal_devotion"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/paladin_eternal_devotion"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		"precache"
+		{
+			"particle"		"particles/status_fx/status_effect_ghost.vpcf"
+			"particle"		"particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
+			"particle"		"particles/custom/aura_devotion.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // in tooltip
+			{
+				"var_type"					"FIELD_FLOAT"
+				"buff_duration"				"7.0 8.0 9.0 10.0"
+			}
+			"02" // in tooltip
+			{
+				"var_type"					"FIELD_FLOAT"
+				"health_regen"				"25.0"
+			}
+			"03" // in tooltip
+			{
+				"var_type"					"FIELD_INTEGER"
+				"buff_radius"				"1800"
+			}
+			"04" // in tooltip
+			{
+				"var_type"						"FIELD_INTEGER"
+				"angel_damage"					"150 250 350 450"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"05" // in tooltip
+			{
+				"var_type"					"FIELD_FLOAT"
+				"angel_duration"			"12.0 13.0 14.0 15.0"
+			}
+			"06" // in tooltip
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_bonus"				"2 3 4 5"
+			}
+			"07" // in tooltip
+			{
+				"var_type"					"FIELD_INTEGER"
+				"aura_radius"				"900"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_eternal_devotion_guardian_angel_spawn_passive"  // doesn't need tooltip
+			{
+				"Passive" 					"1"
+				"IsHidden"					"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"AllowIllusionDuplicate"	"0"
+				
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Omniknight.GuardianAngel.Cast"
+						"Target"
+						{
+							"Center" 	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD | DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+						}
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/paladin/eternal_devotion.lua"
+						"Function"			"EternalDevotionCheck"
+					}
+					
+					"SpawnUnit"
+					{
+						"UnitName"		"npc_dota_summoned_guardian_angel"
+						"UnitCount"		"1"
+						"SpawnRadius"	"1"
+						"Duration"		"%angel_duration"
+						
+						"Target"
+						{
+							"Center" 	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD | DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+						}
+						
+						"GrantsGold"	"1"
+						"GrantsXP"		"1"
+
+						"OnSpawn"
+						{
+							"ApplyModifier"
+							{
+								"Target"		"TARGET"
+								"ModifierName"  "modifier_guardian_angel_summoned_buff"
+								"Duration"		"%angel_duration"
+							}
+						}
+					}
+				}
+			}
+			
+			"modifier_guardian_angel_buff" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsPurgable"			"1"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%health_regen"
+				}
+			}
+
+			"modifier_guardian_angel_summoned_buff" 
+			{
+				"IsHidden"    				"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"1"
+				
+				"StatusEffectName"			"particles/status_fx/status_effect_ghost.vpcf"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"				"TARGET"
+						"EffectName" 			"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+						"EffectAttachType" 		"follow_origin"
+						"EffectRadius"			"0.5"
+					}
+					
+					"AttachEffect"
+					{
+						"Target" 				"TARGET"
+						"EffectName" 			"particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
+						"EffectAttachType" 		"follow_overhead"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"			"Hero_Omniknight.GuardianAngel"
+						"Target"				"TARGET"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" 		"1"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"				"%angel_damage"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"  		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			
+			"modifier_devotion_aura_applier"
+			{
+				"Passive" 					"1"
+				"IsHidden"    				"1"
+				"IsBuff"					"1"
+				"IsPurgable"				"0"
+				
+				"AllowIllusionDuplicate"	"1"
+				
+				"Aura"        			"modifier_devotion_aura_effect"
+				"Aura_Radius" 			"%aura_radius"
+				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_ApplyToCaster" 	"1"
+			}
+
+			"modifier_devotion_aura_effect" // needs tooltip
+			{
+				"IsHidden"    	"0"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"EffectName"		"particles/custom/aura_devotion.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				
+				"Properties" 
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%armor_bonus"
+				}
+			}
+		}
+	}
+}

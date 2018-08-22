@@ -1,0 +1,275 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Summon Lava Spawn: Lava Spawn level 1 
+	// Notes: OK; 10.6.2018;
+	//=================================================================================
+	"npc_dota_firelord_lava_spawn_1"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
+		"ModelScale"				"0.75"									// 5.2.2016;
+		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
+		"Level"						"1"										// 5.2.2016;
+		"IsSummoned"				"1"
+		"CanBeDominated"  			"1"										// 5.2.2016;
+		
+		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
+		
+		"ArmorPhysical"				"2"										// 5.2.2016;
+		"MagicalResistance"			"50"									// 5.2.2016
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"16"									// 5.2.2016;
+		"AttackDamageMax"			"24"									// 5.2.2016;
+		
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"800"									// 5.2.2016;
+		"AttackRange"				"450"									// 5.2.2016;
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+		"ProjectileSpeed"			"900"									// 5.2.2016;
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"12"									// 12.5.2018;
+		"BountyGoldMin"				"22"									// 12.5.2018;
+		"BountyGoldMax"				"36"									// 12.5.2018;
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"280"									// 12.5.2018;
+		"MovementTurnRate"			"0.5"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"300"									// 12.5.2018;
+		"StatusHealthRegen"			"4.0"									// 10.6.2018;
+		"StatusMana"				"0"
+		"StatsManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"
+		
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
+		
+		// Bounds
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"HealthBarOffset"			"130"									// 5.2.2016; was 140
+	}
+	
+	//=================================================================================
+	// Summon Lava Spawn: Lava Spawn level 2 
+	// Notes: OK; 10.6.2018;
+	//=================================================================================
+	"npc_dota_firelord_lava_spawn_2"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
+		"ModelScale"				"0.85"									// 12.5.2018;
+		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
+		"Level"						"2"										// 5.2.2016;
+		"IsSummoned"				"1"
+		"CanBeDominated"  			"1"										// 5.2.2016;
+		
+		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
+		
+		"ArmorPhysical"				"3"										// 5.2.2016;
+		"MagicalResistance"			"50"									// 5.2.2016;
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"24"									// 5.2.2016;
+		"AttackDamageMax"			"32"									// 5.2.2016;
+		
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"800"									// 5.2.2016;
+		"AttackRange"				"450"									// 5.2.2016;
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+		"ProjectileSpeed"			"900"									// 5.2.2016;
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"12"									// 12.5.2018;
+		"BountyGoldMin"				"22"									// 12.5.2018;
+		"BountyGoldMax"				"36"									// 12.5.2018;
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"310"									// 12.5.2018;
+		"MovementTurnRate"			"0.5"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"320"									// 12.5.2018;
+		"StatusHealthRegen"			"4.0"									// 10.6.2018;
+		"StatusMana"				"0"
+		"StatsManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"									// 5.2.2016;
+		
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"HealthBarOffset"			"135"									// 5.2.2016; was 140
+	}
+	
+	//=================================================================================
+	// Summon Lava Spawn: Lava Spawn level 3
+	// Notes: OK; 10.6.2018;
+	//=================================================================================
+	"npc_dota_firelord_lava_spawn_3"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
+		"ModelScale"				"1.00"									// 12.5.2018;
+		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
+		"Level"						"3"										// 5.2.2016;
+		"IsSummoned"				"1"
+		"CanBeDominated"  			"1"										// 5.2.2016;
+		
+		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
+		
+		"ArmorPhysical"				"4"										// 5.2.2016;
+		"MagicalResistance"			"50"									// 5.2.2016;
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"34"									// 5.2.2016;
+		"AttackDamageMax"			"42"									// 5.2.2016;
+		
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"800"									// 5.2.2016;
+		"AttackRange"				"450"									// 5.2.2016;
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+		"ProjectileSpeed"			"900"									// 5.2.2016;
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"12"									// 12.5.2018;
+		"BountyGoldMin"				"22"									// 12.5.2018;
+		"BountyGoldMax"				"36"									// 12.5.2018;
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"340"									// 12.5.2018;
+		"MovementTurnRate"			"0.5"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"340"									// 12.5.2018;
+		"StatusHealthRegen"			"4.0"									// 10.6.2018;
+		"StatusMana"				"0"
+		"StatsManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"									// 5.2.2016;
+		
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"HealthBarOffset"			"140"
+	}
+	
+	//=================================================================================
+	// Summon Lava Spawn: Lava Spawn level 4
+	// Notes: OK; 10.6.2018;
+	//=================================================================================
+	"npc_dota_firelord_lava_spawn_4"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
+		"ModelScale"				"1.2"									// 12.5.2018;
+		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
+		"Level"						"4"										// 5.2.2016;
+		"IsSummoned"				"1"
+		"CanBeDominated"  			"1"										// 5.2.2016;
+		
+		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
+		
+		"ArmorPhysical"				"5"										// 5.2.2016;
+		"MagicalResistance"			"50"									// 5.2.2016;
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"43"
+		"AttackDamageMax"			"51"									// 5.2.2016;
+		
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"800"									// 5.2.2016;
+		"AttackRange"				"450"									// 5.2.2016;
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+		"ProjectileSpeed"			"900"									// 5.2.2016;
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"12"									// 12.5.2018;
+		"BountyGoldMin"				"22"									// 12.5.2018;
+		"BountyGoldMax"				"36"									// 12.5.2018;
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"370"									// 12.5.2018;
+		"MovementTurnRate"			"0.5"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"360"									// 12.5.2018;
+		"StatusHealthRegen"			"4.0"									// 10.6.2018;
+		"StatusMana"				"0"
+		"StatsManaRegen"			"0"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"
+		"VisionNighttimeRange"		"800"									// 5.2.2016;
+		
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
+		
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+		"HealthBarOffset"			"145"									// 5.2.2016; was 150
+	}
+}

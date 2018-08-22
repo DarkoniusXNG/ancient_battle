@@ -1,0 +1,79 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Stealth Assassin - Ryu; 12.5.2018;
+	// TO_DO: stealth_assassin_permanent_invisibility; stealth_assassin_death_ward
+	//=================================================================================================================
+	"npc_dota_hero_custom_stealth_assassin"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------	
+		"override_hero"				"npc_dota_hero_riki"
+		"Team"						"Good"
+		"BotImplemented"			"0"
+		"Role"						"Carry,Escape,Disabler,Nuker"			// Roles
+		"Rolelevels"				"2,3,1,1"
+		"Complexity"				"1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"6"
+		"Ability1"				"riki_smoke_screen"							// Q, DOTA_VERSION (4 levels)
+		"Ability2"				"stealth_assassin_blink_strike"				// W (4 levels)
+		"Ability3"				"stealth_assassin_desolate"					// E, passive (4 levels)
+		"Ability4"				"stealth_assassin_permanent_invisibility"	// T, passive (4 levels)
+		"Ability5"				"stealth_assassin_ambush"					// F, Secondary Ultimate (1 level)
+		"Ability6"				"stealth_assassin_death_ward"				// R, Primary Ultimate (3 levels)
+		
+		"Ability10"				"special_bonus_hp_150"						// lvl 10 talent: unique
+		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: unique
+		"Ability12"				"special_bonus_20_crit_15"					// lvl 15 talent: same as Riki
+		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: same as Riki
+		"Ability14"				"special_bonus_mp_regen_8"					// lvl 20 talent: unique
+		"Ability15"				"special_bonus_hp_regen_10"					// lvl 20 talent: unique
+		"Ability16"				"special_bonus_movement_speed_100"			// lvl 25 talent: unique
+		"Ability17"				"special_bonus_all_stats_20"				// lvl 25 talent: unique
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// like Riki
+		"MagicalResistance"			"25"									// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"14"									// Riki (4); original (2);
+		"AttackDamageMax"			"18"									// Riki (8); original (12);
+		"AttackRate"				"1.7"									// like Riki
+		"AttackAnimationPoint"		"0.3"									// like Riki
+		"AttackAcquisitionRange"	"600"									// like Riki
+		"AttackRange"				"128"									// Riki(150); original(100 or 128);
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"270"									// Riki (275); Anti-Mage (315);
+		"MovementTurnRate"			"0.6"									// like Riki
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Default
+		"VisionNighttimeRange"		"800"									// Default
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"18"									// Riki (18); original (18); - don't change!
+		"AttributeStrengthGain"		"1.9"									// Riki (1.9); original (2.0);
+		"AttributeBaseIntelligence"	"14"									// Riki (14); original (16); Anti-Mage (12);
+		"AttributeIntelligenceGain"	"1.3"									// Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
+		"AttributeBaseAgility"		"34"									// Riki (30); original (22); - don't change!
+		"AttributeAgilityGain"		"3.0"									// Riki (2.2); original (2.9); Anti- Mage (2.8) - don't increase!
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"1.5"									// Riki (1.5); original (1.5);
+		"StatusHealth"				"200"									// Riki (200); original(230);
+		"StatusMana"				"75"									// like Riki
+		"StatusManaRegen"			"0.9"									// like Riki
+	}
+}

@@ -1,0 +1,45 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Silencer: Global Silence (R) - Modified dota Global Silence
+	// Author: Darkonius
+	// Notes: OK; 10.5.2018;
+	// TO_DO: Test
+	//=================================================================================================================
+	"silencer_custom_global_silence"
+	{
+		"BaseClass"						"silencer_global_silence"
+		"AbilityTextureName"			"silencer_global_silence"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"MaxLevel"						"1"
+		
+		"HasScepterUpgrade"				"0"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"130.0"
+		"AbilityDuration"				"4.5"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"300"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_duration"		"4.5"
+			}
+		}
+	}
+}

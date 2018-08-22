@@ -1,0 +1,26 @@
+#base "heroes/alchemist.txt"
+#base "heroes/archmage.txt"
+#base "heroes/astral_trekker.txt"
+#base "heroes/axe.txt"
+#base "heroes/bane.txt"
+#base "heroes/blademaster.txt"
+#base "heroes/blood_mage.txt"
+#base "heroes/brewmaster.txt"
+#base "heroes/dark_ranger.txt"
+#base "heroes/death_knight.txt"
+#base "heroes/firelord.txt"
+#base "heroes/gambler.txt"
+#base "heroes/lich.txt"
+#base "heroes/life_stealer.txt"
+#base "heroes/mana_eater.txt"
+#base "heroes/paladin.txt"
+#base "heroes/perun.txt"
+#base "heroes/queenofpain.txt"
+#base "heroes/silencer.txt"
+#base "heroes/stealth_assassin.txt"
+#base "heroes/void_demon.txt"
+
+"DOTAHeroes"
+{
+	
+}

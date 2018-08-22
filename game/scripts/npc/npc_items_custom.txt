@@ -1,0 +1,19 @@
+#base "items/item_soul_gem.txt"
+#base "items/item_custom_diffusal_blade.txt"
+#base "items/item_custom_rod_of_atos.txt"
+#base "items/item_staff_of_negation.txt"
+#base "items/item_ultimate_king_bar.txt"
+#base "items/item_infused_robe.txt"
+#base "items/item_orb_of_reflection.txt"
+#base "items/item_blink_sword.txt"
+#base "items/item_atma.txt"
+#base "items/item_mystic_booster.txt"
+#base "items/item_master_staff.txt"
+#base "items/item_drum_of_vitality.txt"
+#base "items/item_custom_mask_of_madness.txt"
+#base "items/item_custom_slippers_of_halcyon.txt"
+
+"DOTAAbilities"
+{
+	
+}

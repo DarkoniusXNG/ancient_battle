@@ -1,0 +1,101 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lightning Shaman: Ion Blast (R) - New Spell, Powershot with Mana Burn, Skillshot
+	// Author: Darkonius
+	// Notes: OK; 15.10.2017;
+	// TO_DO: Fix Wrong projectile;
+	//=================================================================================================================
+	"perun_ion_blast"
+	{
+		"BaseClass"						"ability_lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"custom/perun_ion_blast"
+		"ScriptFile"					"heroes/perun/perun_ion_blast.lua"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"3000"
+		"AbilityCastPoint"				"0.35"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"135"
+		"AbilityDuration"				"0.6875"
+		
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"220 320 420"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"250 360 500"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+			"particle"					"particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf"
+			//"particle"					"particles/projectile_linear/perun_ion_blast_projectile.vpcf"
+			"particle"					"particles/units/heroes/hero_lina/lina_spell_dragon_slave_impact.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_speed"			"3000"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_width_initial"	"275"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_width_end"		"125"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_distance"		"3000"
+			}
+			"05" // should be same as AbilityDamage
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_damage"			"220 320 420"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_mana_burn"		"300 375 450"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"ion_blast_vision_radius"	"400.0"
+			}
+			"08" // radius for destroying trees
+			{
+				"var_type"					"FIELD_FLOAT"
+				"ion_blast_trees_radius"	"125.0"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"ion_blast_vision_duration"	"3.0"
+			}
+		}
+	}
+}

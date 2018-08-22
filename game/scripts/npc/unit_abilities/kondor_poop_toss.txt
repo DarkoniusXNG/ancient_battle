@@ -1,0 +1,170 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Horde Kondor: Poop Toss - Point Target AoE Stun and Damage with indicator
+	// Author: Darkonius
+	// Notes: OK; 6.10.2017;
+	// TO_DO: Fix Projectile
+	//=================================================================================================================
+	"kondor_poop_toss"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"tiny_toss"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"		"SPELL_DISPELLABLE_YES_STRONG"
+		"MaxLevel"					"1"
+		
+		"AbilityCastRange"			"1000"
+		"AbilityCastPoint"			"0.3"
+		"AoERadius" 				"%radius"
+		
+		"AbilityCooldown"			"10.0"
+		"AbilityManaCost"			"200"
+		"AbilityProcsMagicStick"	"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"radius"                "250"
+			}
+			"02"
+			{
+				"var_type"              		"FIELD_INTEGER"
+				"base_damage"         			"150"
+				"CalculateSpellDamageTooltip"	"0"
+			}       
+			"03"
+			{
+				"var_type"              		"FIELD_INTEGER"
+				"hp_percent_damage"     		"10"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"04"
+			{
+				"var_type"              "FIELD_FLOAT"
+				"stun_duration"         "2.0"
+			}
+		}
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+			"particle"	"particles/econ/events/darkmoon_2017/darkmoon_generic_aoe.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		}
+		
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+				"MoveSpeed"				"500"
+				"StartPosition"			"attach_attack1"
+				"StartRadius"			"100"
+				"EndRadius"				"100"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE"
+				"TargetTypes"			"DOTA_UNIT_TARGET_NONE"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"		"0"
+				"ProvidesVision"		"1"
+				"VisionRadius"			"300"
+			}
+			
+			"CreateThinker"
+			{
+				"ModifierName"			"modifier_effect_indicator_thinker"
+				"Target"				"POINT"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"			"Hero_Batrider.Flamebreak"
+				"Target"				"CASTER"
+			}
+		}
+
+		"OnProjectileFinish"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_Invoker.ChaosMeteor.Impact"
+				"Target"				"POINT"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"	// PROJECTILE
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
+					"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"horde/kondor.lua"
+						"Function"		"TossDamageAndDebuff"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_effect_indicator_thinker" // doesn't need tooltip
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+				
+				"Duration"		"3.0"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/events/darkmoon_2017/darkmoon_generic_aoe.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00"		"0 0 0"
+							"01"		"%radius 0 0"
+							"02"		"6 0 1"
+							"03"		"200 0 0"
+							"04"		"0 0 0"
+						}
+					}
+				}
+			}
+			
+			"modifier_custom_poop_toss_stun" // doesn't need tooltip
+			{
+				"IsHidden"			"1"
+				"IsDebuff"			"1"
+				"IsStunDebuff"		"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}

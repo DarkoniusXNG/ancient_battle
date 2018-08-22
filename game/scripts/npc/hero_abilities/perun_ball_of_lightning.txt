@@ -1,0 +1,152 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Lightning Shaman: Ball of Lightning (Q) - New Spell, Int Based Radius Damage Nuke, Skillshot
+	// Author: Darkonius
+	// Notes: OK; 31.1.2017;
+	// TO_DO:
+	//=================================================================================================================
+	"perun_ball_of_lightning"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/perun_ball_of_lightning"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"			"particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
+			"particle"			"particles/projectile_linear/sven_spell_storm_bolt.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900 1100 1300 1500"
+		"AbilityCastPoint"				"0.1"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"7.0 6.0 5.0 4.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"90"
+		"AbilityProcsMagicStick"		"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"ball_speed"				"800 900 1000 1100"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ball_width"				"150"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ball_range"				"900 1100 1300 1500"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ball_vision"				"325 350 375 400"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"vision_duration"			"3.34"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"base_damage"				"100"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"int_multiplier"				"1.25 1.5 1.75 2.0"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_radius"					"200 250 300 350"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"      		"POINT"
+				"EffectName"		"particles/projectile_linear/sven_spell_storm_bolt.vpcf"
+				"MoveSpeed"   		"%ball_speed"
+				"StartRadius"   	"%ball_width"
+				"StartPosition" 	"attach_origin"
+				"EndRadius"     	"%ball_width"
+				"FixedDistance" 	"%ball_range"
+				"TargetTeams"   	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"   	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				"HasFrontalCone"    "0"
+				"ProvidesVision"	"1"
+				"VisionRadius"		"%ball_vision"
+			}
+
+			"FireSound"
+			{
+				"EffectName"			"Hero_Sven.StormBolt"
+				"Target"				"CASTER"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"FireSound"
+			{
+				"EffectName"			"Hero_StormSpirit.StaticRemnantExplode"
+				"Target"				"TARGET"
+			}
+			
+			"FireEffect"
+			{
+				"Target"					"TARGET"
+				"EffectName"				"particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
+				"EffectAttachType"			"start_at_origin"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"POINT"
+					"Radius" 	"%damage_radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY" 
+					"Types" 	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				"Action"
+				{	
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/perun/perun_ball.lua"
+						"Function"				"BallHit"
+						"Target"				"TARGET"
+					}
+				}
+			}
+		}
+	}
+}

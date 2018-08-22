@@ -1,0 +1,34 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Void Demon: Backtrack (T) - Modified Faceless Void Backtrack
+	// Author: Valve
+	// Notes: OK; 24.1.2017;
+	// TO_DO: I hope Valve doesn't delete this;
+	//=================================================================================================================
+	"void_demon_backtrack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"faceless_void_backtrack"
+		"AbilityTextureName"			"custom/void_demon_backtrack"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_faceless_void/faceless_void_backtrack.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dodge_chance_pct"		"17"
+			}
+		}
+	}
+}

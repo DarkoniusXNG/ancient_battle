@@ -1,0 +1,192 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Boss Roshan - Level 30
+	// Notes: OK; 9.5.2018; Add bonus attack speed, phased movement, kraken shell, true sight and more spells
+	//=================================================================================
+	"npc_dota_custom_boss_roshan"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/creeps/roshan/roshan.vmdl"
+		"GameSoundsFile"			"soundevents/game_sounds_roshan_halloween.vsndevts"
+		"SoundSet"					"Roshan"
+		"ModelScale"				"1.1"
+		"CanBeDominated"			"0"
+		"IsAncient"					"1"
+		"ConsideredHero"			"1"
+		"Level"						"30"
+		
+		"MinimapIcon"				"minimap_roshancamp"
+		"MinimapIconSize"			"450"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"roshan_spell_block"			// ok
+		"Ability2"					"roshan_bash"					// ok
+		"Ability3"					"roshan_slam"					// ok
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+
+		// Protection
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"18.0"
+		"MagicalResistance"			"55"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"350"
+		"AttackDamageMax"			"350"
+		"AttackRate"				"1.5"
+		"AttackAnimationPoint"		"0.3"
+		"AttackAcquisitionRange"	"1000"
+		"AttackRange"				"150"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"900"
+		"BountyGoldMin"				"350"
+		"BountyGoldMax"				"600"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"110"
+		"HealthBarOffset"			"400"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"270"
+		"MovementTurnRate"			"1.0"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"15000"
+		"StatusHealthRegen"			"20"
+		"StatusMana"				"0"
+		"StatusManaRegen"			"0"
+
+		// Combat
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+
+		// Inventory
+		//----------------------------------------------------------------
+		"HasInventory"				"1"
+		
+		"Creature"
+		{
+			"DisableResistance"			"75.0"
+			
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+				}
+			}
+
+			"DefaultState"				"Invade"
+
+			"OffensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"				"roshan_slam"
+					"AOE"				"1"
+					"Radius"			"325"
+					"MinimumTargets"	"2"
+				}
+			}
+			
+			"EquippedItems"
+			{
+				"Assault"
+				{
+					"Item"    	"item_assault"
+				}
+				
+				"Mystic"
+				{
+					"Item"		"item_mystic_booster"
+				}
+				
+				"EagleSongHorn"
+				{
+					"Item"		"item_eagle"
+				}
+				
+				"DemonEdge"
+				{
+					"Item"		"item_demon_edge"
+				}
+				
+				"Cheese"
+				{
+					"Item"		"item_cheese"
+				}
+			}
+			
+			"ItemDrops"
+            {
+				"Consumables"
+                {
+                    "Item"
+                    {
+                        "1"             "item_cheese"
+                    }
+                    "Chance"            "100"
+                }
+				
+				"Assault"
+                {
+                    "Item"
+                    {
+                        "1"             "item_assault"
+                    }
+                    "Chance"            "100"
+                }
+				
+				"Mystic"
+				{
+					"Item"
+                    {
+                        "1"             "item_mystic_booster"
+                    }
+                    "Chance"            "100"
+				}
+				
+				"EagleSongHorn"
+				{
+					"Item"
+                    {
+                        "1"             "item_eagle"
+                    }
+                    "Chance"            "100"
+				}
+				
+				"DemonEdge"
+				{
+					"Item"
+                    {
+                        "1"             "item_demon_edge"
+                    }
+                    "Chance"            "100"
+				}
+			}
+		}
+	}
+}

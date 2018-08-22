@@ -1,0 +1,82 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Fire Lord; 12.5.2018;
+	// TO_DO: firelord_meteor_push;
+	//=================================================================================================================
+	"npc_dota_hero_custom_firelord"
+	{
+		// General
+		//----------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_nevermore"
+		"Model"						"models/heroes/shadow_fiend/shadow_fiend_arcana.vmdl"
+		"Team"						"Bad"
+		"Role"						"Carry,Nuker,Disabler,Pusher"
+		"Rolelevels"				"3,2,2,1"
+		"Complexity"				"2"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"			"6"
+		"Ability1" 				"firelord_soul_burn"					// Q (4 levels)
+		"Ability2" 				"firelord_summon_lava_spawn"			// W (4 levels)
+		"Ability3" 				"firelord_incinerate"					// E (4 levels) 
+		"Ability4" 				"firelord_meteor_push"					// T (4 levels)
+		"Ability5"				"firelord_flaming_presence"				// F, passive, Secondary Ultimate (1 level)
+		"Ability6" 				"firelord_volcano"						// R, Primary Ultimate (3 levels)
+		"Ability7"				"firelord_arcana_model"					// innate ability; Visual effect - Arcana
+		
+		"Ability10"				"special_bonus_hp_175"					// lvl 10 talent: unique
+		"Ability11"				"special_bonus_attack_speed_20"			// lvl 10 talent: same as Shadow Fiend
+		"Ability12"				"special_bonus_spell_amplify_10"		// lvl 15 talent: unique
+		"Ability13"				"special_bonus_movement_speed_35"		// lvl 15 talent: same as Shadow Fiend
+		"Ability14"				"special_bonus_evasion_20"				// lvl 20 talent: same as Shadow Fiend
+		"Ability15"				"special_bonus_mp_regen_4"				// lvl 20 talent; unique
+		"Ability16"				"special_bonus_attack_range_150"		// lvl 25 talent: unique
+		"Ability17"				"special_bonus_cooldown_reduction_40"	// lvl 25 talent; same as Shadow Fiend
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// SF(-2);
+		"MagicalResistance"			"25"									// Default
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"21.0"									// SF (15); Ursa (24);
+		"AttackDamageMax"			"28.0"									// SF (21); Ursa (28);
+		"AttackRate"				"1.7"									// SF(1.7); original(1.8);
+		"AttackAnimationPoint"		"0.5"									// like SF
+		"AttackAcquisitionRange"	"800"									// Default
+		"AttackRange"				"500"									// like SF
+		"ProjectileSpeed"			"1200"									// like SF
+		
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"15"									// SF(16); original(15);
+		"AttributeStrengthGain"		"2.0"									// SF(2.3); original(2.0);
+		"AttributeBaseIntelligence"	"18"									// SF(18); original(18); - don't change!
+		"AttributeIntelligenceGain"	"2.0"									// SF(2.0); original(2.5); - don't change!
+		"AttributeBaseAgility"		"20"									// SF(20); Ursa(18); original(20);
+		"AttributeAgilityGain"		"2.9"									// SF(2.9); Ursa(2.1); original(1.6);
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"310"									// SF(310); original(320);
+		"MovementTurnRate"			"1.0"									// like SF
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"200"									// like SF
+		"StatusHealthRegen"			"1.75"									// like SF
+		"StatusMana"				"0"										// SF(75);
+		"StatusManaRegen"			"0.9"									// like SF
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Default
+		"VisionNighttimeRange"		"800"									// Default
+	}
+}

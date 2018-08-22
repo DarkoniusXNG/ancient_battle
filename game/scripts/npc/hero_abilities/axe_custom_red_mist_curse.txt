@@ -1,0 +1,113 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Axe: Red Mist Curse (W) - New Spell, like Battle Hunger on enemies but doesn't get removed upon killing and gives FOW vision.
+	// Author: Darkonius
+	// Notes: OK; 26.12.2016;
+	// Linkens: Blocks;
+	// TO_DO:
+	//=================================================================================================================
+	"axe_custom_red_mist_curse"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"custom/axe_custom_red_mist_curse"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"750"						// like Battle Hunger
+		"AbilityCastPoint"				"0.3"						// like Battle Hunger
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15.0 12.0 9.0 6.0"			// Slightly better than Battle Hunger
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"75"						// like Battle Hunger
+		"AbilityProcsMagicStick"		"1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // like Battle Hunger
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"10.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_per_second"			"15 25 35 45"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"move_speed_slow"			"-10 -15 -20 -25"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/axe/red_mist_curse.lua"
+				"Function"		"RedMistCurse"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_red_mist_curse_debuff" // needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"
+				
+				"StatusEffectName" 		"particles/status_fx/status_effect_battle_hunger.vpcf" 	   
+				"StatusEffectPriority"  "9"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
+					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"			"1"
+				}
+
+				"ThinkInterval"  	"1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_per_second"
+					}
+				}
+
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+						"EffectAttachType"  "follow_overhead"
+						"Target"            "TARGET"
+					}
+					
+					"FireSound"
+					{
+						"EffectName"	"Hero_Axe.Battle_Hunger"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+		}
+	}
+}

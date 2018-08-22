@@ -1,0 +1,8 @@
+two_vs_two
+{
+	material materials/overviews/two_vs_two.vmat
+	pos_x -3584
+	pos_y 2176
+	scale 6.250
+}
+

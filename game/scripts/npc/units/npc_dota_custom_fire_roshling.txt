@@ -1,0 +1,102 @@
+"DOTAUnits"
+{
+	//=================================================================================
+	// Horde: Fire Roshan - Level 7
+	// Notes: OK; 9.5.2018;
+	//=================================================================================
+	"npc_dota_custom_fire_roshling"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/creeps/roshan/roshan.vmdl"
+		"SoundSet"					"Roshan"
+		"ModelScale"				".65"
+		"CanBeDominated"			"0"
+		"IsAncient"					"1"
+		"Level"						"7"
+		
+		"Ability1"					"creature_fire_breath"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"7"
+		"MagicalResistance"			"50"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"150"
+		"AttackDamageMax"			"200"
+		"AttackRate"				"1.0"
+		"AttackAnimationPoint"		"0.3"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"150"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"60"
+		"BountyGoldMin"				"115"
+		"BountyGoldMax"				"125"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"60"
+		"HealthBarOffset"			"200"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"270"
+		"MovementTurnRate"			"1.0"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1500"
+		"StatusHealthRegen"			"20"
+		"StatusMana"				"250"
+		"StatusManaRegen"			"5"
+
+		// Team
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"
+		"VisionNighttimeRange"		"1400"
+
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+				}
+			}
+
+			"DefaultState"				"Invade"
+
+			"OffensiveAbilities"
+			{
+				"Ability1"				
+				{
+					"Name"				"creature_fire_breath"
+					"AOE"				"1"
+					"Radius"			"650"
+					"MinimumTargets"	"1"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+"itembuilds/test_axe.txt"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_drow_ranger"
+	"Title"			"Recommended items for Dark Ranger"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_wraith_band"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_boots"
+			"item"		"item_magic_wand"
+			"item"		"item_ring_of_aquila"
+			"item"		"item_lifesteal"
+			"item"		"item_dragon_lance"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_orchid"
+			"item"		"item_manta"
+			"item"		"item_sange_and_yasha"
+			"item"		"item_vladmir"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_armlet"
+			"item"		"item_custom_diffusal_blade"	// new (3800)
+			"item"		"item_ultimate_scepter"
+			"item"		"item_silver_edge"
+			"item"		"item_butterfly"
+			"item"		"item_bloodthorn"
+			"item"		"item_monkey_king_bar"
+			"item"		"item_skadi"
+			"item"		"item_mjollnir"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

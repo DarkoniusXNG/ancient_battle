@@ -1,0 +1,58 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_brewmaster"
+	"Title"			"Recommended items for Brewmaster"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_flask"
+			"item"		"item_stout_shield"
+			"item"		"item_branches"
+			"item"		"item_branches"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_boots"
+			"item"		"item_bottle"
+			"item"		"item_magic_stick"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_phase_boots"
+			"item"		"item_magic_wand"
+			"item"		"item_blink"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"		"item_vladmir"
+			"item"		"item_assault"
+		}	
+		
+		"#DOTA_Item_Build_Other_Items"
+		{
+			"item"		"item_drum_of_vitality"			// new (985)
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_custom_mask_of_madness"	// new (2000)
+			"item"		"item_sange_and_yasha"
+			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_shivas_guard"
+			"item"		"item_heart"
+			"item"		"item_radiance"
+			"item"		"item_heavens_halberd"
+			"item"		"item_refresher"
+			"item"		"item_abyssal_blade"
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

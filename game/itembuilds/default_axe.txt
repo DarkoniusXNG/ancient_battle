@@ -1,0 +1,53 @@
+"itembuilds/test_axe.txt"
+{
+	"author"		"Darkonius"
+	"hero"			"npc_dota_hero_axe"
+	"Title"			"Recommended items for Axe"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_stout_shield"
+			"item"		"item_ring_of_protection"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_iron_talon"
+			"item"		"item_tranquil_boots"
+			"item"		"item_soul_ring"
+			"item"		"item_blink"
+			"item"		"item_vanguard"
+			"item"		"item_blade_mail"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_infused_robe"				// new (4500)
+			"item"		"item_orb_of_reflection"		// new (7300)
+			"item"		"item_blink_sword"				// new (5700)
+			"item"		"item_assault"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_drum_of_vitality"			// new (985)
+			"item"		"item_atma"						// new (1100)
+			"item"		"item_slippers_of_halcyon"		// new (2000)
+			"item"		"item_crimson_guard"
+			"item"		"item_heart"
+			"item"		"item_pipe"	
+			"item"		"item_shivas_guard"
+			"item"		"item_octarine_core"
+			"item"		"item_heavens_halberd"
+			"item"		"item_radiance"
+			"item"		"item_mjollnir"
+			"item"		"item_manta"
+			"item"		"item_master_staff"				// new (7800)
+			"item"		"item_ultimate_king_bar"		// new (7950)
+			"item"		"item_staff_of_negation"		// new (8650)
+		}
+	}
+}

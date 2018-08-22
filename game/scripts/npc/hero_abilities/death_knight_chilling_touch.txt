@@ -1,0 +1,150 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Death Knight: Chilling Touch (F) - New Spell, When activated provides bonus magic damage to caster and his allies.
+	// Passively gives bonus ms and hp regen (Chilling Death Aura);
+	// Author: Darkonius
+	// Notes: OK; 11.5.2018; 
+	// Note 1: Active part works on illusions;
+	// Note 2: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
+	// Note 3: Bonus Damage is working against buildings too;
+	// TO_DO:
+	//=================================================================================================================
+	"death_knight_chilling_touch"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"     		"ancient_apparition_chilling_touch"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"MaxLevel"               		"1"
+		"RequiredLevel"          		"6"
+
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"50.0"
+		"AbilityManaCost"				"140"
+		"AbilityProcsMagicStick"		"1"
+		
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
+			"particle"			"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+			"particle"			"particles/custom/doom_bringer_doom.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"buff_radius"				"600"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_damage"				"80"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"buff_duration"				"20.0"
+			}
+			"04" // like Necronomicon Archer Aura
+			{
+				"var_type"					"FIELD_FLOAT"
+				"aura_move_speed_bonus"		"9"
+			}
+			"05" // like Satyr Tormenter Unholy Aura
+			{
+				"var_type"					"FIELD_FLOAT"
+				"aura_health_regen_bonus"	"5.5"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"aura_radius"				"900"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Ancient_Apparition.ChillingTouchCast" 
+				"Target" 		"CASTER"
+			}
+			
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_death_knight_chilling_touch"
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%buff_radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO"
+				}
+				"Duration"		"%buff_duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_chilling_death_aura" // doesn't need tooltip
+			{
+				"Passive" 			"1"
+				"IsHidden" 			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"Aura" 				"modifier_chilling_death_aura_buff"
+				"Aura_Radius" 		"%aura_radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				
+				"AllowIllusionDuplicate"	"1"
+			}
+
+			"modifier_chilling_death_aura_buff" // needs tooltip
+			{
+				"IsHidden" 			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"EffectName"		"particles/custom/doom_bringer_doom.vpcf"
+				"EffectAttachType"  "follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%aura_health_regen_bonus"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%aura_move_speed_bonus"
+				}
+			}
+			
+			"modifier_death_knight_chilling_touch" // needs tooltip
+			{
+				"IsHidden"		"0"
+				"IsBuff"		"1"
+				"IsPurgable"	"1"
+				
+				"EffectName"		"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+				"EffectAttachType"	"attach_attack1"
+				
+				"OnAttackLanded"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%bonus_damage"
+					}
+				}
+			}
+		}
+	}
+}

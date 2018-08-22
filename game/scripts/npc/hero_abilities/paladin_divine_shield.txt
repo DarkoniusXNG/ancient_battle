@@ -1,0 +1,123 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Paladin: Divine Shield (R) - New Spell, immunity to magic, physical and pure damage, has aghanim upgrade which gives full spell immunity
+	// Author: Darkonius
+	// Notes: OK; 25.1.2017; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
+	// TO_DO:
+	//=================================================================================================================
+	"paladin_divine_shield"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/paladin_divine_shield"
+		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"				// False Promise is 1000
+		"AbilityCastPoint"				"0.3"				// False Promise is 0.3; Shallow Grave is 0.4;
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		
+		"AbilityCooldown"				"65.0"				// False Promise is 100/65/30; Shallow Grave is 60/45/30/15; Repel is 30/26/22/18;
+		"AbilityManaCost"				"125 150 175"		// False Promise is 100; Shallow Grave is 150; Repel is 50;
+		"AbilityProcsMagicStick"		"1"
+		"HasScepterUpgrade" 			"1"
+		
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01" // Repel is 4/5/6/7; False Promise is 7/8/9; Shallow Grave is 5; don't change!
+			{
+				"var_type"					"FIELD_FLOAT"
+				"shield_duration"			"6.0 7.0 8.0"
+			}
+			"02" // in tooltip only; should be same as AbilityCastRange; False Promise is 1000; Repel is 500; Shallow Grave is 550/700/850/1000;
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cast_range"				"700"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target" 			"TARGET"
+				"EffectName" 		"Hero_Omniknight.Repel"
+			}
+			
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "TARGET"
+			}
+			
+			"RunScript"
+			{
+				"Target"			"TARGET"
+				"ScriptFile"		"heroes/paladin/paladin_divine_shield.lua"
+				"Function"			"DivineShield"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_paladin_divine_shield" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsPurgable"			"0"
+				
+				"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+				"EffectAttachType"		"follow_origin"
+
+				"Duration"				"%shield_duration"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
+				}
+			}
+			
+			"modifier_paladin_divine_shield_upgraded" // needs tooltip
+			{
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsPurgable"			"0"
+				
+				"StatusEffectName"         	"particles/status_fx/status_effect_ghost.vpcf"        
+				"StatusEffectPriority"  	"12"
+				
+				"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+				"EffectAttachType"		"follow_origin"
+
+				"Duration"				"%shield_duration"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"	
+				}
+			}
+		}
+	}
+}

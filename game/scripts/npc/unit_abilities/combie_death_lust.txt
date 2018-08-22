@@ -1,0 +1,130 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Horde Combie: Death Lust - Passive Melee Slow;
+	// Author: Darkonius
+	// Notes: OK; 19.6.2017;
+	// TO_DO: Tooltips
+	//=================================================================================================================
+	"combie_death_lust"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"		"undying_tombstone_zombie_deathstrike"
+		"MaxLevel"					"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"creep_duration"		"2.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_duration"			"1.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_slow"		"-5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"-5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_bonus"	"50"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"buff_duration"			"2.0"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_combie_death_lust_passive"	// doesn't need tooltip
+			{
+				"Passive"		"1"
+				"IsHidden"		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_custom_death_lust_slow"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO"
+						}
+						"Duration"		"%hero_duration"
+					}
+					
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_custom_death_lust_slow"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_BASIC"
+						}
+						"Duration"		"%creep_duration"
+					}
+					
+					"ApplyModifier"
+					{
+						"Target" 		"CASTER"
+						"ModifierName" 	"modifier_custom_death_lust_buff"
+						"Duration"		"%buff_duration"
+					}	
+				}
+			}
+
+			"modifier_custom_death_lust_slow"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"		"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+				"EffectAttachType"	"attach_hitloc"
+				
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				}
+			}
+			
+			"modifier_custom_death_lust_buff"	// needs tooltip
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"EffectName" "particles/items2_fx/mask_of_madness.vpcf"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed_bonus"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+"DOTAUnits"
+{
+	//====================================================================================
+	// Unit for firelord_volcano ability (Volcano base model)
+	// Notes: OK; 4.11.2016;
+	//====================================================================================
+	"npc_dota_firelord_volcano"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/particle/soil_rupture.vmdl"
+		"ModelScale"				"5"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"VisionDaytimeRange"		"0"	
+		"VisionNighttimeRange"		"0"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL" 
+	}
+}

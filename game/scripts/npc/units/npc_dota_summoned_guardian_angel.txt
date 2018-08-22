@@ -1,0 +1,73 @@
+"DOTAUnits"
+{
+	//=================================================================================	
+	// Paladin Eternal Devotion: Guardian Angel
+	// Notes: OK; 4.11.2016;
+	//=================================================================================
+	"npc_dota_summoned_guardian_angel"
+	{
+		// General
+		//-----------------------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
+		"ModelScale" 				"1.20"
+		"SoundSet"					"Creep_Good_Melee_Mega"				// 4.11.2016;
+		"Level"						"3"									// 12.4.2016;
+		"IsSummoned"				"1"
+		"CanBeDominated"  			"1"									// 5.2.2016; Angel is spell immune;
+		
+		// Abilities
+		//-----------------------------------------------------------------------------
+		"Ability1"					"guardian_angel_holy_purification"	// Ability 1
+		"Ability2"					"guardian_angel_bash"				// Ability 2
+		
+		// Protection
+		//-----------------------------------------------------------------------------
+		"ArmorPhysical"				"1"									// Physical protection.
+		"MagicalResistance"			"0"									// 5.2.2016; Angel is spell immune;
+
+		// Attack
+		//-----------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"0"									// Damage range min.
+		"AttackDamageMax"			"0"									// Damage range max.
+		"AttackRate"				"1.0"								// Speed of attack.
+		"AttackAnimationPoint"		"0.4"								// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"								// Range within a target can be acquired.
+		"AttackRange"				"128"								// Range within a target can be attacked.
+		
+		// Bounds
+		//-----------------------------------------------------------------------------
+		"HealthBarOffset"			"170"
+		"BoundsHullName"      		"DOTA_HULL_SIZE_SMALL"      		// Hull type used for navigation/locomotion.
+
+		// Bounty
+		//-----------------------------------------------------------------------------
+		"BountyXP"					"50"								// 12.4.2016;
+		"BountyGoldMin"				"40"								// 4.11.2016;
+		"BountyGoldMax"				"50"								// 4.11.2016;
+
+		// Movement
+		//-----------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"450"								// Speed.			
+
+		// Status
+		//-----------------------------------------------------------------------------
+		"StatusHealth"				"250"								// Base health.
+		"StatusHealthRegen"			"0.5"								// Health regeneration rate.
+		"StatusMana"				"200"								// Base mana.
+		"StatusManaRegen"			"1.0"								// Mana regeneration rate.		 
+		
+		// Vision
+		//-----------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"								// Range of vision during day light.
+		"VisionNighttimeRange"		"1800"								// Range of vision at night time.
+
+		// Combat
+		//-----------------------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"				// 29.4.2016;
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"				// 29.4.2016;
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
+	}
+}

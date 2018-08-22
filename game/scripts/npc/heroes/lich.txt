@@ -1,0 +1,80 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Lich; 11.5.2018;
+	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
+	// TO_DO:
+	//=================================================================================================================
+	"npc_dota_hero_custom_lich"
+	{
+		"override_hero"				"npc_dota_hero_lich"
+		"Team"						"Bad"
+		"BotImplemented"			"0"
+		"HeroSelectSoundEffect"		"Hero_Lich.Pick"						// Hero Pick sound
+		"Role"						"Support,Nuker,Pusher,Disabler"			// Roles
+		"Rolelevels"				"3,2,3,2"
+		"Complexity"				"1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"		"6"
+		"Ability1"			"lich_custom_frost_nova"				// Q (4 levels)
+		"Ability2"			"lich_custom_frost_armor"				// W (4 levels)
+		"Ability3"			"lich_custom_dark_ritual"				// E (4 levels)
+		"Ability4"			"lich_custom_death_and_decay"			// T (4 levels)
+		"Ability5"			"lich_custom_freezing_touch"			// F, passive, Secondary Ultimate (1 level, level 12 required)
+		"Ability6"			"lich_custom_ice_storm"					// R, Primary Ultimate (3 levels, level 6 required)
+		
+		"Ability10"			"special_bonus_hp_175"					// lvl 10 talent; same as dota Lich
+		"Ability11"			"special_bonus_movement_speed_25"		// lvl 10 talent; same as dota Lich
+		"Ability12"			"special_bonus_cast_range_175"			// lvl 15 talent; unique
+		"Ability13"			"special_bonus_attack_damage_120"		// lvl 15 talent; same as dota Lich
+		"Ability14"			"special_bonus_all_stats_15"			// lvl 20 talent; unique
+		"Ability15"			"special_bonus_gold_income_30"			// lvl 20 talent; same as dota Lich
+		"Ability16"			"special_bonus_spell_amplify_15"		// lvl 25 talent; unique
+		"Ability17"			"special_bonus_attack_range_125"		// lvl 25 talent; unique
+		
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"-1"									// like dota Lich
+		"MagicalResistance"			"25"									// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"				"26"								// like dota Lich
+		"AttackDamageMax"				"35"								// like dota Lich
+		"AttackRate"					"1.7"								// like dota Lich
+		"AttackAnimationPoint"			"0.46"								// like dota Lich
+		"AttackAcquisitionRange"		"800"								// like dota Lich
+		"AttackRange"					"600"								// dota Lich (550); original (600);
+		"ProjectileSpeed"				"900"								// like dota Lich
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"					"315"								// dota Lich (315); original (270);
+		"MovementTurnRate"				"0.5"								// like dota Lich
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"			"1800"								// Default
+		"VisionNighttimeRange"			"800"								// Default
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"15"								// dota Lich (20); original (15)
+		"AttributeStrengthGain"			"2.0"								// dota Lich (1.85); original (2.0) - don't change!
+		"AttributeBaseIntelligence"		"16"								// dota Lich (16); original (20); - don't change!
+		"AttributeIntelligenceGain"		"3.25"								// dota Lich (3.25); original (3.4)
+		"AttributeBaseAgility"			"15"								// dota Lich (15); original (14)
+		"AttributeAgilityGain"			"2.0"								// dota Lich (2.0); original (1.0)
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"				"1.5"								// like dota Lich
+		"StatusHealth"					"200"								// like dota Lich
+		"StatusMana"					"0"									// dota Lich(75);
+		"StatusManaRegen"				"0.9"								// like dota Lich
+	}
+}

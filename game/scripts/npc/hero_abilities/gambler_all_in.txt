@@ -1,0 +1,113 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Gambler: All In (R) - New Spell, Ultimate, Deals damage based on Gambler's net worth, can backfire
+	// Author: Darkonius; 
+	// Linkens: Blocks only if it would hit;
+	// Notes: 20.9.2017; Chance for Success is True Random; Has Aghanim Scepter upgrade;
+	// TO_DO: If its too weak increase damage cap from 600/875/1100 (scepter: 875/1100/1400) to 900/1100/1300 (scepter: 1100/1300/1500).
+	//=================================================================================================================
+	"gambler_all_in"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName" 			"custom/gambler_all_in"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"				"0.25"
+		"AbilityCastRange"				"600"
+		
+		"HasScepterUpgrade" 			"1"
+		
+		"AbilityCooldown"				"70.0 60.0 50.0"
+		
+		"AbilityManaCost"				"350 500 700"
+		"AbilityProcsMagicStick" 		"1"
+		"AbilityGoldCost"				"500"
+		
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf"
+			"particle"		"particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // tooltip only; should be same as AbilityGoldCost
+			{
+				"var_type"								"FIELD_INTEGER"
+				"gold_cost"								"500"
+			}
+			"02"
+			{
+				"var_type"								"FIELD_INTEGER"
+				"damage_cap"							"600 875 1100"
+				"CalculateSpellDamageTooltip"			"0"
+			}
+			"03" // tooltip only;
+			{
+				"var_type"								"FIELD_INTEGER"
+				"chance_to_backfire"					"50 40 30"
+			}
+			"04"
+			{
+				"var_type"								"FIELD_INTEGER"
+				"net_worth_to_damage_ratio"				"10 12 15"
+				"CalculateSpellDamageTooltip"			"0"
+			}
+			"05"
+			{
+				"var_type"								"FIELD_INTEGER"
+				"damage_cap_scepter"					"875 1100 1400"
+				"CalculateSpellDamageTooltip"			"0"
+			}
+			"06"
+			{
+				"var_type"								"FIELD_INTEGER"
+				"net_worth_to_damage_ratio_scepter"		"12 15 20"
+				"CalculateSpellDamageTooltip"			"0"
+			}
+			"07" // only here; 100% - chance_to_backfire
+			{
+				"var_type"								"FIELD_INTEGER"
+				"chance_for_success"					"50 60 70"
+			}
+		}
+
+		"OnSpellStart"
+		{	
+			"Random"
+			{
+				"Chance"			"%chance_for_success"
+				
+				"OnSuccess"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/gambler/gambler_all_in.lua"
+						"Function"		"AllInSuccess"
+					}
+				}
+				
+				"OnFailure"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/gambler/gambler_all_in.lua"
+						"Function"		"AllInFailure"
+					}
+				}
+			}
+		}
+	}
+}

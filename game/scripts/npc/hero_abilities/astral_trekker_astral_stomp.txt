@@ -1,0 +1,155 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
+	// Author: Darkonius
+	// Notes: OK; 31.1.2017; Has Aghanim Scepter Upgrade
+	// Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
+	// TO_DO:
+	//=================================================================================================================
+	"astral_trekker_astral_stomp"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"    		"custom/astral_trekker_astral_stomp"
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"HasScepterUpgrade"				"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation" 			"ACT_DOTA_SPAWN"
+		"AbilityCastPoint" 				"0.47"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"               "15.0"
+		
+		// Mana Cost + Magic Stick/Wand
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"130"
+		"AbilityProcsMagicStick"		"1"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+			"particle"					"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // unique
+			{ 
+				"var_type"  		"FIELD_FLOAT"
+				"stun_duration" 	"1.5 2.0 2.5 3.0"
+			}
+			"02" // same as Hoof Stomp
+			{
+				"var_type"			"FIELD_INTEGER"
+				"stun_radius"		"315"
+			}
+			"03" // Hoof Stomp: 100/150/200/250
+			{
+				"var_type"			"FIELD_INTEGER"
+				"base_damage"		"50 75 100 125"
+			}
+			"04" // this is not in tooltip (scepter adds 75 damage)
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_level_1"	"100"
+			}
+			"05" // this is not in tooltip (scepter adds 75 damage)
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_level_2"	"150"
+			}
+			"06" // this is not in tooltip (scepter adds 75 damage)
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_level_3"	"200"
+			}
+			"07" // tooltip only (visible with aghanim scepter)
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_radius_scepter"			"800"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+		
+		"OnSpellStart"	
+		{		
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%stun_radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
+				{
+					"01"	"%stun_radius 0 %stun_radius"
+				}
+			}
+			
+			"FireSound"
+			{
+				"EffectName"		"Hero_Centaur.HoofStomp"
+				"Target" 			"CASTER"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  			"CASTER"
+					"Radius" 			"%stun_radius"
+					"Teams" 			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_astral_stomp"
+					}
+				}
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/astral_trekker/astral_stomp.lua"
+				"Function"		"AstralStompDamageCheck"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_astral_stomp"	// needs tooltip
+			{
+				"IsHidden"		"0"		
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"
+				
+				"Duration"		"%stun_duration"
+				
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"			
+				}
+			}
+		}
+	}
+}

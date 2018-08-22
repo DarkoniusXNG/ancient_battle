@@ -1,0 +1,88 @@
+"DOTAHeroes"
+{
+	//================================================================================================================
+	// Hero: Blood Mage
+	// Notes: OK; 13.5.2018;
+	//=================================================================================================================
+	"npc_dota_hero_blood_mage"
+	{
+		"override_hero"				"npc_dota_hero_invoker"
+		"Team"						"Good"
+		"BotImplemented"			"0"
+		"Role"						"Nuker,Initiator,Disabler,Pusher"
+		"Rolelevels"				"3,1,1,1"
+		"Complexity"				"1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"6"
+		"Ability1"				"blood_mage_flame_strike"			// Q (4 levels)
+		"Ability2"				"blood_mage_banish"					// W (4 levels)
+		"Ability3"				"blood_mage_mana_transfer"			// E (4 levels)
+		"Ability4"				"blood_mage_blood_mirror"			// T (4 levels)
+		"Ability5"				"blood_mage_summon_phoenix"			// F, Secondary Ultimate (1 level)
+		"Ability6"				"blood_mage_rupture"				// R, Primary Ultimate (3 levels)				
+        "Ability7"				"blood_mage_orbs"					// innate ability
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"special_bonus_hp_300"
+		"Ability11"				"special_bonus_attack_damage_30"
+		"Ability12"				"special_bonus_cast_range_125"
+		"Ability13"				"special_bonus_attack_range_125"
+		"Ability14"				"special_bonus_hp_regen_20"
+		"Ability15"				"special_bonus_attack_speed_80"
+		"Ability16"				"special_bonus_magic_resistance_80"
+		"Ability17"				"special_bonus_lifesteal_100"
+		"Ability18"				"generic_hidden"
+		"Ability19"				"generic_hidden"
+		"Ability20"				"generic_hidden"
+		"Ability21"				"generic_hidden"
+		"Ability22"				"generic_hidden"
+		"Ability23"				"generic_hidden"
+		"Ability24"				"generic_hidden"
+
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"								// Invoker(-1); original(2);
+		"MagicalResistance"			"25"							// Default
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"20"							// Invoker(18);
+		"AttackDamageMax"			"35" 							// Invoker(32);
+		"AttackRate"				"1.7"							// Invoker(1.7);
+		"AttackAnimationPoint"		"0.5"							// like Invoker
+		"AttackRange"				"600"							// like Invoker
+		"AttackAcquisitionRange"	"800"							// like Invoker
+		"ProjectileSpeed"			"900"							// like Invoker
+		
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"290"							// original(300); Invoker(295);
+		"MovementTurnRate"			"0.6"							// like Invoker
+		
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"							// Default
+		"VisionNighttimeRange"		"800"							// Default
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"		"19"							// Invoker(19); original(18); Pugna(19);
+		"AttributeStrengthGain"		"2.0"							// Invoker(2.5); original(2.0); Pugna(1.8);
+		"AttributeBaseAgility"		"14"							// Invoker(22); original(14); Pugna(16);
+		"AttributeAgilityGain"		"1.0"							// Invoker(3.0); original(1.0); Pugna(1.0);
+		"AttributeBaseIntelligence"	"24"							// Invoker(25); original(19); Pugna(24);
+		"AttributeIntelligenceGain"	"3.0"							// Invoker(2.5); original(3.0); Pugna(4.5);
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"1.5"							// Invoker(1.5); original(1.15);
+		"StatusHealth"				"200"							// original(100);
+		"StatusMana"				"0"								// original(0);
+		"StatusManaRegen"			"0.9"							// Invoker(0.9); original(0.96);
+	}
+}

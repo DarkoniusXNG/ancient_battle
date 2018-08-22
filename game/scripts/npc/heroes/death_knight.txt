@@ -1,0 +1,78 @@
+"DOTAHeroes"
+{
+	//================================================================================================================
+	// HERO: Death Knight; 11.5.2018;
+	// Notes: OK; Death Pact provides dmg and hp, Chilling Death Aura provides bonus hp regen and bonus ms;
+	// TO_DO: death_knight_death_pit;
+	//=================================================================================================================
+	"npc_dota_hero_death_knight"
+	{
+		"override_hero"				"npc_dota_hero_abaddon"
+		"Team"						"Bad"
+		"BotImplemented"			"0"
+		"Role"						"Carry,Durable,Disabler"				// Roles
+		"Rolelevels"				"3,3,1"
+		"Complexity"				"1"
+		
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"6"
+		"Ability1"					"death_knight_death_coil"				// Q (4 levels)
+		"Ability2"					"death_knight_death_pact"				// W, modified (4 levels)
+		"Ability3"					"death_knight_death_pit"				// E (4 levels)
+		"Ability4"					"abaddon_frostmourne"					// T, DOTA_VERSION (4 levels)
+		"Ability5"					"death_knight_chilling_touch"			// F, Secondary Ultimate (1 level)
+		"Ability6"					"abaddon_borrowed_time"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
+		
+		"Ability10"		"special_bonus_intelligence_10"						// lvl 10 talent; unique
+		"Ability11"		"special_bonus_exp_boost_20"						// lvl 10 talent; same as Abaddon
+		"Ability12"		"special_bonus_mp_regen_4"							// lvl 15 talent; unique
+		"Ability13"		"special_bonus_armor_6"								// lvl 15 talent; same as Abaddon
+		"Ability14"		"special_bonus_cooldown_reduction_20"				// lvl 20 talent; same as Abaddon
+		"Ability15"		"special_bonus_attack_damage_90"					// lvl 20 talent; same as Abaddon
+		"Ability16"		"special_bonus_unique_abaddon_3"					// lvl 25 talent; same as Abaddon
+		"Ability17"		"special_bonus_attack_speed_80"						// lvl 25 talent; unique
+
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"-2"									// like Abaddon
+		"MagicalResistance"			"25"									// Default
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"32"									// like Abaddon
+		"AttackDamageMax"			"42" 									// like Abaddon
+		"AttackRate"				"1.7"									// Default
+		"AttackAnimationPoint"		"0.56"									// like Abaddon
+		"AttackRange"				"150"									// like Abaddon
+		"AttackAcquisitionRange"	"600"									// like Abaddon
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementSpeed"				"270"									// original(320); Abaddon(305);
+		"MovementTurnRate"			"0.5"									// like Abaddon
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"			"1800"								// Default
+		"VisionNighttimeRange"			"800"								// Default
+		
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"23"								// Abaddon (23); original (23) - don't change!
+		"AttributeStrengthGain"			"2.5"								// Abaddon (2.6); original (2.7);
+		"AttributeBaseAgility"			"15"								// Abaddon (17); original (12);
+		"AttributeAgilityGain"			"1.5"								// Abaddon (1.5); original (1.5); - don't change!
+		"AttributeBaseIntelligence"		"21"								// Abaddon (21); original (17); - don't change!
+		"AttributeIntelligenceGain"		"2.0"								// Abaddon (2.0); original (1.8); - don't change!
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealthRegen"				"1.0"								// Abaddon(1.5); Clinkz(1.5); Spirit Breaker (1.0)
+		"StatusHealth"					"150"								// Abaddon(200);
+		"StatusMana"					"0"									// Abaddon(75);
+		"StatusManaRegen"				"0.9"								// like Abaddon
+	}
+}
