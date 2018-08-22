@@ -1,0 +1,16 @@
+# Dota 2 Binaries
+tools_thumbnail_cache.bin
+tools_asset_info.bin
+
+# Dota 2 compiled files
+panorama_debugger.cfg
+
+game/maps/
+game/materials/
+game/models/
+game/panorama/
+game/particles/
+game/soundevents/
+game/sounds/
+
+*.vpk
