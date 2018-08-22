@@ -1,1 +1,1 @@
-# ancient_battle_dota2
+# Ancient Battle game mode
