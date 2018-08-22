@@ -1,13 +1,11 @@
 -- This library allow for easily delayed/timed actions
 require('libraries/timers')
--- This library can be used for advanced physics/motion/collision of units.  See PhysicsReadme.txt for more information.
+-- This library can be used for advanced physics/motion/collision of units.
 --require('libraries/physics')
 -- This library can be used for advanced 3D projectile systems.
 --require('libraries/projectiles')
 -- This library can be used for starting customized animations on units from lua
 require('libraries/animations')
--- This library can be used for performing "Frankenstein" attachments on units
-require('libraries/attachments')
 -- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
 -- This library (by Noya) provides player selection inspection and management from server lua
@@ -34,7 +32,7 @@ require('spawns')
 
   This function should generally only be used if the Precache() function in addon_game_mode.lua is not working.
 ]]
-function weird_dota_gamemode:PostLoadPrecache()
+function ancient_battle_gamemode:PostLoadPrecache()
 
 end
 
@@ -42,7 +40,7 @@ end
   This function is called once and only once as soon as the first player (almost certain to be the server in local lobbies) loads in.
   It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
 ]]
-function weird_dota_gamemode:OnFirstPlayerLoaded()
+function ancient_battle_gamemode:OnFirstPlayerLoaded()
 
 end
 
@@ -50,7 +48,7 @@ end
   This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
   It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
 ]]
-function weird_dota_gamemode:OnAllPlayersLoaded()
+function ancient_battle_gamemode:OnAllPlayersLoaded()
 	
 	-- Find all buildings on the map
 	local buildings = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
@@ -104,7 +102,7 @@ end
   levels, changing the starting gold, removing/adding abilities, adding physics, etc.
   The hero parameter is the hero entity that just spawned in
 ]]
-function weird_dota_gamemode:OnHeroInGame(hero)
+function ancient_battle_gamemode:OnHeroInGame(hero)
 	
 	-- Innate abilities (this is applied to custom created heroes/illusions too)
 	InitializeInnateAbilities(hero)
@@ -130,10 +128,7 @@ function weird_dota_gamemode:OnHeroInGame(hero)
 				
 				-- Set the starting gold for the player's hero
 				if PlayerResource:HasRandomed(playerID) then
-					PlayerResource:ModifyGold(playerID, 200, false, 0)
-					--hero:SetGold(RANDOM_START_GOLD, false)
-				--else
-					--hero:SetGold(NORMAL_START_GOLD, false)
+					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-NORMAL_START_GOLD, false, 0)
 				end
 				
 				-- Client Settings
@@ -154,7 +149,7 @@ end
   gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
   is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 ]]
-function weird_dota_gamemode:OnGameInProgress()
+function ancient_battle_gamemode:OnGameInProgress()
 
 	if GetMapName() == "holdout" then
 		-- Custom backdoor protection
@@ -171,7 +166,7 @@ end
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
-function weird_dota_gamemode:InitGameMode()
+function ancient_battle_gamemode:InitGameMode()
 	-- Setup rules
 	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
 	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
@@ -185,7 +180,6 @@ function weird_dota_gamemode:InitGameMode()
 	GameRules:SetUseCustomHeroXPValues(USE_CUSTOM_XP_VALUES)
 	GameRules:SetGoldPerTick(GOLD_PER_TICK)
 	GameRules:SetGoldTickTime(GOLD_TICK_TIME)
-	GameRules:SetRuneSpawnTime(RUNE_SPAWN_TIME)
 	GameRules:SetUseBaseGoldBountyOnHeroes(USE_STANDARD_HERO_GOLD_BOUNTY)
 	GameRules:SetHeroMinimapIconScale(MINIMAP_ICON_SIZE)
 	GameRules:SetCreepMinimapIconScale(MINIMAP_CREEP_ICON_SIZE)
@@ -225,46 +219,46 @@ function weird_dota_gamemode:InitGameMode()
 	end
 	
 	-- Event Hooks
-	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerLevelUp'), self)
-	ListenToGameEvent('dota_ability_channel_finished', Dynamic_Wrap(weird_dota_gamemode, 'OnAbilityChannelFinished'), self)
-	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerLearnedAbility'), self)
-	ListenToGameEvent('entity_killed', Dynamic_Wrap(weird_dota_gamemode, 'OnEntityKilled'), self)
-	ListenToGameEvent('player_connect_full', Dynamic_Wrap(weird_dota_gamemode, 'OnConnectFull'), self)
-	ListenToGameEvent('player_disconnect', Dynamic_Wrap(weird_dota_gamemode, 'OnDisconnect'), self)
-	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(weird_dota_gamemode, 'OnItemPurchased'), self)
-	ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(weird_dota_gamemode, 'OnItemPickedUp'), self)
-	ListenToGameEvent('last_hit', Dynamic_Wrap(weird_dota_gamemode, 'OnLastHit'), self)
-	ListenToGameEvent('dota_non_player_used_ability', Dynamic_Wrap(weird_dota_gamemode, 'OnNonPlayerUsedAbility'), self)
-	ListenToGameEvent('player_changename', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerChangedName'), self)
-	ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(weird_dota_gamemode, 'OnRuneActivated'), self)
-	ListenToGameEvent('dota_player_take_tower_damage', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerTakeTowerDamage'), self)
-	ListenToGameEvent('tree_cut', Dynamic_Wrap(weird_dota_gamemode, 'OnTreeCut'), self)
-	ListenToGameEvent('entity_hurt', Dynamic_Wrap(weird_dota_gamemode, 'OnEntityHurt'), self)
-	ListenToGameEvent('player_connect', Dynamic_Wrap(weird_dota_gamemode, 'PlayerConnect'), self)
-	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(weird_dota_gamemode, 'OnAbilityUsed'), self)
-	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(weird_dota_gamemode, 'OnGameRulesStateChange'), self)
-	ListenToGameEvent('npc_spawned', Dynamic_Wrap(weird_dota_gamemode, 'OnNPCSpawned'), self)
-	ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerPickHero'), self)
-	ListenToGameEvent('dota_team_kill_credit', Dynamic_Wrap(weird_dota_gamemode, 'OnTeamKillCredit'), self)
-	ListenToGameEvent("player_reconnected", Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerReconnect'), self)
-	ListenToGameEvent("player_chat", Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerChat'), self)
+	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerLevelUp'), self)
+	ListenToGameEvent('dota_ability_channel_finished', Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityChannelFinished'), self)
+	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerLearnedAbility'), self)
+	ListenToGameEvent('entity_killed', Dynamic_Wrap(ancient_battle_gamemode, 'OnEntityKilled'), self)
+	ListenToGameEvent('player_connect_full', Dynamic_Wrap(ancient_battle_gamemode, 'OnConnectFull'), self)
+	ListenToGameEvent('player_disconnect', Dynamic_Wrap(ancient_battle_gamemode, 'OnDisconnect'), self)
+	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(ancient_battle_gamemode, 'OnItemPurchased'), self)
+	ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ancient_battle_gamemode, 'OnItemPickedUp'), self)
+	ListenToGameEvent('last_hit', Dynamic_Wrap(ancient_battle_gamemode, 'OnLastHit'), self)
+	ListenToGameEvent('dota_non_player_used_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnNonPlayerUsedAbility'), self)
+	ListenToGameEvent('player_changename', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerChangedName'), self)
+	ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(ancient_battle_gamemode, 'OnRuneActivated'), self)
+	ListenToGameEvent('dota_player_take_tower_damage', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerTakeTowerDamage'), self)
+	ListenToGameEvent('tree_cut', Dynamic_Wrap(ancient_battle_gamemode, 'OnTreeCut'), self)
+	ListenToGameEvent('entity_hurt', Dynamic_Wrap(ancient_battle_gamemode, 'OnEntityHurt'), self)
+	ListenToGameEvent('player_connect', Dynamic_Wrap(ancient_battle_gamemode, 'PlayerConnect'), self)
+	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityUsed'), self)
+	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(ancient_battle_gamemode, 'OnGameRulesStateChange'), self)
+	ListenToGameEvent('npc_spawned', Dynamic_Wrap(ancient_battle_gamemode, 'OnNPCSpawned'), self)
+	ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerPickHero'), self)
+	ListenToGameEvent('dota_team_kill_credit', Dynamic_Wrap(ancient_battle_gamemode, 'OnTeamKillCredit'), self)
+	ListenToGameEvent("player_reconnected", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerReconnect'), self)
+	ListenToGameEvent("player_chat", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerChat'), self)
 
-	ListenToGameEvent("dota_illusions_created", Dynamic_Wrap(weird_dota_gamemode, 'OnIllusionsCreated'), self)
-	ListenToGameEvent("dota_item_combined", Dynamic_Wrap(weird_dota_gamemode, 'OnItemCombined'), self)
-	ListenToGameEvent("dota_player_begin_cast", Dynamic_Wrap(weird_dota_gamemode, 'OnAbilityCastBegins'), self)
-	ListenToGameEvent("dota_tower_kill", Dynamic_Wrap(weird_dota_gamemode, 'OnTowerKill'), self)
-	ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerSelectedCustomTeam'), self)
-	ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(weird_dota_gamemode, 'OnNPCGoalReached'), self)
+	ListenToGameEvent("dota_illusions_created", Dynamic_Wrap(ancient_battle_gamemode, 'OnIllusionsCreated'), self)
+	ListenToGameEvent("dota_item_combined", Dynamic_Wrap(ancient_battle_gamemode, 'OnItemCombined'), self)
+	ListenToGameEvent("dota_player_begin_cast", Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityCastBegins'), self)
+	ListenToGameEvent("dota_tower_kill", Dynamic_Wrap(ancient_battle_gamemode, 'OnTowerKill'), self)
+	ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerSelectedCustomTeam'), self)
+	ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(ancient_battle_gamemode, 'OnNPCGoalReached'), self)
 	
-	--ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(weird_dota_gamemode, 'OnShopToggled'), self)
-	--ListenToGameEvent('player_spawn', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerSpawn'), self)
-	--ListenToGameEvent('dota_unit_event', Dynamic_Wrap(weird_dota_gamemode, 'OnDotaUnitEvent'), self)
-	--ListenToGameEvent('nommed_tree', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerAteTree'), self)
-	--ListenToGameEvent('player_completed_game', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerCompletedGame'), self)
-	--ListenToGameEvent('dota_match_done', Dynamic_Wrap(weird_dota_gamemode, 'OnDotaMatchDone'), self)
-	--ListenToGameEvent('dota_combatlog', Dynamic_Wrap(weird_dota_gamemode, 'OnCombatLogEvent'), self)
-	--ListenToGameEvent('dota_player_killed', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerKilled'), self)
-	--ListenToGameEvent('player_team', Dynamic_Wrap(weird_dota_gamemode, 'OnPlayerTeam'), self)
+	--ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(ancient_battle_gamemode, 'OnShopToggled'), self)
+	--ListenToGameEvent('player_spawn', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerSpawn'), self)
+	--ListenToGameEvent('dota_unit_event', Dynamic_Wrap(ancient_battle_gamemode, 'OnDotaUnitEvent'), self)
+	--ListenToGameEvent('nommed_tree', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerAteTree'), self)
+	--ListenToGameEvent('player_completed_game', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerCompletedGame'), self)
+	--ListenToGameEvent('dota_match_done', Dynamic_Wrap(ancient_battle_gamemode, 'OnDotaMatchDone'), self)
+	--ListenToGameEvent('dota_combatlog', Dynamic_Wrap(ancient_battle_gamemode, 'OnCombatLogEvent'), self)
+	--ListenToGameEvent('dota_player_killed', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerKilled'), self)
+	--ListenToGameEvent('player_team', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerTeam'), self)
 
 	-- Change random seed
 	local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
@@ -276,31 +270,30 @@ function weird_dota_gamemode:InitGameMode()
 	local gamemode = GameRules:GetGameModeEntity()
 	
 	-- Setting the Order filter to start catching events
-	gamemode:SetExecuteOrderFilter(Dynamic_Wrap(weird_dota_gamemode, "OrderFilter"), self)
+	gamemode:SetExecuteOrderFilter(Dynamic_Wrap(ancient_battle_gamemode, "OrderFilter"), self)
   
 	-- Setting the Damage filter
-	gamemode:SetDamageFilter(Dynamic_Wrap(weird_dota_gamemode, "DamageFilter"), self)
+	gamemode:SetDamageFilter(Dynamic_Wrap(ancient_battle_gamemode, "DamageFilter"), self)
 	
 	-- Setting the Modifier filter
-	gamemode:SetModifierGainedFilter(Dynamic_Wrap(weird_dota_gamemode, "ModifierFilter"), self)
+	gamemode:SetModifierGainedFilter(Dynamic_Wrap(ancient_battle_gamemode, "ModifierFilter"), self)
 	
 	-- Setting the Experience filter
-	gamemode:SetModifyExperienceFilter(Dynamic_Wrap(weird_dota_gamemode, "ExperienceFilter"), self)
+	gamemode:SetModifyExperienceFilter(Dynamic_Wrap(ancient_battle_gamemode, "ExperienceFilter"), self)
 	
 	-- Setting the Tracking Projectile filter
-	gamemode:SetTrackingProjectileFilter(Dynamic_Wrap(weird_dota_gamemode, "ProjectileFilter"), self)
+	gamemode:SetTrackingProjectileFilter(Dynamic_Wrap(ancient_battle_gamemode, "ProjectileFilter"), self)
   
 	-- Lua Modifiers
 	LinkLuaModifier("modifier_client_convars", "libraries/modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "libraries/modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_custom_paladin_talent", "heroes/paladin/modifiers/modifier_custom_paladin_talent", LUA_MODIFIER_MOTION_NONE)
 	
 	print("Ancient Battle game mode initialized.")
 end
 
 mode = nil
 -- This function is called as the first player loads and sets up the game mode parameters
-function weird_dota_gamemode:CaptureGameMode()
+function ancient_battle_gamemode:CaptureGameMode()
 	if mode == nil then
 		-- Set GameMode parameters
 		mode = GameRules:GetGameModeEntity()
@@ -335,12 +328,7 @@ function weird_dota_gamemode:CaptureGameMode()
 		mode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 		mode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
 
-		for rune, spawn in pairs(ENABLED_RUNES) do
-			mode:SetRuneEnabled(rune, spawn)
-		end
-
-		-- SetPowerRuneSpawnInterval
-		-- SetBountyRuneSpawnInterval
+		mode:SetUseDefaultDOTARuneSpawnLogic(true)
 		mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
 		
 		mode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
@@ -352,7 +340,7 @@ function weird_dota_gamemode:CaptureGameMode()
 end
 
 -- Order filter function
-function weird_dota_gamemode:OrderFilter(event)
+function ancient_battle_gamemode:OrderFilter(event)
 	--PrintTable(event)
 	
 	local order = event.order_type
@@ -388,7 +376,7 @@ function weird_dota_gamemode:OrderFilter(event)
 end
 
 -- Damage filter function
-function weird_dota_gamemode:DamageFilter(keys)
+function ancient_battle_gamemode:DamageFilter(keys)
 	--PrintTable(keys)
 	
 	local attacker
@@ -678,7 +666,7 @@ function weird_dota_gamemode:DamageFilter(keys)
 end
 
 -- Modifier filter function
-function weird_dota_gamemode:ModifierFilter(keys)
+function ancient_battle_gamemode:ModifierFilter(keys)
 	--PrintTable(keys)
 	
 	local unit_with_modifier = EntIndexToHScript(keys.entindex_parent_const)
@@ -695,7 +683,7 @@ function weird_dota_gamemode:ModifierFilter(keys)
 end
 
 -- Experience filter function
-function weird_dota_gamemode:ExperienceFilter(keys)
+function ancient_battle_gamemode:ExperienceFilter(keys)
 	--PrintTable(keys)
 	local experience = keys.experience
 	local playerID = keys.player_id_const
@@ -705,7 +693,7 @@ function weird_dota_gamemode:ExperienceFilter(keys)
 end
 
 -- Tracking Projectile (attack and spell projectiles) filter function
-function weird_dota_gamemode:ProjectileFilter(keys)
+function ancient_battle_gamemode:ProjectileFilter(keys)
 	--PrintTable(keys)
 	
 	local can_be_dodged = keys.dodgeable				-- values: 1 or 0

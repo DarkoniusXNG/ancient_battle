@@ -98,7 +98,7 @@ function SwapWearable(unit, target_model, new_model)
     while wearable ~= nil do
         if wearable:GetClassname() == "dota_item_wearable" then
             if wearable:GetModelName() == target_model then
-                wearable:SetModel( new_model )
+                wearable:SetModel(new_model)
                 return
             end
         end
@@ -672,7 +672,7 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 end
 
 -- Custom Cleave function
-function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, start_position, start_radius, end_radius, distance, particle)
+function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle)
 	if attacker == nil then
 		print("Attacker/Cleaver is nil!")
 		return nil
@@ -698,7 +698,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		damage_table.ability = ability
 	else
 		target_team = DOTA_UNIT_TARGET_TEAM_BOTH
-		target_type = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
+		target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 		target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 		damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
 	end
@@ -718,11 +718,16 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		return
 	end
 	
-	local affected_units = FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
+	if target:IsOther() then
+		--print("Cleave doesn't work when attacking ward-like units!")
+		return
+	end
+	
+	local affected_units = FindUnitsinTrapezoid(team_number, direction, cleave_origin, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
 	
 	-- Calculating damage and setting damage flags
 	damage_table.damage = main_damage*damage_percent/100
-	damage_table.damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL
+	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 	
 	for k, unit in pairs(affected_units) do
 		if unit ~= target then

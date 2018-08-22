@@ -3,6 +3,7 @@ if paladin_storm_hammer == nil then
 end
 
 LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/modifiers/modifier_paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_custom_paladin_talent", "heroes/paladin/modifiers/modifier_custom_paladin_talent", LUA_MODIFIER_MOTION_NONE)
 
 function paladin_storm_hammer:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")

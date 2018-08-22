@@ -1,5 +1,5 @@
-if weird_dota_gamemode == nil then
-	_G.weird_dota_gamemode = class({})
+if ancient_battle_gamemode == nil then
+	_G.ancient_battle_gamemode = class({})
 end
 
 require('util')
@@ -28,5 +28,5 @@ end
 
 function Activate()
 	print("Ancient Battle game mode activated.")
-	weird_dota_gamemode:InitGameMode()
+	ancient_battle_gamemode:InitGameMode()
 end

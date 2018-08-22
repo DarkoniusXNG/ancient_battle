@@ -1,5 +1,5 @@
 -- Cleanup a player when they leave
-function weird_dota_gamemode:OnDisconnect(keys)
+function ancient_battle_gamemode:OnDisconnect(keys)
 	--PrintTable(keys)
 	local name = keys.name
 	local networkID = keys.networkid
@@ -8,7 +8,7 @@ function weird_dota_gamemode:OnDisconnect(keys)
 end
 
 -- The overall game state has changed
-function weird_dota_gamemode:OnGameRulesStateChange(keys)
+function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	--PrintTable(keys)
 	local new_state = GameRules:State_Get()
 	
@@ -19,8 +19,8 @@ function weird_dota_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
 		GameRules:SetCustomGameSetupAutoLaunchDelay(CUSTOM_GAME_SETUP_TIME)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
-		weird_dota_gamemode:PostLoadPrecache()
-		weird_dota_gamemode:OnAllPlayersLoaded()
+		ancient_battle_gamemode:PostLoadPrecache()
+		ancient_battle_gamemode:OnAllPlayersLoaded()
 		Timers:CreateTimer(HERO_SELECTION_TIME - 1.1, function()
 			for playerID = 0, 19 do
 				if PlayerResource:IsValidPlayerID(playerID) then
@@ -43,7 +43,7 @@ function weird_dota_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_PRE_GAME then
 		
 	elseif new_state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		weird_dota_gamemode:OnGameInProgress()
+		ancient_battle_gamemode:OnGameInProgress()
 	elseif new_state == DOTA_GAMERULES_STATE_POST_GAME then
 	
 	elseif new_state == DOTA_GAMERULES_STATE_DISCONNECT then
@@ -52,7 +52,7 @@ function weird_dota_gamemode:OnGameRulesStateChange(keys)
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes.
-function weird_dota_gamemode:OnNPCSpawned(keys)
+function ancient_battle_gamemode:OnNPCSpawned(keys)
 	--PrintTable(keys)
 	local npc = EntIndexToHScript(keys.entindex)
 	local unit_owner = npc:GetOwner()
@@ -60,29 +60,29 @@ function weird_dota_gamemode:OnNPCSpawned(keys)
 	-- OnHeroInGame
 	if npc:IsRealHero() and npc.bFirstSpawned == nil then
 		npc.bFirstSpawned = true
-		weird_dota_gamemode:OnHeroInGame(npc)
+		ancient_battle_gamemode:OnHeroInGame(npc)
 	end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
 -- operations here
-function weird_dota_gamemode:OnEntityHurt(keys)
+function ancient_battle_gamemode:OnEntityHurt(keys)
 	--PrintTable(keys)
 end
 
 -- An item was picked up off the ground
-function weird_dota_gamemode:OnItemPickedUp(keys)
+function ancient_battle_gamemode:OnItemPickedUp(keys)
 	--PrintTable(keys)
 end
 
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
 -- state as necessary
-function weird_dota_gamemode:OnPlayerReconnect(keys)
+function ancient_battle_gamemode:OnPlayerReconnect(keys)
 	--PrintTable(keys)
 end
 
 -- An item was purchased by a player
-function weird_dota_gamemode:OnItemPurchased(keys)
+function ancient_battle_gamemode:OnItemPurchased(keys)
 	--PrintTable(keys)
 	
 	-- The playerID of the hero who is buying something
@@ -97,7 +97,7 @@ function weird_dota_gamemode:OnItemPurchased(keys)
 end
 
 -- An ability was used by a player
-function weird_dota_gamemode:OnAbilityUsed(keys)
+function ancient_battle_gamemode:OnAbilityUsed(keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -105,14 +105,14 @@ function weird_dota_gamemode:OnAbilityUsed(keys)
 end
 
 -- A non-player entity (necro-book, chen creep, etc) used an ability
-function weird_dota_gamemode:OnNonPlayerUsedAbility(keys)
+function ancient_battle_gamemode:OnNonPlayerUsedAbility(keys)
 	--PrintTable(keys)
 	
 	local abilityname = keys.abilityname
 end
 
 -- A player changed their name
-function weird_dota_gamemode:OnPlayerChangedName(keys)
+function ancient_battle_gamemode:OnPlayerChangedName(keys)
 	--PrintTable(keys)
 	
 	local newName = keys.newname
@@ -120,15 +120,15 @@ function weird_dota_gamemode:OnPlayerChangedName(keys)
 end
 
 -- A player leveled up an ability
-function weird_dota_gamemode:OnPlayerLearnedAbility(keys)
+function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 	--PrintTable(keys)
 	
 	local player = EntIndexToHScript(keys.player)
 	local ability_name = keys.abilityname
+	local playerID = player:GetPlayerID()
+	local hero = PlayerResource:GetAssignedHero(playerID)
 	
 	if ability_name == "special_bonus_unique_sven" then
-		local playerID = player:GetPlayerID()
-		local hero = PlayerResource:GetAssignedHero(playerID)
 		
 		local talent = hero:FindAbilityByName(ability_name)
 		if talent then
@@ -138,7 +138,7 @@ function weird_dota_gamemode:OnPlayerLearnedAbility(keys)
 end
 
 -- A channelled ability finished by either completing or being interrupted
-function weird_dota_gamemode:OnAbilityChannelFinished(keys)
+function ancient_battle_gamemode:OnAbilityChannelFinished(keys)
 	--PrintTable(keys)
 	
 	local abilityname = keys.abilityname
@@ -146,7 +146,7 @@ function weird_dota_gamemode:OnAbilityChannelFinished(keys)
 end
 
 -- A player leveled up
-function weird_dota_gamemode:OnPlayerLevelUp(keys)
+function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 	--PrintTable(keys)
 	
 	local player = EntIndexToHScript(keys.player)
@@ -182,7 +182,7 @@ function weird_dota_gamemode:OnPlayerLevelUp(keys)
 end
 
 -- A player last hit a creep, a tower, or a hero
-function weird_dota_gamemode:OnLastHit(keys)
+function ancient_battle_gamemode:OnLastHit(keys)
 	--PrintTable(keys)
 	
 	local isFirstBlood = keys.FirstBlood == 1
@@ -193,7 +193,7 @@ function weird_dota_gamemode:OnLastHit(keys)
 end
 
 -- A tree was cut down by tango, quelling blade, etc.
-function weird_dota_gamemode:OnTreeCut(keys)
+function ancient_battle_gamemode:OnTreeCut(keys)
 	--PrintTable(keys)
 	
 	local treeX = keys.tree_x
@@ -201,7 +201,7 @@ function weird_dota_gamemode:OnTreeCut(keys)
 end
 
 -- A rune was activated by a player
-function weird_dota_gamemode:OnRuneActivated (keys)
+function ancient_battle_gamemode:OnRuneActivated (keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -209,7 +209,7 @@ function weird_dota_gamemode:OnRuneActivated (keys)
 end
 
 -- A player took damage from a tower
-function weird_dota_gamemode:OnPlayerTakeTowerDamage(keys)
+function ancient_battle_gamemode:OnPlayerTakeTowerDamage(keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -217,7 +217,7 @@ function weird_dota_gamemode:OnPlayerTakeTowerDamage(keys)
 end
 
 -- A player picked or randomed a hero (this is happening before OnNPCSpawned)
-function weird_dota_gamemode:OnPlayerPickHero(keys)
+function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	--PrintTable(keys)
 	
 	local hero_name = keys.hero
@@ -241,7 +241,7 @@ function weird_dota_gamemode:OnPlayerPickHero(keys)
 end
 
 -- A player killed another player in a multi-team context
-function weird_dota_gamemode:OnTeamKillCredit(keys)
+function ancient_battle_gamemode:OnTeamKillCredit(keys)
 	--PrintTable(keys)
 	
 	local killerPlayer = PlayerResource:GetPlayer(keys.killer_userid)
@@ -251,7 +251,7 @@ function weird_dota_gamemode:OnTeamKillCredit(keys)
 end
 
 -- An entity died (something or someone killed an entity)
-function weird_dota_gamemode:OnEntityKilled(keys)
+function ancient_battle_gamemode:OnEntityKilled(keys)
 	--PrintTable(keys)
 	
 	-- The Unit that was Killed
@@ -310,7 +310,6 @@ function weird_dota_gamemode:OnEntityKilled(keys)
 		
 		-- When team hero kill limit is reached
 		if END_GAME_ON_KILLS and GetTeamHeroKills(killer_unit:GetTeam()) >= KILLS_TO_END_GAME_FOR_TEAM then
-			GameRules:SetSafeToLeave(true)
 			GameRules:SetGameWinner(killer_unit:GetTeam())
 		end
 		
@@ -406,15 +405,15 @@ function weird_dota_gamemode:OnEntityKilled(keys)
 end
 
 -- This function is called 1 to 2 times as the player connects initially but before they have completely connected
-function weird_dota_gamemode:PlayerConnect(keys)
+function ancient_battle_gamemode:PlayerConnect(keys)
 	--PrintTable(keys)
 end
 
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
-function weird_dota_gamemode:OnConnectFull(keys)
+function ancient_battle_gamemode:OnConnectFull(keys)
 	--PrintTable(keys)
 	
-	weird_dota_gamemode:CaptureGameMode()
+	ancient_battle_gamemode:CaptureGameMode()
 
 	local index = keys.index
 	local playerID = keys.PlayerID
@@ -424,14 +423,14 @@ function weird_dota_gamemode:OnConnectFull(keys)
 end
 
 -- This function is called whenever illusions are created and tells you which was/is the original entity
-function weird_dota_gamemode:OnIllusionsCreated(keys)
+function ancient_battle_gamemode:OnIllusionsCreated(keys)
 	--PrintTable(keys)
 	
 	local originalEntity = EntIndexToHScript(keys.original_entindex)
 end
 
 -- This function is called whenever an item is combined to create a new item
-function weird_dota_gamemode:OnItemCombined(keys)
+function ancient_battle_gamemode:OnItemCombined(keys)
 	--PrintTable(keys)
 	
 	-- The playerID of the hero who is buying something
@@ -447,7 +446,7 @@ function weird_dota_gamemode:OnItemCombined(keys)
 end
 
 -- This function is called OnAbilityPhaseStart
-function weird_dota_gamemode:OnAbilityCastBegins(keys)
+function ancient_battle_gamemode:OnAbilityCastBegins(keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.PlayerID)
@@ -455,7 +454,7 @@ function weird_dota_gamemode:OnAbilityCastBegins(keys)
 end
 
 -- This function is called whenever a tower is killed
-function weird_dota_gamemode:OnTowerKill(keys)
+function ancient_battle_gamemode:OnTowerKill(keys)
 	--PrintTable(keys)
 	
 	local gold = keys.gold
@@ -464,7 +463,7 @@ function weird_dota_gamemode:OnTowerKill(keys)
 end
 
 -- This function is called whenever a player changes their custom team selection during Game Setup 
-function weird_dota_gamemode:OnPlayerSelectedCustomTeam(keys)
+function ancient_battle_gamemode:OnPlayerSelectedCustomTeam(keys)
 	--PrintTable(keys)
 	
 	local player = PlayerResource:GetPlayer(keys.player_id)
@@ -473,7 +472,7 @@ function weird_dota_gamemode:OnPlayerSelectedCustomTeam(keys)
 end
 
 -- This function is called whenever a NPC reaches its goal position/target
-function weird_dota_gamemode:OnNPCGoalReached(keys)
+function ancient_battle_gamemode:OnNPCGoalReached(keys)
 	--PrintTable(keys)
 	
 	local goalEntity = EntIndexToHScript(keys.goal_entindex)
@@ -482,7 +481,7 @@ function weird_dota_gamemode:OnNPCGoalReached(keys)
 end
 
 -- This function is called whenever any player sends a chat message to team or All
-function weird_dota_gamemode:OnPlayerChat(keys)
+function ancient_battle_gamemode:OnPlayerChat(keys)
 	--PrintTable(keys)
 	
 	local teamonly = keys.teamonly

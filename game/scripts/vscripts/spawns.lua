@@ -1,11 +1,11 @@
 function DifficultyCheck()
 	local heroes_on_the_map = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_DEAD + DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, FIND_ANY_ORDER, false)
 	local difficulty = 1
-	if #heroes_on_the_map > 1 then
+	if #heroes_on_the_map == 2 then
 		difficulty = 2
-	elseif #heroes_on_the_map > 2 then
+	elseif #heroes_on_the_map == 3 then
 		difficulty = 3
-	elseif #heroes_on_the_map > 3 then
+	elseif #heroes_on_the_map == 4 then
 		difficulty = 4
 	end
 	return difficulty

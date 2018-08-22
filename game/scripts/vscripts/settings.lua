@@ -5,8 +5,8 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 
 CUSTOM_GAME_SETUP_TIME = 20.0			-- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0             	-- How long should we let people select their hero?
-STRATEGY_TIME = 10.0						-- How long should strategy time last?
-SHOWCASE_TIME = 0.0						-- How long should show case time be?
+STRATEGY_TIME = 0.0						-- How long should strategy time last? !!! You can buy items during strategy time and it will not be spent!
+SHOWCASE_TIME = 5.0						-- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
