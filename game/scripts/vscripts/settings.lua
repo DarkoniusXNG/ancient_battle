@@ -5,7 +5,7 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 
 CUSTOM_GAME_SETUP_TIME = 20.0			-- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0             	-- How long should we let people select their hero?
-STRATEGY_TIME = 0.0						-- How long should strategy time last?
+STRATEGY_TIME = 10.0						-- How long should strategy time last?
 SHOWCASE_TIME = 0.0						-- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
@@ -15,7 +15,6 @@ GOLD_PER_TICK = 3                     	-- How much gold should players get per t
 GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
 NORMAL_START_GOLD = 600					-- Starting Gold if picked normally
 RANDOM_START_GOLD = 800					-- Starting Gold if randomed
-REPICK_START_GOLD = 825					-- Starting Gold if repicked (REPICK IS NOT WORKING!)
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
@@ -24,7 +23,7 @@ MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our 
 MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
-RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
+--RUNE_SPAWN_TIME = 120                   -- How long in seconds should we wait between rune spawns?
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
@@ -106,14 +105,14 @@ DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
 
-ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
-ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
-ENABLED_RUNES[DOTA_RUNE_HASTE] = true
-ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
-ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
-ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
-ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
-ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
+--ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
+--ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
+--ENABLED_RUNES[DOTA_RUNE_HASTE] = true
+--ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
+--ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
+--ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
+--ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
+--ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
 
 MAX_NUMBER_OF_TEAMS = 2                			-- How many potential teams can be in this game mode?
 USE_CUSTOM_TEAM_COLORS = false          		-- Should we use custom team colors?
@@ -149,7 +148,7 @@ if GetMapName() == "two_vs_two" then
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?
 	BUYBACK_COOLDOWN_TIME = 0.0
-	MAX_RESPAWN_TIME = 25.0
+	MAX_RESPAWN_TIME = 15.0
 	FOUNTAIN_CONSTANT_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 1
@@ -174,13 +173,12 @@ if GetMapName() == "holdout" then
 	GOLD_TICK_TIME = 1.0
 	NORMAL_START_GOLD = 800
 	RANDOM_START_GOLD = 1000
-	REPICK_START_GOLD = 700
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true
 	BUYBACK_COOLDOWN_TIME = 0.0
-	MAX_RESPAWN_TIME = 25.0
+	MAX_RESPAWN_TIME = 20.0
 	FOUNTAIN_CONSTANT_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 1
