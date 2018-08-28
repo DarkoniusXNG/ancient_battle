@@ -1,14 +1,15 @@
 <root>
   <script>
     function UpdateHeroSelection() {
+		var dotaHud = $.GetContextPanel().GetParent().GetParent();
 		if (Game.GameStateIsBefore(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION)) {
-			$.GetContextPanel().GetParent().GetParent().FindChild("PreGame").visible = false;
+			dotaHud.FindChild("PreGame").visible = false;
 		}
 		else if (Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION)) {
-			$.GetContextPanel().GetParent().GetParent().FindChild("PreGame").visible = true;
+			dotaHud.FindChild("PreGame").visible = true;
 		}
 		else if (Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME)) {
-			$.GetContextPanel().GetParent().GetParent().FindChild("PreGame").visible = false;
+			dotaHud.FindChild("PreGame").visible = false;
 		}
 	}
 	(function()
@@ -28,12 +29,12 @@
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_6] = "#1bc0d8;";
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_7] = "#c7e40d;";
     GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_8] = "#8c2af4;";
-
   </script>
 
   <Panel>
     <!-- CustomUIElements go here.-->
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/selection.xml" />
+	<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/hero_select_overlay.xml" />
   </Panel>
 </root>
