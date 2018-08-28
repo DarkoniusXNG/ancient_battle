@@ -128,7 +128,9 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				
 				-- Set the starting gold for the player's hero
 				if PlayerResource:HasRandomed(playerID) then
-					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-NORMAL_START_GOLD, false, 0)
+					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
+				else
+					PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
 				end
 				
 				-- Client Settings
