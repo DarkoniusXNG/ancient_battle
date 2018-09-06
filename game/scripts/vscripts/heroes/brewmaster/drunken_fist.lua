@@ -25,10 +25,10 @@ function DrunkenFistCleave(event)
 	local team_number = attacker:GetTeamNumber()
 	local direction = attacker:GetForwardVector()
 	local cache_unit = nil
-	local order = 0
+	local order = FIND_ANY_ORDER
 	local cache = false
-	local target_team = ability:GetAbilityTargetTeam()
-	local target_type = ability:GetAbilityTargetType()
+	local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
+	local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 	local target_flags = ability:GetAbilityTargetFlags()
 	
 	local knockback_modifier_table =
@@ -45,9 +45,12 @@ function DrunkenFistCleave(event)
 	
 	if attacker then
 		if attacker:IsRealHero() then
+			-- Damage (cleave)
 			CustomCleaveAttack(attacker, target, ability, damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle)
+			
+			-- Knockback
 			local enemies = FindUnitsinTrapezoid(team_number, direction, cleave_origin, cache_unit, push_start_radius, push_end_radius, push_distance, target_team, target_type, target_flags, order, cache)
-			for k, enemy in pairs(enemies) do
+			for _, enemy in pairs(enemies) do
 				enemy:AddNewModifier(attacker, ability, "modifier_knockback", knockback_modifier_table)
 			end
 			-- Hero_Tiny_Tree.Impact

@@ -14,7 +14,6 @@ function Cyclone(event)
 		target:EmitSound("Brewmaster_Storm.Cyclone")
 		
 		if target:IsRealHero() then
-			--ability:ApplyDataDrivenModifier(caster, target, "modifier_custom_cyclone", {["duration"] = hero_duration})
 			target:AddNewModifier(caster, ability, "modifier_brewmaster_storm_cyclone", {duration=hero_duration})
 		else
 			target:AddNewModifier(caster, ability, "modifier_brewmaster_storm_cyclone", {duration=creep_duration})

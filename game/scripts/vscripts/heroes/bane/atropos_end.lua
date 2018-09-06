@@ -7,8 +7,11 @@ function AtroposEndStrongDispel(event)
 	
 	SuperStrongDispel(caster, true, false)
 	
-	-- Sound and particle
+	-- Sound
 	EmitSoundOn("n_creep_SatyrTrickster.Cast", caster)
+	
+	-- Particle
 	local particleName = "particles/generic_gameplay/generic_purge.vpcf"	
 	local particle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, caster)
+	ParticleManager:ReleaseParticleIndex(particle)
 end

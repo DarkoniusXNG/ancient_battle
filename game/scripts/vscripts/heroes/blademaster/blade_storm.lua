@@ -25,16 +25,18 @@ function BladeStormDamage(keys)
 	local caster_team = caster:GetTeamNumber()
 	local caster_pos = caster:GetAbsOrigin()
 	
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	
 	-- Damage enemies (not buildings) in a radius
-	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-	for k, enemy in pairs(enemies) do
+	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	for _, enemy in pairs(enemies) do
 		ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = damage_per_tick, damage_type = DAMAGE_TYPE_MAGICAL})
 		enemy:EmitSound("Hero_Juggernaut.BladeFury.Impact")
 	end
 	
 	-- Damage enemy buildings in a radius
-    local buildings = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, 0, 0, false)
-	for k, enemy_building in pairs(buildings) do
+    local buildings = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	for _, enemy_building in pairs(buildings) do
 		ApplyDamage({victim = enemy_building, attacker = caster, ability = ability, damage = damage_to_buildings, damage_type = DAMAGE_TYPE_MAGICAL})
 		enemy_building:EmitSound("Hero_Juggernaut.BladeFury.Impact")
 	end

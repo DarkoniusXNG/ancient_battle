@@ -16,6 +16,7 @@ function RemoveOrbs(keys)
 	
 	for i=1,3 do
 		ParticleManager:DestroyParticle(hero.orbs[i],false)
+		ParticleManager:ReleaseParticleIndex(hero.orbs[i])
 	end
 	hero.orbs = {}
 end

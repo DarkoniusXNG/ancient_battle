@@ -10,8 +10,12 @@ function TauntStart(event)
 	local caster_team = caster:GetTeamNumber()
 	local caster_location = caster:GetAbsOrigin()
 	
-	local enemies_in_radius = FindUnitsInRadius(caster_team, caster_location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+	-- Targetting constants
+	local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
+	local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 	
+	local enemies_in_radius = FindUnitsInRadius(caster_team, caster_location, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 	for _,enemy in pairs(enemies_in_radius) do
 		enemy:Interrupt()
 		if enemy:IsCreep() then

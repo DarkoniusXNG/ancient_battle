@@ -10,6 +10,7 @@ function ModelChange(event)
     ParticleManager:SetParticleControl(particle, 2, Vector(1,0,0))
     ParticleManager:SetParticleControl(particle, 3, Vector(1,0,0))
     ParticleManager:SetParticleControl(particle, 6, Vector(1,0,0))
+	ParticleManager:ReleaseParticleIndex(particle)
 	
 	-- For Arcana casting animations
 	AddAnimationTranslate(caster, "arcana")
@@ -20,4 +21,5 @@ function DeathEffect(event)
     local origin = caster:GetAbsOrigin()
     local particle = ParticleManager:CreateParticle("particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_death.vpcf", PATTACH_CUSTOMORIGIN, caster)
     ParticleManager:SetParticleControl(particle, 1, origin)
+	ParticleManager:ReleaseParticleIndex(particle)
 end

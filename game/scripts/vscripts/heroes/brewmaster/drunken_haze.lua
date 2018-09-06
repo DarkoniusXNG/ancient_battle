@@ -10,12 +10,16 @@ function DrunkenHazeStart(event)
 		local hero_duration = ability:GetLevelSpecialValueFor("duration_heroes", ability_level)
 		local creep_duration = ability:GetLevelSpecialValueFor("duration_creeps", ability_level)
 		local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
-		local caster_team = caster:GetTeamNumber() -- GetTeam()
+		local caster_team = caster:GetTeamNumber()
 		local target_location = target:GetAbsOrigin()
 		
-		local enemies = FindUnitsInRadius(caster_team, target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+		-- Targetting constants
+		local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
+		local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+		local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
 		
-		for k, unit in pairs(enemies) do
+		local enemies = FindUnitsInRadius(caster_team, target_location, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+		for _, unit in pairs(enemies) do
 			-- If the target didn't become spell immune in the same frame as projectile hit then apply the debuff
 			if not unit:IsMagicImmune() then
 				if unit:IsRealHero() then

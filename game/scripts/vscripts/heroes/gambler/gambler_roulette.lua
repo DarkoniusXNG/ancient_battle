@@ -5,16 +5,17 @@ function RouletteStart(keys)
 	local ability = keys.ability
 	
 	local caster_location = caster:GetAbsOrigin()
-	local caster_team = caster:GetTeam()
+	local caster_team = caster:GetTeamNumber()
 	local ability_level = ability:GetLevel() - 1
 	
 	local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
 	local chance_to_hit = ability:GetLevelSpecialValueFor("chance_to_hit", ability_level)
 	
-	local targetType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
-	local UnitsInRadius = FindUnitsInRadius(caster_team, caster_location, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, targetType, 0, 0, false)
-		
-	for k, unit in pairs(UnitsInRadius) do
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
+	
+	local units = FindUnitsInRadius(caster_team, caster_location, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, target_type, target_flags, FIND_ANY_ORDER, false)
+	for _, unit in pairs(units) do
 		local random_number_for_unit = RandomFloat(0, 100.0)
 		
 		if random_number_for_unit < chance_to_hit then
@@ -65,6 +66,7 @@ function RouletteProjectileHit(keys)
 		ParticleManager:SetParticleControl(particle, 1, Vector(symbol, damage_table.damage, 0))
 		ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 		ParticleManager:SetParticleControl(particle, 3, color)
+		ParticleManager:ReleaseParticleIndex(particle)
 	else
 		damage_table.damage = base_damage
 	end

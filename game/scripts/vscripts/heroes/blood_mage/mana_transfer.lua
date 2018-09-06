@@ -27,7 +27,7 @@ function ManaDrainParticle(event)
 	local ability = event.ability
 
 	local particleName = "particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
-	caster.ManaDrainParticle = ParticleManager:CreateParticle(particleName,PATTACH_POINT_FOLLOW,caster)
+	caster.ManaDrainParticle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, caster)
 	-- PATTACH_ABSORIGIN_FOLLOW
 	
 	if target:GetTeamNumber() == caster:GetTeamNumber() then
@@ -58,7 +58,8 @@ function ManaDrainManaTransfer(event)
 		target:Kill(ability, caster)
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.ManaDrainParticle,false)
+		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
+		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 		return
 	else
 		-- Location variables
@@ -74,7 +75,7 @@ function ManaDrainManaTransfer(event)
 		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
 			ability:OnChannelFinish(false)
 			caster:Interrupt()
-			ParticleManager:DestroyParticle(caster.ManaDrainParticle,false)
+			ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
 			target:RemoveModifierByName("modifier_mana_transfer_enemy")
 			return
 		end
@@ -113,6 +114,7 @@ function ManaTransferEnd(event)
 	local target = event.target
 	if caster.ManaDrainParticle then
 		ParticleManager:DestroyParticle(caster.ManaDrainParticle,false)
+		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 	end
 	
 	caster:Interrupt()

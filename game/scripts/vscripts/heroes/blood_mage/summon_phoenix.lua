@@ -5,9 +5,9 @@ function GetSummonPoints(event)
     local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
     
-	local front_position = origin + fv * distance
+	local front_position = origin + fv*distance
 
-    local result = { }
+    local result = {}
     table.insert(result, front_position)
 
     return result
@@ -37,13 +37,13 @@ function KillPhoenix(event)
     if IsValidEntity(phoenix) then
 		phoenix:RemoveAbility("custom_phoenix_turn_into_egg")
 		phoenix:RemoveModifierByName("modifier_custom_phoenix_reborn")
-		phoenix:ForceKill(true) 
+		phoenix:ForceKill(false) 
 	end
 	if IsValidEntity(phoenix_egg) then
 		phoenix_egg:RemoveAbility("custom_egg_turn_into_phoenix")
 		phoenix_egg:RemoveModifierByName("modifier_custom_phoenix_egg")
 		phoenix_egg:AddNoDraw()
-		phoenix_egg:ForceKill(true)
+		phoenix_egg:ForceKill(false)
 	end
 end
 
@@ -94,10 +94,11 @@ function PhoenixEggDeathCheck(event)
         ParticleManager:SetParticleControl(particle, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(particle, 1, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(particle, 3, unit:GetAbsOrigin())
+		ParticleManager:ReleaseParticleIndex(particle)
     end
 
     -- Remove/Hide the egg
     --unit:RemoveSelf()
-	--unit:ForceKill(true) -- plays the death animation
+	--unit:ForceKill(true) -- not good -> plays the death animation
 	unit:AddNoDraw()
 end

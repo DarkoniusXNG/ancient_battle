@@ -7,14 +7,15 @@ function LuckyStars(keys)
 	local bonus_gold = ability:GetLevelSpecialValueFor("bonus_gold", ability:GetLevel() - 1)
 	local caster_location = caster:GetAbsOrigin()
 	
-	-- Grants the gold (unreliable)
+	-- Give gold (unreliable) to the caster
 	caster:ModifyGold(bonus_gold, false, 0)
 
-	-- Show the particles to all
+	-- Coin particles
 	local particleName = "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"		
-	local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, caster)
-	ParticleManager:SetParticleControl(particle, 0, caster_location)
-	ParticleManager:SetParticleControl(particle, 1, caster_location)
+	local particle_coins = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, caster)
+	ParticleManager:SetParticleControl(particle_coins, 0, caster_location)
+	ParticleManager:SetParticleControl(particle_coins, 1, caster_location)
+	ParticleManager:ReleaseParticleIndex(particle_coins)
 	
 	-- Message Particle, has a bunch of options
 	local symbol = 0 -- "+" presymbol
@@ -26,4 +27,5 @@ function LuckyStars(keys)
 	ParticleManager:SetParticleControl(particle, 1, Vector(symbol, bonus_gold, symbol))
     ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
     ParticleManager:SetParticleControl(particle, 3, color)
+	ParticleManager:ReleaseParticleIndex(particle)
 end

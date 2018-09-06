@@ -19,8 +19,11 @@ function EternalDevotionCheck(keys)
 				end
 			end
 			
-			local allies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
-			for k, ally in pairs(allies) do
+			local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+			local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
+			
+			local allies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, target_flags, FIND_ANY_ORDER, false)
+			for _, ally in pairs(allies) do
 				ability:ApplyDataDrivenModifier(caster, ally, "modifier_guardian_angel_buff", {["duration"] = buff_duration})
 			end
 		end

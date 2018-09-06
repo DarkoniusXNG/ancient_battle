@@ -25,7 +25,7 @@ function AllInSuccess(event)
 		local items_worth = 0
 		
 		-- Getting the gold value of caster's items and adding to items_worth
-		for i = 0, 5 do
+		for i = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
 			local item = caster:GetItemInSlot(i)
 			if item and item:GetPurchaser() == caster then
 				items_worth = items_worth + item:GetCost()
@@ -42,16 +42,20 @@ function AllInSuccess(event)
 		
 		-- Applying the damage
 		ApplyDamage({victim = target, attacker = caster, damage = gold_damage, damage_type = gold_damage_type, ability = ability})
-			
-		-- Particles and Sounds
+
+		-- Victory Particle
 		local duel_victory_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+		ParticleManager:ReleaseParticleIndex(duel_victory_particle)
+		
+		-- Sounds
 		local damage_sound_cap = damage_cap*0.8
 		if gold_damage > damage_sound_cap then
-			event.caster:EmitSound("Hero_OgreMagi.Fireblast.x3")
+			caster:EmitSound("Hero_OgreMagi.Fireblast.x3")
 		else
-			event.caster:EmitSound("Hero_OgreMagi.Fireblast.x2")
+			caster:EmitSound("Hero_OgreMagi.Fireblast.x2")
 		end
 		
+		-- Message particle
 		local symbol = 2
 		local color = Vector(1, 200, 1) -- Green
 		local lifetime = 2
@@ -61,6 +65,7 @@ function AllInSuccess(event)
 		ParticleManager:SetParticleControl(particle, 1, Vector(symbol, gold_damage, 5))
 		ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 		ParticleManager:SetParticleControl(particle, 3, color)
+		ParticleManager:ReleaseParticleIndex(particle)
 	end
 end
 
@@ -89,8 +94,8 @@ function AllInFailure(event)
 	local items_worth = 0
 	
 	-- Getting the gold value of caster's items and adding to items_worth
-	for i = 0, 5 do
-		local item = caster:GetItemInSlot( i )
+	for i = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
+		local item = caster:GetItemInSlot(i)
 		if item and item:GetPurchaser() == caster then
 			items_worth = items_worth + item:GetCost()
 		end
@@ -107,8 +112,10 @@ function AllInFailure(event)
 	-- Applying the damage
 	ApplyDamage({victim = caster, attacker = target, damage = gold_damage, damage_type = gold_damage_type, ability = ability})
 	
-	-- Particles and Sounds
-	event.caster:EmitSound("Hero_Rubick.SpellSteal.Target")
+	-- Sound
+	caster:EmitSound("Hero_Rubick.SpellSteal.Target")
+	
+	-- Message particle
 	local symbol = 2
 	local color = Vector(255, 1, 1) -- Red
 	local lifetime = 2
@@ -118,4 +125,5 @@ function AllInFailure(event)
 	ParticleManager:SetParticleControl(particle, 1, Vector(symbol, gold_damage, 0))
 	ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 	ParticleManager:SetParticleControl(particle, 3, color)
+	ParticleManager:ReleaseParticleIndex(particle)
 end

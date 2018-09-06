@@ -9,6 +9,7 @@ function AnabolicFrenzyStart(event)
 	if not target:TriggerSpellAbsorb(ability) then
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_anabolic_frenzy_slow", {["duration"] = duration})
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_anabolic_frenzy_active", {["duration"] = duration})
+		
 		if caster:GetName() ~= "npc_dota_hero_life_stealer" then
 			caster:RemoveModifierByName("modifier_anabolic_frenzy_passive")
 		end

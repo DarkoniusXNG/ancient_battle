@@ -5,9 +5,9 @@ function GetSummonPoints(event)
     local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
     
-	local front_position = origin + fv * distance
+	local front_position = origin + fv*distance
 
-    local result = { }
+    local result = {}
     table.insert(result, front_position)
 
     return result
@@ -69,6 +69,5 @@ function LavaSpawnAttackCounter(event)
 			lava_spawn:AddNewModifier(caster, ability, "modifier_kill", {duration = 1.0})
 		end
 		--attacker.attack_counter = 0 						-- uncomment this if you want them to replicate multiple times
-		--lava_spawn.attack_counter = 0 					-- not needed but doesn't do any harm anyway
 	end
 end

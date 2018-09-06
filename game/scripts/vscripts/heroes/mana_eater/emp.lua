@@ -23,13 +23,16 @@ function ElectromagneticPulse(keys)
 		endTime = delay,
 		callback = function()
 			ParticleManager:DestroyParticle(emp_effect, false)
+			ParticleManager:ReleaseParticleIndex(emp_effect)
 			local emp_explosion_effect = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_emp_explode.vpcf", PATTACH_ABSORIGIN, caster)
+			ParticleManager:ReleaseParticleIndex(emp_explosion_effect)
 			
 			caster:EmitSound("Hero_Invoker.EMP.Discharge")
 			
-			local nearby_enemy_units = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MANA_ONLY, FIND_ANY_ORDER, false)
-
-			for i, unit in pairs(nearby_enemy_units) do
+			local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+			
+			local nearby_enemy_units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, DOTA_UNIT_TARGET_FLAG_MANA_ONLY, FIND_ANY_ORDER, false)
+			for _, unit in pairs(nearby_enemy_units) do
 				if unit:IsIllusion() then
 					unit:Kill(ability, caster) -- This gives the kill credit to the caster
 				else

@@ -26,7 +26,7 @@ function PhilosopherStoneDamage(event)
 	-- Set the damage type (depends on damage reductions of the unit)
 	local damage_type = DAMAGE_TYPE_MAGICAL
 	
-	-- Getting the physical and magical reduction
+	-- Getting the physical and magical reduction of the target
 	local armor = target:GetPhysicalArmorValue()
 	local armor_reduction = (armor*0.05) / (1+0.05*(math.abs(armor))) 	-- 0.05 for 1 armor; 0.10 for 2 armor etc.
 	local magic_reduction = target:GetMagicalArmorValue() 				-- 0.25
@@ -46,6 +46,7 @@ function PhilosopherStoneDamage(event)
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = damage_type
+	damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 	damage_table.ability = ability
 	damage_table.victim = target
 	damage_table.damage = actual_damage

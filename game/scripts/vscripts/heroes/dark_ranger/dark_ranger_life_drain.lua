@@ -40,7 +40,7 @@ function LifeDrainHealthTransfer(event)
 	
 	local health_drain = ability:GetLevelSpecialValueFor("health_drain", ability_level)
 	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
-	local HP_drain = health_drain * tick_rate
+	local HP_drain = health_drain*tick_rate
 
 	-- How much caster heals himself
 	local HP_gain = HP_drain
@@ -51,6 +51,7 @@ function LifeDrainHealthTransfer(event)
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
 		ParticleManager:DestroyParticle(caster.LifeDrainParticle,false)
+		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
 		return
 	else
 		-- Location variables
@@ -92,6 +93,7 @@ function LifeDrainEnd(event)
 	local target = event.target
 	if caster.LifeDrainParticle then
 		ParticleManager:DestroyParticle(caster.LifeDrainParticle,false)
+		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
 	end
 	
 	caster:Interrupt()

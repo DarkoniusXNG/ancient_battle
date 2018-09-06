@@ -5,9 +5,9 @@ function GetSummonPoints(event)
 	local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
 	
-	local front_position = origin + fv * distance
+	local front_position = origin + fv*distance
 
-    local result = { }
+    local result = {}
     table.insert(result, front_position)
 
     return result

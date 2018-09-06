@@ -615,7 +615,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 	end
 end
 
--- Finding units in a trapezoid
+-- Finding units in a trapezoid shape area
 function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
 	local circle = FindUnitsInRadius(team_number, start_position, cache_unit, distance+end_radius, target_team, target_type, target_flags, order, cache)
 	local direction = direction
@@ -636,20 +636,6 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 	local vector3 = vertex3 - vertex4	-- vector43
 	local vector4 = vertex1 - vertex3	-- vector31
 	
-	-- For debugging - it shows vertexes briefly
-	--local ward1 = CreateUnitByName("npc_dota_observer_wards", vertex1, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward1, vertex1, false)
-	--ward1:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward2 = CreateUnitByName("npc_dota_observer_wards", vertex2, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward2, vertex2, false)
-	--ward2:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward3 = CreateUnitByName("npc_dota_observer_wards", vertex3, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward3, vertex3, false)
-	--ward3:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	--local ward4 = CreateUnitByName("npc_dota_observer_wards", vertex4, true, attacker, attacker, team_number)
-	--FindClearSpaceForUnit(ward4, vertex4, false)
-	--ward4:AddNewModifier(attacker, nil, "modifier_kill", {duration = 2.0})
-	
 	local unit_table = {}
 	
 	for _, unit in pairs(circle) do
@@ -657,12 +643,12 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 			local unit_location = unit:GetAbsOrigin()
 			local vector1p = unit_location - vertex1
 			local vector2p = unit_location - vertex2
-			local vector3p = unit_location - vertex4
-			local vector4p = unit_location - vertex3
+			local vector3p = unit_location - vertex3
+			local vector4p = unit_location - vertex4
 			local cross1 = vector1.x * vector1p.y - vector1.y * vector1p.x
 			local cross2 = vector2.x * vector2p.y - vector2.y * vector2p.x
-			local cross3 = vector3.x * vector3p.y - vector3.y * vector3p.x
-			local cross4 = vector4.x * vector4p.y - vector4.y * vector4p.x
+			local cross3 = vector3.x * vector4p.y - vector3.y * vector4p.x
+			local cross4 = vector4.x * vector3p.y - vector4.y * vector3p.x
 			if (cross1 > 0 and cross2 > 0 and cross3 > 0 and cross4 > 0) or (cross1 < 0 and cross2 < 0 and cross3 < 0 and cross4 < 0) then
 				table.insert(unit_table, unit)
 			end
@@ -672,7 +658,9 @@ function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit
 end
 
 -- Custom Cleave function
-function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle)
+-- Required arguments: main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance;
+-- If start_radius is 0, it will behave like the old cleave (pre 7.00);
+function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave)
 	if attacker == nil then
 		print("Attacker/Cleaver is nil!")
 		return nil
@@ -680,7 +668,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	local team_number = attacker:GetTeamNumber()
 	local direction = attacker:GetForwardVector()
 	local cache_unit = nil
-	local order = 0
+	local order = FIND_ANY_ORDER
 	local cache = false
 	
 	local damage_table = {}
@@ -710,7 +698,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	
 	if target:GetTeamNumber() == team_number then
 		--print("Cleave doesn't work when attacking allies!")
-		return		-- Comment this if you want you to cleave of allies
+		return
 	end
 	
 	if target:IsTower() or target:IsBarracks() or target:IsBuilding() then
@@ -719,7 +707,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	end
 	
 	if target:IsOther() then
-		--print("Cleave doesn't work when attacking ward-like units!")
+		--print("Cleave doesn't work when attacking ward-type units!")
 		return
 	end
 	
@@ -729,16 +717,31 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	damage_table.damage = main_damage*damage_percent/100
 	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 	
-	for k, unit in pairs(affected_units) do
-		if unit ~= target then
+	for _, unit in pairs(affected_units) do
+		if unit ~= target and unit ~= attacker then
 			damage_table.victim = unit
 			ApplyDamage(damage_table)
 		end
 	end
 	
 	-- Particles
-	--local cleave_pfx = ParticleManager:CreateParticle(particle, PATTACH_ABSORIGIN, target)
-	--ParticleManager:SetParticleControl(cleave_pfx, 0, target:GetAbsOrigin())
-	--ParticleManager:ReleaseParticleIndex(cleave_pfx)
-
+	if particle_cleave then
+		if particle_cleave == "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf" then
+			for _, unit in pairs(affected_units) do
+				if unit ~= attacker then
+					local tidebringer_hit_fx = ParticleManager:CreateParticle(particle_cleave, PATTACH_CUSTOMORIGIN, attacker)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 0, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+					ParticleManager:ReleaseParticleIndex(tidebringer_hit_fx)
+					unit:EmitSound("Hero_Kunkka.TidebringerDamage")
+				end
+			end
+		else
+			local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
+			ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
+			ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
+			ParticleManager:ReleaseParticleIndex(cleave_pfx)
+		end
+	end
 end

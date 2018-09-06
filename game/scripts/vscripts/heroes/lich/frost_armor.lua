@@ -35,4 +35,5 @@ end
 function EndFrostArmorParticle(event)
 	local target = event.target
 	ParticleManager:DestroyParticle(target.FrostArmorParticle,false)
+	ParticleManager:ReleaseParticleIndex(target.FrostArmorParticle)
 end

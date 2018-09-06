@@ -8,11 +8,11 @@ function gambler_bet_on_spell_start(keys)
 	local targetCurrentHP = target:GetHealth()
 	local targetMaxHP = target:GetMaxHealth()
 	local target_location = target:GetAbsOrigin()
-	local target_team = target:GetTeam()
+	local target_team = target:GetTeamNumber()
 	
 	-- Checking if there are heroes around the target
-	local target_allies = FindUnitsInRadius(target_team, target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
-	local target_enemies = FindUnitsInRadius(target_team, target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
+	local target_allies = FindUnitsInRadius(target_team, target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	local target_enemies = FindUnitsInRadius(target_team, target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 	local number_of_target_allies = #target_allies
 	local number_of_target_enemies = #target_enemies
 	
@@ -65,12 +65,12 @@ function gambler_bet_on_target_death(keys)
 	local gold_cost = ability:GetGoldCost(ability_level)
 	local gold_for_caster = gold_cost
 	
-	if target:IsAlive() == false and target:IsRealHero() and attacker and attacker:GetOwner() ~= nil then
+	if target:IsAlive() == false and target:IsRealHero() and attacker and attacker:GetOwner() then
 		local attacker_owner = attacker:GetOwner()
 		local caster_owner = caster:GetOwner()
 		
 		-- Calculating the winning gold for the caster
-		gold_for_caster = math.ceil(target.quota * gold_cost)
+		gold_for_caster = math.ceil(target.quota*gold_cost)
 		
 		-- Checking if the caster (or caster's unit or illusion) got the kill, if he did, he is cheating and he is getting less gold
 		if attacker_owner ~= caster_owner then
@@ -102,5 +102,6 @@ function gambler_bet_on_target_death(keys)
 		ParticleManager:SetParticleControl(particle, 1, Vector(symbol, gold_for_caster, symbol))
 		ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 		ParticleManager:SetParticleControl(particle, 3, color)
+		ParticleManager:ReleaseParticleIndex(particle)
 	end
 end

@@ -41,9 +41,14 @@ function AstralStompDamageCheck(event)
 		end
 	end
 	
+	-- Targetting constants
+	local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
+	local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
+	
 	-- Damage enemies in a radius around the caster
-	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-	for k, enemy in pairs(enemies) do
+	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+	for _, enemy in pairs(enemies) do
 		if enemy:IsAttackImmune() or enemy:IsMagicImmune() then
 			-- Enemy is immune to attacks or magic. Astral damage type doesn't affect them.
 		else

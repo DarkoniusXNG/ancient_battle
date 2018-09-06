@@ -48,7 +48,7 @@ function PrimalSplit(event)
 	ability:ApplyDataDrivenModifier(caster, caster.Storm, "modifier_custom_primal_split_spirit_buff", {})
 	ability:ApplyDataDrivenModifier(caster, caster.Fire, "modifier_custom_primal_split_spirit_buff", {})
 
-	-- Make them expire after the duration (Fire need to die first, thats why shortest duration)
+	-- Make them expire after the duration (Fire needs to die first, thats why shortest duration)
 	caster.Earth:AddNewModifier(caster, ability, "modifier_kill", {duration = duration+0.2})
 	caster.Storm:AddNewModifier(caster, ability, "modifier_kill", {duration = duration+0.1})
 	caster.Fire:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})

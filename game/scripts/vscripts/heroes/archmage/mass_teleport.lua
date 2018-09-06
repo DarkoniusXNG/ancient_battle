@@ -43,14 +43,18 @@ function MassTeleportStop(event)
 	
 	-- Stop Sound on caster
 	caster:StopSound("Hero_KeeperOfTheLight.Recall.Cast")
+	
 	-- Remove particle from target
 	Timers:RemoveTimer(ability.particle_timer)
 	ParticleManager:DestroyParticle(ability.particle_target, true)
+	ParticleManager:ReleaseParticleIndex(ability.particle_target)
+	
 	-- Stop Sound on target
 	StopSoundOn("Hero_KeeperOfTheLight.Recall.Cast", target)
 	-- Remove particle on caster
 	if ability.particle_caster then
 		ParticleManager:DestroyParticle(ability.particle_caster, true)
+		ParticleManager:ReleaseParticleIndex(ability.particle_caster)
 	end
 end
 
@@ -63,7 +67,9 @@ function MassTeleport(event)
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin()
 	local radius = 100 + ability:GetLevelSpecialValueFor("radius", ability:GetLevel() - 1)
-	local units_to_teleport = FindUnitsInRadius(caster:GetTeam(), caster_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+	
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local units_to_teleport = FindUnitsInRadius(caster:GetTeamNumber(), caster_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 	
 	-- Teleport allied units if they are not channeling
     for _,unit in pairs(units_to_teleport) do
@@ -73,6 +79,7 @@ function MassTeleport(event)
 			ProjectileManager:ProjectileDodge(unit)
 		end
     end
+	
     -- Teleports the caster
 	FindClearSpaceForUnit(caster, target_location, true)
 	ProjectileManager:ProjectileDodge(caster)

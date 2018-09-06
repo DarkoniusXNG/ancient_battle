@@ -17,9 +17,13 @@ function AbsorbLife(keys)
 	ParticleManager:SetParticleControl(absorb_life_radius, 0, point)
 	ParticleManager:SetParticleControl(absorb_life_radius, 1, Vector(radius, radius, radius))
 	ParticleManager:SetParticleControl(absorb_life_radius, 2, point)
+	ParticleManager:ReleaseParticleIndex(absorb_life_radius)
+	
+	local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
 	
 	local total_heal = 0
-	local enemies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+	local enemies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, target_flags, FIND_ANY_ORDER, false)
 	for k, enemy in pairs(enemies) do
 		local enemy_current_hp = enemy:GetHealth()
 		local enemy_location = enemy:GetAbsOrigin()
@@ -32,7 +36,7 @@ function AbsorbLife(keys)
 		ParticleManager:SetParticleControlEnt(absorb_life_link, 0, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy_location, true)
 		ParticleManager:SetParticleControlEnt(absorb_life_link, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster_location, true)
 		ParticleManager:SetParticleControlEnt(absorb_life_link, 3, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", (caster_location + enemy_location)/2, true)
-		
+		ParticleManager:ReleaseParticleIndex(absorb_life_link)
 	end
 	-- Heal the caster
 	caster:Heal(total_heal, caster)

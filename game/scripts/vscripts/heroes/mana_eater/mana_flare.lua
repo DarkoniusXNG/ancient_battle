@@ -16,6 +16,7 @@ function ManaFlareEnd(event)
 	if caster:HasModifier("modifier_mana_flare_armor_buff") then
 		caster:RemoveModifierByName("modifier_mana_flare_armor_buff")
 	end
+	
 	if caster:HasModifier("modifier_mana_flare_aura_applier") then
 		caster:RemoveModifierByName("modifier_mana_flare_aura_applier")
 	end
@@ -37,7 +38,7 @@ function ManaFlareDamage(event)
 	end
 
 	-- Calculating and applying damage
-	local mana_flare_damage = mana_cost * damage_per_used_mana
+	local mana_flare_damage = mana_cost*damage_per_used_mana
 	ApplyDamage({victim = unit, attacker = caster, ability = ability, damage = mana_flare_damage, damage_type = damage_type})
 
 	-- Sounds
@@ -45,22 +46,26 @@ function ManaFlareDamage(event)
 	caster:EmitSound("Hero_Pugna.NetherWard.Attack")
 	
 	-- Basic particles
-	local attackName = "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
-	local attack = ParticleManager:CreateParticle(attackName, PATTACH_ABSORIGIN_FOLLOW, caster)
-	ParticleManager:SetParticleControl(attack, 1, unit:GetAbsOrigin())
+	local particle_name = "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
+	local particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControl(particle, 1, unit:GetAbsOrigin())
+	ParticleManager:ReleaseParticleIndex(particle)
 
 	-- Additional particles
 	if mana_flare_damage < 150 then
-		local attackName = "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
-		local attack = ParticleManager:CreateParticle(attackName, PATTACH_ABSORIGIN_FOLLOW, caster)
-		ParticleManager:SetParticleControl(attack, 1, unit:GetAbsOrigin())
+		local light = "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
+		local light_particle = ParticleManager:CreateParticle(light, PATTACH_ABSORIGIN_FOLLOW, caster)
+		ParticleManager:SetParticleControl(light_particle, 1, unit:GetAbsOrigin())
+		ParticleManager:ReleaseParticleIndex(light_particle)
 	elseif mana_flare_damage < 250 then
-		local attackName = "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
-		local attack = ParticleManager:CreateParticle(attackName, PATTACH_ABSORIGIN_FOLLOW, caster)
-		ParticleManager:SetParticleControl(attack, 1, unit:GetAbsOrigin())
+		local medium = "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
+		local medium_particle = ParticleManager:CreateParticle(medium, PATTACH_ABSORIGIN_FOLLOW, caster)
+		ParticleManager:SetParticleControl(medium_particle, 1, unit:GetAbsOrigin())
+		ParticleManager:ReleaseParticleIndex(medium_particle)
 	else
-		local attackName = "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
-		local attack = ParticleManager:CreateParticle(attackName, PATTACH_ABSORIGIN_FOLLOW, caster)
-		ParticleManager:SetParticleControl(attack, 1, unit:GetAbsOrigin())
+		local heavy = "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
+		local heavy_particle = ParticleManager:CreateParticle(heavy, PATTACH_ABSORIGIN_FOLLOW, caster)
+		ParticleManager:SetParticleControl(heavy_particle, 1, unit:GetAbsOrigin())
+		ParticleManager:ReleaseParticleIndex(heavy_particle)
 	end	
 end

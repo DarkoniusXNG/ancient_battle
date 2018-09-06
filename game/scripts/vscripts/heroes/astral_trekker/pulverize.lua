@@ -12,11 +12,11 @@ function PulverizeProc(event)
 	local end_radius = ability:GetLevelSpecialValueFor("cleave_end_radius", ability_level)
 	local particle = "particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
 	
-	local damage_value = damage*damage_percent*0.01
+	local cleave_origin = target:GetAbsOrigin()
 	
 	if attacker then
 		if attacker:IsRealHero() then
-			DoCleaveAttack(attacker, target, ability, damage_value, start_radius, end_radius, distance, particle)
+			CustomCleaveAttack(attacker, target, ability, damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle)
 		end
 	end
 end

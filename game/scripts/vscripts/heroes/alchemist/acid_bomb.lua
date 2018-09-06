@@ -19,12 +19,15 @@ function AcidBombStart(event)
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_custom_acid_bomb_stun", {["duration"] = stun_duration})
 			target:Interrupt()
 		
+			-- Targetting constants
+			local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
+			local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+			local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
+			
 			-- Apply debuff to enemies in a radius around the target
-			local enemies = FindUnitsInRadius(caster_team, target_pos, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-			for k, enemy in pairs(enemies) do
-				if not enemy:IsMagicImmune() then
-					ability:ApplyDataDrivenModifier(caster, enemy, "modifier_custom_acid_bomb_debuff", {["duration"] = debuff_duration})
-				end
+			local enemies = FindUnitsInRadius(caster_team, target_pos, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+			for _, enemy in pairs(enemies) do
+				ability:ApplyDataDrivenModifier(caster, enemy, "modifier_custom_acid_bomb_debuff", {["duration"] = debuff_duration})
 			end
 		end
 	end

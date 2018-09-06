@@ -60,6 +60,7 @@ function MysticBoltHit(event)
 		
 		if target:HasModifier("modifier_anti_magic_field_buff") then
 			damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
+			damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 		end
 		
 		-- Applying the damage
