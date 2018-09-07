@@ -2,7 +2,7 @@
     local caster = keys.caster
 	local ability = keys.ability
     local point = keys.target_points[1]
-	local caster_team = caster:GetTeam()
+	local caster_team = caster:GetTeamNumber()
 	
 	local particle_name1 = "particles/blood_mage/invoker_sun_strike_team_immortal1.vpcf"
     local particle1 = ParticleManager:CreateParticleForTeam(particle_name1, PATTACH_CUSTOMORIGIN, caster, caster_team)

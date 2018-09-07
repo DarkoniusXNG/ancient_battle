@@ -113,7 +113,7 @@ function ManaTransferEnd(event)
 	local caster = event.caster
 	local target = event.target
 	if caster.ManaDrainParticle then
-		ParticleManager:DestroyParticle(caster.ManaDrainParticle,false)
+		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
 		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 	end
 	
@@ -154,7 +154,7 @@ function ManaTransferAlly(event)
 	if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.ManaDrainParticle,false)
+		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
 		target:RemoveModifierByName("modifier_mana_transfer_ally")
 		return
 	end

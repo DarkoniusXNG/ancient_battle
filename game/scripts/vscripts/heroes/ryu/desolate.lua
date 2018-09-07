@@ -7,6 +7,7 @@ function DesolateCheck(event)
 	if target.GetInvulnCount == nil then -- if not target:IsBuilding() then
 		local target_location = target:GetAbsOrigin()
 		local ability_level = ability:GetLevel() - 1
+		
 		local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
 		local agi_dmg_multiplier = ability:GetLevelSpecialValueFor("damage_multiplier", ability_level)
 		
@@ -20,21 +21,32 @@ function DesolateCheck(event)
 		damage_table.ability = ability
 		damage_table.victim = target
 		damage_table.damage = desolate_damage
+		damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
+		
+		-- Targetting constants
+		local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
+		local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+		local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 		
 		-- Finding target's allies in a radius
-		local enemies = FindUnitsInRadius(target:GetTeam(), target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
-		-- Number of enemies around the target hero or unit
+		local enemies = FindUnitsInRadius(target:GetTeamNumber(), target_location, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+		
+		-- Number of target's allies around the target hero or unit (including the target itself)
 		local number_of_nearby_enemies = #enemies
 		
 		if number_of_nearby_enemies < 2 then
+			
 			-- Applying the damage
 			ApplyDamage(damage_table)
+			
 			-- Particle
-			local particleName = "particles/units/heroes/hero_riki/riki_backstab.vpcf"
-			local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, target)
+			local particle_name = "particles/units/heroes/hero_riki/riki_backstab.vpcf"
+			local particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
 			Timers:CreateTimer(1.0, function()
 				ParticleManager:DestroyParticle(particle,false)
+				ParticleManager:ReleaseParticleIndex(particle)
 			end)
+			
 			-- Sound
 			caster:EmitSound("Hero_Riki.Backstab")
 		end

@@ -10,7 +10,7 @@ function AmbushStart(event)
 	end
 end
 
--- Called OnCreated modifier_ambushed
+-- Called OnCreated in modifier_ambushed
 function AmbushFail(keys)
 	local caster = keys.caster
 	local target = keys.target
@@ -21,22 +21,29 @@ function AmbushFail(keys)
 	
 	local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
 	local base_damage = ability:GetLevelSpecialValueFor("base_damage", ability_level)
-	local hp_percent = ability:GetLevelSpecialValueFor("max_hp_percent_damage", ability_level)
+	local hp_percent_damage = ability:GetLevelSpecialValueFor("max_hp_percent_damage", ability_level)
 	
-	local chance_to_fail = 0
 	local target_max_hp = target:GetMaxHealth()
+	
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = ability:GetAbilityDamageType()
 	damage_table.ability = ability
 	damage_table.victim = target
 	
+	-- Targetting constants
+	local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
+	
 	-- Finding target's allies in a radius
-	local enemies = FindUnitsInRadius(target:GetTeam(), target_location, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
-	-- Finding the number of target's allies excluding the target himself
+	local enemies = FindUnitsInRadius(target:GetTeamNumber(), target_location, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+	
+	-- Number of target's allies around the target hero or unit (excluding the target itself)
 	local number_of_nearby_enemies = #enemies - 1 -- removing the target from the count
 	
 	-- Calculating chance to fail (1 enemy - 20%; 2 enemies - 50%; 3 enemies - 66.67%; 4 enemies - 75%; 5 enemies - 80% ... 35 enemies - 97% etc.)
+	local chance_to_fail
 	if number_of_nearby_enemies > 1 then
 		chance_to_fail = 100-(100/number_of_nearby_enemies)
 	else
@@ -48,11 +55,11 @@ function AmbushFail(keys)
 	end
 	
 	-- Random number generation
-	local randomNumber = RandomFloat(0, 100.0)
+	local random_number = RandomFloat(0, 100.0)
 	
 	-- Setting the damage
-	if randomNumber > chance_to_fail then
-		damage_table.damage = math.ceil(base_damage + (hp_percent/100)*target_max_hp)
+	if random_number > chance_to_fail then
+		damage_table.damage = math.ceil(base_damage + hp_percent_damage*target_max_hp*0.01)
 	else
 		damage_table.damage = base_damage
 	end

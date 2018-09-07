@@ -132,7 +132,7 @@ function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 		
 		local talent = hero:FindAbilityByName(ability_name)
 		if talent then
-			hero:AddNewModifier(hero, nil, "modifier_custom_paladin_talent", {})
+			hero:AddNewModifier(hero, talent, "modifier_paladin_storm_hammer_talent", {})
 		end
 	end
 end
@@ -282,9 +282,9 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		-- Adjust Minimum Gold bounty
 		local gold_bounty
 		if hero_streak > 1 then
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL + hero_streak*60
 		else
-			gold_bounty = HERO_KILL_GOLD_BASE + hero_level * HERO_KILL_GOLD_PER_LEVEL
+			gold_bounty = HERO_KILL_GOLD_BASE + hero_level*HERO_KILL_GOLD_PER_LEVEL
 		end
 		killed_unit:SetMinimumGoldBounty(gold_bounty)
 		

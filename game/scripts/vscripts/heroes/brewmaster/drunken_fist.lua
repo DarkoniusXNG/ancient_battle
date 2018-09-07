@@ -29,7 +29,7 @@ function DrunkenFistCleave(event)
 	local cache = false
 	local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
 	local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
-	local target_flags = ability:GetAbilityTargetFlags()
+	local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 	
 	local knockback_modifier_table =
 	{

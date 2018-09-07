@@ -12,7 +12,7 @@ function DivineShield(keys)
 	local RemoveExceptions = false
 	target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 	
-	-- Checking if the caster has aghanim scepter or not and applying modifiers accordingly
+	-- Checking if the caster has Aghanim Scepter or not and applying modifiers accordingly
 	if caster:HasScepter() then
 		SuperStrongDispel(target, true, false)
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_paladin_divine_shield_upgraded", {})

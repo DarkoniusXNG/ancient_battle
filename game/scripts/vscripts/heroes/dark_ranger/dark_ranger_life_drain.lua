@@ -50,7 +50,7 @@ function LifeDrainHealthTransfer(event)
 		target:Kill(ability, caster)
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.LifeDrainParticle,false)
+		ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
 		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
 		return
 	else
@@ -67,7 +67,7 @@ function LifeDrainHealthTransfer(event)
 		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
 			ability:OnChannelFinish(false)
 			caster:Interrupt()
-			ParticleManager:DestroyParticle(caster.LifeDrainParticle,false)
+			ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
 			target:RemoveModifierByName("modifier_dark_ranger_life_drain")
 			return
 		end
@@ -92,7 +92,7 @@ function LifeDrainEnd(event)
 	local caster = event.caster
 	local target = event.target
 	if caster.LifeDrainParticle then
-		ParticleManager:DestroyParticle(caster.LifeDrainParticle,false)
+		ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
 		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
 	end
 	

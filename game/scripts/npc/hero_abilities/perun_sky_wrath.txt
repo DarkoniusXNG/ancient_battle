@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Lightning Shaman: Wrath of the Sky (W) - New Spell, AoE Nuke, Disable (Silence, Disarm and Blind) and True Sight Reveal
+	// Lightning Shaman: Wrath of the Sky (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017; Silence and Disarm are dealt in smaller radius; Blind and Damage is applied in larger radius;
+	// Notes: OK; 7.9.2018; Stun radius is smaller;
 	// TO_DO:
 	//=================================================================================================================
 	"perun_sky_wrath"
@@ -35,16 +35,16 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"12.0"
+		"AbilityCooldown"				"10.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 125 140 160"
+		"AbilityManaCost"				"100 120 140 160"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"140 210 280 350"
+		"AbilityDamage"					"80 120 160 200"	// like Lina Light Strike Array
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"disable_duration"			"1.0 1.5 2.0 2.5"
+				"disable_duration"			"0.5 0.75 1.0 1.25 1.5"
 			}
 			"02"
 			{
@@ -63,7 +63,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"blind_duration"			"3.5 4.0 4.5 5.0"
+				"blind_duration"			"3.0 3.5 4.0 4.5"
 			}
 			"04" // if damage_radius and blind_radius are not the same you need to change the tooltip
 			{
@@ -207,9 +207,9 @@
 		{
 			"modifier_custom_sky_blinded"
 			{
-				"IsHidden"         									"0"
-				"IsDebuff"											"1"
-				"IsPurgable"       									"1"
+				"IsHidden"         					"0"
+				"IsDebuff"							"1"
+				"IsPurgable"       					"1"
 
 				"Properties"
 				{
@@ -219,14 +219,14 @@
 			
 			"modifier_custom_sky_disabled"
 			{
-				"IsHidden"         									"0"
-				"IsDebuff"											"1"
-				"IsPurgable"       									"1"
+				"IsHidden"         					"0"
+				"IsDebuff"							"1"
+				"IsStunDebuff"						"1"
+				"IsPurgable"       					"1"
 				
 				"States"
 				{
-					"MODIFIER_STATE_DISARMED"						"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_SILENCED"						"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"						"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 			

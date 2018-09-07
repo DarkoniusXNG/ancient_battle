@@ -1,22 +1,28 @@
 -- Called OnSpellStart
-function TimeStopStart(keys)
-	local target = keys.target
-	local caster = keys.caster
-	local ability = keys.ability
-	local modifier = keys.time_stop_modifier
+function TimeStopStart(event)
+	local target = event.target
+	local caster = event.caster
+	local ability = event.ability
+	local modifier = event.time_stop_modifier
 	
-	local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1)
+	local ability_level = ability:GetLevel() - 1
+	
+	local duration = ability:GetLevelSpecialValueFor("duration", ability_level)
+	
 	-- Checking if the caster has Aghanim Scepter
 	if caster:HasScepter() then
-		duration = ability:GetLevelSpecialValueFor("duration_scepter", ability:GetLevel() - 1)
+		duration = ability:GetLevelSpecialValueFor("duration_scepter", ability_level)
 	end
 	
 	-- Check if a target is a caster's controlled unit, Void Demon, Faceless Void or Astral Trekker(with Time Constant)
 	if (caster:GetPlayerOwner() == target:GetPlayerOwner()) or (target:GetName() == "npc_dota_hero_night_stalker") or (target:GetName() == "npc_dota_hero_faceless_void") or (target:HasModifier("modifier_time_constant")) then
 		-- print("Time independent being detected.")
 	else
-		target:InterruptMotionControllers(false) -- this interrupts things like Force staff
+		-- Interrupt things like Force staff
+		target:InterruptMotionControllers(false)
+		
 		ability:ApplyDataDrivenModifier(caster, target, modifier, {duration = duration})
+		
 		if caster:HasScepter() and target:GetTeamNumber() ~= caster:GetTeamNumber() then
 			modifier = "modifier_time_stop_scepter"
 			ability:ApplyDataDrivenModifier(caster, target, modifier, {duration = duration})

@@ -6,7 +6,6 @@ function PurgeStart(event)
 	
 	-- Checking if target has spell block, and if its an enemy
 	if not target:TriggerSpellAbsorb(ability) and target:GetTeamNumber() ~= caster:GetTeamNumber()  then
-		local damage_type = ability:GetAbilityDamageType()
 		local ability_level = ability:GetLevel() - 1
 		
 		local hero_duration = ability:GetLevelSpecialValueFor("slow_hero_duration", ability_level)
@@ -17,7 +16,7 @@ function PurgeStart(event)
 		local damage_table = {}
 		damage_table.attacker = caster
 		damage_table.victim = target
-		damage_table.damage_type = damage_type
+		damage_table.damage_type = ability:GetAbilityDamageType()
 		damage_table.ability = ability
 		
 		if target:IsRealHero() then

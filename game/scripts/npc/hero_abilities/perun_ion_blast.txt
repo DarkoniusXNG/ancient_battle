@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Ion Blast (R) - New Spell, Powershot with Mana Burn, Skillshot
 	// Author: Darkonius
-	// Notes: OK; 15.10.2017;
+	// Notes: OK; 7.9.2018;
 	// TO_DO: Fix Wrong projectile;
 	//=================================================================================================================
 	"perun_ion_blast"
@@ -59,12 +59,12 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_width_initial"	"275"
+				"ion_blast_width_initial"	"250"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_width_end"		"125"
+				"ion_blast_width_end"		"250"
 			}
 			"04"
 			{
@@ -83,13 +83,13 @@
 			}
 			"07"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"ion_blast_vision_radius"	"400.0"
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_vision_radius"	"350"
 			}
 			"08" // radius for destroying trees
 			{
-				"var_type"					"FIELD_FLOAT"
-				"ion_blast_trees_radius"	"125.0"
+				"var_type"					"FIELD_INTEGER"
+				"ion_blast_trees_radius"	"150"
 			}
 			"09"
 			{
