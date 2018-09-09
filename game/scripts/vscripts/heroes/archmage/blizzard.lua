@@ -4,7 +4,7 @@ function BlizzardStart(event)
 	local caster = event.caster
 	
 	-- Main Sound
-	EmitSoundOn("Hero_Ancient_Apparition.IceVortex", target)
+	target:EmitSound("Hero_Ancient_Apparition.IceVortex")
 	
 	-- Variables
 	local target_position = target:GetAbsOrigin()
@@ -43,7 +43,7 @@ end
 function BlizzardStopSound(event)
 	local target = event.target
 	
-	StopSoundOn("Hero_Ancient_Apparition.IceVortex", target)
+	target:StopSound("Hero_Ancient_Apparition.IceVortex")
 end
 
 function BlizzardWave(event)
@@ -99,7 +99,7 @@ function BlizzardDamageBuildings(keys)
 	
 	-- Damage enemy buildings in a radius
     local buildings = FindUnitsInRadius(caster_team, target_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-	for k, enemy_building in pairs(buildings) do
+	for _, enemy_building in pairs(buildings) do
 		ApplyDamage({victim = enemy_building, attacker = caster, ability = ability, damage = damage_to_buildings, damage_type = DAMAGE_TYPE_MAGICAL})
 	end
 end

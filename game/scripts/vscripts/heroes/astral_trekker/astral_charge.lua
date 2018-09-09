@@ -28,7 +28,7 @@ function astral_charge_traverse(keys)
 		-- Stop everything if health of the caster is below 100 upon cast start
 		ability:RefundManaCost()
 		caster:RemoveModifierByName(modifierName)
-		StopSoundOn(loop_sound_name, caster)
+		caster:StopSound(loop_sound_name)
 		caster.astral_charge_is_running = false
 		caster:SetDayTimeVisionRange(1800)
 		caster:SetNightTimeVisionRange(1000)
@@ -63,8 +63,10 @@ function astral_charge_traverse(keys)
 		else
 			caster:SetHealth(100)
 		end
-		-- Emitting sound (added 15.1.2016;)
-		EmitSoundOn(loop_sound_name, caster)
+		
+		-- Sound on caster
+		caster:EmitSound(loop_sound_name)
+		
 		-- Traverse
 		Timers:CreateTimer(function()
 			-- Removing health
@@ -81,7 +83,7 @@ function astral_charge_traverse(keys)
 				else
 					-- Exit condition if caster run out of hp (his hp is < 100)
 					caster:RemoveModifierByName(modifierName)
-					StopSoundOn(loop_sound_name, caster)
+					caster:StopSound(loop_sound_name)
 					caster.astral_charge_is_running = false
 					caster:SetDayTimeVisionRange(1800)
 					caster:SetNightTimeVisionRange(1000)
@@ -99,7 +101,7 @@ function astral_charge_traverse(keys)
 			if (target - currentPos):Length2D() <= speed / intervals_per_second then
 				-- Exit condition if caster arrived at designated location
 				caster:RemoveModifierByName(modifierName)
-				StopSoundOn(loop_sound_name, caster)
+				caster:StopSound(loop_sound_name)
 				caster.astral_charge_is_running = false
 				caster:SetDayTimeVisionRange(1800)
 				caster:SetNightTimeVisionRange(1000)
@@ -117,7 +119,7 @@ function astral_charge_traverse(keys)
 		ability:RefundManaCost()
 		-- Exit condition if caster doesn't have enough health
 		caster:RemoveModifierByName(modifierName)
-		StopSoundOn(loop_sound_name, caster)
+		caster:StopSound(loop_sound_name)
 		caster.astral_charge_is_running = false
 		caster:SetDayTimeVisionRange(1800)
 		caster:SetNightTimeVisionRange(1000)
@@ -130,7 +132,7 @@ function astral_charge_stop(keys)
 	local loop_sound_name = "Hero_StormSpirit.BallLightning.Loop"
 	local modifierName = "modifier_astral_charge_buff"
 	caster:RemoveModifierByName(modifierName)
-	StopSoundOn(loop_sound_name, caster)
+	caster:StopSound(loop_sound_name)
 	caster.astral_charge_is_running = false
 	caster:SetDayTimeVisionRange(1800)
 	caster:SetNightTimeVisionRange(1000)

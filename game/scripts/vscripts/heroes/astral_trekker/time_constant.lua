@@ -17,7 +17,7 @@ function PurgeTimeDebuffs(event)
 			SuperStrongDispel(caster, true, false)
 			
 			-- Sound
-			EmitSoundOn("Hero_Tidehunter.KrakenShell", caster)
+			caster:EmitSound("Hero_Tidehunter.KrakenShell")
 			
 			-- Particle
 			local particleName = "particles/units/heroes/hero_tidehunter/tidehunter_krakenshell_purge.vpcf"	

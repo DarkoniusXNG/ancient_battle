@@ -52,14 +52,15 @@ function paladin_storm_hammer:OnSpellStart()
 	ProjectileManager:CreateTrackingProjectile(info)
 	
 	-- Sound on caster
-	EmitSoundOn("Hero_Sven.StormBolt", caster)
+	caster:EmitSound("Hero_Sven.StormBolt")
 end
 
 function paladin_storm_hammer:OnProjectileHit(target, location)
 	if target then 
 		if (not target:IsInvulnerable()) and (not target:TriggerSpellAbsorb(self)) then
+			
 			-- Sound on target
-			EmitSoundOn("Hero_Sven.StormBoltImpact", target)
+			target:EmitSound("Hero_Sven.StormBoltImpact")
 			
 			-- Kv variables
 			local bolt_aoe = self:GetSpecialValueFor("bolt_aoe")

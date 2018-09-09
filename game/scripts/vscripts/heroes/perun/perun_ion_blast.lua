@@ -13,7 +13,7 @@ function perun_ion_blast:OnSpellStart()
 	local distance = self:GetSpecialValueFor("ion_blast_distance")
 	
 	-- Sound on caster
-	EmitSoundOn("Hero_Tinker.Laser", caster)
+	caster:EmitSound("Hero_Tinker.Laser")
 
 	-- Check if its a unit or point target
 	local target_pos
@@ -89,7 +89,7 @@ function perun_ion_blast:OnProjectileHit(target, location)
 			ApplyDamage(damage_table)
 			
 			-- Sound on target
-			EmitSoundOn("Hero_Tinker.LaserImpact", target)
+			target:EmitSound("Hero_Tinker.LaserImpact")
 			
 			-- Mana Drain
 			local current_mana = target:GetMana()

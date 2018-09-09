@@ -60,10 +60,11 @@ function PhilosopherStoneSound(event)
 	local ability = event.ability
 	local point = event.target_points[1]
 	
-	-- Particles and sound
-	local DummyUnit = CreateUnitByName("npc_dota_custom_dummy_unit", point, false, caster, caster:GetOwner(), caster:GetTeamNumber())
-	DummyUnit:AddNewModifier(caster, ability, "modifier_kill", {duration = 0.1})
+	local dummy = CreateUnitByName("npc_dota_custom_dummy_unit", point, false, caster, caster:GetOwner(), caster:GetTeamNumber())
 	
-	EmitSoundOn("Hero_Phoenix.ProjectileImpact", DummyUnit)
-	EmitSoundOn("Hero_Phoenix.FireSpirits.Target", DummyUnit)
+	-- Sounds
+	dummy:EmitSound("Hero_Phoenix.ProjectileImpact")
+	dummy:EmitSound("Hero_Phoenix.FireSpirits.Target")
+	
+	dummy:AddNewModifier(caster, ability, "modifier_kill", {duration = 0.1})
 end

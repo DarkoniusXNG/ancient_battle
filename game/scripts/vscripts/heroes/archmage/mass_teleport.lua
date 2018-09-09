@@ -32,7 +32,8 @@
 		return 0.02
 	end)
 	
-	EmitSoundOn("Hero_KeeperOfTheLight.Recall.Cast", target)
+	-- Sound on target
+	target:EmitSound("Hero_KeeperOfTheLight.Recall.Cast")
 end
 
 -- Stops the channeling sound and removes particles on target and caster
@@ -50,7 +51,8 @@ function MassTeleportStop(event)
 	ParticleManager:ReleaseParticleIndex(ability.particle_target)
 	
 	-- Stop Sound on target
-	StopSoundOn("Hero_KeeperOfTheLight.Recall.Cast", target)
+	target:StopSound("Hero_KeeperOfTheLight.Recall.Cast")
+	
 	-- Remove particle on caster
 	if ability.particle_caster then
 		ParticleManager:DestroyParticle(ability.particle_caster, true)

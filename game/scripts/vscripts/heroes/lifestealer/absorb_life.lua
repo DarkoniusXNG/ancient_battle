@@ -38,9 +38,11 @@ function AbsorbLife(keys)
 		ParticleManager:SetParticleControlEnt(absorb_life_link, 3, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", (caster_location + enemy_location)/2, true)
 		ParticleManager:ReleaseParticleIndex(absorb_life_link)
 	end
+	
 	-- Heal the caster
 	caster:Heal(total_heal, caster)
 	SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, total_heal, nil)
+	
 	-- Sound
-	EmitSoundOn("Hero_Undying.SoulRip.Cast", caster)
+	caster:EmitSound("Hero_Undying.SoulRip.Cast")
 end

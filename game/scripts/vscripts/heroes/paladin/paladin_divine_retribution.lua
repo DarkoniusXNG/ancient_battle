@@ -9,7 +9,10 @@ function RetributionStart(keys)
 	
 	if caster and unit then
 		if unit:IsRealHero() and caster:IsRealHero() then
-			EmitSoundOn("Hero_Medusa.StoneGaze.Target", caster)
+			
+			-- Sound on caster (owner of the aura)
+			caster:EmitSoundOn("Hero_Medusa.StoneGaze.Target")
+			
 			ability:ApplyDataDrivenModifier(caster, caster, modifier_name, {["duration"] = buff_duration})
 		end
 	end
