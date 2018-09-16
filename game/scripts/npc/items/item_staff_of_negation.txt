@@ -27,8 +27,8 @@
 	}
 	
 	//=================================================================================================================
-	// 1259 - Staff of Negation - Custom Rod of Atos (3000) + Oblivion Staff (1650) + Custom Diffusal Blade (3500) = 8150
-	// Notes: OK; 17.5.2018;
+	// 1259 - Staff of Negation - Custom Rod of Atos (2900) + Oblivion Staff (1650) + Custom Diffusal Blade (3150) = 7700
+	// Notes: OK; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"item_staff_of_negation"
@@ -37,7 +37,7 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/staff_of_negation"
 		
-		"ItemCost"						"8150"
+		"ItemCost"						"7700"
 		"ItemShopTags"					"int;agi;str;regen_health;unique;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"staff of negation"
@@ -57,7 +57,7 @@
 		"AbilityCastRange"				"1150"
 		"AbilityCastPoint"				"0.0"
 		"AoERadius" 					"%radius"
-		"AbilityManaCost"				"100"
+		"AbilityManaCost"				"250"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@
 			"10"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"move_slow"				"-100"
+				"slow"					"-100"
 			}
 			"11"
 			{
@@ -172,8 +172,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%move_slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%slow"
 					"MODIFIER_PROPERTY_DISABLE_HEALING"					"1"
 					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"			"1"
 				}

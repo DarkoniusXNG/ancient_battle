@@ -1,12 +1,12 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// 1272 - Recipe: Master Staff
-	// Notes: OK; 17.5.2018; 
+	// Recipe: Master Staff
+	// Notes: OK; 16.9.2018; 
 	//=================================================================================================================
 	"item_recipe_master_staff"
 	{
-		"ID"							"1272"
+		"ID"							"8224"		// 1272
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -27,13 +27,13 @@
 	}
 	
 	//=================================================================================================================
-	// 1273 - Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
-	// Notes: OK; 17.5.2018; Suggested/rejected names: Muting Staff
+	// Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
+	// Notes: OK; 16.9.2018; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
 	// TO_DO: 
 	//=================================================================================================================
 	"item_master_staff"
 	{
-		"ID"              				"1273"
+		"ID"              				"8225"		// 1273
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/master_staff"
 		
@@ -44,9 +44,9 @@
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"15.0"
 		"AbilityManaCost"				"100"
 		
 		"ItemCost"						"10400"
@@ -64,32 +64,32 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // like Reaver
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_str"				"25"
 			}
-			"02"
+			"02" // like Nullifier
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_armor"			"5"
 			}
-			"03"
+			"03" // like Nullifier
 			{
 				"var_type"				"FIELD_FLOAT"
-				"bonus_hp_regen"		"5.0"
+				"bonus_hp_regen"		"5"
 			}
-			"04"
+			"04" // like Mystic Staff
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"25"
 			}
-			"05"
+			"05" // Nullifier (65) + Mystic Booster (10)
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"85"
+				"bonus_dmg"				"75"
 			}
-			"06"
+			"06" // like Nullifier
 			{
 				"var_type"				"FIELD_FLOAT"
 				"mute_duration"			"5.0"
@@ -128,10 +128,10 @@
 			
 			"modifier_item_master_staff_muted" // needs tooltip
 			{
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
 				
-				"TextureName"		"custom/master_staff"
+				"TextureName"			"custom/master_staff"
 				
 				"EffectName"			"particles/items4_fx/nullifier_mute_debuff.vpcf"
 				"EffectAttachType"		"follow_origin"

@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1266 - Recipe: Blink Sword
-	// Notes: OK; 17.5.2018;
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_recipe_blink_sword"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"250"
+		"ItemCost"						"100"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -22,19 +22,19 @@
 		"ItemResult"					"item_blink_sword"
 		"ItemRequirements"
 		{
-			"01"						"item_blink;item_claymore;item_ultimate_orb"
+			"01"						"item_blink;item_soul_gem;item_soul_gem"
 		}
 	}
 	
 	//=================================================================================================================
-	// 1267 - Blink Sword - Blink Dagger(2200) + Claymore(1400) + Ultimate Orb(2150) + Recipe(250) = 6000
-	// Notes: OK; 17.5.2018;
+	// 1267 - Blink Sword - Blink Dagger (2200) + 2 x Soul Gem (1400) + Recipe (100) = 5100
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_blink_sword"
 	{
 		"ID"							"1267"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"      		"custom/blink_sword"
+		"AbilityTextureName"      		"item_super_blink"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastRange"				"0"
@@ -43,8 +43,8 @@
 		"AbilitySharedCooldown"			"blink_items"
 		"AbilityManaCost"				"0"
 		
-		"ItemCost"						"6000"
-		"ItemShopTags"					"teleport;damage;agi;int;str"
+		"ItemCost"						"5100"
+		"ItemShopTags"					"teleport;agi;int;str"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"blink sword"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
@@ -60,24 +60,19 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"21"
+				"bonus_str"				"10"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"10"
+				"bonus_agi"				"10"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"10"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"10"
 			}
-			"05"
+			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"blink_range"			"1400"
@@ -116,7 +111,6 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-﻿-- Called on Spell Start
+﻿-- Called OnSpellStart
 -- Purges summons and illusions, dispels buffs from enemies, dispels debuffs from allies and slows everything in the area
 function Negate(keys)
 	local point = keys.target_points[1]

@@ -1,12 +1,12 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// 1260 - Recipe: Ultimate King Bar
-	// Notes: OK; 26.12.2016;
+	// Recipe: Ultimate King Bar
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_recipe_ultimate_king_bar"
 	{
-		"ID"							"1260"
+		"ID"							"8115"		// 1260
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -27,12 +27,12 @@
 	}
 	
 	//=================================================================================================================
-	// 1261 - Ultimate King Bar - Black King Bar (3975) + Ghost Scepter (1500) + Recipe (2475) = 7950
-	// Notes: OK; 17.5.2018;
+	// Ultimate King Bar - Black King Bar (3975) + Ghost Scepter (1500) + Recipe (2475) = 7950
+	// Notes: OK; 16.9.2018; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
 	//=================================================================================================================
 	"item_ultimate_king_bar"
 	{
-		"ID"							"1261"
+		"ID"							"8116"		// 1261
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/ultimate_king_bar"
 		
@@ -47,8 +47,9 @@
 		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"FightRecapLevel"				"2"
 		
-		"AbilityCooldown"				"60.0"
+		"AbilityCooldown"				"60"
 		"AbilitySharedCooldown"			"black_king_bar"
 		"AbilityCastPoint"				"0.0"
 		"AbilityManaCost"				"0"
@@ -127,11 +128,11 @@
 			
 			"item_modifier_forgotten_king_bar_damage_shield" // needs tooltip
 			{
-				"IsHidden"			"0"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsPurgable"			"0"
 				
-				"TextureName"		"custom/ultimate_king_bar"
+				"TextureName"			"custom/ultimate_king_bar"
 				
 				"StatusEffectName"		"particles/status_fx/status_effect_ghost.vpcf"        
 				"StatusEffectPriority"	"12"

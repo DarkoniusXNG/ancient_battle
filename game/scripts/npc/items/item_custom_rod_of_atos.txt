@@ -1,21 +1,21 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// 1254 - Recipe: Custom Rod of Atos
-	// Notes: OK; 17.5.2018;
+	// Recipe: Custom Rod of Atos
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_recipe_custom_rod_of_atos"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1254"
+		"ID"							"8205"		// 1254
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"600"	
+		"ItemCost"						"500"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -29,14 +29,14 @@
 	}
 	
 	//=================================================================================================================
-	// 1255 - Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (600) = 3000
-	// Notes: OK; 17.5.2018;
+	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (500) = 2900
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_custom_rod_of_atos"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1255"
+		"ID"							"8206"		// 1255
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_rod_of_atos"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -54,7 +54,7 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"50"
-		"ItemCost"						"3000"
+		"ItemCost"						"2900"
 		"ItemShopTags"					"int;agi;str;regen_health"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"rod of atos"

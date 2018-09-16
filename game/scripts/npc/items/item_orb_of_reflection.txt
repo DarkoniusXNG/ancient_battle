@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1264 - Recipe: Orb of Reflection
-	// Notes: OK; 17.5.2018;
+	// Notes: OK; 16.9.2018;
 	//=================================================================================================================
 	"item_recipe_orb_of_reflection"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
+		"ItemCost"						"100"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -27,8 +27,9 @@
 	}
 	
 	//=================================================================================================================
-	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) = 7600
-	// Notes: OK; 17.5.2018; Uses damage filter and built-in modifier; Can be disassembled. Must be weaker than Ultimate King Bar in some way (lower duration).
+	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) + Recipe (100) = 7700
+	// Notes: OK; 16.9.2018; Uses damage filter and built-in modifier; Can be disassembled. Must be weaker than Ultimate King Bar.
+	// Notes: Spell Lifesteal works normally with Orb of Reflection;
 	//=================================================================================================================
 	"item_orb_of_reflection"
 	{
@@ -38,11 +39,11 @@
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"        		"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"25.0"
 		"AbilitySharedCooldown"			"reflection_items"
 		"AbilityManaCost"				"100"
 		
-		"ItemCost"						"7600"
+		"ItemCost"						"7700"
 		"ItemShopTags"					"damage;armor;regen_health;regen_mana;str;agi;int;hard_to_tag"
 		"ItemQuality"					"epic"
 		"ItemAliases"					"orb of reflection"
@@ -50,21 +51,21 @@
 		"ItemDroppable" 				"1"
 		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
 		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // like Blademail
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_dmg"				"22"
 			}
-			"02"
+			"02" // 5 + 10
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"16"
+				"bonus_armor"			"15"
 			}
 			"03"
 			{
@@ -76,22 +77,22 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_agi"				"5"
 			}
-			"05"
+			"05" // 10 + 5
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"15"
 			}
-			"06"
+			"06" // like Lotus Orb
 			{
 				"var_type"				"FIELD_FLOAT"
 				"bonus_hp_regen"		"5.5"
 			}
-			"07"
+			"07" // like lotus Orb
 			{
 				"var_type"				"FIELD_FLOAT"
 				"bonus_mana_regen"		"1.75"
 			}			
-			"08"
+			"08" // like Lotus Orb
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_mana"			"250"
@@ -101,7 +102,7 @@
 				"var_type"				"FIELD_INTEGER"
 				"passive_damage_return"	"40"
 			}
-			"10"
+			"10" // like Blademail; must be lower duration than Ultimate King Bar or the same duration
 			{
 				"var_type"				"FIELD_FLOAT"
 				"reflect_duration"		"4.5"
@@ -156,19 +157,19 @@
 			
 			"item_modifier_orb_of_reflection_passive_return" // doesn't need tooltip
 			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+				"Passive" 			"1"  
+				"IsHidden" 			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
 			}
 			
 			"item_modifier_orb_of_reflection_active_reflect" // needs tooltip
 			{
-				"IsHidden" 		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+				"IsHidden" 			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
 				
-				"TextureName"	"custom/orb_of_reflection"
+				"TextureName"		"custom/orb_of_reflection"
 				
 				"EffectName"		"particles/items_fx/blademail.vpcf"
 				"EffectAttachType"	"follow_origin"

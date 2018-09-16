@@ -745,3 +745,43 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		end
 	end
 end
+
+-- Probably not needed
+function HasOtherUniqueAttackModifiers(unit)
+
+	local list_of_passive_orbs ={
+	"modifier_item_mask_of_death",
+	"modifier_item_satanic"
+	}
+	
+	local list_of_autocast_orbs ={
+	"modifier_dark_arrow",
+	"modifier_incinerate_orb",
+	"modifier_glaives_of_silence_orb"
+	}
+	
+	if unit then
+		for i = 1, #list_of_passive_orbs do
+			if unit:HasModifier(list_of_passive_orbs[i]) then
+				return true
+			end
+		end
+		
+		for j = 1, #list_of_autocast_orbs do
+			local current_modifier_name = list_of_autocast_orbs[j]
+			if unit:HasModifier(current_modifier_name) then
+				local modifier = unit:FindModifierByName(current_modifier_name)
+				if modifier then
+					local ability = modifier:GetAbility()
+					if ability then
+						if ability:GetAutoCastState() then
+							return true
+						end
+					end
+				end
+			end
+		end
+		
+		return false
+	end
+end
