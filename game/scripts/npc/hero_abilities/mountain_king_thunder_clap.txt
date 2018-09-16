@@ -1,15 +1,15 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Paladin: Thunder Clap (E) - Custom Datadriven Brewmaster Thunder Clap
+	// Mountain King: Thunder Clap (E) - Custom Datadriven Brewmaster Thunder Clap
 	// Author: Darkonius
-	// Notes: OK; 25.1.2017;
+	// Notes: OK; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
-	"paladin_thunder_clap"
+	"mountain_king_thunder_clap"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/paladin_thunder_clap"
+		"AbilityTextureName"			"custom/mountain_king_thunder_clap"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -84,7 +84,7 @@
 
 			"ApplyModifier"
 			{
-				"ModifierName"	"modifier_paladin_thunder_clap"
+				"ModifierName"	"modifier_mountain_king_thunder_clap"
 				"Target"
 				{
 					"Center"	"CASTER"
@@ -97,7 +97,7 @@
 			
 			"ApplyModifier"
 			{
-				"ModifierName"	"modifier_paladin_thunder_clap"
+				"ModifierName"	"modifier_mountain_king_thunder_clap"
 				"Target"
 				{
 					"Center"	"CASTER"
@@ -124,7 +124,7 @@
 
 		"Modifiers"
 		{
-			"modifier_paladin_thunder_clap" // needs tooltip
+			"modifier_mountain_king_thunder_clap" // needs tooltip
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"

@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Horde Fire Roshan: Fire Breath - Channeling damage in a cone in front of a caster while changing direction
-	// Author: Darkonius
-	// Notes: OK; 9.5.2018; Don't change the name!
+	// Horde Fire Roshling: Fire Breath - Channeling damage in a cone in front of a caster while changing direction
+	// Author: Valve
+	// Notes: OK; 9.5.2018; Don't change the name of the ability or AbilitySpecials names and order!
 	// TO_DO:
 	//=================================================================================================================
 	"creature_fire_breath"

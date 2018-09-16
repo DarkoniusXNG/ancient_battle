@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Linkens: Blocks;
 	// Notes: OK; 9.5.2018; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
-	// Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan and other Ancients;
 	// TO_DO: Damage filter branch
 	//=================================================================================================================
 	"bane_custom_enfeeble"

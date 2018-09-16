@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Axe; 11.5.2018;
-	// TO_DO:
+	// HERO: Axe; 16.9.2018;
+	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_axe"
 	{
@@ -22,7 +22,9 @@
 		"Ability4"					"axe_custom_counter_helix"				// T, passive (4 levels)
 		"Ability5"					"axe_custom_blood_mist_power"			// F, Second Ultimate (1 level)
 		"Ability6"					"holdout_culling_blade"					// R, Primary Ultimate (3 levels)
-		
+		"Ability7"					"generic_hidden"
+		"Ability8"					"generic_hidden"
+		"Ability9"					"generic_hidden"
 		"Ability10"					"special_bonus_strength_8"				// lvl 10 talent: same as dota Axe
 		"Ability11"					"special_bonus_attack_speed_40"			// lvl 10 talent: same as dota Axe		
 		"Ability12"					"special_bonus_mp_regen_3"				// lvl 15 talent: same as dota Axe

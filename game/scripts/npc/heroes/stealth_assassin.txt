@@ -1,10 +1,10 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Stealth Assassin - Ryu; 12.5.2018;
+	// HERO: Stealth Assassin - Ryu; 16.9.2018;
 	// TO_DO: stealth_assassin_permanent_invisibility; stealth_assassin_death_ward
 	//=================================================================================================================
-	"npc_dota_hero_custom_stealth_assassin"
+	"npc_dota_hero_stealth_assassin"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------	
@@ -24,7 +24,9 @@
 		"Ability4"				"stealth_assassin_permanent_invisibility"	// T, passive (4 levels)
 		"Ability5"				"stealth_assassin_ambush"					// F, Secondary Ultimate (1 level)
 		"Ability6"				"stealth_assassin_death_ward"				// R, Primary Ultimate (3 levels)
-		
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
 		"Ability10"				"special_bonus_hp_150"						// lvl 10 talent: unique
 		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: unique
 		"Ability12"				"special_bonus_20_crit_15"					// lvl 15 talent: same as Riki

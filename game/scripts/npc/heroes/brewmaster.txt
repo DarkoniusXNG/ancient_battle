@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Brewmaster; 11.5.2018;
+	// HERO: Brewmaster; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_brewmaster"
@@ -22,7 +22,9 @@
 		"Ability4"			"brewmaster_custom_drunken_brawler"					// T, passive (4 levels)
 		"Ability5"			"brewmaster_custom_drunken_fist"					// F, Secondary Ultimate (3 levels)
 		"Ability6"			"brewmaster_custom_primal_split"					// R, Primary Ultimate (1 level)
-		
+		"Ability7"			"generic_hidden"
+		"Ability8"			"generic_hidden"
+		"Ability9"			"generic_hidden"
 		"Ability10"			"special_bonus_hp_200"								// lvl 10 talent: same as dota Brewmaster 
 		"Ability11"			"special_bonus_mp_regen_3"							// lvl 10 talent: unique
 		"Ability12"			"special_bonus_attack_damage_65"					// lvl 15 talent: unique

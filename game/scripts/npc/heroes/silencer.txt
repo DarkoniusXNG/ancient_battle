@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Silencer; 12.5.2018;
-	// TO_DO: silencer_custom_curse_of_the_silent; silencer_custom_glaives_of_silence;
+	// HERO: Silencer; 16.9.2018;
+	// TO_DO: silencer_custom_curse_of_the_silent; silencer_custom_global_silence;
 	//=================================================================================================================
 	"npc_dota_hero_custom_silencer"
 	{
@@ -20,7 +20,8 @@
 		"Ability5"				"silencer_custom_summon_golems"			// F, Secondary Ultimate (3 levels)
 		"Ability6"				"silencer_custom_global_silence"		// R, Primary Ultimate (1 level)
 		"Ability7"				"silencer_glaives_of_wisdom"			// innate ability
-		
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
 		"Ability10"				"special_bonus_armor_5"					// lvl 10 talent; same as dota Silencer
 		"Ability11"				"special_bonus_intelligence_7"			// lvl 10 talent; unique
 		"Ability12"				"special_bonus_hp_200"					// lvl 15 talent; unique

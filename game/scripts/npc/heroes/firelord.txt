@@ -1,10 +1,10 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Fire Lord; 12.5.2018;
+	// HERO: Fire Lord; 16.9.2018;
 	// TO_DO: firelord_meteor_push;
 	//=================================================================================================================
-	"npc_dota_hero_custom_firelord"
+	"npc_dota_hero_fire_lord"
 	{
 		// General
 		//----------------------------------------------------------------
@@ -25,7 +25,8 @@
 		"Ability5"				"firelord_flaming_presence"				// F, passive, Secondary Ultimate (1 level)
 		"Ability6" 				"firelord_volcano"						// R, Primary Ultimate (3 levels)
 		"Ability7"				"firelord_arcana_model"					// innate ability; Visual effect - Arcana
-		
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
 		"Ability10"				"special_bonus_hp_175"					// lvl 10 talent: unique
 		"Ability11"				"special_bonus_attack_speed_20"			// lvl 10 talent: same as Shadow Fiend
 		"Ability12"				"special_bonus_spell_amplify_10"		// lvl 15 talent: unique

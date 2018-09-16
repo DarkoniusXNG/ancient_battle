@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Lightning Shaman: Wrath of the Sky (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
+	// Lightning Shaman: Perun's Wrath (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
 	// Author: Darkonius
-	// Notes: OK; 7.9.2018; Stun radius is smaller;
+	// Notes: OK; 13.9.2018; Stun radius is smaller than the damage/blind radius;
 	// TO_DO:
 	//=================================================================================================================
 	"perun_sky_wrath"

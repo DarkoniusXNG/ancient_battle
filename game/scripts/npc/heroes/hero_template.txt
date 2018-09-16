@@ -24,17 +24,17 @@
 		// "Ability4"				""									// T (4 levels)
 		// "Ability5"				""									// F, Secondary Ultimate (1 level)
 		// "Ability6"				""									// R, Primary Ultimate (3 levels)				
-        // "Ability7"				""					
-		// "Ability8"				""
-		// "Ability9"				""
-		// "Ability10"		"special_bonus_undefined"
-		// "Ability11"		"special_bonus_undefined"
-		// "Ability12"		"special_bonus_undefined"
-		// "Ability13"		"special_bonus_undefined"
-		// "Ability14"		"special_bonus_undefined"
-		// "Ability15"		"special_bonus_undefined"
-		// "Ability16"		"special_bonus_undefined"
-		// "Ability17"		"special_bonus_undefined"
+        // "Ability7"				"generic_hidden"					
+		// "Ability8"				"generic_hidden"
+		// "Ability9"				"generic_hidden"
+		// "Ability10"				"special_bonus_undefined"
+		// "Ability11"				"special_bonus_undefined"
+		// "Ability12"				"special_bonus_undefined"
+		// "Ability13"				"special_bonus_undefined"
+		// "Ability14"				"special_bonus_undefined"
+		// "Ability15"				"special_bonus_undefined"
+		// "Ability16"				"special_bonus_undefined"
+		// "Ability17"				"special_bonus_undefined"
 
 		// // Protection
 		// //-------------------------------------------------------------------------------------------------------------

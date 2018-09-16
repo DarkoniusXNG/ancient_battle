@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Queen of Pain; 12.5.2018;
+	// HERO: Queen of Pain; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_queenofpain"	
@@ -24,7 +24,9 @@
 		"Ability4"			"queenofpain_custom_scream_of_terror"	// T (4 levels)
 		"Ability5"			"queenofpain_custom_pain_steal"			// F, passive (1 level)
 		"Ability6"			"queenofpain_sonic_wave"				// R, Primary Ultimate, DOTA_VERSION (3 levels)
-		
+		"Ability7"			"generic_hidden"
+		"Ability8"			"generic_hidden"
+		"Ability9"			"generic_hidden"
 		"Ability10"			"special_bonus_attack_damage_25"		// lvl 10 talent: same as dota QoP
 		"Ability11"			"special_bonus_strength_10"				// lvl 10 talent: same as dota QoP
 		"Ability12"			"special_bonus_cooldown_reduction_12"	// lvl 15 talent: same as dota QoP

@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Horde Exploding Zombie: Acid Spray on Death
+	// Horde Exploding Zombie: Damage, Knockback + Acid Spray on Death
 	// Author: Valve + Darkonius
-	// Notes: OK; 6.10.2017;
+	// Notes: OK; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"exploding_zombie_acid_spray"
@@ -31,7 +31,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"150"
+				"damage_per_second"		"150"
 			}
 			"04"
 			{
@@ -156,14 +156,14 @@
 				"IsPurgable"	"0"
 				
 				"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
-				"ThinkInterval"	"%tick_rate"
 				
+				"ThinkInterval"	"%tick_rate"
 				"OnIntervalThink"
 				{
 					"Damage"
 					{
 						"Type"		"DAMAGE_TYPE_PHYSICAL"
-						"Damage"	"%damage"
+						"Damage"	"%damage_per_second"
 						"Target"	"TARGET"
 					}
 				}

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Alchemist; 11.5.2018;
+	// HERO: Alchemist; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_alchemist"
@@ -22,8 +22,9 @@
 		"Ability4"				"alchemist_goblins_greed"				// T, DOTA_VERSION (4 levels)
 		"Ability5"				"alchemist_custom_transmute"			// F, Secondary Ultimate (1 level)
 		"Ability6"				"alchemist_custom_chemical_rage"		// R, Primary Ultimate (3 levels)
-		"Ability7"				"generic_hidden"		
-        
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
 		"Ability10"				"special_bonus_attack_speed_25"			// lvl 10 talent: same as dota Alchemist
 		"Ability11"				"special_bonus_armor_4"					// lvl 10 talent: unique
 		"Ability12"				"special_bonus_attack_damage_50"		// lvl 15 talent; same as dota Alchemist

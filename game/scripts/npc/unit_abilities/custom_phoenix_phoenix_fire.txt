@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Phoenix: Phoenix Fire
 	// Author: Darkonius
-	// Notes: OK; 24.5.2018;
-	// TO_DO: 
+	// Notes: OK; 16.9.2018;
+	// TO_DO: Particles, Sounds and Phoenix Degen (negative hp regen or damage with hp removal flag)
 	//=================================================================================================================
 	"custom_phoenix_phoenix_fire"
 	{
@@ -35,52 +35,58 @@
 
 		"Modifiers"
 		{
-			"modifier_phoenix_reborn"
+			"modifier_custom_phoenix_fire_aura_applier" // doesn't need tooltip
 			{
 				"Passive"           "1"
+				"IsHidden"			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+				
+				"Aura" 				"modifier_custom_phoenix_fire_aura_effect"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
 				"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
 				"EffectAttachType"  "follow_origin"
+			}
+			
+			"modifier_custom_phoenix_fire_aura_effect" // needs tooltip
+			{
+				"IsHidden" 			"0"
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
 
 				"OnCreated"
 				{
-					"FireSound"
+					"Damage"
 					{
-						"EffectName"    "Hero_Phoenix.SuperNova.Begin"
-						"Target"        "CASTER"
+						"Target"	"TARGET"
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Damage"    "%initial_damage"
 					}
+					
+					//"FireSound"
+					//{
+						//"EffectName"    ""
+						//"Target"        "CASTER"
+					//}
 				}
-			
-
+				
 				"ThinkInterval"  "1.0"
 				"OnIntervalThink"
 				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/phoenix.lua"
-						"Function"      "PhoenixDegen"
-					}
+					//"RunScript"
+					//{
+						//"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+						//"Function"      "PhoenixDegen"
+					//}
 
 					"Damage"
 					{
-						"Target"
-						{
-							"Center"    "CASTER"
-							"Radius"    "%phoenix_immolation_radius"
-							"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Type"          "DAMAGE_TYPE_MAGICAL"
-						"Damage"        "%phoenix_damage_per_second"
-					}
-				}
-				
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/phoenix.lua"
-						"Function"      "PhoenixEgg"
+						"Target"	"TARGET"
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Damage"    "%damage_per_second"
 					}
 				}
 			}

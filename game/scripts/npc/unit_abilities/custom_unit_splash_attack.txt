@@ -1,0 +1,46 @@
+"DOTAAbilities"
+{
+	//====================================================================================================
+	// Custom units: Splash Attack - passive, dealing 100% attack damage in a radius around the attacked target;
+	// Author: Darkonius
+	// Notes: OK; 16.9.2018;
+	// TO_DO: ALL
+	//====================================================================================================
+	"custom_unit_splash_attack"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"    "custom/custom_unit_splash_attack"
+	    "MaxLevel"              "1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"400"
+			}
+		}
+	
+	    "Modifiers"
+	    {
+	        "modifier_custom_unit_custom_splash_attack" // doesn't need tooltip
+	        {
+	            "Passive"		"1"
+	            "IsHidden"		"1"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					
+				}
+	    
+	            "States"
+	            {
+	                
+	            }
+	        }
+	    }
+	}
+}

@@ -29,6 +29,7 @@
 #base "hero_abilities/axe_custom_cut_from_above.txt"
 
 #base "hero_abilities/bane_custom_enfeeble.txt"
+#base "hero_abilities/bane_custom_brain_sap.txt"
 #base "hero_abilities/bane_custom_nightmare.txt"
 #base "hero_abilities/bane_custom_night_terror.txt"
 #base "hero_abilities/bane_custom_atropos_end.txt"
@@ -105,7 +106,8 @@
 #base "hero_abilities/paladin_eternal_devotion.txt"
 #base "hero_abilities/paladin_holy_purification.txt"
 #base "hero_abilities/paladin_storm_hammer.txt"
-#base "hero_abilities/paladin_thunder_clap.txt"
+
+#base "hero_abilities/mountain_king_thunder_clap.txt"
 
 #base "hero_abilities/perun_ball_of_lightning.txt"
 #base "hero_abilities/perun_electric_shield.txt"
@@ -163,6 +165,8 @@
 #base "unit_abilities/primal_split_storm_spirit_storm_walk.txt"
 #base "unit_abilities/dummy_unit.txt"
 #base "unit_abilities/custom_unit_spell_immunity.txt"
+#base "unit_abilities/custom_unit_splash_attack.txt"
+#base "unit_abilities/custom_phoenix_phoenix_fire.txt"
 #base "unit_abilities/custom_phoenix_turn_into_egg.txt"
 #base "unit_abilities/custom_egg_turn_into_phoenix.txt"
 #base "unit_abilities/custom_egg_passives.txt"

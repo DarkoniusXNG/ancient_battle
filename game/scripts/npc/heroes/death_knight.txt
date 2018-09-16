@@ -1,9 +1,9 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Death Knight; 11.5.2018;
+	// HERO: Death Knight; 16.9.2018;
 	// Notes: OK; Death Pact provides dmg and hp, Chilling Death Aura provides bonus hp regen and bonus ms;
-	// TO_DO: death_knight_death_pit;
+	// TO_DO: death_knight_death_pit; death_knight_chilling_touch;
 	//=================================================================================================================
 	"npc_dota_hero_death_knight"
 	{
@@ -16,22 +16,24 @@
 		
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"				"6"
-		"Ability1"					"death_knight_death_coil"				// Q (4 levels)
-		"Ability2"					"death_knight_death_pact"				// W, modified (4 levels)
-		"Ability3"					"death_knight_death_pit"				// E (4 levels)
-		"Ability4"					"abaddon_frostmourne"					// T, DOTA_VERSION (4 levels)
-		"Ability5"					"death_knight_chilling_touch"			// F, Secondary Ultimate (1 level)
-		"Ability6"					"abaddon_borrowed_time"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
-		
-		"Ability10"		"special_bonus_intelligence_10"						// lvl 10 talent; unique
-		"Ability11"		"special_bonus_exp_boost_20"						// lvl 10 talent; same as Abaddon
-		"Ability12"		"special_bonus_mp_regen_4"							// lvl 15 talent; unique
-		"Ability13"		"special_bonus_armor_6"								// lvl 15 talent; same as Abaddon
-		"Ability14"		"special_bonus_cooldown_reduction_20"				// lvl 20 talent; same as Abaddon
-		"Ability15"		"special_bonus_attack_damage_90"					// lvl 20 talent; same as Abaddon
-		"Ability16"		"special_bonus_unique_abaddon_3"					// lvl 25 talent; same as Abaddon
-		"Ability17"		"special_bonus_attack_speed_80"						// lvl 25 talent; unique
+		"AbilityLayout"			"6"
+		"Ability1"				"death_knight_death_coil"				// Q (4 levels)
+		"Ability2"				"death_knight_death_pact"				// W, modified (4 levels)
+		"Ability3"				"death_knight_death_pit"				// E (4 levels)
+		"Ability4"				""										// T, DOTA_VERSION (4 levels)
+		"Ability5"				"death_knight_chilling_touch"			// F, Secondary Ultimate (1 level)
+		"Ability6"				"abaddon_borrowed_time"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"special_bonus_intelligence_10"			// lvl 10 talent; unique
+		"Ability11"				"special_bonus_exp_boost_20"			// lvl 10 talent; same as Abaddon
+		"Ability12"				"special_bonus_mp_regen_4"				// lvl 15 talent; unique
+		"Ability13"				"special_bonus_armor_6"					// lvl 15 talent; same as Abaddon
+		"Ability14"				"special_bonus_cooldown_reduction_20"	// lvl 20 talent; same as Abaddon
+		"Ability15"				"special_bonus_attack_damage_90"		// lvl 20 talent; same as Abaddon
+		"Ability16"				"special_bonus_unique_abaddon_3"		// lvl 25 talent; same as Abaddon
+		"Ability17"				"special_bonus_attack_speed_80"			// lvl 25 talent; unique
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

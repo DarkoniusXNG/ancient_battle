@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Dark Ranger; 11.5.2018;
+	// HERO: Dark Ranger; 16.9.2018;
 	// Notes: OK; Dark Arrows provide bonus dmg, Precision aura provides bonus dmg proportional to agility; Marksmanship provides bonus agility
 	// TO_DO:
 	//=================================================================================================================
@@ -26,7 +26,9 @@
 		"Ability4"			"dark_ranger_life_drain"				// T (4 levels)
 		"Ability5"			"dark_ranger_charm"						// F, Secondary Ultimate (1 level)
 		"Ability6" 			"dark_ranger_custom_marksmanship"		// R, Primary Ultimate (3 levels)
-		
+		"Ability7"			"generic_hidden"
+		"Ability8"			"generic_hidden"
+		"Ability9"			"generic_hidden"
 		"Ability10"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as Drow Ranger
 		"Ability11"			"special_bonus_all_stats_5"				// lvl 10 talent; same as Drow Ranger
 		"Ability12"			"special_bonus_unique_drow_ranger_2"	// lvl 15 talent; same as Drow Ranger

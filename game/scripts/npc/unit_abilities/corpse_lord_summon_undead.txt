@@ -2,18 +2,18 @@
 {
 	//=================================================================================================================
 	// Horde Corpse Lord: Summon Undead
-	// Author: Valve
-	// Notes: OK; 20.6.2017;
+	// Author: Valve + Darkonius
+	// Notes: OK; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"corpse_lord_summon_undead"
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName" 			"undying_soul_rip"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		
 		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"2.2 2.1 2.0 1.9"
+		"AbilityChannelTime"			"2.5"
 		"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
 		"AbilityCooldown"				"10.0"
 		"AbilityManaCost"				"100"

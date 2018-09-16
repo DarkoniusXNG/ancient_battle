@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lich; 11.5.2018;
+	// HERO: Lich; 16.9.2018;
 	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
 	// TO_DO:
 	//=================================================================================================================
@@ -24,7 +24,9 @@
 		"Ability4"			"lich_custom_death_and_decay"			// T (4 levels)
 		"Ability5"			"lich_custom_freezing_touch"			// F, passive, Secondary Ultimate (1 level, level 12 required)
 		"Ability6"			"lich_custom_ice_storm"					// R, Primary Ultimate (3 levels, level 6 required)
-		
+		"Ability7"			"generic_hidden"
+		"Ability8"			"generic_hidden"
+		"Ability9"			"generic_hidden"
 		"Ability10"			"special_bonus_hp_175"					// lvl 10 talent; same as dota Lich
 		"Ability11"			"special_bonus_movement_speed_25"		// lvl 10 talent; same as dota Lich
 		"Ability12"			"special_bonus_cast_range_175"			// lvl 15 talent; unique

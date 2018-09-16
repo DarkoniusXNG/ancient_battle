@@ -27,7 +27,7 @@
 		"Ability1"          "custom_phoenix_turn_into_egg"
 		"Ability2"          "custom_unit_spell_immunity"
 		"Ability3"          "custom_phoenix_phoenix_fire"
-		"Ability4"          "custom_phoenix_splash_attack"
+		"Ability4"          "custom_unit_splash_attack"
 		
 
 		// Armor

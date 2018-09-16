@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Horde Minor Lich: Minor Frost Blast
 	// Author: Darkonius
-	// Notes: OK; 19.6.2017; Ignores Spell Block (Linkens) and Spell Reflect (Lotus Orb);
+	// Notes: OK; 16.9.2018; Ignores Spell Block (Linkens) and Spell Reflect (Lotus Orb);
 	// TO_DO:
 	//=================================================================================================================
 	"lich_custom_minor_frost_blast"
@@ -33,7 +33,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"190"
+		"AbilityManaCost"				"200"
 		"AbilityProcsMagicStick"		"1"
 
 		// Special
@@ -100,10 +100,10 @@
 			{
 				"Target"
 				{
-					"Center"  				"TARGET"
-					"Radius" 				"%radius"
-					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+					"Center"  		"TARGET"
+					"Radius" 		"%radius"
+					"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 				}
 
 				"Action"

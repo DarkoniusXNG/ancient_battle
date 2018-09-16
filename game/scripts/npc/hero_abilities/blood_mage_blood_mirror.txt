@@ -30,8 +30,8 @@
 		
 		"precache"
 		{
-			//"particle"  	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-			//"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+			//"particle"  	"particles/units/heroes/.vpcf"
+			//"soundfile" 	"soundevents//.vsndevts"
 		}
 		
 		"AbilitySpecial"
@@ -84,7 +84,7 @@
 				"IsPurgable"		"1"
 		
 				//"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				//"EffectAttachType"	"follow_origin"
+				"EffectAttachType"	"follow_origin"
 		
 				"Properties"
 				{
@@ -104,7 +104,7 @@
 				"IsPurgable"		"1"
 		
 				//"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				//"EffectAttachType"	"follow_origin"
+				"EffectAttachType"	"follow_origin"
 		
 				"Properties"
 				{

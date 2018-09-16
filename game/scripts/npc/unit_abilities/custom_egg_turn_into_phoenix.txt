@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Phoenix Egg: Turn into Phoenix if not killed
 	// Author: Darkonius
-	// Notes: OK; 24.5.2018;
+	// Notes: OK; 16.9.2018;
 	// TO_DO: 
 	//=================================================================================================================
 	"custom_egg_turn_into_phoenix"
@@ -23,21 +23,6 @@
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
 				
-				//"OnCreated"
-				//{
-					//"AttachEffect"
-					//{
-						//"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf"
-						//"EffectAttachType"  "follow_origin"
-						//"Target"            "TARGET"
-						//"ControlPointEntities"
-						//{
-							//"TARGET"    "attach_origin"
-							//"TARGET"    "attach_origin"
-						//}
-					//}                       
-				//}
-
 				"OnDeath"
 				{
 					"RunScript"

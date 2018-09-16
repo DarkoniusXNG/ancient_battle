@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Gambler; 11.5.2018;
+	// HERO: Gambler; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_gambler"
@@ -29,7 +29,6 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 		"Ability10"				"generic_hidden"
-		
 		"Ability11"				"special_bonus_attack_damage_60"			// lvl 10 talent: same as Rubick
 		"Ability12"				"special_bonus_hp_200"						// lvl 10 talent: same as Rubick
 		"Ability13"				"special_bonus_intelligence_15"				// lvl 15 talent: unique

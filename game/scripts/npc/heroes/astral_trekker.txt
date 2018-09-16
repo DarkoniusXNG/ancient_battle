@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Astral Trekker; 11.5.2018;
+	// HERO: Astral Trekker; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_astral_trekker"
@@ -23,7 +23,9 @@
 		"Ability4"				"astral_trekker_time_constant"				// T, passive (1 level)
 		"Ability5"				"astral_trekker_giant_growth"				// F. Secondary Ultimate (3 levels)
 		"Ability6"				"astral_trekker_astral_charge"				// R, Primary Ultimate (4 levels)
-
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
 		"Ability10"				"special_bonus_all_stats_5"					// lvl 10 talent; unique
 		"Ability11"				"special_bonus_armor_5"						// lvl 10 talent; same as Spirit Breaker
 		"Ability12"				"special_bonus_attack_damage_45"			// lvl 15 talent; unique

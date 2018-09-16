@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lightning Shaman - Perun; 11.5.2018;
+	// HERO: Lightning Shaman - Perun; 16.9.2018;
 	// TO_DO: perun_electric_trap; perun_electric_shield;
 	//=================================================================================================================
 	"npc_dota_hero_perun"
@@ -17,22 +17,24 @@
 		
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"				"6"
-		"Ability1" 					"perun_ball_of_lightning"			// Q (4 levels)
-		"Ability2" 					"perun_sky_wrath"					// W (4 levels)
-		"Ability3" 					"perun_electric_trap"				// E (4 levels)
-		"Ability4" 					"perun_electric_shield"				// T (4 levels)
-		"Ability5"					"perun_purge"						// F, Secondary Ultimate (1 level)
-		"Ability6" 					"perun_ion_blast"					// R, Primary Ultimate (3 levels)
-		
-		"Ability10"		"special_bonus_armor_5"							// lvl 10 talent; unique
-		"Ability11"		"special_bonus_intelligence_8"					// lvl 10 talent; same as Skywrath Mage
-		"Ability12"		"special_bonus_attack_damage_40"				// lvl 15 talent; unique
-		"Ability13"		"special_bonus_hp_300"							// lvl 15 talent; same as Bloodseeker
-		"Ability14"		"special_bonus_movement_speed_30"				// lvl 20 talent; unique
-		"Ability15"		"special_bonus_all_stats_10"					// lvl 20 talent; unique
-		"Ability16"		"special_bonus_mp_regen_6"						// lvl 25 talent; unique
-		"Ability17"		"special_bonus_spell_lifesteal_30"				// lvl 25 talent; unique
+		"AbilityLayout"			"6"
+		"Ability1" 				"perun_ball_of_lightning"			// Q (4 levels)
+		"Ability2" 				"perun_sky_wrath"					// W (4 levels)
+		"Ability3" 				"perun_electric_trap"				// E (4 levels)
+		"Ability4" 				"perun_electric_shield"				// T (4 levels)
+		"Ability5"				"perun_purge"						// F, Secondary Ultimate (1 level)
+		"Ability6" 				"perun_ion_blast"					// R, Primary Ultimate (3 levels)
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"special_bonus_armor_5"				// lvl 10 talent; unique
+		"Ability11"				"special_bonus_intelligence_8"		// lvl 10 talent; same as Skywrath Mage
+		"Ability12"				"special_bonus_attack_damage_40"	// lvl 15 talent; unique
+		"Ability13"				"special_bonus_hp_300"				// lvl 15 talent; same as Bloodseeker
+		"Ability14"				"special_bonus_movement_speed_30"	// lvl 20 talent; unique
+		"Ability15"				"special_bonus_all_stats_10"		// lvl 20 talent; unique
+		"Ability16"				"special_bonus_mp_regen_6"			// lvl 25 talent; unique
+		"Ability17"				"special_bonus_spell_lifesteal_30"	// lvl 25 talent; unique
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

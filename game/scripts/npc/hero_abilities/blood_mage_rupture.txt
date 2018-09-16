@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Rupture - Datadriven Bloodseeker's rupture without Aghanim Scepter
 	// Author: Darkonius
-	// Notes: OK; 16.5.2018;
+	// Notes: OK; 16.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_rupture"
@@ -66,6 +66,7 @@
 			{
 				"var_type"							"FIELD_FLOAT"
 				"damage_cap_interval"				"0.25"
+				"CalculateSpellDamageTooltip"		"0"
 			}
 		}
 		

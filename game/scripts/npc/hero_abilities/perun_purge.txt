@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Lightning Shaman: Shaman Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
+	// Lightning Shaman: Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 31.12.2016;
+	// Notes: OK; 13.9.2018;
 	// TO_DO: Add Aghanim Scepter Upgrade (Applies Break on enemies)
 	//=================================================================================================================
 	"perun_purge"
