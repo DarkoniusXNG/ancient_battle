@@ -271,7 +271,7 @@ function ancient_battle_gamemode:InitGameMode()
 	
 	local gamemode = GameRules:GetGameModeEntity()
 	
-	-- Setting the Order filter to start catching events
+	-- Setting the Order filter
 	gamemode:SetExecuteOrderFilter(Dynamic_Wrap(ancient_battle_gamemode, "OrderFilter"), self)
   
 	-- Setting the Damage filter
@@ -330,9 +330,15 @@ function ancient_battle_gamemode:CaptureGameMode()
 		mode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 		mode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
 
-		mode:SetUseDefaultDOTARuneSpawnLogic(true)
-		mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
+		if USE_DEFAULT_RUNE_SYSTEM then
+			mode:SetUseDefaultDOTARuneSpawnLogic(USE_DEFAULT_RUNE_SYSTEM)
+		else
+			for rune, spawn in pairs(ENABLED_RUNES) do
+				mode:SetRuneEnabled(rune, spawn)
+			end
+		end
 		
+		mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
 		mode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
 		mode:SetKillingSpreeAnnouncerDisabled(DISABLE_KILLING_SPREE_ANNOUNCER)
 		mode:SetStickyItemDisabled(DISABLE_STICKY_ITEM)

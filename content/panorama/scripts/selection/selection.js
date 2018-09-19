@@ -13,8 +13,7 @@ function Selection_New(msg)
         else
             GameUI.SelectUnit(entities[i], true) //Add
     };
-    // OnUpdateSelectedUnit()
-	$.Schedule(0.03, SendSelectedEntities);
+    $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Recieves a list of entities to add to the current selection
@@ -25,8 +24,7 @@ function Selection_Add(msg)
     for (var i in entities) {
         GameUI.SelectUnit(entities[i], true)
     };
-    //OnUpdateSelectedUnit()
-	$.Schedule(0.03, SendSelectedEntities);
+    $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Removes a list of entities from the current selection
@@ -53,8 +51,7 @@ function Selection_Remove(msg)
         else
             GameUI.SelectUnit(selected_entities[i], true) //Add
     };
-    //OnUpdateSelectedUnit()
-	$.Schedule(0.03, SendSelectedEntities);
+    $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Fall back to the default selection
@@ -63,8 +60,7 @@ function Selection_Reset(msg)
     var playerID = Players.GetLocalPlayer()
     var heroIndex = Players.GetPlayerHeroEntityIndex(playerID)
     GameUI.SelectUnit(heroIndex, false)
-    //OnUpdateSelectedUnit()
-	$.Schedule(0.03, SendSelectedEntities);
+    $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Filter & Sending
@@ -105,12 +101,12 @@ function OnUpdateQueryUnit()
 
 (function () {
     // Custom event listeners
-    GameEvents.Subscribe( "selection_new", Selection_New);
-    GameEvents.Subscribe( "selection_add", Selection_Add);
-    GameEvents.Subscribe( "selection_remove", Selection_Remove);
-    GameEvents.Subscribe( "selection_reset", Selection_Reset);
+    GameEvents.Subscribe("selection_new", Selection_New);
+    GameEvents.Subscribe("selection_add", Selection_Add);
+    GameEvents.Subscribe("selection_remove", Selection_Remove);
+    GameEvents.Subscribe("selection_reset", Selection_Reset);
 
     // Built-In Dota client events
-    GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
-    GameEvents.Subscribe( "dota_player_update_query_unit", OnUpdateQueryUnit );
+    GameEvents.Subscribe("dota_player_update_selected_unit", OnUpdateSelectedUnit);
+    GameEvents.Subscribe("dota_player_update_query_unit", OnUpdateQueryUnit);
 })();
