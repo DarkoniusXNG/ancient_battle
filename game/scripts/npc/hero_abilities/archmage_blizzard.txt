@@ -37,8 +37,8 @@
 			}
 			"02" // (Abyssal Underlord Firestorm: 6; Archmage original: 6/8/10; Shrapnel: 10)
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"6.0 7.0 8.0 9.0"
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"6 7 8 9"
 			}
 			"03" // (Abyssal Underlord Firestorm: 25/40/55/70; Archmage original: 30/40/50; Shrapnel: 15/35/55/75)
 			{
@@ -47,13 +47,13 @@
 			}
 			"04" // like original Archmage, Abyssal Underlord Firestorm and Sniper's Shrapnel
 			{
-				"var_type"				"FIELD_FLOAT"
-				"wave_interval"			"1.0"
+				"var_type"				"FIELD_INTEGER"
+				"wave_interval"			"1"
 			}
 			"05"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"1.0"
+				"var_type"				"FIELD_INTEGER"
+				"slow_duration"			"1"
 			}
 			"06" // like Ice Vortex and Shrapnel
 			{

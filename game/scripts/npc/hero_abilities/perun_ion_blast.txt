@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Ion Blast (R) - New Spell, Powershot with Mana Burn, Skillshot
 	// Author: Darkonius
-	// Notes: OK; 7.9.2018;
+	// Notes: OK; 25.9.2018;
 	// TO_DO: Fix Wrong projectile;
 	//=================================================================================================================
 	"perun_ion_blast"
@@ -20,21 +20,21 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"3000"
+		"AbilityCastRange"				"2600 3000 4500"
 		"AbilityCastPoint"				"0.35"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"135"
+		"AbilityCooldown"				"135 120 100"
 		"AbilityDuration"				"0.6875"
 		
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"220 320 420"
+		"AbilityDamage"					"250 350 450"	// same as WR Powershot but lower than QoP Sonic Wave
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"250 360 500"
+		"AbilityManaCost"				"250 360 500"	// same as QoP Sonic Wave
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
@@ -59,22 +59,22 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_width_initial"	"250"
+				"ion_blast_width_initial"	"200"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_width_end"		"250"
+				"ion_blast_width_end"		"200"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_distance"		"3000"
+				"ion_blast_distance"		"2600 3000 4500"
 			}
-			"05" // should be same as AbilityDamage
+			"05" // should be same as AbilityDamage (same as Powershot but lower than Sonic Wave)
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ion_blast_damage"			"220 320 420"
+				"ion_blast_damage"			"250 350 450"
 			}
 			"06"
 			{

@@ -26,8 +26,8 @@
 		{
 			"01" // don't change the name of this ability special (its required for built-in modifier)
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"duration"                  "25.0"
+				"var_type"                  "FIELD_INTEGER"
+				"duration"                  "25"
 			}
 			"02"
 			{

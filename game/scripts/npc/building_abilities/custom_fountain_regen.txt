@@ -26,18 +26,18 @@
 			}
 			"02"
 			{
-				"var_type"								"FIELD_FLOAT"
-				"hp_regen"								"6.0"
+				"var_type"								"FIELD_INTEGER"
+				"hp_regen"								"6"
 			}
 			"03"
 			{
-				"var_type"								"FIELD_FLOAT"
-				"mp_regen"								"6.0"
+				"var_type"								"FIELD_INTEGER"
+				"mp_regen"								"6"
 			}
 			"04"
 			{
-				"var_type"								"FIELD_FLOAT"
-				"regen_stickyness"						"3.0"
+				"var_type"								"FIELD_INTEGER"
+				"regen_stickyness"						"3"
 			}
 		}
 

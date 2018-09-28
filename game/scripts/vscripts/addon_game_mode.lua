@@ -4,14 +4,18 @@ end
 
 require('util')
 require('customgamemode')
-require('player')
+require('custom_illusions')
+-- Essential files:
+require('libraries/timers')
+require('player_resource')
 
 function Precache(context)
+	-- Custom items
 	PrecacheItemByNameSync("item_slippers_of_halcyon", context)
 	PrecacheItemByNameSync("item_ultimate_king_bar", context)
 	PrecacheItemByNameSync("item_infused_robe", context)
 	
-	-- Holdout stuff
+	-- Holdout stuff (units etc.)
 	PrecacheUnitByNameSync("npc_dota_custom_corpse_lord", context)
 	PrecacheUnitByNameSync("npc_dota_custom_minor_lich", context)
 	PrecacheUnitByNameSync("npc_dota_custom_bash_roshling", context)
@@ -27,6 +31,6 @@ function Precache(context)
 end
 
 function Activate()
-	print("Ancient Battle game mode activated.")
+	print("Ancient Battle custom game activated.")
 	ancient_battle_gamemode:InitGameMode()
 end

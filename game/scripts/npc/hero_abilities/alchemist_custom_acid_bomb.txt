@@ -51,13 +51,13 @@
 		{
 			"01" // like Paralyzing Cask
 			{
-				"var_type"          	"FIELD_FLOAT"
-				"stun_duration"   		"1.0"
+				"var_type"          	"FIELD_INTEGER"
+				"stun_duration"   		"1"
 			}
 			"02" // like Maledict, better than Poison Touch, worse than Acid Spray
 			{
-				"var_type"          	"FIELD_FLOAT"
-				"debuff_duration"       "12.0"
+				"var_type"          	"FIELD_INTEGER"
+				"debuff_duration"       "12"
 			}
 			"03" // like Acid Spray
 			{

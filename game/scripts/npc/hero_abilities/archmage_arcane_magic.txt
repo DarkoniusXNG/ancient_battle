@@ -46,8 +46,8 @@
 			}
 			"02" // KOTL Chakra Magic: 15 seconds
 			{
-				"var_type"				"FIELD_FLOAT"
-				"buff_duration"			"15.0"
+				"var_type"				"FIELD_INTEGER"
+				"buff_duration"			"15"
 			}
 			"03" // Crystal Maiden (Global) Arcane Aura: 0.8/1/1.2/1.4
 			{

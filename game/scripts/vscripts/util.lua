@@ -55,19 +55,16 @@ COLOR_ORANGE = '\x1B'
 COLOR_LRED = '\x1C'
 COLOR_GOLD = '\x1D'
 
---[[ This function is showing Error Messages using notifications library from BMD's Barebones
-	Author: Noya
-]]
+-- This function is showing Error Messages using BMD's notifications library
+-- Author: Noya
 function SendErrorMessage(pID, string)
     Notifications:ClearBottom(pID)
     Notifications:Bottom(pID, {text=string, style={color='#E62020'}, duration=2})
     EmitSoundOnClient("General.Cancel", PlayerResource:GetPlayer(pID))
 end
 
---[[ This function hides all hats (wearables) from the hero and store them into a handle variable
-  Date: 09.08.2015.
-  Author: Noya (Part of BMD Barebones)
-]]
+-- This function hides all hats (wearables) from the hero and store them into a handle variable
+-- Author: Noya
 function HideWearables(hero)
 	hero.hiddenWearables = {} -- Keep every wearable handle in a table to show them later
 	local model = hero:FirstMoveChild()
@@ -80,19 +77,16 @@ function HideWearables(hero)
 	end
 end
 
---[[ This function unhides/shows wearables that were hidden with HideWearables() function.
-	Author: Noya (Part of BMD Barebones)
-]]
+-- This function unhides/shows wearables that were hidden with HideWearables() function.
+-- Author: Noya
 function ShowWearables(hero)
-  for i,v in pairs(hero.hiddenWearables) do
-    v:RemoveEffects(EF_NODRAW)
-  end
+	for i,v in pairs(hero.hiddenWearables) do
+		v:RemoveEffects(EF_NODRAW)
+	end
 end
 
---[[ This function is needed for changing models (for Arcanas for example)
-	Used in firelord_arcana.lua etc.
-	Author: Noya
-]]
+-- This function is needed for changing models (for Arcanas for example)
+-- Author: Noya
 function SwapWearable(unit, target_model, new_model)
     local wearable = unit:FirstMoveChild()
     while wearable ~= nil do
@@ -105,23 +99,33 @@ function SwapWearable(unit, target_model, new_model)
         wearable = wearable:NextMovePeer()
     end
 end
- 
--- This function checks if a given unit is Roshan, returns boolean value;
-function IsRoshan(unit)
-	if unit:IsAncient() and unit:GetName() == "npc_dota_roshan" then
-		return true
-	else
-		return false
-	end
-end
 
--- This function checks if this unit/entity is a fountain or not; returns boolean value;
-function IsFountain(unit)
-	if unit:GetName() == "ent_dota_fountain_bad" or unit:GetName() == "ent_dota_fountain_good" then
+-- This function checks if a given unit is Roshan, returns boolean value;
+function CDOTA_BaseNPC:IsRoshan()
+	if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
 		return true
 	end
 	
 	return false
+end
+
+-- This function checks if this entity is a fountain or not; returns boolean value;
+function CBaseEntity:IsFountain()
+	if self:GetName() == "ent_dota_fountain_bad" or self:GetName() == "ent_dota_fountain_good" then
+		return true
+	end
+	
+	return false
+end
+
+-- This function checks if a given unit is Roshan, returns boolean value;
+function IsRoshan(unit)
+	return unit:IsRoshan()
+end
+
+-- This function checks if this unit is a fountain or not; returns boolean value;
+function IsFountain(unit)
+	return unit:IsFountain()
 end
 
 -- Initializes heroes' innate abilities

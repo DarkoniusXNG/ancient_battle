@@ -4,7 +4,7 @@
 	// Alchemist: Philosopher's Stone (E) - New Spell,
 	// Author: Darkonius
 	// Notes: OK; 15.10.2017;
-	// TO_DO: 
+	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_philosophers_stone"
 	{

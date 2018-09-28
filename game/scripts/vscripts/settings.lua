@@ -1,4 +1,3 @@
--- In this file you can set up all the properties and settings for your game mode.
 
 ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
@@ -27,16 +26,19 @@ MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for rune
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
---BUYBACK_COOLDOWN_TIME = 360.0
+BUYBACK_COOLDOWN_TIME = 360.0
 
 DISABLE_FOG_OF_WAR_ENTIRELY = false     -- Should we disable fog of war entirely for both teams?
 USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged areas of the map completely black until uncovered by each team? 
 -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
-USE_STANDARD_HERO_GOLD_BOUNTY = true    -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
+USE_CUSTOM_HERO_GOLD_BOUNTY = true		-- Should the gold for hero kills be modified (true) or same as in default Dota (false)?
 HERO_KILL_GOLD_BASE = 110				-- Hero gold bounty base value
 HERO_KILL_GOLD_PER_LEVEL = 10			-- Hero gold bounty increase per level
+HERO_KILL_GOLD_PER_STREAK = 60			-- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
+
+USE_CUSTOM_HERO_LEVELS = false			-- Should the heroes give a custom amount of XP when killed?
 
 USE_CUSTOM_TOP_BAR_VALUES = true		-- Should we do customized top bar values or use the default kill count per team?
 TOP_BAR_VISIBLE = true                  -- Should we display the top bar score/count at all?
@@ -47,11 +49,10 @@ REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = false               -- Should the game end after a certain number of kills?
---KILLS_TO_END_GAME_FOR_TEAM = 50       -- How many kills for a team should signify an end of game?
 
-USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
+USE_CUSTOM_XP_VALUES = true      		-- Should we use custom XP values to level up heroes, or the default Dota numbers?
 MAX_LEVEL = 35                          -- What level should we let heroes get to?
-USE_CUSTOM_XP_VALUES = true      --false? broken?-- Should we use custom XP values to level up heroes, or the default Dota numbers?
+-- NOTE: MAX_LEVEL and XP_PER_LEVEL_TABLE will not work if USE_CUSTOM_XP_VALUES is false or nil.
 
 -- Fill this table up with the required XP per level if you want to change it
 XP_PER_LEVEL_TABLE = {}
@@ -93,7 +94,42 @@ DISABLE_ANNOUNCER = false               -- Should we disable the announcer from 
 FORCE_PICKED_HERO = nil                 -- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
 
 FIXED_RESPAWN_TIME = -1                 -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
-MAX_RESPAWN_TIME = 40.0					-- Default Dota doesn't have a limit. Fast game modes have 20.0 seconds
+MAX_RESPAWN_TIME = 30.0					-- Default Dota doesn't have a limit. Fast game modes have 20.0 seconds
+USE_CUSTOM_RESPAWN_TIMES = true			-- Should we use custom respawn times?
+
+-- Fill this table with respawn times on each level if USE_CUSTOM_RESPAWN_TIMES is true.
+CUSTOM_RESPAWN_TIME = {}
+CUSTOM_RESPAWN_TIME[1] = 5
+CUSTOM_RESPAWN_TIME[2] = 7
+CUSTOM_RESPAWN_TIME[3] = 9
+CUSTOM_RESPAWN_TIME[4] = 13
+CUSTOM_RESPAWN_TIME[5] = 16
+CUSTOM_RESPAWN_TIME[6] = 26
+CUSTOM_RESPAWN_TIME[7] = 28
+CUSTOM_RESPAWN_TIME[8] = 30
+CUSTOM_RESPAWN_TIME[9] = 32
+CUSTOM_RESPAWN_TIME[10] = 34
+CUSTOM_RESPAWN_TIME[11] = 36
+CUSTOM_RESPAWN_TIME[12] = 44
+CUSTOM_RESPAWN_TIME[13] = 46
+CUSTOM_RESPAWN_TIME[14] = 48
+CUSTOM_RESPAWN_TIME[15] = 50
+CUSTOM_RESPAWN_TIME[16] = 52
+CUSTOM_RESPAWN_TIME[17] = 54
+CUSTOM_RESPAWN_TIME[18] = 65
+CUSTOM_RESPAWN_TIME[19] = 70
+CUSTOM_RESPAWN_TIME[20] = 75
+CUSTOM_RESPAWN_TIME[21] = 80
+CUSTOM_RESPAWN_TIME[22] = 85
+CUSTOM_RESPAWN_TIME[23] = 90
+CUSTOM_RESPAWN_TIME[24] = 95
+CUSTOM_RESPAWN_TIME[25] = 100
+
+if MAX_LEVEL > 25 then
+	for i=26, MAX_LEVEL do
+		CUSTOM_RESPAWN_TIME[i] = CUSTOM_RESPAWN_TIME[i-1] + 5
+	end
+end
 
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_MANA_REGEN = -1     -- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.
@@ -106,6 +142,8 @@ DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree a
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
 
 USE_DEFAULT_RUNE_SYSTEM = true			-- Use default dota rune spawn timings and the same runes as dota have?
+BOUNTY_RUNE_SPAWN_INTERVAL = 300		-- How long in seconds should we wait between bounty rune spawns? BUGGED! WORKS FOR POWERUPS TOO!
+POWER_RUNE_SPAWN_INTERVAL = 120			-- How long in seconds should we wait between power-up runes spawns? BUGGED! WORKS FOR BOUNTIES TOO!
 
 ENABLED_RUNES = {}                      -- Which runes should be enabled to spawn in our game mode?
 ENABLED_RUNES[DOTA_RUNE_DOUBLEDAMAGE] = true
@@ -113,8 +151,8 @@ ENABLED_RUNES[DOTA_RUNE_HASTE] = true
 ENABLED_RUNES[DOTA_RUNE_ILLUSION] = true
 ENABLED_RUNES[DOTA_RUNE_INVISIBILITY] = true
 ENABLED_RUNES[DOTA_RUNE_REGENERATION] = true
-ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
-ENABLED_RUNES[DOTA_RUNE_ARCANE] = true
+ENABLED_RUNES[DOTA_RUNE_BOUNTY] = false
+ENABLED_RUNES[DOTA_RUNE_ARCANE] = true	-- BUGGED! NEVER SPAWNS!
 
 MAX_NUMBER_OF_TEAMS = 2                			-- How many potential teams can be in this game mode?
 USE_CUSTOM_TEAM_COLORS = false          		-- Should we use custom team colors?
@@ -140,12 +178,13 @@ if GetMapName() == "two_vs_two" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
+	SHOWCASE_TIME = 10.0
 	PRE_GAME_TIME = 30.0
 	POST_GAME_TIME = 30.0
 	GOLD_PER_TICK = 6
 	GOLD_TICK_TIME = 1.0
 	END_GAME_ON_KILLS = true
-	KILLS_TO_END_GAME_FOR_TEAM = 10
+	KILLS_TO_END_GAME_FOR_TEAM = 10			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?
@@ -169,9 +208,10 @@ end
 if GetMapName() == "holdout" then
 	UNIVERSAL_SHOP_MODE = true
 	STRATEGY_TIME = 0.0
+	SHOWCASE_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 2
+	GOLD_PER_TICK = 1
 	GOLD_TICK_TIME = 1.0
 	NORMAL_START_GOLD = 800
 	RANDOM_START_GOLD = 1000
@@ -180,7 +220,7 @@ if GetMapName() == "holdout" then
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true
 	BUYBACK_COOLDOWN_TIME = 0.0
-	MAX_RESPAWN_TIME = 20.0
+	MAX_RESPAWN_TIME = 15.0
 	FOUNTAIN_CONSTANT_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_MANA_REGEN = 1
 	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 1
