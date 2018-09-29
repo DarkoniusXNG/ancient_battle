@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017; Has Aghanim Scepter Upgrade
+	// Notes: OK; 29.9.2018; Has Aghanim Scepter Upgrade - increases dmg and radius
 	// Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
 	// TO_DO:
 	//=================================================================================================================
@@ -26,7 +26,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "15.0"
+		"AbilityCooldown"               "13.0"
 		
 		// Mana Cost + Magic Stick/Wand
 		//-------------------------------------------------------------------------------------------------------------
@@ -53,33 +53,37 @@
 			"02" // same as Hoof Stomp
 			{
 				"var_type"			"FIELD_INTEGER"
-				"stun_radius"		"315"
+				"radius"			"315"
 			}
 			"03" // Hoof Stomp: 100/150/200/250
 			{
 				"var_type"			"FIELD_INTEGER"
 				"base_damage"		"50 75 100 125"
 			}
-			"04" // this is not in tooltip (scepter adds 75 damage)
+			"04" // this is not in tooltip
 			{
 				"var_type"			"FIELD_INTEGER"
 				"damage_level_1"	"100"
 			}
-			"05" // this is not in tooltip (scepter adds 75 damage)
+			"05" // this is not in tooltip
 			{
 				"var_type"			"FIELD_INTEGER"
 				"damage_level_2"	"150"
 			}
-			"06" // this is not in tooltip (scepter adds 75 damage)
+			"06" // this is not in tooltip
 			{
 				"var_type"			"FIELD_INTEGER"
 				"damage_level_3"	"200"
 			}
-			"07" // tooltip only (visible with aghanim scepter)
+			"07" // unique (visible with aghanim scepter)
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_radius_scepter"			"800"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"				"FIELD_INTEGER"
+				"base_damage_scepter"	"125 150 175 200"
+			}
+			"08" // unique (visible with aghanim scepter)
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius_scepter"	"800"
 			}
 		}
 		
@@ -89,11 +93,11 @@
 			{
 				"EffectName"		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
 				"EffectAttachType" 	"follow_origin"
-				"EffectRadius"		"%stun_radius"
+				"EffectRadius"		"%radius"
 				"Target" 			"CASTER"
 				"ControlPoints"
 				{
-					"01"	"%stun_radius 0 %stun_radius"
+					"01"	"%radius 0 %radius"
 				}
 			}
 			
@@ -103,30 +107,10 @@
 				"Target" 			"CASTER"
 			}
 			
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  			"CASTER"
-					"Radius" 			"%stun_radius"
-					"Teams" 			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-
-				"Action"
-				{
-					"ApplyModifier"
-					{
-						"Target" 		"TARGET"
-						"ModifierName"	"modifier_astral_stomp"
-					}
-				}
-			}
-			
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/astral_trekker/astral_stomp.lua"
-				"Function"		"AstralStompDamageCheck"
+				"Function"		"AstralStomp"
 			}
 		}
 		
@@ -137,8 +121,6 @@
 				"IsHidden"		"0"		
 				"IsDebuff"		"1"
 				"IsPurgable"	"1"
-				
-				"Duration"		"%stun_duration"
 				
 				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"

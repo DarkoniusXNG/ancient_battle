@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
 	// Author: Darkonius
-	// Notes: OK; 24.5.2018; Has Aghanim Scepter upgrade;
+	// Notes: OK; 29.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_giant_growth"
@@ -16,18 +16,18 @@
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"5"
 		
-		"HasScepterUpgrade" 			"1"
+		"HasScepterUpgrade" 			"0"
 
 		"AbilityCastPoint" 				"0.0"
 
-		"AbilityCooldown"               "150.0"
+		"AbilityCooldown"               "80.0"
 		
 		"AbilityManaCost"				"75"
 		"AbilityProcsMagicStick"		"1"
 		
 		"AbilitySpecial"
 		{
-			"01" // like Kunkka's Tidebringer (in combination with Pulverize)
+			"01" // Kunkka's Tidebringer 25/50/75/100;
 			{ 
 				"var_type"  					"FIELD_INTEGER"
 				"passive_bonus_damage" 			"50 75 100"
@@ -55,8 +55,8 @@
 			}
 			"06"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"duration"						"40.0 45.0 50.0"
+				"var_type"						"FIELD_INTEGER"
+				"duration"						"40 45 50"
 			}
 			"07" // this is used in lua
 			{
@@ -67,11 +67,6 @@
 			{
 				"var_type"  					"FIELD_INTEGER"
 				"stomp_bonus_damage" 			"100 150 200"
-			}
-			"09" // this is in tooltip only
-			{
-				"var_type"  					"FIELD_INTEGER"
-				"stomp_bonus_damage_scepter" 	"175 225 275"
 			}
 		}
 

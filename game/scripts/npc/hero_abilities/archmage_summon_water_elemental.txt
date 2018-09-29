@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Summon Water Elemental (W) - New Spell, Creates 1 Water Elemental that has no abilities.
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017;
+	// Notes: OK; 29.9.2018;
 	// TO_DO: Make Water Elementals phased and give them free pathing if they are too weak or boring; increase mana cost accordingly
 	// ================================================================================================================
 	"archmage_summon_water_elemental"
@@ -30,8 +30,8 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"60.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"60"
 			}
 			"02" // only in tooltip
 			{
@@ -301,7 +301,7 @@
 				"IsHidden"		"1"
 				"IsPurgable"	"0"
 				
-				"Duration"		"1.0"
+				"Duration"		"1"
 				
 				"States"
 				{

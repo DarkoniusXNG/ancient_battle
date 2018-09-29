@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Time Constant (T) - New Spell; Passive; Immunity to time altering spells and some slows; Super Strong Dispel;
 	// Author: Darkonius
-	// Notes: OK; 31.12.2016;
+	// Notes: OK; 29.9.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_time_constant"

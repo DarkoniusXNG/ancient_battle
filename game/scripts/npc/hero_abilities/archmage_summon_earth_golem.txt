@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Summon Earth Golem (T) - New Spell, Creates 1 Earth Golem that has Hurl Boulder (Stun).
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017;
+	// Notes: OK; 30.9.2018;
 	// TO_DO:
 	// ================================================================================================================
 	"archmage_summon_earth_golem"
@@ -30,8 +30,8 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"60.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"60"
 			}
 			"02" // only in tooltip
 			{
@@ -301,7 +301,7 @@
 				"IsHidden"		"1"
 				"IsPurgable"	"0"
 				
-				"Duration"		"1.0"
+				"Duration"		"1"
 				
 				"States"
 				{

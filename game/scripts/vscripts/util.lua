@@ -789,3 +789,103 @@ function HasOtherUniqueAttackModifiers(unit)
 		return false
 	end
 end
+
+-- XNG random:
+-- chance increases by 5% if false
+-- chance decreases by 5% if true.
+-- If it was false for 2 or more times and then true, chance is reset to starting.
+-- If it was true for 2 or more times and then false, chance is reset to starting.
+-- If the chance is increased to 100% or above, chance is reset to starting.
+-- If the chance is decreased to 0% or below, chance is reset to starting.
+function CDOTA_Ability_Lua:XNGRandom(percentage)
+	local increment = 5
+
+	if self.XNG_counter == nil then
+		self.XNG_counter = 0
+	end
+
+	if self.XNG_success_counter == nil then
+		self.XNG_success_counter = 0
+	end
+
+	if self.XNG_fail_counter == nil then
+		self.XNG_fail_counter = 0
+	end
+
+	local new_percentage = percentage + self.XNG_counter
+
+	-- Reset the counters if new percentage reached a limit
+	if new_percentage >= 100 then
+		self.XNG_counter = 0
+		self.XNG_success_counter = 0
+		self.XNG_fail_counter = 0
+		return true
+	elseif new_percentage <= 0 then
+		self.XNG_counter = 0
+		self.XNG_success_counter = 0
+		self.XNG_fail_counter = 0
+		return false
+	end
+
+	-- Reset the counters if someone is too lucky (consecutive success) or too unlucky (consecutive failure)
+	if self.XNG_success_counter > 2 or self.XNG_fail_counter > 2 then
+		self.XNG_counter = 0
+		self.XNG_success_counter = 0
+		self.XNG_fail_counter = 0
+	end
+
+	if RollPercentage(new_percentage) then
+		-- Decreasing the chance for next check
+		self.XNG_counter = self.XNG_counter - increment	
+
+		-- Increasing success counter
+		self.XNG_success_counter = self.XNG_success_counter + 1
+
+		--Reset the fail counter
+		self.XNG_fail_counter = 0
+
+		return true
+	else
+		-- Increasing the chance for next check
+		self.XNG_counter = self.XNG_counter + increment
+
+		-- Increasing fail counter
+		self.XNG_fail_counter = self.XNG_fail_counter + 1
+
+		-- Reset the success counter
+		self.XNG_success_counter = 0
+
+		return false
+	end
+end
+
+-- Pseudo Random:
+-- Its not the same pseudo-random distribution as in dota
+-- starting chance is lower than percentage. Example: If percentage is 25%, starting chance is 6.25%
+-- chance is increased on each fail. chance increase is equal to starting chance.
+-- If the chance is increased to 100% or above, chance and counter are reset.
+function CDOTA_Ability_Lua:PseudoRandom(percentage)
+	if self.PR_counter == nil then
+		self.PR_counter = 0
+	end
+
+	local new_percentage = math.floor(percentage*percentage/100 + self.PR_counter)
+
+	-- Reset the counters if new percentage reached a limit
+	if new_percentage >= 100 then
+		self.PR_counter = 0
+		return true
+	end
+
+	local chance_increment = percentage*percentage/100
+
+	if RollPercentage(new_percentage) then
+		--Reset the counter
+		self.PR_counter = 0
+		return true
+	else
+		-- Increasing the chance for next check
+		self.PR_counter = self.PR_counter + chance_increment
+		return false
+	end
+end

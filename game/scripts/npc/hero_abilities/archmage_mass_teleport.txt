@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Mass Teleport (R) - New Spell, Ultimate, Teleports the caster and neaby allies to target allied unit or building
 	// Author: Darkonius
-	// Notes: OK; 27.12.2016;
+	// Notes: OK; 29.9.2018;
 	// TO_DO:
 	// ================================================================================================================
 	"archmage_mass_teleport"
@@ -20,8 +20,8 @@
 		"AbilityCastPoint"				"0.6"
 		"AbilityCooldown"				"130 120 110"
 
-		"AbilityManaCost"				"225"
-		"AbilityChannelTime"			"5.0 4.0 3.0"
+		"AbilityManaCost"				"100 200 300"
+		"AbilityChannelTime"			"5 4 3"
 
 		"precache"
 		{
@@ -37,8 +37,8 @@
 			}
 			"03" // should be same as AbilityChannelTime
 			{
-				"var_type"				"FIELD_FLOAT"
-				"channel_time"			"5.0 4.0 3.0"
+				"var_type"				"FIELD_INTEGER"
+				"channel_time"			"5 4 3"
 			}
 		}
 

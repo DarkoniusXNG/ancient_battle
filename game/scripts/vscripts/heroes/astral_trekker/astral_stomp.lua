@@ -1,5 +1,5 @@
 -- Called OnSpellStart
-function AstralStompDamageCheck(event)
+function AstralStomp(event)
 	local caster = event.caster
 	local ability = event.ability
 	
@@ -12,10 +12,16 @@ function AstralStompDamageCheck(event)
 	local dmg_first_level = ability:GetLevelSpecialValueFor("damage_level_1", ability_level)
 	local dmg_second_level = ability:GetLevelSpecialValueFor("damage_level_2", ability_level)
 	local dmg_third_level = ability:GetLevelSpecialValueFor("damage_level_3", ability_level)
-	local base_damage = ability:GetLevelSpecialValueFor("base_damage", ability_level)
-	local radius = ability:GetLevelSpecialValueFor("stun_radius", ability_level)
+	local astral_damage = ability:GetLevelSpecialValueFor("base_damage", ability_level)
+	local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
+	local stun_duration = ability:GetLevelSpecialValueFor("stun_duration", ability_level)
 	
-	local astral_damage = base_damage
+	if caster:HasScepter() then
+		-- Adding bonus damage if the caster has Scepter 
+		astral_damage = ability:GetLevelSpecialValueFor("base_damage_scepter", ability_level)
+		-- Increase the radius even if the caster doesn't have Giant Growth learned
+		radius = ability:GetLevelSpecialValueFor("radius_scepter", ability_level)
+	end
 	
 	-- Checking if caster has Giant Growth ability
 	if giant_growth then
@@ -23,21 +29,10 @@ function AstralStompDamageCheck(event)
 		-- Setting the damage according to level of Giant Growth
 		if giant_growth_level == 1 then
 			astral_damage = astral_damage + dmg_first_level
-		end
-		if giant_growth_level == 2 then
+		elseif giant_growth_level == 2 then
 			astral_damage = astral_damage + dmg_second_level
-		end
-		if giant_growth_level == 3 then
+		elseif giant_growth_level == 3 then
 			astral_damage = astral_damage + dmg_third_level
-		end
-		if caster:HasScepter() then
-			-- Checking if Giant Growth is learned actually
-			if giant_growth_level ~= 0 then
-				-- Adding bonus damage if the caster has Scepter 
-				astral_damage = astral_damage + 75
-			end
-			-- Increase the radius even if the caster doesn't have Giant Growth learned
-			radius = radius + 485
 		end
 	end
 	
@@ -49,6 +44,9 @@ function AstralStompDamageCheck(event)
 	-- Damage enemies in a radius around the caster
 	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 	for _, enemy in pairs(enemies) do
+		-- Apply stun modifier
+		ability:ApplyDataDrivenModifier(caster, enemy, "modifier_astral_stomp", {["duration"] = stun_duration})
+		-- Apply astral damage
 		if enemy:IsAttackImmune() or enemy:IsMagicImmune() then
 			-- Enemy is immune to attacks or magic. Astral damage type doesn't affect them.
 		else

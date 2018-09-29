@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Astral Trekker: Entrapment (Q) - Datadriven Naga Siren Ensnare without illusion casting part
+	// Astral Trekker: Entrapment (Q) - like Naga Siren Ensnare without illusion casting part
 	// Author: Darkonius
-	// Notes: OK; 27.12.2016; Just applies root and reveal; Doesn't disarm; Interrupts;
+	// Notes: OK; 30.9.2018; Just applies root and reveal; Doesn't disarm; Interrupts;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -30,7 +30,7 @@
 		
 		// Mana Cost + Magic Stick/Wand
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"90 100 110 120"
+		"AbilityManaCost"				"80 90 100 110"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
