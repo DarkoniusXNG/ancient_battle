@@ -29,7 +29,8 @@
 		
 		"precache"
 		{
-			"particle"			"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+			"particle"		"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+			"particle"		"particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
 		}
 		
 		// Special	
@@ -122,8 +123,8 @@
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
-				"EffectName"		"particles/units/heroes/hero_silencer/silencer_curse.vpcf"
-				"EffectAttachType"	"follow_overhead"
+				"EffectName"		"particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
+				"EffectAttachType"	"follow_origin"
 				
 				"ThinkInterval"  	"%tick_interval"
 				

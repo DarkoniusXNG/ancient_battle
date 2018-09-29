@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Silencer; 16.9.2018;
-	// TO_DO: silencer_custom_curse_of_the_silent; silencer_custom_global_silence;
+	// HERO: Silencer; 28.9.2018;
+	// TO_DO: silencer_custom_global_silence;
 	//=================================================================================================================
 	"npc_dota_hero_custom_silencer"
 	{

@@ -259,17 +259,17 @@ function ancient_battle_gamemode:InitGameMode()
 	gamemode:SetTrackingProjectileFilter(Dynamic_Wrap(ancient_battle_gamemode, "ProjectileFilter"), self)
 	
 	-- Setting the rune filters
-	gamemode:SetBountyRunePickupFilter(Dynamic_Wrap(your_gamemode_name, "BountyRuneFilter"), self)
-	gamemode:SetRuneSpawnFilter(Dynamic_Wrap(your_gamemode_name, "RuneSpawnFilter"), self)
+	gamemode:SetBountyRunePickupFilter(Dynamic_Wrap(ancient_battle_gamemode, "BountyRuneFilter"), self)
+	gamemode:SetRuneSpawnFilter(Dynamic_Wrap(ancient_battle_gamemode, "RuneSpawnFilter"), self)
 
 	-- Setting the Healing filter
-	gamemode:SetHealingFilter(Dynamic_Wrap(your_gamemode_name, "HealingFilter"), self)
+	gamemode:SetHealingFilter(Dynamic_Wrap(ancient_battle_gamemode, "HealingFilter"), self)
 
 	-- Setting the Gold Filter
-	gamemode:SetModifyGoldFilter(Dynamic_Wrap(your_gamemode_name, "GoldFilter"), self)
+	gamemode:SetModifyGoldFilter(Dynamic_Wrap(ancient_battle_gamemode, "GoldFilter"), self)
 
 	-- Setting the Inventory filter
-	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(your_gamemode_name, "InventoryFilter"), self)
+	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
   
 	-- Lua Modifiers
 	LinkLuaModifier("modifier_client_convars", "libraries/modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)

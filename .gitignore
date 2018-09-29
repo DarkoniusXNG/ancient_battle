@@ -13,3 +13,8 @@ game/soundevents/
 game/sounds/
 
 *.vpk
+*.vxml_c
+*.vjs_c
+*.vcss_c
+*.bin
+*.vpcf_c
