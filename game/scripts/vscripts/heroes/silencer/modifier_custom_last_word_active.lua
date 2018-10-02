@@ -24,6 +24,7 @@ function modifier_custom_last_word_active:OnCreated()
 		
 		if ability == nil then
 			-- Lotus Orb fix
+			local caster = self:GetCaster()
 			ability = caster:FindAbilityByName("silencer_custom_last_word") or parent:FindAbilityByName("silencer_custom_last_word")
 		end
 		

@@ -7,45 +7,66 @@
 	// Linkens: Blocks;
 	// TO_DO: ALL
 	//=================================================================================================================
-	// "custom_hero_custom_ability"
-	// {
-		// // General
-		// "BaseClass"						"ability_datadriven"
-		// "AbilityType"					"DOTA_ABILITY_TYPE_BASIC"  // this is default; not needed unless overriding dota ability or its an ultimate or talent
-	//  DOTA_ABILITY_TYPE_ULTIMATE = 1 										// needed for ultimates
-	//  DOTA_ABILITY_TYPE_ATTRIBUTES = 2 										// needed for talents
-		// "AbilityTextureName"				"custom_hero_custom_ability"		// icon for ability
-		// "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NONE"
-	//	DOTA_ABILITY_BEHAVIOR_HIDDEN = 1 : This ability can be owned by a unit but can't be casted and wont show up on the HUD.
-	//	DOTA_ABILITY_BEHAVIOR_PASSIVE = 2 : Can't be casted like above but this one shows up on the ability HUD
-	//	DOTA_ABILITY_BEHAVIOR_NO_TARGET = 4 : Doesn't need a target to be cast, ability fires off as soon as the button is pressed
-	//	DOTA_ABILITY_BEHAVIOR_UNIT_TARGET = 8 : Ability needs a target to be casted on.
-	//	DOTA_ABILITY_BEHAVIOR_POINT = 16 : Ability can be cast anywhere the mouse cursor is (If a unit is clicked it will just be cast where the unit was standing)
-	//	DOTA_ABILITY_BEHAVIOR_AOE = 32 : This ability draws a radius where the ability will have effect. YOU STILL NEED A TARGETTING BEHAVIOR LIKE DOTA_ABILITY_BEHAVIOR_POINT FOR THIS TO WORK.
-	//	DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE = 64 : This ability probably can be casted or have a casting scheme but cannot be learned (these are usually abilities that are temporary like techie's bomb detonate)
-	//	DOTA_ABILITY_BEHAVIOR_CHANNELLED = 128 : This abillity is channelled. If the user moves or is silenced the ability is interrupted.
-	//	DOTA_ABILITY_BEHAVIOR_TOGGLE = 512 :  
+	"custom_hero_custom_ability"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/hero_name/custom_ability.lua"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"	// this is default; not needed unless overriding dota ability or its an ultimate or talent
+	//  DOTA_ABILITY_TYPE_ULTIMATE											// needed for ultimates
+	//  DOTA_ABILITY_TYPE_ATTRIBUTES										// needed for talents
+		"AbilityTextureName"			"custom_hero_custom_ability"		// icon for ability
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NONE"
+	//	DOTA_ABILITY_BEHAVIOR_HIDDEN: This ability can be owned by a unit but can't be casted and wont show up on the HUD.
+	//	DOTA_ABILITY_BEHAVIOR_PASSIVE: Can't be casted like above but this one shows up on the ability HUD
+	//	DOTA_ABILITY_BEHAVIOR_NO_TARGET: Doesn't need a target to be cast, ability fires off as soon as the button is pressed
+	//	DOTA_ABILITY_BEHAVIOR_UNIT_TARGET: Ability needs a target to be casted on.
+	//	DOTA_ABILITY_BEHAVIOR_POINT: Ability can be cast anywhere the mouse cursor is (If a unit is clicked it will just be cast where the unit was standing)
+	//	DOTA_ABILITY_BEHAVIOR_AOE: This ability draws a radius where the ability will have effect. YOU STILL NEED A TARGETTING BEHAVIOR LIKE DOTA_ABILITY_BEHAVIOR_POINT FOR THIS TO WORK.
+	//	DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE: This ability probably can be casted or have a casting scheme but cannot be learned (these are usually abilities that are temporary)
+	//	DOTA_ABILITY_BEHAVIOR_CHANNELLED: This abillity is channelled. If the user moves or is silenced the ability is interrupted.
+	//	DOTA_ABILITY_BEHAVIOR_TOGGLE:  
 		// "OnCastbar"						"1"									// default: 1; doesn't do anything if 0 (use DOTA_ABILITY_BEHAVIOR_HIDDEN)
 		// "OnLearnbar"						"1"									// default: 1; doesn't do anything if 0 (use DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE)
-		
-		// "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		// "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		// "AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		// "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"				// _MAGICAL _PURE
-		// "SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO" 		//_YES
-		// "SpellDispellableType"			"SPELL_DISPELLABLE_NO"				// SPELL_DISPELLABLE_YES SPELL_DISPELLABLE_YES_STRONG
+
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"					// DAMAGE_TYPE_MAGICAL; DAMAGE_TYPE_PURE;
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"				// SPELL_IMMUNITY_ENEMIES_YES
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"					// SPELL_DISPELLABLE_YES; SPELL_DISPELLABLE_YES_STRONG;
 		// "HasScepterUpgrade"				"0"									// default: 0; 1 if its really upgradeable
-		// "CalculateSpellDamageTooltip" 	"1"									// default: 1; The spell amp tooltip is now done through this - still works automatically if your kv has "damage" in its name, so use these to enable/disable if inaccurate
-	
-		// "AbilityCastRange"				"0"									// not needed for NO TARGET and PASSIVE abilities
+
+		"AbilityCastRange"				"0"										// not needed for NO TARGET and PASSIVE abilities
 		// "AbilityCastRangeBuffer"			"250"								// not needed in most cases
-		// "AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-		
+		"AbilityCastPoint"				"0.0"
+
 		// "AbilityChannelTime"				"0.0 0.0 0.0 0.0" 					// needed for channeling abilities only
-		// "AbilityCooldown"				"0.0 0.0 0.0 0.0"
-		
+		"AbilityCooldown"				"10.0 9.0 8.0 7.0"
+
 		// "AbilitySharedCooldown"			"string"
-		// "AbilityManaCost"				"0 0 0 0"
-		// "AbilityProcsMagicStick"			"1"									// essential for active abilities
-	// }
+		"AbilityManaCost"				"50 60 70 80"
+		"AbilityProcsMagicStick"		"1"										// essential for active abilities
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_name/particle_name.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hero_name.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"health_drain"						"60 90 120 150"
+				"CalculateSpellDamageTooltip"		"1"	// The spell amp tooltip is now done through this - still works automatically if your kv has "damage" in its name, so use these to enable/disable if inaccurate
+			}
+			"02"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"damage_reduction"					"20.0"
+				"CalculateSpellDamageTooltip"		"0"
+			}
+		}
+	}
 }
