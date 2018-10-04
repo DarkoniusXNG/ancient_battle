@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 16.9.2018;
-	// TO_DO: bane_custom_enfeeble; bane_custom_brain_sap; bane_custom_night_terror;
+	// HERO: Bane; 4.10.2018;
+	// TO_DO: bane_custom_enfeeble; bane_custom_night_terror;
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
 	{
@@ -44,8 +44,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"37"									// like dota Bane
-		"AttackDamageMax"			"43"									// like dota Bane
+		"AttackDamageMin"			"35"									// like dota Bane
+		"AttackDamageMax"			"41"									// like dota Bane
 		"AttackRate"				"1.7"									// like dota Bane
 		"AttackAnimationPoint"		"0.3"									// like dota Bane
 		"AttackAcquisitionRange"	"800"									// like dota Bane

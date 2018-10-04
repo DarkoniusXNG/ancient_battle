@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Bane: Brain Sap - custom,
+	// Bane: Brain Sap - custom, steals intelligence too
 	// Author: Darkonius
-	// Notes: OK; 14.9.2018;
-	// TO_DO: Add int steal
+	// Notes: OK; 4.10.2018;
+	// TO_DO:
 	//=================================================================================================================
 	"bane_custom_brain_sap"
 	{
@@ -45,6 +45,16 @@
 				"LinkedSpecialBonus"			"special_bonus_unique_bane_2"
 			}
 			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"int_steal"						"1 2 3 4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"int_steal_duration"			"60.0"
+			}
+			"04"
 			{
 				"var_type"						"FIELD_FLOAT"
 				"cooldown_scepter"				"1.5"
