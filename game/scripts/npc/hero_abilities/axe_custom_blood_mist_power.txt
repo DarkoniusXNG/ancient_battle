@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Blood Mist Power (F) - New Spell, Second Ultimate, No target spell, When activated damage dealt by axe with spells (not items!) becomes pure
 	// Author: Darkonius
-	// Notes: OK; 26.12.2016; Uses damage filter; Requires level 12;
+	// Notes: OK; 4.10.2018; Uses damage filter; Requires level 12;
 	// TO_DO:
 	//=================================================================================================================
 	"axe_custom_blood_mist_power"
@@ -19,7 +19,7 @@
 		
 		"AbilityCastPoint"				"0"
 		"AbilityManaCost"				"150"
-		"AbilityCooldown"				"40.0"
+		"AbilityCooldown"				"35.0"
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -33,8 +33,8 @@
 		{
 			"01"
 			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"15.0"
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"15"
 			}
 		}
 		

@@ -828,7 +828,7 @@ function CDOTA_Ability_Lua:XNGRandom(percentage)
 	end
 
 	-- Reset the counters if someone is too lucky (consecutive success) or too unlucky (consecutive failure)
-	if self.XNG_success_counter > 2 or self.XNG_fail_counter > 2 then
+	if self.XNG_success_counter > 1 or self.XNG_fail_counter > 1 then
 		self.XNG_counter = 0
 		self.XNG_success_counter = 0
 		self.XNG_fail_counter = 0
@@ -868,8 +868,10 @@ function CDOTA_Ability_Lua:PseudoRandom(percentage)
 	if self.PR_counter == nil then
 		self.PR_counter = 0
 	end
+	
+	local actual_percentage = percentage*percentage/100
 
-	local new_percentage = math.floor(percentage*percentage/100 + self.PR_counter)
+	local new_percentage = math.floor(actual_percentage + self.PR_counter)
 
 	-- Reset the counters if new percentage reached a limit
 	if new_percentage >= 100 then
@@ -877,7 +879,7 @@ function CDOTA_Ability_Lua:PseudoRandom(percentage)
 		return true
 	end
 
-	local chance_increment = percentage*percentage/100
+	local chance_increment = actual_percentage
 
 	if RollPercentage(new_percentage) then
 		--Reset the counter

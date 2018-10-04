@@ -94,7 +94,7 @@
 				
 				"ControlPoints"
 				{
-					"00"	"0 0 0"
+					"00"	"0 0 0"	// target origin
 					"01"	"%radius %radius %radius"
 				}
 			}
