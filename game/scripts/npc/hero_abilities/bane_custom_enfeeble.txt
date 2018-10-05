@@ -4,15 +4,14 @@
 	// Bane: Enfeeble (Q) - Reduces all of damage output of the enemy.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 9.5.2018; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
+	// Notes: OK; 5.10.2018; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
 	// Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan and other Ancients;
-	// TO_DO: Damage filter branch
+	// TO_DO:
 	//=================================================================================================================
 	"bane_custom_enfeeble"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/bane/enfeeble.lua"
 		"AbilityTextureName"			"bane_enfeeble"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -45,61 +44,14 @@
 			"02" // reduces spell damage (but not item damage)
 			{
 				"var_type"						"FIELD_INTEGER"
-				"spell_damage_reduction"		"10 15 20 25"
+				"spell_damage_reduction"		"25 30 35 40"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			
-			"03" // dota Enfeeble: 14/16/18/20 seconds
+			"03" // dota Enfeeble: 8/12/16/20 seconds
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration"					"10.0"
-			}
-		}
-
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Bane.Enfeeble.Cast"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-
-			"FireSound"
-			{
-				"EffectName"	"Hero_Bane.Enfeeble"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/bane/enfeeble.lua"
-				"Function"		"EnfeebleStart"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_custom_enfeeble_debuff"	// needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsDebuff"		"1"
-				"IsPurgable"	"0"
-				
-				"EffectName"		"particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
-				"EffectAttachType"	"follow_overhead"			
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		"%attack_damage_reduction"
-				}
 			}
 		}
 	}

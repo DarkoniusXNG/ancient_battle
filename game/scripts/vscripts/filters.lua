@@ -67,9 +67,12 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		return false
 	end
 	
+	if damage_after_reductions <= 0 then
+		return false
+	end
 	
 	-- Axe Blood Mist Power: Converting physical and magical damage of SPELLS to pure damage
-	if damaging_ability and attacker:HasModifier("modifier_blood_mist_power_buff") and keys.damage > 0 then
+	if damaging_ability and attacker:HasModifier("modifier_blood_mist_power_buff") then
 		
 		local ability = attacker:FindAbilityByName("axe_custom_blood_mist_power")
 		if ability and ability ~= damaging_ability then
@@ -80,26 +83,9 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				-- Nullifying the damage of the spell (It will be reapplied later)
 				keys.damage = 0
 				
-				-- Initializing the value of original damage
-				local original_damage = damage_after_reductions
-			
-				-- Is the damage_type physical or magical?
-				if damage_type == DAMAGE_TYPE_PHYSICAL then
-					-- Armor of the victim
-					local armor = victim:GetPhysicalArmorValue()
-					-- Physical damage is reduced by armor
-					local damage_armor_reduction = 1-(armor*0.05/(1+0.05*(math.abs(armor))))
-					-- Physical damage equation: damage_after_reductions = original_damage * damage_armor_reduction
-					original_damage = damage_after_reductions/damage_armor_reduction
-				elseif damage_type == DAMAGE_TYPE_MAGICAL then
-					-- Magic Resistance of the victim
-					local magic_resistance = victim:GetMagicalArmorValue()
-					-- Magical damage is reduced by magic resistance
-					local damage_magic_resist_reduction = 1-magic_resistance
-					-- Magical damage equation: damage_after_reductions = original_damage * damage_magic_resist_reduction
-					original_damage = damage_after_reductions/damage_magic_resist_reduction
-				end
-				
+				-- Calculating original damage
+				local original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
+
 				local damage_table = {}
 				damage_table.victim = victim
 				damage_table.attacker = attacker
@@ -108,16 +94,41 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				damage_table.damage = math.floor(original_damage)
 		
 				ApplyDamage(damage_table)
+
+				return false
 			end
 		end
 	end
 	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
+	-- Bane Enfeeble debuff: Reducing ALL damage of SPELLS by the percentage (It doesn't show properly on client)
+	if damaging_ability and attacker:HasModifier("modifier_custom_enfeeble_debuff") then
+		-- Doesn't reduce damage from items
+		if not damaging_ability:IsItem() then
+			local modifier = attacker:FindModifierByName("modifier_custom_enfeeble_debuff")
+			local reduction
+			if modifier then
+				reduction = modifier.spell_damage_reduction
+				local ability = modifier:GetAbility()
+				if reduction == nil then
+					if ability then
+						reduction = ability:GetSpecialValueFor("spell_damage_reduction")
+					else
+						print("bane_custom_enfeeble not found.")
+						reduction = 0
+					end
+				end
+			else
+				print("modifier_custom_enfeeble_debuff not found on attacker.")
+				reduction = 0
+			end
+			
+			-- Reduce damage
+			keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
+		end
 	end
 	
 	-- Orb of Reflection: Damage prevention and Reflecting all damage before reductions as Pure damage to the attacker
-	if victim:HasModifier("item_modifier_orb_of_reflection_active_reflect") and keys.damage > 0 then
+	if victim:HasModifier("item_modifier_orb_of_reflection_active_reflect") then
 
 		-- Nullifying the damage to victim
 		keys.damage = 0
@@ -137,30 +148,14 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			-- Initializing the value of original damage
 			local original_damage = damage_after_reductions
 			
-			if damage_type == DAMAGE_TYPE_PHYSICAL then
-				-- Armor of the victim
-				local armor = victim:GetPhysicalArmorValue()
-				-- Physical damage is reduced by armor
-				local damage_armor_reduction = 1-(armor*0.05/(1+0.05*(math.abs(armor))))
-				-- Physical damage equation: damage_after_reductions = original_damage * damage_armor_reduction
-				if damaging_ability then
-					-- Damage came from an ability (spell or item)
-					original_damage = damage_after_reductions/damage_armor_reduction
-				else
-					-- Damage came from a physical attack (Damage block is not calculated)
-					local average_attack_damage = attacker:GetAverageTrueAttackDamage(attacker)
-					local damage_before_armor_reduction = damage_after_reductions / damage_armor_reduction
-					original_damage = math.max(damage_before_armor_reduction, average_attack_damage)
-				end
-			elseif damage_type == DAMAGE_TYPE_MAGICAL then
-				-- Magic Resistance of the victim
-				local magic_resistance = victim:GetMagicalArmorValue()
-				-- Magical damage is reduced by magic resistance
-				local damage_magic_resist_reduction = 1-magic_resistance
-				-- Magical damage equation: damage_after_reductions = original_damage * damage_magic_resist_reduction
-				original_damage = damage_after_reductions/damage_magic_resist_reduction
+			if damaging_ability then
+				-- Damage came from an ability (spell or item)
+				original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
+			else
+				-- Damage came from a physical attack
+				original_damage = math.max(attacker:GetAverageTrueAttackDamage(victim), CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type))
 			end
-			
+
 			if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
 				-- Reflect damage to the attacker
 				local damage_table = {}
@@ -172,6 +167,8 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
 		
 				ApplyDamage(damage_table)
+				
+				return false
 			end
 		end
 	end
@@ -181,7 +178,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	end
 	
 	-- Orb of Reflection: Partial Damage return to the attacker as Magical damage (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("item_modifier_orb_of_reflection_active_reflect")) and victim:IsRealHero() and keys.damage > 0 then
+	if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("item_modifier_orb_of_reflection_active_reflect")) and victim:IsRealHero() then
 
 		-- Return or not
 		if not dont_reflect_flag then	
@@ -226,7 +223,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	end
 	
 	-- Infused Robe passive Damage Blocking any damage type after all reductions (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() and keys.damage > 0 then
+	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() then
 		
 		local ability
 		for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
@@ -337,7 +334,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		end
 	end
 	
-	if keys.damage == 0 then
+	if keys.damage <= 0 then
 		return false
 	end
 	
@@ -497,4 +494,42 @@ function ancient_battle_gamemode:InventoryFilter(keys)
 	end
 
 	return true
+end
+
+-- For calculating damage of abilities before reductions
+-- It can be used for calculating damage of attacks but it doesn't include damage block
+function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_type)
+	if damage_after_reductions == 0 then
+		return 0
+	end
+	if unit == nil then
+		return nil
+	end
+	local original_damage = damage_after_reductions
+	-- Is the damage_type physical or magical?
+	if damage_type == DAMAGE_TYPE_PHYSICAL then
+		-- Armor of the unit
+		local armor = unit:GetPhysicalArmorValue()
+		-- Physical damage is reduced by armor
+		local damage_armor_reduction = 1-(armor*0.05/(1+0.05*(math.abs(armor))))
+		-- In case the unit has infinite armor for some reason (to prevent division by zero)
+		if damage_armor_reduction == 0 then
+			damage_armor_reduction = 0.01
+		end
+		-- Physical damage equation: damage_after_reductions = original_damage * damage_armor_reduction
+		original_damage = damage_after_reductions/damage_armor_reduction
+	elseif damage_type == DAMAGE_TYPE_MAGICAL then
+		-- Magic Resistance of the unit
+		local magic_resistance = unit:GetMagicalArmorValue()
+		-- Magical damage is reduced by magic resistance
+		local damage_magic_resist_reduction = 1-magic_resistance
+		-- In case the unit has 100% magic resistance (to prevent division by zero)
+		if damage_magic_resist_reduction == 0 then
+			damage_magic_resist_reduction = 0.01
+		end
+		-- Magical damage equation: damage_after_reductions = original_damage * damage_magic_resist_reduction
+		original_damage = damage_after_reductions/damage_magic_resist_reduction
+	end
+	
+	return original_damage
 end
