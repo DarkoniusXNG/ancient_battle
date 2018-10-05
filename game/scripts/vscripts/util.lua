@@ -392,7 +392,6 @@ end
 function CustomPassiveBreak(unit, duration)
 	-- List of custom abilities with passive modifiers
 	local abilities_with_passives = {
-	"axe_custom_counter_helix",
 	"death_knight_chilling_touch",
 	"dark_ranger_custom_marksmanship",
 	"life_stealer_custom_anabolic_frenzy",
@@ -402,7 +401,6 @@ function CustomPassiveBreak(unit, duration)
 	"firelord_flaming_presence",
 	"stealth_assassin_desolate",
 	"gambler_lucky_stars",
-	"silencer_custom_last_word",
 	"astral_trekker_time_constant",
 	"astral_trekker_giant_growth",
 	"archmage_arcane_magic",
@@ -410,11 +408,9 @@ function CustomPassiveBreak(unit, duration)
 	"brewmaster_custom_drunken_brawler",
 	"mana_eater_mana_shell",
 	"alchemist_custom_philosophers_stone",
-	"blademaster_custom_blade_dance",
-	"astral_trekker_pulverize"
+	"blademaster_custom_blade_dance"
 	}
 	local passive_modifiers = {
-	"modifier_counter_helix_aura_ultimate",
 	"modifier_chilling_death_aura",
 	"modifier_custom_marksmanship_passive",
 	"modifier_anabolic_frenzy_passive",
@@ -424,7 +420,6 @@ function CustomPassiveBreak(unit, duration)
 	"modifier_firelord_presence_aura_applier",
 	"modifier_stealth_assassin_desolate",
 	"modifier_gambler_lucky_stars_passive",
-	"modifier_last_word_aura_applier",
 	"modifier_time_constant",
 	"modifier_giant_growth_passive",
 	"modifier_archmage_aura_applier",
@@ -432,8 +427,7 @@ function CustomPassiveBreak(unit, duration)
 	"modifier_custom_drunken_brawler_passive",
 	"modifier_mana_shell_passive",
 	"modifier_philosophers_stone_passive_buff",
-	"modifier_custom_blade_dance_passive",
-	"modifier_custom_pulverize_passive"
+	"modifier_custom_blade_dance_passive"
 	}
 	if unit and duration then
 		for i=1, #passive_modifiers do
@@ -786,108 +780,6 @@ function HasOtherUniqueAttackModifiers(unit)
 			end
 		end
 		
-		return false
-	end
-end
-
--- XNG random:
--- chance increases by 5% if false
--- chance decreases by 5% if true.
--- If it was false for 2 or more times and then true, chance is reset to starting.
--- If it was true for 2 or more times and then false, chance is reset to starting.
--- If the chance is increased to 100% or above, chance is reset to starting.
--- If the chance is decreased to 0% or below, chance is reset to starting.
-function CDOTA_Ability_Lua:XNGRandom(percentage)
-	local increment = 5
-
-	if self.XNG_counter == nil then
-		self.XNG_counter = 0
-	end
-
-	if self.XNG_success_counter == nil then
-		self.XNG_success_counter = 0
-	end
-
-	if self.XNG_fail_counter == nil then
-		self.XNG_fail_counter = 0
-	end
-
-	local new_percentage = percentage + self.XNG_counter
-
-	-- Reset the counters if new percentage reached a limit
-	if new_percentage >= 100 then
-		self.XNG_counter = 0
-		self.XNG_success_counter = 0
-		self.XNG_fail_counter = 0
-		return true
-	elseif new_percentage <= 0 then
-		self.XNG_counter = 0
-		self.XNG_success_counter = 0
-		self.XNG_fail_counter = 0
-		return false
-	end
-
-	-- Reset the counters if someone is too lucky (consecutive success) or too unlucky (consecutive failure)
-	if self.XNG_success_counter > 1 or self.XNG_fail_counter > 1 then
-		self.XNG_counter = 0
-		self.XNG_success_counter = 0
-		self.XNG_fail_counter = 0
-	end
-
-	if RollPercentage(new_percentage) then
-		-- Decreasing the chance for next check
-		self.XNG_counter = self.XNG_counter - increment	
-
-		-- Increasing success counter
-		self.XNG_success_counter = self.XNG_success_counter + 1
-
-		--Reset the fail counter
-		self.XNG_fail_counter = 0
-
-		return true
-	else
-		-- Increasing the chance for next check
-		self.XNG_counter = self.XNG_counter + increment
-
-		-- Increasing fail counter
-		self.XNG_fail_counter = self.XNG_fail_counter + 1
-
-		-- Reset the success counter
-		self.XNG_success_counter = 0
-
-		return false
-	end
-end
-
--- Pseudo Random:
--- Its not the same pseudo-random distribution as in dota
--- starting chance is lower than percentage. Example: If percentage is 25%, starting chance is 6.25%
--- chance is increased on each fail. chance increase is equal to starting chance.
--- If the chance is increased to 100% or above, chance and counter are reset.
-function CDOTA_Ability_Lua:PseudoRandom(percentage)
-	if self.PR_counter == nil then
-		self.PR_counter = 0
-	end
-	
-	local actual_percentage = percentage*percentage/100
-
-	local new_percentage = math.floor(actual_percentage + self.PR_counter)
-
-	-- Reset the counters if new percentage reached a limit
-	if new_percentage >= 100 then
-		self.PR_counter = 0
-		return true
-	end
-
-	local chance_increment = actual_percentage
-
-	if RollPercentage(new_percentage) then
-		--Reset the counter
-		self.PR_counter = 0
-		return true
-	else
-		-- Increasing the chance for next check
-		self.PR_counter = self.PR_counter + chance_increment
 		return false
 	end
 end

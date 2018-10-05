@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Bane: Nightmare (E) - Modified, Cast range improved; Cooldown slightly improved;
 	// Author: Valve + Darkonius
-	// Notes: OK; 9.5.2018; Nightmare End is not connected to this spell;
+	// Notes: OK; 5.10.2018; Nightmare End is not connected to this spell;
 	// TO_DO:
 	//=================================================================================================================
 	"bane_custom_nightmare"
