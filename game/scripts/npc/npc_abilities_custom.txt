@@ -31,7 +31,7 @@
 #base "hero_abilities/bane_custom_enfeeble.txt"
 #base "hero_abilities/bane_custom_brain_sap.txt"
 //#base "hero_abilities/bane_custom_nightmare.txt"
-#base "hero_abilities/bane_custom_night_terror.txt"
+#base "hero_abilities/bane_custom_terror_blink.txt"
 #base "hero_abilities/bane_custom_atropos_end.txt"
 
 #base "hero_abilities/blademaster_blade_storm.txt"

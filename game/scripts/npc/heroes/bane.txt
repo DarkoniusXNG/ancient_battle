@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 5.10.2018;
-	// TO_DO: bane_custom_night_terror;
+	// HERO: Bane; 7.10.2018;
+	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
 	{
@@ -21,7 +21,7 @@
 		"Ability1"					"bane_custom_enfeeble"					// Q (4 levels)
 		"Ability2"					"bane_custom_brain_sap"					// W (4 levels)
 		"Ability3"					"bane_nightmare"						// E, DOTA_VERSION (4 levels)
-		"Ability4"					"bane_custom_night_terror"				// T (4 levels)
+		"Ability4"					"bane_custom_terror_blink"				// T (4 levels)
 		"Ability5"					"bane_custom_atropos_end"				// F, Secondary Ultimate (1 level)
 		"Ability6"					"bane_fiends_grip"						// R, Primary Ultimate, DOTA_VERSION (3 levels)
 		"Ability7"					"bane_nightmare_end"

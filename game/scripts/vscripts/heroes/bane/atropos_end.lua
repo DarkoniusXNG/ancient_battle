@@ -6,6 +6,7 @@ function AtroposEndStrongDispel(event)
 	ability:ToggleAbility()
 	
 	SuperStrongDispel(caster, true, false)
+	-- If needed remove modifier_custom_terror_buff
 	
 	-- Sound on caster
 	caster:EmitSound("n_creep_SatyrTrickster.Cast")
