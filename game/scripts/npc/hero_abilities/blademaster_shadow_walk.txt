@@ -1,10 +1,9 @@
-// Dota Heroes File
 "DOTAAbilities"
 {
 	//=================================================================================================================
 	// Blademaster: Shadow Walk (E) - Datadriven, Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
 	// Author: Darkonius
-	// Notes: OK; 26.12.2016; Uses built-in modifier: modifier_invisible; Dispellable with Basic Dispel;
+	// Notes: OK; 9.10.2018; Uses built-in modifier: modifier_invisible; Dispellable with Basic Dispel;
 	// Notes: Bonus Damage can damage buildings;
 	// TO_DO:
 	//=================================================================================================================
@@ -33,8 +32,8 @@
 		{
 			"01"
 			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"20.0 25.0 30.0 35.0"
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"20 25 30 35"
 			}
 			"02"
 			{

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Blade Dance (T) - Datadriven, passive, chance to critical strike
 	// Author: Darkonius
-	// Notes: OK; 26.12.2016; Chance to crit is pseudo-random; Can crit on buildings;
+	// Notes: OK; 9.10.2018; Chance to crit is pseudo-random; Can crit on buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_custom_blade_dance"
@@ -13,12 +13,12 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
 
 		"precache"
 		{
 			"particle"  "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
 			"particle"  "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
 		}
 		
 		"AbilitySpecial"
@@ -26,7 +26,7 @@
 			"01"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"crit_damage"               "200"
+				"crit_damage"               "180"
 			}
 			"02"
 			{

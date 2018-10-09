@@ -3,12 +3,13 @@
 	//=================================================================================================================
 	// Blademaster: Blade Storm (Q) - Datadriven, similar to Juggernaut Blade Fury
 	// Author: Darkonius
-	// Notes: OK; 10.5.2018; Deals 25% damage to buildings. Can attack normally during Blade Storm.
+	// Notes: OK; 9.10.2018; Deals 25% damage to buildings. Can attack normally during Blade Storm.
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_blade_storm"
 	{
-		"BaseClass"                     "ability_datadriven"
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"					"heroes/blademaster/blade_storm.lua"
 		"AbilityTextureName"            "custom/blademaster_blade_storm"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -33,7 +34,7 @@
 			"02" // not in tooltip
 			{
 				"var_type"                  "FIELD_FLOAT"
-				"tick_interval"    			"0.2"
+				"think_interval"    		"0.2"
 			}
 			"03"
 			{
@@ -45,89 +46,10 @@
 				"var_type"                  "FIELD_FLOAT"
 				"duration"                  "6.0"
 			}
-		}
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
+			"05"
 			{
-				"ModifierName"  "modifier_custom_blade_storm"
-				"Target"        "CASTER"
-				"Duration"      "%duration"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_custom_blade_storm" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"OverrideAnimation"         "ACT_DOTA_OVERRIDE_ABILITY_1"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_SILENCED"           "MODIFIER_STATE_VALUE_ENABLED"
-				}
-				
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "CASTER"
-						"ControlPoints"
-						{
-							"05"    "%radius 0 0"
-						}
-					}
-					
-					"FireSound"
-					{
-						"EffectName"    "Hero_Juggernaut.BladeFuryStart"
-						"Target"        "CASTER"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blademaster/blade_storm.lua"
-						"Function"      "BladeStormStart"
-					}
-				}
-				
-				"ThinkInterval"  "%tick_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blademaster/blade_storm.lua"
-						"Function"      "BladeStormDamage"
-					}
-				}
-
-				"OnDestroy"
-				{
-					"FireSound"
-					{
-						"EffectName"    "Hero_Juggernaut.BladeFuryStop"
-						"Target"        "CASTER"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blademaster/blade_storm.lua"
-						"Function"      "BladeStormStop"
-					}
-				}
+				"var_type"                  "FIELD_INTEGER"
+				"damage_to_buildings"    	"25"
 			}
 		}
 	}

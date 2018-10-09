@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Blademaster; 16.9.2018;
+	// HERO: Blademaster; 9.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_blademaster"
@@ -28,14 +28,14 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
-		"Ability10"			"special_bonus_all_stats_5"				// lvl 10 talent; same as Juggernaut
-		"Ability11"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as Juggernaut
-		"Ability12"			"special_bonus_attack_speed_25"			// lvl 15 talent: same as Juggernaut
-		"Ability13"			"special_bonus_strength_14"				// lvl 15 talent: unique
-		"Ability14"			"special_bonus_armor_10"				// lvl 20 talent; same as Juggernaut
-		"Ability15"			"special_bonus_magic_resistance_20"		// lvl 20 talent; unique
-		"Ability16"			"special_bonus_agility_20"				// lvl 25 talent; unique
-		"Ability17"			"special_bonus_unique_juggernaut_2"		// lvl 25 talent; same as Juggernaut
+		"Ability10"			"special_bonus_all_stats_5"					// lvl 10 talent; same as Juggernaut
+		"Ability11"			"special_bonus_unique_naga_siren"			// lvl 10 talent; talent for blademaster_mirror_image
+		"Ability12"			"special_bonus_attack_speed_25"				// lvl 15 talent: same as Juggernaut
+		"Ability13"			"special_bonus_unique_naga_siren_4"			// lvl 15 talent: talent for blademaster_mirror_image
+		"Ability14"			"special_bonus_armor_10"					// lvl 20 talent; same as Juggernaut
+		"Ability15"			"special_bonus_unique_legion_commander_3"	// lvl 20 talent; talent for blademaster_counter_attack
+		"Ability16"			"special_bonus_agility_20"					// lvl 25 talent; unique
+		"Ability17"			"special_bonus_unique_juggernaut_2"			// lvl 25 talent; same as Juggernaut
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
