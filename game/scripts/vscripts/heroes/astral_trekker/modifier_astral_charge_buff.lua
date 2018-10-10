@@ -72,7 +72,7 @@ function modifier_astral_charge_buff:OnDestroy()
 			parent:SetNightTimeVisionRange(800)
 		end
 		if self.particle_index then
-			ParticleManager:DestroyParticle(self.particle_index, true)
+			ParticleManager:DestroyParticle(self.particle_index, false)
 			ParticleManager:ReleaseParticleIndex(self.particle_index)
 		end
 	end
