@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Banish - Datadriven Pugna Decrepify
 	// Author: Darkonius
-	// Notes: OK; 14.5.2018;
+	// Notes: OK; 10.10.2018;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -58,8 +58,8 @@
 			}
 			"05"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"creep_duration"            "5.0"
+				"var_type"                  "FIELD_INTEGER"
+				"creep_duration"            "5"
 			}
 		}
 		

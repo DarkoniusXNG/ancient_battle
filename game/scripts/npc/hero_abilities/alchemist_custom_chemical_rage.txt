@@ -3,12 +3,13 @@
 	//=================================================================================================================
 	// Alchemist: Chemical Rage (R) - New Spell, Similar to DotA's Chemical Rage
 	// Author: Darkonius
-	// Notes: OK; 9.5.2018; Uses built-in modifiers; Has Aghanim Scepter upgrade;
-	// TO_DO: OnUpgrade -> not really important; Basic Dispel on Cast
+	// Notes: OK; 10.10.2018; Uses built-in modifiers; Has Aghanim Scepter upgrade;
+	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_chemical_rage"
 	{
-		"BaseClass"                     "ability_datadriven"
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"					"heroes/alchemist/custom_chemical_rage.lua"
 		"AbilityTextureName"            "custom/alchemist_custom_chemical_rage"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -26,8 +27,8 @@
 		{
 			"01" // don't change the name of this ability special (its required for built-in modifier)
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"duration"                  "25"
+				"var_type"                  "FIELD_FLOAT"
+				"duration"                  "25.0"
 			}
 			"02"
 			{
@@ -49,69 +50,10 @@
 				"var_type"					"FIELD_INTEGER"
 				"custom_bonus_health_regen"	"25 50 75"
 			}
-		}
-
-		"OnSpellStart"
-		{
-			"FireSound"
+			"06"
 			{
-				"EffectName"    "Hero_Alchemist.ChemicalRage.Cast"
-				"Target"        "CASTER"
-			}
-
-			// Applying the built-in modifier that controls the animations, sounds and body transformation.
-			// The modifier_alchemist_chemical_rage tooltip needs to be adjusted
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_alchemist_chemical_rage_transform"
-				"Target"        "CASTER"
-				"Duration"      "%transformation_time"
-			}
-
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_custom_chemical_rage_buff"
-				"Target"        "CASTER"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_custom_chemical_rage_buff" // doesn't need tooltip
-			{
-				"IsHidden"  	"1"
-				"IsBuff"    	"1"
-				"IsPurgable"	"0"
-				
-				"AllowIllusionDuplicate"	"0"
-				
-				"Duration"  	"%duration"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%custom_bonus_move_speed"
-					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"	"%custom_base_attack_time"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%custom_bonus_health_regen"
-				}
-				
-				"ThinkInterval"		"0.2"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/alchemist/custom_chemical_rage.lua"
-						"Function"      "ScepterBuff"
-					}
-				}
-				
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/alchemist/custom_chemical_rage.lua"
-						"Function"		"ScepterBuffEnd"
-					}
-				}
+				"var_type"					"FIELD_FLOAT"
+				"think_interval"			"0.2"
 			}
 		}
 	}

@@ -164,10 +164,11 @@
 
 			"modifier_transfer_mana_extra" // doesn't need tooltip
 			{
-				"Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				"IsHidden"          "1"
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
+				
+				"Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Duration"          "%duration"
 

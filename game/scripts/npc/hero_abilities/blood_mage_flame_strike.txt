@@ -3,12 +3,13 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 15.5.2018; Flame Strike deals 25% of the damage to buildings;
+	// Notes: OK; 10.10.2018; Flame Strike deals 25% of the damage to buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_flame_strike"
 	{
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"					"heroes/blood_mage/flame_strike.lua"
 		"AbilityTextureName"			"custom/blood_mage_flame_strike"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -45,7 +46,7 @@
 			"02" // Nether Blast total damage to buildings: 50/87.5/125/162.5
 			{
 				"var_type"              "FIELD_INTEGER"
-				"initial_damage"		"50 80 140 200"
+				"initial_damage"		"70 85 100 175"
 			}
 			"03" // Macropyre: 100/140/180; Sand Storm: 40/60/80/100; Shrapnel: 15/35/55/75; Firestorm: 25/40/55/70;
 			{
