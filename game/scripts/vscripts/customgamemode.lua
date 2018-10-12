@@ -138,7 +138,11 @@ function ancient_battle_gamemode:OnGameInProgress()
 			ancient_handle:AddNewModifier(ancient_handle, nil, "modifier_custom_building_invulnerable", {})
 		end)
 		-- Start Spawning the Horde
-		SpawnFirstSevenWaves()
+		custom_spawner:Stage1()
+	elseif GetMapName() == "two_vs_two" then
+		custom_spawner:SpawnNeutrals()
+	elseif GetMapName() == "five_vs_five" then
+		custom_spawner:SpawnRoshan()
 	end
 end
 
