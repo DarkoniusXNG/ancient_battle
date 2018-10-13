@@ -4,9 +4,9 @@
 	// Dark Ranger: Charm (F) - New Spell, Takes control of a target enemy unit. Charm takes control of heroes for a short time and make them invulnerable.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: 24.12.2016; Has Aghanim Scepter upgrade; Ancients can be charmed only with equipped Aghanim Scepter;
-	// Notes: DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES zbog nekih unita koji su imuni na magije; 
-	// TO_DO: If Removed units or units that became illusions deal DOT damage, crashes the game;
+	// Notes: 13.10.2018; Has Aghanim Scepter upgrade; Ancients can be charmed only with equipped Aghanim Scepter;
+	// Notes: If Removed units or units that became illusions deal DOT damage, crashes the game;
+	// TO_DO: Rework into ability_lua
 	//=================================================================================================================
 	"dark_ranger_charm"
 	{
@@ -43,23 +43,23 @@
 		{
 			"01"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"charm_hero_duration"			"6.0"
+				"var_type"						"FIELD_INTEGER"
+				"charm_hero_duration"			"6"
 			}
 			"02"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"charm_creep_duration"			"160.0"
+				"var_type"						"FIELD_INTEGER"
+				"charm_creep_duration"			"160"
 			}
 			"03" // this is not displayed in tooltip of the spell (this duration depends on the duration of the longest delayed damage spell)
 			{
-				"var_type"						"FIELD_FLOAT"
-				"charm_clone_duration"			"50.0"
+				"var_type"						"FIELD_INTEGER"
+				"charm_clone_duration"			"50"
 			}
 			"04"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"charm_hero_duration_scepter"	"10.0"
+				"var_type"						"FIELD_INTEGER"
+				"charm_hero_duration_scepter"	"10"
 			}
 		}
 	

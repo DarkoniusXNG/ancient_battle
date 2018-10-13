@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Primal Split (R) - Ultimate, Datadriven Brewmaster's Primal Split with slight modifications
 	// Author: Darkonius
-	// Notes: OK; 27.5.2018; Selecting and deselecting works (selection library).
+	// Notes: OK; 13.10.2018; Selecting and deselecting works (selection library).
 	// TO_DO: Ability UI is bugged after Primal Split end -> fix if you can;
 	//====================================================================================================
 	"brewmaster_custom_primal_split"
@@ -27,8 +27,8 @@
 		{
 			"01" // original: 60 seconds; dota: 16/18/20 seconds
 			{
-				"var_type"					"FIELD_FLOAT"
-				"spirit_duration"			"20.0"
+				"var_type"					"FIELD_INTEGER"
+				"spirit_duration"			"20"
 			}
 			"02" // dota: 0.6;
 			{

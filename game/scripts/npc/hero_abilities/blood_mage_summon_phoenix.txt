@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Summon Phoenix - summons a powerful creature that respawns on death etc.
 	// Author: Darkonius
-	// Notes: OK; 16.9.2018;
+	// Notes: OK; 13.10.2018;
 	// TO_DO: Cast Animation; Phoenix Fire, Splash Attack, Egg particles and sounds
 	//=================================================================================================================
 	"blood_mage_summon_phoenix"
@@ -14,7 +14,7 @@
 		"MaxLevel"              		"1"
 		"RequiredLevel"					"6"
 		
-		//"AbilityCastAnimation"			""
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_FORGE_SPIRIT"
 		"AbilityCastPoint"				"0.2"
 		
 		"AbilityCooldown"				"180.0"
@@ -37,8 +37,8 @@
 		{
 			"01"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"phoenix_egg_duration"      "10.0"
+				"var_type"                  "FIELD_INTEGER"
+				"phoenix_egg_duration"      "10"
 			}
 			"02" // not in tooltip
 			{

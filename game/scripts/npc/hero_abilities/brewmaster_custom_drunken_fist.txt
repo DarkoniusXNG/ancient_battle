@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Drunken Fist (F) - New Spell, Ultimate, Cleave + Knockback in front of the caster
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 6.9.2018;
+	// Notes: OK; 13.10.2018;
 	// TO_DO: 
 	//====================================================================================================
 	"brewmaster_custom_drunken_fist"
@@ -38,8 +38,8 @@
 		{
 			"01" // Magnus Empower: 40 seconds; Sven Warcry: 8 seconds; Lone Druid Battle Cry: 6 seconds;
 			{
-				"var_type"              		"FIELD_FLOAT"
-				"duration"             			"8.0"
+				"var_type"              		"FIELD_INTEGER"
+				"duration"             			"8"
 			}
 			"02" // same as cleave
 			{

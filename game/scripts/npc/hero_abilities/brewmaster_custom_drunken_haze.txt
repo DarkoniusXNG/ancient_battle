@@ -4,7 +4,7 @@
 	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 27.5.2018; Projectile can be disjointed;
+	// Notes: OK; 13.10.2018; Projectile can be disjointed;
 	// TO_DO: Animacija je cudna. Treba bude DOTA_PROJECTILE_ATTACHMENT_ATTACK_2.
 	//====================================================================================================
 	"brewmaster_custom_drunken_haze"
@@ -21,17 +21,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.4"									// ok; dota: 0.2;
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastRange"				"850"									// original had 550 cast range
+		"AbilityCastRange"				"850"									// original: 550
 		
 		"AoERadius"						"%radius"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 9.0 7.0 5.0"						// original had 12 seconds CD
+		"AbilityCooldown"				"10.0 9.0 7.0 5.0"						// original CD: 12 seconds
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"25"									// original had 70 mana cost
+		"AbilityManaCost"				"25"									// original: 70
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -45,23 +45,23 @@
 			}
 			"02" // original: 5 seconds; dota: 4.5 seconds;
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration_heroes"			"5.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration_heroes"			"5"
 			}
 			"03" // original: 12 seconds; dota: 4.5 seconds;
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration_creeps"			"12.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration_creeps"			"12"
 			}
-			"04" // original: 15/30/50%; dota: 10/20/30/40%; optimal: 10/15/20/25%
+			"04" // original: 15/30/50%; dota: 10/20/30/40%;
 			{
 				"var_type"					"FIELD_INTEGER"
 				"movement_slow"				"-10 -20 -30 -40"
 			}
-			"05" // original: 45/65/80%; dota: 70%
+			"05" // original: 45/65/80%; dota: 70%;
 			{
 				"var_type"					"FIELD_INTEGER"
-				"miss_chance"				"45 50 60 70"
+				"miss_chance"				"50 60 70 80"
 			}
 			"06"
 			{

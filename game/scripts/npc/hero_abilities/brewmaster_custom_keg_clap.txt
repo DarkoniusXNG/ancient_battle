@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Brewmaster: Keg Clap (E) - Datadriven Brewmaster Thunder Clap
 	// Author: Darkonius
-	// Notes: OK; 27.5.2018;
+	// Notes: OK; 13.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"brewmaster_custom_keg_clap"
@@ -21,7 +21,7 @@
 		
 		"AbilityCooldown"				"13.0"
 
-		"AbilityManaCost"				"100 115 130 145"		// dota: 90/105/130/150
+		"AbilityManaCost"				"95 115 130 150"		// dota: 90/105/130/150
 		"AbilityProcsMagicStick"		"1"
 
 		"AbilitySpecial"
@@ -33,13 +33,13 @@
 			}
 			"02"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"4.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"4"
 			}
 			"03"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration_creeps"			"8.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration_creeps"			"8"
 			}
 			"04"
 			{

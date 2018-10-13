@@ -64,6 +64,7 @@
 #base "hero_abilities/death_knight_death_coil.txt"
 #base "hero_abilities/death_knight_death_pact.txt"
 #base "hero_abilities/death_knight_death_pit.txt"
+#base "hero_abilities/death_knight_unholy_aura.txt"
 
 #base "hero_abilities/firelord_arcana_model.txt"
 #base "hero_abilities/firelord_flaming_presence.txt"

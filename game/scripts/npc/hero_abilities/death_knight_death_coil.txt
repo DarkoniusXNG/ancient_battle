@@ -4,7 +4,7 @@
 	// Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 3.7.2017; Can't cast on himself; Projectile is slower than in DotA;
+	// Notes: OK; 13.10.2018; Can't cast on himself; Projectile is slower than in DotA;
 	// TO_DO: 
 	//=================================================================================================================
 	"death_knight_death_coil"
@@ -31,7 +31,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50 60 70 80"
+		"AbilityManaCost"				"50"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -53,13 +53,13 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"heal_amount"			"150 200 300 350"
+				"heal_amount"			"150 200 250 300"
 			}
 			
-			"04" // not in tooltip
+			"04" // dota: 1600
 			{
 				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"		"900"
+				"projectile_speed"		"950"
 			}
 		}
 		

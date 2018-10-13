@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Ranger: Marksmanship (R) - New Spell, Passive, bonus agility, bonus accuracy, bonus attack range and bonus chance to instantly kill creeps
 	// Author: Darkonius
-	// Notes: OK; 26.12.2016; Pseudo True Strike = Accuracy -> True Random; Chance to kill creeps instantly -> True Random;
+	// Notes: OK; 13.10.2018; Pseudo True Strike = Accuracy -> True Random; Chance to kill creeps instantly -> True Random;
 	// Notes: Chance to kill creeps instantly -> DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO
 	// TO_DO:
 	//=================================================================================================================
@@ -23,12 +23,12 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_agi"						"20 30 40"
+				"bonus_agi"						"15 35 55"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_accuracy"				"20 30 40"
+				"bonus_accuracy"				"25 35 45"
 			}
 			"03"
 			{

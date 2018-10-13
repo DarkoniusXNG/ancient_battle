@@ -1,9 +1,9 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Death Knight; 16.9.2018;
-	// Notes: OK; Death Pact provides dmg and hp, Chilling Death Aura provides bonus hp regen and bonus ms;
-	// TO_DO: death_knight_death_pit; death_knight_chilling_touch;
+	// HERO: Death Knight; 13.10.2018;
+	// Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
+	// TO_DO: death_knight_death_pit;
 	//=================================================================================================================
 	"npc_dota_hero_death_knight"
 	{
@@ -20,7 +20,7 @@
 		"Ability1"				"death_knight_death_coil"				// Q (4 levels)
 		"Ability2"				"death_knight_death_pact"				// W, modified (4 levels)
 		"Ability3"				"death_knight_death_pit"				// E (4 levels)
-		"Ability4"				""										// T, DOTA_VERSION (4 levels)
+		"Ability4"				"death_knight_unholy_aura"				// T (4 levels)
 		"Ability5"				"death_knight_chilling_touch"			// F, Secondary Ultimate (1 level)
 		"Ability6"				"abaddon_borrowed_time"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
 		"Ability7"				"generic_hidden"

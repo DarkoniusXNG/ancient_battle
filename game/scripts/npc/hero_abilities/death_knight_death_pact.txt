@@ -3,8 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Death Pact (W) - Modified Clinkz Death Pact
 	// Author: Valve + Darkonius
-	// Notes: OK; 9.5.2018;
-	// Notes: DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES zbog kripova sa spell immunity a koji nisu ni ancienti ili krip heroji
+	// Notes: OK; 13.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pact"
@@ -46,7 +45,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"35.0"
+				"duration"				"35"
 			}
 			"02"
 			{
@@ -56,7 +55,7 @@
 			"03"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"damage_gain_pct"				"4.0 5.0 6.0 7.0"
+				"damage_gain_pct"				"4 5 6 7"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 		}
