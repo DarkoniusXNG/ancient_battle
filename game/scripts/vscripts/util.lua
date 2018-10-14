@@ -392,7 +392,6 @@ end
 function CustomPassiveBreak(unit, duration)
 	-- List of custom abilities with passive modifiers
 	local abilities_with_passives = {
-	"death_knight_chilling_touch",
 	"dark_ranger_custom_marksmanship",
 	"life_stealer_custom_anabolic_frenzy",
 	"paladin_eternal_devotion",
@@ -411,7 +410,6 @@ function CustomPassiveBreak(unit, duration)
 	"blademaster_custom_blade_dance"
 	}
 	local passive_modifiers = {
-	"modifier_chilling_death_aura",
 	"modifier_custom_marksmanship_passive",
 	"modifier_anabolic_frenzy_passive",
 	"modifier_devotion_aura_applier",
@@ -782,4 +780,8 @@ function HasOtherUniqueAttackModifiers(unit)
 		
 		return false
 	end
+end
+
+function HasBit(flags, specific_flag)
+	return bit.band(flags, specific_flag) == specific_flag
 end

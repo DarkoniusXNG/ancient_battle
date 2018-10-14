@@ -4,14 +4,14 @@
 	// Death Knight: Death Pit (E) - Creates a pit in which enemies are slowed, provide lifesteal when damaged and take more damage.
 	// Author: Darkonius
 	// Notes: OK; 14.10.2018;
-	// TO_DO: ALL
+	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pit"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"					"ability_lua"
-		"ScriptFile"				"heroes/death_knigh/death_pit.lua"
+		"ScriptFile"				"heroes/death_knight/death_pit.lua"
 		"AbilityTextureName"    	"custom/death_knight_death_pit"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -36,8 +36,9 @@
 		
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
-			"particle"			"particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+			//"particle"			"particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"
+			"particle"			"particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay.vpcf"
 		}
 		
 		// Special
@@ -52,7 +53,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-20 -30 -40 -50"
+				"move_speed_slow"		"-15 -20 -25 -30"
 			}
 			"03"
 			{
