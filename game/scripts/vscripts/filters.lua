@@ -236,26 +236,29 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		end
 		-- Fetch the damage block amount
 		local ability_level = ability:GetLevel() - 1
+		local block_chance = ability:GetLevelSpecialValueFor("damage_block_chance", ability_level)
 		local damage_block = ability:GetLevelSpecialValueFor("damage_block", ability_level)
 		
-		-- Calculating new/reduced damage and blocked damage
-		local new_damage = math.max(keys.damage - damage_block, 0)
-		local blocked_damage = keys.damage - new_damage -- max(blocked_damage) = damage_block
-		
-		if attacker:IsNull() or victim:IsNull() then
-			return false
-		end
-		
-		if (not attacker:IsTower()) and (not attacker:IsFountain()) then
-			-- Show block message
-			if damage_type == DAMAGE_TYPE_PHYSICAL then
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, victim, blocked_damage, nil)
-			else
-				SendOverheadEventMessage(nil, OVERHEAD_ALERT_MAGICAL_BLOCK, victim, blocked_damage, nil)
+		if RollPercentage(block_chance) then
+			-- Calculating new/reduced damage and blocked damage
+			local new_damage = math.max(keys.damage - damage_block, 0)
+			local blocked_damage = keys.damage - new_damage -- max(blocked_damage) = damage_block
+			
+			if attacker:IsNull() or victim:IsNull() then
+				return false
 			end
+			
+			if (not attacker:IsTower()) and (not attacker:IsFountain()) then
+				-- Show block message
+				if damage_type == DAMAGE_TYPE_PHYSICAL then
+					SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, victim, blocked_damage, nil)
+				else
+					SendOverheadEventMessage(nil, OVERHEAD_ALERT_MAGICAL_BLOCK, victim, blocked_damage, nil)
+				end
 
-			-- Reduce damage
-			keys.damage = new_damage
+				-- Reduce damage
+				keys.damage = new_damage
+			end
 		end
 	end
 	

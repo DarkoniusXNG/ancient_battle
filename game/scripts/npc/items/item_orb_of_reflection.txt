@@ -28,7 +28,7 @@
 	
 	//=================================================================================================================
 	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) + Recipe (100) = 7700
-	// Notes: OK; 16.9.2018; Uses damage filter and built-in modifier; Can be disassembled. Must be weaker than Ultimate King Bar.
+	// Notes: OK; 14.10.2018; Uses damage filter and built-in modifier; Must be weaker than Ultimate King Bar.
 	// Notes: Spell Lifesteal works normally with Orb of Reflection;
 	//=================================================================================================================
 	"item_orb_of_reflection"
@@ -100,7 +100,7 @@
 			"09"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"passive_damage_return"	"40"
+				"passive_damage_return"	"35"
 			}
 			"10" // like Blademail; must be lower duration than Ultimate King Bar or the same duration
 			{

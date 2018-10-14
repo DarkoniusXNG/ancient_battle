@@ -28,8 +28,8 @@
 	
 	//=================================================================================================================
 	// 1263 - Infused Robe - Hood of Defiance (1700) + Vanguard (2150) + Infused Raindrop (225) + Recipe (425) = 4500
-	// Notes: OK; 16.9.2018; Uses damage filter;
-	// TO_DO: Add block chance, currently its 100%
+	// Notes: OK; 14.10.2018; Uses damage filter;
+	// TO_DO: 
 	//=================================================================================================================
 	"item_infused_robe"
 	{
@@ -68,35 +68,40 @@
 				"var_type"					"FIELD_INTEGER"
 				"damage_block"				"35"
 			}
-			"02" // like Hood
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_block_chance"		"50"
+			}
+			"03" // like Hood
 			{
 				"var_type"					"FIELD_INTEGER"
 				"bonus_magic_resist"		"25"
 			}
-			"03" // 6.5 + 5.5
+			"04" // 6.5 + 5.5
 			{
 				"var_type"					"FIELD_INTEGER"
 				"bonus_hp_regen"			"12"
 			}
-			"04" // like Vanguard
+			"05" // like Vanguard
 			{
 				"var_type"					"FIELD_INTEGER"
 				"bonus_hp"					"250"
 			}
-			"05" // like Raindrop
+			"06" // like Raindrop
 			{
 				"var_type"					"FIELD_FLOAT"
 				"bonus_mana_regen"			"0.5"
 			}
-			"06" // Hood (325); Raindrop (120); Aphotic Shield (110/140/170/200 but with lvl 25 talent its: 335/365/395/425)
+			"07" // Hood (325); Raindrop (120); Aphotic Shield (110/140/170/200 but with lvl 25 talent its: 335/365/395/425)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"barrier_block"				"200"
 			}
-			"07" // Hood (12); Aphotic Shield (15);
+			"08" // Hood (12); Aphotic Shield (15);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"barrier_duration"			"12.0"
+				"barrier_duration"			"12"
 			}
 		}
 		
