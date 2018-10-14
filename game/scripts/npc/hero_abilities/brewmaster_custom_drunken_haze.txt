@@ -4,8 +4,8 @@
 	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 13.10.2018; Projectile can be disjointed;
-	// TO_DO: Animacija je cudna. Treba bude DOTA_PROJECTILE_ATTACHMENT_ATTACK_2.
+	// Notes: OK; 14.10.2018; Projectile can be disjointed;
+	// TO_DO: Cast Animation is weird. It should be DOTA_PROJECTILE_ATTACHMENT_ATTACK_2.
 	//====================================================================================================
 	"brewmaster_custom_drunken_haze"
 	{
@@ -19,7 +19,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.4"									// ok; dota: 0.2;
+		"AbilityCastPoint"				"0.4"									// dota: 0.2;
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastRange"				"850"									// original: 550
 		
@@ -27,7 +27,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 9.0 7.0 5.0"						// original CD: 12 seconds
+		"AbilityCooldown"				"10.0 9.0 7.0 5.0"						// original: 12 seconds
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Red Mist Curse (W) - New Spell, like Battle Hunger on enemies but doesn't get removed upon killing and gives FOW vision.
 	// Author: Darkonius
-	// Notes: OK; 4.10.2018;
+	// Notes: OK; 14.10.2018;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================

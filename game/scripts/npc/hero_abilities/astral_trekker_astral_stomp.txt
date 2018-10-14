@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
 	// Author: Darkonius
-	// Notes: OK; 29.9.2018; Has Aghanim Scepter Upgrade - increases dmg and radius
+	// Notes: OK; 14.10.2018; Has Aghanim Scepter Upgrade - increases dmg and radius
 	// Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
 	// TO_DO:
 	//=================================================================================================================

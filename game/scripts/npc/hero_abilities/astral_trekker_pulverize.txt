@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Pulverize (E) - New Spell; Passive; Chance to cleave 120% damage;
 	// Author: Darkonius
-	// Notes: OK; 29.9.2018; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
+	// Notes: OK; 14.10.2018; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
 	// TO_DO: 
 	//=================================================================================================================
 	"astral_trekker_pulverize"
@@ -20,7 +20,6 @@
 		
 		"precache"
 		{
-			//"particle" 	"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
 			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave.vpcf"
 		}
 		

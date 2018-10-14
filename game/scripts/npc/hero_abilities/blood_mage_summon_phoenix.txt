@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Summon Phoenix - summons a powerful creature that respawns on death etc.
 	// Author: Darkonius
-	// Notes: OK; 13.10.2018;
+	// Notes: OK; 14.10.2018; Can't have more than one;
 	// TO_DO: Cast Animation; Phoenix Fire, Splash Attack, Egg particles and sounds
 	//=================================================================================================================
 	"blood_mage_summon_phoenix"

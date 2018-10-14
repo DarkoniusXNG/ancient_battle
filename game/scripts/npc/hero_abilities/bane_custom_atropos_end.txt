@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Bane: Atropos End (F) - New Spell, Removes Nightmare, other debuffs and stuns from caster. Doesn't work while silenced or hexed;
 	// Author: Darkonius
-	// Notes: OK; 4.10.2018; Magic Stick/Wand doesn't proc! (INTENTIONAL)
-	// TO_DO:
+	// Notes: OK; 14.10.2018; Magic Stick/Wand doesn't proc! (INTENTIONAL)
+	// TO_DO: If needed add terror blink buff to dispel list
 	//=================================================================================================================
 	"bane_custom_atropos_end"
 	{

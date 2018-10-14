@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Drunken Brawler (T) - like Brewmaster's Drunken Brawler but, no guaranteed crit and evasion
 	// Author: Darkonius
-	// Notes: OK; 13.10.2018; Chance to crit is pseudo-random;
+	// Notes: OK; 14.10.2018; Chance to crit is pseudo-random;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_drunken_brawler"

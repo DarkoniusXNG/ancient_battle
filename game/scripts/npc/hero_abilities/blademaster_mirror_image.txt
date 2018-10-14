@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Mirror Image (W) - Modified Naga Siren Mirror Image
 	// Author: Valve + Darkonius
-	// Notes: OK; 9.10.2018; Summons 2 illusions that deal less damage than Naga Siren's
+	// Notes: OK; 14.10.2018; Summons 2 illusions
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_mirror_image"

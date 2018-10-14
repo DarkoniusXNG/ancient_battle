@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Counter Attack (F) - Modified Legion Commander Moment of Courage. 1 level and No Lifesteal!
 	// Author: Valve + Darkonius
-	// Notes: OK; 9.10.2018; Blademaster can crit on Counter-Attack;
+	// Notes: OK; 14.10.2018; Blademaster can crit on Counter-Attack;
 	// Notes: Can counter-attack buildings;
 	// TO_DO:
 	//=================================================================================================================

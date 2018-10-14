@@ -4,13 +4,14 @@
 	// Blood Mage: Blood Mirror - Redirects a percentage of the Damage dealt to Blood Mage to the target
 	// or redirects a percentage of the damage dealt to an ally to the Blood Mage.
 	// Author: Darkonius
-	// Notes: OK; 14.5.2018;
+	// Notes: OK; 14.10.2018;
 	// Linkens: Blocks;
 	// TO_DO: ALL
 	//=================================================================================================================
 	"blood_mage_blood_mirror"
 	{
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/blood_mage/blood_mirror.lua"
 		"AbilityTextureName"			"custom/blood_mage_blood_mirror"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -41,80 +42,10 @@
 				"var_type"                  "FIELD_INTEGER"
 				"redirected_damage"        	"10 15 20 25"
 			}
-			"04"
+			"02"
 			{
 				"var_type"                  "FIELD_FLOAT"
 				"duration"             		"5.0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			//"FireSound"
-			//{
-				//"EffectName"	""
-				//"Target" 		"TARGET"
-			//}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/blood_mage/blood_mirror.lua"
-				"Function"		"BloodMirrorStart"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_blood_mirror_ally"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%duration"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_blood_mirror_enemy" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-		
-				//"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					
-				}
-
-				"States"
-				{
-					
-				}			
-			}
-			
-			"modifier_blood_mirror_ally" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-		
-				//"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					
-				}
-
-				"States"
-				{
-					
-				}			
 			}
 		}
 	}

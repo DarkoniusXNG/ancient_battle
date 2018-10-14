@@ -67,7 +67,6 @@ function modifier_pulverize_cleave:OnAttackLanded(event)
 			local end_radius = self.cleave_end_radius
 			local distance = self.cleave_distance
 			local particle_cleave = "particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave.vpcf"
-			--"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
 
 			local main_damage
 			local damage_percent

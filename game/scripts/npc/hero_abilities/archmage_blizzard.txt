@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Archmage: Blizzard (Q) - New Spell, Calls down waves of freezing ice shards that damage and slows units in a target area.
 	// Author: Darkonius
-	// Notes: OK; 15.5.2018; 25% of the damage is dealt to buildings;
+	// Notes: OK; 14.10.2018; 25% of the damage is dealt to buildings;
 	// TO_DO:
 	//====================================================================================================
 	"archmage_blizzard"
@@ -30,22 +30,22 @@
 		
 		"AbilitySpecial"
 		{
-			"01" // (Abyssal Underlord Firestorm: 400; Archmage original: 200; Shrapnel: 450; Ice Vortex: 275)
+			"01" // Underlord Firestorm (400); Archmage original (200); Shrapnel (450); Ice Vortex (275);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"400"
 			}
-			"02" // (Abyssal Underlord Firestorm: 6; Archmage original: 6/8/10; Shrapnel: 10)
+			"02" // Underlord Firestorm (6); Archmage original (6/8/10); Shrapnel (10);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"duration"				"6 7 8 9"
 			}
-			"03" // (Abyssal Underlord Firestorm: 25/40/55/70; Archmage original: 30/40/50; Shrapnel: 15/35/55/75)
+			"03" // Underlord Firestorm (25/40/55/70); Archmage original (30/40/50); Shrapnel (15/35/55/75);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"damage"				"25 40 55 70"
 			}
-			"04" // like original Archmage, Abyssal Underlord Firestorm and Sniper's Shrapnel
+			"04" // like original Archmage, Underlord Firestorm and Sniper Shrapnel
 			{
 				"var_type"				"FIELD_INTEGER"
 				"wave_interval"			"1"
@@ -65,7 +65,7 @@
 				"var_type"				"FIELD_INTEGER"
 				"attack_speed_slow"		"-15 -20 -25 -30"
 			}
-			"08" // not in tooltip; only here; %radius*2 doesnt work 7.00
+			"08" // not in tooltip; only here;
 			{
 				"var_type"				"FIELD_INTEGER"
 				"double_radius"			"800"

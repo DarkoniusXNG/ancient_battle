@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Blade Storm (Q) - Datadriven, similar to Juggernaut Blade Fury
 	// Author: Darkonius
-	// Notes: OK; 9.10.2018; Deals 25% damage to buildings. Can attack normally during Blade Storm.
+	// Notes: OK; 14.10.2018; Deals 25% damage to buildings. Can attack normally during Blade Storm.
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_blade_storm"

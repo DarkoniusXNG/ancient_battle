@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
 	// Author: Darkonius
-	// Notes: OK; 29.9.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_giant_growth"
@@ -61,7 +61,7 @@
 			"07" // this is used in lua
 			{
 				"var_type"						"FIELD_FLOAT"
-				"growth_size"					"1.2"
+				"growth_size"					"1.2 1.4 1.6"
 			}
 			"08" // this is in tooltip only
 			{

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
 	// Author: Darkonius
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO: attach_hitloc effect is weird -> not critical
 	//=================================================================================================================
 	"archmage_arcane_magic"
@@ -26,7 +26,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"25 35 45 55"				// KOTL Chakra Magic: 0
+		"AbilityManaCost"				"15 25 35 45"				// KOTL Chakra Magic: 0
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -39,20 +39,20 @@
 		
 		"AbilitySpecial"
 		{
-			"01" // Crystal Maiden Self Arcane Aura: 1.6/2.4/3.2/4.0 (aura_mana_regen+buff_mana_regen >> cm self regen)
+			"01" // Crystal Maiden Self Arcane Aura: 1.8/2.6/3.4/4.2 (aura_mana_regen+buff_mana_regen >> cm self regen)
 			{
 				"var_type"				"FIELD_FLOAT"
 				"buff_mana_regen"		"1.5 2.0 2.5 3.0"
 			}
-			"02" // KOTL Chakra Magic: 15 seconds
+			"02" // KOTL Chakra Magic (15 seconds);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"buff_duration"			"15"
 			}
-			"03" // Crystal Maiden (Global) Arcane Aura: 0.8/1/1.2/1.4
+			"03" // Crystal Maiden (Global) Arcane Aura: 0.7/0.9/1.1/1.3
 			{
 				"var_type"				"FIELD_FLOAT"
-				"aura_mana_regen"		"1.0 1.2 1.4 1.6"
+				"aura_mana_regen"		"0.9 1.1 1.3 1.5"
 			}
 			"04"
 			{

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Alchemist: Philosopher's Stone (E) - New Spell,
 	// Author: Darkonius
-	// Notes: OK; 15.10.2017;
-	// TO_DO:
+	// Notes: OK; 14.10.2018;
+	// TO_DO: It will need rework into ability_lua if you implement spell steal
 	//=================================================================================================================
 	"alchemist_custom_philosophers_stone"
 	{
@@ -36,28 +36,28 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" //
+			"01"
 			{
 				"var_type"          			"FIELD_INTEGER"
 				"base_damage" 					"75"
 			}
-			"02" //
+			"02"
 			{
 				"var_type"          			"FIELD_FLOAT"
 				"bonus_damage_multiplier" 		"0.5 1.0 1.5 2.0"
 				"CalculateSpellDamageTooltip"	"0"
 			}
-			"03" // 
+			"03"
 			{
 				"var_type"          			"FIELD_INTEGER"
 				"radius"            			"250"
 			}
-			"04" // not showing in tooltip
+			"04"
 			{
 				"var_type"          			"FIELD_INTEGER"
 				"projectile_speed"            	"1000"
 			}
-			"05" // not showing in tooltip; it should be same as radius
+			"05" // it should be roughly the same as radius
 			{
 				"var_type"          			"FIELD_INTEGER"
 				"projectile_vision"				"300"

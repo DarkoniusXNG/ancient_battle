@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Blood Mage: Rupture - Datadriven Bloodseeker's rupture without Aghanim Scepter
+	// Blood Mage: Rupture - Datadriven, like Bloodseeker's rupture without Aghanim Scepter
 	// Author: Darkonius
-	// Notes: OK; 13.10.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_rupture"

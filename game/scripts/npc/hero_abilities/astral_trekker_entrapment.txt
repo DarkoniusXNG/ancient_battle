@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Entrapment (Q) - like Naga Siren Ensnare without illusion casting part
 	// Author: Darkonius
-	// Notes: OK; 30.9.2018; Just applies root and reveal; Doesn't disarm; Interrupts;
+	// Notes: OK; 14.10.2018; Just applies root and reveal; Doesn't disarm; Interrupts;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -49,7 +49,7 @@
 			"01"
 			{ 
 				"var_type"  		"FIELD_FLOAT"
-				"duration" 			"2.0 3.0 4.0 5.0"
+				"duration" 			"2 3 4 5"
 			}
 		}
 

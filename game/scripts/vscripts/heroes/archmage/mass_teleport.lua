@@ -8,10 +8,7 @@
 	local casterPos = caster:GetAbsOrigin()
 	ParticleManager:SetParticleControl(particle_caster, 0, casterPos)
 	ParticleManager:SetParticleControl(particle_caster, 2, Vector(255,255,255)) -- color
-	ParticleManager:SetParticleControl(particle_caster, 3, casterPos)
-	ParticleManager:SetParticleControl(particle_caster, 4, casterPos)
 	ParticleManager:SetParticleControl(particle_caster, 5, casterPos)
-	ParticleManager:SetParticleControl(particle_caster, 6, casterPos)
 	ability.particle_caster = particle_caster
 	
 	-- Remove the particle on caster after channel duration

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Bane: Terror Blink (T) - New Spell, Blinks on target point, disarmed, then returns to starting point
 	// Author: Darkonius
-	// Notes: OK; 7.10.2018; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
-	// TO_DO:
+	// Notes: OK; 14.10.2018; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
+	// TO_DO: If too weak increase duration to 8 seconds.
 	//=================================================================================================================
 	"bane_custom_terror_blink"
 	{

@@ -4,7 +4,7 @@
 	// Archmage: Conjure Image (F) - New Spell, Ultimate, Makes the illusion out of the target hero
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 28.9.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO: Add a visual effect (particle);
 	// ================================================================================================================
 	"archmage_conjure_image"

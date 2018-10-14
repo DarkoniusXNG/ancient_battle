@@ -5,6 +5,7 @@ function GrowStart(event)
 	
 	local model_size = ability:GetLevelSpecialValueFor("growth_size", ability:GetLevel() - 1)
 	local original_model_scale = caster:GetModelScale()
+	caster.original_model_scale = original_model_scale
 	local model_size_interval = 100 / (model_size - original_model_scale)
 	
 	-- Scale Up in 100 intervals
@@ -22,7 +23,7 @@ function GrowEnd(event)
 	local ability = event.ability
 	
 	local model_size = ability:GetLevelSpecialValueFor("growth_size", ability:GetLevel() - 1)
-	local original_model_scale = 0.74 -- this value is written in npc_heroes_custom.txt; use handle tied to caster if you prefer
+	local original_model_scale = caster.original_model_scale or 0.74
 	local model_size_interval = 100 / (model_size - original_model_scale) 
 	
 	-- Scale Down in 100 intervals

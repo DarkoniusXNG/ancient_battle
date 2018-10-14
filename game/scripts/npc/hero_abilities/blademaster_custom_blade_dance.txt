@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Blade Dance (T) - Datadriven, passive, chance to critical strike
 	// Author: Darkonius
-	// Notes: OK; 9.10.2018; Chance to crit is pseudo-random; Can crit on buildings;
+	// Notes: OK; 14.10.2018; Chance to crit is pseudo-random; Can crit on buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_custom_blade_dance"

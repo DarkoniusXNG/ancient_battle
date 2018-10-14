@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Primal Split (R) - Ultimate, Datadriven Brewmaster's Primal Split with slight modifications
 	// Author: Darkonius
-	// Notes: OK; 13.10.2018; Selecting and deselecting works (selection library).
+	// Notes: OK; 14.10.2018; Selecting and deselecting works (selection library).
 	// TO_DO: Ability UI is bugged after Primal Split end -> fix if you can;
 	//====================================================================================================
 	"brewmaster_custom_primal_split"

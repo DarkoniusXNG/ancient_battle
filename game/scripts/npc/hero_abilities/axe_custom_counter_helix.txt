@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
 	// Author: Darkonius
-	// Notes: OK; 4.10.2018; Pseudo-Random, triggers OnAttackStart
+	// Notes: OK; 14.10.2018; Pseudo-Random, triggers OnAttackStart
 	// TO_DO:
 	//=================================================================================================================
 	"axe_custom_counter_helix"
@@ -20,6 +20,7 @@
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 
 		"AbilityCooldown"				"0.45 0.4 0.35 0.3"
+		"AbilityManaCost"				"0"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

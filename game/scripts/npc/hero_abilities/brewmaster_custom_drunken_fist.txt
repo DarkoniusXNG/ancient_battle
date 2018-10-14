@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Drunken Fist (F) - New Spell, Ultimate, Cleave + Knockback in front of the caster
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 13.10.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO: 
 	//====================================================================================================
 	"brewmaster_custom_drunken_fist"

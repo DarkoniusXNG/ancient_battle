@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Healing Spray (Q) - New Spell, Creates a pool of healing spray that heals and decreases incoming damage
 	// Author: Darkonius
-	// Notes: OK; 9.5.2018;
+	// Notes: OK; 14.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_healing_spray"

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Acid Bomb (W) - New Spell, Tracking Projectile, stuns, reduces armor and deals damage over time
 	// Author: Darkonius
-	// Notes: OK; 24.5.2018; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// Notes: OK; 14.10.2018; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
 	// Linkens: Blocks;
 	// TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important.
 	//=================================================================================================================
@@ -49,12 +49,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // like Paralyzing Cask
+			"01" // like Paralyzing Cask (on heroes)
 			{
 				"var_type"          	"FIELD_INTEGER"
 				"stun_duration"   		"1"
 			}
-			"02" // like Maledict, better than Poison Touch, worse than Acid Spray
+			"02" // like Maledict; Acid Spray (16);
 			{
 				"var_type"          	"FIELD_INTEGER"
 				"debuff_duration"       "12"
@@ -64,12 +64,12 @@
 				"var_type"          	"FIELD_INTEGER"
 				"armor_reduction"   	"-4 -5 -6 -7"
 			}
-			"04" // like Acid Spray, worse than Poison Touch
+			"04" // Acid Spray (15/20/25/30) with duration 16; Poison Touch (16/28/40/52) with duration 4/5/6/7;
 			{
 				"var_type"          	"FIELD_INTEGER"
-				"damage_per_second" 	"15 20 25 30"
+				"damage_per_second" 	"15 25 30 40"
 			}
-			"05" // better than Unstable Concoction, original Acid Bomb, Maledict and Poison Touch
+			"05" // Unstable Concoction (200); original Acid Bomb (200); Maledict (180)
 			{
 				"var_type"          	"FIELD_INTEGER"
 				"radius"            	"250"
