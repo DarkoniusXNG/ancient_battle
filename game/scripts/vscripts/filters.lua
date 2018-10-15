@@ -177,7 +177,97 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		return false
 	end
 	
-	-- Orb of Reflection: Partial Damage return to the attacker as Magical damage (DOESN'T WORK ON ILLUSIONS!)
+	-- Blood Mirror: Damage redirection
+	if victim:HasModifier("modifier_custom_blood_mirror_buff_ally_redirect") then
+		local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_ally_redirect")
+		
+		local reduction
+		local new_victim
+		if modifier then
+			reduction = modifier.damage_redirect_percent
+			new_victim = modifier.redirect_target
+		else
+			print("modifier_custom_blood_mirror_buff_ally_redirect not found on victim.")
+			reduction = 0
+			new_victim = nil
+		end
+		
+		if reduction == nil then
+			reduction = 0
+		end
+		-- Reducing damage on victim
+		keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
+
+		-- Calculating how much of the damage is redirected
+		local damage_to_redirect = damage_after_reductions*reduction/100
+		
+		local damage_table = {}
+		damage_table.attacker = attacker
+		damage_table.damage_type = damage_type
+		damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+		
+		if damaging_ability then
+			damage_table.ability = damaging_ability
+		end
+		
+		if new_victim then
+			-- Checking if the redirect_target has a debuff (just in case)
+			if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_caster") and damage_to_redirect > 0 then
+				damage_table.victim = new_victim
+				damage_table.damage = damage_to_redirect
+				ApplyDamage(damage_table)
+			end
+		else
+			print("redirect_target for Blood Mirror is nil")
+		end
+	end
+	
+	if victim:HasModifier("modifier_custom_blood_mirror_buff_caster_redirect") then
+		local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_caster_redirect")
+
+		local reduction
+		local new_victim
+		if modifier then
+			reduction = modifier.damage_redirect_percent
+			new_victim = modifier.redirect_target
+		else
+			print("modifier_custom_blood_mirror_buff_caster_redirect not found on victim.")
+			reduction = 0
+			new_victim = nil
+		end
+		
+		if reduction == nil then
+			reduction = 0
+		end
+		-- Reducing damage on victim
+		keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
+
+		-- Calculating how much of the damage is redirected
+		local damage_to_redirect = damage_after_reductions*reduction/100
+
+		-- Creating a damage table
+		local damage_table = {}
+		damage_table.attacker = victim
+		damage_table.damage_type = damage_type
+		damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+
+		if damaging_ability then
+			damage_table.ability = damaging_ability
+		end
+
+		if new_victim and not new_victim:IsNull() then
+			-- Checking if the redirect_target has a debuff because it can be dispelled
+			if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_enemy") and damage_to_redirect > 0 then
+				damage_table.victim = new_victim
+				damage_table.damage = damage_to_redirect
+				ApplyDamage(damage_table)
+			end
+		else
+			print("redirect_target for Blood Mirror is nil")
+		end
+	end
+	
+	-- Orb of Reflection: Partial Damage return to the attacker (DOESN'T WORK ON ILLUSIONS!)
 	if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("item_modifier_orb_of_reflection_active_reflect")) and victim:IsRealHero() then
 
 		-- Return or not
@@ -208,10 +298,10 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				local damage_table = {}
 				damage_table.victim = attacker
 				damage_table.attacker = victim
-				damage_table.damage_type = DAMAGE_TYPE_MAGICAL
+				damage_table.damage_type = damage_type
 				damage_table.ability = ability
 				damage_table.damage = new_damage
-				damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
 				
 				ApplyDamage(damage_table)
 			end
