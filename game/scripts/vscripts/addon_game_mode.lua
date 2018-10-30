@@ -4,8 +4,6 @@ end
 
 require('util')
 require('customgamemode')
-require('custom_illusions')
-require('custom_RNG')
 -- Essential files:
 require('libraries/timers')
 require('player_resource')

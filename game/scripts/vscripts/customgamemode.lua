@@ -13,8 +13,10 @@ require('libraries/selection')
 require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
-require('spawns')
 require('filters')
+require('custom_illusions')
+require('custom_RNG')
+require('custom_spawner')
 
 function ancient_battle_gamemode:PostLoadPrecache()
 
