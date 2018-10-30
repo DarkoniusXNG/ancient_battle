@@ -11,7 +11,7 @@ end
 function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	--PrintTable(keys)
 	local new_state = GameRules:State_Get()
-	
+
 	if new_state == DOTA_GAMERULES_STATE_INIT then
 
 	elseif new_state == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
@@ -29,7 +29,7 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 						PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
 						PlayerResource:SetHasRandomed(playerID)
 						PlayerResource:SetCanRepick(playerID, false)
-						print("Randomed a hero for a player number "..playerID)
+						print("[Ancient Battle] Randomed a hero for a player number "..playerID)
 					end
 				end
 			end
@@ -57,7 +57,7 @@ function ancient_battle_gamemode:OnNPCSpawned(keys)
 
 	local npc = EntIndexToHScript(keys.entindex)
 	local unit_owner = npc:GetOwner()
-	
+
 	-- OnHeroInGame
 	if npc:IsRealHero() and npc.bFirstSpawned == nil then
 		npc.bFirstSpawned = true
@@ -84,7 +84,7 @@ function ancient_battle_gamemode:OnPlayerReconnect(keys)
 
 	local new_state = GameRules:State_Get()
 	if new_state > DOTA_GAMERULES_STATE_HERO_SELECTION then
-		Timers:CreateTimer(0.5, function()
+		Timers:CreateTimer(1.0, function()
 			local playerID = keys.PlayerID
 
 			if PlayerResource:HasSelectedHero(playerID) or PlayerResource:HasRandomed(playerID) then
@@ -94,7 +94,7 @@ function ancient_battle_gamemode:OnPlayerReconnect(keys)
 					PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
 					PlayerResource:SetHasRandomed(playerID)
 					PlayerResource:SetCanRepick(playerID, false)
-					print("[BAREBONES] Randomed a hero for a player number "..playerID.." that reconnected.")
+					print("[Ancient Battle] Randomed a hero for a player number "..playerID.." that reconnected.")
 				end
 			end
 		end)
@@ -121,31 +121,35 @@ function ancient_battle_gamemode:OnPlayerChangedName(keys)
 	--PrintTable(keys)
 end
 
--- A player leveled up an ability
+-- A player leveled up an ability; Note: it doesn't trigger when you use SetLevel() on the ability!
 function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 	--PrintTable(keys)
 
 	local player = EntIndexToHScript(keys.player)
 	local ability_name = keys.abilityname
 
+	local playerID
 	if player then
-		local playerID = player:GetPlayerID()
-		local hero = PlayerResource:GetAssignedHero(playerID)
-		
-		-- Handling talents without custom net tables
-		local talents = {
-			{"special_bonus_unique_sven", "modifier_paladin_storm_hammer_talent"},
-			{"special_bonus_unique_hero_name_1", "modifier_ability_name_talent_name_1"}
-		}
-		
-		for i = 1, #talents do
-			local talent = talents[i]
-			if ability_name == talent[1] then
-				local talent_ability = hero:FindAbilityByName(ability_name)
-				if talent_ability then
-					local talent_modifier = talent[2]
-					hero:AddNewModifier(hero, talent_ability, talent_modifier, {})
-				end
+		playerID = player:GetPlayerID()
+	else
+		playerID = keys.PlayerID
+	end
+
+	local hero = PlayerResource:GetAssignedHero(playerID)
+
+	-- Handling talents without custom net tables
+	local talents = {
+		{"special_bonus_unique_sven", "modifier_paladin_storm_hammer_talent"},
+		{"special_bonus_unique_hero_name_1", "modifier_ability_name_talent_name_1"}
+	}
+
+	for i = 1, #talents do
+		local talent = talents[i]
+		if ability_name == talent[1] then
+			local talent_ability = hero:FindAbilityByName(ability_name)
+			if talent_ability then
+				local talent_modifier = talent[2]
+				hero:AddNewModifier(hero, talent_ability, talent_modifier, {})
 			end
 		end
 	end
@@ -159,9 +163,10 @@ end
 -- A player leveled up
 function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 	--PrintTable(keys)
-	
+
 	local player = EntIndexToHScript(keys.player)
 	local level = keys.level
+
 	local playerID
 	local hero
 	if player then
@@ -191,7 +196,7 @@ function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 			hero:SetMinimumGoldBounty(gold_bounty)
 			hero:SetMaximumGoldBounty(gold_bounty)
 		end
-		
+
 		-- Add a skill point when a hero levels up
 		local levels_without_ability_point = {17, 19, 21, 22, 23, 24}	-- on this levels you should get a skill point
 		for i = 1, #levels_without_ability_point do
@@ -206,12 +211,16 @@ end
 -- A player last hit a creep, a tower, or a hero
 function ancient_battle_gamemode:OnLastHit(keys)
 	--PrintTable(keys)
-	
+
 	local isFirstBlood = keys.FirstBlood == 1
 	local isHeroKill = keys.HeroKill == 1
 	local isTowerKill = keys.TowerKill == 1
-	local player = PlayerResource:GetPlayer(keys.PlayerID)
-	local killedEnt = EntIndexToHScript(keys.EntKilled)
+
+	-- Player ID that got a last hit
+	local playerID = keys.PlayerID
+
+	-- Killed unit (creep, hero, tower etc.)
+	local killed_entity = EntIndexToHScript(keys.EntKilled)
 end
 
 -- A tree was cut down by tango, quelling blade, etc.
@@ -222,27 +231,27 @@ end
 -- A rune was activated by a player
 function ancient_battle_gamemode:OnRuneActivated(keys)
 	--PrintTable(keys)
-	
-	local player = PlayerResource:GetPlayer(keys.PlayerID)
+
+	local playerID = keys.PlayerID
 	local rune = keys.rune
 end
 
 -- A player took damage from a tower
 function ancient_battle_gamemode:OnPlayerTakeTowerDamage(keys)
 	--PrintTable(keys)
-	
-	local player = PlayerResource:GetPlayer(keys.PlayerID)
+
+	local playerID = keys.PlayerID
 	local damage = keys.damage
 end
 
 -- A player picked or randomed a hero (this is happening before OnNPCSpawned)
 function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	--PrintTable(keys)
-	
+
 	local hero_name = keys.hero
 	local hero_entity = EntIndexToHScript(keys.heroindex)
 	local player = EntIndexToHScript(keys.player)
-	
+
 	Timers:CreateTimer(0.5, function()
 		local playerID = hero_entity:GetPlayerID()
 		if PlayerResource:IsFakeClient(playerID) then
@@ -262,11 +271,6 @@ end
 -- A player killed another player in a multi-team context
 function ancient_battle_gamemode:OnTeamKillCredit(keys)
 	--PrintTable(keys)
-	
-	local killer_player = PlayerResource:GetPlayer(keys.killer_userid)
-	local victim_player = PlayerResource:GetPlayer(keys.victim_userid)
-	local streak = keys.herokills
-	local killer_team = keys.teamnumber
 end
 
 -- An entity died (an entity killed an entity)
@@ -365,28 +369,28 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 				killed_unit:SetTimeUntilRespawn(respawn_time)
 			end
 		end
-		
+
 		-- Buyback Cooldown
 		if CUSTOM_BUYBACK_COOLDOWN_ENABLED then
 			PlayerResource:SetCustomBuybackCooldown(killed_unit:GetPlayerID(), BUYBACK_COOLDOWN_TIME)
 		end
-		
+
 		-- Killer is not a hero but it killed a hero
 		if killer_unit:IsTower() or killer_unit:IsCreep() or killer_unit:IsFountain() then
 
 		end
-		
+
 		-- When team hero kill limit is reached
 		if END_GAME_ON_KILLS and GetTeamHeroKills(killer_unit:GetTeam()) >= KILLS_TO_END_GAME_FOR_TEAM then
 			GameRules:SetGameWinner(killer_unit:GetTeam())
 		end
-		
+
 		if SHOW_KILLS_ON_TOPBAR then
 			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, GetTeamHeroKills(DOTA_TEAM_BADGUYS))
 			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
 		end
 	end
-	
+
 	-- Axe Chop Sound with Cut From Above (Culling Blade) when he kills heroes (not illusions)
 	if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability ~= nil then
 		local ability = killer_unit:FindAbilityByName("holdout_culling_blade")
@@ -394,16 +398,16 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 			killer_unit:EmitSound("Hero_Axe.Culling_Blade_Success")
 		end
 	end
-	
+
 	-- Ancient destruction detection (if the map doesn't have ancients with this names, this will never happen)
 	if killed_unit:GetUnitName() == "npc_dota_badguys_fort" then
 		GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 	elseif killed_unit:GetUnitName() == "npc_dota_goodguys_fort" then
 		GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
 	end
-	
+
 	-- Remove dead non-hero units from selection -> bugged ability/cast bar
-	if killed_unit:IsIllusion() or (killed_unit:IsControllableByAnyPlayer() and (not killed_unit:IsRealHero()) and (not killed_unit:IsCourier()) and (not killed_unit:IsClone())) then
+	if killed_unit:IsIllusion() or (killed_unit:IsControllableByAnyPlayer() and (not killed_unit:IsRealHero()) and (not killed_unit:IsCourier()) and (not killed_unit:IsClone())) and (not killed_unit:IsTempestDouble()) then
 		local player = killed_unit:GetPlayerOwner()
 		local playerID
 		if player == nil then
@@ -413,7 +417,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		end
 		PlayerResource:RemoveFromSelection(playerID, killed_unit)
 	end
-	
+
 	-- Holdout game mode
 	if GetMapName() == "holdout" then
 		-- Ancient to become vulnerable if all his towers are destroyed (Custom backdoor protection)
@@ -480,13 +484,13 @@ end
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 function ancient_battle_gamemode:OnConnectFull(keys)
 	--PrintTable(keys)
-	
+
 	ancient_battle_gamemode:CaptureGameMode()
 
 	local index = keys.index
 	local playerID = keys.PlayerID
 	local userID = keys.userid
-	
+
 	PlayerResource:OnPlayerConnect(keys)
 end
 
@@ -508,17 +512,17 @@ end
 -- This function is called whenever a tower is killed
 function ancient_battle_gamemode:OnTowerKill(keys)
 	--PrintTable(keys)
-	
+
 	local gold = keys.gold
-	local killerPlayer = PlayerResource:GetPlayer(keys.killer_userid)
+	local killer_userID = keys.killer_userid
 	local team = keys.teamnumber
 end
 
 -- This function is called whenever a player changes their custom team selection during Game Setup 
 function ancient_battle_gamemode:OnPlayerSelectedCustomTeam(keys)
 	--PrintTable(keys)
-	
-	local player = PlayerResource:GetPlayer(keys.player_id)
+
+	local playerID = keys.player_id
 	local success = (keys.success == 1)
 	local team = keys.team_id
 end
@@ -535,7 +539,7 @@ end
 -- This function is called whenever any player sends a chat message to team or All
 function ancient_battle_gamemode:OnPlayerChat(keys)
 	--PrintTable(keys)
-	
+
 	local team_only = keys.teamonly
 	local userID = keys.userid
 	local text = keys.text
