@@ -21,7 +21,7 @@
 		"AbilityLayout"		"6"
 		"Ability1"			"paladin_holy_purification"				// Q (4 levels)
 		"Ability2"			"paladin_storm_hammer"					// W (4 levels)
-		"Ability3"			""										// E (4 levels)
+		"Ability3"			"paladin_holy_strike"					// E (4 levels)
 		"Ability4"			"paladin_eternal_devotion"				// T, passive (4 levels)
 		"Ability5"			"paladin_divine_retribution"			// F, passive (1 level)
 		"Ability6"			"paladin_divine_shield"					// R, Primary Ultimate (3 levels)

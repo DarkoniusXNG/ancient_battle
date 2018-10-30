@@ -1,19 +1,21 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Paladin's Guardian Angel: Holy Purification (Q) - Datadriven Omniknight Purification 
+	// Paladin's Guardian Angel: Holy Purification (Q) - similar to Omniknight Purification 
 	// Author: Darkonius
-	// Notes: OK; 30.1.2017; Cast Point is 0.1; Can heal spell/magic immune and invulnerable allies;
+	// Notes: OK; 30.10.2018; Cast Point is 0.1; Can heal spell/magic immune and invulnerable allies;
+	// Notes: When cast on an enemy, enemy is damaged and caster's allies around the enemy are healed.
 	// TO_DO:
 	//=================================================================================================================
 	"guardian_angel_holy_purification"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/paladin/holy_purification.lua"
 		"AbilityTextureName"			"custom/paladin_holy_purification"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
@@ -55,88 +57,7 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-		}
-
-		"OnSpellStart"
-		{
-			"Heal"
-			{
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"HealAmount"	"%heal"
-			}
-			
-			"FireSound"
-			{
-				"EffectName"	"Hero_Omniknight.Purification"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-
-			"FireEffect"
-			{
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"ControlPoints"
-				{
-					"00"	"0 0 0"
-					"01"	"%radius %radius %radius"
-				}
-			}
-			
-			"FireEffect"
-			{
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  	"TARGET"
-					"Radius"	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-
-				"Action"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_PURE"
-						"Damage"	"%heal"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/paladin/paladin_holy_purification.lua"
-						"Function"			"PurificationHit"
-						"hit_particle"		"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-					}
-				}
-			}
+			"particle"	"particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_immortal_cast.vpcf"
 		}
 	}
 }

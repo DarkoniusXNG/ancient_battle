@@ -4,7 +4,7 @@
 	// Paladin: Storm Hammer (W) - Custom LUA Sven Storm Bolt
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 26.1.2017; Dynamically changes cooldown with lvl 25 talent;
+	// Notes: OK; 30.10.2018; Dynamically changes cooldown with lvl 25 talent;
 	// TO_DO:
 	//=================================================================================================================
 	"paladin_storm_hammer"
@@ -25,7 +25,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.3"
-		"AOERadius"						"%bolt_aoe"
 		
 		"precache"
 		{

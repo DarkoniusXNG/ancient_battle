@@ -107,6 +107,7 @@
 #base "hero_abilities/paladin_eternal_devotion.txt"
 #base "hero_abilities/paladin_holy_purification.txt"
 #base "hero_abilities/paladin_storm_hammer.txt"
+#base "hero_abilities/paladin_holy_strike.txt"
 
 #base "hero_abilities/mountain_king_thunder_clap.txt"
 
