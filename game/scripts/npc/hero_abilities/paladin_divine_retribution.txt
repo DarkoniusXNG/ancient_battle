@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Paladin: Divine Retribution (F) - New Spell, passive, For every allied hero death in vicinity, Paladin gains damage and armor.
 	// Author: Darkonius
-	// Notes: OK; 14.9.2017;
+	// Notes: OK; 31.10.2018;
 	// TO_DO:
 	//=================================================================================================================
 	"paladin_divine_retribution"
@@ -30,8 +30,8 @@
 		{
 			"01" // in tooltip
 			{
-				"var_type"					"FIELD_FLOAT"
-				"buff_duration"				"30.0"
+				"var_type"						"FIELD_INTEGER"
+				"buff_duration"					"30"
 			}
 			"02" // in tooltip
 			{
@@ -41,13 +41,13 @@
 			}
 			"03" // in tooltip
 			{
-				"var_type"					"FIELD_INTEGER"
-				"armor_bonus"				"5"
+				"var_type"						"FIELD_INTEGER"
+				"armor_bonus"					"5"
 			}
 			"04" // in tooltip
 			{
-				"var_type"					"FIELD_INTEGER"
-				"aura_radius"				"1000"
+				"var_type"						"FIELD_INTEGER"
+				"aura_radius"					"1000"
 			}
 		}
 		

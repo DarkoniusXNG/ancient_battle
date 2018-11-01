@@ -112,3 +112,7 @@ end
 function paladin_holy_purification:ProcsMagicStick()
 	return true
 end
+
+if guardian_angel_holy_purification == nil then
+	guardian_angel_holy_purification = paladin_holy_purification
+end

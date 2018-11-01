@@ -3,8 +3,9 @@
 	//=================================================================================================================
 	// Paladin: Divine Shield (R) - New Spell, immunity to magic, physical and pure damage, has aghanim upgrade which gives full spell immunity
 	// Author: Darkonius
-	// Notes: OK; 25.1.2017; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
-	// TO_DO:
+	// Notes: OK; 1.11.2018; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
+	// Notes: If you need to nerf duration nerf it by 1 second; If ability needs a buff, reduce mana cost;
+	// TO_DO: 
 	//=================================================================================================================
 	"paladin_divine_shield"
 	{
@@ -18,12 +19,12 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700"				// False Promise is 1000
+		"AbilityCastRange"				"550 650 750"		// False Promise is 1000; Repel is 500; Shallow Grave is 550/700/850/1000;
 		"AbilityCastPoint"				"0.3"				// False Promise is 0.3; Shallow Grave is 0.4;
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		
-		"AbilityCooldown"				"65.0"				// False Promise is 100/65/30; Shallow Grave is 60/45/30/15; Repel is 30/26/22/18;
-		"AbilityManaCost"				"125 150 175"		// False Promise is 100; Shallow Grave is 150; Repel is 50;
+		"AbilityCooldown"				"50.0 40.0 30.0"	// False Promise is 100/65/30; Ursa Enrage: 50/40/30;
+		"AbilityManaCost"				"125 150 175"		// False Promise is 100; Shallow Grave is 150; Repel is 85;
 		"AbilityProcsMagicStick"		"1"
 		"HasScepterUpgrade" 			"1"
 		
@@ -31,20 +32,16 @@
 		{
 			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
 			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
+			"particle"				"particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 		}
 		
 		"AbilitySpecial"
 		{
-			"01" // Repel is 4/5/6/7; False Promise is 7/8/9; Shallow Grave is 5; don't change!
+			"01" // Repel is 4/5/6/7; False Promise is 8/9/10; Shallow Grave is 5; Ursa Enrage: 4;
 			{
 				"var_type"					"FIELD_FLOAT"
-				"shield_duration"			"6.0 7.0 8.0"
-			}
-			"02" // in tooltip only; should be same as AbilityCastRange; False Promise is 1000; Repel is 500; Shallow Grave is 550/700/850/1000;
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cast_range"				"700"
+				"shield_duration"			"5.0 6.0 7.0"
 			}
 		}
 		
@@ -82,8 +79,6 @@
 				"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
 				"EffectAttachType"		"follow_origin"
 
-				"Duration"				"%shield_duration"
-
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
@@ -98,13 +93,11 @@
 				"IsBuff"				"1"
 				"IsPurgable"			"0"
 				
-				"StatusEffectName"         	"particles/status_fx/status_effect_ghost.vpcf"        
-				"StatusEffectPriority"  	"12"
+				//"StatusEffectName"        "particles/status_fx/status_effect_ghost.vpcf"        
+				//"StatusEffectPriority"  	"12"
 				
-				"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+				"EffectName"			"particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
 				"EffectAttachType"		"follow_origin"
-
-				"Duration"				"%shield_duration"
 				
 				"Properties"
 				{
