@@ -20,15 +20,15 @@ function modifier_custom_building_invulnerable:DeclareFunctions()
 	return funcs
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamageMagical( params )
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamageMagical(params)
 	return 1
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePhysical( params )
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePhysical(params)
 	return 1
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePure( params )
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePure(params)
 	return 1
 end
 

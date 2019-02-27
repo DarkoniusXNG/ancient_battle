@@ -20,7 +20,8 @@ function Blink(keys)
 	-- Start Particle
 	local blinkIndex = ParticleManager:CreateParticle("particles/items_fx/blink_dagger_start.vpcf", PATTACH_ABSORIGIN, caster)
 	Timers:CreateTimer( 1, function()
-		ParticleManager:DestroyParticle( blinkIndex, false )
+		ParticleManager:DestroyParticle(blinkIndex, false)
+		ParticleManager:ReleaseParticleIndex(blinkIndex)
 		return nil
 		end
 	)
@@ -32,6 +33,7 @@ function Blink(keys)
 	ProjectileManager:ProjectileDodge(caster)
 	
 	-- End Particle
-	ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, caster)
-	
+	local blink_end_index = ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, caster)
+	ParticleManager:ReleaseParticleIndex(blink_end_index)
+
 end

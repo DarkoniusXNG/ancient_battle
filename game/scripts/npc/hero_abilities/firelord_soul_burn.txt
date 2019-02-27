@@ -73,7 +73,7 @@
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			
-			"07" // like Bloodseeker's Bloodrage, amplifies only attack damage
+			"07" // similar to Bloodseeker's Bloodrage, amplifies only attack damage
 			{
 				"var_type"						"FIELD_INTEGER"
 				"damage_amp"					"25 30 35 40"

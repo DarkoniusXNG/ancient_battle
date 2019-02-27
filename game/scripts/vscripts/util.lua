@@ -128,25 +128,6 @@ function IsFountain(unit)
 	return unit:IsFountain()
 end
 
--- Initializes heroes' innate abilities
-function InitializeInnateAbilities(hero)
-
-	-- List of innate abilities
-	local innate_abilities = {
-		"firelord_arcana_model",
-		"blood_mage_orbs",
-		"mana_eater_mana_regen"
-	}
-
-	-- Cycle through any innate abilities found, then upgrade them
-	for i = 1, #innate_abilities do
-		local current_ability = hero:FindAbilityByName(innate_abilities[i])
-		if current_ability then
-			current_ability:SetLevel(1)
-		end
-	end
-end
-
 --[[ This function interrupts and hide the target hero, applies SuperStrongDispel and CustomPassiveBreak to the target,
     and creates a copy of the target for the caster, returns the hScript copy;
 	Target hero has vision over the area where he is moved! You need a modifier to disable this vision;

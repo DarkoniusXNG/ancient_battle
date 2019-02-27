@@ -12,19 +12,12 @@ function ancient_battle_gamemode:OrderFilter(event)
 		local caster = EntIndexToHScript(units["0"])
 		
 		if caster:HasModifier("modifier_anti_magic_field_debuff") and (not ability:IsItem()) then
-			ability:UseResources(true,true,true)
+			ability:UseResources(true,false,true)
 			local playerID = caster:GetPlayerOwnerID()
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
 	end
-
-	-- If the order is a simple move command
-	if order == DOTA_UNIT_ORDER_MOVE_TO_POSITION and units["0"] then
-		local unit_with_order = EntIndexToHScript(units["0"])
-		local destination_x = event.position_x
-		local destination_y = event.position_y
-    end
 
 	return true
 end
@@ -604,7 +597,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Armor of the unit
 		local armor = unit:GetPhysicalArmorValue()
 		-- Physical damage is reduced by armor
-		local damage_armor_reduction = 1-(armor*0.05/(1+0.05*(math.abs(armor))))
+		local damage_armor_reduction = 1-(armor*0.052/(0.9+0.048*(math.abs(armor))))
 		-- In case the unit has infinite armor for some reason (to prevent division by zero)
 		if damage_armor_reduction == 0 then
 			damage_armor_reduction = 0.01

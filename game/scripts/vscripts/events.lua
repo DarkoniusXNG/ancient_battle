@@ -1,15 +1,16 @@
 -- Cleanup a player when they leave
 function ancient_battle_gamemode:OnDisconnect(keys)
-	--PrintTable(keys)
 	local name = keys.name
 	local networkID = keys.networkid
 	local reason = keys.reason
 	local userID = keys.userid
+	print("A player "..name.." disconnected:")
+	print("==================================================")
+	PrintTable(keys)
+	print("==================================================")
 end
 
--- The overall game state has changed
 function ancient_battle_gamemode:OnGameRulesStateChange(keys)
-	--PrintTable(keys)
 	local new_state = GameRules:State_Get()
 
 	if new_state == DOTA_GAMERULES_STATE_INIT then
@@ -21,7 +22,7 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		ancient_battle_gamemode:PostLoadPrecache()
 		ancient_battle_gamemode:OnAllPlayersLoaded()
-		Timers:CreateTimer(HERO_SELECTION_TIME - 1.1, function()
+		Timers:CreateTimer(HERO_SELECTION_TIME+STRATEGY_TIME-1.1, function()
 			for playerID = 0, 19 do
 				if PlayerResource:IsValidPlayerID(playerID) then
 					-- If this player still hasn't picked a hero, random one
@@ -38,8 +39,6 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 
 	elseif new_state == DOTA_GAMERULES_STATE_TEAM_SHOWCASE then
 
-	elseif new_state == DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD then
-
 	elseif new_state == DOTA_GAMERULES_STATE_PRE_GAME then
 
 	elseif new_state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -53,10 +52,7 @@ end
 
 -- An NPC has spawned somewhere in game.  This includes heroes.
 function ancient_battle_gamemode:OnNPCSpawned(keys)
-	--PrintTable(keys)
-
 	local npc = EntIndexToHScript(keys.entindex)
-	local unit_owner = npc:GetOwner()
 
 	-- OnHeroInGame
 	if npc:IsRealHero() and npc.bFirstSpawned == nil then
@@ -65,13 +61,9 @@ function ancient_battle_gamemode:OnNPCSpawned(keys)
 	end
 end
 
-function ancient_battle_gamemode:OnEntityHurt(keys)
-	--PrintTable(keys)
-end
-
 -- An item was picked up off the ground
 function ancient_battle_gamemode:OnItemPickedUp(keys)
-	--PrintTable(keys)
+
 end
 
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
@@ -103,28 +95,26 @@ end
 
 -- An item was purchased by a player
 function ancient_battle_gamemode:OnItemPurchased(keys)
-	--PrintTable(keys)
+
 end
 
 -- An ability was used by a player
 function ancient_battle_gamemode:OnAbilityUsed(keys)
-	--PrintTable(keys)
+
 end
 
 -- A non-player entity (necro-book, chen creep, etc) used an ability
 function ancient_battle_gamemode:OnNonPlayerUsedAbility(keys)
-	--PrintTable(keys)
+
 end
 
 -- A player changed their name
 function ancient_battle_gamemode:OnPlayerChangedName(keys)
-	--PrintTable(keys)
+
 end
 
 -- A player leveled up an ability; Note: it doesn't trigger when you use SetLevel() on the ability!
 function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
-	--PrintTable(keys)
-
 	local player = EntIndexToHScript(keys.player)
 	local ability_name = keys.abilityname
 
@@ -157,13 +147,11 @@ end
 
 -- A channelled ability finished by either completing or being interrupted
 function ancient_battle_gamemode:OnAbilityChannelFinished(keys)
-	--PrintTable(keys)
+
 end
 
 -- A player leveled up
 function ancient_battle_gamemode:OnPlayerLevelUp(keys)
-	--PrintTable(keys)
-
 	local player = EntIndexToHScript(keys.player)
 	local level = keys.level
 
@@ -210,44 +198,26 @@ end
 
 -- A player last hit a creep, a tower, or a hero
 function ancient_battle_gamemode:OnLastHit(keys)
-	--PrintTable(keys)
 
-	local isFirstBlood = keys.FirstBlood == 1
-	local isHeroKill = keys.HeroKill == 1
-	local isTowerKill = keys.TowerKill == 1
-
-	-- Player ID that got a last hit
-	local playerID = keys.PlayerID
-
-	-- Killed unit (creep, hero, tower etc.)
-	local killed_entity = EntIndexToHScript(keys.EntKilled)
 end
 
 -- A tree was cut down by tango, quelling blade, etc.
 function ancient_battle_gamemode:OnTreeCut(keys)
-	--PrintTable(keys)
+
 end
 
 -- A rune was activated by a player
 function ancient_battle_gamemode:OnRuneActivated(keys)
-	--PrintTable(keys)
 
-	local playerID = keys.PlayerID
-	local rune = keys.rune
 end
 
 -- A player took damage from a tower
 function ancient_battle_gamemode:OnPlayerTakeTowerDamage(keys)
-	--PrintTable(keys)
 
-	local playerID = keys.PlayerID
-	local damage = keys.damage
 end
 
 -- A player picked or randomed a hero (this is happening before OnNPCSpawned)
 function ancient_battle_gamemode:OnPlayerPickHero(keys)
-	--PrintTable(keys)
-
 	local hero_name = keys.hero
 	local hero_entity = EntIndexToHScript(keys.heroindex)
 	local player = EntIndexToHScript(keys.player)
@@ -270,13 +240,10 @@ end
 
 -- A player killed another player in a multi-team context
 function ancient_battle_gamemode:OnTeamKillCredit(keys)
-	--PrintTable(keys)
+
 end
 
--- An entity died (an entity killed an entity)
 function ancient_battle_gamemode:OnEntityKilled(keys)
-	--PrintTable(keys)
-
 	-- The Unit that was Killed
 	local killed_unit = EntIndexToHScript(keys.entindex_killed)
 
@@ -337,27 +304,17 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 				respawn_time = respawn_time_after_25
 			end
 
-			-- Bloodstone reduction (bloodstone can't be in backpack)
-			for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-				local item = killed_unit:GetItemInSlot(i)
-				if item then
-					if item:GetName() == "item_bloodstone" then
-						local current_charges = item:GetCurrentCharges()
-						local charges_before_death = math.ceil(current_charges*1.5)
-						local reduction_per_charge = item:GetLevelSpecialValueFor("respawn_time_reduction", item:GetLevel() - 1)
-						local respawn_reduction = charges_before_death*reduction_per_charge
-						respawn_time = math.max(1, respawn_time-respawn_reduction)
-						break -- to prevent multiple bloodstones granting respawn reduction
-					end
-				end
-			end
-
 			-- Reaper's Scythe respawn time increase
 			if killing_ability then
 				if killing_ability:GetAbilityName() == "necrolyte_reapers_scythe" then
 					local respawn_extra_time = killing_ability:GetLevelSpecialValueFor("respawn_constant", killing_ability:GetLevel() - 1)
 					respawn_time = respawn_time + respawn_extra_time
 				end
+			end
+			
+			-- Killer is a neutral creep
+			if killer_unit:IsNeutralUnitType() then
+				-- If a hero is killed by a neutral creep, respawn time can be modified here
 			end
 
 			-- Maximum Respawn Time
@@ -373,6 +330,11 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		-- Buyback Cooldown
 		if CUSTOM_BUYBACK_COOLDOWN_ENABLED then
 			PlayerResource:SetCustomBuybackCooldown(killed_unit:GetPlayerID(), BUYBACK_COOLDOWN_TIME)
+		end
+		
+		-- Buyback Fixed Gold Cost
+		if CUSTOM_BUYBACK_COST_ENABLED then
+			PlayerResource:SetCustomBuybackCost(killed_unit:GetPlayerID(), BUYBACK_FIXED_GOLD_COST)
 		end
 
 		-- Killer is not a hero but it killed a hero
@@ -402,8 +364,16 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	-- Ancient destruction detection (if the map doesn't have ancients with this names, this will never happen)
 	if killed_unit:GetUnitName() == "npc_dota_badguys_fort" then
 		GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+		GameRules:SetCustomVictoryMessage("#dota_post_game_radiant_victory")
+		GameRules:SetCustomVictoryMessageDuration(POST_GAME_TIME)
 	elseif killed_unit:GetUnitName() == "npc_dota_goodguys_fort" then
 		GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+		if GetMapName() == "holdout" then
+			GameRules:SetCustomVictoryMessage("Defeated by the Horde!")
+		else
+			GameRules:SetCustomVictoryMessage("#dota_post_game_dire_victory")
+			GameRules:SetCustomVictoryMessageDuration(POST_GAME_TIME)
+		end
 	end
 
 	-- Remove dead non-hero units from selection -> bugged ability/cast bar
@@ -478,7 +448,7 @@ end
 
 -- This function is called 1 to 2 times as the player connects initially but before they have completely connected
 function ancient_battle_gamemode:PlayerConnect(keys)
-	--PrintTable(keys)
+
 end
 
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
@@ -496,51 +466,35 @@ end
 
 -- This function is called whenever illusions are created and tells you which was/is the original entity
 function ancient_battle_gamemode:OnIllusionsCreated(keys)
-	--PrintTable(keys)
+
 end
 
 -- This function is called whenever an item is combined to create a new item
 function ancient_battle_gamemode:OnItemCombined(keys)
-	--PrintTable(keys)
+
 end
 
 -- This function is called OnAbilityPhaseStart
 function ancient_battle_gamemode:OnAbilityCastBegins(keys)
-	--PrintTable(keys)
+
 end
 
 -- This function is called whenever a tower is killed
 function ancient_battle_gamemode:OnTowerKill(keys)
-	--PrintTable(keys)
 
-	local gold = keys.gold
-	local killer_userID = keys.killer_userid
-	local team = keys.teamnumber
 end
 
 -- This function is called whenever a player changes their custom team selection during Game Setup 
 function ancient_battle_gamemode:OnPlayerSelectedCustomTeam(keys)
-	--PrintTable(keys)
 
-	local playerID = keys.player_id
-	local success = (keys.success == 1)
-	local team = keys.team_id
 end
 
 -- This function is called whenever a NPC reaches its goal position/target
 function ancient_battle_gamemode:OnNPCGoalReached(keys)
-	--PrintTable(keys)
 
-	local goal_entity = EntIndexToHScript(keys.goal_entindex)
-	local next_goal_entity = EntIndexToHScript(keys.next_goal_entindex)
-	local npc = EntIndexToHScript(keys.npc_entindex)
 end
 
 -- This function is called whenever any player sends a chat message to team or All
 function ancient_battle_gamemode:OnPlayerChat(keys)
-	--PrintTable(keys)
 
-	local team_only = keys.teamonly
-	local userID = keys.userid
-	local text = keys.text
 end

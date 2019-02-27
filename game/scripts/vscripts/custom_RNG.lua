@@ -1,15 +1,17 @@
 -- XNG random:
--- chance increases by increment % if false
--- chance decreases by increment % if true.
+-- chance increases by an increment if false
+-- chance decreases by an increment if true.
 -- Resets the chance to starting percentage if there are 2 consecutive true/false.
 -- If the chance is increased to 100% or above, chance is reset to starting percentage.
 -- If the chance is decreased to 0% or below, chance is reset to starting percentage.
 -- Has 3 counters:
--- 1) XNG_counter increases/decreases the starting percentage by increment %.
+-- 1) XNG_counter increases/decreases the starting percentage by an increment.
 -- 2) XNG_success_counter counts how many times this function returned true in a row.
 -- 3) XNG_fail_counter counts how many times this function returned false in a row.
 function CDOTA_Ability_Lua:XNGRandom(percentage)
 	local increment = 5
+	local max_number_of_successes = 2
+	local max_number_of_failures = 2
 
 	if self.XNG_counter == nil then
 		self.XNG_counter = 0
@@ -25,7 +27,7 @@ function CDOTA_Ability_Lua:XNGRandom(percentage)
 
 	local new_percentage = percentage + self.XNG_counter
 
-	-- Reset the counters if new percentage reached a limit
+	-- Reset the counters if new percentage reached upper or lower limit
 	if new_percentage >= 100 then
 		self.XNG_counter = 0
 		self.XNG_success_counter = 0
@@ -39,7 +41,7 @@ function CDOTA_Ability_Lua:XNGRandom(percentage)
 	end
 
 	-- Reset the counters if someone is too lucky (consecutive successes) or too unlucky (consecutive failures)
-	if self.XNG_success_counter > 1 or self.XNG_fail_counter > 1 then
+	if self.XNG_success_counter > max_number_of_successes-1 or self.XNG_fail_counter > max_number_of_failures-1 then
 		self.XNG_counter = 0
 		self.XNG_success_counter = 0
 		self.XNG_fail_counter = 0
@@ -85,7 +87,7 @@ function CDOTA_Ability_Lua:PseudoRandom(percentage)
 
 	local new_percentage = math.floor(actual_percentage + self.PR_counter)
 
-	-- Reset the counters if new percentage reached a limit
+	-- Reset the counters if new percentage reached an upper limit
 	if new_percentage >= 100 then
 		self.PR_counter = 0
 		return true

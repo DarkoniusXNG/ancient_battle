@@ -2,7 +2,7 @@ if modifier_client_convars == nil then
 	modifier_client_convars = class({})
 end
 
-function modifier_client_convars:OnCreated( params )
+function modifier_client_convars:OnCreated(params)
     if IsClient() then
         SendToConsole("dota_player_add_summoned_to_selection 0")
 		--SendToConsole("dota_hud_disable_damage_numbers 1")

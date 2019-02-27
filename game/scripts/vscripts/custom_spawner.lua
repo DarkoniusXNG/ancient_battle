@@ -4,7 +4,7 @@ end
 
 -- This function checks for number of players/heroes in the game and setting the difficulty accordingly
 function custom_spawner:DifficultyCheck()
-	local hero_flags = bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS)
+	local hero_flags = bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO)
 	local heroes_on_the_map = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, hero_flags, FIND_ANY_ORDER, false)
 	local difficulty = 1
 	if #heroes_on_the_map == 2 then
@@ -120,7 +120,7 @@ function custom_spawner:SpawnNeutralUnits(spawner_entity, units_to_spawn, number
     local point = Entities:FindByName(nil, spawner_entity):GetAbsOrigin()
 	for i=1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point, true, nil, nil, DOTA_TEAM_NEUTRALS)
-		FindClearSpaceForUnit(unit, point+RandomVector(RandomInt(50,150)), false)
+		FindClearSpaceForUnit(unit, point+RandomVector(RandomInt(50,120)), false)
 	end
 end
 

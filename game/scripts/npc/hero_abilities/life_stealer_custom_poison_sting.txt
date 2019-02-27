@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Poison Sting (T) - Modified Venomancer Poison Sting; 
 	// Author: Valve + Darkonius
-	// Notes: OK; 10.5.2018; Old Naix had: 2/4/7/10 dmg, 2 seconds duration; 10/20/30/40% slow
+	// Notes: OK; 27.2.2019; Old Naix had: 2/4/7/10 dmg, 2 seconds duration; 10/20/30/40% slow
 	// TO_DO:
 	//=================================================================================================================
 	"life_stealer_custom_poison_sting"
@@ -30,12 +30,12 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"6 12 18 24"
+				"damage"					"6 14 22 30"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_speed"			"-10 -12 -13 -14"
+				"movement_speed"			"-10 -12 -14 -16"
 			}			
 		}
 	}

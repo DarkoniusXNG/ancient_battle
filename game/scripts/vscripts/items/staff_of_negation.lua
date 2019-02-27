@@ -85,5 +85,6 @@ function Staff_Mana_Break(keys)
 		-- Plays the particle
 		local manaburn_fx = ParticleManager:CreateParticle("particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 		ParticleManager:SetParticleControl(manaburn_fx, 0, target:GetAbsOrigin() )
+		ParticleManager:ReleaseParticleIndex(manaburn_fx)
 	end
 end

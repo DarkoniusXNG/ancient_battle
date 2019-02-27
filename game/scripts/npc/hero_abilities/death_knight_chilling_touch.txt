@@ -58,7 +58,7 @@
 		{
 			"FireSound"
 			{
-				"EffectName"	"Hero_Ancient_Apparition.ChillingTouchCast" 
+				"EffectName"	"Hero_Ancient_Apparition.ChillingTouch.Cast" 
 				"Target" 		"CASTER"
 			}
 			

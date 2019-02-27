@@ -19,10 +19,6 @@ RANDOM_START_GOLD = 800					-- Starting Gold if randomed
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
 
-MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our heroes?
-MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
-MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
-
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
@@ -45,7 +41,6 @@ TOP_BAR_VISIBLE = true                  -- Should we display the top bar score/c
 SHOW_KILLS_ON_TOPBAR = true             -- Should we display kills only on the top bar? (No denies, suicides, kills by neutrals)  Requires USE_CUSTOM_TOP_BAR_VALUES
 
 ENABLE_TOWER_BACKDOOR_PROTECTION = true	-- Should we enable backdoor protection for our towers?
-REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the main hero dies?
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = false               -- Should the game end after a certain number of kills?

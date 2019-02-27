@@ -1,17 +1,8 @@
--- This library can be used for advanced physics/motion/collision of units.
---require('libraries/physics')
--- This library can be used for advanced 3D projectile systems.
---require('libraries/projectiles')
--- This library can be used for starting customized animations on units from lua
 require('libraries/animations')
--- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
--- This library (by Noya) provides player selection inspection and management from server lua
 require('libraries/selection')
 
--- settings.lua is where you can specify many different properties for your game mode and is one of the core barebones files.
 require('settings')
--- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
 require('filters')
 require('custom_illusions')
@@ -74,11 +65,6 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 	end
 end
 
---[[
-  It is also called if the player's hero is replaced with a new hero for any reason.  This function is useful for initializing heroes, such as adding
-  levels, changing the starting gold, removing/adding abilities, adding physics, etc.
-  The hero parameter is the hero entity that just spawned in
-]]
 function ancient_battle_gamemode:OnHeroInGame(hero)
 	
 	-- Innate abilities (this is applied to custom created heroes/illusions too)
@@ -107,7 +93,6 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				if PlayerResource:HasRandomed(playerID) then
 					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
 				else
-					-- If the NORMAL_START_GOLD is smaller then 600, don't use this line:
 					PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
 				end
 				
@@ -124,11 +109,6 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 	end)
 end
 
---[[
-  This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this point,
-  gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
-  is useful for starting any game logic timers/thinkers, beginning the first round, etc.
-]]
 function ancient_battle_gamemode:OnGameInProgress()
 
 	if GetMapName() == "holdout" then
@@ -144,7 +124,7 @@ function ancient_battle_gamemode:OnGameInProgress()
 	elseif GetMapName() == "two_vs_two" then
 		custom_spawner:SpawnNeutrals()
 	elseif GetMapName() == "five_vs_five" then
-		custom_spawner:SpawnRoshan()
+		--custom_spawner:SpawnRoshan()
 	end
 end
 
@@ -167,14 +147,10 @@ function ancient_battle_gamemode:InitGameMode()
 	if USE_CUSTOM_HERO_GOLD_BOUNTY then
 		GameRules:SetUseBaseGoldBountyOnHeroes(false)
 	end
-	GameRules:SetHeroMinimapIconScale(MINIMAP_ICON_SIZE)
-	GameRules:SetCreepMinimapIconScale(MINIMAP_CREEP_ICON_SIZE)
-	GameRules:SetRuneMinimapIconScale(MINIMAP_RUNE_ICON_SIZE)	
-  
 	GameRules:SetFirstBloodActive(ENABLE_FIRST_BLOOD)
 	GameRules:SetHideKillMessageHeaders(HIDE_KILL_BANNERS)
 	
-	-- This is multiteam configuration stuff
+	-- This is multi-team configuration stuff
 	if USE_AUTOMATIC_PLAYERS_PER_TEAM then
 		local num = math.floor(10 / MAX_NUMBER_OF_TEAMS)
 		local count = 0
@@ -219,7 +195,7 @@ function ancient_battle_gamemode:InitGameMode()
 	ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(ancient_battle_gamemode, 'OnRuneActivated'), self)
 	ListenToGameEvent('dota_player_take_tower_damage', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerTakeTowerDamage'), self)
 	ListenToGameEvent('tree_cut', Dynamic_Wrap(ancient_battle_gamemode, 'OnTreeCut'), self)
-	ListenToGameEvent('entity_hurt', Dynamic_Wrap(ancient_battle_gamemode, 'OnEntityHurt'), self)
+
 	ListenToGameEvent('player_connect', Dynamic_Wrap(ancient_battle_gamemode, 'PlayerConnect'), self)
 	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityUsed'), self)
 	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(ancient_battle_gamemode, 'OnGameRulesStateChange'), self)
@@ -235,13 +211,6 @@ function ancient_battle_gamemode:InitGameMode()
 	ListenToGameEvent("dota_tower_kill", Dynamic_Wrap(ancient_battle_gamemode, 'OnTowerKill'), self)
 	ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerSelectedCustomTeam'), self)
 	ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(ancient_battle_gamemode, 'OnNPCGoalReached'), self)
-	
-	--ListenToGameEvent('player_spawn', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerSpawn'), self)
-	--ListenToGameEvent('nommed_tree', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerAteTree'), self)
-	--ListenToGameEvent('player_completed_game', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerCompletedGame'), self)
-	--ListenToGameEvent('dota_match_done', Dynamic_Wrap(ancient_battle_gamemode, 'OnDotaMatchDone'), self)
-	--ListenToGameEvent('dota_combatlog', Dynamic_Wrap(ancient_battle_gamemode, 'OnCombatLogEvent'), self)
-	--ListenToGameEvent('player_team', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerTeam'), self)
 
 	-- Change random seed
 	local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
@@ -278,8 +247,8 @@ function ancient_battle_gamemode:InitGameMode()
 	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
   
 	-- Lua Modifiers
-	LinkLuaModifier("modifier_client_convars", "libraries/modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_custom_building_invulnerable", "libraries/modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	
 	print("Ancient Battle custom game initialized.")
 end
@@ -291,31 +260,24 @@ function ancient_battle_gamemode:CaptureGameMode()
 	local mode = GameRules:GetGameModeEntity()
 	mode:SetRecommendedItemsDisabled(RECOMMENDED_BUILDS_DISABLED)
 	mode:SetCameraDistanceOverride(CAMERA_DISTANCE_OVERRIDE)
+	mode:SetBuybackEnabled(BUYBACK_ENABLED)
 	mode:SetCustomBuybackCostEnabled(CUSTOM_BUYBACK_COST_ENABLED)
 	mode:SetCustomBuybackCooldownEnabled(CUSTOM_BUYBACK_COOLDOWN_ENABLED)
-	mode:SetBuybackEnabled(BUYBACK_ENABLED)
 	mode:SetTopBarTeamValuesOverride(USE_CUSTOM_TOP_BAR_VALUES)
 	mode:SetTopBarTeamValuesVisible(TOP_BAR_VISIBLE)
-
 	if USE_CUSTOM_XP_VALUES then
 		mode:SetUseCustomHeroLevels(true)
 		mode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
 	end
-
 	mode:SetBotThinkingEnabled(USE_STANDARD_DOTA_BOT_THINKING)
 	mode:SetTowerBackdoorProtectionEnabled(ENABLE_TOWER_BACKDOOR_PROTECTION)
-
 	mode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
 	mode:SetGoldSoundDisabled(DISABLE_GOLD_SOUNDS)
-	mode:SetRemoveIllusionsOnDeath(REMOVE_ILLUSIONS_ON_DEATH)
-
 	mode:SetAlwaysShowPlayerInventory(SHOW_ONLY_PLAYER_INVENTORY)
 	mode:SetAnnouncerDisabled(DISABLE_ANNOUNCER)
-
 	if FORCE_PICKED_HERO ~= nil then
 		mode:SetCustomGameForceHero(FORCE_PICKED_HERO)
 	end
-
 	mode:SetFixedRespawnTime(FIXED_RESPAWN_TIME)
 	mode:SetFountainConstantManaRegen(FOUNTAIN_CONSTANT_MANA_REGEN)
 	mode:SetFountainPercentageHealthRegen(FOUNTAIN_PERCENTAGE_HEALTH_REGEN)
@@ -324,7 +286,6 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetMaximumAttackSpeed(MAXIMUM_ATTACK_SPEED)
 	mode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 	mode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
-
 	if USE_DEFAULT_RUNE_SYSTEM then
 		mode:SetUseDefaultDOTARuneSpawnLogic(USE_DEFAULT_RUNE_SYSTEM)
 	else
@@ -334,11 +295,29 @@ function ancient_battle_gamemode:CaptureGameMode()
 		mode:SetBountyRuneSpawnInterval(BOUNTY_RUNE_SPAWN_INTERVAL)
 		mode:SetPowerRuneSpawnInterval(POWER_RUNE_SPAWN_INTERVAL)
 	end
-
 	mode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
 	mode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
 	mode:SetKillingSpreeAnnouncerDisabled(DISABLE_KILLING_SPREE_ANNOUNCER)
 	mode:SetStickyItemDisabled(DISABLE_STICKY_ITEM)
 
 	self:OnFirstPlayerLoaded()
+end
+
+-- Initializes heroes' innate abilities
+function InitializeInnateAbilities(hero)
+
+	-- List of innate abilities
+	local innate_abilities = {
+		"firelord_arcana_model",
+		"blood_mage_orbs",
+		"mana_eater_mana_regen"
+	}
+
+	-- Cycle through any innate abilities found, then set their level to 1
+	for i = 1, #innate_abilities do
+		local current_ability = hero:FindAbilityByName(innate_abilities[i])
+		if current_ability then
+			current_ability:SetLevel(1)
+		end
+	end
 end
