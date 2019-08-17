@@ -22,44 +22,42 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 	-- Find all buildings on the map
 	local buildings = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
 
-	-- Iterate through each one
+	-- Iterate through each found entity and check its name
 	for _, building in pairs(buildings) do
-		local building_name = building:GetName()
-		-- Check if its a fountain
-		if string.find(building_name, "fountain") then
-			-- Add abilities to fountains
-			building:AddAbility("custom_building_true_strike")
-			local fountain_true_strike = building:FindAbilityByName("custom_building_true_strike")
-			fountain_true_strike:SetLevel(1)
-			building:AddAbility("custom_fountain_true_sight")
-			local fountain_true_sight = building:FindAbilityByName("custom_fountain_true_sight")
-			fountain_true_sight:SetLevel(1)
-			if GetMapName() == "two_vs_two" then
-				building:AddAbility("custom_fountain_regen")
-				local fountain_regen = building:FindAbilityByName("custom_fountain_regen")
-				fountain_regen:SetLevel(1)
-			end
-		end
-		-- Check if its a tower
-		if string.find(building_name, "tower") then
-			-- Add abilities to towers
-			building:AddAbility("custom_building_true_strike")
-			local towers_true_strike = building:FindAbilityByName("custom_building_true_strike")
-			towers_true_strike:SetLevel(1)
-			if GetMapName() == "holdout" then
-				if building:GetTeam() == DOTA_TEAM_BADGUYS then
-					building:AddNewModifier(building, nil, "modifier_custom_building_invulnerable", {})
-					-- Adding Fury Swipes
-					building:AddAbility("ursa_fury_swipes")
-					local towers_fury_swipes = building:FindAbilityByName("ursa_fury_swipes")
-					towers_fury_swipes:SetLevel(4)
+		if building then
+			local building_name = building:GetName()
+			-- Check if its a fountain
+			if string.find(building_name, "fountain") then
+				-- Add abilities to fountains
+				building:AddAbility("custom_building_true_strike")
+				local fountain_true_strike = building:FindAbilityByName("custom_building_true_strike")
+				fountain_true_strike:SetLevel(1)
+				building:AddAbility("custom_fountain_true_sight")
+				local fountain_true_sight = building:FindAbilityByName("custom_fountain_true_sight")
+				fountain_true_sight:SetLevel(1)
+				if GetMapName() == "two_vs_two" then
+					building:AddAbility("custom_fountain_regen")
+					local fountain_regen = building:FindAbilityByName("custom_fountain_regen")
+					fountain_regen:SetLevel(1)
 				end
-			end
-		end
-		-- Check if its an ancient
-		if string.find(building_name, "fort") then
-			if GetMapName() == "holdout" then
-				building:AddNewModifier(building, nil, "modifier_custom_building_invulnerable", {})
+			elseif string.find(building_name, "tower") then -- Check if its a tower
+				-- Add abilities to towers
+				building:AddAbility("custom_building_true_strike")
+				local towers_true_strike = building:FindAbilityByName("custom_building_true_strike")
+				towers_true_strike:SetLevel(1)
+				if GetMapName() == "holdout" then
+					if building:GetTeam() == DOTA_TEAM_BADGUYS then
+						building:AddNewModifier(building, nil, "modifier_custom_building_invulnerable", {})
+						-- Adding Fury Swipes
+						building:AddAbility("ursa_fury_swipes")
+						local towers_fury_swipes = building:FindAbilityByName("ursa_fury_swipes")
+						towers_fury_swipes:SetLevel(4)
+					end
+				end
+			elseif string.find(building_name, "fort") then -- Check if its an ancient (throne/tree)
+				if GetMapName() == "holdout" then
+					building:AddNewModifier(building, nil, "modifier_custom_building_invulnerable", {})
+				end
 			end
 		end
 	end
@@ -68,7 +66,7 @@ end
 function ancient_battle_gamemode:OnHeroInGame(hero)
 	
 	-- Innate abilities (this is applied to custom created heroes/illusions too)
-	InitializeInnateAbilities(hero)
+	self:InitializeInnateAbilities(hero)
 	
 	Timers:CreateTimer(0.5, function()
 		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
@@ -78,12 +76,17 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 			-- Set starting gold for bots
 			hero:SetGold(NORMAL_START_GOLD, false)
 		else
+			if not PlayerResource.PlayerData[playerID] then
+				PlayerResource.PlayerData[playerID] = {}
+				print("[Ancient Battle] PlayerResource's PlayerData for playerID "..playerID.." was not properly initialized.")
+			end
 			-- Set some hero stuff on first spawn or on every spawn (custom or not)
 			if PlayerResource.PlayerData[playerID].already_set_hero == true then
 				-- This is happening only when players create new heroes with custom hero-create spells:
 				-- Dark Ranger Charm, Archmage Conjure Image
 			else
 				-- This is happening for players when their first hero spawn for the first time
+				--print("[Ancient Battle] Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID "..playerID)
 				
 				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
 				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
@@ -103,7 +106,7 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				
 				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
 				PlayerResource.PlayerData[playerID].already_set_hero = true
-				print("Hero "..hero:GetUnitName().." set for player with ID "..playerID)
+				--print("[Ancient Battle] Hero "..hero:GetUnitName().." set for the player with ID "..playerID)
 			end
 		end
 	end)
@@ -144,6 +147,7 @@ function ancient_battle_gamemode:InitGameMode()
 	end
 	GameRules:SetGoldPerTick(GOLD_PER_TICK)
 	GameRules:SetGoldTickTime(GOLD_TICK_TIME)
+	--GameRules:SetStartingGold(NORMAL_START_GOLD)
 	if USE_CUSTOM_HERO_GOLD_BOUNTY then
 		GameRules:SetUseBaseGoldBountyOnHeroes(false)
 	end
@@ -299,12 +303,15 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
 	mode:SetKillingSpreeAnnouncerDisabled(DISABLE_KILLING_SPREE_ANNOUNCER)
 	mode:SetStickyItemDisabled(DISABLE_STICKY_ITEM)
+	
+	mode:SetCustomGlyphCooldown(CUSTOM_GLYPH_COOLDOWN)
+	mode:SetCustomScanCooldown(CUSTOM_SCAN_COOLDOWN)
 
 	self:OnFirstPlayerLoaded()
 end
 
 -- Initializes heroes' innate abilities
-function InitializeInnateAbilities(hero)
+function ancient_battle_gamemode:InitializeInnateAbilities(hero)
 
 	-- List of innate abilities
 	local innate_abilities = {

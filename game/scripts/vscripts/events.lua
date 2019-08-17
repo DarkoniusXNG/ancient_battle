@@ -22,8 +22,8 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		ancient_battle_gamemode:PostLoadPrecache()
 		ancient_battle_gamemode:OnAllPlayersLoaded()
-		Timers:CreateTimer(HERO_SELECTION_TIME+STRATEGY_TIME-1.1, function()
-			for playerID = 0, 19 do
+		Timers:CreateTimer(HERO_SELECTION_TIME+STRATEGY_TIME-1, function()
+			for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 				if PlayerResource:IsValidPlayerID(playerID) then
 					-- If this player still hasn't picked a hero, random one
 					if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and (not PlayerResource:IsBroadcaster(playerID)) then
@@ -216,7 +216,7 @@ function ancient_battle_gamemode:OnPlayerTakeTowerDamage(keys)
 
 end
 
--- A player picked or randomed a hero (this is happening before OnNPCSpawned)
+-- A player picked or randomed a hero (this is happening before OnHeroInGame)
 function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	local hero_name = keys.hero
 	local hero_entity = EntIndexToHScript(keys.heroindex)
@@ -228,6 +228,10 @@ function ancient_battle_gamemode:OnPlayerPickHero(keys)
 			-- This is happening only for bots when they spawn for the first time or if they use custom hero-create spells:
 			-- Dark Ranger Charm, Archmage Conjure Image
 		else
+			if not PlayerResource.PlayerData[playerID] then
+				PlayerResource.PlayerData[playerID] = {}
+				print("[Ancient Battle] PlayerResource's PlayerData for playerID "..playerID.." was not properly initialized.")
+			end
 			if PlayerResource.PlayerData[playerID].already_assigned_hero == true then
 				-- This is happening only when players create new heroes with spells (Dark Ranger Charm, Archmage Conjure Image)
 			else
@@ -248,16 +252,16 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	local killed_unit = EntIndexToHScript(keys.entindex_killed)
 
 	-- The Killing entity
-	local killer_unit = nil
+	local killer_unit
 
-	if keys.entindex_attacker ~= nil then
+	if keys.entindex_attacker then
 		killer_unit = EntIndexToHScript(keys.entindex_attacker)
 	end
 
 	-- The ability/item used to kill, or nil if not killed by an item/ability
-	local killing_ability = nil
+	local killing_ability
 
-	if keys.entindex_inflictor ~= nil then
+	if keys.entindex_inflictor then
 		killing_ability = EntIndexToHScript(keys.entindex_inflictor)
 	end
 
@@ -288,7 +292,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		if ENABLE_HERO_RESPAWN then
 			local killed_unit_level = killed_unit:GetLevel()
 
-			-- Respawn time without buyback penalty (+25 sec)
+			-- Respawn time without buyback penalty
 			local respawn_time = 1
 			if USE_CUSTOM_RESPAWN_TIMES then
 				-- Get respawn time from the table that we defined
@@ -354,7 +358,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	end
 
 	-- Axe Chop Sound with Cut From Above (Culling Blade) when he kills heroes (not illusions)
-	if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability ~= nil then
+	if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability then
 		local ability = killer_unit:FindAbilityByName("holdout_culling_blade")
 		if killing_ability == ability then
 			killer_unit:EmitSound("Hero_Axe.Culling_Blade_Success")
@@ -380,7 +384,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	if killed_unit:IsIllusion() or (killed_unit:IsControllableByAnyPlayer() and (not killed_unit:IsRealHero()) and (not killed_unit:IsCourier()) and (not killed_unit:IsClone())) and (not killed_unit:IsTempestDouble()) then
 		local player = killed_unit:GetPlayerOwner()
 		local playerID
-		if player == nil then
+		if not player then
 			playerID = killed_unit:GetPlayerOwnerID()
 		else
 			playerID = player:GetPlayerID()
@@ -453,13 +457,8 @@ end
 
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 function ancient_battle_gamemode:OnConnectFull(keys)
-	--PrintTable(keys)
 
 	ancient_battle_gamemode:CaptureGameMode()
-
-	local index = keys.index
-	local playerID = keys.PlayerID
-	local userID = keys.userid
 
 	PlayerResource:OnPlayerConnect(keys)
 end

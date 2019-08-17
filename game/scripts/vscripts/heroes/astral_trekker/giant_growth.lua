@@ -9,7 +9,7 @@ function GrowStart(event)
 	local model_size_interval = 100 / (model_size - original_model_scale)
 	
 	-- Scale Up in 100 intervals
-	for i=1,100 do
+	for i = 1, 100 do
 		Timers:CreateTimer(i/75,function()
     		local modelScale = original_model_scale + i/model_size_interval
 			caster:SetModelScale(modelScale)
@@ -27,7 +27,7 @@ function GrowEnd(event)
 	local model_size_interval = 100 / (model_size - original_model_scale) 
 	
 	-- Scale Down in 100 intervals
-	for i=1,100 do
+	for i = 1 , 100 do
 		Timers:CreateTimer(i/50,function()
 	    	local modelScale = model_size - i/model_size_interval
 			caster:SetModelScale(modelScale)

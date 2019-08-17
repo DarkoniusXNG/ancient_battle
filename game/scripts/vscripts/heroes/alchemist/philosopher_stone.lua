@@ -27,7 +27,7 @@ function PhilosopherStoneDamage(event)
 	local damage_type = DAMAGE_TYPE_MAGICAL
 	
 	-- Getting the physical and magical reduction of the target
-	local armor = target:GetPhysicalArmorValue()
+	local armor = target:GetPhysicalArmorValue(false)
 	local armor_reduction = (armor*0.052/(0.9+0.048*(math.abs(armor))))
 	local magic_reduction = target:GetMagicalArmorValue()
 	

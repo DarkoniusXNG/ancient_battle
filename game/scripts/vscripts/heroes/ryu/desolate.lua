@@ -26,7 +26,7 @@ function DesolateCheck(event)
 		-- Targetting constants
 		local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
 		local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
-		local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
+		local target_flags = DOTA_UNIT_TARGET_FLAG_NONE		-- bit.bor(DOTA_UNIT_TARGET_FLAG_INVULNERABLE, DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD) -- this will affect dummies and thinkers
 		
 		-- Finding target's allies in a radius
 		local enemies = FindUnitsInRadius(target:GetTeamNumber(), target_location, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)

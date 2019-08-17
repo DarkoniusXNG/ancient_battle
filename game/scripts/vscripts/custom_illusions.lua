@@ -8,12 +8,13 @@
 -- Known issues (for both methods): Morphling interaction, power treads always strength, terrorblade metamorphosis missing attack projectile
 -- missing talent trees (visually only)
 function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damage_dealt, damage_taken, controllable, method)
-	if caster == nil or ability == nil or duration == nil then
-		print("caster, ability and duration need to be defined!")
+	if not caster or not ability or not duration then
+		print("caster, ability and duration need to be defined for CreateIllusion!")
 		return nil
 	end
 	
 	if self == nil then
+		print("CDOTA_BaseNPC for CreateIllusion is nil.")
 		return nil
 	end
 	
@@ -26,7 +27,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 	local illusion_damage_dealt = damage_dealt or 0
 	local illusion_damage_taken = damage_taken or 0
 
-	if controllable == nil then
+	if not controllable then
 		controllable = true
 	end
 	
@@ -87,7 +88,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 
 			-- Set the skill points to 0 and learn the skills of the caster
 			illusion:SetAbilityPoints(0)
-			for ability_slot=0, unit_ability_count-1 do
+			for ability_slot = 0, unit_ability_count-1 do
 				local current_ability = self:GetAbilityByIndex(ability_slot)
 				if current_ability then 
 					local current_ability_level = current_ability:GetLevel()
@@ -109,7 +110,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 				end
 			end
 			-- Remove teleport scroll
-			for i=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
+			for i = 9, 16 do
 				local item = illusion:GetItemInSlot(i)
 				if item then
 					if item:GetName() == "item_tpscroll" then
@@ -118,7 +119,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 				end
 			end
 			-- Recreate the items of the CDOTA_BaseNPC to be the same on illusion
-			for item_slot=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
+			for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 				local item = self:GetItemInSlot(item_slot)
 				if item then
 					local item_name = item:GetName()
@@ -135,23 +136,25 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 				end
 			end
 			
-			for _, modifier in ipairs(self:FindAllModifiers()) do
-				local modifier_name = modifier:GetName()
-				if modifier.AllowIllusionDuplicate and modifier:AllowIllusionDuplicate() and modifier:GetDuration() ~= -1 then
-					local skip = false
-					for i=1, #modifier_ignore_list do
-						if modifier_name == modifier_ignore_list[i] then
-							skip = true
+			for _, modifier in pairs(self:FindAllModifiers()) do
+				if modifier then
+					local modifier_name = modifier:GetName()
+					if modifier.AllowIllusionDuplicate and modifier:AllowIllusionDuplicate() and modifier:GetDuration() ~= -1 then
+						local skip = false
+						for i=1, #modifier_ignore_list do
+							if modifier_name == modifier_ignore_list[i] then
+								skip = true
+							end
+						end
+						if not skip then
+							illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetRemainingTime() })
 						end
 					end
-					if not skip then
-						illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetRemainingTime() })
-					end
-				end
 				
-				for i=1, #wanted_modifiers do
-					if modifier_name == wanted_modifiers[i] then
-						illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetDuration() })
+					for i=1, #wanted_modifiers do
+						if modifier_name == wanted_modifiers[i] then
+							illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetDuration() })
+						end
 					end
 				end
 			end
@@ -171,15 +174,16 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 			-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
 			illusion:MakeIllusion()
 		else
-			-- CDOTA_BaseNPC is a creep
+			-- CDOTA_BaseNPC is a creep and not an illusion of a creep
 			illusion = CreateUnitByName(unit_name, origin, true, caster, caster, caster:GetTeamNumber())
 			if controllable then
 				illusion:SetControllableByPlayer(playerID, true)
 			end
 			illusion:SetOwner(owner)
 			FindClearSpaceForUnit(illusion, origin, false)
-
-			for ability_slot=0, 15 do
+			
+			local unit_ability_count = self:GetAbilityCount()
+			for ability_slot = 0, unit_ability_count-1 do
 				local current_ability = self:GetAbilityByIndex(ability_slot)
 				if current_ability then 
 					local current_ability_level = current_ability:GetLevel()
@@ -240,7 +244,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 		FindClearSpaceForUnit(illusion, origin, false)
 
 		local unit_ability_count = self:GetAbilityCount()
-		for ability_slot=0, unit_ability_count-1 do
+		for ability_slot = 0, unit_ability_count-1 do
 			local current_ability = self:GetAbilityByIndex(ability_slot)
 			if current_ability then 
 				local current_ability_level = current_ability:GetLevel()
@@ -260,7 +264,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 		illusion:SetHealth(self:GetHealth())
 		illusion:SetBaseDamageMax(self:GetBaseDamageMax())
 		illusion:SetBaseDamageMin(self:GetBaseDamageMin())
-		illusion:SetPhysicalArmorBaseValue(self:GetPhysicalArmorValue())
+		illusion:SetPhysicalArmorBaseValue(self:GetPhysicalArmorValue(true))
 		illusion:SetBaseAttackTime(self:GetBaseAttackTime())
 		illusion:SetBaseMoveSpeed(self:GetBaseMoveSpeed())
 
@@ -286,27 +290,27 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 		end
 		
 		for _, modifier in ipairs(self:FindAllModifiers()) do
-				local modifier_name = modifier:GetName()
-				if modifier.AllowIllusionDuplicate and modifier:AllowIllusionDuplicate() then
-					local skip = false
-					for i=1, #modifier_ignore_list do
-						if modifier_name == modifier_ignore_list[i] then
-							skip = true
-						end
-					end
-					if not skip then
-						illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetRemainingTime() })
+			local modifier_name = modifier:GetName()
+			if modifier.AllowIllusionDuplicate and modifier:AllowIllusionDuplicate() then
+				local skip = false
+				for i=1, #modifier_ignore_list do
+					if modifier_name == modifier_ignore_list[i] then
+						skip = true
 					end
 				end
-				
-				for i=1, #wanted_modifiers do
-					if modifier_name == wanted_modifiers[i] then
-						illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetDuration() })
-					end
+				if not skip then
+					illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetRemainingTime() })
 				end
 			end
+			
+			for i=1, #wanted_modifiers do
+				if modifier_name == wanted_modifiers[i] then
+					illusion:AddNewModifier(modifier:GetCaster(), modifier:GetAbility(), modifier_name, { duration = modifier:GetDuration() })
+				end
+			end
+		end
 		
-		for item_slot=DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
+		for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 			local item = self:GetItemInSlot(item_slot)
 			if item then
 				local item_name = item:GetName()
@@ -351,7 +355,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 	end
 
 	if illusion then
-		if illusion.custom_illusion == nil then
+		if not illusion.custom_illusion then
 			illusion.custom_illusion = true
 		end
 	end

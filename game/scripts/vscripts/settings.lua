@@ -129,12 +129,14 @@ end
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_MANA_REGEN = -1     -- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_HEALTH_REGEN = -1   -- What should we use for the percentage fountain health regen?  Use -1 to keep the default dota behavior.
-MAXIMUM_ATTACK_SPEED = 600              -- What should we use for the maximum attack speed?
+MAXIMUM_ATTACK_SPEED = 800              -- What should we use for the maximum attack speed?
 MINIMUM_ATTACK_SPEED = 10               -- What should we use for the minimum attack speed?
 
 DISABLE_DAY_NIGHT_CYCLE = false         -- Should we disable the day night cycle from naturally occurring? (Manual adjustment still possible)
 DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree announcer?
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
+CUSTOM_GLYPH_COOLDOWN = 300
+CUSTOM_SCAN_COOLDOWN = 210
 
 USE_DEFAULT_RUNE_SYSTEM = true			-- Use default dota rune spawn timings and the same runes as dota have?
 BOUNTY_RUNE_SPAWN_INTERVAL = 300		-- How long in seconds should we wait between bounty rune spawns? BUGGED! WORKS FOR POWERUPS TOO!
@@ -198,6 +200,8 @@ if GetMapName() == "two_vs_two" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_6] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
+	CUSTOM_GLYPH_COOLDOWN = 5
+	CUSTOM_SCAN_COOLDOWN = 5
 end
 
 if GetMapName() == "holdout" then

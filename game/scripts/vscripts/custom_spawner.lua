@@ -7,12 +7,8 @@ function custom_spawner:DifficultyCheck()
 	local hero_flags = bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO)
 	local heroes_on_the_map = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, hero_flags, FIND_ANY_ORDER, false)
 	local difficulty = 1
-	if #heroes_on_the_map == 2 then
-		difficulty = 2
-	elseif #heroes_on_the_map == 3 then
-		difficulty = 3
-	elseif #heroes_on_the_map == 4 then
-		difficulty = 4
+	if #heroes_on_the_map ~= 0 then
+		difficulty = #heroes_on_the_map
 	end
 	return difficulty
 end
@@ -37,14 +33,16 @@ end
 function custom_spawner:AllEnemyCreaturesAttackMoveCommand()
 	local creatures_on_map = Entities:FindAllByClassname("npc_dota_creature")
 	for _,creature in pairs(creatures_on_map) do
-		self:AttackMoveCommand(creature, Vector(0,0,0))
+		if creature then
+			self:AttackMoveCommand(creature, Vector(0,0,0))
+		end
 	end
 end
 
 function custom_spawner:SpawnWave(spawner_name, destination_name, units_to_spawn, number_of_units)
     local point = Entities:FindByName(nil, spawner_name):GetAbsOrigin()
 	local waypoint = Entities:FindByName(nil, destination_name):GetAbsOrigin() or Vector(0,0,0)
-	for i=1, number_of_units do
+	for i = 1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point+RandomVector(RandomInt(100,200)), true, nil, nil, DOTA_TEAM_BADGUYS)
 		self:AttackMoveCommand(unit, waypoint)
 	end
@@ -54,7 +52,7 @@ function custom_spawner:SpawnDefence(spawner_name, destination_name, units_to_sp
 	local point = Entities:FindByName(nil, spawner_name):GetAbsOrigin()
 	local waypoint = Entities:FindByName(nil, destination_name):GetAbsOrigin()
 	
-	for i=1, number_of_units do
+	for i = 1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point+RandomVector(RandomInt(100,200)), true, nil, nil, DOTA_TEAM_GOODGUYS)
 		Timers:CreateTimer(function()	
 			local order =
@@ -75,14 +73,16 @@ function custom_spawner:AreAllEnemyCreaturesDead()
 	local number_of_enemy_creatures = 0
 		
 	for _,creature in pairs(creatures_on_map) do
-		if creature:GetTeam() == DOTA_TEAM_BADGUYS and creature:IsAlive() then
-			number_of_enemy_creatures = number_of_enemy_creatures + 1
+		if creature then
+			if creature:GetTeam() == DOTA_TEAM_BADGUYS and creature:IsAlive() then
+				number_of_enemy_creatures = number_of_enemy_creatures + 1
+			end
 		end
 	end
 	if number_of_enemy_creatures > 0 then
 		return false
 	end
-	
+
 	return true
 end
 
@@ -118,7 +118,7 @@ end
 -- Function for spawning neutral creeps
 function custom_spawner:SpawnNeutralUnits(spawner_entity, units_to_spawn, number_of_units)
     local point = Entities:FindByName(nil, spawner_entity):GetAbsOrigin()
-	for i=1, number_of_units do
+	for i = 1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point, true, nil, nil, DOTA_TEAM_NEUTRALS)
 		FindClearSpaceForUnit(unit, point+RandomVector(RandomInt(50,120)), false)
 	end
@@ -151,7 +151,7 @@ function custom_spawner:SpawnAncientCamp(spawner_entity)
     }
 	local random_number = RandomInt(1, #ancient_camp_creeps)
 	local camp = ancient_camp_creeps[random_number]
-	for i=1, #camp do
+	for i = 1, #camp do
 		local neutral_creep = camp[i]
 		local unit_to_spawn = neutral_creep[1]
 		local number_of_units = neutral_creep[2]
@@ -185,7 +185,7 @@ function custom_spawner:SpawnHardCamp(spawner_entity)
     }
 	local random_number = RandomInt(1, #hard_camp_creeps)
 	local camp = hard_camp_creeps[random_number]
-	for i=1, #camp do
+	for i = 1, #camp do
 		local neutral_creep = camp[i]
 		local unit_to_spawn = neutral_creep[1]
 		local number_of_units = neutral_creep[2]
@@ -206,7 +206,7 @@ function custom_spawner:SpawnMediumCamp(spawner_entity)
     }
 	local random_number = RandomInt(1, #medium_camp_creeps)
 	local camp = medium_camp_creeps[random_number]
-	for i=1, #camp do
+	for i = 1, #camp do
 		local neutral_creep = camp[i]
 		local unit_to_spawn = neutral_creep[1]
 		local number_of_units = neutral_creep[2]
@@ -243,7 +243,7 @@ function custom_spawner:SpawnEasyCamp(spawner_entity)
     }
 	local random_number = RandomInt(1, #easy_camp_creeps)
 	local camp = easy_camp_creeps[random_number]
-	for i=1, #camp do
+	for i = 1, #camp do
 		local neutral_creep = camp[i]
 		local unit_to_spawn = neutral_creep[1]
 		local number_of_units = neutral_creep[2]

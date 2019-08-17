@@ -174,17 +174,17 @@ function HideAndCopyHero(target, caster)
 			target:RemoveModifierByName(hidden_modifiers[i])	
 		end
 		
-		local ability_table = {}
-		local item_table = {}
-		ability_table[1] = "dark_ranger_charm" -- obvious reasons, weird interactions
-		ability_table[2] = "paladin_eternal_devotion" -- disabling just in case, playerID issues
-		ability_table[3] = "perun_electric_trap" -- crashes
-		ability_table[4] = "shredder_chakram"	-- crashes
-		ability_table[5] = "shredder_chakram_2"	-- crashes
-		ability_table[6] = "archmage_mass_teleport" -- preventing abuse
-		item_table[1] = "item_tpscroll" -- preventing abuse
-		item_table[2] = "item_travel_boots" -- preventing abuse
-		item_table[3] = "item_travel_boots_2" -- preventing abuse
+		local ability_table = {
+			"dark_ranger_charm", 			-- obvious reasons, weird interactions
+			"paladin_eternal_devotion", 	-- disabling just in case, playerID issues
+			"perun_electric_trap", 			-- crashes
+			"archmage_mass_teleport" 		-- preventing abuse
+		}
+		local item_table = {
+			"item_tpscroll", 				-- preventing abuse
+			"item_travel_boots", 			-- preventing abuse
+			"item_travel_boots_2" 			-- preventing abuse
+		}
 		
 		-- Creating copy of the target hero
 		local copy = CreateUnitByName(target_name, target_origin, true, caster, nil, caster_team) -- handle hUnitOwner MUST be nil, else it will crash the game.
@@ -194,20 +194,20 @@ function HideAndCopyHero(target, caster)
 		FindClearSpaceForUnit(copy, target_origin, false)
 		
 		-- Levelling up the Copy of the hero
-		for i=1,target_level-1 do
+		for i = 1,target_level-1 do
 			copy:HeroLevelUp(false) -- false because we don't want to see level up effects
 		end
 
 		-- Recreate the items of the original, disabling some items, not ignoring items in backpack
 		local disable_item = {}
-		for itemSlot=0,8 do
+		for itemSlot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 			local item = target:GetItemInSlot(itemSlot)
 			if item then
 				local itemName = item:GetName()
 				local newItem = CreateItem(itemName, copy, copy)
 				local newItemName = newItem:GetName()
 				disable_item[itemSlot+1] = 0
-				for i= 1, #item_table do
+				for i = 1, #item_table do
 					if newItemName == item_table[i] then
 						--print("Disabling "..newItemName)
 						disable_item[itemSlot+1] = 1
@@ -218,11 +218,15 @@ function HideAndCopyHero(target, caster)
 				end
 			end
 		end
+
+		-- Remove tp scroll from the copy
+		local tp_scroll = copy:GetItemInSlot(15)
+		copy:RemoveItem(tp_scroll)
 		
 		-- Enabling and disabling abilities on a copy
 		copy:SetAbilityPoints(0)
 		local disable_ability = {}
-		for abilitySlot=0,target_ability_count-1 do
+		for abilitySlot = 0, target_ability_count-1 do
 			local ability = target:GetAbilityByIndex(abilitySlot)
 			if ability then 
 				local abilityLevel = ability:GetLevel()
@@ -248,7 +252,7 @@ function HideAndCopyHero(target, caster)
 		-- Preventing dropping and selling items in inventory
 		copy:SetHasInventory(false)
 		copy:SetCanSellItems(false)
-		-- Disabling bounties because copy can die (even if its invulnerable it can still die: suicide (bloodstone) or axe's cut from above/culling blade)
+		-- Disabling bounties because copy can die (even if its invulnerable it can still die: suicide abilities or axe's cut from above/culling blade)
 		copy:SetMaximumGoldBounty(0)
 		copy:SetMinimumGoldBounty(0)
 		copy:SetDeathXP(0)
@@ -271,26 +275,26 @@ function HideTheCopyPermanently(copy)
 	if copy then
 		-- Effects and auras that are visual while hidden - Special cases
 		local hidden_modifiers = {
-		"modifier_firelord_arcana",												-- Fire Lord Arcana
-		"modifier_drow_ranger_trueshot",										-- Precision Aura (built-in)
-		"modifier_drow_ranger_trueshot_aura",									-- Precision Aura (built-in)
-		"modifier_drow_ranger_trueshot_global",									-- Precision Aura (built-in)
-		"modifier_black_king_bar_immune",										-- Black King Bar (built-in)
-		"modifier_item_ring_of_basilius_aura",									-- Ring of Basilius Aura
-		"modifier_item_ring_of_aquila_aura",									-- Ring of Aquila Aura
-		"modifier_item_mekansm_aura",											-- Mekansm Aura
-		"modifier_item_ancient_janggo",											-- Drums of Endurance Aura
-		"modifier_item_vladmir",												-- Vladmir's Aura
-		"modifier_item_guardian_greaves",										-- Guardian Greaves Aura
-		"modifier_item_assault_positive_aura",									-- Assault Cuirass Positive Aura
-		"modifier_item_assault_positive_buildings_aura",						-- Assault Cuirass Positive Aura (buildings)
-		"modifier_item_assault_negative_armor_aura",							-- Assault Cuirass Negative Aura
-		"modifier_item_pipe",													-- Pipe of Insight Aura
-		"modifier_item_headdress",												-- Headdress Aura
-		"modifier_item_radiance",												-- Radiance Aura
-		"modifier_item_crimson_guard_extra",									-- Crimson Guard Active
-		"modifier_item_shivas_guard",											-- Shiva's Guard Aura
-		"modifier_slippers_of_halcyon_caster"									-- Slippers of Halcyon Active
+			"modifier_firelord_arcana",												-- Fire Lord Arcana
+			"modifier_drow_ranger_trueshot",										-- Precision Aura (built-in)
+			"modifier_drow_ranger_trueshot_aura",									-- Precision Aura (built-in)
+			"modifier_drow_ranger_trueshot_global",									-- Precision Aura (built-in)
+			"modifier_black_king_bar_immune",										-- Black King Bar (built-in)
+			"modifier_item_ring_of_basilius_aura",									-- Ring of Basilius Aura
+			"modifier_item_ring_of_aquila_aura",									-- Ring of Aquila Aura
+			"modifier_item_mekansm_aura",											-- Mekansm Aura
+			"modifier_item_ancient_janggo",											-- Drums of Endurance Aura
+			"modifier_item_vladmir",												-- Vladmir's Aura
+			"modifier_item_guardian_greaves",										-- Guardian Greaves Aura
+			"modifier_item_assault_positive_aura",									-- Assault Cuirass Positive Aura
+			"modifier_item_assault_positive_buildings_aura",						-- Assault Cuirass Positive Aura (buildings)
+			"modifier_item_assault_negative_armor_aura",							-- Assault Cuirass Negative Aura
+			"modifier_item_pipe",													-- Pipe of Insight Aura
+			"modifier_item_headdress",												-- Headdress Aura
+			"modifier_item_radiance",												-- Radiance Aura
+			"modifier_item_crimson_guard_extra",									-- Crimson Guard Active
+			"modifier_item_shivas_guard",											-- Shiva's Guard Aura
+			"modifier_slippers_of_halcyon_caster"									-- Slippers of Halcyon Active
 		}
 		if copy:IsAlive() then
 			copy:Stop()
@@ -298,8 +302,8 @@ function HideTheCopyPermanently(copy)
 			copy.died = false
 		else
 			-- MakeIllusion() and RemoveSelf() are not good here:
-			-- Illusions cant deal damage over time (poisons etc.) -> automatic crash to desktop if illusions have dot
-			-- Removed units cant deal damage over time -> automatic crash to desktop if dot is still active after removing the unit
+			-- Illusions must not deal damage over time (poisons etc.) -> automatic server crash if illusions have DoT
+			-- Removed units must not deal damage over time! -> automatic server crash if DoT is still active after removing the unit
 			copy:RespawnUnit()
 			copy.died = true
 		end
@@ -310,10 +314,10 @@ function HideTheCopyPermanently(copy)
 		-- Remove passive modifiers with Custom Break
 		CustomPassiveBreak(copy, 100)
 		-- Cycle through hidden modifiers and remove them (Death, SuperStrongDispel and CustomPassiveBreak remove most modifiers but we need to make sure for remaining modifiers)
-		for i=1, #hidden_modifiers do
+		for i = 1, #hidden_modifiers do
 			copy:RemoveModifierByName(hidden_modifiers[i])	
 		end
-		-- Moving the copy to the corner of the map (Hiding him for sure)
+		-- Moving the copy to the corner of the map underground (Hiding him for sure)
 		local corner = Vector(0,0,0)
 		if GetMapName() == "two_vs_two" then
 			corner = Vector(2300,-2300,-322)
@@ -342,17 +346,17 @@ function UnhideOriginalOnLocation(original, location)
 		
 		-- List of auras and abilities with visual effect
 		local hidden_abilities = {
-		"firelord_arcana_model",
-		"hidden_ability_not_affected_with_custom_passive_break"
+			"firelord_arcana_model",
+			"hidden_ability_not_affected_with_custom_passive_break"
 		}
 		local passive_modifiers = {
-		"modifier_firelord_arcana",
-		"modifier_not_removed_with_super_strong_dispel_or_custom_passive_break"
+			"modifier_firelord_arcana",
+			"modifier_not_removed_with_super_strong_dispel_or_custom_passive_break"
 		}
 		-- Re-enabling removed passive modifiers with CustomPassiveBreak
 		CustomPassiveBreak(original, 0.1)
 		-- Cycle through remaining hidden abilities found on the hero, then re-activate them
-		for i=1, #hidden_abilities do
+		for i = 1, #hidden_abilities do
 			local ability = original:FindAbilityByName(hidden_abilities[i])
 			if ability then
 				if ability:GetLevel() ~= 0 then
@@ -373,43 +377,43 @@ end
 function CustomPassiveBreak(unit, duration)
 	-- List of custom abilities with passive modifiers
 	local abilities_with_passives = {
-	"dark_ranger_custom_marksmanship",
-	"life_stealer_custom_anabolic_frenzy",
-	"paladin_eternal_devotion",
-	"paladin_divine_retribution",
-	"queenofpain_custom_pain_steal",
-	"firelord_flaming_presence",
-	"stealth_assassin_desolate",
-	"gambler_lucky_stars",
-	"astral_trekker_time_constant",
-	"astral_trekker_giant_growth",
-	"archmage_arcane_magic",
-	"lich_custom_freezing_touch",
-	"brewmaster_custom_drunken_brawler",
-	"mana_eater_mana_shell",
-	"alchemist_custom_philosophers_stone",
-	"blademaster_custom_blade_dance"
+		"dark_ranger_custom_marksmanship",
+		"life_stealer_custom_anabolic_frenzy",
+		"paladin_eternal_devotion",
+		"paladin_divine_retribution",
+		"queenofpain_custom_pain_steal",
+		"firelord_flaming_presence",
+		"stealth_assassin_desolate",
+		"gambler_lucky_stars",
+		"astral_trekker_time_constant",
+		"astral_trekker_giant_growth",
+		"archmage_arcane_magic",
+		"lich_custom_freezing_touch",
+		"brewmaster_custom_drunken_brawler",
+		"mana_eater_mana_shell",
+		"alchemist_custom_philosophers_stone",
+		"blademaster_custom_blade_dance"
 	}
 	local passive_modifiers = {
-	"modifier_custom_marksmanship_passive",
-	"modifier_anabolic_frenzy_passive",
-	"modifier_devotion_aura_applier",
-	"modifier_retribution_aura_applier",
-	"modifier_pain_steal_aura_applier",
-	"modifier_firelord_presence_aura_applier",
-	"modifier_stealth_assassin_desolate",
-	"modifier_gambler_lucky_stars_passive",
-	"modifier_time_constant",
-	"modifier_giant_growth_passive",
-	"modifier_archmage_aura_applier",
-	"modifier_lich_freezing_touch_passive",
-	"modifier_custom_drunken_brawler_passive",
-	"modifier_mana_shell_passive",
-	"modifier_philosophers_stone_passive_buff",
-	"modifier_custom_blade_dance_passive"
+		"modifier_custom_marksmanship_passive",
+		"modifier_anabolic_frenzy_passive",
+		"modifier_devotion_aura_applier",
+		"modifier_retribution_aura_applier",
+		"modifier_pain_steal_aura_applier",
+		"modifier_firelord_presence_aura_applier",
+		"modifier_stealth_assassin_desolate",
+		"modifier_gambler_lucky_stars_passive",
+		"modifier_time_constant",
+		"modifier_giant_growth_passive",
+		"modifier_archmage_aura_applier",
+		"modifier_lich_freezing_touch_passive",
+		"modifier_custom_drunken_brawler_passive",
+		"modifier_mana_shell_passive",
+		"modifier_philosophers_stone_passive_buff",
+		"modifier_custom_blade_dance_passive"
 	}
 	if unit and duration then
-		for i=1, #passive_modifiers do
+		for i = 1, #passive_modifiers do
 			unit:RemoveModifierByName(passive_modifiers[i])
 		end
 		
@@ -417,7 +421,7 @@ function CustomPassiveBreak(unit, duration)
 		
 		if duration ~= 100 then
 			Timers:CreateTimer(duration, function()
-				for i=1, #abilities_with_passives do
+				for i = 1, #abilities_with_passives do
 					local ability = unit:FindAbilityByName(abilities_with_passives[i])
 					if ability then
 						if ability:GetLevel() ~= 0 then
@@ -436,15 +440,15 @@ end
 ]]
 function CustomItemDisable(caster, unit)
 	local passive_item_modifiers_exceptions ={
-	"modifier_item_empty_bottle",
-	"modifier_item_observer_ward",
-	"modifier_item_tome_of_knowledge",
-	"modifier_item_sentry_ward",
-	"modifier_item_blink_dagger",
-	"modifier_item_armlet_unholy_strength"
+		"modifier_item_empty_bottle",
+		"modifier_item_observer_ward",
+		"modifier_item_tome_of_knowledge",
+		"modifier_item_sentry_ward",
+		"modifier_item_blink_dagger",
+		"modifier_item_armlet_unholy_strength"
 	}
 	if unit then
-		for itemSlot=0,8 do
+		for itemSlot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 			local item = unit:GetItemInSlot(itemSlot)
 			if item then
 				local item_owner = item:GetPurchaser()
@@ -461,30 +465,32 @@ function CustomItemDisable(caster, unit)
 		local all_modifiers = unit:FindAllModifiers()
 		-- Iterate through each one and check their ability
 		for _, modifier in pairs(all_modifiers) do
-			local modifier_ability = modifier:GetAbility()			-- can be nil
-			if modifier_ability then
-				if modifier_ability:IsItem() then
-					-- Get the duration of the item modifier
-					local item_modifier_duration = modifier:GetDuration()
-					-- If the modifier duration is -1 (infinite duration) there is a chance that this is a passive modifier
-					if item_modifier_duration == -1 then
-						-- Get the name of the item modifier
-						local item_modifier_name = modifier:GetName()
-						-- Initializing handle: safe_to_remove
-						modifier.safe_to_remove = true
-						for i=1, #passive_item_modifiers_exceptions do
-							if item_modifier_name == passive_item_modifiers_exceptions[i] then
-								modifier.safe_to_remove = false
+			if modifier then
+				local modifier_ability = modifier:GetAbility()			-- can be nil
+				if modifier_ability then
+					if modifier_ability:IsItem() then
+						-- Get the duration of the item modifier
+						local item_modifier_duration = modifier:GetDuration()
+						-- If the modifier duration is -1 (infinite duration) there is a chance that this is a passive modifier
+						if item_modifier_duration == -1 then
+							-- Get the name of the item modifier
+							local item_modifier_name = modifier:GetName()
+							-- Initializing handle: safe_to_remove
+							modifier.safe_to_remove = true
+							for i = 1, #passive_item_modifiers_exceptions do
+								if item_modifier_name == passive_item_modifiers_exceptions[i] then
+									modifier.safe_to_remove = false
+								end
 							end
-						end
-						if modifier.safe_to_remove == true then
-							unit:RemoveModifierByName(item_modifier_name)
+							if modifier.safe_to_remove == true then
+								unit:RemoveModifierByName(item_modifier_name)
+							end
 						end
 					end
 				end
 			end
 		end
-		
+
 		-- Preventing dropping and selling items in inventory
 		unit:SetHasInventory(false)
 		unit:SetCanSellItems(false)
@@ -498,7 +504,7 @@ end
 ]]
 function CustomItemEnable(caster, unit)
 	if unit then
-		for itemSlot=0,8 do
+		for itemSlot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 			local item = unit:GetItemInSlot(itemSlot)
 			if item then
 				local item_owner = item:GetPurchaser()
@@ -581,7 +587,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				-- Death Pact
 			}
 			
-			for i=1, #undispellable_with_normal_dispel_buffs do
+			for i = 1, #undispellable_with_normal_dispel_buffs do
 				target:RemoveModifierByName(undispellable_with_normal_dispel_buffs[i])	
 			end
 		end
@@ -662,7 +668,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		damage_table.damage_type = ability:GetAbilityDamageType()
 		damage_table.ability = ability
 	else
-		target_team = DOTA_UNIT_TARGET_TEAM_BOTH
+		target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
 		target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 		target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 		damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
@@ -727,14 +733,14 @@ end
 function HasOtherUniqueAttackModifiers(unit)
 
 	local list_of_passive_orbs ={
-	"modifier_item_mask_of_death",
-	"modifier_item_satanic"
+		"modifier_item_mask_of_death",
+		"modifier_item_satanic"
 	}
 	
 	local list_of_autocast_orbs ={
-	"modifier_dark_arrow",
-	"modifier_incinerate_orb",
-	"modifier_glaives_of_silence_orb"
+		"modifier_dark_arrow",
+		"modifier_incinerate_orb",
+		"modifier_glaives_of_silence_orb"
 	}
 	
 	if unit then

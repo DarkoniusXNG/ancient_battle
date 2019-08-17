@@ -1,13 +1,12 @@
 -- Order Filter; order can be casting an ability, moving, clicking to attack, using radar, glyph etc.
-function ancient_battle_gamemode:OrderFilter(event)
-	--PrintTable(event)
-
-	local order = event.order_type
-	local units = event.units
+function ancient_battle_gamemode:OrderFilter(filter_table)
+	local order = filter_table.order_type
+	local units = filter_table.units
+	local playerID = filter_table.issuer_player_id_const
 
 	-- If the order is an ability
 	if order == DOTA_UNIT_ORDER_CAST_POSITION or order == DOTA_UNIT_ORDER_CAST_TARGET or order == DOTA_UNIT_ORDER_CAST_NO_TARGET or order == DOTA_UNIT_ORDER_CAST_TOGGLE or order == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO then
-		local ability_index = event.entindex_ability
+		local ability_index = filter_table.entindex_ability
 		local ability = EntIndexToHScript(ability_index)
 		local caster = EntIndexToHScript(units["0"])
 		
@@ -42,8 +41,6 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	local damaging_ability
 	if inflictor then
 		damaging_ability = EntIndexToHScript(inflictor)
-	else
-		damaging_ability = nil
 	end
 
 	-- Dont reflect the reflected damage
@@ -157,7 +154,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				damage_table.damage_type = DAMAGE_TYPE_PURE
 				damage_table.ability = ability
 				damage_table.damage = original_damage
-				damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 		
 				ApplyDamage(damage_table)
 				
@@ -294,7 +291,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				damage_table.damage_type = damage_type
 				damage_table.ability = ability
 				damage_table.damage = new_damage
-				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
+				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
 				
 				ApplyDamage(damage_table)
 			end
@@ -429,8 +426,6 @@ end
 
 -- Modifier (buffs, debuffs) filter function
 function ancient_battle_gamemode:ModifierFilter(keys)
-	--PrintTable(keys)
-
 	local unit_with_modifier = EntIndexToHScript(keys.entindex_parent_const)
 	local modifier_name = keys.name_const
 	local modifier_duration = keys.duration
@@ -456,8 +451,6 @@ end
 
 -- Tracking Projectile (attack and spell projectiles) filter function
 function ancient_battle_gamemode:ProjectileFilter(keys)
-	--PrintTable(keys)
-
 	local can_be_dodged = keys.dodgeable				-- values: 1 for yes or 0 for no
 	local ability_index = keys.entindex_ability_const	-- value if not ability: -1
 	local source_index = keys.entindex_source_const
@@ -472,15 +465,11 @@ end
 
 -- Bounty Rune Filter, can be used to modify Alchemist's Greevil Greed for example
 function ancient_battle_gamemode:BountyRuneFilter(keys)
-	--PrintTable(keys)
-
 	return true
 end
 
 -- Rune filter, can be used to modify what runes spawn and don't spawn, can be used to replace runes
 function ancient_battle_gamemode:RuneSpawnFilter(keys)
-	--PrintTable(keys)
-
 	return true
 end
 
@@ -586,6 +575,7 @@ end
 -- It can be used for calculating damage of attacks but it doesn't include damage block
 function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_type)
 	if damage_after_reductions == 0 then
+		-- Unable to calculate damage before reductions if damage after reductions is 0
 		return 0
 	end
 	if unit == nil then
@@ -595,7 +585,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 	-- Is the damage_type physical or magical?
 	if damage_type == DAMAGE_TYPE_PHYSICAL then
 		-- Armor of the unit
-		local armor = unit:GetPhysicalArmorValue()
+		local armor = unit:GetPhysicalArmorValue(false)
 		-- Physical damage is reduced by armor
 		local damage_armor_reduction = 1-(armor*0.052/(0.9+0.048*(math.abs(armor))))
 		-- In case the unit has infinite armor for some reason (to prevent division by zero)
