@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Blade Storm (Q) - Datadriven, similar to Juggernaut Blade Fury
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Deals 25% damage to buildings. Can attack normally during Blade Storm.
+	// Notes: OK; 18.8.2019; Deals 25% damage to buildings. Can attack normally during Blade Storm.
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_blade_storm"
@@ -26,30 +26,31 @@
 		
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // same or better than Juggernaut
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"damage_per_second"    		"80 100 130 150"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_per_second"                       "85 110 135 160"
 			}
 			"02" // not in tooltip
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"think_interval"    		"0.2"
+				"var_type"                                "FIELD_FLOAT"
+				"think_interval"                          "0.2"
 			}
 			"03"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"radius"         			"250"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "250"
 			}
-			"04"
+			"04" // better than Juggernaut
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"duration"                  "6.0"
+				"var_type"                                "FIELD_FLOAT"
+				"duration"                                "6.0"
 			}
 			"05"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"damage_to_buildings"    	"25"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_to_buildings"                     "25"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 		}
 	}

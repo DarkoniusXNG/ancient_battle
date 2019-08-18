@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Phoenix: Phoenix Fire
 	// Author: Darkonius
-	// Notes: OK; 16.9.2018;
-	// TO_DO: Particles, Sounds and Phoenix Degen (negative hp regen or damage with hp removal flag)
+	// Notes: OK; 18.8.2019;
+	// TO_DO: Particles, Sounds
 	//=================================================================================================================
 	"custom_phoenix_phoenix_fire"
 	{
@@ -13,23 +13,34 @@
 		"MaxLevel"                      "1"
 
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"initial_damage" 			"100"
+				"var_type"                                "FIELD_INTEGER"
+				"initial_damage"                          "100"
 			}
 			"02"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"damage_per_second" 		"25"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_per_second"                       "25"
 			}
 			"03"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"radius" 					"400"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "700"
+			}
+			"04"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"damage_to_self"                          "5"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 		}
 
@@ -49,6 +60,16 @@
 
 				"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
 				"EffectAttachType"  "follow_origin"
+				
+				"ThinkInterval"     "1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
+						"Function"      "PhoenixDegen"
+					}
+				}
 			}
 			
 			"modifier_custom_phoenix_fire_aura_effect" // needs tooltip
@@ -73,15 +94,9 @@
 					//}
 				}
 				
-				"ThinkInterval"  "1.0"
+				"ThinkInterval"     "1"
 				"OnIntervalThink"
 				{
-					//"RunScript"
-					//{
-						//"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
-						//"Function"      "PhoenixDegen"
-					//}
-
 					"Damage"
 					{
 						"Target"	"TARGET"

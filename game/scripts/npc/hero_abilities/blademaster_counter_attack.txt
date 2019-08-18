@@ -15,6 +15,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilitySound"					"Hero_LegionCommander.Courage"
+
 		"MaxLevel"						"1"
 		
 		// Time		

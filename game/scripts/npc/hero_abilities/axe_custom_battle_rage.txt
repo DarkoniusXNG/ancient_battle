@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Battle Rage (E) - New Spell, Applies a Buff that gives Lifesteal (normal + spell lifesteal) and bonus ms
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Stacks with Octarine Core;
+	// Notes: OK; 18.8.2019; Stacks with Octarine Core;
 	// TO_DO: Rework into ability_lua and prevent spell lifesteal with some damage flags
 	//=================================================================================================================
 	"axe_custom_battle_rage"
@@ -55,7 +55,7 @@
 			"03" // Battle Hunger bonus movement speed: 12%
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_move_speed"			"9 12 15 18"
+				"bonus_move_speed"			"12 15 18 21"
 			}
 		}
 

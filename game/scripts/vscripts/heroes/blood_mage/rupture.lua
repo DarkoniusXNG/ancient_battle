@@ -28,7 +28,11 @@ function DistanceCheck(keys)
 	local distance_cap_amount = ability:GetLevelSpecialValueFor("distance_cap_amount", ability_level)
 	local damage = 0
 	
-	if target.last_position_rupture ~= nil then
+	if not target or target:IsNull() then
+	  return
+	end
+	
+	if target.last_position_rupture then
 		local distance = (target.last_position_rupture - target:GetAbsOrigin()):Length2D()
 	
 		if distance <= distance_cap_amount and distance > 0 then

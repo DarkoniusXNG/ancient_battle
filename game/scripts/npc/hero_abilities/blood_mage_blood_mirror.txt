@@ -4,9 +4,9 @@
 	// Blood Mage: Blood Mirror - Redirects a percentage of the Damage dealt to Blood Mage to the target
 	// or redirects a percentage of the damage dealt to an ally to the Blood Mage.
 	// Author: Darkonius
-	// Notes: OK; 15.10.2018; Uses damage filter
+	// Notes: OK; 18.8.2019; Uses damage filter
 	// Linkens: Blocks;
-	// TO_DO: Particles, tooltips
+	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_blood_mirror"
 	{

@@ -4,7 +4,7 @@
 	// Axe: Cut from Above (R) - Modified Axe Culling Blade from Holdout Game Mode
 	// Author: Author of Valve Holdout Game Mode (Hardcoded)
 	// Linkens: Doesn't Block (INTENTIONAL); 
-	// Notes: 14.10.2018; Doesn't kill couriers. DON'T CHANGE THE NAME OF THE SPELL: holdout_culling_blade !!!
+	// Notes: 18.8.2019; Doesn't kill couriers. DON'T CHANGE THE NAME OF THE SPELL: holdout_culling_blade !!!
 	//=================================================================================================================
 	"holdout_culling_blade"
 	{
@@ -30,7 +30,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 150 200"
+		"AbilityManaCost"				"80 130 180"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

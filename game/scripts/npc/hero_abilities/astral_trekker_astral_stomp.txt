@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Has Aghanim Scepter Upgrade - increases dmg and radius
+	// Notes: OK; 18.8.2019; Has Aghanim Scepter Upgrade - increases dmg and radius
 	// Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
 	// TO_DO:
 	//=================================================================================================================
@@ -30,7 +30,7 @@
 		
 		// Mana Cost + Magic Stick/Wand
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"130"
+		"AbilityManaCost"				"115 120 125 130"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
@@ -55,10 +55,10 @@
 				"var_type"			"FIELD_INTEGER"
 				"radius"			"315"
 			}
-			"03" // Hoof Stomp: 100/150/200/250
+			"03" // same as Hoof Stomp
 			{
 				"var_type"			"FIELD_INTEGER"
-				"base_damage"		"50 75 100 125"
+				"base_damage"		"80 110 140 170"
 			}
 			"04" // this is not in tooltip
 			{
@@ -79,11 +79,13 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"base_damage_scepter"	"125 150 175 200"
+				"RequiresScepter"       "1"
 			}
 			"08" // unique (visible with aghanim scepter)
 			{
 				"var_type"			"FIELD_INTEGER"
 				"radius_scepter"	"800"
+				"RequiresScepter"   "1"
 			}
 		}
 		

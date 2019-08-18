@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Mana Transfer - Mana Drain from enemies, Mana giving to allies
 	// Author: 
-	// Notes: OK; 14.10.2018; Kills illusions; The link doesn't break when the target gets out of vision;
+	// Notes: OK; 18.8.2019; Kills illusions; The link doesn't break when the target gets out of vision;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -56,6 +56,11 @@
 			{
 				"var_type"					"FIELD_FLOAT"
 				"tick_rate"					"0.2"
+			}
+			"05"
+			{
+				"var_type"                  "FIELD_INTEGER"
+				"extra_mana_duration"       "10"
 			}
 		}
 
@@ -170,7 +175,7 @@
 				
 				"Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
-				"Duration"          "%duration"
+				"Duration"          "%extra_mana_duration"
 
 				"Properties"
 				{

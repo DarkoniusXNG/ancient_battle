@@ -34,12 +34,12 @@ function KillPhoenix(event)
     local phoenix = caster.phoenix
     local phoenix_egg = caster.phoenix_egg
 
-    if IsValidEntity(phoenix) then
+    if phoenix and not phoenix:IsNull() then
 		phoenix:RemoveAbility("custom_phoenix_turn_into_egg")
 		phoenix:RemoveModifierByName("modifier_custom_phoenix_reborn")
 		phoenix:ForceKill(false) 
 	end
-	if IsValidEntity(phoenix_egg) then
+	if phoenix_egg and not phoenix_egg:IsNull() then
 		phoenix_egg:RemoveAbility("custom_egg_turn_into_phoenix")
 		phoenix_egg:RemoveModifierByName("modifier_custom_phoenix_egg")
 		phoenix_egg:AddNoDraw()
@@ -70,7 +70,7 @@ function PhoenixIntoEgg(event)
     -- Remove/Hide the phoenix
     --caster:RemoveSelf()
 	--caster:ForceKill(true)
-	caster:AddNoDraw()
+	  caster:AddNoDraw()
 end
 
 -- Called OnDeath - Check if the egg died from an attacker other than the time-out
@@ -101,4 +101,24 @@ function PhoenixEggDeathCheck(event)
     --unit:RemoveSelf()
 	--unit:ForceKill(true) -- not good -> plays the death animation
 	unit:AddNoDraw()
+end
+
+-- Called OnIntervalThink inside modifier_custom_phoenix_fire_aura_applier
+function PhoenixDegen(event)
+	local caster = event.caster -- the phoenix
+	local ability = event.ability
+	
+	if not caster or not ability then
+		return
+	end
+	
+	local damage_table = {}
+	damage_table.victim = caster
+	damage_table.attacker = caster
+	damage_table.damage_type = DAMAGE_TYPE_PURE
+	damage_table.ability = ability
+	damage_table.damage = ability:GetLevelSpecialValueFor("damage_to_self", ability:GetLevel() - 1)
+	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_HPLOSS, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS)
+		
+	ApplyDamage(damage_table)
 end

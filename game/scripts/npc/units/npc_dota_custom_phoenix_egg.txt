@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summoned Phoenix's Egg
-	// Notes: OK; 24.5.2018;
+	// Notes: OK; 18.8.2018;
 	//=================================================================================
 	"npc_dota_custom_phoenix_egg"
 	{
@@ -12,7 +12,7 @@
 		
 		"SoundSet"          		"Phoenix_Sun"
 		"GameSoundsFile"          	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
-		//"IdleSoundLoop"           "Hero_DragonKnight.Tutorial_Intro"
+		//"IdleSoundLoop"           "sound_name"
 		
 		"Level"           			"6"
 		"UnitLabel"         		"phoenix_egg"
@@ -22,9 +22,9 @@
 		
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"          "custom_egg_turn_into_phoenix"
-		"Ability2"          "custom_unit_spell_immunity"
-		"Ability3"          "custom_egg_passives"
+		"Ability1"                  "custom_egg_turn_into_phoenix"
+		"Ability2"                  "custom_unit_spell_immunity"
+		"Ability3"                  "custom_egg_passives"
 
 		// Armor
 		//----------------------------------------------------------------

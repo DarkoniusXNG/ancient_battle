@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
 	// Author: Darkonius
-	// Notes: OK; 27.2.2019;
+	// Notes: OK; 18.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_giant_growth"
@@ -27,7 +27,7 @@
 		
 		"AbilitySpecial"
 		{
-			"01" // Kunkka's Tidebringer 25/50/75/100;
+			"01" // same as Kunkka's Tidebringer last 3 levels;
 			{ 
 				"var_type"  					"FIELD_INTEGER"
 				"passive_bonus_damage" 			"50 75 100"
@@ -51,7 +51,7 @@
 			"05"
 			{ 
 				"var_type"  					"FIELD_INTEGER"
-				"active_bonus_armor" 			"10 15 20"
+				"active_bonus_armor" 			"10 18 26"
 			}
 			"06"
 			{

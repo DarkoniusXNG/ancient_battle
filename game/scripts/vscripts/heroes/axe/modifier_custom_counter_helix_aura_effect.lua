@@ -85,8 +85,10 @@ function modifier_custom_counter_helix_aura_effect:OnAttackStart(event)
 			-- Damage enemies in a radius around the atacked target
 			local enemies = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin(), nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 			for _, enemy in pairs(enemies) do
-				damage_table.victim = enemy
-				ApplyDamage(damage_table)
+				if enemy then
+					damage_table.victim = enemy
+					ApplyDamage(damage_table)
+				end
 			end
 
 			ability:UseResources(false, false, true)

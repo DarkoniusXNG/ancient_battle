@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Blood Mage Summon Phoenix unit
-	// Notes: OK; 24.5.2018;
+	// Notes: OK; 18.8.2019;
 	//=================================================================================
 	"npc_dota_custom_phoenix_summon"
 	{
@@ -28,7 +28,6 @@
 		"Ability2"          "custom_unit_spell_immunity"
 		"Ability3"          "custom_phoenix_phoenix_fire"
 		"Ability4"          "custom_unit_splash_attack"
-		
 
 		// Armor
 		//----------------------------------------------------------------
@@ -85,6 +84,8 @@
 		
 		"Creature"
 		{
+			"DisableResistance"     "50"
+			
 			"AttachWearables"
 	        {
 	            "Wearable1"	{	"ItemDef"	"535"	} // phoenix ambient 

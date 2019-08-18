@@ -3,13 +3,13 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 14.10.2018; Flame Strike deals 25% of the damage to buildings;
-	// TO_DO:
+	// Notes: OK; 18.8.2018; Flame Strike deals 25% of the damage to buildings;
+	// TO_DO: test particles
 	//=================================================================================================================
 	"blood_mage_flame_strike"
 	{
-		"BaseClass"                     "ability_datadriven"	// ability_lua
-		//"ScriptFile"					"heroes/blood_mage/flame_strike.lua"
+		"BaseClass"                     "ability_lua"
+		"ScriptFile"					"heroes/blood_mage/flame_strike.lua"
 		"AbilityTextureName"			"custom/blood_mage_flame_strike"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -40,153 +40,40 @@
 		{
 			"01"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "300"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "300"
 			}
 			"02" // Nether Blast total damage to buildings (50/87.5/125/162.5);
 			{
-				"var_type"              "FIELD_INTEGER"
-				"initial_damage"		"70 85 100 175"
+				"var_type"                                "FIELD_INTEGER"
+				"initial_damage"                          "70 85 100 175"
 			}
-			"03" // Macropyre (100/140/180); Sand Storm (40/60/80/100); Shrapnel (15/35/55/75); Firestorm (25/40/55/70);
+			"03" // Less than Macropyre and Sand Storm or Firestorm dmg + 5;
 			{
-				"var_type"              "FIELD_INTEGER"
-				"damage_per_second"		"30 45 60 75"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_per_second"                       "30 45 60 75"
 			}
-			"04" // Macropyre (10); Shrapnel (10);
+			"04" // unique
 			{
-				"var_type"              "FIELD_INTEGER"
-				"duration" 				"6"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "6"
 			}
 			"05"
 			{
-				"var_type"              "FIELD_FLOAT"
-				"delay"                 "1.6"
+				"var_type"                                "FIELD_FLOAT"
+				"delay"                                   "1.6"
 			}
 			"06"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"damage_interval"		"0.5"
+				"var_type"                                "FIELD_FLOAT"
+				"damage_interval"                         "0.5"
+				"CalculateSpellDamageTooltip"             "0"
 			}
-		}
-		
-		"OnSpellStart"
-		{
-			"RunScript"
+			"07"
 			{
-				"ScriptFile"    "heroes/blood_mage/flame_strike.lua"
-				"Function"      "FlameStrikeStart"
-				"Target"        "POINT"
-			}
-
-			"FireSound"
-			{
-				"EffectName"    "Hero_Invoker.SunStrike.Charge"
-				"Target"        "CASTER"
-			}
-
-			"DelayedAction"
-			{
-				"Delay"     "%delay"
-				"Action"    
-				{
-					"CreateThinker"
-					{
-						"ModifierName"  "modifier_flame_strike_thinker"
-						"Target"        "POINT"
-					}
-				}
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_flame_strike_thinker" // doesn't need tooltip
-			{
-				"IsHidden"      "1"
-				"IsPurgable"	"0"
-				"Duration"      "%duration"
-
-				"Aura"              "modifier_flame_strike_burn"
-				"Aura_Radius"       "%radius"
-				"Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/flame_strike.lua"
-						"Function"      "InitialDamage"
-						"Target"		"POINT"
-					}
-
-					"FireSound"
-					{
-						"EffectName"    "Ability.LightStrikeArray"
-						"Target"        "TARGET"
-					}
-
-					"AttachEffect"
-					{
-						"Target"            "TARGET"
-						"EffectName"        "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"EffectRadius"      "%radius"
-					}
-					
-					"AttachEffect"
-					{
-						"Target"            "TARGET"
-						"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"EffectRadius"      "%radius"
-					}
-					
-					"DestroyTrees"
-					{
-						"Target"        "TARGET"
-						"Radius"        "%radius"
-					}
-				}
-
-				"ThinkInterval"     "%damage_interval"
-				"OnIntervalThink"
-				{
-					"AttachEffect"
-					{
-						"Target"            "TARGET"
-						"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"EffectRadius"      "%radius"
-					}
-				}
-			}
-
-			"modifier_flame_strike_burn" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsDebuff"  	"1"
-				"IsPurgable"	"0"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/flame_strike.lua"
-						"Function"      "FlameStrikeDamage"
-					}
-				}
-
-				"ThinkInterval" 	"%damage_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/flame_strike.lua"
-						"Function"      "FlameStrikeDamage"
-					}
-				}
+				"var_type"                                "FIELD_INTEGER"
+				"buildings_damage"                        "25"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 		}
 	}

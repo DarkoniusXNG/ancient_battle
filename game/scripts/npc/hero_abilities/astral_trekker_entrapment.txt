@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Entrapment (Q) - like Naga Siren Ensnare without illusion casting part
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Just applies root and reveal; Doesn't disarm; Interrupts;
+	// Notes: OK; 18.8.2019; Just applies root and reveal; Doesn't disarm; Interrupts;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -26,11 +26,11 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "12.0"
+		"AbilityCooldown"               "14.0"
 		
 		// Mana Cost + Magic Stick/Wand
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"80 90 100 110"
+		"AbilityManaCost"				"70 80 90 100"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
