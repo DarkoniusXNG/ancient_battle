@@ -293,7 +293,7 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"2200"
+		//"ItemCost"						"2200"
 		//"ItemShopTags"				"teleport"
 		//"ItemQuality"					"component"
 		//"ItemAliases"					"blink dagger"
