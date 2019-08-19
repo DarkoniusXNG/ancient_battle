@@ -8,12 +8,13 @@
 	//=================================================================================================================
 	"guardian_angel_bash"
 	{
-		"BaseClass"						"slardar_bash"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/paladin/bash.lua"
 		"AbilityTextureName"			"custom/guardian_angel_bash"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+
 		"MaxLevel"						"1"
 		
 		"precache"
@@ -33,15 +34,10 @@
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"0"
-			}
-			"03"
-			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"1.0"
 			}
-			"04"
+			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration_creep"		"2.0"
