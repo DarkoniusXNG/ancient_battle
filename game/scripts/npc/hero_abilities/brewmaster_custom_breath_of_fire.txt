@@ -8,7 +8,8 @@
 	//====================================================================================================
 	"brewmaster_custom_breath_of_fire"
 	{
-		"BaseClass"           		 	"ability_datadriven"
+		"BaseClass"           		 	"ability_lua"
+		"ScriptFile"					"heroes/brewmaster/breath_of_fire.lua"
 		"AbilityTextureName"            "custom/brewmaster_custom_breath_of_fire"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
 		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -43,22 +44,22 @@
 			"02" // Dragon Knight: 1050
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"fire_breath_speed"        			"1100"
+				"speed"        			            "1100"
 			}
 			"03" // original: 150; Dragon Knight: 150
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"fire_breath_width_start"    		"150"
+				"start_radius"                      "150"
 			}
 			"04" // Dragon Knight: 250
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"fire_breath_width_end"      		"250"
+				"end_radius"                        "250"
 			}
 			"05" // Dragon Knight: 750;
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"fire_breath_distance"      		"750"
+				"distance"      		            "750"
 			}
 			"06" // original: 5 seconds
 			{
@@ -68,81 +69,12 @@
 			"07" // original: 1 second
 			{
 				"var_type"                  		"FIELD_FLOAT"
-				"tick_interval"      				"0.2"
+				"burn_damage_interval"      		"0.2"
 			}
 			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps
 			{
 				"var_type"                  		"FIELD_INTEGER"
 				"burn_damage_per_second"     		"15 20 35 40"
-			}
-		}
-
-		"OnSpellStart"
-		{
-			"LinearProjectile"
-			{
-				"Target"      		"POINT"
-				"EffectName"  		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-				"MoveSpeed"   		"%fire_breath_speed"
-				"StartRadius"   	"%fire_breath_width_start"
-				"StartPosition" 	"attach_origin"
-				"EndRadius"     	"%fire_breath_width_end"
-				"FixedDistance" 	"%fire_breath_distance"
-				"TargetTeams"   	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"   	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				"TargetFlags"    	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"HasFrontalCone"	"1"
-				"ProvidesVision" 	"1"
-				"VisionRadius"		"150"
-			}
-
-			"FireSound"
-			{
-				"EffectName"    "Hero_DragonKnight.BreathFire"
-				"Target"        "CASTER"
-			}
-		}
-
-		"OnProjectileHitUnit"
-		{
-			"DeleteOnHit" 		"0"
-			
-			"Damage"
-			{
-				"Target"    "TARGET"
-				"Type"      "DAMAGE_TYPE_MAGICAL"
-				"Damage"    "%initial_damage"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"    "heroes/brewmaster/breath_of_fire.lua"
-				"Function"      "HazeBurnStart"
-			} 
-		}
-		
-		"Modifiers"
-		{
-			"modifier_breath_fire_haze_burn" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"  		"1"
-				"IsPurgable"		"1"
-				
-				"Duration"			"%burn_duration"
-
-				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"ThinkInterval"     "%tick_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/brewmaster/breath_of_fire.lua"
-						"Function"			"HazeBurnDamage"
-					}
-				}            
 			}
 		}
 	}
