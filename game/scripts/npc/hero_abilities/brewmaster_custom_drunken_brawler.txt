@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Drunken Brawler (T) - like Brewmaster's Drunken Brawler but, no guaranteed crit and evasion
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Chance to crit is pseudo-random;
+	// Notes: OK; 24.8.2019; Chance to crit is pseudo-random;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_drunken_brawler"
@@ -13,6 +13,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 
 		"precache"
 		{
@@ -20,7 +21,7 @@
 			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunkenbrawler_evade.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
 		}
-		
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -42,7 +43,7 @@
 				"CalculateSpellDamageTooltip"	"0"
 			}
 		}
-		
+
 		"Modifiers"
 		{
 			"modifier_custom_drunken_brawler_passive" // doesn't need tooltip
@@ -50,7 +51,7 @@
 				"Passive"   				"1"
 				"IsHidden"  				"1"
 				"IsPurgable"				"0"
-				
+
 				"AllowIllusionDuplicate"	"1"
 
 				"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_drunkenbrawler_evade.vpcf"
@@ -73,7 +74,7 @@
 					{
 						"Chance" 		"%crit_chance"
 						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_BREWMASTER_CRIT"
-						
+
 						"OnSuccess"
 						{
 							"FireSound"
@@ -104,7 +105,7 @@
 				"IsHidden"  	"1"
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_damage"

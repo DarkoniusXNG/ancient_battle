@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Primal Split Earth Spirit: Taunt (Q) - similar to Axe Berserker's Call
 	// Author: Darkonius
-	// Notes: OK; 27.5.2018;
-	// TO_DO: Sound
+	// Notes: OK; 24.8.2019;
+	// TO_DO: Sound Hero_Brewmaster.Taunt.KegRoll?
 	//====================================================================================================
 	"primal_split_earth_spirit_taunt"
 	{
@@ -18,6 +18,7 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 	    "MaxLevel"                      "1"
 		
 	    "AbilityCastPoint"              "0.3"
@@ -77,7 +78,7 @@
                     "MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
                 }
 				
-				"ThinkInterval"		"0.3"
+				"ThinkInterval"		"0.1"
 				"OnIntervalThink"
 				{
 					"RunScript"

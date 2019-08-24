@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Primal Split (R) - Ultimate, Datadriven Brewmaster's Primal Split with slight modifications
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Selecting and deselecting works (selection library).
+	// Notes: OK; 24.8.2019; Selecting and deselecting works (selection library).
 	// TO_DO: Ability UI is bugged after Primal Split end -> fix if you can;
 	//====================================================================================================
 	"brewmaster_custom_primal_split"
@@ -13,16 +13,17 @@
 		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"						"1"
-		
+
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"				"0.65"
-		
-		"AbilityCooldown"				"140.0"							// original: 180 seconds; dota: 140/120/100 seconds
+
+		"AbilityCooldown"				"140.0"							// original: 180 seconds; dota: 140/130/120 seconds
 
 		"AbilityManaCost"				"150"							// original: 150
 		"AbilityProcsMagicStick"		"1"
-		
+
 		"AbilitySpecial"
 		{
 			"01" // original: 60 seconds; dota: 16/18/20 seconds
@@ -30,7 +31,7 @@
 				"var_type"					"FIELD_INTEGER"
 				"spirit_duration"			"20"
 			}
-			"02" // dota: 0.6;
+			"02" // same as dota Brewmaster
 			{
 				"var_type"					"FIELD_FLOAT"
 				"split_duration"			"0.6"
@@ -68,14 +69,14 @@
 				"Target" 		"CASTER"
 				"Duration"		"%split_duration"
 			}
-			
+
 			"FireSound"
 			{
 				"EffectName"	"Hero_Brewmaster.PrimalSplit.Cast"
 				"Target" 		"CASTER"
 			}
 		}
-		
+
 		"Modifiers"
 		{
 			"modifier_custom_primal_split_delay" // doesn't need tooltip
@@ -83,7 +84,7 @@
 				"IsHidden"			"1"
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
-		
+
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -100,7 +101,7 @@
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
 				}
-				
+
 				"States"
 				{
 					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -113,7 +114,7 @@
 						"EffectName"	"Hero_Brewmaster.PrimalSplit.Spawn"
 						"Target" 		"CASTER"
 					}
-					
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_custom_primal_split_caster_buff"
@@ -135,7 +136,7 @@
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
 				}
-				
+
 				"States" // states of the hidden hero
 				{
 					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
@@ -149,7 +150,7 @@
 					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				
+
 				"OnCreated"
 				{
 					"RunScript"
@@ -190,7 +191,7 @@
 				"IsHidden"			"1"
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
-				
+
 				"OnDeath"
 				{
 					"RunScript"

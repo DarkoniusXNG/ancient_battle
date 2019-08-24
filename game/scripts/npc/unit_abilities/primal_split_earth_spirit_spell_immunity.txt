@@ -11,6 +11,7 @@
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityTextureName"    "custom/primal_split_earth_spirit_spell_immunity"
+
 	    "MaxLevel"              "1"
 	
 	    "Modifiers"

@@ -4,7 +4,7 @@
 	// Primal Split Earth Spirit: Hurl Boulder (W) - datadriven dota Primal Earth Split Hurl Boulder
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 26.6.2017;
+	// Notes: OK; 24.8.2019;
 	// TO_DO: 
 	//====================================================================================================
 	"primal_split_earth_spirit_hurl_boulder"
@@ -63,7 +63,7 @@
 
 			"FireSound"
 			{
-				"EffectName"			"n_mud_golem.Boulder.Cast"
+				"EffectName"			"Brewmaster_Earth.Boulder.Cast" // "n_mud_golem.Boulder.Cast"
 				"Target"				"CASTER"
 			}
 		}
@@ -109,7 +109,7 @@
 					
 					"FireSound"
 					{
-						"EffectName"	"n_mud_golem.Boulder.Target"
+						"EffectName"	"Brewmaster_Earth.Boulder.Target" // "n_mud_golem.Boulder.Target"
 						"Target"		"TARGET"
 					}
 				}

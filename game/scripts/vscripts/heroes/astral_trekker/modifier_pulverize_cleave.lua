@@ -53,6 +53,11 @@ function modifier_pulverize_cleave:OnAttackLanded(event)
 			
 			local target = event.target
 			
+			-- Prevent building up the proc chance (or crashing) when attacking items
+			if target.GetUnitName == nil then
+				return
+			end
+			
 			-- Prevent building up the proc chance on buildings, wards and allies
 			if target:GetTeamNumber() == parent:GetTeamNumber() or target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
 				return nil

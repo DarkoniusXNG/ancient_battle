@@ -2,8 +2,8 @@
 {
 	//====================================================================================================
 	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
-	// Author: Jastuchko + Darkonius
-	// Notes: OK; 14.10.2018;
+	// Authors: Jastuchko + Darkonius
+	// Notes: OK; 24.8.2019;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_breath_of_fire"
@@ -17,16 +17,16 @@
 		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
 		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
+
 		"AbilityCastRange"              "750"								// unique
 		"AbilityCastPoint"              "0.3"								// Dragon Knight: 0.2
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		
+
 		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 12 seconds
-		
+
 		"AbilityManaCost"               "90 100 110 120"					// original: 70; Dragon Knight: 100/110/120/130
 		"AbilityProcsMagicStick"		"1"
-		
+
 		"precache"
 		{
 			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
@@ -46,7 +46,7 @@
 				"var_type"                  		"FIELD_INTEGER"
 				"speed"        			            "1100"
 			}
-			"03" // original: 150; Dragon Knight: 150
+			"03" // same as melee attack range
 			{
 				"var_type"                  		"FIELD_INTEGER"
 				"start_radius"                      "150"
@@ -74,7 +74,7 @@
 			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"burn_damage_per_second"     		"15 20 35 40"
+				"burn_damage_per_second"     		"20 30 40 50"
 			}
 		}
 	}

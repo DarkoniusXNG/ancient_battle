@@ -12,7 +12,7 @@ function brewmaster_custom_breath_of_fire:OnSpellStart()
 	if not point then
 		return
 	end
-	
+
 	-- Linear projectile values
 	local projectile_name = "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
 	local projectile_distance = self:GetSpecialValueFor("distance")
@@ -105,18 +105,19 @@ function modifier_breath_fire_haze_burn:GetEffectName()
 	return "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
 end
 
-function modifier_chaos_knight_reality_rift_custom:GetEffectAttachType()
+function modifier_breath_fire_haze_burn:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW -- follow_origin
 end
 
 function modifier_breath_fire_haze_burn:OnCreated()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
+
 	local think_interval
 	if ability then
-	  think_interval = ability:GetSpecialValueFor("burn_damage_interval")
+		think_interval = ability:GetSpecialValueFor("burn_damage_interval")
 	else
-	  think_interval = 0.2
+		think_interval = 0.2
 	end
 	-- Ignite Sound
 	parent:EmitSound("Hero_BrewMaster.CinderBrew.Ignite")
@@ -128,9 +129,9 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
 	local parent = self:GetParent()
-	
+
 	if not caster or not ability or not parent then
-	  return
+		return
 	end
 
 	local damage_per_second = ability:GetSpecialValueFor("burn_damage_per_second")
@@ -147,4 +148,3 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 	-- Apply Burn Damage
 	ApplyDamage(damage_table)
 end
-

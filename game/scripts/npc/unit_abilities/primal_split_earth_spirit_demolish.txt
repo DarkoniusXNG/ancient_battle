@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Primal Split Earth Spirit: Demolish (R) - passive, 100% attack damage as pure damage in a radius + bonus flat physical damage to buildings
 	// Author: Darkonius
-	// Notes: OK; 27.5.2018;
-	// TO_DO: 
+	// Notes: OK; 24.8.2019;
+	// TO_DO: Add sound?
 	//====================================================================================================
 	"primal_split_earth_spirit_demolish"
 	{
@@ -13,6 +13,7 @@
 	    "AbilityTextureName"    	"custom/primal_split_earth_spirit_demolish"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+
 	    "MaxLevel"              	"1"
 	
 		"AbilitySpecial"
@@ -21,6 +22,7 @@
 			{
 				"var_type"              		"FIELD_INTEGER"
 				"radius_damage_percent"        	"100"
+				"CalculateSpellDamageTooltip"	"0"
 			}
 			"02"
 			{
@@ -30,7 +32,7 @@
 			"03"
 			{
 				"var_type"              		"FIELD_INTEGER"
-				"bonus_damage_to_buildings"		"200"
+				"bonus_damage_to_buildings"		"270"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 	    }

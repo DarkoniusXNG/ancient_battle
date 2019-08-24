@@ -4,7 +4,7 @@
 	// Primal Split Storm Spirit: Cyclone (W) - datadriven dota Primal Storm Split Cyclone
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 27.6.2017; Uses built-in modifier: modifier_brewmaster_storm_cyclone
+	// Notes: OK; 24.8.2019; Uses built-in modifier: modifier_brewmaster_storm_cyclone
 	// TO_DO: 
 	//====================================================================================================
 	"primal_split_storm_spirit_cyclone"
@@ -16,6 +16,7 @@
 	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
 	    "MaxLevel"                      "1"
 		
 	    "AbilityCastRange"              "600"

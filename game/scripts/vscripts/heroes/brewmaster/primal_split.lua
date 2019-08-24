@@ -4,9 +4,9 @@ function PrimalSplit(event)
 	local playerID = caster:GetPlayerID()
 	local ability = event.ability
 	local duration = ability:GetLevelSpecialValueFor("spirit_duration", ability:GetLevel() - 1)
-	
+
 	local caster_team = caster:GetTeamNumber()
-	
+
 	local unit_name_earth = "npc_dota_custom_primal_split_earth_spirit"
 	local unit_name_storm = "npc_dota_custom_primal_split_storm_spirit"
 	local unit_name_fire = "npc_dota_custom_primal_split_fire_spirit"
@@ -17,7 +17,7 @@ function PrimalSplit(event)
     local distance = 100
 	local ang_right = QAngle(0, -90, 0)
     local ang_left = QAngle(0, 90, 0)
-	
+
 	local earth_position = origin + forwardV * distance 					-- Earth in front
 	local storm_position = RotatePosition(origin, ang_left, earth_position) -- Storm at the left, a bit behind
 	local fire_position = RotatePosition(origin, ang_right, earth_position) -- Fire at the righ, a bit behind
@@ -32,7 +32,7 @@ function PrimalSplit(event)
 	PlayerResource:AddToSelection(playerID, caster.Storm)
 	PlayerResource:AddToSelection(playerID, caster.Fire)
 	PlayerResource:RemoveFromSelection(playerID, caster)
-	
+
 	-- Make them controllable
 	caster.Earth:SetControllableByPlayer(playerID, true)
 	caster.Storm:SetControllableByPlayer(playerID, true)
@@ -68,30 +68,44 @@ function SpiritDied(event)
 	local caster = event.caster
 	local attacker = event.attacker
 	local unit = event.unit
-	
+
 	local playerID = caster:GetPlayerID()
 
 	unit:AddNoDraw()
 	PlayerResource:RemoveFromSelection(playerID, unit)
-	
+
+	local function IsAliveCustom(unit)
+		if not unit or unit:IsNull() then
+			return false
+		end
+
+		if not IsValidEntity(unit) then
+			return false
+		end
+
+		if not unit:IsAlive() then
+			return false
+		end
+
+		return true
+	end
+
 	-- Check which spirits are still alive
-	if IsValidEntity(caster.Earth) and caster.Earth:IsAlive() then
+	if IsAliveCustom(caster.Earth) then
 		caster.ActiveSplit = caster.Earth
-	elseif IsValidEntity(caster.Storm) and caster.Storm:IsAlive() then
+	elseif IsAliveCustom(caster.Storm) then
 		caster.ActiveSplit = caster.Storm
-	elseif IsValidEntity(caster.Fire) and caster.Fire:IsAlive() then
+	elseif IsAliveCustom(caster.Fire) then
 		caster.ActiveSplit = caster.Fire
 	else
 		-- Check if they died because the spell ended, or they were killed by an attacker
 		-- If the attacker is the same as the unit, it means the summon duration is over.
 		if attacker == unit then
 			-- Primal Split Ended Succesfully
-		else
-			if attacker ~= nil then
-				-- Kill the caster with credit to the attacker.
-				caster:Kill(nil, attacker)
-				caster.ActiveSplit = nil
-			end
+		elseif attacker then
+			-- Kill the caster with credit to the attacker.
+			caster:Kill(nil, attacker)
+			caster.ActiveSplit = nil
 		end
 	end
 end
@@ -110,7 +124,7 @@ end
 function PrimalSplitEnd(event)
 	local caster = event.caster
 	local playerID = caster:GetPlayerID()
-	
+
 	if caster.ActiveSplit then
 		local position = caster.ActiveSplit:GetAbsOrigin()
 		FindClearSpaceForUnit(caster, position, true)

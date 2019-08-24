@@ -679,7 +679,18 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		return nil
 	end
 	
-	if target:GetTeamNumber() == team_number then
+	if target:IsNull() then
+		return nil
+    end
+	
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+	-- items don't have that method -> nil; if the target is an item, don't continue
+	if target.GetUnitName == nil then
+		--print("Cleave doesn't work when attacking items!")
+		return
+	end
+	
+	if target:GetTeamNumber() == team_number and target_type == DOTA_UNIT_TARGET_TEAM_ENEMY then
 		--print("Cleave doesn't work when attacking allies!")
 		return
 	end
