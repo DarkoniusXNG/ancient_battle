@@ -4,7 +4,7 @@
 	// Stealth Assassin: Ambush (F) - New Spell, deals health percent damage, applies mini stun
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 31.1.2017; Stun is not dispellable;
+	// Notes: OK; 26.8.2019; Stun is not dispellable;
 	// TO_DO: Add animation or particle to the spell;
 	//=================================================================================================================
 	"stealth_assassin_ambush"
@@ -58,7 +58,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"radius"					"400"
+				"radius"					"325"
 			}
 			"04"
 			{

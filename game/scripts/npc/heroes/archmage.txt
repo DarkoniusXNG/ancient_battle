@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Archmage; 11.5.2018;
+	// HERO: Archmage; 26.8.2019;
 	// Notes: OK; Arcane Magic provides bonus mana regen;
 	// TO_DO:
 	//=================================================================================================================
@@ -27,14 +27,18 @@
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
-		"Ability10"				"special_bonus_strength_6"					// lvl 10 talent; unique
+
+		"Ability10"				"special_bonus_exp_boost_40"				// lvl 10 talent; unique
 		"Ability11"				"special_bonus_movement_speed_25"			// lvl 10 talent; same as KOTL
-		"Ability12"				"special_bonus_exp_boost_40"				// lvl 15 talent; same as KOTL
-		"Ability13"				"special_bonus_intelligence_10"				// lvl 15 talent; unique
+
+		"Ability12"				"special_bonus_armor_10"				    // lvl 15 talent; unique
+		"Ability13"				"special_bonus_all_stats_10"				// lvl 15 talent; unique
+
 		"Ability14"				"special_bonus_magic_resistance_40"			// lvl 20 talent; same as KOTL
-		"Ability15"				"special_bonus_armor_8"						// lvl 20 talent; unique
-		"Ability16"				"special_bonus_cooldown_reduction_15"		// lvl 25 talent; unique
-		"Ability17"				"special_bonus_all_stats_15"				// lvl 25 talent; unique
+		"Ability15"				"special_bonus_attack_speed_40"             // lvl 20 talent; unique
+
+		"Ability16"				"special_bonus_cooldown_reduction_25"		// lvl 25 talent; unique
+		"Ability17"				"special_bonus_spell_block_20"				// lvl 25 talent; unique
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -54,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"315"									// KOTL (335); Furion (290); original (320); Sniper (285); Crystal Maiden (275);
+		"MovementSpeed"				"320"									// KOTL (335); Furion (290); original (320); Sniper (285); Crystal Maiden (275);
 		"MovementTurnRate"			"0.5"									// like KOTL
 		
 		// Vision
@@ -74,9 +78,9 @@
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// like KOTL
+		"StatusHealthRegen"			"1.5"									// unique
 		"StatusHealth"				"200"									// like KOTL
-		"StatusMana"				"0"										// KOTL (75); Crystal Maiden (75);
-		"StatusManaRegen"			"0.9"									// like KOTL
+		"StatusMana"				"0"										// Default
+		"StatusManaRegen"			"0.0"									// like KOTL
 	}
 }

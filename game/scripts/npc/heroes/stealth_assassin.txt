@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Stealth Assassin - Ryu; 16.9.2018;
-	// TO_DO: stealth_assassin_permanent_invisibility; stealth_assassin_death_ward
+	// HERO: Stealth Assassin - Ryu; 26.8.2019;
+	// TO_DO: stealth_assassin_death_ward
 	//=================================================================================================================
 	"npc_dota_hero_stealth_assassin"
 	{
@@ -27,14 +27,18 @@
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
+
 		"Ability10"				"special_bonus_hp_150"						// lvl 10 talent: unique
 		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: unique
+
 		"Ability12"				"special_bonus_20_crit_15"					// lvl 15 talent: same as Riki
-		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: same as Riki
-		"Ability14"				"special_bonus_mp_regen_8"					// lvl 20 talent: unique
-		"Ability15"				"special_bonus_hp_regen_10"					// lvl 20 talent: unique
+		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: Smoke Screen talent
+
+		"Ability14"				"special_bonus_mp_regen_14"					// lvl 20 talent: unique
+		"Ability15"				"special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent; alternatives: special_bonus_unique_riki_1
+
 		"Ability16"				"special_bonus_movement_speed_100"			// lvl 25 talent: unique
-		"Ability17"				"special_bonus_all_stats_20"				// lvl 25 talent: unique
+		"Ability17"				"special_bonus_unique_witch_doctor_5"		// lvl 25 talent: Death Ward damage talent
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -44,16 +48,16 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"14"									// Riki (4); original (2);
-		"AttackDamageMax"			"18"									// Riki (8); original (12);
+		"AttackDamageMin"			"21"									// Riki (21); original (2);
+		"AttackDamageMax"			"25"									// Riki (25); original (12);
 		"AttackRate"				"1.7"									// like Riki
 		"AttackAnimationPoint"		"0.3"									// like Riki
 		"AttackAcquisitionRange"	"600"									// like Riki
-		"AttackRange"				"128"									// Riki(150); original(100 or 128);
+		"AttackRange"				"128"									// Riki (150); original (100 or 128);
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"270"									// Riki (275); Anti-Mage (315);
+		"MovementSpeed"				"285"									// Riki (290); Anti-Mage (310);
 		"MovementTurnRate"			"0.6"									// like Riki
 		
 		// Vision
@@ -69,13 +73,13 @@
 		"AttributeBaseIntelligence"	"14"									// Riki (14); original (16); Anti-Mage (12);
 		"AttributeIntelligenceGain"	"1.3"									// Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
 		"AttributeBaseAgility"		"34"									// Riki (30); original (22); - don't change!
-		"AttributeAgilityGain"		"3.0"									// Riki (2.2); original (2.9); Anti- Mage (2.8) - don't increase!
+		"AttributeAgilityGain"		"3.0"									// Riki (2.5); original (2.9); Anti-Mage (3.2) - don't increase!
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// Riki (1.5); original (1.5);
-		"StatusHealth"				"200"									// Riki (200); original(230);
+		"StatusHealthRegen"			"1.0"									// Riki (1.0); original (1.5);
+		"StatusHealth"				"200"									// Riki (200); original (230);
 		"StatusMana"				"75"									// like Riki
-		"StatusManaRegen"			"0.9"									// like Riki
+		"StatusManaRegen"			"0.0"									// like Riki
 	}
 }

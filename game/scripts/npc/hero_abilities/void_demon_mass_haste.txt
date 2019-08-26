@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Void Demon: Mass Haste (F) - New Spell; Ultimate; Gives max movement speed, phased movement and bonus attack speed for the duration to all allied heroes on the map.
 	// Author: Darkonius
-	// Notes: OK; 10.5.2018; While using FireSound sounds they are not global!; Buff is not dispellable;
-	// TO_DO:
+	// Notes: OK; 26.8.2019; While using FireSound sounds they are not global!; Buff is not dispellable;
+	// TO_DO: EmitGlobalSound; add Unslowable state; and add aghs upgrade that gives free pathing, ignores ms limit and decreases cooldown
 	//=================================================================================================================
 	"void_demon_mass_haste"
 	{
@@ -14,6 +14,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"               		"3"
 		"RequiredLevel"          		"6"
 		"LevelsBetweenUpgrades"  		"6"
@@ -21,14 +22,15 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80.0 70.0 60.0"
+		"AbilityCooldown"				"110 100 90"  // Stampede: 110/100/90; Battle Trance: 90;
 
 		// Mana Cost + Magic Stick/Wand
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100"
+		"AbilityManaCost"				"150 200 250"
 		"AbilityProcsMagicStick"		"1"
 
 		// Special
@@ -43,7 +45,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"80 140 200"
+				"bonus_attack_speed"	"140 170 200"
 			}
 			"03"
 			{

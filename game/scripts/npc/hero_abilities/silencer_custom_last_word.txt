@@ -4,8 +4,8 @@
 	// Silencer: Last Word (E) - New Spell; Passive + Active; Old Last Word Aura + Old Last Word Active with disarm
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 29.9.2018;
-	// TO_DO: tooltips
+	// Notes: OK; 26.8.2019;
+	// TO_DO: 
 	//=================================================================================================================
 	"silencer_custom_last_word"
 	{
@@ -22,7 +22,7 @@
 		"AbilityCastPoint"				"0.3"
 		"AbilityCastRange"				"900"
 
-		"AbilityCooldown"				"30.0 24.0 18.0 12.0"
+		"AbilityCooldown"				"22 18 14 10"
 		
 		"AbilityManaCost"				"120"
 		"AbilityProcsMagicStick"		"1"
@@ -51,7 +51,7 @@
 				"var_type"						"FIELD_FLOAT"
 				"disarm_duration"				"2.5 3.0 3.5 4.0"
 			}
-			"05"
+			"05" // old aura_radius was 750
 			{
 				"var_type"						"FIELD_INTEGER"
 				"aura_radius"					"500"

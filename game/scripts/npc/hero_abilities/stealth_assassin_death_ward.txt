@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Stealth Assassin: Death Ward (R) - Modified Witch Doctor Death Ward
 	// Author: Valve + Darkonius
-	// Notes: OK; 12.5.2018; Has Aghanim Scepter upgrade;
+	// Notes: OK; 26.8.2019; Has Aghanim Scepter upgrade;
 	// TO_DO: Rework to be like the old one
 	//=================================================================================================================
 	"stealth_assassin_death_ward"
@@ -50,23 +50,33 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"60 100 150"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bounces"					"0 0 1"
+				"var_type"                                "FIELD_INTEGER"
+				"damage"                                  "85 135 185"
+				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_5"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			"03"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"bounces_scepter"			"2 3 4"
+				"var_type"                                "FIELD_INTEGER"
+				"attack_range_tooltip"                    "700"
+				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_1"
 			}
 			"04"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"bounce_radius"				"650"
+				"var_type"                                "FIELD_INTEGER"
+				"bounces_scepter"                         "2 3 4"
+				"RequiresScepter"                         "1"
+			}
+			"05"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bounce_radius"                           "650"
+				"RequiresScepter"                         "1"
+			}
+			"06"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"duration_tooltip"                        "8"
 			}
 		}
 	}

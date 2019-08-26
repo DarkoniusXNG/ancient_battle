@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Brewmaster; 16.9.2018;
+	// HERO: Brewmaster; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_brewmaster"
@@ -25,12 +25,16 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
+
 		"Ability10"			"special_bonus_hp_200"								// lvl 10 talent: same as dota Brewmaster 
 		"Ability11"			"special_bonus_mp_regen_3"							// lvl 10 talent: unique
-		"Ability12"			"special_bonus_attack_damage_65"					// lvl 15 talent: unique
+
+		"Ability12"			"special_bonus_attack_damage_40"					// lvl 15 talent: unique
 		"Ability13"			"special_bonus_magic_resistance_20"					// lvl 15 talent: same as dota Brewmaster
+
 		"Ability14"			"special_bonus_cooldown_reduction_15"				// lvl 20 talent; unique
 		"Ability15"			"special_bonus_strength_20"							// lvl 20 talent; unique
+
 		"Ability16"			"special_bonus_attack_speed_100"					// lvl 25 talent; unique
 		"Ability17"			"special_bonus_spell_amplify_25"					// lvl 25 talent; unique
 		
@@ -51,7 +55,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"					"295"							// like dota Brewmaster
+		"MovementSpeed"					"305"							// like dota Brewmaster
 		"MovementTurnRate"				"0.6"							// like dota Brewmaster
 		"HasAggressiveStance"			"1"
 		
@@ -64,17 +68,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"			"23"							// original (22); dota (23);
-		"AttributeStrengthGain"			"3.0"							// original (3.0); dota (3.2);
+		"AttributeStrengthGain"			"3.0"							// original (3.0); dota (3.7);
 		"AttributeBaseAgility"			"22"							// original (14); dota (22);
-		"AttributeAgilityGain"			"1.95"							// original (1.5); dota (1.95);
-		"AttributeBaseIntelligence"		"15"							// original (15); dota (14);
-		"AttributeIntelligenceGain"		"1.25"							// original (1.5); dota (1.25);
+		"AttributeAgilityGain"			"1.5"							// original (1.5); dota (2);
+		"AttributeBaseIntelligence"		"15"							// original (15); dota (15);
+		"AttributeIntelligenceGain"		"1.6"							// original (1.5); dota (1.6);
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"2.0"							// like dota Brewmaster
+		"StatusHealthRegen"			"0.5"							// like dota Brewmaster
 		"StatusHealth"				"200"							// like dota Brewmaster
 		"StatusMana"				"75"							// like dota Brewmaster
-		"StatusManaRegen"			"0.9"							// like dota Brewmaster
+		"StatusManaRegen"			"0.9"							// unique
 	}
 }

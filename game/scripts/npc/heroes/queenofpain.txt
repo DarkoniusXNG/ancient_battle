@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Queen of Pain; 16.9.2018;
+	// HERO: Queen of Pain; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_queenofpain"	
@@ -27,34 +27,38 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
+
 		"Ability10"			"special_bonus_attack_damage_25"		// lvl 10 talent: same as dota QoP
 		"Ability11"			"special_bonus_strength_10"				// lvl 10 talent: same as dota QoP
+
 		"Ability12"			"special_bonus_cooldown_reduction_12"	// lvl 15 talent: same as dota QoP
 		"Ability13"			"special_bonus_intelligence_35"			// lvl 15 talent: unique
+
 		"Ability14"			"special_bonus_attack_range_125"		// lvl 20 talent: unique
 		"Ability15"			"special_bonus_spell_lifesteal_30"		// lvl 20 talent: same as dota QoP
+
 		"Ability16"			"special_bonus_unique_queen_of_pain_2"	// lvl 25 talent: same as dota QoP
-		"Ability17"			"special_bonus_spell_block_20"			// lvl 25 talent: same as dota QoP
+		"Ability17"			"special_bonus_spell_block_15"			// lvl 25 talent: same as dota QoP
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-1"									// like QoP
+		"ArmorPhysical"				"0"									    // like QoP
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"21"									// QoP(23);
-		"AttackDamageMax"			"31"									// QoP(31);
+		"AttackDamageMin"			"21"									// QoP (20);
+		"AttackDamageMax"			"31"									// QoP (28);
 		"AttackRate"				"1.5"									// like QoP
 		"AttackAnimationPoint"		"0.56"									// like QoP
 		"AttackAcquisitionRange"	"800"									// like QoP
-		"AttackRange"				"600"									// QoP(550);
+		"AttackRange"				"600"									// QoP (550);
 		"ProjectileSpeed"			"1500"									// like QoP
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"295"									// QoP(295);
+		"MovementSpeed"				"290"									// QoP (290);
 		"MovementTurnRate"			"0.5"									// like QoP
 		
 		// Vision
@@ -65,18 +69,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"			"18"								// QoP(18);
-		"AttributeStrengthGain"			"2.2"								// QoP(2.3);
-		"AttributeBaseIntelligence"		"24"								// QoP(22);
-		"AttributeIntelligenceGain"		"2.5"								// QoP(2.5);
-		"AttributeBaseAgility"			"18"								// QoP(18);
-		"AttributeAgilityGain"			"2.0"								// QoP(2.0);
+		"AttributeBaseStrength"			"18"								// QoP (18);
+		"AttributeStrengthGain"			"2.3"								// QoP (2.3);
+		"AttributeBaseIntelligence"		"25"								// QoP (25);
+		"AttributeIntelligenceGain"		"2.9"								// QoP (2.9);
+		"AttributeBaseAgility"			"22"								// QoP (22);
+		"AttributeAgilityGain"			"2.2"								// QoP (2.2);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// like QoP
+		"StatusHealthRegen"			"0.0"									// like QoP
 		"StatusHealth"				"200"									// like QoP
 		"StatusMana"				"75"									// like QoP
-		"StatusManaRegen"			"0.9"									// like QoP
+		"StatusManaRegen"			"0.0"									// like QoP
 	}
 }

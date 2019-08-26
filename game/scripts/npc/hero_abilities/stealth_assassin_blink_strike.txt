@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Stealth Assassin: Blink Strike (W) - New Spell, similar to Blink but with damage in a radius
+	// Stealth Assassin: Blink Strike (W) - New Spell, similar to Antimage's Blink but with damage in a radius
 	// Author: Darkonius
-	// Notes: OK; 12.5.2017;
+	// Notes: OK; 26.8.2019;
 	// TO_DO: If too weak ADD attack damage to the blink damage;
 	//=================================================================================================================
 	"stealth_assassin_blink_strike"
@@ -26,7 +26,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"12.0 9.0 7.0 5.0"				// ok
+		"AbilityCooldown"				"10.0 8.0 6.0 4.0"				// like Riki Blink Strike
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -42,10 +42,10 @@
 				"var_type"				"FIELD_INTEGER"
 				"blink_range"			"800 925 1050 1150"
 			}
-			"02"
+			"02" // don't change
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"75 120 170 225"
+				"damage"				"75 125 175 225"
 			}
 			"03"
 			{

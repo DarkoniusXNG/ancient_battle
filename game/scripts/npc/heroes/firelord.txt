@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Fire Lord; 16.9.2018;
+	// HERO: Fire Lord; 26.8.2019;
 	// TO_DO: firelord_meteor_push;
 	//=================================================================================================================
 	"npc_dota_hero_fire_lord"
@@ -27,18 +27,22 @@
 		"Ability7"				"firelord_arcana_model"					// innate ability; Visual effect - Arcana
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
+
 		"Ability10"				"special_bonus_hp_175"					// lvl 10 talent: unique
 		"Ability11"				"special_bonus_attack_speed_20"			// lvl 10 talent: same as Shadow Fiend
+
 		"Ability12"				"special_bonus_spell_amplify_10"		// lvl 15 talent: unique
-		"Ability13"				"special_bonus_movement_speed_35"		// lvl 15 talent: same as Shadow Fiend
-		"Ability14"				"special_bonus_evasion_20"				// lvl 20 talent: same as Shadow Fiend
+		"Ability13"				"special_bonus_movement_speed_35"		// lvl 15 talent: similar to Shadow Fiend
+
+		"Ability14"				"special_bonus_evasion_20"				// lvl 20 talent: unique
 		"Ability15"				"special_bonus_mp_regen_4"				// lvl 20 talent; unique
+
 		"Ability16"				"special_bonus_attack_range_150"		// lvl 25 talent: unique
 		"Ability17"				"special_bonus_cooldown_reduction_40"	// lvl 25 talent; same as Shadow Fiend
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// SF(-2);
+		"ArmorPhysical"				"0"										// SF(0);
 		"MagicalResistance"			"25"									// Default
 		
 		// Attack
@@ -55,25 +59,25 @@
 		// Attributes
 		//----------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"15"									// SF(16); original(15);
-		"AttributeStrengthGain"		"2.0"									// SF(2.3); original(2.0);
+		"AttributeBaseStrength"		"15"									// SF(19); original(15);
+		"AttributeStrengthGain"		"2.0"									// SF(2.5); original(2.0);
 		"AttributeBaseIntelligence"	"18"									// SF(18); original(18); - don't change!
-		"AttributeIntelligenceGain"	"2.0"									// SF(2.0); original(2.5); - don't change!
+		"AttributeIntelligenceGain"	"2.0"									// SF(2.2); original(2.5); - don't change!
 		"AttributeBaseAgility"		"20"									// SF(20); Ursa(18); original(20);
-		"AttributeAgilityGain"		"2.9"									// SF(2.9); Ursa(2.1); original(1.6);
+		"AttributeAgilityGain"		"3.0"									// SF(3.5); Ursa(2.4); original(1.6);
 		
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"310"									// SF(310); original(320);
+		"MovementSpeed"				"310"									// SF(305); original(320);
 		"MovementTurnRate"			"1.0"									// like SF
 		
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"200"									// like SF
-		"StatusHealthRegen"			"1.75"									// like SF
+		"StatusHealthRegen"			"0.25"									// like SF
 		"StatusMana"				"0"										// SF(75);
-		"StatusManaRegen"			"0.9"									// like SF
+		"StatusManaRegen"			"0.3"									// like SF
 		
 		// Vision
 		//----------------------------------------------------------------

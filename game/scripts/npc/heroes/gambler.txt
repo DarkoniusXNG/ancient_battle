@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Gambler; 16.9.2018;
+	// HERO: Gambler; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_gambler"
@@ -29,12 +29,16 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 		"Ability10"				"generic_hidden"
+
 		"Ability11"				"special_bonus_attack_damage_60"			// lvl 10 talent: same as Rubick
 		"Ability12"				"special_bonus_hp_200"						// lvl 10 talent: same as Rubick
+
 		"Ability13"				"special_bonus_intelligence_15"				// lvl 15 talent: unique
-		"Ability14"				"special_bonus_cast_range_100"				// lvl 15 talent: same as Rubick
-		"Ability15"				"special_bonus_spell_amplify_10"			// lvl 20 talent: unique
+		"Ability14"				"special_bonus_cast_range_100"				// lvl 15 talent: unique
+
+		"Ability15"				"special_bonus_spell_amplify_15"			// lvl 20 talent: unique
 		"Ability16"				"special_bonus_attack_speed_250"			// lvl 20 talent; unique
+
 		"Ability17"				"special_bonus_gold_income_70"				// lvl 25 talent; unique
 		"Ability18"				"special_bonus_cooldown_reduction_30"		// lvl 25 talent: unique
 		
@@ -46,8 +50,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"19"									// like Rubick
-		"AttackDamageMax"			"29"									// like Rubick
+		"AttackDamageMin"			"22"									// like Rubick; original (22);
+		"AttackDamageMax"			"32"									// like Rubick; original (28);
 		"AttackRate"				"1.7"									// like Rubick
 		"AttackAnimationPoint"		"0.4"									// like Rubick
 		"AttackAcquisitionRange"	"800"									// like Rubick
@@ -67,18 +71,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"			"18"								// Rubick (21); original Gambler (16); 
-		"AttributeStrengthGain"			"1.8"								// Rubick (1.8); worse than original Gambler
-		"AttributeBaseAgility"			"14"								// Rubick (14); worse than original Gambler
-		"AttributeAgilityGain"			"1.6"								// Rubick (1.6); worse than original Gambler
-		"AttributeBaseIntelligence"		"21"								// Rubick (25); original Gambler (21); 
-		"AttributeIntelligenceGain"		"2.4"								// Rubick (2.4); original Gambler (2.0);
+		"AttributeBaseStrength"			"21"								// Rubick (21); original Gambler (16); 
+		"AttributeStrengthGain"			"2.0"								// Rubick (2.0); original Gambler (1.8);
+		"AttributeBaseAgility"			"16"								// Rubick (23); original Gambler (16);
+		"AttributeAgilityGain"			"1.6"								// Rubick (2.5); original Gambler (1.6);
+		"AttributeBaseIntelligence"		"25"								// Rubick (25); original Gambler (21); 
+		"AttributeIntelligenceGain"		"3.1"								// Rubick (3.1); original Gambler (2.0);
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// like Rubick
+		"StatusHealthRegen"			"0.0"									// like Rubick
 		"StatusHealth"				"200"									// like Rubick
 		"StatusMana"				"75"									// like Rubick
-		"StatusManaRegen"			"0.9"									// like Rubick
+		"StatusManaRegen"			"0.0"									// like Rubick
 	}
 }

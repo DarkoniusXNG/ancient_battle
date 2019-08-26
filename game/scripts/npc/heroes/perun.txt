@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lightning Shaman - Perun; 16.9.2018;
+	// HERO: Lightning Shaman - Perun; 26.8.2019;
 	// TO_DO: perun_electric_trap; perun_electric_shield;
 	//=================================================================================================================
 	"npc_dota_hero_perun"
@@ -27,25 +27,29 @@
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
-		"Ability10"				"special_bonus_armor_5"				// lvl 10 talent; unique
-		"Ability11"				"special_bonus_intelligence_8"		// lvl 10 talent; same as Skywrath Mage
-		"Ability12"				"special_bonus_attack_damage_40"	// lvl 15 talent; unique
-		"Ability13"				"special_bonus_hp_300"				// lvl 15 talent; same as Bloodseeker
+
+		"Ability10"				"special_bonus_armor_6"				// lvl 10 talent; same as Bloodseeker
+		"Ability11"				"special_bonus_intelligence_8"		// lvl 10 talent; unique
+
+		"Ability12"				"special_bonus_mp_regen_6"          // lvl 15 talent; unique
+		"Ability13"				"special_bonus_hp_300"				// lvl 15 talent; similar to Bloodseeker
+
 		"Ability14"				"special_bonus_movement_speed_30"	// lvl 20 talent; unique
-		"Ability15"				"special_bonus_all_stats_10"		// lvl 20 talent; unique
-		"Ability16"				"special_bonus_mp_regen_6"			// lvl 25 talent; unique
-		"Ability17"				"special_bonus_spell_lifesteal_30"	// lvl 25 talent; unique
+		"Ability15"				"special_bonus_spell_lifesteal_30"	// lvl 20 talent; unique
+
+		"Ability16"				"special_bonus_attack_damage_250"	// lvl 25 talent; unique
+		"Ability17"				"special_bonus_gold_income_50"      // lvl 25 talent; same as Skywrath Mage
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"									// Skywrath Mage(-2); Bloodseeker(0);
+		"ArmorPhysical"				"1"									// Skywrath Mage (-2); Bloodseeker (2);
 		"MagicalResistance"			"25"								// Default
 		
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"33"								// Bloodseeker(33); Dark Seer(33)
-		"AttackDamageMax"			"39"								// Bloodseeker(39); Dark Seer(39)
+		"AttackDamageMin"			"33"								// Bloodseeker (33); Dark Seer (33);
+		"AttackDamageMax"			"39"								// Bloodseeker (39); Dark Seer (39);
 		"AttackRate"				"1.7"								// like Dark Seer
 		"AttackAnimationPoint"		"0.43"								// like Bloodseeker
 		"AttackAcquisitionRange"	"600"								// like Bloodseeker
@@ -53,7 +57,7 @@
 		
 		// Movement
 		//----------------------------------------------------------------
-		"MovementSpeed"				"300"								// Bloodseeker(285); Zeus(300); Dark Seer(295); Skywrath Mage(330);
+		"MovementSpeed"				"300"								// Bloodseeker (300); Zeus (295); Dark Seer (295); Skywrath Mage (325);
 		"MovementTurnRate"			"0.5" 								// like Bloodseeker
 		
 		// Vision
@@ -64,18 +68,18 @@
 		// Attributes
 		//----------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"			// like Zeus
-		"AttributeBaseStrength"		"21"								// Zeus(21); Skywrath Mage(21); Bloodseeker(24); Dark Seer(24);
-		"AttributeStrengthGain"		"2.9"								// Zeus(2.6); Skywrath Mage(1.8); Bloodseeker(2.7); Dark Seer(2.9);
-		"AttributeBaseIntelligence"	"25"								// Zeus(20); Skywrath Mage(25); Dark Seer(21);
-		"AttributeIntelligenceGain"	"3.6"								// Zeus(2.7); Skywrath Mage(3.6); Dark Seer(2.7);
-		"AttributeBaseAgility"		"13"								// Zeus(11); Skywrath Mage(13); Dark Seer(12); - don't change!
-		"AttributeAgilityGain"		"1.2"								// Zeus(1.2); Skywrath Mage(0.8); Dark Seer(1.2); - don't change!
+		"AttributeBaseStrength"		"21"								// Zeus (21); Skywrath Mage (21); Bloodseeker (24); Dark Seer (20); - don't change!
+		"AttributeStrengthGain"		"3.1"								// Zeus (2.1); Skywrath Mage (2.0); Bloodseeker (2.7); Dark Seer (3.1);
+		"AttributeBaseIntelligence"	"25"								// Zeus (22); Skywrath Mage (25); Dark Seer (21);
+		"AttributeIntelligenceGain"	"4.1"								// Zeus (3.3); Skywrath Mage (4.1); Dark Seer (3.1);
+		"AttributeBaseAgility"		"13"								// Zeus (11); Skywrath Mage (13); Dark Seer (12); - don't change!
+		"AttributeAgilityGain"		"1.2"								// Zeus (1.2); Skywrath Mage (0.8); Dark Seer (1.8); - don't change!
 		
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"250"								// Unique for Lightning Shaman
-		"StatusHealthRegen"			"1.5"								// like Dark Seer
+		"StatusHealthRegen"			"0.0"								// like Dark Seer
 		"StatusMana"				"75"								// like Skywrath Mage
-		"StatusManaRegen"			"0.9"								// like Skywrath Mage
+		"StatusManaRegen"			"0.0"								// like Skywrath Mage
 	}
 }

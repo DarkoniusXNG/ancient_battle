@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 11.5.2018;
+	// HERO: Lifestealer; 26.8.2019;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
 	// TO_DO: life_stealer_custom_open_wounds;
 	//=================================================================================================================
@@ -26,20 +26,24 @@
 		"Ability5"				"life_stealer_custom_absorb_life"			// F (1 level)
 		"Ability6"				"life_stealer_custom_rage"					// R, Primary Ultimate (3 levels)
 		"Ability7"				"generic_hidden"
-		"Ability8"				"generic_hidden"		
-		"Ability9"				"generic_hidden"		
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+
 		"Ability10"				"special_bonus_hp_200"						// lvl 10 talent; same as dota Lifestealer
-		"Ability11"				"special_bonus_mp_regen_175"				// lvl 10 talent; unique
+		"Ability11"				"special_bonus_mp_regen_2"                  // lvl 10 talent; unique
+
 		"Ability12"				"special_bonus_lifesteal_20"				// lvl 15 talent; unique 
 		"Ability13"				"special_bonus_attack_damage_30"			// lvl 15 talent; same as dota Lifestealer
+
 		"Ability14"				"special_bonus_evasion_20"					// lvl 20 talent; same as dota Lifestealer
 		"Ability15"				"special_bonus_cast_range_125"				// lvl 20 talent; unique
+
 		"Ability16"				"special_bonus_armor_15"					// lvl 25 talent; unique
-		"Ability17"				"special_bonus_unique_lifestealer_3"		// lvl 25 talent; same as dota Lifestealer
-		
+		"Ability17"				"special_bonus_unique_lifestealer_3"		// lvl 25 talent; Feast talent
+
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-2"									// like dota Lifestealer
+		"ArmorPhysical"				"-2"									// dota Lifestealer (0);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
@@ -47,14 +51,14 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"27"									// like dota Lifestealer
 		"AttackDamageMax"			"37"									// like dota Lifestealer
-		"AttackRate"				"1.8"									// dota Lifestealer(1.85); old Lifestealer(1.7);
+		"AttackRate"				"1.8"									// dota Lifestealer (1.85); old Lifestealer (1.7);
 		"AttackAnimationPoint"		"0.39"									// like dota Lifestealer
 		"AttackAcquisitionRange"	"600"									// like dota Lifestealer
 		"AttackRange"				"128"									// like old Lifestealer
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// dota Lifestealer(310); old Lifestealer(295);
+		"MovementSpeed"				"285"									// dota Lifestealer (325); old Lifestealer (295);
 		"MovementTurnRate"			"1.0"									// like Lifestealer
 		"HasAggressiveStance"       "1"                          			// like Lifestealer
 		
@@ -66,18 +70,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"25"									// dota Lifestealer(25); old Lifestealer(15);
-		"AttributeStrengthGain"		"2.4"									// dota Lifestealer(3.1); old Lifestealer(1.4);
-		"AttributeBaseIntelligence"	"15"									// dota Lifestealer(15); old Lifestealer(15); - don't change!
-		"AttributeIntelligenceGain"	"1.5"									// dota Lifestealer(1.75); old Lifestealer(1.5); - don't change!
-		"AttributeBaseAgility"		"18"									// dota Lifestealer(18); old Lifestealer(26); - don't change!
-		"AttributeAgilityGain"		"1.9"									// dota Lifestealer(1.9); old Lifestealer(4.05); - don't change!
+		"AttributeBaseStrength"		"25"									// dota Lifestealer (25); old Lifestealer (15);
+		"AttributeStrengthGain"		"2.9"									// dota Lifestealer (2.9); old Lifestealer (1.4);
+		"AttributeBaseIntelligence"	"15"									// dota Lifestealer (15); old Lifestealer (15); - don't change!
+		"AttributeIntelligenceGain"	"1.5"									// dota Lifestealer (1.8); old Lifestealer (1.5); - don't change!
+		"AttributeBaseAgility"		"18"									// dota Lifestealer (18); old Lifestealer (26); - don't change!
+		"AttributeAgilityGain"		"1.9"									// dota Lifestealer (2.4); old Lifestealer (4.05); - don't change!
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// like dota Lifestealer
+		"StatusHealthRegen"			"0.0"									// like dota Lifestealer
 		"StatusHealth"				"200"									// like dota Lifestealer
 		"StatusMana"				"75"									// like dota Lifestealer
-		"StatusManaRegen"			"0.9"									// like dota Lifestealer
+		"StatusManaRegen"			"0.0"									// like dota Lifestealer
 	}
 }

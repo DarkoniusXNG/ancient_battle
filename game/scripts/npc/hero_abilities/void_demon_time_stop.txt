@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Void Demon: Time Stop (R) - New Spell; Ultimate; Stops time around the caster, affects all units around the caster
 	// Author: Darkonius
-	// Notes: OK; 10.5.2018; Disables evasion; Doesn't work on fountains and other invulnerable units.
+	// Notes: OK; 26.8.2019; Disables evasion; Doesn't work on fountains and other invulnerable units.
 	// Notes: Has Aghanim Scepter upgrade: disabled healing + revealing invis + cooldown freeze; Affects buildings too;
 	// TO_DO:
 	//=================================================================================================================
@@ -15,6 +15,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"               		"4"
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"6"
@@ -22,14 +23,15 @@
 		"HasScepterUpgrade" 			"1"
 		
 		"AbilityCastPoint"				"0.35"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"140.0 120.0 100.0 80.0"
+		"AbilityCooldown"				"140 120 100 80"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150 200 250 300"
+		"AbilityManaCost"				"150 225 300 375"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -49,7 +51,8 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration_scepter"		"5.0 5.5 6.0 6.5"
+				"duration_scepter"		"4.5 5.0 5.5 6.0"
+				"RequiresScepter"       "1"
 			}
 		}
 		

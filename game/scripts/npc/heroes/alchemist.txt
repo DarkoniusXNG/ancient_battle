@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Alchemist; 16.9.2018;
+	// HERO: Alchemist; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_alchemist"
@@ -25,15 +25,19 @@
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
+
 		"Ability10"				"special_bonus_attack_speed_25"			// lvl 10 talent: same as dota Alchemist
 		"Ability11"				"special_bonus_armor_4"					// lvl 10 talent: unique
+
 		"Ability12"				"special_bonus_attack_damage_50"		// lvl 15 talent; same as dota Alchemist
 		"Ability13"				"special_bonus_hp_400"					// lvl 15 talent; same as dota Alchemist
-		"Ability14"				"special_bonus_cleave_30"				// lvl 20 talent: same as dota Alchemist
+
+		"Ability14"				"special_bonus_cleave_40"				// lvl 20 talent: same as dota Alchemist
 		"Ability15"				"special_bonus_spell_amplify_15"		// lvl 20 talent: unique
-		"Ability16"				"special_bonus_lifesteal_30"			// lvl 25 talent; unique
+
+		"Ability16"				"special_bonus_lifesteal_30"			// lvl 25 talent; unique try special_bonus_unique_alchemist_4
 		"Ability17"				"special_bonus_strength_20"				// lvl 25 talent; unique
-		
+
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"0"								// Default; original (0); dota (-1);
@@ -43,7 +47,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"24"							// original (3); dota (24);
-		"AttackDamageMax"			"34" 							// original (30); dota (33);
+		"AttackDamageMax"			"33" 							// original (30); dota (33);
 		"AttackRate"				"1.7"							// like dota Alchemist
 		"AttackAnimationPoint"		"0.35"							// like dota Alchemist
 		"AttackRange"				"150"							// like dota Alchemist
@@ -51,7 +55,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"280"							// original (270); dota (290);
+		"MovementSpeed"				"290"							// original (270); dota (305);
 		"MovementTurnRate"			"0.6"							// like dota Alchemist
 		"HasAggressiveStance"		"1"								// like dota Alchemist
 		
@@ -64,17 +68,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"		// like dota Alchemist and original Alchemist
 		"AttributeBaseStrength"		"25"							// original (25); dota (25);
-		"AttributeStrengthGain"		"2.1"							// original (3.3); dota (2.1);
-		"AttributeBaseAgility"		"11"							// original (10); dota (16);
+		"AttributeStrengthGain"		"2.4"							// original (3.3); dota (2.4);
+		"AttributeBaseAgility"		"11"							// original (10); dota (22);
 		"AttributeAgilityGain"		"1.2"							// original (1.0); dota (1.2);
 		"AttributeBaseIntelligence"	"25"							// original (18); dota (25);
 		"AttributeIntelligenceGain"	"1.0"							// original (2.0); dota (1.8);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"							// like dota Alchemist
+		"StatusHealthRegen"			"0.0"							// like dota Alchemist
 		"StatusHealth"				"200"							// like dota Alchemist
 		"StatusMana"				"75"							// like dota Alchemist
-		"StatusManaRegen"			"0.9"							// like dota Alchemist
+		"StatusManaRegen"			"0.0"							// like dota Alchemist
 	}
 }

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Axe; 16.9.2018;
+	// HERO: Axe; 26.8.2019;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_axe"
@@ -25,25 +25,29 @@
 		"Ability7"					"generic_hidden"
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"
+
 		"Ability10"					"special_bonus_strength_8"				// lvl 10 talent: same as dota Axe
-		"Ability11"					"special_bonus_attack_speed_40"			// lvl 10 talent: same as dota Axe		
+		"Ability11"					"special_bonus_attack_speed_40"			// lvl 10 talent: same as dota Axe
+
 		"Ability12"					"special_bonus_mp_regen_3"				// lvl 15 talent: same as dota Axe
-		"Ability13"					"special_bonus_movement_speed_40"		// lvl 15 talent: same as dota Axe
-		"Ability14"					"special_bonus_hp_regen_25"				// lvl 20 talent: unique
+		"Ability13"					"special_bonus_movement_speed_40"		// lvl 15 talent: unique
+
+		"Ability14"					"special_bonus_hp_regen_25"				// lvl 20 talent: same as dota Axe
 		"Ability15"					"special_bonus_attack_damage_75"		// lvl 20 talent: unique
-		"Ability16"					"special_bonus_armor_15"				// lvl 25 talent; unique
+
+		"Ability16"					"special_bonus_unique_axe_2"			// lvl 25 talent; Berserker's Call talent
 		"Ability17"					"special_bonus_hp_500"					// lvl 25 talent; unique
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-2"									// like dota Axe
+		"ArmorPhysical"				"-2"									// unique
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"24"									// like dota Axe
-		"AttackDamageMax"			"28"									// like dota Axe
+		"AttackDamageMin"			"27"									// like dota Axe
+		"AttackDamageMax"			"31"									// like dota Axe
 		"AttackRate"				"1.7"									// like dota Axe
 		"AttackAnimationPoint"		"0.5"									// like dota Axe
 		"AttackAcquisitionRange"	"600"									// like dota Axe
@@ -51,7 +55,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// like dota Axe
+		"MovementSpeed"				"290"									// unique
 		"MovementTurnRate"			"0.6"									// like dota Axe
 		
 		// Vision
@@ -63,7 +67,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"25"									// like dota Axe
-		"AttributeStrengthGain"		"2.8"									// like dota Axe
+		"AttributeStrengthGain"		"3.4"									// like dota Axe
 		"AttributeBaseIntelligence"	"18"									// like dota Axe
 		"AttributeIntelligenceGain"	"1.6"									// like dota Axe
 		"AttributeBaseAgility"		"20"									// like dota Axe
@@ -71,9 +75,9 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusMana"				"75"									// like dota Axe
-		"StatusManaRegen"			"0.9"									// like dota Axe
-		"StatusHealthRegen"			"4.25"									// like dota Axe
+		"StatusHealthRegen"			"2.75"									// like dota Axe
 		"StatusHealth"				"200"									// like dota Axe
+		"StatusMana"				"75"									// like dota Axe
+		"StatusManaRegen"			"0.0"									// like dota Axe
 	}
 }

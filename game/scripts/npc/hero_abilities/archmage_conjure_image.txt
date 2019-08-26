@@ -4,7 +4,7 @@
 	// Archmage: Conjure Image (F) - New Spell, Ultimate, Makes the illusion out of the target hero
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 14.10.2018;
+	// Notes: OK; 26.8.2019;
 	// TO_DO: Add a visual effect (particle);
 	// ================================================================================================================
 	"archmage_conjure_image"
@@ -18,6 +18,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
 		"MaxLevel"               		"1"
 		"RequiredLevel"					"6"
 
@@ -49,23 +50,24 @@
 				"var_type"							"FIELD_INTEGER"
 				"illusion_damage_out"				"-20"
 			}
-			"03" // tooltip only (illusion_damage_out + 100)
+			"03" // not in tooltip
+			{
+				"var_type"							"FIELD_INTEGER"
+				"illusion_damage_in"				"0"
+			}
+			"04" // tooltip only (illusion_damage_out + 100)
 			{
 				"var_type"							"FIELD_INTEGER"
 				"illusion_damage_dealt"				"80"
 				"CalculateSpellDamageTooltip"		"0"
 			}
-			"04" // tooltip only (illusion_damage_in + 100)
+			"05" // tooltip only (illusion_damage_in + 100)
 			{
 				"var_type"							"FIELD_INTEGER"
 				"illusion_damage_taken"				"100"
 				"CalculateSpellDamageTooltip"		"0"
 			}
-			"05" // not in tooltip
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_in"				"0"
-			}
+			
 		}
 		
 		"precache"

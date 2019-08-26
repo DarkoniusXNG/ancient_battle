@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// Notes: OK; 26.8.2019; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -19,6 +19,7 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+
 		"MaxLevel"						"1"
 		"RequiredLevel"        			"6"
 		
@@ -37,6 +38,11 @@
 		"AbilityManaCost"				"100"
 		"AbilityProcsMagicStick"		"1"
 		"HasScepterUpgrade"				"1"
+
+		"precache"
+		{
+			"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+		}
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

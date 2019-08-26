@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Astral Trekker; 16.9.2018;
+	// HERO: Astral Trekker; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_astral_trekker"
@@ -26,12 +26,16 @@
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
-		"Ability10"				"special_bonus_all_stats_5"					// lvl 10 talent; unique
+
+		"Ability10"				"special_bonus_night_vision_600"			// lvl 10 talent; same as Spirit Breaker
 		"Ability11"				"special_bonus_armor_5"						// lvl 10 talent; same as Spirit Breaker
+
 		"Ability12"				"special_bonus_attack_damage_45"			// lvl 15 talent; unique
-		"Ability13"				"special_bonus_hp_regen_10"					// lvl 15 talent; same as Spirit Breaker
+		"Ability13"				"special_bonus_hp_regen_12"					// lvl 15 talent; same as Spirit Breaker
+
 		"Ability14"				"special_bonus_attack_speed_50"				// lvl 20 talent; unique
 		"Ability15"				"special_bonus_gold_income_25"				// lvl 20 talent; unique
+
 		"Ability16"				"special_bonus_hp_800"						// lvl 25 talent; same as Spirit Breaker
 		"Ability17"				"special_bonus_cooldown_reduction_20"		// lvl 25 talent; unique
 		
@@ -54,18 +58,18 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"25"									// Tiny(30); Spirit Breaker(29);
-		"AttributeStrengthGain"		"2.7"									// Tiny(3.3); Spirit Breaker(2.7);
+		"AttributeStrengthGain"		"3.1"									// Tiny(4.1); Spirit Breaker(3.1);
 		"AttributeBaseIntelligence"	"17"									// Tiny(17); Spirit Breaker(14);
-		"AttributeIntelligenceGain"	"1.6"									// Tiny(1.6); Spirit Breaker(1.8);
+		"AttributeIntelligenceGain"	"1.8"									// Tiny(2.2); Spirit Breaker(1.8);
 		"AttributeBaseAgility"		"10"									// Tiny(0); Spirit Breaker(17);
 		"AttributeAgilityGain"		"1.0"									// Tiny(0); Spirit Breaker(1.7);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// like Tiny
+		"StatusHealthRegen"			"0.0"									// like Tiny
 		"StatusHealth"				"200"									// like Spirit Breaker
 		"StatusMana"				"75"									// like Tiny
-		"StatusManaRegen"			"0.9"									// like Tiny
+		"StatusManaRegen"			"0.0"									// like Tiny
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------

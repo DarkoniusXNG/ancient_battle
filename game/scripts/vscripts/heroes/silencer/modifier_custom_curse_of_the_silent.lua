@@ -23,17 +23,16 @@ function modifier_custom_curse_of_the_silent:OnCreated()
 	self.ability = self:GetAbility()
 	parent.spell_not_cast = true
 
-	local tick_interval = self.ability:GetSpecialValueFor("tick_interval")
-	self:StartIntervalThink(tick_interval)
+	local think_interval = self.ability:GetSpecialValueFor("tick_interval")
+	self:StartIntervalThink(think_interval)
 
 	if IsServer() then
 		local mana_loss_per_second = self.ability:GetSpecialValueFor("mana_loss_per_second")
-		local tick_interval = self.ability:GetSpecialValueFor("tick_interval")
-		local mana_loss_per_tick = mana_loss_per_second*tick_interval
+		local mana_loss_per_interval = mana_loss_per_second*think_interval
 
 		-- Reduce mana if the unit (parent) has mana
 		if parent:GetMana() > 0 then
-			parent:ReduceMana(mana_loss_per_tick)
+			parent:ReduceMana(mana_loss_per_interval)
 		end
 	end
 end
@@ -51,12 +50,12 @@ function modifier_custom_curse_of_the_silent:OnIntervalThink()
 	if IsServer() then
 		local parent = self:GetParent()
 		local mana_loss_per_second = self.ability:GetSpecialValueFor("mana_loss_per_second")
-		local tick_interval = self.ability:GetSpecialValueFor("tick_interval")
-		local mana_loss_per_tick = mana_loss_per_second*tick_interval
+		local think_interval = self.ability:GetSpecialValueFor("tick_interval")
+		local mana_loss_per_interval = mana_loss_per_second*think_interval
 
 		-- Reduce mana if the unit (parent) has mana
 		if parent:GetMana() > 0 then
-			parent:ReduceMana(mana_loss_per_tick)
+			parent:ReduceMana(mana_loss_per_interval)
 		end
 	end
 end
@@ -130,7 +129,7 @@ function modifier_custom_curse_of_the_silent:OnSpentMana(event)
 		-- Spell (with mana cost) was cast
 		parent.spell_not_cast = false
 
-		-- Setting duration is safer instead of removing the modifier
+		-- Setting remaining duration is safer instead of removing the modifier
 		self:SetDuration(0.1, false)
 	end
 end

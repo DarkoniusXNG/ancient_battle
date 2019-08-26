@@ -38,7 +38,7 @@ function bane_custom_brain_sap:OnSpellStart()
 		local caster = self:GetCaster()
 		local target = self:GetCursorTarget()
 
-		if caster == nil or target == nil then
+		if not caster or not target then
 			return nil
 		end
 
@@ -61,7 +61,7 @@ function bane_custom_brain_sap:OnSpellStart()
 			-- Talent that increases damage and heal of Brain Sap
 			local talent = caster:FindAbilityByName("special_bonus_unique_bane_2")
 			if talent then
-				if talent:GetLevel() ~= 0 then
+				if talent:GetLevel() > 0 then
 					damage_and_heal = damage_and_heal + talent:GetSpecialValueFor("value")
 				end
 			end

@@ -26,7 +26,7 @@
 		
 		"HasScepterUpgrade" 			"1"
 		
-		"AbilityCooldown"				"70.0 60.0 50.0"
+		"AbilityCooldown"				"70.0 60.0 50.0" // original: 60
 		
 		"AbilityManaCost"				"350 500 700"
 		"AbilityProcsMagicStick" 		"1"
@@ -54,7 +54,7 @@
 				"damage_cap"							"600 875 1100"
 				"CalculateSpellDamageTooltip"			"0"
 			}
-			"03" // tooltip only;
+			"03" // tooltip only; original: 30/25/20%
 			{
 				"var_type"								"FIELD_INTEGER"
 				"chance_to_backfire"					"50 40 30"

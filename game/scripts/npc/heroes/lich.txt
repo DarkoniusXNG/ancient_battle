@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lich; 16.9.2018;
+	// HERO: Lich; 26.8.2019;
 	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
 	// TO_DO:
 	//=================================================================================================================
@@ -27,13 +27,17 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
-		"Ability10"			"special_bonus_hp_175"					// lvl 10 talent; same as dota Lich
-		"Ability11"			"special_bonus_movement_speed_25"		// lvl 10 talent; same as dota Lich
-		"Ability12"			"special_bonus_cast_range_175"			// lvl 15 talent; unique
+
+		"Ability10"			"special_bonus_hp_200"					// lvl 10 talent; same as dota Lich
+		"Ability11"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as dota Lich
+
+		"Ability12"			"special_bonus_gold_income_30"			// lvl 15 talent; unique
 		"Ability13"			"special_bonus_attack_damage_120"		// lvl 15 talent; same as dota Lich
+
 		"Ability14"			"special_bonus_all_stats_15"			// lvl 20 talent; unique
-		"Ability15"			"special_bonus_gold_income_30"			// lvl 20 talent; same as dota Lich
-		"Ability16"			"special_bonus_spell_amplify_15"		// lvl 25 talent; unique
+		"Ability15"			"special_bonus_cast_range_200"			// lvl 20 talent; same as dota Lich
+
+		"Ability16"			"special_bonus_spell_amplify_20"		// lvl 25 talent; unique
 		"Ability17"			"special_bonus_attack_range_125"		// lvl 25 talent; unique
 		
 		// Protection
@@ -54,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"					"315"								// dota Lich (315); original (270);
+		"MovementSpeed"					"295"								// dota Lich (295); original (270);
 		"MovementTurnRate"				"0.5"								// like dota Lich
 		
 		// Vision
@@ -66,17 +70,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"			"15"								// dota Lich (20); original (15)
-		"AttributeStrengthGain"			"2.0"								// dota Lich (1.85); original (2.0) - don't change!
-		"AttributeBaseIntelligence"		"16"								// dota Lich (16); original (20); - don't change!
-		"AttributeIntelligenceGain"		"3.25"								// dota Lich (3.25); original (3.4)
+		"AttributeStrengthGain"			"2.0"								// dota Lich (2.1); original (2.0) - don't change!
+		"AttributeBaseIntelligence"		"16"								// dota Lich (24); original (20); - don't change!
+		"AttributeIntelligenceGain"		"3.4"								// dota Lich (4.1); original (3.4)
 		"AttributeBaseAgility"			"15"								// dota Lich (15); original (14)
 		"AttributeAgilityGain"			"2.0"								// dota Lich (2.0); original (1.0)
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"				"1.5"								// like dota Lich
+		"StatusHealthRegen"				"0.0"								// like dota Lich
 		"StatusHealth"					"200"								// like dota Lich
-		"StatusMana"					"0"									// dota Lich(75);
-		"StatusManaRegen"				"0.9"								// like dota Lich
+		"StatusMana"					"0"									// dota Lich (75);
+		"StatusManaRegen"				"0.75"								// like dota Lich
 	}
 }

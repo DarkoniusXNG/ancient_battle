@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Blademaster; 9.10.2018;
+	// HERO: Blademaster; 26.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_blademaster"
@@ -28,14 +28,18 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
+
 		"Ability10"			"special_bonus_all_stats_5"					// lvl 10 talent; same as Juggernaut
 		"Ability11"			"special_bonus_unique_naga_siren"			// lvl 10 talent; talent for blademaster_mirror_image
-		"Ability12"			"special_bonus_attack_speed_25"				// lvl 15 talent: same as Juggernaut
+
+		"Ability12"			"special_bonus_attack_speed_25"				// lvl 15 talent: unique
 		"Ability13"			"special_bonus_unique_naga_siren_4"			// lvl 15 talent: talent for blademaster_mirror_image
+
 		"Ability14"			"special_bonus_armor_10"					// lvl 20 talent; same as Juggernaut
 		"Ability15"			"special_bonus_unique_legion_commander_3"	// lvl 20 talent; talent for blademaster_counter_attack
-		"Ability16"			"special_bonus_agility_20"					// lvl 25 talent; unique
-		"Ability17"			"special_bonus_unique_juggernaut_2"			// lvl 25 talent; same as Juggernaut
+
+		"Ability16"			"special_bonus_agility_20"					// lvl 25 talent; unique; alternatives: special_bonus_hp_600 or special_bonus_evasion_30
+		"Ability17"			"special_bonus_unique_juggernaut_2"			// lvl 25 talent; talent for Omnislash
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -45,8 +49,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"22"									// like Juggernaut
-		"AttackDamageMax"			"26"									// like Juggernaut
+		"AttackDamageMin"			"20"									// unique
+		"AttackDamageMax"			"34"									// unique
 		"AttackRate"				"1.7"									// Naga Siren (1.7); Juggernaut (1.4); original (1.77);
 		"AttackAnimationPoint"		"0.33"									// like Juggernaut
 		"AttackAcquisitionRange"	"600"									// like Juggernaut
@@ -54,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// Clinkz (295); Juggernaut (295); Naga Siren (315); original (320);
+		"MovementSpeed"				"290"									// Clinkz (295); Juggernaut (300); Naga Siren (320); original (320);
 		"MovementTurnRate"			"0.6"									// like Juggernaut
 		"HasAggressiveStance"		"1"										// like Juggernaut
 		
@@ -66,18 +70,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"20"									// Juggernaut (21); Naga Siren (22); original (18); - don't change!
+		"AttributeBaseStrength"		"20"									// Juggernaut (20); Naga Siren (22); original (18); - don't change!
 		"AttributeStrengthGain"		"2.0"									// Juggernaut (2.2); Naga Siren (2.8); original (2.0);
 		"AttributeBaseIntelligence"	"15"									// Juggernaut (14); Naga Siren (21); original (16);
 		"AttributeIntelligenceGain"	"2.0"									// Juggernaut (1.4); Naga Siren (2.0); original (2.25);
-		"AttributeBaseAgility"		"26"									// Juggernaut (26); Naga Siren (21); original (24); - don't change!
-		"AttributeAgilityGain"		"2.4"									// Juggernaut (2.4); Naga Siren (3.2); original (1.75);
+		"AttributeBaseAgility"		"26"									// Juggernaut (34); Naga Siren (21); original (24); - don't change!
+		"AttributeAgilityGain"		"2.8"									// Juggernaut (2.8); Naga Siren (3.7); original (1.75);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"2.0"									// like Juggernaut
+		"StatusHealthRegen"			"0.5"									// like Juggernaut
 		"StatusHealth"				"200"									// like Juggernaut
 		"StatusMana"				"75"									// like Juggernaut
-		"StatusManaRegen"			"0.9"									// like Juggernaut
+		"StatusManaRegen"			"1.0"									// unique
 	}
 }

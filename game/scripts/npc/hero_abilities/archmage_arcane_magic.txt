@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
 	// Author: Darkonius
-	// Notes: OK; 24.8.2019;
+	// Notes: OK; 26.8.2019;
 	// TO_DO: attach_hitloc effect is weird -> not critical
 	//=================================================================================================================
 	"archmage_arcane_magic"
@@ -39,7 +39,7 @@
 
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // Chakra Magic Total mana restored: 80/160/240/320; aura_mana_regen x 15 + buff_mana_regen x 15 should be equal to this
 			{
 				"var_type"				"FIELD_FLOAT"
 				"buff_mana_regen"		"4.0 9.0 14.0 19.0"

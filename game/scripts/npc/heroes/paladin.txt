@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Paladin; 16.9.2018;
+	// HERO: Paladin; 26.8.2019;
 	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
 	// TO_DO:
 	//=================================================================================================================
@@ -28,25 +28,29 @@
 		"Ability7"			"generic_hidden"
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
+
 		"Ability10"			"special_bonus_gold_income_15"			// lvl 10 talent; same as Omniknight
 		"Ability11"			"special_bonus_exp_boost_35"			// lvl 10 talent; unique
-		"Ability12"			"special_bonus_cast_range_75"			// lvl 15 talent; unique
+
+		"Ability12"			"special_bonus_cast_range_150"			// lvl 15 talent; unique
 		"Ability13"			"special_bonus_movement_speed_30"		// lvl 15 talent; unique
+
 		"Ability14"			"special_bonus_mp_regen_6"				// lvl 20 talent; unique
 		"Ability15"			"special_bonus_all_stats_12"			// lvl 20 talent; unique
+
 		"Ability16"			"special_bonus_unique_omniknight_1"		// lvl 25 talent; custom: Eternal Devotion OnDeath effect becomes Global
-		"Ability17"			"special_bonus_unique_sven"				// lvl 25 talent; custom: -5s Storm Hammer cd
+		"Ability17"			"special_bonus_unique_sven"				// lvl 25 talent; custom: -6s Storm Hammer cd
 		
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// Omniknight(1); original (2);
+		"ArmorPhysical"				"0"										// Omniknight (2); original (2);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"29"									// Omniknight(31); original (2);
-		"AttackDamageMax"			"39" 									// Omniknight(41); original (12);
+		"AttackDamageMin"			"29"									// Omniknight (31); original (2);
+		"AttackDamageMax"			"39" 									// Omniknight (41); original (12);
 		"AttackRate"				"1.7"									// like Omniknight
 		"AttackAnimationPoint"		"0.433"									// like Omniknight
 		"AttackRange"				"150"									// like Omniknight
@@ -54,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"280"									// Omniknight(300); original(270); Sven(285); Brewmaster(295);
+		"MovementSpeed"				"280"									// Omniknight (300); original (270); Sven (285);
 		"MovementTurnRate"			"0.6"									// like Omniknight
 		
 		// Vision
@@ -65,18 +69,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"22"									// Omniknight(22); original(22);
-		"AttributeStrengthGain"		"3.1"									// Omniknight(3.1); original(2.7);
-		"AttributeBaseAgility"		"13"									// Omniknight(15); original(13); - don't change!
-		"AttributeAgilityGain"		"1.5"									// Omniknight(1.75); original(1.5); - don't change!
-		"AttributeBaseIntelligence"	"17"									// Omniknight(15); original(17); - don't change!
-		"AttributeIntelligenceGain"	"1.8"									// Omniknight(1.8); original(1.8); - don't change!
+		"AttributeBaseStrength"		"22"									// Omniknight (22); original (22);
+		"AttributeStrengthGain"		"3.6"									// Omniknight (3.6); original (2.7);
+		"AttributeBaseAgility"		"13"									// Omniknight (15); original (13); - don't change!
+		"AttributeAgilityGain"		"1.5"									// Omniknight (1.8); original (1.5); - don't change!
+		"AttributeBaseIntelligence"	"17"									// Omniknight (15); original (17); - don't change!
+		"AttributeIntelligenceGain"	"1.8"									// Omniknight (1.8); original (1.8); - don't change!
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// Omniknight(1.5); original(0.25);
-		"StatusHealth"				"210"									// Omniknight(200); original(100 or 210);
-		"StatusMana"				"25"									// Omniknight(75); original(51 or 100)
-		"StatusManaRegen"			"0.9"									// Omniknight(0.9); original(0.01)
+		"StatusHealthRegen"			"0.25"									// Omniknight (0.0); original (0.25);
+		"StatusHealth"				"210"									// Omniknight (200); original (100 or 210);
+		"StatusMana"				"25"									// Omniknight (75); original (51 or 100);
+		"StatusManaRegen"			"0.0"									// Omniknight (0.0); original (0.01);
 	}
 }
