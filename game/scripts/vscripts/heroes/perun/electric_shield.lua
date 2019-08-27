@@ -140,7 +140,7 @@ function modifier_perun_electric_shield:OnDestroy()
 	end
 
 	-- Stop loop sound
-	--parent:StopSound("Hero_Dark_Seer.Ion_Shield_lp")
+	parent:StopSound("Hero_Dark_Seer.Ion_Shield_lp")
 
 	-- Emit End sound
 	parent:EmitSound("Hero_Dark_Seer.Ion_Shield_end")
