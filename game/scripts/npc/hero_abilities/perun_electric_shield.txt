@@ -3,15 +3,16 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Shield (T) - Similar to Dark Seer Ion Shell
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017;
+	// Notes: OK; 27.8.2019;
 	// Linkens: Doesn't block (INTENTIONAL);
-	// TO_DO: ALL
+	// TO_DO:
 	//=================================================================================================================
 	"perun_electric_shield"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/perun/electric_shield.lua"
 		"AbilityTextureName"			"custom/perun_electric_shield"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -26,9 +27,9 @@
 		
 		"AoERadius"						"%radius"
 		
-		"AbilityCooldown"				"10.0"
+		"AbilityCooldown"				"9"
 		
-		"AbilityManaCost"				"75 90 110 130"
+		"AbilityManaCost"				"100 110 120 130"
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -42,23 +43,23 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "250"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"30 50 70 90"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_per_second"                       "30 50 70 90"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"25.0"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "25"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"tick_interval"			"0.1"
+				"var_type"                                "FIELD_FLOAT"
+				"damage_interval"                         "0.1"
 			}
 		}
 	}

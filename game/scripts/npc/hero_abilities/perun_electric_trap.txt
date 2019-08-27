@@ -3,14 +3,15 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Trap (E) - Similar to Techies Stasis Trap
 	// Author: Darkonius
-	// Notes: OK; 17.2.2017; Trap stuns in a radius;
-	// TO_DO: ALL
+	// Notes: OK; 27.8.2019; Trap stuns in a radius;
+	// TO_DO: Lua
 	//=================================================================================================================
 	"perun_electric_trap"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/perun/electric_trap.lua"
 		"AbilityTextureName"			"custom/perun_electric_trap"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
@@ -60,12 +61,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"activation_delay"			"1.0"
+				"delay"			            "1.0"
 			}	
 			"04"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"360.0"
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"360"
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Ball of Lightning (Q) - New Spell, Int Based Radius Damage Nuke, Skillshot
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017;
+	// Notes: OK; 27.8.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"perun_ball_of_lightning"
@@ -28,7 +28,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"900 1100 1300 1500"
+		"AbilityCastRange"				"1500"
 		"AbilityCastPoint"				"0.1"
 
 		// Time		
@@ -47,7 +47,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"ball_speed"				"800 900 1000 1100"
+				"ball_speed"				"800"
 			}
 			"02"
 			{
@@ -57,12 +57,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ball_range"				"900 1100 1300 1500"
+				"ball_range"				"1500"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"ball_vision"				"325 350 375 400"
+				"ball_vision"				"325"
 			}
 			"05"
 			{
@@ -72,18 +72,18 @@
 			"06"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"base_damage"				"100"
+				"base_damage"				"50 70 90 110"
 			}
 			"07"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"int_multiplier"				"1.25 1.5 1.75 2.0"
-				"CalculateSpellDamageTooltip"	"0"
+				"int_multiplier"				"1.0 1.2 1.4 1.6"
+				"CalculateSpellDamageTooltip"	"1"
 			}
 			"08"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage_radius"					"200 250 300 350"
+				"damage_radius"					"300"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 		}

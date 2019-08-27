@@ -39,7 +39,7 @@ function brewmaster_custom_breath_of_fire:OnSpellStart()
 		--iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
 		--fExpireTime = 10,
 	    bDeleteOnHit = false,
-	    vVelocity = projectile_direction * projectile_speed,
+	    vVelocity = projectile_direction*projectile_speed,
 	    bProvidesVision = true,
 	    iVisionRadius = math.max(projectile_start_radius, projectile_end_radius),
 		iVisionTeamNumber = caster:GetTeamNumber()
@@ -59,28 +59,28 @@ end
 function brewmaster_custom_breath_of_fire:OnProjectileHit(target, location)
 	local caster = self:GetCaster()
 
-	if not target then
-		return
-	end
-
 	-- KV variables
 	local initial_damage = self:GetSpecialValueFor("initial_damage")
 	local duration = self:GetSpecialValueFor("burn_duration")
 
-	local damage_table = {}
-	damage_table.victim = target
-	damage_table.attacker = caster
-	damage_table.damage_type = self:GetAbilityDamageType() or DAMAGE_TYPE_MAGICAL
-	damage_table.ability = self
-	damage_table.damage = initial_damage
+	if target then
+		local damage_table = {}
+		damage_table.victim = target
+		damage_table.attacker = caster
+		damage_table.damage_type = self:GetAbilityDamageType() or DAMAGE_TYPE_MAGICAL
+		damage_table.ability = self
+		damage_table.damage = initial_damage
 
-	-- Apply Initial Damage
-	ApplyDamage(damage_table)
+		-- Apply Initial Damage
+		ApplyDamage(damage_table)
 
-	-- Apply burn modifier only if the target has drunken haze debuff
-	if target:HasModifier("modifier_custom_drunken_haze_debuff") then
-		target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = duration})
+		-- Apply burn modifier only if the target has drunken haze debuff
+		if target:HasModifier("modifier_custom_drunken_haze_debuff") then
+			target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = duration})
+		end
 	end
+
+	return false
 end
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------

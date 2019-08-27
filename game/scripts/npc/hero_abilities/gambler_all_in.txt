@@ -4,7 +4,7 @@
 	// Gambler: All In (R) - New Spell, Ultimate, Deals damage based on Gambler's net worth, can backfire
 	// Author: Darkonius; 
 	// Linkens: Blocks only if it would hit;
-	// Notes: 20.9.2017; Chance for Success is True Random; Has Aghanim Scepter upgrade;
+	// Notes: 27.8.2019; Chance for Success is True Random; Has Aghanim Scepter upgrade;
 	// TO_DO: If its too weak increase damage cap from 600/875/1100 (scepter: 875/1100/1400) to 900/1100/1300 (scepter: 1100/1300/1500).
 	//=================================================================================================================
 	"gambler_all_in"
@@ -26,7 +26,7 @@
 		
 		"HasScepterUpgrade" 			"1"
 		
-		"AbilityCooldown"				"70.0 60.0 50.0" // original: 60
+		"AbilityCooldown"				"70 60 50" // original: 60
 		
 		"AbilityManaCost"				"350 500 700"
 		"AbilityProcsMagicStick" 		"1"
@@ -48,7 +48,7 @@
 				"var_type"								"FIELD_INTEGER"
 				"gold_cost"								"500"
 			}
-			"02"
+			"02" // Lina ult: 450/650/850; Lion ult: 600/725/850 (800/925/1050)
 			{
 				"var_type"								"FIELD_INTEGER"
 				"damage_cap"							"600 875 1100"
@@ -65,10 +65,10 @@
 				"net_worth_to_damage_ratio"				"10 12 15"
 				"CalculateSpellDamageTooltip"			"0"
 			}
-			"05"
+			"05" // Lion ult scepter: 725/875/1075 (925/1075/1225)
 			{
 				"var_type"								"FIELD_INTEGER"
-				"damage_cap_scepter"					"875 1100 1400"
+				"damage_cap_scepter"					"800 1100 1400"
 				"CalculateSpellDamageTooltip"			"0"
 			}
 			"06"

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Perun's Wrath (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
 	// Author: Darkonius
-	// Notes: OK; 13.9.2018; Stun radius is smaller than the damage/blind radius;
+	// Notes: OK; 27.8.2019; Stun radius is smaller than the damage/blind radius;
 	// TO_DO:
 	//=================================================================================================================
 	"perun_sky_wrath"
@@ -52,44 +52,44 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"disable_duration"			"0.5 0.75 1.0 1.25 1.5"
+				"var_type"                                "FIELD_FLOAT"
+				"stun_duration"                           "0.5 0.75 1.0 1.25"
 			}
 			"02"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"disable_radius"			"200"
+				"var_type"                                "FIELD_INTEGER"
+				"stun_radius"                             "200"
 			}
 			"03"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"blind_duration"			"3.0 3.5 4.0 4.5"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_radius"                           "325"
+				"CalculateSpellDamageTooltip"             "0"
 			}
-			"04" // if damage_radius and blind_radius are not the same you need to change the tooltip
+			"04" // blind_radius can be bigger than damage_radius if you want a realistic spell
 			{
-				"var_type"					"FIELD_INTEGER"
-				"blind_radius"				"325"
+				"var_type"                                "FIELD_INTEGER"
+				"blind_radius"                            "325"
 			}
 			"05"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"miss_chance"				"35 45 55 65"
+				"var_type"                                "FIELD_INTEGER"
+				"blind_duration"                          "5"
 			}
 			"06"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"true_sight_radius"			"750"				
+				"var_type"                                "FIELD_INTEGER"
+				"miss_chance"                             "35 45 55 65"
 			}
 			"07"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"true_sight_duration"		"4.5"
+				"var_type"                                "FIELD_INTEGER"
+				"true_sight_radius"                       "750"				
 			}
-			"08" // if damage_radius and blind_radius are not the same you need to change the tooltip
+			"08"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_radius"					"325"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"true_sight_duration"                     "5"
 			}
 		}
 		
@@ -169,12 +169,12 @@
 				"Target"
 				{
 					"Center"  	"POINT"
-					"Radius" 	"%disable_radius"
+					"Radius" 	"%stun_radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
 				"ModifierName"		"modifier_custom_sky_disabled"
-				"Duration"   		"%disable_duration"
+				"Duration"   		"%stun_duration"
 			}
 			
 			"SpawnUnit"

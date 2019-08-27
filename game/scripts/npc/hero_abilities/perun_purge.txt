@@ -4,7 +4,7 @@
 	// Lightning Shaman: Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 13.9.2018;
+	// Notes: OK; 27.8.2019;
 	// TO_DO: Add Aghanim Scepter Upgrade (Applies Break on enemies)
 	//=================================================================================================================
 	"perun_purge"
@@ -18,9 +18,10 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"						"1"
 		"RequiredLevel"        			"6"
-		
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"50.0"
@@ -60,7 +61,7 @@
 				"base_damage"			"250"
 			}
 		}
-		
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -72,13 +73,13 @@
 					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
 			}
-			
+
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/perun/perun_purge.lua"
 				"Function"		"PurgeStart"
 			}
-			
+
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_purge_ally"
@@ -88,17 +89,17 @@
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
-				"Duration"		"0.25"
+				"Duration"		"1"
 			}
 		}
-		
+
 		"Modifiers"
 		{
 			"modifier_purge_enemy_hero" // needs tooltip
 			{
 				"IsDebuff"				"1"
 				"IsPurgable"			"0"
-				
+
 				"OnCreated"
 				{
 					"RunScript"
@@ -108,16 +109,21 @@
 						"TARGET"		"TARGET"
 					}
 				}
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
 				}
 			}
-			
+
 			"modifier_purge_ally" // doesn't need tooltip
 			{
 				"IsHidden"				"1"
+				"IsDebuff"				"0"
+				"IsPurgable"	        "0"
+
+				"Duration"              "1"
+
 				"OnCreated"
 				{
 					"RunScript"
@@ -127,14 +133,13 @@
 						"TARGET"		"TARGET"
 					}
 				}
-				"Duration"	"0.25"
 			}
-			
+
 			"modifier_purge_enemy_creep" // needs tooltip
 			{
 				"IsDebuff"		"1"
 				"IsPurgable"	"0"
-				
+
 				"OnCreated"
 				{
 					"RunScript"
@@ -144,7 +149,7 @@
 						"TARGET"		"TARGET"
 					}
 				}
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
