@@ -28,7 +28,7 @@
 	
 	//=================================================================================================================
 	// 1263 - Infused Robe - Hood of Defiance (1700) + Vanguard (2150) + Infused Raindrop (225) + Recipe (425) = 4500
-	// Notes: OK; 14.10.2018; Uses damage filter;
+	// Notes: OK; 10.9.2019; Uses damage filter; Damage block chance is True Random;
 	// TO_DO: 
 	//=================================================================================================================
 	"item_infused_robe"
@@ -63,12 +63,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // like Vanguard lowest value
 			{
 				"var_type"					"FIELD_INTEGER"
 				"damage_block"				"35"
 			}
-			"02"
+			"02" // like Vanguard
 			{
 				"var_type"					"FIELD_INTEGER"
 				"damage_block_chance"		"50"
@@ -78,10 +78,10 @@
 				"var_type"					"FIELD_INTEGER"
 				"bonus_magic_resist"		"25"
 			}
-			"04" // 6.5 + 5.5
+			"04" // Hood (8) + Vanguard (7)
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_hp_regen"			"12"
+				"bonus_hp_regen"			"15"
 			}
 			"05" // like Vanguard
 			{

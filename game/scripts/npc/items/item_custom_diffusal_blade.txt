@@ -8,7 +8,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8173"		// 1256
+		"ID"							"8173" // 1256
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -30,12 +30,12 @@
 	
 	//=================================================================================================================
 	// Custom Diffusal Blade - 2x Blade of Alacrity (1000) + Staff of Wizardry (1000) + Recipe (150) = 3150
-	// Notes: OK; 16.9.2018; Same price; same cooldown; has 16 charges; 100% damage mana burn; slow is not decaying;
+	// Notes: OK; 10.9.2019; Same price; same cooldown; has 16 charges; 100% damage mana burn; slow is not decaying;
 	// TO_DO:
 	//=================================================================================================================
 	"item_custom_diffusal_blade"
 	{
-		"ID"							"8174"		// 1257
+		"ID"							"8174" // 1257
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_diffusal_blade"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -43,6 +43,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -88,7 +89,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"mana_burn_illusion_melee"	"15"
+				"mana_burn_illusion_melee"	"16"
 			}
 			"05"
 			{

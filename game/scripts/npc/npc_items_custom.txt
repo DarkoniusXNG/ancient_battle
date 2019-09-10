@@ -1,5 +1,7 @@
 #base "items/item_soul_gem.txt"
 #base "items/item_custom_diffusal_blade.txt"
+#base "items/item_custom_poor_mans_shield.txt"
+#base "items/item_custom_ring_of_aquila.txt"
 #base "items/item_custom_rod_of_atos.txt"
 #base "items/item_staff_of_negation.txt"
 #base "items/item_ultimate_king_bar.txt"

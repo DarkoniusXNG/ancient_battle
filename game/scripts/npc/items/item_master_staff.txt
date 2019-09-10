@@ -6,7 +6,7 @@
 	//=================================================================================================================
 	"item_recipe_master_staff"
 	{
-		"ID"							"8224"		// 1272
+		"ID"							"8224" // 1272
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -28,12 +28,12 @@
 	
 	//=================================================================================================================
 	// Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
-	// Notes: OK; 16.9.2018; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
+	// Notes: OK; 10.9.2019; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
 	// TO_DO: 
 	//=================================================================================================================
 	"item_master_staff"
 	{
-		"ID"              				"8225"		// 1273
+		"ID"              				"8225" // 1273
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/master_staff"
 		
@@ -52,7 +52,7 @@
 		"ItemCost"						"10400"
 		"ItemShopTags"					"damage;int;str"
 		"ItemQuality"					"epic"
-		"ItemAliases"					"master staff"
+		"ItemAliases"					"master staff; nullifier staff"
 		"ItemPermanent"					"1"
 		"ItemSellable" 					"1"
 		"ItemDroppable" 				"1"
@@ -77,7 +77,7 @@
 			"03" // like Nullifier
 			{
 				"var_type"				"FIELD_FLOAT"
-				"bonus_hp_regen"		"5"
+				"bonus_hp_regen"		"6"
 			}
 			"04" // like Mystic Staff
 			{
@@ -92,7 +92,7 @@
 			"06" // like Nullifier
 			{
 				"var_type"				"FIELD_FLOAT"
-				"mute_duration"			"5.0"
+				"mute_duration"			"6.0"
 			}
 		}
 		

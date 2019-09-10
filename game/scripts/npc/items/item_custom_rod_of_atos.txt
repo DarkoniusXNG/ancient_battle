@@ -2,20 +2,20 @@
 {
 	//=================================================================================================================
 	// Recipe: Custom Rod of Atos
-	// Notes: OK; 16.9.2018;
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_recipe_custom_rod_of_atos"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8205"		// 1254
+		"ID"							"8205" // 1254
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"500"	
+		"ItemCost"						"350"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -29,24 +29,25 @@
 	}
 	
 	//=================================================================================================================
-	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (500) = 2900
-	// Notes: OK; 16.9.2018;
+	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (350) = 2750
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_custom_rod_of_atos"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8206"		// 1255
+		"ID"							"8206" // 1255
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_rod_of_atos"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellDispellableType"          "SPELL_DISPELLABLE_YES"
 		
 		// Stats		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"16.0"
+		"AbilityCooldown"				"16"
 		"AbilitySharedCooldown"			"rod_of_atos"
 		"AbilityCastRange"				"1150"
 		"AbilityCastPoint"				"0.0"
@@ -54,12 +55,12 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"50"
-		"ItemCost"						"2900"
-		"ItemShopTags"					"int;agi;str;regen_health"
+		"ItemCost"						"2750"
+		"ItemShopTags"					"int;agi;str"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"rod of atos"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -73,12 +74,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"6"
+				"bonus_agi"				"5"
 			}
 			"03"
 			{			
 				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"15"
+				"bonus_str"				"10"
 			}
 			"04"
 			{

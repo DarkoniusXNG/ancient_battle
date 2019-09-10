@@ -27,8 +27,8 @@
 	}
 	
 	//=================================================================================================================
-	// 1267 - Blink Sword - Blink Dagger (2200) + 2 x Soul Gem (1400) + Recipe (100) = 5100
-	// Notes: OK; 16.9.2018;
+	// 1267 - Blink Sword - Blink Dagger (2250) + 2 x Soul Gem (1400) + Recipe (100) = 5150
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_blink_sword"
 	{
@@ -43,7 +43,7 @@
 		"AbilitySharedCooldown"			"blink_items"
 		"AbilityManaCost"				"0"
 		
-		"ItemCost"						"5100"
+		"ItemCost"						"5150"
 		"ItemShopTags"					"teleport;agi;int;str"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"blink sword"

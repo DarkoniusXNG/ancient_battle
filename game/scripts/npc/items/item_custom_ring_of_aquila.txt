@@ -1,0 +1,97 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Custom Ring of Aquila
+	//=================================================================================================================
+	"item_recipe_custom_ring_of_aquila"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8211"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_ring_of_aquila"
+		"ItemRequirements"
+		{
+			"01"						"item_wraith_band;item_ring_of_basilius"
+		}
+	}
+
+	//=================================================================================================================
+	// Custom Ring of Aquila - Wraith Band (515) + Ring of Basilius (500) = 1015
+	// Notes: OK; 10.9.2019;
+	//=================================================================================================================
+	"item_custom_ring_of_aquila"
+	{
+		"ID"              			"8212"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"items/custom_ring_of_aquila.lua"
+
+		"AbilityTextureName"		"item_ring_of_aquila"
+
+		"ItemCost"					"1015"
+		"ItemShopTags"              "damage;agi;int;str;regen_mana;armor"
+		"ItemSellable" 				"1"
+		"ItemPurchasable"			"1"
+		"ItemDroppable"				"1"
+		"ItemShareability"        	"ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"        	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemQuality"  				"rare"
+		"ItemAliases"               "roa;ring of aquila;aquila"
+		"ItemDisassembleRule" 		"DOTA_ITEM_DISASSEMBLE_NEVER"
+
+		"UIPickupSound"				"Item.PickUpRingShop"
+		"UIDropSound"				"Item.DropRingShop"
+		"WorldDropSound"			"Item.DropRingWorld"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agility"                           "6"
+			}
+			"02"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_strength"                          "3"
+			}
+			"03"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_intellect"                         "3"
+			}
+			"04"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_damage"                            "5"
+			}
+			"05"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_attack_speed"                      "5"
+			}
+			"06"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_armor"                             "2"
+			}
+			"07"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"bonus_mana_regen"                        "0.75"
+			}
+		}
+	}
+}

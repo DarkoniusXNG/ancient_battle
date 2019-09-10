@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1274 - Recipe: Drum of Vitality
-	// Notes: OK; 17.5.2018;
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_recipe_drum_of_vitality"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"110"
+		"ItemCost"						"85"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -23,13 +23,12 @@
 		"ItemRequirements"
 		{
 			"01"						"item_bracer;item_ring_of_regen;item_faerie_fire"
-			"02"						"item_drum_of_vitality"
 		}
 	}
 	
 	//=================================================================================================================
-	// 1275 - Drum of Vitality - Bracer (465) + Ring of Regen (325) + Faerie Fire (70) + Recipe (110) = 970
-	// Notes: OK; 17.5.2018;
+	// 1275 - Drum of Vitality - Bracer (515) + Ring of Regen (300) + Faerie Fire (70) + Recipe (85) = 970
+	// Notes: OK; 10.9.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"item_drum_of_vitality"
@@ -52,7 +51,7 @@
 		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		"ItemPermanent"					"1"
-		"ItemInitialCharges"			"8"
+		"ItemInitialCharges"			"10"
 		"ItemRequiresCharges"			"1"
 		"ItemDisplayCharges"			"1"
 		
@@ -60,35 +59,40 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // 6 +
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"9"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_str"                               "6"
 			}
-			"02"
+			"02" // 3 +
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"3"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agi"                               "3"
 			}
-			"03"
+			"03" // 3 +
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"3"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_int"                               "3"
 			}
-			"04"
+			"04" // 2 +
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"10"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_dmg"                               "5"
 			}
-			"05"
+			"05" // 2 +
 			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_hp_regen"		"3.0"
+				"var_type"                                "FIELD_FLOAT"
+				"bonus_hp_regen"                          "3.0"
 			}
-			"06"
+			"06" // 5 +
 			{
-				"var_type"				"FIELD_INTEGER"
-				"heal"					"100"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_magic_resistance"                  "5"
+			}
+			"07" // 85 +
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"heal"                                    "100"
 			}
 		}
 		
@@ -135,6 +139,7 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"        "%bonus_magic_resistance"
 				}
 			}
 		}

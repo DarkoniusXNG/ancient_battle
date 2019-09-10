@@ -1,0 +1,80 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Custom Poor Man's Shield
+	//=================================================================================================================
+	"item_recipe_custom_poor_mans_shield"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8070"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_poor_mans_shield"
+		"ItemRequirements"
+		{
+			"01"						"item_slippers;item_slippers;item_stout_shield"
+		}
+	}
+
+	//=================================================================================================================
+	// Custom Poor Man's Shield - 2 x Slippers (135) + Stout Shield (200) = 470
+	// Notes: OK; 10.9.2019;
+	//=================================================================================================================
+	"item_custom_poor_mans_shield"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8071"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/custom_poor_mans_shield.lua"
+
+		"AbilityTextureName"			"item_poor_mans_shield"
+
+		"ItemCost"						"470"
+		"ItemShopTags"					"agi;block"
+		"ItemSellable"					"1"
+		"ItemPurchasable"				"1"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemQuality"					"common"
+		"ItemAliases"					"pms;poor man's shield"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // 2 x Slippers (3)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agility"                           "6"
+			}
+			"02" // like Stout Shield
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"damage_block_melee"                      "20"
+			}
+			"03" // like Stout Shield
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"damage_block_ranged"                     "9"
+			}
+			"04" // like Stout Shield
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"block_chance"                            "50"
+			}
+		}
+	}
+}

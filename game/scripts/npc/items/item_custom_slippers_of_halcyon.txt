@@ -29,7 +29,7 @@
 	
 	//=================================================================================================================
 	// 1252 - Slippers of Halcyon - Tranquil Boots (1050) + Vitality Booster (1100) = 2150
-	// Notes: OK; 17.5.2018;
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_custom_slippers_of_halcyon"
 	{
@@ -70,7 +70,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movement"		"70"
+				"bonus_movement"		"50"
 			}
 			"02"
 			{
@@ -95,7 +95,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"900"
+				"radius"				"1200"
 			}
 			"07" // in tooltip only
 			{

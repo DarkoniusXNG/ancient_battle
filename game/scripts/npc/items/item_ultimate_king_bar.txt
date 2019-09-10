@@ -2,18 +2,18 @@
 {
 	//=================================================================================================================
 	// Recipe: Ultimate King Bar
-	// Notes: OK; 16.9.2018;
+	// Notes: OK; 10.9.2019;
 	//=================================================================================================================
 	"item_recipe_ultimate_king_bar"
 	{
-		"ID"							"8115"		// 1260
+		"ID"							"8115" // 1260
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"2475"	
+		"ItemCost"						"2150"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -27,16 +27,16 @@
 	}
 	
 	//=================================================================================================================
-	// Ultimate King Bar - Black King Bar (3975) + Ghost Scepter (1500) + Recipe (2475) = 7950
-	// Notes: OK; 16.9.2018; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
+	// Ultimate King Bar - Black King Bar (4050) + Ghost Scepter (1500) + Recipe (2150) = 7700
+	// Notes: OK; 10.9.2019; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
 	//=================================================================================================================
 	"item_ultimate_king_bar"
 	{
-		"ID"							"8116"		// 1261
+		"ID"							"8116" // 1261
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/ultimate_king_bar"
 		
-		"ItemCost"						"7950"
+		"ItemCost"						"7700"
 		"ItemShopTags"					"str;agi;int;damage;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"ukb;ultimate king bar"
