@@ -39,7 +39,7 @@
 			"item"		"item_spirit_vessel"
 			"item"		"item_atma"
 			"item"		"item_custom_mask_of_madness"
-			"item"		"item_slippers_of_halcyon"
+			"item"		"item_custom_slippers_of_halcyon"
 			"item"		"item_echo_sabre"
 			"item"		"item_infused_robe"
 			"item"		"item_assault"

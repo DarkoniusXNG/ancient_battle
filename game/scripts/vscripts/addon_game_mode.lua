@@ -10,7 +10,7 @@ require('player_resource')
 
 function Precache(context)
 	-- Custom items
-	PrecacheItemByNameSync("item_slippers_of_halcyon", context)
+	PrecacheItemByNameSync("item_custom_slippers_of_halcyon", context)
 	PrecacheItemByNameSync("item_ultimate_king_bar", context)
 	PrecacheItemByNameSync("item_infused_robe", context)
 	

@@ -35,7 +35,7 @@
 		{
 			"item"		"item_drum_of_vitality"
 			"item"		"item_atma"
-			"item"		"item_slippers_of_halcyon"
+			"item"		"item_custom_slippers_of_halcyon"
 			"item"		"item_crimson_guard"
 			"item"		"item_heart"
 			"item"		"item_pipe"	
