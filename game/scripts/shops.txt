@@ -1,25 +1,25 @@
 "dota_shops"
 {
-	// Consumables (14/14)
+	// Consumables (14/15)
 	"consumables"
 	{
-		"item"    "item_clarity"
-		"item"    "item_enchanted_mango"
-		"item"    "item_tango"
-		"item"    "item_flask"
-		"item"	  "item_faerie_fire"
-		"item"	  "item_cheese"
-		"item"    "item_smoke_of_deceit"
-		"item"    "item_tpscroll"
-		"item"    "item_dust"
-		"item"    "item_courier"
-		"item"    "item_ward_observer"
-		"item"    "item_ward_sentry"
-		"item"	  "item_tome_of_knowledge"
-		"item"    "item_bottle"             
+		"item"		"item_tpscroll"
+		"item"		"item_clarity"
+		"item"		"item_faerie_fire"
+		"item"		"item_smoke_of_deceit"
+		"item"		"item_ward_observer"
+		"item"		"item_ward_sentry"
+		"item"		"item_enchanted_mango"
+		"item"		"item_flask"
+		"item"		"item_tango"
+		"item"		"item_tome_of_knowledge"
+		"item"		"item_dust"
+		"item"		"item_courier"
+		"item"		"item_bottle"
+		"item"      "item_cheese"
 	}
 
-	// Attributes (13/14)
+	// Attributes (14/15)
 	"attributes"
 	{
 		"item"    "item_branches"				// +1 to all
@@ -27,188 +27,202 @@
 		"item"    "item_gauntlets"				// +2 to STR
 		"item"    "item_slippers"				// +2 to AGI
 		"item"    "item_mantle"					// +2 to INT
+
 		"item"    "item_circlet"				// +2 to all
 	
 		"item"    "item_belt_of_strength"		// +5 to STR
 		"item"    "item_boots_of_elves"			// +5 to AGI
 		"item"    "item_robe"					// +5 to INT
+
+		"item"    "item_crown"                  // +4 to all
+
 		"item"	  "item_soul_gem"				// +5 to all
 
 		"item"    "item_ogre_axe"				//+10 to STR
 		"item"    "item_blade_of_alacrity"		//+10 to AGI
 		"item"    "item_staff_of_wizardry"		//+10 to INT
+
 		"item"    "item_ultimate_orb"			//+10 to all
 	
-	//	"item"	"item_cursed_necklace"		// Cursed Necklace (+20 to all, -1% HP regen, drops on death)
+        //"item"    "item_cursed_necklace"		// Cursed Necklace (+20 to all, -1% HP regen, drops on death)
 	}
 
-	// Weapons and armor (14/14)
+	// Weapons and armor (14/15)
 	"weapons_armor"
 	{
-		"item"    "item_ring_of_protection"
-		"item"    "item_stout_shield"
-		"item"    "item_quelling_blade"
-		"item"	  "item_infused_raindrop"
-		"item"	  "item_blight_stone"
-		"item"    "item_orb_of_venom"
-		"item"    "item_blades_of_attack"
-		"item"    "item_chainmail"
-		"item"    "item_quarterstaff"
-		"item"    "item_helm_of_iron_will"
-		"item"    "item_broadsword"
-		"item"    "item_claymore"
-		"item"    "item_javelin"
-		"item"    "item_mithril_hammer"
+		"item"		"item_ring_of_protection"
+		"item"		"item_stout_shield"
+		"item"		"item_quelling_blade"
+		"item"		"item_infused_raindrop"
+		"item"		"item_orb_of_venom"
+		"item"		"item_blight_stone"
+		"item"		"item_blades_of_attack"
+		"item"		"item_chainmail"
+		"item"		"item_quarterstaff"
+		"item"		"item_helm_of_iron_will"
+		"item"		"item_javelin"
+		"item"		"item_broadsword"
+		"item"		"item_claymore"
+		"item"		"item_mithril_hammer"
 	}
   
-	// Misc (14/14)
+	// Misc (15/15)
 	"misc"
 	{
-		"item"	  "item_wind_lace"
 		"item"    "item_magic_stick"
-		"item"    "item_sobi_mask"
+		"item"	  "item_wind_lace"
 		"item"    "item_ring_of_regen"
+		"item"    "item_sobi_mask"
 		"item"    "item_boots"
 		"item"    "item_gloves"
 		"item"    "item_cloak"
+		"item"    "item_ring_of_tarrasque"
 		"item"    "item_ring_of_health"
 		"item"    "item_void_stone"
 		"item"    "item_gem"
 		"item"    "item_lifesteal"
-		"item"    "item_ghost"
 		"item"    "item_shadow_amulet"
+		"item"    "item_ghost"
 		"item"    "item_blink"
 	} 
   
-	// Level 1 - Green Recipes (14/14)
+	// Level 1 - Green Recipes (17)
 	"basics"
 	{
-		"item"    "item_magic_wand"			// For all
-		"item"    "item_bracer"				// For STR
-		"item"    "item_wraith_band"		// For AGI
-		"item"    "item_null_talisman"		// For INT
-		"item"	  "item_atma"				// For STR and INT
+		"item"    "item_magic_wand"
+		"item"    "item_null_talisman"
+		"item"    "item_wraith_band"
+		"item"    "item_bracer"
+		"item"	  "item_atma"
 		"item"    "item_soul_ring"
-		"item"    "item_phase_boots"
+		"item"    "item_custom_poor_mans_shield"
+		"item"    "item_custom_ring_of_aquila"
 		"item"    "item_power_treads"
+		"item"    "item_phase_boots"
 		"item"    "item_oblivion_staff"
 		"item"    "item_pers"
+		"item"	  "item_custom_mask_of_madness" // this can be moved
+		"item"    "item_helm_of_the_dominator" // this can be moved
 		"item"    "item_hand_of_midas"
-		"item"    "item_travel_boots"   
+		"item"    "item_travel_boots"
 		"item"    "item_moon_shard"
-		"item"    "item_soul_booster"
 	//	"item"	  "item_shinigami_eyes"	// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
 	}
 
 	// Level 2 - Blue Recipes (15/15)
 	"support"
 	{
-    //	"item"    "item_ring_of_basilius"		// temporary disabled until Valve fixes shop
+        "item"    "item_ring_of_basilius"
 		"item"    "item_headdress"
 		"item"    "item_buckler"
 		"item"    "item_urn_of_shadows"
-		"item"    "item_ring_of_aquila"
 		"item"	  "item_drum_of_vitality"
 		"item"    "item_tranquil_boots"
-		"item"    "item_arcane_boots"
 		"item"    "item_medallion_of_courage"
+		"item"    "item_arcane_boots"
 		"item"    "item_ancient_janggo"
-		"item"    "item_helm_of_the_dominator"
+		//"item"    "item_helm_of_the_dominator"
 		"item"    "item_vladmir"
 		"item"    "item_mekansm"
+		"item"    "item_holy_locket"
 		"item"	  "item_spirit_vessel"
-		"item"    "item_guardian_greaves"
 		"item"    "item_pipe"
+		"item"    "item_guardian_greaves"
 	}
   
-	// Arcane Recipes (14/14)
+	// Arcane Recipes (15)
 	"magics"      
 	{
-		"item"    "item_force_staff"
 		"item"    "item_glimmer_cape"
 		"item"    "item_veil_of_discord"
+		"item"    "item_force_staff"
 		"item"    "item_aether_lens"
 		"item"    "item_necronomicon"
 		"item"    "item_dagon"
 		"item"    "item_cyclone"
-		"item"    "item_solar_crest"			// temporary disabled until Valve fixes shop
-		"item"	  "item_custom_rod_of_atos"    
+		"item"	  "item_custom_rod_of_atos"
+		"item"    "item_solar_crest"
 	//	"item"	  "item_black_demon_book"		// Black Demon Book (Soul Gem + Wind Lace + Recipe; +5% MS; Soul Catch)
 		"item"    "item_orchid"
 		"item"    "item_ultimate_scepter"
+		//"item"	  "item_nullifier"
 		"item"    "item_refresher"
 		"item"    "item_sheepstick"
 		"item"    "item_octarine_core"
-	//  "item"	  "item_nullifier"				// temporary disabled until Valve fixes shop
 		"item"	  "item_master_staff"
 	//	"item"	  "item_ares_soul"		// Ares Soul (upgrade for Eternal Orb, Soul Gem and Cloak; +60% damage aura; Bonus damage with all damage types)
 	}
     
-	// Level 3 - Purple Recipes (15/15)
+	// Level 3 - Purple Recipes (16)
 	"defense"
 	{
 		"item"    "item_hood_of_defiance"
 		"item"    "item_vanguard"
 		"item"    "item_blade_mail"
+		//"item"    "item_soul_booster"
+		"item"    "item_aeon_disk"
 		"item"	  "item_infused_robe"
 		"item"    "item_crimson_guard"
-		"item"	  "item_aeon_disk"
-	//	"item"    "item_black_king_bar"			// temporary disabled until Valve fixes shop
-		"item"	  "item_ultimate_king_bar"
 		"item"    "item_lotus_orb"
+	    //"item"    "item_black_king_bar"
+		"item"	  "item_ultimate_king_bar"
+		"item"    "item_hurricane_pike" // this can be moved if needed
 		"item"	  "item_orb_of_reflection"
 		"item"    "item_shivas_guard"
-		"item"    "item_bloodstone"
 		"item"    "item_manta"
+		"item"    "item_bloodstone"
 		"item"    "item_sphere"
-		"item"    "item_assault"
 		"item"    "item_heart"
+		"item"    "item_assault"
 	//	"item"	  "item_eternal_orb"			// Eternal Orb (upgrade for Soul Booster and 2 Ultimate Orbs; 10% chance to disjoint)
 	}
   
-	// Weapon Recipes (15/15)
+	// Weapon Recipes (16)
 	"weapons"
 	{
-		"item"    "item_lesser_crit"			// temporary disabled until Valve fixes shop
+		"item"    "item_lesser_crit"
 		"item"	  "item_blink_sword"
 		"item"    "item_armlet"
+		//"item"    "item_hurricane_pike"
+		"item"    "item_meteor_hammer"
+		"item"    "item_invis_sword"
 		"item"    "item_basher"
-	//	"item"	  "item_meteor_hammer"			// temporary disabled until Valve fixes shop
-    //	"item"    "item_invis_sword"			// temporary disabled until Valve fixes shop
+        "item"    "item_monkey_king_bar"
 		"item"    "item_bfury"
-		"item"    "item_dragon_lance"
-		"item"    "item_silver_edge"
 		"item"    "item_ethereal_blade"
 		"item"    "item_radiance"
-		"item"    "item_monkey_king_bar"
 		"item"    "item_greater_crit"
 		"item"    "item_butterfly"
-		"item"    "item_rapier"					// temporary disabled until Valve fixes shop
+		"item"    "item_silver_edge"
+		"item"    "item_rapier"
 		"item"    "item_abyssal_blade"
 		"item"	  "item_bloodthorn"
 	}
     
-	// Level 4 - Orange / Orb / Artifacts (15/15)  
+	// Level 4 - Orange / Orb / Artifacts (14/16)  
 	"artifacts"
 	{
-		"item"	  "item_custom_mask_of_madness"
+		"item"    "item_dragon_lance"
+		//"item"	  "item_custom_mask_of_madness"
 		"item"    "item_sange"
 		"item"    "item_yasha"
 		"item"	  "item_kaya"
 		"item"	  "item_echo_sabre"
 		"item"    "item_maelstrom"
 		"item"	  "item_custom_diffusal_blade"
-		"item"    "item_desolator"
 		"item"    "item_heavens_halberd"
+		"item"    "item_desolator"
+		//"item"    "item_kaya_and_sange"
 		"item"    "item_sange_and_yasha"
-		"item"    "item_mjollnir"
-		"item"    "item_skadi"
+		//"item"    "item_yasha_and_kaya"
 		"item"    "item_satanic"
-		"item"	  "item_hurricane_pike"
+		"item"    "item_skadi"
+		"item"    "item_mjollnir"
+		//"item"	  "item_hurricane_pike"
 		"item"	  "item_staff_of_negation"
 	}
 
-	// Side Shop List 1 (12/14)
+	// Side Shop List 1 (13/14)
 	"sideshop1"
 	{
 		"item"    "item_tpscroll"
@@ -223,19 +237,19 @@
 		"item"    "item_belt_of_strength"
 		"item"    "item_robe"
 		"item"    "item_ring_of_health"			// added
+		"item"    "item_crown"
 	}
 
-	// Side Shop List 2 (13/14)
+	// Side Shop List 2 (12/14)
 	"sideshop2"
 	{
-		"item"    "item_stout_shield"
-		"item"	  "item_blight_stone"			// added
 		"item"    "item_gloves"
 		"item"    "item_chainmail"
+		"item"	  "item_blight_stone"			// added
 		"item"    "item_cloak"
 		"item"    "item_void_stone"
-		"item"    "item_quarterstaff"			// added
 		"item"    "item_helm_of_iron_will"
+		"item"    "item_quarterstaff"			// added
 		"item"    "item_energy_booster"
 		"item"    "item_vitality_booster"
 		"item"    "item_lifesteal"
@@ -279,6 +293,7 @@
 		"item"		"item_slippers"
 		"item"		"item_mantle"
 		"item"		"item_circlet"
+		"item"		"item_recipe_magic_wand"
 		"item"		"item_ring_of_protection"
 		"item"		"item_stout_shield"
 		"item"		"item_quelling_blade"
@@ -290,9 +305,11 @@
 		"item"		"item_ring_of_regen"
 		"item"		"item_boots"
 		"item"		"item_gloves"
+		"item"		"item_crown"
 		"item"		"item_wraith_band"
 		"item"		"item_null_talisman"
 		"item"		"item_bracer"
+		"item"      "item_atma"
 		"item"		"item_blades_of_attack"
 	}
 }

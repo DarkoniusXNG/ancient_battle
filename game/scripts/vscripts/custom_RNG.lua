@@ -103,3 +103,6 @@ function CDOTA_Ability_Lua:PseudoRandom(percentage)
 		return false
 	end
 end
+
+CDOTA_Item_Lua.XNGRandom = CDOTA_Ability_Lua.XNGRandom
+CDOTA_Item_Lua.PseudoRandom = CDOTA_Ability_Lua.PseudoRandom

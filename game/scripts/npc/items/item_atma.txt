@@ -47,6 +47,7 @@
 		"ItemDroppable" 				"1"
 		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
 		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ShouldBeInitiallySuggested"	"1"
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------

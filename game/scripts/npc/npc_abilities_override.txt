@@ -78,8 +78,8 @@
   //"item_oblivion_staff"     "REMOVE"
   //"item_recipe_pers"      "REMOVE"
   //"item_pers"     "REMOVE"
-  //"item_recipe_poor_mans_shield"      "REMOVE"
-  //"item_poor_mans_shield"     "REMOVE"
+  "item_recipe_poor_mans_shield"      "REMOVE"
+  "item_poor_mans_shield"             "REMOVE"
   //"item_recipe_bracer"      "REMOVE"
   //"item_bracer"     "REMOVE"
   //"item_recipe_wraith_band"     "REMOVE"
@@ -215,8 +215,8 @@
   //"item_abyssal_blade"      "REMOVE"
   //"item_recipe_heavens_halberd"     "REMOVE"
   //"item_heavens_halberd"      "REMOVE"
-  //"item_recipe_ring_of_aquila"      "REMOVE"
-  //"item_ring_of_aquila"     "REMOVE"
+  "item_recipe_ring_of_aquila"      "REMOVE"
+  "item_ring_of_aquila"             "REMOVE"
   //"item_recipe_tranquil_boots"      "REMOVE"
   //"item_tranquil_boots"     "REMOVE"
   //"item_shadow_amulet"      "REMOVE"
@@ -276,50 +276,11 @@
 	"item_banana"      "REMOVE"
 	
 	//=================================================================================================================
-	// Blink Dagger - Decreased item cost to 2200. Shares the cooldown with Blink Sword.
-	// Notes: OK; 29.10.2016;
+	// Blink Dagger - Shares the cooldown with Blink Sword.
 	//=================================================================================================================
 	"item_blink"
 	{
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityCastRange"			"0"
-		//"AbilityCastPoint"			"0.0"
-		//"AbilityCooldown"				"12.0"
 		"AbilitySharedCooldown"			"blink_items"
-		//"AbilityManaCost"				"0"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		//"ItemCost"						"2200"
-		//"ItemShopTags"				"teleport"
-		//"ItemQuality"					"component"
-		//"ItemAliases"					"blink dagger"
-		//"SideShop"					"1"
-		//"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		// "AbilitySpecial"
-		// {
-			// "01"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "blink_range"			"1200"
-			// }
-			// "02"
-			// {
-				// "var_type"				"FIELD_FLOAT"
-				// "blink_damage_cooldown"	"3.0"
-			// }
-			// "03"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "blink_range_clamp"	"960"
-			// }
-		// }
 	}
 	
 	//=================================================================================================================
@@ -366,145 +327,26 @@
 	
 	//=================================================================================================================
 	// Black King Bar - Shares the cooldown with Ultimate King Bar
-	// Notes: OK; 10.1.2017;
 	//=================================================================================================================
 	"item_black_king_bar"
 	{
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
-		// Stats		
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityCooldown"				"80 75 70 65 60 55"
 		"AbilitySharedCooldown"			"black_king_bar"
-
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		//"ItemCost"					"3975"
-		//"ItemShopTags"				"str;damage;hard_to_tag"
-		//"ItemQuality"					"epic"
-		//"ItemAliases"					"bkb;black king bar"
-		//"ItemSellable"				"1"
-		//"ItemDeclarations"			"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		// "AbilitySpecial"
-		// {
-			// "01"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_strength"		"10"
-			// }
-			// "02"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_damage"			"24"
-			// }
-			// "03"
-			// {
-				// "var_type"				"FIELD_FLOAT"
-				// "duration"				"10.0 9.0 8.0 7.0 6.0 5.0"
-			// }
-			// "04"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "max_level"				"6"
-			// }
-			// "05"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "model_scale"			"30"     // Percentage over model scale
-			// }
-		// }
 	}
 	
 	//=================================================================================================================
 	// Blade Mail - Shares cooldown with Orb of Reflection
-	// Notes: OK; 29.10.2016;
 	//=================================================================================================================
 	"item_blade_mail"
 	{
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-
-		//"AbilityCooldown"				"18.0"
 		"AbilitySharedCooldown"			"reflection_items"
-
-		//"AbilityManaCost"				"25"
-		//"ItemCost"					"2200"
-		//"ItemShopTags"				"damage;armor;int;hard_to_tag"
-		//"ItemQuality"					"epic"
-		//"ItemAliases"					"blade mail"
-		//"ItemDeclarations"			"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		// "AbilitySpecial"
-		// {
-			// "01"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_damage"			"22"
-			// }
-			// "02"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_armor"			"6"
-			// }
-			// "03"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_intellect"		"10"
-			// }
-			// "04"
-			// {
-				// "var_type"				"FIELD_FLOAT"
-				// "duration"				"4.5"
-			// }
-		// }
 	}
 	
 	//=================================================================================================================
 	// Hood of Defiance - Shares cooldown with Infused Robe
-	// Notes: OK; 29.10.2016;
 	//=================================================================================================================
 	"item_hood_of_defiance"
 	{
-		//"AbilityCooldown"				"60.0"
 		"AbilitySharedCooldown"			"hood_of_defiance"
-		//"AbilityManaCost"				"75"
-		
-		//"ItemCost"					"1675"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		// "AbilitySpecial"
-		// {
-			// "01"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_spell_resist"	"30"
-			// }
-			// "02"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "bonus_health_regen"	"8"
-			// }			
-			// "03"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "tooltip_resist"		"30"
-			// }
-			// "04"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "barrier_block"			"325"
-			// }
-			// "05"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "barrier_duration"		"12.0"
-			// }
-		// }
 	}
 	
 	//=================================================================================================================
@@ -514,5 +356,53 @@
 	"silencer_glaives_of_wisdom"
 	{
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+	
+	//=================================================================================================================
+	// Orb of Venom
+	//=================================================================================================================
+	"item_orb_of_venom"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Sage Mask
+	//=================================================================================================================
+	"item_sobi_mask"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Ring of Regen
+	//=================================================================================================================
+	"item_ring_of_regen"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Ring of Health
+	//=================================================================================================================
+	"item_ring_of_health"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Blight Stone
+	//=================================================================================================================
+	"item_blight_stone"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Quarterstaff
+	//=================================================================================================================
+	"item_quarterstaff"
+	{
+		"SideShop"						"1"
 	}
 }
