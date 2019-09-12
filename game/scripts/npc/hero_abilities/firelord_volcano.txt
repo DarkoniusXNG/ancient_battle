@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
 	// Author: Darkonius
-	// Notes: OK; 14.10.2017;
+	// Notes: OK; 12.9.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"firelord_volcano"
@@ -21,7 +21,7 @@
 		"AbilityCastRange"				"1000"
 		"AbilityCastPoint"				"1.67"
 		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
-		"AbilityCooldown"				"180.0"
+		"AbilityCooldown"				"160.0"
 		"AbilityManaCost"				"200 180 150"
 		"AbilityProcsMagicStick"		"1"
 		"HasScepterUpgrade" 			"1"
@@ -64,7 +64,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"wave_damage"			"125 175 225"
+				"wave_damage"			"140 200 260"
 			}
 			"06"
 			{

@@ -4,7 +4,7 @@
 	// Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 13.10.2018; Life Drain works only if the caster doesn't have max health;
+	// Notes: OK; 12.9.2019; Life Drain works only if the caster doesn't have max health;
 	// Notes: The link will not break if the target goes out of vision;
 	// TO_DO: Fix issue with breaking when buying aether lens
 	//=================================================================================================================
@@ -29,7 +29,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"10.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@
 			"01"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"health_drain"						"60 90 120 150"
+				"health_drain"						"75 100 125 150"
 				"CalculateSpellDamageTooltip"		"1"
 			}
 			"02"

@@ -13,28 +13,29 @@ function custom_spawner:DifficultyCheck()
 	return difficulty
 end
 
--- This function will check if the unit is in enemy team and give him ...
--- the attack-move command if true -> Fixes the AI/pathing of spawned units
+-- the attack-move command -> For fixing the AI/pathing of spawned units
 function custom_spawner:AttackMoveCommand(unit, point)
 	Timers:CreateTimer(function()
-		if unit:GetTeam() == DOTA_TEAM_BADGUYS then
-			local order =
-			{
-				UnitIndex = unit:GetEntityIndex(),
-				OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-				Position = point,
-				Queue = true
-			}
-			ExecuteOrderFromTable(order)
-		end
+		local order =
+		{
+			UnitIndex = unit:GetEntityIndex(),
+			OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+			Position = point,
+			Queue = true
+		}
+		ExecuteOrderFromTable(order)
 	end)
 end
 
+-- This function will find all creatures, check if they are in enemy team and give them ...
+-- the attack-move command if true
 function custom_spawner:AllEnemyCreaturesAttackMoveCommand()
 	local creatures_on_map = Entities:FindAllByClassname("npc_dota_creature")
 	for _,creature in pairs(creatures_on_map) do
-		if creature then
-			self:AttackMoveCommand(creature, Vector(0,0,0))
+		if creature and not creature:IsNull() then
+			if creature:GetTeam() == DOTA_TEAM_BADGUYS then
+				self:AttackMoveCommand(creature, Vector(0,0,0))
+			end
 		end
 	end
 end
@@ -54,16 +55,7 @@ function custom_spawner:SpawnDefence(spawner_name, destination_name, units_to_sp
 	
 	for i = 1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point+RandomVector(RandomInt(100,200)), true, nil, nil, DOTA_TEAM_GOODGUYS)
-		Timers:CreateTimer(function()	
-			local order =
-			{
-				UnitIndex = unit:GetEntityIndex(),
-				OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
-				Position = waypoint,
-				Queue = true
-			}
-			ExecuteOrderFromTable(order)
-		end)
+		self:AttackMoveCommand(unit, waypoint)
 	end
 end
 
@@ -73,7 +65,7 @@ function custom_spawner:AreAllEnemyCreaturesDead()
 	local number_of_enemy_creatures = 0
 		
 	for _,creature in pairs(creatures_on_map) do
-		if creature then
+		if creature and not creature:IsNull() then
 			if creature:GetTeam() == DOTA_TEAM_BADGUYS and creature:IsAlive() then
 				number_of_enemy_creatures = number_of_enemy_creatures + 1
 			end
@@ -88,7 +80,7 @@ end
 
 -- This function checks if every condition is fulfilled for starting the next round; Returns boolean
 function custom_spawner:ShouldWeStartNextRound(current_round)
-	if self:AreAllEnemyCreaturesDead() == true then
+	if self:AreAllEnemyCreaturesDead() then
 		if current_round == 1 then
 			-- add here special rules for ending the round
 		elseif current_round == 2 then
@@ -120,7 +112,7 @@ function custom_spawner:SpawnNeutralUnits(spawner_entity, units_to_spawn, number
     local point = Entities:FindByName(nil, spawner_entity):GetAbsOrigin()
 	for i = 1, number_of_units do
 		local unit = CreateUnitByName(units_to_spawn, point, true, nil, nil, DOTA_TEAM_NEUTRALS)
-		FindClearSpaceForUnit(unit, point+RandomVector(RandomInt(50,120)), false)
+		FindClearSpaceForUnit(unit, point+RandomVector(RandomInt(50,110)), false)
 	end
 end
 
@@ -138,19 +130,9 @@ function custom_spawner:IsCampEmpty(spawner_entity, camp_radius)
 	return true
 end
 
-function custom_spawner:SpawnAncientCamp(spawner_entity)
-	local ancient_camp_creeps = {
-		{
-			{"", 1},
-			{"", 2},
-		},
-		{
-			{"", 1},
-			{"", 2},
-		}
-    }
-	local random_number = RandomInt(1, #ancient_camp_creeps)
-	local camp = ancient_camp_creeps[random_number]
+function custom_spawner:SpawnNeutralCamp(spawner_entity, camp_creeps)
+	local random_number = RandomInt(1, #camp_creeps)
+	local camp = camp_creeps[random_number]
 	for i = 1, #camp do
 		local neutral_creep = camp[i]
 		local unit_to_spawn = neutral_creep[1]
@@ -183,35 +165,32 @@ function custom_spawner:SpawnHardCamp(spawner_entity)
 			{"npc_dota_neutral_dark_troll", 2},
 		}
     }
-	local random_number = RandomInt(1, #hard_camp_creeps)
-	local camp = hard_camp_creeps[random_number]
-	for i = 1, #camp do
-		local neutral_creep = camp[i]
-		local unit_to_spawn = neutral_creep[1]
-		local number_of_units = neutral_creep[2]
-		self:SpawnNeutralUnits(spawner_entity, unit_to_spawn, number_of_units)
-	end
+	self:SpawnNeutralCamp(spawner_entity, hard_camp_creeps)
 end
 
 function custom_spawner:SpawnMediumCamp(spawner_entity)
 	local medium_camp_creeps = {
 		{
-			{"", 1},
-			{"", 2},
+			{"npc_dota_neutral_centaur_khan", 1},
+			{"npc_dota_neutral_centaur_outrunner", 1},
 		},
 		{
-			{"", 1},
-			{"", 2},
+			{"npc_dota_neutral_alpha_wolf", 1},
+			{"npc_dota_neutral_giant_wolf", 2},
+		},
+		{
+			{"npc_dota_neutral_satyr_soulstealer", 2},
+			{"npc_dota_neutral_satyr_trickster", 2},
+		},
+		{
+			{"npc_dota_neutral_ogre_magi", 1},
+			{"npc_dota_neutral_ogre_mauler", 2},
+		},
+		{
+			{"npc_dota_neutral_mud_golem", 2},
 		}
     }
-	local random_number = RandomInt(1, #medium_camp_creeps)
-	local camp = medium_camp_creeps[random_number]
-	for i = 1, #camp do
-		local neutral_creep = camp[i]
-		local unit_to_spawn = neutral_creep[1]
-		local number_of_units = neutral_creep[2]
-		self:SpawnNeutralUnits(spawner_entity, unit_to_spawn, number_of_units)
-	end
+	self:SpawnNeutralCamp(spawner_entity, medium_camp_creeps)
 end
 
 function custom_spawner:SpawnEasyCamp(spawner_entity)
@@ -241,14 +220,33 @@ function custom_spawner:SpawnEasyCamp(spawner_entity)
 			{"npc_dota_neutral_harpy_scout", 2},
 		}
     }
-	local random_number = RandomInt(1, #easy_camp_creeps)
-	local camp = easy_camp_creeps[random_number]
-	for i = 1, #camp do
-		local neutral_creep = camp[i]
-		local unit_to_spawn = neutral_creep[1]
-		local number_of_units = neutral_creep[2]
-		self:SpawnNeutralUnits(spawner_entity, unit_to_spawn, number_of_units)
-	end
+	self:SpawnNeutralCamp(spawner_entity, easy_camp_creeps)
+end
+
+function custom_spawner:SpawnAncientCamp(spawner_entity)
+	local ancient_camp_creeps = {
+		{
+			{"npc_dota_neutral_elder_jungle_stalker", 1},
+			{"npc_dota_neutral_jungle_stalker", 2},
+		},
+		{
+			{"npc_dota_neutral_prowler_shaman", 1},
+			{"npc_dota_neutral_prowler_acolyte", 2},
+		},
+		{
+			{"npc_dota_neutral_granite_golem", 1},
+			{"npc_dota_neutral_rock_golem", 2},
+		},
+		{
+			{"npc_dota_neutral_big_thunder_lizard", 1},
+			{"npc_dota_neutral_small_thunder_lizard", 2},
+		},
+		{
+			{"npc_dota_neutral_black_dragon", 1},
+			{"npc_dota_neutral_black_drake", 2},
+		}
+    }
+	self:SpawnNeutralCamp(spawner_entity, ancient_camp_creeps)
 end
 
 function custom_spawner:SpawnNeutralCamps()
@@ -262,10 +260,10 @@ function custom_spawner:SpawnNeutralCamps()
 
 	-- Medium Camps
 	if self:IsCampEmpty("medium_camp_dire_right", 600) then
-		--self:SpawnMediumCamp("medium_camp_dire_right")
+		self:SpawnMediumCamp("medium_camp_dire_right")
 	end
 	if self:IsCampEmpty("medium_camp_dire_left", 600) then
-		--self:SpawnMediumCamp("medium_camp_dire_left")
+		self:SpawnMediumCamp("medium_camp_dire_left")
 	end
 
 	-- Easy Camps
@@ -281,7 +279,7 @@ function custom_spawner:SpawnNeutralCamps()
 
 	-- Ancients
 	if self:IsCampEmpty("ancients_and_boss_spawn", 600) then
-		--self:SpawnAncientCamp("ancients_and_boss_spawn")
+		self:SpawnAncientCamp("ancients_and_boss_spawn")
 	end
 end
 
