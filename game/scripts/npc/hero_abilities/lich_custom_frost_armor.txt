@@ -3,15 +3,15 @@
 	//====================================================================================================
 	// Lich: Ice Armor (W) - Datadriven Lich Frost Armor, increased slow values
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 10.6.2018;
-	// TO_DO: Ponekad na lich-u ne moze autocast lepo da radi ako je meta prebrzo dmg-ovana - not critical
+	// Notes: OK; 12.9.2019;
+	// TO_DO: Sometimes autocast doesnt work properly if ally is damaged too fast - not critical
 	//====================================================================================================
 	"lich_custom_frost_armor"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"lich_frost_armor"
+		"AbilityTextureName"			"custom/lich_custom_frost_armor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"

@@ -4,13 +4,13 @@
 	// Lich: Frost Blast (Q) - Datadriven Lich Frost Nova, Reduced slow values
 	// Author: Jastuchko + Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 12.9.2019;
 	// TO_DO:
 	//====================================================================================================
 	"lich_custom_frost_nova"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"lich_frost_nova"
+		"AbilityTextureName"			"custom/lich_custom_frost_nova"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

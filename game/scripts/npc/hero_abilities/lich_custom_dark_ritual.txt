@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Lich: Sacrifice (E) - Datadriven Lich Dark Ritual(Sacrifice), nobody gets XP, decreased cooldown, increased cast range
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 12.9.2019;
 	// TO_DO:
 	//====================================================================================================
 	"lich_custom_dark_ritual"
@@ -11,7 +11,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"lich_dark_ritual"
+		"AbilityTextureName"			"custom/lich_custom_dark_ritual"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
