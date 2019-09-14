@@ -53,6 +53,9 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 						local towers_fury_swipes = building:FindAbilityByName("ursa_fury_swipes")
 						towers_fury_swipes:SetLevel(4)
 					end
+				elseif GetMapName() == "two_vs_two" then
+					-- Buff Towers in 2v2
+					building:AddNewModifier(building, nil, "modifier_custom_tower_buff", {})
 				end
 			elseif string.find(building_name, "fort") then -- Check if its an ancient (throne/tree)
 				if GetMapName() == "holdout" then
@@ -253,6 +256,7 @@ function ancient_battle_gamemode:InitGameMode()
 	-- Lua Modifiers
 	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	
 	print("Ancient Battle custom game initialized.")
 end

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Fire Lord: Meteor Push (E) - New Spell, Knocks back caster and enemies on impact, deals damage on impact and on hit
 	// Author: Darkonius
-	// Notes: OK; 12.9.2019;
-	// TO_DO: Test
+	// Notes: OK; 14.9.2019;
+	// TO_DO:
 	// ================================================================================================================
 	"firelord_meteor_push"
 	{
@@ -72,7 +72,7 @@
 			"08" // This is the burn damage dealt by the meteor ball (dealt only if enemy touched it)
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "15 20 25 30"
+				"damage_per_second"                       "26 39 52 65"
 			}
 			"09"
 			{

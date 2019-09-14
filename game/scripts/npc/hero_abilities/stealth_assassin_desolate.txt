@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Stealth Assassin: Desolate (E) - New Spell, similar to Spectre Desolate
 	// Author: Darkonius
-	// Notes: OK; 26.8.2019; Damage is dealt in a seperate instance;
+	// Notes: OK; 13.9.2019; Damage is dealt in a seperate instance; Damage ignores Damage Block; It cant be lifestealed off of, and its not considered by crit or cleave.
 	// TO_DO:
 	//=================================================================================================================
 	"stealth_assassin_desolate"
@@ -23,7 +23,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"damage_multiplier"                       "0.9 1.1 1.3 1.5"
+				"damage_multiplier"                       "0.7 0.9 1.1 1.3"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"

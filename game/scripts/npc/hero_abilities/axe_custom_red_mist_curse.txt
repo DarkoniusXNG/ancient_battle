@@ -1,11 +1,11 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Axe: Red Mist Curse (W) - New Spell, like Battle Hunger on enemies but doesn't get removed upon killing and gives FOW vision.
+	// Axe: Red Mist Curse (W) - New Spell, like Ogre Magi Ignite but gives FOW vision and no projectile.
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018;
+	// Notes: OK; 14.9.2019; Total Damage difference (old-new): -35/-71/-91/-95
 	// Linkens: Blocks;
-	// TO_DO:
+	// TO_DO: 
 	//=================================================================================================================
 	"axe_custom_red_mist_curse"
 	{
@@ -27,31 +27,31 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0 15.0 10.0 5.0"		// same as Battle Hunger or worse
+		"AbilityCooldown"				"15.0"                      // Ignite (15); Leech Seed (16/13/10/7);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"65 70 75 80"				// same as Battle Hunger or worse
+		"AbilityManaCost"				"90"                        // Ignite (90);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // like Battle Hunger
+			"01" // Battle Hunger (12); Dual Breath (5); Ignite (5/6/7/8); Leech Seed (7); Shadow Word (12);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration"					"12"
+				"duration"					"5 6 7 8"
 			}
-			"02" // unique
+			"02" // Shadow Word (15/25/35/45); Ignite (26/34/42/50); Leech Seed (12/24/36/48);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage_per_second"			"15 25 35 45"
+				"damage_per_second"			"26 34 42 50"
 			}
-			"03" // unique
+			"03" // Battle Hunger (12%); Ignite (20%/22%/24%/26%); Leech Seed (16%/20%/24%/28%);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"move_speed_slow"			"-10 -15 -20 -25"
+				"move_speed_slow"			"-12 -17 -22 -27"
 			}
 		}
 

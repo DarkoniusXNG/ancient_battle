@@ -98,7 +98,7 @@ if IsServer() then
 
 	local chance = ability:GetSpecialValueFor("chance") or self.chance
 
-	if ability:XNGRandom(chance) then
+	if ability:PseudoRandom(chance) then
 	  local duration = ability:GetSpecialValueFor("duration") or self.duration
 
 	  -- Creeps have a different duration
