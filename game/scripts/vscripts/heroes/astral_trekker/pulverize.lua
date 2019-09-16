@@ -7,3 +7,7 @@ LinkLuaModifier("modifier_pulverize_cleave", "heroes/astral_trekker/modifier_pul
 function astral_trekker_pulverize:GetIntrinsicModifierName()
 	return "modifier_pulverize_cleave"
 end
+
+function astral_trekker_pulverize:IsStealable()
+	return false
+end

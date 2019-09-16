@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Mana Eater: Mana Flare (E) - New Spell, like Pugna's Nether Ward but the hero itself is the source of the Mana Flare + bonus armor while channeling
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017; Channeling spell;
+	// Notes: OK; 16.9.2019; Channeling spell; Pure damage;
 	// TO_DO:
 	//=================================================================================================================
 	"mana_eater_mana_flare"
@@ -43,21 +43,24 @@
 				"var_type"					"FIELD_INTEGER"
 				"bonus_armor"				"20"
 			}
-			"04" // Nether Ward: 1/1.25/1.5/1.75
+			"04" // like Nether Ward
 			{
 				"var_type"						"FIELD_FLOAT"
-				"damage_per_used_mana"			"1.0 1.25 1.5 1.75"
+				"damage_per_used_mana"			"1.25 1.5 1.75 2.0"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 		}
 	
 		"precache"
 		{
-			"particle"  "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf" // used
-			"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
-			"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
-			"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
-			"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
+			"particle"  "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf"  // used
+			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
+			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
+			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
+			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
+			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_heavy_ti_5.vpcf"  // used
+			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_medium_ti_5.vpcf" // used
+			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"  // used
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
 		}

@@ -27,6 +27,9 @@ function perun_electric_trap:OnSpellStart()
 	local trap_duration = self:GetSpecialValueFor("duration")
 	local trap = CreateUnitByName("npc_dota_techies_stasis_trap", point, true, caster, caster, caster:GetTeamNumber())
 	trap:SetOwner(caster)
+	trap:SetDeathXP(12)
+	trap:SetMaximumGoldBounty(20)
+	trap:SetMinimumGoldBounty(10)
 	trap:AddNewModifier(caster, self, "modifier_perun_electric_trap", {})
 	trap:AddNewModifier(caster, self, "modifier_kill", {duration = trap_duration})
 end
@@ -84,9 +87,11 @@ function modifier_perun_electric_trap:OnIntervalThink()
 		local all_enemies = FindUnitsInRadius(mine_team, point, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 		local enemies = {}
 		for _, enemy in pairs(all_enemies) do
-			local name = enemy:GetUnitName()
-			if name ~= "npc_dota_custom_electric_trap" then
-				table.insert(enemies, enemy)
+			if enemy then
+				local name = enemy:GetUnitName()
+				if name ~= "npc_dota_custom_electric_trap" and name ~="npc_dota_techies_stasis_trap" then
+					table.insert(enemies, enemy)
+				end
 			end
 		end
 
@@ -97,7 +102,7 @@ function modifier_perun_electric_trap:OnIntervalThink()
 			local delay = ability:GetSpecialValueFor("delay")
 			local stun_duration = ability:GetSpecialValueFor("stun_duration")
 
-			Timers:CreateTimer(delay, function ()
+			Timers:CreateTimer(delay, function()
 				if parent:IsNull() then
 					return nil
 				end
@@ -108,9 +113,11 @@ function modifier_perun_electric_trap:OnIntervalThink()
 					local all = FindUnitsInRadius(parent_team, parent_origin, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 					local enemies_again = {}
 					for _, enemy in pairs(all) do
-						local name = enemy:GetUnitName()
-						if name ~= "npc_dota_custom_electric_trap" then
-							table.insert(enemies_again, enemy)
+						if enemy then
+							local name = enemy:GetUnitName()
+							if name ~= "npc_dota_custom_electric_trap" and name ~="npc_dota_techies_stasis_trap" then
+								table.insert(enemies_again, enemy)
+							end
 						end
 					end
 
@@ -131,8 +138,10 @@ function modifier_perun_electric_trap:OnIntervalThink()
 						parent:EmitSound("Hero_Techies.StasisTrap.Stun")
 
 						for _, enemy in pairs(enemies_again) do
-							-- Apply Stasis Trap debuff to the enemy
-							enemy:AddNewModifier(parent, ability, "modifier_custom_electric_trap_stun", {duration = stun_duration})
+							if enemy then
+								-- Apply Electric Trap stun debuff to the enemy
+								enemy:AddNewModifier(parent, ability, "modifier_custom_electric_trap_stun", {duration = stun_duration})
+							end
 						end
 
 						parent:ForceKill(false)
@@ -141,7 +150,7 @@ function modifier_perun_electric_trap:OnIntervalThink()
 						local enemy_heroes_around = FindUnitsInRadius(parent_team, parent_origin, nil, 1500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, hero_flags, FIND_ANY_ORDER, false)
 						local number_of_heroes = #enemy_heroes_around
 						for _, hero in pairs(enemy_heroes_around) do
-							if number_of_heroes>0 then
+							if number_of_heroes > 0 then
 								hero:AddExperience(parent_death_xp/number_of_heroes, DOTA_ModifyXP_CreepKill, false, false)
 							end
 						end

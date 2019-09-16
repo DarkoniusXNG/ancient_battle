@@ -144,7 +144,7 @@ function modifier_perun_electric_shield:OnDestroy()
 
 	-- Emit End sound
 	parent:EmitSound("Hero_Dark_Seer.Ion_Shield_end")
-	
+
 	if self.particle then
 		--ParticleManager:ReleaseParticleIndex(self.particle)
 	end

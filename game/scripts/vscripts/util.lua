@@ -390,7 +390,6 @@ function CustomPassiveBreak(unit, duration)
 		"archmage_arcane_magic",
 		"lich_custom_freezing_touch",
 		"brewmaster_custom_drunken_brawler",
-		"mana_eater_mana_shell",
 		"alchemist_custom_philosophers_stone",
 		"blademaster_custom_blade_dance"
 	}
@@ -408,7 +407,6 @@ function CustomPassiveBreak(unit, duration)
 		"modifier_archmage_aura_applier",
 		"modifier_lich_freezing_touch_passive",
 		"modifier_custom_drunken_brawler_passive",
-		"modifier_mana_shell_passive",
 		"modifier_philosophers_stone_passive_buff",
 		"modifier_custom_blade_dance_passive"
 	}

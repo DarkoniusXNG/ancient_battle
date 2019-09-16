@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Mana Eater: Anti-Magic Field (W) - New Spell, Generates an anti magic field that grants magic immunity (not spell immunity!) to all heroes and buildings within and pseudo-silence to enemies.
 	// Author: Darkonius
-	// Notes: OK; 27.12.2016; Uses Order Filter;
+	// Notes: OK; 16.9.2019; Uses Order Filter;
 	// TO_DO: Fix sound length if Valve doesn't -> not critical
 	//=================================================================================================================
 	"mana_eater_anti_magic_field"
@@ -44,12 +44,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"	// Arc Warden Magnetic Field radius: 275
+			"01" // like Arc Warden Magnetic Field
 			{
 				"var_type"					"FIELD_INTEGER"
 				"radius"					"300"
 			}
-			"02"	// Arc Warden Magnetic Field duration: 3.5/4.5/5.5/6.5
+			"02" // unique
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration"					"4.0 6.0 8.0 10.0"

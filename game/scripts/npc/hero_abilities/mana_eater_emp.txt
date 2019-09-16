@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Mana Eater: EMP (F) - New Spell, Similar to Invoker's EMP, burns percentage of max mana and EMP follows the caster
 	// Author: Darkonius
-	// Notes: OK; 31.1.2017; Destroys illusions; EMP cannot be dispelled from Mana Eater once activated;
+	// Notes: OK; 16.9.2019; Destroys illusions; EMP cannot be dispelled from Mana Eater once activated; Pure damage;
 	// TO_DO: 
 	//=================================================================================================================
 	"mana_eater_emp"
@@ -16,6 +16,7 @@
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"               	"4"
 		"RequiredLevel"				"6"
 		"LevelsBetweenUpgrades"		"4"
@@ -38,12 +39,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // like Invoker EMP
 			{
 				"var_type"						"FIELD_INTEGER"
-				"radius"						"700"
+				"radius"						"675"
 			}
-			"02"
+			"02" // similar to OD Sanity's Eclipse
 			{
 				"var_type"						"FIELD_INTEGER"
 				"mana_burned"					"30 35 40 45"
@@ -54,12 +55,12 @@
 				"damage_per_mana_burned"		"0.75"
 				"CalculateSpellDamageTooltip"	"0"
 			}
-			"04"
+			"04" // like Invoker EMP
 			{
 				"var_type"						"FIELD_INTEGER"
 				"mana_gained_per_mana_burned"	"50"
 			}
-			"05"
+			"05" // like Invoker EMP
 			{
 				"var_type"						"FIELD_FLOAT"
 				"delay"							"2.9"

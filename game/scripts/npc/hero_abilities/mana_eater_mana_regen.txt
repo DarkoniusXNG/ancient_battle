@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Mana Eater: Negative Mana Regeneration - innate passive effect, -5 mana regen
+	// Mana Eater: Negative Mana Regeneration - innate passive effect;
 	// Author: Darkonius
-	// Notes: OK; 10.2.2017; Min mana regeneration that can be seen in HUD is -50. Clamping issue.
-	// TO_DO: If there is an error or crash, make a lua modifier that dynamicaly applies negative mana regen debuff to constantly be -5.
+	// Notes: OK; 16.9.2019; Min mana regeneration that can be seen in HUD is -50. Clamping issue.
+	// TO_DO: 
 	//=================================================================================================================
 	"mana_eater_mana_regen"
 	{

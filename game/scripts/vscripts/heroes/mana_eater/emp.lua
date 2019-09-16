@@ -39,7 +39,7 @@ function ElectromagneticPulse(keys)
 					-- Calculating mana burn value
 					local unit_current_mana = unit:GetMana()
 					local unit_max_mana = unit:GetMaxMana()
-					local mana_to_burn_on_unit = mana_to_burn_percent*unit_max_mana*0.01
+					local mana_to_burn_on_unit = unit_max_mana*mana_to_burn_percent*0.01
 					if mana_to_burn_on_unit > unit_current_mana then
 						mana_to_burn_on_unit = unit_current_mana
 					end

@@ -4,7 +4,7 @@
 	// Mana Eater: Absorb Mana (R) - New Spell, Transfers mana from the target to the caster
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 27.12.2016; Has Aghanim Scepter upgrade; Destroys illusions; DOTA_UNIT_TARGET_FLAG_MANA_ONLY doesn't work
+	// Notes: OK; 16.9.2019; Has Aghanim Scepter upgrade; Destroys illusions; DOTA_UNIT_TARGET_FLAG_MANA_ONLY doesn't work
 	// TO_DO: 
 	//=================================================================================================================
 	"mana_eater_absorb_mana"
@@ -21,7 +21,7 @@
 		
 		"HasScepterUpgrade" 			"1"
 		
-		"AbilityCastRange"				"550"
+		"AbilityCastRange"				"550" // like Puck attack range
 		"AbilityCastPoint"				"0.35"
 		
 		"AbilityCooldown"				"90.0 70.0 50.0"
@@ -54,7 +54,7 @@
 			"05"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"buff_duration_scepter"		"5.0"
+				"buff_duration_scepter"		"10.0"
 			}
 		}
 		

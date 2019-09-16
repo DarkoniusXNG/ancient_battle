@@ -34,7 +34,7 @@ function MysticBoltHit(event)
 	-- Find correct mana_at_that_time
 	local mana_at_that_time
 	for i, mana in pairs(caster.mana_spent_at_cast_time) do
-		if mana ~= nil then
+		if mana then
 			mana_at_that_time = mana
 			caster.mana_spent_at_cast_time[i] = nil
 			break
