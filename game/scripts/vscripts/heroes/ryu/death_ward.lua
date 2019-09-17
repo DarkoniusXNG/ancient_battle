@@ -145,12 +145,12 @@ end
 
 function modifier_custom_death_ward:OnCreated()
 	local parent = self:GetParent()
-	local owner = parent:GetOwner()
 	self.ward_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_witchdoctor/witchdoctor_ward_skull.vpcf", PATTACH_POINT_FOLLOW, parent)
 	ParticleManager:SetParticleControlEnt(self.ward_particle, 0, parent, PATTACH_POINT_FOLLOW, "attach_attack1", parent:GetAbsOrigin(), true)
 	ParticleManager:SetParticleControl(self.ward_particle, 2, parent:GetAbsOrigin())
 
 	if IsServer() then
+		local owner = parent:GetOwner()
 		local attack_range_bonus = 0
 		-- Check for bonus attack range talent
 		local talent = owner:FindAbilityByName("special_bonus_unique_witch_doctor_1")
@@ -166,7 +166,7 @@ function modifier_custom_death_ward:OnCreated()
 end
 
 function modifier_custom_death_ward:OnDestroy()
-	if self.ward_particle and not self.ward_particle:IsNull() then
+	if self.ward_particle then
 		ParticleManager:DestroyParticle(self.ward_particle, true)
 		ParticleManager:ReleaseParticleIndex(self.ward_particle)
 	end
@@ -330,13 +330,15 @@ function modifier_custom_death_ward:OnAttackLanded(event)
 	end
 end
 
-function modifier_custom_death_ward:CheckState()
-	local parent = self:GetParent()
-	local owner = parent:GetOwner()
+if IsServer() then
+	function modifier_custom_death_ward:CheckState()
+		local parent = self:GetParent()
+		local owner = parent:GetOwner()
 
-	local state = {
-		[MODIFIER_STATE_CANNOT_MISS] = owner:HasScepter(),
-	}
-	return state
+		local state = {
+			[MODIFIER_STATE_CANNOT_MISS] = owner:HasScepter(),
+		}
+		return state
+	end
 end
 
