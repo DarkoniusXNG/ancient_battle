@@ -24,6 +24,7 @@
 #base "units/water_elementals.txt"
 #base "units/npc_dota_custom_phoenix_summon.txt"
 #base "units/npc_dota_custom_phoenix_egg.txt"
+#base "units/npc_dota_custom_death_ward.txt"
 
 "DOTAUnits"
 {
