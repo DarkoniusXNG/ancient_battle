@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 10.5.2018; Slow works on towers; Passive works on illusions.
+	// Notes: OK; 18.9.2019; Slow works on towers; Passive works on illusions.
 	// TO_DO:
 	//====================================================================================================
 	"lich_custom_freezing_touch"
@@ -24,18 +24,18 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"3.0"
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"3"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-30"
+				"move_speed_slow"		"-40"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"attack_speed_slow"		"-30"
+				"attack_speed_slow"		"-60"
 			}
 		}
 

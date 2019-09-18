@@ -4,7 +4,7 @@
 	// Dark Ranger: Dark Arrows (Q) - New Spell, Frost Arrows + adds extra damage to attacks. Units killed while under the effect of Dark Arrow will turn into Dark Minions.
 	// Author: Darkonius;
 	// Linkens: Doesn't Block (INTENTIONAL)
-	// Notes: OK; 13.10.2018; Bonus damage can damage buildings;
+	// Notes: OK; 18.9.2019; Bonus damage can damage buildings;
 	// Notes: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
 	// TO_DO: Rework into ability_lua
 	//================================================================================================================= 
@@ -46,7 +46,7 @@
 			"03"
 			{
 				"var_type"          			"FIELD_INTEGER"
-				"dark_minion_damage"       		"16 18 20 22"
+				"dark_minion_damage"       		"20 25 35 45"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"04"

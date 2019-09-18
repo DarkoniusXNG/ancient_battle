@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 26.8.2019;
+	// HERO: Lifestealer; 18.9.2019;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
 	// TO_DO: life_stealer_custom_open_wounds;
 	//=================================================================================================================
@@ -20,7 +20,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"											// It works now (7.00)
 		"Ability1"				"life_stealer_feast"						// Q, DOTA_VERSION (4 levels)
-		"Ability2"				"life_stealer_custom_open_wounds"			// W (4 levels)
+		"Ability2"				"life_stealer_open_wounds"                  // W, DOTA_VERSION (4 levels)
 		"Ability3"				"life_stealer_custom_anabolic_frenzy"		// E (4 levels)
 		"Ability4"				"life_stealer_custom_poison_sting"			// T, passive, modified (4 levels)
 		"Ability5"				"life_stealer_custom_absorb_life"			// F (1 level)
@@ -30,9 +30,9 @@
 		"Ability9"				"generic_hidden"
 
 		"Ability10"				"special_bonus_hp_200"						// lvl 10 talent; same as dota Lifestealer
-		"Ability11"				"special_bonus_mp_regen_2"                  // lvl 10 talent; unique
+		"Ability11"				"special_bonus_unique_venomancer_2"         // lvl 10 talent; Poison Sting talent
 
-		"Ability12"				"special_bonus_lifesteal_20"				// lvl 15 talent; unique 
+		"Ability12"				"special_bonus_unique_lifestealer_2"		// lvl 15 talent; Open Wounds talent 
 		"Ability13"				"special_bonus_attack_damage_30"			// lvl 15 talent; same as dota Lifestealer
 
 		"Ability14"				"special_bonus_evasion_20"					// lvl 20 talent; same as dota Lifestealer

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Poison Sting (T) - Modified Venomancer Poison Sting; 
 	// Author: Valve + Darkonius
-	// Notes: OK; 27.2.2019; Old Naix had: 2/4/7/10 dmg, 2 seconds duration; 10/20/30/40% slow
+	// Notes: OK; 18.9.2019; Old Naix had: 2/4/7/10 dmg, 2 seconds duration; 10/20/30/40% slow
 	// TO_DO:
 	//=================================================================================================================
 	"life_stealer_custom_poison_sting"
@@ -15,8 +15,8 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -35,7 +35,8 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_speed"			"-10 -12 -14 -16"
+				"movement_speed"			"-11 -13 -15 -17"
+				"LinkedSpecialBonus"        "special_bonus_unique_venomancer_2"
 			}			
 		}
 	}

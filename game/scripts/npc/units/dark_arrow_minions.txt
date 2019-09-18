@@ -2,7 +2,7 @@
 {
 	//====================================================================================
 	// Dark Arrow: Lesser Dark Minion
-	// Notes: OK; 4.11.2016;
+	// Notes: OK; 18.9.2019;
 	//====================================================================================
 	"npc_dota_dark_arrow_minion_1"
 	{										
@@ -26,8 +26,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"15"								// Damage range min.
-		"AttackDamageMax"			"17"								// Damage range max.	
+		"AttackDamageMin"			"15"								// 18.9.2019;
+		"AttackDamageMax"			"20"								// 18.9.2019;
 		"AttackRate"				"1.7"								// Speed of attack.
 		"AttackAnimationPoint"		"0.38"								// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"								// Range within a target can be acquired.
@@ -72,7 +72,7 @@
 	
 	//====================================================================================
 	// Dark Arrow: Medium/Mediocre Dark Minion
-	// Notes: OK; 4.11.2016;
+	// Notes: OK; 18.9.2019;
 	//====================================================================================
 	"npc_dota_dark_arrow_minion_2"
 	{										
@@ -96,8 +96,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"17"								// Damage range min.
-		"AttackDamageMax"			"19"								// Damage range max.	
+		"AttackDamageMin"			"20"								// 18.9.2019;
+		"AttackDamageMax"			"30"								// 18.9.2019;
 		"AttackRate"				"1.7"								// Speed of attack.
 		"AttackAnimationPoint"		"0.38"								// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"								// Range within a target can be acquired.
@@ -142,7 +142,7 @@
 	
 	//====================================================================================
 	// Dark Arrow: Great Dark Minion
-	// Notes: OK; 4.11.2016;
+	// Notes: OK; 18.9.2019;
 	//====================================================================================
 	"npc_dota_dark_arrow_minion_3"
 	{										
@@ -166,8 +166,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"19"								// Damage range min.
-		"AttackDamageMax"			"21"								// Damage range max.	
+		"AttackDamageMin"			"30"								// 18.9.2019;
+		"AttackDamageMax"			"40"								// 18.9.2019;
 		"AttackRate"				"1.7"								// Speed of attack.
 		"AttackAnimationPoint"		"0.38"								// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"								// Range within a target can be acquired.
@@ -212,7 +212,7 @@
 	
 	//====================================================================================
 	// Dark Arrow: Super Dark Minion
-	// Notes: OK; 4.11.2016;
+	// Notes: OK; 18.9.2019;
 	//====================================================================================
 	"npc_dota_dark_arrow_minion_4"
 	{										
@@ -236,8 +236,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"21"								// Damage range min.
-		"AttackDamageMax"			"23"								// Damage range max.	
+		"AttackDamageMin"			"40"								// 18.9.2019;
+		"AttackDamageMax"			"50"								// 18.9.2019;
 		"AttackRate"				"1.7"								// Speed of attack.
 		"AttackAnimationPoint"		"0.38"								// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"								// Range within a target can be acquired.

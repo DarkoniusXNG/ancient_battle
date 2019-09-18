@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lich; 26.8.2019;
+	// HERO: Lich; 18.9.2019;
 	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
 	// TO_DO:
 	//=================================================================================================================
@@ -71,7 +71,7 @@
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"			"15"								// dota Lich (20); original (15)
 		"AttributeStrengthGain"			"2.0"								// dota Lich (2.1); original (2.0) - don't change!
-		"AttributeBaseIntelligence"		"16"								// dota Lich (24); original (20); - don't change!
+		"AttributeBaseIntelligence"		"20"								// dota Lich (24); original (20); - don't change!
 		"AttributeIntelligenceGain"		"3.4"								// dota Lich (4.1); original (3.4)
 		"AttributeBaseAgility"			"15"								// dota Lich (15); original (14)
 		"AttributeAgilityGain"			"2.0"								// dota Lich (2.0); original (1.0)

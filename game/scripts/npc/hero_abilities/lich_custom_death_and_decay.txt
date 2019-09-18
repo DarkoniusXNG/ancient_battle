@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Lich: Death and Decay (T) - Datadriven Enigma's Midnight Pulse that works on buildings and ancients
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 12.9.2019;
+	// Notes: OK; 18.9.2019;
 	// TO_DO:
 	//====================================================================================================
 	"lich_custom_death_and_decay"
@@ -27,7 +27,7 @@
 
 		"AbilityCooldown"				"35.0"
 
-		"AbilityManaCost"				"100 110 120 130"
+		"AbilityManaCost"				"100 120 140 160"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
@@ -44,34 +44,34 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"550"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "550"
 			}
 			
 			"02" // needs to be integer
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"2 3 4 5"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"damage"                                  "2 3 4 5"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			
 			"03" // needs to be integer
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_buildings"				"1"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_buildings"                        "1"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"tick_rate"				"1.0"
+				"var_type"                                "FIELD_INTEGER"
+				"tick_rate"                               "1"
 			}
 			
 			"05"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"10.0"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "12"
 			}
 		}
 		

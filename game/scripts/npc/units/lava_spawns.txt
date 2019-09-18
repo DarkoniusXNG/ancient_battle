@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 1 
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 18.9.2019;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_1"
 	{
@@ -24,8 +24,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"16"									// 5.2.2016;
-		"AttackDamageMax"			"24"									// 5.2.2016;
+		"AttackDamageMin"			"20"									// 18.9.2019;
+		"AttackDamageMax"			"30"									// 18.9.2019;
 		
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
@@ -48,7 +48,7 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"300"									// 12.5.2018;
+		"StatusHealth"				"360"									// 18.9.2019;
 		"StatusHealthRegen"			"4.0"									// 10.6.2018;
 		"StatusMana"				"0"
 		"StatsManaRegen"			"0"
@@ -71,7 +71,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 2 
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 18.9.2019;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_2"
 	{
@@ -93,8 +93,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"24"									// 5.2.2016;
-		"AttackDamageMax"			"32"									// 5.2.2016;
+		"AttackDamageMin"			"30"									// 18.9.2019;
+		"AttackDamageMax"			"40"									// 18.9.2019;
 		
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
@@ -117,7 +117,7 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"320"									// 12.5.2018;
+		"StatusHealth"				"400"									// 18.9.2019;
 		"StatusHealthRegen"			"4.0"									// 10.6.2018;
 		"StatusMana"				"0"
 		"StatsManaRegen"			"0"
@@ -139,7 +139,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 3
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 18.9.2019;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_3"
 	{
@@ -161,8 +161,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"34"									// 5.2.2016;
-		"AttackDamageMax"			"42"									// 5.2.2016;
+		"AttackDamageMin"			"40"									// 18.9.2019;
+		"AttackDamageMax"			"50"									// 18.9.2019;
 		
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
@@ -185,7 +185,7 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"340"									// 12.5.2018;
+		"StatusHealth"				"440"									// 18.9.2019;
 		"StatusHealthRegen"			"4.0"									// 10.6.2018;
 		"StatusMana"				"0"
 		"StatsManaRegen"			"0"
@@ -207,7 +207,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 4
-	// Notes: OK; 10.6.2018;
+	// Notes: OK; 18.9.2019;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_4"
 	{
@@ -229,8 +229,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"43"
-		"AttackDamageMax"			"51"									// 5.2.2016;
+		"AttackDamageMin"			"50"                                    // 18.9.2019;
+		"AttackDamageMax"			"60"									// 18.9.2019;
 		
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
@@ -253,7 +253,7 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"360"									// 12.5.2018;
+		"StatusHealth"				"480"									// 18.9.2019;
 		"StatusHealthRegen"			"4.0"									// 10.6.2018;
 		"StatusMana"				"0"
 		"StatsManaRegen"			"0"

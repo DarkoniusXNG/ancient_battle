@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Lich: Ice Armor (W) - Datadriven Lich Frost Armor, increased slow values
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 12.9.2019;
+	// Notes: OK; 18.9.2019;
 	// TO_DO: Sometimes autocast doesnt work properly if ally is damaged too fast - not critical
 	//====================================================================================================
 	"lich_custom_frost_armor"
@@ -53,8 +53,8 @@
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"2.0"
+				"var_type"				"FIELD_INTEGER"
+				"slow_duration"			"2"
 			}
 			"05"
 			{
@@ -63,8 +63,8 @@
 			}
 			"06"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"armor_duration"		"40.0"
+				"var_type"				"FIELD_INTEGER"
+				"armor_duration"		"40"
 			}
 		}
 
@@ -72,7 +72,7 @@
 		{
 			"FireSound"
 			{
-				"EffectName"	"Hero_Lich.FrostArmor"
+				"EffectName"	"Hero_Lich.IceAge" // "Hero_Lich.FrostArmor"
 				"Target"		"TARGET"
 			}
 
@@ -134,7 +134,7 @@
 
 					"FireSound"
 					{
-						"EffectName"	"Hero_Lich.FrostArmorDamage"
+						"EffectName"	"Hero_Lich.IceAge.Damage" // "Hero_Lich.FrostArmorDamage"
 						"Target"		"TARGET"
 					}
 				}

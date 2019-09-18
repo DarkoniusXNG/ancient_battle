@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Lich: Ice Storm (R) - New Spell, Ultimate, Damages and mini stuns all enemy heroes on the map
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 31.1.2017;
+	// Notes: OK; 18.9.2019; Power of Prague
 	// TO_DO: 
 	//====================================================================================================
 	"lich_custom_ice_storm"
@@ -32,6 +32,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"              "0.4"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_5"
 
 		// Time     
 		//-------------------------------------------------------------------------------------------------------------
@@ -48,23 +49,23 @@
 		{
 			"01" // not in tooltip;
 			{
-				"var_type"          "FIELD_FLOAT"
-				"tick_interval"   	"0.2"
+				"var_type"                                "FIELD_FLOAT"
+				"tick_interval"                           "0.2"
 			}
 			"02"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"damage_per_second" "150 175 200"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_per_second"                       "130 140 150"
 			}
 			"03"
 			{
-				"var_type"          "FIELD_FLOAT"
-				"duration"   		"1.5 2.0 2.5"
+				"var_type"                                "FIELD_FLOAT"
+				"duration"                                "2.0 2.5 3.0"
 			}
 			"04"
 			{
-				"var_type"           "FIELD_FLOAT"
-				"mini_stun_duration" "0.2"
+				"var_type"                                "FIELD_FLOAT"
+				"mini_stun_duration"                      "0.2"
 			}
 		}
 

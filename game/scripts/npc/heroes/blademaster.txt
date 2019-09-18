@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Blademaster; 26.8.2019;
+	// HERO: Blademaster; 18.9.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_blademaster"
@@ -38,7 +38,7 @@
 		"Ability14"			"special_bonus_armor_10"					// lvl 20 talent; same as Juggernaut
 		"Ability15"			"special_bonus_unique_legion_commander_3"	// lvl 20 talent; talent for blademaster_counter_attack
 
-		"Ability16"			"special_bonus_agility_20"					// lvl 25 talent; unique; alternatives: special_bonus_hp_600 or special_bonus_evasion_30
+		"Ability16"			"special_bonus_hp_600"					    // lvl 25 talent; alternatives: special_bonus_evasion_30
 		"Ability17"			"special_bonus_unique_juggernaut_2"			// lvl 25 talent; talent for Omnislash
 		
 		// Protection
