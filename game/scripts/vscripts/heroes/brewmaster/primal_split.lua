@@ -75,7 +75,11 @@ function SpiritDied(event)
 	PlayerResource:RemoveFromSelection(playerID, unit)
 
 	local function IsAliveCustom(unit)
-		if not unit or unit:IsNull() then
+		if not unit then
+			return false
+		end
+		
+		if unit:IsNull() then
 			return false
 		end
 

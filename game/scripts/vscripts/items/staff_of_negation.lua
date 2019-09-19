@@ -10,34 +10,47 @@ function Negate(keys)
 	local summon_damage = 99999
 	local blink_disable_damage = 50
 
-	-- Apply the slow modifier to enemies around point and kill all summons and illusions
-	local enemies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+	-- Targetting constants
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+
+	-- Apply the slow modifier and purge enemies around point and kill all summons and illusions
+	local enemies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, target_flags, 0, false)
 	for k, enemy in pairs(enemies) do
-		ability:ApplyDataDrivenModifier(caster, enemy, "item_modifier_negate_slow", nil)
-		-- Basic Dispel (Removes Buffs)
-		local RemovePositiveBuffs1 = true
-		local RemoveDebuffs1 = false
-		local BuffsCreatedThisFrameOnly1 = false
-		local RemoveStuns1 = false
-		local RemoveExceptions1 = false
-		enemy:Purge(RemovePositiveBuffs1, RemoveDebuffs1, BuffsCreatedThisFrameOnly1, RemoveStuns1, RemoveExceptions1)
-		if enemy:IsDominated() or enemy:IsSummoned() or enemy:IsIllusion() then
-			ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
-		else
-			ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = blink_disable_damage, damage_type = ability:GetAbilityDamageType()})
+		if enemy then
+			enemy:RemoveModifierByName("modifier_brewmaster_storm_cyclone")
+			enemy:RemoveModifierByName("modifier_eul_cyclone")
+
+			-- Basic Dispel (Removes Buffs)
+			local RemovePositiveBuffs1 = true
+			local RemoveDebuffs1 = false
+			local BuffsCreatedThisFrameOnly1 = false
+			local RemoveStuns1 = false
+			local RemoveExceptions1 = false
+			enemy:Purge(RemovePositiveBuffs1, RemoveDebuffs1, BuffsCreatedThisFrameOnly1, RemoveStuns1, RemoveExceptions1)
+
+			ability:ApplyDataDrivenModifier(caster, enemy, "item_modifier_negate_slow", nil)
+
+			if enemy:IsDominated() or enemy:IsSummoned() or enemy:IsIllusion() then
+				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
+			else
+				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = blink_disable_damage, damage_type = ability:GetAbilityDamageType()})
+			end
 		end
 	end
 	
 	-- Apply the basic dispel to allies around point
-	local allies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+	local allies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, target_flags, 0, false)
 	for k, ally in pairs(allies) do
-		-- Basic Dispel (Removes normal debuffs)
-		local RemovePositiveBuffs = false
-		local RemoveDebuffs = true
-		local BuffsCreatedThisFrameOnly = false
-		local RemoveStuns = false
-		local RemoveExceptions = false
-		ally:Purge( RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+		if ally then
+			-- Basic Dispel (Removes normal debuffs)
+			local RemovePositiveBuffs = false
+			local RemoveDebuffs = true
+			local BuffsCreatedThisFrameOnly = false
+			local RemoveStuns = false
+			local RemoveExceptions = false
+			ally:Purge( RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+		end
 	end
 	
 	-- Sound

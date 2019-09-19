@@ -30,16 +30,18 @@ function DemolishDamage(keys)
 
 	-- Don't trigger on items
 	if target.GetUnitName == nil then
-		return
+		return nil
 	end
 
 	local enemies_in_radius = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 	for _,enemy in pairs(enemies_in_radius) do
-		if enemy ~= target and caster == attacker then
-			damage_table.victim = enemy
-			damage_table.damage = damage_value
-			damage_table.damage_type = ability:GetAbilityDamageType()
-			ApplyDamage(damage_table)
+		if enemy then
+			if enemy ~= target and caster == attacker then
+				damage_table.victim = enemy
+				damage_table.damage = damage_value
+				damage_table.damage_type = ability:GetAbilityDamageType()
+				ApplyDamage(damage_table)
+			end
 		end
 	end
 

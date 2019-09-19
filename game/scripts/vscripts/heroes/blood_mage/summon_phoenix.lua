@@ -70,7 +70,7 @@ function PhoenixIntoEgg(event)
     -- Remove/Hide the phoenix
     --caster:RemoveSelf()
 	--caster:ForceKill(true)
-	  caster:AddNoDraw()
+	caster:AddNoDraw()
 end
 
 -- Called OnDeath - Check if the egg died from an attacker other than the time-out
@@ -107,11 +107,11 @@ end
 function PhoenixDegen(event)
 	local caster = event.caster -- the phoenix
 	local ability = event.ability
-	
+
 	if not caster or not ability then
 		return
 	end
-	
+
 	local damage_table = {}
 	damage_table.victim = caster
 	damage_table.attacker = caster
@@ -119,6 +119,6 @@ function PhoenixDegen(event)
 	damage_table.ability = ability
 	damage_table.damage = ability:GetLevelSpecialValueFor("damage_to_self", ability:GetLevel() - 1)
 	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_HPLOSS, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS)
-		
+
 	ApplyDamage(damage_table)
 end

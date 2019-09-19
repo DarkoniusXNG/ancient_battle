@@ -28,7 +28,7 @@
 	
 	//=================================================================================================================
 	// Ultimate King Bar - Black King Bar (4050) + Ghost Scepter (1500) + Recipe (2150) = 7700
-	// Notes: OK; 10.9.2019; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
+	// Notes: OK; 19.9.2019; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
 	//=================================================================================================================
 	"item_ultimate_king_bar"
 	{
@@ -97,7 +97,13 @@
 				"EffectName"    "DOTA_Item.BlackKingBar.Activate"
 				"Target"        "CASTER"
 			}
-			
+
+			"RunScript"
+			{
+				"ScriptFile"    "items/ultimate_king_bar.lua"
+				"Function"      "BKBPurge"
+			}
+
 			"ApplyModifier"
 			{
 				"ModifierName"  "item_modifier_forgotten_king_bar_damage_shield"

@@ -1,6 +1,5 @@
 LinkLuaModifier("modifier_breath_fire_haze_burn", "heroes/brewmaster/breath_of_fire.lua", LUA_MODIFIER_MOTION_NONE)
 
---Spell Function
 if brewmaster_custom_breath_of_fire == nil then
   brewmaster_custom_breath_of_fire = class({})
 end
@@ -113,16 +112,17 @@ function modifier_breath_fire_haze_burn:OnCreated()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 
-	local think_interval
+	local think_interval = 0.2
 	if ability then
 		think_interval = ability:GetSpecialValueFor("burn_damage_interval")
-	else
-		think_interval = 0.2
 	end
-	-- Ignite Sound
-	parent:EmitSound("Hero_BrewMaster.CinderBrew.Ignite")
-	-- Start burning
-	self:StartIntervalThink(think_interval)
+	if IsServer() then
+		-- Ignite Sound
+		parent:EmitSound("Hero_BrewMaster.CinderBrew.Ignite")
+
+		-- Start burning
+		self:StartIntervalThink(think_interval)
+	end
 end
 
 function modifier_breath_fire_haze_burn:OnIntervalThink()
@@ -130,19 +130,28 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 	local ability = self:GetAbility()
 	local parent = self:GetParent()
 
-	if not caster or not ability or not parent then
+	if not caster or not IsServer() then
 		return
 	end
 
-	local damage_per_second = ability:GetSpecialValueFor("burn_damage_per_second")
-	local interval = ability:GetSpecialValueFor("burn_damage_interval")
-	local damage_per_interval = damage_per_second*interval
+	local damage_per_second = 50
+	local damage_interval = 0.2
+	local damage_type = DAMAGE_TYPE_MAGICAL
 
 	local damage_table = {}
 	damage_table.victim = parent
 	damage_table.attacker = caster
-	damage_table.damage_type = ability:GetAbilityDamageType() or DAMAGE_TYPE_MAGICAL
-	damage_table.ability = ability
+
+	if ability then
+		damage_per_second = ability:GetSpecialValueFor("burn_damage_per_second")
+		damage_interval = ability:GetSpecialValueFor("burn_damage_interval")
+		damage_type = ability:GetAbilityDamageType()
+		damage_table.ability = ability
+	end
+
+	local damage_per_interval = damage_per_second*interval
+
+	damage_table.damage_type = damage_type
 	damage_table.damage = damage_per_interval
 
 	-- Apply Burn Damage
