@@ -10,7 +10,9 @@ function FrostArmorAutocast(event)
 		if not caster:IsChanneling() then
 			if not target:HasModifier(modifier) then
 				-- always caster:Interrupt() before CastAbility functions ?
-				caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
+				if ability:IsFullyCastable() and not ability:IsInAbilityPhase() then
+					caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
+				end
 			end
 		end	
 	end	

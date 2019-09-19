@@ -3,7 +3,27 @@ function DesolateCheck(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
-	
+
+	-- To prevent crashes:
+	if not target then
+		return
+	end
+
+	if target:IsNull() then
+		return
+	end
+
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+    -- items don't have that method -> nil; if the target is an item, don't continue
+    if target.GetUnitName == nil then
+		return
+    end
+
+	-- Don't affect buildings and wards
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+		return
+	end
+
 	if target.GetInvulnCount == nil then -- if not target:IsBuilding() then
 		local target_location = target:GetAbsOrigin()
 		local ability_level = ability:GetLevel() - 1

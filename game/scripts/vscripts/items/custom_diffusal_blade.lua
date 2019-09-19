@@ -86,12 +86,32 @@ function Mana_Break(keys)
 	local target = keys.target
 	local ability = keys.ability
 	local ability_level = ability:GetLevel() - 1
-	
+
 	-- If better version of mana break is present, do nothing
 	if caster:HasModifier("modifier_item_staff_of_negation_mana_break") or caster:HasModifier("modifier_item_true_manta_mana_break") then
 		return nil
 	end
-	
+
+	-- To prevent crashes:
+	if not target then
+		return
+	end
+
+	if target:IsNull() then
+		return
+	end
+
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+    -- items don't have that method -> nil; if the target is an item, don't continue
+    if target.GetUnitName == nil then
+		return
+    end
+
+	-- Don't affect buildings, wards and illusions
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsIllusion() then
+		return
+	end
+
 	-- Parameters
 	local mana_burn = ability:GetLevelSpecialValueFor("mana_burn", ability_level)
 	if attacker:IsIllusion() then
@@ -116,7 +136,7 @@ function Mana_Break(keys)
 			ApplyDamage({attacker = caster, victim = target, ability = ability, damage = target_mana, damage_type = DAMAGE_TYPE_PHYSICAL})
 		end
 	end
-	
+
 	-- Sound and effect
 	if not target:IsMagicImmune() and target:GetMana() > 1 then
 		-- Plays the particle

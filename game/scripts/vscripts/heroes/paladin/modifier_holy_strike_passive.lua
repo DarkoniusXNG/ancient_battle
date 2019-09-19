@@ -81,7 +81,7 @@ end
 function modifier_holy_strike_passive:OnAttack(event)
     local parent = self:GetParent()
 	local ability = self:GetAbility()
-	
+
 	if event.attacker ~= parent then
 		return
 	end
@@ -89,7 +89,7 @@ function modifier_holy_strike_passive:OnAttack(event)
 	if parent:GetCurrentActiveAbility() ~= ability then
 		return
 	end
-	
+
 	-- Manual cast detected
 	self.manual_cast = true
 end
@@ -98,7 +98,7 @@ function modifier_holy_strike_passive:OnAttackLanded(event)
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 	local target = event.target
-	
+
 	if event.attacker == parent and ability:IsCooldownReady() and (not parent:IsSilenced()) then
 		if ability:GetAutoCastState() == true then
 			-- The Attack while autocast is on
@@ -119,19 +119,34 @@ function modifier_holy_strike_passive:HolyStrike(event)
 		local ability = self:GetAbility()	
 		local attack_damage = event.original_damage
 
-		-- Calculate bonus pure damage
-		local percent_as_pure = ability:GetSpecialValueFor("percent_damage_as_pure")
-		local true_damage = attack_damage*percent_as_pure/100
-			
+		-- To prevent crashes:
+		if not target then
+			return
+		end
+
+		if target:IsNull() then
+			return
+		end
+
+		-- Check for existence of GetUnitName method to determine if target is a unit or an item
+		-- items don't have that method -> nil; if the target is an item, don't continue
+		if target.GetUnitName == nil then
+			return
+		end
+
 		-- If the attack target is a building or a ward then stop (return)
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
 			return
 		end
-		
+
 		-- If the attacker is an illusion then stop (return)
 		if attacker:IsIllusion() then
 			return
 		end
+
+		-- Calculate bonus pure damage
+		local percent_as_pure = ability:GetSpecialValueFor("percent_damage_as_pure")
+		local true_damage = attack_damage*percent_as_pure/100
 
 		-- Damage table
 		local damage_table = {}
@@ -142,7 +157,7 @@ function modifier_holy_strike_passive:HolyStrike(event)
 		damage_table.victim = target
 
 		ApplyDamage(damage_table)
-		
+
 		local player = attacker:GetPlayerOwner()
 		SendOverheadEventMessage(player, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, target, true_damage, player)
 

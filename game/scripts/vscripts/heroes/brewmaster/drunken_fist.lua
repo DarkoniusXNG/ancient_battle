@@ -6,6 +6,26 @@ function DrunkenFistCleave(event)
 	local damage = event.DamageOnAttack
 	local ability_level = ability:GetLevel() - 1
 
+	-- To prevent crashes:
+	if not target then
+		return
+	end
+
+	if target:IsNull() then
+		return
+	end
+
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+    -- items don't have that method -> nil; if the target is an item, don't continue
+    if target.GetUnitName == nil then
+		return
+    end
+
+	-- Don't affect buildings and wards
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+		return
+	end
+
 	local damage_percent = ability:GetLevelSpecialValueFor("cleave_damage", ability_level)
 	local start_radius = ability:GetLevelSpecialValueFor("cleave_start_radius", ability_level)
 	local distance = ability:GetLevelSpecialValueFor("cleave_distance", ability_level)

@@ -68,49 +68,49 @@ if IsServer() then
 	local target = event.target
 
 	if parent ~= event.attacker then
-	  return
+		return
 	end
 
     -- No bash while broken or illusion
 	if parent:PassivesDisabled() or parent:IsIllusion() then
-	  return
+		return
 	end
 
 	-- To prevent crashes:
 	if not target then
-	  return
+		return
 	end
 
 	if target:IsNull() then
-	  return
+		return
 	end
-	
+
 	-- Check for existence of GetUnitName method to determine if target is a unit or an item
     -- items don't have that method -> nil; if the target is an item, don't continue
     if target.GetUnitName == nil then
-      return
+		return
     end
 
-	-- Don't affect buildings, wards and invulnerable units.
-	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsInvulnerable() then
-	  return
+	-- Don't affect buildings and wards
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+		return
 	end
 
 	local chance = ability:GetSpecialValueFor("chance") or self.chance
 
 	if ability:PseudoRandom(chance) then
-	  local duration = ability:GetSpecialValueFor("duration") or self.duration
+		local duration = ability:GetSpecialValueFor("duration") or self.duration
 
-	  -- Creeps have a different duration
-	  if not target:IsHero() then
-		duration = ability:GetSpecialValueFor("duration_creep") or self.duration_creep
-	  end
+		-- Creeps have a different duration
+		if not target:IsHero() then
+			duration = ability:GetSpecialValueFor("duration_creep") or self.duration_creep
+		end
 
-	  -- Apply built-in stun modifier
-	  target:AddNewModifier(parent, ability, "modifier_bashed", {duration = duration})
+		-- Apply built-in stun modifier
+		target:AddNewModifier(parent, ability, "modifier_bashed", {duration = duration})
 
-	  -- Sound of Bash stun
-	  target:EmitSound("Hero_Slardar.Bash")
+		-- Sound of Bash stun
+		target:EmitSound("Hero_Slardar.Bash")
 	end
   end
 end

@@ -3,10 +3,25 @@ function LuckyStars(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	
+
+	-- To prevent crashes:
+	if not target then
+		return
+	end
+
+	if target:IsNull() then
+		return
+	end
+
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+    -- items don't have that method -> nil; if the target is an item, don't continue
+    if target.GetUnitName == nil then
+		return
+    end
+
 	local bonus_gold = ability:GetLevelSpecialValueFor("bonus_gold", ability:GetLevel() - 1)
 	local caster_location = caster:GetAbsOrigin()
-	
+
 	-- Give gold (unreliable) to the caster
 	caster:ModifyGold(bonus_gold, false, 0)
 
@@ -16,7 +31,7 @@ function LuckyStars(keys)
 	ParticleManager:SetParticleControl(particle_coins, 0, caster_location)
 	ParticleManager:SetParticleControl(particle_coins, 1, caster_location)
 	ParticleManager:ReleaseParticleIndex(particle_coins)
-	
+
 	-- Message Particle, has a bunch of options
 	local symbol = 0 -- "+" presymbol
 	local color = Vector(255, 200, 33) -- Gold color

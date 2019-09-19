@@ -149,7 +149,7 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 		damage_table.ability = ability
 	end
 
-	local damage_per_interval = damage_per_second*interval
+	local damage_per_interval = damage_per_second*damage_interval
 
 	damage_table.damage_type = damage_type
 	damage_table.damage = damage_per_interval

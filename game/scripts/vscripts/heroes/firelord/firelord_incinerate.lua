@@ -6,9 +6,29 @@ function IncinerateAttack(event)
 	local modifier_name = "modifier_incinerate_stack"
 	local ability_level = ability:GetLevel() - 1
 
+	-- To prevent crashes:
+	if not target then
+		return
+	end
+
+	if target:IsNull() then
+		return
+	end
+
+	-- Check for existence of GetUnitName method to determine if target is a unit or an item
+    -- items don't have that method -> nil; if the target is an item, don't continue
+    if target.GetUnitName == nil then
+		return
+    end
+
+	-- Don't affect buildings and wards
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+		return
+	end
+
 	local duration = ability:GetLevelSpecialValueFor("bonus_reset_time", ability_level)
 	local damage_per_stack = ability:GetLevelSpecialValueFor("damage_per_stack", ability_level)
-	
+
 	-- If the unit has the modifier, increase the stack, else initialize it
 	if IsValidEntity(target) then
 	

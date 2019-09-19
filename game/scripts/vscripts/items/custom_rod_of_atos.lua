@@ -13,7 +13,5 @@ function Cripple(keys)
 		ApplyDamage({victim = target, attacker = caster, ability = ability, damage = blink_disable_damage, damage_type = ability:GetAbilityDamageType()})
 		-- Sound
 		EmitSoundOnLocationWithCaster(target_location, "DOTA_Item.RodOfAtos.Target", caster) -- DOTA_Item.RodOfAtos.Activate
-	else
-		--print("Target has Spell Block")
 	end
 end
