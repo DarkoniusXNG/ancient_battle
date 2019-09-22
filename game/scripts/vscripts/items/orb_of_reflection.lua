@@ -147,7 +147,7 @@ function modifier_item_orb_of_reflection_passives:OnTakeDamage(event)
 		end
 
 		-- Don't trigger on buildings, towers and fountains
-		if attacker:IsBuilding() or attacker::IsTower() or attacker:IsFountain() then
+		if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
 			return nil
 		end
 
@@ -278,7 +278,7 @@ function modifier_item_orb_of_reflection_active_reflect:OnTakeDamage(event)
 		end
 
 		-- Don't trigger on buildings, towers and fountains
-		if attacker:IsBuilding() or attacker::IsTower() or attacker:IsFountain() then
+		if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
 			return nil
 		end
 
