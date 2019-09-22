@@ -3,16 +3,22 @@
 	//=================================================================================================================
 	// Phoenix Egg: Turn into Phoenix if not killed
 	// Author: Darkonius
-	// Notes: OK; 16.9.2018;
-	// TO_DO: 
+	// Notes: OK; 21.9.2019;
+	// TO_DO: Sounds
 	//=================================================================================================================
 	"custom_egg_turn_into_phoenix"
 	{
 		"BaseClass"                     "ability_datadriven"
 		"AbilityTextureName"            "custom/blood_mage_summon_phoenix"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
 		"MaxLevel"                      "1"
 
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_death.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+		}
 
 		"Modifiers"
 		{

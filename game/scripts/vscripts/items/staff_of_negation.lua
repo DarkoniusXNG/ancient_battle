@@ -12,7 +12,7 @@ function Negate(keys)
 
 	-- Targetting constants
 	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
-	local target_flags = DOTA_UNIT_TARGET_FLAG_INVULNERABLE
+	local target_flags = bit.bor(DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, DOTA_UNIT_TARGET_FLAG_INVULNERABLE)
 
 	-- Apply the slow modifier and purge enemies around point and kill all summons and illusions
 	local enemies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, target_flags, 0, false)

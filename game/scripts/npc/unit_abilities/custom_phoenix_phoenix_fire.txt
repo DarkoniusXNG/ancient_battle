@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Phoenix: Phoenix Fire
 	// Author: Darkonius
-	// Notes: OK; 18.8.2019;
-	// TO_DO: Particles, Sounds
+	// Notes: OK; 21.9.2019;
+	// TO_DO: Particles and sounds
 	//=================================================================================================================
 	"custom_phoenix_phoenix_fire"
 	{
@@ -29,7 +29,7 @@
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "25"
+				"damage_per_second"                       "35"
 			}
 			"03"
 			{
@@ -86,12 +86,6 @@
 						"Type" 		"DAMAGE_TYPE_MAGICAL"
 						"Damage"    "%initial_damage"
 					}
-					
-					//"FireSound"
-					//{
-						//"EffectName"    ""
-						//"Target"        "CASTER"
-					//}
 				}
 				
 				"ThinkInterval"     "1"

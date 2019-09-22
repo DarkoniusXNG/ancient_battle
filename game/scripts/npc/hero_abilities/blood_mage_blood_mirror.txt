@@ -40,7 +40,7 @@
 			"01"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"redirected_damage"        	"45 50 55 60"
+				"redirected_damage"        	"35 40 45 50"
 			}
 			"02"
 			{

@@ -452,6 +452,12 @@ function CustomItemDisable(caster, unit)
 				local item_owner = item:GetPurchaser()
 				local unit_owner = unit:GetOwner()
 				local caster_owner = caster:GetOwner()
+
+				-- Store original purchaser only for the first time when CustomItemDisable is called 
+				if item.original_purchaser == nil then
+					item.original_purchaser = item_owner
+				end
+
 				if item_owner == unit then
 					item:SetPurchaser(caster)
 				elseif item_owner == unit_owner then
@@ -513,15 +519,26 @@ function CustomItemEnable(caster, unit)
 				elseif item_owner == caster_owner then
 					item:SetPurchaser(unit_owner)
 				end
+
+				if item.original_purchaser then
+					item:SetPurchaser(item.original_purchaser)
+				end
 			end
 		end
+
 		-- Enable dropping and selling items back
 		unit:SetHasInventory(true)
 		unit:SetCanSellItems(true)
+
 		-- To reset unit's items and their passive modifiers: add an item and remove it
-		local new_item = CreateItem("item_magic_wand", unit, unit)
-		unit:AddItem(new_item)
-		new_item:RemoveSelf()
+		-- HasAnyAvailableInventorySpace() is bugged in that it counts wards as empty inventory slots for some reason
+		if unit:HasAnyAvailableInventorySpace() then
+			local new_item = CreateItem("item_magic_wand", unit, unit)
+			unit:AddItem(new_item)
+			new_item:RemoveSelf()
+		end
+
+		unit:CalculateStatBonus()
 	else
 		print("unit is nil!")
 	end
@@ -541,24 +558,28 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 		if bCustomRemoveAllDebuffs == true then
 			
 			RemoveStuns = true -- this ensures removing modifiers debuffs with "IsStunDebuff" "1"
-			
+
+			-- Abilities
 			target:RemoveModifierByName("modifier_entrapment")					-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_volcano_stun")				-- pierces BKB
 			target:RemoveModifierByName("modifier_time_stop")					-- pierces BKB
+			target:RemoveModifierByName("modifier_time_stop_scepter")           -- pierces BKB
 			target:RemoveModifierByName("modifier_custom_enfeeble_debuff")		-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_venomancer_poison_sting")		-- pierces BKB, doesn't get removed with BKB
+			target:RemoveModifierByName("modifier_venomancer_poison_sting")
 			target:RemoveModifierByName("modifier_purge_enemy_hero")			-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_purge_enemy_creep")			-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_bane_nightmare_invulnerable") -- invulnerable type
 			target:RemoveModifierByName("modifier_axe_berserkers_call")			-- pierces BKB, doesn't get removed with BKB
-			
+
+			-- Items
 			target:RemoveModifierByName("modifier_item_skadi_slow")				-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_heavens_halberd_debuff")		-- doesn't pierce BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_sheepstick_debuff")			-- doesn't pierce BKB, cannot be removed with Strong Dispel
+			target:RemoveModifierByName("modifier_sheepstick_debuff")			-- doesn't pierce BKB,
 			target:RemoveModifierByName("modifier_silver_edge_debuff")			-- doesn't pierce BKB, doesn't get removed with BKB
 			-- Exceptions:
 			-- Exception 1: modifier_charmed_hero       			(Dark Ranger Charm - not advisable)
 			-- Exception 2: modifier_incinerate_stack   			(Fire Lord Incinerate - not advisable)
+			-- Exception 3: modifier_custom_rupture                 (Blood Mage Rupture - it would be lame if dispellable
 		end
 		
 		if bCustomRemoveAllBuffs == true then
@@ -580,7 +601,10 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_paladin_divine_shield",
 				"modifier_paladin_divine_shield_upgraded",
 				"modifier_black_king_bar_immune",
+				"item_modifier_forgotten_king_bar_damage_shield",
 				"modifier_slippers_of_halcyon_caster",
+				"item_modifier_infused_robe_damage_barrier",
+				"modifier_item_orb_of_reflection_active_reflect",
 				"modifier_custom_marksmanship_buff"
 				-- Death Pact
 			}

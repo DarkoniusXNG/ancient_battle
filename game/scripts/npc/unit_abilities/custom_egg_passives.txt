@@ -3,57 +3,37 @@
 	//=================================================================================================================
 	// Phoenix Egg: Passives
 	// Author: Darkonius
-	// Notes: OK; 16.9.2018;
-	// TO_DO: Immunity to cleave, splash; Not targetable with spells, like Phoenix Egg in dota
+	// Notes: OK; 21.9.2019;
+	// TO_DO: Particles and sounds
 	//=================================================================================================================
   	"custom_egg_passives"
 	{
-		"AbilityBehavior"     			"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"           			"ability_datadriven"
-		"AbilityTextureName"            "rubick_empty1"
-		"MaxLevel"                      "1"
-	
-		"Modifiers"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/blood_mage/custom_egg_passives.lua"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"                              "rubick_empty1"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+
+		"MaxLevel"                                        "1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"modifier_custom_phoenix_egg_passives" // doesn't need tooltip
+			"01"
 			{
-				"Passive"                   "1"
-				"IsHidden"                  "1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
-				
-				// "OnCreated"
-				// {
-					// "FireSound"
-					// {
-						// "EffectName"    "Hero_Phoenix.SuperNova.Begin"
-						// "Target"        "CASTER"
-					// }
-					
-					//"AttachEffect"
-					//{
-						//"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf"
-						//"EffectAttachType"  "follow_origin"
-						//"Target"            "TARGET"
-						//"ControlPointEntities"
-						//{
-							//"TARGET"    "attach_origin"
-							//"TARGET"    "attach_origin"
-						//}
-					//}
-				// }
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"       	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+				"var_type"                                "FIELD_INTEGER"
+				"melee_hero_hits_to_kill"                 "4"
+			}
+			"02"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"ranged_hero_hits_to_kill"                "4"
+			}
+			"03"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"creep_hits_to_kill"                      "16"
 			}
 		}
     }

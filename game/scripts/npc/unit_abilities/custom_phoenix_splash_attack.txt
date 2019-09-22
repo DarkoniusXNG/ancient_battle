@@ -1,12 +1,12 @@
 "DOTAAbilities"
 {
 	//====================================================================================================
-	// Custom units: Splash Attack - passive, dealing 100% attack damage in a radius around the attacked target;
+	// Phoenix: Splash Attack - passive, dealing 100% attack damage as magic damage in a radius around the attacked target;
 	// Author: Darkonius
 	// Notes: OK; 21.9.2019;
 	// TO_DO: Particle
 	//====================================================================================================
-	"custom_unit_splash_attack"
+	"custom_phoenix_splash_attack"
 	{
 	    "BaseClass"                                       "ability_lua"
 		"ScriptFile"                                      "horde/physical_splash_attack.lua"
@@ -15,8 +15,8 @@
 		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"                           "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 	    "MaxLevel"                                        "1"
 

@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summoned Phoenix's Egg
-	// Notes: OK; 18.8.2018;
+	// Notes: OK; 21.9.2019;
 	//=================================================================================
 	"npc_dota_custom_phoenix_egg"
 	{
@@ -63,7 +63,7 @@
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"        		"200"     						// dota Phoenix(100); original(200);
+		"StatusHealth"        		"160"     						// dota Phoenix(100); original(200);
 		"StatusHealthRegen"     	"0.0"     						// 
 		"StatusMana"        		"0"     						// 
 		"StatusManaRegen"     		"0.0"     						// 

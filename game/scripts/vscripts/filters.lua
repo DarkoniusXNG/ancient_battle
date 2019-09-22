@@ -118,185 +118,185 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	end
 	
 	-- Orb of Reflection: Damage prevention and Reflecting all damage before reductions as Pure damage to the attacker
-	if victim:HasModifier("item_modifier_orb_of_reflection_active_reflect") then
+	-- if victim:HasModifier("modifier_item_orb_of_reflection_active_reflect") then
 
-		-- Nullifying the damage to victim
-		keys.damage = 0
+		-- -- Nullifying the damage to victim
+		-- keys.damage = 0
 		
-		-- Reflect or not
-		if not dont_reflect_flag then	
-			local ability
-			for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-				local this_item = victim:GetItemInSlot(i)
-				if this_item then
-					if this_item:GetName() == "item_orb_of_reflection" then
-						ability = this_item
-					end
-				end
-			end
+		-- -- Reflect or not
+		-- if not dont_reflect_flag then	
+			-- local ability
+			-- for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
+				-- local this_item = victim:GetItemInSlot(i)
+				-- if this_item then
+					-- if this_item:GetName() == "item_orb_of_reflection" then
+						-- ability = this_item
+					-- end
+				-- end
+			-- end
 			
-			-- Initializing the value of original damage
-			local original_damage = damage_after_reductions
+			-- -- Initializing the value of original damage
+			-- local original_damage = damage_after_reductions
 			
-			if damaging_ability then
-				-- Damage came from an ability (spell or item)
-				original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
-			else
-				-- Damage came from a physical attack
-				original_damage = math.max(attacker:GetAverageTrueAttackDamage(victim), CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type))
-			end
+			-- if damaging_ability then
+				-- -- Damage came from an ability (spell or item)
+				-- original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
+			-- else
+				-- -- Damage came from a physical attack
+				-- original_damage = math.max(attacker:GetAverageTrueAttackDamage(victim), CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type))
+			-- end
 
-			if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
-				-- Reflect damage to the attacker
-				local damage_table = {}
-				damage_table.victim = attacker
-				damage_table.attacker = victim
-				damage_table.damage_type = DAMAGE_TYPE_PURE
-				damage_table.ability = ability
-				damage_table.damage = original_damage
-				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
+			-- if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
+				-- -- Reflect damage to the attacker
+				-- local damage_table = {}
+				-- damage_table.victim = attacker
+				-- damage_table.attacker = victim
+				-- damage_table.damage_type = DAMAGE_TYPE_PURE
+				-- damage_table.ability = ability
+				-- damage_table.damage = original_damage
+				-- damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 		
-				ApplyDamage(damage_table)
+				-- ApplyDamage(damage_table)
 				
-				return false
-			end
-		end
-	end
+				-- return false
+			-- end
+		-- end
+	-- end
 	
 	if attacker:IsNull() or victim:IsNull() then
 		return false
 	end
 	
 	-- Blood Mirror: Damage redirection
-	if victim:HasModifier("modifier_custom_blood_mirror_buff_ally_redirect") then
-		local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_ally_redirect")
+	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_ally_redirect") then
+		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_ally_redirect")
 		
-		local reduction
-		local new_victim
-		if modifier then
-			reduction = modifier.damage_redirect_percent
-			new_victim = modifier.redirect_target
-		else
-			print("modifier_custom_blood_mirror_buff_ally_redirect not found on victim.")
-			reduction = 0
-			new_victim = nil
-		end
+		-- local reduction
+		-- local new_victim
+		-- if modifier then
+			-- reduction = modifier.damage_redirect_percent
+			-- new_victim = modifier.redirect_target
+		-- else
+			-- print("modifier_custom_blood_mirror_buff_ally_redirect not found on victim.")
+			-- reduction = 0
+			-- new_victim = nil
+		-- end
 		
-		if reduction == nil then
-			reduction = 0
-		end
-		-- Reducing damage on victim
-		keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
+		-- if reduction == nil then
+			-- reduction = 0
+		-- end
+		-- -- Reducing damage on victim
+		-- keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
 
-		-- Calculating how much of the damage is redirected
-		local damage_to_redirect = damage_after_reductions*reduction/100
+		-- -- Calculating how much of the damage is redirected
+		-- local damage_to_redirect = damage_after_reductions*reduction/100
 		
-		local damage_table = {}
-		damage_table.attacker = attacker
-		damage_table.damage_type = damage_type
-		damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+		-- local damage_table = {}
+		-- damage_table.attacker = attacker
+		-- damage_table.damage_type = damage_type
+		-- damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
 		
-		if damaging_ability then
-			damage_table.ability = damaging_ability
-		end
+		-- if damaging_ability then
+			-- damage_table.ability = damaging_ability
+		-- end
 		
-		if new_victim then
-			-- Checking if the redirect_target has a debuff (just in case)
-			if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_caster") and damage_to_redirect > 0 then
-				damage_table.victim = new_victim
-				damage_table.damage = damage_to_redirect
-				ApplyDamage(damage_table)
-			end
-		else
-			print("redirect_target for Blood Mirror is nil")
-		end
-	end
+		-- if new_victim then
+			-- -- Checking if the redirect_target has a debuff (just in case)
+			-- if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_caster") and damage_to_redirect > 0 then
+				-- damage_table.victim = new_victim
+				-- damage_table.damage = damage_to_redirect
+				-- ApplyDamage(damage_table)
+			-- end
+		-- else
+			-- print("redirect_target for Blood Mirror is nil")
+		-- end
+	-- end
 	
-	if victim:HasModifier("modifier_custom_blood_mirror_buff_caster_redirect") then
-		local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_caster_redirect")
+	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_caster_redirect") then
+		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_caster_redirect")
 
-		local reduction
-		local new_victim
-		if modifier then
-			reduction = modifier.damage_redirect_percent
-			new_victim = modifier.redirect_target
-		else
-			print("modifier_custom_blood_mirror_buff_caster_redirect not found on victim.")
-			reduction = 0
-			new_victim = nil
-		end
+		-- local reduction
+		-- local new_victim
+		-- if modifier then
+			-- reduction = modifier.damage_redirect_percent
+			-- new_victim = modifier.redirect_target
+		-- else
+			-- print("modifier_custom_blood_mirror_buff_caster_redirect not found on victim.")
+			-- reduction = 0
+			-- new_victim = nil
+		-- end
 		
-		if reduction == nil then
-			reduction = 0
-		end
-		-- Reducing damage on victim
-		keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
+		-- if reduction == nil then
+			-- reduction = 0
+		-- end
+		-- -- Reducing damage on victim
+		-- keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
 
-		-- Calculating how much of the damage is redirected
-		local damage_to_redirect = damage_after_reductions*reduction/100
+		-- -- Calculating how much of the damage is redirected
+		-- local damage_to_redirect = damage_after_reductions*reduction/100
 
-		-- Creating a damage table
-		local damage_table = {}
-		damage_table.attacker = victim
-		damage_table.damage_type = damage_type
-		damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+		-- -- Creating a damage table
+		-- local damage_table = {}
+		-- damage_table.attacker = victim
+		-- damage_table.damage_type = damage_type
+		-- damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
 
-		if damaging_ability then
-			damage_table.ability = damaging_ability
-		end
+		-- if damaging_ability then
+			-- damage_table.ability = damaging_ability
+		-- end
 
-		if new_victim and not new_victim:IsNull() then
-			-- Checking if the redirect_target has a debuff because it can be dispelled
-			if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_enemy") and damage_to_redirect > 0 then
-				damage_table.victim = new_victim
-				damage_table.damage = damage_to_redirect
-				ApplyDamage(damage_table)
-			end
-		else
-			print("redirect_target for Blood Mirror is nil")
-		end
-	end
+		-- if new_victim and not new_victim:IsNull() then
+			-- -- Checking if the redirect_target has a debuff because it can be dispelled
+			-- if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_enemy") and damage_to_redirect > 0 then
+				-- damage_table.victim = new_victim
+				-- damage_table.damage = damage_to_redirect
+				-- ApplyDamage(damage_table)
+			-- end
+		-- else
+			-- print("redirect_target for Blood Mirror is nil")
+		-- end
+	-- end
 	
 	-- Orb of Reflection: Partial Damage return to the attacker (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("item_modifier_orb_of_reflection_active_reflect")) and victim:IsRealHero() then
+	-- if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("modifier_item_orb_of_reflection_active_reflect")) and victim:IsRealHero() then
 
-		-- Return or not
-		if not dont_reflect_flag then	
-			local ability
-			for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-				local this_item = victim:GetItemInSlot(i)
-				if this_item then
-					if this_item:GetName() == "item_orb_of_reflection" then
-						ability = this_item
-					end
-				end
-			end
+		-- -- Return or not
+		-- if not dont_reflect_flag then	
+			-- local ability
+			-- for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
+				-- local this_item = victim:GetItemInSlot(i)
+				-- if this_item then
+					-- if this_item:GetName() == "item_orb_of_reflection" then
+						-- ability = this_item
+					-- end
+				-- end
+			-- end
 			
-			-- Fetch the damage return amount/percentage
-			local ability_level = ability:GetLevel() - 1
-			local damage_return = ability:GetLevelSpecialValueFor("passive_damage_return", ability_level)
+			-- -- Fetch the damage return amount/percentage
+			-- local ability_level = ability:GetLevel() - 1
+			-- local damage_return = ability:GetLevelSpecialValueFor("passive_damage_return", ability_level)
 			
-			-- Calculating damage that will be returned to attacker
-			local new_damage = damage_after_reductions*damage_return/100
+			-- -- Calculating damage that will be returned to attacker
+			-- local new_damage = damage_after_reductions*damage_return/100
 			
-			if attacker:IsNull() or victim:IsNull() then
-				return false
-			end
+			-- if attacker:IsNull() or victim:IsNull() then
+				-- return false
+			-- end
 			
-			if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
-				-- Returning Damage to the attacker
-				local damage_table = {}
-				damage_table.victim = attacker
-				damage_table.attacker = victim
-				damage_table.damage_type = damage_type
-				damage_table.ability = ability
-				damage_table.damage = new_damage
-				damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
+			-- if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
+				-- -- Returning Damage to the attacker
+				-- local damage_table = {}
+				-- damage_table.victim = attacker
+				-- damage_table.attacker = victim
+				-- damage_table.damage_type = damage_type
+				-- damage_table.ability = ability
+				-- damage_table.damage = new_damage
+				-- damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
 				
-				ApplyDamage(damage_table)
-			end
-		end
-	end
+				-- ApplyDamage(damage_table)
+			-- end
+		-- end
+	-- end
 	
 	if attacker:IsNull() or victim:IsNull() then
 		return false

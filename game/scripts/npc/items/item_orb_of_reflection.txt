@@ -28,13 +28,14 @@
 	
 	//=================================================================================================================
 	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) + Recipe (100) = 7700
-	// Notes: OK; 10.9.2019; Uses damage filter and built-in modifier; Must be weaker than Ultimate King Bar.
+	// Notes: OK; 10.9.2019; Uses built-in modifier; Must be weaker than Ultimate King Bar.
 	// Notes:
 	//=================================================================================================================
 	"item_orb_of_reflection"
 	{
 		"ID"              				"1265"
-		"BaseClass"           			"item_datadriven"
+		"BaseClass"           			"item_lua"
+		"ScriptFile"                    "items/orb_of_reflection.lua"
 		"AbilityTextureName"      		"custom/orb_of_reflection"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -100,79 +101,12 @@
 			"09"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"passive_damage_return"	"35"
+				"passive_damage_return"	"30"
 			}
 			"10" // like Blademail; must be lower duration than Ultimate King Bar or the same duration
 			{
 				"var_type"				"FIELD_FLOAT"
 				"reflect_duration"		"4.5"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"    "DOTA_Item.BladeMail.Activate"
-				"Target"        "CASTER"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"  "item_modifier_orb_of_reflection_active_reflect"
-				"Target"        "CASTER"
-				"Duration"      "%reflect_duration"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"items/orb_of_reflection.lua"
-				"Function"		"Reflect"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_orb_of_reflection_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	    	"%bonus_mana_regen"
-					"MODIFIER_PROPERTY_MANA_BONUS"						"%bonus_mana"
-				}
-			}
-			
-			"item_modifier_orb_of_reflection_passive_return" // doesn't need tooltip
-			{
-				"Passive" 			"1"  
-				"IsHidden" 			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-			}
-			
-			"item_modifier_orb_of_reflection_active_reflect" // needs tooltip
-			{
-				"IsHidden" 			"0"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"TextureName"		"custom/orb_of_reflection"
-				
-				"EffectName"		"particles/items_fx/blademail.vpcf"
-				"EffectAttachType"	"follow_origin"
 			}
 		}
 	}

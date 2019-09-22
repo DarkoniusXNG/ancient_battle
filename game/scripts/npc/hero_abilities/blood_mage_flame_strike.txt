@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 27.8.2019; Flame Strike deals 25% of the damage to buildings;
+	// Notes: OK; 21.9.2019; Flame Strike deals 25% of the damage to buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_flame_strike"
@@ -24,7 +24,7 @@
 		"AoERadius"                     "%radius"
 		
 		"AbilityCooldown"				"10.0"
-		"AbilityManaCost"				"100 110 120 130"
+		"AbilityManaCost"				"115 125 135 145"
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -43,10 +43,10 @@
 				"var_type"                                "FIELD_INTEGER"
 				"radius"                                  "300"
 			}
-			"02" // Nether Blast total damage to buildings (50/87.5/125/162.5);
+			"02" // Nether Blast total damage to buildings (50/87.5/125/162.5); original Pillar damage (120.15/213.6/293.7);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"initial_damage"                          "70 85 100 175"
+				"initial_damage"                          "70 130 190 250"
 			}
 			"03" // Less than Macropyre and Sand Storm or Firestorm dmg + 5;
 			{
@@ -58,7 +58,7 @@
 				"var_type"                                "FIELD_INTEGER"
 				"duration"                                "6"
 			}
-			"05"
+			"05" // original (0.9); original Pillar duration (2.67s);
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"delay"                                   "1.6"

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Stealth Assassin: Death Ward (R) - Non-channeling Witch Doctor Death Ward
 	// Author: Darkonius
-	// Notes: OK; 17.9.2019; Has Aghanim Scepter upgrade;
-	// TO_DO: Test
+	// Notes: OK; 20.9.2019; Has Aghanim Scepter upgrade;
+	// TO_DO:
 	//=================================================================================================================
 	"stealth_assassin_death_ward"
 	{
@@ -14,18 +14,16 @@
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/ryu/death_ward.lua"
 		"AbilityTextureName"			"custom/stealth_assassin_death_ward"
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT" // "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		//"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		
+
 		"HasScepterUpgrade"				"1"
-		
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"200"
@@ -34,11 +32,10 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"80.0"
-		//"AbilityChannelTime"			"8.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150 200 250"
+		"AbilityManaCost"				"200 250 300"
 
 		"precache"
 		{
@@ -49,7 +46,7 @@
 			"particle"	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_skull.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
-		
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -61,40 +58,40 @@
 				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_5"
 				"CalculateSpellDamageTooltip"             "0"
 			}
-			"03"
+			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"attack_range_tooltip"                    "700"
 				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_1"
 			}
-			"04"
+			"03"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bounces_scepter"                         "2 3 4"
 				"RequiresScepter"                         "1"
 			}
-			"05"
+			"04"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bounce_radius"                           "650"
 				"RequiresScepter"                         "1"
 			}
-			"06"
+			"05"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"duration_tooltip"                        "8"
 			}
-			"07"
+			"06"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"melee_hero_hits_to_kill"                 "4"
 			}
-			"08"
+			"07"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"ranged_hero_hits_to_kill"                "8"
 			}
-			"09"
+			"08"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"creep_hits_to_kill"                      "16"

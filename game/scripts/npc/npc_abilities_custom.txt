@@ -170,6 +170,7 @@
 #base "unit_abilities/custom_unit_splash_attack.txt"
 #base "unit_abilities/custom_phoenix_phoenix_fire.txt"
 #base "unit_abilities/custom_phoenix_turn_into_egg.txt"
+#base "unit_abilities/custom_phoenix_splash_attack.txt"
 #base "unit_abilities/custom_egg_turn_into_phoenix.txt"
 #base "unit_abilities/custom_egg_passives.txt"
 
