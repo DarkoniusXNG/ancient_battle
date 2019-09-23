@@ -1,0 +1,42 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Dark Terminator: Blink - global blink
+	// Author: Darkonius
+	// Notes: OK; 23.9.2019;
+	// TO_DO: ALL
+	//=================================================================================================================
+	"dark_terminator_blink"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/dark_terminator/blink.lua"
+		"AbilityTextureName"			"custom/dark_terminator_blink"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		
+		//"HasScepterUpgrade"			"0"
+
+		"AbilityCastRange"				"0" // GLOBAL
+
+		"AbilityCastPoint"				"0.5"
+
+		"AbilityCooldown"				"60 50 40 30"
+
+		"AbilityManaCost"				"75"
+		"AbilityProcsMagicStick"		"1"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"cast_point"					    "0.5"
+			}
+		}
+	}
+}

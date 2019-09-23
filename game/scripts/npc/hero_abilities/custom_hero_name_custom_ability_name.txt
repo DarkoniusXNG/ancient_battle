@@ -14,7 +14,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"	// this is default; not needed unless overriding dota ability or its an ultimate or talent
 	//  DOTA_ABILITY_TYPE_ULTIMATE											// needed for ultimates
 	//  DOTA_ABILITY_TYPE_ATTRIBUTES										// needed for talents
-		"AbilityTextureName"			"custom_hero_custom_ability"		// icon for ability
+		"AbilityTextureName"			"custom/custom_hero_custom_ability"		// icon for ability
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NONE"
 	//	DOTA_ABILITY_BEHAVIOR_HIDDEN: This ability can be owned by a unit but can't be casted and wont show up on the HUD.
 	//	DOTA_ABILITY_BEHAVIOR_PASSIVE: Can't be casted like above but this one shows up on the ability HUD
@@ -35,6 +35,9 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"				// SPELL_IMMUNITY_ENEMIES_YES
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"					// SPELL_DISPELLABLE_YES; SPELL_DISPELLABLE_YES_STRONG;
 		// "HasScepterUpgrade"				"0"									// default: 0; 1 if its really upgradeable
+		
+		"MaxLevel"						"4"
+		"RequiredLevel"					"6"
 
 		"AbilityCastRange"				"0"										// not needed for NO TARGET and PASSIVE abilities
 		// "AbilityCastRangeBuffer"			"250"								// not needed in most cases

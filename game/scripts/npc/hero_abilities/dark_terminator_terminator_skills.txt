@@ -1,0 +1,43 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Dark Terminator: Terminator Skills - new custom ability that is similar to Drunken Brawler
+	// Author: 
+	// Notes: OK; 23.9.2019;
+	// TO_DO: ALL
+	//=================================================================================================================
+	"dark_terminator_terminator_skills"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/dark_terminator/terminator_skills.lua"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityTextureName"			"custom/dark_terminator_terminator_skills"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		
+		"MaxLevel"						"4"
+		"RequiredLevel"					"6"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"damage_proc_chance"                      "25"
+				"CalculateSpellDamageTooltip"             "0"
+			}
+			"02"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"damage"                                  "120 150 180 210"
+			}
+			"03" // original: 7/14/21%
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"evasion_chance"                          "7 14 21 28"
+			}
+		}
+	}
+}
