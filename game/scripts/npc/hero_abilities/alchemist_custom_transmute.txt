@@ -3,9 +3,9 @@
 	//=================================================================================================================
 	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
 	// Author: Darkonius
-	// Notes: OK; 26.8.2019; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
+	// Notes: OK; 4.10.2019; DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan;
 	// Linkens: Blocks;
-	// TO_DO:
+	// TO_DO: Dynamic cooldown (when used on creeps: 45s; when used on heroes: 70s)
 	//=================================================================================================================
 	"alchemist_custom_transmute"
 	{
@@ -25,7 +25,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80.0"
+		"AbilityCooldown"				"70.0"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -35,8 +35,9 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100"
+		"AbilityManaCost"				"150"
 		"AbilityProcsMagicStick"		"1"
+
 		"HasScepterUpgrade"				"1"
 
 		"precache"

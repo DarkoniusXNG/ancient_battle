@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Healing Spray (Q) - New Spell, Creates a pool of healing spray that heals and decreases incoming damage
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018;
+	// Notes: OK; 4.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_healing_spray"
@@ -15,9 +15,9 @@
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		
-		"AbilityCastRange"              "900"
-		"AbilityCastPoint"              "0.1"
-		"AbilityCooldown"               "20.0"
+		"AbilityCastRange"              "900"             // like Acid Spray
+		"AbilityCastPoint"              "0.2"             // like Acid Spray
+		"AbilityCooldown"               "20.0"            // Acid Spray (22); Wisp Overcharge (18);
 
 		"AbilityManaCost"               "150 160 170 180"
 		"AbilityProcsMagicStick"		"1"
@@ -26,27 +26,27 @@
 		
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original: 250; smaller than Acid Spray (475/525/575/625)
 			{
 				"var_type"              "FIELD_INTEGER"
 				"radius"                "400 425 450 475"
 			}
-			"02"
+			"02" // original: 3/4/5; Acid Spray: 16; Wisp Overcharge: 8
 			{
 				"var_type"              "FIELD_INTEGER"
 				"duration"         		"15"
-			}       
-			"03"
+			}
+			"03" // original: 30/45/60;
 			{
 				"var_type"              "FIELD_INTEGER"
-				"heal_per_wave"         "15 20 25 30"
+				"heal_per_wave"         "15 30 45 60"
 			}
 			"04"
 			{
 				"var_type"              "FIELD_INTEGER"
 				"wave_interval"         "1"
 			}
-			"05"
+			"05" // like Wisp Overcharge
 			{
 				"var_type"              		"FIELD_INTEGER"
 				"damage_decrease"      			"-5 -10 -15 -20"
