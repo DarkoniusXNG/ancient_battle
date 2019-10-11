@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Stealth Assassin - Ryu; 17.9.2019;
+	// HERO: Stealth Assassin - Ryu; 11.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_stealth_assassin"
@@ -14,7 +14,7 @@
 		"Role"						"Carry,Escape,Disabler,Nuker"			// Roles
 		"Rolelevels"				"2,3,1,1"
 		"Complexity"				"1"
-		
+
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"
@@ -28,18 +28,18 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_hp_150"						// lvl 10 talent: unique
-		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: unique
+		"Ability10"				"special_bonus_hp_regen_6"				    // lvl 10 talent: same as Riki
+		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: similar to Riki
 
 		"Ability12"				"special_bonus_20_crit_15"					// lvl 15 talent: same as Riki
-		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: Smoke Screen talent
+		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: same as Riki: Smoke Screen talent
 
-		"Ability14"				"special_bonus_mp_regen_14"					// lvl 20 talent: unique
-		"Ability15"				"special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent; alternatives: special_bonus_unique_riki_1
+		"Ability14"				"special_bonus_hp_300"					    // lvl 20 talent: unique
+		"Ability15"				"special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent;
 
 		"Ability16"				"special_bonus_movement_speed_100"			// lvl 25 talent: unique
 		"Ability17"				"special_bonus_unique_witch_doctor_5"		// lvl 25 talent: Death Ward damage talent
-		
+
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"0"										// like Riki
@@ -54,12 +54,12 @@
 		"AttackAnimationPoint"		"0.3"									// like Riki
 		"AttackAcquisitionRange"	"600"									// like Riki
 		"AttackRange"				"128"									// Riki (150); original (100 or 128);
-		
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"285"									// Riki (290); Anti-Mage (310);
 		"MovementTurnRate"			"0.6"									// like Riki
-		
+
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"		"1800"									// Default

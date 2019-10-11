@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lich; 18.9.2019;
+	// HERO: Lich; 11.10.2019;
 	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
 	// TO_DO:
 	//=================================================================================================================
@@ -31,14 +31,14 @@
 		"Ability10"			"special_bonus_hp_200"					// lvl 10 talent; same as dota Lich
 		"Ability11"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as dota Lich
 
-		"Ability12"			"special_bonus_gold_income_30"			// lvl 15 talent; unique
+		"Ability12"			"special_bonus_gold_income_120"			// lvl 15 talent; unique
 		"Ability13"			"special_bonus_attack_damage_120"		// lvl 15 talent; same as dota Lich
 
 		"Ability14"			"special_bonus_all_stats_15"			// lvl 20 talent; unique
 		"Ability15"			"special_bonus_cast_range_200"			// lvl 20 talent; same as dota Lich
 
 		"Ability16"			"special_bonus_spell_amplify_20"		// lvl 25 talent; unique
-		"Ability17"			"special_bonus_attack_range_125"		// lvl 25 talent; unique
+		"Ability17"			"special_bonus_attack_range_150"		// lvl 25 talent; unique
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

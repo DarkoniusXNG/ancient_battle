@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Silencer; 26.8.2019;
+	// HERO: Silencer; 11.10.2019;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_silencer"
@@ -27,7 +27,7 @@
 		"Ability10"				"special_bonus_armor_6"					// lvl 10 talent; same as dota Silencer
 		"Ability11"				"special_bonus_intelligence_7"			// lvl 10 talent; unique
 
-		"Ability12"				"special_bonus_hp_200"					// lvl 15 talent; unique
+		"Ability12"				"special_bonus_hp_250"					// lvl 15 talent; unique
 		"Ability13"				"special_bonus_unique_silencer_2"		// lvl 15 talent; INT steal talent
 
 		"Ability14"				"special_bonus_spell_amplify_25"		// lvl 20 talent; unique

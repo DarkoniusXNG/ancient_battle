@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Paladin; 26.8.2019;
+	// HERO: Paladin; 11.10.2019;
 	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
 	// TO_DO:
 	//=================================================================================================================
@@ -29,10 +29,10 @@
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
 
-		"Ability10"			"special_bonus_gold_income_15"			// lvl 10 talent; same as Omniknight
+		"Ability10"			"special_bonus_gold_income_90"			// lvl 10 talent; same as Omniknight
 		"Ability11"			"special_bonus_exp_boost_35"			// lvl 10 talent; unique
 
-		"Ability12"			"special_bonus_cast_range_150"			// lvl 15 talent; unique
+		"Ability12"			"special_bonus_attack_damage_90"		// lvl 15 talent; same as Omniknight
 		"Ability13"			"special_bonus_movement_speed_30"		// lvl 15 talent; unique
 
 		"Ability14"			"special_bonus_mp_regen_6"				// lvl 20 talent; unique

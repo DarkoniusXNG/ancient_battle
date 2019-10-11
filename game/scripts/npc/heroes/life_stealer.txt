@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 18.9.2019;
+	// HERO: Lifestealer; 11.10.2019;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
 	// TO_DO: life_stealer_custom_open_wounds;
 	//=================================================================================================================
@@ -75,7 +75,7 @@
 		"AttributeBaseIntelligence"	"15"									// dota Lifestealer (15); old Lifestealer (15); - don't change!
 		"AttributeIntelligenceGain"	"1.5"									// dota Lifestealer (1.8); old Lifestealer (1.5); - don't change!
 		"AttributeBaseAgility"		"18"									// dota Lifestealer (18); old Lifestealer (26); - don't change!
-		"AttributeAgilityGain"		"1.9"									// dota Lifestealer (2.4); old Lifestealer (4.05); - don't change!
+		"AttributeAgilityGain"		"2.4"									// dota Lifestealer (2.4); old Lifestealer (4.05);
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

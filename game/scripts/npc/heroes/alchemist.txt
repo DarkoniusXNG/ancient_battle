@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Alchemist; 26.8.2019;
+	// HERO: Alchemist; 11.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_alchemist"
@@ -35,8 +35,8 @@
 		"Ability14"				"special_bonus_cleave_40"				// lvl 20 talent: same as dota Alchemist
 		"Ability15"				"special_bonus_spell_amplify_15"		// lvl 20 talent: unique
 
-		"Ability16"				"special_bonus_lifesteal_30"			// lvl 25 talent; unique try special_bonus_unique_alchemist_4
-		"Ability17"				"special_bonus_strength_20"				// lvl 25 talent; unique
+		"Ability16"				"special_bonus_unique_alchemist_4"		// lvl 25 talent; same as dota Alchemist; special_bonus_lifesteal_30 
+		"Ability17"				"special_bonus_unique_alchemist_3"		// lvl 25 talent; same as dota Alchemist; special_bonus_strength_20
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

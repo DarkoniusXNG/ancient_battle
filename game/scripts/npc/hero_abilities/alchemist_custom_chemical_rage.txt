@@ -89,6 +89,7 @@
 			{
 				"var_type"                  "FIELD_FLOAT"
 				"custom_base_attack_time"   "1.2 1.1 1.0"
+				"LinkedSpecialBonus"		"special_bonus_unique_alchemist_3"
 			}
 			"13"
 			{
