@@ -184,6 +184,7 @@ function modifier_custom_death_ward:DeclareFunctions()
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
+		MODIFIER_PROPERTY_DISABLE_HEALING,
 		MODIFIER_EVENT_ON_ATTACK_START,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
@@ -212,6 +213,10 @@ function modifier_custom_death_ward:GetModifierAttackRangeBonus()
 		end
 	end
 	return attack_range_bonus
+end
+
+function modifier_custom_death_ward:GetDisableHealing()
+	return 1
 end
 
 function modifier_custom_death_ward:OnAttackStart(event)

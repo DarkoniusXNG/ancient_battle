@@ -4,7 +4,7 @@
 	// Lightning Shaman: Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 27.8.2019;
+	// Notes: OK; 11.10.2019;
 	// TO_DO: Add Aghanim Scepter Upgrade (Applies Break on enemies)
 	//=================================================================================================================
 	"perun_purge"
@@ -53,7 +53,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"summon_damage"			"5000"
+				"summon_damage"			"1000"
 			}
 			"05"
 			{

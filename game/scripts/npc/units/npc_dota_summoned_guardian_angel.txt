@@ -2,7 +2,7 @@
 {
 	//=================================================================================	
 	// Paladin Eternal Devotion: Guardian Angel
-	// Notes: OK; 4.11.2016;
+	// Notes: OK; 11.10.2019;
 	//=================================================================================
 	"npc_dota_summoned_guardian_angel"
 	{
@@ -18,8 +18,9 @@
 		
 		// Abilities
 		//-----------------------------------------------------------------------------
-		"Ability1"					"guardian_angel_holy_purification"	// Ability 1
-		"Ability2"					"guardian_angel_bash"				// Ability 2
+		"Ability1"					"guardian_angel_holy_purification"
+		"Ability2"					"guardian_angel_bash"
+		"Ability3"                  "custom_unit_spell_immunity"
 		
 		// Protection
 		//-----------------------------------------------------------------------------

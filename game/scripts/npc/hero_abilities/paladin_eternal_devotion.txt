@@ -184,11 +184,6 @@
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" 		"1"
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"				"%angel_damage"
 				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"  		"MODIFIER_STATE_VALUE_ENABLED"
-				}
 			}
 			
 			"modifier_devotion_aura_applier"

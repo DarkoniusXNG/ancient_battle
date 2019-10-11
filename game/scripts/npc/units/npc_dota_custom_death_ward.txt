@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Stealth Assassin's Death Ward
-	// Notes: 20.9.2019;
+	// Notes: 11.10.2019;
 	//=================================================================================
 	"npc_dota_custom_death_ward"
 	{
@@ -16,6 +16,8 @@
 		"UnitLabel"                                       "death_ward"
 
 		"IsSummoned"                                      "1"
+		"IsAncient"                                       "1"
+		"IsOther"                                         "1"
 
 		//"ConsideredHero"  				"1"
 

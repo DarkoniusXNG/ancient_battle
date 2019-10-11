@@ -41,8 +41,10 @@ function Diffusal_Purge_Start(event)
 				--print("Target is a summoned or dominated unit.")
 				ability:ApplyDataDrivenModifier(caster, target, "item_modifier_custom_purged_enemy_creep", {["duration"] = duration})
 				DispelEnemy(target)
-				damage_table.damage = summon_damage
-				ApplyDamage(damage_table)
+				if not target:IsMagicImmune() then
+					damage_table.damage = summon_damage
+					ApplyDamage(damage_table)
+				end
 			else
 				--print("Target is not summoned or dominated unit.")
 				ability:ApplyDataDrivenModifier(caster, target, "item_modifier_custom_purged_enemy_creep", {["duration"] = duration})

@@ -32,7 +32,9 @@ function Negate(keys)
 			ability:ApplyDataDrivenModifier(caster, enemy, "item_modifier_negate_slow", nil)
 
 			if enemy:IsDominated() or enemy:IsSummoned() or enemy:IsIllusion() then
-				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
+				if not enemy:IsMagicImmune() then
+					ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
+				end
 			else
 				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = blink_disable_damage, damage_type = ability:GetAbilityDamageType()})
 			end

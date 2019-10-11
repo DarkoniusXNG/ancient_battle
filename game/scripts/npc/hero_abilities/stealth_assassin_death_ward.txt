@@ -89,7 +89,7 @@
 			"07"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"ranged_hero_hits_to_kill"                "8"
+				"ranged_hero_hits_to_kill"                "5"
 			}
 			"08"
 			{
