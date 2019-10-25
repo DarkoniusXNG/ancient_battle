@@ -29,8 +29,12 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 	if parent ~= attacker then
 		return
 	end
+	
+	if not IsServer() then
+		return
+	end
 
-	-- No bash while broken or illusion
+	-- No mana drain while broken or if attacker is an illusion
 	if parent:PassivesDisabled() or parent:IsIllusion() then
 		return
 	end
@@ -114,7 +118,6 @@ function modifier_mana_eater_passive:OnDeath(keys)
 		if targetMana < drainAmount then
 			drainAmount = targetMana
 		end
-
 
 		local missingMana = caster:GetMaxMana() - caster:GetMana()
 		if missingMana < drainAmount then

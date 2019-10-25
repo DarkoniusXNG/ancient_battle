@@ -25,8 +25,8 @@
 
         "precache"
         {
-            //"particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump.vpcf"
-            //"particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf"
+            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump.vpcf"
+            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf"
             //"soundfile" "soundevents/game_sounds_heroes/game_sounds_warp_beast.vsndevts"
         }
 
@@ -40,7 +40,7 @@
             "02"
             {
                 "var_type"            "FIELD_FLOAT"
-                "jump_time"            "0.6"
+                "jump_time"            "1.0 0.8 0.6 0.4"
             }
             "03"
             {
@@ -56,7 +56,7 @@
             "05"
             {
                 "var_type"            "FIELD_FLOAT"
-                "jump_height"          "450 500 550 600"
+                "jump_height"          "450"
             }
         }
     }
@@ -85,7 +85,7 @@
 
         "precache"
         {
-            //"particle"  "particles/units/heroes/hero_warp_beast/warp_beast_latch.vpcf"
+            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_latch.vpcf"
         }
 
         "AbilitySpecial"
@@ -124,7 +124,7 @@
 
         "precache"
         {
-            //"particle"  "particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf"
+            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf"
         }
 
         "AbilitySpecial"
@@ -179,7 +179,7 @@
 
         "precache"
         {
-            //"particle"  "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
+            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
             //"soundfile" "soundevents/game_sounds_heroes/game_sounds_warp_beast.vsndevts"
         }
 

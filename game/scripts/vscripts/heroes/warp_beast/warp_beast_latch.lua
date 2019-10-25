@@ -83,11 +83,6 @@ function warp_beast_latch:OnSpellStart()
 		caster:SetForceAttackTarget(target)
 		-- Timers:CreateTimer(0.1, function() ExecuteOrderFromTable(order) return nil end )
 	end
-
-	-- caster:SetCursorTargetingNothing(true)
-	
-	-- caster:PerformAttack(target, true, true, true, true, false, false, false)
-
 end
 
 function warp_beast_latch:GetLatchHeight(target)
@@ -156,7 +151,8 @@ end
 function modifier_latch:GetModifierAttackSpeedBonus_Constant()
 	return self.attackspeed_bonus
 end
-
+--[[
+-- Lifesteal part
 function modifier_latch:OnAttackLanded(event)
 	if IsServer() and self:GetParent() == event.attacker then 
 		local attacker = event.attacker
@@ -179,6 +175,7 @@ function modifier_latch:OnAttackLanded(event)
 
 	end
 end
+]]
 
 function modifier_latch:OnOrder(event)
 	if IsServer() and event.unit == self:GetParent() and self.target and self.target:HasModifier("modifier_latch_target") and self.target:GetTeam() == self:GetParent():GetTeam() then 
@@ -213,42 +210,43 @@ function modifier_latch_target:IsPurgable()
 	return false
 end
 
-function modifier_latch_target:DeclareFunctions()
-	local funcs = {
+-- function modifier_latch_target:DeclareFunctions()
+	-- local funcs = {
 		-- MODIFIER_EVENT_ON_ORDER
-	}
-	return funcs
-end
+	-- }
+	-- return funcs
+-- end
 
-function modifier_latch_target:OnOrder(event)
-	if not IsServer() then return end
+-- -- Being able to use spells and items while latched
+-- function modifier_latch_target:OnOrder(event)
+	-- if not IsServer() then return end
 
-	local caster = self:GetCaster()
-	if event.unit == caster and caster:IsRealHero() then
-		if cast_orders[event.order_type] and not self:GetCaster():IsSilenced() then
-			local ability = event.ability
-			if ability then
-				local castPosition
-				if event.target then
-					castPosition = event.target:GetAbsOrigin()
-				else
-					castPosition = event.new_pos
-				end
+	-- local caster = self:GetCaster()
+	-- if event.unit == caster and caster:IsRealHero() then
+		-- if cast_orders[event.order_type] and not self:GetCaster():IsSilenced() then
+			-- local ability = event.ability
+			-- if ability then
+				-- local castPosition
+				-- if event.target then
+					-- castPosition = event.target:GetAbsOrigin()
+				-- else
+					-- castPosition = event.new_pos
+				-- end
 
-				local maxCastRange = ability:GetCastRange(castPosition, caster) + caster:GetCastRangeIncrease()
-				local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
+				-- local maxCastRange = ability:GetCastRange(castPosition, caster) + caster:GetCastRangeBonus()
+				-- local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
 
-				-- Remove latch if Temporal Jump is used and within range
-				if maxCastRange >= distance and ability:GetName() == "warp_beast_temporal_jump" then
-					self:Destroy()
-				-- Remove latch if Warp is used
-				elseif caster:HasModifier("modifier_warp") and maxCastRange < distance then
-					self:Destroy()
-				end
-			end
-		end
-	end
-end
+				-- -- Remove latch if Temporal Jump is used and within range
+				-- if maxCastRange >= distance and ability:GetName() == "warp_beast_temporal_jump" then
+					-- self:Destroy()
+				-- -- Remove latch if Warp is used
+				-- elseif caster:HasModifier("modifier_warp") and maxCastRange < distance then
+					-- self:Destroy()
+				-- end
+			-- end
+		-- end
+	-- end
+-- end
 
 function modifier_latch_target:OnDestroy()
 	if not IsServer() then return end
@@ -256,5 +254,3 @@ function modifier_latch_target:OnDestroy()
 	local caster = self:GetCaster()
 	caster:RemoveModifierByName("modifier_latch")
 end
-
-

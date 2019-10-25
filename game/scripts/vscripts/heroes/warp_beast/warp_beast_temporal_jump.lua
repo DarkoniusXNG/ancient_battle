@@ -41,7 +41,7 @@ function warp_beast_temporal_jump:OnSpellStart()
 	local distance = ((point - origin):Length2D() * interval) / jumpTime
 
 	--Emit sound
-	caster:EmitSound("Hero_Warp_Beast.Temporal_Jump")
+	caster:EmitSound("Hero_FacelessVoid.TimeWalk.Aeons")
 
 	local modifier = self:GetCaster():AddNewModifier(caster, self, "modifier_temporal_jump", {})
 	caster:SetModel("models/items/courier/faceless_rex/faceless_rex_flying.vmdl")
@@ -65,7 +65,6 @@ function warp_beast_temporal_jump:OnSpellStart()
 		local height = ((4 * jumpHeight * distance * percentage) - (4 * jumpHeight * percentage * percentage)) / (distance * distance)
 
 		local horizontalMovement = GetGroundPosition(caster:GetAbsOrigin(), caster) + forwardVec * distance
-		-- if caster:IsRooted() then horizontalMovement = GetGroundPosition(caster:GetAbsOrigin(), caster) + forwardVec * 0.1 end
 
 		caster:SetAbsOrigin(horizontalMovement + Vector(0, 0, height) )
 
@@ -78,7 +77,6 @@ function warp_beast_temporal_jump:OnSpellStart()
 			FindClearSpaceForUnit(caster, point, false)
 
 			if not caster:IsStunned() and not caster:IsDisarmed() then
-				-- caster:EmitSound("Hero_Warp_Beast.Temporal_Jump.Impact")
 				self:CreateAttackWave(caster:GetAbsOrigin())
 			end
 
@@ -118,7 +116,7 @@ function warp_beast_temporal_jump:CreateAttackWave(origin)
 	local caster = self:GetCaster()
 	local radius = self:GetSpecialValueFor("radius")
 	local wave_speed = self:GetSpecialValueFor("wave_speed")
-	
+
 	local talent1 = caster:FindAbilityByName("special_bonus_unique_warp_beast_jump_radius")
 	if talent1 then
 		if talent1:GetLevel() ~= 0 then
@@ -132,8 +130,7 @@ function warp_beast_temporal_jump:CreateAttackWave(origin)
 	local interval = 0.05
 	local radiusGrowth = wave_speed * interval
 
-	--EmitSoundOnLocationWithCaster(origin, "Hero_Warp_Beast.Temporal_Jump.BigImpact", caster)
-	--EmitSoundOnLocationWithCaster(origin, "Hero_Warp_Beast.Temporal_Jump.Impact", caster)
+	EmitSoundOnLocationWithCaster(origin, "Hero_FacelessVoid.TimeDilation.Cast.ti7", caster)
 
 	-- Create wave particle 
 	-- CP1: Radius

@@ -4,30 +4,11 @@ LinkLuaModifier("modifier_warp_indicator", "scripts/vscripts/heroes/warp_beast/w
 LinkLuaModifier("modifier_warp_effect", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_warp_castrange_buffer", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 
-
 warp_beast_warp = class({})
-
--- function warp_beast_warp:OnUpgrade()
--- 	if not IsServer() then return end
-
--- 	local caster = self:GetCaster()
--- 	if not self.warpMana then
--- 		self.warpMana = CreateUnitByName("npc_warp_mana", Vector(0,0,0), false, nil, nil, caster:GetTeamNumber())
-
--- 		self.warpMana:SetAbsOrigin(caster:GetAbsOrigin() + Vector(0, 0, 50) + caster:GetForwardVector() * -50)
--- 		self.warpMana:SetParent(caster, "attach_origin")
--- 		self.warpMana:MakeIllusion()
--- 	end
-
--- 	local manaPool = self:GetSpecialValueFor("mana_pool")
--- 	self.warpMana:RemoveModifierByName("modifier_warp_mana_thinker")
--- 	self.warpMana:AddNewModifier(caster, self, "modifier_warp_mana_thinker", {mana_pool = manaPool})
--- end
 
 function warp_beast_warp:GetIntrinsicModifierName()
 	return "modifier_warp"
 end
-
 
 function warp_beast_warp:OnToggle()
 	if not IsServer() then return end
@@ -55,12 +36,10 @@ function warp_beast_warp:CanWarp(maxCastRange, castPosition, ability)
 		end
 	end
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
-	-- print(distance - maxCastRange)
 	
 	local manaCost = ability:GetManaCost(-1)
 	local currentWarpMana = caster:GetMana()
 	local warpManaCost = (distance - maxCastRange) / distancePerMana
-	-- print(manacost)
 
 	-- print("Warp active status: " .. (currentWarpMana >= warpManaCost + manaCost))
 	return currentWarpMana >= warpManaCost + manaCost
@@ -95,16 +74,9 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	local forwardVec = (castPosition - warpPosition):Normalized()
 
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
-	-- print(distance - maxCastRange)
 	
 	local currentWarpMana = caster:GetMana()
 	local warpManaCost = (distance - maxCastRange) / distancePerMana
-	-- print(manacost)
-
-
-	-- if currentWarpMana < warpManaCost + manaCost then
-	-- 	return
-	-- end
 
 	caster:StartGesture(ACT_DOTA_SPAWN)
 	caster:Stop()
@@ -139,7 +111,6 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	ParticleManager:SetParticleControl(particle2, 2, Vector(50,0,0))
 
 	EmitSoundOnLocationWithCaster(caster:GetAbsOrigin(), "Hero_Warp_Beast.Warp", caster)
-	-- caster:SetForwardVector(forwardVec)
 
 	Timers:CreateTimer(warpDuration, function()
 		caster:RemoveModifierByNameAndCaster("modifier_rooted", caster)
@@ -163,31 +134,6 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	-- end)
 
 end
-
--- modifier_warp_mana = class({})
-
--- function modifier_warp_mana:IsPermanent()
--- 	return true
--- end
-
--- function modifier_warp_mana:IsHidden()
--- 	return true
--- end
-
--- function modifier_warp_mana:DeclareFunctions()
--- 	local funcs = {
--- 		MODIFIER_PROPERTY_MANA_BONUS
--- 	}
-
--- 	return funcs
--- end
-
--- function modifier_warp_mana:GetModifierManaBonus()
--- 	if self:GetParent():PassivesDisabled() then 
--- 		return 0
--- 	end
--- 	return self:GetAbility():GetSpecialValueFor("bonus_mana")
--- end
 
 ---------------------------------------------------------------------------------------------------------------
 
@@ -323,65 +269,3 @@ modifier_warp_indicator = class({})
 function modifier_warp_indicator:IsPermanent()
 	return true
 end
-
----------------------------------------------------------------------------------------------------------------
-
--- modifier_warp_mana_thinker = class({})
-
--- function modifier_warp_mana_thinker:CheckState()
--- 	local states = {
--- 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
--- 		[MODIFIER_STATE_INVULNERABLE] = true,
--- 		-- [MODIFIER_STATE_INVISIBLE] = true,
--- 		-- [MODIFIER_STATE_UNSELECTABLE] = true,
--- 		-- [MODIFIER_STATE_OUT_OF_GAME] = true,
--- 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
-
--- 	}
-
--- 	return states
--- end
-
--- function modifier_warp_mana_thinker:DeclareFunctions()
--- 	local funcs = {
--- 		MODIFIER_PROPERTY_MANA_BONUS,
--- 		MODIFIER_EVENT_ON_MANA_GAINED,
--- 	}
-
--- 	return funcs
--- end
-
--- function modifier_warp_mana_thinker:GetModifierManaBonus()
--- 	return self.manaPool - 1000 or 1000
--- end
-
-
--- function modifier_warp_mana_thinker:OnManaGained(event)
--- 	if event.unit == self:GetCaster() then
--- 		self:GetParent():GiveMana(event.gain)
--- 	end
--- end
-
--- function modifier_warp_mana_thinker:OnCreated(keys)
--- 	if not IsServer() then return end
-
--- 	self:StartIntervalThink(0.2)
--- 	self.manaPool = keys.mana_pool
--- end
-
--- function modifier_warp_mana_thinker:OnRefresh(keys)
--- 	if not IsServer() then return end
-
--- 	self.manaPool = keys.mana_pool
--- end
-
--- function modifier_warp_mana_thinker:OnIntervalThink()
--- 	local caster = self:GetCaster()
--- 	local unit = self:GetParent()
-
--- 	if caster:GetManaPercent() == 100 then
--- 		unit:SetBaseManaRegen(caster:GetManaRegen())
--- 	else
--- 		unit:SetBaseManaRegen(0)
--- 	end
--- end
