@@ -321,7 +321,8 @@ function ancient_battle_gamemode:InitializeInnateAbilities(hero)
 	local innate_abilities = {
 		"firelord_arcana_model",
 		"blood_mage_orbs",
-		"mana_eater_mana_regen"
+		"mana_eater_mana_regen",
+		"warp_beast_silly_attack_mutator"
 	}
 
 	-- Cycle through any innate abilities found, then set their level to 1

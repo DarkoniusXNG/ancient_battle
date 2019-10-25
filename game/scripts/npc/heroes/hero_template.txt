@@ -44,6 +44,7 @@
 		// // Attack
 		// //-------------------------------------------------------------------------------------------------------------
 		// "AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"	// DOTA_UNIT_CAP_MELEE_ATTACK
+		// "BaseAttackSpeed"            "100"                           // Default: 100
 		// "AttackDamageMin"			"20"							// Default: 1
 		// "AttackDamageMax"			"40" 							// Default: 1
 		// "AttackRate"					"2.2"							// Default: 1.7
@@ -81,7 +82,7 @@
 		// "StatusHealthRegen"			"1.0"							// Default: 0.25
 		// "StatusHealth"				"340"							// Default: 150
 		// "StatusMana"					"0"								// Default: 0
-		// "StatusManaRegen"			"0.01"							// Default: 0.01	
+		// "StatusManaRegen"			"0.01"							// Default: 0.01
 	
 		// // Combat
 		// //-------------------------------------------------------------------------------------------------------------

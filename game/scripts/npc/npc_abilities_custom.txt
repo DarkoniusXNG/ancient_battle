@@ -174,6 +174,8 @@
 #base "unit_abilities/custom_egg_turn_into_phoenix.txt"
 #base "unit_abilities/custom_egg_passives.txt"
 
+#base "hero_abilities/warp_beast_abilities.txt"
+
 "DOTAAbilities"
 {
 	"Version"		"1"

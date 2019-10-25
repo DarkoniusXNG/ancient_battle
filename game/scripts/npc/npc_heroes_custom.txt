@@ -20,6 +20,8 @@
 #base "heroes/stealth_assassin.txt"
 #base "heroes/void_demon.txt"
 
+#base "heroes/warp_beast.txt"
+
 "DOTAHeroes"
 {
 	

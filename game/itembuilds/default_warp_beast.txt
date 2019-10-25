@@ -1,0 +1,55 @@
+"itembuilds"
+{
+	"author"		"SwordBacon"
+	"hero"			"npc_dota_hero_warp_beast"
+	"Title"			"Recommended items for Warp Beast"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_tango"
+			"item"		"item_custom_poor_mans_shield"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_quelling_blade"
+			"item"		"item_custom_ring_of_aquila"
+			"item"		"item_boots"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_power_treads"
+			"item"		"item_maelstrom"
+			"item"		"item_basher"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"		"item_sphere"
+			"item"		"item_abyssal_blade"
+			"item"		"item_bloodthorn"
+		}
+
+		"#DOTA_Item_Build_Other_Items"
+		{
+			"item"		"item_bfury"
+			"item"		"item_echo_sabre"
+			"item"		"item_desolator"
+			"item"		"item_nullifier"
+			"item"		"item_butterfly"
+			"item"		"item_greater_crit"
+			"item"		"item_monkey_king_bar"
+			"item"		"item_moon_shard"
+			"item"		"item_mjollnir"
+			"item"		"item_black_king_bar"
+			"item"		"item_manta"
+			"item"		"item_bloodstone"
+			"item"		"item_skadi"
+			"item"		"item_satanic"
+			"item"		"item_sheepstick"
+		}
+	}
+}
