@@ -40,7 +40,7 @@
             "02"
             {
                 "var_type"                                "FIELD_FLOAT"
-                "jump_time"                               "1.0 0.8 0.6 0.4"
+                "jump_time"                               "0.7 0.6 0.5 0.4"
             }
             "03" // like Tidehunter Anchor Smash
             {
@@ -76,7 +76,7 @@
 		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
         "SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_NO"
 
-        "AbilityCastRange"                                "700" // unique
+        "AbilityCastRange"                                "600" // unique
         "AbilityCastPoint"                                "0.25" // like Phantom Assassin Phantom Strike
         "AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_1"
 
@@ -190,7 +190,7 @@
             "01" // bonus cast range per mana
             {
                 "var_type"          "FIELD_FLOAT"
-                "distance_per_mana"     "2.0"
+                "distance_per_mana"     "1.5 2.0 2.5"
                 "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_warp_mana_pool"
             }
             "02"
@@ -284,7 +284,7 @@
             "02"
             {
                 "var_type"            "FIELD_FLOAT"
-                "radius"            "550"
+                "radius"            "600"
             }
         }
     }

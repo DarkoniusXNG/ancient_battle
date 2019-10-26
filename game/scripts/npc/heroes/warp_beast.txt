@@ -86,7 +86,7 @@
 		"StatusHealthRegen"                               "0.75"
 		"StatusHealth"                                    "200"
 		"StatusMana"                                      "180"                 // unique
-		"StatusManaRegen"                                 "0.0"
+		"StatusManaRegen"                                 "1.0"                 // unique
 
 		// Combat
 		//-------------------------------------------------------------------------------------------------------------
@@ -102,8 +102,6 @@
 		// Inventory
 		"HasInventory"				"1"
 		"DisableWearables" 			"1"
-
-		//"Portrait"      "vgui/hud/heroportraits/portrait_faceless_void"
 
 		"particle_folder"                                 "particles/units/heroes/hero_faceless_void"
 		"GameSoundsFile"                                  "soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
