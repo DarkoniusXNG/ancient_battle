@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
 	// Author: Darkonius
-	// Notes: OK; 14.9.2019;
-	// TO_DO: Fix Volcano not being invulnerable
+	// Notes: OK; 26.10.2019;
+	// TO_DO:
 	//=================================================================================================================
 	"firelord_volcano"
 	{

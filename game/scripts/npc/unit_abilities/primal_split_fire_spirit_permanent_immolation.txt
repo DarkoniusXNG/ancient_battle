@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Primal Split Fire Spirit: Permanent Immolation (Q) - passive, like Radiance but smaller radius
 	// Author: Darkonius
-	// Notes: OK; 27.5.2018;
+	// Notes: OK; 26.10.2019;
 	// TO_DO:
 	//====================================================================================================
 	"primal_split_fire_spirit_permanent_immolation"
@@ -29,7 +29,7 @@
 	        "02" // dota: 220;
 	        {
 	            "var_type"						"FIELD_INTEGER"
-	            "radius"						"250"
+	            "radius"						"300"
 	        }
 	    }
 		

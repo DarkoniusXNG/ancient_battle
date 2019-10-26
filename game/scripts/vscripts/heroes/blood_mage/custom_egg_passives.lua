@@ -54,6 +54,7 @@ function modifier_custom_phoenix_egg_passives:DeclareFunctions()
 	local funcs ={
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+		MODIFIER_PROPERTY_DISABLE_HEALING,
 		MODIFIER_EVENT_ON_ATTACK_LANDED
 	}
 	return funcs
@@ -64,6 +65,10 @@ function modifier_custom_phoenix_egg_passives:GetAbsoluteNoDamagePhysical()
 end
 
 function modifier_custom_phoenix_egg_passives:GetAbsoluteNoDamagePure()
+	return 1
+end
+
+function modifier_custom_phoenix_egg_passives:GetDisableHealing()
 	return 1
 end
 
@@ -84,7 +89,7 @@ function modifier_custom_phoenix_egg_passives:OnAttackLanded(event)
 		return
 	end
 
-	-- Don't trigger when someone attacks items; this also prevents bouncing off items
+	-- Don't trigger when someone attacks items;
 	if target.GetUnitName == nil then
 		return
 	end

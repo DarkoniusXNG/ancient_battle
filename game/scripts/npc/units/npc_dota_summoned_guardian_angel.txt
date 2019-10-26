@@ -15,13 +15,13 @@
 		"Level"						"3"									// 12.4.2016;
 		"IsSummoned"				"1"
 		"CanBeDominated"  			"1"									// 5.2.2016; Angel is spell immune;
-		
+
 		// Abilities
 		//-----------------------------------------------------------------------------
-		"Ability1"					"guardian_angel_holy_purification"
-		"Ability2"					"guardian_angel_bash"
+		"Ability1"                  "guardian_angel_holy_purification"
+		"Ability2"                  "guardian_angel_bash"
 		"Ability3"                  "custom_unit_spell_immunity"
-		
+
 		// Protection
 		//-----------------------------------------------------------------------------
 		"ArmorPhysical"				"1"									// Physical protection.
@@ -36,7 +36,7 @@
 		"AttackAnimationPoint"		"0.4"								// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"700"								// Range within a target can be acquired.
 		"AttackRange"				"128"								// Range within a target can be attacked.
-		
+
 		// Bounds
 		//-----------------------------------------------------------------------------
 		"HealthBarOffset"			"170"
@@ -59,7 +59,7 @@
 		"StatusHealthRegen"			"0.5"								// Health regeneration rate.
 		"StatusMana"				"200"								// Base mana.
 		"StatusManaRegen"			"1.0"								// Mana regeneration rate.		 
-		
+
 		// Vision
 		//-----------------------------------------------------------------------------
 		"VisionDaytimeRange"		"1800"								// Range of vision during day light.

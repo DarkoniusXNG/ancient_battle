@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Unholy Aura (F) - New Spell, Passive, gives bonus move speed and hp regeneration
 	// Author: Darkonius
-	// Notes: OK; 13.10.2018;
+	// Notes: OK; 26.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_unholy_aura"
@@ -25,12 +25,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // 3rd level should be like Necronomicon Archer Aura
+			"01" // First 3 levels should be similar to Necronomicon Archer Aura
 			{
 				"var_type"					"FIELD_INTEGER"
 				"aura_move_speed_bonus"		"5 7 9 11"
 			}
-			"02" // 3rd level should be like Satyr Tormenter Unholy Aura
+			"02" // 3rd level should be similar to Satyr Tormenter Unholy Aura
 			{
 				"var_type"					"FIELD_FLOAT"
 				"aura_health_regen_bonus"	"1.5 3.5 5.5 7.5"
@@ -38,7 +38,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"aura_radius"				"900"
+				"aura_radius"				"1200"
 			}
 		}
 	}
