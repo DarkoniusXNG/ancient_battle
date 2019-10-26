@@ -1,6 +1,5 @@
 LinkLuaModifier("modifier_warp", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_warp_indicator", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
--- LinkLuaModifier("modifier_warp_mana", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_warp_effect", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_warp_castrange_buffer", "scripts/vscripts/heroes/warp_beast/warp_beast_warp.lua", LUA_MODIFIER_MOTION_NONE)
 

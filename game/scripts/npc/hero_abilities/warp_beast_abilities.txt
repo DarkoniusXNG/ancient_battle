@@ -13,15 +13,15 @@
         "AbilityUnitTargetTeam"          "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"          "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"          "DAMAGE_TYPE_PHYSICAL"
-        "SpellImmunityType"              "SPELL_IMMUNITY_ENEMIES_NO"
+        "SpellImmunityType"              "SPELL_IMMUNITY_ENEMIES_YES"
 
         "AbilityCastRange"               "450 500 550 600"
-        "AoERadius"                      "275 300 325 350"
+        "AoERadius"                      "375"
         "AbilityCastPoint"               "0.0"
         "AbilityCastAnimation"           "ACT_DOTA_CAST_ABILITY_1"
 
-        "AbilityCooldown"                "12 10 8 6"
-        "AbilityManaCost"                "120"
+        "AbilityCooldown"                "18 14 10 6" // like Ember Spirit Sleight of Fist
+        "AbilityManaCost"                "120" // unique
 
         "precache"
         {
@@ -34,35 +34,35 @@
         {
             "01"
             {
-                "var_type"            "FIELD_INTEGER"
-                "charges"               "3"
+                "var_type"                                "FIELD_INTEGER"
+                "charges"                                 "3"
             }
             "02"
             {
-                "var_type"            "FIELD_FLOAT"
-                "jump_time"            "1.0 0.8 0.6 0.4"
+                "var_type"                                "FIELD_FLOAT"
+                "jump_time"                               "1.0 0.8 0.6 0.4"
             }
-            "03"
+            "03" // like Tidehunter Anchor Smash
             {
-                "var_type"            "FIELD_INTEGER"
-                "radius"                "275 300 325 350"
-                "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_jump_radius"
+                "var_type"                                "FIELD_INTEGER"
+                "radius"                                  "375"
+                "LinkedSpecialBonus"                      "special_bonus_unique_warp_beast_jump_radius"
             }
             "04"
             {
-                "var_type"            "FIELD_INTEGER"
-                "wave_speed"            "800"
+                "var_type"                                "FIELD_INTEGER"
+                "wave_speed"                              "800"
             }
             "05"
             {
-                "var_type"            "FIELD_FLOAT"
-                "jump_height"          "450"
+                "var_type"                                "FIELD_FLOAT"
+                "jump_height"                             "450"
             }
         }
     }
 
     //=================================================================================================================
-    // Warp Beast - Latch
+    // Warp Beast - Latch - like Phantom Assassin Phantom Strike except it makes you uncontrollable and it sticks to the enemy
     //=================================================================================================================
     "warp_beast_latch"
     {
@@ -76,12 +76,12 @@
 		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
         "SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_NO"
 
-        "AbilityCastRange"                "400"
-        "AbilityCastPoint"                "0.0"
-        "AbilityCastAnimation"            "ACT_DOTA_CAST_ABILITY_1"
+        "AbilityCastRange"                                "700" // unique
+        "AbilityCastPoint"                                "0.25" // like Phantom Assassin Phantom Strike
+        "AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_1"
 
-        "AbilityCooldown"                "11 9 7 5"
-        "AbilityManaCost"                "80"
+        "AbilityCooldown"                                 "11 9 7 5" // like Phantom Assassin Phantom Strike
+        "AbilityManaCost"                                 "35 40 45 50" // like Phantom Assassin Phantom Strike
 
         "precache"
         {
@@ -90,27 +90,27 @@
 
         "AbilitySpecial"
         {
-            "01"
+            "01" // like Phantom Assassin Phantom Strike
             {
-                "var_type"            "FIELD_INTEGER"
-                "attackspeed_bonus"   "100 125 150 175"
-                "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_latch_attackspeed"
+                "var_type"                                "FIELD_INTEGER"
+                "attackspeed_bonus"                       "100 125 150 175"
+                "LinkedSpecialBonus"                      "special_bonus_unique_warp_beast_latch_attackspeed"
             }
-            "02"
+            "02" // unused
             {
-                "var_type"            "FIELD_INTEGER"
-                "lifesteal_bonus"   "60"
+                "var_type"                                "FIELD_INTEGER"
+                "lifesteal_bonus"                         "60"
             }
-            "03"
+            "03" // like Phantom Assassin Phantom Strike
             {
-                "var_type"            "FIELD_INTEGER"
-                "duration"            "2"
+                "var_type"                                "FIELD_INTEGER"
+                "duration"                                "2"
             }
         }
     }
 
     //=================================================================================================================
-    // Warp Beast - Mana Eater
+    // Warp Beast - Void Steal - Mana Break without damage + mana steal on hit and on kill
     //=================================================================================================================
     "warp_beast_mana_eater"
     {
@@ -129,29 +129,30 @@
 
         "AbilitySpecial"
         {
-            "01"
+            "01" // like Anti-Mage's mana break
             {
-                "var_type"            "FIELD_INTEGER"
-                "drain_amount"            "12 20 28 36"
-                "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_mana_eater"
+                "var_type"                                "FIELD_INTEGER"
+                "drain_amount"                            "28 40 52 64"
+                "LinkedSpecialBonus"                      "special_bonus_unique_warp_beast_mana_eater"
             }
             "02"
             {
-                "var_type"            "FIELD_INTEGER"
-                "kill_drain_percentage"  "20"
+                "var_type"                                "FIELD_INTEGER"
+                "kill_drain_percentage"                   "15"
             }
             "03"
             {
-                "var_type"            "FIELD_INTEGER"
-                "bonus_mana_cap"    "200 300 400 500"
+                "var_type"                                "FIELD_INTEGER"
+                "bonus_mana_cap"                          "200 300 400 500"
             }
             "04"
             {
-                "var_type"            "FIELD_INTEGER"
-                "bonus_duration"    "30"
+                "var_type"                                "FIELD_INTEGER"
+                "bonus_duration"                          "30"
             }
         }
     }
+
     //=================================================================================================================
     // Warp Beast - Silly Attack Mutator
     // Plays Faceless Rex's death animation as an attack animation. Looks amazing!
@@ -164,6 +165,7 @@
 
         "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
     }
+
     //=================================================================================================================
     // Warp Beast - Warp
     //=================================================================================================================
@@ -185,24 +187,20 @@
 
         "AbilitySpecial"
         {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_mana"        "200 400 600"
-            }
-            "02"
+            "01" // bonus cast range per mana
             {
                 "var_type"          "FIELD_FLOAT"
-                "distance_per_mana"     "2.5"
+                "distance_per_mana"     "2.0"
                 "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_warp_mana_pool"
             }
-            "03"
+            "02"
             {
                 "var_type"          "FIELD_FLOAT"
                 "warp_duration"     "0.4 0.3 0.2"
             }
         }
     }
+
     "special_bonus_unique_warp_beast_latch_attackspeed"
     {
         "BaseClass"             "special_bonus_undefined"
@@ -219,6 +217,7 @@
         }
 
     }
+
     "special_bonus_unique_warp_beast_mana_eater"
     {
         "BaseClass"             "special_bonus_undefined"
@@ -235,6 +234,7 @@
         }
 
     }
+
     "special_bonus_unique_warp_beast_jump_radius"
     {
         "BaseClass"             "special_bonus_undefined"
@@ -251,6 +251,7 @@
         }
 
     }
+
     "special_bonus_unique_warp_beast_warp_mana_pool"
     {
         "BaseClass"             "special_bonus_undefined"
@@ -266,6 +267,7 @@
             }
         }
     }
+
     "special_bonus_unique_warp_beast_warp_silence"
     {
         "BaseClass"             "special_bonus_undefined"
@@ -277,12 +279,12 @@
             "01"
             {
                 "var_type"            "FIELD_FLOAT"
-                "value"            "1.5"
+                "value"            "3"
             }
             "02"
             {
                 "var_type"            "FIELD_FLOAT"
-                "radius"            "300"
+                "radius"            "550"
             }
         }
     }

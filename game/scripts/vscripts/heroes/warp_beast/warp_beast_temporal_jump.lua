@@ -142,7 +142,7 @@ function warp_beast_temporal_jump:CreateAttackWave(origin)
 
 	Timers:CreateTimer(interval, function()
 		currentRadius = currentRadius + radiusGrowth
-		local units = FindUnitsInRadius(caster:GetTeamNumber(), origin, nil, currentRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		local units = FindUnitsInRadius(caster:GetTeamNumber(), origin, nil, currentRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC), DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 
 		for k, unit in pairs(units) do
 			if not hits[unit:entindex()] then
