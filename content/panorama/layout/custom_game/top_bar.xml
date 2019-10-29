@@ -1,0 +1,16 @@
+<root>
+	<styles>
+
+	</styles>
+
+	<scripts>
+		<include src="s2r://panorama/scripts/custom_game/top_bar.js"/>
+	</scripts>
+	<Panel>
+		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_warp_beast.png" hittest="false" />-->
+		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/npc_dota_hero_warp_beast.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
+		<!--<DOTAHeroImage heroname="npc_dota_hero_warp_beast" src="file://{images}/heroes/npc_dota_hero_warp_beast.png" />-->
+	</Panel>
+</root>
