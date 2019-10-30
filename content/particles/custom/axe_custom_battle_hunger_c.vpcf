@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -14,7 +14,6 @@
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/particle_glow_04.vtex"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_flAnimationRate = 1.45
 		},
@@ -23,13 +22,11 @@
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fDrag = 0.05
 		},
 		{
 			_class = "C_OP_Spin"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fSpinRateStopTime = 1.0
 			m_nSpinRateDegrees = 4
@@ -58,14 +55,12 @@
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_flRadiusMax = 64.0
 			m_flRadiusMin = 64.0
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fLifetimeMax = 0.25
 			m_fLifetimeMin = 0.25
@@ -74,14 +69,14 @@
 			_class = "C_INIT_CreateWithinSphere"
 		},
 		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMax = [ 0.0, 0.0, 24.0 ]
-			m_OffsetMin = [ 0.0, 0.0, 24.0 ]
-		},
-		{
 			_class = "C_INIT_RandomAlpha"
 			m_nAlphaMin = 220
 			m_nAlphaMax = 220
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 24.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 24.0 ]
 		},
 	]
 	m_Emitters = 
@@ -97,4 +92,7 @@
 			m_ChildRef = resource:"particles/units/heroes/hero_axe/axe_battle_hunger_flames.vpcf"
 		},
 	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 8
+	m_nFirstMultipleOverride_BackwardCompat = 4
 }

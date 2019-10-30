@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Stealth Assassin - Ryu; 11.10.2019;
+	// HERO: Stealth Assassin - Ryu; 29.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_stealth_assassin"
@@ -29,7 +29,7 @@
 		"Ability9"				"generic_hidden"
 
 		"Ability10"				"special_bonus_hp_regen_6"				    // lvl 10 talent: same as Riki
-		"Ability11"				"special_bonus_agility_10"					// lvl 10 talent: similar to Riki
+		"Ability11"				"special_bonus_agility_8"					// lvl 10 talent: same as Riki
 
 		"Ability12"				"special_bonus_20_crit_15"					// lvl 15 talent: same as Riki
 		"Ability13"				"special_bonus_unique_riki_2"				// lvl 15 talent: same as Riki: Smoke Screen talent
@@ -42,7 +42,7 @@
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// like Riki
+		"ArmorPhysical"				"0"										// Riki (1);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
@@ -73,7 +73,7 @@
 		"AttributeBaseIntelligence"	"14"									// Riki (14); original (16); Anti-Mage (12);
 		"AttributeIntelligenceGain"	"1.3"									// Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
 		"AttributeBaseAgility"		"34"									// Riki (30); original (22); - don't change!
-		"AttributeAgilityGain"		"3.0"									// Riki (2.5); original (2.9); Anti-Mage (3.2) - don't increase!
+		"AttributeAgilityGain"		"2.9"									// Riki (2.5); original (2.9); Anti-Mage (3.2) - don't increase!
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

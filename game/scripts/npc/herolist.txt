@@ -28,4 +28,6 @@
 	"npc_dota_hero_invoker" 			"1"
 	
 	"npc_dota_hero_warp_beast"          "1"
+	"npc_dota_hero_sohei"               "1"
+	"npc_dota_hero_electrician"         "1"
 }

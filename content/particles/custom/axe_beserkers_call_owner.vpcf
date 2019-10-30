@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_ConstantColor = [ 62, 193, 68, 255 ]
@@ -34,14 +34,12 @@
 			_class = "C_OP_BasicMovement"
 			m_fDrag = 0.05
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_Spin"
 			m_nSpinRateDegrees = 4
 			m_fSpinRateStopTime = 1.0
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_FadeOut"
@@ -50,12 +48,10 @@
 			m_flFadeBias = 0.35
 			m_bEaseInAndOut = false
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_Decay"
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -91,32 +87,27 @@
 			m_flRadiusMin = 116.0
 			m_flRadiusMax = 125.0
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
 			m_fLifetimeMin = 0.35
 			m_fLifetimeMax = 0.7
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_INIT_RandomRotation"
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
 		},
 		{
 			_class = "C_INIT_RandomYawFlip"
 			m_flOpTimeOffsetMax = 1.0
-			m_flOpStrengthMinScale = 0.0
-		},
-		{
-			_class = "C_INIT_CreateWithinSphere"
 		},
 	]
 	m_Emitters = 
@@ -155,4 +146,6 @@
 			]
 		},
 	]
+	m_nBehaviorVersion = 8
+	m_nFirstMultipleOverride_BackwardCompat = 5
 }

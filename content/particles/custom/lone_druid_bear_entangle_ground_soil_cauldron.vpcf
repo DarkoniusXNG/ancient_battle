@@ -1,48 +1,37 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
-	m_ConstantColor =
-	[
-		211,
-		185,
-		176,
-		255,
-	]
+	m_ConstantColor = [ 211, 185, 176, 255 ]
 	m_nMaxParticles = 32
-	m_Children =
+	m_Children = 
 	[
 		{
 			m_ChildRef = resource:"particles/econ/items/lone_druid/lone_druid_cauldron/lone_druid_bear_entangle_ground_proj_cauldron.vpcf"
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity =
-			[
-				0.000000,
-				0.000000,
-				-1000.000000,
-			]
+			m_Gravity = [ 0.0, 0.0, -1000.0 ]
 			m_nOpEndCapState = 1
 		},
 		{
 			_class = "C_OP_EndCapTimedDecay"
-			m_flDecayTime = 0.500000
+			m_flDecayTime = 0.5
 		},
 		{
 			_class = "C_OP_LerpScalar"
 			m_nFieldOutput = 18
-			m_flOutput = 64.000000
-			m_flEndTime = 0.750000
+			m_flOutput = 64.0
+			m_flEndTime = 0.75
 		},
 	]
-	m_Renderers =
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderModels"
-			m_ModelList =
+			m_ModelList = 
 			[
 				{
 					m_model = resource:"models/particle/soil_fx_a.vmdl"
@@ -53,22 +42,23 @@
 			m_nSubModelField = 19
 			m_nManualFrameField = 18
 			m_bAnimated = true
+			m_bForceLoopingAnimation = true
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 18.000000
-			m_flRadiusMax = 20.000000
+			m_flRadiusMin = 18.0
+			m_flRadiusMax = 20.0
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 5.000000
-			m_fLifetimeMax = 5.000000
+			m_fLifetimeMin = 5.0
+			m_fLifetimeMax = 5.0
 		},
 		{
 			_class = "C_INIT_RandomSecondSequence"
@@ -81,25 +71,18 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin =
-			[
-				0.000000,
-				0.000000,
-				2.000000,
-			]
-			m_OffsetMax =
-			[
-				0.000000,
-				0.000000,
-				2.000000,
-			]
+			m_OffsetMin = [ 0.0, 0.0, 2.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 2.0 ]
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
 		},
 	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 8
+	m_nFirstMultipleOverride_BackwardCompat = 5
 }

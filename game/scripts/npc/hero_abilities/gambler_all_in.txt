@@ -4,7 +4,7 @@
 	// Gambler: All In (R) - New Spell, Ultimate, Deals damage based on Gambler's net worth, can backfire
 	// Author: Darkonius; 
 	// Linkens: Blocks only if it would hit;
-	// Notes: 27.8.2019; Chance for Success is True Random; Has Aghanim Scepter upgrade;
+	// Notes: 30.10.2019; Chance for Success is True Random; Has Aghanim Scepter upgrade;
 	// TO_DO: If its too weak increase damage cap from 600/875/1100 (scepter: 875/1100/1400) to 900/1100/1300 (scepter: 1100/1300/1500).
 	//=================================================================================================================
 	"gambler_all_in"
@@ -26,9 +26,9 @@
 		
 		"HasScepterUpgrade" 			"1"
 		
-		"AbilityCooldown"				"70 60 50" // original: 60
+		"AbilityCooldown"				"70 60 50" // original: 60 or 30
 		
-		"AbilityManaCost"				"350 500 700"
+		"AbilityManaCost"				"200 420 650"
 		"AbilityProcsMagicStick" 		"1"
 		"AbilityGoldCost"				"500"
 		

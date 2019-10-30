@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Mana Eater; 11.10.2019;
+	// HERO: Mana Eater; 29.10.2019;
 	// Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
 	// TO_DO:
 	//=================================================================================================================
@@ -35,7 +35,7 @@
 		"Ability12"			"special_bonus_attack_damage_90"				// lvl 15 talent; same as Puck
 		"Ability13"			"special_bonus_spell_amplify_15"                // lvl 15 talent; same as Puck
 
-		"Ability14"			"special_bonus_armor_5"							// lvl 20 talent; unique
+		"Ability14"			"special_bonus_armor_10"						// lvl 20 talent; unique
 		"Ability15"			"special_bonus_attack_range_100"				// lvl 20 talent; unique
 
 		"Ability16"			"special_bonus_cast_range_400"					// lvl 25 talent; unique
@@ -70,12 +70,12 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"			// Unique for Mana Eater
-		"AttributeBaseStrength"			"17"								// Puck (17); Skywrath Mage (21); Vengeful Spirit (19); Troll Warlord (21);
-		"AttributeStrengthGain"			"2.4"								// Puck (2.4); Vengeful Spirit (2.9); Troll Warlord (2.5); - don't decrease!
+		"AttributeBaseStrength"			"19"								// Puck (17); Skywrath Mage (21); Vengeful Spirit (19); Troll Warlord (21);
+		"AttributeStrengthGain"			"2.9"								// Puck (2.4); Vengeful Spirit (2.9); Troll Warlord (2.5); - don't decrease!
 		"AttributeBaseIntelligence"		"13"								// Troll Warlord (13); Vengeful Spirit (17); - don't change!
 		"AttributeIntelligenceGain"		"1.0"								// Troll Warlord (1.0); Vengeful Spirit (1.5); - don't change!
 		"AttributeBaseAgility"			"27"								// Puck (22); Troll Warlord (21); Vengeful Spirit (27); optimal (23);
-		"AttributeAgilityGain"			"2.8"								// Puck (1.7); Troll Warlord (2.9); Vengeful Spirit (3.8); optimal (2.8);
+		"AttributeAgilityGain"			"3.8"								// Puck (2.2); Troll Warlord (2.9); Vengeful Spirit (3.8); optimal (2.8);
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Paladin; 11.10.2019;
+	// HERO: Paladin; 29.10.2019;
 	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
 	// TO_DO:
 	//=================================================================================================================
@@ -35,12 +35,12 @@
 		"Ability12"			"special_bonus_attack_damage_90"		// lvl 15 talent; same as Omniknight
 		"Ability13"			"special_bonus_movement_speed_30"		// lvl 15 talent; unique
 
-		"Ability14"			"special_bonus_mp_regen_6"				// lvl 20 talent; unique
-		"Ability15"			"special_bonus_all_stats_12"			// lvl 20 talent; unique
+		"Ability14"			"special_bonus_unique_omniknight_2"		// lvl 20 talent; custom: Eternal Devotion OnDeath effect becomes Global
+		"Ability15"			"special_bonus_unique_sven"				// lvl 20 talent; custom: -6s Storm Hammer cd
 
-		"Ability16"			"special_bonus_unique_omniknight_1"		// lvl 25 talent; custom: Eternal Devotion OnDeath effect becomes Global
-		"Ability17"			"special_bonus_unique_sven"				// lvl 25 talent; custom: -6s Storm Hammer cd
-		
+		"Ability16"			"special_bonus_unique_omniknight_1"		// lvl 25 talent; custom: Purification bonus dmg/heal
+		"Ability17"			"special_bonus_unique_sven_3"			// lvl 25 talent; custom: Storm Hammer Purges
+
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"0"										// Omniknight (2); original (2);

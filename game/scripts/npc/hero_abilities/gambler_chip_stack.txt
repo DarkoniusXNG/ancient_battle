@@ -25,7 +25,7 @@
 		"AbilityCastRange"				"500"
 		"AbilityCastPoint"				"0.4"
 		
-		"AbilityCooldown"				"70.0"
+		"AbilityCooldown"				"70.0" // original: 6 seconds
 		
 		"AbilityManaCost"				"350"
 		"AbilityProcsMagicStick" 		"1"

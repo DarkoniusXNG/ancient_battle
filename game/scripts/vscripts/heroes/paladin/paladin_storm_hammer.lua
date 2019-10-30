@@ -87,8 +87,18 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 						damage_table.ability = self
 
 						ApplyDamage(damage_table)
-					
-						enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = bolt_stun_duration})
+
+						if enemy:IsAlive() then
+							enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = bolt_stun_duration})
+
+							-- Talent that applies Purge
+							local talent = caster:FindAbilityByName("special_bonus_unique_sven_3")
+							if talent then
+								if talent:GetLevel() ~= 0 then
+									self:DispelEnemy(enemy)
+								end
+							end
+						end
 					end
 				end
 			end
@@ -100,4 +110,19 @@ end
 
 function paladin_storm_hammer:ProcsMagicStick()
 	return true
+end
+
+function paladin_storm_hammer:DispelEnemy(target)
+	-- Basic Dispel (Buffs)
+	local RemovePositiveBuffs = true
+	local RemoveDebuffs = false
+	local BuffsCreatedThisFrameOnly = false
+	local RemoveStuns = false
+	local RemoveExceptions = false
+	target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+
+	-- Kill the target if its summoned, dominated or an illusion
+	if target:IsSummoned() or target:IsDominated() or target:IsIllusion() then
+		target:Kill(nil, self:GetCaster())
+	end
 end

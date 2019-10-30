@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -14,7 +14,6 @@
 			m_bAdditive = true
 			m_bDisableZBuffering = true
 			m_hTexture = resource:"materials/particle/particle_flares/aircraft_red.vtex"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_flAnimationRate = 1.45
 		},
@@ -23,27 +22,23 @@
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fDrag = 0.05
 			m_Gravity = [ 0.0, 0.0, 300.0 ]
 		},
 		{
 			_class = "C_OP_Spin"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fSpinRateStopTime = 1.0
 			m_nSpinRateDegrees = 4
 		},
 		{
 			_class = "C_OP_Decay"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flStartScale = 4.0
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_flBias = 0.85
 		},
@@ -63,33 +58,24 @@
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_flRadiusMax = 25.0
 			m_flRadiusMin = 16.0
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_fLifetimeMax = 0.7
 			m_fLifetimeMin = 0.35
 		},
 		{
 			_class = "C_INIT_RandomRotation"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
-			m_flOpStrengthMinScale = 0.0
 			m_flOpTimeOffsetMax = 1.0
 			m_nAlphaMin = 128
-		},
-		{
-			_class = "C_INIT_RandomYawFlip"
-			m_flOpStrengthMinScale = 0.0
-			m_flOpTimeOffsetMax = 1.0
 		},
 		{
 			_class = "C_INIT_CreateOnModel"
@@ -100,6 +86,10 @@
 			_class = "C_INIT_RandomColor"
 			m_ColorMin = [ 184, 0, 0, 255 ]
 			m_ColorMax = [ 196, 0, 0, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+			m_flOpTimeOffsetMax = 1.0
 		},
 	]
 	m_Emitters = 
@@ -136,6 +126,23 @@
 		},
 		{
 			m_ChildRef = resource:"particles/custom/axe_custom_battle_hunger_start_c.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 8
+	m_nFirstMultipleOverride_BackwardCompat = 6
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
 		},
 	]
 }

@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Linkens: Doesn't Block (because its global)
 	// How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
-	// Notes: OK; 24.9.2017;
+	// Notes: OK; 30.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"gambler_bet"
@@ -24,10 +24,10 @@
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCastPoint"				"0.3"
 		
-		"AbilityCooldown"				"30"    				// don't change
-		"AbilityManaCost"				"150"					// subject to change
+		"AbilityCooldown"				"30"    				// Ante Up (60)
+		"AbilityManaCost"				"50"					// Ante Up (100)
 		"AbilityProcsMagicStick" 		"1"
-		"AbilityGoldCost"				"50 75 100 125"			// subject to change
+		"AbilityGoldCost"				"50 75 100 125"			// Ante Up (100)
 		"AbilityCastRange"				"0" 					// global (20 000)
 
 		"precache"
@@ -47,10 +47,10 @@
 				"var_type"					"FIELD_INTEGER"
 				"gold_cost"					"50 75 100 125"
 			}
-			"02"
+			"02" // Ante Up (60)
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration"					"15.0"
+				"duration"					"30.0"
 			}
 			"03"
 			{

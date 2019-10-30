@@ -20,6 +20,13 @@ function paladin_holy_purification:OnSpellStart()
 	local heal_particle_name_2 = "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_immortal_cast.vpcf"
 	local heal_hit_particle_name = "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 	
+	-- Talent that increases damage and heal
+	local talent = caster:FindAbilityByName("special_bonus_unique_omniknight_1")
+	if talent then
+		if talent:GetLevel() ~= 0 then
+			damage_and_heal = damage_and_heal + talent:GetSpecialValueFor("value")
+		end
+	end
 	
 	if IsServer() then
 		-- Init damage table

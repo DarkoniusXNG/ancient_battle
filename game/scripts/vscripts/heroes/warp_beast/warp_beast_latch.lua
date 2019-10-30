@@ -35,7 +35,7 @@ function warp_beast_latch:OnSpellStart()
 		return
 	end
 
-	if target:HasModifier("modifier_item_lotus_orb_active") then 
+	if target:HasModifier("modifier_item_lotus_orb_active") or target:HasModifier("modifier_latch") then -- or target:HasModifier("modifier_latch_target") then 
 		return 
 	end
 

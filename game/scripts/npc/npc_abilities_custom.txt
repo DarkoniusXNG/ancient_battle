@@ -175,6 +175,8 @@
 #base "unit_abilities/custom_egg_passives.txt"
 
 #base "hero_abilities/warp_beast_abilities.txt"
+#base "hero_abilities/sohei_abilities.txt"
+#base "hero_abilities/electrician_abilities.txt"
 
 "DOTAAbilities"
 {

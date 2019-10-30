@@ -11,6 +11,13 @@
 		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
 		<!--<Image src="file://{images}/heroes/npc_dota_hero_warp_beast.png" hittest="false" />-->
 		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
-		<!--<DOTAHeroImage heroname="npc_dota_hero_warp_beast" src="file://{images}/heroes/npc_dota_hero_warp_beast.png" />-->
+		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_sohei.png" hittest="false" />-->
+		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_sohei.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/npc_dota_hero_sohei.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_sohei.png" hittest="false" />-->
+		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_electrician.png" hittest="false" />-->
+		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_electrician.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/npc_dota_hero_electrician.png" hittest="false" />-->
+		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_electrician.png" hittest="false" />-->
 	</Panel>
 </root>

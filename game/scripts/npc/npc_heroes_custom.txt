@@ -21,6 +21,8 @@
 #base "heroes/void_demon.txt"
 
 #base "heroes/warp_beast.txt"
+#base "heroes/sohei.txt"
+#base "heroes/electrician.txt"
 
 "DOTAHeroes"
 {

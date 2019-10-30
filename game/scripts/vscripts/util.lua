@@ -118,6 +118,19 @@ function CBaseEntity:IsFountain()
 	return false
 end
 
+function CDOTA_BaseNPC:GetValueChangedByStatusResistance(value)
+	if self and value then
+		local reduction = self:GetStatusResistance()
+
+		-- Maximum (Positive Status Resistance)
+		if reduction >= 1 then
+			return value*0.01
+		end
+		-- It should work with Negative Status Resistance
+		return value*(1-reduction)
+	end
+end
+
 -- This function checks if a given unit is Roshan, returns boolean value;
 function IsRoshan(unit)
 	return unit:IsRoshan()

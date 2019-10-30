@@ -35,7 +35,7 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 	end
 
 	-- No mana drain while broken or if attacker is an illusion
-	if parent:PassivesDisabled() or parent:IsIllusion() then
+	if parent:PassivesDisabled() then
 		return
 	end
 
@@ -79,21 +79,28 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 			drainAmount = targetMana
 		end
 
-		local missingMana = parent:GetMaxMana() - parent:GetMana()
-		if missingMana < drainAmount then
-			local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
-			if modifier then
-				modifier:SetDuration(duration, true)
-				modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
-			else
-				modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {Duration = duration})
-				if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap"))) end
+		-- Don't give mana to illusions
+		if not parent:IsIllusion() then
+			local missingMana = parent:GetMaxMana() - parent:GetMana()
+			if missingMana < drainAmount then
+				local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
+				if modifier then
+					modifier:SetDuration(duration, true)
+					modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
+				else
+					modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {Duration = duration})
+					if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap"))) end
+				end
+				parent:CalculateStatBonus()
 			end
-			parent:CalculateStatBonus()
 		end
 
 		target:ReduceMana(drainAmount)
-		parent:GiveMana(drainAmount)
+
+		-- Don't give mana to illusions
+		if not parent:IsIllusion() then
+			parent:GiveMana(drainAmount)
+		end
 
 		target:EmitSound("Hero_Warp_Beast.ManaEater")
 
@@ -109,15 +116,12 @@ function modifier_mana_eater_passive:OnDeath(keys)
 		local caster = self:GetParent()
 		local unit = keys.unit
 
-		if unit:IsIllusion() then return end
+		if unit:IsIllusion() or caster:IsIllusion() then
+			return
+		end
 
 		local drainAmount = self:GetAbility():GetSpecialValueFor("kill_drain_percentage") * unit:GetMaxMana() / 100
-		local targetMana = unit:GetMana()
 		local duration = self:GetAbility():GetSpecialValueFor("bonus_duration")
-
-		if targetMana < drainAmount then
-			drainAmount = targetMana
-		end
 
 		local missingMana = caster:GetMaxMana() - caster:GetMana()
 		if missingMana < drainAmount then
@@ -132,7 +136,6 @@ function modifier_mana_eater_passive:OnDeath(keys)
 			caster:CalculateStatBonus()
 		end
 
-		unit:ReduceMana(drainAmount)
 		caster:GiveMana(drainAmount)
 	end
 end

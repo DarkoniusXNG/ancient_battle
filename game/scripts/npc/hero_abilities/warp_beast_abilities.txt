@@ -27,7 +27,6 @@
         {
             "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump.vpcf"
             "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf"
-            //"soundfile" "soundevents/game_sounds_heroes/game_sounds_warp_beast.vsndevts"
         }
 
         "AbilitySpecial"
@@ -86,6 +85,7 @@
         "precache"
         {
             "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_latch.vpcf"
+			"soundfile" "soundevents/units/game_sounds_warp_beast.vsndevts"
         }
 
         "AbilitySpecial"
@@ -138,7 +138,7 @@
             "02"
             {
                 "var_type"                                "FIELD_INTEGER"
-                "kill_drain_percentage"                   "15"
+                "kill_drain_percentage"                   "10"
             }
             "03"
             {
@@ -182,7 +182,7 @@
         "precache"
         {
             "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
-            //"soundfile" "soundevents/game_sounds_heroes/game_sounds_warp_beast.vsndevts"
+            "soundfile" "soundevents/units/game_sounds_warp_beast.vsndevts"
         }
 
         "AbilitySpecial"

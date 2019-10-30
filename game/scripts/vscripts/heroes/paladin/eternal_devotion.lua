@@ -8,7 +8,7 @@ function EternalDevotionCheck(keys)
 	local radius = ability:GetLevelSpecialValueFor("buff_radius", ability_level)
 	
 	if caster then
-		local talent = caster:FindAbilityByName("special_bonus_unique_omniknight_1")
+		local talent = caster:FindAbilityByName("special_bonus_unique_omniknight_2")
 		local caster_team = caster:GetTeamNumber()
 		local caster_pos = caster:GetAbsOrigin()
 		

@@ -1,10 +1,28 @@
-LinkLuaModifier("modifier_temporal_jump", "scripts/vscripts/heroes/warp_beast/warp_beast_temporal_jump.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_temporal_jump_charges", "scripts/vscripts/heroes/warp_beast/warp_beast_temporal_jump.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_temporal_jump", "heroes/warp_beast/warp_beast_temporal_jump.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_temporal_jump_charges", "heroes/warp_beast/warp_beast_temporal_jump.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_warp_beast_temporal_radius_talent", "heroes/warp_beast/warp_beast_temporal_jump.lua", LUA_MODIFIER_MOTION_NONE)
 
 warp_beast_temporal_jump = class({})
 
 function warp_beast_temporal_jump:GetAOERadius()
-	return self:GetSpecialValueFor("radius")
+	local caster = self:GetCaster()
+	local radius = self:GetSpecialValueFor("radius")
+
+	if IsServer() then
+		-- Talent that increases radius
+		local talent = caster:FindAbilityByName("special_bonus_unique_warp_beast_jump_radius")
+		if talent then
+			if talent:GetLevel() ~= 0 then
+				radius = radius + talent:GetSpecialValueFor("value")
+			end
+		end
+	else
+		if caster:HasModifier("modifier_warp_beast_temporal_radius_talent") then
+			radius = radius + caster.temporal_radius_talent_value
+		end
+	end
+
+	return radius
 end
 
 function warp_beast_temporal_jump:GetIntrinsicModifierName()
@@ -238,5 +256,34 @@ function modifier_temporal_jump_charges:OnIntervalThink()
 
 			return nil
 		end)
+	end
+end
+
+if modifier_warp_beast_temporal_radius_talent == nil then
+	modifier_warp_beast_temporal_radius_talent = class({})
+end
+
+function modifier_warp_beast_temporal_radius_talent:IsHidden()
+    return true
+end
+
+function modifier_warp_beast_temporal_radius_talent:IsPurgable()
+    return false
+end
+
+function modifier_warp_beast_temporal_radius_talent:AllowIllusionDuplicate() 
+	return false
+end
+
+function modifier_warp_beast_temporal_radius_talent:RemoveOnDeath()
+    return false
+end
+
+function modifier_warp_beast_temporal_radius_talent:OnCreated()
+	if IsClient() then
+		local parent = self:GetParent()
+		local talent = self:GetAbility()
+		local talent_value = talent:GetSpecialValueFor("value")
+		parent.temporal_radius_talent_value = talent_value
 	end
 end

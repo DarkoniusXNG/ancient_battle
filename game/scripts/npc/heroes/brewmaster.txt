@@ -33,9 +33,9 @@
 		"Ability13"			"special_bonus_magic_resistance_20"					// lvl 15 talent: same as dota Brewmaster
 
 		"Ability14"			"special_bonus_cooldown_reduction_15"				// lvl 20 talent; unique
-		"Ability15"			"special_bonus_strength_20"							// lvl 20 talent; unique
+		"Ability15"			"special_bonus_attack_speed_100"					// lvl 20 talent; same as dota Brewmaster
 
-		"Ability16"			"special_bonus_attack_speed_100"					// lvl 25 talent; unique
+		"Ability16"			"special_bonus_cleave_100"                          // lvl 25 talent; unique
 		"Ability17"			"special_bonus_spell_amplify_25"					// lvl 25 talent; unique
 		
 		// Protection

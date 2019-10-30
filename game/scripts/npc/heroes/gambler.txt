@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Gambler; 11.10.2019;
+	// HERO: Gambler; 29.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_gambler"
@@ -33,7 +33,7 @@
 		"Ability11"				"special_bonus_attack_damage_60"			// lvl 10 talent: same as Rubick
 		"Ability12"				"special_bonus_hp_200"						// lvl 10 talent: same as Rubick
 
-		"Ability13"				"special_bonus_intelligence_15"				// lvl 15 talent: unique
+		"Ability13"				"special_bonus_armor_5"				        // lvl 15 talent: unique
 		"Ability14"				"special_bonus_cast_range_125"				// lvl 15 talent: unique
 
 		"Ability15"				"special_bonus_spell_amplify_15"			// lvl 20 talent: unique
@@ -44,7 +44,7 @@
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// Default
+		"ArmorPhysical"				"0"										// Default; Rubick (-1);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
@@ -55,12 +55,12 @@
 		"AttackRate"				"1.7"									// like Rubick
 		"AttackAnimationPoint"		"0.4"									// like Rubick
 		"AttackAcquisitionRange"	"800"									// like Rubick
-		"AttackRange"				"600"									// Rubick(550); original Gambler(500);
+		"AttackRange"				"600"									// Rubick (550); original Gambler (500);
 		"ProjectileSpeed"			"1125"									// like Rubick
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// Rubick(290); original Gambler(320);
+		"MovementSpeed"				"290"									// Rubick (290); original Gambler (320);
 		"MovementTurnRate"			"0.7"									// like Rubick
 		
 		// Vision

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Void Demon; 11.10.2019;
+	// HERO: Void Demon; 29.10.2019;
 	// Notes: OK; Mass Haste provides max movement speed and bonus attack speed;
 	// TO_DO:
 	//=================================================================================================================
@@ -43,7 +43,7 @@
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1"										// Night Stalker (2);
+		"ArmorPhysical"				"2"										// Night Stalker (2);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
@@ -71,10 +71,10 @@
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"23"									// Night Stalker (23); original (18);
 		"AttributeStrengthGain"		"3.2"									// Night Stalker (3.2); original (1.0);
-		"AttributeBaseIntelligence"	"18"									// Night Stalker (13); original (18 or 20);
-		"AttributeIntelligenceGain"	"2.0"									// Night Stalker (1.6); original (2.0);
 		"AttributeBaseAgility"		"19"									// Night Stalker (18); Troll Warlord (21); original (19);
 		"AttributeAgilityGain"		"2.5"									// Night Stalker (2.3); Troll Warlord (2.9); original (2.5);
+		"AttributeBaseIntelligence"	"18"									// Night Stalker (13); original (18 or 20);
+		"AttributeIntelligenceGain"	"2.0"									// Night Stalker (1.6); original (2.0);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

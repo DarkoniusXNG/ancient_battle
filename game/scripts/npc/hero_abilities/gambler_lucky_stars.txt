@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
 	// Author: Darkonius
-	// Notes: OK; 27.8.2019; Can Crit on buildings; Chance to proc is Pseudo-Random;
+	// Notes: OK; 30.10.2019; Can Crit on buildings; Chance to proc is Pseudo-Random;
 	// TO_DO: If its too weak increase proc chance to a maximum 12%
 	//=================================================================================================================
 	"gambler_lucky_stars"
@@ -34,7 +34,7 @@
 			"01" // Phantom Assassin Crit
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"crit_damage"                             "150 200 325 450"
+				"crit_damage"                             "160 200 325 450"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 11.10.2019;
+	// HERO: Lifestealer; 29.10.2019;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
 	// TO_DO: life_stealer_custom_open_wounds;
 	//=================================================================================================================
@@ -36,7 +36,7 @@
 		"Ability13"				"special_bonus_attack_damage_30"			// lvl 15 talent; same as dota Lifestealer
 
 		"Ability14"				"special_bonus_evasion_20"					// lvl 20 talent; same as dota Lifestealer
-		"Ability15"				"special_bonus_cast_range_125"				// lvl 20 talent; unique
+		"Ability15"				"special_bonus_spell_lifesteal_70"			// lvl 20 talent; unique
 
 		"Ability16"				"special_bonus_armor_15"					// lvl 25 talent; unique
 		"Ability17"				"special_bonus_unique_lifestealer_3"		// lvl 25 talent; Feast talent
@@ -58,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// dota Lifestealer (325); old Lifestealer (295);
+		"MovementSpeed"				"290"									// dota Lifestealer (325); old Lifestealer (295);
 		"MovementTurnRate"			"1.0"									// like Lifestealer
 		"HasAggressiveStance"       "1"                          			// like Lifestealer
 		
@@ -74,7 +74,7 @@
 		"AttributeStrengthGain"		"2.9"									// dota Lifestealer (2.9); old Lifestealer (1.4);
 		"AttributeBaseIntelligence"	"15"									// dota Lifestealer (15); old Lifestealer (15); - don't change!
 		"AttributeIntelligenceGain"	"1.5"									// dota Lifestealer (1.8); old Lifestealer (1.5); - don't change!
-		"AttributeBaseAgility"		"18"									// dota Lifestealer (18); old Lifestealer (26); - don't change!
+		"AttributeBaseAgility"		"18"									// dota Lifestealer (18); old Lifestealer (26);
 		"AttributeAgilityGain"		"2.4"									// dota Lifestealer (2.4); old Lifestealer (4.05);
 		
 		// Status

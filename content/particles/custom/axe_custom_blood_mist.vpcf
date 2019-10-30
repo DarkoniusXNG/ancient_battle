@@ -1,4 +1,4 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
@@ -54,7 +54,7 @@
 		},
 		{
 			_class = "C_OP_LerpEndCapScalar"
-			m_nFieldOutput = 16
+			m_nFieldOutput = "16"
 			m_flLerpTime = 0.5
 		},
 	]
@@ -69,15 +69,15 @@
 			_class = "C_INIT_CreateWithinSphere"
 		},
 		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMax = [ 0.0, 0.0, 75.0 ]
-			m_OffsetMin = [ 0.0, 0.0, 75.0 ]
-		},
-		{
 			_class = "C_INIT_RandomRotation"
 			m_flDegrees = 40.0
 			m_flDegreesMax = 0.0
 			m_bRandomlyFlipDirection = false
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 75.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 75.0 ]
 		},
 	]
 	m_Emitters = 
@@ -92,6 +92,30 @@
 	[
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit_icon_glow.vpcf"
+		},
+	]
+	m_nBehaviorVersion = 8
+	m_nFirstMultipleOverride_BackwardCompat = 3
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ null, null, null ]
+					m_entityName = "self"
+				},
+			]
 		},
 	]
 }

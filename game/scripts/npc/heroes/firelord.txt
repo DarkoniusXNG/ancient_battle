@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Fire Lord; 11.10.2019;
+	// HERO: Fire Lord; 29.10.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_fire_lord"
@@ -64,7 +64,7 @@
 		"AttributeBaseIntelligence"	"18"									// SF(18); original(18); - don't change!
 		"AttributeIntelligenceGain"	"2.0"									// SF(2.2); original(2.5); - don't change!
 		"AttributeBaseAgility"		"20"									// SF(20); Ursa(18); original(20);
-		"AttributeAgilityGain"		"3.0"									// SF(3.5); Ursa(2.4); original(1.6);
+		"AttributeAgilityGain"		"3.5"									// SF(3.5); Ursa(2.4); original(1.6);
 		
 		// Movement
 		//----------------------------------------------------------------
@@ -76,7 +76,7 @@
 		//----------------------------------------------------------------
 		"StatusHealth"				"200"									// like SF
 		"StatusHealthRegen"			"0.25"									// like SF
-		"StatusMana"				"0"										// SF(75);
+		"StatusMana"				"75"									// like SF
 		"StatusManaRegen"			"0.3"									// like SF
 		
 		// Vision

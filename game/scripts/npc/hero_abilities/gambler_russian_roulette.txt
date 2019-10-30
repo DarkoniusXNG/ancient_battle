@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Gambler: Russian Roulette (E) - New Spell, mini-stuns, roots and disarms enemies, allies and the caster; has a chance to do damage on any target
 	// Author: Darkonius;
-	// Notes: OK; 20.9.2017; Roulette can hit units that wander into a radius after a delay.
-	// Notes: Ministun is applied only to enemies; Root and disarm are applied to all; Reveal is dispellable on Gambler; 
+	// Notes: OK; 30.10.2019; Roulette can hit units that wander into a radius after a delay.
+	// Notes: Ministun is applied only to enemies; Root and disarm are applied to enemies; Reveal is dispellable on Gambler; 
 	// TO_DO:
 	//=================================================================================================================
 	"gambler_russian_roulette"
@@ -96,7 +96,7 @@
 				{
 					"Center"	"CASTER"
 					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					"Flags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 				}

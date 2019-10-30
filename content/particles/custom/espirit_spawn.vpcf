@@ -1,8 +1,8 @@
-<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf16:version{261b3cba-02c7-424f-854b-c432c6f018d1} -->
 {
 	_class = "CParticleSystemDefinition"
 	m_nMaxParticles = 10
-	m_Children =
+	m_Children = 
 	[
 		{
 			m_ChildRef = resource:"particles/custom/espirit_spawn_groundburst.vpcf"
@@ -17,4 +17,6 @@
 			m_ChildRef = resource:"particles/custom/espirit_spawn_grounddustbdust.vpcf"
 		},
 	]
+	m_PreEmissionOperators = [  ]
+	m_nBehaviorVersion = 8
 }

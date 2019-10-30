@@ -17,12 +17,6 @@ function InitHeroSelection()  {
 			if (GridCategories.GetChild(i).FindChildTraverse("HeroList").GetChild(j)) {
 				var hero_panel = GridCategories.GetChild(i).FindChildTraverse("HeroList").GetChild(j).GetChild(0).GetChild(0);
                 //$.Msg(hero_panel)
-				if (hero_panel.heroname == "warp_beast") {
-					// this works but it makes the portrait static
-					var portrait = FindDotaHudElement('HeroInspectInfo').FindChildTraverse('HeroPortrait');
-					portrait.style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_' + hero_panel.heroname + '.png")';
-				    portrait.style.backgroundSize = "100% 100%";
-				}
 				hero_panel.GetParent().AddClass("HeroCard");
 				hero_panel.style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_' + hero_panel.heroname + '.png")';
 				hero_panel.style.backgroundSize = "100% 100%";
@@ -32,6 +26,14 @@ function InitHeroSelection()  {
 		i++;
 	}
 }
+// When player clicks on the hero in hero selection
+//var portrait = FindDotaHudElement('HeroInspectInfo').FindChildTraverse('HeroPortrait');
+//$.Msg(portrait)
+//if (panel.heroname == "warp_beast" || panel.heroname == "sohei" || panel.heroname == "electrician") {
+// this works but it makes the portrait static
+//portrait.style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_' + hero_panel.heroname + '.png")';
+//portrait.style.backgroundSize = "100% 100%";
+//}
 
 (function() {
 	var PreGame = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("PreGame")
