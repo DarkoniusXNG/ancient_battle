@@ -22,7 +22,7 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		ancient_battle_gamemode:PostLoadPrecache()
 		ancient_battle_gamemode:OnAllPlayersLoaded()
-		Timers:CreateTimer(HERO_SELECTION_TIME+STRATEGY_TIME-1, function()
+		Timers:CreateTimer(BANNING_PHASE_TIME+HERO_SELECTION_TIME+HERO_SELECTION_PENALTY_TIME+STRATEGY_TIME-0.5, function()
 			for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 				if PlayerResource:IsValidPlayerID(playerID) then
 					-- If this player still hasn't picked a hero, random one

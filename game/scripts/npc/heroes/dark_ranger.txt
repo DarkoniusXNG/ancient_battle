@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Dark Ranger; 11.10.2019;
+	// HERO: Dark Ranger; 1.11.2019;
 	// Notes: OK; Dark Arrows provide bonus dmg, Precision aura provides bonus attack speed proportional to agility; Marksmanship provides bonus agility
 	// TO_DO:
 	//=================================================================================================================
@@ -50,8 +50,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// like Drow Ranger
-		"AttackDamageMin"			"22"									// Drow Ranger(19);
-		"AttackDamageMax"			"32"									// Drow Ranger(30);
+		"AttackDamageMin"			"22"									// Drow Ranger (19);
+		"AttackDamageMax"			"32"									// Drow Ranger (30);
 		"AttackRate"				"1.7"									// Default
 		"AttackAnimationPoint"		"0.65"									// like Drow Ranger
 		"AttackAcquisitionRange"	"800"									// like Drow Ranger
@@ -60,7 +60,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// Drow Ranger(285);
+		"MovementSpeed"				"285"									// Drow Ranger (285);
 		"MovementTurnRate"			"0.7"									// like Drow Ranger
 		
 		// Vision
@@ -71,13 +71,13 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (18); - don't change!
-		"AttributeStrengthGain"			"1.9"								// original (1.9); Drow Ranger (1.9); - don't change!
-		"AttributeBaseIntelligence"		"15"								// original (15); Drow Ranger (15); - don't change!
-		"AttributeIntelligenceGain"		"2.6"								// original (2.6); Drow Ranger (1.4);
+		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (18);
+		"AttributeStrengthGain"			"1.9"								// original (1.9); Drow Ranger (1.9);
 		"AttributeBaseAgility"			"28"								// original (21); Drow Ranger (30);
 		"AttributeAgilityGain"			"1.5"								// original (1.5); Drow Ranger (2.8);
-		
+		"AttributeBaseIntelligence"		"15"								// original (15); Drow Ranger (15);
+		"AttributeIntelligenceGain"		"2.6"								// original (2.6); Drow Ranger (1.4);
+
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"200"									// like Drow Ranger

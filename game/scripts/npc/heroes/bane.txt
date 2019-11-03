@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 11.10.2019;
+	// HERO: Bane; 1.11.2019;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
@@ -32,9 +32,9 @@
 		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: same as dota Bane
 
 		"Ability12"					"special_bonus_hp_300"					// lvl 15 talent: unique
-		"Ability13"					"special_bonus_exp_boost_40"			// lvl 15 talent: same as dota Bane
+		"Ability13"					"special_bonus_attack_range_200"		// lvl 15 talent: unique
 
-		"Ability14"					"special_bonus_attack_speed_100"		// lvl 20 talent: unique
+		"Ability14"					"special_bonus_attack_speed_120"		// lvl 20 talent: unique
 		"Ability15"					"special_bonus_movement_speed_50"		// lvl 20 talent: same as dota Bane
 
 		"Ability16"					"special_bonus_unique_bane_2"			// lvl 25 talent; same as dota Bane
@@ -55,30 +55,30 @@
 		"AttackAcquisitionRange"	"800"									// like dota Bane
 		"AttackRange"				"400"									// like dota Bane
 		"ProjectileSpeed"			"900"									// like dota Bane
-		
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"305"									// like dota Bane
 		"MovementTurnRate"			"0.6"									// like dota Bane
-		
+
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"		"1800"									// Default
 		"VisionNighttimeRange"		"800"									// Default
-		
+
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"		"23"									// like dota Bane
 		"AttributeStrengthGain"		"2.6"									// like dota Bane
-		"AttributeBaseIntelligence"	"23"									// like dota Bane
-		"AttributeIntelligenceGain"	"2.6"									// like dota Bane
 		"AttributeBaseAgility"		"23"									// like dota Bane
 		"AttributeAgilityGain"		"2.6"									// like dota Bane
-		
+		"AttributeBaseIntelligence"	"23"									// like dota Bane
+		"AttributeIntelligenceGain"	"2.6"									// like dota Bane
+
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// unique
+		"StatusHealthRegen"			"0.0"									// like dota Bane
 		"StatusHealth"				"150"									// Default
 		"StatusMana"				"0"										// Default
 		"StatusManaRegen"			"0.0"									// like dota Bane

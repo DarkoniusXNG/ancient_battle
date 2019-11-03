@@ -303,7 +303,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	end
 	
 	-- Infused Robe passive Damage Blocking any damage type after all reductions (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() then
+	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() and victim ~= attacker then
 		
 		local ability
 		for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do

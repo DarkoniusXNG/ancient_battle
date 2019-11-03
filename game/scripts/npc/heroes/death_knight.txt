@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Death Knight; 11.10.2019;
+	// HERO: Death Knight; 1.11.2019;
 	// Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
 	// TO_DO: 
 	//=================================================================================================================
@@ -28,7 +28,7 @@
 		"Ability9"				"generic_hidden"
 
 		"Ability10"				"special_bonus_mp_regen_4"			    // lvl 10 talent; unique
-		"Ability11"				"special_bonus_exp_boost_25"			// lvl 10 talent; same as Abaddon
+		"Ability11"				"special_bonus_strength_8"              // lvl 10 talent; unique
 
 		"Ability12"				"special_bonus_movement_speed_20"		// lvl 15 talent; unique
 		"Ability13"				"special_bonus_armor_8"					// lvl 15 talent; same as Abaddon
@@ -56,7 +56,7 @@
 		
 		// Movement
 		//----------------------------------------------------------------
-		"MovementSpeed"				"270"									// original(320); Abaddon(325);
+		"MovementSpeed"				"300"									// original (320); Abaddon (325);
 		"MovementTurnRate"			"0.5"									// like Abaddon
 		
 		// Vision
@@ -67,18 +67,18 @@
 		// Attributes
 		//----------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"23"								// Abaddon (23); original (23) - don't change!
+		"AttributeBaseStrength"			"23"								// Abaddon (23); original (23)
 		"AttributeStrengthGain"			"2.5"								// Abaddon (3.0); original (2.7);
 		"AttributeBaseAgility"			"12"								// Abaddon (23); original (12);
-		"AttributeAgilityGain"			"1.5"								// Abaddon (1.5); original (1.5); - don't change!
-		"AttributeBaseIntelligence"		"21"								// Abaddon (21); original (17); - don't change!
-		"AttributeIntelligenceGain"		"2.0"								// Abaddon (2.0); original (1.8); - don't change!
+		"AttributeAgilityGain"			"1.5"								// Abaddon (1.5); original (1.5);
+		"AttributeBaseIntelligence"		"21"								// Abaddon (21); original (17);
+		"AttributeIntelligenceGain"		"2.0"								// Abaddon (2.0); original (1.8);
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealthRegen"				"0.0"								// Abaddon(0);
-		"StatusHealth"					"150"								// Abaddon(200);
-		"StatusMana"					"0"									// Abaddon(75);
+		"StatusHealthRegen"				"0.0"								// Abaddon (0);
+		"StatusHealth"					"150"								// Abaddon (200);
+		"StatusMana"					"0"									// Abaddon (75);
 		"StatusManaRegen"				"0.0"								// like Abaddon
 	}
 }

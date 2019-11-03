@@ -15,6 +15,7 @@
 #base "heroes/mana_eater.txt"
 #base "heroes/paladin.txt"
 #base "heroes/perun.txt"
+#base "heroes/pudge.txt"
 #base "heroes/queenofpain.txt"
 #base "heroes/silencer.txt"
 #base "heroes/stealth_assassin.txt"

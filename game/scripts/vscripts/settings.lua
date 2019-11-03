@@ -5,6 +5,8 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 
 CUSTOM_GAME_SETUP_TIME = 20.0           -- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0              -- How long should we let people select their hero? Should be at least 5 seconds.
+HERO_SELECTION_PENALTY_TIME = 10.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
+BANNING_PHASE_TIME = 30.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
 STRATEGY_TIME = 0.0                     -- How long should strategy time last? !!! You can buy items during strategy time and it will not be spent!
 SHOWCASE_TIME = 12.0                    -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?

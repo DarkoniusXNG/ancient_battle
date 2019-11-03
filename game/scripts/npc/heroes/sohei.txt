@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// HERO: Sohei
-	// Notes: OK; 29.10.2019;
+	// Notes: OK; 1.11.2019;
 	//=================================================================================================================
 	"npc_dota_hero_sohei"
 	{
@@ -69,7 +69,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"                                   "320"
+		"MovementSpeed"                                   "300"
 		"MovementTurnRate"                                "1.5"
 
 		// Vision
@@ -81,7 +81,7 @@
 		//-------------------------------------------------------------------------------------------------------------
         "AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"
         "AttributeBaseStrength"                           "23"                  //
-        "AttributeStrengthGain"                           "4.5"                 //
+        "AttributeStrengthGain"                           "3.5"                 //
 		"AttributeBaseAgility"                            "18"                  //
         "AttributeAgilityGain"                            "1.5"                 //
         "AttributeBaseIntelligence"                       "15"                  //

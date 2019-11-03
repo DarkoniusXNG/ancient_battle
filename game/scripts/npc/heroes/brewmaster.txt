@@ -12,7 +12,7 @@
 		"Role"						"Carry,Initiator,Durable,Disabler,Nuker"	// roles
 		"Rolelevels"				"2,3,2,2,2"
 		"Complexity"				"3"
-		
+
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"		"6"
@@ -37,33 +37,33 @@
 
 		"Ability16"			"special_bonus_cleave_100"                          // lvl 25 talent; unique
 		"Ability17"			"special_bonus_spell_amplify_25"					// lvl 25 talent; unique
-		
+
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"-2"								// like dota Brewmaster
 		"MagicalResistance"			"25"								// Default
-		
+
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"				"29"							// original (2); dota (29);
-		"AttackDamageMax"				"36"							// original (12); dota (36)
+		"AttackDamageMax"				"36"							// original (12); dota (36);
 		"AttackRate"					"1.7"							// Default
 		"AttackAnimationPoint"			"0.35"							// like dota Brewmaster
 		"AttackAcquisitionRange"		"600"							// like dota Brewmaster
 		"AttackRange"					"150"							// like dota Brewmaster
-		
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"					"305"							// like dota Brewmaster
 		"MovementTurnRate"				"0.6"							// like dota Brewmaster
 		"HasAggressiveStance"			"1"
-		
+
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"			"1800"							// Default
 		"VisionNighttimeRange"			"800"							// Default
-		
+
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
@@ -73,7 +73,7 @@
 		"AttributeAgilityGain"			"1.5"							// original (1.5); dota (2);
 		"AttributeBaseIntelligence"		"15"							// original (15); dota (15);
 		"AttributeIntelligenceGain"		"1.6"							// original (1.5); dota (1.6);
-		
+
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealthRegen"			"0.5"							// like dota Brewmaster

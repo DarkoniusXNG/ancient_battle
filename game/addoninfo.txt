@@ -1,10 +1,11 @@
 "AddonInfo"
 {
-	"maps"					"two_vs_two five_vs_five" //holdout"
+	"maps"					"two_vs_two five_vs_five" // holdout"
 	"IsPlayable"			"1"
 	"PenaltiesEnabled"  	"0"
 	"CheckAFKPlayers" 		"0" 
 	"HeroGuidesSupported" 	"1"
+	"EnablePickRules"		"1"
 	
 	"two_vs_two"
 	{

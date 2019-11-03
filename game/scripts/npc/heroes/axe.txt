@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Axe; 13.9.2019;
-	// TO_DO: 
+	// HERO: Axe; 1.11.2019;
+	// TO_DO: NEW LVL 25 TALENT THAT WILL REPLACE HP
 	//=================================================================================================================
 	"npc_dota_hero_custom_axe"
 	{
@@ -36,7 +36,7 @@
 		"Ability15"					"special_bonus_attack_damage_75"		// lvl 20 talent: unique
 
 		"Ability16"					"special_bonus_unique_axe_2"			// lvl 25 talent; Berserker's Call talent
-		"Ability17"					"special_bonus_hp_500"					// lvl 25 talent; unique
+		"Ability17"					"special_bonus_hp_500"					// lvl 25 talent; unique NEEDS NEW TALENT
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -52,12 +52,12 @@
 		"AttackAnimationPoint"		"0.5"									// like dota Axe
 		"AttackAcquisitionRange"	"600"									// like dota Axe
 		"AttackRange"				"150"									// like dota Axe
-		
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// unique
+		"MovementSpeed"				"290"									// Axe (305);
 		"MovementTurnRate"			"0.6"									// like dota Axe
-		
+
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"		"1800"									// Default
@@ -68,10 +68,10 @@
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"25"									// like dota Axe
 		"AttributeStrengthGain"		"3.4"									// like dota Axe
-		"AttributeBaseIntelligence"	"18"									// like dota Axe
-		"AttributeIntelligenceGain"	"1.6"									// like dota Axe
 		"AttributeBaseAgility"		"20"									// like dota Axe
 		"AttributeAgilityGain"		"2.2"									// like dota Axe
+		"AttributeBaseIntelligence"	"18"									// like dota Axe
+		"AttributeIntelligenceGain"	"1.6"									// like dota Axe
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

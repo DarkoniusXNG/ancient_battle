@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Hero: Blood Mage
-	// Notes: OK; 29.10.2019;
+	// Notes: OK; 1.11.2019;
 	//=================================================================================================================
 	"npc_dota_hero_blood_mage"
 	{
@@ -33,8 +33,8 @@
 		"Ability12"				"special_bonus_cast_range_125"
 		"Ability13"				"special_bonus_attack_range_125"
 
-		"Ability14"				"special_bonus_hp_regen_20"
-		"Ability15"				"special_bonus_attack_speed_100"
+		"Ability14"				"special_bonus_hp_regen_40"
+		"Ability15"				"special_bonus_attack_speed_120"
 
 		"Ability16"				"special_bonus_magic_resistance_80"
 		"Ability17"				"special_bonus_lifesteal_100"
@@ -49,46 +49,46 @@
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"2"								// Invoker(0); original(2);
+		"ArmorPhysical"				"2"								// Invoker (0); original (2);
 		"MagicalResistance"			"25"							// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"27"							// Invoker(27);
-		"AttackDamageMax"			"35" 							// Invoker(33);
-		"AttackRate"				"1.7"							// Invoker(1.7);
+		"AttackDamageMin"			"27"							// Invoker (27); Pugna (19);
+		"AttackDamageMax"			"35" 							// Invoker (33); Pugna (27);
+		"AttackRate"				"1.7"							// Invoker (1.7);
 		"AttackAnimationPoint"		"0.5"							// like Invoker
 		"AttackRange"				"600"							// like Invoker
 		"AttackAcquisitionRange"	"800"							// like Invoker
 		"ProjectileSpeed"			"900"							// like Invoker
-		
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"295"							// original(300); Invoker(280);
+		"MovementSpeed"				"330"							// original (300); Invoker (280); Pugna (330);
 		"MovementTurnRate"			"0.5"							// like Invoker
-		
+
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
 		"VisionDaytimeRange"		"1800"							// Default
 		"VisionNighttimeRange"		"800"							// Default
-		
+
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"		"18"							// Invoker(18); original(18); Pugna(19);
-		"AttributeStrengthGain"		"2.0"							// Invoker(2.4); original(2.0); Pugna(2.0);
-		"AttributeBaseAgility"		"14"							// Invoker(14); original(14); Pugna(16);
-		"AttributeAgilityGain"		"1.0"							// Invoker(1.9); original(1.0); Pugna(1.3);
-		"AttributeBaseIntelligence"	"24"							// Invoker(15); original(19); Pugna(24);
-		"AttributeIntelligenceGain"	"3.0"							// Invoker(4.6); original(3.0); Pugna(5.2);
+		"AttributeBaseStrength"		"19"							// Invoker (18); original (18); Pugna (19);
+		"AttributeStrengthGain"		"2.0"							// Invoker (2.4); original (2.0); Pugna (2.0);
+		"AttributeBaseAgility"		"16"							// Invoker (14); original (14); Pugna (16);
+		"AttributeAgilityGain"		"1.3"							// Invoker (1.9); original (1.0); Pugna (1.3);
+		"AttributeBaseIntelligence"	"24"							// Invoker (15); original (19); Pugna (24);
+		"AttributeIntelligenceGain"	"4.6"							// Invoker (4.6); original (3.0); Pugna (5.2);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"							// Invoker(0); original(1.15);
-		"StatusHealth"				"200"							// original(100);
-		"StatusMana"				"0"								// original(0);
-		"StatusManaRegen"			"1.0"							// Invoker(0.0); original(0.96);
+		"StatusHealthRegen"			"1.5"							// Invoker (0); original (1.15);
+		"StatusHealth"				"200"							// original (100);
+		"StatusMana"				"0"								// original (0);
+		"StatusManaRegen"			"0.5"							// Invoker (0.0); original(0.96); Pugna (0.5);
 	}
 }

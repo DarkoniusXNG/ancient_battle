@@ -140,6 +140,7 @@ function ancient_battle_gamemode:InitGameMode()
 	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
 	GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
 	GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME)
+	GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
 	GameRules:SetPreGameTime(PRE_GAME_TIME)
 	GameRules:SetPostGameTime(POST_GAME_TIME)
 	GameRules:SetShowcaseTime(SHOWCASE_TIME)
@@ -285,6 +286,9 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetAnnouncerDisabled(DISABLE_ANNOUNCER)
 	if FORCE_PICKED_HERO ~= nil then
 		mode:SetCustomGameForceHero(FORCE_PICKED_HERO)
+	else
+		mode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
+		mode:SetDraftingHeroPickSelectTimeOverride(HERO_SELECTION_TIME)
 	end
 	mode:SetFixedRespawnTime(FIXED_RESPAWN_TIME)
 	mode:SetFountainConstantManaRegen(FOUNTAIN_CONSTANT_MANA_REGEN)
