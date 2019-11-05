@@ -53,7 +53,7 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"BaseAttackSpeed"                                 "125"
+		"BaseAttackSpeed"                                 "100"
 		"AttackDamageMin"                                 "33"                        
         "AttackDamageMax"                                 "39"
 		"AttackRate"                                      "1.7"
@@ -75,12 +75,12 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
         "AttributePrimary"                                "DOTA_ATTRIBUTE_AGILITY"
-        "AttributeBaseStrength"                           "25"                  // Anti-Mage (23); Faceless Void (24); Spectre (23); Phantom Assassin (21);
-        "AttributeStrengthGain"                           "1.3"                 // Anti-Mage (1.3); Faceless Void (2.4); Spectre (2.5); Phantom Assassin (2.2);
-		"AttributeBaseAgility"                            "23"                  // Anti-Mage (24); Faceless Void (23); Spectre (23); Phantom Assassin (23);
-        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (3.2); Faceless Void (3.0); Spectre (2.1); Phantom Assassin (3.4);
-        "AttributeBaseIntelligence"                       "12"                  // Anti-Mage (12); Faceless Void (15); Spectre (16);
-        "AttributeIntelligenceGain"                       "1.5"                 // Anti-Mage (1.8); Faceless Void (1.5); Spectre (1.9);
+        "AttributeBaseStrength"                           "23"                  // Anti-Mage (23); Faceless Void (24); Spectre (23); Phantom Assassin (21); original (26);
+        "AttributeStrengthGain"                           "1.3"                 // Anti-Mage (1.3); Faceless Void (2.4); Spectre (2.5); Phantom Assassin (2.2); original (1.3);
+		"AttributeBaseAgility"                            "23"                  // Anti-Mage (24); Faceless Void (23); Spectre (23); Phantom Assassin (23); original (30);
+        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (3.2); Faceless Void (3.0); Spectre (2.1); Phantom Assassin (3.4); original (2.0);
+        "AttributeBaseIntelligence"                       "12"                  // Anti-Mage (12); Faceless Void (15); Spectre (16); original (19);
+        "AttributeIntelligenceGain"                       "1.5"                 // Anti-Mage (1.8); Faceless Void (1.5); Spectre (1.9); original (2.4);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

@@ -5,28 +5,28 @@
     //=================================================================================================================
     "warp_beast_temporal_jump"
     {
-        "BaseClass"                      "ability_lua"
-        "ScriptFile"                     "heroes/warp_beast/warp_beast_temporal_jump.lua"
-        "AbilityTextureName"             "custom/warp_beast_temporal_jump"
+        "BaseClass"                                       "ability_lua"
+        "ScriptFile"                                      "heroes/warp_beast/warp_beast_temporal_jump.lua"
+        "AbilityTextureName"                              "custom/warp_beast_temporal_jump"
 
-        "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-        "AbilityUnitTargetTeam"          "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"          "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "AbilityUnitDamageType"          "DAMAGE_TYPE_PHYSICAL"
-        "SpellImmunityType"              "SPELL_IMMUNITY_ENEMIES_YES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+        "AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
+        "SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
-        "AbilityCastRange"               "450 500 550 600"
-        "AoERadius"                      "375"
-        "AbilityCastPoint"               "0.0"
-        "AbilityCastAnimation"           "ACT_DOTA_CAST_ABILITY_1"
+        "AbilityCastRange"                                "450 500 550 600"
+        "AoERadius"                                       "375"
+        "AbilityCastPoint"                                "0.0"
+        "AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_1"
 
-        "AbilityCooldown"                "18 14 10 6" // like Ember Spirit Sleight of Fist
-        "AbilityManaCost"                "120" // unique
+        "AbilityCooldown"                                 "22 18 14 10" // Ember Spirit Sleight of Fist (18/14/10/6); original (12/10/8/6);
+        "AbilityManaCost"                                 "120" // unique
 
         "precache"
         {
-            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump.vpcf"
-            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf"
+            "particle"                                    "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump.vpcf"
+            "particle"                                    "particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf"
         }
 
         "AbilitySpecial"
@@ -84,8 +84,8 @@
 
         "precache"
         {
-            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_latch.vpcf"
-			"soundfile" "soundevents/units/game_sounds_warp_beast.vsndevts"
+            "particle"                                    "particles/units/heroes/hero_warp_beast/warp_beast_latch.vpcf"
+			"soundfile"                                   "soundevents/units/game_sounds_warp_beast.vsndevts"
         }
 
         "AbilitySpecial"
@@ -114,28 +114,28 @@
     //=================================================================================================================
     "warp_beast_mana_eater"
     {
-        "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "heroes/warp_beast/warp_beast_mana_eater.lua"
-        "AbilityTextureName"            "custom/warp_beast_mana_eater"
+        "BaseClass"                                       "ability_lua"
+        "ScriptFile"                                      "heroes/warp_beast/warp_beast_mana_eater.lua"
+        "AbilityTextureName"                              "custom/warp_beast_mana_eater"
 
-        "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-        "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"            "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
         "precache"
         {
-            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf"
+            "particle"                                    "particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf"
         }
 
         "AbilitySpecial"
         {
-            "01" // like Anti-Mage's mana break
+            "01" // Anti-Mage's mana break (28/40/52/64); original (12/20/28/36);
             {
                 "var_type"                                "FIELD_INTEGER"
-                "drain_amount"                            "28 40 52 64"
+                "drain_amount"                            "12 20 28 36"
                 "LinkedSpecialBonus"                      "special_bonus_unique_warp_beast_mana_eater"
             }
-            "02"
+            "02" // original (20%);
             {
                 "var_type"                                "FIELD_INTEGER"
                 "kill_drain_percentage"                   "10"
@@ -159,11 +159,11 @@
     //=================================================================================================================
     "warp_beast_silly_attack_mutator"
     {
-        "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "heroes/warp_beast/warp_beast_silly_attack_mutator.lua"
-        "AbilityTextureName"            "faceless_void_chronosphere"
+        "BaseClass"                                       "ability_lua"
+        "ScriptFile"                                      "heroes/warp_beast/warp_beast_silly_attack_mutator.lua"
+        "AbilityTextureName"                              "faceless_void_chronosphere"
 
-        "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
     }
 
     //=================================================================================================================
@@ -171,48 +171,48 @@
     //=================================================================================================================
     "warp_beast_warp"
     {
-        "BaseClass"                     "ability_lua"
-        "ScriptFile"                    "heroes/warp_beast/warp_beast_warp.lua"
-        "AbilityTextureName"            "custom/warp_beast_warp"
+        "BaseClass"                                       "ability_lua"
+        "ScriptFile"                                      "heroes/warp_beast/warp_beast_warp.lua"
+        "AbilityTextureName"                              "custom/warp_beast_warp"
 
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-        "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
-        "MaxLevel"                      "3"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
+        "MaxLevel"                                        "3"
 
         "precache"
         {
-            "particle"  "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
-            "soundfile" "soundevents/units/game_sounds_warp_beast.vsndevts"
+            "particle"                                    "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
+            "soundfile"                                   "soundevents/units/game_sounds_warp_beast.vsndevts"
         }
 
         "AbilitySpecial"
         {
-            "01" // bonus cast range per mana
+            "01" // bonus cast range per mana; original (2.5);
             {
-                "var_type"          "FIELD_FLOAT"
-                "distance_per_mana"     "1.5 2.0 2.5"
-                "LinkedSpecialBonus"    "special_bonus_unique_warp_beast_warp_mana_pool"
+                "var_type"                                "FIELD_FLOAT"
+                "distance_per_mana"                       "1.5 2.0 2.5"
+                "LinkedSpecialBonus"                      "special_bonus_unique_warp_beast_warp_mana_pool"
             }
             "02"
             {
-                "var_type"          "FIELD_FLOAT"
-                "warp_duration"     "0.4 0.3 0.2"
+                "var_type"                                "FIELD_FLOAT"
+                "warp_duration"                           "0.4 0.3 0.2"
             }
         }
     }
 
     "special_bonus_unique_warp_beast_latch_attackspeed"
     {
-        "BaseClass"             "special_bonus_undefined"
-        "AbilityType"           "DOTA_ABILITY_TYPE_ATTRIBUTES"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                                       "special_bonus_undefined"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"            "FIELD_INTEGER"
-                "value"            "40"
+                "var_type"                                "FIELD_INTEGER"
+                "value"                                   "40"
             }
         }
 
@@ -220,16 +220,16 @@
 
     "special_bonus_unique_warp_beast_mana_eater"
     {
-        "BaseClass"             "special_bonus_undefined"
-        "AbilityType"           "DOTA_ABILITY_TYPE_ATTRIBUTES"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                                       "special_bonus_undefined"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"            "FIELD_INTEGER"
-                "value"            "24"
+                "var_type"                                "FIELD_INTEGER"
+                "value"                                   "24"
             }
         }
 
@@ -237,16 +237,16 @@
 
     "special_bonus_unique_warp_beast_jump_radius"
     {
-        "BaseClass"             "special_bonus_undefined"
-        "AbilityType"           "DOTA_ABILITY_TYPE_ATTRIBUTES"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                                       "special_bonus_undefined"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"            "FIELD_INTEGER"
-                "value"            "200"
+                "var_type"                                "FIELD_INTEGER"
+                "value"                                   "200"
             }
         }
 
@@ -254,37 +254,37 @@
 
     "special_bonus_unique_warp_beast_warp_mana_pool"
     {
-        "BaseClass"             "special_bonus_undefined"
-        "AbilityType"           "DOTA_ABILITY_TYPE_ATTRIBUTES"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                                       "special_bonus_undefined"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"            "FIELD_FLOAT"
-                "value"            "1.5"
+                "var_type"                                "FIELD_FLOAT"
+                "value"                                   "1.5"
             }
         }
     }
 
     "special_bonus_unique_warp_beast_warp_silence"
     {
-        "BaseClass"             "special_bonus_undefined"
-        "AbilityType"           "DOTA_ABILITY_TYPE_ATTRIBUTES"
-        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                                       "special_bonus_undefined"
+        "AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
         "AbilitySpecial"
         {
             "01"
             {
-                "var_type"            "FIELD_FLOAT"
-                "value"            "3"
+                "var_type"                                "FIELD_FLOAT"
+                "value"                                   "3"
             }
             "02"
             {
-                "var_type"            "FIELD_FLOAT"
-                "radius"            "600"
+                "var_type"                                "FIELD_FLOAT"
+                "radius"                                  "600"
             }
         }
     }

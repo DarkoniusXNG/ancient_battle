@@ -4,10 +4,6 @@ function ancient_battle_gamemode:OnDisconnect(keys)
 	local networkID = keys.networkid
 	local reason = keys.reason
 	local userID = keys.userid
-	print("A player "..name.." disconnected:")
-	print("==================================================")
-	PrintTable(keys)
-	print("==================================================")
 end
 
 function ancient_battle_gamemode:OnGameRulesStateChange(keys)
@@ -69,11 +65,6 @@ end
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
 -- state as necessary
 function ancient_battle_gamemode:OnPlayerReconnect(keys)
-	print("A player reconnected:")
-	print("==================================================")
-	PrintTable(keys)
-	print("==================================================")
-
 	local new_state = GameRules:State_Get()
 	if new_state > DOTA_GAMERULES_STATE_HERO_SELECTION then
 		Timers:CreateTimer(1.0, function()
