@@ -31,7 +31,7 @@
 	
 	//=================================================================================================================
 	// Custom Mask of Madness - Morbid Mask (900) + Quarterstaff (875) = 1775
-	// Notes: OK; 10.9.2019; Can be disassembled!
+	// Notes: OK; 8.11.2019; Can be disassembled!
 	// TO_DO:
 	//=================================================================================================================
 	"item_custom_mask_of_madness"
@@ -97,7 +97,7 @@
 			"08"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_attack_damage_melee"		"20"
+				"bonus_attack_damage_melee"		"30"
 			}
 			"09"
 			{

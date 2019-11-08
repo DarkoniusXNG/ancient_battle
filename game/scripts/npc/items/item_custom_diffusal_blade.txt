@@ -30,7 +30,7 @@
 	
 	//=================================================================================================================
 	// Custom Diffusal Blade - 2x Blade of Alacrity (1000) + Staff of Wizardry (1000) + Recipe (150) = 3150
-	// Notes: OK; 10.9.2019; Same price; same cooldown; has 16 charges; 100% damage mana burn; slow is not decaying;
+	// Notes: OK; 8.11.2019; Same price; same cooldown; has 16 charges; 100% damage mana burn; slow is not decaying;
 	// TO_DO:
 	//=================================================================================================================
 	"item_custom_diffusal_blade"
@@ -73,38 +73,38 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"20"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agi"                               "20"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"10"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_int"                               "10"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_burn"				"50"
+				"var_type"                                "FIELD_INTEGER"
+				"mana_burn"                               "40"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_burn_illusion_melee"	"16"
+				"var_type"                                "FIELD_INTEGER"
+				"mana_burn_illusion_melee"                "16"
 			}
 			"05"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_burn_illusion_ranged"	"8"
+				"var_type"                                "FIELD_INTEGER"
+				"mana_burn_illusion_ranged"               "8"
 			}
 			"06"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"purge_summoned_damage"	"99999"
+				"var_type"                                "FIELD_INTEGER"
+				"purge_summoned_damage"                   "99999"
 			}
 			"07"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"purge_slow_duration"	"3.0"
+				"var_type"                                "FIELD_FLOAT"
+				"purge_slow_duration"                     "3.0"
 			}
 		}
 		
