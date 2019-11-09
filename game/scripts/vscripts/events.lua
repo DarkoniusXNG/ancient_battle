@@ -18,7 +18,8 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		ancient_battle_gamemode:PostLoadPrecache()
 		ancient_battle_gamemode:OnAllPlayersLoaded()
-		Timers:CreateTimer(BANNING_PHASE_TIME+HERO_SELECTION_TIME+HERO_SELECTION_PENALTY_TIME+STRATEGY_TIME-0.5, function()
+		local delay = BANNING_PHASE_TIME + HERO_SELECTION_TIME + HERO_SELECTION_PENALTY_TIME + STRATEGY_TIME
+		Timers:CreateTimer(delay, function()
 			for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 				if PlayerResource:IsValidPlayerID(playerID) then
 					-- If this player still hasn't picked a hero, random one
@@ -384,6 +385,20 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 			playerID = player:GetPlayerID()
 		end
 		PlayerResource:RemoveFromSelection(playerID, killed_unit)
+	end
+
+	-- 2v2 map optional win condition
+	if GetMapName() == "two_vs_two" and string.find(killed_unit:GetUnitName(), "tower") and killed_unit:IsBuilding() then
+		local tower_team = killed_unit:GetTeam()
+		if tower_team == DOTA_TEAM_GOODGUYS then
+			GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
+			GameRules:SetCustomVictoryMessage("#dota_post_game_dire_victory")
+			GameRules:SetCustomVictoryMessageDuration(POST_GAME_TIME)
+		elseif tower_team == DOTA_TEAM_BADGUYS then
+			GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+			GameRules:SetCustomVictoryMessage("#dota_post_game_radiant_victory")
+			GameRules:SetCustomVictoryMessageDuration(POST_GAME_TIME)
+		end
 	end
 
 	-- Holdout game mode

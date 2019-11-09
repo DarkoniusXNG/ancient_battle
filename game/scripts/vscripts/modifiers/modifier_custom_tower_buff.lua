@@ -1,5 +1,5 @@
 --[[
--Modifier to grant 2x health/damage
+-Modifier to grant bonus health/damage
 Base health and damage is checked only on first application of modifier
 ]]
 if modifier_custom_tower_buff == nil then
@@ -38,7 +38,7 @@ function modifier_custom_tower_buff:DeclareFunctions()
 end
 
 function modifier_custom_tower_buff:GetModifierExtraHealthBonus()
-	return self.parentMaxHealth
+	return 2*(self.parentMaxHealth)
 end
 
 function modifier_custom_tower_buff:GetModifierBaseAttack_BonusDamage()

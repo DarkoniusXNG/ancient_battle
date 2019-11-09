@@ -7,7 +7,7 @@ CUSTOM_GAME_SETUP_TIME = 20.0           -- How long should custom game setup las
 HERO_SELECTION_TIME = 60.0              -- How long should we let people select their hero? Should be at least 5 seconds.
 HERO_SELECTION_PENALTY_TIME = 10.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
 BANNING_PHASE_TIME = 30.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
-STRATEGY_TIME = 0.0                     -- How long should strategy time last? !!! You can buy items during strategy time and it will not be spent!
+STRATEGY_TIME = 10.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
 SHOWCASE_TIME = 12.0                    -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
@@ -78,7 +78,7 @@ XP_PER_LEVEL_TABLE[22] = 16150
 XP_PER_LEVEL_TABLE[23] = 18150
 XP_PER_LEVEL_TABLE[24] = 20400
 XP_PER_LEVEL_TABLE[25] = 22000
-for i=26,MAX_LEVEL do
+for i = 26, MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + i*100
 end
 
@@ -123,7 +123,7 @@ CUSTOM_RESPAWN_TIME[24] = 95
 CUSTOM_RESPAWN_TIME[25] = 100
 
 if MAX_LEVEL > 25 then
-	for i=26, MAX_LEVEL do
+	for i = 26, MAX_LEVEL do
 		CUSTOM_RESPAWN_TIME[i] = CUSTOM_RESPAWN_TIME[i-1] + 5
 	end
 end
@@ -202,7 +202,7 @@ if GetMapName() == "two_vs_two" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
 	CUSTOM_GLYPH_COOLDOWN = 300
-	CUSTOM_SCAN_COOLDOWN = 5
+	CUSTOM_SCAN_COOLDOWN = 60
 end
 
 if GetMapName() == "holdout" then
@@ -234,4 +234,36 @@ if GetMapName() == "holdout" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_6] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
+end
+
+if GetMapName() == "3vs3" then
+	UNIVERSAL_SHOP_MODE = true
+	ALLOW_SAME_HERO_SELECTION = true
+	STRATEGY_TIME = 0.0
+	SHOWCASE_TIME = 10.0
+	PRE_GAME_TIME = 60.0
+	POST_GAME_TIME = 30.0
+	GOLD_PER_TICK = 5
+	END_GAME_ON_KILLS = true
+	KILLS_TO_END_GAME_FOR_TEAM = 30			-- How many kills for a team should signify an end of game?
+	LOSE_GOLD_ON_DEATH = false
+	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
+	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?
+	BUYBACK_COOLDOWN_TIME = 0.0
+	MAX_RESPAWN_TIME = 30.0
+	FOUNTAIN_CONSTANT_MANA_REGEN = 1
+	FOUNTAIN_PERCENTAGE_MANA_REGEN = 1
+	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 1
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 3
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 3
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_1] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_2] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_3] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_4] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_5] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_6] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
+	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
+	CUSTOM_GLYPH_COOLDOWN = 300
+	CUSTOM_SCAN_COOLDOWN = 180
 end
