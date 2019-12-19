@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Lifestealer: Rage (R) - New Spell, Spell immunity + bonus damage
+	// Lifestealer: Rage - New Spell, Spell immunity + bonus damage
 	// Author: Darkonius
-	// Notes: OK; 14.5.2018;
+	// Notes: OK; 19.12.2019;
 	// TO_DO: Add growing mechanic OnSpellStart (Increases Lifestealer's size by 25% for its duration.);
 	//=================================================================================================================
 	"life_stealer_custom_rage"
@@ -15,7 +15,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"MaxLevel"						"3"
-		"RequiredLevel"        			"6"
+		"RequiredLevel"        			"3"
 		"LevelsBetweenUpgrades"  		"5"
 		
 		// Casting
@@ -25,7 +25,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"50.0"
+		"AbilityCooldown"				"25"
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -38,14 +38,14 @@
 		{
 			"01"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_bonus"					"30 45 60"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"damage_bonus"                            "30 45 60"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"6.0 7.0 8.0"
+				"var_type"                                "FIELD_FLOAT"
+				"duration"                                "5.0 6.0 7.0"
 			}
 		}
 		
@@ -100,7 +100,8 @@
 		
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 			"%damage_bonus"
+					//"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 			"%damage_bonus"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"          "%damage_bonus"
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
 				}
 

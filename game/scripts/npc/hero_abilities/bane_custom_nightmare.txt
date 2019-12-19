@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Bane: Nightmare (E) - Modified, Cast range improved; Cooldown slightly improved;
+	// Bane: Nightmare (E) - Modified, Cast range and Cooldown improved;
 	// Author: Valve + Darkonius
-	// Notes: OK; 14.10.2018; Nightmare End is not connected to this spell; NOT USED !!!
-	// TO_DO: Fixing ALL
+	// Notes: OK; 19.12.2019;
+	// TO_DO:
 	//=================================================================================================================
 	"bane_custom_nightmare"
 	{
@@ -15,23 +15,19 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"450 550 600 650"
 		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20 18 16 13"
+		"AbilityCooldown"				"19 17 15 13"
 		"AbilityDuration"				"4.0 5.0 6.0 7.0"
-
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"20"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -55,11 +51,6 @@
 			{
 				"var_type"					"FIELD_FLOAT"
 				"animation_rate"			"0.2"
-			}
-			"04" // should be the same as AbilityCastRange
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cast_range_tooltip"		"450 550 600 650"
 			}
 		}
 	}

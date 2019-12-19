@@ -42,6 +42,8 @@
 		"Ability17"				"special_bonus_gold_income_420"				// lvl 25 talent; unique
 		"Ability18"				"special_bonus_cooldown_reduction_30"		// lvl 25 talent: unique
 		
+		// Available talents: special_bonus_unique_chaos_knight_3
+		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"0"										// Default; Rubick (-1);

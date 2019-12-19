@@ -38,7 +38,7 @@
 		"Ability15"				"special_bonus_spell_lifesteal_30"	// lvl 20 talent; unique
 
 		"Ability16"				"special_bonus_attack_damage_250"	// lvl 25 talent; unique
-		"Ability17"				"special_bonus_gold_income_50"      // lvl 25 talent; same as Skywrath Mage
+		"Ability17"				"special_bonus_gold_income_420"     // lvl 25 talent; unique
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

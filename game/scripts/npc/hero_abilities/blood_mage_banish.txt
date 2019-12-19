@@ -1,11 +1,11 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Blood Mage: Banish - Datadriven Pugna Decrepify
+	// Blood Mage: Banish - like Pugna Decrepify
 	// Author: Darkonius
-	// Notes: OK; 21.9.2019; Original cooldown is 0;
+	// Notes: OK; 20.11.2019; Original cooldown is 0;
 	// Linkens: Blocks;
-	// TO_DO: 25% heal amplification (original had 66%)
+	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_banish"
 	{
@@ -25,7 +25,7 @@
 		
 		"AbilityCooldown"				"15.0 12.0 9.0 6.0"
 		
-		"AbilityManaCost"				"70 65 60 55"
+		"AbilityManaCost"				"60"
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -62,6 +62,11 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"creep_duration"                          "5"
+			}
+			"06" // original: 66%
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"heal_amp_pct"                            "75"
 			}
 		}
 		

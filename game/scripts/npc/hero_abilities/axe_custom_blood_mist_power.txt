@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Axe: Blood Mist Power (F) - New Spell, Second Ultimate, No target spell, When activated damage dealt by axe with spells (not items!) becomes pure
+	// Axe: Blood Mist Power (F) - New Spell, Second Ultimate, No target spell, When activated damage dealt with spells (not items!) becomes pure
 	// Author: Darkonius
 	// Notes: OK; 14.10.2018; Uses damage filter; Requires level 12;
 	// TO_DO:

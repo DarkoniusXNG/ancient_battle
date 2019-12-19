@@ -4,7 +4,7 @@
 	// Blood Mage: Blood Mirror - Redirects a percentage of the Damage dealt to Blood Mage to the target
 	// or redirects a percentage of the damage dealt to an ally to the Blood Mage.
 	// Author: Darkonius
-	// Notes: OK; 18.8.2019; Uses damage filter
+	// Notes: OK; 20.11.2019;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -30,7 +30,6 @@
 		
 		"precache"
 		{
-			//"particle"  	"particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_eztzhok.vpcf"
 			"particle"		"particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_ground_eztzhok.vpcf"
 			"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}

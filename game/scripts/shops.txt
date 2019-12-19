@@ -51,7 +51,7 @@
 	"weapons_armor"
 	{
 		"item"		"item_ring_of_protection"
-		"item"		"item_stout_shield"
+		"item"		"item_custom_stout_shield"
 		"item"		"item_quelling_blade"
 		"item"		"item_infused_raindrop"
 		"item"		"item_orb_of_venom"
@@ -222,21 +222,22 @@
 		"item"	  "item_staff_of_negation"
 	}
 
-	// Side Shop List 1 (13/14)
+	// Side Shop List 1 (14/14)
 	"sideshop1"
 	{
 		"item"    "item_tpscroll"
+		"item"    "item_custom_stout_shield"
 		"item"	  "item_ring_of_protection"
 		"item"    "item_magic_stick"
 		"item"    "item_quelling_blade"
-		"item"    "item_orb_of_venom"			// added
-		"item"    "item_sobi_mask"				// added
-		"item"    "item_ring_of_regen"			// added
+		"item"    "item_orb_of_venom"
+		"item"    "item_sobi_mask"
+		"item"    "item_ring_of_regen"
 		"item"    "item_boots"
 		"item"    "item_boots_of_elves"
 		"item"    "item_belt_of_strength"
 		"item"    "item_robe"
-		"item"    "item_ring_of_health"			// added
+		"item"    "item_ring_of_health"
 		"item"    "item_crown"
 	}
 
@@ -245,11 +246,11 @@
 	{
 		"item"    "item_gloves"
 		"item"    "item_chainmail"
-		"item"	  "item_blight_stone"			// added
+		"item"	  "item_blight_stone"
 		"item"    "item_cloak"
 		"item"    "item_void_stone"
 		"item"    "item_helm_of_iron_will"
-		"item"    "item_quarterstaff"			// added
+		"item"    "item_quarterstaff"
 		"item"    "item_energy_booster"
 		"item"    "item_vitality_booster"
 		"item"    "item_lifesteal"
@@ -295,7 +296,7 @@
 		"item"		"item_circlet"
 		"item"		"item_recipe_magic_wand"
 		"item"		"item_ring_of_protection"
-		"item"		"item_stout_shield"
+		"item"		"item_custom_stout_shield"
 		"item"		"item_quelling_blade"
 		"item"		"item_blight_stone"
 		"item"		"item_orb_of_venom"

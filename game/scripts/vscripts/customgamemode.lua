@@ -74,6 +74,23 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 	Timers:CreateTimer(0.5, function()
 		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
 		
+		if not hero:IsTempestDouble() and not hero:IsClone() and not hero.has_courier and not hero.original then
+			-- Create a courier
+			local courier_unit = CreateUnitByName("npc_dota_courier", hero:GetAbsOrigin(), true, hero, hero, hero:GetTeamNumber())
+			courier_unit:SetOwner(hero)
+			courier_unit:SetControllableByPlayer(playerID, true)
+			courier_unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+			--courier_unit:SetOriginalModel("models/props_gameplay/donkey_wings.vmdl")
+			courier_unit:RemoveAbility("courier_burst")
+			courier_unit:RemoveAbility("courier_shield")
+			courier_unit:RemoveAbility("courier_go_to_enemy_secretshop")
+			courier_unit:RemoveAbility("courier_go_to_sideshop")
+			courier_unit:RemoveAbility("courier_go_to_sideshop2")
+			--courier_unit:RemoveAbility("nothing")   -- it doesnt give an error even if it didnt find an ability with that name
+			courier_unit:AddNewModifier(hero, nil, "modifier_custom_courier", {})
+			
+			hero.has_courier = true
+		end
 		if PlayerResource:IsFakeClient(playerID) then
 			-- This is happening only for bots
 			-- Set starting gold for bots
@@ -88,7 +105,7 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				-- This is happening only when players create new heroes with custom hero-create spells:
 				-- Dark Ranger Charm, Archmage Conjure Image
 			else
-				-- This is happening for players when their first hero spawn for the first time
+				-- This is happening for players when their first hero spawns for the first time
 				--print("[Ancient Battle] Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID "..playerID)
 				
 				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
@@ -258,6 +275,7 @@ function ancient_battle_gamemode:InitGameMode()
 	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
 	
 	print("Ancient Battle custom game initialized.")
 end

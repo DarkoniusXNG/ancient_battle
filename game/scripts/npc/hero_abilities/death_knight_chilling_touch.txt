@@ -7,7 +7,7 @@
 	// Note 1: Buff can be placed on illusions too;
 	// Note 2: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
 	// Note 3: Bonus Damage is working against buildings too;
-	// TO_DO: Add Animate Dead part
+	// TO_DO: Rework to lua and make it work on player controlled units (but only on units controlled by Death Knight)
 	//=================================================================================================================
 	"death_knight_chilling_touch"
 	{
@@ -19,11 +19,12 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		"MaxLevel"               		"1"
+		"MaxLevel"               		"3"
 		"RequiredLevel"          		"6"
+		"LevelsBetweenUpgrades"  		"5"
 
 		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"50.0"
+		"AbilityCooldown"				"50"
 		"AbilityManaCost"				"140"
 		"AbilityProcsMagicStick"		"1"
 		
@@ -40,12 +41,12 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"buff_radius"				"900"
+				"buff_radius"				"1200"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_damage"				"80"
+				"bonus_damage"				"50 75 100"
 			}
 			"03"
 			{

@@ -21,8 +21,8 @@
 		"Ability2"				"death_knight_death_pact"				// W, modified (4 levels)
 		"Ability3"				"death_knight_death_pit"				// E (4 levels)
 		"Ability4"				"death_knight_unholy_aura"				// T (4 levels)
-		"Ability5"				"death_knight_chilling_touch"			// F, Secondary Ultimate (1 level)
-		"Ability6"				"abaddon_borrowed_time"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
+		"Ability5"				"death_knight_chilling_touch"			// F, Secondary Ultimate (3 levels)
+		"Ability6"				"death_knight_resurrection"				// R, Primary Ultimate(1 level)
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
