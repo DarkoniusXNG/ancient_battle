@@ -1,6 +1,6 @@
 "dota_shops"
 {
-	// Consumables (14/15)
+	// Consumables (13/15)
 	"consumables"
 	{
 		"item"		"item_tpscroll"
@@ -14,12 +14,11 @@
 		"item"		"item_tango"
 		"item"		"item_tome_of_knowledge"
 		"item"		"item_dust"
-		"item"		"item_courier"
 		"item"		"item_bottle"
 		"item"      "item_cheese"
 	}
 
-	// Attributes (14/15)
+	// Attributes (13/15)
 	"attributes"
 	{
 		"item"    "item_branches"				// +1 to all
@@ -42,7 +41,7 @@
 		"item"    "item_blade_of_alacrity"		//+10 to AGI
 		"item"    "item_staff_of_wizardry"		//+10 to INT
 
-		"item"    "item_ultimate_orb"			//+10 to all
+		//"item"    "item_ultimate_orb"			//+10 to all
 	
         //"item"    "item_cursed_necklace"		// Cursed Necklace (+20 to all, -1% HP regen, drops on death)
 	}
@@ -66,7 +65,7 @@
 		"item"		"item_mithril_hammer"
 	}
   
-	// Misc (15/15)
+	// Misc (13/15)
 	"misc"
 	{
 		"item"    "item_magic_stick"
@@ -77,8 +76,8 @@
 		"item"    "item_gloves"
 		"item"    "item_cloak"
 		"item"    "item_ring_of_tarrasque"
-		"item"    "item_ring_of_health"
-		"item"    "item_void_stone"
+		//"item"    "item_ring_of_health"
+		//"item"    "item_void_stone"
 		"item"    "item_gem"
 		"item"    "item_lifesteal"
 		"item"    "item_shadow_amulet"
@@ -106,7 +105,7 @@
 		"item"    "item_hand_of_midas"
 		"item"    "item_travel_boots"
 		"item"    "item_moon_shard"
-	//	"item"	  "item_shinigami_eyes"	// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
+		//"item"	  "item_shinigami_eyes"	// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
 	}
 
 	// Level 2 - Blue Recipes (15/15)
@@ -142,7 +141,7 @@
 		"item"    "item_cyclone"
 		"item"	  "item_custom_rod_of_atos"
 		"item"    "item_solar_crest"
-	//	"item"	  "item_black_demon_book"		// Black Demon Book (Soul Gem + Wind Lace + Recipe; +5% MS; Soul Catch)
+		//"item"	  "item_black_demon_book"		// Black Demon Book (Soul Gem + Wind Lace + Recipe; +5% MS; Soul Catch)
 		"item"    "item_orchid"
 		"item"    "item_ultimate_scepter"
 		//"item"	  "item_nullifier"
@@ -150,7 +149,7 @@
 		"item"    "item_sheepstick"
 		"item"    "item_octarine_core"
 		"item"	  "item_master_staff"
-	//	"item"	  "item_ares_soul"		// Ares Soul (upgrade for Eternal Orb, Soul Gem and Cloak; +60% damage aura; Bonus damage with all damage types)
+		//"item"	  "item_ares_soul"		// Ares Soul (upgrade for Eternal Orb, Soul Gem and Cloak; +60% damage aura; Bonus damage with all damage types)
 	}
     
 	// Level 3 - Purple Recipes (16)
@@ -174,7 +173,7 @@
 		"item"    "item_sphere"
 		"item"    "item_heart"
 		"item"    "item_assault"
-	//	"item"	  "item_eternal_orb"			// Eternal Orb (upgrade for Soul Booster and 2 Ultimate Orbs; 10% chance to disjoint)
+		//"item"	  "item_eternal_orb"		// Eternal Orb (upgrade for Soul Booster and 2 Ultimate Orbs; 10% chance to disjoint)
 	}
   
 	// Weapon Recipes (16)
@@ -241,7 +240,7 @@
 		"item"    "item_crown"
 	}
 
-	// Side Shop List 2 (12/14)
+	// Side Shop List 2 (13/14)
 	"sideshop2"
 	{
 		"item"    "item_gloves"
@@ -256,6 +255,7 @@
 		"item"    "item_lifesteal"
 		"item"    "item_broadsword"
 		"item"    "item_blink"
+		"item"    "item_blades_of_attack"
 	}
   
 	"secretshop"
@@ -286,7 +286,6 @@
 		"item"		"item_flask"
 		"item"		"item_smoke_of_deceit"
 		"item"		"item_dust"
-		"item"		"item_courier"
 		"item"		"item_ward_observer"
 		"item"		"item_ward_sentry"
 		"item"		"item_branches"
