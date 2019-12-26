@@ -28,7 +28,7 @@
 	
 	//=================================================================================================================
 	// Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
-	// Notes: OK; 10.9.2019; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
+	// Notes: OK; 25.12.2019; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
 	// TO_DO: 
 	//=================================================================================================================
 	"item_master_staff"
@@ -36,19 +36,19 @@
 		"ID"              				"8225" // 1273
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/master_staff"
-		
+
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		
+
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"15.0"
-		"AbilityManaCost"				"100"
-		
+		"AbilityManaCost"				"250"
+
 		"ItemCost"						"10400"
 		"ItemShopTags"					"damage;int;str"
 		"ItemQuality"					"epic"
@@ -95,7 +95,7 @@
 				"mute_duration"			"6.0"
 			}
 		}
-		
+
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -104,7 +104,7 @@
 				"Function"		"Mute_Disable_Start"
 			}
 		}
-		
+
 		"Modifiers"
 		{
 			"modifier_item_master_staff_passives" // doesn't need tooltip
@@ -113,9 +113,9 @@
 				"IsHidden" 		"1"
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
@@ -128,19 +128,20 @@
 			
 			"modifier_item_master_staff_muted" // needs tooltip
 			{
+				"IsHidden"              "0"
 				"IsDebuff"				"1"
 				"IsPurgable"			"1"
-				
+
 				"TextureName"			"custom/master_staff"
-				
+
 				"EffectName"			"particles/items4_fx/nullifier_mute_debuff.vpcf"
 				"EffectAttachType"		"follow_origin"
-				
+
 				"States"
 				{
 					"MODIFIER_STATE_MUTED" 		"MODIFIER_STATE_VALUE_ENABLED" 
 				}
-				
+
 				"OnDestroy"
 				{
 					"RunScript"

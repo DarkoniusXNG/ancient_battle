@@ -16,7 +16,7 @@
 #base "items/item_drum_of_vitality.txt"
 #base "items/item_custom_mask_of_madness.txt"
 #base "items/item_custom_slippers_of_halcyon.txt"
-
+#base "items/item_custom_magus_cloak.txt"
 
 "DOTAAbilities"
 {

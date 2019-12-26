@@ -15,7 +15,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"425"	
 		"ItemShopTags"					""
-		
+
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"					"1"
@@ -27,8 +27,8 @@
 	}
 	
 	//=================================================================================================================
-	// 1263 - Infused Robe - Hood of Defiance (1700) + Vanguard (2150) + Infused Raindrop (225) + Recipe (425) = 4500
-	// Notes: OK; 10.9.2019; Uses damage filter; Damage block chance is True Random;
+	// 1263 - Infused Robe - Hood of Defiance (1650) + Vanguard (2150) + Infused Raindrop (225) + Recipe (425) = 4450
+	// Notes: OK; 25.12.2019; Uses damage filter; Damage block chance is True Random;
 	// TO_DO: 
 	//=================================================================================================================
 	"item_infused_robe"
@@ -36,14 +36,14 @@
 		"ID"              				"1263"
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/infused_robe"
-		
+
 		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"        		"0.0"
-		"AbilityCooldown"       		"55.0"
+		"AbilityCooldown"       		"60"
 		"AbilitySharedCooldown"			"hood_of_defiance"
 		"AbilityManaCost"       		"100"
-		
-		"ItemCost"            			"4500"
+
+		"ItemCost"            			"4450"
 		"ItemShopTags"					"regen_health;magic_resist;block;health_pool"
 		"ItemQuality"					"epic"
 		"ItemAliases"					"infused robe"
@@ -52,13 +52,13 @@
 		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
 		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
-		
+
 		"precache"
 		{
 			"particle"              "particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
 			"soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
 		}
-		
+
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -91,12 +91,12 @@
 			"06" // like Raindrop
 			{
 				"var_type"					"FIELD_FLOAT"
-				"bonus_mana_regen"			"0.5"
+				"bonus_mana_regen"			"0.75"
 			}
 			"07" // Hood (325); Raindrop (120); Aphotic Shield (110/140/170/200 but with lvl 25 talent its: 335/365/395/425)
 			{
 				"var_type"					"FIELD_INTEGER"
-				"barrier_block"				"200"
+				"barrier_block"				"325"
 			}
 			"08" // Hood (12); Aphotic Shield (15);
 			{
@@ -104,7 +104,7 @@
 				"barrier_duration"			"12"
 			}
 		}
-		
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -112,13 +112,13 @@
 				"EffectName"    "Hero_Abaddon.AphoticShield.Cast"
 				"Target"        "CASTER"
 			}
-			
+
 			"RemoveModifier"
 			{
 				"ModifierName"	"item_modifier_infused_robe_damage_barrier"
 				"Target" 		"CASTER"
 			}
-			
+
 			"ApplyModifier"
 			{
 				"ModifierName"  "item_modifier_infused_robe_damage_barrier"
@@ -126,7 +126,7 @@
 				"Duration"      "%barrier_duration"
 			}
 		}
-		
+
 		"Modifiers"
 		{
 			"modifier_item_infused_robe_passives" // doesn't need tooltip
@@ -135,9 +135,9 @@
 				"IsHidden" 		"1"
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_BONUS"					"%bonus_hp"
@@ -146,7 +146,7 @@
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	    	"%bonus_mana_regen"
 				}
 			}
-			
+
 			"item_modifier_infused_robe_damage_block" // doesn't need tooltip
 			{
 				"Passive" 		"1"  
@@ -154,15 +154,15 @@
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
 			}
-			
+
 			"item_modifier_infused_robe_damage_barrier" // needs tooltip (anti-damage shell)
 			{
 				"IsHidden"			"0"
 				"IsBuff"			"1"
 				"IsPurgable"		"0"
-				
+
 				"TextureName"		"custom/infused_robe"
-				
+
 				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
 				"EffectAttachType"	"follow_origin"
 			}

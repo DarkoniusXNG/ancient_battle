@@ -27,8 +27,8 @@
 	}
 	
 	//=================================================================================================================
-	// 1259 - Staff of Negation - Custom Rod of Atos (2750) + Oblivion Staff (1650) + Custom Diffusal Blade (3150) = 7550
-	// Notes: OK; 10.9.2019;
+	// 1259 - Staff of Negation - Custom Rod of Atos (2750) + Oblivion Staff (1575) + Custom Diffusal Blade (3300) = 7625
+	// Notes: OK; 25.12.2019;
 	// TO_DO:
 	//=================================================================================================================
 	"item_staff_of_negation"
@@ -37,7 +37,7 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/staff_of_negation"
 		
-		"ItemCost"						"7550"
+		"ItemCost"						"7625"
 		"ItemShopTags"					"int;agi;str;regen_health;unique;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"staff of negation"
@@ -52,9 +52,9 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		
-		"AbilityCooldown"				"16.0"
+		"AbilityCooldown"				"16"
 		"AbilitySharedCooldown"			"rod_of_atos"
-		"AbilityCastRange"				"1150"
+		"AbilityCastRange"				"1100"
 		"AbilityCastPoint"				"0.0"
 		"AoERadius" 					"%radius"
 		"AbilityManaCost"				"250"
@@ -111,14 +111,19 @@
 			"10"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow"					"-100"
+				"move_speed_slow"		"-100"
 			}
 			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"-150"
+			}
+			"12"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"4.0"
 			}
-			"12"
+			"13"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"325"
@@ -172,8 +177,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed_slow"
 					"MODIFIER_PROPERTY_DISABLE_HEALING"					"1"
 					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"			"1"
 				}

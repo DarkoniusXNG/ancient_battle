@@ -24,17 +24,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // ok
+			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_str"				"5"
 			}
-			"02" // ok
+			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_agi"				"5"
 			}
-			"03" // ok
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"5"

@@ -28,7 +28,7 @@
 	
 	//=================================================================================================================
 	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) + Recipe (100) = 7700
-	// Notes: OK; 10.9.2019; Uses built-in modifier; Must be weaker than Ultimate King Bar.
+	// Notes: OK; 25.12.2019; Uses built-in modifier;
 	// Notes:
 	//=================================================================================================================
 	"item_orb_of_reflection"
@@ -37,13 +37,13 @@
 		"BaseClass"           			"item_lua"
 		"ScriptFile"                    "items/orb_of_reflection.lua"
 		"AbilityTextureName"      		"custom/orb_of_reflection"
-		
+
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"        		"0.0"
-		"AbilityCooldown"				"25.0"
+		"AbilityCooldown"				"25.0" // Blade Mail (25); Lotus Orb (15);
 		"AbilitySharedCooldown"			"reflection_items"
-		"AbilityManaCost"				"100"
-		
+		"AbilityManaCost"				"100" // Blade Mail (25) + Lotus Orb (75)
+
 		"ItemCost"						"7700"
 		"ItemShopTags"					"damage;armor;regen_health;regen_mana;str;agi;int;hard_to_tag"
 		"ItemQuality"					"epic"
@@ -53,7 +53,7 @@
 		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
 		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
-		
+
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -63,17 +63,17 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_dmg"				"22"
 			}
-			"02" // Blademail (5) + Lotus Orb (10)
+			"02" // Blademail (6) + Lotus Orb (10)
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"15"
+				"bonus_armor"			"16"
 			}
-			"03"
+			"03" // like Soul Gem
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_str"				"5"
 			}
-			"04"
+			"04" // like Soul Gem
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_agi"				"5"
@@ -91,19 +91,19 @@
 			"07" // like lotus Orb
 			{
 				"var_type"				"FIELD_FLOAT"
-				"bonus_mana_regen"		"4"
+				"bonus_mana_regen"		"4.0"
 			}			
 			"08" // like Lotus Orb
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_mana"			"250"
 			}
-			"09"
+			"09" // Return Damage is percent of damage before reductions and damage type is the same as original damage
 			{
 				"var_type"				"FIELD_INTEGER"
-				"passive_damage_return"	"30"
+				"passive_damage_return"	"20"
 			}
-			"10" // like Blademail; must be lower duration than Ultimate King Bar or the same duration
+			"10" // like Blademail;
 			{
 				"var_type"				"FIELD_FLOAT"
 				"reflect_duration"		"4.5"
