@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Fire Lord: Summon Lava Spawn (W) - New Spell, Creates 1 Lava Spawn that can split into 2 after attacking 5 times, new ones can split too
+	// Fire Lord: Summon Lava Spawn (W) - New Spell, Creates 1 Lava Spawn that can split into 2 after attacking several times, new ones can split too
 	// Author: Darkonius
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 26.12.2019;
 	// TO_DO:
 	// ================================================================================================================
 	"firelord_summon_lava_spawn"
@@ -17,7 +17,7 @@
 		
 		"AbilityCooldown"				"40.0"
 	
-		"AbilityManaCost"				"50"
+		"AbilityManaCost"				"90"
 		"AbilityProcsMagicStick"		"1"
 	
 		"precache"
@@ -32,24 +32,24 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"lava_spawn_duration"		"40.0"
+				"var_type"                                "FIELD_INTEGER"
+				"lava_spawn_duration"                     "40"
 			}
 			"02"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"attacks_to_split"			"5"
+				"var_type"                                "FIELD_INTEGER"
+				"attacks_to_split"                        "5"
 			}
-			"03"
+			"03" // this is average damage; tooltip value
 			{
-				"var_type"						"FIELD_INTEGER"
-				"lava_spawn_damage"				"25 35 45 55"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"lava_spawn_damage"                       "25 35 45 55"
+				"CalculateSpellDamageTooltip"             "0"
 			}
-			"04" // Eidolons: 180/200/220/240
+			"04" // Enigma Eidolons: 180/200/220/240
 			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_hp"				"360 400 440 480"
+				"var_type"                                "FIELD_INTEGER"
+				"lava_spawn_hp"                           "360 400 440 480"
 			}
 			"05" // not in tooltip
 			{

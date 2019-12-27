@@ -22,7 +22,7 @@
 		"AbilityCastPoint"              "0.05"
 		
 		"AbilityCooldown"				"20.0"
-		"AbilityManaCost"				"100"
+		"AbilityManaCost"				"90"
 		"AbilityProcsMagicStick" 		"1"
 		
 		"precache"

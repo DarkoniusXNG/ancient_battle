@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Fire Lord: Flaming Presence (F) - New Spell, Aura that damages and amplifies all damage they take from attacks and spells.
 	// Author: Darkonius
-	// Notes: OK; 16.10.2017;
+	// Notes: OK; 26.12.2019;
 	// TO_DO: 
 	//=================================================================================================================
 	"firelord_flaming_presence"
@@ -39,7 +39,7 @@
 			"03"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage_per_second"				"35"
+				"damage_per_second"				"32"
 			}
 		}
 		
