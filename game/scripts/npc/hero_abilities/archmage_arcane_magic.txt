@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019;
+	// Notes: OK; 25.2.2020;
 	// TO_DO: attach_hitloc effect is weird -> not critical
 	//=================================================================================================================
 	"archmage_arcane_magic"
@@ -17,17 +17,17 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 
-		"AbilityCastPoint"				"0.3"						// like KOTL Chakra Magic
-		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"              "0.3"             // like KOTL Chakra Magic
+		"AbilityCastRange"              "1200"
 		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0 18.0 16.0 14.0"		// like KOTL Chakra Magic
+		"AbilityCooldown"               "20 18 16 14"     // like KOTL Chakra Magic
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"				            // KOTL Chakra Magic: 0
+		"AbilityManaCost"               "0"               // KOTL Chakra Magic: 0
 		"AbilityProcsMagicStick"		"1"
 
 		"precache"
