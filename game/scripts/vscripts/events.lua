@@ -16,22 +16,8 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
 		GameRules:SetCustomGameSetupAutoLaunchDelay(CUSTOM_GAME_SETUP_TIME)
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
-		ancient_battle_gamemode:PostLoadPrecache()
-		ancient_battle_gamemode:OnAllPlayersLoaded()
-		local delay = BANNING_PHASE_TIME + HERO_SELECTION_TIME + HERO_SELECTION_PENALTY_TIME + STRATEGY_TIME
-		Timers:CreateTimer(delay, function()
-			for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-				if PlayerResource:IsValidPlayerID(playerID) then
-					-- If this player still hasn't picked a hero, random one
-					if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and (not PlayerResource:IsBroadcaster(playerID)) then
-						PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
-						PlayerResource:SetHasRandomed(playerID)
-						PlayerResource:SetCanRepick(playerID, false)
-						print("[Ancient Battle] Randomed a hero for a player number "..playerID)
-					end
-				end
-			end
-		end)
+		self:PostLoadPrecache()
+		self:OnAllPlayersLoaded()
 	elseif new_state == DOTA_GAMERULES_STATE_STRATEGY_TIME then
 
 	elseif new_state == DOTA_GAMERULES_STATE_TEAM_SHOWCASE then
@@ -39,7 +25,7 @@ function ancient_battle_gamemode:OnGameRulesStateChange(keys)
 	elseif new_state == DOTA_GAMERULES_STATE_PRE_GAME then
 
 	elseif new_state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		ancient_battle_gamemode:OnGameInProgress()
+		self:OnGameInProgress()
 	elseif new_state == DOTA_GAMERULES_STATE_POST_GAME then
 
 	elseif new_state == DOTA_GAMERULES_STATE_DISCONNECT then
@@ -54,8 +40,85 @@ function ancient_battle_gamemode:OnNPCSpawned(keys)
 	-- OnHeroInGame
 	if npc:IsRealHero() and npc.bFirstSpawned == nil then
 		npc.bFirstSpawned = true
-		ancient_battle_gamemode:OnHeroInGame(npc)
+		self:OnHeroInGame(npc)
 	end
+end
+
+function ancient_battle_gamemode:OnHeroInGame(hero)
+	-- List of innate abilities
+	local innate_abilities = {
+		"firelord_arcana_model",
+		"blood_mage_orbs",
+		"mana_eater_mana_regen",
+		"warp_beast_silly_attack_mutator"
+	}
+
+	-- Cycle through any innate abilities found, then set their level to 1
+	for i = 1, #innate_abilities do
+		local current_ability = hero:FindAbilityByName(innate_abilities[i])
+		if current_ability then
+			current_ability:SetLevel(1)
+		end
+	end
+
+	Timers:CreateTimer(0.5, function()
+		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
+
+		if not hero:IsTempestDouble() and not hero:IsClone() and not hero.has_courier and not hero.original and not DEFAULT_DOTA_COURIER then
+			-- Create a courier
+			local courier_unit = CreateUnitByName("npc_dota_courier", hero:GetAbsOrigin(), true, hero, hero, hero:GetTeamNumber())
+			courier_unit:SetOwner(hero)
+			courier_unit:SetControllableByPlayer(playerID, true)
+			courier_unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+			--courier_unit:SetOriginalModel("models/props_gameplay/donkey_wings.vmdl")
+			courier_unit:RemoveAbility("courier_burst")
+			courier_unit:RemoveAbility("courier_shield")
+			courier_unit:RemoveAbility("courier_go_to_enemy_secretshop")
+			courier_unit:RemoveAbility("courier_go_to_sideshop")
+			courier_unit:RemoveAbility("courier_go_to_sideshop2")
+			courier_unit:AddNewModifier(hero, nil, "modifier_custom_courier", {})
+			
+			hero.has_courier = true
+		end
+		if PlayerResource:IsFakeClient(playerID) then
+			-- This is happening only for bots
+			-- Set starting gold for bots
+			hero:SetGold(NORMAL_START_GOLD, false)
+		else
+			if not PlayerResource.PlayerData[playerID] then
+				PlayerResource.PlayerData[playerID] = {}
+				print("[Ancient Battle] PlayerResource's PlayerData for playerID "..playerID.." was not properly initialized.")
+			end
+			-- Set some hero stuff on first spawn or on every spawn (custom or not)
+			if PlayerResource.PlayerData[playerID].already_set_hero == true then
+				-- This is happening only when players create new heroes with custom hero-create spells:
+				-- Dark Ranger Charm, Archmage Conjure Image
+			else
+				-- This is happening for players when their first hero spawns for the first time
+				--print("[Ancient Battle] Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID "..playerID)
+				
+				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
+				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
+				hero:MakeVisibleToTeam(DOTA_TEAM_BADGUYS, 0.5)
+				
+				-- Set the starting gold for the player's hero
+				--if PlayerResource:HasRandomed(playerID) then
+					--PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
+				--else
+					--PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
+				--end
+				
+				-- Client Settings
+				if PlayerResource:IsValidPlayerID(playerID) then
+					hero:AddNewModifier(hero, nil, "modifier_client_convars", {})
+				end
+				
+				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
+				PlayerResource.PlayerData[playerID].already_set_hero = true
+				--print("[Ancient Battle] Hero "..hero:GetUnitName().." set for the player with ID "..playerID)
+			end
+		end
+	end)
 end
 
 -- An item was picked up off the ground
@@ -85,23 +148,8 @@ function ancient_battle_gamemode:OnPlayerReconnect(keys)
 	end
 end
 
--- An item was purchased by a player
-function ancient_battle_gamemode:OnItemPurchased(keys)
-
-end
-
 -- An ability was used by a player
 function ancient_battle_gamemode:OnAbilityUsed(keys)
-
-end
-
--- A non-player entity (necro-book, chen creep, etc) used an ability
-function ancient_battle_gamemode:OnNonPlayerUsedAbility(keys)
-
-end
-
--- A player changed their name
-function ancient_battle_gamemode:OnPlayerChangedName(keys)
 
 end
 
@@ -117,7 +165,7 @@ function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 		playerID = keys.PlayerID
 	end
 
-	local hero = PlayerResource:GetAssignedHero(playerID)
+	local hero = PlayerResource:GetBarebonesAssignedHero(playerID)
 
 	-- Handling talents without custom net tables
 	local talents = {
@@ -138,11 +186,6 @@ function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 			end
 		end
 	end
-end
-
--- A channelled ability finished by either completing or being interrupted
-function ancient_battle_gamemode:OnAbilityChannelFinished(keys)
-
 end
 
 -- A player leveled up
@@ -206,11 +249,6 @@ function ancient_battle_gamemode:OnRuneActivated(keys)
 
 end
 
--- A player took damage from a tower
-function ancient_battle_gamemode:OnPlayerTakeTowerDamage(keys)
-
-end
-
 -- A player picked or randomed a hero (this is happening before OnHeroInGame)
 function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	local hero_name = keys.hero
@@ -237,32 +275,44 @@ function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	end)
 end
 
--- A player killed another player in a multi-team context
-function ancient_battle_gamemode:OnTeamKillCredit(keys)
-
-end
-
 function ancient_battle_gamemode:OnEntityKilled(keys)
-	-- The Unit that was Killed
-	local killed_unit = EntIndexToHScript(keys.entindex_killed)
+	-- Indexes:
+    local killed_entity_index = keys.entindex_killed
+    local attacker_entity_index = keys.entindex_attacker
+    local inflictor_index = keys.entindex_inflictor -- it can be nil if not killed by an item/ability
 
-	-- The Killing entity
-	local killer_unit
+    -- Find the entity that was killed
+    local killed_unit
+    if killed_entity_index then
+      killed_unit = EntIndexToHScript(killed_entity_index)
+    end
 
-	if keys.entindex_attacker then
-		killer_unit = EntIndexToHScript(keys.entindex_attacker)
-	end
+    -- Find the entity (killer) that killed the entity mentioned above
+    local killer_unit
+    if attacker_entity_index then
+      killer_unit = EntIndexToHScript(attacker_entity_index)
+    end
 
-	-- The ability/item used to kill, or nil if not killed by an item/ability
-	local killing_ability
+	if killed_unit == nil or killer_unit == nil then
+      -- don't continue if killer or killed entity dont exist
+      return
+    end
 
-	if keys.entindex_inflictor then
-		killing_ability = EntIndexToHScript(keys.entindex_inflictor)
-	end
+	-- Find the ability/item used to kill, or nil if not killed by an item/ability
+    local killing_ability
+    if inflictor_index then
+      killing_ability = EntIndexToHScript(inflictor_index)
+    end
+
+    -- For Meepo clones, find the original
+    if killed_unit:IsClone() then
+      if killed_unit:GetCloneSource() then
+        killed_unit = killed_unit:GetCloneSource()
+      end
+    end
 
 	-- Killed Unit is a hero (not an illusion and not a copy) and he is not reincarnating
-	if killed_unit:IsRealHero() and (not killed_unit:IsReincarnating()) and (killed_unit.original == nil) then
-
+	if killed_unit:IsRealHero() and not killed_unit:IsTempestDouble() and not killed_unit:IsReincarnating() and (killed_unit.original == nil) then
 		-- Hero gold bounty update for the killer
 		if USE_CUSTOM_HERO_GOLD_BOUNTY then
 			if killer_unit:IsRealHero() then
@@ -298,9 +348,9 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 			end
 
 			-- Fixing respawn time after level 25
-			local respawn_time_after_25 = 100 + (killed_unit_level-25)*5
-			if killed_unit_level > 25 and respawn_time < respawn_time_after_25	then
-				respawn_time = respawn_time_after_25
+			local respawn_time_after_30 = 100 + (killed_unit_level-30)*5
+			if killed_unit_level > 30 and respawn_time ~= respawn_time_after_30 and not USE_CUSTOM_RESPAWN_TIMES then
+				respawn_time = respawn_time_after_30
 			end
 
 			-- Reaper's Scythe respawn time increase
@@ -376,7 +426,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	end
 
 	-- Remove dead non-hero units from selection -> bugged ability/cast bar
-	if killed_unit:IsIllusion() or (killed_unit:IsControllableByAnyPlayer() and (not killed_unit:IsRealHero()) and (not killed_unit:IsCourier()) and (not killed_unit:IsClone())) and (not killed_unit:IsTempestDouble()) then
+	if killed_unit:IsIllusion() or (killed_unit:IsControllableByAnyPlayer() and not killed_unit:IsRealHero() and not killed_unit:IsCourier() and not killed_unit:IsClone() and not killed_unit:IsTempestDouble()) then
 		local player = killed_unit:GetPlayerOwner()
 		local playerID
 		if not player then
@@ -384,7 +434,9 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		else
 			playerID = player:GetPlayerID()
 		end
-		PlayerResource:RemoveFromSelection(playerID, killed_unit)
+		if Selection then
+			PlayerResource:RemoveFromSelection(playerID, killed_unit)
+		end
 	end
 
 	-- 2v2 map optional win condition
@@ -459,32 +511,12 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	end
 end
 
--- This function is called 1 to 2 times as the player connects initially but before they have completely connected
-function ancient_battle_gamemode:PlayerConnect(keys)
-
-end
-
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 function ancient_battle_gamemode:OnConnectFull(keys)
 
-	ancient_battle_gamemode:CaptureGameMode()
+	self:CaptureGameMode()
 
 	PlayerResource:OnPlayerConnect(keys)
-end
-
--- This function is called whenever illusions are created and tells you which was/is the original entity
-function ancient_battle_gamemode:OnIllusionsCreated(keys)
-
-end
-
--- This function is called whenever an item is combined to create a new item
-function ancient_battle_gamemode:OnItemCombined(keys)
-
-end
-
--- This function is called OnAbilityPhaseStart
-function ancient_battle_gamemode:OnAbilityCastBegins(keys)
-
 end
 
 -- This function is called whenever a tower is killed

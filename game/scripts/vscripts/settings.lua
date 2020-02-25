@@ -5,9 +5,9 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 
 CUSTOM_GAME_SETUP_TIME = 20.0           -- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0              -- How long should we let people select their hero? Should be at least 5 seconds.
-HERO_SELECTION_PENALTY_TIME = 10.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
-BANNING_PHASE_TIME = 30.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
-STRATEGY_TIME = 10.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
+HERO_SELECTION_PENALTY_TIME = 30.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
+BANNING_PHASE_TIME = 20.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
+STRATEGY_TIME = 15.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
 SHOWCASE_TIME = 12.0                    -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
@@ -16,7 +16,6 @@ TREE_REGROW_TIME = 60.0                 -- How long should it take individual tr
 GOLD_PER_TICK = 3                       -- How much gold should players get per tick?
 GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
 NORMAL_START_GOLD = 600                 -- Starting Gold if picked normally
-RANDOM_START_GOLD = 800                 -- Starting Gold if randomed
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
@@ -173,11 +172,12 @@ USE_AUTOMATIC_PLAYERS_PER_TEAM = true  -- Should we set the number of players to
 
 CUSTOM_TEAM_PLAYER_COUNT = {}	-- If we're not automatically setting the number of players per team, use this table
 
+DEFAULT_DOTA_COURIER = true
+
 if GetMapName() == "two_vs_two" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
-	SHOWCASE_TIME = 10.0
 	PRE_GAME_TIME = 30.0
 	POST_GAME_TIME = 30.0
 	GOLD_PER_TICK = 6
@@ -203,6 +203,7 @@ if GetMapName() == "two_vs_two" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
 	CUSTOM_GLYPH_COOLDOWN = 300
 	CUSTOM_SCAN_COOLDOWN = 60
+	DEFAULT_DOTA_COURIER = false
 end
 
 if GetMapName() == "holdout" then
@@ -214,7 +215,6 @@ if GetMapName() == "holdout" then
 	GOLD_PER_TICK = 1
 	GOLD_TICK_TIME = 1.0
 	NORMAL_START_GOLD = 800
-	RANDOM_START_GOLD = 1000
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false
@@ -234,13 +234,13 @@ if GetMapName() == "holdout" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_6] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 0
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
+	DEFAULT_DOTA_COURIER = false
 end
 
 if GetMapName() == "3vs3" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
-	SHOWCASE_TIME = 10.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
 	GOLD_PER_TICK = 5
@@ -266,4 +266,5 @@ if GetMapName() == "3vs3" then
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 0
 	CUSTOM_GLYPH_COOLDOWN = 300
 	CUSTOM_SCAN_COOLDOWN = 180
+	DEFAULT_DOTA_COURIER = false
 end

@@ -13,11 +13,22 @@ function ancient_battle_gamemode:PostLoadPrecache()
 
 end
 
-function ancient_battle_gamemode:OnFirstPlayerLoaded()
-
-end
-
 function ancient_battle_gamemode:OnAllPlayersLoaded()
+  -- Force Random a hero for every play that didnt pick a hero when time runs out
+  local delay = HERO_SELECTION_TIME + HERO_SELECTION_PENALTY_TIME + STRATEGY_TIME + BANNING_PHASE_TIME - 0.1
+
+  Timers:CreateTimer(delay, function()
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+      if PlayerResource:IsValidPlayerID(playerID) then
+        if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and (not PlayerResource:IsBroadcaster(playerID)) then
+          PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection() -- this will cause an error if player is disconnected
+          PlayerResource:SetHasRandomed(playerID)
+          PlayerResource:SetCanRepick(playerID, false)
+          print("[Ancient Battle] Randomed a hero for a player number "..playerID)
+        end
+      end
+    end
+  end)
 	
 	-- Find all buildings on the map
 	local buildings = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
@@ -66,74 +77,7 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 	end
 end
 
-function ancient_battle_gamemode:OnHeroInGame(hero)
-	
-	-- Innate abilities (this is applied to custom created heroes/illusions too)
-	self:InitializeInnateAbilities(hero)
-	
-	Timers:CreateTimer(0.5, function()
-		local playerID = hero:GetPlayerID()	-- never nil (-1 by default), needs delay 1 or more frames
-		
-		if not hero:IsTempestDouble() and not hero:IsClone() and not hero.has_courier and not hero.original then
-			-- Create a courier
-			local courier_unit = CreateUnitByName("npc_dota_courier", hero:GetAbsOrigin(), true, hero, hero, hero:GetTeamNumber())
-			courier_unit:SetOwner(hero)
-			courier_unit:SetControllableByPlayer(playerID, true)
-			courier_unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
-			--courier_unit:SetOriginalModel("models/props_gameplay/donkey_wings.vmdl")
-			courier_unit:RemoveAbility("courier_burst")
-			courier_unit:RemoveAbility("courier_shield")
-			courier_unit:RemoveAbility("courier_go_to_enemy_secretshop")
-			courier_unit:RemoveAbility("courier_go_to_sideshop")
-			courier_unit:RemoveAbility("courier_go_to_sideshop2")
-			--courier_unit:RemoveAbility("nothing")   -- it doesnt give an error even if it didnt find an ability with that name
-			courier_unit:AddNewModifier(hero, nil, "modifier_custom_courier", {})
-			
-			hero.has_courier = true
-		end
-		if PlayerResource:IsFakeClient(playerID) then
-			-- This is happening only for bots
-			-- Set starting gold for bots
-			hero:SetGold(NORMAL_START_GOLD, false)
-		else
-			if not PlayerResource.PlayerData[playerID] then
-				PlayerResource.PlayerData[playerID] = {}
-				print("[Ancient Battle] PlayerResource's PlayerData for playerID "..playerID.." was not properly initialized.")
-			end
-			-- Set some hero stuff on first spawn or on every spawn (custom or not)
-			if PlayerResource.PlayerData[playerID].already_set_hero == true then
-				-- This is happening only when players create new heroes with custom hero-create spells:
-				-- Dark Ranger Charm, Archmage Conjure Image
-			else
-				-- This is happening for players when their first hero spawns for the first time
-				--print("[Ancient Battle] Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID "..playerID)
-				
-				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
-				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
-				hero:MakeVisibleToTeam(DOTA_TEAM_BADGUYS, 0.5)
-				
-				-- Set the starting gold for the player's hero
-				if PlayerResource:HasRandomed(playerID) then
-					PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
-				else
-					PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
-				end
-				
-				-- Client Settings
-				if PlayerResource:IsValidPlayerID(playerID) then
-					hero:AddNewModifier(hero, nil, "modifier_client_convars", {})
-				end
-				
-				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
-				PlayerResource.PlayerData[playerID].already_set_hero = true
-				--print("[Ancient Battle] Hero "..hero:GetUnitName().." set for the player with ID "..playerID)
-			end
-		end
-	end)
-end
-
 function ancient_battle_gamemode:OnGameInProgress()
-
 	if GetMapName() == "holdout" then
 		-- Custom backdoor protection
 		Timers:CreateTimer(function()
@@ -153,9 +97,9 @@ end
 
 function ancient_battle_gamemode:InitGameMode()
 	-- Setup rules
-	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
-	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
 	GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
+	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
+	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
 	--GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME)
 	GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
 	GameRules:SetPreGameTime(PRE_GAME_TIME)
@@ -166,15 +110,15 @@ function ancient_battle_gamemode:InitGameMode()
 	if USE_CUSTOM_HERO_LEVELS then
 		GameRules:SetUseCustomHeroXPValues(true)
 	end
-	GameRules:SetGoldPerTick(GOLD_PER_TICK)
-	GameRules:SetGoldTickTime(GOLD_TICK_TIME)
-	--GameRules:SetStartingGold(NORMAL_START_GOLD)
+	--GameRules:SetGoldPerTick(GOLD_PER_TICK)   -- Doesn't work
+	--GameRules:SetGoldTickTime(GOLD_TICK_TIME) -- Doesn't work
+	GameRules:SetStartingGold(NORMAL_START_GOLD)
 	if USE_CUSTOM_HERO_GOLD_BOUNTY then
 		GameRules:SetUseBaseGoldBountyOnHeroes(false)
 	end
 	GameRules:SetFirstBloodActive(ENABLE_FIRST_BLOOD)
 	GameRules:SetHideKillMessageHeaders(HIDE_KILL_BANNERS)
-	
+
 	-- This is multi-team configuration stuff
 	if USE_AUTOMATIC_PLAYERS_PER_TEAM then
 		local num = math.floor(10 / MAX_NUMBER_OF_TEAMS)
@@ -204,35 +148,23 @@ function ancient_battle_gamemode:InitGameMode()
 			SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
 		end
 	end
-	
+
 	-- Event Hooks
 	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerLevelUp'), self)
-	ListenToGameEvent('dota_ability_channel_finished', Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityChannelFinished'), self)
 	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerLearnedAbility'), self)
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(ancient_battle_gamemode, 'OnEntityKilled'), self)
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(ancient_battle_gamemode, 'OnConnectFull'), self)
 	ListenToGameEvent('player_disconnect', Dynamic_Wrap(ancient_battle_gamemode, 'OnDisconnect'), self)
-	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(ancient_battle_gamemode, 'OnItemPurchased'), self)
 	ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ancient_battle_gamemode, 'OnItemPickedUp'), self)
 	ListenToGameEvent('last_hit', Dynamic_Wrap(ancient_battle_gamemode, 'OnLastHit'), self)
-	ListenToGameEvent('dota_non_player_used_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnNonPlayerUsedAbility'), self)
-	ListenToGameEvent('player_changename', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerChangedName'), self)
 	ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(ancient_battle_gamemode, 'OnRuneActivated'), self)
-	ListenToGameEvent('dota_player_take_tower_damage', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerTakeTowerDamage'), self)
 	ListenToGameEvent('tree_cut', Dynamic_Wrap(ancient_battle_gamemode, 'OnTreeCut'), self)
-
-	ListenToGameEvent('player_connect', Dynamic_Wrap(ancient_battle_gamemode, 'PlayerConnect'), self)
 	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityUsed'), self)
 	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(ancient_battle_gamemode, 'OnGameRulesStateChange'), self)
 	ListenToGameEvent('npc_spawned', Dynamic_Wrap(ancient_battle_gamemode, 'OnNPCSpawned'), self)
 	ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerPickHero'), self)
-	ListenToGameEvent('dota_team_kill_credit', Dynamic_Wrap(ancient_battle_gamemode, 'OnTeamKillCredit'), self)
 	ListenToGameEvent("player_reconnected", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerReconnect'), self)
 	ListenToGameEvent("player_chat", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerChat'), self)
-
-	ListenToGameEvent("dota_illusions_created", Dynamic_Wrap(ancient_battle_gamemode, 'OnIllusionsCreated'), self)
-	ListenToGameEvent("dota_item_combined", Dynamic_Wrap(ancient_battle_gamemode, 'OnItemCombined'), self)
-	ListenToGameEvent("dota_player_begin_cast", Dynamic_Wrap(ancient_battle_gamemode, 'OnAbilityCastBegins'), self)
 	ListenToGameEvent("dota_tower_kill", Dynamic_Wrap(ancient_battle_gamemode, 'OnTowerKill'), self)
 	ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(ancient_battle_gamemode, 'OnPlayerSelectedCustomTeam'), self)
 	ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(ancient_battle_gamemode, 'OnNPCGoalReached'), self)
@@ -242,25 +174,24 @@ function ancient_battle_gamemode:InitGameMode()
 	math.randomseed(tonumber(timeTxt))
 
 	local gamemode = GameRules:GetGameModeEntity()
-	
+
 	-- Setting the Order filter
 	gamemode:SetExecuteOrderFilter(Dynamic_Wrap(ancient_battle_gamemode, "OrderFilter"), self)
-  
+
 	-- Setting the Damage filter
 	gamemode:SetDamageFilter(Dynamic_Wrap(ancient_battle_gamemode, "DamageFilter"), self)
-	
+
 	-- Setting the Modifier filter
 	gamemode:SetModifierGainedFilter(Dynamic_Wrap(ancient_battle_gamemode, "ModifierFilter"), self)
-	
+
 	-- Setting the Experience filter
 	gamemode:SetModifyExperienceFilter(Dynamic_Wrap(ancient_battle_gamemode, "ExperienceFilter"), self)
-	
+
 	-- Setting the Tracking Projectile filter
 	gamemode:SetTrackingProjectileFilter(Dynamic_Wrap(ancient_battle_gamemode, "ProjectileFilter"), self)
-	
+
 	-- Setting the rune filters
 	gamemode:SetBountyRunePickupFilter(Dynamic_Wrap(ancient_battle_gamemode, "BountyRuneFilter"), self)
-	gamemode:SetRuneSpawnFilter(Dynamic_Wrap(ancient_battle_gamemode, "RuneSpawnFilter"), self)
 
 	-- Setting the Healing filter
 	gamemode:SetHealingFilter(Dynamic_Wrap(ancient_battle_gamemode, "HealingFilter"), self)
@@ -270,19 +201,19 @@ function ancient_battle_gamemode:InitGameMode()
 
 	-- Setting the Inventory filter
 	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
-  
+
 	-- Lua Modifiers
 	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
-	
+
 	print("Ancient Battle custom game initialized.")
+	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
 end
 
 -- This function is called as the first player loads and sets up the game mode parameters
 function ancient_battle_gamemode:CaptureGameMode()
-
 	-- Set GameMode parameters
 	local mode = GameRules:GetGameModeEntity()
 	mode:SetRecommendedItemsDisabled(RECOMMENDED_BUILDS_DISABLED)
@@ -329,29 +260,9 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
 	mode:SetKillingSpreeAnnouncerDisabled(DISABLE_KILLING_SPREE_ANNOUNCER)
 	mode:SetStickyItemDisabled(DISABLE_STICKY_ITEM)
-	
 	mode:SetCustomGlyphCooldown(CUSTOM_GLYPH_COOLDOWN)
 	mode:SetCustomScanCooldown(CUSTOM_SCAN_COOLDOWN)
-
-	self:OnFirstPlayerLoaded()
-end
-
--- Initializes heroes' innate abilities
-function ancient_battle_gamemode:InitializeInnateAbilities(hero)
-
-	-- List of innate abilities
-	local innate_abilities = {
-		"firelord_arcana_model",
-		"blood_mage_orbs",
-		"mana_eater_mana_regen",
-		"warp_beast_silly_attack_mutator"
-	}
-
-	-- Cycle through any innate abilities found, then set their level to 1
-	for i = 1, #innate_abilities do
-		local current_ability = hero:FindAbilityByName(innate_abilities[i])
-		if current_ability then
-			current_ability:SetLevel(1)
-		end
+	if DEFAULT_DOTA_COURIER then
+		gamemode:SetFreeCourierModeEnabled(true)
 	end
 end
