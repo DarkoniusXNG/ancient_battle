@@ -6,16 +6,17 @@
 		{
 			"5:00"
 			{
-				"0" "9"
-				"1" "6"
-				"2" "3"
+				"0" "10"
+				"1" "10"
+				"2" "10"
+				"3" "10"
 			}
 		}
 		
 		"items"
 		{
 			"item_keen_optic"				  "1"
-			"item_recipe_ironwood_tree"		  "1"
+			"item_ironwood_tree"			  "1"
 			"item_royal_jelly"				  "1"
 			"item_mango_tree"				  "1"
 			"item_ocean_heart"				  "1"
@@ -30,11 +31,12 @@
 	{
 		"drop_rates"
 		{
-			"15:00"
+			"10:00"
 			{
-				"0" "9"
-				"1" "6"
-				"2" "3"
+				"0" "10"
+				"1" "10"
+				"2" "10"
+				"3" "10"
 			}
 		}
 
@@ -48,7 +50,7 @@
 			"item_nether_shawl"				  "1"
 			"item_dragon_scale"				  "1"
 			"item_essence_ring"				  "1"
-			"item_recipe_vambrace"			  "1"
+			"item_vambrace"			          "1"
 			"item_clumsy_net"				  "1"
 		}
 	}
@@ -56,11 +58,12 @@
 	{
 		"drop_rates"
 		{
-			"25:00"
+			"20:00"
 			{
-				"0" "9"
-				"1" "6"
-				"2" "3"
+				"0" "10"
+				"1" "10"
+				"2" "10"
+				"3" "10"
 			}
 		}
 
@@ -76,6 +79,7 @@
 			"item_orb_of_destruction"		  "1"
 			"item_titan_sliver"				  "1"
 			"item_spy_gadget"				  "1"
+			"item_mind_breaker"				  "1"
 		}
 	}
 	"4"
@@ -84,9 +88,10 @@
 		{
 			"40:00"
 			{
-				"0" "9"
-				"1" "6"
-				"2" "3"
+				"0" "10"
+				"1" "10"
+				"2" "10"
+				"3" "10"
 			}
 		}
 
@@ -108,11 +113,12 @@
 	{
 		"drop_rates"
 		{
-			"70:00"
+			"45:00"
 			{
-				"0" "9"
-				"1" "6"
-				"2" "3"
+				"0" "10"
+				"1" "10"
+				"2" "10"
+				"3" "10"
 			}
 		}
 
@@ -120,7 +126,6 @@
 		{
 			"item_force_boots"				  "1"
 			"item_desolator_2"				  "1"
-			"item_phoenix_ash"				  "1"
 			"item_seer_stone"				  "1"
 			"item_mirror_shield"			  "1"
 			"item_woodland_striders"		  "1"
