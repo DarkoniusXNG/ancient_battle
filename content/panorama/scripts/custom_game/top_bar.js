@@ -4,29 +4,36 @@ function FindDotaHudElement(panel) {
 
 function OverrideHeroImage(panel){
 	if (panel) {
-		//$.Msg(panel2.heroname)
-		panel.style.backgroundImage = 'url("file://{images}/heroes/npc_dota_hero_' + panel.heroname + '.png")';
-		panel.style.backgroundSize = "100% 100%";
+		var name = panel.heroname;
+		if (name === 'sohei' || name === 'electrician' || name === 'warp_beast') {
+			panel.style.backgroundImage = 'url("file://{images}/heroes/npc_dota_hero_' + name + '.png")';
+			panel.style.backgroundSize = '100% 100%';
+		}
 	}
 }
 
 function OverrideHeroImagesForTeam(team){
 	if (team) {
-		for (i=0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS-1; i++) {
+		var i;
+		for (i = 0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS - 1; i++) {
 			var top_bar_panel = FindDotaHudElement(team + "Player" + i);
 			if (top_bar_panel && Players.IsValidPlayerID(i)) {
 				var panel = top_bar_panel.FindChildTraverse("HeroImage");
-				OverrideHeroImage(panel)
+				OverrideHeroImage(panel);
 			}
 		}
 	}
 }
 
 function OverrideTopBarHeroImages(){
-	if (Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS)) {
+	if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_TEAM_SHOWCASE)) {
 		OverrideHeroImagesForTeam("Radiant");
 		OverrideHeroImagesForTeam("Dire");
 	}
 }
 
-GameEvents.Subscribe("game_rules_state_change", OverrideTopBarHeroImages)
+(function () {
+	GameEvents.Subscribe('game_rules_state_change', OverrideTopBarHeroImages);
+	GameEvents.Subscribe('player_connect', OverrideTopBarHeroImages);
+	GameEvents.Subscribe('player_reconnected', OverrideTopBarHeroImages);
+})();
