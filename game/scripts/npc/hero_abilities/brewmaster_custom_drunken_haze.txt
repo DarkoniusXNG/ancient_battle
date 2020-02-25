@@ -4,8 +4,8 @@
 	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 24.8.2019; Projectile can be disjointed;
-	// TO_DO: Fix particles, Cast Animation is weird. It should be .
+	// Notes: OK; 25.2.2020; Projectile can be disjointed;
+	// TO_DO: Cast Animation is weird.
 	//====================================================================================================
 	"brewmaster_custom_drunken_haze"
 	{
@@ -72,9 +72,7 @@
 
 		"precache"
 		{
-			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-			"particle" 	"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
-			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+			"particle"	"particles/custom/brewmaster_drunken_haze.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
 		}
 
@@ -83,7 +81,7 @@
 			"TrackingProjectile"
 			{
 				"Target"           	"TARGET"
-				"EffectName"       	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+				"EffectName"       	"particles/custom/brewmaster_drunken_haze.vpcf"
 				"Dodgeable"        	"1"
 				"ProvidesVision"   	"0"
 				"MoveSpeed"        	"%projectile_speed"
@@ -116,10 +114,12 @@
 				"IsDebuff"		"1"
 				"IsPurgable"	"1"
 
-				"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+				//"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+				"EffectName"            "particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_debuff.vpcf"
 				"EffectAttachType"		"follow_origin"
 
-				"StatusEffectName"		"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+				//"StatusEffectName"		"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+				"StatusEffectName"      "particles/status_fx/status_effect_brewmaster_cinder_brew.vpcf"
 				"StatusEffectPriority"	"5"
 
 				"Properties"
