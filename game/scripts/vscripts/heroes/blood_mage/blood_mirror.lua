@@ -57,13 +57,13 @@ function blood_mage_blood_mirror:OnSpellStart()
 				-- Sound on target
 				target:EmitSound("Hero_OgreMagi.Bloodlust.Target.FP")
 
+				caster.redirect_target = target -- only on the server-side
+
 				-- Apply debuff
 				target:AddNewModifier(caster, self, "modifier_custom_blood_mirror_debuff_enemy", {duration = blood_mirror_duration})
 
 				-- Apply buff to the caster
 				caster:AddNewModifier(caster, self, "modifier_custom_blood_mirror_buff_caster_redirect", {duration = blood_mirror_duration})
-				
-				caster.redirect_target = target -- only on the server-side
 			end
 		end
 	end

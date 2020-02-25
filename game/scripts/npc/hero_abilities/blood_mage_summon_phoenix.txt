@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Summon Phoenix - summons a powerful creature that respawns on death etc.
 	// Author: Darkonius
-	// Notes: OK; 23.8.2019; Can't have more than one;
+	// Notes: OK; 25.2.2020; Can't have more than one;
 	// TO_DO: Egg particles and sounds
 	//=================================================================================================================
 	"blood_mage_summon_phoenix"
@@ -19,7 +19,7 @@
 		
 		"AbilityCooldown"				"180.0"
 		
-		"AbilityManaCost"				"175"
+		"AbilityManaCost"				"200"
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -38,7 +38,7 @@
 			"01"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"phoenix_egg_duration"      "10"
+				"phoenix_egg_duration"      "5"
 			}
 			"02" // not in tooltip
 			{

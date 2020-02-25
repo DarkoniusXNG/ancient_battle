@@ -4,7 +4,7 @@
 	// Custom units: Splash Attack - passive, dealing 100% attack damage in a radius around the attacked target;
 	// Author: Darkonius
 	// Notes: OK; 21.9.2019;
-	// TO_DO: Particle
+	// TO_DO:
 	//====================================================================================================
 	"custom_unit_splash_attack"
 	{
