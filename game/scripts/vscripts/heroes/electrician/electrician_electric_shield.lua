@@ -75,7 +75,8 @@ end
 
 function modifier_electrician_electric_shield:DeclareFunctions()
 	local func = {
-		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
+		--MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
+		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK
 	}
 
 	return func
@@ -84,7 +85,32 @@ end
 --------------------------------------------------------------------------------
 
 if IsServer() then
+	--[[
 	function modifier_electrician_electric_shield:GetModifierPhysical_ConstantBlockUnavoidablePreArmor( event )
+		-- start with the maximum block amount
+		local blockAmount = event.damage * self.shieldRate
+		-- grab the remaining shield hp
+		local hp = self:GetStackCount()
+
+		-- don't block more than remaining hp
+		blockAmount = math.min( blockAmount, hp )
+
+		-- remove shield hp
+		self:SetStackCount( hp - blockAmount )
+
+		-- do the little block visual effect
+		SendOverheadEventMessage( nil, 8, self:GetParent(), blockAmount, nil )
+
+		-- destroy the modifier if hp is reduced to nothing
+		if self:GetStackCount() <= 0 then
+			self:Destroy()
+		end
+
+		return blockAmount
+	end
+	]]
+	
+	function modifier_electrician_electric_shield:GetModifierTotal_ConstantBlock( event )
 		-- start with the maximum block amount
 		local blockAmount = event.damage * self.shieldRate
 		-- grab the remaining shield hp
@@ -112,7 +138,7 @@ if IsServer() then
 	function modifier_electrician_electric_shield:OnCreated( event )
 		local parent = self:GetParent()
 		local spell = self:GetAbility()
-    local caster = self:GetCaster()
+        local caster = self:GetCaster()
 
 		self:SetStackCount( event.shieldHP )
 
@@ -129,8 +155,9 @@ if IsServer() then
 
 		-- play sound
 		parent:EmitSound( "Ability.static.start" )
-  -- cast animation
-    caster:StartGesture( ACT_DOTA_CAST_ABILITY_2 )
+
+		-- cast animation
+        caster:StartGesture( ACT_DOTA_CAST_ABILITY_2 )
 
 		-- start thinking
 		self:StartIntervalThink( damageInterval )
