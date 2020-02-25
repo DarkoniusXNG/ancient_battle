@@ -197,7 +197,7 @@ function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 	local hero
 	if player then
 		playerID = player:GetPlayerID()
-		hero = PlayerResource:GetAssignedHero(playerID)
+		hero = PlayerResource:GetBarebonesAssignedHero(playerID)
 	end
 
 	if hero then

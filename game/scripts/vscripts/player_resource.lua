@@ -34,7 +34,6 @@ function CDOTA_PlayerResource:AssignHero(playerID, hero_entity)
 	if self:IsRealPlayer(playerID) then
 		self.PlayerData[playerID].hero = hero_entity
 		self.PlayerData[playerID].hero_name = hero_entity:GetUnitName()
-		DebugPrint("[BAREBONES] Assigned "..self.PlayerData[playerID].hero_name.." to the player with ID "..playerID)
 	end
 end
 
