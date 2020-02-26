@@ -101,16 +101,10 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
 				hero:MakeVisibleToTeam(DOTA_TEAM_BADGUYS, 0.5)
 				
-				-- Set the starting gold for the player's hero
-				--if PlayerResource:HasRandomed(playerID) then
-					--PlayerResource:ModifyGold(playerID, RANDOM_START_GOLD-600, false, 0)
-				--else
-					--PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
-				--end
-				
-				-- Client Settings
+				-- Add permanent modifiers to the hero
 				if PlayerResource:IsValidPlayerID(playerID) then
 					hero:AddNewModifier(hero, nil, "modifier_client_convars", {})
+					hero:AddNewModifier(hero, nil, "modifier_custom_passive_gold", {})
 				end
 				
 				-- This ensures that this will not happen again if some other hero spawns for the first time during the game

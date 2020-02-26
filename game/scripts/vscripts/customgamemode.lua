@@ -207,6 +207,7 @@ function ancient_battle_gamemode:InitGameMode()
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_passive_gold", "modifiers/modifier_custom_passive_gold.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("Ancient Battle custom game initialized.")
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
@@ -263,6 +264,6 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetCustomGlyphCooldown(CUSTOM_GLYPH_COOLDOWN)
 	mode:SetCustomScanCooldown(CUSTOM_SCAN_COOLDOWN)
 	if DEFAULT_DOTA_COURIER then
-		gamemode:SetFreeCourierModeEnabled(true)
+		mode:SetFreeCourierModeEnabled(true)
 	end
 end

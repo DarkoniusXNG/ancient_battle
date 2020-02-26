@@ -540,10 +540,6 @@ function ancient_battle_gamemode:GoldFilter(keys)
 			return false
 		end
 	end
-	
-	if reason == DOTA_ModifyGold_GameTick then
-		keys.gold = GOLD_PER_TICK
-	end
 
 	return true
 end

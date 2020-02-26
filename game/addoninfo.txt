@@ -1,6 +1,6 @@
 "AddonInfo"
 {
-	"maps"					"two_vs_two five_vs_five" // holdout"
+	"maps"					"two_vs_two five_vs_five" // 3vs3"// holdout"
 	"IsPlayable"			"1"
 	"PenaltiesEnabled"  	"0"
 	"CheckAFKPlayers" 		"0" 
@@ -18,5 +18,9 @@
 	"holdout"
 	{
 		"MaxPlayers"		"4"
+	}
+	"3vs3"
+	{
+		"MaxPlayers"		"6"
 	}
 }
