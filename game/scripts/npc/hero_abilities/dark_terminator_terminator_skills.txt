@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// Dark Terminator: Terminator Skills - new custom ability that is similar to Drunken Brawler
-	// Author: 
+	// Author: Darkonius
 	// Notes: OK; 23.9.2019;
 	// TO_DO: ALL
 	//=================================================================================================================
@@ -25,7 +25,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_proc_chance"                      "25"
+				"damage_proc_chance"                      "10 15 20 25"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"

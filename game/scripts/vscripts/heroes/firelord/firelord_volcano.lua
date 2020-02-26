@@ -4,11 +4,11 @@ function VolcanoKnockback(event)
 	local targets = event.target_entities
 	local ability = event.ability
 	local volcano = event.target
-	
+
 	local radius = ability:GetLevelSpecialValueFor("radius", ability:GetLevel() - 1)
 
 	local volcano_center_location = volcano:GetAbsOrigin()
-	
+
 	for _,unit in pairs(targets) do
 		local unit_location = unit:GetAbsOrigin()
 		-- Set the knockback origin in front of the unit
@@ -34,17 +34,17 @@ function VolcanoWave(event)
 	local caster = event.caster
 	local targets = event.target_entities
 	local ability = event.ability
-	
+
 	local ability_level = ability:GetLevel() - 1
 	local wave_damage = ability:GetLevelSpecialValueFor("wave_damage", ability_level)
 	local stun_duration = ability:GetLevelSpecialValueFor("stun_duration", ability_level)
-	
+
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = ability:GetAbilityDamageType()
 	damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 	damage_table.ability = ability
-	
+
 	for _,unit in pairs(targets) do
 		ability:ApplyDataDrivenModifier(caster, unit, "modifier_volcano_stun", {duration = stun_duration})
 		
@@ -52,8 +52,29 @@ function VolcanoWave(event)
 		damage_table.damage = wave_damage
 		ApplyDamage(damage_table)
 	end
-	
+
 	if caster:HasScepter() then
 		VolcanoKnockback(event)
 	end
+end
+
+function VolcanoAoEIndicator(event)
+	local caster = event.caster
+	local ability = event.ability
+	local volcano = event.target
+
+	local ability_level = ability:GetLevel() - 1
+	local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
+	local volcano_duration = ability:GetLevelSpecialValueFor("volcano_duration", ability_level)
+
+	-- Ring particle
+    local particleHandler = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_furarmy_ring.vpcf", PATTACH_ABSORIGIN, caster)
+    ParticleManager:SetParticleControl(particleHandler, 0, volcano:GetOrigin())
+    ParticleManager:SetParticleControl(particleHandler, 1, Vector(radius,0,0))
+
+	-- Destroy particle when volcano ends
+	Timers:CreateTimer(volcano_duration, function()
+        ParticleManager:DestroyParticle(particleHandler, false)
+		ParticleManager:ReleaseParticleIndex(particleHandler)
+	end)
 end

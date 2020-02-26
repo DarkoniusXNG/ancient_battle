@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
 	// Authors: Jastuchko + Darkonius
-	// Notes: OK; 24.8.2019;
+	// Notes: OK; 23.11.2019;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_breath_of_fire"
@@ -18,11 +18,11 @@
 		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 
-		"AbilityCastRange"              "750"								// unique
+		"AbilityCastRange"              "750"								// Dragon Knight: 600
 		"AbilityCastPoint"              "0.3"								// Dragon Knight: 0.2
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 
-		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 12 seconds
+		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 14/13/12/11 seconds
 
 		"AbilityManaCost"               "90 100 110 120"					// original: 70; Dragon Knight: 100/110/120/130
 		"AbilityProcsMagicStick"		"1"
@@ -39,7 +39,7 @@
 			"01" // original: 65/125/170; Dragon Knight: 90/170/240/300
 			{
 				"var_type"                  		"FIELD_INTEGER"
-				"initial_damage"        			"80 125 170 240"
+				"initial_damage"        			"90 170 240 300"
 			}
 			"02" // Dragon Knight: 1050
 			{
@@ -61,7 +61,7 @@
 				"var_type"                  		"FIELD_INTEGER"
 				"distance"      		            "750"
 			}
-			"06" // original: 5 seconds
+			"06" // original: 5 seconds; Cinder Brew: 5 seconds;
 			{
 				"var_type"                  		"FIELD_INTEGER"
 				"burn_duration"      				"5"
@@ -71,7 +71,7 @@
 				"var_type"                  		"FIELD_FLOAT"
 				"burn_damage_interval"      		"0.2"
 			}
-			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps
+			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps; Cinder Brew: 20/30/40/50;
 			{
 				"var_type"                  		"FIELD_INTEGER"
 				"burn_damage_per_second"     		"20 30 40 50"

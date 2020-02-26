@@ -1,9 +1,9 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 29.10.2019;
+	// HERO: Lifestealer; 19.12.2019;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
-	// TO_DO: life_stealer_custom_open_wounds;
+	// TO_DO:;
 	//=================================================================================================================
 	"npc_dota_hero_custom_life_stealer"
 	{
@@ -20,19 +20,19 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"											// It works now (7.00)
 		"Ability1"				"life_stealer_feast"						// Q, DOTA_VERSION (4 levels)
-		"Ability2"				"life_stealer_open_wounds"                  // W, DOTA_VERSION (4 levels)
-		"Ability3"				"life_stealer_custom_anabolic_frenzy"		// E (4 levels)
+		"Ability2"				"life_stealer_custom_anabolic_frenzy"       // W (4 levels)
+		"Ability3"				"life_stealer_custom_rage"                  // E (3 levels)
 		"Ability4"				"life_stealer_custom_poison_sting"			// T, passive, modified (4 levels)
 		"Ability5"				"life_stealer_custom_absorb_life"			// F (1 level)
-		"Ability6"				"life_stealer_custom_rage"					// R, Primary Ultimate (3 levels)
-		"Ability7"				"generic_hidden"
+		"Ability6"				"life_stealer_infest"					    // R, Primary Ultimate (3 levels)
+		"Ability7"				"life_stealer_consume"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
 		"Ability10"				"special_bonus_hp_200"						// lvl 10 talent; same as dota Lifestealer
 		"Ability11"				"special_bonus_unique_venomancer_2"         // lvl 10 talent; Poison Sting talent
 
-		"Ability12"				"special_bonus_unique_lifestealer_2"		// lvl 15 talent; Open Wounds talent 
+		"Ability12"				"special_bonus_movement_speed_25"		    // lvl 15 talent; same as dota Lifestealer
 		"Ability13"				"special_bonus_attack_damage_30"			// lvl 15 talent; same as dota Lifestealer
 
 		"Ability14"				"special_bonus_evasion_20"					// lvl 20 talent; same as dota Lifestealer
@@ -49,13 +49,14 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"27"									// like dota Lifestealer
-		"AttackDamageMax"			"37"									// like dota Lifestealer
-		"AttackRate"				"1.8"									// dota Lifestealer (1.85); old Lifestealer (1.7);
+		"AttackDamageMin"			"20"									// like dota Lifestealer
+		"AttackDamageMax"			"30"									// like dota Lifestealer
+		"AttackRate"				"1.7"									// dota Lifestealer (1.7); old Lifestealer (1.7);
 		"AttackAnimationPoint"		"0.39"									// like dota Lifestealer
 		"AttackAcquisitionRange"	"600"									// like dota Lifestealer
 		"AttackRange"				"128"									// like old Lifestealer
-		
+		"BaseAttackSpeed"           "100"                                   // Default
+
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"290"									// dota Lifestealer (325); old Lifestealer (295);
@@ -71,7 +72,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"25"									// dota Lifestealer (25); old Lifestealer (15);
-		"AttributeStrengthGain"		"2.9"									// dota Lifestealer (2.9); old Lifestealer (1.4);
+		"AttributeStrengthGain"		"2.4"									// dota Lifestealer (2.4); old Lifestealer (1.4);
 		"AttributeBaseIntelligence"	"15"									// dota Lifestealer (15); old Lifestealer (15); - don't change!
 		"AttributeIntelligenceGain"	"1.5"									// dota Lifestealer (1.8); old Lifestealer (1.5); - don't change!
 		"AttributeBaseAgility"		"18"									// dota Lifestealer (18); old Lifestealer (26);

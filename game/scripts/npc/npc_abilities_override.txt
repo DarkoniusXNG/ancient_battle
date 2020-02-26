@@ -19,7 +19,7 @@
   //"item_quarterstaff"     "REMOVE"
   //"item_quelling_blade"     "REMOVE"
   //"item_ring_of_protection"     "REMOVE"
-  //"item_stout_shield"     "REMOVE"
+  "item_stout_shield"     "REMOVE"
   //"item_gauntlets"      "REMOVE"
   //"item_slippers"     "REMOVE"
   //"item_mantle"     "REMOVE"
@@ -274,6 +274,74 @@
 	// "item_recipe_hurricane_pike"      "REMOVE"
 	// "item_hurricane_pike"      "REMOVE"
 	"item_banana"      "REMOVE"
+  // Neutral items
+  //"item_keen_optic"               "REMOVE"
+  //"item_royal_jelly"              "REMOVE"
+  //"item_ocean_heart"              "REMOVE"
+  "item_iron_talon"               "REMOVE"
+  "item_recipe_iron_talon"        "REMOVE"
+  //"item_mango_tree"               "REMOVE"
+  //"item_arcane_ring"              "REMOVE"
+  //"item_elixer"                   "REMOVE"
+  //"item_broom_handle"             "REMOVE"
+  //"item_ironwood_tree"            "REMOVE"
+  //"item_recipe_ironwood_tree"     "REMOVE"
+  //"item_trusty_shovel"            "REMOVE"
+  //"item_faded_broach"             "REMOVE"
+  //"item_grove_bow"                "REMOVE"
+  //"item_vampire_fangs"            "REMOVE"
+  //"item_repair_kit"               "REMOVE"
+  //"item_pupils_gift"              "REMOVE"
+  "item_helm_of_the_undying"      "REMOVE"
+  //"item_imp_claw"                 "REMOVE"
+  //"item_philosophers_stone"       "REMOVE"
+  //"item_dragon_scale"             "REMOVE"
+  //"item_essence_ring"             "REMOVE"
+  //"item_nether_shawl"             "REMOVE"
+  "item_tome_of_aghanim"          "REMOVE"
+  //"item_craggy_coat"              "REMOVE"
+  //"item_greater_faerie_fire"      "REMOVE"
+  //"item_quickening_charm"         "REMOVE"
+  "item_mind_breaker"             "REMOVE"
+  "item_third_eye"                "REMOVE"
+  //"item_spider_legs"              "REMOVE"
+  //"item_vambrace"                 "REMOVE"
+  //"item_recipe_vambrace"          "REMOVE"
+  //"item_clumsy_net"               "REMOVE"
+  //"item_enchanted_quiver"         "REMOVE"
+  //"item_paladin_sword"            "REMOVE"
+  //"item_orb_of_destruction"       "REMOVE"
+  //"item_titan_sliver"             "REMOVE"
+  //"item_witless_shako"            "REMOVE"
+  //"item_timeless_relic"           "REMOVE"
+  //"item_spell_prism"              "REMOVE"
+  "item_princes_knife"            "REMOVE"
+  //"item_flicker"                  "REMOVE"
+  //"item_spy_gadget"               "REMOVE"
+  //"item_ninja_gear"               "REMOVE"
+  //"item_illusionsts_cape"         "REMOVE"
+  //"item_havoc_hammer"             "REMOVE"
+  //"item_panic_button"             "REMOVE" // Magic Lamp
+  //"item_the_leveller"             "REMOVE"
+  //"item_minotaur_horn"            "REMOVE"
+  //"item_force_boots"              "REMOVE"
+  //"item_desolator_2"				"REMOVE"
+  //"item_seer_stone"               "REMOVE"
+  //"item_mirror_shield"            "REMOVE"
+  "item_fallen_sky"               "REMOVE"
+  "item_recipe_fallen_sky"        "REMOVE"
+  "item_fusion_rune"              "REMOVE"
+  "item_apex"                     "REMOVE"
+  "item_ballista"                 "REMOVE"
+  //"item_woodland_striders"        "REMOVE"
+  //"item_trident"                  "REMOVE"
+  //"item_recipe_trident"           "REMOVE"
+  //"item_demonicon"                "REMOVE" // Book of the Dead
+  //"item_pirate_hat"               "REMOVE"
+  //"item_ex_machina"               "REMOVE"
+  //"item_phoenix_ash"              "REMOVE"
+  //"item_horizon"                  "REMOVE"
+  //"item_dimensional_doorway"      "REMOVE"
 	
 	//=================================================================================================================
 	// Blink Dagger - Shares the cooldown with Blink Sword.
@@ -281,6 +349,7 @@
 	"item_blink"
 	{
 		"AbilitySharedCooldown"			"blink_items"
+		"SideShop"						"1"
 	}
 	
 	//=================================================================================================================
@@ -358,6 +427,26 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	}
 	
+	"item_tpscroll"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_ring_of_protection"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_magic_stick"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_quelling_blade"
+	{
+		"SideShop"						"1"
+	}
+	
 	//=================================================================================================================
 	// Orb of Venom
 	//=================================================================================================================
@@ -382,10 +471,45 @@
 		"SideShop"						"1"
 	}
 	
+	"item_boots"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_boots_of_elves"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_belt_of_strength"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_robe"
+	{
+		"SideShop"						"1"
+	}
+	
 	//=================================================================================================================
 	// Ring of Health
 	//=================================================================================================================
 	"item_ring_of_health"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_crown"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_gloves"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_chainmail"
 	{
 		"SideShop"						"1"
 	}
@@ -398,11 +522,120 @@
 		"SideShop"						"1"
 	}
 	
+	"item_cloak"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_void_stone"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_helm_of_iron_will"
+	{
+		"SideShop"						"1"
+	}
+	
 	//=================================================================================================================
 	// Quarterstaff
 	//=================================================================================================================
 	"item_quarterstaff"
 	{
 		"SideShop"						"1"
+	}
+	
+	"item_energy_booster"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_vitality_booster"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_lifesteal"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_broadsword"
+	{
+		"SideShop"						"1"
+	}
+	
+	"item_blades_of_attack"
+	{
+		"SideShop"						"1"
+	}
+	
+	//=================================================================================================================
+	// Filler buildings ability (Shrines)
+	//=================================================================================================================
+	"filler_ability"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                               "6226"
+		"AbilityBehavior"                  "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"                         "1"
+
+		"AbilityCastAnimation"             "ACT_DOTA_CAST_ABILITY_2"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"                  "180"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"hp_heal"                      "90"
+			}
+			"02"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"mp_heal"                      "50"
+			}
+			"03"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"hp_heal_growth"               "0"
+			}
+			"04"
+			{
+				"var_type"                     "FIELD_FLOAT"
+				"mp_heal_growth"               "0"
+			}
+			"05"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"hp_heal_pct"                  "2"
+			}
+			"06"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"mp_heal_pct"                  "2"
+			}
+			"07"
+			{
+				"var_type"                     "FIELD_FLOAT"
+				"duration"                     "5"
+			}
+			"08"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"radius"                       "500"
+			}
+			"09"
+			{
+				"var_type"                     "FIELD_INTEGER"
+				"initial_cooldown"             "180"
+			}
+		}
 	}
 }

@@ -1,0 +1,59 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
+	// Author: Darkonius
+	// Notes: OK; 19.12.2019;
+	// TO_DO:
+	//=================================================================================================================
+	"death_knight_resurrection"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes/death_knight/resurrection.lua"
+		"AbilityTextureName"			"custom/death_knight_resurrection"
+		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+
+		// "HasScepterUpgrade"				"0"
+		
+		"AbilityCastPoint"				"0.453"
+
+		"AbilityCooldown" 				"80"
+		"AbilityManacost" 				"200"
+		"AbilityProcsMagicStick"		"1"
+		
+		"MaxLevel"						"1"
+		"RequiredLevel"					"6"
+
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+			"particle"		"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"resurrections_limit"	"999"
+			}
+		}
+	}
+}

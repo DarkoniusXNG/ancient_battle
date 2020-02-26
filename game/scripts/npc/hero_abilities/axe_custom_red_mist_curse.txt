@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Axe: Red Mist Curse (W) - New Spell, like Ogre Magi Ignite but gives FOW vision and no projectile.
+	// Axe: Red Mist Curse (W) - New Spell, like Ogre Magi Ignite but gives FOW vision, no projectile and single target affected.
 	// Author: Darkonius
-	// Notes: OK; 14.9.2019; Total Damage difference (old-new): -35/-71/-91/-95
+	// Notes: OK; 25.2.2020;
 	// Linkens: Blocks;
 	// TO_DO: 
 	//=================================================================================================================
@@ -27,28 +27,28 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"15.0"                      // Ignite (15); Leech Seed (16/13/10/7);
+		"AbilityCooldown"				"15.0"                      // Ignite (15); Leech Seed (22/19/16/13);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"90"                        // Ignite (90);
+		"AbilityManaCost"				"60 70 80 90"               // Ignite (90); Battle Hunger (50/60/70/80);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // Battle Hunger (12); Dual Breath (5); Ignite (5/6/7/8); Leech Seed (7); Shadow Word (12);
+			"01" // Battle Hunger (12); Dual Breath (5); Ignite (5/6/7/8); Leech Seed (5); Shadow Word (12);
 			{
 				"var_type"					"FIELD_INTEGER"
 				"duration"					"5 6 7 8"
 			}
-			"02" // Shadow Word (15/25/35/45); Ignite (26/34/42/50); Leech Seed (12/24/36/48);
+			"02" // Shadow Word (15/25/35/45); Ignite (26/34/42/50); Leech Seed (15/30/45/60);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage_per_second"			"26 34 42 50"
+				"damage_per_second"			"25 35 45 55"
 			}
-			"03" // Battle Hunger (12%); Ignite (20%/22%/24%/26%); Leech Seed (16%/20%/24%/28%);
+			"03" // Battle Hunger (12%); Ignite (20%/22%/24%/26%); Leech Seed (18%/24%/30%/36%);
 			{
 				"var_type"					"FIELD_INTEGER"
 				"move_speed_slow"			"-12 -17 -22 -27"

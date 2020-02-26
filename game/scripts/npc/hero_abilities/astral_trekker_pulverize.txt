@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Astral Trekker: Pulverize (E) - New Spell; Passive; Chance to cleave 120% damage;
+	// Astral Trekker: Pulverize (E) - New Spell; Passive; Chance to cleave;
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
+	// Notes: OK; 20.11.2019; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
 	// TO_DO: 
 	//=================================================================================================================
 	"astral_trekker_pulverize"
@@ -30,26 +30,26 @@
 				"var_type"                  	"FIELD_INTEGER"
 				"cleave_chance"             	"15 20 25 30"
 			}
-			"02"
+			"02" // similar to Kunkka Tidebringer old cleave damage when it was pure
 			{
 				"var_type"                  	"FIELD_INTEGER"
 				"cleave_damage"             	"120"
 				"CalculateSpellDamageTooltip"	"0"
 			}
-			"03"
+			"03" // unique
 			{
 				"var_type"                  	"FIELD_INTEGER"
 				"cleave_start_radius"        	"250"
 			}
-			"04"
+			"04" // like Sven Great Cleave
 			{
 				"var_type"                  	"FIELD_INTEGER"
-				"cleave_distance"        		"625"
+				"cleave_distance"        		"650"
 			}
-			"05"
+			"05" // like Sven Great Cleave
 			{
 				"var_type"                  	"FIELD_INTEGER"
-				"cleave_end_radius"        		"330"
+				"cleave_end_radius"        		"360"
 			}
 		}
 	}

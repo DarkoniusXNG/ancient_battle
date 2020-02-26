@@ -20,7 +20,7 @@ end
 
 function modifier_custom_terror_buff:CheckState()
 	local state = {
-	[MODIFIER_STATE_DISARMED] = true,
+		[MODIFIER_STATE_DISARMED] = true,
 	}
 
 	return state

@@ -21,59 +21,66 @@ end
 function modifier_custom_blood_mirror_buff_ally_redirect:OnCreated()
 	local ability = self:GetAbility()
 	self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
-	self.redirect_target = self:GetCaster()
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:OnRefresh()
 	local ability = self:GetAbility()
 	self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
-	self.redirect_target = self:GetCaster()
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
 
 	return funcs
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:GetModifierIncomingDamage_Percentage(kv)
-	if IsServer() then
-		local attacker = kv.attacker
-		local redirect_target = self.redirect_target
-		local reduction = self.damage_redirect_percent
+	local redirect_target = self:GetCaster()
+	local reduction = self.damage_redirect_percent
+	local ability = self:GetAbility()
+
+	if ability then
+		reduction = ability:GetSpecialValueFor("redirected_damage")
+		redirect_target = ability:GetCaster()
+	end
+
+	-- Checking if the redirect_target has a debuff (just in case)
+	if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
+		-- Apply damage reduction only if caster is alive and has a buff
+		return -(reduction)
+	else
+		return 0
+	end
+end
+
+function modifier_custom_blood_mirror_buff_ally_redirect:OnTakeDamage(event)
+    -- Only consider damage the parent receives
+    if event.unit == self:GetParent() then
 		local damage_table = {}
+		local redirect_target = self:GetCaster()
+		local redirected_damage = self.damage_redirect_percent
 		local ability = self:GetAbility()
 
 		if ability then
-			local ability_level	= ability:GetLevel()
-			redirect_target = self:GetCaster()
-			reduction = ability:GetLevelSpecialValueFor("redirected_damage", ability_level)
-			--damage_table.ability = ability
+			redirected_damage = ability:GetSpecialValueFor("redirected_damage")
+			redirect_target = ability:GetCaster()
+			damage_table.ability = ability
 		end
-
-		local damage_after_reductions = kv.damage
-		local damage_to_redirect = damage_after_reductions*reduction/100
 
 		damage_table.victim = redirect_target
-		damage_table.attacker = attacker
-		damage_table.damage = damage_to_redirect
-		damage_table.damage_type = kv.damage_type
-		damage_table.damage_flags = bit.bor(kv.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION)
-		damage_table.ability = kv.inflictor
+		damage_table.attacker = event.attacker
+		damage_table.damage = event.original_damage*(redirected_damage/100)
+		damage_table.damage_type = event.damage_type -- DAMAGE_TYPE_PHYSICAL
+		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_HPLOSS, DOTA_DAMAGE_FLAG_REFLECTION)
 
-		-- Checking if the redirect_target has a debuff (just in case)
-		if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") and damage_to_redirect > 0 then
-			--Apply the damage to the caster
+        -- Redirect damage to caster if he is alive and if he has that buff
+		if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
 			ApplyDamage(damage_table)
-
-			-- Apply damage reduction
-			return -(reduction)
 		end
-
-		return 0
-	end
+    end
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:GetEffectName()

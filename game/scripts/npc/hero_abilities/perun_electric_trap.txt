@@ -4,7 +4,7 @@
 	// Lightning Shaman: Electric Trap (E) - Similar to Techies Stasis Trap
 	// Author: Darkonius
 	// Notes: OK; 27.8.2019; Trap stuns in a radius;
-	// TO_DO: Lua
+	// TO_DO:
 	//=================================================================================================================
 	"perun_electric_trap"
 	{
@@ -61,12 +61,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"delay"			            "1.0"
+				"delay"			            "1.5"
 			}	
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration"					"360"
+				"duration"					"180"
 			}
 		}
 	}

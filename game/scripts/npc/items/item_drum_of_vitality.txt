@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1274 - Recipe: Drum of Vitality
-	// Notes: OK; 10.9.2019;
+	// Notes: OK; 25.12.2019;
 	//=================================================================================================================
 	"item_recipe_drum_of_vitality"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"85"
+		"ItemCost"						"80"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -25,10 +25,10 @@
 			"01"						"item_bracer;item_ring_of_regen;item_faerie_fire"
 		}
 	}
-	
+
 	//=================================================================================================================
-	// 1275 - Drum of Vitality - Bracer (515) + Ring of Regen (300) + Faerie Fire (70) + Recipe (85) = 970
-	// Notes: OK; 10.9.2019;
+	// 1275 - Drum of Vitality - Bracer (510) + Ring of Regen (250) + Faerie Fire (70) + Recipe (80) = 910
+	// Notes: OK; 25.12.2019; Item cost should be the same as Ring of Aquila;
 	// TO_DO:
 	//=================================================================================================================
 	"item_drum_of_vitality"
@@ -44,7 +44,7 @@
 		"AbilityCooldown"				"5.0"
 		
 		"AbilityManaCost"				"0"
-		"ItemCost"						"970"
+		"ItemCost"						"910"
 		"ItemShopTags"					"str;agi;int;damage;regen_health;hard_to_tag"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"drum of vitality"
@@ -77,12 +77,12 @@
 			"04" // 2 +
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"bonus_dmg"                               "5"
+				"bonus_dmg"                               "2"
 			}
 			"05" // 2 +
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"bonus_hp_regen"                          "3.0"
+				"bonus_hp_regen"                          "2.0"
 			}
 			"06" // 5 +
 			{

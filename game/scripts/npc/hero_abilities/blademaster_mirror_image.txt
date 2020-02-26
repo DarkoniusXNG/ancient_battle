@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Mirror Image (W) - Modified Naga Siren Mirror Image
 	// Author: Valve + Darkonius
-	// Notes: OK; 18.8.2019; Summons 2 illusions
+	// Notes: OK; 19.12.2019; Summons 2 illusions;
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_mirror_image"
@@ -11,6 +11,7 @@
 		"BaseClass"             		"naga_siren_mirror_image"
 		"AbilityTextureName"			"custom/blademaster_mirror_image"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilitySound"                  "Hero_NagaSiren.MirrorImage"
 		
 		"AbilityCooldown"				"45 40 35 30"
 		"AbilityCastPoint"				"0.3"
@@ -29,7 +30,7 @@
 			"01"
 			{
 				"var_type"									"FIELD_FLOAT"
-				"illusion_duration"							"28"
+				"illusion_duration"							"25"
 			}
 			"02" // not in tooltip
 			{
@@ -47,12 +48,12 @@
 			"04" // not in tooltip
 			{
 				"var_type"									"FIELD_INTEGER"
-				"incoming_damage"							"400 350 300 250"
+				"incoming_damage"							"250"
 			}
 			"05" // incoming_damage + 100
 			{
 				"var_type"									"FIELD_INTEGER"
-				"tooltip_incoming_damage_total_pct"			"500 450 400 350"
+				"tooltip_incoming_damage_total_pct"			"350"
 				"CalculateSpellDamageTooltip"				"0"
 			}
 			"06"

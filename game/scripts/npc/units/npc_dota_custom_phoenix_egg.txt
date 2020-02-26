@@ -2,25 +2,25 @@
 {
 	//=================================================================================
 	// Summoned Phoenix's Egg
-	// Notes: OK; 26.10.2019;
+	// Notes: OK; 25.2.2020;
 	//=================================================================================
 	"npc_dota_custom_phoenix_egg"
 	{
 		"BaseClass"         		"npc_dota_creature"
 		"Model"           			"models/heroes/phoenix/phoenix_egg.vmdl"
 		"ModelScale"				"0.7"							// dota Phoenix Sun is 1.0
-		
+
 		"SoundSet"          		"Phoenix_Sun"
 		"GameSoundsFile"          	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
 		//"IdleSoundLoop"           "sound_name"
-		
+
 		"Level"           			"6"
 		"UnitLabel"         		"phoenix_egg"
-		
+
 		"IsSummoned"      			"0"
 		"CanBeDominated"  			"0"
 		"IsAncient"                 "1"
-		
+
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"                  "custom_egg_turn_into_phoenix"
@@ -29,8 +29,8 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"       		"0"
-		"MagicalResistance"       	"0"
+		"ArmorPhysical"       		"0"                             // handled by custom_egg_passives
+		"MagicalResistance"       	"0"                             // handled by custom_unit_spell_immunity
 
 		// Attack
 		//----------------------------------------------------------------
@@ -43,44 +43,44 @@
 		"AttackRange"       		"0"
 		"ProjectileModel"			""
 		"ProjectileSpeed"			"0"
-		
+
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"          		"100"     						// 
-		"BountyGoldMin"       		"100"     						// 
-		"BountyGoldMax"       		"100"     						// 
+		"BountyXP"          		"100"
+		"BountyGoldMin"       		"100"
+		"BountyGoldMax"       		"100"
 
 		// Bounds
 		//----------------------------------------------------------------
 		"BoundsHullName"      		"DOTA_HULL_SIZE_HERO"
-		"HealthBarOffset"         	"140"							// maybe(140); dota(450)
+		"HealthBarOffset"         	"140"							// maybe (140); dota (450)
 		"RingRadius"              	"85"
-		
+
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_NONE"
 		"MovementSpeed"       		"0"
 		"MovementTurnRate"      	"0.0"
-		
+
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"        		"160"     						// dota Phoenix(100); original(200);
-		"StatusHealthRegen"     	"0.0"     						// 
-		"StatusMana"        		"0"     						// 
-		"StatusManaRegen"     		"0.0"     						// 
-		
+		"StatusHealth"        		"160"     						// dota Phoenix (100); original (200);
+		"StatusHealthRegen"     	"0.0"     						// handled by custom_egg_passives
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0.0"
+
 		// Combat
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_GOODGUYS"
 		"CombatClassAttack"     	"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"     	"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"   	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
-		
+
 		// Vision
 		//----------------------------------------------------------------
-		"VisionDaytimeRange"    	"600"							// original(600);
-		"VisionNighttimeRange"    	"600"							// original(600);
-		
+		"VisionDaytimeRange"    	"600"							// original (600);
+		"VisionNighttimeRange"    	"600"							// original (600);
+
 		"WakesNeutrals"				"0"
 	}
 }

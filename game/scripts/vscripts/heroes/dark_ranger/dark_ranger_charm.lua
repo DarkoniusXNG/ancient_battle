@@ -40,8 +40,8 @@ function CharmStart(event)
 				if not target:IsAncient() then
 					ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
 				else
-					-- Target is an Ancient creep.
-					if caster:HasScepter() and not IsRoshan(target) then 
+					-- Target is an Ancient creep
+					if caster:HasScepter() and not IsRoshan(target) and not target:IsCourier() then 
 						ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
 						-- this 'if block' is making sure that Charm works on any creep (even Ancients, but not Roshan) if the caster has Aghanim Scepter.
 					else
@@ -51,6 +51,8 @@ function CharmStart(event)
 						-- Display error messages
 						if IsRoshan(target) then 
 							SendErrorMessage(pID, "Can't Target Roshan!")
+						elseif target:IsCourier() then
+							SendErrorMessage(pID, "Can't Target Couriers!")
 						else
 							SendErrorMessage(pID, "Can't Target Ancients without Aghanim Scepter!")
 						end

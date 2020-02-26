@@ -298,9 +298,9 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		-- end
 	-- end
 	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
+	--if attacker:IsNull() or victim:IsNull() then
+		--return false
+	--end
 	
 	-- Infused Robe passive Damage Blocking any damage type after all reductions (DOESN'T WORK ON ILLUSIONS!)
 	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() and victim ~= attacker then
@@ -416,6 +416,16 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			victim:SetMaximumGoldBounty(gold_bounty)
 		end
 	end
+
+	-- Increase xp bounty of neutrals
+	if victim:IsNeutralUnitType() and keys.damage >= victim:GetHealth() and not victim.changed_xp_bounty then
+		local old_xp_bounty = victim:GetDeathXP()
+		local xp_multiplier = 1.1
+		local new_xp_bounty = old_xp_bounty * xp_multiplier
+
+		victim:SetDeathXP(math.ceil(new_xp_bounty))
+		victim.changed_xp_bounty = true
+	end
 	
 	if keys.damage <= 0 then
 		return false
@@ -446,6 +456,14 @@ function ancient_battle_gamemode:ExperienceFilter(keys)
 	local playerID = keys.player_id_const
 	local reason = keys.reason_const
 
+	local xp_multiplier = 1.17
+	if reason == DOTA_ModifyXP_CreepKill then
+		--if GetMapName() == "two_vs_two" then
+			--xp_multiplier = 1.5
+		--end
+		keys.experience = experience * xp_multiplier
+	end
+
 	return true
 end
 
@@ -465,11 +483,6 @@ end
 
 -- Bounty Rune Filter, can be used to modify Alchemist's Greevil Greed for example
 function ancient_battle_gamemode:BountyRuneFilter(keys)
-	return true
-end
-
--- Rune filter, can be used to modify what runes spawn and don't spawn, can be used to replace runes
-function ancient_battle_gamemode:RuneSpawnFilter(keys)
 	return true
 end
 

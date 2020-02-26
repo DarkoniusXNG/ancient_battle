@@ -16,9 +16,24 @@ end
 function modifier_mana_eater_passive:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
-		MODIFIER_EVENT_ON_DEATH
+		MODIFIER_EVENT_ON_DEATH,
+		MODIFIER_PROPERTY_EVASION_CONSTANT
 	}
 	return funcs
+end
+
+function modifier_mana_eater_passive:GetModifierEvasion_Constant()
+	local parent = self:GetParent()
+	local evasion_per_mana_percentage = self:GetAbility():GetSpecialValueFor("evasion_per_mana_percentage")
+	local max_mana = parent:GetMaxMana()
+	local current_mana = parent:GetMana()
+	local current_mana_percentage = (current_mana/max_mana)*100
+	local evasion = math.ceil(current_mana_percentage*evasion_per_mana_percentage/100)
+	if not parent:PassivesDisabled() then
+		return evasion
+	else
+		return 0
+	end
 end
 
 function modifier_mana_eater_passive:OnAttackLanded(event)
@@ -34,7 +49,7 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 		return
 	end
 
-	-- No mana drain while broken or if attacker is an illusion
+	-- No mana drain while broken
 	if parent:PassivesDisabled() then
 		return
 	end
@@ -72,12 +87,12 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 				drainAmount = drainAmount + talent:GetSpecialValueFor("value")
 			end
 		end
-		local targetMana = target:GetMana()
+		--local targetMana = target:GetMana()
 		local duration = ability:GetSpecialValueFor("bonus_duration")
 
-		if targetMana < drainAmount then
-			drainAmount = targetMana
-		end
+		--if targetMana < drainAmount then
+			--drainAmount = targetMana
+		--end
 
 		-- Don't give mana to illusions
 		if not parent:IsIllusion() then
@@ -95,7 +110,7 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 			end
 		end
 
-		target:ReduceMana(drainAmount)
+		--target:ReduceMana(drainAmount)
 
 		-- Don't give mana to illusions
 		if not parent:IsIllusion() then

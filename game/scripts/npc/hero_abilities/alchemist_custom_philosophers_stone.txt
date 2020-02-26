@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Philosopher's Stone (E) - New Spell,
 	// Author: Darkonius
-	// Notes: OK; 4.10.2019;
+	// Notes: OK; 19.12.2019;
 	// TO_DO: It will need rework into ability_lua if you implement spell steal
 	//=================================================================================================================
 	"alchemist_custom_philosophers_stone"
@@ -18,7 +18,7 @@
 		"AbilityCastRange"				"750"
 		"AbilityCastPoint"				"0.3"
 		
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"15"
 		"AbilityManaCost"				"100"
 		"AbilityProcsMagicStick"		"1"
 		
@@ -39,7 +39,7 @@
 			"01"
 			{
 				"var_type"          			"FIELD_INTEGER"
-				"base_damage" 					"70"
+				"base_damage" 					"70 80 90 100"
 			}
 			"02" // like Morphling Adaptive Strike Max Bonus Damage Agility Multiplier
 			{

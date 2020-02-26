@@ -71,8 +71,12 @@ function ManaDrainManaTransfer(event)
 		local break_distance = ability:GetLevelSpecialValueFor("break_distance", ability_level)
 		local direction = (target_location - caster_location):Normalized()
 
-		-- If the leash is broken or target is spell immune or invulnerable then stop the channel
-		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
+		-- If one of these then stop the channel:
+		-- 1) leash is broken
+		-- 2) target becomes spell immune
+		-- 3) target becomes invulnerable
+		-- 4) target doesn't have a mana pool
+		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() or target:GetMana() < 1 then
 			ability:OnChannelFinish(false)
 			caster:Interrupt()
 			ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
@@ -150,8 +154,8 @@ function ManaTransferAlly(event)
 	local break_distance = ability:GetLevelSpecialValueFor("break_distance", ability_level)
 	local direction = (target_location - caster_location):Normalized()
 
-	-- If the leash is broken or target is spell immune or invulnerable then stop the channel
-	if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
+	-- If the leash is broken or target doesn't have a mana pool
+	if distance >= break_distance or target:GetMana() < 1 then
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
 		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)

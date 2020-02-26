@@ -59,12 +59,14 @@
 #base "hero_abilities/dark_ranger_custom_marksmanship.txt"
 #base "hero_abilities/dark_ranger_dark_arrows.txt"
 #base "hero_abilities/dark_ranger_life_drain.txt"
+#base "hero_abilities/dark_ranger_ranger_aura.txt"
 
 #base "hero_abilities/death_knight_chilling_touch.txt"
 #base "hero_abilities/death_knight_death_coil.txt"
 #base "hero_abilities/death_knight_death_pact.txt"
 #base "hero_abilities/death_knight_death_pit.txt"
 #base "hero_abilities/death_knight_unholy_aura.txt"
+#base "hero_abilities/death_knight_resurrection.txt"
 
 #base "hero_abilities/firelord_arcana_model.txt"
 #base "hero_abilities/firelord_flaming_presence.txt"
@@ -90,7 +92,6 @@
 
 #base "hero_abilities/life_stealer_custom_absorb_life.txt"
 #base "hero_abilities/life_stealer_custom_anabolic_frenzy.txt"
-#base "hero_abilities/life_stealer_custom_open_wounds.txt"
 #base "hero_abilities/life_stealer_custom_poison_sting.txt"
 #base "hero_abilities/life_stealer_custom_rage.txt"
 

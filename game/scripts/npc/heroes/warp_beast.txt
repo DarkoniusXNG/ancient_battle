@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Warp Beast
-	// Notes: OK; 29.10.2019;
+	// Notes: OK; 26.2.2020;
 	//================================================================================================================
 	"npc_dota_hero_warp_beast"
     {
@@ -47,15 +47,15 @@
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"                                   "2"
+		"ArmorPhysical"                                   "0" // Phantom Assassin (1); Faceless Void (0);
 		"MagicalResistance"                               "25"
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"BaseAttackSpeed"                                 "100"
-		"AttackDamageMin"                                 "33"                        
-        "AttackDamageMax"                                 "39"
+		"AttackDamageMin"                                 "33" // Phantom Assassin (27); Faceless Void (33);
+		"AttackDamageMax"                                 "39" // Phantom Assassin (29); Faceless Void (39);
 		"AttackRate"                                      "1.7"
 		"AttackAnimationPoint"                            "0.38"
 		"AttackAcquisitionRange"                          "600"
@@ -64,7 +64,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"                                   "310"
+		"MovementSpeed"                                   "310" // Phantom Assassin (305); Faceless Void (300);
 		"MovementTurnRate"                                "1.0"
 
 		// Vision
@@ -84,10 +84,10 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "0.75"
-		"StatusHealth"                                    "200"
-		"StatusMana"                                      "220"                 // unique
-		"StatusManaRegen"                                 "1.0"                 // unique
+		"StatusHealthRegen"                               "0.25"                // Phantom Assassin (0.25); Faceless Void (0.5);
+		"StatusHealth"                                    "200"                 // Default
+		"StatusMana"                                      "75"                  // Default
+		"StatusManaRegen"                                 "0.5"                 // unique
 
 		// Combat
 		//-------------------------------------------------------------------------------------------------------------

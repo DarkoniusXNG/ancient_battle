@@ -4,7 +4,7 @@
 	// Blademaster: Shadow Walk (E) - Datadriven, Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
 	// Author: Darkonius
 	// Notes: OK; 14.10.2018; Uses built-in modifier: modifier_invisible; Dispellable with Basic Dispel;
-	// Notes: Bonus Damage can damage buildings;
+	// Notes: Bonus Damage can damage buildings; No fade time;
 	// TO_DO: Rework into ability_lua because damage is blocked with damage block
 	//=================================================================================================================
 	"blademaster_shadow_walk"

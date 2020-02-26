@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
 	// Author: Darkonius
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 25.2.2020;
 	// TO_DO: attach_hitloc effect is weird -> not critical
 	//=================================================================================================================
 	"archmage_arcane_magic"
@@ -17,16 +17,17 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 
-		"AbilityCastPoint"				"0.3"						// like KOTL Chakra Magic
-		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"              "0.3"             // like KOTL Chakra Magic
+		"AbilityCastRange"              "1200"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0 18.0 16.0 14.0"		// like KOTL Chakra Magic
+		"AbilityCooldown"               "20 18 16 14"     // like KOTL Chakra Magic
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"15 25 35 45"				// KOTL Chakra Magic: 0
+		"AbilityManaCost"               "0"               // KOTL Chakra Magic: 0
 		"AbilityProcsMagicStick"		"1"
 
 		"precache"
@@ -39,17 +40,17 @@
 
 		"AbilitySpecial"
 		{
-			"01" // Chakra Magic Total mana restored: 80/160/240/320; aura_mana_regen x 15 + buff_mana_regen x 15 should be equal to this
+			"01" // Chakra Magic Total mana restored: 80/160/240/320; <- (aura_mana_regen + buff_mana_regen) x buff_duration
 			{
 				"var_type"				"FIELD_FLOAT"
 				"buff_mana_regen"		"4.0 9.0 14.0 19.0"
 			}
-			"02" // KOTL Chakra Magic (15 seconds); Chakra Magic Total mana restored: 80/160/240/320
+			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"buff_duration"			"15"
 			}
-			"03" // Crystal Maiden (Global) Arcane Aura: 1/1.5/2/2.5
+			"03" // Crystal Maiden (Global) Arcane Aura: 0.5/1/1.5/2
 			{
 				"var_type"				"FIELD_FLOAT"
 				"aura_mana_regen"		"1.5 2.0 2.5 3.0"

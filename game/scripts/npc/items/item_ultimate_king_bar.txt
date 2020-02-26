@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// Recipe: Ultimate King Bar
-	// Notes: OK; 10.9.2019;
+	// Notes: OK; 25.12.2019;
 	//=================================================================================================================
 	"item_recipe_ultimate_king_bar"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"2150"	
+		"ItemCost"						"1500"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -27,8 +27,8 @@
 	}
 	
 	//=================================================================================================================
-	// Ultimate King Bar - Black King Bar (4050) + Ghost Scepter (1500) + Recipe (2150) = 7700
-	// Notes: OK; 19.9.2019; Price should be like: BKB x 2; Duration should be the lowest duration of BKB;
+	// Ultimate King Bar - Black King Bar (4050) + Ghost Scepter (1500) + Recipe (1500) = 7050
+	// Notes: OK; 25.12.2019; Ideal price should be like: BKB x 2; Duration should be the lowest duration of BKB;
 	//=================================================================================================================
 	"item_ultimate_king_bar"
 	{
@@ -36,7 +36,7 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/ultimate_king_bar"
 		
-		"ItemCost"						"7700"
+		"ItemCost"						"7050"
 		"ItemShopTags"					"str;agi;int;damage;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"ukb;ultimate king bar"
@@ -51,7 +51,6 @@
 		
 		"AbilityCooldown"				"60"
 		"AbilitySharedCooldown"			"black_king_bar"
-		"AbilityCastPoint"				"0.0"
 		"AbilityManaCost"				"0"
 		
 		"precache"
@@ -66,7 +65,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"20"
+				"bonus_str"				"15"
 			}
 			"02"
 			{
@@ -81,12 +80,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"48"
+				"bonus_dmg"				"30"
 			}
 			"05"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"5.0"
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"5"
 			}
 		}
 		

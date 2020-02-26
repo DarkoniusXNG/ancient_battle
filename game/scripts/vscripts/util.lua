@@ -289,12 +289,12 @@ function HideTheCopyPermanently(copy)
 		-- Effects and auras that are visual while hidden - Special cases
 		local hidden_modifiers = {
 			"modifier_firelord_arcana",												-- Fire Lord Arcana
-			"modifier_drow_ranger_trueshot",										-- Precision Aura (built-in)
-			"modifier_drow_ranger_trueshot_aura",									-- Precision Aura (built-in)
-			"modifier_drow_ranger_trueshot_global",									-- Precision Aura (built-in)
+			--"modifier_drow_ranger_trueshot",										-- Precision Aura (built-in)
+			--"modifier_drow_ranger_trueshot_aura",									-- Precision Aura (built-in)
+			--"modifier_drow_ranger_trueshot_global",								-- Precision Aura (built-in)
 			"modifier_black_king_bar_immune",										-- Black King Bar (built-in)
 			"modifier_item_ring_of_basilius_aura",									-- Ring of Basilius Aura
-			"modifier_item_ring_of_aquila_aura",									-- Ring of Aquila Aura
+			--"modifier_item_ring_of_aquila_aura",									-- Ring of Aquila Aura
 			"modifier_item_mekansm_aura",											-- Mekansm Aura
 			"modifier_item_ancient_janggo",											-- Drums of Endurance Aura
 			"modifier_item_vladmir",												-- Vladmir's Aura
@@ -578,7 +578,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 			target:RemoveModifierByName("modifier_time_stop")					-- pierces BKB
 			target:RemoveModifierByName("modifier_time_stop_scepter")           -- pierces BKB
 			target:RemoveModifierByName("modifier_custom_enfeeble_debuff")		-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_venomancer_poison_sting")
+			--target:RemoveModifierByName("modifier_venomancer_poison_sting")
 			target:RemoveModifierByName("modifier_purge_enemy_hero")			-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_purge_enemy_creep")			-- pierces BKB, doesn't get removed with BKB
 			target:RemoveModifierByName("modifier_bane_nightmare_invulnerable") -- invulnerable type
@@ -618,8 +618,8 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_slippers_of_halcyon_caster",
 				"item_modifier_infused_robe_damage_barrier",
 				"modifier_item_orb_of_reflection_active_reflect",
-				"modifier_custom_marksmanship_buff"
-				-- Death Pact
+				"modifier_custom_marksmanship_buff",
+				"modifier_custom_death_pact"
 			}
 			
 			for i = 1, #undispellable_with_normal_dispel_buffs do

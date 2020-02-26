@@ -4,8 +4,8 @@
 	// Fire Lord: Soul Burn (Q) - New Spell, Damages targeted unit, reduces/amplifies attack damage and silences enemies.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 31.1.2017;
-	// TO_DO: Stavi dinamicki cooldown, kad je na prijatelje manji cd
+	// Notes: OK; 26.12.2019; Dynamic cooldown, lower when cast on allies or self
+	// TO_DO:
 	//================================================================================================================= 
 	"firelord_soul_burn"
 	{
@@ -17,23 +17,23 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
+
 		"AbilityCastAnimation"			"ACT_DOTA_RAZE_1"
-		"AbilityCastRange"				"700"						// like Skywrath Mage Ancient Seal
-		"AbilityCastPoint"				"0.2"
-		
-		"AbilityCooldown"				"15.0 14.0 13.0 12.0"
-	
+		"AbilityCastRange"				"700 750 800 850" // like Skywrath Mage Ancient Seal; old Bloodrage (800);
+		"AbilityCastPoint"				"0.2" // like Bloodrage
+
+		"AbilityCooldown"				"14" // like Skywrath Mage Ancient Seal
+
 		"AbilityManaCost"				"80 90 100 110"
 		"AbilityProcsMagicStick"		"1"
-	
+
 		"precache"
 		{
 			"particle" 	"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf"
 			"particle"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
 		}
-		
+
 		"AbilitySpecial"
 		{
 			"01"
@@ -41,46 +41,45 @@
 				"var_type"					"FIELD_INTEGER"
 				"damage_per_second"			"20 25 30 35"
 			}
-			
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"damage_per_second_ally"	"20"
 			}
-			
 			"03" // like Skywrath Mage Ancient Seal
 			{
 				"var_type"					"FIELD_FLOAT"
-				"hero_duration"				"3.0 4.0 5.0 6.0"
+				"hero_duration"				"3 4 5 6"
 			}
-			
-			"04" // like Skywrath Mage Ancient Seal
+			"04"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"creep_duration"			"6.0"
+				"creep_duration"			"6"
 			}
-			
-			"05" // like Bloodseeker's Bloodrage
+			"05" // this is duration on allies; like Bloodseeker's Bloodrage
 			{
 				"var_type"					"FIELD_FLOAT"
-				"buff_duration"				"9.0 10.0 11.0 12.0"
+				"buff_duration"				"9 10 11 12"
 			}
-			
 			"06" // original Fire Lord had 50% reduction at all levels
 			{
 				"var_type"						"FIELD_INTEGER"
 				"damage_reduction"				"-20 -30 -40 -50"
 				"CalculateSpellDamageTooltip"	"0"
 			}
-			
-			"07" // similar to Bloodseeker's Bloodrage, amplifies only attack damage
+			"07" // this amplifies only attack damage
 			{
 				"var_type"						"FIELD_INTEGER"
 				"damage_amp"					"25 30 35 40"
 				"CalculateSpellDamageTooltip"	"0"
 			}
+			"08" // like Bloodseeker's Bloodrage cooldown
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cooldown_allies"				"9 8 7 6"
+			}
 		}
-	
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -88,36 +87,24 @@
 				"EffectName"	"hero_bloodseeker.bloodRage"
 				"Target" 		"TARGET"
 			}
-	
+
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/firelord/firelord_soul_burn.lua"
 				"Function"		"SoulBurnStart"
 			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_soul_buff"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%buff_duration"
-			}
 		}
-	
+
 		"Modifiers"
 		{
 			"modifier_soul_burn" // needs tooltip
 			{
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
-		
+
 				"EffectName"		"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger.vpcf"
 				"EffectAttachType"	"follow_overhead"
-				
+
 				"OnCreated"
 				{
 					"Damage"
@@ -127,7 +114,7 @@
 						"Damage"		"%damage_per_second"
 					}
 				}
-		
+
 				"ThinkInterval"  	"1.0"
 				"OnIntervalThink"
 				{
@@ -138,26 +125,26 @@
 						"Damage"		"%damage_per_second"
 					}
 				}
-	
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
 				}
-	
+
 				"States"
 				{
 					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
-			
+
 			"modifier_soul_buff" // needs tooltip
 			{
 				"IsBuff"			"1"
 				"IsPurgable"		"1"
-		
+
 				"EffectName"		"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf"
 				"EffectAttachType"	"follow_overhead"
-				
+
 				"OnCreated"
 				{
 					"Damage"
@@ -167,7 +154,7 @@
 						"Damage"		"%damage_per_second_ally"
 					}
 				}
-		
+
 				"ThinkInterval"  	"1.0"
 				"OnIntervalThink"
 				{
@@ -178,7 +165,7 @@
 						"Damage"		"%damage_per_second_ally"
 					}
 				}
-	
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_amp"

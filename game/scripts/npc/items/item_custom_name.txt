@@ -1,6 +1,10 @@
 "DOTAAbilities"
 {
-	//"ID"              			"1836"		// anything above 1250 should be safe to use. (max is 2000)	// Essential
+	//=================================================================================================================
+	// Item Name -
+	// Notes: OK; Date;
+	//=================================================================================================================
+	//"ID"              			"1280"		// anything above 1250 should be safe to use. // Essential
     //"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
     //"AbilityUnitTargetTeam"     	"DOTA_UNIT_TARGET_TEAM_ENEMY"
     //"AbilityUnitTargetType"     	"DOTA_UNIT_TARGET_HERO"

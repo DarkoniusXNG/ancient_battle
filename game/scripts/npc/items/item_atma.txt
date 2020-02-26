@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1268 - Recipe: Atma
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 25.12.2019;
 	//=================================================================================================================
 	"item_recipe_atma"
 	{
@@ -13,7 +13,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"5"
+		"ItemCost"						"0"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -23,13 +23,13 @@
 		"ItemRequirements"
 		{
 			//"01"						"item_bracer;item_null_talisman;item_wraith_band"
-			"01"                        "item_gauntlets;item_slippers;item_mantle" // 3 x 135
+			"01"                        "item_gauntlets;item_slippers;item_mantle"
 		}
 	}
 	
 	//=================================================================================================================
-	// 1269 - Atma
-	// Notes: OK; 18.9.2019; Suggested/rejected names: Collar of Viceroy
+	// 1269 - Atma - 3 x 145 = 435
+	// Notes: OK; 25.12.2019; Suggested/rejected names: Collar of Viceroy
 	//=================================================================================================================
 	"item_atma"
 	{
@@ -39,7 +39,7 @@
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"ItemCost"						"410"
+		"ItemCost"						"435"
 		"ItemShopTags"					"damage;int;str;agi"
 		"ItemQuality"					"common"
 		"ItemAliases"					"atma"
@@ -71,7 +71,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"2"
+				"bonus_dmg"				"3"
 			}
 		}
 		

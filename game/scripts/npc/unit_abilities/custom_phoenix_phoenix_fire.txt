@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Phoenix: Phoenix Fire
 	// Author: Darkonius
-	// Notes: OK; 21.9.2019;
+	// Notes: OK; 25.2.2020;
 	// TO_DO: Particles and sounds
 	//=================================================================================================================
 	"custom_phoenix_phoenix_fire"
@@ -39,7 +39,7 @@
 			"04"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_to_self"                          "5"
+				"damage_to_self"                          "25"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 		}

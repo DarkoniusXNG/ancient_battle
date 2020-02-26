@@ -18,14 +18,14 @@
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
-		"Ability10"                                       "special_bonus_cleave_25"                // unique
+		"Ability10"                                       "special_bonus_armor_5"
 		"Ability11"                                       "special_bonus_unique_pudge_2"
 
 		"Ability12"                                       "special_bonus_spell_lifesteal_13"
 		"Ability13"                                       "special_bonus_unique_pudge_4"
 
-		"Ability14"                                       "special_bonus_gold_income_180"
-		"Ability15"                                       "special_bonus_cooldown_reduction_15"
+		"Ability14"                                       "special_bonus_cleave_60"      // unique
+		"Ability15"                                       "special_bonus_unique_pudge_5"
 
 		"Ability16"                                       "special_bonus_unique_pudge_3"
 		"Ability17"                                       "special_bonus_unique_pudge_1"
@@ -36,8 +36,8 @@
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"                                 "40"
 		"AttackDamageMax"                                 "46"
-		"AttackRate"                                      "1.700000"
-		"AttackAnimationPoint"                            "0.500000"
+		"AttackRate"                                      "1.7"
+		"AttackAnimationPoint"                            "0.5"
 		"AttackAcquisitionRange"                          "600"
 		"AttackRange"                                     "150"
 		"ProjectileSpeed"                                 "0"
@@ -46,12 +46,12 @@
 		"AttributeBaseStrength"                           "25"
 		"AttributeStrengthGain"                           "3.5"                 // original (4.0);
 		"AttributeBaseAgility"                            "14"
-		"AttributeAgilityGain"                            "1.500000"
+		"AttributeAgilityGain"                            "1.5"
 		"AttributeBaseIntelligence"                       "16"
-		"AttributeIntelligenceGain"                       "1.500000"
+		"AttributeIntelligenceGain"                       "1.5"
 
 		"MovementSpeed"                                   "280"
-		"MovementTurnRate"                                "0.700000"
+		"MovementTurnRate"                                "0.7"
 		"BoundsHullName"                                  "DOTA_HULL_SIZE_HERO"
 
 		// Status

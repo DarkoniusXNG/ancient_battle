@@ -15,7 +15,7 @@ function TimeStopStart(event)
 	end
 
 	-- Check if a target is a caster's controlled unit, Void Demon, Faceless Void or Astral Trekker (with Time Constant)
-	if caster:GetPlayerOwner() == target:GetPlayerOwner() or target:GetName() == "npc_dota_hero_night_stalker" or target:GetName() == "npc_dota_hero_faceless_void" or (target:HasModifier("modifier_time_constant") and not target:PassivesDisabled()) then
+	if caster:GetPlayerOwner() == target:GetPlayerOwner() or target:GetName() == "npc_dota_hero_night_stalker" or (target:HasModifier("modifier_time_constant") and not target:PassivesDisabled()) then
 		-- print("Time independent being detected.")
 		return
 	end

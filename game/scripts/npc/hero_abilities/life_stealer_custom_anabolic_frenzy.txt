@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Lifestealer: Anabolic Frenzy (E) - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
+	// Lifestealer: Anabolic Frenzy - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
 	// Author: Darkonius
 	// Linkens: Blocks
-	// Notes: OK; 11.5.2018;
+	// Notes: OK; 19.12.2019;
 	// TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
 	//=================================================================================================================
 	"life_stealer_custom_anabolic_frenzy"
@@ -23,7 +23,7 @@
 		
 		// Cooldown		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"24.0 20.0 18.0 16.0"
+		"AbilityCooldown"				"22 20 18 16"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@
 
 		// Cast Range
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"200 300 400 500"
+		"AbilityCastRange"				"400"
 		
 		"precache"
 		{
@@ -55,7 +55,7 @@
 			"03"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"active_bonus_movement_speed_pct"	"3 5 7 9"
+				"active_bonus_movement_speed_pct"	"15"
 			}
 			"04"
 			{
@@ -76,11 +76,6 @@
 			{
 				"var_type"							"FIELD_FLOAT"
 				"duration"							"3.0 4.0 5.0 6.0"
-			}
-			"08"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"cast_range_tooltip"				"200 300 400 500"
 			}
 		}
 		
