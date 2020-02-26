@@ -61,12 +61,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"delay"			            "1.0"
+				"delay"			            "1.5"
 			}	
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration"					"360"
+				"duration"					"180"
 			}
 		}
 	}

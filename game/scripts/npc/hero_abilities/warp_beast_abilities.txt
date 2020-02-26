@@ -31,10 +31,10 @@
 
         "AbilitySpecial"
         {
-            "01"
+            "01" // original (3);
             {
                 "var_type"                                "FIELD_INTEGER"
-                "charges"                                 "3"
+                "charges"                                 "1"
             }
             "02"
             {
@@ -110,7 +110,7 @@
     }
 
     //=================================================================================================================
-    // Warp Beast - Void Steal - Mana Break without damage + mana steal on hit and on kill
+    // Warp Beast - Void - Mana gain on hit and on kill and evasion based on current mana percentage
     //=================================================================================================================
     "warp_beast_mana_eater"
     {
@@ -150,6 +150,11 @@
                 "var_type"                                "FIELD_INTEGER"
                 "bonus_duration"                          "30"
             }
+			"05"
+			{
+				"var_type"                                "FIELD_INTEGER"
+                "evasion_per_mana_percentage"             "20 30 40 50"
+			}
         }
     }
 
@@ -229,7 +234,7 @@
             "01"
             {
                 "var_type"                                "FIELD_INTEGER"
-                "value"                                   "24"
+                "value"                                   "18"
             }
         }
 
