@@ -180,7 +180,7 @@ if GetMapName() == "two_vs_two" then
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 30.0
 	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 6
+	GOLD_PER_TICK = 3
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false

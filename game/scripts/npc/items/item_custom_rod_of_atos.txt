@@ -30,7 +30,7 @@
 
 	//=================================================================================================================
 	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (350) = 2750
-	// Notes: OK; 25.12.2019;
+	// Notes: OK; 26.2.2020;
 	//=================================================================================================================
 	"item_custom_rod_of_atos"
 	{
@@ -81,11 +81,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_str"				"10"
 			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-60"
-			}
+			//"04"
+			//{
+				//"var_type"				"FIELD_INTEGER"
+				//"move_speed_slow"		"-60"
+			//}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
@@ -139,9 +139,15 @@
 				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
 				"EffectAttachType"		"follow_origin"
 
+				"States"	
+				{
+					"MODIFIER_STATE_ROOTED" 	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
+					//"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed_slow"
 					"MODIFIER_PROPERTY_DISABLE_HEALING"					"1"
 				}

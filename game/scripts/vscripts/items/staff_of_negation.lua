@@ -30,6 +30,7 @@ function Negate(keys)
 			enemy:Purge(RemovePositiveBuffs1, RemoveDebuffs1, BuffsCreatedThisFrameOnly1, RemoveStuns1, RemoveExceptions1)
 
 			ability:ApplyDataDrivenModifier(caster, enemy, "item_modifier_negate_slow", nil)
+			enemy:AddNewModifier(caster, ability, "modifier_custom_leash_debuff", {duration = ability:GetLevelSpecialValueFor("duration", ability_level)})
 
 			if enemy:IsDominated() or enemy:IsSummoned() or enemy:IsIllusion() then
 				if not enemy:IsMagicImmune() then
