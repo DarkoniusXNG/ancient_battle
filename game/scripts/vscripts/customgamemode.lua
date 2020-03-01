@@ -1,11 +1,13 @@
 require('libraries/animations')
 require('libraries/notifications')
 require('libraries/selection')
+require('libraries/buildings')
+require('libraries/custom_illusions')
 
 require('settings')
 require('events')
 require('filters')
-require('custom_illusions')
+
 require('custom_RNG')
 require('custom_spawner')
 

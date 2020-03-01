@@ -5,70 +5,87 @@
 	//=================================================================================================================
 	"sohei_dash"
 	{
-		"BaseClass"                                       "ability_lua"
-		"ID"                                              "9500"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"AbilityTextureName"                              "custom/ronin_dash"
-		"ScriptFile"                                      "heroes/sohei/sohei_dash.lua"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                                  "9500"
+		"BaseClass"                                           "ability_lua"
+		"ScriptFile"                                          "heroes/sohei/sohei_dash.lua"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityTextureName"                                  "custom/ronin_dash"
+		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
+		"AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
+		"AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
+		"SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+
+		"HasScepterUpgrade"                                   "1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.0"
-		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastRange"                                "300"
+		"AbilityCastPoint"                                    "0.0"
+		"AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastRange"                                    "500"
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "22 18 14 10"
+		"AbilityCooldown"                                     "0"
+		"AbilityCharges"                                      "3"
+		"AbilityChargeRestoreTime"                            "20 18 16 14"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "50"
+		"AbilityManaCost"                                     "40"
 
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"particle"                                    "particles/econ/items/juggernaut/bladekeeper_omnislash/_dc_juggernaut_omni_slash_trail.vpcf"
-			"soundfile"                                   "soundevents/units/game_sounds_sohei.vsndevts"
+		  "particle"                                          "particles/econ/items/juggernaut/bladekeeper_omnislash/_dc_juggernaut_omni_slash_trail.vpcf"
+		  "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+		  "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
 		}
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"dash_distance"                           "300"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"dash_speed"                              "2400"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"max_charges"                             "4"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"tree_radius"                             "175"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"charge_restore_time"                     "22 18 14 10"
-				"LinkedSpecialBonus"                      "special_bonus_sohei_dash_recharge"
-				"LinkedSpecialBonusOperation"             "SPECIAL_BONUS_SUBTRACT"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"momentum_cd_refund"                      "100"
-			}
+		  "01"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"dash_speed"                                      "2400"
+		  }
+		  "02"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"dash_width"                                      "175"
+		  }
+		  "03"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"damage"                                          "75 100 125 150"
+		  }
+		  "04" // old Faceless Void Time Walk (20/30/40/50%)
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"move_speed_slow_pct"                             "-20 -25 -30 -35"
+		  }
+		  "05"
+		  {
+			"var_type"                                        "FIELD_FLOAT"
+			"slow_duration"                                   "2.0"
+		  }
+		  "06"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"scepter_base_heal"                               "300"
+			"RequiresScepter"                                 "1"
+		  }
+		  "07"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"scepter_hp_as_heal"                              "10"
+			"RequiresScepter"                                 "1"
+		  }
 		}
 	}
 
@@ -79,9 +96,10 @@
 	{
 		"BaseClass"                                       "ability_lua"
 		"ID"                                              "9511"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ALLIES_YES"
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_YES"
 		"AbilityTextureName"                              "custom/ronin_guard"
@@ -89,16 +107,16 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.0"
-		"AbilityCastRange"                                "900"
+		"AbilityCastPoint"                                "0.25"
+		"AbilityCastRange"                                "500"
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "22 20 18 16" // Bulldoze (22); Heavenly Grace (26/22/18/14);
+		"AbilityCooldown"                                 "20 18 16 14" // Bulldoze (22); Heavenly Grace (26/22/18/14);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "80 90 100 110"
+		"AbilityManaCost"                                 "85"
 
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -116,17 +134,17 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"status_resistance"                       "45 60 75 90"
+				"bonus_magic_resistance"                  "90"
 			}
-			"02" // Heavenly Grace (12); Bulldoze (8);
+			"02"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"sr_duration"                             "8"
+				"duration"                                "5 6 7 8"
 			}
 			"03"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"post_heal"                               "90 180 270 360"
+				"post_heal"                               "90 160 230 300"
 			}
 			"04"
 			{
@@ -198,35 +216,35 @@
 	}
 
 	//=================================================================================================================
-	// Sohei: Momentum
+	// Sohei: Momentum Strike
 	//=================================================================================================================
-	"sohei_momentum"
+	"sohei_momentum_strike"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"                                       "ability_lua"
 		"ID"                                              "9503"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE" //"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
 		"AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
 		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_YES"
 		"AbilityTextureName"                              "custom/ronin_momentum"
-		"ScriptFile"                                      "heroes/sohei/sohei_momentum.lua"
+		"ScriptFile"                                      "heroes/sohei/sohei_momentum_strike.lua"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.0"
-		"AbilityCastRange"                                "300"
+		"AbilityCastPoint"                                "0.15"
+		"AbilityCastRange"                                "0"
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "12 9 6 3" // like Jinada
+		"AbilityCooldown"                                 "14" // like Mars Spear
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "0"
+		"AbilityManaCost"                                 "100"
 
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -234,6 +252,7 @@
 		{
 			"particle"                                    "particles/hero/sohei/momentum.vpcf"
 			"particle"                                    "particles/hero/sohei/knockback.vpcf"
+			"particle"                                    "particles/hero/sohei/momentum_strike_projectile.vpcf"
 			"soundfile"                                   "soundevents/units/game_sounds_sohei.vsndevts"
 		}
 
@@ -244,12 +263,12 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"trigger_distance"                        "300"
+				"max_travel_distance"                     "900 1000 1100 1200"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"knockback_distance"                      "350"
+				"knockback_distance"                      "400"
 			}
 			"03"
 			{
@@ -259,23 +278,40 @@
 			"04"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"collision_radius"                        "150"
+				"collision_radius"                        "125"
 			}
 			"05" // old Jinada (150/175/200/225)
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"crit_damage"                             "150 175 200 225"
+				"crit_damage"                             "150 180 210 240"
+				"LinkedSpecialBonus"                      "special_bonus_sohei_momentum_strike_crit"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"06"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"movement_slow"                           "-15 -20 -25 -30"
+				"movement_slow"                           "-20 -25 -30 -35"
 			}
 			"07"
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"slow_duration"                           "4.0"
+			}
+			"08"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"stun_duration"                           "1.0 1.2 1.4 1.6"
+				"LinkedSpecialBonus"                      "special_bonus_sohei_stun"
+			}
+			"09" // projectile vision
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"vision_radius"                           "300"
+			}
+			"10"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"projectile_speed"                        "1200"
 			}
 		}
 	}
@@ -368,28 +404,28 @@
 		"BaseClass"                                       "ability_lua"
 		"ID"                                              "9501"
 		"AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
-		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO"
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES" // this is for UI tooltip
 		"AbilityTextureName"                              "custom/ronin_flurry_of_blows"
 		"ScriptFile"                                      "heroes/sohei/sohei_flurry_of_blows.lua"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "1.0"
+		"AbilityCastPoint"                                "0.0"
 		"AbilityCastRange"                                "400"
 		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
 		"AnimationPlaybackRate"                           "2"
 
 		// Time
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "50 45 40" // like Tricks of the Trade
+		"AbilityCooldown"                                 "10"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "150"
+		"AbilityManaCost"                                 "50"
 
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -407,29 +443,24 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"flurry_radius"                           "375"
+				"flurry_radius"                           "450"
 				"LinkedSpecialBonus"                      "special_bonus_sohei_fob_radius"
 			}
-			"02" // max_duration/attack_interval - 1
+			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"max_attacks"                             "5 7 9"
+				"bonus_damage"                            "120 160 200"
 			}
-			"03" // Tricks of the Trade (4/4.5/5)
+			"03"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"max_duration"                            "4.0 4.5 5.0"
-			}
-			"04" // Tricks of the Trade (0.6/0.55/0.5)
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"attack_interval"                         "0.6 0.55 0.5"
+				"delay"                                   "1.0"
 			}
 		}
 	}
 
 	//=================================================================================================================
-	// sohei talent 1: Momentum inflicts a brief stun if the target collides with an obstacle
+	// Momentum Strike talent: bonus stun duration if the target collides with an obstacle
 	//=================================================================================================================
 	"special_bonus_sohei_stun"
 	{
@@ -447,60 +478,36 @@
 			"01"
 			{
 				"var_type"        "FIELD_FLOAT"
-				"value"         "0.2"     // Stun duration
+				"value"         "1.0"     // Stun duration
 			}
 		}
 	}
 	//=================================================================================================================
-	// sohei talent 3: Momentum hits reduce the cooldown on Guard
+	// Dash talent: Sohei becomes invulnerable during Dash
 	//=================================================================================================================
-	"special_bonus_sohei_momentum_guard_cooldown"
+	"special_bonus_sohei_dash_invulnerable"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"           "special_bonus_undefined"
-		"AbilityType"         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ID"                  "9506"
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"                                                  "9506"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"value"         "1.0"     // Cooldown reduction in seconds
-			}
+		  "01"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"value"                                           "1"
+		  }
 		}
 	}
 
 	//=================================================================================================================
-	// sohei talent 4: Dash charges cooldown reduced
-	//=================================================================================================================
-	"special_bonus_sohei_dash_recharge"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"           "special_bonus_undefined"
-		"AbilityType"         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ID"                  "9507"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"value"         "3.0"     // Decreases Cooldown of Dash charges
-			}
-		}
-	}
-
-	//=================================================================================================================
-	// sohei talent 5: Increases Flurry of Blows' AOE radius
+	// Flurry of Blows talent: Increases radius
 	//=================================================================================================================
 	"special_bonus_sohei_fob_radius"
 	{
@@ -522,56 +529,57 @@
 			}
 		}
 	}
-
+	
 	//=================================================================================================================
-	// sohei talent 6: Wholeness of Body can be cast on allies
+	// Momentum Strike talent: bonus crit damage
 	//=================================================================================================================
-	"special_bonus_sohei_wholeness_allycast"
+	"special_bonus_sohei_momentum_strike_crit"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"           "special_bonus_undefined"
-		"AbilityType"         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ID"                  "9509"
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"                                                  "9509"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"value"         "1"     // nothing
-			}
+		  "01"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"value"                                           "100"
+		  }
 		}
 	}
+	
 	//=================================================================================================================
-	// sohei talent 2: Wholeness of Body also knockbacks enemies
+	// Wholeness of Body talent: Applies Momentum Strike knockback (if Momentum Strike is learned) to enemies around the target
 	//=================================================================================================================
 	"special_bonus_sohei_wholeness_knockback"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"           "special_bonus_undefined"
-		"AbilityType"         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"ID"                  "9505"
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"                                                  "9505"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"value"           "500"     // Knockback max distance
-			}
-			"02"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"duration"        "0.2"     // Knockback max duration
-			}
+		  "01"
+		  {
+			"var_type"                                        "FIELD_INTEGER"
+			"value"                                           "400"     // Knockback max distance
+		  }
+		  "02"
+		  {
+			"var_type"                                        "FIELD_FLOAT"
+			"duration"                                        "0.2"     // Knockback max duration
+		  }
 		}
 	}
 }
