@@ -1,33 +1,30 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Cloak - invisibility + ms bonus + backstab dmg when out of invisibility
+	// Dark Terminator: Cloak - invisibility + ms bonus
 	// Author: Darkonius
-	// Notes: OK; 23.9.2019; Uses built-in modifier: modifier_invisible;
-	// TO_DO: ALL
+	// Notes: OK; 2.3.2020; Still has unit collision; Not on minimap for enemies; no health bar; low attack priority;
+	// TO_DO: Icon, test, tooltips
 	//=================================================================================================================
 	"dark_terminator_cloak"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/dark_terminator/cloak.lua"
-		"AbilityTextureName"			"custom/dark_terminator_cloak"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/dark_terminator/cloak.lua"
+		"AbilityTextureName"                              "custom/dark_terminator_cloak"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityCastPoint"                                "0.0"
 
-		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"                                 "20"
 
-		"AbilityCooldown"				"20.0 19.0 18.0 17.0"
-
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"1"
+		"AbilityManaCost"                                 "75"
+		"AbilityProcsMagicStick"                          "1"
 
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-			//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_hero_name.vsndevts"
+			"particle"                                    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+			"soundfile"                                   "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 		}
 
 		"AbilitySpecial"
@@ -40,17 +37,12 @@
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"bonus_move_speed"                        "10 20 30 40"
+				"bonus_move_speed"                        "10 15 20 25"
 			}
 			"03"
 			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_damage"                            "30 60 90 120"
-			}
-			"04"
-			{
 				"var_type"                                "FIELD_FLOAT"
-				"fade_time"                               "0.6"
+				"fade_time"                               "1.0"
 			}
 		}
 	}
