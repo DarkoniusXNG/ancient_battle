@@ -114,7 +114,7 @@ end
 modifier_dark_terminator_terminate_target = class({})
 
 function modifier_dark_terminator_terminate_target:IsHidden()
-    return true
+    return false
 end
 
 function modifier_dark_terminator_terminate_target:IsDebuff()

@@ -32,13 +32,13 @@
 		"Ability10"                                       "special_bonus_movement_speed_20"
 		"Ability11"                                       "special_bonus_attack_damage_20"         // same as Sniper
 
-		"Ability12"                                       "special_bonus_unique_dark_terminator_proc_chance"
+		"Ability12"                                       "special_bonus_unique_dark_terminator_take_aim"
 		"Ability13"                                       "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 
 		"Ability14"                                       "special_bonus_unique_dark_terminator_confuse_extra_illusion"
 		"Ability15"                                       "special_bonus_unique_dark_terminator_terminate"
 
-		"Ability16"                                       "special_bonus_unique_dark_terminator_take_aim"
+		"Ability16"                                       "special_bonus_unique_dark_terminator_proc_chance"
 		"Ability17"                                       "special_bonus_reincarnation_250"
 
 		// Protection
