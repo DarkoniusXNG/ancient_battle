@@ -84,7 +84,7 @@ function modifier_dark_terminator_headshot_passive:OnAttackLanded(event)
 	local chance = ability:GetSpecialValueFor("damage_proc_chance")
 	
 	-- Talent that increases proc chance:
-	local talent = caster:FindAbilityByName("special_bonus_unique_dark_terminator_proc_chance")
+	local talent = parent:FindAbilityByName("special_bonus_unique_dark_terminator_proc_chance")
 	if talent then
 		if talent:GetLevel() ~= 0 then
 			chance = chance + talent:GetSpecialValueFor("value")
@@ -93,19 +93,26 @@ function modifier_dark_terminator_headshot_passive:OnAttackLanded(event)
 
 	if ability:PseudoRandom(chance) then
 
-		local particle_slow_fx = ParticleManager:CreateParticle("particles/units/heroes/hero_sniper/sniper_headshot_slow.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
-		ParticleManager:SetParticleControl(particle_slow_fx, 0, target:GetAbsOrigin())
-		ParticleManager:ReleaseParticleIndex(particle_slow_fx)
+		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_sniper/sniper_headshot_slow.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+		ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
+		Timers:CreateTimer(1.0, function()
+			ParticleManager:DestroyParticle(particle, false)
+			ParticleManager:ReleaseParticleIndex(particle)
+		end)
 
 		target:EmitSound("Hero_Tinker.Heat-Seeking_Missile.Impact")
 
 		local damage_table = {}
 		damage_table.attacker = parent
 		damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
-		damage_table.damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR
+		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 		damage_table.ability = ability
 		damage_table.victim = target
-		damage_table.damage = ability:GetSpecialValueFor("damage")
+
+		-- Calculate bonus damage
+		local damage_percent = ability:GetSpecialValueFor("damage_percent")/100
+
+		damage_table.damage = damage_percent * event.original_damage
 
 		ApplyDamage(damage_table)
 	end

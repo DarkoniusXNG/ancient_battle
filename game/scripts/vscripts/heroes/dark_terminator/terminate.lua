@@ -21,7 +21,7 @@ function dark_terminator_terminate:OnAbilityPhaseStart(keys)
     -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
     self.storedTarget = {}
 	self.storedTarget[1] = self:GetCursorTarget()
-	self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {})
+	self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + 2})
     return true
 end
 
@@ -70,7 +70,11 @@ end
 function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 	local caster = self:GetCaster()
 
-    -- Remove the crosshair+vision
+	if not target or target:IsNull() then
+		return
+	end
+	
+	-- Remove the crosshair+vision
     target:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 
 	for k,v in pairs(self.storedTarget) do
@@ -79,8 +83,8 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
         end
     end
 
-	local sound_target = "Hero_Sniper.AssassinateProjectile"
-	target:EmitSound(sound_target)
+	--local sound_target = "Hero_Sniper.AssassinateProjectile"
+	--target:EmitSound(sound_target)
 
 	-- If target has Spell Block, don't continue
 	if target:TriggerSpellAbsorb(self) then
@@ -141,15 +145,9 @@ function modifier_dark_terminator_terminate_target:DeclareFunctions()
   local funcs = { 
     MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
   }
+  return funcs
 end
 
 function modifier_dark_terminator_terminate_target:GetModifierProvidesFOWVision()
-  return 1
+	return 1
 end
---[[
-function modifier_dark_terminator_terminate_target:OnCreated()
-    if IsServer() then
-        self:StartIntervalThink(FrameTime())
-    end
-end
-]]

@@ -3,9 +3,9 @@
 	//=================================================================================================================
 	// Dark Terminator: Terminate - global Sniper Assassinate
 	// Author: Darkonius
-	// Notes: OK; 2.3.2020; Crosshair particle is visible for enemies too;
+	// Notes: OK; 3.3.2020; Crosshair particle is visible for enemies too;
 	// Linkens: Blocks;
-	// TO_DO: Icon, Test, tooltips
+	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_terminate"
 	{
@@ -21,8 +21,6 @@
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
-		"AbilitySound"                                    "Ability.Assassinate"
-
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"                                "0" // GLOBAL
@@ -36,7 +34,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "275 300 325"
+		"AbilityManaCost"                                 "175 225 275"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------

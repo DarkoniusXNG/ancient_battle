@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Confuse - Like Manta but 1 illusion
-	// Author: Valve
-	// Notes: OK; 2.3.2020; Doesn't apply dispel to caster; Not invulnerable during cast;
-	// TO_DO: Icon, test, tooltips
+	// Dark Terminator: Confuse - Like Manta but 1 illusion or 2 with the talent; No Dispel and no invulnerability;
+	// Author: Darkonius
+	// Notes: OK; 3.3.2020; Doesn't apply dispel to caster; Not invulnerable during cast;
+	// TO_DO: 
 	//=================================================================================================================
 	"dark_terminator_confuse"
 	{

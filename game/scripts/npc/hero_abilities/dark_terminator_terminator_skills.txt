@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Dark Terminator: Terminator Skills - new custom ability, bonus evasion and chance to deal bonus damage that ignores armor
 	// Author: Darkonius
-	// Notes: OK; 2.3.2020; Proc damage ignores armor; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
-	// TO_DO: icon, test, tooltips
+	// Notes: OK; 3.3.2020; Proc damage ignores armor; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
+	// TO_DO: 
 	//=================================================================================================================
 	"dark_terminator_terminator_skills"
 	{
@@ -16,8 +16,8 @@
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 
-		"MaxLevel"                                        "4"
-		"RequiredLevel"                                   "6"
+		//"MaxLevel"                                        "4"
+		//"RequiredLevel"                                   "6"
 
 		"precache"
 		{
@@ -36,7 +36,8 @@
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage"                                  "60 70 80 90"
+				"damage_percent"                          "50"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			"03" // original: 7/14/21%
 			{

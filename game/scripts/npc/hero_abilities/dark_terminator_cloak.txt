@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Cloak - invisibility + ms bonus
+	// Dark Terminator: Cloak - invisibility + ms bonus; Still has collision; Also some blur effects;
 	// Author: Darkonius
-	// Notes: OK; 2.3.2020; Still has unit collision; Not on minimap for enemies; no health bar; low attack priority;
-	// TO_DO: Icon, test, tooltips
+	// Notes: OK; 3.3.2020; Not on minimap for enemies; no health bar; low attack priority;
+	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_cloak"
 	{

@@ -184,15 +184,9 @@ end
 
 -- A player leveled up
 function ancient_battle_gamemode:OnPlayerLevelUp(keys)
-	local player = EntIndexToHScript(keys.player)
 	local level = keys.level
-
-	local playerID
-	local hero
-	if player then
-		playerID = player:GetPlayerID()
-		hero = PlayerResource:GetBarebonesAssignedHero(playerID)
-	end
+	local playerID = keys.player_id
+	local hero = PlayerResource:GetBarebonesAssignedHero(playerID) or EntIndexToHScript(keys.hero_entindex)
 
 	if hero then
 		if hero.original then

@@ -1,6 +1,6 @@
 dark_terminator_cloak = class({})
 
-LinkLuaModifier( "modifier_dark_terminator_cloak", "heroes/dark_terminator/cloak.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dark_terminator_cloak", "heroes/dark_terminator/cloak.lua", LUA_MODIFIER_MOTION_NONE)
 
 function dark_terminator_cloak:OnSpellStart()
 	local caster = self:GetCaster()
