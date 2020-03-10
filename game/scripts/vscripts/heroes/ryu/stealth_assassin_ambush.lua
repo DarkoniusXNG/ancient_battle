@@ -60,6 +60,10 @@ function AmbushFail(keys)
 	-- Setting the damage
 	if random_number > chance_to_fail then
 		damage_table.damage = math.ceil(base_damage + hp_percent_damage*target_max_hp*0.01)
+		
+		-- Apply Slow debuff
+		local slow_duration = ability:GetLevelSpecialValueFor("slow_duration", ability_level)
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_ambushed_slow_debuff", {["duration"] = slow_duration})
 	else
 		damage_table.damage = base_damage
 	end

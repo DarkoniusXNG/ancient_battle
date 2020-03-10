@@ -13,8 +13,8 @@ PRE_GAME_TIME = 90.0                    -- How long after loading heroes into th
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
-GOLD_PER_TICK = 3                       -- How much gold should players get per tick?
-GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks?
+GOLD_PER_TICK = 1                       -- How much gold should players get per tick?
+GOLD_TICK_TIME = 0.7                    -- How long should we wait in seconds between gold ticks?
 NORMAL_START_GOLD = 600                 -- Starting Gold if picked normally
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended builds for heroes
@@ -180,7 +180,7 @@ if GetMapName() == "two_vs_two" then
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 30.0
 	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 3
+	GOLD_PER_TICK = 6
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
@@ -213,7 +213,7 @@ if GetMapName() == "holdout" then
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
 	GOLD_PER_TICK = 1
-	GOLD_TICK_TIME = 1.0
+	GOLD_TICK_TIME = 0.7
 	NORMAL_START_GOLD = 800
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false

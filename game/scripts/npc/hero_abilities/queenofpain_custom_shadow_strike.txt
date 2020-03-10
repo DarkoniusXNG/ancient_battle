@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Queen of Pain: Shadow Gale (Q) - New Spell, Skillshot Shadow Strike, like Venomancer's Venomous Gale
 	// Author: Author of Holdout Game Mode + Darkonius
-	// Notes: OK; 26.12.2016; It's using the built-in modifier; 
+	// Notes: OK; 4.3.2020; It's using the built-in modifier; 
 	// TO_DO:
 	//=================================================================================================================
 	"queenofpain_custom_shadow_strike"
@@ -19,26 +19,26 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"AbilitySound"					"Hero_QueenOfPain.ShadowStrike"
-		
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800" 						// like Venomancer's spell
-		"AbilityCastPoint"				"0.4" 					    // like QoP's spell
+		"AbilityCastRange"				"800"                       // Venomous Gale (800);
+		"AbilityCastPoint"				"0.4"                       // Shadow Strike (0.4);
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 
-		"AbilityCooldown"				"16.0 12.0 8.0 4.0"			// like QoP's spell
-		"AbilityDuration"				"15.0"						// like Venomancer or QoP spell
-	
+		"AbilityCooldown"				"16 14 12 10"               // Shadow Strike (16/12/8/4);
+		"AbilityDuration"				"15"                        // Shadow Strike (15);
+
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"110"
 		"AbilityProcsMagicStick"		"1"
-		
+
 		"precache"
 		{
 			"particle"			"particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
 		}
-		
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -65,15 +65,15 @@
 
 		"OnProjectileHitUnit"
 		{
-			"DeleteOnHit" 			"0"
-			
+			"DeleteOnHit"				"0"
+
 			"ApplyModifier"
 			{
 				"Target" 				"TARGET"
 				"Duration"				"%AbilityDuration"
 				"ModifierName"			"modifier_queenofpain_shadow_strike"			
 			}
-			
+
 			"Damage"
 			{
 				"Type"					"DAMAGE_TYPE_MAGICAL"
@@ -81,52 +81,47 @@
 				"Target"				"TARGET"
 			}
 		}
-		
+
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // Shadow Strike (50/75/100/125); Venomous Gale (25/50/75/100);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"strike_damage"			"50 75 100 125"				// like QoP's spell
+				"strike_damage"			"50 75 100 125"
 			}
-			"02"
+			"02" // Shadow Strike (30/50/70/90); Venomous Gale (15/45/75/105);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration_damage"		"40 50 60 70"				// unique
+				"duration_damage"		"40 60 80 100"
 			}
-			"03"
+			"03" // Shadow Strike (20/30/40/50%);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"movement_slow"			"-20 -30 -40 -50"			// like QoP's spell
+				"movement_slow"			"-20 -30 -40 -50"
 			}
-			"04"
+			"04" // Shadow Strike (900); Venomous Gale (1200);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"		"900"						// like QoP's spell
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cast_range_tooltip"	"800"
+				"projectile_speed"		"1100"
 			}	
-			"06"
+			"05" // Shadow Strike (15); Venomous Gale (15);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"duration_tooltip"		"15"
 			}
-			"07"
+			"06" // Shadow Strike (3); Venomous Gale (3);
 			{
 				"var_type"				"FIELD_FLOAT"
 				"damage_interval"		"3.0"
 			}
-			"08"
+			"07" // Venomous Gale (850);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"distance"				"850"						// like Venomancer's spell
+				"distance"				"850"
 			}
-			"09"
+			"08" // Venomous Gale (125);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"150"

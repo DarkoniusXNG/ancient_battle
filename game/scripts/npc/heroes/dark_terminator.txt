@@ -18,11 +18,11 @@
 
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"                                   "6"
+		"AbilityLayout"                                   "5"
 		"Ability1"                                        "dark_terminator_cloak"                  // Q (4 levels)
 		"Ability2"                                        "dark_terminator_blink"                  // W (4 levels)
 		"Ability3"                                        "dark_terminator_terminator_skills"      // E, passive (4 levels)
-		"Ability4"                                        "dark_terminator_take_aim"               // T, passive (4 levels)
+		"Ability4"                                        "generic_hidden" // "dark_terminator_take_aim" // T, passive (4 levels)
 		"Ability5"                                        "dark_terminator_confuse"                // F, Secondary Ultimate (1 level)
 		"Ability6"                                        "dark_terminator_terminate"              // R, Primary Ultimate (3 levels)				
 		"Ability7"                                        "generic_hidden"					
@@ -32,7 +32,7 @@
 		"Ability10"                                       "special_bonus_movement_speed_20"
 		"Ability11"                                       "special_bonus_attack_damage_20"         // same as Sniper
 
-		"Ability12"                                       "special_bonus_unique_dark_terminator_take_aim"
+		"Ability12"                                       "special_bonus_attack_range_125" // "special_bonus_unique_dark_terminator_take_aim"
 		"Ability13"                                       "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 
 		"Ability14"                                       "special_bonus_unique_dark_terminator_confuse_extra_illusion"
