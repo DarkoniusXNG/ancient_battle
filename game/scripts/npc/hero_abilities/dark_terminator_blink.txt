@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Blink - global blink
 	// Author: Darkonius
-	// Notes: OK; 3.3.2020;
+	// Notes: OK; 10.3.2020;
 	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_blink"
@@ -19,7 +19,7 @@
 		
 		"AbilityCastAnimation"                            "ACT_DOTA_VICTORY"
 
-		"AbilityCooldown"                                 "120 110 100 90"
+		"AbilityCooldown"                                 "60 50 40 30"
 
 		"AbilityManaCost"                                 "200 150 100 50"
 		"AbilityProcsMagicStick"                          "1"
