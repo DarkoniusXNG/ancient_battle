@@ -98,9 +98,9 @@ if IsServer() then
     -- Movement parameters
     local parent = self:GetParent()
     local ability = self:GetAbility()
-	self.start_pos = parent:GetAbsOrigin()
+    self.start_pos = parent:GetAbsOrigin()
     -- Data sent by AddNewModifier
-	self.direction = Vector(event.direction_x, event.direction_y, 0)
+    self.direction = Vector(event.direction_x, event.direction_y, 0)
     self.distance = event.distance + 1
     self.speed = event.speed
     self.width = event.width

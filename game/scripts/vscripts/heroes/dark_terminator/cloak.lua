@@ -60,7 +60,9 @@ end
 
 function modifier_dark_terminator_cloak:OnAbilityExecuted(event)
 	if IsServer() then
-		if event.unit ~= self:GetParent() then return end
+		if event.unit ~= self:GetParent() then
+			return
+		end
 
 		self:Destroy()
 	end
@@ -68,7 +70,9 @@ end
 
 function modifier_dark_terminator_cloak:OnAttack(event)
 	if IsServer() then
-		if event.attacker ~= self:GetParent() then return end
+		if event.attacker ~= self:GetParent() then
+			return
+		end
 
 		self:Destroy()
 	end
@@ -76,8 +80,7 @@ end
 
 function modifier_dark_terminator_cloak:CheckState()
 	local state = {
-		--[MODIFIER_STATE_INVISIBLE] = true,
-		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- on purpose
+		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- its not part of the ability on purpose
 		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,

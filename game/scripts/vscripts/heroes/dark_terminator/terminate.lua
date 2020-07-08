@@ -28,13 +28,13 @@ end
 function dark_terminator_terminate:OnAbilityPhaseInterrupted()
     local caster = self:GetCaster()
 	-- Remove the crosshairs from the target(s)
-    if self.storedTarget then
-        for k,v in pairs(self.storedTarget) do
-            if v then
+	if self.storedTarget then
+		for k,v in pairs(self.storedTarget) do
+			if v then
 				v:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 			end
-        end
-    end
+		end
+	end
     self.storedTarget = nil
 end
 
@@ -78,10 +78,10 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
     target:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 
 	for k,v in pairs(self.storedTarget) do
-        if v == target then
-            self.storedTarget[k] = nil
-        end
-    end
+		if v == target then
+			self.storedTarget[k] = nil
+		end
+	end
 
 	--local sound_target = "Hero_Sniper.AssassinateProjectile"
 	--target:EmitSound(sound_target)
@@ -135,17 +135,17 @@ end
 
 function modifier_dark_terminator_terminate_target:CheckStates()
     local state = {
-        [MODIFIER_STATE_INVISIBLE] = false,
+		[MODIFIER_STATE_INVISIBLE] = false,
 		[MODIFIER_STATE_PROVIDES_VISION] = true,
     }
     return state
 end
 
 function modifier_dark_terminator_terminate_target:DeclareFunctions()
-  local funcs = { 
-    MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
-  }
-  return funcs
+	local funcs = { 
+		MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
+	}
+	return funcs
 end
 
 function modifier_dark_terminator_terminate_target:GetModifierProvidesFOWVision()

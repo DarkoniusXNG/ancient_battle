@@ -71,10 +71,10 @@ function modifier_dark_terminator_headshot_passive:OnAttackLanded(event)
 	end
 
 	-- Check for existence of GetUnitName method to determine if target is a unit or an item
-    -- items don't have that method -> nil; if the target is an item, don't continue
-    if target.GetUnitName == nil then
+	-- items don't have that method -> nil; if the target is an item, don't continue
+	if target.GetUnitName == nil then
 		return
-    end
+	end
 
 	-- Don't affect buildings and wards
 	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then

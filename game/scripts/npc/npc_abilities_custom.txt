@@ -64,7 +64,7 @@
 #base "hero_abilities/dark_terminator_blink.txt"
 #base "hero_abilities/dark_terminator_cloak.txt"
 #base "hero_abilities/dark_terminator_confuse.txt"
-#base "hero_abilities/dark_terminator_take_aim.txt"
+//#base "hero_abilities/dark_terminator_take_aim.txt"
 #base "hero_abilities/dark_terminator_terminate.txt"
 #base "hero_abilities/dark_terminator_terminator_skills.txt"
 

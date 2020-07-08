@@ -29,7 +29,7 @@ function dark_terminator_confuse:OnSpellStart()
 
 	-- Particle
 	local particle = ParticleManager:CreateParticle("particles/items2_fx/manta_phase.vpcf", PATTACH_ABSORIGIN, caster)
-	Timers:CreateTimer(0.3, function()
+	Timers:CreateTimer(0.05, function()
 		ParticleManager:DestroyParticle(particle, false)
 		ParticleManager:ReleaseParticleIndex(particle)
 	end)

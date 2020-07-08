@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Take Aim - custom Sniper's Take Aim
+	// Dark Terminator: Take Aim - custom Sniper's Take Aim - unused
 	// Author: Darkonius
 	// Notes: OK; 3.3.2020;
 	// TO_DO:
