@@ -17,9 +17,9 @@
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"45 40 35 30" // like Phoenix Fire Spirits
+		"AbilityCooldown"				"45 40 35 30"                // like Phoenix Fire Spirits
 
-		"AbilityManaCost"				"120 130 140 150"
+		"AbilityManaCost"				"120 130 140 150"            // Phoenix Fire Spirits (80/90/100/110);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -29,14 +29,14 @@
 			"01" // like Omniknight Degen Aura movement speed slow
 			{
 				"var_type"				"FIELD_INTEGER"
-				"movement_speed_slow"	"-10 -18 -26 -35"
+				"movement_speed_slow"	"-10 -18 -26 -34"
 			}
 			"02" // like Phoenix Fire Spirits attack speed slow
 			{
 				"var_type"				"FIELD_INTEGER"
 				"attack_speed_slow"		"-80 -100 -120 -140"
 			}
-			"03"
+			"03" // Crippling Fear (375);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"400"

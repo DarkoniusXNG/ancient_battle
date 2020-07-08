@@ -1,26 +1,50 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Take Aim - custom Sniper's Take Aim
+	// Dark Terminator: Take Aim - custom Sniper's Take Aim - unused
 	// Author: Darkonius
-	// Notes: OK; 23.9.2019;
-	// TO_DO: ALL
+	// Notes: OK; 3.3.2020;
+	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_take_aim"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/dark_terminator/take_aim.lua"
-		"AbilityTextureName"			"custom/dark_terminator_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/dark_terminator/take_aim.lua"
+		"AbilityTextureName"                              "custom/dark_terminator_take_aim"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_attack_range"			"100 200 300 400"
-				"LinkedSpecialBonus"			"special_bonus_unique_sniper_6"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_attack_range"                      "100 200 300 400"
+				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_take_aim"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Take Aim bonus attack range talent
+	//=================================================================================================================
+	"special_bonus_unique_dark_terminator_take_aim"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                              "87892"
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "125"
 			}
 		}
 	}

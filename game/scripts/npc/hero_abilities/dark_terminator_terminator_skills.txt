@@ -1,24 +1,28 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Dark Terminator: Terminator Skills - new custom ability that is similar to Drunken Brawler
+	// Dark Terminator: Terminator Skills - new custom ability, bonus evasion and chance to deal bonus damage that ignores armor
 	// Author: Darkonius
-	// Notes: OK; 23.9.2019;
-	// TO_DO: ALL
+	// Notes: OK; 3.3.2020; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
+	// TO_DO: 
 	//=================================================================================================================
 	"dark_terminator_terminator_skills"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/dark_terminator/terminator_skills.lua"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityTextureName"			"custom/dark_terminator_terminator_skills"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
-		"MaxLevel"						"4"
-		"RequiredLevel"					"6"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/dark_terminator/terminator_skills.lua"
+		"AbilityTextureName"                              "custom/dark_terminator_terminator_skills"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+
+		//"MaxLevel"                                        "4"
+		//"RequiredLevel"                                   "6"
+
+		"precache"
+		{
+			"soundfile"                                   "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+		}
 
 		"AbilitySpecial"
 		{
@@ -26,17 +30,43 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage_proc_chance"                      "10 15 20 25"
+				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_proc_chance"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage"                                  "120 150 180 210"
+				"damage_percent"                          "100"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 			"03" // original: 7/14/21%
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"evasion_chance"                          "7 14 21 28"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Terminator Skills bonus proc chance
+	//=================================================================================================================
+	"special_bonus_unique_dark_terminator_proc_chance"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                              "86280"
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "15"
 			}
 		}
 	}

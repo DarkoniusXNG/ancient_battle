@@ -17,14 +17,22 @@ function modifier_custom_passive_gold:RemoveOnDeath()
 end
 
 function modifier_custom_passive_gold:OnCreated()
-	local parent = self:GetParent()
 	if not IsServer() then
 		return
 	end
+	local parent = self:GetParent()
 	if GetMapName() ~= "two_vs_two" or parent.original then
 		self:Destroy()
 	end
-	self:StartIntervalThink(GOLD_TICK_TIME)
+	local GOLD_PER_MINUTE = 260 -- SETTINGS.GOLD_PER_MINUTE
+	if GOLD_PER_MINUTE ~= 0 then
+		self.goldTickTime = 60/GOLD_PER_MINUTE
+		self.goldPerTick = 1
+	else
+		self.goldPerTick = 0
+		self:Destroy()
+	end
+	self:StartIntervalThink(self.goldTickTime)
 end
 
 function modifier_custom_passive_gold:OnIntervalThink()
@@ -34,6 +42,6 @@ function modifier_custom_passive_gold:OnIntervalThink()
 	local parent = self:GetParent()
 	local game_state = GameRules:State_Get()
 	if game_state >= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		parent:ModifyGold(GOLD_PER_TICK, false, DOTA_ModifyGold_GameTick)
+		parent:ModifyGold(self.goldPerTick, false, DOTA_ModifyGold_GameTick)
 	end
 end

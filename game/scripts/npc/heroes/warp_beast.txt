@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Warp Beast
-	// Notes: OK; 26.2.2020;
+	// Notes: OK; 10.3.2020;
 	//================================================================================================================
 	"npc_dota_hero_warp_beast"
     {
@@ -25,7 +25,7 @@
 
         "Ability1"                                        "warp_beast_temporal_jump"
         "Ability2"                                        "warp_beast_latch"
-        "Ability3"                                        "warp_beast_mana_eater"
+        "Ability3"                                        "void_spirit_resonant_pulse"
         "Ability4"                                        "warp_beast_silly_attack_mutator"
         "Ability5"                                        "generic_hidden"
         "Ability6"                                        "warp_beast_warp"
@@ -33,16 +33,16 @@
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
-        "Ability10"                                       "special_bonus_attack_damage_20"
+        "Ability10"                                       "special_bonus_attack_damage_15"
         "Ability11"                                       "special_bonus_strength_12"
 
         "Ability12"                                       "special_bonus_lifesteal_15"
         "Ability13"                                       "special_bonus_unique_warp_beast_latch_attackspeed"
 
-        "Ability14"                                       "special_bonus_unique_warp_beast_mana_eater"
+        "Ability14"                                       "special_bonus_unique_void_spirit_4" //"special_bonus_unique_warp_beast_mana_eater"
         "Ability15"                                       "special_bonus_unique_warp_beast_jump_radius"
 
-        "Ability16"                                       "special_bonus_mp_1000"
+        "Ability16"                                       "special_bonus_unique_warp_beast_warp_mana_pool"
         "Ability17"                                       "special_bonus_unique_warp_beast_warp_silence"
 
 		// Protection
@@ -64,7 +64,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"                                   "310" // Phantom Assassin (305); Faceless Void (300);
+		"MovementSpeed"                                   "300" // Phantom Assassin (305); Faceless Void (300);
 		"MovementTurnRate"                                "1.0"
 
 		// Vision

@@ -1,107 +1,94 @@
--- "OnSpellStart"
--- {
-	-- "FireEffect"
-	-- {
-		-- "Target"			"CASTER"
-		-- "EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-		-- "EffectAttachType"	"attach_origin"
-	-- }
+dark_terminator_cloak = class({})
 
-	-- "FireSound"
-	-- {
-		-- "Target"			"CASTER"
-		-- "EffectName"		"Hero_BountyHunter.WindWalk"
-	-- }
+LinkLuaModifier("modifier_dark_terminator_cloak", "heroes/dark_terminator/cloak.lua", LUA_MODIFIER_MOTION_NONE)
 
-	-- "ApplyModifier" // this modifier only applies transparency, not actual invisibility
-	-- {
-		-- "ModifierName" 		"modifier_invisible"
-		-- "Target"			"CASTER"
-		-- "Duration"			"%duration"
-	-- }
+function dark_terminator_cloak:OnSpellStart()
+	local caster = self:GetCaster()
 
-	-- "ApplyModifier"
-	-- {
-		-- "ModifierName" 		"modifier_custom_wind_walk_buff"
-		-- "Target"			"CASTER"
-		-- "Duration"			"%duration"
-	-- }
--- }
+	local duration = self:GetSpecialValueFor("duration")
 
--- "Modifiers"
--- {
-	-- "modifier_custom_wind_walk_buff" // needs tooltip
-	-- {
-		-- "IsHidden"			"0"
-		-- "IsBuff"			"1"
-		-- "IsPurgable"		"1"
-		
-		-- "Duration"          "%duration"
-		
-		-- "Properties"
-		-- {
-			-- "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_move_speed"
-		-- }
-		
-		-- "States"
-		-- {
-			-- "MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
-			-- "MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-		-- }
-		
-		-- "OnAttackLanded"
-		-- {
-			-- "RemoveModifier"
-			-- {
-				-- "ModifierName" 	"modifier_custom_wind_walk_buff"
-				-- "Target"		"CASTER"
-			-- }
+	local particle_smoke = "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+	--local particle_invis_start = "particles/generic_hero_status/status_invisibility_start.vpcf"
+	local sound_cast = "Hero_BountyHunter.WindWalk"
 
-			-- "Damage"
-			-- {
-				-- "Target"
-				-- {
-					-- "Center"	"TARGET"
-					-- "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				-- }
-				-- "Type"			"DAMAGE_TYPE_PHYSICAL"
-				-- "Damage"		"%bonus_damage"
-			-- }
+	-- Smoke particle
+	local effect_cast = ParticleManager:CreateParticle(particle_smoke, PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControl(effect_cast, 0, caster:GetAbsOrigin())
+	ParticleManager:ReleaseParticleIndex(effect_cast)
 
-			-- "FireEffect"
-			-- {
-				-- "EffectName"		"particles/msg_fx/msg_crit.vpcf"
-				-- "EffectAttachType"	"follow_overhead"
-				-- "Target"
-				-- {
-					-- "Center"	"TARGET"
-					-- "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				-- }
-				-- "ControlPoints"
-				-- {
-					-- "01"		"9 %bonus_damage 4"		//pre number post
-					-- "02"		"1 4 0"					//lifetime digits
-					-- "03"		"255 0 0"				//color
-				-- }
-			-- }
-		-- }
+	-- Sound
+	caster:EmitSound(sound_cast)
+	
+	-- Apply buff
+	caster:AddNewModifier(caster, self, "modifier_dark_terminator_cloak", {duration = duration})
+end
 
-		-- "OnAbilityExecuted"
-		-- {
-			-- "RemoveModifier"
-			-- {
-				-- "ModifierName" 	"modifier_custom_wind_walk_buff"
-				-- "Target"		"CASTER"
-			-- }
-		-- }
-		
-		-- "OnDestroy"
-		-- {
-			-- "RemoveModifier"
-			-- {
-				-- "ModifierName" 	"modifier_invisible"
-				-- "Target"		"CASTER"
-			-- }
-		-- }
-	-- }
--- }
+---------------------------------------------------------------------------------------------------
+
+modifier_dark_terminator_cloak = class({})
+
+function modifier_dark_terminator_cloak:IsHidden()
+	return false
+end
+
+function modifier_dark_terminator_cloak:IsDebuff()
+	return false
+end
+
+function modifier_dark_terminator_cloak:IsPurgable()
+	return false
+end
+
+function modifier_dark_terminator_cloak:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
+		MODIFIER_EVENT_ON_ABILITY_EXECUTED,
+		MODIFIER_EVENT_ON_ATTACK,
+	}
+
+	return funcs
+end
+
+function modifier_dark_terminator_cloak:GetModifierMoveSpeedBonus_Percentage()
+	return self:GetAbility():GetSpecialValueFor("bonus_move_speed")
+end
+
+function modifier_dark_terminator_cloak:GetModifierInvisibilityLevel()
+	return 1
+end
+
+function modifier_dark_terminator_cloak:OnAbilityExecuted(event)
+	if IsServer() then
+		if event.unit ~= self:GetParent() then
+			return
+		end
+
+		self:Destroy()
+	end
+end
+
+function modifier_dark_terminator_cloak:OnAttack(event)
+	if IsServer() then
+		if event.attacker ~= self:GetParent() then
+			return
+		end
+
+		self:Destroy()
+	end
+end
+
+function modifier_dark_terminator_cloak:CheckState()
+	local state = {
+		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- its not part of the ability on purpose
+		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,
+	}
+
+	if self:GetElapsedTime() >= self:GetAbility():GetSpecialValueFor("fade_time") then
+		state[MODIFIER_STATE_INVISIBLE] = true
+	end
+
+	return state
+end

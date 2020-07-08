@@ -232,9 +232,15 @@ function HideAndCopyHero(target, caster)
 			end
 		end
 
-		-- Remove tp scroll from the copy
-		local tp_scroll = copy:GetItemInSlot(15)
-		copy:RemoveItem(tp_scroll)
+		-- Remove tp scrolls and neutral items from the copy (they have special item slots)
+		local u1 = copy:GetItemInSlot(15)
+		local u2 = copy:GetItemInSlot(16)
+		if u1 then
+			copy:RemoveItem(u1)
+		end
+		if u2 then
+			copy:RemoveItem(u2)
+		end
 		
 		-- Enabling and disabling abilities on a copy
 		copy:SetAbilityPoints(0)
@@ -688,14 +694,14 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	local cache_unit = nil
 	local order = FIND_ANY_ORDER
 	local cache = false
-	
+
 	local damage_table = {}
 	damage_table.attacker = attacker
-	
+
 	local target_team
 	local target_type
 	local target_flags
-	
+
 	if ability then
 		target_team = ability:GetAbilityTargetTeam()
 		target_type = ability:GetAbilityTargetType()
@@ -763,13 +769,23 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 1, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 					ParticleManager:SetParticleControlEnt(tidebringer_hit_fx, 2, unit, PATTACH_OVERHEAD_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 					ParticleManager:ReleaseParticleIndex(tidebringer_hit_fx)
-					unit:EmitSound("Hero_Kunkka.TidebringerDamage")
 				end
 			end
 		else
-			local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_WORLDORIGIN, attacker)
+			local cleave_pfx = ParticleManager:CreateParticle(particle_cleave, PATTACH_CUSTOMORIGIN, attacker)
 			ParticleManager:SetParticleControl(cleave_pfx, 0, cleave_origin)
+			ParticleManager:SetParticleControl(cleave_pfx, 2, cleave_origin)
+			ParticleManager:SetParticleControl(cleave_pfx, 3, cleave_origin)
+			ParticleManager:SetParticleControl(cleave_pfx, 4, cleave_origin)
+			ParticleManager:SetParticleControl(cleave_pfx, 5, cleave_origin)
 			ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
+			for i, unit in pairs(affected_units) do
+				if unit ~= attacker and unit ~= target then
+					for i = 6, 17 do
+						ParticleManager:SetParticleControlEnt(cleave_pfx, i, unit, PATTACH_POINT, "attach_hitloc", unit:GetAbsOrigin(), true)
+					end
+				end
+			end
 			ParticleManager:ReleaseParticleIndex(cleave_pfx)
 		end
 	end

@@ -26,11 +26,6 @@ function stealth_assassin_death_ward:OnSpellStart()
 		-- Create Death Ward unit
 		local death_ward = CreateUnitByName(unit_name, point, true, caster, caster, caster:GetTeamNumber())
 
-		-- Set on a clear space
-		--Timers:CreateTimer(FrameTime(), function()
-			--ResolveNPCPositions(point, 128)
-		--end)
-
 		death_ward:SetOwner(caster)
 		death_ward:SetControllableByPlayer(caster:GetPlayerID(), true)
 
@@ -55,8 +50,7 @@ function stealth_assassin_death_ward:OnSpellStart()
 		death_ward:AddNewModifier(caster, self, "modifier_kill", {duration = ward_duration})
 		death_ward:AddNewModifier(caster, self, "modifier_phased", {duration = 0.03}) -- unit will insta unstuck after this built-in modifier expires.
 
-		-- Variables needed for later
-		self.ward_damage = damage
+		-- Variable needed for later
 		self.ward_unit = death_ward
 	end
 end
@@ -71,12 +65,12 @@ function stealth_assassin_death_ward:OnProjectileHit_ExtraData(target, vLocation
 	if not owner:HasScepter() then
 		return
 	end
-
-	-- Damage of the bounced projectile
-	local damage = self.ward_damage
-
+	
 	-- Source of the damage
 	local damage_source = self.ward_unit
+
+	-- Damage of the bounced projectile (get the damage of the death ward unit)
+	local damage = damage_source:GetAverageTrueAttackDamage(damage_source)
 
 	-- Damage table of bounced projectile
 	local damage_table = {}

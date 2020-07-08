@@ -1,11 +1,13 @@
 require('libraries/animations')
 require('libraries/notifications')
 require('libraries/selection')
+require('libraries/buildings')
+require('libraries/custom_illusions')
 
 require('settings')
 require('events')
 require('filters')
-require('custom_illusions')
+
 require('custom_RNG')
 require('custom_spawner')
 
@@ -208,6 +210,7 @@ function ancient_battle_gamemode:InitGameMode()
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_passive_gold", "modifiers/modifier_custom_passive_gold.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_passive_xp", "modifiers/modifier_custom_passive_xp.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_leash_debuff", "modifiers/modifier_custom_leash_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("Ancient Battle custom game initialized.")

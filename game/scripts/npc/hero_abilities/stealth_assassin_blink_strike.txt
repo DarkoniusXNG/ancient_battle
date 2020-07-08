@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Stealth Assassin: Blink Strike (W) - New Spell, similar to Antimage's Blink but with damage in a radius
 	// Author: Darkonius
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 4.3.2020;
 	// TO_DO: If too weak ADD attack damage to the blink damage;
 	//=================================================================================================================
 	"stealth_assassin_blink_strike"
@@ -20,27 +20,27 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0"								// ok
-		"AbilityCastPoint"				"0.4"							// ok
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.4"                           // Anti-Mage (0.4); QoP (0.33);
 		"AoERadius" 					"%radius"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 8.0 6.0 4.0"				// like Riki Blink Strike
+		"AbilityCooldown"				"12 10 8 6"                     // Anti-Mage and QoP (15/12/9/6); Riki 6.82 (20/15/10/5);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"60"							// ok
-		"AbilityProcsMagicStick"		"1"								// ok
+		"AbilityManaCost"				"60"                            // Anti-Mage and QoP Blink (60);
+		"AbilityProcsMagicStick"		"1"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // Anti-Mage (925/1000/1075/1150); QoP (1300);  Riki 6.82 (700);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"800 925 1050 1150"
+				"blink_range"			"850 950 1050 1150"
 			}
 			"02" // don't change
 			{
@@ -50,7 +50,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"325"
+				"radius"				"375"
 			}
 		}
 		

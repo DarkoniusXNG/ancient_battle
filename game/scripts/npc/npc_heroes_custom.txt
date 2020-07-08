@@ -7,6 +7,7 @@
 #base "heroes/blood_mage.txt"
 #base "heroes/brewmaster.txt"
 #base "heroes/dark_ranger.txt"
+#base "heroes/dark_terminator.txt"
 #base "heroes/death_knight.txt"
 #base "heroes/firelord.txt"
 #base "heroes/gambler.txt"

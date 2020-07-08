@@ -3,44 +3,42 @@
 	//=================================================================================================================
 	// Dark Terminator: Terminate - global Sniper Assassinate
 	// Author: Darkonius
-	// Notes: OK; 23.9.2019;
+	// Notes: OK; 3.3.2020; Crosshair particle is visible for enemies too;
 	// Linkens: Blocks;
-	// TO_DO: ALL
+	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_terminate"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/dark_terminator/terminate.lua"
-		"AbilityTextureName"			"custom/dark_terminator_terminate"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-
-		"AbilitySound"					"Ability.Assassinate"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/dark_terminator/terminate.lua"
+		"AbilityTextureName"                              "custom/dark_terminator_terminate"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"                           "DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0" // GLOBAL
+		"AbilityCastRange"                                "0" // GLOBAL
 		
-		"AbilityCastPoint"				"2.0"
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"                                "2.0"
+		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20 15 10"
+		"AbilityCooldown"                                 "20 15 10"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"175 225 275"
+		"AbilityManaCost"                                 "175 225 275"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityModifierSupportValue"	"0.0"	// Modifier just does damage
+		"AbilityModifierSupportValue"                     "0.0"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -48,20 +46,37 @@
 		{
 			"01"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"projectile_speed"			"2500"
+				"var_type"                                "FIELD_INTEGER"
+				"projectile_speed"                        "2500"
 			}
 			"02"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"                    "320 485 650"
+				"var_type"                                "FIELD_INTEGER"
+				"damage"                                  "320 485 650"
 			}
-			"03"
+		}
+	}
+	
+	//=================================================================================================================
+	// Terminate talent that decreases cast point
+	//=================================================================================================================
+	"special_bonus_unique_dark_terminator_terminate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                              "86897"
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"total_cast_time_tooltip"				"2"
-				"LinkedSpecialBonus"	"special_bonus_unique_sniper_4"
-				"LinkedSpecialBonusOperation"	"SPECIAL_BONUS_SUBTRACT"
+				"var_type"                                "FIELD_FLOAT"
+				"value"                                   "1.8"
 			}
 		}
 	}

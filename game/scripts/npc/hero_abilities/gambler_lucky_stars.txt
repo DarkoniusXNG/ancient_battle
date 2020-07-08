@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
 	// Author: Darkonius
-	// Notes: OK; 30.10.2019; Can Crit on buildings; Chance to proc is Pseudo-Random;
+	// Notes: OK; 4.3.2020; Can Crit on buildings; Chance to proc is Pseudo-Random;
 	// TO_DO: If its too weak increase proc chance to a maximum 12%
 	//=================================================================================================================
 	"gambler_lucky_stars"
@@ -57,7 +57,7 @@
 				"IsHidden"  				"1"
 				"IsBuff"					"1"
 				"IsPurgable"				"0"
-				
+
 				"AllowIllusionDuplicate"	"1"
 
 				"OnAttackStart"
@@ -72,7 +72,7 @@
 					{
 						"Chance" 		"%crit_chance"
 						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT"
-						
+
 						"OnSuccess"
 						{
 							"FireSound"
@@ -103,12 +103,17 @@
 				"IsHidden"  	"1"
 				"IsBuff"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_damage"
 				}
-				
+
+				"States"
+				{
+					"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
 				"OnAttackLanded"
 				{
 					"RemoveModifier"
@@ -116,7 +121,7 @@
 						"ModifierName"  "modifier_gambler_lucky_crit"
 						"Target"   		"CASTER"    
 					}
-					
+
 					"RunScript"
 					{
 						"ScriptFile"	"heroes/gambler/gambler_lucky_stars.lua"

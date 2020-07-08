@@ -47,7 +47,7 @@ function modifier_custom_courier:CheckState()
 		[MODIFIER_STATE_FLYING] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_BLIND] = true,
-		--[MODIFIER_STATE_INVULNERABLE] = true,
+		[MODIFIER_STATE_INVULNERABLE] = true,
 		--[MODIFIER_STATE_NO_HEALTH_BAR] = true
 	}
 	return state
