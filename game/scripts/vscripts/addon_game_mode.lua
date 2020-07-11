@@ -14,6 +14,11 @@ function Precache(context)
 	PrecacheItemByNameSync("item_ultimate_king_bar", context)
 	PrecacheItemByNameSync("item_infused_robe", context)
 	
+	-- Warp Beast
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts", context)
+	PrecacheResource("particle_folder", "particles/units/heroes/hero_void_spirit/pulse", context)
+	--"particles/units/heroes/hero_void_spirit/pulse/void_spirit_pulse.vpcf"
+	
 	-- Holdout stuff (units etc.)
 	PrecacheUnitByNameSync("npc_dota_custom_corpse_lord", context)
 	PrecacheUnitByNameSync("npc_dota_custom_minor_lich", context)
