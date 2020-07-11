@@ -61,7 +61,7 @@
 			"05" // original (1.33 -> 0.9); original Pillar duration (2.67s); Sun Strike (1.7); Light Strike (0.5);
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"delay"                                   "1.6"
+				"delay"                                   "0.9"
 			}
 			"06"
 			{
