@@ -13,7 +13,7 @@ end
 	other toggles.
 ================================================================================================================= ]]
 function revert_on_toggle_on(keys)
-	local other_toggle_ability = keys.caster:FindAbilityByName("trenja_elokvenciranost")
+	local other_toggle_ability = keys.caster:FindAbilityByName("mimic_int_to_agi")
 	if other_toggle_ability ~= nil then
 		if other_toggle_ability:GetToggleState() == true then
 			other_toggle_ability:ToggleAbility()

@@ -13,7 +13,7 @@ end
 	other toggles if they are toggled on.
 ================================================================================================================= ]]
 function elokvenciranost_on_toggle_on(keys)
-	local other_toggle_ability = keys.caster:FindAbilityByName("trenja_revert")
+	local other_toggle_ability = keys.caster:FindAbilityByName("mimic_revert")
 	if other_toggle_ability ~= nil then
 		if other_toggle_ability:GetToggleState() == true then
 			other_toggle_ability:ToggleAbility()
