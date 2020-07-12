@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Archmage; 1.11.2019;
+	// HERO: Archmage; 12.7.2020;
 	// Notes: OK; Arcane Magic provides bonus mana regen;
 	// TO_DO:
 	//=================================================================================================================
@@ -28,13 +28,13 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_attack_damage_30"			// lvl 10 talent; same as Nature's Prophet
-		"Ability11"				"special_bonus_movement_speed_25"			// lvl 10 talent; same as KOTL and Nature's Prophet
+		"Ability10"				"special_bonus_attack_damage_30"			// lvl 10 talent; Nature's Prophet (+25)
+		"Ability11"				"special_bonus_movement_speed_25"			// lvl 10 talent; KOTL (+20)
 
-		"Ability12"				"special_bonus_armor_10"				    // lvl 15 talent; same as Nature's Prophet
-		"Ability13"				"special_bonus_cast_range_350"				// lvl 15 talent; same as KOTL
+		"Ability12"				"special_bonus_armor_10"				    // lvl 15 talent; Nature's Prophet (+8)
+		"Ability13"				"special_bonus_cast_range_200"				// lvl 15 talent; KOTL (+200)
 
-		"Ability14"				"special_bonus_magic_resistance_40"			// lvl 20 talent; same as KOTL
+		"Ability14"				"special_bonus_magic_resistance_40"			// lvl 20 talent; unique
 		"Ability15"				"special_bonus_attack_speed_100"            // lvl 20 talent; unique
 
 		"Ability16"				"special_bonus_cooldown_reduction_25"		// lvl 25 talent; unique
@@ -58,7 +58,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"320"									// KOTL (335); Furion (290); original (320); Sniper (285); Crystal Maiden (275);
+		"MovementSpeed"				"320"									// KOTL (330); Furion (290); original (320); Sniper (285); Crystal Maiden (275);
 		"MovementTurnRate"			"0.5"									// like KOTL
 		
 		// Vision
@@ -71,10 +71,10 @@
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"			// like KOTL
 		"AttributeBaseStrength"			"18"								// KOTL (16); original (14); Crystal Maiden (18); Furion (21);
 		"AttributeStrengthGain"			"2.2"								// KOTL (2.3); original (1.8); Crystal Maiden (2.2); Furion (2.6);
-		"AttributeBaseAgility"			"17"								// KOTL (15); original (17); Crystal Maiden (16); Furion (18);
-		"AttributeAgilityGain"			"1.6"								// KOTL (1.6); original (1.0); Crystal Maiden (1.6); Furion (3.3);
+		"AttributeBaseAgility"			"17"								// KOTL (15); original (17); Crystal Maiden (16); Furion (22);
+		"AttributeAgilityGain"			"1.6"								// KOTL (1.6); original (1.0); Crystal Maiden (1.6); Furion (3.6);
 		"AttributeBaseIntelligence"		"14"								// KOTL (23); original (19); Crystal Maiden (14); Furion (23);
-		"AttributeIntelligenceGain"		"3.2"								// KOTL (3.2); original (3.2); Crystal Maiden (3.3); Furion (3.5);
+		"AttributeIntelligenceGain"		"3.2"								// KOTL (3.2); original (3.2); Crystal Maiden (3.3); Furion (3.7);
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Alchemist; 19.12.2019;
+	// HERO: Alchemist; 12.7.2020;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_alchemist"
@@ -26,17 +26,17 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_attack_speed_25"			// lvl 10 talent: same as dota Alchemist
-		"Ability11"				"special_bonus_corruption_4"			// lvl 10 talent: unique
+		"Ability10"				"special_bonus_attack_speed_15"			// lvl 10 talent: same as dota Alchemist
+		"Ability11"				"special_bonus_corruption_3"			// lvl 10 talent: unique
 
-		"Ability12"				"special_bonus_attack_damage_30"		// lvl 15 talent; same as dota Alchemist
-		"Ability13"				"special_bonus_hp_400"					// lvl 15 talent; same as dota Alchemist
+		"Ability12"				"special_bonus_attack_damage_20"		// lvl 15 talent; same as dota Alchemist
+		"Ability13"				"special_bonus_hp_350"					// lvl 15 talent; same as dota Alchemist
 
-		"Ability14"				"special_bonus_cleave_40"				// lvl 20 talent: same as dota Alchemist
+		"Ability14"				"special_bonus_cleave_30"				// lvl 20 talent: same as dota Alchemist
 		"Ability15"				"special_bonus_spell_amplify_15"		// lvl 20 talent: unique
 
-		"Ability16"				"special_bonus_unique_alchemist_4"		// lvl 25 talent; same as dota Alchemist; 
-		"Ability17"				"special_bonus_unique_alchemist_3"		// lvl 25 talent; same as dota Alchemist;
+		"Ability16"				"special_bonus_unique_alchemist_4"		// lvl 25 talent; Chemical Rage bonus regen; 
+		"Ability17"				"special_bonus_unique_alchemist_3"		// lvl 25 talent; Chemical Rage Base Attack Time;
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -68,9 +68,9 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"		// like dota Alchemist and original Alchemist
 		"AttributeBaseStrength"		"25"							// original (25); dota (25);
-		"AttributeStrengthGain"		"2.4"							// original (3.3); dota (2.4);
+		"AttributeStrengthGain"		"2.4"							// original (3.3); dota (2.7);
 		"AttributeBaseAgility"		"11"							// original (10); dota (22);
-		"AttributeAgilityGain"		"1.2"							// original (1.0); dota (1.2);
+		"AttributeAgilityGain"		"1.2"							// original (1.0); dota (1.5);
 		"AttributeBaseIntelligence"	"25"							// original (18); dota (25);
 		"AttributeIntelligenceGain"	"1.0"							// original (2.0); dota (1.8);
 
