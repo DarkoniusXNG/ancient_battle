@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Blink - global blink
 	// Author: Darkonius
-	// Notes: OK; 10.3.2020;
+	// Notes: OK; 12.7.2020;
 	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_blink"
@@ -15,7 +15,7 @@
 
 		"AbilityCastRange"                                "0" // GLOBAL
 
-		"AbilityCastPoint"                                "0.75 0.65 0.55 0.45"
+		"AbilityCastPoint"                                "3.0"
 		
 		"AbilityCastAnimation"                            "ACT_DOTA_VICTORY"
 
@@ -35,7 +35,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"cast_point"                              "0.75 0.65 0.55 0.45"
+				"cast_point"                              "3.0"
 			}
 		}
 	}

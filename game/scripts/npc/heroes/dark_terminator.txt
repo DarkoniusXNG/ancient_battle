@@ -30,7 +30,7 @@
 		"Ability9"                                        "generic_hidden"
 
 		"Ability10"                                       "special_bonus_movement_speed_20"
-		"Ability11"                                       "special_bonus_attack_damage_20"         // same as Sniper
+		"Ability11"                                       "special_bonus_attack_damage_15"         // same as Sniper
 
 		"Ability12"                                       "special_bonus_attack_range_125" // "special_bonus_unique_dark_terminator_take_aim"
 		"Ability13"                                       "special_bonus_unique_dark_terminator_confuse_illusion_damage"
@@ -52,7 +52,7 @@
 		"BaseAttackSpeed"                                 "50"                                     // Sniper (100); original (100); concept (50);
 		"AttackDamageMin"                                 "42"                                     // Sniper (15); original (42); concept (9);
 		"AttackDamageMax"                                 "52"                                     // Sniper (21); original (52); concept (15);
-		"AttackRate"                                      "0.9"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
+		"AttackRate"                                      "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
 		"AttackAnimationPoint"                            "0.17"                                   // like Sniper
 		"AttackRange"                                     "400"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
 		"AttackAcquisitionRange"                          "800"                                    // Default
