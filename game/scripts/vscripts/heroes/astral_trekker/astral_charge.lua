@@ -3,6 +3,7 @@ if astral_trekker_astral_charge == nil then
 end
 
 LinkLuaModifier("modifier_astral_charge_buff", "heroes/astral_trekker/modifier_astral_charge_buff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_astral_charge_hit", "heroes/astral_trekker/astral_charge.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- function astral_trekker_astral_charge:CastFilterResultLocation(location)
 	-- local default_result = self.BaseClass.CastFilterResultLocation(self, location)
@@ -149,12 +150,14 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 			-- Damage per distance travelled
 			local distance_traveled = (current_position - caster_position):Length2D()
 			local distance_damage = distance_traveled * damage_per_distance_traveled_percent / 100
-			local damage_per_interval = distance_damage / intervals_per_second
 
-			if damage_per_interval > 0 then
+			if distance_damage > 0 then
 				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 				for _, enemy in pairs(enemies) do
-					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage_per_interval, damage_type = DAMAGE_TYPE_MAGICAL})
+					if not enemy:HasModifier("modifier_astral_charge_hit") then
+						enemy:AddNewModifier(caster, nil, "modifier_astral_charge_hit", {duration = 1.0})
+						ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = distance_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+					end
 				end
 			end
 
@@ -184,4 +187,24 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 		-- Display the error message
 		SendErrorMessage(caster:GetPlayerOwnerID(), "Not enough health to cast this spell.")
 	end
+end
+
+if modifier_astral_charge_hit == nil then
+	modifier_astral_charge_hit = class({})
+end
+
+function modifier_astral_charge_hit:IsHidden()
+	return true
+end
+
+function modifier_astral_charge_hit:IsDebuff()
+	return true
+end
+
+function modifier_astral_charge_hit:IsPurgable()
+	return false
+end
+
+function modifier_astral_charge_hit:RemoveOnDeath()
+	return true
 end
