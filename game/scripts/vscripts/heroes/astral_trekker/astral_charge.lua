@@ -87,6 +87,15 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	local loop_sound_name = "Hero_StormSpirit.BallLightning.Loop"
 	local modifier_name = "modifier_astral_charge_buff"
 	
+	-- Talent that gives damage during travel:
+	local talent = caster:FindAbilityByName("special_bonus_unique_astral_trekker_astral_charge_damage")
+	local damage_per_distance_traveled_percent = 0
+	if talent then
+		if talent:GetLevel() ~= 0 then
+			damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
+		end
+	end
+	
 	-- Necessary pre-calculated variables
 	local current_position = caster_position
 	local intervals_per_second = speed/destroy_radius -- This will calculate how many times in one second, unit should move based on destroy tree radius
@@ -136,7 +145,19 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 			current_position = current_position + forwardVec * ( speed / intervals_per_second )
 			-- caster:SetAbsOrigin( current_position ) -- This doesn't work because unit will not stick to the ground but rather travel in linear
 			FindClearSpaceForUnit(caster, current_position, false)
-			
+
+			-- Damage per distance travelled
+			local distance_traveled = (current_position - caster_position):Length2D()
+			local distance_damage = distance_traveled * damage_per_distance_traveled_percent / 100
+			local damage_per_interval = distance_damage / intervals_per_second
+
+			if damage_per_interval > 0 then
+				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				for _, enemy in pairs(enemies) do
+					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage_per_interval, damage_type = DAMAGE_TYPE_MAGICAL})
+				end
+			end
+
 			-- Check if unit is close to the destination point
 			if (target - current_position):Length2D() <= speed / intervals_per_second then
 				-- Exit condition if caster arrived at designated location
@@ -144,8 +165,8 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				modifier:SetDuration(0.1, false)
 
 				-- Damage around destination
-				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-				for k, enemy in pairs(enemies) do
+				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				for _, enemy in pairs(enemies) do
 					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
 				end
 				return nil

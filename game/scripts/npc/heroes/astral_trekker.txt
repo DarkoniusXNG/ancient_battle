@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Astral Trekker; 1.11.2019;
-	// TO_DO: NEW LVL 20 TALENT THAT WILL REPLACE LIFESTEAL
+	// HERO: Astral Trekker; 13.7.2020;
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_astral_trekker"
 	{
@@ -27,16 +27,16 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_night_vision_600"			// lvl 10 talent; same as Spirit Breaker
-		"Ability11"				"special_bonus_armor_5"						// lvl 10 talent; same as Spirit Breaker
+		"Ability10"				"special_bonus_night_vision_600"			// lvl 10 talent; Spirit Breaker (+500)
+		"Ability11"				"special_bonus_armor_4"						// lvl 10 talent; same as Spirit Breaker
 
-		"Ability12"				"special_bonus_attack_damage_45"			// lvl 15 talent; similar to Spirit Breaker
-		"Ability13"				"special_bonus_hp_regen_12"					// lvl 15 talent; same as Spirit Breaker
+		"Ability12"				"special_bonus_attack_damage_30"			// lvl 15 talent; like Spirit Breaker
+		"Ability13"				"special_bonus_hp_regen_12"					// lvl 15 talent; Spirit Breaker (+10)
 
-		"Ability14"				"special_bonus_lifesteal_100"               // lvl 20 talent; unique NEEDS NEW TALENT
+		"Ability14"				"special_bonus_hp_650"                      // lvl 20 talent; unique
 		"Ability15"				"special_bonus_attack_speed_100"			// lvl 20 talent; unique
 
-		"Ability16"				"special_bonus_hp_800"						// lvl 25 talent; same as Spirit Breaker
+		"Ability16"				"special_bonus_unique_astral_trekker_astral_charge_damage" // lvl 25 talent; unique
 		"Ability17"				"special_bonus_cooldown_reduction_20"		// lvl 25 talent; unique
 
 		// Armor
@@ -73,7 +73,7 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// Tiny (290); Spirit Breaker(285);
+		"MovementSpeed"				"290"									// Tiny (290); Spirit Breaker (290);
 		"MovementTurnRate"			"0.5"									// like Spirit Breaker
 
 		// Vision

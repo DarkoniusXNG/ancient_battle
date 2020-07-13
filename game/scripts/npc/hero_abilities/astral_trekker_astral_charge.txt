@@ -88,4 +88,28 @@
 			}
 		}
 	}
+	
+	//=================================================================================================================
+	// Astral Charge talent bonus damage based on distance travelled
+	//=================================================================================================================
+	"special_bonus_unique_astral_trekker_astral_charge_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                              "86906"
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "16"
+			}
+		}
+	}
 }
