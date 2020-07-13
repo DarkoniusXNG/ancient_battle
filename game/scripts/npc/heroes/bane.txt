@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 1.11.2019;
+	// HERO: Bane; 14.7.2020;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
@@ -28,17 +28,17 @@
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"
 		
-		"Ability10"					"special_bonus_armor_7"					// lvl 10 talent: same as dota Bane
+		"Ability10"					"special_bonus_armor_6"					// lvl 10 talent: same as dota Bane
 		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: same as dota Bane
 
-		"Ability12"					"special_bonus_hp_300"					// lvl 15 talent: unique
-		"Ability13"					"special_bonus_attack_range_200"		// lvl 15 talent: unique
+		"Ability12"					"special_bonus_hp_250"					// lvl 15 talent: unique
+		"Ability13"					"special_bonus_unique_bane_5"		    // lvl 15 talent: Nightmare cooldown talent
 
 		"Ability14"					"special_bonus_attack_speed_120"		// lvl 20 talent: unique
-		"Ability15"					"special_bonus_movement_speed_50"		// lvl 20 talent: same as dota Bane
+		"Ability15"					"special_bonus_movement_speed_40"		// lvl 20 talent: same as dota Bane
 
-		"Ability16"					"special_bonus_unique_bane_2"			// lvl 25 talent; same as dota Bane
-		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; same as dota Bane
+		"Ability16"					"special_bonus_unique_bane_2"			// lvl 25 talent; Brain Sap Damage/Heal talent
+		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; Fiend's Grip Duration talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -79,8 +79,8 @@
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealthRegen"			"0.0"									// like dota Bane
-		"StatusHealth"				"150"									// Default
-		"StatusMana"				"0"										// Default
+		"StatusHealth"				"150"									// Default; dota Bane (200);
+		"StatusMana"				"0"										// Default; dota Bane (75);
 		"StatusManaRegen"			"0.0"									// like dota Bane
 	}
 }
