@@ -73,6 +73,14 @@ function modifier_custom_counter_helix_aura_effect:OnAttackStart(event)
 			-- KV variables
 			local radius = ability:GetSpecialValueFor("radius")
 			local damage = ability:GetSpecialValueFor("damage")
+			
+			-- Talent that increases damage:
+			local talent = target:FindAbilityByName("special_bonus_unique_axe_counter_helix_damage")
+			if talent then
+				if talent:GetLevel() ~= 0 then
+					damage = damage + talent:GetSpecialValueFor("value")
+				end
+			end
 
 			-- Damage table
 			local damage_table = {}

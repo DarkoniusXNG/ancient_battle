@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Axe; 1.11.2019;
-	// TO_DO: NEW LVL 25 TALENT THAT WILL REPLACE HP
+	// HERO: Axe; 14.7.2020;
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_axe"
 	{
@@ -27,20 +27,20 @@
 		"Ability9"					"generic_hidden"
 
 		"Ability10"					"special_bonus_strength_8"				// lvl 10 talent: same as dota Axe
-		"Ability11"					"special_bonus_attack_speed_40"			// lvl 10 talent: same as dota Axe
+		"Ability11"					"special_bonus_movement_speed_30"		// lvl 10 talent: dota Axe (+20)
 
-		"Ability12"					"special_bonus_mp_regen_3"				// lvl 15 talent: same as dota Axe
-		"Ability13"					"special_bonus_movement_speed_30"		// lvl 15 talent: same as dota Axe
+		"Ability12"					"special_bonus_mp_regen_3"				// lvl 15 talent: dota Axe (+2)
+		"Ability13"					"special_bonus_attack_speed_40"		    // lvl 15 talent: dota Axe (+35)
 
-		"Ability14"					"special_bonus_hp_regen_25"				// lvl 20 talent: same as dota Axe
+		"Ability14"					"special_bonus_hp_regen_25"				// lvl 20 talent: dota Axe (+20)
 		"Ability15"					"special_bonus_attack_damage_75"		// lvl 20 talent: unique
 
 		"Ability16"					"special_bonus_unique_axe_2"			// lvl 25 talent; Berserker's Call talent
-		"Ability17"					"special_bonus_hp_500"					// lvl 25 talent; unique NEEDS NEW TALENT
+		"Ability17"					"special_bonus_unique_axe_counter_helix_damage"  // lvl 25 talent; Counter Helix bonus damage
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-2"									// unique
+		"ArmorPhysical"				"-2"									// unique; dota Axe (-1);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
@@ -55,7 +55,7 @@
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// Axe (305);
+		"MovementSpeed"				"290"									// Axe (310);
 		"MovementTurnRate"			"0.6"									// like dota Axe
 
 		// Vision

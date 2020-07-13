@@ -90,7 +90,7 @@
 	}
 	
 	//=================================================================================================================
-	// Astral Charge talent bonus damage based on distance travelled
+	// Astral Charge talent bonus damage based on distance traveled
 	//=================================================================================================================
 	"special_bonus_unique_astral_trekker_astral_charge_damage"
 	{
