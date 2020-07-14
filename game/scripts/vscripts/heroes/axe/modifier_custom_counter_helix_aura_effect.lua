@@ -77,7 +77,7 @@ function modifier_custom_counter_helix_aura_effect:OnAttackStart(event)
 			-- Talent that increases damage:
 			local talent = target:FindAbilityByName("special_bonus_unique_axe_counter_helix_damage")
 			if talent then
-				if talent:GetLevel() ~= 0 then
+				if talent:GetLevel() > 0 then
 					damage = damage + talent:GetSpecialValueFor("value")
 				end
 			end

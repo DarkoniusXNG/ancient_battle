@@ -92,7 +92,7 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	local talent = caster:FindAbilityByName("special_bonus_unique_astral_trekker_astral_charge_damage")
 	local damage_per_distance_traveled_percent = 0
 	if talent then
-		if talent:GetLevel() ~= 0 then
+		if talent:GetLevel() > 0 then
 			damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
 		end
 	end

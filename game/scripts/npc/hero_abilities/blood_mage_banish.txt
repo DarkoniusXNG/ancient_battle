@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Banish - like Pugna Decrepify
 	// Author: Darkonius
-	// Notes: OK; 20.11.2019; Original cooldown was 0;
+	// Notes: OK; 14.7.2020; Original cooldown was 0;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -57,11 +57,13 @@
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"hero_duration"                           "3.5"
+				"LinkedSpecialBonus"                      "special_bonus_unique_pugna_5"
 			}
 			"05" // original: 12/15/18
 			{
-				"var_type"                                "FIELD_INTEGER"
-				"creep_duration"                          "5"
+				"var_type"                                "FIELD_FLOAT"
+				"creep_duration"                          "5.0"
+				"LinkedSpecialBonus"                      "special_bonus_unique_pugna_5"
 			}
 			"06" // original: 66%
 			{

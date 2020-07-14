@@ -81,6 +81,14 @@ function modifier_flame_strike_thinker:OnCreated()
 	local interval = ability:GetSpecialValueFor("damage_interval")
 	local buildings_damage = ability:GetSpecialValueFor("buildings_damage")
 
+	-- Talent that increases initial damage:
+	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_flame_strike_damage")
+	if talent then
+		if talent:GetLevel() > 0 then
+			damage_to_units = damage_to_units + talent:GetSpecialValueFor("value")
+		end
+	end
+
 	local damage_to_buildings = damage_to_units*buildings_damage*0.01
 	local caster_team = caster:GetTeamNumber()
 

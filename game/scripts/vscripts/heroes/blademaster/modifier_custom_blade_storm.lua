@@ -75,7 +75,7 @@ function modifier_custom_blade_storm:OnIntervalThink()
 		-- Talent that increases damage:
 		local talent = parent:FindAbilityByName("special_bonus_unique_juggernaut_3")
 		if talent then
-			if talent:GetLevel() ~= 0 then
+			if talent:GetLevel() > 0 then
 				damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
 			end
 		end

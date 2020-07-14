@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 25.2.2020; Flame Strike deals 25% of the damage to buildings;
+	// Notes: OK; 14.7.2020; Flame Strike deals 25% of the damage to buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_flame_strike"
@@ -47,6 +47,7 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"initial_damage"                          "70 130 190 250"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_flame_strike_damage"
 			}
 			"03" // initial_damage + damage_per_second = 100/175/250/325
 			{
@@ -74,6 +75,30 @@
 				"var_type"                                "FIELD_INTEGER"
 				"buildings_damage"                        "25"
 				"CalculateSpellDamageTooltip"             "0"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Flame Strike talent - increases damage
+	//=================================================================================================================
+	"special_bonus_unique_blood_mage_flame_strike_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                                              "86238"
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "250"
 			}
 		}
 	}

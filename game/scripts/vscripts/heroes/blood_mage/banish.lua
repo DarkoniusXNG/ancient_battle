@@ -4,24 +4,27 @@ function BanishStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
+	local ability_level = ability:GetLevel() - 1
+	local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
+	local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
+	
+	-- Talent that increases duration:
+	local talent = caster:FindAbilityByName("special_bonus_unique_pugna_5")
+	if talent then
+		if talent:GetLevel() > 0 then
+			hero_duration = hero_duration + talent:GetSpecialValueFor("value")
+			creep_duration = creep_duration + talent:GetSpecialValueFor("value")
+		end
+	end
+
 	-- Checking if target has spell block, and if its an enemy
 	if not target:TriggerSpellAbsorb(ability) and target:GetTeamNumber() ~= caster:GetTeamNumber()  then
-		local ability_level = ability:GetLevel() - 1
-
-		local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
-		local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
-
 		if target:IsRealHero() then
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = hero_duration})
 		else
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = creep_duration})
 		end
 	elseif target:GetTeamNumber() == caster:GetTeamNumber() then
-		local ability_level = ability:GetLevel() - 1
-
-		local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
-		local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
-		
 		LinkLuaModifier("modifier_banished_heal_amp", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
 
 		if target:IsRealHero() then
