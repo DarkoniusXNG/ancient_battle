@@ -33,8 +33,8 @@ end
 
 function modifier_custom_blade_storm:CheckState()
 	local state = {
-	[MODIFIER_STATE_MAGIC_IMMUNE] = true,
-	[MODIFIER_STATE_SILENCED] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		[MODIFIER_STATE_SILENCED] = true,
 	}
 
 	return state
@@ -72,6 +72,13 @@ function modifier_custom_blade_storm:OnIntervalThink()
 	local damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
 	
 	if IsServer then
+		-- Talent that increases damage:
+		local talent = parent:FindAbilityByName("special_bonus_unique_juggernaut_3")
+		if talent then
+			if talent:GetLevel() ~= 0 then
+				damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
+			end
+		end
 		local damage_per_tick = damage_per_second*think_interval
 		local damage_to_buildings = damage_per_tick*damage_to_buildings_percent/100
 		local parent_team = parent:GetTeamNumber()
