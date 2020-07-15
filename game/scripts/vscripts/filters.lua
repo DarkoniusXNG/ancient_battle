@@ -16,6 +16,13 @@ function ancient_battle_gamemode:OrderFilter(filter_table)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
+
+		if caster:HasModifier("modifier_drunken_haze_fizzle") and (not ability:IsItem()) then
+			ability:UseResources(true,false,true)
+			local playerID = caster:GetPlayerOwnerID()
+			SendErrorMessage(playerID, "Used Spell has no effect!")
+			return false
+		end
 	end
 
 	return true

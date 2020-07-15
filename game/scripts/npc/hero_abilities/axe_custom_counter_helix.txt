@@ -57,7 +57,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"                                              "86991"
 		"BaseClass"                                       "special_bonus_undefined"
 		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"

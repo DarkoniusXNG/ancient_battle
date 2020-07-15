@@ -26,16 +26,16 @@
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
 
-		"Ability10"			"special_bonus_hp_200"								// lvl 10 talent: same as dota Brewmaster 
-		"Ability11"			"special_bonus_mp_regen_3"							// lvl 10 talent: unique
+		"Ability10"			"special_bonus_hp_150"								// lvl 10 talent: same as dota Brewmaster 
+		"Ability11"			"special_bonus_attack_damage_20"					// lvl 10 talent: Brewmaster (+12)
 
-		"Ability12"			"special_bonus_attack_damage_40"					// lvl 15 talent: unique
-		"Ability13"			"special_bonus_magic_resistance_20"					// lvl 15 talent: same as dota Brewmaster
+		"Ability12"			"special_bonus_unique_brewmaster_drunken_haze_burn"	// lvl 15 talent: Drunken Haze burn damage talent
+		"Ability13"			"special_bonus_magic_resistance_15"					// lvl 15 talent: same as dota Brewmaster
 
 		"Ability14"			"special_bonus_cooldown_reduction_15"				// lvl 20 talent; unique
-		"Ability15"			"special_bonus_attack_speed_100"					// lvl 20 talent; same as dota Brewmaster
+		"Ability15"			"special_bonus_attack_speed_80"					    // lvl 20 talent; same as dota Brewmaster
 
-		"Ability16"			"special_bonus_cleave_100"                          // lvl 25 talent; unique
+		"Ability16"			"special_bonus_unique_brewmaster_drunken_haze_fizzle"  // lvl 25 talent; Drunken Haze causes fizzle talent
 		"Ability17"			"special_bonus_spell_amplify_25"					// lvl 25 talent; unique
 
 		// Protection

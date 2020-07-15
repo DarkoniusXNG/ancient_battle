@@ -44,7 +44,7 @@
 		"Ability15"                                       "special_bonus_electrician_shock_autoself"
 
 		"Ability16"                                       "special_bonus_spell_amplify_25"
-		"Ability17"                                       "special_bonus_mp_1000" // old: special_bonus_hp_1000
+		"Ability17"                                       "special_bonus_mp_1000"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

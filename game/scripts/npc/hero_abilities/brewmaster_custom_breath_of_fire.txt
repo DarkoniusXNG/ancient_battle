@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
 	// Authors: Jastuchko + Darkonius
-	// Notes: OK; 23.11.2019;
+	// Notes: OK; 15.7.2020;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_breath_of_fire"
@@ -75,6 +75,30 @@
 			{
 				"var_type"                  		"FIELD_INTEGER"
 				"burn_damage_per_second"     		"20 30 40 50"
+				"LinkedSpecialBonus"                "special_bonus_unique_brewmaster_drunken_haze_burn"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Breathe Fire + Drunken Haze talent - increases burn damage
+	//=================================================================================================================
+	"special_bonus_unique_brewmaster_drunken_haze_burn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "10"
 			}
 		}
 	}

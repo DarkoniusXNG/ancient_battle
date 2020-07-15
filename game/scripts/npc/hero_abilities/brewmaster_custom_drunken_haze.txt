@@ -4,7 +4,7 @@
 	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 25.2.2020; Projectile can be disjointed;
+	// Notes: OK; 14.7.2020; Projectile can be disjointed;
 	// TO_DO: Cast Animation is weird.
 	//====================================================================================================
 	"brewmaster_custom_drunken_haze"
@@ -51,7 +51,7 @@
 			"03" // original: 12 seconds;
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration_creeps"			"12"
+				"duration_creeps"			"7"
 			}
 			"04" // original: 15/30/50%;
 			{
@@ -136,6 +136,29 @@
 						"Target"		"TARGET"	
 					}
 				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Drunken Haze talent - spells have a chance to fizzle
+	//=================================================================================================================
+	"special_bonus_unique_brewmaster_drunken_haze_fizzle"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}
