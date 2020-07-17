@@ -49,7 +49,7 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_RANGED_ATTACK"            // like original
-		"BaseAttackSpeed"                                 "50"                                     // Sniper (100); original (100); concept (50);
+		"BaseAttackSpeed"                                 "90"                                     // Sniper (100); original (100); concept (50);
 		"AttackDamageMin"                                 "42"                                     // Sniper (15); original (42); concept (9);
 		"AttackDamageMax"                                 "52"                                     // Sniper (21); original (52); concept (15);
 		"AttackRate"                                      "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);

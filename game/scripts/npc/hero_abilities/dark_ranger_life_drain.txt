@@ -4,9 +4,9 @@
 	// Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 12.9.2019; Life Drain works only if the caster doesn't have max health;
+	// Notes: OK; 17.7.2020; Life Drain works only if the caster doesn't have max health;
 	// Notes: The link will not break if the target goes out of vision;
-	// TO_DO: Fix issue with breaking when buying aether lens
+	// TO_DO:
 	//=================================================================================================================
 	"dark_ranger_life_drain"
 	{
@@ -23,17 +23,17 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"650"
+		"AbilityCastRange"				"550" // it should be equal to Dark Ranger's starting attack range
 		"AbilityCastPoint"				"0.2"
-		"AbilityChannelTime"			"10.0"
+		"AbilityChannelTime"			"7.0"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0"
+		"AbilityCooldown"				"7.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50 75 100 125"
+		"AbilityManaCost"				"75 100 125 150"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -54,12 +54,12 @@
 			"03" // needs to be same as AbilityChannelTime
 			{
 				"var_type"							"FIELD_INTEGER"
-				"duration"							"10"
+				"duration"							"7"
 			}
-			"04"
+			"04" // don't change!
 			{
 				"var_type"							"FIELD_INTEGER"
-				"break_distance"					"900"
+				"break_distance"					"800"
 			}
 		}
 
@@ -133,6 +133,29 @@
 						"Function"		"LifeDrainHealthTransfer"
 					}
 				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Life Drain talent - makes it Pure and allows it to work while full hp
+	//=================================================================================================================
+	"special_bonus_unique_dark_ranger_life_drain_pure"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

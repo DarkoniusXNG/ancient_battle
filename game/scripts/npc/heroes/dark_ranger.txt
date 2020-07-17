@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Dark Ranger; 19.12.2019;
+	// HERO: Dark Ranger; 16.7.2020;
 	// Notes: OK; Dark Arrows provide bonus dmg, Ranger aura provides bonus attack damage proportional to agility; Marksmanship provides bonus agility
 	// TO_DO:
 	//=================================================================================================================
@@ -30,37 +30,37 @@
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
 
-		"Ability10"			"special_bonus_movement_speed_20"		// lvl 10 talent; same as Drow Ranger
+		"Ability10"			"special_bonus_unique_drow_ranger_5"    // lvl 10 talent; same as Drow Ranger; Gust blind chance talent
 		"Ability11"			"special_bonus_all_stats_5"	            // lvl 10 talent; same as Drow Ranger
 
-		"Ability12"			"special_bonus_unique_drow_ranger_5"	// lvl 15 talent; same as Drow Ranger: Gust blind chance talent
-		"Ability13"			"special_bonus_agility_12"			    // lvl 15 talent; same as Drow Ranger
+		"Ability12"			"special_bonus_cast_range_200"          // lvl 15 talent; unique
+		"Ability13"			"special_bonus_agility_10"			    // lvl 15 talent; same as Drow Ranger
 
 		"Ability14"			"special_bonus_unique_drow_ranger_4"	// lvl 20 talent; same as Drow Ranger: Gust silence duration talent
 		"Ability15"			"special_bonus_attack_range_100"	    // lvl 20 talent; unique
 
-		"Ability16"			"special_bonus_corruption_5"	        // lvl 25 talent; unique
+		"Ability16"			"special_bonus_unique_dark_ranger_life_drain_pure" // lvl 25 talent; unique; Life Drain pure talent
 		"Ability17"			"special_bonus_evasion_50"				// lvl 25 talent; unique
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-3"									// like Drow Ranger
+		"ArmorPhysical"				"-3"									// Drow Ranger (0);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// like Drow Ranger
-		"AttackDamageMin"			"22"									// Drow Ranger (19);
-		"AttackDamageMax"			"32"									// Drow Ranger (30);
+		"AttackDamageMin"			"24"									// Drow Ranger (31);
+		"AttackDamageMax"			"34"									// Drow Ranger (38);
 		"AttackRate"				"1.7"									// Default
-		"AttackAnimationPoint"		"0.65"									// like Drow Ranger
+		"AttackAnimationPoint"		"0.65"									// Drow Ranger (0.55);
 		"AttackAcquisitionRange"	"800"									// like Drow Ranger
 		"AttackRange"				"550"									// Unique for Dark Ranger
 		"ProjectileSpeed"			"1250"									// like Drow Ranger
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// Drow Ranger (285);
+		"MovementSpeed"				"285"									// Drow Ranger (290);
 		"MovementTurnRate"			"0.7"									// like Drow Ranger
 		
 		// Vision
@@ -73,8 +73,8 @@
 		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (18);
 		"AttributeStrengthGain"			"1.9"								// original (1.9); Drow Ranger (1.9);
-		"AttributeBaseAgility"			"28"								// original (21); Drow Ranger (30);
-		"AttributeAgilityGain"			"1.5"								// original (1.5); Drow Ranger (2.8);
+		"AttributeBaseAgility"			"21"								// original (21); Drow Ranger (20);
+		"AttributeAgilityGain"			"1.5"								// original (1.5); Drow Ranger (2.9);
 		"AttributeBaseIntelligence"		"15"								// original (15); Drow Ranger (15);
 		"AttributeIntelligenceGain"		"2.6"								// original (2.6); Drow Ranger (1.4);
 

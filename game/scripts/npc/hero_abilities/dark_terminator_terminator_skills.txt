@@ -29,7 +29,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_proc_chance"                      "10 15 20 25"
+				"damage_proc_chance"                      "15 20 25 30"
 				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_proc_chance"
 				"CalculateSpellDamageTooltip"             "0"
 			}

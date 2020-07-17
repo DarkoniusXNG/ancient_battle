@@ -95,14 +95,18 @@ function modifier_custom_ranger_aura_effect:OnCreated()
 		self.agility = self.caster:GetAgility()
 	end
 
-	self.bonus_damage = math.floor((self.agility)*(self.percent)/100)
+	self.bonus_damage = math.ceil((self.agility)*(self.percent)/100)
 	
 	self:StartIntervalThink(1)
 end
 
 function modifier_custom_ranger_aura_effect:OnRefresh()
-	if not self.ability or self.ability:IsNull() then self.ability = self:GetAbility() end
-	if not self.caster or self.caster:IsNull() then self.caster = self:GetCaster() end
+	if not self.ability or self.ability:IsNull() then
+		self.ability = self:GetAbility()
+	end
+	if not self.caster or self.caster:IsNull() then
+		self.caster = self:GetCaster()
+	end
 	if self.ability then
 		self.percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
 	end
@@ -110,12 +114,8 @@ function modifier_custom_ranger_aura_effect:OnRefresh()
 		self.agility = self.caster:GetAgility()
 	end
 
-	self.bonus_damage = math.floor((self.agility)*(self.percent)/100)
+	self.bonus_damage = math.ceil((self.agility)*(self.percent)/100)
 end
-
---function modifier_custom_ranger_aura_effect:OnDestroy()
-
---end
 
 function modifier_custom_ranger_aura_effect:OnIntervalThink()
 	self:ForceRefresh()
@@ -124,6 +124,7 @@ end
 function modifier_custom_ranger_aura_effect:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+		MODIFIER_PROPERTY_TOOLTIP
 	}
 end
 
@@ -135,4 +136,8 @@ function modifier_custom_ranger_aura_effect:GetModifierPreAttack_BonusDamage()
 	end
 
 	return 0
+end
+
+function modifier_custom_ranger_aura_effect:OnTooltip()
+	return self.bonus_damage
 end
