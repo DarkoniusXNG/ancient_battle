@@ -85,7 +85,6 @@ end
 function modifier_custom_ranger_aura_effect:OnCreated()
 	self.ability = self:GetAbility()
 	self.caster = self:GetCaster()
-	self.bonus_damage = 0
 	self.percent = 0
 	self.agility = 0
 	if self.ability then
@@ -129,8 +128,16 @@ function modifier_custom_ranger_aura_effect:DeclareFunctions()
 end
 
 function modifier_custom_ranger_aura_effect:GetModifierPreAttack_BonusDamage()
+	if self:GetCaster():PassivesDisabled() then
+		return 0
+	end
+
 	if self.bonus_damage then
-		return self.bonus_damage
+		if self.bonus_damage ~= 0 then
+			return self.bonus_damage
+		else
+			self:ForceRefresh()
+		end
 	else
 		self:ForceRefresh()
 	end
@@ -139,5 +146,8 @@ function modifier_custom_ranger_aura_effect:GetModifierPreAttack_BonusDamage()
 end
 
 function modifier_custom_ranger_aura_effect:OnTooltip()
+	if self:GetCaster():PassivesDisabled() then
+		return 0
+	end
 	return self.bonus_damage
 end

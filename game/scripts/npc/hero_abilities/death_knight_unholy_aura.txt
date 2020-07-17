@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Unholy Aura (F) - New Spell, Passive, gives bonus move speed and hp regeneration
 	// Author: Darkonius
-	// Notes: OK; 26.10.2019;
+	// Notes: OK; 17.7.2020;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_unholy_aura"
@@ -15,30 +15,30 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
+
 		"precache"
 		{
 			"particle"			"particles/custom/doom_bringer_doom.vpcf"
 		}
-		
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // First 3 levels should be similar to Necronomicon Archer Aura
+			"01" // old Necronomicon Archer Aura (5/7/9%); Degen Aura (10/18/26/34%); old Empowering Haste (4/6/8/10%); original (10/20/30%);
 			{
-				"var_type"					"FIELD_INTEGER"
-				"aura_move_speed_bonus"		"5 7 9 11"
+				"var_type"                                "FIELD_INTEGER"
+				"aura_move_speed_bonus"                   "5 7 9 11"
 			}
-			"02" // 3rd level should be similar to Satyr Tormenter Unholy Aura
+			"02" // Satyr Tormenter Unholy Aura (5); Headdress (2); original (0.5/1/1.5);
 			{
-				"var_type"					"FIELD_FLOAT"
-				"aura_health_regen_bonus"	"1.5 3.5 5.5 7.5"
+				"var_type"                                "FIELD_FLOAT"
+				"aura_health_regen_bonus"                 "2.0 4.0 6.0 8.0"
 			}
 			"03"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"aura_radius"				"1200"
+				"var_type"                                "FIELD_INTEGER"
+				"aura_radius"                             "1200"
 			}
 		}
 	}

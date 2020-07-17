@@ -25,7 +25,15 @@ function DeathCoilProjectileHit(event)
 	local damage_type = ability:GetAbilityDamageType()
 	local damage_to_enemies = ability:GetLevelSpecialValueFor("target_damage", ability_level)
 	local heal_amount = ability:GetLevelSpecialValueFor("heal_amount", ability_level)
-	
+
+	-- Talent that increases heal amount
+	local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_death_coil_heal")
+	if talent then
+		if talent:GetLevel() > 0 then
+			heal_amount = heal_amount + talent:GetSpecialValueFor("value")
+		end
+	end
+
 	-- Hit Sound
 	target:EmitSound("Hero_Abaddon.DeathCoil.Target")
 	
@@ -41,7 +49,7 @@ function DeathCoilProjectileHit(event)
 			ApplyDamage(damage_table)
 		end
 	else
-		target:Heal(heal_amount, caster)
+		target:Heal(heal_amount, ability)
 		SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, target, heal_amount, nil)
 	end
 end

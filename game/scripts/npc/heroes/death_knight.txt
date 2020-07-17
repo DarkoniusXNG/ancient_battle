@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Death Knight; 1.11.2019;
+	// HERO: Death Knight; 17.7.2020;
 	// Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
 	// TO_DO: 
 	//=================================================================================================================
@@ -18,38 +18,38 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"
 		"Ability1"				"death_knight_death_coil"				// Q (4 levels)
-		"Ability2"				"death_knight_death_pact"				// W, modified (4 levels)
+		"Ability2"				"death_knight_death_pact"				// W (4 levels)
 		"Ability3"				"death_knight_death_pit"				// E (4 levels)
 		"Ability4"				"death_knight_unholy_aura"				// T (4 levels)
 		"Ability5"				"death_knight_chilling_touch"			// F, Secondary Ultimate (3 levels)
-		"Ability6"				"death_knight_resurrection"				// R, Primary Ultimate(1 level)
+		"Ability6"				"death_knight_resurrection"				// R, Primary Ultimate (1 level)
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_mp_regen_4"			    // lvl 10 talent; unique
-		"Ability11"				"special_bonus_strength_8"              // lvl 10 talent; unique
+		"Ability10"				"special_bonus_movement_speed_15"	    // lvl 10 talent; same as Abaddon
+		"Ability11"				"special_bonus_strength_8"              // lvl 10 talent; same as Abaddon
 
-		"Ability12"				"special_bonus_movement_speed_20"		// lvl 15 talent; unique
-		"Ability13"				"special_bonus_armor_8"					// lvl 15 talent; same as Abaddon
+		"Ability12"				"special_bonus_unique_death_knight_death_pit_heal_reduction" // lvl 15 talent; unique; Death Pit heal reduction increase talent;
+		"Ability13"				"special_bonus_armor_6"					// lvl 15 talent; same as Abaddon
 
-		"Ability14"				"special_bonus_cooldown_reduction_20"	// lvl 20 talent; same as Abaddon
-		"Ability15"				"special_bonus_attack_damage_90"		// lvl 20 talent; same as Abaddon
+		"Ability14"				"special_bonus_cooldown_reduction_20"	// lvl 20 talent; Abaddon (+15%);
+		"Ability15"				"special_bonus_unique_death_knight_death_pact_increase" // lvl 20 talent; unique; Death Pact hp and dmg gain increase talent;
 
-		"Ability16"				"special_bonus_hp_800"                  // lvl 25 talent; unique
+		"Ability16"				"special_bonus_unique_death_knight_death_coil_heal" // lvl 25 talent; unique; Death Coil heal increase talent;
 		"Ability17"				"special_bonus_attack_speed_250"		// lvl 25 talent; unique
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-1"									// like Abaddon
+		"ArmorPhysical"				"0"									    // Abaddon (-1); original (1);
 		"MagicalResistance"			"25"									// Default
 		
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"32"									// like Abaddon
-		"AttackDamageMax"			"42" 									// like Abaddon
-		"AttackRate"				"1.7"									// Default
+		"AttackDamageMin"			"30"									// Abaddon (28);
+		"AttackDamageMax"			"40" 									// Abaddon (38);
+		"AttackRate"				"1.7"									// Default; original (1.88);
 		"AttackAnimationPoint"		"0.56"									// like Abaddon
 		"AttackRange"				"150"									// like Abaddon
 		"AttackAcquisitionRange"	"600"									// like Abaddon
@@ -67,18 +67,18 @@
 		// Attributes
 		//----------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"23"								// Abaddon (23); original (23)
+		"AttributeBaseStrength"			"23"								// Abaddon (23); original (23);
 		"AttributeStrengthGain"			"2.5"								// Abaddon (3.0); original (2.7);
 		"AttributeBaseAgility"			"12"								// Abaddon (23); original (12);
 		"AttributeAgilityGain"			"1.5"								// Abaddon (1.5); original (1.5);
-		"AttributeBaseIntelligence"		"21"								// Abaddon (21); original (17);
+		"AttributeBaseIntelligence"		"18"								// Abaddon (18); original (17);
 		"AttributeIntelligenceGain"		"2.0"								// Abaddon (2.0); original (1.8);
 		
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealthRegen"				"0.0"								// Abaddon (0);
-		"StatusHealth"					"150"								// Abaddon (200);
-		"StatusMana"					"0"									// Abaddon (75);
-		"StatusManaRegen"				"0.0"								// like Abaddon
+		"StatusHealthRegen"				"0.0"								// Abaddon (0.5); original (-1.15/-0.3 on Blight);
+		"StatusHealth"					"150"								// Abaddon (200); original (215);
+		"StatusMana"					"50"								// Abaddon (75); original (51);
+		"StatusManaRegen"				"0.0"								// Abaddon (0); original (0.01);
 	}
 }

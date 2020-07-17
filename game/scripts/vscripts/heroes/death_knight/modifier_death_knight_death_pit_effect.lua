@@ -16,14 +16,23 @@ end
 
 function modifier_death_knight_death_pit_effect:OnCreated()
 	local ability = self:GetAbility()
-	
+
 	self.move_speed_slow = ability:GetSpecialValueFor("move_speed_slow")
 	self.heal_reduction = ability:GetSpecialValueFor("heal_reduction")
 	self.bonus_lifesteal = ability:GetSpecialValueFor("bonus_lifesteal")
-	
+
 	if IsServer() then
 		local parent = self:GetParent()
-		
+		local caster = ability:GetCaster() -- modifier:GetCaster() in this case will probably return a thinker and not a real caster of the spell
+
+		-- Talent that increases healing reduction
+		local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_death_pit_heal_reduction")
+		if talent then
+			if talent:GetLevel() > 0 then
+				self.heal_reduction = ability:GetSpecialValueFor("heal_reduction") + talent:GetSpecialValueFor("value")
+			end
+		end
+
 		-- Sound on unit that is affected
 		parent:EmitSound("Hero_AbyssalUnderlord.Pit.TargetHero")
 	end

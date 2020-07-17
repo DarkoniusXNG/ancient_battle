@@ -61,23 +61,25 @@ function modifier_custom_death_pact:OnCreated(event)
 		self:SetStackCount(event.stacks)
 	end
 
-	local healthPct = ability:GetSpecialValueFor( "health_gain_pct" ) * 0.01
-	local damagePct = ability:GetSpecialValueFor( "damage_gain_pct" ) * 0.01
+	local healthPct = ability:GetSpecialValueFor("health_gain_pct") 
+	local damagePct = ability:GetSpecialValueFor("damage_gain_pct")
+	
+	if IsServer() then
+		-- Talent that increases hp and dmg gain
+		local talent = parent:FindAbilityByName("special_bonus_unique_death_knight_death_pact_increase")
+		if talent then
+			if talent:GetLevel() > 0 then
+				healthPct = healthPct + talent:GetSpecialValueFor("value")
+				damagePct = damagePct + talent:GetSpecialValueFor("value2")
+			end
+		end
+	end
 
 	-- retrieve the stack count
 	local targetHealth = self:GetStackCount()
 
-	-- make sure the resulting buffs don't exceed the caps
-	self.health = targetHealth * healthPct
-	self.damage = targetHealth * damagePct
-
-	if healthMax then
-		self.health = math.min(healthMax, self.health)
-	end
-
-	if damageMax then
-		self.damage = math.min(damageMax, self.health)
-	end
+	self.health = targetHealth * healthPct * 0.01
+	self.damage = targetHealth * damagePct * 0.01
 
 	if IsServer() then
 		-- apply the new health and such
@@ -102,23 +104,25 @@ function modifier_custom_death_pact:OnRefresh(event)
 		self:SetStackCount(event.stacks)
 	end
 
-	local healthPct = ability:GetSpecialValueFor( "health_gain_pct" ) * 0.01
-	local damagePct = ability:GetSpecialValueFor( "damage_gain_pct" ) * 0.01
+	local healthPct = ability:GetSpecialValueFor("health_gain_pct")
+	local damagePct = ability:GetSpecialValueFor("damage_gain_pct")
+
+	if IsServer() then
+		-- Talent that increases hp and dmg gain
+		local talent = parent:FindAbilityByName("special_bonus_unique_death_knight_death_pact_increase")
+		if talent then
+			if talent:GetLevel() > 0 then
+				healthPct = healthPct + talent:GetSpecialValueFor("value")
+				damagePct = damagePct + talent:GetSpecialValueFor("value2")
+			end
+		end
+	end
 
 	-- retrieve the stack count
 	local targetHealth = self:GetStackCount()
 
-	-- make sure the resulting buffs don't exceed the caps
-	self.health = targetHealth * healthPct
-	self.damage = targetHealth * damagePct
-
-	if healthMax then
-		self.health = math.min(healthMax, self.health)
-	end
-
-	if damageMax then
-		self.damage = math.min(damageMax, self.health)
-	end
+	self.health = targetHealth * healthPct * 0.01
+	self.damage = targetHealth * damagePct * 0.01
 
 	if IsServer() then
 		-- apply the new health and such

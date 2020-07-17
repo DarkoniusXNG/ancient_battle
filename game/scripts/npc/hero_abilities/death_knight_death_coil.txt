@@ -4,7 +4,7 @@
 	// Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 13.10.2018; Can't cast on himself; Projectile is slower than in DotA;
+	// Notes: OK; 17.7.2020; Can't cast on himself;
 	// TO_DO: 
 	//=================================================================================================================
 	"death_knight_death_coil"
@@ -18,45 +18,43 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"800" // Myst Coil (575); original (800);
+		"AbilityCastPoint"				"0.3" // Myst Coil (0.25);
 		"CastFilterRejectCaster" 		"1"
-		
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"4.5"
+		"AbilityCooldown"				"5.5" // Myst Coil (5.5); original (6);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"
+		"AbilityManaCost"				"50" // Myst Coil (50); original (75);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // Myst Coil (75/100/125/150); original (0);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"self_damage"			"75 100 125 150"
 			}
-			
-			"02"
+			"02" // Myst Coil (120/165/210/255); original (100/200/300);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"target_damage"			"150 200 250 300"
 			}
-			
-			"03"
+			"03" // Myst Coil (120/165/210/255); original (200/400/600);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"heal_amount"			"150 200 250 300"
+				"heal_amount"			"120 165 210 255"
+				"LinkedSpecialBonus"    "special_bonus_unique_death_knight_death_coil_heal"
 			}
-			
-			"04" // dota: 1600
+			"04" // Myst Coil (1300); original (?);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"projectile_speed"		"950"
@@ -84,8 +82,8 @@
 			
 			"RunScript"
 			{
-				"ScriptFile"	"heroes/death_knight/death_coil.lua"
-				"Function"		"DeathCoilStart"
+				"ScriptFile"            "heroes/death_knight/death_coil.lua"
+				"Function"              "DeathCoilStart"
 			}
 		}
 		
@@ -97,6 +95,29 @@
 			{
 				"ScriptFile"	"heroes/death_knight/death_coil.lua"
 				"Function"		"DeathCoilProjectileHit"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Death Coil talent - increases heal amount
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_death_coil_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "250"
 			}
 		}
 	}

@@ -47,7 +47,7 @@ function modifier_death_knight_death_pit_thinker:OnCreated()
 
 		local dummy = CreateUnitByName("npc_dota_custom_dummy_unit", location, true, caster, caster, caster:GetTeamNumber())
 		
-		-- Sound on dummy (thinker) that represents Acid Spray itself
+		-- Sound on dummy (thinker) that represents Death Pit itself
 		dummy:EmitSound("Hero_AbyssalUnderlord.PitOfMalice")
 		dummy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
 
@@ -85,6 +85,7 @@ function modifier_death_knight_death_pit_thinker:OnIntervalThink()
 	end
 end
 
+--[[
 function modifier_death_knight_death_pit_thinker:OnDestroy()
 	if IsServer() then
 		if self.particle then
@@ -93,3 +94,4 @@ function modifier_death_knight_death_pit_thinker:OnDestroy()
 		end
 	end
 end
+]]
