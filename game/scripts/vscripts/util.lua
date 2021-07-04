@@ -100,15 +100,6 @@ function SwapWearable(unit, target_model, new_model)
     end
 end
 
--- This function checks if a given unit is Roshan, returns boolean value;
-function CDOTA_BaseNPC:IsRoshan()
-	if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
-		return true
-	end
-	
-	return false
-end
-
 -- This function checks if this entity is a fountain or not; returns boolean value;
 function CBaseEntity:IsFountain()
 	if self:GetName() == "ent_dota_fountain_bad" or self:GetName() == "ent_dota_fountain_good" then
@@ -116,19 +107,6 @@ function CBaseEntity:IsFountain()
 	end
 	
 	return false
-end
-
-function CDOTA_BaseNPC:GetValueChangedByStatusResistance(value)
-	if self and value then
-		local reduction = self:GetStatusResistance()
-
-		-- Maximum (Positive Status Resistance)
-		if reduction >= 1 then
-			return value*0.01
-		end
-		-- It should work with Negative Status Resistance
-		return value*(1-reduction)
-	end
 end
 
 -- This function checks if a given unit is Roshan, returns boolean value;

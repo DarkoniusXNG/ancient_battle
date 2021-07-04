@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Acid Bomb (W) - New Spell, Tracking Projectile, stuns, reduces armor and deals damage over time
 	// Author: Darkonius
-	// Notes: OK; 4.10.2019;
+	// Notes: OK; 2021;
 	// Linkens: Blocks;
 	// TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important.
 	//=================================================================================================================
@@ -23,16 +23,16 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"700"									// like Paralyzing Cask and original Acid Bomb
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.3"                                   // Unstable Concoction (0.2); Paralyzing Cask (0.35);
 		"AbilityCastAnimation"          "ACT_DOTA_ALCHEMIST_CONCOCTION_THROW"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0 18.0 16.0 14.0"					// like Paralyzing Cask
+		"AbilityCooldown"				"20 18 16 14"					        // like Paralyzing Cask
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110"									// like Paralyzing Cask level 1
+		"AbilityManaCost"				"100 110 120 130"					    // unique
 		"AbilityProcsMagicStick"		"1"
 		
 		"AOERadius"                     "%radius"
@@ -68,7 +68,7 @@
 				"var_type"          	"FIELD_INTEGER"
 				"damage_per_second" 	"20 30 40 50"
 			}
-			"05" // Unstable Concoction (200); original Acid Bomb (200); Maledict (180)
+			"05" // Unstable Concoction (250); original Acid Bomb (200); Maledict (180)
 			{
 				"var_type"          	"FIELD_INTEGER"
 				"radius"            	"250"

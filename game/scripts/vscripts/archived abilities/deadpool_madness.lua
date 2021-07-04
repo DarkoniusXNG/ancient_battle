@@ -43,7 +43,7 @@ function FindNewUnitToAttack(caster, ability)
 	local caster_position = caster:GetAbsOrigin()
 	local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE
 	local closest_distance = 20000
-	local target = nil
+	local target
 	
 	-- Find all units on the map that are attackable (enemy or ally of the caster)
 	local units = FindUnitsInRadius(caster_team, caster_position, nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, flags, 0, false)

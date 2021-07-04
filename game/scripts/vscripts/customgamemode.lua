@@ -3,6 +3,7 @@ require('libraries/notifications')
 require('libraries/selection')
 require('libraries/buildings')
 require('libraries/custom_illusions')
+require('libraries/basenpc')
 
 require('settings')
 require('events')

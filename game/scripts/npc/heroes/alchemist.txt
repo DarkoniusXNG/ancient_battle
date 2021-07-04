@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Alchemist; 12.7.2020;
+	// HERO: Alchemist; 2021;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_alchemist"
@@ -9,18 +9,20 @@
 		"override_hero"			"npc_dota_hero_alchemist"
 		"Team"					"Good"
 		"BotImplemented"		"0"
-		"Role"					"Carry,Support,Durable,Disabler,Initiator,Nuker"
-		"Rolelevels"			"2,2,2,2,2,2"
+		"Role"					"Carry,Support,Durable,Disabler,Initiator"
+		"Rolelevels"			"2,2,2,2,2"
 		"Complexity"			"2"
 		
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"			"6"
+		"AbilityLayout"			"5"
+		"AbilityTalentStart"    "10"
 		"Ability1"				"alchemist_custom_healing_spray"		// Q (4 levels)
 		"Ability2"				"alchemist_custom_acid_bomb"			// W (4 levels)
-		"Ability3"				"alchemist_custom_philosophers_stone"	// E (4 levels)
-		"Ability4"				"alchemist_goblins_greed"				// T, DOTA_VERSION (4 levels)
-		"Ability5"				"alchemist_custom_transmute"			// F, Secondary Ultimate (1 level)
+		//"Ability3"				"alchemist_custom_philosophers_stone"	// E (4 levels)
+		"Ability3"				"alchemist_goblins_greed"				// E, DOTA_VERSION (4 levels)
+		"Ability4"				"generic_hidden"
+		"Ability5"				"alchemist_custom_transmute"			// F, Shard ability
 		"Ability6"				"alchemist_custom_chemical_rage"		// R, Primary Ultimate (3 levels)
 		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
