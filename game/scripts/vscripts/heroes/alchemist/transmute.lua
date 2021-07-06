@@ -72,6 +72,9 @@ function alchemist_custom_transmute:OnSpellStart()
 
   if target:IsHero() or target:IsConsideredHero() then
     -- Target is a real hero, illusion of a hero or a hero creep.
+    -- Take status resistance in mind
+    stun_hero_duration = target:GetValueChangedByStatusResistance(stun_hero_duration)
+    -- Apply spell effect
     target:AddNewModifier(caster, self, "modifier_custom_transmuted_hero", {duration = stun_hero_duration})
   else
     local min_gold_bounty = target:GetMinimumGoldBounty()
