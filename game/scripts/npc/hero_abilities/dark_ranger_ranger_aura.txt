@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Dark Ranger: Ranger Aura (E) - Percentage of Dark Ranger's agility is given as bonus damage to ranged allies in radius
 	// Author: Darkonius;
-	// Notes: OK; 19.12.2019; Illusions don't bestow the aura;
-	// TO_DO:
+	// Notes: OK; 2021; Illusions don't bestow the aura;
+	// TO_DO: special_bonus_unique_dark_ranger_2; special_bonus_unique_dark_ranger_3;
 	//================================================================================================================= 
 	"dark_ranger_ranger_aura"
 	{
@@ -21,13 +21,66 @@
 		{
 			"01"
 			{
-				"var_type"                                "FIELD_FLOAT"
+				"var_type"                                "FIELD_INTEGER"
 				"agility_to_ranged_damage"                "10 20 30 40"
+				"LinkedSpecialBonus"                      "special_bonus_unique_dark_ranger_2"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"radius"                                  "1200"
+			}
+			"03"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_attack_range"                      "0"
+				"LinkedSpecialBonus"                      "special_bonus_unique_dark_ranger_3"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Ranger Aura talent - increases agility to ranged damage percentage
+	//=================================================================================================================
+	"special_bonus_unique_dark_ranger_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "10"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Ranger Aura talent - increases attack range of all allied units
+	//=================================================================================================================
+	"special_bonus_unique_dark_ranger_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "100"
 			}
 		}
 	}

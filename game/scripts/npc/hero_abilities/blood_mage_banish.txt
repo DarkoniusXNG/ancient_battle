@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Banish - like Pugna Decrepify
 	// Author: Darkonius
-	// Notes: OK; 14.7.2020; Original cooldown was 0;
+	// Notes: OK; 2021; Original cooldown was 0;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -57,13 +57,13 @@
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"hero_duration"                           "3.5"
-				"LinkedSpecialBonus"                      "special_bonus_unique_pugna_5"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_1"
 			}
 			"05" // original: 12/15/18
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"creep_duration"                          "5.0"
-				"LinkedSpecialBonus"                      "special_bonus_unique_pugna_5"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_1"
 			}
 			"06" // original: 66%
 			{
@@ -133,6 +133,29 @@
 					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}			
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Banish bonus duration talent
+	//=================================================================================================================
+	"special_bonus_unique_blood_mage_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"value"                                   "1.5"
 			}
 		}
 	}

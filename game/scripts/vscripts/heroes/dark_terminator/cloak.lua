@@ -55,7 +55,7 @@ function modifier_dark_terminator_cloak:GetModifierMoveSpeedBonus_Percentage()
 end
 
 function modifier_dark_terminator_cloak:GetModifierInvisibilityLevel()
-	return 1
+	return return math.min(1, self:GetElapsedTime() / self:GetAbility():GetSpecialValueFor("fade_time"))
 end
 
 function modifier_dark_terminator_cloak:OnAbilityExecuted(event)

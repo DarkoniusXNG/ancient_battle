@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Blademaster: Blade Storm (Q) - Datadriven, similar to Juggernaut Blade Fury
+	// Blademaster: Blade Storm (Q) - similar to Juggernaut Blade Fury
 	// Author: Darkonius
-	// Notes: OK; 14.7.2020; Deals 25% damage to buildings. Can attack normally during Blade Storm.
+	// Notes: OK; 2021; Deals 25% damage to buildings. Can attack normally during Blade Storm.
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_blade_storm"
@@ -29,8 +29,8 @@
 			"01" // same or better than Juggernaut
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "85 110 135 160"
-				"LinkedSpecialBonus"                      "special_bonus_unique_juggernaut_3"
+				"damage_per_second"                       "90 115 140 165"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blademaster_2"
 			}
 			"02" // not in tooltip
 			{
@@ -41,6 +41,7 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"radius"                                  "250"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blademaster_1"
 			}
 			"04" // better than Juggernaut
 			{
@@ -52,6 +53,52 @@
 				"var_type"                                "FIELD_INTEGER"
 				"damage_to_buildings"                     "25"
 				"CalculateSpellDamageTooltip"             "0"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Blade Storm bonus radius talent
+	//=================================================================================================================
+	"special_bonus_unique_blademaster_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "75"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Blade Storm bonus damage talent
+	//=================================================================================================================
+	"special_bonus_unique_blademaster_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "165"
 			}
 		}
 	}

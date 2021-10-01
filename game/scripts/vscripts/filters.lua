@@ -607,7 +607,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Armor of the unit
 		local armor = unit:GetPhysicalArmorValue(false)
 		-- Physical damage is reduced by armor
-		local damage_armor_reduction = 1-(armor*0.052/(0.9+0.048*(math.abs(armor))))
+		local damage_armor_reduction = 1-(armor*0.06/(1+0.6*(math.abs(armor))))
 		-- In case the unit has infinite armor for some reason (to prevent division by zero)
 		if damage_armor_reduction == 0 then
 			damage_armor_reduction = 0.01

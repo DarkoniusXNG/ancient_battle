@@ -47,7 +47,7 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"initial_damage"                          "70 130 190 250"
-				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_flame_strike_damage"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_2"
 			}
 			"03" // initial_damage + damage_per_second = 100/175/250/325
 			{
@@ -80,9 +80,9 @@
 	}
 
 	//=================================================================================================================
-	// Flame Strike talent - increases damage
+	// Flame Strike bonus damage talent
 	//=================================================================================================================
-	"special_bonus_unique_blood_mage_flame_strike_damage"
+	"special_bonus_unique_blood_mage_2"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------

@@ -16,13 +16,27 @@ function dark_terminator_terminate:GetCastPoint()
 end
 
 function dark_terminator_terminate:OnAbilityPhaseStart(keys)
-    local caster = self:GetCaster()
-    caster:EmitSound("Ability.AssassinateLoad")
-    -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
-    self.storedTarget = {}
-	self.storedTarget[1] = self:GetCursorTarget()
-	self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + 2})
-    return true
+  local caster = self:GetCaster()
+  local target = self:GetCursorTarget()
+
+  -- Sound
+  caster:EmitSound("Ability.AssassinateLoad")
+
+  -- Get locations
+  local caster_origin = caster:GetAbsOrigin()
+  local target_origin = target:GetAbsOrigin()
+
+  -- Calculate travel time of the projectile
+  local distance = (target_origin - caster_origin):Length2D()
+  local speed = self:GetSpecialValueFor("projectile_speed")
+  local travel_time = distance / speed
+
+  -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
+  self.storedTarget = {}
+  self.storedTarget[1] = target
+  self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + travel_time})
+
+  return true
 end
 
 function dark_terminator_terminate:OnAbilityPhaseInterrupted()
@@ -59,7 +73,7 @@ function dark_terminator_terminate:OnSpellStart(keys)
             bProvidesVision = true,
             vSpawnOrigin = caster:GetAbsOrigin(),
             iMoveSpeed = self:GetSpecialValueFor("projectile_speed"), --
-            iVisionRadius = 100,--
+            iVisionRadius = 250,--
             iVisionTeamNumber = caster:GetTeamNumber(),
             iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
         }

@@ -6,7 +6,7 @@
 	// Linkens: Doesn't Block (INTENTIONAL)
 	// Notes: OK; 18.9.2019; Bonus damage can damage buildings;
 	// Notes: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
-	// TO_DO: Rework into ability_lua
+	// TO_DO: Rework into ability_lua; special_bonus_unique_dark_ranger_1
 	//================================================================================================================= 
 	"dark_ranger_dark_arrows"
 	{
@@ -19,9 +19,9 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
-		"AbilityCastRange"				"600"
+		"AbilityCastRange"				"550"
 		"AbilityManaCost"				"20"
-		"AbilityDamage"					"10 20 30 40"
+		"AbilityDamage"					"5 10 15 20"
 		"AbilityCooldown"				"0.0"
 	
 		"precache"
@@ -88,6 +88,12 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"creep_slow_duration"		"3"
+			}
+			"10"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dark_arrow_damage"		    "5 10 15 20"
+				"LinkedSpecialBonus"        "special_bonus_unique_dark_ranger_1"
 			}
 		}
 	
@@ -340,6 +346,29 @@
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Dark Arrows talent - increases bonus damage
+	//=================================================================================================================
+	"special_bonus_unique_dark_ranger_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "15"
 			}
 		}
 	}

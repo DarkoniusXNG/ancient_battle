@@ -44,7 +44,7 @@ function LifeDrainHealthTransfer(event)
 	
 	-- Talent that changes damage type and allows full hp draining
 	local has_talent = false
-	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_life_drain_pure")
+	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
 	if talent then
 		if talent:GetLevel() > 0 then
 			has_talent = true
@@ -96,12 +96,10 @@ function LifeDrainHealthTransfer(event)
 		if has_talent then
 			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_PURE})
 			caster:Heal(HP_gain, caster)
-		else
-			if caster:GetHealthDeficit() > 0 then
-				-- Health Transfer from the Enemy to the caster
-				ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_MAGICAL})
-				caster:Heal(HP_gain, caster)
-			end
+		elseif caster:GetHealthDeficit() > 0 then
+			-- Health Transfer from the Enemy to the caster
+			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_MAGICAL})
+			caster:Heal(HP_gain, caster)
 		end
 	end
 end

@@ -47,6 +47,8 @@ function DrunkenHazeStart(event)
 	end
 end
 
+---------------------------------------------------------------------------------------------------
+
 if modifier_drunken_haze_fizzle == nil then
 	modifier_drunken_haze_fizzle = class({})
 end

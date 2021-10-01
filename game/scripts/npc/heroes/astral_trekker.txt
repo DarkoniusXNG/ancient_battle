@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Astral Trekker; 13.7.2020;
-	// TO_DO:
+	// HERO: Astral Trekker; 2021;
+	// TO_DO: special_bonus_unique_astral_trekker_2
 	//=================================================================================================================
 	"npc_dota_hero_astral_trekker"
 	{
@@ -17,6 +17,7 @@
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"
+		"AbilityTalentStart"    "10"
 		"Ability1"				"astral_trekker_entrapment"					// Q (4 levels)
 		"Ability2"				"astral_trekker_astral_stomp"				// W (4 levels)
 		"Ability3"				"astral_trekker_pulverize"					// E, passive (4 levels)
@@ -30,14 +31,14 @@
 		"Ability10"				"special_bonus_night_vision_600"			// lvl 10 talent; Spirit Breaker (+500)
 		"Ability11"				"special_bonus_armor_4"						// lvl 10 talent; same as Spirit Breaker
 
-		"Ability12"				"special_bonus_attack_damage_30"			// lvl 15 talent; like Spirit Breaker
-		"Ability13"				"special_bonus_hp_regen_12"					// lvl 15 talent; Spirit Breaker (+10)
+		"Ability12"				"special_bonus_attack_damage_40"			// lvl 15 talent; Spirit Breaker (+40)
+		"Ability13"				"special_bonus_hp_regen_12"					// lvl 15 talent; unique
 
 		"Ability14"				"special_bonus_hp_650"                      // lvl 20 talent; unique
 		"Ability15"				"special_bonus_attack_speed_100"			// lvl 20 talent; unique
 
-		"Ability16"				"special_bonus_unique_astral_trekker_astral_charge_damage" // lvl 25 talent; unique
-		"Ability17"				"special_bonus_cooldown_reduction_20"		// lvl 25 talent; unique
+		"Ability16"				"special_bonus_unique_astral_trekker_1"     // lvl 25 talent; Astral Charge damage per distance traveled talent
+		"Ability17"				"special_bonus_unique_astral_trekker_2"		// lvl 25 talent; unique
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -47,8 +48,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"35"									// Tiny (46); Spirit Breaker (31);
-		"AttackDamageMax"			"45"									// Tiny (52); Spirit Breaker (41);
+		"AttackDamageMin"			"35"									// Tiny (31); Spirit Breaker (31);
+		"AttackDamageMax"			"45"									// Tiny (37); Spirit Breaker (41);
 		"AttackRate"				"1.7"									// Tiny (1.7); Spirit Breaker (1.9);
 		"AttackAnimationPoint"		"0.6"									// like Spirit Breaker
 		"AttackAcquisitionRange"	"600"									// Default
@@ -57,24 +58,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"29"									// Tiny (28); Spirit Breaker (29);
-		"AttributeStrengthGain"		"3.1"									// Tiny (4.1); Spirit Breaker (3.1);
+		"AttributeBaseStrength"		"30"									// Tiny (30); Spirit Breaker (27);
+		"AttributeStrengthGain"		"3.0"									// Tiny (4.0); Spirit Breaker (3.0);
 		"AttributeBaseAgility"		"10"									// Tiny (0); Spirit Breaker (17);
 		"AttributeAgilityGain"		"1.0"									// Tiny (0); Spirit Breaker (1.7);
-		"AttributeBaseIntelligence"	"17"									// Tiny (17); Spirit Breaker (14);
-		"AttributeIntelligenceGain"	"2.2"									// Tiny (2.2); Spirit Breaker (1.8);
+		"AttributeBaseIntelligence"	"14"									// Tiny (17); Spirit Breaker (14);
+		"AttributeIntelligenceGain"	"1.8"									// Tiny (2.2); Spirit Breaker (1.8);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.0"									// Tiny (0); Spirit Breaker (1.25);
+		"StatusHealthRegen"			"0.25"									// Tiny (1.5); Spirit Breaker (1.25);
 		"StatusHealth"				"200"									// like Spirit Breaker
 		"StatusMana"				"75"									// like Tiny
 		"StatusManaRegen"			"0.0"									// like Tiny
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"									// Tiny (290); Spirit Breaker (290);
-		"MovementTurnRate"			"0.5"									// like Spirit Breaker
+		"MovementSpeed"				"290"									// Tiny (295); Spirit Breaker (290);
+		"MovementTurnRate"			"0.6"									// like Spirit Breaker
 
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------

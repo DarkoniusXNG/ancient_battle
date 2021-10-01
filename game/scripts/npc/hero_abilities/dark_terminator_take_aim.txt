@@ -20,30 +20,6 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_attack_range"                      "100 200 300 400"
-				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_take_aim"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Take Aim bonus attack range talent
-	//=================================================================================================================
-	"special_bonus_unique_dark_terminator_take_aim"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "125"
 			}
 		}
 	}

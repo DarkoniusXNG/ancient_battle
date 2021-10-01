@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Hero: Blood Mage
-	// Notes: OK; 14.7.2020;
+	// Notes: OK; 2021;
 	//=================================================================================================================
 	"npc_dota_hero_blood_mage"
 	{
@@ -31,13 +31,13 @@
 		"Ability11"				"special_bonus_attack_damage_45"
 
 		"Ability12"				"special_bonus_cast_range_125"
-		"Ability13"				"special_bonus_unique_pugna_5"      // Banish duration talent
+		"Ability13"				"special_bonus_unique_blood_mage_1"     // Banish duration talent
 
 		"Ability14"				"special_bonus_hp_regen_40"
 		"Ability15"				"special_bonus_attack_speed_120"
 
 		"Ability16"				"special_bonus_magic_resistance_80"
-		"Ability17"				"special_bonus_unique_blood_mage_flame_strike_damage" // Flame Strike damage talent
+		"Ability17"				"special_bonus_unique_blood_mage_2"     // Flame Strike damage talent
 
 		"Ability18"				"generic_hidden"
 		"Ability19"				"generic_hidden"
@@ -46,6 +46,7 @@
 		"Ability22"				"generic_hidden"
 		"Ability23"				"generic_hidden"
 		"Ability24"				"generic_hidden"
+		"Ability25"             "generic_hidden"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -55,8 +56,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"27"							// Invoker (27); Pugna (19);
-		"AttackDamageMax"			"35" 							// Invoker (33); Pugna (27);
+		"AttackDamageMin"			"29"							// Invoker (29); Pugna (21);
+		"AttackDamageMax"			"35" 							// Invoker (35); Pugna (28);
 		"AttackRate"				"1.7"							// Invoker (1.7);
 		"AttackAnimationPoint"		"0.4"							// like Invoker
 		"AttackRange"				"600"							// like Invoker
@@ -66,7 +67,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"330"							// original (300); Invoker (280); Pugna (330);
+		"MovementSpeed"				"330"							// original (300); Invoker (275); Pugna (330);
 		"MovementTurnRate"			"0.5"							// like Invoker
 
 		// Vision
@@ -86,7 +87,7 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"							// Invoker (0); original (1.15);
+		"StatusHealthRegen"			"1.5"							// Invoker (0.25); original (1.15);
 		"StatusHealth"				"200"							// original (100); Invoker (200);
 		"StatusMana"				"0"								// original (0); Invoker (75);
 		"StatusManaRegen"			"0.5"							// Invoker (0.0); original (0.96); Pugna (0.5);

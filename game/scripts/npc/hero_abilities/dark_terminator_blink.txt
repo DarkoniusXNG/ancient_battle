@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Blink - global blink
 	// Author: Darkonius
-	// Notes: OK; 12.7.2020;
+	// Notes: OK; 2021;
 	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_blink"
@@ -21,7 +21,7 @@
 
 		"AbilityCooldown"                                 "60 50 40 30"
 
-		"AbilityManaCost"                                 "200 150 100 50"
+		"AbilityManaCost"                                 "75"
 		"AbilityProcsMagicStick"                          "1"
 
 		"precache"

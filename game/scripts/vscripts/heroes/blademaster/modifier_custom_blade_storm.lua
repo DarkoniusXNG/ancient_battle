@@ -73,10 +73,17 @@ function modifier_custom_blade_storm:OnIntervalThink()
 	
 	if IsServer then
 		-- Talent that increases damage:
-		local talent = parent:FindAbilityByName("special_bonus_unique_juggernaut_3")
+		local talent = parent:FindAbilityByName("special_bonus_unique_blademaster_2")
 		if talent then
 			if talent:GetLevel() > 0 then
 				damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
+			end
+		end
+		-- Talent that increases radius:
+		local talent_2 = parent:FindAbilityByName("special_bonus_unique_blademaster_1")
+		if talent_2 then
+			if talent_2:GetLevel() > 0 then
+				radius = radius + talent_2:GetSpecialValueFor("value")
 			end
 		end
 		local damage_per_tick = damage_per_second*think_interval
