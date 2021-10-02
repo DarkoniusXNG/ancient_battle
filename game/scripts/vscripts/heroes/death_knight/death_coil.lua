@@ -27,7 +27,7 @@ function DeathCoilProjectileHit(event)
 	local heal_amount = ability:GetLevelSpecialValueFor("heal_amount", ability_level)
 
 	-- Talent that increases heal amount
-	local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_death_coil_heal")
+	local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_1")
 	if talent then
 		if talent:GetLevel() > 0 then
 			heal_amount = heal_amount + talent:GetSpecialValueFor("value")

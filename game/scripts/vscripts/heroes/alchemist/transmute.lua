@@ -2,19 +2,19 @@ alchemist_custom_transmute = class({})
 
 LinkLuaModifier("modifier_custom_transmuted_hero", "heroes/alchemist/transmute.lua", LUA_MODIFIER_MOTION_NONE)
 
-function alchemist_custom_transmute:OnHeroCalculateStatBonus()
-  local caster = self:GetCaster()
+-- function alchemist_custom_transmute:OnHeroCalculateStatBonus()
+  -- local caster = self:GetCaster()
 
-  if caster:HasShardCustom() then
-    self:SetHidden(false)
-    if self:GetLevel() <= 0 then
-      self:SetLevel(1)
-    end
-  else
-    self:SetHidden(true)
-    --self:SetLevel(0)
-  end
-end
+  -- if caster:HasShardCustom() then
+    -- self:SetHidden(false)
+    -- if self:GetLevel() <= 0 then
+      -- self:SetLevel(1)
+    -- end
+  -- else
+    -- self:SetHidden(true)
+    -- --self:SetLevel(0)
+  -- end
+-- end
 
 function alchemist_custom_transmute:CastFilterResultTarget(target)
   local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
@@ -38,12 +38,13 @@ function alchemist_custom_transmute:GetCooldown(level)
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
+  local target = self:GetCursorTarget()
 
   if IsClient() then
     return base_cooldown
-  elseif self:GetCursorTarget() and (self:GetCursorTarget():IsHero() or self:GetCursorTarget():IsConsideredHero()) then
+  elseif target and (target:IsHero() or target:IsConsideredHero()) then
     return cooldown_heroes
-  elseif self:GetCursorTarget() then
+  elseif target then
     return cooldown_creeps
   else
     return base_cooldown

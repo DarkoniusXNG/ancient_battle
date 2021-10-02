@@ -26,12 +26,15 @@ function modifier_death_knight_death_pit_effect:OnCreated()
 		local caster = ability:GetCaster() -- modifier:GetCaster() in this case will probably return a thinker and not a real caster of the spell
 
 		-- Talent that increases healing reduction
-		local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_death_pit_heal_reduction")
+		local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_4")
 		if talent then
 			if talent:GetLevel() > 0 then
 				self.heal_reduction = ability:GetSpecialValueFor("heal_reduction") + talent:GetSpecialValueFor("value")
 			end
 		end
+		
+		-- Slow should be affected by status resistance
+		self.move_speed_slow = parent:GetValueChangedByStatusResistance(ability:GetSpecialValueFor("move_speed_slow"))
 
 		-- Sound on unit that is affected
 		parent:EmitSound("Hero_AbyssalUnderlord.Pit.TargetHero")
@@ -43,7 +46,11 @@ modifier_death_knight_death_pit_effect.OnRefresh = modifier_death_knight_death_p
 function modifier_death_knight_death_pit_effect:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-		MODIFIER_EVENT_ON_HEALTH_GAINED,
+		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
+		MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
+		--MODIFIER_EVENT_ON_HEALTH_GAINED,
 		MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
 
@@ -54,24 +61,24 @@ function modifier_death_knight_death_pit_effect:GetModifierMoveSpeedBonus_Percen
 	return self.move_speed_slow
 end
 
-function modifier_death_knight_death_pit_effect:OnHealthGained(event)
-	if IsServer() then
-		if event.unit == self:GetParent() and event.gain > 0 then
-			local affected_unit = event.unit or self:GetParent()
+-- function modifier_death_knight_death_pit_effect:OnHealthGained(event)
+	-- if IsServer() then
+		-- if event.unit == self:GetParent() and event.gain > 0 then
+			-- local affected_unit = event.unit or self:GetParent()
 
-			local heal_reduction = self.heal_reduction
-			local new_heal_percentage = 1 - heal_reduction/100
+			-- local heal_reduction = self.heal_reduction
+			-- local new_heal_percentage = 1 - heal_reduction/100
 
-			local original_health_gain = event.gain
-			local new_health_gain = original_health_gain*new_heal_percentage
+			-- local original_health_gain = event.gain
+			-- local new_health_gain = original_health_gain*new_heal_percentage
 
-			local new_HP = affected_unit:GetHealth() - original_health_gain + new_health_gain
-			new_HP = math.max(new_HP, 1)
+			-- local new_HP = affected_unit:GetHealth() - original_health_gain + new_health_gain
+			-- new_HP = math.max(new_HP, 1)
 
-			affected_unit:SetHealth(new_HP)
-		end
-	end
-end
+			-- affected_unit:SetHealth(new_HP)
+		-- end
+	-- end
+-- end
 
 function modifier_death_knight_death_pit_effect:OnTakeDamage(event)
 	if IsServer() then
@@ -107,4 +114,36 @@ function modifier_death_knight_death_pit_effect:OnTakeDamage(event)
 			ParticleManager:ReleaseParticleIndex(lifesteal_particle_index)
 		end
 	end
+end
+
+function modifier_death_knight_death_pit_effect:GetModifierHPRegenAmplify_Percentage()
+  if self.heal_reduction then
+    return 0 - math.abs(self.heal_reduction)
+  end
+
+  return 0
+end
+
+function modifier_death_knight_death_pit_effect:GetModifierHealAmplify_PercentageTarget()
+  if self.heal_reduction then
+    return 0 - math.abs(self.heal_reduction)
+  end
+
+  return 0
+end
+
+function modifier_death_knight_death_pit_effect:GetModifierLifestealRegenAmplify_Percentage()
+  if self.heal_reduction then
+    return 0 - math.abs(self.heal_reduction)
+  end
+
+  return 0
+end
+
+function modifier_death_knight_death_pit_effect:GetModifierSpellLifestealRegenAmplify_Percentage()
+  if self.heal_reduction then
+    return 0 - math.abs(self.heal_reduction)
+  end
+
+  return 0
 end

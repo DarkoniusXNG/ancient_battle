@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Death Pact (W) - bonus dmg and hp based on consumed creep current hp
 	// Author: Darkonius
-	// Notes: OK; 17.7.2020;
+	// Notes: OK; 2021;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pact"
@@ -49,28 +49,29 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"duration"                                "35"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_2"
 			}
 			"02" // dota (60/80/100%); original (100/200/300%);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"health_gain_pct"                         "40 50 60 70"
-				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_death_pact_increase"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_3"
 			}
 			"03" // dota (6/10/14%); original (0%);
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"damage_gain_pct"                         "4 5 6 7"
-				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_death_pact_increase"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_3"
 				"LinkedSpecialBonusField"                 "value2"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 		}
 	}
-
+	
 	//=================================================================================================================
-	// Death Pact talent - increases hp and damage gain
+	// Death Pact talent - increases duration
 	//=================================================================================================================
-	"special_bonus_unique_death_knight_death_pact_increase"
+	"special_bonus_unique_death_knight_2"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -85,7 +86,30 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "30"
+				"value"                                   "15"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Death Pact talent - increases hp and damage gain
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "50"
 			}
 			"02"
 			{

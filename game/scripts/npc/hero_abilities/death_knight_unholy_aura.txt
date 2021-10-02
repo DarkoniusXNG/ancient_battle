@@ -25,7 +25,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // old Necronomicon Archer Aura (5/7/9%); Degen Aura (10/18/26/34%); old Empowering Haste (4/6/8/10%); original (10/20/30%);
+			"01" // old Necronomicon Archer Aura (5/7/9%); old Empowering Haste (4/6/8/10%); original (10/20/30%);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"aura_move_speed_bonus"                   "5 7 9 11"

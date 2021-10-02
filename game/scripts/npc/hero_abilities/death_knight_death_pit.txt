@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Death Pit (E) - Creates a pit in which enemies are slowed, provide lifesteal when damaged and have reduced healing.
 	// Author: Darkonius
-	// Notes: OK; 17.7.2020;
+	// Notes: OK; 2021;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pit"
@@ -21,12 +21,12 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"750" // Pit of Malice (750);
+		"AbilityCastRange"				"675" // Pit of Malice (675);
 		"AbilityCastPoint"				"0.01"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"18 17 16 15" // Pit of Malice (18/17/16/15);
+		"AbilityCooldown"				"18 17 16 15" // Pit of Malice (21/19/17/15);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"heal_reduction"                          "10 15 20 25"
-				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_death_pit_heal_reduction"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_4"
 			}
 			"04"
 			{
@@ -77,7 +77,7 @@
 	//=================================================================================================================
 	// Death Pit talent - increases heal reduction
 	//=================================================================================================================
-	"special_bonus_unique_death_knight_death_pit_heal_reduction"
+	"special_bonus_unique_death_knight_4"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------

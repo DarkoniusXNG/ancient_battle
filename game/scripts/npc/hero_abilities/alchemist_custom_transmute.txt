@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
 	// Author: Darkonius
-	// Notes: OK; 2021; Shard ability
+	// Notes: OK; 2021;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -22,7 +22,7 @@
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
 
 		"MaxLevel"						"1"
-		//"RequiredLevel"        			"6"
+		"RequiredLevel"        			"6"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -65,12 +65,12 @@
 			"03"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"cooldown_heroes"           "70"
+				"cooldown_heroes"           "80"
 			}
 			"04"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"cooldown_creeps"           "45"
+				"cooldown_creeps"           "40"
 			}
 		}
 	}

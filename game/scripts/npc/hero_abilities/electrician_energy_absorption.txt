@@ -1,0 +1,137 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Electrician: Energy Absorption
+  //=================================================================================================================
+  "electrician_energy_absorption"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/electrician/electrician_energy_absorption.lua"
+    "AbilityTextureName"                                  "custom/electrician_energy_absorption"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
+    "AbilityCastRange"                                    "400"
+
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "15"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "75 100 125 150"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // original: 300
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400"
+      }
+      "02" // original (40/75/115/150 but pure);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "90 160 230 300"
+      }
+      "03" // original: 12/16/20/24
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_absorb_base"                                "16 28 40 52"
+      }
+      "04" // original: 8/10/12/14%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_absorb_percentage"                          "8 10 12 14"
+        "LinkedSpecialBonus"                              "special_bonus_electrician_energy_absorption_mana"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "speed_absorb_heroes"                             "10 15 20 25"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "speed_absorb_non_heroes"                         "5"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "7.0"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_mana_cap"                                  "300 400 500 600"
+      }
+    }
+
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"					"particles/units/heroes/hero_zuus/zuus_base_attack.vpcf"
+      "particle"					"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
+      "particle"					"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_msg.vpcf"
+      "soundfile"					"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+    }
+  }
+
+  //=================================================================================================================
+  // Electrician: Energy Absorption bonus mana absorbed
+  //=================================================================================================================
+  "special_bonus_electrician_energy_absorption_mana"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "6"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Electrician: Decreases Energy Absorption cooldown
+  //=================================================================================================================
+  "special_bonus_electrician_energy_absorption_cooldown"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "4"
+      }
+    }
+  }
+}

@@ -3,11 +3,11 @@
 	//=================================================================================================================
 	// Death Knight: Chilling Touch (F) - New Spell, When activated provides bonus magic damage to caster and his allies.
 	// Author: Darkonius
-	// Notes: OK; 17.7.2020; 
+	// Notes: OK; 2021; 
 	// Note 1: Buff can be placed on illusions too;
 	// Note 2: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
 	// Note 3: Bonus Damage is working against buildings too;
-	// TO_DO: Rework to lua and make it work on player controlled units (but only on units controlled by Death Knight)
+	// TO_DO: Rework to lua and make it work on player controlled units (but only on units controlled by Death Knight); special_bonus_unique_death_knight_5
 	//=================================================================================================================
 	"death_knight_chilling_touch"
 	{
@@ -48,6 +48,7 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"bonus_damage"				"75 100 125"
+				"LinkedSpecialBonus"        "special_bonus_unique_death_knight_5"
 			}
 			"03" // old Chilling Touch (20/24/28/32); Tag Team (5);
 			{
@@ -98,6 +99,29 @@
 						"Damage"		"%bonus_damage"
 					}
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Chilling Touch talent - increases damage
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_5"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "25"
 			}
 		}
 	}

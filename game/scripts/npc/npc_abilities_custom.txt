@@ -75,6 +75,11 @@
 #base "hero_abilities/death_knight_unholy_aura.txt"
 #base "hero_abilities/death_knight_resurrection.txt"
 
+#base "hero_abilities/electrician_static_grip.txt"
+#base "hero_abilities/electrician_electric_shield.txt"
+#base "hero_abilities/electrician_energy_absorption.txt"
+#base "hero_abilities/electrician_cleansing_shock.txt"
+
 #base "hero_abilities/firelord_arcana_model.txt"
 #base "hero_abilities/firelord_flaming_presence.txt"
 #base "hero_abilities/firelord_incinerate.txt"
@@ -184,7 +189,6 @@
 
 #base "hero_abilities/warp_beast_abilities.txt"
 #base "hero_abilities/sohei_abilities.txt"
-#base "hero_abilities/electrician_abilities.txt"
 
 "DOTAAbilities"
 {

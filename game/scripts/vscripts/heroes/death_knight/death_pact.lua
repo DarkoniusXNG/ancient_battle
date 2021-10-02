@@ -5,28 +5,54 @@ end
 LinkLuaModifier("modifier_custom_death_pact", "heroes/death_knight/death_pact.lua", LUA_MODIFIER_MOTION_NONE)
 
 function death_knight_death_pact:OnSpellStart()
-	local caster = self:GetCaster()
-	local target = self:GetCursorTarget()
-	local duration = self:GetSpecialValueFor("duration")
+  local caster = self:GetCaster()
+  local target = self:GetCursorTarget()
+  local duration = self:GetSpecialValueFor("duration")
+  
+  -- Talent that increases duration
+  local talent_1 = parent:FindAbilityByName("special_bonus_unique_death_knight_2")
+  if talent_1 then
+    if talent_1:GetLevel() > 0 then
+      duration = duration + talent_1:GetSpecialValueFor("value")
+    end
+  end
 
-	-- get the target's current health
-	local target_health = target:GetHealth()
+  -- get the target's current health
+  local target_health = target:GetHealth()
 
-	-- kill the target
-	target:Kill(self, caster)
+  -- kill the target
+  target:Kill(self, caster)
 
-	-- apply the new modifier which actually provides the stats
-	-- then set its stack count to the amount of health the target had
-	caster:AddNewModifier(caster, self, "modifier_custom_death_pact", { duration = duration, stacks = target_health })
+  -- get KV variables
+  local healthPct = self:GetSpecialValueFor("health_gain_pct")
+  local damagePct = self:GetSpecialValueFor("damage_gain_pct")
 
-	-- Sounds
-	caster:EmitSound("Hero_Clinkz.DeathPact.Cast")
-	target:EmitSound("Hero_Clinkz.DeathPact")
+  -- Talent that increases hp and dmg gain
+  local talent_2 = caster:FindAbilityByName("special_bonus_unique_death_knight_3")
+  if talent_2 then
+    if talent_2:GetLevel() > 0 then
+      healthPct = healthPct + talent_2:GetSpecialValueFor("value")
+      damagePct = damagePct + talent_2:GetSpecialValueFor("value2")
+    end
+  end
 
-	-- Particle
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf", PATTACH_ABSORIGIN, target)
-	ParticleManager:SetParticleControlEnt(particle, 1, caster, PATTACH_ABSORIGIN, "", caster:GetAbsOrigin(), true)
-	ParticleManager:ReleaseParticleIndex(particle)
+  -- Calculate bonuses
+  local health = target_health * healthPct * 0.01
+  local damage = target_health * damagePct * 0.01
+
+  -- apply the new modifier which actually provides the stats
+  -- then set its stack count to the amount of health the target had
+  local modifier = caster:AddNewModifier(caster, self, "modifier_custom_death_pact", {duration = duration, health = health})
+  modifier:SetStackCount(damage)
+
+  -- play the sounds
+  caster:EmitSound("Hero_Clinkz.DeathPact.Cast")
+  target:EmitSound("Hero_Clinkz.DeathPact")
+
+  -- Particle
+  local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf", PATTACH_ABSORIGIN, target)
+  ParticleManager:SetParticleControlEnt(particle, 1, caster, PATTACH_ABSORIGIN, "", caster:GetAbsOrigin(), true)
+  ParticleManager:ReleaseParticleIndex(particle)
 end
 
 --------------------------------------------------------------------------------
@@ -47,90 +73,28 @@ function modifier_custom_death_pact:IsPurgable()
 	return false
 end
 
+function modifier_custom_death_pact:RemoveOnDeath()
+  return false
+end
+
 function modifier_custom_death_pact:OnCreated(event)
-	local parent = self:GetParent()
-	local ability = self:GetAbility()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
 
-	-- this has to be done server-side because valve
-	if IsServer() then
-		-- get the parent's current health before applying anything
-		self.parentHealth = parent:GetHealth()
+  -- this has to be done server-side because valve
+  if IsServer() then
+    self.health = event.health
 
-		-- set the modifier's stack count to the target's health, so that we
-		-- have access to it on the client
-		self:SetStackCount(event.stacks)
-	end
+    -- apply the new health and such
+    parent:CalculateStatBonus(true)
 
-	local healthPct = ability:GetSpecialValueFor("health_gain_pct") 
-	local damagePct = ability:GetSpecialValueFor("damage_gain_pct")
-	
-	if IsServer() then
-		-- Talent that increases hp and dmg gain
-		local talent = parent:FindAbilityByName("special_bonus_unique_death_knight_death_pact_increase")
-		if talent then
-			if talent:GetLevel() > 0 then
-				healthPct = healthPct + talent:GetSpecialValueFor("value")
-				damagePct = damagePct + talent:GetSpecialValueFor("value2")
-			end
-		end
-	end
-
-	-- retrieve the stack count
-	local targetHealth = self:GetStackCount()
-
-	self.health = targetHealth * healthPct * 0.01
-	self.damage = targetHealth * damagePct * 0.01
-
-	if IsServer() then
-		-- apply the new health and such
-		parent:CalculateStatBonus()
-
-		-- add the added health
-		parent:SetHealth(self.parentHealth + self.health)
-	end
+    -- add the added health
+    parent:Heal(event.health, ability)
+  end
 end
 
 function modifier_custom_death_pact:OnRefresh(event)
-	local parent = self:GetParent()
-	local ability = self:GetAbility()
-
-	-- this has to be done server-side because valve
-	if IsServer() then
-		-- get the parent's current health before applying anything
-		self.parentHealth = parent:GetHealth()
-
-		-- set the modifier's stack count to the target's health, so that we
-		-- have access to it on the client
-		self:SetStackCount(event.stacks)
-	end
-
-	local healthPct = ability:GetSpecialValueFor("health_gain_pct")
-	local damagePct = ability:GetSpecialValueFor("damage_gain_pct")
-
-	if IsServer() then
-		-- Talent that increases hp and dmg gain
-		local talent = parent:FindAbilityByName("special_bonus_unique_death_knight_death_pact_increase")
-		if talent then
-			if talent:GetLevel() > 0 then
-				healthPct = healthPct + talent:GetSpecialValueFor("value")
-				damagePct = damagePct + talent:GetSpecialValueFor("value2")
-			end
-		end
-	end
-
-	-- retrieve the stack count
-	local targetHealth = self:GetStackCount()
-
-	self.health = targetHealth * healthPct * 0.01
-	self.damage = targetHealth * damagePct * 0.01
-
-	if IsServer() then
-		-- apply the new health and such
-		parent:CalculateStatBonus()
-
-		-- add the added health
-		parent:SetHealth(self.parentHealth + self.health)
-	end
+  self:OnCreated(event)
 end
 
 function modifier_custom_death_pact:DeclareFunctions()
@@ -143,17 +107,17 @@ function modifier_custom_death_pact:DeclareFunctions()
 end
 
 function modifier_custom_death_pact:GetModifierBaseAttack_BonusDamage()
-	return self.damage
+  return self:GetStackCount()
 end
 
 function modifier_custom_death_pact:GetModifierExtraHealthBonus()
-	return self.health
+  return self.health
 end
 
 function modifier_custom_death_pact:GetEffectName()
-	return "particles/units/heroes/hero_clinkz/clinkz_death_pact_buff.vpcf"
+  return "particles/units/heroes/hero_clinkz/clinkz_death_pact_buff.vpcf"
 end
 
 function modifier_custom_death_pact:GetEffectAttachType()
-	return PATTACH_POINT_FOLLOW
+  return PATTACH_POINT_FOLLOW
 end

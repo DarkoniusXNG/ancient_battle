@@ -4,7 +4,7 @@
 	// Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 17.7.2020; Can't cast on himself;
+	// Notes: OK; 2021; Can't cast on himself;
 	// TO_DO: 
 	//=================================================================================================================
 	"death_knight_death_coil"
@@ -52,7 +52,7 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"heal_amount"			"120 165 210 255"
-				"LinkedSpecialBonus"    "special_bonus_unique_death_knight_death_coil_heal"
+				"LinkedSpecialBonus"    "special_bonus_unique_death_knight_1"
 			}
 			"04" // Myst Coil (1300); original (?);
 			{
@@ -102,7 +102,7 @@
 	//=================================================================================================================
 	// Death Coil talent - increases heal amount
 	//=================================================================================================================
-	"special_bonus_unique_death_knight_death_coil_heal"
+	"special_bonus_unique_death_knight_1"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -117,7 +117,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "250"
+				"value"                                   "255"
 			}
 		}
 	}
