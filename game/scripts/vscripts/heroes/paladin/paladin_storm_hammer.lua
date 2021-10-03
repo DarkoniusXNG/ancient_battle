@@ -2,33 +2,35 @@ if paladin_storm_hammer == nil then
 	paladin_storm_hammer = class({})
 end
 
-LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/modifier_paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_paladin_storm_hammer_talent", "heroes/paladin/modifier_paladin_storm_hammer_talent.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_paladin_storm_hammer_talent", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
 
 function paladin_storm_hammer:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
 end
 
-function paladin_storm_hammer:GetCooldown(nLevel)
-	local caster = self:GetCaster()
-	local cooldown = self.BaseClass.GetCooldown(self, nLevel)
-	
-	if IsServer() then
-		-- Talent that reduces cooldown
-		local talent = caster:FindAbilityByName("special_bonus_unique_sven")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				local reduction = talent:GetSpecialValueFor("value")
-				cooldown = cooldown - reduction
-			end
-		end
-	else
-		if caster:HasModifier("modifier_paladin_storm_hammer_talent") then
-			cooldown = cooldown - caster.storm_hammer_talent_value
-		end
-	end
-	
-	return cooldown
+function paladin_storm_hammer:GetCooldown(level)
+  local caster = self:GetCaster()
+  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+  -- Talent that decreases cooldown
+  if IsServer() then
+    local talent = caster:FindAbilityByName("special_bonus_unique_paladin_8")
+	if talent and talent:GetLevel() > 0 then
+      if not caster:HasModifier("modifier_paladin_storm_hammer_talent") then
+        caster:AddNewModifier(caster, talent, "modifier_paladin_storm_hammer_talent", {})
+      end
+      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+    else
+      caster:RemoveModifierByName("modifier_paladin_storm_hammer_talent")
+    end
+  else
+    if caster:HasModifier("modifier_paladin_storm_hammer_talent") and caster.storm_hammer_talent_value then
+      return base_cooldown - math.abs(caster.storm_hammer_talent_value)
+    end
+  end
+  
+  return base_cooldown
 end
 
 function paladin_storm_hammer:OnSpellStart()
@@ -67,6 +69,12 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 			local bolt_damage = self:GetSpecialValueFor("bolt_damage")
 			local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")
 			
+			-- Talent that increases stun duration
+			local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_7")
+	        if talent_1 and talent_1:GetLevel() > 0 then
+				bolt_stun_duration = bolt_stun_duration + talent_1:GetSpecialValueFor("value")
+			end
+			
 			local caster = self:GetCaster()
 			
 			-- Targetting constants
@@ -89,14 +97,15 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 						ApplyDamage(damage_table)
 
 						if enemy:IsAlive() then
-							enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = bolt_stun_duration})
+							-- Calculate stun duration with status resistance in mind
+							local stun_duration = enemy:GetValueChangedByStatusResistance(bolt_stun_duration)
+							
+							enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = stun_duration})
 
-							-- Talent that applies Purge
-							local talent = caster:FindAbilityByName("special_bonus_unique_sven_3")
-							if talent then
-								if talent:GetLevel() ~= 0 then
-									self:DispelEnemy(enemy)
-								end
+							-- Talent that dispels enemies
+							local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_4")
+							if talent_2 and talent_2:GetLevel() > 0 then
+								self:DispelEnemy(enemy)
 							end
 						end
 					end
@@ -124,5 +133,78 @@ function paladin_storm_hammer:DispelEnemy(target)
 	-- Kill the target if its summoned, dominated or an illusion
 	if target:IsSummoned() or target:IsDominated() or target:IsIllusion() then
 		target:Kill(nil, self:GetCaster())
+	end
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_paladin_storm_hammer == nil then
+	modifier_paladin_storm_hammer = class({})
+end
+
+function modifier_paladin_storm_hammer:IsDebuff()
+	return true
+end
+
+function modifier_paladin_storm_hammer:IsStunDebuff()
+	return true
+end
+
+function modifier_paladin_storm_hammer:GetEffectName()
+	return "particles/generic_gameplay/generic_stunned.vpcf"
+end
+
+function modifier_paladin_storm_hammer:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
+end
+
+function modifier_paladin_storm_hammer:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
+	}
+
+	return funcs
+end
+
+function modifier_paladin_storm_hammer:GetOverrideAnimation(params)
+	return ACT_DOTA_DISABLED
+end
+
+function modifier_paladin_storm_hammer:CheckState()
+  local state = {
+    [MODIFIER_STATE_STUNNED] = true,
+  }
+
+  return state
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_paladin_storm_hammer_talent == nil then
+	modifier_paladin_storm_hammer_talent = class({})
+end
+
+function modifier_paladin_storm_hammer_talent:IsHidden()
+    return true
+end
+
+function modifier_paladin_storm_hammer_talent:IsPurgable()
+    return false
+end
+
+function modifier_paladin_storm_hammer_talent:AllowIllusionDuplicate() 
+	return false
+end
+
+function modifier_paladin_storm_hammer_talent:RemoveOnDeath()
+    return false
+end
+
+function modifier_paladin_storm_hammer_talent:OnCreated()
+	if IsClient() then
+		local parent = self:GetParent()
+		local talent = self:GetAbility()
+		local talent_value = talent:GetSpecialValueFor("value")
+		parent.storm_hammer_talent_value = talent_value
 	end
 end

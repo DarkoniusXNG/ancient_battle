@@ -9,24 +9,25 @@ LinkLuaModifier("modifier_special_bonus_electrician_energy_absorption_cooldown",
 
 function electrician_energy_absorption:GetCooldown(level)
   local caster = self:GetCaster()
-  local base_cd = self.BaseClass.GetCooldown(self, level)
+  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
   if IsServer() then
     local talent = caster:FindAbilityByName("special_bonus_electrician_energy_absorption_cooldown")
     if talent and talent:GetLevel() > 0 then
       if not caster:HasModifier("modifier_special_bonus_electrician_energy_absorption_cooldown") then
         caster:AddNewModifier(caster, talent, "modifier_special_bonus_electrician_energy_absorption_cooldown", {})
       end
-      return base_cd - math.abs(talent:GetSpecialValueFor("value"))
+      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
     else
       caster:RemoveModifierByName("modifier_special_bonus_electrician_energy_absorption_cooldown")
     end
   else
     if caster:HasModifier("modifier_special_bonus_electrician_energy_absorption_cooldown") and caster.special_bonus_electrician_energy_absorption_cooldown then
-      return base_cd - math.abs(caster.special_bonus_electrician_energy_absorption_cooldown)
+      return base_cooldown - math.abs(caster.special_bonus_electrician_energy_absorption_cooldown)
     end
   end
 
-  return base_cd
+  return base_cooldown
 end
 
 function electrician_energy_absorption:OnSpellStart()

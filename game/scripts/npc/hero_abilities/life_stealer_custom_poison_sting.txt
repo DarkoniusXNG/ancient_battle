@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Poison Sting - Modified Venomancer Poison Sting; 
 	// Author: Valve + Darkonius
-	// Notes: OK; 19.12.2019; Old Naix had: 2/4/7/10 dmg, 2 seconds duration; 10/20/30/40% slow
+	// Notes: OK; 2021;
 	// TO_DO:
 	//=================================================================================================================
 	"life_stealer_custom_poison_sting"
@@ -22,26 +22,21 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // Ghoul Frenzy (1.5); old Poison Sting (2); Venomancer Poison Sting (6/9/12/15);
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"duration"                                "3.0 4.5 6.0 7.5"
 			}
-			"02"
+			"02" // old Poison Sting (2/4/7/10); Venomancer Poison Sting (6/14/22/30);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage"                                  "6 14 22 30"
 			}
-			"03"
+			"03"// Ghoul Frenzy (10/15/20/25%); old Poison Sting (10/20/30/40%); Venomancer Poison Sting (8/10/12/14%);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"movement_speed"                          "-11 -13 -15 -17"
+				"movement_speed"                          "-12 -14 -16 -18"
 				"LinkedSpecialBonus"                      "special_bonus_unique_venomancer_2"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"hp_regen_reduction"                      "15"
 			}
 		}
 	}

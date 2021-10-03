@@ -4,8 +4,8 @@
 	// Mana Eater: Mystic Bolt (Q) - New Spell, Tracking Projectile that has damage related to the current mana of the caster
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 15.10.2017; Doesn't trigger Mana Flare.
-	// TO_DO: 
+	// Notes: OK; 2021; Doesn't trigger Mana Flare.
+	// TO_DO: Rework to lua; dynamic mana cost;
 	//=================================================================================================================
 	"mana_eater_mystic_bolt"
 	{

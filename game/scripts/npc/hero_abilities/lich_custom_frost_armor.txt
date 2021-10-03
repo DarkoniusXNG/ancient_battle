@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Lich: Ice Armor (W) - Datadriven Lich Frost Armor, increased slow values
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 18.9.2019;
-	// TO_DO: Sometimes autocast doesnt work properly if ally is damaged too fast - not critical
+	// Notes: OK; 2021;
+	// TO_DO: Rework to lua; Sometimes autocast doesnt work properly if ally is damaged too fast - not critical; status resistance fix
 	//====================================================================================================
 	"lich_custom_frost_armor"
 	{
@@ -25,33 +25,33 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"5.0"
+		"AbilityCooldown"				"5.0" // original (2); old dota (5);
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"
+		"AbilityManaCost"				"50" // original (40); old dota (50);
 		"AbilityProcsMagicStick"		"1"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // old dota (4/6/8/10);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"armor_bonus"			"3 5 7 9"
+				"armor_bonus"			"4 6 8 10"
 			}
-			"02" // original Lich had -50%
+			"02" // original: -50%
 			{
 				"var_type"				"FIELD_INTEGER"
 				"slow_movement_speed"	"-10 -15 -25 -30"
 			}
-			"03" // original Lich had -25
+			"03" // original: -25
 			{
 				"var_type"				"FIELD_INTEGER"
 				"slow_attack_speed"		"-10 -15 -25 -30"
 			}
-			"04"
+			"04" // original: 3/5/7 seconds
 			{
 				"var_type"				"FIELD_INTEGER"
 				"slow_duration"			"2"
@@ -59,12 +59,12 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"autocast_radius"		"800"
+				"autocast_radius"		"1000"
 			}
-			"06"
+			"06" // original (45); old dota (40);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"armor_duration"		"40"
+				"armor_duration"		"45"
 			}
 		}
 
@@ -183,6 +183,52 @@
 						"Function"      "FrostArmorAutocast"
 					}
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Ice Armor autocast aura talent - Lich applies Ice Armor to all allies near him, using mana but not going on cd
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Ice Armor provides hp regen talent
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_6"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "50"
 			}
 		}
 	}

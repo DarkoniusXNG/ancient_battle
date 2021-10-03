@@ -4,6 +4,12 @@ end
 
 LinkLuaModifier("modifier_mana_shell_passive", "heroes/mana_eater/mana_shell.lua", LUA_MODIFIER_MOTION_NONE)
 
+function mana_eater_mana_shell:Spawn()
+  if IsServer() and self:GetLevel() ~= 1 then
+    self:SetLevel(1)
+  end
+end
+
 function mana_eater_mana_shell:GetIntrinsicModifierName()
 	return "modifier_mana_shell_passive"
 end
@@ -94,10 +100,10 @@ function modifier_mana_shell_passive:OnTakeDamage(event)
 		
 		if event.attacker == parent then
 			-- Check for talent
-			local talent = parent:FindAbilityByName("special_bonus_unique_puck")
+			local talent = parent:FindAbilityByName("special_bonus_unique_mana_eater_2")
 			if talent then
-				if talent:GetLevel() ~= 0 then
-					local mana_gain_percentage_on_damage_dealt = 50
+				if talent:GetLevel() > 0 then
+					local mana_gain_percentage_on_damage_dealt = talent:GetSpecialValueFor("value")
 					local mana_amount = damage_taken*mana_gain_percentage_on_damage_dealt*0.01
 
 					-- Give mana to the parent in relation to damage taken; 

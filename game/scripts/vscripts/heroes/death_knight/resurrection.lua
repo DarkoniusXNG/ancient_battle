@@ -22,7 +22,7 @@ function death_knight_resurrection:GetCooldown(level)
     end
   else
     if caster:HasModifier("modifier_death_knight_res_cd") and caster.death_knight_res_cd then
-      return base_cd - math.abs(caster.death_knight_res_cd)
+      return base_cooldown - math.abs(caster.death_knight_res_cd)
     end
   end
   

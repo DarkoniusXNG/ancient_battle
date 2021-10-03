@@ -1,16 +1,16 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Mana Eater: Mana Flare (E) - New Spell, like Pugna's Nether Ward but the hero itself is the source of the Mana Flare + bonus armor while channeling
+	// Mana Eater: Mana Flare (E) - New Spell, like Pugna's Nether Ward but the hero itself is the source + self root + bonus armor + flare splashes
 	// Author: Darkonius
-	// Notes: OK; 16.9.2019; Channeling spell; Pure damage;
-	// TO_DO:
+	// Notes: OK; 2021; Pure damage;
+	// TO_DO: Rework to lua; Add Root to caster; Merge modifier_mana_flare_armor_buff and modifier_mana_flare_aura_applier; add splash
 	//=================================================================================================================
 	"mana_eater_mana_flare"
 	{
 		"BaseClass"					"ability_datadriven"
 		"AbilityTextureName"		"custom/mana_eater_mana_flare"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
@@ -20,34 +20,43 @@
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate"		"0.3"
 		
-		"AbilityCastPoint"			"0.0"				// was 0.75
-		"AbilityCooldown"			"15.0"				// Nether Ward: 35 seconds
-		"AbilityManaCost"			"75"				// Nether Ward: 80
+		"AbilityCastPoint"			"0.0"                 // was 0.75
+		"AbilityCooldown"			"0.5"
+		"AbilityManaCost"			"50"                  // Nether Ward (80); original (50);
 		"AbilityProcsMagicStick"	"1"
-		"AbilityChannelTime"		"15.0"
 		
 		"AbilitySpecial"
 		{
-			"01" // only in tooltip, should be same as AbilityChannelTime. Nether Ward: 30 seconds
+			"01" // Nether Ward (18/22/26/30); original (30);
 			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"15.0"
+				"var_type"                                "FIELD_FLOAT"
+				"duration"                                "15.0"
 			}
-			"02" // Nether Ward: 1600; Original Mana Flare: 750
+			"02" // Nether Ward (35); original (20); cooldown starts when buff is removed;
 			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1800"
+				"var_type"                                "FIELD_INTEGER"
+				"cooldown"                                "15"
 			}
-			"03"
+			"03" // Nether Ward (1600); original(750);
 			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_armor"				"20"
+				"var_type"                                "FIELD_INTEGER"
+				"aura_radius"                             "1800"
 			}
-			"04" // like Nether Ward
+			"04" // original (12);
 			{
-				"var_type"						"FIELD_FLOAT"
-				"damage_per_used_mana"			"1.25 1.5 1.75 2.0"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_armor"                             "20"
+			}
+			"05" // Nether Ward (50 + 1/1.25/1.5/1.75); original (4 for units 1 for heroes);
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"damage_per_used_mana"                    "1.25 1.5 1.75 2.0"
+				"CalculateSpellDamageTooltip"             "0"
+			}
+			"06" // original (200);
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"splash_radius"                           "300"
 			}
 		}
 	
@@ -92,23 +101,23 @@
 			}
 		}
 	
-		"OnChannelFinish"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mana_eater/mana_flare.lua"
-				"Function"		"ManaFlareEnd"
-			}
-		}
+		// "OnChannelFinish"
+		// {
+			// "RunScript"
+			// {
+				// "ScriptFile"	"heroes/mana_eater/mana_flare.lua"
+				// "Function"		"ManaFlareEnd"
+			// }
+		// }
 		
-		"OnChannelInterrupted"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mana_eater/mana_flare.lua"
-				"Function"		"ManaFlareEnd"
-			}
-		}
+		// "OnChannelInterrupted"
+		// {
+			// "RunScript"
+			// {
+				// "ScriptFile"	"heroes/mana_eater/mana_flare.lua"
+				// "Function"		"ManaFlareEnd"
+			// }
+		// }
 	
 		"Modifiers"
 		{

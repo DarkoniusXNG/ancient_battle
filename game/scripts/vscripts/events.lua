@@ -164,7 +164,6 @@ function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 
 	-- Handling talents without custom net tables
 	local talents = {
-		{"special_bonus_unique_sven", "modifier_paladin_storm_hammer_talent"},
 		{"special_bonus_sohei_fob_radius", "modifier_sohei_flurry_talent"},
 		{"special_bonus_sohei_wholeness_allycast", "modifier_sohei_wholeness_talent"},
 		{"special_bonus_unique_warp_beast_jump_radius", "modifier_warp_beast_temporal_radius_talent"},
@@ -336,7 +335,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 				respawn_time = killed_unit:GetRespawnTime()
 			end
 
-			-- Fixing respawn time after level 25
+			-- Fixing respawn time after level 30
 			local respawn_time_after_30 = 100 + (killed_unit_level-30)*5
 			if killed_unit_level > 30 and respawn_time ~= respawn_time_after_30 and not USE_CUSTOM_RESPAWN_TIMES then
 				respawn_time = respawn_time_after_30

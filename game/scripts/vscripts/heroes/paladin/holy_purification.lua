@@ -2,8 +2,34 @@ if paladin_holy_purification == nil then
 	paladin_holy_purification = class({})
 end
 
+LinkLuaModifier("modifier_paladin_purification_cd", "heroes/paladin/holy_purification.lua", LUA_MODIFIER_MOTION_NONE)
+
 function paladin_holy_purification:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
+end
+
+function paladin_holy_purification:GetCooldown(level)
+  local caster = self:GetCaster()
+  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+  -- Talent that decreases cooldown
+  if IsServer() then
+    local talent = caster:FindAbilityByName("special_bonus_unique_paladin_3")
+	if talent and talent:GetLevel() > 0 then
+      if not caster:HasModifier("modifier_paladin_purification_cd") then
+        caster:AddNewModifier(caster, talent, "modifier_paladin_purification_cd", {})
+      end
+      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+    else
+      caster:RemoveModifierByName("modifier_paladin_purification_cd")
+    end
+  else
+    if caster:HasModifier("modifier_paladin_purification_cd") and caster.purification_cd then
+      return base_cooldown - math.abs(caster.purification_cd)
+    end
+  end
+  
+  return base_cooldown
 end
 
 function paladin_holy_purification:OnSpellStart()
@@ -20,12 +46,16 @@ function paladin_holy_purification:OnSpellStart()
 	local heal_particle_name_2 = "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_immortal_cast.vpcf"
 	local heal_hit_particle_name = "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 	
+	-- Talent that increases radius
+	local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_1")
+	if talent_1 and talent_1:GetLevel() > 0 then
+		radius = radius + talent_1:GetSpecialValueFor("value")
+	end
+	
 	-- Talent that increases damage and heal
-	local talent = caster:FindAbilityByName("special_bonus_unique_omniknight_1")
-	if talent then
-		if talent:GetLevel() ~= 0 then
-			damage_and_heal = damage_and_heal + talent:GetSpecialValueFor("value")
-		end
+	local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_6")
+	if talent_2 and talent_2:GetLevel() > 0 then
+		damage_and_heal = damage_and_heal + talent_2:GetSpecialValueFor("value")
 	end
 	
 	if IsServer() then
@@ -120,6 +150,39 @@ function paladin_holy_purification:ProcsMagicStick()
 	return true
 end
 
+---------------------------------------------------------------------------------------------------
+
 if guardian_angel_holy_purification == nil then
 	guardian_angel_holy_purification = paladin_holy_purification
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_paladin_purification_cd == nil then
+	modifier_paladin_purification_cd = class({})
+end
+
+function modifier_paladin_purification_cd:IsHidden()
+    return true
+end
+
+function modifier_paladin_purification_cd:IsPurgable()
+    return false
+end
+
+function modifier_paladin_purification_cd:AllowIllusionDuplicate() 
+	return false
+end
+
+function modifier_paladin_purification_cd:RemoveOnDeath()
+    return false
+end
+
+function modifier_paladin_purification_cd:OnCreated()
+	if IsClient() then
+		local parent = self:GetParent()
+		local talent = self:GetAbility()
+		local talent_value = talent:GetSpecialValueFor("value")
+		parent.purification_cd = talent_value
+	end
 end

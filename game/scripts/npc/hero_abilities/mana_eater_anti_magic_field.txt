@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Mana Eater: Anti-Magic Field (W) - New Spell, Generates an anti magic field that grants magic immunity (not spell immunity!) to all heroes and buildings within and pseudo-silence to enemies.
 	// Author: Darkonius
-	// Notes: OK; 16.9.2019; Uses Order Filter;
-	// TO_DO: Fix sound length if Valve doesn't -> not critical
+	// Notes: OK; 2021; Uses Order Filter;
+	// TO_DO: Rework to lua; datadriven thinkers don't get removed;
 	//=================================================================================================================
 	"mana_eater_anti_magic_field"
 	{
@@ -22,7 +22,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"20"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -44,12 +44,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // like Arc Warden Magnetic Field
+			"01" // Arc Warden Magnetic Field (300);
 			{
 				"var_type"					"FIELD_INTEGER"
 				"radius"					"300"
 			}
-			"02" // unique
+			"02" // Arc Warden Magnetic Field (3.5/4.5/5.5/6.5);
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration"					"4.0 6.0 8.0 10.0"
@@ -166,6 +166,29 @@
 				{
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Anti-Magic Field: bonus attack speed talent
+	//=================================================================================================================
+	"special_bonus_unique_mana_eater_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "120"
 			}
 		}
 	}
