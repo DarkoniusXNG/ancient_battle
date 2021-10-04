@@ -4,7 +4,7 @@
 	// Lich: Ice Storm (R) - New Spell, Ultimate, Damages and mini stuns all enemy heroes on the map
 	// Author: Jastuchko + Darkonius
 	// Notes: OK; 2021; Power of Prague
-	// TO_DO: Rework to lua; Add vision to ulted heroes (not true sight); scepter
+	// TO_DO: Rework to lua; Add vision to ulted heroes (not true sight); scepter frostbite
 	//====================================================================================================
 	"lich_custom_ice_storm"
 	{

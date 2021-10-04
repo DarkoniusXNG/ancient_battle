@@ -85,7 +85,7 @@ function paladin_holy_purification:OnSpellStart()
 			local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 
 			local enemies = FindUnitsInRadius(caster_team, target:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
-			for _,enemy in pairs(enemies) do
+			for _, enemy in pairs(enemies) do
 				-- Particles on enemies
 				local hit_pfx = ParticleManager:CreateParticle(heal_hit_particle_name, PATTACH_ABSORIGIN_FOLLOW, enemy)
 				ParticleManager:SetParticleControlEnt(hit_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
@@ -130,7 +130,7 @@ function paladin_holy_purification:OnSpellStart()
 				local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 			
 				local allies = FindUnitsInRadius(caster_team, target:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
-				for _,ally in pairs(allies) do
+				for _, ally in pairs(allies) do
 					-- Particles on allies
 					local hit_pfx = ParticleManager:CreateParticle(heal_hit_particle_name, PATTACH_ABSORIGIN_FOLLOW, ally)
 					ParticleManager:SetParticleControlEnt(hit_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)

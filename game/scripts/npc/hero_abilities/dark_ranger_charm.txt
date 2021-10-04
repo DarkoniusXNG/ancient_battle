@@ -60,6 +60,7 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"charm_hero_duration_scepter"	"10"
+				"RequiresScepter"               "1"
 			}
 		}
 	

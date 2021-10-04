@@ -3,9 +3,9 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Shield (T) - Similar to Dark Seer Ion Shell
 	// Author: Darkonius
-	// Notes: OK; 27.8.2019;
+	// Notes: OK; 2021;
 	// Linkens: Doesn't block (INTENTIONAL);
-	// TO_DO:
+	// TO_DO: shard (can damage enemies it is cast on, gives 400 hp to allies)
 	//=================================================================================================================
 	"perun_electric_shield"
 	{
@@ -44,12 +44,14 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "250"
+				"radius"                                  "275"
+				"LinkedSpecialBonus"                      "special_bonus_unique_perun_2"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage_per_second"                       "30 50 70 90"
+				"LinkedSpecialBonus"                      "special_bonus_unique_perun_3"
 			}
 			"03"
 			{
@@ -60,6 +62,52 @@
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"damage_interval"                         "0.1"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Electric Shield: bonus radius/AoE talent
+	//=================================================================================================================
+	"special_bonus_unique_perun_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "75"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Electric Shield: bonus damage talent
+	//=================================================================================================================
+	"special_bonus_unique_perun_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "50"
 			}
 		}
 	}

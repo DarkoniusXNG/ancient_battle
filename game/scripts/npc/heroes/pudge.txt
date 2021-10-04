@@ -1,64 +1,69 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// Pudge
+	// HERO: Pudge; 2021;
+	// TO_DO: pudge_custom_meat_hook;
 	//=================================================================================================================
 	"npc_dota_hero_pudge"
 	{
 		"Model"                                           "models/heroes/pudge/pudge.vmdl"
 		"BotImplemented"                                  "0"
-
-		"Ability1"                                        "pudge_meat_hook"
-		"Ability2"                                        "pudge_rot"
-		"Ability3"                                        "pudge_flesh_heap"
-		"Ability4"                                        "generic_hidden"
+		
+		"AbilityLayout"                                   "5"
+		"AbilityTalentStart"                              "10"
+		"Ability1"                                        "pudge_custom_meat_hook"
+		"Ability2"                                        "pudge_custom_rot"
+		"Ability3"                                        "pudge_custom_flesh_heap"
+		"Ability4"                                        "pudge_eject"
 		"Ability5"                                        "generic_hidden"
 		"Ability6"                                        "pudge_dismember"
 		"Ability7"                                        "generic_hidden"					
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
-		"Ability10"                                       "special_bonus_armor_5"
-		"Ability11"                                       "special_bonus_unique_pudge_2"
+		"Ability10"                                       "special_bonus_armor_4"               // dota Pudge (4)
+		"Ability11"                                       "special_bonus_unique_pudge_custom_1" // Rot slow talent
 
-		"Ability12"                                       "special_bonus_spell_lifesteal_13"
-		"Ability13"                                       "special_bonus_unique_pudge_4"
+		"Ability12"                                       "special_bonus_spell_lifesteal_13"    // dota Pudge (10%)
+		"Ability13"                                       "special_bonus_unique_pudge_custom_2" // Meat Hook damage talent
 
-		"Ability14"                                       "special_bonus_cleave_60"      // unique
-		"Ability15"                                       "special_bonus_unique_pudge_5"
+		"Ability14"                                       "special_bonus_unique_pudge_6"        // Dismember duration talent
+		"Ability15"                                       "special_bonus_unique_pudge_custom_3" // Meat Hook cooldown talent
 
-		"Ability16"                                       "special_bonus_unique_pudge_3"
-		"Ability17"                                       "special_bonus_unique_pudge_1"
+		"Ability16"                                       "special_bonus_unique_pudge_custom_4" // Meat Hook speed talent
+		"Ability17"                                       "special_bonus_unique_pudge_3"        // Dismember Damage/Heal talent
+		
+		// special_bonus_cleave_60
 
-		"ArmorPhysical"                                   "-2"
-		"MagicalResistance"                               "0"
+		"ArmorPhysical"                                   "0"                                   // dota (0); original (0);
+		"MagicalResistance"                               "0"                                   // dota (25); original (25%);
 		
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"                                 "40"
-		"AttackDamageMax"                                 "46"
-		"AttackRate"                                      "1.7"
-		"AttackAnimationPoint"                            "0.5"
+		"AttackDamageMin"                                 "42"                                  // dota (42); original (32);
+		"AttackDamageMax"                                 "48"                                  // dota (48); original (36);
+		"AttackRate"                                      "1.7"                                 // Default
+		"AttackAnimationPoint"                            "0.5"                                 // like dota Pudge
 		"AttackAcquisitionRange"                          "600"
-		"AttackRange"                                     "150"
+		"AttackRange"                                     "150"                                 // dota (150); original (128);
 		"ProjectileSpeed"                                 "0"
 
 		"AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"                           "25"
-		"AttributeStrengthGain"                           "3.5"                 // original (4.0);
-		"AttributeBaseAgility"                            "14"
-		"AttributeAgilityGain"                            "1.5"
-		"AttributeBaseIntelligence"                       "16"
-		"AttributeIntelligenceGain"                       "1.5"
+		"AttributeBaseStrength"                           "25"                                  // dota (25); original (26);
+		"AttributeStrengthGain"                           "3.0"                                 // dota (3); original (3.7);
+		"AttributeBaseAgility"                            "14"                                  // dota (14); original (14);
+		"AttributeAgilityGain"                            "1.4"                                 // dota (1.4); original (1.4);
+		"AttributeBaseIntelligence"                       "16"                                  // dota (16); original (15);
+		"AttributeIntelligenceGain"                       "1.5"                                 // dota (1.5); original (1.5);
 
-		"MovementSpeed"                                   "280"
-		"MovementTurnRate"                                "0.7"
+		"MovementSpeed"                                   "280"                                 // dota (280); original (300);
+		"MovementTurnRate"                                "0.7"                                 // dota (0.7); original (0.6);
 		"BoundsHullName"                                  "DOTA_HULL_SIZE_HERO"
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "0.0"                 // original (0);
-		"StatusHealth"                                    "150"                 // original (200);
-		"StatusMana"                                      "0"                   // original (75);
-		"StatusManaRegen"                                 "0.0"                 // original (0);
+		"StatusHealthRegen"                               "0.25"                                // dota (2); original (0.25)
+		"StatusHealth"                                    "150"                                 // dota (200); original (150);
+		"StatusMana"                                      "0"                                   // dota (75); original (0);
+		"StatusManaRegen"                                 "0.0"                                 // dota (0); original (0.01);
 	}
 }

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lightning Shaman: Perun's Wrath (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
 	// Author: Darkonius
-	// Notes: OK; 27.8.2019; Stun radius is smaller than the damage/blind radius;
-	// TO_DO:
+	// Notes: OK; 2021; Stun radius is smaller than the damage/blind radius;
+	// TO_DO: Rework to lua; Fix particles; Add effect delay (LIghtning first, then split earth); status resistance fix; blind is applied first;
 	//=================================================================================================================
 	"perun_sky_wrath"
 	{
@@ -29,42 +29,48 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.4"					// like Zeus' Lightning Bolt
+		"AbilityCastRange"				"700 750 800 850" // like Zeus' Lightning Bolt
+		"AbilityCastPoint"				"0.4" // Zeus' Lightning Bolt (0.4); Lina Light Strike Array (0.45);
 		"AOERadius"						"%damage_radius"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0"
+		"AbilityCooldown"				"8" // Zeus' Lightning Bolt (6); Lina Light Strike Array (13/11/9/7);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 120 140 160"
+		"AbilityManaCost"				"100 110 120 130" // Zeus' Lightning Bolt (120/125/130/135); Lina Light Strike Array (100/105/110/115);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"80 120 160 200"	// like Lina Light Strike Array
+		//"AbilityDamage"					"80 130 180 230" // Zeus' Lightning Bolt (125/200/275/350); Lina Light Strike Array (80/130/180/230);
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"stun_duration"                           "0.5 0.75 1.0 1.25"
-			}
-			"02"
+			"01" // Zeus' Lightning Bolt (125/200/275/350); Lina Light Strike Array (80/130/180/230);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"stun_radius"                             "200"
+				"damage"                                  "80 130 180 230"
+				"LinkedSpecialBonus"                      "special_bonus_unique_perun_1"
 			}
-			"03"
+			"02" // Lina Light Strike Array (250);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage_radius"                           "325"
 				"CalculateSpellDamageTooltip"             "0"
+			}
+			"03" // Zeus' Lightning Bolt (0.2); Light Strike Array (1.5/1.9/2.2/2.5);
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"stun_duration"                           "0.5 0.75 1.0 1.25"
+			}
+			"04" // Lina Light Strike Array (250);
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"stun_radius"                             "250"
 			}
 			"04" // blind_radius can be bigger than damage_radius if you want a realistic spell
 			{
@@ -81,38 +87,25 @@
 				"var_type"                                "FIELD_INTEGER"
 				"miss_chance"                             "35 45 55 65"
 			}
-			"07"
+			"07" // Zeus' Lightning Bolt (750);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"true_sight_radius"                       "750"				
 			}
-			"08"
+			"08" // Zeus' Lightning Bolt (5);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"true_sight_duration"                     "5"
+			}
+			"09"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"effect_delay"                            "0.5"
 			}
 		}
 		
 		"OnSpellStart"
 		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Leshrac.Split_Earth"
-				"Target" 		"CASTER"
-			}
-			
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
-				"EffectAttachType"  "start_at_customorigin"
-				"TargetPoint"       "POINT"
-
-				"ControlPoints"
-				{
-					"01"    "%damage_radius %damage_radius %damage_radius"
-				}
-			}
-			
 			"FireSound"
 			{
 				"EffectName"	"Hero_Zuus.LightningBolt"
@@ -129,6 +122,24 @@
 				{
 					"01"    "%damage_radius 0 0" 
 					
+				}
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Hero_Leshrac.Split_Earth"
+				"Target" 		"CASTER"
+			}
+			
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
+				"EffectAttachType"  "start_at_customorigin"
+				"TargetPoint"       "POINT"
+
+				"ControlPoints"
+				{
+					"01"    "%damage_radius %damage_radius %damage_radius"
 				}
 			}
 
@@ -269,6 +280,29 @@
 				"IsHidden"		"0"
 				"IsDebuff"		"1"
 				"IsPurgable"    "0"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Wrath of the Sky: bonus damage talent
+	//=================================================================================================================
+	"special_bonus_unique_perun_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "120"
 			}
 		}
 	}

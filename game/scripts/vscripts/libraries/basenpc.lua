@@ -46,13 +46,15 @@ if CDOTA_BaseNPC then
       "modifier_black_king_bar_immune",
       "modifier_item_hood_of_defiance_barrier",
       "modifier_item_pipe_barrier",
+      "modifier_item_satanic_unholy",
       "modifier_item_shadow_amulet_fade",
       "modifier_item_invisibility_edge_windwalk",
       "modifier_item_silver_edge_windwalk",
       "modifier_rune_invis",
       "modifier_item_blade_mail_reflect",
       "modifier_item_lotus_orb_active",
-      "modifier_item_sphere_target",               -- Linken's Sphere transferred buff
+      "modifier_item_sphere_target",                    -- Linken's Sphere transferred buff
+      "modifier_item_book_of_shadows_buff",
       "item_modifier_forgotten_king_bar_damage_shield", ------------------------------------------------
       "modifier_slippers_of_halcyon_caster",
       "item_modifier_infused_robe_damage_barrier",
@@ -81,6 +83,7 @@ if CDOTA_BaseNPC then
       "modifier_razor_static_link_debuff",
       "modifier_razor_eye_of_the_storm_armor",  -- Eye of the Storm stacks
       "modifier_sand_king_caustic_finale_orb",  -- Caustic Finale initial debuff
+      "modifier_shadow_demon_shadow_poison",
       "modifier_shadow_demon_purge_slow",
       "modifier_slardar_amplify_damage",        -- Corrosive Haze becomes undispellable with the talent
       "modifier_slark_pounce_leash",
@@ -130,7 +133,7 @@ if CDOTA_BaseNPC then
       "modifier_mirana_moonlight_shadow",
       "modifier_nyx_assassin_spiked_carapace",
       "modifier_nyx_assassin_vendetta",
-      "modifier_omniknight_repel",              -- Heavenly Grace
+      --"modifier_omniknight_repel",              -- Heavenly Grace
       "modifier_pangolier_shield_crash_buff",
       "modifier_phantom_assassin_blur_active",
       "modifier_razor_static_link_buff",
@@ -141,6 +144,7 @@ if CDOTA_BaseNPC then
       "modifier_ursa_enrage",
       "modifier_weaver_shukuchi",
       "modifier_winter_wyvern_cold_embrace",
+      "modifier_windrunner_windrun",
       "modifier_windrunner_windrun_invis",
       "modifier_time_slow_aura_applier", ------------------------------------------------------
       "modifier_custom_chemical_rage_buff",
@@ -169,7 +173,7 @@ if CDOTA_BaseNPC then
       --"modifier_brewmaster_primal_split_duration", -- Coding nightmare
       --"modifier_bristleback_warpath",         -- Removing this breaks the ability
       "modifier_death_prophet_exorcism",        -- transformation modifier and an ultimate
-      --"modifier_dragon_knight_dragon_form",   -- transformation modifier and an ultimate, it shouldnt be removed if ability is at level 5
+      --"modifier_dragon_knight_dragon_form",   -- transformation modifier and an ultimate,
       --"modifier_lina_fiery_soul",             -- Removing this breaks the ability
       "modifier_lycan_shapeshift",              -- transformation modifier and an ultimate
       "modifier_lycan_shapeshift_speed",        -- transformation modifier and an ultimate
@@ -181,7 +185,7 @@ if CDOTA_BaseNPC then
       "modifier_night_stalker_darkness",        -- Nightstalker Dark Ascension (transformation modifier and an ultimate)
       --"modifier_nyx_assassin_burrow",         -- Bugs out the caster
       --"modifier_obsidian_destroyer_astral_imprisonment_prison",
-      --"modifier_oracle_false_promise_timer",  -- Removing this can kill a hero right at the start of the duel
+      --"modifier_oracle_false_promise_timer",  -- Removing this can kill a hero
       "modifier_pangolier_gyroshell",           -- transformation modifier and an ultimate
       --"modifier_phoenix_fire_spirit_count",   -- Phoenix Fire Spirits buff on the caster
       "modifier_sand_king_epicenter",           -- transformation modifier and an ultimate

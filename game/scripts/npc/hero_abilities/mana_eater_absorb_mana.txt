@@ -45,16 +45,19 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"mana_transfered_scepter"	"55 65 75"
+				"RequiresScepter"           "1"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"bonus_mana_scepter"		"1000"
+				"RequiresScepter"           "1"
 			}
 			"05"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"buff_duration_scepter"		"10"
+				"RequiresScepter"           "1"
 			}
 		}
 		

@@ -38,7 +38,7 @@
 		"Ability14"				"special_bonus_status_resistance_10"        // lvl 20 talent; unique
 		"Ability15"				"special_bonus_attack_speed_100"            // lvl 20 talent; unique
 
-		"Ability16"				"special_bonus_unique_archmage_1"		    // lvl 25 talent; unique
+		"Ability16"				"special_bonus_unique_archmage_1"		    // lvl 25 talent; 
 		"Ability17"				"special_bonus_spell_block_20"				// lvl 25 talent; unique
 
 		"Ability18"             "generic_hidden"

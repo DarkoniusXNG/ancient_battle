@@ -133,6 +133,10 @@
 
 #base "hero_abilities/potm_shadow_meld.txt"
 
+#base "hero_abilities/pudge_custom_meat_hook.txt"
+#base "hero_abilities/pudge_custom_rot.txt"
+#base "hero_abilities/pudge_custom_flesh_heap.txt"
+
 #base "hero_abilities/queenofpain_custom_pain_steal.txt"
 #base "hero_abilities/queenofpain_custom_scream_of_terror.txt"
 #base "hero_abilities/queenofpain_custom_shadow_strike.txt"
