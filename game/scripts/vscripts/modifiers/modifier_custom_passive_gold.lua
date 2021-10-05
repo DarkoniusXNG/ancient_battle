@@ -24,11 +24,12 @@ function modifier_custom_passive_gold:OnCreated()
 	if GetMapName() ~= "two_vs_two" or parent.original then
 		self:Destroy()
 	end
-	local GOLD_PER_MINUTE = 260 -- SETTINGS.GOLD_PER_MINUTE
-	if GOLD_PER_MINUTE ~= 0 then
-		self.goldTickTime = 60/GOLD_PER_MINUTE
+	local gpm = 260 -- SETTINGS.GOLD_PER_MINUTE
+	if gpm ~= 0 then
+		self.goldTickTime = 60/gpm
 		self.goldPerTick = 1
 	else
+		self.goldTickTime = -1
 		self.goldPerTick = 0
 		self:Destroy()
 	end

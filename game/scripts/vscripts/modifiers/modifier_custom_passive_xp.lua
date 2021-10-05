@@ -1,4 +1,4 @@
-modifier_custom_passive_xp = modifier_custom_passive_xp or class({})
+modifier_custom_passive_xp = class({})
 
 function modifier_custom_passive_xp:IsPermanent()
 	return true
@@ -18,11 +18,12 @@ function modifier_custom_passive_xp:OnCreated()
 	if GetMapName() ~= "two_vs_two" or parent.original then
 		self:Destroy()
 	end
-	local XP_PER_MINUTE = 10 -- SETTINGS.XP_PER_MINUTE
-	if XP_PER_MINUTE ~= 0 then
-		self.xpTickTime = 60/XP_PER_MINUTE
+	local xpm = 10 -- SETTINGS.XP_PER_MINUTE
+	if xpm ~= 0 then
+		self.xpTickTime = 60/xpm
 		self.xpPerTick = 1
 	else
+		self.xpTickTime = -1
 		self.xpPerTick = 0
 		self:Destroy()
 	end

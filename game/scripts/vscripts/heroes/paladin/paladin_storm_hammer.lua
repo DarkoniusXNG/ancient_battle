@@ -69,14 +69,14 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 			local bolt_damage = self:GetSpecialValueFor("bolt_damage")
 			local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")
 			
+			local caster = self:GetCaster()
+
 			-- Talent that increases stun duration
 			local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_7")
 	        if talent_1 and talent_1:GetLevel() > 0 then
 				bolt_stun_duration = bolt_stun_duration + talent_1:GetSpecialValueFor("value")
 			end
-			
-			local caster = self:GetCaster()
-			
+
 			-- Targetting constants
 			local target_team = self:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
 			local target_type = self:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)

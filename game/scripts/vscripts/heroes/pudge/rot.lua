@@ -141,8 +141,10 @@ function modifier_pudge_custom_rot_aura_applier:OnIntervalThink()
 	-- Damage enemies
 	local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
 	for _, enemy in pairs(enemies) do
-		damage_table.victim = enemy
-		ApplyDamage(damage_table)
+		if enemy and not enemy:IsNull() then
+			damage_table.victim = enemy
+			ApplyDamage(damage_table)
+		end
 	end
 	
 	-- Damage the parent (caster)
@@ -247,7 +249,7 @@ function modifier_pudge_custom_rot_aura_effect:GetModifierHPRegenAmplify_Percent
 end
 
 function modifier_pudge_custom_rot_aura_effect:GetModifierHealAmplify_PercentageTarget()
-  if self.heal_reduction and and self:GetCaster():HasScepter() then
+  if self.heal_reduction and self:GetCaster():HasScepter() then
     return 0 - math.abs(self.heal_reduction)
   end
 
@@ -255,7 +257,7 @@ function modifier_pudge_custom_rot_aura_effect:GetModifierHealAmplify_Percentage
 end
 
 function modifier_pudge_custom_rot_aura_effect:GetModifierLifestealRegenAmplify_Percentage()
-  if self.heal_reduction and and self:GetCaster():HasScepter() then
+  if self.heal_reduction and self:GetCaster():HasScepter() then
     return 0 - math.abs(self.heal_reduction)
   end
 
@@ -263,7 +265,7 @@ function modifier_pudge_custom_rot_aura_effect:GetModifierLifestealRegenAmplify_
 end
 
 function modifier_pudge_custom_rot_aura_effect:GetModifierSpellLifestealRegenAmplify_Percentage()
-  if self.heal_reduction and and self:GetCaster():HasScepter() then
+  if self.heal_reduction and self:GetCaster():HasScepter() then
     return 0 - math.abs(self.heal_reduction)
   end
 

@@ -4,9 +4,11 @@ LinkLuaModifier("modifier_pudge_custom_flesh_heap_passive", "heroes/pudge/flesh_
 LinkLuaModifier("modifier_pudge_custom_flesh_heap_kill_tracker", "heroes/pudge/flesh_heap.lua", LUA_MODIFIER_MOTION_NONE)
 
 function pudge_custom_flesh_heap:Spawn()
-	local caster = self:GetCaster()
-	-- Add kill tracker modifier
-	caster:AddNewModifier(caster, self, "modifier_pudge_custom_flesh_heap_kill_tracker", {})
+	if IsServer() then
+		local caster = self:GetCaster()
+		-- Add kill tracker modifier
+		caster:AddNewModifier(caster, self, "modifier_pudge_custom_flesh_heap_kill_tracker", {})
+	end
 end
 
 function pudge_custom_flesh_heap:GetIntrinsicModifierName()
@@ -72,7 +74,7 @@ function modifier_pudge_custom_flesh_heap_passive:OnCreated(event)
 			end
 		end
 
-		parent:CalculateStatBonus()
+		parent:CalculateStatBonus(true)
 	end
 end
 

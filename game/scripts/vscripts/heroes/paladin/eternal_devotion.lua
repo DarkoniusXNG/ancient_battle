@@ -48,6 +48,8 @@ function EternalDevotionCheck(keys)
 					angel:SetOwner(caster)
 					--angel:SetBaseDamageMin(angel_dmg) -- not needed because of modifier_guardian_angel_summoned_buff
 					--angel:SetBaseDamageMax(angel_dmg) -- not needed because of modifier_guardian_angel_summoned_buff
+					
+					angel:AddNewModifier(caster, ability, "modifier_kill", {duration = buff_duration})
 
 					-- Apply angel buff
 					ability:ApplyDataDrivenModifier(caster, angel, "modifier_guardian_angel_summoned_buff", {["duration"] = buff_duration})

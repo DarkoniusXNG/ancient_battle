@@ -197,15 +197,15 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 		ProjectileManager:CreateLinearProjectile( info )
 		self.vProjectileLocation = vHookPos
 
-		if hTarget ~= nil and ( not hTarget:IsInvisible() ) and bTargetPulled then
+		if hTarget and ( not hTarget:IsInvisible() ) and bTargetPulled then
 			ParticleManager:SetParticleControlEnt( self.nChainParticleFXIndex, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetOrigin() + self.vHookOffset, true )
 			ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 4, Vector( 0, 0, 0 ) )
 			ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 5, Vector( 1, 0, 0 ) )
+
+			hTarget:EmitSound("Hero_Pudge.AttackHookRetract")
 		else
 			ParticleManager:SetParticleControlEnt( self.nChainParticleFXIndex, 1, caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", caster:GetOrigin() + self.vHookOffset, true);
 		end
-
-		hTarget:EmitSound("Hero_Pudge.AttackHookRetract")
 
 		if caster:IsAlive() then
 			caster:RemoveGesture( ACT_DOTA_OVERRIDE_ABILITY_1 );
