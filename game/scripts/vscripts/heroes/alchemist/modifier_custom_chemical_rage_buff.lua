@@ -105,7 +105,7 @@ function modifier_custom_chemical_rage_buff:ScepterBuff(caster)
 			local strength_new = strength_old + intelligence_old - 1
 			caster:SetBaseIntellect(intelligence_new)
 			caster:SetBaseStrength(strength_new)
-			caster:CalculateStatBonus()  -- This is needed to update Caster's bonuses from stats
+			caster:CalculateStatBonus(true)  -- This is needed to update Caster's bonuses from stats
 		end
 	end	
 end
@@ -127,6 +127,6 @@ function modifier_custom_chemical_rage_buff:ScepterBuffEnd(caster)
 		
 		caster:SetBaseIntellect(intelligence_new)
 		caster:SetBaseStrength(strength_new)
-		caster:CalculateStatBonus()
+		caster:CalculateStatBonus(true)
 	end
 end

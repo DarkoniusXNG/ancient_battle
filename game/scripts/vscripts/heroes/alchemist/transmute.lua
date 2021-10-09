@@ -38,16 +38,19 @@ function alchemist_custom_transmute:GetCooldown(level)
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
-  local target = self:GetCursorTarget()
+  
 
   if IsClient() then
     return base_cooldown
-  elseif target and (target:IsHero() or target:IsConsideredHero()) then
-    return cooldown_heroes
-  elseif target then
-    return cooldown_creeps
   else
-    return base_cooldown
+    local target = self:GetCursorTarget()
+    if target and (target:IsHero() or target:IsConsideredHero()) then
+      return cooldown_heroes
+    elseif target then
+      return cooldown_creeps
+    else
+      return base_cooldown
+    end
   end
 end
 
