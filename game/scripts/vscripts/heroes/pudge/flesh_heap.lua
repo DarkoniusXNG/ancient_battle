@@ -65,7 +65,7 @@ function modifier_pudge_custom_flesh_heap_passive:OnCreated(event)
 		-- Change stack count of this intrinsic modifier
 		if self.str_per_hero_kill then
 			if self.str_per_hero_kill ~= 0 then
-				-- We are ''turning creep kills into hero kills'' -- this is not entirelly accurate but whatever
+				-- We are ''turning creep kills into hero kills'' -- this is not entirely accurate but whatever
 				local new_stack_count = strength / self.str_per_hero_kill
 				local old_stack_count = self:GetStackCount()
 				if new_stack_count > old_stack_count then
@@ -154,70 +154,68 @@ function modifier_pudge_custom_flesh_heap_kill_tracker:DeclareFunctions()
   return funcs
 end
 
-function modifier_pudge_custom_flesh_heap_kill_tracker:OnDeath(event)
-  if not IsServer() then
-    return
-  end
+if IsServer() then
+	function modifier_pudge_custom_flesh_heap_kill_tracker:OnDeath(event)
+		local parent = self:GetParent()
+		local killer = event.attacker
+		local dead = event.unit
 
-  local parent = self:GetParent()
-  local killer = event.attacker
-  local dead = event.unit
+		-- Flesh Heap doesn't work on illusions of Pudge or when Pudge is dead
+		if parent:IsIllusion() or not parent:IsAlive() then
+			return
+		end
 
-  -- Flesh Heap doesn't work on illusions of Pudge or when Pudge is dead
-  if parent:IsIllusion() or not parent:IsAlive() then
-    return
-  end
+		-- Don't continue if the killer doesn't exist
+		if not killer or killer:IsNull() then
+			return
+		end
 
-  -- Don't continue if the killer doesn't exist
-  if not killer or killer:IsNull() then
-    return
-  end
+		-- Don't continue if the killer isn't the parent
+		if killer ~= parent then
+			return
+		end
 
-  -- Don't continue if the killer isn't the parent
-  if killer ~= parent then
-    return
-  end
+		-- Check for existence of GetUnitName method to determine if dead unit isn't something weird (an item, rune etc.)
+		if dead.GetUnitName == nil then
+			return
+		end
 
-  -- Check for existence of GetUnitName method to determine if dead unit isn't something weird (an item, rune etc.)
-  if dead.GetUnitName == nil then
-    return
-  end
+		-- Don't trigger on Pudge deaths and denies
+		if parent == dead then
+			return
+		end
 
-  -- Don't trigger on Pudge deaths and denies
-  if parent == dead then
-    return
-  end
+		-- Don't continue if the ability doesn't exist
+		local ability = self:GetAbility()
+		if not ability or ability:IsNull() then
+			return
+		end
 
-  -- Don't continue if the ability doesn't exist
-  local ability = self:GetAbility()
-  if not ability or ability:IsNull() then
-    return
-  end
+		-- Flesh Heap stacks don't increase when killing a buildings, wards or illusions
+		if dead:IsTower() or dead:IsBarracks() or dead:IsBuilding() or dead:IsOther() or dead:IsIllusion() then
+			return
+		end
 
-  -- Flesh Heap stacks don't increase when killing a buildings, wards or illusions
-  if dead:IsTower() or dead:IsBarracks() or dead:IsBuilding() or dead:IsOther() or dead:IsIllusion() then
-    return
-  end
-  
-  if dead:IsRealHero() then
-    self.hero_kills = self.hero_kills + 1
-	
-	local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_fleshheap_count.vpcf", PATTACH_OVERHEAD_FOLLOW, parent)
-	ParticleManager:SetParticleControl(nFXIndex, 1, Vector(1, 0, 0))
-	ParticleManager:ReleaseParticleIndex(nFXIndex)
-  else
-    self.creep_kills = self.creep_kills + 1
-  end
-  
-  local str_per_hero_kill = ability:GetSpecialValueFor("str_per_hero_kill")
-  local str_per_creep_kill = ability:GetSpecialValueFor("str_per_creep_kill")
+		if dead:IsRealHero() then
+			self.hero_kills = self.hero_kills + 1
 
-  -- Calculate total strength and change stack count
-  self:SetStackCount(math.floor(self.hero_kills * str_per_hero_kill + self.creep_kills * str_per_creep_kill))
-  
-  -- Refresh the intrinsic modifier if it exists
-  local intrinsic = parent:FindModifierByName("modifier_pudge_custom_flesh_heap_passive")
-  if intrinsic then
-    intrinsic:ForceRefresh()
-  end
+			local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_fleshheap_count.vpcf", PATTACH_OVERHEAD_FOLLOW, parent)
+			ParticleManager:SetParticleControl(nFXIndex, 1, Vector(1, 0, 0))
+			ParticleManager:ReleaseParticleIndex(nFXIndex)
+		else
+			self.creep_kills = self.creep_kills + 1
+		end
+
+		local str_per_hero_kill = ability:GetSpecialValueFor("str_per_hero_kill")
+		local str_per_creep_kill = ability:GetSpecialValueFor("str_per_creep_kill")
+
+		-- Calculate total strength and change stack count
+		self:SetStackCount(math.floor(self.hero_kills * str_per_hero_kill + self.creep_kills * str_per_creep_kill))
+
+		-- Refresh the intrinsic modifier if it exists
+		local intrinsic = parent:FindModifierByName("modifier_pudge_custom_flesh_heap_passive")
+		if intrinsic then
+			intrinsic:ForceRefresh()
+		end
+	end
 end

@@ -38,9 +38,11 @@ function blood_mage_flame_strike:OnSpellStart()
 	caster:EmitSound("Hero_Invoker.SunStrike.Charge")
 
 	local delay = self:GetSpecialValueFor("delay")
+	local thinker_duration = self:GetSpecialValueFor("duration")
+	local ability = self
 	Timers:CreateTimer(delay, function()
 		-- Thinker
-		CreateModifierThinker(caster, self, "modifier_flame_strike_thinker", {duration = self:GetSpecialValueFor("duration")}, point, caster:GetTeamNumber(), false)
+		CreateModifierThinker(caster, ability, "modifier_flame_strike_thinker", {duration = thinker_duration}, point, caster:GetTeamNumber(), false)
     end)
 end
 
@@ -83,10 +85,8 @@ function modifier_flame_strike_thinker:OnCreated()
 
 	-- Talent that increases initial damage:
 	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_2")
-	if talent then
-		if talent:GetLevel() > 0 then
-			damage_to_units = damage_to_units + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		damage_to_units = damage_to_units + talent:GetSpecialValueFor("value")
 	end
 
 	local damage_to_buildings = damage_to_units*buildings_damage*0.01

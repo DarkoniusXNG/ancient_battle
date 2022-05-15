@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Paladin: Divine Retribution (F) - New Spell, passive, For every allied hero death in vicinity, Paladin gains damage and armor.
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"paladin_divine_retribution"
@@ -16,6 +16,7 @@
 		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
 		"MaxLevel"						"1"
 		"RequiredLevel"					"3"
 		

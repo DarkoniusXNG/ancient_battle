@@ -85,16 +85,34 @@ end
 function modifier_custom_ranger_aura_effect:OnCreated()
 	self.ability = self:GetAbility()
 	self.caster = self:GetCaster()
-	self.percent = 0
-	self.agility = 0
+
+	local agility = 0
+	local percent = 0
+	local attack_range = 0
+
 	if self.ability then
-		self.percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
-	end
-	if self.caster then
-		self.agility = self.caster:GetAgility()
+		percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
+		attack_range = self.ability:GetSpecialValueFor("bonus_attack_range")
 	end
 
-	self.bonus_damage = math.ceil((self.agility)*(self.percent)/100)
+	if self.caster then
+		agility = self.caster:GetAgility()
+
+        -- Talent that increases damage
+		local talent1 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_2")
+		if talent1 and talent1:GetLevel() > 0 then
+			percent = percent + talent1:GetSpecialValueFor("value")
+		end
+		
+		-- Talent that provides attack range
+		local talent2 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_3")
+		if talent2 and talent2:GetLevel() > 0 then
+			attack_range = attack_range + talent2:GetSpecialValueFor("value")
+		end
+	end
+
+	self.attack_range = attack_range
+	self.bonus_damage = math.ceil(agility * percent / 100)
 	
 	self:StartIntervalThink(1)
 end
@@ -103,17 +121,38 @@ function modifier_custom_ranger_aura_effect:OnRefresh()
 	if not self.ability or self.ability:IsNull() then
 		self.ability = self:GetAbility()
 	end
+
 	if not self.caster or self.caster:IsNull() then
 		self.caster = self:GetCaster()
 	end
+
+	local agility = 0
+	local percent = 0
+	local attack_range = 0
+
 	if self.ability then
-		self.percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
-	end
-	if self.caster then
-		self.agility = self.caster:GetAgility()
+		percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
+		attack_range = self.ability:GetSpecialValueFor("bonus_attack_range")
 	end
 
-	self.bonus_damage = math.ceil((self.agility)*(self.percent)/100)
+	if self.caster then
+		agility = self.caster:GetAgility()
+
+        -- Talent that increases damage
+		local talent1 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_2")
+		if talent1 and talent1:GetLevel() > 0 then
+			percent = percent + talent1:GetSpecialValueFor("value")
+		end
+		
+		-- Talent that provides attack range
+		local talent2 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_3")
+		if talent2 and talent2:GetLevel() > 0 then
+			attack_range = attack_range + talent2:GetSpecialValueFor("value")
+		end
+	end
+
+	self.attack_range = attack_range
+	self.bonus_damage = math.ceil(agility * percent / 100)
 end
 
 function modifier_custom_ranger_aura_effect:OnIntervalThink()
@@ -123,7 +162,8 @@ end
 function modifier_custom_ranger_aura_effect:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
-		MODIFIER_PROPERTY_TOOLTIP
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
+		MODIFIER_PROPERTY_TOOLTIP,
 	}
 end
 
@@ -140,6 +180,14 @@ function modifier_custom_ranger_aura_effect:GetModifierPreAttack_BonusDamage()
 		end
 	else
 		self:ForceRefresh()
+	end
+
+	return 0
+end
+
+function modifier_custom_ranger_aura_effect:GetModifierAttackRangeBonus()
+	if self:GetParent():IsRangedAttacker() then
+		return self.attack_range
 	end
 
 	return 0

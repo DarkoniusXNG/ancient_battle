@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Acid Bomb (W) - New Spell, Tracking Projectile, stuns, reduces armor and deals damage over time
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// Linkens: Blocks;
 	// TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important.
 	//=================================================================================================================

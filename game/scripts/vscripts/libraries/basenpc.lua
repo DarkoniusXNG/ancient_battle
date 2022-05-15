@@ -55,7 +55,8 @@ if CDOTA_BaseNPC then
       "modifier_item_lotus_orb_active",
       "modifier_item_sphere_target",                    -- Linken's Sphere transferred buff
       "modifier_item_book_of_shadows_buff",
-      "item_modifier_forgotten_king_bar_damage_shield", ------------------------------------------------
+      -- custom:
+      "item_modifier_forgotten_king_bar_damage_shield",
       "modifier_slippers_of_halcyon_caster",
       "item_modifier_infused_robe_damage_barrier",
       "modifier_item_orb_of_reflection_active_reflect",
@@ -66,6 +67,7 @@ if CDOTA_BaseNPC then
       "modifier_heavens_halberd_debuff",        -- Heaven's Halberd debuff
       "modifier_silver_edge_debuff",            -- Silver Edge debuff
       "modifier_item_nullifier_mute",           -- Nullifier debuff
+      -- custom:
     }
 
     local undispellable_ability_debuffs = {
@@ -96,6 +98,7 @@ if CDOTA_BaseNPC then
       "modifier_winter_wyvern_winters_curse_aura",
       "modifier_winter_wyvern_winters_curse",
       "modifier_windrunner_windrun_slow",
+      -- custom:
       "modifier_entrapment",                    -- pierces BKB, doesn't get removed with BKB
       "modifier_volcano_stun",                  -- pierces BKB
       "modifier_time_stop",                     -- pierces BKB
@@ -133,7 +136,6 @@ if CDOTA_BaseNPC then
       "modifier_mirana_moonlight_shadow",
       "modifier_nyx_assassin_spiked_carapace",
       "modifier_nyx_assassin_vendetta",
-      --"modifier_omniknight_repel",              -- Heavenly Grace
       "modifier_pangolier_shield_crash_buff",
       "modifier_phantom_assassin_blur_active",
       "modifier_razor_static_link_buff",
@@ -146,7 +148,8 @@ if CDOTA_BaseNPC then
       "modifier_winter_wyvern_cold_embrace",
       "modifier_windrunner_windrun",
       "modifier_windrunner_windrun_invis",
-      "modifier_time_slow_aura_applier", ------------------------------------------------------
+      -- custom:
+      "modifier_time_slow_aura_applier",
       "modifier_custom_chemical_rage_buff",
       "modifier_alchemist_chemical_rage",
       "modifier_custom_blade_storm",
@@ -222,6 +225,42 @@ if CDOTA_BaseNPC then
 
     self:Purge(true, true, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
   end
+
+  function CDOTA_BaseNPC:IsLeashedCustom()
+    local leashes = {
+      "modifier_slark_pounce_leash",
+      "modifier_grimstroke_soul_chain",
+      "modifier_furion_sprout_tether",
+      "modifier_puck_coiled",
+      -- custom leash modifiers:
+    }
+
+    for _, v in pairs(leashes) do
+      if self:HasModifier(v) then
+        return true
+      end
+    end
+
+    local stampede_slow = self:FindModifierByName("modifier_centaur_stampede_slow")
+    if stampede_slow then
+      local caster = stampede_slow:GetCaster()
+      if caster and caster:HasScepter() then
+        return true
+      end
+    end
+
+    local power_cogs = self:FindModifierByName("modifier_rattletrap_cog_marker")
+    if power_cogs then
+      local caster = power_cogs:GetCaster()
+      if caster then
+        local talent = caster:FindAbilityByName("special_bonus_unique_clockwerk_2")
+        if talent and talent:GetLevel() then
+          return true
+        end
+      end
+    end
+    return false
+  end
 end
 
 -- On Client:
@@ -245,6 +284,24 @@ if C_DOTA_BaseNPC then
   function C_DOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
       return true
+    end
+
+    return false
+  end
+  
+  function C_DOTA_BaseNPC:IsLeashedCustom()
+    local leashes = {
+      "modifier_slark_pounce_leash",
+      "modifier_grimstroke_soul_chain",
+      "modifier_furion_sprout_tether",
+      "modifier_puck_coiled",
+	  -- custom leash modifiers:
+    }
+
+    for _, v in pairs(leashes) do
+      if self:HasModifier(v) then
+        return true
+      end
     end
 
     return false

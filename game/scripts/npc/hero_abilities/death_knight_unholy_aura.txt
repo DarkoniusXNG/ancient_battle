@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Unholy Aura (F) - New Spell, Passive, gives bonus move speed and hp regeneration
 	// Author: Darkonius
-	// Notes: OK; 17.7.2020;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_unholy_aura"

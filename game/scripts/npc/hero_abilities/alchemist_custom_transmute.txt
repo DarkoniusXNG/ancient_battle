@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================

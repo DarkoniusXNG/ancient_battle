@@ -71,20 +71,16 @@ function modifier_custom_blade_storm:OnIntervalThink()
 	local radius = ability:GetSpecialValueFor("radius")
 	local damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
 	
-	if IsServer then
+	if IsServer() then
 		-- Talent that increases damage:
 		local talent = parent:FindAbilityByName("special_bonus_unique_blademaster_2")
-		if talent then
-			if talent:GetLevel() > 0 then
-				damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
-			end
+		if talent and talent:GetLevel() > 0 then
+			damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
 		end
 		-- Talent that increases radius:
 		local talent_2 = parent:FindAbilityByName("special_bonus_unique_blademaster_1")
-		if talent_2 then
-			if talent_2:GetLevel() > 0 then
-				radius = radius + talent_2:GetSpecialValueFor("value")
-			end
+		if talent_2 and talent_2:GetLevel() > 0 then
+			radius = radius + talent_2:GetSpecialValueFor("value")
 		end
 		local damage_per_tick = damage_per_second*think_interval
 		local damage_to_buildings = damage_per_tick*damage_to_buildings_percent/100

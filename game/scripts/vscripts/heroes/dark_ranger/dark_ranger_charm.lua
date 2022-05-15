@@ -63,7 +63,7 @@ function CharmStart(event)
 				ability:RefundManaCost()
 				ability:EndCooldown()
 				-- Display the error message
-				SendErrorMessage(pID, "Hero Immune To Spells!")
+				SendErrorMessage(pID, "Can't Target Heroes Immune To Spells!")
 			end
 		end
 	end

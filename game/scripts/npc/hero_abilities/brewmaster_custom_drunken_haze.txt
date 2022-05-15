@@ -4,7 +4,7 @@
 	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 14.7.2020; Projectile can be disjointed;
+	// Notes: OK; 2022; Projectile can be disjointed;
 	// TO_DO: Cast Animation is weird.
 	//====================================================================================================
 	"brewmaster_custom_drunken_haze"
@@ -27,11 +27,11 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"11.0 9.0 7.0 5.0"						// original: 12 seconds
+		"AbilityCooldown"				"13 11 9 7"						        // original: 12 seconds
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"									// original: 70
+		"AbilityManaCost"				"70"									// original: 70
 		"AbilityProcsMagicStick"		"1"
 
 		// Special
@@ -56,7 +56,7 @@
 			"04" // original: 15/30/50%;
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_slow"				"-10 -20 -30 -40"
+				"movement_slow"				"-15 -25 -35 -45"
 			}
 			"05" // original: 45/65/80%;
 			{

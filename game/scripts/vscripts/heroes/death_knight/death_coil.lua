@@ -28,10 +28,8 @@ function DeathCoilProjectileHit(event)
 
 	-- Talent that increases heal amount
 	local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_1")
-	if talent then
-		if talent:GetLevel() > 0 then
-			heal_amount = heal_amount + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		heal_amount = heal_amount + talent:GetSpecialValueFor("value")
 	end
 
 	-- Hit Sound
@@ -39,7 +37,7 @@ function DeathCoilProjectileHit(event)
 	
 	-- Target is an enemy or ally?
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
-		if not target:TriggerSpellAbsorb(ability) then
+		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			local damage_table = {}
 			damage_table.attacker = caster
 			damage_table.victim = target

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Dark Ranger: Ranger Aura (E) - Percentage of Dark Ranger's agility is given as bonus damage to ranged allies in radius
 	// Author: Darkonius;
-	// Notes: OK; 2021; Illusions don't bestow the aura;
-	// TO_DO: special_bonus_unique_dark_ranger_2; special_bonus_unique_dark_ranger_3;
+	// Notes: OK; 2022; Illusions don't bestow the aura;
+	// TO_DO:
 	//================================================================================================================= 
 	"dark_ranger_ranger_aura"
 	{

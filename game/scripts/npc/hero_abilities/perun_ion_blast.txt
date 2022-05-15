@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Ion Blast (R) - New Spell, Powershot with Mana Burn, Skillshot
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO: Fix Wrong projectile;
 	//=================================================================================================================
 	"perun_ion_blast"

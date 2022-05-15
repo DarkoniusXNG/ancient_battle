@@ -164,10 +164,7 @@ function ancient_battle_gamemode:OnPlayerLearnedAbility(keys)
 
 	-- Handling talents without custom net tables
 	local talents = {
-		{"special_bonus_sohei_fob_radius", "modifier_sohei_flurry_talent"},
-		{"special_bonus_sohei_wholeness_allycast", "modifier_sohei_wholeness_talent"},
-		{"special_bonus_unique_warp_beast_jump_radius", "modifier_warp_beast_temporal_radius_talent"},
-		{"special_bonus_unique_hero_name_1", "modifier_ability_name_talent_name_1"}
+		{"special_bonus_unique_hero_name_1", "modifier_ability_name_talent_name_1"},
 	}
 
 	for i = 1, #talents do

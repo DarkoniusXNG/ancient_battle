@@ -1,9 +1,9 @@
 "DOTAUnits" //or DOTAHeroes
 {
 	//=================================================================================================================
-	// HERO: Electrician Chatterjee; 2021;
+	// HERO: Electrician Chatterjee; 2022;
 	// Notes: OK;
-	// TO_DO:
+	// TO_DO: electrician_electric_shield fix and shard
 	//=================================================================================================================
 	"npc_dota_hero_electrician"
 	{
@@ -84,13 +84,13 @@
 		"AttributeStrengthGain"                           "2.5"
 		"AttributeBaseAgility"                            "13"
 		"AttributeAgilityGain"                            "2.0"
-		"AttributeBaseIntelligence"                       "25"
-		"AttributeIntelligenceGain"                       "3.5"
+		"AttributeBaseIntelligence"                       "21"
+		"AttributeIntelligenceGain"                       "3.4"
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"                                    "200"                 // original (127);
-		"StatusHealthRegen"                               "1.5"                 // original (1.0);
+		"StatusHealthRegen"                               "1.0"                 // original (1.0);
 		"StatusMana"                                      "75"                  // original (25);
 		"StatusManaRegen"                                 "0.0"                 // Default;
 

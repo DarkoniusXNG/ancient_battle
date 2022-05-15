@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Cloak - invisibility + ms bonus; Still has collision; Also some blur effects;
 	// Author: Darkonius
-	// Notes: OK; 12.7.2020; Not on minimap for enemies; no health bar; low attack priority;
+	// Notes: OK; 2022; Not on minimap for enemies; no health bar; low attack priority;
 	// TO_DO:
 	//=================================================================================================================
 	"dark_terminator_cloak"

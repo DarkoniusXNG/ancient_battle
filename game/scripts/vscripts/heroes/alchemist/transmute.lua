@@ -38,20 +38,17 @@ function alchemist_custom_transmute:GetCooldown(level)
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
-  
 
-  if IsClient() then
-    return base_cooldown
-  else
+  if IsServer() then
     local target = self:GetCursorTarget()
     if target and (target:IsHero() or target:IsConsideredHero()) then
       return cooldown_heroes
     elseif target then
       return cooldown_creeps
-    else
-      return base_cooldown
     end
   end
+
+  return base_cooldown
 end
 
 function alchemist_custom_transmute:OnSpellStart()
@@ -81,9 +78,10 @@ function alchemist_custom_transmute:OnSpellStart()
     -- Apply spell effect
     target:AddNewModifier(caster, self, "modifier_custom_transmuted_hero", {duration = stun_hero_duration})
   else
-    local min_gold_bounty = target:GetMinimumGoldBounty()
+    --local min_gold_bounty = target:GetMinimumGoldBounty()
     local max_gold_bounty = target:GetMaximumGoldBounty()
-    local new_gold_bounty = math.ceil((min_gold_bounty + max_gold_bounty) * 0.5 * gold_bounty_multiplier)
+    --local new_gold_bounty = math.ceil((min_gold_bounty + max_gold_bounty) * 0.5 * gold_bounty_multiplier)
+	local new_gold_bounty = math.ceil(max_gold_bounty * gold_bounty_multiplier)
     target:SetMinimumGoldBounty(new_gold_bounty)
     target:SetMaximumGoldBounty(new_gold_bounty)
     target:AddNoDraw()

@@ -2,34 +2,30 @@ if paladin_holy_purification == nil then
 	paladin_holy_purification = class({})
 end
 
-LinkLuaModifier("modifier_paladin_purification_cd", "heroes/paladin/holy_purification.lua", LUA_MODIFIER_MOTION_NONE)
-
 function paladin_holy_purification:GetAOERadius()
-	return self:GetSpecialValueFor("radius")
+	local caster = self:GetCaster()
+	local base_radius = self:GetSpecialValueFor("radius")
+
+	-- Talent that increases radius
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_1")
+	if talent and talent:GetLevel() > 0 then
+		return base_radius + talent:GetSpecialValueFor("value")
+	end
+
+	return base_radius
 end
 
 function paladin_holy_purification:GetCooldown(level)
-  local caster = self:GetCaster()
-  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-  -- Talent that decreases cooldown
-  if IsServer() then
-    local talent = caster:FindAbilityByName("special_bonus_unique_paladin_3")
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_3")
 	if talent and talent:GetLevel() > 0 then
-      if not caster:HasModifier("modifier_paladin_purification_cd") then
-        caster:AddNewModifier(caster, talent, "modifier_paladin_purification_cd", {})
-      end
-      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-    else
-      caster:RemoveModifierByName("modifier_paladin_purification_cd")
-    end
-  else
-    if caster:HasModifier("modifier_paladin_purification_cd") and caster.purification_cd then
-      return base_cooldown - math.abs(caster.purification_cd)
-    end
-  end
-  
-  return base_cooldown
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
+
+	return base_cooldown
 end
 
 function paladin_holy_purification:OnSpellStart()
@@ -119,8 +115,8 @@ function paladin_holy_purification:OnSpellStart()
 				ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin())
 				ParticleManager:ReleaseParticleIndex(particle)
 
-				-- invulnerability check
-				if not target:IsInvulnerable() then
+				-- spell-immunit and invulnerability check
+				if not target:IsMagicImmune() and not target:IsInvulnerable() then
 					damage_table.victim = target
 					ApplyDamage(damage_table)
 				end
@@ -154,35 +150,4 @@ end
 
 if guardian_angel_holy_purification == nil then
 	guardian_angel_holy_purification = paladin_holy_purification
-end
-
----------------------------------------------------------------------------------------------------
-
-if modifier_paladin_purification_cd == nil then
-	modifier_paladin_purification_cd = class({})
-end
-
-function modifier_paladin_purification_cd:IsHidden()
-    return true
-end
-
-function modifier_paladin_purification_cd:IsPurgable()
-    return false
-end
-
-function modifier_paladin_purification_cd:AllowIllusionDuplicate() 
-	return false
-end
-
-function modifier_paladin_purification_cd:RemoveOnDeath()
-    return false
-end
-
-function modifier_paladin_purification_cd:OnCreated()
-	if IsClient() then
-		local parent = self:GetParent()
-		local talent = self:GetAbility()
-		local talent_value = talent:GetSpecialValueFor("value")
-		parent.purification_cd = talent_value
-	end
 end

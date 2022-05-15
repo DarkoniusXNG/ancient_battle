@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Paladin: Storm Hammer (W) - Custom LUA Sven Storm Bolt
+	// Paladin: Storm Hammer (W) - like Sven Storm Bolt but custom
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"paladin_storm_hammer"

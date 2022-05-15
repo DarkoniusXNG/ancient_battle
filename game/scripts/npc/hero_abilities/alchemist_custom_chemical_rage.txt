@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Chemical Rage (R) - New Spell, Similar to DotA's Chemical Rage
 	// Author: Darkonius
-	// Notes: OK; 2021; Uses built-in modifiers; Has Aghanim Scepter upgrade;
+	// Notes: OK; 2022; Uses built-in modifiers; Has Aghanim Scepter upgrade;
 	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_chemical_rage"

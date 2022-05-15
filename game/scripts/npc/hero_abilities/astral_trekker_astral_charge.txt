@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Astral Charge (R) - Ultimate; New Spell, like Storm Spirit Ball Lightning but he is not invulnerable, no damage, and health cost
 	// Author: Darkonius
-	// Notes: OK; 2021; Disabled with Root;
+	// Notes: OK; 2022; Disabled with Root or Leash;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_astral_charge"
@@ -63,7 +63,7 @@
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"tree_destroy_radius"			"100"
+				"tree_destroy_radius"			"125"
 			}
 			"06"
 			{

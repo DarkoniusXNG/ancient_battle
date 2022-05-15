@@ -2,6 +2,19 @@ if perun_ion_blast == nil then
 	perun_ion_blast = class({})
 end
 
+function perun_ion_blast:GetCastRange(location, target)
+	local caster = self:GetCaster()
+	local base_cast_range = self.BaseClass.GetCastRange(self, location, target)
+
+	-- Talent that makes it global
+	local talent = caster:FindAbilityByName("special_bonus_unique_perun_4")
+	if talent and talent:GetLevel() > 0 then
+		return talent:GetSpecialValueFor("value")
+	end
+
+	return base_cast_range
+end
+
 function perun_ion_blast:OnSpellStart()
 	local caster = self:GetCaster()
 	local caster_pos = caster:GetOrigin()
@@ -11,6 +24,12 @@ function perun_ion_blast:OnSpellStart()
 	local start_radius = self:GetSpecialValueFor("start_radius")
 	local end_radius = self:GetSpecialValueFor("end_radius")
 	local distance = self:GetSpecialValueFor("distance")
+
+	-- Talent that makes it global
+	local talent = caster:FindAbilityByName("special_bonus_unique_perun_4")
+	if talent and talent:GetLevel() > 0 then
+		distance = talent:GetSpecialValueFor("value") - end_radius
+	end
 
 	-- Sound on caster
 	caster:EmitSound("Hero_Tinker.Laser")
@@ -36,7 +55,7 @@ function perun_ion_blast:OnSpellStart()
 		EffectName = "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf",
 		--EffectName = "particles/projectile_linear/perun_ion_blast_projectile.vpcf",
 		vSpawnOrigin = caster_pos,
-		fDistance = distance,
+		fDistance = distance + caster:GetCastRangeBonus(),
 		fStartRadius = start_radius,
 		fEndRadius = end_radius,
 		bHasFrontalCone = false,

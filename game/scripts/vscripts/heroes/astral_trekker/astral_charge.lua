@@ -44,22 +44,20 @@ function astral_trekker_astral_charge:OnSpellStart()
 		caster.astral_charge_is_running = false
 	end
 
-	if IsServer() then
-		-- If health of the caster is below 100 then refund mana cost
-		if caster:GetHealth() > 100 and caster.astral_charge_is_running == false then
-			-- Sound on caster
-			caster:EmitSound("Hero_StormSpirit.BallLightning")
-			-- Add the buff to the caster
-			caster:AddNewModifier(caster, self, "modifier_astral_charge_buff", {})
-			-- Get target point
-			self.target_point = self:GetCursorPosition()
-			-- Make sure there are no multiple instances on one caster
-			caster.astral_charge_is_running = true
-			-- Start astral charge traverse
-			self:astral_charge_traverse()
-		else
-			self:RefundManaCost()
-		end
+	-- If health of the caster is below 100 then refund mana cost
+	if caster:GetHealth() > 100 and caster.astral_charge_is_running == false then
+		-- Sound on caster
+		caster:EmitSound("Hero_StormSpirit.BallLightning")
+		-- Add the buff to the caster
+		caster:AddNewModifier(caster, self, "modifier_astral_charge_buff", {})
+		-- Get target point
+		self.target_point = self:GetCursorPosition()
+		-- Make sure there are no multiple instances on one caster
+		caster.astral_charge_is_running = true
+		-- Start astral charge traverse
+		self:astral_charge_traverse()
+	else
+		self:RefundManaCost()
 	end
 end
 
@@ -91,10 +89,8 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	-- Talent that gives damage during travel:
 	local talent = caster:FindAbilityByName("special_bonus_unique_astral_trekker_1")
 	local damage_per_distance_traveled_percent = 0
-	if talent then
-		if talent:GetLevel() > 0 then
-			damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
 	end
 	
 	-- Necessary pre-calculated variables

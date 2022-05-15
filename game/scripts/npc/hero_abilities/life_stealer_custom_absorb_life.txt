@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lifestealer: Absorb Life (F) - New Spell, Deals damage and absorbs percentage of current hp of affected enemies in a radius 
 	// Author: Darkonius
-	// Notes: OK; 2021;
-	// TO_DO:
+	// Notes: OK; 2022;
+	// TO_DO: special_bonus_unique_lifestealer_custom_1
 	//=================================================================================================================
 	"life_stealer_custom_absorb_life"
 	{
@@ -49,7 +49,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"hp_percent_damage"				"12"
+				"hp_percent_damage"				"10"
 				"CalculateSpellDamageTooltip"	"0"
 			}	
 			"03"

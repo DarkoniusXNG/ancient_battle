@@ -11,10 +11,8 @@ function death_knight_death_pact:OnSpellStart()
   
   -- Talent that increases duration
   local talent_1 = parent:FindAbilityByName("special_bonus_unique_death_knight_2")
-  if talent_1 then
-    if talent_1:GetLevel() > 0 then
-      duration = duration + talent_1:GetSpecialValueFor("value")
-    end
+  if talent_1 and talent_1:GetLevel() > 0 then
+    duration = duration + talent_1:GetSpecialValueFor("value")
   end
 
   -- get the target's current health
@@ -29,11 +27,9 @@ function death_knight_death_pact:OnSpellStart()
 
   -- Talent that increases hp and dmg gain
   local talent_2 = caster:FindAbilityByName("special_bonus_unique_death_knight_3")
-  if talent_2 then
-    if talent_2:GetLevel() > 0 then
-      healthPct = healthPct + talent_2:GetSpecialValueFor("value")
-      damagePct = damagePct + talent_2:GetSpecialValueFor("value2")
-    end
+  if talent_2 and talent_2:GetLevel() > 0 then
+    healthPct = healthPct + talent_2:GetSpecialValueFor("value")
+    damagePct = damagePct + talent_2:GetSpecialValueFor("value2")
   end
 
   -- Calculate bonuses
@@ -74,7 +70,7 @@ function modifier_custom_death_pact:IsPurgable()
 end
 
 function modifier_custom_death_pact:RemoveOnDeath()
-  return false
+	return false
 end
 
 function modifier_custom_death_pact:OnCreated(event)

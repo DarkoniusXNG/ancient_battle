@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 14.7.2020; Flame Strike deals 25% of the damage to buildings;
+	// Notes: OK; 2022; Flame Strike deals 25% of the damage to buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_flame_strike"

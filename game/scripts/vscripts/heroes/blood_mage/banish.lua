@@ -10,23 +10,22 @@ function BanishStart(event)
 	
 	-- Talent that increases duration:
 	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_1")
-	if talent then
-		if talent:GetLevel() > 0 then
-			hero_duration = hero_duration + talent:GetSpecialValueFor("value")
-			creep_duration = creep_duration + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		hero_duration = hero_duration + talent:GetSpecialValueFor("value")
+		creep_duration = creep_duration + talent:GetSpecialValueFor("value")
 	end
 
 	-- Checking if target has spell block, and if its an enemy
-	if not target:TriggerSpellAbsorb(ability) and target:GetTeamNumber() ~= caster:GetTeamNumber()  then
-		if target:IsRealHero() then
-			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = hero_duration})
-		else
-			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = creep_duration})
+	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
+			if target:IsRealHero() then
+				ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = hero_duration})
+			else
+				ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = creep_duration})
+			end
 		end
-	elseif target:GetTeamNumber() == caster:GetTeamNumber() then
+	else
 		LinkLuaModifier("modifier_banished_heal_amp", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
-
 		if target:IsRealHero() then
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_ally", {["duration"] = hero_duration})
 			target:AddNewModifier(caster, ability, "modifier_banished_heal_amp", {duration = hero_duration})

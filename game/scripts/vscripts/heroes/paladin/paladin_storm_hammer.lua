@@ -3,34 +3,22 @@ if paladin_storm_hammer == nil then
 end
 
 LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_paladin_storm_hammer_talent", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
 
 function paladin_storm_hammer:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
 end
 
 function paladin_storm_hammer:GetCooldown(level)
-  local caster = self:GetCaster()
-  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-  -- Talent that decreases cooldown
-  if IsServer() then
-    local talent = caster:FindAbilityByName("special_bonus_unique_paladin_8")
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_8")
 	if talent and talent:GetLevel() > 0 then
-      if not caster:HasModifier("modifier_paladin_storm_hammer_talent") then
-        caster:AddNewModifier(caster, talent, "modifier_paladin_storm_hammer_talent", {})
-      end
-      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-    else
-      caster:RemoveModifierByName("modifier_paladin_storm_hammer_talent")
-    end
-  else
-    if caster:HasModifier("modifier_paladin_storm_hammer_talent") and caster.storm_hammer_talent_value then
-      return base_cooldown - math.abs(caster.storm_hammer_talent_value)
-    end
-  end
-  
-  return base_cooldown
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
+
+	return base_cooldown
 end
 
 function paladin_storm_hammer:OnSpellStart()
@@ -176,35 +164,4 @@ function modifier_paladin_storm_hammer:CheckState()
   }
 
   return state
-end
-
----------------------------------------------------------------------------------------------------
-
-if modifier_paladin_storm_hammer_talent == nil then
-	modifier_paladin_storm_hammer_talent = class({})
-end
-
-function modifier_paladin_storm_hammer_talent:IsHidden()
-    return true
-end
-
-function modifier_paladin_storm_hammer_talent:IsPurgable()
-    return false
-end
-
-function modifier_paladin_storm_hammer_talent:AllowIllusionDuplicate() 
-	return false
-end
-
-function modifier_paladin_storm_hammer_talent:RemoveOnDeath()
-    return false
-end
-
-function modifier_paladin_storm_hammer_talent:OnCreated()
-	if IsClient() then
-		local parent = self:GetParent()
-		local talent = self:GetAbility()
-		local talent_value = talent:GetSpecialValueFor("value")
-		parent.storm_hammer_talent_value = talent_value
-	end
 end

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Shield (T) - Similar to Dark Seer Ion Shell
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// Linkens: Doesn't block (INTENTIONAL);
 	// TO_DO: shard (can damage enemies it is cast on, gives 400 hp to allies)
 	//=================================================================================================================

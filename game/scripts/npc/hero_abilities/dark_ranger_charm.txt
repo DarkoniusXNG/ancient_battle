@@ -4,7 +4,7 @@
 	// Dark Ranger: Charm (F) - New Spell, Takes control of a target enemy unit. Charm takes control of heroes for a short time and make them invulnerable.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: 17.7.2020; Has Aghanim Scepter upgrade; Ancients can be charmed only with equipped Aghanim Scepter;
+	// Notes: 2022; Has Aghanim Scepter upgrade; Ancients can be charmed only with equipped Aghanim Scepter;
 	// Notes: If Removed units or units that became illusions deal DOT damage, crashes the game;
 	// TO_DO: Rework into ability_lua
 	//=================================================================================================================

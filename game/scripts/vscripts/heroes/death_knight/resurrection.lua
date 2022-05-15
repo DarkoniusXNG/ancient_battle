@@ -3,30 +3,18 @@
 end
 
 LinkLuaModifier("modifier_custom_resurrected", "heroes/death_knight/resurrection.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_death_knight_res_cd", "heroes/death_knight/resurrection.lua", LUA_MODIFIER_MOTION_NONE)
 
 function death_knight_resurrection:GetCooldown(level)
-  local caster = self:GetCaster()
-  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-  -- Talent that decreases cooldown
-  if IsServer() then
-    local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_6")
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_6")
 	if talent and talent:GetLevel() > 0 then
-      if not caster:HasModifier("modifier_death_knight_res_cd") then
-        caster:AddNewModifier(caster, talent, "modifier_death_knight_res_cd", {})
-      end
-      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-    else
-      caster:RemoveModifierByName("modifier_death_knight_res_cd")
-    end
-  else
-    if caster:HasModifier("modifier_death_knight_res_cd") and caster.death_knight_res_cd then
-      return base_cooldown - math.abs(caster.death_knight_res_cd)
-    end
-  end
-  
-  return base_cooldown
+	  return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
+
+	return base_cooldown
 end
 
 function death_knight_resurrection:OnSpellStart()
@@ -69,7 +57,6 @@ function death_knight_resurrection:OnSpellStart()
 					unit:AddNewModifier(caster, self, "modifier_kill", {duration = duration})
 					unit:AddNewModifier(caster, nil, "modifier_phased", {duration = 0.03}) -- unit will insta unstuck after this built-in modifier expires.
 					self:FireParticleOnceForUnit(unit)
-					number_of_resurrections = number_of_resurrections + 1
 				else
 					--print("Resurrecting Lane Creep.")
 					local resurected = CreateUnitByName(unit_name, unit:GetAbsOrigin(), true, caster, caster, caster_team)
@@ -79,8 +66,9 @@ function death_knight_resurrection:OnSpellStart()
 					resurected:AddNewModifier(caster, self, "modifier_kill", {duration = duration})
 					resurected:AddNewModifier(caster, nil, "modifier_phased", {duration = 0.03}) -- unit will insta unstuck after this built-in modifier expires.
 					self:FireParticleOnceForUnit(resurected)
-					number_of_resurrections = number_of_resurrections + 1
 				end
+				
+				number_of_resurrections = number_of_resurrections + 1
 			end
 		end
 	end
@@ -136,34 +124,3 @@ function modifier_custom_resurrected:CheckState()
 	return state
 end
 
----------------------------------------------------------------------------------------------------
-
--- Modifier on caster used for talent that improves Resurrection cooldown
-modifier_death_knight_res_cd = class({})
-
-function modifier_death_knight_res_cd:IsHidden()
-  return true
-end
-
-function modifier_death_knight_res_cd:IsPurgable()
-  return false
-end
-
-function modifier_death_knight_res_cd:RemoveOnDeath()
-  return false
-end
-
-function modifier_death_knight_res_cd:OnCreated()
-  if not IsServer() then
-    local parent = self:GetParent()
-    local talent = self:GetAbility()
-    parent.death_knight_res_cd = talent:GetSpecialValueFor("value")
-  end
-end
-
-function modifier_death_knight_res_cd:OnDestroy()
-  local parent = self:GetParent()
-  if parent and parent.death_knight_res_cd then
-    parent.death_knight_res_cd = nil
-  end
-end

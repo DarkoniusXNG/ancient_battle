@@ -4,7 +4,7 @@
 	// Mana Eater: Anti-Magic Field (W) - New Spell, Generates an anti magic field that grants magic immunity (not spell immunity!) to all heroes and buildings within and pseudo-silence to enemies.
 	// Author: Darkonius
 	// Notes: OK; 2021; Uses Order Filter;
-	// TO_DO: Rework to lua; datadriven thinkers don't get removed;
+	// TO_DO: Rework to lua; datadriven thinkers don't get removed; special_bonus_unique_mana_eater_1
 	//=================================================================================================================
 	"mana_eater_anti_magic_field"
 	{

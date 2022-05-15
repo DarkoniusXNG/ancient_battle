@@ -27,10 +27,8 @@ function modifier_death_knight_death_pit_effect:OnCreated()
 
 		-- Talent that increases healing reduction
 		local talent = caster:FindAbilityByName("special_bonus_unique_death_knight_4")
-		if talent then
-			if talent:GetLevel() > 0 then
-				self.heal_reduction = ability:GetSpecialValueFor("heal_reduction") + talent:GetSpecialValueFor("value")
-			end
+		if talent and talent:GetLevel() > 0 then
+			self.heal_reduction = ability:GetSpecialValueFor("heal_reduction") + talent:GetSpecialValueFor("value")
 		end
 		
 		-- Slow should be affected by status resistance
@@ -80,38 +78,81 @@ end
 	-- end
 -- end
 
-function modifier_death_knight_death_pit_effect:OnTakeDamage(event)
-	if IsServer() then
-		if event.unit == self:GetParent() and event.damage > 0 then
-			local affected_unit = event.unit or self:GetParent()
-			local lifesteal_percent = self.bonus_lifesteal
-			local damage = event.damage
-			local damage_flags = event.damage_flags
-			local attacker = event.attacker
+if IsServer() then
+	function modifier_death_knight_death_pit_effect:OnTakeDamage(event)
+		local parent = self:GetParent()
+		local attacker = event.attacker
+		local damaged_unit = event.unit
+		local dmg_flags = event.damage_flags
+		local damage = event.damage
+		local inflictor = event.inflictor
 
-			if HasBit(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL) then
-				return nil
-			end
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
+			return
+		end
 
-			if attacker == affected_unit then
-				return nil
-			end
+		-- Check if damaged entity exists
+		if not damaged_unit or damaged_unit:IsNull() then
+			return
+		end
 
-			if not attacker:IsAlive() then
-				return nil
-			end
-			
-			local heal_amount = lifesteal_percent*damage/100
+		-- Check if damaged entity has this modifier
+		if damaged_unit ~= parent then
+			return
+		end
+
+		-- Ignore self damage
+		if damaged_unit == attacker then
+			return
+		end
+
+		-- Check if attacker is something weird
+		if attacker.GetUnitName == nil then
+			return
+		end
+
+		-- Buildings, wards and invulnerable units can't lifesteal
+		if attacker:IsTower() or attacker:IsBuilding() or attacker:IsOther() or attacker:IsInvulnerable() then
+			return
+		end
+
+		-- Check if attacker is dead
+		if not attacker:IsAlive() then
+			return
+		end
+
+		-- Check if damage is 0 or negative 
+		if damage <= 0 then
+			return
+		end
+
+		-- Check for damage flags
+		if HasBit(dmg_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(dmg_flags, DOTA_DAMAGE_FLAG_REFLECTION) or HasBit(dmg_flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL) or HasBit(dmg_flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION) then
+			return
+		end
+
+		local lifesteal_percent = self.bonus_lifesteal
+		local heal_amount = lifesteal_percent * damage / 100
+
+		if heal_amount > 0 then
 			attacker:Heal(heal_amount, self:GetAbility())
-			
+
 			-- Heal Amount message
 			SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, attacker, heal_amount, nil)
-			
-			-- Lifesteal Particle
-			local lifesteal_particle_name = "particles/generic_gameplay/generic_lifesteal.vpcf"
-			local lifesteal_particle_index = ParticleManager:CreateParticle(lifesteal_particle_name, PATTACH_ABSORIGIN_FOLLOW, attacker)
-			ParticleManager:SetParticleControl(lifesteal_particle_index, 0, attacker:GetAbsOrigin())
-			ParticleManager:ReleaseParticleIndex(lifesteal_particle_index)
+
+			-- Particle
+			if inflictor then
+				-- Spell Lifesteal
+				local particle1 = ParticleManager:CreateParticle("particles/items3_fx/octarine_core_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, attacker)
+				ParticleManager:SetParticleControl(particle1, 0, attacker:GetAbsOrigin())
+				ParticleManager:ReleaseParticleIndex(particle1)
+			else
+				-- Normal Lifesteal
+				local particle2 = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, attacker)
+				--ParticleManager:SetParticleControl(particle2, 0, attacker:GetAbsOrigin())
+				ParticleManager:ReleaseParticleIndex(particle2)
+			end
 		end
 	end
 end

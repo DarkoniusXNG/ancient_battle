@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blademaster: Blade Storm (Q) - similar to Juggernaut Blade Fury
 	// Author: Darkonius
-	// Notes: OK; 2021; Deals 25% damage to buildings. Can attack normally during Blade Storm.
+	// Notes: OK; 2022; Deals 25% damage to buildings. Can attack normally during Blade Storm.
 	// TO_DO:
 	//=================================================================================================================
 	"blademaster_blade_storm"

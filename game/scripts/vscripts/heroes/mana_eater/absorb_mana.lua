@@ -33,6 +33,8 @@ function AbsorbMana(keys)
 			else
 				-- Don't go on cooldown if targeted unit doesn't have mana
 				ability:EndCooldown()
+				local pID = caster:GetPlayerOwnerID()
+				SendErrorMessage(pID, "Target Doesn't Have Mana!")
 			end
 		end
 	end

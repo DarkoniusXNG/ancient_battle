@@ -4,7 +4,7 @@
 	// Lifestealer: Anabolic Frenzy - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
 	// Author: Darkonius
 	// Linkens: Blocks
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
 	//=================================================================================================================
 	"life_stealer_custom_anabolic_frenzy"

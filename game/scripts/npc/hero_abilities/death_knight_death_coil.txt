@@ -4,7 +4,7 @@
 	// Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 2021; Can't cast on himself;
+	// Notes: OK; 2022; Can't cast on himself;
 	// TO_DO: 
 	//=================================================================================================================
 	"death_knight_death_coil"

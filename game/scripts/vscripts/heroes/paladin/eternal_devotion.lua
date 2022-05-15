@@ -16,7 +16,7 @@ function EternalDevotionCheck(keys)
 		if caster:IsRealHero() then
 			-- Check if caster has the global talent
 			if talent_1 and talent_1:GetLevel() > 0 then
-				radius = 20000
+				radius = FIND_UNITS_EVERYWHERE
 			end
 			
 			-- Check if caster has Wrath of God talent

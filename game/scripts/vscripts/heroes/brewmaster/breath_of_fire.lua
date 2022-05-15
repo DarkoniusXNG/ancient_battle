@@ -151,10 +151,8 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 	
 	-- Talent that increases damage per second
 	local talent = caster:FindAbilityByName("special_bonus_unique_brewmaster_drunken_haze_burn")
-	if talent then
-		if talent:GetLevel() > 0 then
-			damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
 	end
 
 	local damage_per_interval = damage_per_second*damage_interval

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// HERO: Dark Ranger; 2021;
 	// Notes: OK; Dark Arrows provide bonus dmg, Ranger aura provides bonus attack damage proportional to agility; Marksmanship provides bonus agility
-	// TO_DO: special_bonus_unique_dark_ranger_1; special_bonus_unique_dark_ranger_2; special_bonus_unique_dark_ranger_3; special_bonus_unique_dark_ranger_4;
+	// TO_DO: special_bonus_unique_dark_ranger_1; special_bonus_unique_dark_ranger_4;
 	//=================================================================================================================
 	"npc_dota_hero_dark_ranger"
 	{

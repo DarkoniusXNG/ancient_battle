@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Terminate - global Sniper Assassinate
 	// Author: Darkonius
-	// Notes: OK; 2021; Crosshair particle is visible for enemies too;
+	// Notes: OK; 2022; Crosshair particle is visible for enemies too;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================

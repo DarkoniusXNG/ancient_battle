@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lightning Shaman - Perun; 2021;
-	// TO_DO: special_bonus_unique_perun_1 - special_bonus_unique_perun_4
+	// HERO: Lightning Shaman - Perun; 2022;
+	// TO_DO: special_bonus_unique_perun_1;
 	//=================================================================================================================
 	"npc_dota_hero_perun"
 	{

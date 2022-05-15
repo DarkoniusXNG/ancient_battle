@@ -4,7 +4,7 @@
 	// Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 2021; Life Drain works only if the caster doesn't have max health;
+	// Notes: OK; 2022; Life Drain works only if the caster doesn't have max health;
 	// Notes: The link will not break if the target goes out of vision;
 	// TO_DO: shard: Life Drain applies Dark Arrow debuff
 	//=================================================================================================================
@@ -59,7 +59,7 @@
 			"04" // don't change!
 			{
 				"var_type"							"FIELD_INTEGER"
-				"break_distance"					"800"
+				"break_distance"					"850"
 			}
 		}
 

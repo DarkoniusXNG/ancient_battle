@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Poison Sting - Modified Venomancer Poison Sting; 
 	// Author: Valve + Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"life_stealer_custom_poison_sting"
@@ -25,12 +25,12 @@
 			"01" // Ghoul Frenzy (1.5); old Poison Sting (2); Venomancer Poison Sting (6/9/12/15);
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"duration"                                "3.0 4.5 6.0 7.5"
+				"duration"                                "2.0"
 			}
-			"02" // old Poison Sting (2/4/7/10); Venomancer Poison Sting (6/14/22/30);
+			"02" // old Poison Sting (2/4/7/10); Venomancer Poison Sting (8/16/24/32);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage"                                  "6 14 22 30"
+				"damage"                                  "15 30 45 60"
 			}
 			"03"// Ghoul Frenzy (10/15/20/25%); old Poison Sting (10/20/30/40%); Venomancer Poison Sting (8/10/12/14%);
 			{

@@ -5,7 +5,7 @@ function LifeDrainStart(event)
 	local ability = event.ability
 	
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
+	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_life_drain", {})
 		caster:EmitSound("Hero_Pugna.LifeDrain.Target")
 	else
@@ -45,10 +45,8 @@ function LifeDrainHealthTransfer(event)
 	-- Talent that changes damage type and allows full hp draining
 	local has_talent = false
 	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
-	if talent then
-		if talent:GetLevel() > 0 then
-			has_talent = true
-		end
+	if talent and talent:GetLevel() > 0 then
+		has_talent = true
 	end
 
 	-- How much caster heals himself

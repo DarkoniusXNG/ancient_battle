@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lightning Shaman: Ball of Lightning (Q) - New Spell, Int Based Radius Damage Nuke, Skillshot
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"perun_ball_of_lightning"

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Arcane Magic (E) - New Spell, aura that gives mana regen, mana cost reduction, magic resistance and spell amp, has active part that gives mana regen amp and cdr
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"archmage_arcane_magic"

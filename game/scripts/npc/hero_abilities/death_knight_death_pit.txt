@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Death Knight: Death Pit (E) - Creates a pit in which enemies are slowed, provide lifesteal when damaged and have reduced healing.
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pit"

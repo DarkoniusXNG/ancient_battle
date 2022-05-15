@@ -3,7 +3,7 @@
 	//====================================================================================================
 	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
 	// Authors: Jastuchko + Darkonius
-	// Notes: OK; 15.7.2020;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_breath_of_fire"
@@ -24,7 +24,7 @@
 
 		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 14/13/12/11 seconds
 
-		"AbilityManaCost"               "90 100 110 120"					// original: 70; Dragon Knight: 100/110/120/130
+		"AbilityManaCost"               "100 110 120 130"					// original: 70; Dragon Knight: 100/110/120/130
 		"AbilityProcsMagicStick"		"1"
 
 		"precache"

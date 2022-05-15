@@ -19,7 +19,7 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
-		"AbilityCastRange"				"550"
+		"AbilityCastRange"				"550" // it should be equal to Dark Ranger's starting attack range
 		"AbilityManaCost"				"20"
 		"AbilityDamage"					"5 10 15 20"
 		"AbilityCooldown"				"0.0"

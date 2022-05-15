@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
 	// Author: Darkonius
-	// Notes: OK; 14.7.2020; Pseudo-Random, triggers OnAttackStart
+	// Notes: OK; 2022; Pseudo-Random, triggers OnAttackStart
 	// TO_DO:
 	//=================================================================================================================
 	"axe_custom_counter_helix"

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Rage - New Spell, Spell immunity + bonus damage
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO: Add growing mechanic OnSpellStart (Increases Lifestealer's size by 25% for its duration.);
 	//=================================================================================================================
 	"life_stealer_custom_rage"

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Mana Eater: Mana Shell (T) - New Spell, Passive Spell; Percentage of the damage dealt to Mana Eater gives him mana.
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"mana_eater_mana_shell"

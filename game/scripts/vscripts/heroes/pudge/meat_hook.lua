@@ -2,7 +2,6 @@ pudge_custom_meat_hook = class({})
 
 LinkLuaModifier("modifier_pudge_meat_hook_followthrough_lua", "heroes/pudge/meat_hook.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_pudge_custom_meat_hook", "heroes/pudge/meat_hook.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
-LinkLuaModifier("modifier_pudge_custom_meat_hook_cd", "heroes/pudge/meat_hook.lua", LUA_MODIFIER_MOTION_NONE)
 
 function pudge_custom_meat_hook:OnAbilityPhaseStart()
 	self:GetCaster():StartGesture( ACT_DOTA_OVERRIDE_ABILITY_1 )
@@ -17,22 +16,11 @@ function pudge_custom_meat_hook:GetCooldown(level)
   local caster = self:GetCaster()
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-  -- Talent that decreases cooldown
-  if IsServer() then
-    local talent = caster:FindAbilityByName("special_bonus_unique_pudge_custom_3")
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_pudge_custom_3")
 	if talent and talent:GetLevel() > 0 then
-      if not caster:HasModifier("modifier_pudge_custom_meat_hook_cd") then
-        caster:AddNewModifier(caster, talent, "modifier_pudge_custom_meat_hook_cd", {})
-      end
-      return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-    else
-      caster:RemoveModifierByName("modifier_pudge_custom_meat_hook_cd")
-    end
-  else
-    if caster:HasModifier("modifier_pudge_custom_meat_hook_cd") and caster.meat_hook_cd then
-      return base_cooldown - math.abs(caster.meat_hook_cd)
-    end
-  end
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
   
   return base_cooldown
 end
@@ -407,33 +395,4 @@ function modifier_pudge_meat_hook_followthrough_lua:CheckState()
 	}
 
 	return state
-end
-
----------------------------------------------------------------------------------------------------
-
-modifier_pudge_custom_meat_hook_cd = class({})
-
-function modifier_pudge_custom_meat_hook_cd:IsHidden()
-    return true
-end
-
-function modifier_pudge_custom_meat_hook_cd:IsPurgable()
-    return false
-end
-
-function modifier_pudge_custom_meat_hook_cd:AllowIllusionDuplicate() 
-	return false
-end
-
-function modifier_pudge_custom_meat_hook_cd:RemoveOnDeath()
-    return false
-end
-
-function modifier_pudge_custom_meat_hook_cd:OnCreated()
-	if IsClient() then
-		local parent = self:GetParent()
-		local talent = self:GetAbility()
-		local talent_value = talent:GetSpecialValueFor("value")
-		parent.meat_hook_cd = talent_value
-	end
 end
