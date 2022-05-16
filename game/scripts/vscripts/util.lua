@@ -533,7 +533,7 @@ function CustomItemEnable(caster, unit)
 			new_item:RemoveSelf()
 		end
 
-		unit:CalculateStatBonus()
+		unit:CalculateStatBonus(true)
 	else
 		print("unit is nil!")
 	end
