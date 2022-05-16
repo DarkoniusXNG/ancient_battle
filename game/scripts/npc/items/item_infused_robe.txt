@@ -6,7 +6,6 @@
 	//=================================================================================================================
 	"item_recipe_infused_robe"
 	{
-		"ID"							"1262"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -33,7 +32,6 @@
 	//=================================================================================================================
 	"item_infused_robe"
 	{
-		"ID"              				"1263"
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/infused_robe"
 

@@ -8,7 +8,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8205" // 1254
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -36,7 +35,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8206" // 1255
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_rod_of_atos"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

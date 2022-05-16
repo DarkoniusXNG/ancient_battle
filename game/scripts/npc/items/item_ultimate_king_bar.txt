@@ -6,7 +6,6 @@
 	//=================================================================================================================
 	"item_recipe_ultimate_king_bar"
 	{
-		"ID"							"8115" // 1260
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -32,7 +31,6 @@
 	//=================================================================================================================
 	"item_ultimate_king_bar"
 	{
-		"ID"							"8116" // 1261
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/ultimate_king_bar"
 		

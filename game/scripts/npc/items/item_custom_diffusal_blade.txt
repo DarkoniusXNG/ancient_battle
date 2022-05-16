@@ -8,7 +8,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8173" // 1256
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -35,7 +34,6 @@
 	//=================================================================================================================
 	"item_custom_diffusal_blade"
 	{
-		"ID"							"8174" // 1257
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_diffusal_blade"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

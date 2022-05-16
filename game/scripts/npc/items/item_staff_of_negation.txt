@@ -6,7 +6,6 @@
 	//=================================================================================================================
 	"item_recipe_staff_of_negation"
 	{
-		"ID"							"1258"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -33,7 +32,6 @@
 	//=================================================================================================================
 	"item_staff_of_negation"
 	{
-		"ID"							"1259"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/staff_of_negation"
 

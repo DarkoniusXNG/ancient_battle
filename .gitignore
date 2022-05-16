@@ -22,3 +22,4 @@ game/sounds/
 *.vtex_c
 game/tools_asset_info.bin
 game/tools_thumbnail_cache.bin
+*.bin
