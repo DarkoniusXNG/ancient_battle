@@ -4,7 +4,7 @@
 	// Lightning Shaman: Ion Blast (R) - New Spell, Powershot with Mana Burn, Skillshot
 	// Author: Darkonius
 	// Notes: OK; 2022;
-	// TO_DO: Fix Wrong projectile;
+	// TO_DO:
 	//=================================================================================================================
 	"perun_ion_blast"
 	{
@@ -38,8 +38,7 @@
 		"precache"
 		{
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-			"particle"					"particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf"
-			//"particle"					"particles/projectile_linear/perun_ion_blast_projectile.vpcf"
+			"particle"					"particles/ion_blast/ion_blast_projectile.vpcf"
 			"particle"					"particles/units/heroes/hero_lina/lina_spell_dragon_slave_impact.vpcf"
 		}
 
@@ -55,12 +54,12 @@
 			"02" // Powershot (125)
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"start_radius"                            "200"
+				"start_radius"                            "175"
 			}
 			"03" // Powershot (125)
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"end_radius"                              "200"
+				"end_radius"                              "175"
 			}
 			"04" // Powershot (2600); original (2500/3000/4500);
 			{
@@ -91,7 +90,7 @@
 			"09" // Powershot (50);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"trees_radius"                            "200"
+				"trees_radius"                            "175"
 			}
 		}
 	}

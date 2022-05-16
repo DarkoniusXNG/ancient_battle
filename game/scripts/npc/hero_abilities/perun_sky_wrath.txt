@@ -3,14 +3,14 @@
 	//=================================================================================================================
 	// Lightning Shaman: Perun's Wrath (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
 	// Author: Darkonius
-	// Notes: OK; 2021; Stun radius is smaller than the damage/blind radius;
-	// TO_DO: Rework to lua; Fix particles; Add effect delay (LIghtning first, then split earth); status resistance fix; blind is applied first;
+	// Notes: OK; 2022; Stun radius is smaller than the damage/blind radius;
+	// TO_DO:
 	//=================================================================================================================
 	"perun_sky_wrath"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
 		"AbilityTextureName"			"custom/perun_sky_wrath"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -18,42 +18,40 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+        "ScriptFile"					"heroes/perun/perun_sky_wrath.lua"
 		
 		"precache"
 		{
 			"soundfile"     "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
 			"soundfile"     "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 			"particle"		"particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
-			"particle"		"particles/custom/perun_sky_wrath.vpcf"
+			"particle"		"particles/custom/perun_sky_wrath_new.vpcf"
+			"particle"		"particles/custom/perun_sky_wrath_aoe.vpcf"
 		}
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700 750 800 850" // like Zeus' Lightning Bolt
-		"AbilityCastPoint"				"0.4" // Zeus' Lightning Bolt (0.4); Lina Light Strike Array (0.45);
+		"AbilityCastRange"				"700 750 800 850" // Zeus' Lightning Bolt (700 750 800 850); Lina Light Strike Array (625);
+		"AbilityCastPoint"				"0.45" // Zeus' Lightning Bolt (0.3); Lina Light Strike Array (0.45);
 		"AOERadius"						"%damage_radius"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8" // Zeus' Lightning Bolt (6); Lina Light Strike Array (13/11/9/7);
+		"AbilityCooldown"				"11 10 9 8" // Zeus' Lightning Bolt (6); Lina Light Strike Array (13/11/9/7);
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"100 110 120 130" // Zeus' Lightning Bolt (120/125/130/135); Lina Light Strike Array (100/105/110/115);
 		"AbilityProcsMagicStick"		"1"
-		
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityDamage"					"80 130 180 230" // Zeus' Lightning Bolt (125/200/275/350); Lina Light Strike Array (80/130/180/230);
-		
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // Zeus' Lightning Bolt (125/200/275/350); Lina Light Strike Array (80/130/180/230);
+			"01" // Zeus' Lightning Bolt (125/200/275/350); Lina Light Strike Array (100/150/200/250);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage"                                  "80 130 180 230"
+				"damage"                                  "90 140 190 240"
 				"LinkedSpecialBonus"                      "special_bonus_unique_perun_1"
 			}
 			"02" // Lina Light Strike Array (250);
@@ -62,7 +60,7 @@
 				"damage_radius"                           "325"
 				"CalculateSpellDamageTooltip"             "0"
 			}
-			"03" // Zeus' Lightning Bolt (0.2); Light Strike Array (1.5/1.9/2.2/2.5);
+			"03" // Zeus' Lightning Bolt (0.3); Light Strike Array (1.6/1.9/2.2/2.5);
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"stun_duration"                           "0.5 0.75 1.0 1.25"
@@ -97,190 +95,6 @@
 				"var_type"                                "FIELD_INTEGER"
 				"true_sight_duration"                     "5"
 			}
-			"09"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"effect_delay"                            "0.5"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.LightningBolt"
-				"Target" 		"CASTER"
-			}
-
-			"FireEffect"
-			{
-				"EffectName"        "particles/custom/perun_sky_wrath.vpcf"
-				"EffectAttachType"  "start_at_customorigin" 
-				"TargetPoint"       "POINT"
-				
-				"ControlPoints"
-				{
-					"01"    "%damage_radius 0 0" 
-					
-				}
-			}
-			
-			"FireSound"
-			{
-				"EffectName"	"Hero_Leshrac.Split_Earth"
-				"Target" 		"CASTER"
-			}
-			
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
-				"EffectAttachType"  "start_at_customorigin"
-				"TargetPoint"       "POINT"
-
-				"ControlPoints"
-				{
-					"01"    "%damage_radius %damage_radius %damage_radius"
-				}
-			}
-
-			"DestroyTrees"
-			{
-				"Target" 		"POINT"
-				"Radius"		"%damage_radius"
-			}
-			
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"  	"POINT"
-					"Radius" 	"%damage_radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Type"			"DAMAGE_TYPE_MAGICAL"
-				"Damage"		"%AbilityDamage"
-			}
-			
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Center"  	"POINT"
-					"Radius" 	"%blind_radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"ModifierName"		"modifier_custom_sky_blinded"
-				"Duration"   		"%blind_duration"
-			}
-			
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Center"  	"POINT"
-					"Radius" 	"%stun_radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"ModifierName"		"modifier_custom_sky_disabled"
-				"Duration"   		"%stun_duration"
-			}
-			
-			"SpawnUnit"
-			{
-				"UnitName" 			"npc_dota_thinker"
-				"Target" 			"POINT"
-				"UnitCount"			"1"
-				"Duration"			"%true_sight_duration"
-				"GrantsGold"		"0"
-				"GrantsXP"			"0"
-				"OnSpawn"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_zuus_lightningbolt_vision_thinker" // built-in modifier
-						"Target"		"TARGET"
-						"Duration"		"%true_sight_duration"
-					}
-					
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_revealed_thinker"	// this modifier applies dummy states to the thinker
-						"Target"		"TARGET"
-						"Duration"		"%true_sight_duration"
-					}
-				}
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_custom_sky_blinded"
-			{
-				"IsHidden"         					"0"
-				"IsDebuff"							"1"
-				"IsPurgable"       					"1"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MISS_PERCENTAGE"				"%miss_chance"
-				}
-			}
-			
-			"modifier_custom_sky_disabled"
-			{
-				"IsHidden"         					"0"
-				"IsDebuff"							"1"
-				"IsStunDebuff"						"1"
-				"IsPurgable"       					"1"
-				
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"						"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			
-			"modifier_revealed_thinker"
-			{
-				"IsHidden"			"1"
-				"IsDebuff"			"0"
-				"IsPurgable"    	"0"
-				
-				"Aura" 				"modifier_revealed_truesight_aura"	// this modifier is just a visual effect
-				"Aura_Radius" 		"%true_sight_radius"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Duration"   		"%true_sight_duration"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_TEAM_MOVE_TO"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_TEAM_SELECT"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"		   	"MODIFIER_STATE_VALUE_ENABLED"	
-				}
-			}
-			
-			"modifier_revealed_truesight_aura"	// this modifier is just a visual effect
-			{
-				"IsHidden"		"0"
-				"IsDebuff"		"1"
-				"IsPurgable"    "0"
-			}
 		}
 	}
 	
@@ -302,7 +116,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "120"
+				"value"                                   "130"
 			}
 		}
 	}

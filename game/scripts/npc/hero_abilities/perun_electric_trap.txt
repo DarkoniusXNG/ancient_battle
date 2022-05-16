@@ -51,7 +51,7 @@
 			"01" // old Techies Stasis Trap (450);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"radius"					"450"
+				"radius"					"325"
 			}
 			"02" // old Techies Stasis Trap (2.5/3/3.5/4)
 			{
