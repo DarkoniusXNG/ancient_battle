@@ -4,7 +4,7 @@
 	// Silencer: Glaives of Silence (W) -  New Spell; AutoCast Attack Spell; Unique Attack Modifier;
 	// Author: Darkonius
 	// Notes: OK; 20.2.2017;
-	// TO_DO: Runscript bonus INT damage
+	// TO_DO: Rework to lua; add bonus INT damage talent
 	//=================================================================================================================
 	"silencer_custom_glaives_of_silence"
 	{
