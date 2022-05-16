@@ -281,7 +281,7 @@
   "item_iron_talon"               "REMOVE"
   "item_recipe_iron_talon"        "REMOVE"
   //"item_mango_tree"               "REMOVE"
-  //"item_arcane_ring"              "REMOVE"
+  "item_arcane_ring"              "REMOVE"
   //"item_elixer"                   "REMOVE"
   //"item_broom_handle"             "REMOVE"
   //"item_ironwood_tree"            "REMOVE"
@@ -292,18 +292,18 @@
   //"item_vampire_fangs"            "REMOVE"
   //"item_repair_kit"               "REMOVE"
   //"item_pupils_gift"              "REMOVE"
-  "item_helm_of_the_undying"      "REMOVE"
+  //"item_helm_of_the_undying"      "REMOVE"
   //"item_imp_claw"                 "REMOVE"
   //"item_philosophers_stone"       "REMOVE"
   //"item_dragon_scale"             "REMOVE"
   //"item_essence_ring"             "REMOVE"
   //"item_nether_shawl"             "REMOVE"
-  "item_tome_of_aghanim"          "REMOVE"
+  //"item_tome_of_aghanim"          "REMOVE"
   //"item_craggy_coat"              "REMOVE"
   //"item_greater_faerie_fire"      "REMOVE"
   //"item_quickening_charm"         "REMOVE"
-  "item_mind_breaker"             "REMOVE"
-  "item_third_eye"                "REMOVE"
+  //"item_mind_breaker"             "REMOVE"
+  //"item_third_eye"                "REMOVE"
   //"item_spider_legs"              "REMOVE"
   //"item_vambrace"                 "REMOVE"
   //"item_recipe_vambrace"          "REMOVE"
@@ -315,7 +315,7 @@
   //"item_witless_shako"            "REMOVE"
   //"item_timeless_relic"           "REMOVE"
   //"item_spell_prism"              "REMOVE"
-  "item_princes_knife"            "REMOVE"
+  //"item_princes_knife"            "REMOVE"
   //"item_flicker"                  "REMOVE"
   //"item_spy_gadget"               "REMOVE"
   //"item_ninja_gear"               "REMOVE"
@@ -328,11 +328,11 @@
   //"item_desolator_2"				"REMOVE"
   //"item_seer_stone"               "REMOVE"
   //"item_mirror_shield"            "REMOVE"
-  "item_fallen_sky"               "REMOVE"
-  "item_recipe_fallen_sky"        "REMOVE"
-  "item_fusion_rune"              "REMOVE"
-  "item_apex"                     "REMOVE"
-  "item_ballista"                 "REMOVE"
+  //"item_fallen_sky"               "REMOVE"
+  //"item_recipe_fallen_sky"        "REMOVE"
+  //"item_fusion_rune"              "REMOVE"
+  //"item_apex"                     "REMOVE"
+  //"item_ballista"                 "REMOVE"
   //"item_woodland_striders"        "REMOVE"
   //"item_trident"                  "REMOVE"
   //"item_recipe_trident"           "REMOVE"
@@ -348,7 +348,7 @@
 	//=================================================================================================================
 	"item_blink"
 	{
-		"AbilitySharedCooldown"			"blink_items"
+		"AbilitySharedCooldown"			"blink"
 		"SideShop"						"1"
 	}
 	
@@ -418,18 +418,15 @@
 		"AbilitySharedCooldown"			"hood_of_defiance"
 	}
 	
-	//=================================================================================================================
-	// Silencer: Glaives of Wisdom override
-	// Notes: Needed for Silencer's Innate Int Steal Icon to appear
-	//=================================================================================================================
-	"silencer_glaives_of_wisdom"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	}
-	
 	"item_tpscroll"
 	{
 		"SideShop"						"1"
+		"ItemCost"                      "1"
+		"ItemPermanent"                 "1"
+		"ItemRequiresCharges"           "0"
+		"ItemDisplayCharges"            "0"
+		"ItemKillable"                  "0"
+		"ItemDroppable"                 "1"
 	}
 	
 	"item_ring_of_protection"
@@ -568,6 +565,14 @@
 	"item_blades_of_attack"
 	{
 		"SideShop"						"1"
+	}
+
+	//=================================================================================================================
+	// Aghanim's Shard
+	//=================================================================================================================
+	"item_aghanims_shard"
+	{
+		"ItemInitialStockTime"			"780.0" // 60 seconds pregame + 12 * 60 seconds
 	}
 	
 	//=================================================================================================================

@@ -20,7 +20,7 @@
 		"Ability4"				"silencer_custom_silent_torment"		// T (4 levels)
 		"Ability5"				"silencer_custom_summon_golems"			// F, Secondary Ultimate (3 levels)
 		"Ability6"				"silencer_custom_global_silence"		// R, modified, Primary Ultimate (1 level)
-		"Ability7"				"generic_hidden"			            // innate ability
+		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
