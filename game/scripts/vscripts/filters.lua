@@ -427,7 +427,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	-- Increase xp bounty of neutrals
 	if victim:IsNeutralUnitType() and keys.damage >= victim:GetHealth() and not victim.changed_xp_bounty then
 		local old_xp_bounty = victim:GetDeathXP()
-		local xp_multiplier = 1.1
+		local xp_multiplier = 1.15
 		local new_xp_bounty = old_xp_bounty * xp_multiplier
 
 		victim:SetDeathXP(math.ceil(new_xp_bounty))

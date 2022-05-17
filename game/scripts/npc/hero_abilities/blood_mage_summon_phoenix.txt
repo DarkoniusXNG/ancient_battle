@@ -38,7 +38,7 @@
 			"01"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"phoenix_egg_duration"      "5"
+				"phoenix_egg_duration"      "6"
 			}
 			"02" // not in tooltip
 			{

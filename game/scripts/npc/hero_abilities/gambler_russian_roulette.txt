@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Gambler: Russian Roulette (E) - New Spell, mini-stuns, roots and disarms enemies, allies and the caster; has a chance to do damage on any target
+	// Gambler: Russian Roulette (E) - New Spell, mini-stuns, roots and disarms enemies, and the caster; has a chance to do damage on any target
 	// Author: Darkonius;
-	// Notes: OK; 30.10.2019; Roulette can hit units that wander into a radius after a delay.
+	// Notes: OK; 2022; Roulette can hit units that wander into a radius after a delay.
 	// Notes: Ministun is applied only to enemies; Root and disarm are applied to enemies; Reveal is dispellable on Gambler; 
 	// TO_DO:
 	//=================================================================================================================
@@ -26,7 +26,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"16.0"
+		"AbilityCooldown"				"13"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -49,12 +49,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"base_damage"				"100"
+				"base_damage"				"100 175 250 325"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"level_multiplier"			"20 25 30 35"
+				"level_multiplier"			"25"
 			}
 			"05"
 			{
@@ -69,7 +69,7 @@
 			"07"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"mini_stun_duration"		"0.2"
+				"mini_stun_duration"		"0.3"
 			}
 		}
 		

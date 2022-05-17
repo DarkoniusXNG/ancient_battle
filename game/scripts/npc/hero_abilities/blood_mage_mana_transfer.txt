@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Mana Transfer - Mana Drain from enemies, Mana giving to allies
 	// Author: 
-	// Notes: OK; 25.2.2020; Kills illusions; The link doesn't break when the target gets out of vision;
+	// Notes: OK; 2022; Kills illusions; The link doesn't break when the target gets out of vision;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -59,7 +59,7 @@
 			"05"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"extra_mana_duration"       "10"
+				"extra_mana_duration"       "16"
 			}
 		}
 
@@ -180,6 +180,29 @@
 				{
 					"MODIFIER_PROPERTY_MANA_BONUS" "%mana_per_second" 
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Mana Transfer Leashes talent
+	//=================================================================================================================
+	"special_bonus_unique_blood_mage_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

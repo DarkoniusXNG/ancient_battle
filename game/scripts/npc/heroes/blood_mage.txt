@@ -34,9 +34,9 @@
 		"Ability13"				"special_bonus_unique_blood_mage_1"     // Banish duration talent
 
 		"Ability14"				"special_bonus_hp_regen_40"
-		"Ability15"				"special_bonus_attack_speed_120"
+		"Ability15"				"special_bonus_unique_blood_mage_3"     // Mana Transfer Leashes
 
-		"Ability16"				"special_bonus_magic_resistance_80"
+		"Ability16"				"special_bonus_attack_speed_120"
 		"Ability17"				"special_bonus_unique_blood_mage_2"     // Flame Strike damage talent
 
 		"Ability18"				"generic_hidden"

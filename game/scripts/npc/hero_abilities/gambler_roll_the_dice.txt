@@ -4,7 +4,7 @@
 	// Gambler: Roll the Dice (W) - Modified Chaos Knight Chaos Bolt
 	// Author: Valve
 	// Linkens: Blocks;
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"gambler_roll_the_dice"
@@ -19,6 +19,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+
+		"HasShardUpgrade"               "1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -75,6 +77,18 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"fake_bolt_distance"                      "675"
+			}
+			"07"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"shard_bonus_cast_range"                  "500"
+				"RequiresShard"                           "1"
+			}
+			"08"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"shard_illusion_duration"                 "6.0"
+				"RequiresShard"                           "1"
 			}
 		}
 	}

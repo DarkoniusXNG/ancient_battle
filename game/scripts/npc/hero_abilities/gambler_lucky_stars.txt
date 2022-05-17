@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
 	// Author: Darkonius
-	// Notes: OK; 4.3.2020; Can Crit on buildings; Chance to proc is Pseudo-Random;
+	// Notes: OK; 2022; Can Crit on buildings; Chance to proc is Pseudo-Random;
 	// TO_DO: If its too weak increase proc chance to a maximum 12%
 	//=================================================================================================================
 	"gambler_lucky_stars"
@@ -31,10 +31,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // Level 1 value: Like CK crit; other values: like Phantom Assassin crit
+			"01" // Phantom Assassin crit: 200/325/450%
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"crit_damage"                             "140 200 325 450"
+				"crit_damage"                             "150 250 350 450"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"
@@ -42,7 +42,7 @@
 				"var_type"                                "FIELD_INTEGER"
 				"crit_chance"                             "5 6 7 8"
 			}
-			"03" // Alchemist Greevil's Greed gold bonus cap x 2
+			"03" // Alchemist Greevil's Greed gold bonus cap: 15/18/21/24
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_gold"                              "40 48 56 64"

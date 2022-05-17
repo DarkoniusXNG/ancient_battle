@@ -31,8 +31,8 @@ USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged area
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 
 USE_CUSTOM_HERO_GOLD_BOUNTY = true      -- Should the gold for hero kills be modified (true) or same as in default Dota (false)?
-HERO_KILL_GOLD_BASE = 110               -- Hero gold bounty base value
-HERO_KILL_GOLD_PER_LEVEL = 10           -- Hero gold bounty increase per level
+HERO_KILL_GOLD_BASE = 125               -- Hero gold bounty base value
+HERO_KILL_GOLD_PER_LEVEL = 8            -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
 
 USE_CUSTOM_HERO_LEVELS = false          -- Should the heroes give a custom amount of XP when killed?
@@ -180,7 +180,6 @@ if GetMapName() == "two_vs_two" then
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 35.0
 	POST_GAME_TIME = 45.0
-	GOLD_PER_TICK = 6
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false

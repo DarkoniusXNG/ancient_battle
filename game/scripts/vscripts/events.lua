@@ -92,7 +92,6 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 				
 				-- Add permanent modifiers to the hero
 				if PlayerResource:IsValidPlayerID(playerID) then
-					hero:AddNewModifier(hero, nil, "modifier_client_convars", {})
 					hero:AddNewModifier(hero, nil, "modifier_custom_passive_gold", {})
 					hero:AddNewModifier(hero, nil, "modifier_custom_passive_xp", {})
 				end

@@ -208,7 +208,6 @@ function ancient_battle_gamemode:InitGameMode()
 	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
 
 	-- Lua Modifiers
-	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)

@@ -78,7 +78,7 @@ function gambler_bet_on_target_death(keys)
 			if gold_for_caster > max_gold_when_ally_kills then
 				gold_for_caster = max_gold_when_ally_kills
 			end
-			caster:ModifyGold(gold_for_caster, false, 0)
+			
 			-- Killer gets reliable gold
 			attacker:ModifyGold(gold_for_killer, true, 0)
 		else
@@ -89,8 +89,10 @@ function gambler_bet_on_target_death(keys)
 			if gold_for_caster < gold_cost then
 				gold_for_caster = gold_cost
 			end
-			caster:ModifyGold(gold_for_caster, false, 0)
 		end
+		
+		-- Gold for the caster
+		caster:ModifyGold(gold_for_caster, false, 0)
 		
 		-- Message Particle, has a bunch of options
 		local symbol = 0 -- "+" presymbol

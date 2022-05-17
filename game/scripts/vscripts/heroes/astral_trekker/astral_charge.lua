@@ -132,7 +132,9 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				else
 					-- Exit condition if caster runs out of hp (his hp is < 100)
 					local modifier = caster:FindModifierByName(modifier_name)
-					modifier:SetDuration(0.1, false)
+					if modifier then
+						modifier:SetDuration(0.1, false)
+					end
 					return nil
 				end
 				distance = distance - distance_per_hp
@@ -161,7 +163,9 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 			if (target - current_position):Length2D() <= speed / intervals_per_second then
 				-- Exit condition if caster arrived at designated location
 				local modifier = caster:FindModifierByName(modifier_name)
-				modifier:SetDuration(0.1, false)
+				if modifier then
+					modifier:SetDuration(0.1, false)
+				end
 
 				-- Damage around destination
 				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
@@ -178,7 +182,9 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 		-- Exit condition if caster doesn't have enough health 
 		-- This will happen only if the caster has less than 666 max hp, coincidence?
 		local modifier = caster:FindModifierByName(modifier_name)
-		modifier:SetDuration(0.1, false)
+		if modifier then
+			modifier:SetDuration(0.1, false)
+		end
 		
 		-- Display the error message
 		SendErrorMessage(caster:GetPlayerOwnerID(), "Not enough health to cast this spell.")

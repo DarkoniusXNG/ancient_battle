@@ -17,6 +17,7 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+
 		"MaxLevel"               	"1"
 		"RequiredLevel"				"12"
 
@@ -36,7 +37,7 @@
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"attack_speed_slow"                       "-30"
+				"attack_speed_slow"                       "-60"
 				"LinkedSpecialBonus"                      "special_bonus_unique_lich_custom_4"
 				"LinkedSpecialBonusField"                 "value2"
 			}
@@ -104,12 +105,12 @@
 			"01" // ms slow
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "30"
+				"value"                                   "-20"
 			}
 			"02" // as slow
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value2"                                  "30"
+				"value2"                                  "-40"
 			}
 		}
 	}

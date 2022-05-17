@@ -80,7 +80,7 @@
 			"08" // bonus gold for the ally that killed the target
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bonus_gold"				"80 90 100 120"
+				"bonus_gold"				"70 90 110 130"
 			}
 			"09"
 			{
