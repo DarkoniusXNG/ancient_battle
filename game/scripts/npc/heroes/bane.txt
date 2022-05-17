@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 2021;
+	// HERO: Bane; 2022;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
@@ -29,16 +29,16 @@
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"
 		
-		"Ability10"					"special_bonus_armor_6"					// lvl 10 talent: same as dota Bane
+		"Ability10"					"special_bonus_armor_5"					// lvl 10 talent:
 		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: unique
 
 		"Ability12"					"special_bonus_hp_250"					// lvl 15 talent: unique
 		"Ability13"					"special_bonus_unique_bane_9"		    // lvl 15 talent: Fiend's Grip Max Mana Drain talent
 
-		"Ability14"					"special_bonus_attack_speed_120"		// lvl 20 talent: unique
+		"Ability14"					"special_bonus_attack_speed_100"		// lvl 20 talent: unique
 		"Ability15"					"special_bonus_unique_bane_5"		    // lvl 20 talent: Nightmare cooldown talent
 
-		"Ability16"					"special_bonus_unique_bane_2"			// lvl 25 talent; Brain Sap Damage/Heal talent
+		"Ability16"					"special_bonus_unique_bane_custom_2"	// lvl 25 talent; Brain Sap Damage/Heal talent
 		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; Fiend's Grip Duration talent
 
 		// Protection
@@ -49,8 +49,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"35"									// like dota Bane
-		"AttackDamageMax"			"41"									// like dota Bane
+		"AttackDamageMin"			"33"									// like dota Bane
+		"AttackDamageMax"			"39"									// like dota Bane
 		"AttackRate"				"1.7"									// like dota Bane
 		"AttackAnimationPoint"		"0.3"									// like dota Bane
 		"AttackAcquisitionRange"	"800"									// like dota Bane

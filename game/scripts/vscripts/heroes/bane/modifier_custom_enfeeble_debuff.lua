@@ -31,11 +31,10 @@ function modifier_custom_enfeeble_debuff:OnRefresh()
 end
 
 function modifier_custom_enfeeble_debuff:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_TOOLTIP
 	}
-	return funcs
 end
 
 function modifier_custom_enfeeble_debuff:GetModifierDamageOutgoing_Percentage()
@@ -43,7 +42,7 @@ function modifier_custom_enfeeble_debuff:GetModifierDamageOutgoing_Percentage()
 end
 
 function modifier_custom_enfeeble_debuff:OnTooltip()
-  return self.spell_damage_reduction
+	return self.spell_damage_reduction
 end
 
 function modifier_custom_enfeeble_debuff:GetEffectName()

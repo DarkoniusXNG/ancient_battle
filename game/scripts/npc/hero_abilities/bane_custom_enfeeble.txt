@@ -4,7 +4,7 @@
 	// Bane: Enfeeble (Q) - Reduces all of damage output of the enemy.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 26.8.2019; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
+	// Notes: OK; 2022; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
 	// Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan and other Ancients;
 	// TO_DO:
 	//=================================================================================================================
@@ -43,7 +43,7 @@
 			"02" // reduces spell damage (but not item damage)
 			{
 				"var_type"						"FIELD_INTEGER"
-				"spell_damage_reduction"		"25 30 35 40"
+				"spell_damage_reduction"		"20 25 30 35"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"03"

@@ -550,27 +550,40 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 		local RemoveExceptions = false
 		local RemoveStuns = false
 		
+		local function RemoveTableOfModifiersFromUnit(unit, t)
+			for i = 1, #t do
+				unit:RemoveModifierByName(t[i])
+			end
+		end
+		
 		if bCustomRemoveAllDebuffs == true then
 			
 			RemoveStuns = true -- this ensures removing modifiers debuffs with "IsStunDebuff" "1"
 
 			-- Abilities
-			target:RemoveModifierByName("modifier_entrapment")					-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_volcano_stun")				-- pierces BKB
-			target:RemoveModifierByName("modifier_time_stop")					-- pierces BKB
-			target:RemoveModifierByName("modifier_time_stop_scepter")           -- pierces BKB
-			target:RemoveModifierByName("modifier_custom_enfeeble_debuff")		-- pierces BKB, doesn't get removed with BKB
-			--target:RemoveModifierByName("modifier_venomancer_poison_sting")
-			target:RemoveModifierByName("modifier_purge_enemy_hero")			-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_purge_enemy_creep")			-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_bane_nightmare_invulnerable") -- invulnerable type
-			target:RemoveModifierByName("modifier_axe_berserkers_call")			-- pierces BKB, doesn't get removed with BKB
+			local ability_debuffs = {
+				"modifier_entrapment",					-- pierces BKB, doesn't get removed with BKB
+				"modifier_volcano_stun",				-- pierces BKB
+				"modifier_time_stop",					-- pierces BKB
+				"modifier_time_stop_scepter",           -- pierces BKB
+				"modifier_custom_enfeeble_debuff",		-- pierces BKB, doesn't get removed with BKB
+				"modifier_purge_enemy_hero",			-- pierces BKB, doesn't get removed with BKB
+				"modifier_purge_enemy_creep",			-- pierces BKB, doesn't get removed with BKB
+				"modifier_bane_nightmare_invulnerable", -- invulnerable type
+				"modifier_axe_berserkers_call",			-- pierces BKB, doesn't get removed with BKB
+			}
 
 			-- Items
-			target:RemoveModifierByName("modifier_item_skadi_slow")				-- pierces BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_heavens_halberd_debuff")		-- doesn't pierce BKB, doesn't get removed with BKB
-			target:RemoveModifierByName("modifier_sheepstick_debuff")			-- doesn't pierce BKB,
-			target:RemoveModifierByName("modifier_silver_edge_debuff")			-- doesn't pierce BKB, doesn't get removed with BKB
+			local item_debuffs = {
+				"modifier_item_skadi_slow",               -- pierces BKB, doesn't get removed with BKB
+				"modifier_heavens_halberd_debuff",        -- doesn't pierce BKB, doesn't get removed with BKB
+				"modifier_silver_edge_debuff",            -- doesn't pierce BKB, doesn't get removed with BKB
+				"modifier_item_nullifier_mute",           -- pierces BKB, doesn't get removed with BKB
+			}
+			
+			RemoveTableOfModifiersFromUnit(target, ability_debuffs)
+			RemoveTableOfModifiersFromUnit(target, item_debuffs)
+			
 			-- Exceptions:
 			-- Exception 1: modifier_charmed_hero       			(Dark Ranger Charm - not advisable)
 			-- Exception 2: modifier_incinerate_stack   			(Fire Lord Incinerate - not advisable)
@@ -604,9 +617,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_custom_death_pact"
 			}
 			
-			for i = 1, #undispellable_with_normal_dispel_buffs do
-				target:RemoveModifierByName(undispellable_with_normal_dispel_buffs[i])	
-			end
+			RemoveTableOfModifiersFromUnit(target, undispellable_with_normal_dispel_buffs)
 		end
 		
 		target:Purge(bCustomRemoveAllBuffs, bCustomRemoveAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
