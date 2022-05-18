@@ -17,8 +17,9 @@ function modifier_custom_passive_xp:OnCreated()
 		return
 	end
 	local parent = self:GetParent()
-	if GetMapName() ~= "two_vs_two" or parent.original then
+	if parent.original or parent:IsIllusion() then
 		self:Destroy()
+		return
 	end
 	local xpm = 10
 	if xpm ~= 0 then

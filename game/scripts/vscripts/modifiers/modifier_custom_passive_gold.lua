@@ -17,8 +17,9 @@ function modifier_custom_passive_gold:OnCreated()
 		return
 	end
 	local parent = self:GetParent()
-	if GetMapName() ~= "two_vs_two" or parent.original then
+	if (GetMapName() ~= "two_vs_two" and GetMapName() ~= "3vs3") or parent.original or parent:IsIllusion() then
 		self:Destroy()
+		return
 	end
 	local gpm = 130
 	if gpm ~= 0 then
