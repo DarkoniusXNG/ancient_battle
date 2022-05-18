@@ -40,7 +40,7 @@
 			"02"
 			{
 				"var_type"                                        "FIELD_INTEGER"
-				"hook_speed"                                      "1450"
+				"hook_speed"                                      "1500"
 				"LinkedSpecialBonus"                              "special_bonus_unique_pudge_custom_4"
 			}
 			"03"

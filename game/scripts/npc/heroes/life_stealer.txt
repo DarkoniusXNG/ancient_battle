@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Lifestealer; 2021;
+	// HERO: Lifestealer; 2022;
 	// Notes: OK; Anabolic Frenzy provides additional movement speed and attack speed;
 	// TO_DO: special_bonus_unique_lifestealer_custom_1
 	//=================================================================================================================
@@ -39,7 +39,7 @@
 		"Ability14"                 "special_bonus_evasion_16"					// lvl 20 talent; dota Lifestealer (16%)
 		"Ability15"                 "special_bonus_spell_lifesteal_70"			// lvl 20 talent; unique
 
-		"Ability16"                 "special_bonus_unique_lifestealer_custom_1" // lvl 25 talent; Absorb Life applies attacks talent
+		"Ability16"                 "special_bonus_magic_resistance_25"			// lvl 25 talent: special_bonus_unique_lifestealer_custom_1 - Absorb Life applies attacks talent
 		"Ability17"                 "special_bonus_unique_lifestealer_3"		// lvl 25 talent; Feast lifesteal talent
 		
 		// special_bonus_attack_speed_30 - not needed because of Anabolic Frenzy active

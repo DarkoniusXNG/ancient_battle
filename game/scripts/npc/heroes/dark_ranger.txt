@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Dark Ranger; 2021;
+	// HERO: Dark Ranger; 2022;
 	// Notes: OK; Dark Arrows provide bonus dmg, Ranger aura provides bonus attack damage proportional to agility; Marksmanship provides bonus agility
 	// TO_DO: special_bonus_unique_dark_ranger_1; special_bonus_unique_dark_ranger_4;
 	//=================================================================================================================
@@ -32,7 +32,7 @@
 		"Ability9"                  "generic_hidden"
 
 		"Ability10"                 "special_bonus_unique_drow_ranger_5"    // lvl 10 talent; Gust blind chance talent
-		"Ability11"                 "special_bonus_unique_dark_ranger_1"	// lvl 10 talent; Dark Arrows damage talent
+		"Ability11"                 "special_bonus_attack_damage_15"	// lvl 10 talent; special_bonus_unique_dark_ranger_1 - Dark Arrows damage talent
 
 		"Ability12"                 "special_bonus_unique_drow_ranger_4"    // lvl 15 talent; Gust width talent
 		"Ability13"                 "special_bonus_unique_dark_ranger_2"	// lvl 15 talent; Ranger Aura bonus damage talent
@@ -40,7 +40,7 @@
 		"Ability14"                 "special_bonus_unique_drow_ranger_7"	// lvl 20 talent; Gust cooldown talent
 		"Ability15"                 "special_bonus_unique_dark_ranger_3"	// lvl 20 talent; Ranger Aura bonus attack range talent
 
-		"Ability16"                 "special_bonus_unique_dark_ranger_4"    // lvl 25 talent; Marksmanship Split Shot talent
+		"Ability16"                 "special_bonus_agility_80"    // lvl 25 talent; special_bonus_unique_dark_ranger_4 - Marksmanship Split Shot talent
 		"Ability17"                 "special_bonus_unique_dark_ranger_5"	// lvl 25 talent; Life Drain pure talent
 		
 		// special_bonus_cast_range_200

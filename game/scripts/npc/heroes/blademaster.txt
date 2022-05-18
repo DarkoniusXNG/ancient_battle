@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Blademaster; 2021;
+	// HERO: Blademaster; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_blademaster"
@@ -36,7 +36,7 @@
 		"Ability12"                 "special_bonus_attack_speed_25"				// lvl 15 talent: Juggernaut (+20)
 		"Ability13"                 "special_bonus_unique_naga_siren"			// lvl 15 talent: Bonus Mirror Image Illusion talent
 
-		"Ability14"                 "special_bonus_armor_8"					    // lvl 20 talent; Juggernaut (+8)
+		"Ability14"                 "special_bonus_unique_legion_commander_3"	// lvl 20 talent; Counter Atttack chance talent
 		"Ability15"                 "special_bonus_unique_blademaster_2"	    // lvl 20 talent; Blade Storm damage talent
 
 		"Ability16"                 "special_bonus_unique_naga_siren_6"			// lvl 25 talent; Mirror Image cd talent

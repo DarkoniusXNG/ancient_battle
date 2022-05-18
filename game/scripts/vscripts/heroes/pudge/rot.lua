@@ -86,7 +86,7 @@ function modifier_pudge_custom_rot_aura_applier:OnCreated()
 		
 		-- Particle
 		local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
-		ParticleManager:SetParticleControl(nFXIndex, 1, Vector(self.radius, 1, self.radius))
+		ParticleManager:SetParticleControl(nFXIndex, 1, Vector(self:GetAuraRadius(), 1, self:GetAuraRadius()))
 		self:AddParticle(nFXIndex, false, false, -1, false, false)
 
 		-- Start thinking

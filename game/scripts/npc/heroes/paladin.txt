@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Paladin; 2021;
+	// HERO: Paladin; 2022;
 	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
 	// TO_DO:
 	//=================================================================================================================
@@ -41,6 +41,8 @@
 
 		"Ability16"                 "special_bonus_unique_paladin_6"		// lvl 25 talent; Purification bonus dmg/heal talent
 		"Ability17"                 "special_bonus_unique_paladin_7"        // lvl 15 talent; Storm Hammer stun duration talent
+		
+		// available: special_bonus_unique_paladin_8 - Storm Hammer cooldown talent
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------

@@ -29,8 +29,8 @@
 		{
 			"01" // Nether Ward (18/22/26/30); original (30);
 			{
-				"var_type"                                "FIELD_FLOAT"
-				"duration"                                "15.0"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "15"
 			}
 			"02" // Nether Ward (35); original (20); cooldown starts when buff is removed;
 			{

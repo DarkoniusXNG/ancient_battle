@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Mana Eater; 2021;
+	// HERO: Mana Eater; 2022;
 	// Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
 	// TO_DO: special_bonus_unique_mana_eater_1; mana_eater_mana_flare
 	//=================================================================================================================
@@ -22,7 +22,7 @@
 		"AbilityTalentStart"        "10"
 		"Ability1"                  "mana_eater_mystic_bolt"				// Q (4 levels)
 		"Ability2"                  "mana_eater_anti_magic_field"			// W (4 levels)
-		"Ability3"                  "mana_eater_mana_flare"					// E (4 levels)
+		"Ability3"                  "generic_hidden"						// mana_eater_mana_flare E (4 levels)
 		"Ability4"                  "mana_eater_mana_shell"					// innate ability
 		"Ability5"                  "mana_eater_emp"						// F, Secondary Ultimate (4 levels)
 		"Ability6"                  "mana_eater_absorb_mana"				// R, Primary Ultimate (3 levels)
@@ -37,7 +37,7 @@
 		"Ability13"                 "special_bonus_spell_amplify_12"        // lvl 15 talent; Puck (12%)
 
 		"Ability14"                 "special_bonus_armor_10"                // lvl 20 talent; unique
-		"Ability15"                 "special_bonus_unique_mana_eater_1"     // lvl 20 talent; Anti-Magic Field provides attack speed talent
+		"Ability15"                 "special_bonus_attack_speed_50"     // lvl 20 talent> special_bonus_unique_mana_eater_1 - Anti-Magic Field provides attack speed talent
 
 		"Ability16"                 "special_bonus_cast_range_400"          // lvl 25 talent; unique
 		"Ability17"                 "special_bonus_unique_mana_eater_2"     // lvl 25 talent; Mana Shell Mana Gain on Damage Done talent

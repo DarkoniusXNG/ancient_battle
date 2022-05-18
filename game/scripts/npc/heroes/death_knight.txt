@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Death Knight; 2021;
+	// HERO: Death Knight; 2022;
 	// Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
 	// TO_DO: special_bonus_unique_death_knight_5
 	//=================================================================================================================
@@ -35,7 +35,7 @@
 		"Ability13"                 "special_bonus_unique_death_knight_2"   // lvl 15 talent; Death Pact duration talent;
 
 		"Ability14"                 "special_bonus_unique_death_knight_6"   // lvl 20 talent; Resurrection cooldown talent
-		"Ability15"                 "special_bonus_unique_death_knight_5"   // lvl 20 talent; Chilling Touch bonus damage talent
+		"Ability15"                 "special_bonus_night_vision_1000"		// lvl 20 talent; special_bonus_unique_death_knight_5 - Chilling Touch bonus damage talent
 
 		"Ability16"                 "special_bonus_unique_death_knight_1"   // lvl 25 talent; Death Coil heal increase talent;
 		"Ability17"                 "special_bonus_unique_death_knight_3"   // lvl 25 talent; Death Pact hp and dmg gain increase talent;
