@@ -18,21 +18,17 @@ function archmage_arcane_magic:OnSpellStart()
 
   -- Cast particle
   local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf", PATTACH_POINT_FOLLOW, caster)
-  ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_attack1", caster:GetAbsOrigin(), true)
-  ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin())
+  if caster:ScriptLookupAttachment("attach_attack1") ~= 0 then
+    ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_attack1", caster:GetAbsOrigin(), true)
+  else
+    ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
+  end
+  if target:ScriptLookupAttachment("attach_hitloc") ~= 0 then
+    ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+  else
+    ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin())
+  end
   ParticleManager:ReleaseParticleIndex(particle)
-  
--- "FireEffect"
--- {
--- "EffectName"		"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
--- "EffectAttachType"  "follow_origin"
-
--- "ControlPointEntities"
--- {
--- "CASTER"	"attach_attack1" 	// ok
--- "TARGET"	"attach_hitloc" 	// follow_origin but it returns an error
--- }
--- }
 
   -- Actual Effect
   target:AddNewModifier(caster, self, "modifier_archmage_arcane_magic_buff", {duration = duration})
@@ -98,7 +94,7 @@ function modifier_archmage_aura_applier:GetAuraSearchFlags()
 end
 
 function modifier_archmage_aura_applier:GetAuraRadius()
-  return self:GetSpecialValueFor("aura_radius")
+  return self:GetAbility():GetSpecialValueFor("aura_radius")
 end
 
 --function modifier_archmage_aura_applier:IsAuraActiveOnDeath()
@@ -147,8 +143,6 @@ function modifier_archmage_aura_effect:DeclareFunctions()
     MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE, -- GetModifierSpellAmplify_Percentage
     MODIFIER_PROPERTY_MANA_REGEN_CONSTANT, -- GetModifierConstantManaRegen
     MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS, -- GetModifierMagicalResistanceBonus
-    --MODIFIER_PROPERTY_TOOLTIP, -- OnTooltip
-    --MODIFIER_PROPERTY_TOOLTIP2, -- OnTooltip2
   }
 end
 
@@ -167,14 +161,6 @@ end
 function modifier_archmage_aura_effect:GetModifierMagicalResistanceBonus()
   return self.bonus_magic_resist or self:GetAbility():GetSpecialValueFor("aura_magic_resistance")
 end
-
---function modifier_archmage_aura_effect:OnTooltip()
-  --return self.mana_cost_reduction
---end
-
---function modifier_archmage_aura_effect:OnTooltip2()
-  --return self.spell_amp
---end
 
 function modifier_archmage_aura_effect:GetEffectName()
   return "particles/items_fx/aura_shivas.vpcf"
@@ -201,27 +187,26 @@ function modifier_archmage_arcane_magic_buff:IsPurgable()
 end
 
 function modifier_archmage_arcane_magic_buff:OnCreated()
+  local cd_reduction = 12
+  local mana_regen_amp = 100
+
   local ability = self:GetAbility()
   if ability then
-    self.cd_reduction = ability:GetSpecialValueFor("buff_cd_reduction")
-    self.mana_regen_amp = ability:GetSpecialValueFor("buff_mana_regen_amp")
+    cd_reduction = ability:GetSpecialValueFor("buff_cd_reduction")
+    mana_regen_amp = ability:GetSpecialValueFor("buff_mana_regen_amp")
   end
 
---"AttachEffect"
--- {
--- "EffectName"					"particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
--- "EffectAttachType"				"follow_origin"
--- "Target"						"TARGET"
--- }
+  -- Talent that increases cdr:
+  local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_archmage_1")
+  if talent and talent:GetLevel() > 0 then
+    cd_reduction = cd_reduction + talent:GetSpecialValueFor("value")
+  end
+  
+  self.cd_reduction = cd_reduction
+  self.mana_regen_amp = mana_regen_amp
 end
 
-function modifier_archmage_arcane_magic_buff:OnRefresh()
-  local ability = self:GetAbility()
-  if ability then
-    self.cd_reduction = ability:GetSpecialValueFor("buff_cd_reduction")
-    self.mana_regen_amp = ability:GetSpecialValueFor("buff_mana_regen_amp")
-  end
-end
+modifier_archmage_arcane_magic_buff.OnRefresh = modifier_archmage_arcane_magic_buff.OnCreated
 
 function modifier_archmage_arcane_magic_buff:DeclareFunctions()
   return {

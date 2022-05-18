@@ -76,7 +76,7 @@
 		"AttributeBaseAgility"			"27"								// Puck (22); Troll Warlord (21); Vengeful Spirit (20); optimal (23);
 		"AttributeAgilityGain"			"3.5"								// Puck (2.5); Troll Warlord (3.3); Vengeful Spirit (3.2); optimal (2.8);
 		"AttributeBaseIntelligence"		"13"								// Troll Warlord (13); Vengeful Spirit (19); - don't change!
-		"AttributeIntelligenceGain"		"1.0"								// Troll Warlord (1.0); Vengeful Spirit (1.5); - don't change!
+		"AttributeIntelligenceGain"		"0.6"								// Troll Warlord (1.0); Vengeful Spirit (1.5); - don't change!
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

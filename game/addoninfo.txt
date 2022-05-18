@@ -4,6 +4,7 @@
 	[
 		"two_vs_two",
 		"five_vs_five",
+		"3vs3",
 	]
 	IsPlayable = 1
 	PenaltiesEnabled = 0
@@ -31,7 +32,7 @@
 	]
 	HideInTools = false
 	IsTemplate = false
-	DefaultMap = "five_vs_five"
+	DefaultMap = "two_vs_two"
 	Default_Keys = [  ]
 	DisableIK = false
 	EventGame = false

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Mass Teleport (R) - New Spell, Ultimate, Teleports the caster and neaby allies to target allied unit or building
 	// Author: Darkonius
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 2022;
 	// TO_DO: Needs rework into ability_lua
 	// ================================================================================================================
 	"archmage_mass_teleport"
@@ -11,7 +11,7 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"custom/archmage_mass_teleport"
 		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
@@ -19,9 +19,9 @@
 		
 		"AbilityCastPoint"				"0.6"
 		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCooldown"				"130 115 100"
+		"AbilityCooldown"				"120 110 100"
 
-		"AbilityManaCost"				"100 200 300"
+		"AbilityManaCost"				"200"
 		"AbilityChannelTime"			"5 4 3"
 
 		"precache"

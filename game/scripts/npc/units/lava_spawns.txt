@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 1 
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_1"
 	{
@@ -60,8 +60,8 @@
 		
 		// Combat
 		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
 		
 		// Bounds
@@ -71,7 +71,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 2 
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_2"
 	{
@@ -129,8 +129,8 @@
 		
 		// Combat
 		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
 		
 		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
@@ -139,7 +139,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 3
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_3"
 	{
@@ -197,8 +197,8 @@
 		
 		// Combat
 		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
 		
 		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
@@ -207,7 +207,7 @@
 	
 	//=================================================================================
 	// Summon Lava Spawn: Lava Spawn level 4
-	// Notes: OK; 18.9.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_firelord_lava_spawn_4"
 	{
@@ -265,8 +265,8 @@
 		
 		// Combat
 		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"			// 5.2.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"			// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
 		
 		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"

@@ -44,12 +44,13 @@
 			"01" // Chakra Magic Total mana restored: 100/180/260/340;
 			{
 				"var_type"                                        "FIELD_INTEGER"
-				"buff_mana_regen_amp"                             "100"
+				"buff_mana_regen_amp"                             "150"
 			}
 			"02" // Arcane Rune: 30%
 			{
 				"var_type"                                        "FIELD_INTEGER"
 				"buff_cd_reduction"                               "12"
+				"LinkedSpecialBonus"                              "special_bonus_unique_archmage_1"
 			}
 			"03"
 			{
@@ -80,6 +81,29 @@
 			{
 				"var_type"                                        "FIELD_INTEGER"
 				"aura_radius"                                     "1200"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Arcane Magic bonus cdr talent
+	//=================================================================================================================
+	"special_bonus_unique_archmage_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "18"
 			}
 		}
 	}

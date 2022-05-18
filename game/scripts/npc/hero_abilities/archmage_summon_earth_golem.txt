@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Archmage: Summon Earth Golem (T) - New Spell, Creates 1 Earth Golem that has Hurl Boulder (Stun).
 	// Author: Darkonius
-	// Notes: OK; 20.11.2019; Earth Golems have spell-immunity.
+	// Notes: OK; 2022; Earth Golems have spell-immunity.
 	// TO_DO:
 	// ================================================================================================================
 	"archmage_summon_earth_golem"
@@ -15,7 +15,7 @@
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastPoint"				"0.3"
 		
-		"AbilityCooldown"				"50.0 45.0 40.0 35.0"
+		"AbilityCooldown"				"50 45 40 35" // original: 30
 	
 		"AbilityManaCost"				"125"
 		"AbilityProcsMagicStick"		"1"
@@ -28,7 +28,7 @@
 		
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original (60)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"duration"					"60"
@@ -36,15 +36,15 @@
 			"02" // only in tooltip
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage_tooltip"				"31 41 51 62"
+				"damage_tooltip"				"35 45 55 65"
 				"CalculateSpellDamageTooltip"	"0"
 			}
-			"03" // only in tooltip
+			"03" // only in tooltip; original (450/675/900/1100)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"hp_tooltip"				"500 600 700 800"
 			}
-			"04"
+			"04" // original (240)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"ms_tooltip"				"250 260 270 280"

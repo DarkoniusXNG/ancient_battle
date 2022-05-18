@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summon Water Elemental: Water Elemental level 1 
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_water_elemental_1"
 	{
@@ -72,8 +72,8 @@
 		
 		"VoiceFile"					"soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
 		
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 4.11.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 
 		"Creature"
 		{
@@ -86,7 +86,7 @@
 
 	//=================================================================================
 	// Summon Water Elemental: Water Elemental level 2
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_water_elemental_2"
 	{
@@ -116,8 +116,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"30"									// 14.10.2018;
-		"AttackDamageMax"			"30"									// 14.10.2018;
+		"AttackDamageMin"			"35"									// 2022;
+		"AttackDamageMax"			"35"									// 2022;
 		"AttackRate"				"1"										// 4.11.2016;
 		"AttackAnimationPoint"		"0.4"									// 11.3.2016;
 		"AttackAcquisitionRange"	"600"									// 7.3.2016;
@@ -156,8 +156,8 @@
 
 		"VoiceFile"					"soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
 		
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 4.11.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 
 		"Creature"
 		{
@@ -170,7 +170,7 @@
 
 	//=================================================================================
 	// Summon Water Elemental: Water Elemental level 3
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_water_elemental_3"
 	{
@@ -200,8 +200,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"40"									// 14.10.2018;
-		"AttackDamageMax"			"40"									// 14.10.2018;
+		"AttackDamageMin"			"50"									// 2022;
+		"AttackDamageMax"			"50"									// 2022;
 		"AttackRate"				"1"										// 4.11.2016;
 		"AttackAnimationPoint"		"0.4"									// 11.3.2016;
 		"AttackAcquisitionRange"	"600"									// 7.3.2016;
@@ -240,8 +240,8 @@
 
 		"VoiceFile"					"soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
 		
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 4.11.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 
 		"Creature"
 		{
@@ -254,7 +254,7 @@
 	
 	//=================================================================================
 	// Summon Water Elemental: Water Elemental level 4
-	// Notes: OK; 26.8.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_water_elemental_4"
 	{
@@ -284,8 +284,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"50"									// 14.10.2018;
-		"AttackDamageMax"			"50"									// 14.10.2018;
+		"AttackDamageMin"			"65"									// 2022;
+		"AttackDamageMax"			"65"									// 2022;
 		"AttackRate"				"1"										// 4.11.2016;
 		"AttackAnimationPoint"		"0.4"									// 11.3.2016;
 		"AttackAcquisitionRange"	"600"									// 7.3.2016;
@@ -324,8 +324,8 @@
 		
 		"VoiceFile"					"soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
 		
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 4.11.2016;
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 
 		"Creature"
 		{
