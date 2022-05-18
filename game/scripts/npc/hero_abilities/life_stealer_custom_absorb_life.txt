@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lifestealer: Absorb Life (F) - New Spell, Deals damage and absorbs percentage of current hp of affected enemies in a radius 
 	// Author: Darkonius
-	// Notes: OK; 14.10.2017;
-	// TO_DO:
+	// Notes: OK; 2022;
+	// TO_DO: special_bonus_unique_lifestealer_custom_1
 	//=================================================================================================================
 	"life_stealer_custom_absorb_life"
 	{
@@ -23,7 +23,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"16.0"
+		"AbilityCooldown"				"16"
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"base_damage"					"75"
+				"base_damage"					"50"
 			}
 			"02"
 			{
@@ -66,6 +66,29 @@
 				"ScriptFile"    "heroes/lifestealer/absorb_life.lua"
 				"Function"      "AbsorbLife"
 				"Target"		"POINT"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Absorb Life applies attacks talent
+	//=================================================================================================================
+	"special_bonus_unique_lifestealer_custom_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

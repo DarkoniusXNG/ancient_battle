@@ -3,6 +3,7 @@ if astral_trekker_astral_charge == nil then
 end
 
 LinkLuaModifier("modifier_astral_charge_buff", "heroes/astral_trekker/modifier_astral_charge_buff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_astral_charge_hit", "heroes/astral_trekker/astral_charge.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- function astral_trekker_astral_charge:CastFilterResultLocation(location)
 	-- local default_result = self.BaseClass.CastFilterResultLocation(self, location)
@@ -43,22 +44,20 @@ function astral_trekker_astral_charge:OnSpellStart()
 		caster.astral_charge_is_running = false
 	end
 
-	if IsServer() then
-		-- If health of the caster is below 100 then refund mana cost
-		if caster:GetHealth() > 100 and caster.astral_charge_is_running == false then
-			-- Sound on caster
-			caster:EmitSound("Hero_StormSpirit.BallLightning")
-			-- Add the buff to the caster
-			caster:AddNewModifier(caster, self, "modifier_astral_charge_buff", {})
-			-- Get target point
-			self.target_point = self:GetCursorPosition()
-			-- Make sure there are no multiple instances on one caster
-			caster.astral_charge_is_running = true
-			-- Start astral charge traverse
-			self:astral_charge_traverse()
-		else
-			self:RefundManaCost()
-		end
+	-- If health of the caster is below 100 then refund mana cost
+	if caster:GetHealth() > 100 and caster.astral_charge_is_running == false then
+		-- Sound on caster
+		caster:EmitSound("Hero_StormSpirit.BallLightning")
+		-- Add the buff to the caster
+		caster:AddNewModifier(caster, self, "modifier_astral_charge_buff", {})
+		-- Get target point
+		self.target_point = self:GetCursorPosition()
+		-- Make sure there are no multiple instances on one caster
+		caster.astral_charge_is_running = true
+		-- Start astral charge traverse
+		self:astral_charge_traverse()
+	else
+		self:RefundManaCost()
 	end
 end
 
@@ -86,6 +85,13 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	-- Variables based on modifiers and precaches
 	local loop_sound_name = "Hero_StormSpirit.BallLightning.Loop"
 	local modifier_name = "modifier_astral_charge_buff"
+	
+	-- Talent that gives damage during travel:
+	local talent = caster:FindAbilityByName("special_bonus_unique_astral_trekker_1")
+	local damage_per_distance_traveled_percent = 0
+	if talent and talent:GetLevel() > 0 then
+		damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
+	end
 	
 	-- Necessary pre-calculated variables
 	local current_position = caster_position
@@ -126,7 +132,9 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				else
 					-- Exit condition if caster runs out of hp (his hp is < 100)
 					local modifier = caster:FindModifierByName(modifier_name)
-					modifier:SetDuration(0.1, false)
+					if modifier then
+						modifier:SetDuration(0.1, false)
+					end
 					return nil
 				end
 				distance = distance - distance_per_hp
@@ -136,16 +144,32 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 			current_position = current_position + forwardVec * ( speed / intervals_per_second )
 			-- caster:SetAbsOrigin( current_position ) -- This doesn't work because unit will not stick to the ground but rather travel in linear
 			FindClearSpaceForUnit(caster, current_position, false)
-			
+
+			-- Damage per distance travelled
+			local distance_traveled = (current_position - caster_position):Length2D()
+			local distance_damage = distance_traveled * damage_per_distance_traveled_percent / 100
+
+			if distance_damage > 0 then
+				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				for _, enemy in pairs(enemies) do
+					if not enemy:HasModifier("modifier_astral_charge_hit") then
+						enemy:AddNewModifier(caster, nil, "modifier_astral_charge_hit", {duration = 1.0})
+						ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = distance_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+					end
+				end
+			end
+
 			-- Check if unit is close to the destination point
 			if (target - current_position):Length2D() <= speed / intervals_per_second then
 				-- Exit condition if caster arrived at designated location
 				local modifier = caster:FindModifierByName(modifier_name)
-				modifier:SetDuration(0.1, false)
+				if modifier then
+					modifier:SetDuration(0.1, false)
+				end
 
 				-- Damage around destination
-				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-				for k, enemy in pairs(enemies) do
+				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+				for _, enemy in pairs(enemies) do
 					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
 				end
 				return nil
@@ -158,9 +182,31 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 		-- Exit condition if caster doesn't have enough health 
 		-- This will happen only if the caster has less than 666 max hp, coincidence?
 		local modifier = caster:FindModifierByName(modifier_name)
-		modifier:SetDuration(0.1, false)
+		if modifier then
+			modifier:SetDuration(0.1, false)
+		end
 		
 		-- Display the error message
 		SendErrorMessage(caster:GetPlayerOwnerID(), "Not enough health to cast this spell.")
 	end
+end
+
+if modifier_astral_charge_hit == nil then
+	modifier_astral_charge_hit = class({})
+end
+
+function modifier_astral_charge_hit:IsHidden()
+	return true
+end
+
+function modifier_astral_charge_hit:IsDebuff()
+	return true
+end
+
+function modifier_astral_charge_hit:IsPurgable()
+	return false
+end
+
+function modifier_astral_charge_hit:RemoveOnDeath()
+	return true
 end

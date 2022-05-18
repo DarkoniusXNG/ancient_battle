@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 18.9.2019; Slow works on towers; Passive works on illusions.
-	// TO_DO:
+	// Notes: OK; 2021; Slow works on towers; Passive works on illusions.
+	// TO_DO: Rework to lua; status resistance fix; shard
 	//====================================================================================================
 	"lich_custom_freezing_touch"
 	{
@@ -17,6 +17,7 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+
 		"MaxLevel"               	"1"
 		"RequiredLevel"				"12"
 
@@ -24,18 +25,21 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"3"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "3"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-40"
+				"var_type"                                "FIELD_INTEGER"
+				"move_speed_slow"                         "-30"
+				"LinkedSpecialBonus"                      "special_bonus_unique_lich_custom_4"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_speed_slow"		"-60"
+				"var_type"                                "FIELD_INTEGER"
+				"attack_speed_slow"                       "-60"
+				"LinkedSpecialBonus"                      "special_bonus_unique_lich_custom_4"
+				"LinkedSpecialBonusField"                 "value2"
 			}
 		}
 
@@ -79,6 +83,57 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Freezing Touch bonus slow talent
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // ms slow
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "-20"
+			}
+			"02" // as slow
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value2"                                  "-40"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Freezing Touch heal reduction talent
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_7"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "25"
 			}
 		}
 	}

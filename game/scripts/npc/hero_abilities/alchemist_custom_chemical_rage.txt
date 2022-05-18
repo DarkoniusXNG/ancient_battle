@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Chemical Rage (R) - New Spell, Similar to DotA's Chemical Rage
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019; Uses built-in modifiers; Has Aghanim Scepter upgrade;
+	// Notes: OK; 2022; Uses built-in modifiers; Has Aghanim Scepter upgrade;
 	// TO_DO:
 	//=================================================================================================================
 	"alchemist_custom_chemical_rage"
@@ -17,7 +17,7 @@
 		
 		"AbilityCastAnimation"          "ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_START"
 		"AbilityCastPoint"              "0.0"
-		"AbilityCooldown"               "45"
+		"AbilityCooldown"               "55 50 45"
 
 		"AbilityManaCost"               "50 100 150"
 		"AbilityProcsMagicStick"		"1"
@@ -39,7 +39,6 @@
 			{
 				"var_type"                  "FIELD_FLOAT"
 				"base_attack_time"          "1.2 1.1 1.0"
-				"LinkedSpecialBonus"		"special_bonus_unique_alchemist_3"
 			}
 			"04"
 			{
@@ -50,7 +49,6 @@
 			{
 				"var_type"                  "FIELD_INTEGER"
 				"bonus_health_regen"        "0"
-				"LinkedSpecialBonus"        "special_bonus_unique_alchemist_4"
 			}
 			"06"
 			{
@@ -61,7 +59,6 @@
 			{
 				"var_type"                  "FIELD_INTEGER"
 				"bonus_movespeed"           "0"
-				"LinkedSpecialBonus"        "special_bonus_unique_alchemist_6"
 			}
 			"08"
 			{
@@ -72,13 +69,13 @@
 			"09"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"scepter_bonus_damage"      "30"
+				"scepter_bonus_damage"      "20"
 				"RequiresScepter"			"1"
 			}
 			"10"
 			{
 				"var_type"                  "FIELD_INTEGER"
-				"scepter_spell_amp"         "6"
+				"scepter_spell_amp"         "5"
 				"RequiresScepter"           "1"
 			}
 			"11" // custom ability specials start here
@@ -90,18 +87,63 @@
 			{
 				"var_type"                  "FIELD_FLOAT"
 				"custom_base_attack_time"   "1.2 1.1 1.0"
-				"LinkedSpecialBonus"		"special_bonus_unique_alchemist_3"
+				"LinkedSpecialBonus"		"special_bonus_unique_alchemist_custom_1"
 			}
 			"13"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"custom_bonus_health_regen"	"50 75 100"
-				"LinkedSpecialBonus"        "special_bonus_unique_alchemist_4"
 			}
 			"14"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"think_interval"			"0.2"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Chemical Rage BAT Reduction
+	//=================================================================================================================
+	"special_bonus_unique_alchemist_custom_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                        "FIELD_FLOAT"
+				"value"                                           "-0.5"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Chemical Rage Applies Super Strong Dispel
+	//=================================================================================================================
+	"special_bonus_unique_alchemist_custom_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"value"                                           "1"
 			}
 		}
 	}

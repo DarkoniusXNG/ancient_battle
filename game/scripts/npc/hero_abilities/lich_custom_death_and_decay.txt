@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Lich: Death and Decay (T) - Datadriven Enigma's Midnight Pulse that works on buildings and ancients
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 18.9.2019;
-	// TO_DO:
+	// Notes: OK; 2021;
+	// TO_DO: Rework to lua; datadriven thinkers dont get removed
 	//====================================================================================================
 	"lich_custom_death_and_decay"
 	{
@@ -20,14 +20,14 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"				"700"             // old Decaying Soil (700); Midnight Pulse (700);
+		"AbilityCastPoint"				"0.3"             // old Decaying Soil (0.1); Midnight Pulse (0.1);
 		
 		"AoERadius" 					"%radius"
 
-		"AbilityCooldown"				"35.0"
+		"AbilityCooldown"				"35"              // original (150); old Decaying Soil (30); Midnight Pulse (50/45/40/35);
 
-		"AbilityManaCost"				"100 120 140 160"
+		"AbilityManaCost"				"100 120 140 160" // original (250); old Decaying Soil (125/150/175/225); Midnight Pulse (50/80/110/140);
 		"AbilityProcsMagicStick"		"1"
 		
 		// Precache
@@ -42,33 +42,29 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original (300); old Decaying Soil (225); Midnight Pulse (550);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"radius"                                  "550"
 			}
-			
-			"02" // needs to be integer
+			"02" // old Decaying Soil (0); Midnight Pulse (4.75/5.5/6.25/7%);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage"                                  "2 3 4 5"
 				"CalculateSpellDamageTooltip"             "0"
 			}
-			
-			"03" // needs to be integer
+			"03" // old Decaying Soil (4/8/12/16%)
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage_buildings"                        "1"
 				"CalculateSpellDamageTooltip"             "0"
 			}
-			
-			"04"
+			"04" // old Decaying Soil (1);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"tick_rate"                               "1"
 			}
-			
-			"05"
+			"05" // original (35); old Decaying Soil (9/10/11/12 or 4); Midnight Pulse (9/10/11/12);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"duration"                                "12"
@@ -203,6 +199,29 @@
 						"MaxHealthPercentBasedDamage" 	"1"
 					}
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Death and Decay heals allies talent
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

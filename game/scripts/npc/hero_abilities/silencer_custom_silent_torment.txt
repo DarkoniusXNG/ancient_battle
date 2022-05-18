@@ -4,7 +4,7 @@
 	// Silencer: Silent Torment (T) - New Spell, Skillshot; Dps + slow and more dps if silenced
 	// Author: Darkonius
 	// Notes: OK; 20.9.2017;
-	// TO_DO:
+	// TO_DO: Rework to lua - it doesn't work on ancients for some reason
 	//=================================================================================================================
 	"silencer_custom_silent_torment"
 	{

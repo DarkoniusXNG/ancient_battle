@@ -37,7 +37,7 @@ function dark_terminator_confuse:OnSpellStart()
 	illusion_table = {}
 	illusion_table.outgoing_damage = outgoing_damage
 	illusion_table.incoming_damage = incoming_damage
-	illusion_table.bounty_base = 0
+	illusion_table.bounty_base = 100
 	illusion_table.bounty_growth = 0
 	illusion_table.outgoing_damage_structure = outgoing_damage
 	illusion_table.duration = duration

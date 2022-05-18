@@ -4,6 +4,12 @@ end
 
 LinkLuaModifier("modifier_mana_shell_passive", "heroes/mana_eater/mana_shell.lua", LUA_MODIFIER_MOTION_NONE)
 
+function mana_eater_mana_shell:Spawn()
+  if IsServer() and self:GetLevel() ~= 1 then
+    self:SetLevel(1)
+  end
+end
+
 function mana_eater_mana_shell:GetIntrinsicModifierName()
 	return "modifier_mana_shell_passive"
 end
@@ -57,19 +63,24 @@ function modifier_mana_shell_passive:DeclareFunctions()
 	return funcs
 end
 
-function modifier_mana_shell_passive:OnTakeDamage(event)
-	local parent = self:GetParent()
+if IsServer() then	
+	function modifier_mana_shell_passive:OnTakeDamage(event)
+		local parent = self:GetParent()
 
-	if event.unit ~= parent and event.attacker ~= parent then
-		return nil
-	end
+		if event.unit ~= parent and event.attacker ~= parent then
+			return nil
+		end
+		
+		-- Doesn't work on illusions
+		if parent:IsIllusion() then
+			return nil
+		end
+		
+		-- Don't trigger if parent is affected by Break
+		if parent:PassivesDisabled() then
+			return nil
+		end
 	
-	-- Doesn't work on illusions
-	if parent:IsIllusion() then
-		return nil
-	end
-
-	if IsServer() then
 		-- Don't trigger on damage with HP removal flag
 		if HasBit(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) then
 			return nil
@@ -79,12 +90,6 @@ function modifier_mana_shell_passive:OnTakeDamage(event)
 
 		-- Don't trigger on every unit getting damaged, only the one that has this modifier
 		if event.unit == parent then
-			
-			-- Don't trigger if parent has break applied to him
-			if parent:PassivesDisabled() then
-				return nil
-			end
-
 			local mana_gain_percentage_on_damage_taken = self.mana_gain
 			local mana_amount = damage_taken*mana_gain_percentage_on_damage_taken*0.01
 
@@ -94,15 +99,13 @@ function modifier_mana_shell_passive:OnTakeDamage(event)
 		
 		if event.attacker == parent then
 			-- Check for talent
-			local talent = parent:FindAbilityByName("special_bonus_unique_puck")
-			if talent then
-				if talent:GetLevel() ~= 0 then
-					local mana_gain_percentage_on_damage_dealt = 50
-					local mana_amount = damage_taken*mana_gain_percentage_on_damage_dealt*0.01
+			local talent = parent:FindAbilityByName("special_bonus_unique_mana_eater_2")
+			if talent and talent:GetLevel() > 0 then
+				local mana_gain_percentage_on_damage_dealt = talent:GetSpecialValueFor("value")
+				local mana_amount = damage_taken*mana_gain_percentage_on_damage_dealt*0.01
 
-					-- Give mana to the parent in relation to damage taken; 
-					parent:GiveMana(mana_amount)
-				end
+				-- Give mana to the parent in relation to damage taken; 
+				parent:GiveMana(mana_amount)
 			end
 		end
 	end

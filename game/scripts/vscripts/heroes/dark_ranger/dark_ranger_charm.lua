@@ -63,7 +63,7 @@ function CharmStart(event)
 				ability:RefundManaCost()
 				ability:EndCooldown()
 				-- Display the error message
-				SendErrorMessage(pID, "Hero Immune To Spells!")
+				SendErrorMessage(pID, "Can't Target Heroes Immune To Spells!")
 			end
 		end
 	end
@@ -85,6 +85,7 @@ function CharmCreep(keys)
 		target:SetTeam(caster_team)
 		target:SetOwner(caster)
 		target:SetControllableByPlayer(caster_owner, true)
+		--target:RemoveModifierByName("modifier_kill")
 		target:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
 	else
 		local target_name = target:GetUnitName()
@@ -93,6 +94,7 @@ function CharmCreep(keys)
 		local charmed_creep = CreateUnitByName(target_name, target_location, true, caster, caster, caster_team)
 		FindClearSpaceForUnit(charmed_creep, target_location, false)
 		charmed_creep:SetControllableByPlayer(caster_owner, true)
+		--charmed_creep:RemoveModifierByName("modifier_kill")
 		charmed_creep:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
 		ability:ApplyDataDrivenModifier(caster, charmed_creep, "modifier_charmed_general", nil)
 	end

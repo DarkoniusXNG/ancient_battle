@@ -1,16 +1,17 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Archmage: Arcane Magic (E) - New Spell, aura that gives flat mana regen, has active part that gives more mana regen
+	// Archmage: Arcane Magic (E) - New Spell, aura that gives mana regen, mana cost reduction, magic resistance and spell amp, has active part that gives mana regen amp and cdr
 	// Author: Darkonius
-	// Notes: OK; 25.2.2020;
-	// TO_DO: attach_hitloc effect is weird -> not critical
+	// Notes: OK; 2022;
+	// TO_DO:
 	//=================================================================================================================
 	"archmage_arcane_magic"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"                    "heroes/archmage/arcane_magic.lua"
 		"AbilityTextureName"			"custom/archmage_arcane_magic"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -40,110 +41,69 @@
 
 		"AbilitySpecial"
 		{
-			"01" // Chakra Magic Total mana restored: 80/160/240/320; <- (aura_mana_regen + buff_mana_regen) x buff_duration
+			"01" // Chakra Magic Total mana restored: 100/180/260/340;
 			{
-				"var_type"				"FIELD_FLOAT"
-				"buff_mana_regen"		"4.0 9.0 14.0 19.0"
+				"var_type"                                        "FIELD_INTEGER"
+				"buff_mana_regen_amp"                             "150"
 			}
-			"02"
+			"02" // Arcane Rune: 30%
 			{
-				"var_type"				"FIELD_INTEGER"
-				"buff_duration"			"15"
+				"var_type"                                        "FIELD_INTEGER"
+				"buff_cd_reduction"                               "12"
+				"LinkedSpecialBonus"                              "special_bonus_unique_archmage_1"
 			}
-			"03" // Crystal Maiden (Global) Arcane Aura: 0.5/1/1.5/2
+			"03"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"aura_mana_regen"		"1.5 2.0 2.5 3.0"
+				"var_type"                                        "FIELD_INTEGER"
+				"buff_duration"                                   "14"
 			}
-			"04"
+			"04" // Crystal Maiden (Global) Arcane Aura: 0.5/1/1.5/2
 			{
-				"var_type"				"FIELD_INTEGER"
-				"aura_radius"			"1200"
+				"var_type"                                        "FIELD_FLOAT"
+				"aura_mana_regen"                                 "1.5 2.0 2.5 3.0"
 			}
-		}
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
+			"05" // Arcane Rune: 30%
 			{
-				"Target"				"TARGET"
-				"Duration"				"%buff_duration"
-				"ModifierName"			"modifier_arcane_regen_buff"
+				"var_type"                                        "FIELD_INTEGER"
+				"aura_mana_cost_reduction_pct"                    "2 3 4 5"
 			}
-
-			"FireSound"
+			"06"
 			{
-				"EffectName"			"Hero_KeeperOfTheLight.ChakraMagic.Target"
-				"Target"				"TARGET"
+				"var_type"                                        "FIELD_INTEGER"
+				"aura_magic_resistance"                           "6 7 8 9"
 			}
-
-			"FireEffect"
+			"07"
 			{
-				"EffectName"		"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
-				"EffectAttachType"  "follow_origin"
-				
-				"ControlPointEntities"
-				{
-					"CASTER"	"attach_attack1" 	// ok
-					"TARGET"	"attach_hitloc" 	// follow_origin but it returns an error
-				}
+				"var_type"                                        "FIELD_INTEGER"
+				"aura_spell_amp"                                  "5 6 7 8"
+			}
+			"08"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"aura_radius"                                     "1200"
 			}
 		}
-
-		"Modifiers"
+	}
+	
+	//=================================================================================================================
+	// Arcane Magic bonus cdr talent
+	//=================================================================================================================
+	"special_bonus_unique_archmage_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"modifier_archmage_aura_applier"
+			"01"
 			{
-				"Passive"               "1"
-				"IsHidden"				"1"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-
-				"Aura"					"modifier_archmage_aura_effect"
-				"Aura_Radius"			"%aura_radius"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MANA_ONLY"
-				"Aura_ApplyToCaster"	"1"
-
-				"AllowIllusionDuplicate"	"1"
-			}
-
-			"modifier_archmage_aura_effect" // needs tooltip
-			{
-				"IsHidden"					"0"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
-
-				"EffectName"			"particles/items_fx/aura_shivas.vpcf"
-				"EffectAttachType" 		"follow_origin"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%aura_mana_regen"
-				}
-			}
-
-			"modifier_arcane_regen_buff" // needs tooltip
-			{
-				"IsHidden"					"0"
-				"IsBuff"					"1"
-				"IsPurgable"				"1"
-
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"					"particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
-						"EffectAttachType"				"follow_origin"
-						"Target"						"TARGET"
-					}
-				}
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%buff_mana_regen"
-				}
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "18"
 			}
 		}
 	}

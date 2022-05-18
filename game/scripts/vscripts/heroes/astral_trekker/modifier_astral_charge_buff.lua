@@ -20,8 +20,8 @@ end
 
 function modifier_astral_charge_buff:CheckState()
 	local state = {
-	[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
-	[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 	}
 
 	return state

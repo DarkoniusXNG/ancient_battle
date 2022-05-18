@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Paladin: Holy Strike (E) - custom, bonus attack range, bonus pure damage, toggle
 	// Author: Darkonius
-	// Notes: OK; 1.11.2018;
-	// TO_DO: Add sound on attack landed and add proper visual effect for the hammer
+	// Notes: OK; 2021;
+	// TO_DO: Add sound on attack landed and add proper visual effect for the hammer; shard
 	//=================================================================================================================
 	"paladin_holy_strike"
 	{

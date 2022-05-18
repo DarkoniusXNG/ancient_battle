@@ -4,8 +4,8 @@
 	// Lich: Frost Blast (Q) - Datadriven Lich Frost Nova, Reduced slow values
 	// Author: Jastuchko + Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 18.9.2019;
-	// TO_DO:
+	// Notes: OK; 2021;
+	// TO_DO: Rework to lua; status resistance fix
 	//====================================================================================================
 	"lich_custom_frost_nova"
 	{
@@ -25,7 +25,7 @@
 		
 		"AbilityCooldown"				"7.0"
 		
-		"AbilityManaCost"				"105 130 155 180"
+		"AbilityManaCost"				"110 130 150 170"
 		"AbilityProcsMagicStick"		"1"
 		
 		"AbilitySpecial"
@@ -48,7 +48,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"slow_duration"				"4"
+				"slow_duration"				"2"
 			}
 			"05"
 			{
@@ -145,6 +145,34 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Frost Blast bounces talent - Frost Blast will be applied to the nearest target that is not affected by Frost Blast.
+	//=================================================================================================================
+	"special_bonus_unique_lich_custom_5"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // number of bounces
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "2"
+			}
+			"02" // bounce range
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value2"                                  "500"
 			}
 		}
 	}

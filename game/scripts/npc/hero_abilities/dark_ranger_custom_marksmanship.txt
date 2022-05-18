@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Notes: OK; 12.9.2019; Pseudo True Strike = Accuracy -> True Random; Chance to kill creeps instantly -> True Random;
 	// Notes: Chance to kill creeps instantly -> DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO
-	// TO_DO:
+	// TO_DO: Rework into ability_lua; special_bonus_unique_dark_ranger_4
 	//=================================================================================================================
 	"dark_ranger_custom_marksmanship"
 	{
@@ -38,7 +38,7 @@
 			"04"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"chance_to_instant_kill"		"20 30 40"
+				"chance_to_instant_kill"		"15 25 35"
 			}
 			"05" // not in tooltip; only here
 			{
@@ -126,6 +126,29 @@
 				{
 					"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Marksmanship talent - Split Shot
+	//=================================================================================================================
+	"special_bonus_unique_dark_ranger_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

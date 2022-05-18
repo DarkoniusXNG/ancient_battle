@@ -9,7 +9,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"8171" // 1276
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -36,7 +35,6 @@
 	//=================================================================================================================
 	"item_custom_mask_of_madness"
 	{
-		"ID"							"8172" // 1277
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_mask_of_madness"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"

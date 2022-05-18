@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Pseudo-Random, triggers OnAttackStart
+	// Notes: OK; 2022; Pseudo-Random, triggers OnAttackStart
 	// TO_DO:
 	//=================================================================================================================
 	"axe_custom_counter_helix"
@@ -30,6 +30,7 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"damage"					"100 150 200 250"
+				"LinkedSpecialBonus"        "special_bonus_unique_axe_counter_helix_damage"
 			}
 			"02"
 			{
@@ -45,6 +46,29 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"trigger_radius"			"1800"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Counter Helix talent: bonus damage
+	//=================================================================================================================
+	"special_bonus_unique_axe_counter_helix_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "250"
 			}
 		}
 	}

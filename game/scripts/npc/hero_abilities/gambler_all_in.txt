@@ -70,12 +70,14 @@
 				"var_type"								"FIELD_INTEGER"
 				"damage_cap_scepter"					"800 1100 1400"
 				"CalculateSpellDamageTooltip"			"0"
+				"RequiresScepter"                       "1"
 			}
 			"06"
 			{
 				"var_type"								"FIELD_INTEGER"
 				"net_worth_to_damage_ratio_scepter"		"12 15 20"
 				"CalculateSpellDamageTooltip"			"0"
+				"RequiresScepter"                       "1"
 			}
 			"07" // only here; 100% - chance_to_backfire
 			{

@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Death Knight: Death Pact (W) - Custom Clinkz Death Pact, without armor reduction, bonus damage per kill etc.
+	// Death Knight: Death Pact (W) - bonus dmg and hp based on consumed creep current hp
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"death_knight_death_pact"
@@ -17,21 +17,22 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
 		"MaxLevel"						"4"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"400"
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" // dota (900); original (800);
+		"AbilityCastPoint"				"0.5" // dota (0.2);
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"65.0 55.0 45.0 35.0"
+		"AbilityCooldown"				"50 45 40 35" // dota (80/70/60); original (15);
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150"
+		"AbilityManaCost"				"150" // dota (100); original (50);
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -45,21 +46,76 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // dota (65); original (0);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"duration"                                "35"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_2"
+			}
+			"02" // dota (60/80/100%); original (100/200/300%);
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"health_gain_pct"                         "40 50 60 70"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_3"
+			}
+			"03" // dota (6/10/14%); original (0%);
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"damage_gain_pct"                         "4 5 6 7"
+				"LinkedSpecialBonus"                      "special_bonus_unique_death_knight_3"
+				"LinkedSpecialBonusField"                 "value2"
+				"CalculateSpellDamageTooltip"             "0"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Death Pact talent - increases duration
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "15"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Death Pact talent - increases hp and damage gain
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "50"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"health_gain_pct"                         "40 50 60 70"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"damage_gain_pct"                         "4 5 6 7"
-				"CalculateSpellDamageTooltip"             "0"
+				"value2"                                  "7"
 			}
 		}
 	}

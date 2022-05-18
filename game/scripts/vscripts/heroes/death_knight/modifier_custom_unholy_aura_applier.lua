@@ -15,6 +15,10 @@ function modifier_custom_unholy_aura_applier:IsPurgable()
 end
 
 function modifier_custom_unholy_aura_applier:IsAura()
+	local parent = self:GetParent()
+	if parent:PassivesDisabled() then
+		return false
+	end
 	return true
 end
 

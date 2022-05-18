@@ -3,17 +3,36 @@ function ManaTransferStart(event)
 	local target = event.target
 	local caster = event.caster
 	local ability = event.ability
+
+	-- Talent that applies leash
+	local has_talent = false
+	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_3")
+	if talent and talent:GetLevel() > 0 then
+		LinkLuaModifier("modifier_mana_transfer_leash_debuff", "heroes/blood_mage/mana_transfer.lua", LUA_MODIFIER_MOTION_NONE)
+		has_talent = true
+	end
 	
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
-		if not target:TriggerSpellAbsorb(ability) then
+		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_mana_transfer_enemy", {})
 			caster:EmitSound("Hero_Lion.ManaDrain")
+			if has_talent then
+				target:AddNewModifier(caster, ability, "modifier_mana_transfer_leash_debuff", {})
+			end
 		else
 			caster:Interrupt()
 		end
 	else
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_mana_transfer_ally", {})
 		caster:EmitSound("Hero_Lion.ManaDrain")
+	end
+	
+	local target_mana = target:GetMaxMana()
+	-- Don't go on cooldown if targeted unit doesn't have mana
+	if target_mana == 0 then
+		ability:EndCooldown()
+		local pID = caster:GetPlayerOwnerID()
+		SendErrorMessage(pID, "Target Doesn't Have Mana!")
 	end
 end
 
@@ -49,17 +68,12 @@ function ManaDrainManaTransfer(event)
 	local mana_drain = ability:GetLevelSpecialValueFor("mana_per_second", ability_level)
 	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
 	local MP_drain = mana_drain*tick_rate
-
-	-- How much caster gains mana
-	local MP_gain = MP_drain
 	
 	-- If its an illusion then kill it
 	if target:IsIllusion() then
 		target:Kill(ability, caster)
-		ability:OnChannelFinish(false)
+		--ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
-		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 		return
 	else
 		-- Location variables
@@ -77,10 +91,8 @@ function ManaDrainManaTransfer(event)
 		-- 3) target becomes invulnerable
 		-- 4) target doesn't have a mana pool
 		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() or target:GetMana() < 1 then
-			ability:OnChannelFinish(false)
+			--ability:OnChannelFinish(false)
 			caster:Interrupt()
-			ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
-			target:RemoveModifierByName("modifier_mana_transfer_enemy")
 			return
 		end
 		
@@ -95,19 +107,21 @@ function ManaDrainManaTransfer(event)
     local caster_max_mana = caster:GetMaxMana()
 	
 	if caster:IsChanneling() then
+		local mana_transfer = MP_drain
 		if target_mana >= MP_drain then
-			target:ReduceMana(MP_drain)
-
-			-- Mana gained can go over the max mana
-			if caster_mana+MP_gain > caster_max_mana then
-				ability:ApplyDataDrivenModifier(caster, caster, "modifier_transfer_mana_extra", nil)
-			end
-			
-			caster:GiveMana(MP_gain)
+			mana_transfer = MP_drain
 		else
-			target:ReduceMana(target_mana)
-			caster:GiveMana(target_mana)
+			mana_transfer = target_mana
 		end
+
+		target:ReduceMana(mana_transfer)
+
+		-- Mana gained can go over the max mana
+		if caster_mana + mana_transfer > caster_max_mana then
+			ability:ApplyDataDrivenModifier(caster, caster, "modifier_transfer_mana_extra", {})
+		end
+		
+		caster:GiveMana(mana_transfer)
 	end
 end
 
@@ -121,16 +135,23 @@ function ManaTransferEnd(event)
 		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 	end
 	
-	caster:Interrupt()
+	--caster:Interrupt()
 	caster:StopSound("Hero_Lion.ManaDrain")
 	
 	if target then
-		if target:HasModifier("modifier_mana_transfer_enemy") then
-			target:RemoveModifierByName("modifier_mana_transfer_enemy")
+		local mana_drain_debuff = target:FindModifierByNameAndCaster("modifier_mana_transfer_enemy", caster)
+		if mana_drain_debuff then
+			mana_drain_debuff:Destroy()
 		end
 		
-		if target:HasModifier("modifier_mana_transfer_ally") then
-			target:RemoveModifierByName("modifier_mana_transfer_ally")
+		local leash_debuff = target:FindModifierByNameAndCaster("modifier_mana_transfer_leash_debuff", caster)
+		if leash_debuff then
+			leash_debuff:Destroy()
+		end
+		
+		local mana_transfer_buff = target:FindModifierByNameAndCaster("modifier_mana_transfer_ally", caster)
+		if mana_transfer_buff then
+			mana_transfer_buff:Destroy()
 		end
 	end
 end
@@ -156,10 +177,8 @@ function ManaTransferAlly(event)
 
 	-- If the leash is broken or target doesn't have a mana pool
 	if distance >= break_distance or target:GetMana() < 1 then
-		ability:OnChannelFinish(false)
+		--ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
-		target:RemoveModifierByName("modifier_mana_transfer_ally")
 		return
 	end
 	
@@ -172,12 +191,47 @@ function ManaTransferAlly(event)
     local caster_mana = caster:GetMana()
 	
 	if caster:IsChanneling() then
+		local mana_transfer = MP_transfer
 		if caster_mana >= MP_transfer then
-			caster:ReduceMana(MP_transfer)
-			target:GiveMana(MP_transfer)
+			mana_transfer = MP_transfer
 		else
-			caster:ReduceMana(caster_mana)
-			target:GiveMana(caster_mana)
+			mana_transfer = caster_mana
 		end
+		
+		caster:ReduceMana(mana_transfer)
+
+		-- Mana given can go over the max mana
+		if target_mana + mana_transfer > target:GetMaxMana() then
+			ability:ApplyDataDrivenModifier(caster, target, "modifier_transfer_mana_extra", {})
+		end
+
+		target:GiveMana(mana_transfer)
 	end
+end
+
+---------------------------------------------------------------------------------------------------
+
+modifier_mana_transfer_leash_debuff = class({})
+
+function modifier_mana_transfer_leash_debuff:IsHidden()
+	return true
+end
+
+function modifier_mana_transfer_leash_debuff:IsDebuff()
+	return true
+end
+
+function modifier_mana_transfer_leash_debuff:IsPurgable()
+	return false
+end
+
+function modifier_mana_transfer_leash_debuff:RemoveOnDeath()
+	return true
+end
+
+function modifier_mana_transfer_leash_debuff:CheckState()
+	local state = {
+		[MODIFIER_STATE_TETHERED] = true,
+	}
+	return state
 end

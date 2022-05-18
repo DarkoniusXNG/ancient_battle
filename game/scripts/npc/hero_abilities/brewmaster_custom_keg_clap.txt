@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Brewmaster: Keg Clap (E) - Datadriven Brewmaster Thunder Clap
 	// Author: Darkonius
-	// Notes: OK; 24.8.2019;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"brewmaster_custom_keg_clap"
@@ -44,12 +44,12 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"100 150 250 300"
+				"damage"					"90 160 230 300"
 			}
 			"05"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"movement_slow"				"-25 -35 -45 -55"
+				"movement_slow"				"-20 -30 -40 -50"
 			}
 			"06"
 			{

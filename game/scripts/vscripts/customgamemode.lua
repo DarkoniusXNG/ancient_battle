@@ -3,6 +3,7 @@ require('libraries/notifications')
 require('libraries/selection')
 require('libraries/buildings')
 require('libraries/custom_illusions')
+require('libraries/basenpc')
 
 require('settings')
 require('events')
@@ -22,7 +23,7 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
   Timers:CreateTimer(delay, function()
     for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
       if PlayerResource:IsValidPlayerID(playerID) then
-        if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and (not PlayerResource:IsBroadcaster(playerID)) then
+        if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and not PlayerResource:IsBroadcaster(playerID) then
           PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection() -- this will cause an error if player is disconnected
           PlayerResource:SetHasRandomed(playerID)
           PlayerResource:SetCanRepick(playerID, false)
@@ -80,6 +81,8 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 end
 
 function ancient_battle_gamemode:OnGameInProgress()
+	GameRules:SetTimeOfDay(0.251)
+
 	if GetMapName() == "holdout" then
 		-- Custom backdoor protection
 		Timers:CreateTimer(function()
@@ -205,7 +208,6 @@ function ancient_battle_gamemode:InitGameMode()
 	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
 
 	-- Lua Modifiers
-	LinkLuaModifier("modifier_client_convars", "modifiers/modifier_client_convars", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
@@ -214,7 +216,7 @@ function ancient_battle_gamemode:InitGameMode()
 	LinkLuaModifier("modifier_custom_leash_debuff", "modifiers/modifier_custom_leash_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("Ancient Battle custom game initialized.")
-	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
+	Convars:SetInt('dota_max_physical_items_purchase_limit', 128)
 end
 
 -- This function is called as the first player loads and sets up the game mode parameters
@@ -243,6 +245,7 @@ function ancient_battle_gamemode:CaptureGameMode()
 	else
 		mode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
 		mode:SetDraftingHeroPickSelectTimeOverride(HERO_SELECTION_TIME)
+		GameRules:SetCustomGameBansPerTeam(5)
 	end
 	mode:SetFixedRespawnTime(FIXED_RESPAWN_TIME)
 	mode:SetFountainConstantManaRegen(FOUNTAIN_CONSTANT_MANA_REGEN)
@@ -267,7 +270,5 @@ function ancient_battle_gamemode:CaptureGameMode()
 	mode:SetStickyItemDisabled(DISABLE_STICKY_ITEM)
 	mode:SetCustomGlyphCooldown(CUSTOM_GLYPH_COOLDOWN)
 	mode:SetCustomScanCooldown(CUSTOM_SCAN_COOLDOWN)
-	if DEFAULT_DOTA_COURIER then
-		mode:SetFreeCourierModeEnabled(true)
-	end
+	mode:SetFreeCourierModeEnabled(true)
 end

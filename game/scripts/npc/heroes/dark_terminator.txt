@@ -1,7 +1,8 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// Dark Terminator
+	// HERO: Dark Terminator; 2021;
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_dark_terminator"
 	{
@@ -19,10 +20,11 @@
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"                                   "5"
+		"AbilityTalentStart"                              "10"
 		"Ability1"                                        "dark_terminator_cloak"                  // Q (4 levels)
 		"Ability2"                                        "dark_terminator_blink"                  // W (4 levels)
 		"Ability3"                                        "dark_terminator_terminator_skills"      // E, passive (4 levels)
-		"Ability4"                                        "generic_hidden" // "dark_terminator_take_aim" // T, passive (4 levels)
+		"Ability4"                                        "generic_hidden"
 		"Ability5"                                        "dark_terminator_confuse"                // F, Secondary Ultimate (1 level)
 		"Ability6"                                        "dark_terminator_terminate"              // R, Primary Ultimate (3 levels)				
 		"Ability7"                                        "generic_hidden"					
@@ -30,9 +32,9 @@
 		"Ability9"                                        "generic_hidden"
 
 		"Ability10"                                       "special_bonus_movement_speed_20"
-		"Ability11"                                       "special_bonus_attack_damage_20"         // same as Sniper
+		"Ability11"                                       "special_bonus_attack_damage_15"         // same as Sniper
 
-		"Ability12"                                       "special_bonus_attack_range_125" // "special_bonus_unique_dark_terminator_take_aim"
+		"Ability12"                                       "special_bonus_attack_range_125"
 		"Ability13"                                       "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 
 		"Ability14"                                       "special_bonus_unique_dark_terminator_confuse_extra_illusion"
@@ -49,10 +51,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_RANGED_ATTACK"            // like original
-		"BaseAttackSpeed"                                 "50"                                     // Sniper (100); original (100); concept (50);
-		"AttackDamageMin"                                 "42"                                     // Sniper (15); original (42); concept (9);
-		"AttackDamageMax"                                 "52"                                     // Sniper (21); original (52); concept (15);
-		"AttackRate"                                      "0.9"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
+		"BaseAttackSpeed"                                 "90"                                     // Sniper (100); original (100); concept (50);
+		"AttackDamageMin"                                 "42"                                     // Sniper (13); original (42); concept (9);
+		"AttackDamageMax"                                 "52"                                     // Sniper (19); original (52); concept (15);
+		"AttackRate"                                      "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
 		"AttackAnimationPoint"                            "0.17"                                   // like Sniper
 		"AttackRange"                                     "400"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
 		"AttackAcquisitionRange"                          "800"                                    // Default
@@ -83,7 +85,7 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "0.0"                                    // Default (0.25); Sniper (0); original (?);
+		"StatusHealthRegen"                               "0.0"                                    // Default (0.25); Sniper (0.25); original (?);
 		"StatusHealth"                                    "180"                                    // Default (150); Sniper (200); original (180);
 		"StatusMana"                                      "45"                                     // Default (0); Sniper (75); original (45);
 		"StatusManaRegen"                                 "0.01"                                   // Default (0.01); Sniper (0); original (?);

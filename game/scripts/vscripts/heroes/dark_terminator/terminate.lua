@@ -4,32 +4,42 @@ dark_terminator_terminate = class({})
 
 function dark_terminator_terminate:GetCastPoint()
 	local delay = self.BaseClass.GetCastPoint(self)
-	if IsServer() then
-		local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_dark_terminator_terminate")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				delay = delay - talent:GetSpecialValueFor("value")
-			end
-		end
+	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_dark_terminator_terminate")
+	if talent and talent:GetLevel() ~= 0 then
+		delay = delay - talent:GetSpecialValueFor("value")
 	end
 	return delay
 end
 
 function dark_terminator_terminate:OnAbilityPhaseStart(keys)
-    local caster = self:GetCaster()
-    caster:EmitSound("Ability.AssassinateLoad")
-    -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
-    self.storedTarget = {}
-	self.storedTarget[1] = self:GetCursorTarget()
-	self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + 2})
-    return true
+  local caster = self:GetCaster()
+  local target = self:GetCursorTarget()
+
+  -- Sound
+  caster:EmitSound("Ability.AssassinateLoad")
+
+  -- Get locations
+  local caster_origin = caster:GetAbsOrigin()
+  local target_origin = target:GetAbsOrigin()
+
+  -- Calculate travel time of the projectile
+  local distance = (target_origin - caster_origin):Length2D()
+  local speed = self:GetSpecialValueFor("projectile_speed")
+  local travel_time = distance / speed
+
+  -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
+  self.storedTarget = {}
+  self.storedTarget[1] = target
+  self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + travel_time})
+
+  return true
 end
 
 function dark_terminator_terminate:OnAbilityPhaseInterrupted()
     local caster = self:GetCaster()
 	-- Remove the crosshairs from the target(s)
 	if self.storedTarget then
-		for k,v in pairs(self.storedTarget) do
+		for _, v in pairs(self.storedTarget) do
 			if v then
 				v:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 			end
@@ -49,7 +59,7 @@ function dark_terminator_terminate:OnSpellStart(keys)
     end
 
     -- Because we stored the targets in a table, it is easy to fire a projectile at all of them
-    for k,v in pairs(self.storedTarget) do
+    for _, v in pairs(self.storedTarget) do
         local projTable = {
             EffectName = "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf",
             Ability = self,
@@ -58,8 +68,8 @@ function dark_terminator_terminate:OnSpellStart(keys)
             bDodgeable = true,
             bProvidesVision = true,
             vSpawnOrigin = caster:GetAbsOrigin(),
-            iMoveSpeed = self:GetSpecialValueFor("projectile_speed"), --
-            iVisionRadius = 100,--
+            iMoveSpeed = self:GetSpecialValueFor("projectile_speed"),
+            iVisionRadius = 250,
             iVisionTeamNumber = caster:GetTeamNumber(),
             iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
         }
@@ -77,7 +87,7 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 	-- Remove the crosshair+vision
     target:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 
-	for k,v in pairs(self.storedTarget) do
+	for k, v in pairs(self.storedTarget) do
 		if v == target then
 			self.storedTarget[k] = nil
 		end
@@ -104,7 +114,10 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 		damage = self:GetSpecialValueFor("damage"),
 		damage_type = self:GetAbilityDamageType(),
 	}
-	ApplyDamage(damageTable)
+	
+	if not target:IsMagicImmune() and not target:IsInvulnerable() then
+		ApplyDamage(damageTable)
+	end
 
     return true
 end
@@ -150,4 +163,8 @@ end
 
 function modifier_dark_terminator_terminate_target:GetModifierProvidesFOWVision()
 	return 1
+end
+
+function modifier_dark_terminator_terminate_target:GetPriority()
+	return MODIFIER_PRIORITY_ULTRA
 end

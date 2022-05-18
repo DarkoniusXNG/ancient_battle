@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Lifestealer: Rage - New Spell, Spell immunity + bonus damage
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019;
+	// Notes: OK; 2022;
 	// TO_DO: Add growing mechanic OnSpellStart (Increases Lifestealer's size by 25% for its duration.);
 	//=================================================================================================================
 	"life_stealer_custom_rage"
@@ -14,9 +14,10 @@
 		"AbilityTextureName"            "life_stealer_rage"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"MaxLevel"						"3"
+
+		"MaxLevel"						"4"
 		"RequiredLevel"        			"3"
-		"LevelsBetweenUpgrades"  		"5"
+		"LevelsBetweenUpgrades"  		"2"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -25,11 +26,11 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"25"
+		"AbilityCooldown"				"20"
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 150 200"
+		"AbilityManaCost"				"100 150 200 250"
 		"AbilityProcsMagicStick"		"1"
 		
 		// Special
@@ -39,13 +40,13 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_bonus"                            "30 45 60"
+				"damage_bonus"                            "30 45 60 75"
 				"CalculateSpellDamageTooltip"             "0"
 			}
 			"02"
 			{
-				"var_type"                                "FIELD_FLOAT"
-				"duration"                                "5.0 6.0 7.0"
+				"var_type"                                "FIELD_INTEGER"
+				"duration"                                "4 5 6 7"
 			}
 		}
 		

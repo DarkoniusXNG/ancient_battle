@@ -3,7 +3,29 @@ if paladin_holy_purification == nil then
 end
 
 function paladin_holy_purification:GetAOERadius()
-	return self:GetSpecialValueFor("radius")
+	local caster = self:GetCaster()
+	local base_radius = self:GetSpecialValueFor("radius")
+
+	-- Talent that increases radius
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_1")
+	if talent and talent:GetLevel() > 0 then
+		return base_radius + talent:GetSpecialValueFor("value")
+	end
+
+	return base_radius
+end
+
+function paladin_holy_purification:GetCooldown(level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_3")
+	if talent and talent:GetLevel() > 0 then
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
+
+	return base_cooldown
 end
 
 function paladin_holy_purification:OnSpellStart()
@@ -20,12 +42,16 @@ function paladin_holy_purification:OnSpellStart()
 	local heal_particle_name_2 = "particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_immortal_cast.vpcf"
 	local heal_hit_particle_name = "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 	
+	-- Talent that increases radius
+	local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_1")
+	if talent_1 and talent_1:GetLevel() > 0 then
+		radius = radius + talent_1:GetSpecialValueFor("value")
+	end
+	
 	-- Talent that increases damage and heal
-	local talent = caster:FindAbilityByName("special_bonus_unique_omniknight_1")
-	if talent then
-		if talent:GetLevel() ~= 0 then
-			damage_and_heal = damage_and_heal + talent:GetSpecialValueFor("value")
-		end
+	local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_6")
+	if talent_2 and talent_2:GetLevel() > 0 then
+		damage_and_heal = damage_and_heal + talent_2:GetSpecialValueFor("value")
 	end
 	
 	if IsServer() then
@@ -55,7 +81,7 @@ function paladin_holy_purification:OnSpellStart()
 			local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 
 			local enemies = FindUnitsInRadius(caster_team, target:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
-			for _,enemy in pairs(enemies) do
+			for _, enemy in pairs(enemies) do
 				-- Particles on enemies
 				local hit_pfx = ParticleManager:CreateParticle(heal_hit_particle_name, PATTACH_ABSORIGIN_FOLLOW, enemy)
 				ParticleManager:SetParticleControlEnt(hit_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
@@ -89,8 +115,8 @@ function paladin_holy_purification:OnSpellStart()
 				ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin())
 				ParticleManager:ReleaseParticleIndex(particle)
 
-				-- invulnerability check
-				if not target:IsInvulnerable() then
+				-- spell-immunit and invulnerability check
+				if not target:IsMagicImmune() and not target:IsInvulnerable() then
 					damage_table.victim = target
 					ApplyDamage(damage_table)
 				end
@@ -100,7 +126,7 @@ function paladin_holy_purification:OnSpellStart()
 				local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 			
 				local allies = FindUnitsInRadius(caster_team, target:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
-				for _,ally in pairs(allies) do
+				for _, ally in pairs(allies) do
 					-- Particles on allies
 					local hit_pfx = ParticleManager:CreateParticle(heal_hit_particle_name, PATTACH_ABSORIGIN_FOLLOW, ally)
 					ParticleManager:SetParticleControlEnt(hit_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
@@ -119,6 +145,8 @@ end
 function paladin_holy_purification:ProcsMagicStick()
 	return true
 end
+
+---------------------------------------------------------------------------------------------------
 
 if guardian_angel_holy_purification == nil then
 	guardian_angel_holy_purification = paladin_holy_purification

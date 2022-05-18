@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Bane; 1.11.2019;
+	// HERO: Bane; 2022;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_bane"
@@ -18,6 +18,7 @@
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"				"6"
+		"AbilityTalentStart"        "10"
 		"Ability1"					"bane_custom_enfeeble"					// Q (4 levels)
 		"Ability2"					"bane_custom_brain_sap"					// W (4 levels)
 		"Ability3"					"bane_nightmare"						// E, DOTA_VERSION (4 levels)
@@ -28,17 +29,17 @@
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"
 		
-		"Ability10"					"special_bonus_armor_7"					// lvl 10 talent: same as dota Bane
-		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: same as dota Bane
+		"Ability10"					"special_bonus_armor_5"					// lvl 10 talent:
+		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: unique
 
-		"Ability12"					"special_bonus_hp_300"					// lvl 15 talent: unique
-		"Ability13"					"special_bonus_attack_range_200"		// lvl 15 talent: unique
+		"Ability12"					"special_bonus_hp_250"					// lvl 15 talent: unique
+		"Ability13"					"special_bonus_unique_bane_9"		    // lvl 15 talent: Fiend's Grip Max Mana Drain talent
 
-		"Ability14"					"special_bonus_attack_speed_120"		// lvl 20 talent: unique
-		"Ability15"					"special_bonus_movement_speed_50"		// lvl 20 talent: same as dota Bane
+		"Ability14"					"special_bonus_attack_speed_100"		// lvl 20 talent: unique
+		"Ability15"					"special_bonus_unique_bane_5"		    // lvl 20 talent: Nightmare cooldown talent
 
-		"Ability16"					"special_bonus_unique_bane_2"			// lvl 25 talent; same as dota Bane
-		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; same as dota Bane
+		"Ability16"					"special_bonus_unique_bane_custom_2"	// lvl 25 talent; Brain Sap Damage/Heal talent
+		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; Fiend's Grip Duration talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -48,8 +49,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"35"									// like dota Bane
-		"AttackDamageMax"			"41"									// like dota Bane
+		"AttackDamageMin"			"33"									// like dota Bane
+		"AttackDamageMax"			"39"									// like dota Bane
 		"AttackRate"				"1.7"									// like dota Bane
 		"AttackAnimationPoint"		"0.3"									// like dota Bane
 		"AttackAcquisitionRange"	"800"									// like dota Bane
@@ -69,18 +70,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"		"23"									// like dota Bane
-		"AttributeStrengthGain"		"2.6"									// like dota Bane
-		"AttributeBaseAgility"		"23"									// like dota Bane
-		"AttributeAgilityGain"		"2.6"									// like dota Bane
-		"AttributeBaseIntelligence"	"23"									// like dota Bane
-		"AttributeIntelligenceGain"	"2.6"									// like dota Bane
+		"AttributeBaseStrength"		"22"									// like dota Bane
+		"AttributeStrengthGain"		"2.5"									// like dota Bane
+		"AttributeBaseAgility"		"22"									// like dota Bane
+		"AttributeAgilityGain"		"2.5"									// like dota Bane
+		"AttributeBaseIntelligence"	"22"									// like dota Bane
+		"AttributeIntelligenceGain"	"2.5"									// like dota Bane
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.0"									// like dota Bane
-		"StatusHealth"				"150"									// Default
-		"StatusMana"				"0"										// Default
+		"StatusHealthRegen"			"0.25"									// like dota Bane
+		"StatusHealth"				"150"									// Default; dota Bane (200);
+		"StatusMana"				"0"										// Default; dota Bane (75);
 		"StatusManaRegen"			"0.0"									// like dota Bane
 	}
 }

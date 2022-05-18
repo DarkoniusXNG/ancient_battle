@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Paladin; 29.10.2019;
+	// HERO: Paladin; 2022;
 	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
 	// TO_DO:
 	//=================================================================================================================
@@ -18,39 +18,42 @@
 		
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"		"6"
-		"Ability1"			"paladin_holy_purification"				// Q (4 levels)
-		"Ability2"			"paladin_storm_hammer"					// W (4 levels)
-		"Ability3"			"paladin_holy_strike"					// E (4 levels)
-		"Ability4"			"paladin_eternal_devotion"				// T, passive (4 levels)
-		"Ability5"			"paladin_divine_retribution"			// F, passive (1 level)
-		"Ability6"			"paladin_divine_shield"					// R, Primary Ultimate (3 levels)
-		"Ability7"			"generic_hidden"
-		"Ability8"			"generic_hidden"
-		"Ability9"			"generic_hidden"
+		"AbilityLayout"             "6"
+		"AbilityTalentStart"        "10"
+		"Ability1"                  "paladin_holy_purification"				// Q (4 levels)
+		"Ability2"                  "paladin_storm_hammer"					// W (4 levels)
+		"Ability3"                  "paladin_holy_strike"					// E (4 levels)
+		"Ability4"                  "paladin_eternal_devotion"				// T, passive (4 levels)
+		"Ability5"                  "paladin_divine_retribution"			// F, passive (1 level)
+		"Ability6"                  "paladin_divine_shield"					// R, Primary Ultimate (3 levels)
+		"Ability7"                  "generic_hidden"
+		"Ability8"                  "generic_hidden"
+		"Ability9"                  "generic_hidden"
 
-		"Ability10"			"special_bonus_gold_income_90"			// lvl 10 talent; same as Omniknight
-		"Ability11"			"special_bonus_exp_boost_35"			// lvl 10 talent; unique
+		"Ability10"                 "special_bonus_attack_base_damage_50"   // lvl 10 talent; same as Omniknight
+		"Ability11"                 "special_bonus_unique_paladin_1"        // lvl 10 talent; Purification AoE talent
 
-		"Ability12"			"special_bonus_attack_damage_90"		// lvl 15 talent; same as Omniknight
-		"Ability13"			"special_bonus_movement_speed_30"		// lvl 15 talent; unique
+		"Ability12"                 "special_bonus_unique_paladin_2"		// lvl 20 talent; Global Eternal Devotion talent
+		"Ability13"                 "special_bonus_unique_paladin_3"		// lvl 15 talent; Purification cd talent
 
-		"Ability14"			"special_bonus_unique_omniknight_2"		// lvl 20 talent; custom: Eternal Devotion OnDeath effect becomes Global
-		"Ability15"			"special_bonus_unique_sven"				// lvl 20 talent; custom: -6s Storm Hammer cd
+		"Ability14"                 "special_bonus_unique_paladin_4"        // lvl 25 talent; Storm Hammer Dispels enemies talent
+		"Ability15"                 "special_bonus_unique_paladin_5"		// lvl 20 talent; Wrath of God (Eternal Devotion more angels)
 
-		"Ability16"			"special_bonus_unique_omniknight_1"		// lvl 25 talent; custom: Purification bonus dmg/heal
-		"Ability17"			"special_bonus_unique_sven_3"			// lvl 25 talent; custom: Storm Hammer Purges
+		"Ability16"                 "special_bonus_unique_paladin_6"		// lvl 25 talent; Purification bonus dmg/heal talent
+		"Ability17"                 "special_bonus_unique_paladin_7"        // lvl 15 talent; Storm Hammer stun duration talent
+		
+		// available: special_bonus_unique_paladin_8 - Storm Hammer cooldown talent
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// Omniknight (2); original (2);
+		"ArmorPhysical"				"0"										// Omniknight (1); original (2);
 		"MagicalResistance"			"25"									// Default
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"29"									// Omniknight (31); original (2);
-		"AttackDamageMax"			"39" 									// Omniknight (41); original (12);
+		"AttackDamageMin"			"30"									// Omniknight (31); original (2);
+		"AttackDamageMax"			"40" 									// Omniknight (41); original (12);
 		"AttackRate"				"1.7"									// like Omniknight
 		"AttackAnimationPoint"		"0.433"									// like Omniknight
 		"AttackRange"				"150"									// like Omniknight
@@ -58,8 +61,8 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"280"									// Omniknight (300); original (270); Sven (285);
-		"MovementTurnRate"			"0.6"									// like Omniknight
+		"MovementSpeed"				"300"									// Omniknight (315); original (290);
+		"MovementTurnRate"			"0.6"									// Omniknight (0.6); original (0.6);
 		
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
@@ -69,18 +72,18 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"22"									// Omniknight (22); original (22);
-		"AttributeStrengthGain"		"3.6"									// Omniknight (3.6); original (2.7);
+		"AttributeBaseStrength"		"22"									// Omniknight (23); original (22);
+		"AttributeStrengthGain"		"3.1"									// Omniknight (3.1); original (2.7);
 		"AttributeBaseAgility"		"13"									// Omniknight (15); original (13); - don't change!
-		"AttributeAgilityGain"		"1.5"									// Omniknight (1.8); original (1.5); - don't change!
+		"AttributeAgilityGain"		"1.5"									// Omniknight (2.0); original (1.5); - don't change!
 		"AttributeBaseIntelligence"	"17"									// Omniknight (15); original (17); - don't change!
 		"AttributeIntelligenceGain"	"1.8"									// Omniknight (1.8); original (1.8); - don't change!
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.25"									// Omniknight (0.0); original (0.25);
+		"StatusHealthRegen"			"0.25"									// Omniknight (0.25); original (0.25);
 		"StatusHealth"				"210"									// Omniknight (200); original (100 or 210);
-		"StatusMana"				"25"									// Omniknight (75); original (51 or 100);
+		"StatusMana"				"75"									// Omniknight (75); original (51 or 100);
 		"StatusManaRegen"			"0.0"									// Omniknight (0.0); original (0.01);
 	}
 }

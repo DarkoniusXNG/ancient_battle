@@ -1,26 +1,47 @@
-"AddonInfo"
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	"maps"					"two_vs_two five_vs_five" // 3vs3"// holdout"
-	"IsPlayable"			"1"
-	"PenaltiesEnabled"  	"0"
-	"CheckAFKPlayers" 		"0" 
-	"HeroGuidesSupported" 	"1"
-	"EnablePickRules"		"1"
-	
-	"two_vs_two"
+	maps = 
+	[
+		"two_vs_two",
+		"five_vs_five",
+		"3vs3",
+	]
+	IsPlayable = 1
+	PenaltiesEnabled = 0
+	CheckAFKPlayers = 0
+	HeroGuidesSupported = 1
+	EnablePickRules = 1
+	map_options = 
+	[
+		{
+			MaxPlayers = 6
+			map = "3vs3"
+		},
+		{
+			MaxPlayers = 4
+			map = "holdout"
+		},
+		{
+			MaxPlayers = 10
+			map = "five_vs_five"
+		},
+		{
+			MaxPlayers = 4
+			map = "two_vs_two"
+		},
+	]
+	HideInTools = false
+	IsTemplate = false
+	DefaultMap = "two_vs_two"
+	Default_Keys = [  ]
+	DisableIK = false
+	EventGame = false
+	hero_picker = 
 	{
-		"MaxPlayers"		"4"
 	}
-	"five_vs_five"
-	{
-		"MaxPlayers"		"10"
-	}
-	"holdout"
-	{
-		"MaxPlayers"		"4"
-	}
-	"3vs3"
-	{
-		"MaxPlayers"		"6"
-	}
+	ForceDefaultGuide = true
+	MinimalPrecache = true
+	MinPlayers = 1
+	MaxPlayers = 10
+	TeamCount = -1
 }

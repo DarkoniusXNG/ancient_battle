@@ -44,13 +44,16 @@ function AstralStomp(event)
 	-- Damage enemies in a radius around the caster
 	local enemies = FindUnitsInRadius(caster_team, caster_pos, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 	for _, enemy in pairs(enemies) do
-		-- Apply stun modifier
-		ability:ApplyDataDrivenModifier(caster, enemy, "modifier_astral_stomp", {["duration"] = stun_duration})
-		-- Apply astral damage
-		if enemy:IsAttackImmune() or enemy:IsMagicImmune() then
-			-- Enemy is immune to attacks or magic. Astral damage type doesn't affect them.
-		else
-			ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = astral_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+		if enemy and not enemy:IsNull() then
+			-- Get stun duration
+			local enemy_stun_duration = enemy:GetValueChangedByStatusResistance(stun_duration)
+			-- Apply stun modifier
+			ability:ApplyDataDrivenModifier(caster, enemy, "modifier_astral_stomp", {["duration"] = enemy_stun_duration})
+			-- Apply astral damage
+			if not enemy:IsAttackImmune() and not enemy:IsMagicImmune() then
+				-- Enemy is not immune to attacks and not immune to magic. Astral damage type can affect them.
+				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = astral_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+			end
 		end
 	end
 end

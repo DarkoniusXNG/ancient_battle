@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Confuse - Like Manta but 1 illusion or 2 with the talent; No Dispel and no invulnerability;
 	// Author: Darkonius
-	// Notes: OK; 3.3.2020; Doesn't apply dispel to caster; Not invulnerable during cast;
+	// Notes: OK; 2022; Doesn't apply dispel to caster; Not invulnerable during cast;
 	// TO_DO: 
 	//=================================================================================================================
 	"dark_terminator_confuse"
@@ -23,18 +23,12 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "145" // like CK Phantasm
+		"AbilityCooldown"                                 "120"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"                                 "125" // CK Phantasm (125/200/275)
 		"AbilityProcsMagicStick"                          "1"
-
-		//"precache"
-		//{
-			//"particle" 			"particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
-			//"soundfile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
-		//}
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -48,13 +42,13 @@
 			"02" // not in tooltip
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage"                         "0"
+				"outgoing_damage"                         "-100"
 				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 			}
 			"03" // like original
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage_tooltip"                 "100"
+				"outgoing_damage_tooltip"                 "0"
 				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 				"CalculateSpellDamageTooltip"             "0"
 			}
@@ -85,7 +79,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"                                              "86205"
 		"BaseClass"                                       "special_bonus_undefined"
 		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -109,7 +102,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"                                              "87029"
 		"BaseClass"                                       "special_bonus_undefined"
 		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -121,7 +113,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "50"
+				"value"                                   "25"
 			}
 		}
 	}

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
 	// Author: 
-	// Notes: OK; 25.2.2020; Flame Strike deals 25% of the damage to buildings;
+	// Notes: OK; 2022; Flame Strike deals 25% of the damage to buildings;
 	// TO_DO:
 	//=================================================================================================================
 	"blood_mage_flame_strike"
@@ -20,7 +20,7 @@
 	
 		"AbilityCastAnimation"          "ACT_DOTA_CAST_SUN_STRIKE"
 		"AbilityCastRange"				"800"                       // Nether Blast (400); original (800);
-		"AbilityCastPoint"				"0.2"
+		"AbilityCastPoint"				"0"
 		"AoERadius"                     "%radius"
 		
 		"AbilityCooldown"				"10"                        // Nether Blast (5); original (10);
@@ -47,6 +47,7 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"initial_damage"                          "70 130 190 250"
+				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_2"
 			}
 			"03" // initial_damage + damage_per_second = 100/175/250/325
 			{
@@ -61,7 +62,7 @@
 			"05" // original (1.33 -> 0.9); original Pillar duration (2.67s); Sun Strike (1.7); Light Strike (0.5);
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"delay"                                   "0.9"
+				"delay"                                   "1.6"
 			}
 			"06"
 			{
@@ -74,6 +75,29 @@
 				"var_type"                                "FIELD_INTEGER"
 				"buildings_damage"                        "25"
 				"CalculateSpellDamageTooltip"             "0"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Flame Strike bonus damage talent
+	//=================================================================================================================
+	"special_bonus_unique_blood_mage_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "250"
 			}
 		}
 	}

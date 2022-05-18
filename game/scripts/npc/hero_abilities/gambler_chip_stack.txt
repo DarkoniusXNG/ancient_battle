@@ -4,7 +4,7 @@
 	// Gambler: Chip Stack (F) - New Spell, Deals single target damage based on target's net worth
 	// Author: Darkonius;
 	// Linkens: Blocks;
-	// Notes: OK; 24.9.2017;
+	// Notes: OK; 2022;
 	// TO_DO: If its too strong put tracking projectile or damage cap.
 	//=================================================================================================================
 	"gambler_chip_stack"

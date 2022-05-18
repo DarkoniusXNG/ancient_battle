@@ -42,13 +42,13 @@ function modifier_custom_phoenix_egg_passives:RemoveOnDeath()
 	return true
 end
 
-function modifier_custom_phoenix_egg_passives:OnCreated()
+--function modifier_custom_phoenix_egg_passives:OnCreated()
 	-- "particles/units/heroes/hero_phoenix/phoenix_supernova_egg.vpcf"
-end
+--end
 
-function modifier_custom_phoenix_egg_passives:OnDestroy()
+--function modifier_custom_phoenix_egg_passives:OnDestroy()
 
-end
+--end
 
 function modifier_custom_phoenix_egg_passives:DeclareFunctions()
 	local funcs ={
@@ -72,58 +72,56 @@ function modifier_custom_phoenix_egg_passives:GetDisableHealing()
 	return 1
 end
 
-function modifier_custom_phoenix_egg_passives:OnAttackLanded(event)
-	local parent = self:GetParent()
-	local attacker = event.attacker
-	local target = event.target
+if IsServer() then
+	function modifier_custom_phoenix_egg_passives:OnAttackLanded(event)
+		local parent = self:GetParent()
+		local attacker = event.attacker
+		local target = event.target
 
-	if target ~= parent then
-		return
-	end
-
-	if target == nil or attacker == nil then
-		return
-	end
-
-	if target:IsNull() or attacker:IsNull() then
-		return
-	end
-
-	-- Don't trigger when someone attacks items;
-	if target.GetUnitName == nil then
-		return
-	end
-
-	if not IsServer() then
-		return
-	end
-
-	-- Handle attacks to destroy the egg
-	local total_hp = parent:GetMaxHealth() -- it should be divideable with 16, 4 and 8
-	local creep_attacks_to_destroy = 16
-	local melee_hero_attacks_to_destroy = 4
-	local ranged_hero_attacks_to_destroy = 4
-
-	local ability = self:GetAbility()
-	if ability then
-		creep_attacks_to_destroy = ability:GetSpecialValueFor("creep_hits_to_kill")
-		melee_hero_attacks_to_destroy = ability:GetSpecialValueFor("melee_hero_hits_to_kill")
-		ranged_hero_attacks_to_destroy = ability:GetSpecialValueFor("ranged_hero_hits_to_kill")
-	end
-
-	local damage = total_hp/creep_attacks_to_destroy
-	if attacker:IsRealHero() then
-		damage = total_hp/melee_hero_attacks_to_destroy
-		if attacker:IsRangedAttacker() then
-			damage = total_hp/ranged_hero_attacks_to_destroy
+		if not attacker or attacker:IsNull() then
+			return
 		end
-	end
+		
+		if not target or target:IsNull() then
+			return
+		end
+		
+		if target ~= parent then
+			return
+		end
 
-	-- To prevent eggs staying in memory (preventing SetHealth(0) or SetHealth(-value) )
-	if parent:GetHealth() - damage <= 0 then
-		parent:Kill(ability, attacker)
-	else
-		parent:SetHealth(parent:GetHealth() - damage)
+		-- Don't trigger when someone attacks items;
+		if target.GetUnitName == nil then
+			return
+		end
+
+		-- Handle attacks to destroy the egg
+		local total_hp = parent:GetMaxHealth() -- it should be divideable with 16, 4 and 8
+		local creep_attacks_to_destroy = 16
+		local melee_hero_attacks_to_destroy = 4
+		local ranged_hero_attacks_to_destroy = 4
+
+		local ability = self:GetAbility()
+		if ability then
+			creep_attacks_to_destroy = ability:GetSpecialValueFor("creep_hits_to_kill")
+			melee_hero_attacks_to_destroy = ability:GetSpecialValueFor("melee_hero_hits_to_kill")
+			ranged_hero_attacks_to_destroy = ability:GetSpecialValueFor("ranged_hero_hits_to_kill")
+		end
+
+		local damage = total_hp/creep_attacks_to_destroy
+		if attacker:IsRealHero() then
+			damage = total_hp/melee_hero_attacks_to_destroy
+			if attacker:IsRangedAttacker() then
+				damage = total_hp/ranged_hero_attacks_to_destroy
+			end
+		end
+
+		-- To prevent eggs staying in memory (preventing SetHealth(0) or SetHealth(-value) )
+		if parent:GetHealth() - damage <= 0 then
+			parent:Kill(ability, attacker)
+		else
+			parent:SetHealth(parent:GetHealth() - damage)
+		end
 	end
 end
 

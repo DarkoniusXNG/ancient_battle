@@ -6,18 +6,12 @@
 	<scripts>
 		<include src="s2r://panorama/scripts/custom_game/top_bar.js"/>
 	</scripts>
-	<Panel>
-		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_warp_beast.png" hittest="false" />-->
-		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/npc_dota_hero_warp_beast.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" />-->
-		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_sohei.png" hittest="false" />-->
-		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_sohei.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/npc_dota_hero_sohei.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_sohei.png" hittest="false" />-->
-		<!--<Image src="s2r://panorama/images/heroes/npc_dota_hero_electrician.png" hittest="false" />-->
-		<!--<Image src="s2r://panorama/images/heroes/selection/npc_dota_hero_electrician.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/npc_dota_hero_electrician.png" hittest="false" />-->
-		<!--<Image src="file://{images}/heroes/selection/npc_dota_hero_electrician.png" hittest="false" />-->
+	<Panel style="visibility:collapse;">
+		<!-- <Image src="file://panorama/images/heroes/npc_dota_hero_warp_beast.png" hittest="false" /> -->
+		<!-- <Image src="file://panorama/images/heroes/selection/npc_dota_hero_warp_beast.png" hittest="false" /> -->
+		<!-- <Image src="file://panorama/images/heroes/npc_dota_hero_sohei.png" hittest="false" /> -->
+		<!-- <Image src="file://panorama/images/heroes/selection/npc_dota_hero_sohei.png" hittest="false" /> -->
+		<!-- <Image src="file://panorama/images/heroes/npc_dota_hero_electrician.png" hittest="false" /> -->
+		<!-- <Image src="file://panorama/images/heroes/selection/npc_dota_hero_electrician.png" hittest="false" /> -->
 	</Panel>
 </root>

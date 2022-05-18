@@ -5,7 +5,7 @@ function LifeDrainStart(event)
 	local ability = event.ability
 	
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
+	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_life_drain", {})
 		caster:EmitSound("Hero_Pugna.LifeDrain.Target")
 	else
@@ -41,6 +41,13 @@ function LifeDrainHealthTransfer(event)
 	local health_drain = ability:GetLevelSpecialValueFor("health_drain", ability_level)
 	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
 	local HP_drain = health_drain*tick_rate
+	
+	-- Talent that changes damage type and allows full hp draining
+	local has_talent = false
+	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
+	if talent and talent:GetLevel() > 0 then
+		has_talent = true
+	end
 
 	-- How much caster heals himself
 	local HP_gain = HP_drain
@@ -50,8 +57,10 @@ function LifeDrainHealthTransfer(event)
 		target:Kill(ability, caster)
 		ability:OnChannelFinish(false)
 		caster:Interrupt()
-		ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
-		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
+		if caster.LifeDrainParticle then
+			ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
+			ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
+		end
 		return
 	else
 		-- Location variables
@@ -60,14 +69,17 @@ function LifeDrainHealthTransfer(event)
 
 		-- Distance variables
 		local distance = (target_location - caster_location):Length2D()
-		local break_distance = ability:GetLevelSpecialValueFor("break_distance", ability_level)
+		local break_distance = ability:GetLevelSpecialValueFor("break_distance", ability_level) + caster:GetCastRangeBonus()
 		local direction = (target_location - caster_location):Normalized()
 
 		-- If the leash is broken or target is spell immune or invulnerable then stop the channel
 		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
 			ability:OnChannelFinish(false)
 			caster:Interrupt()
-			ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
+			if caster.LifeDrainParticle then
+				ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
+				ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
+			end
 			target:RemoveModifierByName("modifier_dark_ranger_life_drain")
 			return
 		end
@@ -78,12 +90,16 @@ function LifeDrainHealthTransfer(event)
 		end
 	end
 	
-	if caster:GetHealthDeficit() > 0 and caster:IsChanneling() then
-		-- Health Transfer from the Enemy to the caster
-		ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_MAGICAL})
-		caster:Heal(HP_gain, caster)
+	if caster:IsChanneling() then
+		if has_talent then
+			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_PURE})
+			caster:Heal(HP_gain, caster)
+		elseif caster:GetHealthDeficit() > 0 then
+			-- Health Transfer from the Enemy to the caster
+			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_MAGICAL})
+			caster:Heal(HP_gain, caster)
+		end
 	end
-	
 end
 
 -- Called when modifier_dark_ranger_life_drain is destroyed (unit dies or modifier is removed; modifier can be removed in many cases)
@@ -99,9 +115,7 @@ function LifeDrainEnd(event)
 	caster:Interrupt()
 	caster:StopSound("Hero_Pugna.LifeDrain.Target")
 	
-	if target then
-		if target:HasModifier("modifier_dark_ranger_life_drain") then
-			target:RemoveModifierByName("modifier_dark_ranger_life_drain")
-		end
+	if target and not target:IsNull() then
+		target:RemoveModifierByName("modifier_dark_ranger_life_drain")
 	end
 end

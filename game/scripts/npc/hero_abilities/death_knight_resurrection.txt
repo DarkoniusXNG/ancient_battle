@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019;
-	// TO_DO:
+	// Notes: OK; 2022;
+	// TO_DO: Add Aghanim Scepter upgrade - Resurrect heroes (not those that are reincarnating) and gives units 100 armor
 	//=================================================================================================================
 	"death_knight_resurrection"
 	{
@@ -24,8 +24,8 @@
 		
 		"AbilityCastPoint"				"0.453"
 
-		"AbilityCooldown" 				"80"
-		"AbilityManacost" 				"200"
+		"AbilityCooldown" 				"80" // original (180);
+		"AbilityManacost" 				"125" // original (125);
 		"AbilityProcsMagicStick"		"1"
 		
 		"MaxLevel"						"1"
@@ -39,20 +39,43 @@
 
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original (40);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"duration"				"60"
 			}
-			"02"
+			"02" // original (900);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"0"
 			}
-			"03"
+			"03" // original (6);
 			{
 				"var_type"				"FIELD_INTEGER"
-				"resurrections_limit"	"999"
+				"resurrections_limit"	"1000"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Resurrection talent - decreases cooldown
+	//=================================================================================================================
+	"special_bonus_unique_death_knight_6"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "20"
 			}
 		}
 	}

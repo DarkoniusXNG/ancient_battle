@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Bane: Terror Blink (T) - New Spell, Blinks on target point, disarmed, then returns to starting point
 	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
+	// Notes: OK; 2022; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
 	// TO_DO: If too weak increase duration to 8 seconds.
 	//=================================================================================================================
 	"bane_custom_terror_blink"
@@ -16,10 +16,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
-		"AbilityCastRange"				"800 925 1000 1150"
+		"AbilityCastRange"				"850 950 1050 1150"
 		"AbilityCastPoint"				"0.4"					// like Anti-Mage Blink
 
-		"AbilityCooldown"				"15.0 12.0 9.0 6.0"		// like Anti-Mage Blink
+		"AbilityCooldown"				"11 10 9 8"
 		"AbilityManaCost"				"75"
 		"AbilityProcsMagicStick"		"1"
 		

@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Blademaster; 1.11.2019;
+	// HERO: Blademaster; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_blademaster"
@@ -18,28 +18,31 @@
 		
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"		"6"
-		"Ability1"			"blademaster_blade_storm"				// Q (4 levels)
-		"Ability2"			"blademaster_mirror_image"				// W, modified (4 levels)
-		"Ability3"			"blademaster_shadow_walk"				// E (4 levels)
-		"Ability4"			"blademaster_custom_blade_dance"		// T, passive (4 levels) 
-		"Ability5"			"blademaster_counter_attack"			// F, passive, modified (1 level)
-		"Ability6"			"juggernaut_omni_slash"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
-		"Ability7"			"generic_hidden"
-		"Ability8"			"generic_hidden"
-		"Ability9"			"generic_hidden"
+		"AbilityLayout"             "6"
+		"AbilityTalentStart"        "10"
+		"Ability1"                  "blademaster_blade_storm"				// Q (4 levels)
+		"Ability2"                  "blademaster_mirror_image"				// W, modified (4 levels)
+		"Ability3"                  "blademaster_shadow_walk"				// E (4 levels)
+		"Ability4"                  "blademaster_custom_blade_dance"		// T, passive (4 levels) 
+		"Ability5"                  "blademaster_counter_attack"			// F, passive, modified (1 level)
+		"Ability6"                  "juggernaut_omni_slash"					// R, Primary Ultimate, DOTA_VERSION (3 levels)
+		"Ability7"                  "generic_hidden"
+		"Ability8"                  "generic_hidden"
+		"Ability9"                  "generic_hidden"
 
-		"Ability10"			"special_bonus_all_stats_5"					// lvl 10 talent; same as Juggernaut
-		"Ability11"			"special_bonus_unique_naga_siren"			// lvl 10 talent; talent for blademaster_mirror_image
+		"Ability10"                 "special_bonus_unique_blademaster_1"		// lvl 10 talent; Blade Storm radius talent
+		"Ability11"                 "special_bonus_unique_naga_siren_4"			// lvl 10 talent; Mirror Image Damage talent
 
-		"Ability12"			"special_bonus_attack_speed_25"				// lvl 15 talent: unique
-		"Ability13"			"special_bonus_unique_naga_siren_4"			// lvl 15 talent: talent for blademaster_mirror_image
+		"Ability12"                 "special_bonus_attack_speed_25"				// lvl 15 talent: Juggernaut (+20)
+		"Ability13"                 "special_bonus_unique_naga_siren"			// lvl 15 talent: Bonus Mirror Image Illusion talent
 
-		"Ability14"			"special_bonus_armor_10"					// lvl 20 talent; same as Juggernaut
-		"Ability15"			"special_bonus_unique_legion_commander_3"	// lvl 20 talent; talent for blademaster_counter_attack
+		"Ability14"                 "special_bonus_unique_legion_commander_3"	// lvl 20 talent; Counter Atttack chance talent
+		"Ability15"                 "special_bonus_unique_blademaster_2"	    // lvl 20 talent; Blade Storm damage talent
 
-		"Ability16"			"special_bonus_hp_600"					    // lvl 25 talent; alternatives: special_bonus_evasion_30
-		"Ability17"			"special_bonus_unique_juggernaut_2"			// lvl 25 talent; talent for Omnislash
+		"Ability16"                 "special_bonus_unique_naga_siren_6"			// lvl 25 talent; Mirror Image cd talent
+		"Ability17"                 "special_bonus_unique_juggernaut_2"			// lvl 25 talent; Omnislash duration talent
+		
+		// special_bonus_evasion_30
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -49,8 +52,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20"									// Juggernaut (12); Naga Siren (23);
-		"AttackDamageMax"			"34"									// Juggernaut (16); Naga Siren (25);
+		"AttackDamageMin"			"20"									// Juggernaut (16); Naga Siren (23);
+		"AttackDamageMax"			"34"									// Juggernaut (20); Naga Siren (25);
 		"AttackRate"				"1.7"									// Naga Siren (1.7); Juggernaut (1.4); original (1.77);
 		"AttackAnimationPoint"		"0.33"									// like Juggernaut
 		"AttackAcquisitionRange"	"600"									// like Juggernaut
@@ -58,7 +61,7 @@
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"295"									// Clinkz (290); Juggernaut (300); Naga Siren (320); original (320);
+		"MovementSpeed"				"295"									// Clinkz (290); Juggernaut (305); Naga Siren (330); original (320);
 		"MovementTurnRate"			"0.6"									// like Juggernaut
 		"HasAggressiveStance"		"1"										// like Juggernaut
 		
@@ -70,10 +73,10 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"20"									// Juggernaut (20); Naga Siren (22); original (18);
+		"AttributeBaseStrength"		"20"									// Juggernaut (20); Naga Siren (21); original (18);
 		"AttributeStrengthGain"		"2.2"									// Juggernaut (2.2); Naga Siren (2.8); original (2.0);
 		"AttributeBaseAgility"		"26"									// Juggernaut (34); Naga Siren (21); original (24);
-		"AttributeAgilityGain"		"2.8"									// Juggernaut (2.8); Naga Siren (3.7); original (1.75);
+		"AttributeAgilityGain"		"2.8"									// Juggernaut (2.8); Naga Siren (3.3); original (1.75);
 		"AttributeBaseIntelligence"	"16"									// Juggernaut (14); Naga Siren (21); original (16);
 		"AttributeIntelligenceGain"	"2.0"									// Juggernaut (1.4); Naga Siren (2.0); original (2.25);
 
@@ -82,6 +85,6 @@
 		"StatusHealthRegen"			"0.5"									// like Juggernaut
 		"StatusHealth"				"200"									// like Juggernaut
 		"StatusMana"				"75"									// like Juggernaut
-		"StatusManaRegen"			"0.5"									// unique
+		"StatusManaRegen"			"0.25"									// unique
 	}
 }

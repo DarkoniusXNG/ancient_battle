@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//====================================================================================================
-	// Brewmaster: Drunken Brawler (T) - like Brewmaster's Drunken Brawler but, no guaranteed crit and evasion
+	// Brewmaster: Drunken Brawler (T) - like old Brewmaster's Drunken Brawler but, no guaranteed crit and evasion
 	// Author: Darkonius
-	// Notes: OK; 24.8.2019; Chance to crit is pseudo-random;
+	// Notes: OK; 2022; Chance to crit is pseudo-random;
 	// TO_DO:
 	//====================================================================================================
 	"brewmaster_custom_drunken_brawler"
@@ -28,19 +28,19 @@
 		{
 			"01" // original: 7/14/21%
 			{
-				"var_type"					"FIELD_INTEGER"
-				"evasion_chance"			"10 15 20 25"
+				"var_type"                                "FIELD_INTEGER"
+				"evasion_chance"                          "15 20 25 30"
 			}
 			"02" // original: 10%
 			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"10 15 20 25"
+				"var_type"                                "FIELD_INTEGER"
+				"crit_chance"                             "10 15 20 25"
 			}
 			"03" // original: 200/300/400
 			{
-				"var_type"						"FIELD_INTEGER"
-				"crit_damage"					"230 250 270 300"
-				"CalculateSpellDamageTooltip"	"0"
+				"var_type"                                "FIELD_INTEGER"
+				"crit_damage"                             "240 260 280 300"
+				"CalculateSpellDamageTooltip"             "0"
 			}
 		}
 

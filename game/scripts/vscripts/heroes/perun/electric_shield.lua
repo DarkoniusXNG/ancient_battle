@@ -2,10 +2,19 @@ if perun_electric_shield == nil then
 	perun_electric_shield = class({})
 end
 
-LinkLuaModifier("modifier_perun_electric_shield", "heroes/perun/electric_shield.lua", LUA_MODIFIER_MOTION_NONE) --LUA_MODIFIER_MOTION_HORIZONTAL
+LinkLuaModifier("modifier_perun_electric_shield", "heroes/perun/electric_shield.lua", LUA_MODIFIER_MOTION_NONE)
 
 function perun_electric_shield:GetAOERadius()
-	return self:GetSpecialValueFor("radius")
+	local caster = self:GetCaster()
+	local base_radius = self:GetSpecialValueFor("radius")
+
+	-- Talent that increases radius
+	local talent = caster:FindAbilityByName("special_bonus_unique_perun_2")
+	if talent and talent:GetLevel() > 0 then
+		return base_radius + talent:GetSpecialValueFor("value")
+	end
+
+	return base_radius
 end
 
 function perun_electric_shield:OnSpellStart()
@@ -31,6 +40,8 @@ function perun_electric_shield:ProcsMagicStick()
 	return true
 end
 
+---------------------------------------------------------------------------------------------------
+
 if modifier_perun_electric_shield == nil then
 	modifier_perun_electric_shield = class({})
 end
@@ -52,16 +63,32 @@ function modifier_perun_electric_shield:IsDebuff()
 end
 
 function modifier_perun_electric_shield:OnCreated()
-	local ability = self:GetAbility()
-	local parent = self:GetParent()
-
-	self.radius = ability:GetSpecialValueFor("radius")
-	self.damage_per_second = ability:GetSpecialValueFor("damage_per_second")
-	self.interval = ability:GetSpecialValueFor("damage_interval")
-
 	if not IsServer() then
 		return
 	end
+
+	local ability = self:GetAbility()
+	local parent = self:GetParent()
+	local caster = self:GetCaster()
+
+	local radius = ability:GetSpecialValueFor("radius")
+	local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+	
+	-- Talent that increases radius
+	local talent1 = caster:FindAbilityByName("special_bonus_unique_perun_2")
+	if talent1 and talent1:GetLevel() > 0 then
+		radius = radius + talent1:GetSpecialValueFor("value")
+	end
+	
+	-- Talent that increases damage
+	local talent2 = caster:FindAbilityByName("special_bonus_unique_perun_3")
+	if talent2 and talent2:GetLevel() > 0 then
+		damage_per_second = damage_per_second + talent2:GetSpecialValueFor("value")
+	end
+	
+	self.radius = radius
+	self.damage_per_second = damage_per_second
+	self.interval = ability:GetSpecialValueFor("damage_interval")
 
 	-- Start loop sound
 	parent:EmitSound("Hero_Dark_Seer.Ion_Shield_lp")
@@ -75,9 +102,31 @@ function modifier_perun_electric_shield:OnCreated()
 end
 
 function modifier_perun_electric_shield:OnRefresh()
+	if not IsServer() then
+		return
+	end
+
 	local ability = self:GetAbility()
-	self.radius = ability:GetSpecialValueFor("radius")
-	self.damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+	local caster = self:GetCaster()
+
+	local radius = ability:GetSpecialValueFor("radius")
+	local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+	
+	-- Talent that increases radius
+	local talent1 = caster:FindAbilityByName("special_bonus_unique_perun_2")
+	if talent1 and talent1:GetLevel() > 0 then
+		radius = radius + talent1:GetSpecialValueFor("value")
+	end
+	
+	-- Talent that increases damage
+	local talent2 = caster:FindAbilityByName("special_bonus_unique_perun_3")
+	if talent2 and talent2:GetLevel() > 0 then
+		damage_per_second = damage_per_second + talent2:GetSpecialValueFor("value")
+	end
+	
+	self.radius = radius
+	self.damage_per_second = damage_per_second
+	self.interval = ability:GetSpecialValueFor("damage_interval")
 end
 
 function modifier_perun_electric_shield:OnIntervalThink()
@@ -94,7 +143,7 @@ function modifier_perun_electric_shield:OnIntervalThink()
 	end
 
 	local radius = self.radius
-	if ability then
+	if not radius and ability then
 		radius = ability:GetSpecialValueFor("radius")
 	end
 	local enemies = FindUnitsInRadius(caster:GetTeamNumber(), parent:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
@@ -110,9 +159,13 @@ function modifier_perun_electric_shield:OnIntervalThink()
 			local damage_per_second = self.damage_per_second
 			local damage_interval = self.interval
 			local damage_type = DAMAGE_TYPE_MAGICAL
-			if ability then
+			if not damage_per_second and ability then
 				damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+			end
+			if not damage_interval and ability then
 				damage_interval = ability:GetSpecialValueFor("damage_interval")
+			end
+			if ability then
 				damage_type = ability:GetAbilityDamageType()
 			end
 
@@ -145,13 +198,15 @@ function modifier_perun_electric_shield:OnDestroy()
 	-- Emit End sound
 	parent:EmitSound("Hero_Dark_Seer.Ion_Shield_end")
 
-	if self.particle then
+	--if self.particle then
 		--ParticleManager:ReleaseParticleIndex(self.particle)
-	end
+	--end
 end
 
 function modifier_perun_electric_shield:DeclareFunctions()
-	return {MODIFIER_PROPERTY_PROVIDES_FOW_POSITION}
+	return {
+		MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
+	}
 end
 
 function modifier_perun_electric_shield:GetModifierProvidesFOWVision()

@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Hero: Blood Mage
-	// Notes: OK; 1.11.2019;
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"npc_dota_hero_blood_mage"
 	{
@@ -31,13 +31,13 @@
 		"Ability11"				"special_bonus_attack_damage_45"
 
 		"Ability12"				"special_bonus_cast_range_125"
-		"Ability13"				"special_bonus_attack_range_125"
+		"Ability13"				"special_bonus_unique_blood_mage_1"     // Banish duration talent
 
 		"Ability14"				"special_bonus_hp_regen_40"
-		"Ability15"				"special_bonus_attack_speed_120"
+		"Ability15"				"special_bonus_unique_blood_mage_3"     // Mana Transfer Leashes
 
-		"Ability16"				"special_bonus_magic_resistance_80"
-		"Ability17"				"special_bonus_lifesteal_100"
+		"Ability16"				"special_bonus_attack_speed_120"
+		"Ability17"				"special_bonus_unique_blood_mage_2"     // Flame Strike damage talent
 
 		"Ability18"				"generic_hidden"
 		"Ability19"				"generic_hidden"
@@ -46,6 +46,7 @@
 		"Ability22"				"generic_hidden"
 		"Ability23"				"generic_hidden"
 		"Ability24"				"generic_hidden"
+		"Ability25"             "generic_hidden"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -55,10 +56,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"27"							// Invoker (27); Pugna (19);
-		"AttackDamageMax"			"35" 							// Invoker (33); Pugna (27);
+		"AttackDamageMin"			"29"							// Invoker (29); Pugna (21);
+		"AttackDamageMax"			"35" 							// Invoker (35); Pugna (28);
 		"AttackRate"				"1.7"							// Invoker (1.7);
-		"AttackAnimationPoint"		"0.5"							// like Invoker
+		"AttackAnimationPoint"		"0.4"							// like Invoker
 		"AttackRange"				"600"							// like Invoker
 		"AttackAcquisitionRange"	"800"							// like Invoker
 		"ProjectileSpeed"			"900"							// like Invoker
@@ -66,7 +67,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"330"							// original (300); Invoker (280); Pugna (330);
+		"MovementSpeed"				"330"							// original (300); Invoker (275); Pugna (330);
 		"MovementTurnRate"			"0.5"							// like Invoker
 
 		// Vision
@@ -79,16 +80,16 @@
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"		"19"							// Invoker (18); original (18); Pugna (19);
 		"AttributeStrengthGain"		"2.0"							// Invoker (2.4); original (2.0); Pugna (2.0);
-		"AttributeBaseAgility"		"16"							// Invoker (14); original (14); Pugna (16);
+		"AttributeBaseAgility"		"16"							// Invoker (14); original (14); Pugna (24);
 		"AttributeAgilityGain"		"1.3"							// Invoker (1.9); original (1.0); Pugna (1.3);
 		"AttributeBaseIntelligence"	"24"							// Invoker (15); original (19); Pugna (24);
-		"AttributeIntelligenceGain"	"4.6"							// Invoker (4.6); original (3.0); Pugna (5.2);
+		"AttributeIntelligenceGain"	"5.2"							// Invoker (4.6); original (3.0); Pugna (5.2);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"							// Invoker (0); original (1.15);
-		"StatusHealth"				"200"							// original (100);
-		"StatusMana"				"0"								// original (0);
-		"StatusManaRegen"			"0.5"							// Invoker (0.0); original(0.96); Pugna (0.5);
+		"StatusHealthRegen"			"1.5"							// Invoker (0.25); original (1.15);
+		"StatusHealth"				"200"							// original (100); Invoker (200);
+		"StatusMana"				"0"								// original (0); Invoker (75);
+		"StatusManaRegen"			"0.5"							// Invoker (0.0); original (0.96); Pugna (0.5);
 	}
 }

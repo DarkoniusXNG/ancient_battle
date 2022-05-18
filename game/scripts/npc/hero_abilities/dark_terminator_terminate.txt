@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Dark Terminator: Terminate - global Sniper Assassinate
 	// Author: Darkonius
-	// Notes: OK; 3.3.2020; Crosshair particle is visible for enemies too;
+	// Notes: OK; 2022; Crosshair particle is visible for enemies too;
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -47,7 +47,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"projectile_speed"                        "2500"
+				"projectile_speed"                        "2000"
 			}
 			"02"
 			{
@@ -64,7 +64,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"                                              "86897"
 		"BaseClass"                                       "special_bonus_undefined"
 		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -76,7 +75,7 @@
 			"01"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"value"                                   "1.8"
+				"value"                                   "1.6"
 			}
 		}
 	}

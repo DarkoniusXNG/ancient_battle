@@ -6,7 +6,6 @@
 	//=================================================================================================================
 	"item_recipe_mystic_booster"
 	{
-		"ID"							"1270"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
@@ -32,7 +31,6 @@
 	//=================================================================================================================
 	"item_mystic_booster"
 	{
-		"ID"              				"1271"
 		"BaseClass"           			"item_datadriven"
 		"AbilityTextureName"      		"custom/mystic_booster"
 		

@@ -1,0 +1,100 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Pudge: Rot - Pudge can deny with this
+	//=================================================================================================================
+	"pudge_custom_rot"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                           "ability_lua"
+		"ScriptFile"                                          "heroes/pudge/rot.lua"
+		"AbilityTextureName"                                  "pudge_rot"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+
+		"HasScepterUpgrade"                                   "1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"                                    "0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"                                     "0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"                                     "0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"radius"                                          "250"
+			}
+			"02"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"damage_per_second"                               "30 60 90 120"
+			}
+			"03"
+			{
+				"var_type"                                        "FIELD_FLOAT"
+				"damage_interval"                                 "0.2"
+			}
+			"04"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"move_speed_slow"                                 "-14 -20 -26 -32"
+				"LinkedSpecialBonus"                              "special_bonus_unique_pudge_custom_1"
+				"LinkedSpecialBonusOperation"                     "SPECIAL_BONUS_SUBTRACT"
+			}
+			"05"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"scepter_damage_per_second"                       "130 160 190 220"
+				"RequiresScepter"                                 "1"
+			}
+			"06"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"scepter_radius"                                  "475"
+				"RequiresScepter"                                 "1"
+			}
+			"07"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"scepter_heal_reduction"                          "25"
+				"RequiresScepter"                                 "1"
+			}
+		}
+	}
+  
+	//=================================================================================================================
+	// Rot: bonus slow talent
+	//=================================================================================================================
+	"special_bonus_unique_pudge_custom_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "14"
+			}
+		}
+	}
+}

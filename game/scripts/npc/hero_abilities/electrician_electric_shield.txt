@@ -1,0 +1,122 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Electrician: Electric Shield
+  //=================================================================================================================
+  "electrician_electric_shield"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    "AbilityTextureName"                                  "custom/electrician_electric_shield"
+    "ScriptFile"                                          "heroes/electrician/electrician_electric_shield.lua"
+
+    "HasShardUpgrade"                                     "1"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastRange"                                    "350"
+
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "0.5"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "5"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_cost"                                       "20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "shield_per_mana"                                 "0.75 0.95 1.15 1.35"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shield_damage_block"                             "50"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shield_duration"                                 "12"
+      }
+      "05" // original (300); Flame Guard (400);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "350"
+      }
+      "06" // original (15/30/45/60); Flame Guard (30/40/50/60);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_damage"                                     "30 40 50 60"
+        "LinkedSpecialBonus"                              "special_bonus_electrician_electric_shield_damage"
+      }
+      "07" // original (0.5?); Flame Guard (0.2);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "aura_interval"                                   "0.25"
+      }
+	  "08"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "shard_shield_per_mana"                           "1.9 2.1 2.3 2.5"
+      }
+      "09"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shard_shield_damage_block"                       "70"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
+
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/items_fx/chain_lightning.vpcf"
+      "particle"                                          "particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+    }
+  }
+  
+  //=================================================================================================================
+  // Electrician: Electric Shield bonus damage per second
+  //=================================================================================================================
+  "special_bonus_electrician_electric_shield_damage"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "60"
+      }
+    }
+  }
+}

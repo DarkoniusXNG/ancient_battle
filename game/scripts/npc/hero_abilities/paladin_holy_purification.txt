@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Paladin: Holy Purification (Q) - similar to Omniknight Purification, can target enemies
 	// Author: Darkonius
-	// Notes: OK; 29.10.2019; Cast Point is 0.4; Can heal spell/magic immune and invulnerable allies;
+	// Notes: OK; 2022; Cast Point is 0.4; Can heal spell/magic immune and invulnerable allies;
 	// Notes: When cast on an enemy, enemy is damaged and caster's allies around the enemy are healed.
 	// TO_DO:
 	//=================================================================================================================
@@ -28,7 +28,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"11.0"
+		"AbilityCooldown"				"11"
 		
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -43,13 +43,14 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"heal"                                    "90 180 270 360"
-				"LinkedSpecialBonus"                      "special_bonus_unique_omniknight_1"
+				"LinkedSpecialBonus"                      "special_bonus_unique_paladin_6"
 				"CalculateSpellDamageTooltip"             "1"
 			}
 			"02"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"radius"                                  "300"
+				"LinkedSpecialBonus"                      "special_bonus_unique_paladin_1"
 			}
 		}
 
@@ -59,6 +60,75 @@
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 			"particle"	"particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_purification_immortal_cast.vpcf"
+		}
+	}
+	
+	//=================================================================================================================
+	// Holy Purification: bonus radius/AoE talent
+	//=================================================================================================================
+	"special_bonus_unique_paladin_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "75"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Holy Purification: decreases cooldown
+	//=================================================================================================================
+	"special_bonus_unique_paladin_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "2"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Holy Purification: increases damage/heal
+	//=================================================================================================================
+	"special_bonus_unique_paladin_6"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "200"
+			}
 		}
 	}
 }

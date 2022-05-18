@@ -1,9 +1,5 @@
 modifier_custom_passive_gold = class({})
 
-function modifier_custom_passive_gold:IsPermanent()
-	return true
-end
-
 function modifier_custom_passive_gold:IsHidden()
 	return true
 end
@@ -21,14 +17,16 @@ function modifier_custom_passive_gold:OnCreated()
 		return
 	end
 	local parent = self:GetParent()
-	if GetMapName() ~= "two_vs_two" or parent.original then
+	if (GetMapName() ~= "two_vs_two" and GetMapName() ~= "3vs3") or parent.original or parent:IsIllusion() then
 		self:Destroy()
+		return
 	end
-	local GOLD_PER_MINUTE = 260 -- SETTINGS.GOLD_PER_MINUTE
-	if GOLD_PER_MINUTE ~= 0 then
-		self.goldTickTime = 60/GOLD_PER_MINUTE
+	local gpm = 130
+	if gpm ~= 0 then
+		self.goldTickTime = 60/gpm
 		self.goldPerTick = 1
 	else
+		self.goldTickTime = -1
 		self.goldPerTick = 0
 		self:Destroy()
 	end

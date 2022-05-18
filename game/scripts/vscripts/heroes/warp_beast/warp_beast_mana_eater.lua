@@ -106,7 +106,7 @@ function modifier_mana_eater_passive:OnAttackLanded(event)
 					modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {Duration = duration})
 					if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap"))) end
 				end
-				parent:CalculateStatBonus()
+				parent:CalculateStatBonus(true)
 			end
 		end
 
@@ -148,7 +148,7 @@ function modifier_mana_eater_passive:OnDeath(keys)
 				modifier = caster:AddNewModifier(caster, self:GetAbility(), "modifier_mana_eater_bonus_mana_count", {Duration = duration})
 				if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, self:GetAbility():GetSpecialValueFor("bonus_mana_cap"))) end
 			end
-			caster:CalculateStatBonus()
+			caster:CalculateStatBonus(true)
 		end
 
 		caster:GiveMana(drainAmount)

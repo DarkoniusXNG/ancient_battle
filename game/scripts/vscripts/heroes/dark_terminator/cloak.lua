@@ -8,7 +8,6 @@ function dark_terminator_cloak:OnSpellStart()
 	local duration = self:GetSpecialValueFor("duration")
 
 	local particle_smoke = "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-	--local particle_invis_start = "particles/generic_hero_status/status_invisibility_start.vpcf"
 	local sound_cast = "Hero_BountyHunter.WindWalk"
 
 	-- Smoke particle
@@ -39,6 +38,13 @@ function modifier_dark_terminator_cloak:IsPurgable()
 	return false
 end
 
+function modifier_dark_terminator_cloak:OnCreated()
+  self.fade_time = self:GetAbility():GetSpecialValueFor("fade_time")
+
+  local particle = ParticleManager:CreateParticle("particles/generic_hero_status/status_invisibility_start.vpcf", PATTACH_ABSORIGIN, self:GetParent())
+  ParticleManager:ReleaseParticleIndex(particle)
+end
+
 function modifier_dark_terminator_cloak:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
@@ -55,22 +61,34 @@ function modifier_dark_terminator_cloak:GetModifierMoveSpeedBonus_Percentage()
 end
 
 function modifier_dark_terminator_cloak:GetModifierInvisibilityLevel()
-	return 1
+	return return math.min(1, self:GetElapsedTime() / self.fade_time)
 end
 
-function modifier_dark_terminator_cloak:OnAbilityExecuted(event)
-	if IsServer() then
-		if event.unit ~= self:GetParent() then
+if IsServer() then
+	function modifier_dark_terminator_cloak:OnAbilityExecuted(event)
+		local unit = event.unit
+
+		-- Check if unit exists
+		if not unit or unit:IsNull() then
+			return
+		end
+
+		if unit ~= self:GetParent() then
 			return
 		end
 
 		self:Destroy()
 	end
-end
 
-function modifier_dark_terminator_cloak:OnAttack(event)
-	if IsServer() then
-		if event.attacker ~= self:GetParent() then
+	function modifier_dark_terminator_cloak:OnAttack(event)
+		local attacker = event.attacker
+
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
+			return
+		end
+
+		if attacker ~= self:GetParent() then
 			return
 		end
 
@@ -86,9 +104,13 @@ function modifier_dark_terminator_cloak:CheckState()
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,
 	}
 
-	if self:GetElapsedTime() >= self:GetAbility():GetSpecialValueFor("fade_time") then
+	if self:GetElapsedTime() >= self.fade_time then
 		state[MODIFIER_STATE_INVISIBLE] = true
 	end
 
 	return state
+end
+
+function modifier_dark_terminator_cloak:GetPriority()
+  return MODIFIER_PRIORITY_ULTRA
 end

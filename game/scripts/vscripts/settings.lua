@@ -8,7 +8,7 @@ HERO_SELECTION_TIME = 60.0              -- How long should we let people select 
 HERO_SELECTION_PENALTY_TIME = 30.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
 BANNING_PHASE_TIME = 20.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
 STRATEGY_TIME = 15.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
-SHOWCASE_TIME = 12.0                    -- How long should show case time be?
+SHOWCASE_TIME = 0.0                     -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
@@ -31,8 +31,8 @@ USE_UNSEEN_FOG_OF_WAR = false           -- Should we make unseen and fogged area
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 
 USE_CUSTOM_HERO_GOLD_BOUNTY = true      -- Should the gold for hero kills be modified (true) or same as in default Dota (false)?
-HERO_KILL_GOLD_BASE = 110               -- Hero gold bounty base value
-HERO_KILL_GOLD_PER_LEVEL = 10           -- Hero gold bounty increase per level
+HERO_KILL_GOLD_BASE = 125               -- Hero gold bounty base value
+HERO_KILL_GOLD_PER_LEVEL = 8            -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
 
 USE_CUSTOM_HERO_LEVELS = false          -- Should the heroes give a custom amount of XP when killed?
@@ -178,9 +178,8 @@ if GetMapName() == "two_vs_two" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
-	PRE_GAME_TIME = 30.0
-	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 6
+	PRE_GAME_TIME = 35.0
+	POST_GAME_TIME = 45.0
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
@@ -238,22 +237,20 @@ if GetMapName() == "holdout" then
 end
 
 if GetMapName() == "3vs3" then
-	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 5
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 30			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?
 	BUYBACK_COOLDOWN_TIME = 0.0
-	MAX_RESPAWN_TIME = 30.0
-	FOUNTAIN_CONSTANT_MANA_REGEN = 1
-	FOUNTAIN_PERCENTAGE_MANA_REGEN = 1
-	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 1
+	MAX_RESPAWN_TIME = 25.0
+	FOUNTAIN_CONSTANT_MANA_REGEN = 5
+	FOUNTAIN_PERCENTAGE_MANA_REGEN = 5
+	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 5
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 3
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 3
 	CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_1] = 0

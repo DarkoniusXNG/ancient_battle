@@ -3,8 +3,8 @@
 	//====================================================================================================
 	// Lich: Ice Storm (R) - New Spell, Ultimate, Damages and mini stuns all enemy heroes on the map
 	// Author: Jastuchko + Darkonius
-	// Notes: OK; 18.9.2019; Power of Prague
-	// TO_DO: 
+	// Notes: OK; 2021; Power of Prague
+	// TO_DO: Rework to lua; Add vision to ulted heroes (not true sight); scepter frostbite
 	//====================================================================================================
 	"lich_custom_ice_storm"
 	{
@@ -36,11 +36,11 @@
 
 		// Time     
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "110.0 100.0 90.0"
+		"AbilityCooldown"               "120 110 100"
 	   
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"               "250 350 450"
+		"AbilityManaCost"               "300 400 500"
 		"AbilityProcsMagicStick"		"1"
 
 		// Special
@@ -52,10 +52,10 @@
 				"var_type"                                "FIELD_FLOAT"
 				"tick_interval"                           "0.2"
 			}
-			"02"
+			"02" // Zeus ult (300/425/550);
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "130 140 150"
+				"damage_per_second"                       "150 170 190"
 			}
 			"03"
 			{
@@ -65,7 +65,7 @@
 			"04"
 			{
 				"var_type"                                "FIELD_FLOAT"
-				"mini_stun_duration"                      "0.2"
+				"mini_stun_duration"                      "0.1"
 			}
 		}
 

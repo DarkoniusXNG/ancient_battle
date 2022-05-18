@@ -2,33 +2,23 @@ if paladin_storm_hammer == nil then
 	paladin_storm_hammer = class({})
 end
 
-LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/modifier_paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_paladin_storm_hammer_talent", "heroes/paladin/modifier_paladin_storm_hammer_talent.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
 
 function paladin_storm_hammer:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
 end
 
-function paladin_storm_hammer:GetCooldown(nLevel)
+function paladin_storm_hammer:GetCooldown(level)
 	local caster = self:GetCaster()
-	local cooldown = self.BaseClass.GetCooldown(self, nLevel)
-	
-	if IsServer() then
-		-- Talent that reduces cooldown
-		local talent = caster:FindAbilityByName("special_bonus_unique_sven")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				local reduction = talent:GetSpecialValueFor("value")
-				cooldown = cooldown - reduction
-			end
-		end
-	else
-		if caster:HasModifier("modifier_paladin_storm_hammer_talent") then
-			cooldown = cooldown - caster.storm_hammer_talent_value
-		end
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_paladin_8")
+	if talent and talent:GetLevel() > 0 then
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
 	end
-	
-	return cooldown
+
+	return base_cooldown
 end
 
 function paladin_storm_hammer:OnSpellStart()
@@ -68,7 +58,13 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 			local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")
 			
 			local caster = self:GetCaster()
-			
+
+			-- Talent that increases stun duration
+			local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_7")
+	        if talent_1 and talent_1:GetLevel() > 0 then
+				bolt_stun_duration = bolt_stun_duration + talent_1:GetSpecialValueFor("value")
+			end
+
 			-- Targetting constants
 			local target_team = self:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
 			local target_type = self:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
@@ -89,14 +85,15 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 						ApplyDamage(damage_table)
 
 						if enemy:IsAlive() then
-							enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = bolt_stun_duration})
+							-- Calculate stun duration with status resistance in mind
+							local stun_duration = enemy:GetValueChangedByStatusResistance(bolt_stun_duration)
+							
+							enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = stun_duration})
 
-							-- Talent that applies Purge
-							local talent = caster:FindAbilityByName("special_bonus_unique_sven_3")
-							if talent then
-								if talent:GetLevel() ~= 0 then
-									self:DispelEnemy(enemy)
-								end
+							-- Talent that dispels enemies
+							local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_4")
+							if talent_2 and talent_2:GetLevel() > 0 then
+								self:DispelEnemy(enemy)
 							end
 						end
 					end
@@ -125,4 +122,46 @@ function paladin_storm_hammer:DispelEnemy(target)
 	if target:IsSummoned() or target:IsDominated() or target:IsIllusion() then
 		target:Kill(nil, self:GetCaster())
 	end
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_paladin_storm_hammer == nil then
+	modifier_paladin_storm_hammer = class({})
+end
+
+function modifier_paladin_storm_hammer:IsDebuff()
+	return true
+end
+
+function modifier_paladin_storm_hammer:IsStunDebuff()
+	return true
+end
+
+function modifier_paladin_storm_hammer:GetEffectName()
+	return "particles/generic_gameplay/generic_stunned.vpcf"
+end
+
+function modifier_paladin_storm_hammer:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
+end
+
+function modifier_paladin_storm_hammer:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
+	}
+
+	return funcs
+end
+
+function modifier_paladin_storm_hammer:GetOverrideAnimation(params)
+	return ACT_DOTA_DISABLED
+end
+
+function modifier_paladin_storm_hammer:CheckState()
+  local state = {
+    [MODIFIER_STATE_STUNNED] = true,
+  }
+
+  return state
 end

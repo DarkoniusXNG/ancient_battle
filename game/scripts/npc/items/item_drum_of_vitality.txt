@@ -6,7 +6,6 @@
 	//=================================================================================================================
 	"item_recipe_drum_of_vitality"
 	{
-		"ID"							"1274"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"

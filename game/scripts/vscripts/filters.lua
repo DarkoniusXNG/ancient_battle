@@ -16,6 +16,13 @@ function ancient_battle_gamemode:OrderFilter(filter_table)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
+
+		if caster:HasModifier("modifier_drunken_haze_fizzle") and (not ability:IsItem()) then
+			ability:UseResources(true,false,true)
+			local playerID = caster:GetPlayerOwnerID()
+			SendErrorMessage(playerID, "Used Spell has no effect!")
+			return false
+		end
 	end
 
 	return true
@@ -420,7 +427,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	-- Increase xp bounty of neutrals
 	if victim:IsNeutralUnitType() and keys.damage >= victim:GetHealth() and not victim.changed_xp_bounty then
 		local old_xp_bounty = victim:GetDeathXP()
-		local xp_multiplier = 1.1
+		local xp_multiplier = 1.15
 		local new_xp_bounty = old_xp_bounty * xp_multiplier
 
 		victim:SetDeathXP(math.ceil(new_xp_bounty))
@@ -600,7 +607,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Armor of the unit
 		local armor = unit:GetPhysicalArmorValue(false)
 		-- Physical damage is reduced by armor
-		local damage_armor_reduction = 1-(armor*0.052/(0.9+0.048*(math.abs(armor))))
+		local damage_armor_reduction = 1-(armor*0.06/(1+0.06*(math.abs(armor))))
 		-- In case the unit has infinite armor for some reason (to prevent division by zero)
 		if damage_armor_reduction == 0 then
 			damage_armor_reduction = 0.01

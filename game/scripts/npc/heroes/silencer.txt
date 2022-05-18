@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Silencer; 11.10.2019;
+	// HERO: Silencer; 2022;
 	// TO_DO: 
 	//=================================================================================================================
 	"npc_dota_hero_custom_silencer"
@@ -20,21 +20,21 @@
 		"Ability4"				"silencer_custom_silent_torment"		// T (4 levels)
 		"Ability5"				"silencer_custom_summon_golems"			// F, Secondary Ultimate (3 levels)
 		"Ability6"				"silencer_custom_global_silence"		// R, modified, Primary Ultimate (1 level)
-		"Ability7"				"silencer_glaives_of_wisdom"			// innate ability
+		"Ability7"				"generic_hidden"
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_armor_6"					// lvl 10 talent; same as dota Silencer
-		"Ability11"				"special_bonus_intelligence_7"			// lvl 10 talent; unique
+		"Ability10"				"special_bonus_armor_6"					// lvl 10 talent;
+		"Ability11"				"special_bonus_intelligence_10"			// lvl 10 talent; 
 
-		"Ability12"				"special_bonus_hp_250"					// lvl 15 talent; unique
-		"Ability13"				"special_bonus_unique_silencer_2"		// lvl 15 talent; INT steal talent
+		"Ability12"				"special_bonus_hp_250"					// lvl 15 talent;
+		"Ability13"				"special_bonus_attack_speed_30"		    // lvl 15 talent;
 
-		"Ability14"				"special_bonus_spell_amplify_25"		// lvl 20 talent; unique
-		"Ability15"				"special_bonus_magic_resistance_20"		// lvl 20 talent; unique
+		"Ability14"				"special_bonus_spell_amplify_25"		// lvl 20 talent;
+		"Ability15"				"special_bonus_magic_resistance_20"		// lvl 20 talent;
 
 		"Ability16"				"special_bonus_attack_range_200"		// lvl 25 talent; unique
-		"Ability17"				"special_bonus_unique_silencer_4"		// lvl 25 talent; Global Silence talent
+		"Ability17"				"special_bonus_unique_silencer_7"		// lvl 25 talent; Global Silence cd talent
 		
 		"ArmorPhysical"					"-1"								// like dota Silencer
 		"MagicalResistance"				"25"								// Default
@@ -43,16 +43,17 @@
 		"AttackDamageMin"				"18"								// like dota Silencer
 		"AttackDamageMax"				"32"								// like dota Silencer
 		"AttackRate"					"1.7"								// like dota Silencer
+		"BaseAttackSpeed"               "100"                               // dota Silencer (115)
 		"AttackAnimationPoint"			"0.5"								// like dota Silencer
 		"AttackAcquisitionRange"		"800"								// like dota Silencer
 		"AttackRange"					"600"								// like dota Silencer
-		"ProjectileSpeed"				"1000"								// like dota Silencer
+		"ProjectileSpeed"				"900"								// dota Silencer (900)
 		
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"			"19"								// dota Silencer (19);
-		"AttributeStrengthGain"			"2.2"								// dota Silencer (2.7); original(2.2);
+		"AttributeStrengthGain"			"2.2"								// dota Silencer (2.4); original(2.2);
 		"AttributeBaseAgility"			"18"								// dota Silencer (22);
-		"AttributeAgilityGain"			"1.7"								// dota Silencer (3.0);
+		"AttributeAgilityGain"			"1.8"								// dota Silencer (2.4);
 		"AttributeBaseIntelligence"		"27"								// dota Silencer (25);
 		"AttributeIntelligenceGain"		"2.9"								// dota Silencer (2.9);
 		

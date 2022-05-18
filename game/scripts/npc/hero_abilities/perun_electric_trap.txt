@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Trap (E) - Similar to Techies Stasis Trap
 	// Author: Darkonius
-	// Notes: OK; 27.8.2019; Trap stuns in a radius;
-	// TO_DO:
+	// Notes: OK; 2021; Visible trap that stuns in a radius;
+	// TO_DO: Status Resistance fix
 	//=================================================================================================================
 	"perun_electric_trap"
 	{
@@ -25,11 +25,11 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20.0 16.0 13.0 10.0"
+		"AbilityCooldown"				"20 16 13 10" // old Techies Stasis Trap (20/16/13/10)
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"80 110 140 160"
+		"AbilityManaCost"				"75 100 125 150" // old Techies Stasis Trap (80/110/140/160)
 		"AbilityProcsMagicStick"		"1"
 		
 		"precache"
@@ -48,22 +48,22 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{		
-			"01"
+			"01" // old Techies Stasis Trap (450);
 			{
 				"var_type"					"FIELD_INTEGER"
-				"radius"					"400"
+				"radius"					"325"
 			}
-			"02"
+			"02" // old Techies Stasis Trap (2.5/3/3.5/4)
 			{
 				"var_type"					"FIELD_FLOAT"
-				"stun_duration"				"1.0 1.5 2.0 2.5"
+				"stun_duration"				"1.25 1.5 1.75 2.0"
 			}
-			"03"
+			"03" // old Techies Stasis Trap (1.5)
 			{
 				"var_type"					"FIELD_FLOAT"
 				"delay"			            "1.5"
 			}	
-			"04"
+			"04" // old Techies Stasis Trap (360)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"duration"					"180"

@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Paladin: Eternal Devotion (T) - New Spell, passive, on death applies Guardian Angel (physical immunity) and summons an Angel
 	// Author: Darkonius
-	// Notes: OK; 26.10.2019; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
-	// TO_DO: Fix Angel Wings;
+	// Notes: OK; 2022; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
+	// TO_DO: Fix Angel Wings; Rework to lua, make aura global with the talent
 	//=================================================================================================================
 	"paladin_eternal_devotion"
 	{
@@ -215,6 +215,52 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%armor_bonus"
 				}
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Eternal Devotion: Global Guardian Angel buff
+	//=================================================================================================================
+	"special_bonus_unique_paladin_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Eternal Devotion: Wrath of God - For each enemy in the radius an angel spawns
+	//=================================================================================================================
+	"special_bonus_unique_paladin_5"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "1"
 			}
 		}
 	}

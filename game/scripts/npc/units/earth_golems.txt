@@ -2,7 +2,7 @@
 {
 	//=================================================================================
 	// Summon Earth Golem: Earth Golem level 1
-	// Notes: OK; 20.11.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_earth_golem_1"
 	{
@@ -28,8 +28,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"29"									// 7.3.2016; like Mud Golem
-		"AttackDamageMax"			"33"									// 7.3.2016; like Mud Golem
+		"AttackDamageMin"			"35"									// 2022
+		"AttackDamageMax"			"35"									// 2022
 		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
 		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
 		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
@@ -59,8 +59,8 @@
 		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
 		"StatusManaRegen"			"1"										// 4.11.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 7.3.2016; like Mud Golem
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
 		
 		// Vision
@@ -71,7 +71,7 @@
 
 	//=================================================================================
 	// Summon Earth Golem: Earth Golem level 2
-	// Notes: OK; 20.11.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_earth_golem_2"
 	{
@@ -97,8 +97,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"39"									// 8.3.2016;
-		"AttackDamageMax"			"43"									// 8.3.2016;
+		"AttackDamageMin"			"45"									// 2022;
+		"AttackDamageMax"			"45"									// 2022;
 		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
 		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
 		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
@@ -129,8 +129,8 @@
 		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
 		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 7.3.2016; like Mud Golem
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
 		
 		// Vision
@@ -141,7 +141,7 @@
 
 	//=================================================================================
 	// Summon Earth Golem: Earth Golem level 3
-	// Notes: OK; 20.11.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_earth_golem_3"
 	{
@@ -167,8 +167,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"49"									// 4.11.2016;
-		"AttackDamageMax"			"53"									// 4.11.2016;
+		"AttackDamageMin"			"55"									// 2022
+		"AttackDamageMax"			"55"									// 2022
 		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
 		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
 		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
@@ -199,8 +199,8 @@
 		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
 		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 7.3.2016; like Mud Golem
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
 		
 		// Vision
@@ -211,7 +211,7 @@
 
 	//=================================================================================
 	// Summon Earth Golem: Earth Golem level 4
-	// Notes: OK; 20.11.2019;
+	// Notes: OK; 2022;
 	//=================================================================================
 	"npc_dota_earth_golem_4"
 	{
@@ -237,7 +237,7 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"60"									// 4.11.2016;
+		"AttackDamageMin"			"65"									// 2022;
 		"AttackDamageMax"			"65"									// 8.3.2016;
 		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
 		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
@@ -269,8 +269,8 @@
 		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
 		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"		// 7.3.2016; like Mud Golem
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"		// 29.4.2016;
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
 		
 		// Vision

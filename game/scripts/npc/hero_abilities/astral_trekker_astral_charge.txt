@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Astral Trekker: Astral Charge (R) - Ultimate; New Spell, like Storm Spirit Ball Lightning but he is not invulnerable, no damage, and health cost
 	// Author: Darkonius
-	// Notes: OK; 20.11.2019; Disabled with Root;
+	// Notes: OK; 2022; Disabled with Root or Leash;
 	// TO_DO:
 	//=================================================================================================================
 	"astral_trekker_astral_charge"
@@ -28,7 +28,7 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"0"
-		"AbilityManaCost"				"0"
+		"AbilityManaCost"				"5"
 
 		"precache"
 		{
@@ -63,7 +63,7 @@
 			"05"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"tree_destroy_radius"			"100"
+				"tree_destroy_radius"			"125"
 			}
 			"06"
 			{
@@ -85,6 +85,29 @@
 				"var_type"						"FIELD_INTEGER"
 				"damage_radius"					"150"
 				"CalculateSpellDamageTooltip"	"0"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Astral Charge talent bonus damage based on distance traveled
+	//=================================================================================================================
+	"special_bonus_unique_astral_trekker_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"value"                                   "16"
 			}
 		}
 	}

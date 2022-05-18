@@ -2,18 +2,17 @@
 {
 	//=================================================================================================================
 	// 1266 - Recipe: Blink Sword
-	// Notes: OK; 16.9.2018;
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_recipe_blink_sword"
 	{
-		"ID"							"1266"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"custom/custom_recipe"
 		"Model"							"models/props_gameplay/recipe.vmdl"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"100"
+		"ItemCost"						"1750"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -27,23 +26,22 @@
 	}
 	
 	//=================================================================================================================
-	// 1267 - Blink Sword - Blink Dagger (2250) + 2 x Soul Gem (1400) + Recipe (100) = 5150
-	// Notes: OK; 21.9.2019;
+	// 1267 - Blink Sword - Blink Dagger (2250) + 2 x Soul Gem (1400) + Recipe (1750) = 6800
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_blink_sword"
 	{
-		"ID"							"1267"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"      		"item_super_blink"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
-		"AbilitySharedCooldown"			"blink_items"
+		"AbilityCooldown"				"15.0"
+		"AbilitySharedCooldown"			"blink"
 		"AbilityManaCost"				"0"
 		
-		"ItemCost"						"5150"
+		"ItemCost"						"6800"
 		"ItemShopTags"					"teleport;agi;int;str"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"blink sword"

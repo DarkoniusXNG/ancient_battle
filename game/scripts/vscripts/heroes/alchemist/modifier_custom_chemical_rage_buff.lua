@@ -37,10 +37,18 @@ function modifier_custom_chemical_rage_buff:OnCreated()
 	local ability = self:GetAbility()
 
 	local think_interval = ability:GetSpecialValueFor("think_interval")
-
+	local base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
+	
 	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
-	self.base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
 	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
+	
+	-- Talent that reduces BAT
+	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
+	if talent and talent:GetLevel() > 0 then
+		base_attack_time = base_attack_time - math.abs(talent:GetSpecialValueFor("value"))
+	end
+	
+	self.base_attack_time = base_attack_time
 
 	if IsServer() then
 		-- Start thinking
@@ -52,9 +60,18 @@ function modifier_custom_chemical_rage_buff:OnRefresh()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 
+	local base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
+
 	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
-	self.base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
 	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
+	
+	-- Talent that reduces BAT
+	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
+	if talent and talent:GetLevel() > 0 then
+		base_attack_time = base_attack_time - math.abs(talent:GetSpecialValueFor("value"))
+	end
+	
+	self.base_attack_time = base_attack_time
 end
 
 function modifier_custom_chemical_rage_buff:OnIntervalThink()
@@ -105,7 +122,7 @@ function modifier_custom_chemical_rage_buff:ScepterBuff(caster)
 			local strength_new = strength_old + intelligence_old - 1
 			caster:SetBaseIntellect(intelligence_new)
 			caster:SetBaseStrength(strength_new)
-			caster:CalculateStatBonus()  -- This is needed to update Caster's bonuses from stats
+			caster:CalculateStatBonus(true)  -- This is needed to update Caster's bonuses from stats
 		end
 	end	
 end
@@ -127,6 +144,6 @@ function modifier_custom_chemical_rage_buff:ScepterBuffEnd(caster)
 		
 		caster:SetBaseIntellect(intelligence_new)
 		caster:SetBaseStrength(strength_new)
-		caster:CalculateStatBonus()
+		caster:CalculateStatBonus(true)
 	end
 end
