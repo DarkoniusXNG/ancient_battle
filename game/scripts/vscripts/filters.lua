@@ -424,14 +424,31 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		end
 	end
 
-	-- Increase xp bounty of neutrals
-	if victim:IsNeutralUnitType() and keys.damage >= victim:GetHealth() and not victim.changed_xp_bounty then
+	-- Increase bounties of lane creeps and neutrals - using experience and gold filter affects all creeps
+	-- (even player-controlled ones) - we don't want that, so using Damage filter is better in this case
+	if not victim:IsHero() and keys.damage >= victim:GetHealth() and not victim.changed_bounty then
 		local old_xp_bounty = victim:GetDeathXP()
-		local xp_multiplier = 1.15
+		local old_gold_bounty = victim:GetGoldBounty()
+		local gold_multiplier = LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER
+		local xp_multiplier = LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER
 		local new_xp_bounty = old_xp_bounty * xp_multiplier
-
-		victim:SetDeathXP(math.ceil(new_xp_bounty))
-		victim.changed_xp_bounty = true
+		local new_gold_bounty = old_gold_bounty * gold_multiplier
+		
+		if victim:IsNeutralUnitType() or victim:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+			gold_multiplier = NEUTRAL_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER
+			xp_multiplier = NEUTRAL_CREEP_KILL_XP_BOUNTY_MULTIPLIER
+			new_xp_bounty = old_xp_bounty * xp_multiplier
+			new_gold_bounty = old_gold_bounty * gold_multiplier
+			victim:SetDeathXP(math.ceil(new_xp_bounty))
+			victim:SetMinimumGoldBounty(math.floor(new_gold_bounty))
+			victim:SetMaximumGoldBounty(math.ceil(new_gold_bounty))
+			victim.changed_bounty = true
+		elseif victim:IsLaneCreepCustom() then
+			victim:SetDeathXP(math.ceil(new_xp_bounty))
+			victim:SetMinimumGoldBounty(math.floor(new_gold_bounty))
+			victim:SetMaximumGoldBounty(math.ceil(new_gold_bounty))
+			victim.changed_bounty = true
+		end
 	end
 	
 	if keys.damage <= 0 then
@@ -462,14 +479,6 @@ function ancient_battle_gamemode:ExperienceFilter(keys)
 	local experience = keys.experience
 	local playerID = keys.player_id_const
 	local reason = keys.reason_const
-
-	local xp_multiplier = 1.17
-	if reason == DOTA_ModifyXP_CreepKill then
-		--if GetMapName() == "two_vs_two" then
-			--xp_multiplier = 1.5
-		--end
-		keys.experience = experience * xp_multiplier
-	end
 
 	return true
 end
@@ -540,13 +549,6 @@ function ancient_battle_gamemode:GoldFilter(keys)
 	local gold = keys.gold
     local playerID = keys.player_id_const
     local reason = keys.reason_const
-
-	-- Disable all hero kill gold
-	if DISABLE_ALL_GOLD_FROM_HERO_KILLS then
-		if reason == DOTA_ModifyGold_HeroKill then
-			return false
-		end
-	end
 
 	return true
 end

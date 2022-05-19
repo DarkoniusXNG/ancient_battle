@@ -17,11 +17,11 @@ function modifier_custom_passive_gold:OnCreated()
 		return
 	end
 	local parent = self:GetParent()
-	if (GetMapName() ~= "two_vs_two" and GetMapName() ~= "3vs3") or parent.original or parent:IsIllusion() then
+	if parent.original or parent:IsIllusion() then
 		self:Destroy()
 		return
 	end
-	local gpm = 130
+	local gpm = 100
 	if gpm ~= 0 then
 		self.goldTickTime = 60/gpm
 		self.goldPerTick = 1

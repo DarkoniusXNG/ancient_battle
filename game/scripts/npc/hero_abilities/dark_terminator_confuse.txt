@@ -42,13 +42,13 @@
 			"02" // not in tooltip
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage"                         "-100"
+				"outgoing_damage"                         "-75"
 				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 			}
 			"03" // like original
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage_tooltip"                 "0"
+				"outgoing_damage_tooltip"                 "25"
 				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 				"CalculateSpellDamageTooltip"             "0"
 			}
