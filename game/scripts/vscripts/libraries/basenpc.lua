@@ -233,6 +233,8 @@ if CDOTA_BaseNPC then
       "modifier_furion_sprout_tether",
       "modifier_puck_coiled",
       -- custom leash modifiers:
+      "modifier_custom_leash_debuff",
+      "modifier_mana_transfer_leash_debuff",
     }
 
     for _, v in pairs(leashes) do
@@ -328,6 +330,8 @@ if C_DOTA_BaseNPC then
       "modifier_furion_sprout_tether",
       "modifier_puck_coiled",
 	  -- custom leash modifiers:
+      "modifier_custom_leash_debuff",
+      "modifier_mana_transfer_leash_debuff",
     }
 
     for _, v in pairs(leashes) do

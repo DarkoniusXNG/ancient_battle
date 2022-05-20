@@ -61,7 +61,7 @@ function bane_custom_terror_blink:OnSpellStart()
 	-- After a delay (buff duration) teleport back
 	Timers:CreateTimer(delay, function()
 		if caster then
-			if caster.terror_previous_position and (not caster:IsInvulnerable()) and caster:HasModifier("modifier_custom_terror_buff") and (not caster:IsRooted()) then
+			if caster.terror_previous_position and not caster:IsInvulnerable() and caster:HasModifier("modifier_custom_terror_buff") and not caster:IsRooted() and not caster:IsLeashedCustom() then
 				-- Teleporting caster back and preventing getting stuck
 				FindClearSpaceForUnit(caster, caster.terror_previous_position, false)
 

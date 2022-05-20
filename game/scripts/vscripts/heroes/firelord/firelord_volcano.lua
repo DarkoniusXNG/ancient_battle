@@ -44,12 +44,13 @@ function VolcanoWave(event)
 	damage_table.damage_type = ability:GetAbilityDamageType()
 	damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 	damage_table.ability = ability
+	damage_table.damage = wave_damage
 
-	for _,unit in pairs(targets) do
+	for _, unit in pairs(targets) do
 		ability:ApplyDataDrivenModifier(caster, unit, "modifier_volcano_stun", {duration = stun_duration})
-		
+
 		damage_table.victim = unit
-		damage_table.damage = wave_damage
+
 		ApplyDamage(damage_table)
 	end
 

@@ -11,8 +11,6 @@ function warp_beast_warp:GetIntrinsicModifierName()
 end
 
 function warp_beast_warp:OnToggle()
-	if not IsServer() then return end
-
 	local caster = self:GetCaster()
 
 	if self:GetToggleState() then
@@ -30,10 +28,8 @@ function warp_beast_warp:CanWarp(maxCastRange, castPosition, ability)
 	local caster = self:GetCaster()
 	local distancePerMana = self:GetSpecialValueFor("distance_per_mana")
 	local talent = caster:FindAbilityByName("special_bonus_unique_warp_beast_warp_mana_pool")
-	if talent then
-		if talent:GetLevel() ~= 0 then
-			distancePerMana = distancePerMana + talent:GetSpecialValueFor("value")
-		end
+	if talent and talent:GetLevel() > 0 then
+		distancePerMana = distancePerMana + talent:GetSpecialValueFor("value")
 	end
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
 	
@@ -50,10 +46,8 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 
 	local distancePerMana = self:GetSpecialValueFor("distance_per_mana")
 	local talent1 = caster:FindAbilityByName("special_bonus_unique_warp_beast_warp_mana_pool")
-	if talent1 then
-		if talent1:GetLevel() ~= 0 then
-			distancePerMana = distancePerMana + talent1:GetSpecialValueFor("value")
-		end
+	if talent1 and talent1:GetLevel() > 0 then
+		distancePerMana = distancePerMana + talent1:GetSpecialValueFor("value")
 	end
 	local warpDuration = self:GetSpecialValueFor("warp_duration")
 
@@ -81,17 +75,15 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	caster:StartGesture(ACT_DOTA_SPAWN)
 	caster:Stop()
 	caster:Hold()
-	caster:AddNewModifier(caster, self, "modifier_warp_effect", {Duration = warpDuration + 0.5})
-	caster:AddNewModifier(caster, self, "modifier_rooted", {Duration = warpDuration + 0.1})
+	caster:AddNewModifier(caster, self, "modifier_warp_effect", {duration = warpDuration + 0.5})
+	caster:AddNewModifier(caster, self, "modifier_rooted", {duration = warpDuration + 0.1})
 
 	local talent2 = caster:FindAbilityByName("special_bonus_unique_warp_beast_warp_silence")
-	if talent2 then
-		if talent2:GetLevel() ~= 0 then
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), warpPosition, nil, talent2:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-			for k, unit in pairs(units) do
-				if unit then
-					unit:AddNewModifier(caster, self, "modifier_silence", {duration = talent2:GetSpecialValueFor("value")})
-				end
+	if talent2 and talent2:GetLevel() > 0 then
+		local units = FindUnitsInRadius(caster:GetTeamNumber(), warpPosition, nil, talent2:GetSpecialValueFor("radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		for _, unit in pairs(units) do
+			if unit and not unit:IsNull() then
+				unit:AddNewModifier(caster, self, "modifier_silence", {duration = talent2:GetSpecialValueFor("value")})
 			end
 		end
 	end
@@ -115,13 +107,12 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	Timers:CreateTimer(warpDuration, function()
 		caster:RemoveModifierByNameAndCaster("modifier_rooted", caster)
 		caster:RemoveGesture(ACT_DOTA_SPAWN)
-		if not caster:IsStunned() and not caster:IsSilenced() and not caster:IsRooted() then
+		if not caster:IsStunned() and not caster:IsSilenced() and not caster:IsRooted() and not caster:IsLeashedCustom() then
 			caster:SpendMana(warpManaCost, self)
 			ProjectileManager:ProjectileDodge(caster)
 			FindClearSpaceForUnit(caster, Vector(warpPosition.x, warpPosition.y, origin.z), true)
-			-- caster:SetAbsOrigin(Vector(warpPosition.x, warpPosition.y, origin.z))
 			caster:SetForwardVector(forwardVec)
-			caster:AddNewModifier(caster, self, "modifier_warp_castrange_buffer", {Duration = 0.1})
+			caster:AddNewModifier(caster, self, "modifier_warp_castrange_buffer", {duration = 0.1})
 			caster:EmitSound("Hero_Warp_Beast.Warp.Portal")
 			caster:RemoveModifierByName("modifier_warp_effect")
 			ExecuteOrderFromTable(order)
@@ -139,208 +130,240 @@ end
 
 modifier_warp = class({})
 
-if IsServer() then
-	cast_orders = {
-    	[DOTA_UNIT_ORDER_CAST_POSITION] = true,
-    	[DOTA_UNIT_ORDER_CAST_TARGET] = true,
-	}
-end
-
 function modifier_warp:IsHidden()
 	return true
 end
-
 
 function modifier_warp:IsPermanent()
 	return true
 end
 
 function modifier_warp:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_ABILITY_START,
 		MODIFIER_EVENT_ON_ORDER,
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 		MODIFIER_EVENT_ON_DEATH,
 	}
-	return funcs
 end
 
-function modifier_warp:OnAbilityStart(event)
-	if IsServer() and event.unit == self:GetCaster() and self:GetCaster():IsRealHero() then
-		self:GetCaster():RemoveModifierByNameAndCaster("modifier_warp_effect", self:GetCaster())
+if IsServer() then
+	local cast_orders = {
+    	[DOTA_UNIT_ORDER_CAST_POSITION] = true,
+    	[DOTA_UNIT_ORDER_CAST_TARGET] = true,
+	}
+	
+	function modifier_warp:OnAbilityStart(event)
+		local caster = self:GetCaster()
+		if event.unit == caster and caster:IsRealHero() then
+			caster:RemoveModifierByNameAndCaster("modifier_warp_effect", caster)
+		end
 	end
-end
+	
+	function modifier_warp:OnOrder(event)
+		local caster = self:GetCaster()
+		local warpAbility = self:GetAbility()
+		if event.unit == caster and caster:IsRealHero() then
+			-- Stop checking if issuing commands other than toggles
+			if event.order_type ~= DOTA_UNIT_ORDER_CAST_TOGGLE then self.checkRange = false end
+			if cast_orders[event.order_type] and not caster:IsSilenced() and not caster:IsRooted() and not caster:IsLeashedCustom() then
+				local ability = event.ability
 
+				local order = {
+					UnitIndex = caster:GetEntityIndex(),
+					OrderType = event.order_type,
+					AbilityIndex = event.ability:GetEntityIndex(),
+					Queue = false
+				}
 
-function modifier_warp:OnOrder(event)
-	if IsServer() and event.unit == self:GetCaster() and self:GetCaster():IsRealHero() then
-		-- Stop checking if issuing commands other than toggles
-		if event.order_type ~= DOTA_UNIT_ORDER_CAST_TOGGLE then self.checkRange = false end
-		if cast_orders[event.order_type] and not self:GetCaster():IsSilenced() and not self:GetCaster():IsRooted() then
-			local caster = self:GetCaster()
-			local ability = event.ability
+				local castPosition
+				if event.target then
+					castPosition = event.target:GetAbsOrigin()
+					order.Position = event.target:GetAbsOrigin()
+					order.TargetIndex = event.target:GetEntityIndex()
+				else
+					castPosition = event.new_pos
+					order.Position = event.new_pos
+				end
 
-			local order = {
-				UnitIndex = caster:GetEntityIndex(),
-				OrderType = event.order_type,
-				AbilityIndex = event.ability:GetEntityIndex(),
-				Queue = false
-			}
+				if order.Position.z > 1200 then return end
 
-			local castPosition
-			if event.target then
-				castPosition = event.target:GetAbsOrigin()
-				order.Position = event.target:GetAbsOrigin()
-				order.TargetIndex = event.target:GetEntityIndex()
-			else
-				castPosition = event.new_pos
-				order.Position = event.new_pos
-			end
+				self.checkRange = true
 
-			if order.Position.z > 1200 then return end
-
-			self.checkRange = true
-
-			local maxCastRange = ability:GetCastRange(castPosition, caster) + caster:GetCastRangeBonus()
-			--print("Max cast range is: "..maxCastRange)
-			local warpRange = maxCastRange
-			if maxCastRange > 600 then 
-				warpRange = 600
-			end
-			local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
-			if maxCastRange > 0 and maxCastRange < distance then
-				Timers.CreateTimer(0, function()
-					local warpAbility = self:GetAbility()
-					if order and self.checkRange then
-						if warpAbility:GetToggleState() and warpAbility:CanWarp(warpRange, castPosition, ability) then
-							self.checkRange = false
-							caster:Stop()
-							warpAbility:Warp(warpRange, castPosition, ability, order)
+				local maxCastRange = ability:GetCastRange(castPosition, caster) + caster:GetCastRangeBonus()
+				--print("Max cast range is: "..maxCastRange)
+				local warpRange = maxCastRange
+				if warpRange > 600 then 
+					warpRange = 600
+				end
+				local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
+				if maxCastRange > 0 and maxCastRange < distance then
+					Timers.CreateTimer(0, function()
+						if order and self.checkRange then
+							if warpAbility:GetToggleState() and warpAbility:CanWarp(warpRange, castPosition, ability) then
+								self.checkRange = false
+								caster:Stop()
+								warpAbility:Warp(warpRange, castPosition, ability, order)
+								return nil
+							end
+							return 0.1
+						else
 							return nil
 						end
-						return 0.1
-					else
-						return nil
-					end
-				end)
-			end
-		end
-	end
-end
-
-function modifier_warp:OnAttackLanded(event)
-	local parent = self:GetParent()
-	local attacker = event.attacker
-	local target = event.target
-
-	if parent ~= attacker then
-		return
-	end
-	
-	if not IsServer() then
-		return
-	end
-
-	-- No mana drain while broken
-	if parent:PassivesDisabled() then
-		return
-	end
-
-	-- To prevent crashes:
-	if not target then
-		return
-	end
-
-	if target:IsNull() then
-		return
-	end
-
-	-- Check for existence of GetUnitName method to determine if target is a unit or an item
-	-- items don't have that method -> nil; if the target is an item, don't continue
-	if target.GetUnitName == nil then
-		return
-	end
-
-	-- If the attack target is a building or a ward then stop (return)
-	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
-		return
-	end
-	
-	if target:IsIllusion() then
-		return
-	end
-
-	if target:GetMana() > 0 then
-		local ability = self:GetAbility()
-		local drainAmount = ability:GetSpecialValueFor("drain_amount") 
-		local talent = parent:FindAbilityByName("special_bonus_unique_warp_beast_mana_eater")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				drainAmount = drainAmount + talent:GetSpecialValueFor("value")
-			end
-		end
-		--local targetMana = target:GetMana()
-		local duration = ability:GetSpecialValueFor("bonus_duration")
-
-		--if targetMana < drainAmount then
-			--drainAmount = targetMana
-		--end
-
-		-- Don't give mana to illusions
-		if not parent:IsIllusion() then
-			local missingMana = parent:GetMaxMana() - parent:GetMana()
-			if missingMana < drainAmount then
-				local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
-				if modifier then
-					modifier:SetDuration(duration, true)
-					modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
-				else
-					modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {Duration = duration})
-					if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap"))) end
+					end)
 				end
-				parent:CalculateStatBonus(true)
 			end
-			parent:GiveMana(drainAmount)
 		end
-
-		--target:ReduceMana(drainAmount)
-
-		target:EmitSound("Hero_Warp_Beast.ManaEater")
-
-		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-		ParticleManager:SetParticleControlEnt(particle, 1, caster, PATTACH_POINT_FOLLOW, "attach_eye_l", Vector(0,0,0), true)
 	end
-end
 
-function modifier_warp:OnDeath(keys)
-	if not IsServer() then return end
+	function modifier_warp:OnAttackLanded(event)
+		local parent = self:GetParent()
+		local attacker = event.attacker
+		local target = event.target
 
-	if keys.attacker and keys.attacker == self:GetParent() and keys.unit:GetMana() > 0 and not keys.attacker:PassivesDisabled() then
-		local caster = self:GetParent()
-		local unit = keys.unit
-		local ability = self:GetAbility()
-
-		if unit:IsIllusion() or caster:IsIllusion() then
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
 			return
 		end
 
-		local drainAmount = ability:GetSpecialValueFor("kill_drain_percentage") * unit:GetMaxMana() / 100
+		-- Check if attacker has this modifier
+		if parent ~= attacker then
+			return
+		end
+
+		-- No mana drain/gain while broken
+		if parent:PassivesDisabled() then
+			return
+		end
+
+		-- Check if attacked entity exists
+		if not target or target:IsNull() then
+			return
+		end
+
+		-- Check for existence of GetUnitName method to determine if target is a unit or an item
+		-- items don't have that method -> nil; if the target is an item, don't continue
+		if target.GetUnitName == nil then
+			return
+		end
+
+		-- If the attack target is a building or a ward then stop (return)
+		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+			return
+		end
+		
+		if target:IsIllusion() then
+			return
+		end
+
+		if target:GetMana() > 0 then
+			local ability = self:GetAbility()
+			local drainAmount = ability:GetSpecialValueFor("drain_amount")
+			local duration = ability:GetSpecialValueFor("bonus_duration")
+
+			-- Talent that increases mana drain/gain
+			local talent = parent:FindAbilityByName("special_bonus_unique_warp_beast_mana_eater")
+			if talent and talent:GetLevel() > 0 then
+				drainAmount = drainAmount + talent:GetSpecialValueFor("value")
+			end
+
+			--local targetMana = target:GetMana()
+			
+
+			--if targetMana < drainAmount then
+				--drainAmount = targetMana
+			--end
+
+			-- Don't give mana to illusions
+			if not parent:IsIllusion() then
+				local missingMana = parent:GetMaxMana() - parent:GetMana()
+				if missingMana < drainAmount then
+					local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
+					if modifier then
+						modifier:SetDuration(duration, true)
+						modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
+					else
+						modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {duration = duration})
+						if modifier then
+							modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
+						end
+					end
+					parent:CalculateStatBonus(true)
+				end
+				parent:GiveMana(drainAmount)
+			end
+
+			--target:ReduceMana(drainAmount)
+
+			target:EmitSound("Hero_Warp_Beast.ManaEater")
+
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+			ParticleManager:SetParticleControlEnt(particle, 1, caster, PATTACH_POINT_FOLLOW, "attach_eye_l", Vector(0,0,0), true)
+		end
+	end
+
+	function modifier_warp:OnDeath(event)
+		local parent = self:GetParent()
+		local attacker = event.attacker
+		local dead = event.unit
+
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
+			return
+		end
+
+		-- Check if attacker has this modifier
+		if parent ~= attacker then
+			return
+		end
+
+		-- No mana drain/gain on kill while broken or for illusions
+		if parent:PassivesDisabled() or parent:IsIllusion() then
+			return
+		end
+
+		-- Check if attacked entity exists
+		--if not dead or dead:IsNull() then
+			--return
+		--end
+
+		-- Check for existence of GetUnitName method to determine if target is a unit or an item
+		-- items don't have that method -> nil; if the target is an item, don't continue
+		if dead.GetUnitName == nil then
+			return
+		end
+
+		-- If the attack target is a building or a ward then stop (return)
+		if dead:IsTower() or dead:IsBarracks() or dead:IsBuilding() or dead:IsOther() or dead:IsIllusion() then
+			return
+		end
+
+		if dead:GetMaxMana() < 1 then
+			return
+		end
+		
+		local dead_mana = dead:GetMaxMana()
+		local ability = self:GetAbility()
+
+		local drainAmount = ability:GetSpecialValueFor("kill_drain_percentage") * dead_mana / 100
 		local duration = ability:GetSpecialValueFor("bonus_duration")
 
-		local missingMana = caster:GetMaxMana() - caster:GetMana()
+		local missingMana = parent:GetMaxMana() - parent:GetMana()
 		if missingMana < drainAmount then
-			local modifier = caster:FindModifierByName("modifier_mana_eater_bonus_mana_count")
+			local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
 			if modifier then 
 				modifier:SetDuration(duration, true)
 				modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
 			else 
-				modifier = caster:AddNewModifier(caster, ability, "modifier_mana_eater_bonus_mana_count", {Duration = duration})
-				if modifier then modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap"))) end
+				modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {duration = duration})
+				if modifier then
+					modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
+				end
 			end
-			caster:CalculateStatBonus(true)
+			parent:CalculateStatBonus(true)
 		end
 
-		caster:GiveMana(drainAmount)
+		parent:GiveMana(drainAmount)
 	end
 end
 
@@ -389,11 +412,9 @@ function modifier_warp_castrange_buffer:IsPurgable()
 end
 
 function modifier_warp_castrange_buffer:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_CAST_RANGE_BONUS	
+	return {
+		MODIFIER_PROPERTY_CAST_RANGE_BONUS,
 	}
-
-	return funcs
 end
 
 function modifier_warp_castrange_buffer:GetModifierCastRangeBonus()
@@ -436,20 +457,19 @@ function modifier_mana_eater_bonus_mana_count:IsPurgable()
 	return false
 end
 
-function modifier_mana_eater_bonus_mana_count:DeclareFunctions() 
-	local funcs = {
+function modifier_mana_eater_bonus_mana_count:DeclareFunctions()
+	return {
 		MODIFIER_PROPERTY_EXTRA_MANA_BONUS,
 		MODIFIER_EVENT_ON_SPENT_MANA
 	}
-	return funcs
 end
 
 function modifier_mana_eater_bonus_mana_count:GetModifierExtraManaBonus()
 	return self:GetStackCount()
 end
 
-function modifier_mana_eater_bonus_mana_count:OnSpentMana(keys)
-	if IsServer() then
+if IsServer() then
+	function modifier_mana_eater_bonus_mana_count:OnSpentMana(keys)
 		if keys.unit == self:GetParent() then
 			local caster = self:GetParent()
 			local manaCost = keys.cost

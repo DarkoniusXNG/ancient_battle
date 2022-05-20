@@ -587,7 +587,13 @@ function ancient_battle_gamemode:InventoryFilter(keys)
 
 	local owner_name
 	if owner_of_this_item then
-		owner_name = owner_of_this_item:GetUnitName()
+		if owner_of_this_item.GetUnitName then
+			-- owner_of_this_item is an NPC
+			owner_name = owner_of_this_item:GetUnitName()
+		elseif owner_of_this_item.GetAssignedHero then
+			-- owner_of_this_item is a player
+			owner_name = owner_of_this_item:GetAssignedHero():GetUnitName()
+		end
 	end
 
 	return true

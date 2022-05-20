@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// Warp Beast
-	// Notes: OK; 10.3.2020;
+	// Notes: OK; 2022;
 	//================================================================================================================
 	"npc_dota_hero_warp_beast"
     {
@@ -40,22 +40,22 @@
         "Ability13"                                       "special_bonus_unique_warp_beast_latch_attackspeed"
 
         "Ability14"                                       "special_bonus_unique_void_spirit_4" //"special_bonus_unique_warp_beast_mana_eater"
-        "Ability15"                                       "special_bonus_unique_warp_beast_jump_radius"
+        "Ability15"                                       "special_bonus_unique_warp_beast_jump_hero_damage" //"special_bonus_unique_warp_beast_jump_radius"
 
         "Ability16"                                       "special_bonus_unique_warp_beast_warp_mana_pool"
         "Ability17"                                       "special_bonus_unique_warp_beast_warp_silence"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"                                   "0" // Phantom Assassin (1); Faceless Void (0);
+		"ArmorPhysical"                                   "1" // Phantom Assassin (1); Faceless Void (1);
 		"MagicalResistance"                               "25"
 
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"BaseAttackSpeed"                                 "100"
-		"AttackDamageMin"                                 "33" // Phantom Assassin (27); Faceless Void (33);
-		"AttackDamageMax"                                 "39" // Phantom Assassin (29); Faceless Void (39);
+		"AttackDamageMin"                                 "33" // Phantom Assassin (32); Faceless Void (37);
+		"AttackDamageMax"                                 "39" // Phantom Assassin (34); Faceless Void (43);
 		"AttackRate"                                      "1.7"
 		"AttackAnimationPoint"                            "0.38"
 		"AttackAcquisitionRange"                          "600"
@@ -75,16 +75,16 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
         "AttributePrimary"                                "DOTA_ATTRIBUTE_AGILITY"
-        "AttributeBaseStrength"                           "23"                  // Anti-Mage (23); Faceless Void (24); Spectre (23); Phantom Assassin (21); original (26);
-        "AttributeStrengthGain"                           "1.3"                 // Anti-Mage (1.3); Faceless Void (2.4); Spectre (2.5); Phantom Assassin (2.2); original (1.3);
-		"AttributeBaseAgility"                            "23"                  // Anti-Mage (24); Faceless Void (23); Spectre (23); Phantom Assassin (23); original (30);
-        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (3.2); Faceless Void (3.0); Spectre (2.1); Phantom Assassin (3.4); original (2.0);
-        "AttributeBaseIntelligence"                       "12"                  // Anti-Mage (12); Faceless Void (15); Spectre (16); original (19);
-        "AttributeIntelligenceGain"                       "1.5"                 // Anti-Mage (1.8); Faceless Void (1.5); Spectre (1.9); original (2.4);
+        "AttributeBaseStrength"                           "23"                  // Faceless Void (20); Phantom Assassin (21); Void Spirit (22); original (26);
+        "AttributeStrengthGain"                           "2.0"                 // Anti-Mage (1.6); Faceless Void (2.4); Phantom Assassin (2.2); Ember/Void Spirit (2.6); original (1.3);
+        "AttributeBaseAgility"                            "23"                  // Anti-Mage (24); Faceless Void (19); Phantom Assassin (23); original (30);
+        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (2.8); Faceless Void (3.0); Phantom Assassin (3.4); original (2.0);
+        "AttributeBaseIntelligence"                       "12"                  // Anti-Mage (12); Faceless Void (15); Phantom Assassin (15); original (19);
+        "AttributeIntelligenceGain"                       "1.5"                 // Anti-Mage (1.8); Faceless Void (1.5); Phantom Assassin (1.4); original (2.4);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "0.25"                // Phantom Assassin (0.25); Faceless Void (0.5);
+		"StatusHealthRegen"                               "0.75"                // Phantom Assassin (0.75); Faceless Void (1.0);
 		"StatusHealth"                                    "200"                 // Default
 		"StatusMana"                                      "75"                  // Default
 		"StatusManaRegen"                                 "0.5"                 // unique
