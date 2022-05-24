@@ -1,0 +1,85 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sohei: Wholeness of Body - unused
+	//=================================================================================================================
+	"sohei_wholeness_of_body"
+	{
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/sohei/sohei_wholeness_of_body.lua"
+		"AbilityTextureName"                              "custom/ronin_guard"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_YES"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"                                "0.25"
+		"AbilityCastRange"                                "500"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"                                 "17 16 15 14" // Bulldoze (22); Heavenly Grace (26/22/18/14);
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"                                 "75 80 85 90"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"                                    "particles/hero/sohei/guard.vpcf"
+			"particle"                                    "particles/hero/sohei/knockback.vpcf"
+			"soundfile"                                   "soundevents/units/game_sounds_sohei.vsndevts"
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_magic_resistance"                      "50" // original (90%);
+			"bonus_status_resistance"                     "0" // original (100%);
+			"duration"                                    "5 6 7 8"
+			"heal_immediate"                              "100 150 200 250" // original (0);
+			"post_heal"                                   "75" // original (90/160/230/300);
+			"damage_taken_as_heal"
+			{
+				"value"                                   "25"
+				"CalculateSpellDamageTooltip"             "0"
+				"DamageTypeTooltip"                       "DAMAGE_TYPE_NONE"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Wholeness of Body talent: Applies Ki Strike knockback (if Ki Strike is learned) to enemies around the target
+	//=================================================================================================================
+	"special_bonus_sohei_wholeness_knockback"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                           "special_bonus_undefined"
+		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                        "FIELD_INTEGER"
+				"value"                                           "400"     // Knockback max distance
+			}
+			"02"
+			{
+				"var_type"                                        "FIELD_FLOAT"
+				"duration"                                        "0.2"     // Knockback max duration
+			}
+		}
+	}
+}
