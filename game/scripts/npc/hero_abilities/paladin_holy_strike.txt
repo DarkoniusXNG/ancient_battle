@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Paladin: Holy Strike (E) - custom, bonus attack range, bonus pure damage, toggle
 	// Author: Darkonius
-	// Notes: OK; 2021;
+	// Notes: OK; 2022;
 	// TO_DO: Add sound on attack landed and add proper visual effect for the hammer; shard
 	//=================================================================================================================
 	"paladin_holy_strike"
@@ -18,7 +18,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
-		"AbilityCooldown"				"15.0 13.0 11.0 8.0"
+		"AbilityCooldown"				"14 12 10 8"
 		"AbilityCastRange"				"200 250 300 350"	// = attack range + bonus, important for manual casting
 		"AbilityCastPoint"				"0.0"
 		"AbilityManaCost"               "0"
@@ -36,7 +36,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"percent_damage_as_pure"	"50 80 110 140"
+				"percent_damage_as_pure"	"60 70 80 90"
 			}
 		}
 		
