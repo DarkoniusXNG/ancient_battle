@@ -1,0 +1,53 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Old Null Talisman
+	//=================================================================================================================
+	"item_recipe_null_talisman_old"
+	{
+		"BaseClass"           			"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_null_talisman_old"
+		"ItemRequirements"
+		{
+			"01"						"item_circlet;item_mantle"
+		}
+	}
+	
+	//=================================================================================================================
+	// Old Null Talisman
+	//=================================================================================================================
+	"item_null_talisman_old"
+	{
+		"BaseClass"           			"item_lua"
+		"ScriptFile"					"items/null_talisman_old.lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_null_talisman"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"395"
+		"ItemShopTags"					"damage;int;agi;str"
+		"ItemQuality"					"common"
+		"ItemAliases"					"null talisman"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_intellect"		"5"
+			"bonus_strength"		"2"
+			"bonus_agility"			"2"
+		}
+	}
+}

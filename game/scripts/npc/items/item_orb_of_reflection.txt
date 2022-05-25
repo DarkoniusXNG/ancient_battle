@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// 1264 - Recipe: Orb of Reflection
-	// Notes: OK; 16.9.2018;
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_recipe_orb_of_reflection"
 	{
@@ -12,7 +12,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"100"	
+		"ItemCost"						"150"	
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -26,8 +26,8 @@
 	}
 	
 	//=================================================================================================================
-	// 1265 - Orb of Reflection - Blade Mail (2200) + Lotus Orb (4000) + Soul Gem (1400) + Recipe (100) = 7700
-	// Notes: OK; 25.12.2019; Uses built-in modifier;
+	// 1265 - Orb of Reflection - Blade Mail (2100) + Lotus Orb (3850) + Soul Gem (1000) + Recipe (150) = 7100
+	// Notes: OK; 2022; Uses built-in modifier;
 	// Notes:
 	//=================================================================================================================
 	"item_orb_of_reflection"
@@ -42,7 +42,7 @@
 		"AbilitySharedCooldown"			"reflection_items"
 		"AbilityManaCost"				"100" // Blade Mail (25) + Lotus Orb (75)
 
-		"ItemCost"						"7700"
+		"ItemCost"						"7100"
 		"ItemShopTags"					"damage;armor;regen_health;regen_mana;str;agi;int;hard_to_tag"
 		"ItemQuality"					"epic"
 		"ItemAliases"					"orb of reflection"
@@ -59,7 +59,7 @@
 			"01" // like Blademail
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"22"
+				"bonus_dmg"				"28"
 			}
 			"02" // Blademail (6) + Lotus Orb (10)
 			{
@@ -76,10 +76,10 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_agi"				"5"
 			}
-			"05" // Blademail (10) + Soul Gem (5)
+			"05" // Soul Gem (5)
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"15"
+				"bonus_int"				"5"
 			}
 			"06" // like Lotus Orb
 			{

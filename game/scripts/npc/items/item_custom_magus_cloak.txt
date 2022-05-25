@@ -8,10 +8,11 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"                     "item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"80"
+		"ItemCost"						"260"
 		"ItemShopTags"					""
 
 		// Recipe
@@ -20,13 +21,13 @@
 		"ItemResult"					"item_custom_magus_cloak"
 		"ItemRequirements"
 		{
-			"01"						"item_null_talisman;item_sobi_mask;item_faerie_fire"
+			"01"						"item_null_talisman_old;item_sobi_mask;item_faerie_fire"
 		}
 	}
 	
 	//=================================================================================================================
-	// Magus Cloak - Null Talisman (510) + Sage Mask (250) + Faerie Fire (70) + Recipe (80) = 910
-	// Notes: OK; 25.12.2019;
+	// Magus Cloak - Old Null Talisman (395) + Sage Mask (175) + Faerie Fire (70) + Recipe (260) = 900
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_custom_magus_cloak"
 	{
@@ -37,7 +38,7 @@
 
 		"AbilityTextureName"                              "custom/magus_cloak"
 
-		"ItemCost"                                        "910"
+		"ItemCost"                                        "900"
 		"ItemShopTags"                                    "damage;int;agi;str;regen_mana"
 		"ItemSellable"                                    "1"
 		"ItemPurchasable"                                 "1"
@@ -52,17 +53,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // like Null Talisman
+			"01" // better than Null Talisman
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_intellect"                         "6"
 			}
-			"02" // like Null Talisman
+			"02" // better than Null Talisman
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_strength"                          "3"
 			}
-			"03" // like Null Talisman
+			"03" // better than Null Talisman
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_agility"                           "3"
@@ -72,12 +73,12 @@
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_damage"                            "2"
 			}
-			"05" // like Null Talisman
+			"05"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_spell_amp"                         "3"
 			}
-			"06" // like Sage Mask
+			"06"
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"bonus_mana_regen"                        "0.75"
@@ -85,7 +86,7 @@
 			"07" // it should stack with other magus cloaks
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"bonus_debuff_amp"                        "-5"
+				"bonus_cast_range"                        "25"
 			}
 		}
 	}

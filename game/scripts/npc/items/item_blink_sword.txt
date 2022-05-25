@@ -12,7 +12,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"1750"
+		"ItemCost"						"1500"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -21,12 +21,12 @@
 		"ItemResult"					"item_blink_sword"
 		"ItemRequirements"
 		{
-			"01"						"item_blink;item_soul_gem;item_soul_gem"
+			"01"						"item_blink;item_ultimate_orb;item_soul_gem"
 		}
 	}
 	
 	//=================================================================================================================
-	// 1267 - Blink Sword - Blink Dagger (2250) + 2 x Soul Gem (1400) + Recipe (1750) = 6800
+	// 1267 - Blink Sword - Blink Dagger (2250) + Soul Gem (1000) + Ultimate Orb (2050) + Recipe (1500) = 6800
 	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_blink_sword"
@@ -58,17 +58,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"10"
+				"bonus_str"				"15"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"10"
+				"bonus_agi"				"15"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"10"
+				"bonus_int"				"15"
 			}
 			"04"
 			{

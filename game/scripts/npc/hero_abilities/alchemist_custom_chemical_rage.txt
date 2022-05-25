@@ -23,82 +23,48 @@
 		"AbilityProcsMagicStick"		"1"
 		"HasScepterUpgrade"				"1"
 
-		"AbilitySpecial" // built-in: duration; base_attack_time; bonus_health; bonus_health_regen; bonus_mana_regen; bonus_movespeed;
+		"AbilityValues" // built-in: duration; base_attack_time; bonus_health; bonus_health_regen; bonus_mana_regen; bonus_movespeed;
 		{
-			"01" // don't change the name of this ability special (its required for built-in modifier)
+			"duration"									"25.0"
+			"transformation_time"						"0.35"
+			"base_attack_time"							"1.2 1.1 1.0"
+			"bonus_health"								"0"
+			"bonus_health_regen"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"duration"                  "25.0"
+				"value"									"0"
+				"special_bonus_unique_alchemist_4"		"+50"
 			}
-			"02"
+			"bonus_mana_regen"							"0"
+			"bonus_movespeed"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"transformation_time"       "0.35"
+				"value"									"0"
+				"special_bonus_unique_alchemist_6"		"+50"
 			}
-			"03"
+			"scepter_gold_damage"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"base_attack_time"          "1.2 1.1 1.0"
+				"value"									"2"
+				"RequiresScepter"						"1"
 			}
-			"04"
+			"scepter_bonus_damage"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"bonus_health"              "0"
+				"value"									"20"
+				"RequiresScepter"						"1"
 			}
-			"05"
+			"scepter_spell_amp"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"bonus_health_regen"        "0"
+				"value"									"5"
+				"RequiresScepter"						"1"
 			}
-			"06"
+			// custom ability specials start here
+			"custom_bonus_move_speed"					"15 20 25"
+			"custom_bonus_health_regen"					"50 75 100"
+			"custom_bonus_mana_regen"					"1 2 3"
+			"custom_base_attack_time"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"bonus_mana_regen"          "0"
+				"value"									"1.2 1.1 1.0"
+				"LinkedSpecialBonus"					"special_bonus_unique_alchemist_custom_1"
 			}
-			"07"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"bonus_movespeed"           "0"
-			}
-			"08"
-			{
-				"var_type"                  "FIELD_FLOAT"
-				"scepter_gold_damage"       "2"
-				"RequiresScepter"           "1"
-			}
-			"09"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"scepter_bonus_damage"      "20"
-				"RequiresScepter"			"1"
-			}
-			"10"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"scepter_spell_amp"         "5"
-				"RequiresScepter"           "1"
-			}
-			"11" // custom ability specials start here
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"custom_bonus_move_speed"   "15 20 25"
-			}
-			"12"
-			{
-				"var_type"                  "FIELD_FLOAT"
-				"custom_base_attack_time"   "1.2 1.1 1.0"
-				"LinkedSpecialBonus"		"special_bonus_unique_alchemist_custom_1"
-			}
-			"13"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"custom_bonus_health_regen"	"50 75 100"
-			}
-			"14"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"think_interval"			"0.2"
-			}
+			"think_interval"							"0.2"
 		}
 	}
 	

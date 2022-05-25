@@ -12,7 +12,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"80"
+		"ItemCost"						"260"
 		"ItemShopTags"					""
 		
 		// Recipe
@@ -21,13 +21,13 @@
 		"ItemResult"					"item_drum_of_vitality"
 		"ItemRequirements"
 		{
-			"01"						"item_bracer;item_ring_of_regen;item_faerie_fire"
+			"01"						"item_bracer_old;item_ring_of_regen;item_faerie_fire"
 		}
 	}
 
 	//=================================================================================================================
-	// 1275 - Drum of Vitality - Bracer (510) + Ring of Regen (250) + Faerie Fire (70) + Recipe (80) = 910
-	// Notes: OK; 25.12.2019; Item cost should be the same as Ring of Aquila;
+	// 1275 - Drum of Vitality - Old Bracer (395) + Ring of Regen (175) + Faerie Fire (70) + Recipe (260) = 900
+	// Notes: OK; 2022; Item cost should be the same as Ring of Aquila;
 	// TO_DO:
 	//=================================================================================================================
 	"item_drum_of_vitality"
@@ -43,7 +43,7 @@
 		"AbilityCooldown"				"5.0"
 		
 		"AbilityManaCost"				"0"
-		"ItemCost"						"910"
+		"ItemCost"						"900"
 		"ItemShopTags"					"str;agi;int;damage;regen_health;hard_to_tag"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"drum of vitality"
@@ -58,32 +58,32 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // 6 +
+			"01" // better than Bracer
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_str"                               "6"
 			}
-			"02" // 3 +
+			"02" // better than Bracer
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_agi"                               "3"
 			}
-			"03" // 3 +
+			"03" // better than Bracer
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_int"                               "3"
 			}
-			"04" // 2 +
+			"04"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_dmg"                               "2"
 			}
-			"05" // 2 +
+			"05" // 1.25 +
 			{
 				"var_type"                                "FIELD_FLOAT"
 				"bonus_hp_regen"                          "2.0"
 			}
-			"06" // 5 +
+			"06"
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"bonus_magic_resistance"                  "5"

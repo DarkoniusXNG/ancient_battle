@@ -1,4 +1,5 @@
 LinkLuaModifier("modifier_dark_terminator_terminate_target", "heroes/dark_terminator/terminate.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_dark_terminator_terminate_stun", "heroes/dark_terminator/terminate.lua", LUA_MODIFIER_MOTION_NONE)
 
 dark_terminator_terminate = class({})
 
@@ -104,14 +105,25 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
     -- Sound
 	target:EmitSound("Hero_Sniper.AssassinateDamage")
 
-	-- Mini-stun
-	target:Interrupt()
+	-- Actual stun or mini-stun
+	if caster:HasScepter() then
+		local stun_duration = target:GetValueChangedByStatusResistance(self:GetSpecialValueFor("scepter_stun"))
+		target:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_stun", {duration = stun_duration})
+	else
+		-- Mini-stun
+		target:Interrupt()
+	end
+
+	local damage = self:GetSpecialValueFor("damage")
+	if caster:HasScepter() then
+		damage = self:GetSpecialValueFor("scepter_damage")
+	end
 
 	-- Damage
 	local damageTable = {
 		victim = target,
 		attacker = caster,
-		damage = self:GetSpecialValueFor("damage"),
+		damage = damage,
 		damage_type = self:GetAbilityDamageType(),
 	}
 	
@@ -167,4 +179,48 @@ end
 
 function modifier_dark_terminator_terminate_target:GetPriority()
 	return MODIFIER_PRIORITY_ULTRA
+end
+
+---------------------------------------------------------------------------------------------------
+
+modifier_dark_terminator_terminate_stun = class({})
+
+function modifier_dark_terminator_terminate_stun:IsHidden()
+    return false
+end
+
+function modifier_dark_terminator_terminate_stun:IsDebuff()
+	return true
+end
+
+function modifier_dark_terminator_terminate_stun:IsStunDebuff()
+	return true
+end
+
+function modifier_dark_terminator_terminate_stun:GetEffectName()
+	return "particles/generic_gameplay/generic_stunned.vpcf"
+end
+
+function modifier_dark_terminator_terminate_stun:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
+end
+
+function modifier_dark_terminator_terminate_stun:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
+	}
+
+	return funcs
+end
+
+function modifier_dark_terminator_terminate_stun:GetOverrideAnimation(params)
+	return ACT_DOTA_DISABLED
+end
+
+function modifier_dark_terminator_terminate_stun:CheckState()
+  local state = {
+    [MODIFIER_STATE_STUNNED] = true,
+  }
+
+  return state
 end

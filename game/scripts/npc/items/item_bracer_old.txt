@@ -1,0 +1,53 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Old Bracer
+	//=================================================================================================================
+	"item_recipe_bracer_old"
+	{
+		"BaseClass"           			"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_bracer_old"
+		"ItemRequirements"
+		{
+			"01"						"item_circlet;item_gauntlets"
+		}
+	}
+	
+	//=================================================================================================================
+	// Old Bracer
+	//=================================================================================================================
+	"item_bracer_old"
+	{
+		"BaseClass"           			"item_lua"
+		"ScriptFile"					"items/bracer_old.lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_bracer"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"395"
+		"ItemShopTags"					"damage;int;agi;str"
+		"ItemQuality"					"common"
+		"ItemAliases"					"bracer"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_strength"		"5"
+			"bonus_agility"			"2"
+			"bonus_intellect"		"2"
+		}
+	}
+}
