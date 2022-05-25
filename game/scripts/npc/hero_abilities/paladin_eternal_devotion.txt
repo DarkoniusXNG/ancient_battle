@@ -4,7 +4,7 @@
 	// Paladin: Eternal Devotion (T) - New Spell, passive, on death applies Guardian Angel (physical immunity) and summons an Angel
 	// Author: Darkonius
 	// Notes: OK; 2022; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
-	// TO_DO: Fix Angel Wings;
+	// TO_DO:
 	//=================================================================================================================
 	"paladin_eternal_devotion"
 	{
@@ -39,7 +39,7 @@
 				"value"										"1.0 1.5 2.0 2.5"
 				"CalculateSpellDamageTooltip"				"0"
 			}
-			"angel_min_duration"							"6.5 7 7.5 8"
+			"angel_min_duration"							"10"
 		}
 	}
 	

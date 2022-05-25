@@ -158,10 +158,11 @@ if IsServer() then
 		
 		-- Calculate Angel duration
 		local min_duration = ability:GetLevelSpecialValueFor("angel_min_duration", ability_level)
-		local respawn_time = parent:GetTimeUntilRespawn()
+		local respawn_time = math.min(CUSTOM_RESPAWN_TIME[parent:GetLevel()], MAX_RESPAWN_TIME)
 		local angel_duration = math.max(min_duration, respawn_time)
 
 		-- Create an Angel at the death location
+		local playerID = parent:GetPlayerOwnerID() or parent:GetPlayerID()
 		local main_angel = CreateUnitByName("npc_dota_summoned_guardian_angel", death_loc, true, parent, parent:GetOwner(), team)
 		FindClearSpaceForUnit(main_angel, death_loc, false)
 		main_angel:SetControllableByPlayer(playerID, false)
@@ -181,28 +182,24 @@ if IsServer() then
 			local enemies = FindUnitsInRadius(team, death_loc, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, target_type, target_flags, FIND_ANY_ORDER, false)
 
 			for _, enemy in pairs(enemies) do
-				if enemy and not enemy:IsNull() and enemy ~= killer then
+				if enemy and not enemy:IsNull() and enemy ~= killer and enemy:GetTeamNumber() ~= DOTA_TEAM_NEUTRALS then
 					local position = enemy:GetAbsOrigin()
 
-					-- Create an angel at the enemy position (maybe async will lag less)
-					CreateUnitByNameAsync("npc_dota_summoned_guardian_angel", position, true, parent, parent:GetOwner(), team,
-					function (angel)
-						FindClearSpaceForUnit(angel, position, false)
-						--angel:SetControllableByPlayer(playerID, false) -- uncontrollable on purpose
-						angel:SetOwner(parent)
-						angel:SetBaseDamageMin(angel_dmg)
-						angel:SetBaseDamageMax(angel_dmg)
+					-- Create an angel at the enemy position
+					local angel = CreateUnitByName("npc_dota_summoned_guardian_angel", position, true, parent, parent:GetOwner(), team)
+					FindClearSpaceForUnit(angel, position, false)
+					--angel:SetControllableByPlayer(playerID, false) -- uncontrollable on purpose
+					angel:SetOwner(parent)
+					angel:SetBaseDamageMin(angel_dmg)
+					angel:SetBaseDamageMax(angel_dmg)
 
-						angel:AddNewModifier(parent, ability, "modifier_kill", {duration = buff_duration})
+					angel:AddNewModifier(parent, ability, "modifier_kill", {duration = buff_duration})
 
-						-- Apply angel buff
-						angel:AddNewModifier(parent, ability, "modifier_custom_guardian_angel_summon", {duration = buff_duration})
+					-- Apply angel buff
+					angel:AddNewModifier(parent, ability, "modifier_custom_guardian_angel_summon", {duration = buff_duration})
 
-						-- Order the angel to attack the enemy
-						angel:SetForceAttackTarget(enemy)
-
-						return angel
-					end)
+					-- Order the angel to attack the enemy
+					angel:SetForceAttackTarget(enemy)
 				end
 			end
 		end
@@ -344,16 +341,31 @@ end
 
 function modifier_custom_guardian_angel_summon:OnCreated(event)
 	local parent = self:GetParent()
-	local particle_name = "particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
+	local part_name_1 = "particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
+	local part_name_2 = "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
 	local sound_name = "Hero_Omniknight.GuardianAngel"
-	
+
 	if IsServer() then
 		-- Sound
 		parent:EmitSound(sound_name)
 		
 		-- Particle
-		--local particle1 = ParticleManager:CreateParticle(particle_name_1, PATTACH_ABSORIGIN_FOLLOW, parent)
-		--ParticleManager:SetParticleControlEnt(particle1, 5, parent, PATTACH_ROOTBONE_FOLLOW, "attach_hitloc", parent:GetOrigin(), true)
+		self.particle1 = ParticleManager:CreateParticle(part_name_1, PATTACH_CENTER_FOLLOW, parent)
+		ParticleManager:SetParticleControlEnt(self.particle1, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), false)
+		self.particle2 = ParticleManager:CreateParticle(part_name_2, PATTACH_OVERHEAD_FOLLOW, parent)
+	end
+end
+
+function modifier_custom_guardian_angel_summon:OnDestroy()
+	if IsServer() then
+		if self.particle1 then
+			ParticleManager:DestroyParticle(self.particle1, false)
+			ParticleManager:ReleaseParticleIndex(self.particle1)
+		end
+		if self.particle2 then
+			ParticleManager:DestroyParticle(self.particle2, false)
+			ParticleManager:ReleaseParticleIndex(self.particle2)
+		end
 	end
 end
 
@@ -368,7 +380,11 @@ function modifier_custom_guardian_angel_summon:GetAbsoluteNoDamagePhysical()
 end
 
 function modifier_custom_guardian_angel_summon:GetEffectName()
-	return "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_omni.vpcf"
+	return "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+end
+
+function modifier_custom_guardian_angel_summon:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
 end
 
 function modifier_custom_guardian_angel_summon:GetStatusEffectName()
