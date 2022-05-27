@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// Recipe: Custom Rod of Atos
-	// Notes: OK; 10.9.2019;
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_recipe_custom_rod_of_atos"
 	{
@@ -14,7 +14,7 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"350"	
+		"ItemCost"						"330"	
 		"ItemShopTags"					""
 
 		// Recipe
@@ -23,13 +23,13 @@
 		"ItemResult"					"item_custom_rod_of_atos"
 		"ItemRequirements"
 		{
-			"01"						"item_staff_of_wizardry;item_soul_gem"
+			"01"						"item_staff_of_wizardry;item_soul_gem;item_atma"
 		}
 	}
 
 	//=================================================================================================================
-	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1400) + Recipe (350) = 2750
-	// Notes: OK; 26.2.2020;
+	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1000) + Atma (420) + Recipe (330) = 2750
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"item_custom_rod_of_atos"
 	{
@@ -64,7 +64,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{			
-			"01"
+			"01" // Soul Gem (5) + Atma (4) + Staff of Wizardry (10)
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"20"
@@ -72,7 +72,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"5"
+				"bonus_agi"				"10"
 			}
 			"03"
 			{			

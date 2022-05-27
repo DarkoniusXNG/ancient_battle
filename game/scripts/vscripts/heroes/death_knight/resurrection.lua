@@ -47,7 +47,7 @@ function death_knight_resurrection:OnSpellStart()
 		if unit and not unit:IsNull() then
 			if not unit:IsAlive() and number_of_resurrections < resurrections_limit then
 				local unit_name = unit:GetUnitName()
-				if unit_name ~="npc_dota_creep_badguys_ranged" and unit_name ~="npc_dota_creep_badguys_ranged_upgraded" and unit_name ~="npc_dota_creep_badguys_ranged_upgraded_mega" and unit_name ~="npc_dota_creep_goodguys_ranged" and unit_name ~="npc_dota_creep_goodguys_ranged_upgraded" and unit_name ~="npc_dota_creep_goodguys_ranged_upgraded_mega" and unit_name ~="npc_dota_creep_badguys_melee" and unit_name ~="npc_dota_creep_badguys_melee_upgraded" and unit_name ~="npc_dota_creep_badguys_melee_upgraded_mega" and unit_name ~="npc_dota_creep_goodguys_melee" and unit_name ~="npc_dota_creep_goodguys_melee_upgraded" and unit_name ~="npc_dota_creep_goodguys_melee_upgraded_mega" and unit_name ~="npc_dota_goodguys_siege" and unit_name ~="npc_dota_goodguys_siege_upgraded" and unit_name ~="npc_dota_goodguys_siege_upgraded_mega" and unit_name ~="npc_dota_badguys_siege" and unit_name ~="npc_dota_badguys_siege_upgraded" and unit_name ~="npc_dota_badguys_siege_upgraded_mega" then
+				if not unit:IsLaneCreepCustom() then
 					--print("Resurrecting non-lane creep.")
 					unit:SetTeam(caster_team)
 					unit:SetOwner(caster)

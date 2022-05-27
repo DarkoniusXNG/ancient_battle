@@ -120,6 +120,8 @@ function CharmHero(keys)
 		local copy = HideAndCopyHero (target, caster)
 		-- Applying a Modifier to the copy
 		charm_ability:ApplyDataDrivenModifier(caster, copy, "modifier_charmed_cloned_hero", {["duration"] = duration})
+		-- Vision (so the enemy can see what they are doing)
+		copy:AddNewModifier(target, nil, "modifier_provide_vision", {duration = duration})
 		-- Selecting the copy (Adding to selection)
 		PlayerResource:AddToSelection(caster:GetPlayerID(), copy)
 	end

@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// HERO: Sohei
-	// Notes: OK; 29.2.2020;
+	// Notes: OK; 2022;
 	//=================================================================================================================
 	"npc_dota_hero_sohei"
 	{
@@ -23,25 +23,25 @@
 		//"HeroSelectSoundEffect"                           "Hero_FacelessVoid.Pick"
 
         "Ability1"                                        "sohei_dash"
-		"Ability2"                                        "sohei_wholeness_of_body"
+		"Ability2"                                        "sohei_guard"
 		"Ability3"                                        "sohei_momentum_strike"
-		"Ability4"                                        "generic_hidden"
-		"Ability5"                                        "generic_hidden"
+		"Ability4"                                        "sohei_momentum"
+		"Ability5"                                        "sohei_palm_of_life"
 		"Ability6"                                        "sohei_flurry_of_blows"
 		"Ability7"                                        "generic_hidden"
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
-		"Ability10"                                       "special_bonus_sohei_dash_invulnerable"
-		"Ability11"                                       "special_bonus_attack_speed_30"
+		"Ability10"                                       "special_bonus_strength_10"
+		"Ability11"                                       "special_bonus_sohei_dash_cast_range"
 
-		"Ability12"                                       "special_bonus_strength_20"
-		"Ability13"                                       "special_bonus_sohei_wholeness_knockback"
+		"Ability12"                                       "special_bonus_sohei_dash_slow"
+		"Ability13"                                       "special_bonus_sohei_guard_knockback"
 
-		"Ability14"                                       "special_bonus_cleave_40"
+		"Ability14"                                       "special_bonus_unique_sohei_7"
 		"Ability15"                                       "special_bonus_sohei_stun"
 
-		"Ability16"                                       "special_bonus_sohei_momentum_strike_crit"
+		"Ability16"                                       "special_bonus_unique_sohei_5"
 		"Ability17"                                       "special_bonus_sohei_fob_radius"
 
 		// Protection

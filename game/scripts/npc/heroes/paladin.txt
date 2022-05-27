@@ -33,11 +33,11 @@
 		"Ability10"                 "special_bonus_attack_base_damage_50"   // lvl 10 talent; same as Omniknight
 		"Ability11"                 "special_bonus_unique_paladin_1"        // lvl 10 talent; Purification AoE talent
 
-		"Ability12"                 "special_bonus_unique_paladin_2"		// lvl 20 talent; Global Eternal Devotion talent
+		"Ability12"                 "special_bonus_unique_paladin_5"		// lvl 20 talent; Wrath of God (Eternal Devotion more angels)
 		"Ability13"                 "special_bonus_unique_paladin_3"		// lvl 15 talent; Purification cd talent
 
 		"Ability14"                 "special_bonus_unique_paladin_4"        // lvl 25 talent; Storm Hammer Dispels enemies talent
-		"Ability15"                 "special_bonus_unique_paladin_5"		// lvl 20 talent; Wrath of God (Eternal Devotion more angels)
+		"Ability15"                 "special_bonus_unique_paladin_2"		// lvl 20 talent; Global Eternal Devotion talent
 
 		"Ability16"                 "special_bonus_unique_paladin_6"		// lvl 25 talent; Purification bonus dmg/heal talent
 		"Ability17"                 "special_bonus_unique_paladin_7"        // lvl 15 talent; Storm Hammer stun duration talent

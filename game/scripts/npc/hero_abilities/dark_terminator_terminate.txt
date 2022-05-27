@@ -21,6 +21,8 @@
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
+		"HasScepterUpgrade"                               "1"
+
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"                                "0" // GLOBAL
@@ -53,6 +55,17 @@
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"damage"                                  "320 485 650"
+			}
+			"03"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"scepter_damage"                          "420 610 800"
+				"RequiresScepter"                         "1"
+			}
+			"04"
+			{
+				"scepter_stun_duration"                   "1 1.25 1.5"
+				"RequiresScepter"                         "1"
 			}
 		}
 	}

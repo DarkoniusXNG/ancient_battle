@@ -23,13 +23,12 @@ function modifier_custom_chemical_rage_buff:RemoveOnDeath()
 end
 
 function modifier_custom_chemical_rage_buff:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT,
-		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 	}
-
-	return funcs
 end
 
 function modifier_custom_chemical_rage_buff:OnCreated()
@@ -41,6 +40,7 @@ function modifier_custom_chemical_rage_buff:OnCreated()
 	
 	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
 	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
+	self.bonus_mana_regen = ability:GetSpecialValueFor("custom_bonus_mana_regen")
 	
 	-- Talent that reduces BAT
 	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
@@ -64,6 +64,7 @@ function modifier_custom_chemical_rage_buff:OnRefresh()
 
 	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
 	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
+	self.bonus_mana_regen = ability:GetSpecialValueFor("custom_bonus_mana_regen")
 	
 	-- Talent that reduces BAT
 	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
@@ -104,6 +105,10 @@ end
 
 function modifier_custom_chemical_rage_buff:GetModifierConstantHealthRegen()
 	return self.bonus_hp_regen
+end
+
+function modifier_custom_chemical_rage_buff:GetModifierConstantManaRegen()
+	return self.bonus_mana_regen
 end
 
 -- Adds all base intelligence to base strength.

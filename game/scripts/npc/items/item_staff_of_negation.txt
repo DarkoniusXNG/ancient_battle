@@ -26,8 +26,8 @@
 	}
 
 	//=================================================================================================================
-	// 1259 - Staff of Negation - Custom Rod of Atos (2750) + Oblivion Staff (1575) + Custom Diffusal Blade (3300) = 7625
-	// Notes: OK; 26.2.2020;
+	// 1259 - Staff of Negation - Custom Rod of Atos (2750) + Oblivion Staff (1500) + Custom Diffusal Blade (3300) = 7550
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"item_staff_of_negation"
@@ -35,7 +35,7 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName" 			"custom/staff_of_negation"
 
-		"ItemCost"						"7625"
+		"ItemCost"						"7550"
 		"ItemShopTags"					"int;agi;str;regen_health;unique;hard_to_tag"
 		"ItemQuality"					"artifact"
 		"ItemAliases"					"staff of negation"
@@ -66,10 +66,10 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"40"
 			}
-			"02" // Custom Rod of Atos (5) + Custom Diffusal Blade (20)
+			"02" // Custom Rod of Atos (10) + Custom Diffusal Blade (20)
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"25"
+				"bonus_agi"				"30"
 			}
 			"03" // like Custom Rod of Atos
 			{			
@@ -79,7 +79,7 @@
 			"04" // like Oblivion Staff
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"10"
+				"bonus_dmg"				"15"
 			}
 			"05" // like Oblivion Staff
 			{

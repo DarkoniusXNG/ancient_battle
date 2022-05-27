@@ -91,13 +91,12 @@ function BuyStart (event)
 				ability:RefundManaCost()
 				ability:EndCooldown()
 				-- we need to display the error message
-				SendErrorMessage( pID, "Can't Target Magic Immune Heroes!" )
+				SendErrorMessage( pID, "Can't Target Spell Immune Heroes!" )
 			else
 				--print("Target is a creep")
 				if not target:IsAncient() then
 					-- print("Target is not an Ancient Creep")
-					local target_name = target:GetUnitName()
-					if target_name ~="npc_dota_creep_badguys_ranged" and target_name ~="npc_dota_creep_badguys_ranged_upgraded" and target_name ~="npc_dota_creep_badguys_ranged_upgraded_mega" and target_name ~="npc_dota_creep_goodguys_ranged" and target_name ~="npc_dota_creep_goodguys_ranged_upgraded" and target_name ~="npc_dota_creep_goodguys_ranged_upgraded_mega" and target_name ~="npc_dota_creep_badguys_melee" and target_name ~="npc_dota_creep_badguys_melee_upgraded" and target_name ~="npc_dota_creep_badguys_melee_upgraded_mega" and target_name ~="npc_dota_creep_goodguys_melee" and target_name ~="npc_dota_creep_goodguys_melee_upgraded" and target_name ~="npc_dota_creep_goodguys_melee_upgraded_mega" and target_name ~="npc_dota_goodguys_siege" and target_name ~="npc_dota_goodguys_siege_upgraded" and target_name ~="npc_dota_goodguys_siege_upgraded_mega" and target_name ~="npc_dota_badguys_siege" and target_name ~="npc_dota_badguys_siege_upgraded" and target_name ~="npc_dota_badguys_siege_upgraded_mega" then
+					if not target:IsLaneCreepCustom() then
 						--print("Target is a neutral creep.")
 						local neutral_creep_level = target:GetLevel()
 						if neutral_creep_level then
@@ -110,7 +109,7 @@ function BuyStart (event)
 					-- Checking caster gold with creep gold cost
 					if caster_gold >= creep_gold_cost then
 						--print("Caster has enough gold")
-						if ( not target:TriggerSpellAbsorb( ability ) ) then
+						if not target:TriggerSpellAbsorb( ability ) then
 							--print("Target doesn't have Spell Block.")
 							ability:ApplyDataDrivenModifier(caster, target, "modifier_bought_creep", {})
 							-- Spend Gold

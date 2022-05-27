@@ -376,7 +376,6 @@ function CustomPassiveBreak(unit, duration)
 	local abilities_with_passives = {
 		"dark_ranger_custom_marksmanship",
 		"life_stealer_custom_anabolic_frenzy",
-		"paladin_eternal_devotion",
 		"paladin_divine_retribution",
 		"queenofpain_custom_pain_steal",
 		"firelord_flaming_presence",
@@ -387,12 +386,11 @@ function CustomPassiveBreak(unit, duration)
 		"lich_custom_freezing_touch",
 		"brewmaster_custom_drunken_brawler",
 		"alchemist_custom_philosophers_stone",
-		"blademaster_custom_blade_dance"
+		"blademaster_custom_blade_dance",
 	}
 	local passive_modifiers = {
 		"modifier_custom_marksmanship_passive",
 		"modifier_anabolic_frenzy_passive",
-		"modifier_devotion_aura_applier",
 		"modifier_retribution_aura_applier",
 		"modifier_pain_steal_aura_applier",
 		"modifier_firelord_presence_aura_applier",
@@ -403,7 +401,7 @@ function CustomPassiveBreak(unit, duration)
 		"modifier_lich_freezing_touch_passive",
 		"modifier_custom_drunken_brawler_passive",
 		"modifier_philosophers_stone_passive_buff",
-		"modifier_custom_blade_dance_passive"
+		"modifier_custom_blade_dance_passive",
 	}
 	if unit and duration then
 		for i = 1, #passive_modifiers do

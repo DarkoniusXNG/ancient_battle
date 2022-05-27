@@ -147,6 +147,13 @@
 #base "hero_abilities/silencer_custom_silent_torment.txt"
 #base "hero_abilities/silencer_custom_summon_golems.txt"
 
+#base "hero_abilities/sohei_dash.txt"
+#base "hero_abilities/sohei_guard.txt"
+#base "hero_abilities/sohei_momentum_strike.txt"
+#base "hero_abilities/sohei_momentum.txt"
+#base "hero_abilities/sohei_palm_of_life.txt"
+#base "hero_abilities/sohei_flurry_of_blows.txt"
+
 #base "hero_abilities/stealth_assassin_ambush.txt"
 #base "hero_abilities/stealth_assassin_blink_strike.txt"
 #base "hero_abilities/stealth_assassin_death_ward.txt"
@@ -191,7 +198,6 @@
 #base "unit_abilities/custom_egg_passives.txt"
 
 #base "hero_abilities/warp_beast_abilities.txt"
-#base "hero_abilities/sohei_abilities.txt"
 
 "DOTAAbilities"
 {

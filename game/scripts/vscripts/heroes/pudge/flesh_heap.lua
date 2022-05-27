@@ -148,10 +148,9 @@ function modifier_pudge_custom_flesh_heap_kill_tracker:OnRefresh()
 end
 
 function modifier_pudge_custom_flesh_heap_kill_tracker:DeclareFunctions()
-  local funcs = {
+  return {
     MODIFIER_EVENT_ON_DEATH,
   }
-  return funcs
 end
 
 if IsServer() then

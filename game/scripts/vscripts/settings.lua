@@ -35,6 +35,11 @@ HERO_KILL_GOLD_BASE = 125               -- Hero gold bounty base value
 HERO_KILL_GOLD_PER_LEVEL = 8            -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
 
+LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 1.5
+LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.17
+NEUTRAL_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 1.5
+NEUTRAL_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.35
+
 USE_CUSTOM_HERO_LEVELS = false          -- Should the heroes give a custom amount of XP when killed?
 
 USE_CUSTOM_TOP_BAR_VALUES = true        -- Should we do customized top bar values or use the default kill count per team?
@@ -211,8 +216,6 @@ if GetMapName() == "holdout" then
 	SHOWCASE_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
-	GOLD_PER_TICK = 1
-	GOLD_TICK_TIME = 0.7
 	NORMAL_START_GOLD = 800
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false

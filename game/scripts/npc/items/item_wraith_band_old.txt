@@ -1,0 +1,53 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Old Wraith Band
+	//=================================================================================================================
+	"item_recipe_wraith_band_old"
+	{
+		"BaseClass"           			"item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_wraith_band_old"
+		"ItemRequirements"
+		{
+			"01"						"item_circlet;item_slippers"
+		}
+	}
+	
+	//=================================================================================================================
+	// Old Wraith Band - Circlet (155) + Slippers (140) + Recipe (100)
+	//=================================================================================================================
+	"item_wraith_band_old"
+	{
+		"BaseClass"           			"item_lua"
+		"ScriptFile"					"items/wraith_band_old.lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_wraith_band"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"395"
+		"ItemShopTags"					"damage;int;agi;str"
+		"ItemQuality"					"common"
+		"ItemAliases"					"wraith band"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_agility"			"5"
+			"bonus_strength"		"2"
+			"bonus_intellect"		"2"
+		}
+	}
+}

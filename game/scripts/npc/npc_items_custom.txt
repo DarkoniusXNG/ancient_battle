@@ -1,6 +1,10 @@
 #base "items/item_soul_gem.txt"
 #base "items/item_custom_stout_shield.txt"
 // Items with recipes:
+#base "items/item_bracer_old.txt"
+#base "items/item_null_talisman_old.txt"
+#base "items/item_wraith_band_old.txt"
+#base "items/item_atma.txt"
 #base "items/item_custom_diffusal_blade.txt"
 #base "items/item_custom_poor_mans_shield.txt"
 #base "items/item_custom_ring_of_aquila.txt"
@@ -10,7 +14,6 @@
 #base "items/item_infused_robe.txt"
 #base "items/item_orb_of_reflection.txt"
 #base "items/item_blink_sword.txt"
-#base "items/item_atma.txt"
 #base "items/item_mystic_booster.txt"
 #base "items/item_master_staff.txt"
 #base "items/item_drum_of_vitality.txt"

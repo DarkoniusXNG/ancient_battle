@@ -8,7 +8,7 @@ if CDOTA_BaseNPC then
   end
 
   function CDOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance")
+    return self:HasModifier("modifier_boss_resistance") or self:IsRoshan()
   end
 
   function CDOTA_BaseNPC:HasShardCustom()
@@ -233,6 +233,8 @@ if CDOTA_BaseNPC then
       "modifier_furion_sprout_tether",
       "modifier_puck_coiled",
       -- custom leash modifiers:
+      "modifier_custom_leash_debuff",
+      "modifier_mana_transfer_leash_debuff",
     }
 
     for _, v in pairs(leashes) do
@@ -261,6 +263,38 @@ if CDOTA_BaseNPC then
     end
     return false
   end
+  
+  function CDOTA_BaseNPC:IsLaneCreepCustom()
+    local unit_name = self:GetUnitName()
+    local lane_creep_names = {
+      "npc_dota_creep_badguys_ranged",
+      "npc_dota_creep_badguys_ranged_upgraded",
+      "npc_dota_creep_badguys_ranged_upgraded_mega",
+      "npc_dota_creep_goodguys_ranged",
+      "npc_dota_creep_goodguys_ranged_upgraded",
+      "npc_dota_creep_goodguys_ranged_upgraded_mega",
+      "npc_dota_creep_badguys_melee",
+      "npc_dota_creep_badguys_melee_upgraded",
+      "npc_dota_creep_badguys_melee_upgraded_mega",
+      "npc_dota_creep_goodguys_melee",
+      "npc_dota_creep_goodguys_melee_upgraded",
+      "npc_dota_creep_goodguys_melee_upgraded_mega",
+      "npc_dota_goodguys_siege",
+      "npc_dota_goodguys_siege_upgraded",
+      "npc_dota_goodguys_siege_upgraded_mega",
+      "npc_dota_badguys_siege",
+      "npc_dota_badguys_siege_upgraded",
+      "npc_dota_badguys_siege_upgraded_mega",	  
+	}
+
+    for _, v in pairs(lane_creep_names) do
+      if unit_name == v then
+        return true
+      end
+    end
+
+    return false
+  end
 end
 
 -- On Client:
@@ -270,7 +304,7 @@ if C_DOTA_BaseNPC then
   end
 
   function C_DOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance")
+    return self:HasModifier("modifier_boss_resistance") or self:IsRoshan()
   end
 
   function C_DOTA_BaseNPC:HasShardCustom()
@@ -296,10 +330,44 @@ if C_DOTA_BaseNPC then
       "modifier_furion_sprout_tether",
       "modifier_puck_coiled",
 	  -- custom leash modifiers:
+      "modifier_custom_leash_debuff",
+      "modifier_mana_transfer_leash_debuff",
     }
 
     for _, v in pairs(leashes) do
       if self:HasModifier(v) then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  function C_DOTA_BaseNPC:IsLaneCreepCustom()
+    local unit_name = self:GetUnitName()
+    local lane_creep_names = {
+      "npc_dota_creep_badguys_ranged",
+      "npc_dota_creep_badguys_ranged_upgraded",
+      "npc_dota_creep_badguys_ranged_upgraded_mega",
+      "npc_dota_creep_goodguys_ranged",
+      "npc_dota_creep_goodguys_ranged_upgraded",
+      "npc_dota_creep_goodguys_ranged_upgraded_mega",
+      "npc_dota_creep_badguys_melee",
+      "npc_dota_creep_badguys_melee_upgraded",
+      "npc_dota_creep_badguys_melee_upgraded_mega",
+      "npc_dota_creep_goodguys_melee",
+      "npc_dota_creep_goodguys_melee_upgraded",
+      "npc_dota_creep_goodguys_melee_upgraded_mega",
+      "npc_dota_goodguys_siege",
+      "npc_dota_goodguys_siege_upgraded",
+      "npc_dota_goodguys_siege_upgraded_mega",
+      "npc_dota_badguys_siege",
+      "npc_dota_badguys_siege_upgraded",
+      "npc_dota_badguys_siege_upgraded_mega",	  
+	}
+
+    for _, v in pairs(lane_creep_names) do
+      if unit_name == v then
         return true
       end
     end
