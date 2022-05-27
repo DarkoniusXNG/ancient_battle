@@ -46,7 +46,7 @@ function dark_terminator_terminate:OnAbilityPhaseInterrupted()
 			end
 		end
 	end
-    self.storedTarget = nil
+    --self.storedTarget = nil
 end
 
 function dark_terminator_terminate:OnSpellStart(keys)
@@ -107,7 +107,7 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 
 	-- Actual stun or mini-stun
 	if caster:HasScepter() then
-		local stun_duration = target:GetValueChangedByStatusResistance(self:GetSpecialValueFor("scepter_stun"))
+		local stun_duration = target:GetValueChangedByStatusResistance(self:GetSpecialValueFor("scepter_stun_duration"))
 		target:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_stun", {duration = stun_duration})
 	else
 		-- Mini-stun
