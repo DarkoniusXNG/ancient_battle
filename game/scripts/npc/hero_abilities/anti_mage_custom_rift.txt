@@ -1,0 +1,37 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Anti Mage: Rift - blink + reduces spell damage of enemies + bonus status resistance to allies and self
+  //=================================================================================================================
+  "anti_mage_custom_rift"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/anti_mage/rift.lua"
+    "AbilityTextureName"                                  "custom/anti_mage_custom_rift"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.4"
+    "AbilityCastRange"                                    "0"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "15 12 9 6"
+    "AbilityManaCost"                                     "60"
+    "AbilityProcsMagicStick"                              "1"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues" 
+    {
+      "min_blink_range"                                   "200"
+      "max_blink_range"                                   "925 1000 1075 1150"
+      "buff_status_resist"                                "10 15 20 25"
+      "debuff_spell_dmg_reduction"                        "10 15 20 25"
+      "duration"                                          "6"
+    }
+  }
+}
