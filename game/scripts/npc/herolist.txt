@@ -43,6 +43,6 @@
 	"npc_dota_hero_legion_commander" 	"0"
 	
 	"npc_dota_hero_warp_beast"          "1"
-	"npc_dota_hero_sohei"               "0"
-	"npc_dota_hero_electrician"         "0"
+	"npc_dota_hero_sohei"               "1"
+	"npc_dota_hero_electrician"         "1"
 }

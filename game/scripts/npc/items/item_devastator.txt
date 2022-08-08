@@ -1,0 +1,86 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Devastator
+  //=================================================================================================================
+  "item_recipe_devastator"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1600"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_devastator"
+    "ItemRequirements"
+    {
+      "01"                                                "item_desolator"
+    }
+  }
+
+  //=================================================================================================================
+  // Devastator: Desolator (3500) + Recipe (1600) = 5100
+  //=================================================================================================================
+  "item_devastator"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/devastator.lua"
+    "AbilityTextureName"                                  "custom/devastator"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0"
+    "AbilityCooldown"                                     "12"
+    "AbilityManaCost"                                     "75"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "5100"
+    "ItemShopTags"                                        "damage;unique"
+    "ItemQuality"                                         "artifact"
+    "ItemAliases"                                         "devastator"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "precache"
+    {
+      "particle"                                          "particles/items/devastator/devastator_active.vpcf"
+      "particle"                                          "particles/units/heroes/hero_lina/lina_spell_dragon_slave_impact.vpcf"
+    }
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_damage"                                      "70"
+      "corruption_armor"                                  "-6"
+      "corruption_duration"                               "7.0"
+      "devastator_speed"                                  "1200"
+      "devastator_width_initial"                          "200"
+      "devastator_width_end"                              "200"
+      "devastator_distance"                               "800"
+      "devastator_damage"                                 "0"
+      "devastator_movespeed_reduction"                    "-10"
+      "devastator_movespeed_reduction_duration"           "12.0"
+      "devastator_armor_reduction"                        "-12"
+      "devastator_armor_reduction_duration"               "7.0"
+    }
+  }
+}

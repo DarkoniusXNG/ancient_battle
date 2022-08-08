@@ -31,7 +31,7 @@
 		"AbilityProcsMagicStick"		"1"
 		"HasScepterUpgrade" 			"1"
 		
-		//"DisplayAdditionalHeroes"   	"1" 
+		//"DisplayAdditionalHeroes"   	"1"
 		
 		"precache"
 		{

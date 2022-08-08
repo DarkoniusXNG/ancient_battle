@@ -1,0 +1,94 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Pull Staff
+  //=================================================================================================================
+  "item_recipe_pull_staff"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "100"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_pull_staff"
+    "ItemRequirements"
+    {
+      "01"                                                "item_echo_sabre;item_helm_of_iron_will"
+    }
+  }
+
+  //=================================================================================================================
+  // Pull Staff: Echo Sabre (2500) + Helm of Iron Will (975) + Recipe (100) = 3575
+  //=================================================================================================================
+  "item_pull_staff"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/pull_staff.lua"
+    "AbilityTextureName"                                  "custom/pull_staff"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //"AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    //"CastFilterRejectCaster"                              "1"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "650"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "18"
+    "AbilityManaCost"                                     "75"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "3575"
+    "ItemSellable"                                        "1"
+    "ItemPurchasable"                                     "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+
+    "ItemShopTags"                                        "str;damage;attack_speed;hard_to_tag"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "pull staff"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "ItemStackable"                                       "0"
+    "ItemPermanent"                                       "1"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/econ/events/ti6/force_staff_ti6.vpcf"
+      "particle"                                          "particles/status_fx/status_effect_forcestaff.vpcf"
+    }
+
+    "AbilityValues"
+    {
+      "bonus_damage"                                      "15"
+      "bonus_strength"                                    "15"
+      "bonus_intellect"                                   "10"
+      "bonus_attack_speed"                                "10"
+      "bonus_mana_regen"                                  "1.75"
+      "bonus_health_regen"                                "6"
+      "bonus_armor"                                       "6"
+      "speed"                                             "1200"
+      "tooltip_range"                                     "650" // distance + 50
+      "distance"                                          "600" // same as force staff
+      "echo_strike_cooldown"                              "5.0"
+      "echo_strike_slow_duration"                         "0.8"
+    }
+  }
+}

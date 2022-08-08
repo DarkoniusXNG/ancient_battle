@@ -1,0 +1,94 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Splash Cannon
+  //=================================================================================================================
+  "item_recipe_splash_cannon"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1000"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_splash_cannon"
+    "ItemRequirements"
+    {
+      "01"                                                "item_hurricane_pike;item_soul_gem"
+    }
+  }
+
+  //=================================================================================================================
+  // Splash Cannon: Hurricane Pike (4450) + Soul Gem (1000) + Recipe (1000) = 6450
+  //=================================================================================================================
+  "item_splash_cannon"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/splash_cannon.lua"
+    "AbilityTextureName"                                  "custom/splash_cannon"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastRange"                                    "1800"
+    "AbilityManaCost"                                     "200"
+    "AbilityCooldown"                                     "18"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "6450"
+    "ItemShopTags"                                        "damage"
+    "ItemQuality"                                         "artifact"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemAliases"                                         "splash cannon;splash;cannon"
+
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      //"particle"                                          "particles/units/heroes/hero_oracle/oracle_fortune_purge_root_pnt.vpcf"
+      "particle"                                          "particles/econ/items/clockwerk/clockwerk_paraflare/clockwerk_para_rocket_flare_explosion.vpcf"
+      "particle"                                          "particles/base_attacks/ranged_tower_bad.vpcf"
+      "particle"                                          "particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
+    }
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_agility"                                   "25"
+      "bonus_strength"                                  "20"
+      "bonus_intellect"                                 "20"
+      "bonus_health"                                    "250"
+      "bonus_health_regen"                              "3"
+      "bonus_attack_range"                              "160" // ranged only
+      "bonus_damage"                                    "25"
+      "passive_splash_radius"                           "250"
+      "passive_splash_percent"                          "40"
+      "active_damage"                                   "100"
+      "active_radius"                                   "500"
+      "active_splash_percent"                           "200"
+      "knockback_distance"                              "250"
+      "knockback_duration"                              "0.5"
+      "projectile_speed"                                "1800"
+      "recoil_distance"                                 "250"
+      "recoil_duration"                                 "0.2"
+    }
+  }
+}

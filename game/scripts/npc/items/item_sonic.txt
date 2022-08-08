@@ -1,0 +1,69 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Sonic
+  //=================================================================================================================
+  "item_recipe_sonic"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "100"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_sonic"
+    "ItemRequirements"
+    {
+      "01"                                                "item_power_treads;item_blitz_knuckles;item_wind_lace"
+    }
+  }
+
+  //=================================================================================================================
+  // Sonic: Power Treads (1400) + Blitz Knuckles (1000) + Wind Lace (250) + Recipe (100) = 2750
+  //=================================================================================================================
+  "item_sonic"
+  {
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/sonic.lua"
+    "AbilityTextureName"                                  "custom/sonic"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "16"
+    "AbilityManaCost"                                     "75"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "2750"
+    "ItemShopTags"                                        "agi;attack_speed;movespeed;unique"
+    "ItemQuality"                                         "artifact"
+    "ItemAliases"                                         "sonic"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "AbilityValues"
+    {
+      "bonus_movement_speed"                              "65"
+      "bonus_attack_speed"                                "60"
+      "bonus_agility"                                     "18"
+      "active_speed_bonus"                                "30"
+      "duration"                                          "6.0"
+    }
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Custom Arcane Ring
+  //=================================================================================================================
+  "item_recipe_custom_arcane_ring"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "100"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_arcane_ring"
+
+    "ItemRequirements"
+    {
+      "01"                                                "item_energy_booster;item_ring_of_protection"
+    }
+  }
+
+  //=================================================================================================================
+  // Custom Arcane Ring: Energy Booster (800) + Ring of Protection (175) + Recipe (100) = 1075
+  //=================================================================================================================
+  "item_custom_arcane_ring"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/arcane_ring.lua"
+    "AbilityTextureName"                                  "item_arcane_ring"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastRange"                                    "1200"
+    "AbilityCooldown"                                     "30"
+    "AbilityManaCost"                                     "0"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1075"
+    "ItemShopTags"                                        "boost_mana;mana_pool"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "mana ring;arcane ring"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemAlertable"                                       "1"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_mana"                                        "250"
+      "bonus_armor"                                       "2"
+      "mana_replenish"                                    "150"
+      "buff_spell_amp"                                    "5"
+      "buff_cdr"                                          "12"
+      "active_radius"                                     "1200"
+      "active_duration"                                   "15"
+    }
+  }
+}

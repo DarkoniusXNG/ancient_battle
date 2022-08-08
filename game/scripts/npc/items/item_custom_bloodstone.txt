@@ -1,0 +1,87 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Old Bloodstone
+  //=================================================================================================================
+  "item_recipe_custom_bloodstone"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_bloodstone"
+    "ItemRequirements"
+    {
+      "01"                                                "item_soul_booster;item_pers;item_soul_ring"
+    }
+  }
+
+  //=================================================================================================================
+  // Old Bloodstone: Soul Booster (3000) + Perserverance (1650) + Soul Ring (700) + Recipe (0) = 5350
+  //=================================================================================================================
+  "item_custom_bloodstone"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/bloodstone_old.lua"
+    "AbilityTextureName"                                  "custom/bloodstone_old"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "200"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "120"
+    "AbilityManaCost"                                     "0"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "5350"
+    "ItemShopTags"                                        "regen_health;regen_mana;mana_pool;health_pool"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "bs;bloodstone"
+    "ItemInitialCharges"                                  "10" // original: 5
+    "ItemDisplayCharges"                                  "1"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "AllowedInBackpack"                                   "0"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_health"                                      "425"
+      "bonus_mana"                                        "425"
+      "bonus_health_regen"                                "6.5"
+      "bonus_mana_regen"                                  "2.25"
+      "bonus_strength"                                    "6"
+      "bonus_armor"                                       "2"
+      "mana_regen_amp"                                    "200"
+
+      "charge_gain_per_kill"                              "1"
+      "charge_gain_radius"                                "1200" // original: 1000
+      "mana_regen_per_charge"                             "1"
+      "health_regen_per_charge"                           "1"
+      "respawn_time_reduction_per_charge"                 "1" // min respawn time is 1 second
+      "charge_loss_on_death"                              "3" // original: 33% of total
+
+      "death_heal_radius"                                 "1200" // original: 1675
+      "death_heal_base"                                   "400"
+      "death_heal_per_charge"                             "30"
+      "death_mana_restore"                                "400"
+      "death_vision_radius"                               "1200" // original: 1800
+      "death_vision_duration"                             "30" // original: respawn time
+    }
+  }
+}
