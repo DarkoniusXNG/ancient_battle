@@ -76,7 +76,6 @@
       "devastator_width_initial"                          "200"
       "devastator_width_end"                              "200"
       "devastator_distance"                               "800"
-      "devastator_damage"                                 "0"
       "devastator_movespeed_reduction"                    "-10"
       "devastator_movespeed_reduction_duration"           "12.0"
       "devastator_armor_reduction"                        "-12"

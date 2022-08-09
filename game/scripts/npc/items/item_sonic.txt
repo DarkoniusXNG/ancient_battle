@@ -22,12 +22,12 @@
     "ItemResult"                                          "item_sonic"
     "ItemRequirements"
     {
-      "01"                                                "item_power_treads;item_blitz_knuckles;item_wind_lace"
+      "01"                                                "item_yasha;item_blitz_knuckles;item_wind_lace"
     }
   }
 
   //=================================================================================================================
-  // Sonic: Power Treads (1400) + Blitz Knuckles (1000) + Wind Lace (250) + Recipe (100) = 2750
+  // Sonic: Yasha (2050) + Blitz Knuckles (1000) + Wind Lace (250) + Recipe (100) = 3400
   //=================================================================================================================
   "item_sonic"
   {
@@ -46,7 +46,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "2750"
+    "ItemCost"                                            "3400"
     "ItemShopTags"                                        "agi;attack_speed;movespeed;unique"
     "ItemQuality"                                         "artifact"
     "ItemAliases"                                         "sonic"
@@ -55,7 +55,7 @@
     "AbilityValues"
     {
       "bonus_movement_speed"                              "65"
-      "bonus_attack_speed"                                "60"
+      "bonus_attack_speed"                                "50"
       "bonus_agility"                                     "18"
       "active_speed_bonus"                                "30"
       "duration"                                          "6.0"

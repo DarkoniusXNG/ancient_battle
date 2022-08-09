@@ -16,7 +16,8 @@ function item_sheepstick_old:OnSpellStart()
 
   -- Kill the target instantly if it is an illusion
   if target:IsIllusion() and not target:IsStrongIllusionCustom() then
-    target:ForceKill(true)
+    --target:ForceKill(true)
+    target:Kill(self, caster)
     return
   end
 
@@ -110,7 +111,7 @@ if IsServer() then
   function modifier_item_old_hex:OnCreated()
     local parent = self:GetParent()
     local caster = self:GetCaster()
-    self.sheep_pfx = ParticleManager:CreateParticle("particles/items_fx/item_sheepstick.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent, caster)
+    self.sheep_pfx = ParticleManager:CreateParticle("particles/items_fx/item_sheepstick.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
     ParticleManager:SetParticleControl(self.sheep_pfx, 0, parent:GetAbsOrigin())
   end
 

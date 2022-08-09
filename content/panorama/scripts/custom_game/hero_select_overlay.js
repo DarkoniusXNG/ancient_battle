@@ -2,10 +2,10 @@
 
 function UpdateTimer()
 {
-	var gameTime = Game.GetGameTime();
-	var transitionTime = Game.GetStateTransitionTime();
+	const gameTime = Game.GetGameTime();
+	const transitionTime = Game.GetStateTransitionTime();
 
-	var timerValue = Math.max(0, Math.floor( transitionTime - gameTime ));
+	let timerValue = Math.max(0, Math.floor( transitionTime - gameTime ));
 	
 	if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION ) )
 	{
@@ -13,10 +13,10 @@ function UpdateTimer()
 	}
 	$("#TimerPanel").SetDialogVariableInt("timer_seconds", timerValue);
 
-	var banPhaseInstructions = $("#BanPhaseInstructions");
-	var pickPhaseInstructions = $("#PickPhaseInstructions");
+	const banPhaseInstructions = $("#BanPhaseInstructions");
+	const pickPhaseInstructions = $("#PickPhaseInstructions");
 
-	var bIsInBanPhase = Game.IsInBanPhase();
+	const bIsInBanPhase = Game.IsInBanPhase();
 
 	banPhaseInstructions.SetHasClass("Visible", bIsInBanPhase == true);
 	pickPhaseInstructions.SetHasClass("Visible", bIsInBanPhase == false);
@@ -26,7 +26,7 @@ function UpdateTimer()
 
 (function()
 {
-	var timerPanel = $.CreatePanel("Panel", $.GetContextPanel(), "TimerPanel");
+	let timerPanel = $.CreatePanel("Panel", $.GetContextPanel(), "TimerPanel");
 	timerPanel.BLoadLayout( "file://{resources}/layout/custom_game/hero_select_overlay_timer.xml", false, false );
 
 	UpdateTimer();

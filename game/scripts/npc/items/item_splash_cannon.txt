@@ -13,7 +13,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "1000"
+    "ItemCost"                                            "100"
     "ItemShopTags"                                        ""
 
     // Recipe
@@ -27,7 +27,7 @@
   }
 
   //=================================================================================================================
-  // Splash Cannon: Hurricane Pike (4450) + Soul Gem (1000) + Recipe (1000) = 6450
+  // Splash Cannon: Hurricane Pike (4450) + Soul Gem (1000) + Recipe (100) = 5550
   //=================================================================================================================
   "item_splash_cannon"
   {
@@ -52,7 +52,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "6450"
+    "ItemCost"                                            "5550"
     "ItemShopTags"                                        "damage"
     "ItemQuality"                                         "artifact"
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
@@ -62,10 +62,10 @@
     //-------------------------------------------------------------------------------------------------------------
     "precache"
     {
-      //"particle"                                          "particles/units/heroes/hero_oracle/oracle_fortune_purge_root_pnt.vpcf"
       "particle"                                          "particles/econ/items/clockwerk/clockwerk_paraflare/clockwerk_para_rocket_flare_explosion.vpcf"
       "particle"                                          "particles/base_attacks/ranged_tower_bad.vpcf"
       "particle"                                          "particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
+	  "soundfile"                                         "soundevents/items/custom_items.vsndevts"
     }
 
     // Special

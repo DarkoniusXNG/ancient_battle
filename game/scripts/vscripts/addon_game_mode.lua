@@ -13,6 +13,11 @@ function Precache(context)
 	PrecacheItemByNameSync("item_custom_slippers_of_halcyon", context)
 	PrecacheItemByNameSync("item_ultimate_king_bar", context)
 	PrecacheItemByNameSync("item_infused_robe", context)
+	PrecacheItemByNameSync("item_devastator", context)
+	PrecacheItemByNameSync("item_pull_staff", context)
+	PrecacheItemByNameSync("item_sonic", context)
+	PrecacheItemByNameSync("item_splash_cannon", context)
+	PrecacheItemByNameSync("item_stoneskin", context)
 	
 	-- Warp Beast
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts", context)

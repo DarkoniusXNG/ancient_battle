@@ -4,7 +4,7 @@ function FindDotaHudElement(panel) {
 
 function OverrideHeroImage(panel){
 	if (panel) {
-		var name = panel.heroname;
+		const name = panel.heroname;
 		if (name === 'sohei' || name === 'electrician' || name === 'warp_beast') {
 			panel.style.backgroundImage = 'url("file://{images}/heroes/npc_dota_hero_' + name + '.png")';
 			panel.style.backgroundSize = '100% 100%';
@@ -14,11 +14,10 @@ function OverrideHeroImage(panel){
 
 function OverrideHeroImagesForTeam(team){
 	if (team) {
-		var i;
-		for (i = 0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS - 1; i++) {
-			var top_bar_panel = FindDotaHudElement(team + "Player" + i);
+		for (let i = 0; i < DOTALimits_t.DOTA_MAX_TEAM_PLAYERS - 1; i++) {
+			const top_bar_panel = FindDotaHudElement(team + "Player" + i);
 			if (top_bar_panel && Players.IsValidPlayerID(i)) {
-				var panel = top_bar_panel.FindChildTraverse("HeroImage");
+				const panel = top_bar_panel.FindChildTraverse("HeroImage");
 				OverrideHeroImage(panel);
 			}
 		}
@@ -35,5 +34,5 @@ function OverrideTopBarHeroImages(){
 (function () {
 	GameEvents.Subscribe('game_rules_state_change', OverrideTopBarHeroImages);
 	GameEvents.Subscribe('player_connect', OverrideTopBarHeroImages);
-	GameEvents.Subscribe('player_reconnected', OverrideTopBarHeroImages);
+	// GameEvents.Subscribe('player_reconnected', OverrideTopBarHeroImages);
 })();
