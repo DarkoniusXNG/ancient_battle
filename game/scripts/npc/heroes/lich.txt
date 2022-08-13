@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// HERO: Lich; 2022;
-	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
+	// Notes: OK; Dark Ritual provides additional mana;
 	// TO_DO: special_bonus_unique_lich_custom_1 - special_bonus_unique_lich_custom_7
 	//=================================================================================================================
 	"npc_dota_hero_custom_lich"
@@ -30,7 +30,7 @@
 		"Ability9"                  "generic_hidden"
 
 		"Ability10"                 "special_bonus_movement_speed_percentage_5"		// lvl 10 talent; special_bonus_unique_lich_custom_1 - Ice Armor autocast aura talent
-		"Ability11"                 "special_bonus_unique_lich_custom_2"			// lvl 10 talent; Sacrifice works on ancients and enemy units talent
+		"Ability11"                 "special_bonus_unique_lich_custom_2"			// lvl 10 talent; Dark Ritual works on ancients and enemy units talent
 
 		"Ability12"                 "special_bonus_cast_range_100"					// lvl 15 talent: special_bonus_unique_lich_custom_3 - Death and Decay heals talent
 		"Ability13"                 "special_bonus_attack_damage_120"				// lvl 15 talent; unique

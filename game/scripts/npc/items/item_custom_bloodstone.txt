@@ -35,7 +35,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "item_lua"
     "ScriptFile"                                          "items/bloodstone_old.lua"
-    "AbilityTextureName"                                  "custom/bloodstone_old"
+    "AbilityTextureName"                                  "custom/custom_bloodstone"
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT"
 

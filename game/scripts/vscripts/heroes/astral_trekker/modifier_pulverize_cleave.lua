@@ -34,21 +34,19 @@ end
 modifier_pulverize_cleave.OnRefresh = modifier_pulverize_cleave.OnCreated
 
 function modifier_pulverize_cleave:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-
-	return funcs
 end
 
-function modifier_pulverize_cleave:OnAttackLanded(event)
-	if IsServer() then
+if IsServer() then	
+	function modifier_pulverize_cleave:OnAttackLanded(event)
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 		if parent == event.attacker then
 			-- If break is applied don't do anything
 			if parent:PassivesDisabled() then
-				return nil
+				return
 			end
 
 			local target = event.target
@@ -69,11 +67,11 @@ function modifier_pulverize_cleave:OnAttackLanded(event)
 
 			-- Prevent building up the proc chance on buildings, wards and allies
 			if target:GetTeamNumber() == parent:GetTeamNumber() or target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
-				return nil
+				return
 			end
 
 			if not ability:XNGRandom(self.cleave_chance) then
-				return nil
+				return
 			end
 
 			local cleave_origin = parent:GetAbsOrigin()

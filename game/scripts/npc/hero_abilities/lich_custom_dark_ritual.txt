@@ -4,7 +4,7 @@
 	// Lich: Sacrifice (E) - Lich Dark Ritual(Sacrifice), nobody gets XP, decreased cooldown, increased cast range
 	// Author: Jastuchko + Darkonius
 	// Notes: OK; 2022;
-	// TO_DO: tooltip for special_bonus_unique_lich_custom_2; fix talent not working on ancients
+	// TO_DO: test talent if working on ancients
 	//====================================================================================================
 	"lich_custom_dark_ritual"
 	{
@@ -59,7 +59,7 @@
 	}
 	
 	//=================================================================================================================
-	// Sacrifice works on enemies and ancients talent
+	// Dark Ritual works on enemies and ancients talent
 	//=================================================================================================================
 	"special_bonus_unique_lich_custom_2"
 	{

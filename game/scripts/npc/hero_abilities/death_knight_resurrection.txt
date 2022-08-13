@@ -4,7 +4,7 @@
 	// Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
 	// Author: Darkonius
 	// Notes: OK; 2022;
-	// TO_DO: scepter tooltip; add some particle and sound for scepter on heroes
+	// TO_DO: add some particle and sound for scepter on heroes
 	//=================================================================================================================
 	"death_knight_resurrection"
 	{

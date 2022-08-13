@@ -4,7 +4,7 @@
 	// Lifestealer: Poison Sting - like Venomancer Poison Sting + heal reduction
 	// Author: Darkonius
 	// Notes: OK; 2022;
-	// TO_DO: ALL
+	// TO_DO: Test
 	//=================================================================================================================
 	"life_stealer_custom_poison_sting"
 	{

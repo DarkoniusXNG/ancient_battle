@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Notes: OK; 2022;
 	// Linkens: Doesn't block (INTENTIONAL);
-	// TO_DO: shard tooltip
+	// TO_DO:
 	//=================================================================================================================
 	"perun_electric_shield"
 	{
