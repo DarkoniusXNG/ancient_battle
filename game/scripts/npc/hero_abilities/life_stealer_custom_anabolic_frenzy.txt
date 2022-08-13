@@ -27,7 +27,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110 120 130 140"
+		"AbilityManaCost"				"90"
 		"AbilityProcsMagicStick"		"1"
 
 		// Cast Range
@@ -58,10 +58,10 @@
 				"var_type"							"FIELD_INTEGER"
 				"active_bonus_movement_speed_pct"	"15 16 17 18"
 			}
-			"04"
+			"04" // dota lifestealer lvl 10 talent provides 30 AS and base attack speed is 20 more; TLDR: 50 should be max
 			{
 				"var_type"							"FIELD_INTEGER"
-				"active_bonus_attack_speed"			"30"
+				"active_bonus_attack_speed"			"20 30 40 50"
 			}
 			"05" // Visage Grave Chill (15/20/25/30%); Open Wounds (50%);
 			{
@@ -71,7 +71,7 @@
 			"06"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"attack_speed_slow"					"-30"
+				"attack_speed_slow"					"-15 -20 -25 -30"
 			}
 			"07" // Visage Grave Chill: 6 seconds; Empowering Haste: 6 seconds; old Open Wounds: 8 seconds
 			{

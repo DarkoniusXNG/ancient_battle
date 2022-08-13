@@ -4,7 +4,7 @@
 	// Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
 	// Author: Darkonius
 	// Notes: OK; 2022;
-	// TO_DO: Add Aghanim Scepter upgrade - Resurrect heroes (not those that are reincarnating) and gives units 100 armor
+	// TO_DO: scepter tooltip; add some particle and sound for scepter on heroes
 	//=================================================================================================================
 	"death_knight_resurrection"
 	{
@@ -20,11 +20,11 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"          "SPELL_DISPELLABLE_YES"
 
-		// "HasScepterUpgrade"				"0"
+		"HasScepterUpgrade"				"1"
 		
 		"AbilityCastPoint"				"0.453"
 
-		"AbilityCooldown" 				"80" // original (180);
+		"AbilityCooldown" 				"100" // original (180);
 		"AbilityManacost" 				"125" // original (125);
 		"AbilityProcsMagicStick"		"1"
 		

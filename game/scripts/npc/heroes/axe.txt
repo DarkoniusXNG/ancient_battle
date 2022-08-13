@@ -1,8 +1,8 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Axe; 2021;
-	// TO_DO:
+	// HERO: Axe; 2022;
+	// TO_DO: axe_custom_cut_from_above
 	//=================================================================================================================
 	"npc_dota_hero_custom_axe"
 	{
@@ -22,7 +22,7 @@
 		"Ability3"					"axe_custom_battle_rage"				// E (4 levels)
 		"Ability4"					"axe_custom_counter_helix"				// T, passive (4 levels)
 		"Ability5"					"axe_custom_blood_mist_power"			// F, Second Ultimate (1 level)
-		"Ability6"					"holdout_culling_blade"					// R, Primary Ultimate (3 levels)
+		"Ability6"					"axe_custom_cut_from_above"				// R, Primary Ultimate (3 levels)
 		"Ability7"					"generic_hidden"
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"

@@ -135,8 +135,10 @@ function modifier_perun_electric_trap:OnIntervalThink()
 
 						for _, enemy in pairs(enemies_again) do
 							if enemy then
+								-- Status Resistance fix
+								local enemy_stun_duration = enemy:GetValueChangedByStatusResistance(stun_duration)
 								-- Apply Electric Trap stun debuff to the enemy
-								enemy:AddNewModifier(parent, ability, "modifier_custom_electric_trap_stun", {duration = stun_duration})
+								enemy:AddNewModifier(parent, ability, "modifier_custom_electric_trap_stun", {duration = enemy_stun_duration})
 							end
 						end
 

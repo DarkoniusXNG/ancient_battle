@@ -25,7 +25,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                     "135"
+		"AbilityManaCost"                                     "110 120 130 140"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@
 			"02"
 			{
 				"var_type"                                        "FIELD_INTEGER"
-				"hook_speed"                                      "1500"
+				"hook_speed"                                      "1600"
 				"LinkedSpecialBonus"                              "special_bonus_unique_pudge_custom_4"
 			}
 			"03"
@@ -66,7 +66,7 @@
 			"07"
 			{
 				"var_type"                                        "FIELD_FLOAT"
-				"hook_followthrough_constant"                     "0.65"
+				"hook_followthrough_constant"                     "0.6"
 			}
 		}
 	}

@@ -31,7 +31,7 @@
 		"Ability9"                  "generic_hidden"
 
 		"Ability10"                 "special_bonus_movement_speed_25"           // lvl 10 talent; unique
-		"Ability11"                 "special_bonus_unique_venomancer_2"         // lvl 10 talent; Poison Sting slow talent
+		"Ability11"                 "special_bonus_spell_amplify_5"             // lvl 10 talent; unique
 
 		"Ability12"                 "special_bonus_hp_325"                      // lvl 15 talent; dota Lifestealer (325)
 		"Ability13"                 "special_bonus_attack_damage_25"			// lvl 15 talent; dota Lifestealer (25)

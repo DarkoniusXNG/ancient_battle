@@ -4,7 +4,7 @@
 	// Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
 	// Author: Darkonius
 	// Notes: OK; 2022; Pseudo-Random, triggers OnAttackStart
-	// TO_DO:
+	// TO_DO: aghs shard: apply counter helix on Axe attack
 	//=================================================================================================================
 	"axe_custom_counter_helix"
 	{

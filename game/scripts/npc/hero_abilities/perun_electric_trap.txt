@@ -3,8 +3,8 @@
 	//=================================================================================================================
 	// Lightning Shaman: Electric Trap (E) - Similar to Techies Stasis Trap
 	// Author: Darkonius
-	// Notes: OK; 2021; Visible trap that stuns in a radius;
-	// TO_DO: Status Resistance fix
+	// Notes: OK; 2022; Visible trap that stuns in a radius;
+	// TO_DO:
 	//=================================================================================================================
 	"perun_electric_trap"
 	{

@@ -4,7 +4,7 @@
 	// Mana Eater: EMP (F) - New Spell, Similar to Invoker's EMP, burns percentage of max mana and EMP follows the caster
 	// Author: Darkonius
 	// Notes: OK; 2021; Destroys illusions; EMP cannot be dispelled from Mana Eater once activated; Pure damage;
-	// TO_DO: Rework to lua
+	// TO_DO:
 	//=================================================================================================================
 	"mana_eater_emp"
 	{

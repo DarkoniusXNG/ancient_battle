@@ -67,7 +67,7 @@
       "bonus_mana_regen"                                  "2.25"
       "bonus_strength"                                    "6"
       "bonus_armor"                                       "2"
-      "mana_regen_amp"                                    "200"
+      "mana_regen_amp"                                    "100"
 
       "charge_gain_per_kill"                              "1"
       "charge_gain_radius"                                "1200" // original: 1000

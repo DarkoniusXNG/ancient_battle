@@ -36,10 +36,8 @@ function stealth_assassin_death_ward:OnSpellStart()
 		local damage = self:GetSpecialValueFor("damage")
 		-- Check for bonus damage talent
 		local talent = caster:FindAbilityByName("special_bonus_unique_witch_doctor_5")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				damage = damage + talent:GetSpecialValueFor("value")
-			end
+		if talent and talent:GetLevel() ~= 0 then
+			damage = damage + talent:GetSpecialValueFor("value")
 		end
 		death_ward:SetBaseDamageMax(damage)
 		death_ward:SetBaseDamageMin(damage)
@@ -155,10 +153,8 @@ function modifier_custom_death_ward:OnCreated()
 		local attack_range_bonus = 0
 		-- Check for bonus attack range talent
 		local talent = owner:FindAbilityByName("special_bonus_unique_witch_doctor_1")
-		if talent then
-			if talent:GetLevel() ~= 0 then
-				attack_range_bonus = talent:GetSpecialValueFor("value")
-			end
+		if talent and talent:GetLevel() ~= 0 then
+			attack_range_bonus = talent:GetSpecialValueFor("value")
 		end
 
 		-- Change Acquisition range if there is an attack range bonus

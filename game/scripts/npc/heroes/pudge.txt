@@ -2,7 +2,7 @@
 {
 	//================================================================================================================
 	// HERO: Pudge; 2022;
-	// TO_DO: pudge_custom_meat_hook;
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_pudge"
 	{
@@ -39,12 +39,12 @@
 		"MagicalResistance"                               "0"                                   // dota (25); original (25%);
 		
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"                                 "42"                                  // dota (42); original (32);
-		"AttackDamageMax"                                 "48"                                  // dota (48); original (36);
+		"AttackDamageMin"                                 "42"                                  // dota (45); original (32);
+		"AttackDamageMax"                                 "48"                                  // dota (51); original (36);
 		"AttackRate"                                      "1.7"                                 // Default
 		"AttackAnimationPoint"                            "0.5"                                 // like dota Pudge
 		"AttackAcquisitionRange"                          "600"
-		"AttackRange"                                     "150"                                 // dota (150); original (128);
+		"AttackRange"                                     "150"                                 // dota (175); original (128);
 		"ProjectileSpeed"                                 "0"
 
 		"AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"
@@ -53,7 +53,7 @@
 		"AttributeBaseAgility"                            "14"                                  // dota (14); original (14);
 		"AttributeAgilityGain"                            "1.4"                                 // dota (1.4); original (1.4);
 		"AttributeBaseIntelligence"                       "16"                                  // dota (16); original (15);
-		"AttributeIntelligenceGain"                       "1.5"                                 // dota (1.5); original (1.5);
+		"AttributeIntelligenceGain"                       "1.5"                                 // dota (1.8); original (1.5);
 
 		"MovementSpeed"                                   "280"                                 // dota (280); original (300);
 		"MovementTurnRate"                                "0.7"                                 // dota (0.7); original (0.6);

@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Paladin's Guardian Angel: Bash (W) - Modified Slardar Bash
-	// Author: Valve + Darkonius
-	// Notes: OK; 26.12.2016;
+	// Paladin's Guardian Angel: Bash (W) - chance based old Slardar Bash
+	// Author: Darkonius
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"guardian_angel_bash"
