@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Linkens: Doesn't Block (INTENTIONAL); 
 	// Notes: 2022;
-	// TO_DO: ALL
+	// TO_DO:
 	//=================================================================================================================
 	"axe_custom_cut_from_above"
 	{
@@ -26,8 +26,8 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500 700 900"
-		"AbilityCastPoint"				"0.0"
-		"AoERadius" 					"175 225 275"
+		"AbilityCastPoint"				"0.3"
+		"AoERadius" 					"275"
 		"HasScepterUpgrade" 			"1"
 
 		// Time		
@@ -45,23 +45,23 @@
 			"damage_kill_threshold"                       "250 350 450"
 			"scepter_damage_kill_threshold"
 			{
-				"value"                                   "350 450 650"
+				"value"                                   "350 500 650"
+				"RequiresScepter"                         "1"
+			}
+			"scepter_bonus_cast_range"
+			{
+				"value"                                   "400"
 				"RequiresScepter"                         "1"
 			}
 
-			"leap_speed"                                  "1000 1100 1200"
-			"leap_acceleration"                           "7000"
-			"radius"                                      "175 225 275"
-			
-			"scepter_bonus_cast_range"
-			{
-				"value"                                   "500"
-				"RequiresScepter"                         "1"
-			}
+			"leap_speed"                                  "500"
+			"leap_duration"                               "0.5"
+			"leap_height"                                 "250"
+			"radius"                                      "275"
 
 			"bonus_move_speed_on_kill"                    "20 30 40"
 			"bonus_attack_speed_on_kill"                  "20 30 40"
-			"duration"                                    "10"
+			"buff_duration"                               "10"
 			"buff_radius"                                 "1200"
 		}
 	}

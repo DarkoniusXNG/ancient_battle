@@ -398,12 +398,12 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 	end
 
 	-- Axe Chop Sound with Cut From Above (Culling Blade) when he kills heroes (not illusions)
-	if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability then
-		local ability = killer_unit:FindAbilityByName("holdout_culling_blade")
-		if killing_ability == ability then
-			killer_unit:EmitSound("Hero_Axe.Culling_Blade_Success")
-		end
-	end
+	-- if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability then
+		-- local ability = killer_unit:FindAbilityByName("holdout_culling_blade")
+		-- if killing_ability == ability then
+			-- killer_unit:EmitSound("Hero_Axe.Culling_Blade_Success")
+		-- end
+	-- end
 
 	-- Ancient destruction detection (if the map doesn't have ancients with this names, this will never happen)
 	if killed_unit:GetUnitName() == "npc_dota_badguys_fort" then
