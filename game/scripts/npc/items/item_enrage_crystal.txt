@@ -1,0 +1,74 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Enrage Crystal
+  //=================================================================================================================
+  "item_recipe_enrage_crystal"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "200"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_enrage_crystal"
+    "ItemRequirements"
+    {
+      "01"                                                "item_sange;item_relic"
+    }
+  }
+
+  //=================================================================================================================
+  // Enrage Crystal: Sange (2050) + Sacred Relic (3750) + Recipe (200) = 6000
+  //=================================================================================================================
+  "item_enrage_crystal"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/enrage_crystal.lua"
+    "AbilityTextureName"                                  "custom/enrage_crystal"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "30"
+    "AbilityManaCost"                                     "100"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "6000"
+    "ItemShopTags"                                        "str;damage;hard_to_tag"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "enrage crystal"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_strength"                                    "18"
+      "bonus_damage"                                      "60"
+      "bonus_status_resist"                               "18"
+      "hp_regen_amp"                                      "20"
+      "lifesteal_amp"                                     "20"
+    }
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+      "particle"                                          "particles/items/enrage_crystal/enrage_crystal_explosion.vpcf"
+    }
+  }
+}

@@ -106,7 +106,7 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnCreated()
 	end
 	
 	if IsServer() then
-		self.interval = 0.1
+		self.interval = 0.25
 	
 		self:OnIntervalThink()
 		self:StartIntervalThink(self.interval)

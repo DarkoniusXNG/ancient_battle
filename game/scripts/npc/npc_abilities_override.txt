@@ -221,27 +221,27 @@
   //"item_tranquil_boots"     "REMOVE"
   //"item_shadow_amulet"      "REMOVE"
     
-  "item_halloween_candy_corn"     	"REMOVE"
-  "item_mystery_hook"     			"REMOVE"
-  "item_mystery_arrow"      		"REMOVE"
-  "item_mystery_missile"      		"REMOVE"
-  "item_mystery_toss"     			"REMOVE"
-  "item_mystery_vacuum"     		"REMOVE"
-  "item_halloween_rapier"     		"REMOVE"
-  "item_greevil_whistle"      		"REMOVE"
-  "item_greevil_whistle_toggle"     "REMOVE"
-  "item_present"      				"REMOVE"
-  "item_winter_stocking"      		"REMOVE"
-  "item_winter_skates"      		"REMOVE"
-  "item_winter_cake"      			"REMOVE"
-  "item_winter_cookie"      		"REMOVE"
-  "item_winter_coco"      			"REMOVE"
-  "item_winter_ham"     			"REMOVE"
-  "item_winter_kringle"     		"REMOVE"
-  "item_winter_mushroom"      		"REMOVE"
-  "item_winter_greevil_treat"     	"REMOVE"
-  "item_winter_greevil_garbage"     "REMOVE"
-  "item_winter_greevil_chewy"     	"REMOVE"
+  // "item_halloween_candy_corn"     	"REMOVE"
+  // "item_mystery_hook"     			"REMOVE"
+  // "item_mystery_arrow"      		"REMOVE"
+  // "item_mystery_missile"      		"REMOVE"
+  // "item_mystery_toss"     			"REMOVE"
+  // "item_mystery_vacuum"     		"REMOVE"
+  // "item_halloween_rapier"     		"REMOVE"
+  // "item_greevil_whistle"      		"REMOVE"
+  // "item_greevil_whistle_toggle"     "REMOVE"
+  // "item_present"      				"REMOVE"
+  // "item_winter_stocking"      		"REMOVE"
+  // "item_winter_skates"      		"REMOVE"
+  // "item_winter_cake"      			"REMOVE"
+  // "item_winter_cookie"      		"REMOVE"
+  // "item_winter_coco"      			"REMOVE"
+  // "item_winter_ham"     			"REMOVE"
+  // "item_winter_kringle"     		"REMOVE"
+  // "item_winter_mushroom"      		"REMOVE"
+  // "item_winter_greevil_treat"     	"REMOVE"
+  // "item_winter_greevil_garbage"     "REMOVE"
+  // "item_winter_greevil_chewy"     	"REMOVE"
   
   //"item_recipe_moon_shard"      "REMOVE"
   //"item_moon_shard"     "REMOVE"  
@@ -342,16 +342,16 @@
   //"item_phoenix_ash"              "REMOVE"
   //"item_horizon"                  "REMOVE"
   //"item_dimensional_doorway"      "REMOVE"
-	
+
 	//=================================================================================================================
-	// Blink Dagger - Shares the cooldown with Blink Sword.
+	// Blink Dagger - Shares the cooldown with Blink Sword (Super Blink) and other blink daggers
 	//=================================================================================================================
 	"item_blink"
 	{
 		"AbilitySharedCooldown"			"blink"
 		"SideShop"						"1"
 	}
-	
+
 	//=================================================================================================================
 	// Cheese - purchasable, more expensive
 	// Notes: OK; 29.10.2016;
@@ -393,7 +393,7 @@
 			// }
 		// }
 	}
-	
+
 	//=================================================================================================================
 	// Black King Bar - Shares the cooldown with Ultimate King Bar
 	//=================================================================================================================
@@ -401,7 +401,7 @@
 	{
 		"AbilitySharedCooldown"			"black_king_bar"
 	}
-	
+
 	//=================================================================================================================
 	// Blade Mail - Shares cooldown with Orb of Reflection
 	//=================================================================================================================
@@ -409,7 +409,7 @@
 	{
 		"AbilitySharedCooldown"			"reflection_items"
 	}
-	
+
 	//=================================================================================================================
 	// Hood of Defiance - Shares cooldown with Infused Robe
 	//=================================================================================================================
@@ -417,7 +417,15 @@
 	{
 		"AbilitySharedCooldown"			"hood_of_defiance"
 	}
-	
+
+	//=================================================================================================================
+	// Scythe of Vyse - Shares cooldown with old Scythe of Vyse
+	//=================================================================================================================
+	"item_sheepstick"
+	{
+		"AbilitySharedCooldown"			"sheepsticks"
+	}
+
 	"item_tpscroll"
 	{
 		"SideShop"						"1"
@@ -428,140 +436,122 @@
 		"ItemKillable"                  "0"
 		"ItemDroppable"                 "1"
 	}
-	
+
 	"item_ring_of_protection"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_magic_stick"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_quelling_blade"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Orb of Venom
-	//=================================================================================================================
+
 	"item_orb_of_venom"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Sage Mask
-	//=================================================================================================================
+
 	"item_sobi_mask"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Ring of Regen
-	//=================================================================================================================
+
 	"item_ring_of_regen"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_boots"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_boots_of_elves"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_belt_of_strength"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_robe"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Ring of Health
-	//=================================================================================================================
+
 	"item_ring_of_health"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_crown"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_gloves"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_chainmail"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Blight Stone
-	//=================================================================================================================
+
 	"item_blight_stone"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_cloak"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_void_stone"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_helm_of_iron_will"
 	{
 		"SideShop"						"1"
 	}
-	
-	//=================================================================================================================
-	// Quarterstaff
-	//=================================================================================================================
+
 	"item_quarterstaff"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_energy_booster"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_vitality_booster"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_lifesteal"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_broadsword"
 	{
 		"SideShop"						"1"
 	}
-	
+
 	"item_blades_of_attack"
 	{
 		"SideShop"						"1"
@@ -622,7 +612,7 @@
 			"01"						"item_bracer_old"
 		}
 	}
-	
+
 	//=================================================================================================================
 	// Recipe: Null Talisman
 	//=================================================================================================================
@@ -671,7 +661,7 @@
 			"01"						"item_maelstrom;item_ultimate_orb;item_crown;item_atma"
 		}
 	}
-	
+
 	//=================================================================================================================
 	// Filler buildings ability (Shrines)
 	//=================================================================================================================

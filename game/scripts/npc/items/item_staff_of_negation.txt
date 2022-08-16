@@ -51,7 +51,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 
 		"AbilityCooldown"				"16"
-		"AbilitySharedCooldown"			"rod_of_atos"
+		"AbilitySharedCooldown"			"atos"
 		"AbilityCastRange"				"1100"
 		"AbilityCastPoint"				"0.0"
 		"AoERadius" 					"%radius"

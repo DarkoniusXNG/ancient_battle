@@ -13,7 +13,6 @@ function item_custom_bloodstone:OnSpellStart()
 end
 
 --------------------------------------------------------------------------
--- Parts of bloodstone that should stack with other bloodstones
 
 modifier_item_custom_bloodstone_passive = class({})
 
@@ -46,9 +45,6 @@ function modifier_item_custom_bloodstone_passive:DeclareFunctions()
   }
 end
 
---------------------------------------------------------------------------
--- bloodstone stats
-
 function modifier_item_custom_bloodstone_passive:GetModifierHealthBonus()
   return self:GetAbility():GetSpecialValueFor("bonus_health")
 end
@@ -59,12 +55,18 @@ end
 
 function modifier_item_custom_bloodstone_passive:GetModifierConstantHealthRegen()
   local ability = self:GetAbility()
-  return ability:GetSpecialValueFor("bonus_health_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("health_regen_per_charge"))
+  if self:IsFirstItemInInventory() then
+    return ability:GetSpecialValueFor("bonus_health_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("health_regen_per_charge"))
+  end
+  return ability:GetSpecialValueFor("bonus_health_regen")
 end
 
 function modifier_item_custom_bloodstone_passive:GetModifierConstantManaRegen()
   local ability = self:GetAbility()
-  return ability:GetSpecialValueFor("bonus_mana_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("mana_regen_per_charge"))
+  if self:IsFirstItemInInventory() then
+    return ability:GetSpecialValueFor("bonus_mana_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("mana_regen_per_charge"))
+  end
+  return ability:GetSpecialValueFor("bonus_mana_regen")
 end
 
 function modifier_item_custom_bloodstone_passive:GetModifierBonusStats_Strength()
@@ -77,7 +79,8 @@ end
 
 function modifier_item_custom_bloodstone_passive:GetModifierMPRegenAmplify_Percentage()
   local parent = self:GetParent()
-  if not parent:HasModifier("modifier_item_kaya") and not parent:HasModifier("modifier_item_yasha_and_kaya") and not parent:HasModifier("modifier_item_kaya_and_sange") and self:IsFirstItemInInventory() then
+  --if not parent:HasModifier("modifier_item_kaya") and not parent:HasModifier("modifier_item_yasha_and_kaya") and not parent:HasModifier("modifier_item_kaya_and_sange") and self:IsFirstItemInInventory() then
+  if self:IsFirstItemInInventory() then
     return self:GetAbility():GetSpecialValueFor("mana_regen_amp")
   end
   return 0
@@ -227,11 +230,19 @@ function modifier_item_custom_bloodstone_dummy_stuff:GetAbsoluteNoDamagePure()
 end
 
 function modifier_item_custom_bloodstone_dummy_stuff:GetBonusDayVision()
-  return self:GetAbility():GetSpecialValueFor("death_vision_radius")
+  local ability = self:GetAbility()
+  if not ability or ability:IsNull() then
+    return 1200
+  end
+  return ability:GetSpecialValueFor("death_vision_radius")
 end
 
 function modifier_item_custom_bloodstone_dummy_stuff:GetBonusNightVision()
-  return self:GetAbility():GetSpecialValueFor("death_vision_radius")
+  local ability = self:GetAbility()
+  if not ability or ability:IsNull() then
+    return 1200
+  end
+  return ability:GetSpecialValueFor("death_vision_radius")
 end
 
 function modifier_item_custom_bloodstone_dummy_stuff:CheckState()

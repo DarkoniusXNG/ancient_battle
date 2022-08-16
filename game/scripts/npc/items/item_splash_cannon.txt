@@ -37,7 +37,7 @@
     "ScriptFile"                                          "items/splash_cannon.lua"
     "AbilityTextureName"                                  "custom/splash_cannon"
 
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -47,6 +47,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.0"
     "AbilityCastRange"                                    "1800"
+    "AoERadius"                                           "500" // like active_radius
     "AbilityManaCost"                                     "200"
     "AbilityCooldown"                                     "18"
 

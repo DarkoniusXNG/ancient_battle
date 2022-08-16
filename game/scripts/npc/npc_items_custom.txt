@@ -17,6 +17,7 @@
 #base "items/item_custom_slippers_of_halcyon.txt"
 #base "items/item_devastator.txt"
 #base "items/item_drum_of_vitality.txt"
+#base "items/item_enrage_crystal.txt"
 #base "items/item_infused_robe.txt"
 #base "items/item_master_staff.txt"
 #base "items/item_mystic_booster.txt"

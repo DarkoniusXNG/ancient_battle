@@ -14,7 +14,7 @@ function item_custom_arcane_ring:OnSpellStart()
   local mana = self:GetSpecialValueFor("mana_replenish")
 
   -- Particle
-  local particle = ParticleManager:CreateParticle(".vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+  local particle = ParticleManager:CreateParticle("particles/items_fx/arcane_boots.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
   --ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_ABSORIGIN_FOLLOW, nil, caster:GetOrigin(), false)
   ParticleManager:ReleaseParticleIndex(particle)
   
@@ -95,6 +95,12 @@ function modifier_item_custom_arcane_ring_buff:OnCreated()
   if ability and not ability:IsNull() then
     self.cdr = ability:GetSpecialValueFor("buff_cdr")
     self.spell_amp = ability:GetSpecialValueFor("buff_spell_amp")
+  end
+
+  if IsServer() then
+    -- Particle
+    local particle = ParticleManager:CreateParticle("particles/items_fx/arcane_boots_recipient.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+    ParticleManager:ReleaseParticleIndex(particle)
   end
 end
 

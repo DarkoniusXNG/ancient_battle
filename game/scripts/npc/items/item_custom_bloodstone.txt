@@ -43,7 +43,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "200"
     "AbilityCastPoint"                                    "0.0"
-    "AbilityCooldown"                                     "120"
+    "AbilityCooldown"                                     "240"
     "AbilityManaCost"                                     "0"
 
     // Item Info

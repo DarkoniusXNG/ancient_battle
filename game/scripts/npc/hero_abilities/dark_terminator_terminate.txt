@@ -25,7 +25,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"                                "3000"
+		"AbilityCastRange"                                "3600"
 		
 		"AbilityCastPoint"                                "2.0"
 		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"

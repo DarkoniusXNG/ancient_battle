@@ -45,8 +45,8 @@
 
 		// Stats		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"16"
-		"AbilitySharedCooldown"			"rod_of_atos"
+		"AbilityCooldown"				"18"
+		"AbilitySharedCooldown"			"atos"
 		"AbilityCastRange"				"1100"
 		"AbilityCastPoint"				"0.0"
 

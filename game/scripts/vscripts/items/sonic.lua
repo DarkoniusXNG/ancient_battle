@@ -132,3 +132,7 @@ end
 --function modifier_item_sonic_active:GetModifierStatusResistanceStacking()
   --return self:GetAbility():GetSpecialValueFor("status_resist")
 --end
+
+function modifier_item_sonic_active:GetEffectName()
+  return "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
+end

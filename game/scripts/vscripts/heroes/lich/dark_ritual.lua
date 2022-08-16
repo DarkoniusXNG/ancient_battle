@@ -11,7 +11,7 @@ function lich_custom_dark_ritual:CastFilterResultTarget(hTarget)
     has_talent = true
   end
 
-  if hTarget:IsCreep() and not hTarget:IsConsideredHero() and not hTarget:IsCourier() and (not hTarget:IsAncient() or has_talent) and (hTarget:GetTeamNumber() == caster_team or has_talent) and not hTarget:IsMagicImmune() then
+  if hTarget:IsCreep() and not hTarget:IsConsideredHero() and not hTarget:IsCourier() and (not hTarget:IsAncient() or has_talent) and (hTarget:GetTeamNumber() == caster_team or has_talent) and not hTarget:IsMagicImmune() and not hTarget:IsRoshan() then
 	return UF_SUCCESS
   end
 

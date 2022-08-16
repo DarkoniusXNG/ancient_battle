@@ -63,6 +63,7 @@
 
     "precache"
     {
+      "particle"                                          "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
     }
   }

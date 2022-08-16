@@ -45,6 +45,7 @@
     "AbilityCastRange"                                    "1000"
     "AbilityCastPoint"                                    "0.0"
     "AbilityCooldown"                                     "20"
+    "AbilitySharedCooldown"                               "sheepsticks"
     "AbilityManaCost"                                     "150"
 
     // Item Info
