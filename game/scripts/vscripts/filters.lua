@@ -63,11 +63,11 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	if attacker:IsNull() or victim:IsNull() then
 		return false
 	end
-	
+
 	if damage_after_reductions <= 0 then
 		return false
 	end
-	
+
 	-- Axe Blood Mist Power: Converting physical and magical damage of SPELLS to pure damage
 	if damaging_ability and attacker:HasModifier("modifier_blood_mist_power_buff") then
 		
@@ -96,34 +96,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			end
 		end
 	end
-	
-	-- Bane Enfeeble debuff: Reducing ALL damage of SPELLS by the percentage (It doesn't show properly on client)
-	if damaging_ability and attacker:HasModifier("modifier_custom_enfeeble_debuff") then
-		-- Doesn't reduce damage from items
-		if not damaging_ability:IsItem() then
-			local modifier = attacker:FindModifierByName("modifier_custom_enfeeble_debuff")
-			local reduction
-			if modifier then
-				reduction = modifier.spell_damage_reduction
-				local ability = modifier:GetAbility()
-				if reduction == nil then
-					if ability then
-						reduction = ability:GetSpecialValueFor("spell_damage_reduction")
-					else
-						print("bane_custom_enfeeble not found.")
-						reduction = 0
-					end
-				end
-			else
-				print("modifier_custom_enfeeble_debuff not found on attacker.")
-				reduction = 0
-			end
-			
-			-- Reduce damage
-			keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
-		end
-	end
-	
+
 	-- Orb of Reflection: Damage prevention and Reflecting all damage before reductions as Pure damage to the attacker
 	-- if victim:HasModifier("modifier_item_orb_of_reflection_active_reflect") then
 
@@ -169,11 +142,11 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			-- end
 		-- end
 	-- end
-	
+
 	if attacker:IsNull() or victim:IsNull() then
 		return false
 	end
-	
+
 	-- Blood Mirror: Damage redirection
 	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_ally_redirect") then
 		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_ally_redirect")
@@ -218,7 +191,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			-- print("redirect_target for Blood Mirror is nil")
 		-- end
 	-- end
-	
+
 	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_caster_redirect") then
 		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_caster_redirect")
 
@@ -263,137 +236,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			-- print("redirect_target for Blood Mirror is nil")
 		-- end
 	-- end
-	
-	-- Orb of Reflection: Partial Damage return to the attacker (DOESN'T WORK ON ILLUSIONS!)
-	-- if victim:HasModifier("item_modifier_orb_of_reflection_passive_return") and (not victim:HasModifier("modifier_item_orb_of_reflection_active_reflect")) and victim:IsRealHero() then
 
-		-- -- Return or not
-		-- if not dont_reflect_flag then	
-			-- local ability
-			-- for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-				-- local this_item = victim:GetItemInSlot(i)
-				-- if this_item then
-					-- if this_item:GetName() == "item_orb_of_reflection" then
-						-- ability = this_item
-					-- end
-				-- end
-			-- end
-			
-			-- -- Fetch the damage return amount/percentage
-			-- local ability_level = ability:GetLevel() - 1
-			-- local damage_return = ability:GetLevelSpecialValueFor("passive_damage_return", ability_level)
-			
-			-- -- Calculating damage that will be returned to attacker
-			-- local new_damage = damage_after_reductions*damage_return/100
-			
-			-- if attacker:IsNull() or victim:IsNull() then
-				-- return false
-			-- end
-			
-			-- if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
-				-- -- Returning Damage to the attacker
-				-- local damage_table = {}
-				-- damage_table.victim = attacker
-				-- damage_table.attacker = victim
-				-- damage_table.damage_type = damage_type
-				-- damage_table.ability = ability
-				-- damage_table.damage = new_damage
-				-- damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK)
-				
-				-- ApplyDamage(damage_table)
-			-- end
-		-- end
-	-- end
-	
-	--if attacker:IsNull() or victim:IsNull() then
-		--return false
-	--end
-	
-	-- Infused Robe passive Damage Blocking any damage type after all reductions (DOESN'T WORK ON ILLUSIONS!)
-	if victim:HasModifier("item_modifier_infused_robe_damage_block") and (not victim:HasModifier("item_modifier_infused_robe_damage_barrier")) and victim:IsRealHero() and victim ~= attacker then
-		
-		local ability
-		for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-			local this_item = victim:GetItemInSlot(i)
-			if this_item then
-				if this_item:GetName() == "item_infused_robe" then
-					ability = this_item
-				end
-			end
-		end
-		-- Fetch the damage block amount
-		local ability_level = ability:GetLevel() - 1
-		local block_chance = ability:GetLevelSpecialValueFor("damage_block_chance", ability_level)
-		local damage_block = ability:GetLevelSpecialValueFor("damage_block", ability_level)
-		
-		if RollPercentage(block_chance) then
-			-- Calculating new/reduced damage and blocked damage
-			local new_damage = math.max(keys.damage - damage_block, 0)
-			local blocked_damage = keys.damage - new_damage -- max(blocked_damage) = damage_block
-			
-			if attacker:IsNull() or victim:IsNull() then
-				return false
-			end
-			
-			if (not attacker:IsTower()) and (not attacker:IsFountain()) then
-				-- Show block message
-				if damage_type == DAMAGE_TYPE_PHYSICAL then
-					SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, victim, blocked_damage, nil)
-				else
-					SendOverheadEventMessage(nil, OVERHEAD_ALERT_MAGICAL_BLOCK, victim, blocked_damage, nil)
-				end
-
-				-- Reduce damage
-				keys.damage = new_damage
-			end
-		end
-	end
-	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
-	-- Infused Robe Divine Barrier (Anti-Damage Shield/Shell)
-	if victim:HasModifier("item_modifier_infused_robe_damage_barrier") and keys.damage > 0 then
-		
-		local ability
-		for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-			local this_item = victim:GetItemInSlot(i)
-			if this_item then
-				if this_item:GetName() == "item_infused_robe" then
-					ability = this_item
-				end
-			end
-		end
-		-- Fetch the barrier block amount
-		local ability_level = ability:GetLevel() - 1
-		local barrier_absorb_damage = ability:GetLevelSpecialValueFor("barrier_block", ability_level)
-		
-		local absorbed_now = 0
-		local absorbed_already
-		if victim.anti_damage_shell_absorbed then
-			absorbed_already = victim.anti_damage_shell_absorbed
-		else
-			absorbed_already = 0
-		end
-
-		if keys.damage + absorbed_already < barrier_absorb_damage then
-			absorbed_now = keys.damage
-			victim.anti_damage_shell_absorbed = absorbed_already + keys.damage
-		else
-			-- Absorb up to the limit and end
-			absorbed_now = barrier_absorb_damage - absorbed_already
-			victim:RemoveModifierByName("item_modifier_infused_robe_damage_barrier")
-			victim.anti_damage_shell_absorbed = nil
-		end
-		-- Absorb damage with Anti-Damage shield/shell
-		keys.damage = keys.damage - absorbed_now
-	end
-	
-	if attacker:IsNull() or victim:IsNull() then
-		return false
-	end
-	
 	-- Disabling custom passive modifiers with Silver Edge: We first detect all attacks made with heroes that have silver edge in inventory on real heroes without spell immunity.
 	if (not damaging_ability) and attacker:HasModifier("modifier_item_silver_edge") and attacker:IsRealHero() and victim:IsRealHero() and (not victim:IsMagicImmune()) then
 		-- Is the victim breaked (passive_disabled) with Silver Edge?
@@ -403,7 +246,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			end
 		end
 	end
-	
+
 	-- Update the gold bounty of the hero before he dies
 	if USE_CUSTOM_HERO_GOLD_BOUNTY then
 		if attacker:IsControllableByAnyPlayer() and victim:IsRealHero() and keys.damage >= victim:GetHealth() then
@@ -450,11 +293,11 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			victim.changed_bounty = true
 		end
 	end
-	
+
 	if keys.damage <= 0 then
 		return false
 	end
-	
+
 	return true
 end
 

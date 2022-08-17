@@ -197,8 +197,6 @@ function modifier_item_orb_of_reflection_active_reflect:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW -- follow_origin
 end
 
--- "TextureName"		"custom/orb_of_reflection"
-
 function modifier_item_orb_of_reflection_active_reflect:GetStatusEffectName()
 	return "particles/status_fx/status_effect_blademail.vpcf"
 end

@@ -217,11 +217,13 @@ function modifier_item_stoneskin_active:GetModifierAvoidDamage(event)
   local ability = self:GetAbility()
   local chance = 30
   local radius = 400
+  local seed = DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1
   if ability and not ability:IsNull() then
     chance = ability:GetSpecialValueFor("stone_deflect_chance")
     radius = ability:GetSpecialValueFor("stone_deflect_radius")
+    seed = ability:GetEntityIndex()
   end
-  if event.ranged_attack == true and event.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK and RollPseudoRandomPercentage(chance, DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1, parent) == true then
+  if event.ranged_attack == true and event.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK and RollPseudoRandomPercentage(chance, seed, parent) then
     local units = FindUnitsInRadius(
       parent:GetTeamNumber(),
       parent:GetAbsOrigin(),

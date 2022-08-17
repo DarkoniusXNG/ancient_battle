@@ -32,7 +32,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110 130 150 170"
+		"AbilityManaCost"				"100 140 180 220"
 		
 		"AbilitySpecial"
 		{
@@ -55,7 +55,13 @@
 			"04"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"cooldown_scepter"				"3"
+				"scepter_cooldown"				"5"
+				"RequiresScepter"               "1"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"scepter_cast_point"			"0.1"
 				"RequiresScepter"               "1"
 			}
 		}

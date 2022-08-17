@@ -34,19 +34,23 @@ function modifier_custom_stout_shield_passive:DeclareFunctions()
 end
 
 function modifier_custom_stout_shield_passive:GetModifierPhysical_ConstantBlock()
-	local parent = self:GetParent()
-	local ability = self:GetAbility()
-	local chance = ability:GetSpecialValueFor("block_chance")
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+  local chance = ability:GetSpecialValueFor("block_chance")
 
-	if IsServer() then
-		if ability:PseudoRandom(chance) then
-			if parent:IsRangedAttacker() then
-				return ability:GetSpecialValueFor("damage_block_ranged")
-			else
-				return ability:GetSpecialValueFor("damage_block_melee")
-			end
-		end
-	end
+  if not ability or ability:IsNull() then
+    return 0
+  end
 
-	return 0
+  if IsServer() then
+    if RollPseudoRandomPercentage(chance, ability:GetEntityIndex(), parent) then
+      if parent:IsRangedAttacker() then
+        return ability:GetSpecialValueFor("damage_block_ranged")
+      else
+        return ability:GetSpecialValueFor("damage_block_melee")
+      end
+    end
+  end
+
+  return 0
 end

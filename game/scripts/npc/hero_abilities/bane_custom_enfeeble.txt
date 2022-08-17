@@ -37,19 +37,19 @@
 			"01" // reduces attack damage by a percentage -> don't change!
 			{
 				"var_type"						"FIELD_INTEGER"
-				"attack_damage_reduction"		"-35 -40 -45 -50"
+				"attack_damage_reduction"		"-25 -30 -35 -40"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"02" // reduces spell damage (but not item damage)
 			{
 				"var_type"						"FIELD_INTEGER"
-				"spell_damage_reduction"		"20 25 30 35"
+				"spell_damage_reduction"		"15 20 25 30"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"03"
 			{
 				"var_type"                      "FIELD_FLOAT"
-				"duration"                      "10.0"
+				"duration"                      "8"
 			}
 		}
 	}

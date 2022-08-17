@@ -22,12 +22,23 @@ function bane_custom_brain_sap:CastFilterResultTarget(target)
 	return default_result
 end
 
+function bane_custom_brain_sap:GetCastPoint()
+	local caster = self:GetCaster()
+	local delay = self.BaseClass.GetCastPoint(self)
+
+	if caster:HasScepter() then
+		delay = self:GetSpecialValueFor("scepter_cast_point")
+	end
+
+	return delay
+end
+
 function bane_custom_brain_sap:GetCooldown(nLevel)
 	local caster = self:GetCaster()
 	local cooldown = self.BaseClass.GetCooldown(self, nLevel)
 
 	if caster:HasScepter() then
-		cooldown = self:GetSpecialValueFor("cooldown_scepter")
+		cooldown = self:GetSpecialValueFor("scepter_cooldown")
 	end
 
 	return cooldown
