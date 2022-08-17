@@ -219,7 +219,7 @@ if IsServer() then
       ParticleManager:SetParticleControlForward(culling_kill_particle, 3, direction)
       ParticleManager:SetParticleControlForward(culling_kill_particle, 4, direction)
       ParticleManager:ReleaseParticleIndex(culling_kill_particle)
-	end
+    end
 
     if killed_a_hero then
       ability:EndCooldown()

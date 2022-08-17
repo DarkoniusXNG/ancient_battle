@@ -123,7 +123,7 @@ function item_splash_cannon:OnProjectileHit(target, location)
   if caster:IsRangedAttacker() then
     damage_table.damage = bonus_damage + splash_damage
   else
-  -- Melee casters don't apply splash
+    -- Melee casters don't apply splash
     damage_table.damage = bonus_damage
   end
 
@@ -162,6 +162,9 @@ function item_splash_cannon:OnProjectileHit(target, location)
       ApplyDamage(damage_table)
     end
   end
+  
+  -- Destroy trees
+  GridNav:DestroyTreesAroundPoint(origin, radius, false)
 
   -- Sound
   EmitSoundOnLocationWithCaster(location, "Splash_Cannon.Explosion", caster)

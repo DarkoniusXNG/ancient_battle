@@ -33,36 +33,27 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"100 140 180 220"
-		
-		"AbilitySpecial"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
 		{
-			"01"
+			"damage_and_heal"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_and_heal"				"75 150 225 300"
-				"LinkedSpecialBonus"			"special_bonus_unique_bane_custom_2"
+				"value"                                   "75 150 225 300"
+				"LinkedSpecialBonus"                      "special_bonus_unique_bane_custom_2"
 			}
-			"02"
+			"int_steal"                                   "2 3 4 5"
+			"int_steal_duration"                          "60"
+			"scepter_cooldown"
 			{
-				"var_type"						"FIELD_INTEGER"
-				"int_steal"						"2 3 4 5"
+				"value"                                   "5"
+				"RequiresScepter"                         "1"
 			}
-			"03"
+			"scepter_cast_point"
 			{
-				"var_type"						"FIELD_FLOAT"
-				"int_steal_duration"			"60.0"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"scepter_cooldown"				"5"
-				"RequiresScepter"               "1"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"scepter_cast_point"			"0.1"
-				"RequiresScepter"               "1"
+				"value"                                   "0.1"
+				"RequiresScepter"                         "1"
 			}
 		}
 	}

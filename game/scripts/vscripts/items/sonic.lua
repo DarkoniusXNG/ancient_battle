@@ -102,6 +102,7 @@ function modifier_item_sonic_active:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
     MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
+    MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT,
     MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE,
     --MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING
   }
@@ -122,6 +123,11 @@ function modifier_item_sonic_active:GetModifierMoveSpeedBonus_Percentage()
 end
 
 function modifier_item_sonic_active:GetModifierIgnoreMovespeedLimit()
+  return 1
+end
+
+-- Maybe Valve will change this some day into GetModifierIgnoreAttackspeedLimit ...
+function modifier_item_sonic_active:GetModifierAttackSpeed_Limit()
   return 1
 end
 

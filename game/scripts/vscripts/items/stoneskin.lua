@@ -245,7 +245,7 @@ function modifier_item_stoneskin_active:GetModifierAvoidDamage(event)
     end
     if closest and attacker then
       local info = {
-	    EffectName = attacker:GetRangedProjectileName(),
+        EffectName = attacker:GetRangedProjectileName(),
         Ability = ability,
         Source = parent,
         vSourceLoc = parent:GetAbsOrigin(),
@@ -269,12 +269,12 @@ function modifier_item_stoneskin_active:GetModifierAvoidDamage(event)
       -- Create a tracking projectile
       ProjectileManager:CreateTrackingProjectile(info)
 	  
-	  if ability then
-	    ability.deflect_attacker = attacker:GetEntityIndex()
+      if ability then
+        ability.deflect_attacker = attacker:GetEntityIndex()
         ability.deflect_damage = math.max(event.original_damage, event.damage)
-	  end
-	end
-	return 1
+      end
+    end
+    return 1
   end
 
   return 0

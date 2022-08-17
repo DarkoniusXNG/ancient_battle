@@ -34,7 +34,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01" // reduces attack damage by a percentage -> don't change!
+			"01" // reduces total attack damage by a percentage
 			{
 				"var_type"						"FIELD_INTEGER"
 				"attack_damage_reduction"		"-25 -30 -35 -40"

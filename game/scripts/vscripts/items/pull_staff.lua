@@ -395,7 +395,7 @@ if IsServer() then
     end
 
     -- Trigger Echo Strike with the slow
-	self:TriggerEchoStrike(target, true)
+    self:TriggerEchoStrike(target, true)
   end
 end
 
@@ -472,11 +472,11 @@ if IsServer() then
       return
     end
 
-	if parent:IsIllusion() or parent:IsRangedAttacker() then
+    if parent:IsIllusion() or parent:IsRangedAttacker() then
       return
     end
 
-	local ability = self:GetAbility()
+    local ability = self:GetAbility()
     local echo_strike_slow_duration = 0.8
     if ability and not ability:IsNull() then
       echo_strike_slow_duration = ability:GetSpecialValueFor("echo_strike_slow_duration")
@@ -503,7 +503,7 @@ if IsServer() then
       return
     end
 
-	if parent:IsIllusion() or parent:IsRangedAttacker() then
+    if parent:IsIllusion() or parent:IsRangedAttacker() then
       return
     end
 

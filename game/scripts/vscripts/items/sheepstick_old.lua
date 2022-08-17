@@ -113,9 +113,23 @@ if IsServer() then
     local caster = self:GetCaster()
     self.sheep_pfx = ParticleManager:CreateParticle("particles/items_fx/item_sheepstick.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
     ParticleManager:SetParticleControl(self.sheep_pfx, 0, parent:GetAbsOrigin())
+	
+    -- Decide which model
+    local random_number = RandomInt(1, 3)
+    if random_number == 1 then
+      self.model = "models/props_gameplay/pig.vmdl"
+    elseif random_number == 2 then
+      self.model = "models/props_gameplay/frog.vmdl"
+    else
+      self.model = "models/props_gameplay/chicken.vmdl"
+    end
   end
 
   function modifier_item_old_hex:OnRefresh()
+    if self.sheep_pfx then
+      ParticleManager:DestroyParticle(self.sheep_pfx, true)
+      ParticleManager:ReleaseParticleIndex(self.sheep_pfx)
+    end
     self:OnCreated()
   end
 
@@ -140,7 +154,7 @@ function modifier_item_old_hex:GetModifierMoveSpeedOverride()
 end
 
 function modifier_item_old_hex:GetModifierModelChange()
-  return "models/props_gameplay/pig.vmdl"
+  return self.model
 end
 
 function modifier_item_old_hex:GetVisualZDelta()

@@ -1,6 +1,6 @@
 lich_custom_dark_ritual = class({})
 
-function lich_custom_dark_ritual:CastFilterResultTarget(hTarget)
+function lich_custom_dark_ritual:CastFilterResultTarget(target)
   local caster = self:GetCaster()
   local caster_team = caster:GetTeamNumber()
   local has_talent = false
@@ -11,11 +11,21 @@ function lich_custom_dark_ritual:CastFilterResultTarget(hTarget)
     has_talent = true
   end
 
-  if hTarget:IsCreep() and not hTarget:IsConsideredHero() and not hTarget:IsCourier() and (not hTarget:IsAncient() or has_talent) and (hTarget:GetTeamNumber() == caster_team or has_talent) and not hTarget:IsMagicImmune() and not hTarget:IsRoshan() then
+  if target:IsCreep() and not target:IsConsideredHero() and not target:IsCourier() and (not target:IsAncient() or has_talent) and (target:GetTeamNumber() == caster_team or has_talent) and not target:IsMagicImmune() and not target:IsRoshan() then
 	return UF_SUCCESS
   end
 
-  return UnitFilter(hTarget, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, bit.bor(DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO), caster_team)
+  if target:IsRoshan() then
+    return UF_FAIL_CUSTOM
+  end
+
+  return UnitFilter(target, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, bit.bor(DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO), caster_team)
+end
+
+function lich_custom_dark_ritual:GetCustomCastErrorTarget(target)
+  if target:IsRoshan() then
+    return "#dota_hud_error_cant_cast_on_roshan"
+  end
 end
 
 function lich_custom_dark_ritual:OnSpellStart()
@@ -27,7 +37,7 @@ function lich_custom_dark_ritual:OnSpellStart()
   event.ability = self
 
   -- Sound
-  caster:EmitSound("Hero_Lich.SinisterGaze.Cast")
+  caster:EmitSound("Hero_Lich.SinisterGaze.Cast") -- "Ability.DarkRitual"
 
   -- Particle
   local part = ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_dark_ritual.vpcf", PATTACH_POINT_FOLLOW, target)
