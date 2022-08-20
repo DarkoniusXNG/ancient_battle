@@ -146,7 +146,7 @@ function modifier_pull_staff_active_buff:IsHidden()
 end
 
 function modifier_pull_staff_active_buff:IsDebuff()
-  return false
+  return self:GetParent():GetTeamNumber() ~= self:GetCaster():GetTeamNumber()
 end
 
 function modifier_pull_staff_active_buff:IsPurgable()

@@ -79,14 +79,12 @@ function modifier_banished_heal_amp:OnRefresh()
 end
 
 function modifier_banished_heal_amp:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
 		MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
 	}
-
-	return funcs
 end
 
 function modifier_banished_heal_amp:GetModifierHPRegenAmplify_Percentage()

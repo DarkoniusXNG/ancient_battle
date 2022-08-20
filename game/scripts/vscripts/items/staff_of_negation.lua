@@ -7,7 +7,7 @@ function Negate(keys)
 	local ability = keys.ability
 	local ability_level = ability:GetLevel() - 1
 	local radius = ability:GetLevelSpecialValueFor("radius", ability_level)
-	local summon_damage = 99999
+	--local summon_damage = 99999
 	local blink_disable_damage = 50
 
 	-- Targetting constants
@@ -32,9 +32,10 @@ function Negate(keys)
 			ability:ApplyDataDrivenModifier(caster, enemy, "item_modifier_negate_slow", nil)
 			enemy:AddNewModifier(caster, ability, "modifier_custom_leash_debuff", {duration = ability:GetLevelSpecialValueFor("duration", ability_level)})
 
-			if enemy:IsDominated() or enemy:IsSummoned() or enemy:IsIllusion() then
+			if enemy:IsDominated() or enemy:IsSummoned() or (enemy:IsIllusion() and not enemy:IsStrongIllusionCustom()) then
 				if not enemy:IsMagicImmune() then
-					ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
+					--ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = summon_damage, damage_type = ability:GetAbilityDamageType()})
+					enemy:Kill(ability, caster)
 				end
 			else
 				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = blink_disable_damage, damage_type = ability:GetAbilityDamageType()})
@@ -69,15 +70,11 @@ function Staff_Mana_Break(keys)
 
 	-- If better version of mana break is present, do nothing
 	if caster:HasModifier("modifier_item_true_manta_mana_break") then
-		return nil
-	end
-
-	-- To prevent crashes:
-	if not target then
 		return
 	end
 
-	if target:IsNull() then
+	-- To prevent crashes:
+	if not target or target:IsNull() then
 		return
 	end
 
@@ -87,8 +84,8 @@ function Staff_Mana_Break(keys)
 		return
     end
 
-	-- Don't affect buildings, wards and illusions
-	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsIllusion() then
+	-- Don't affect buildings, wards, illusions and spell-immune units
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsIllusion() or target:IsMagicImmune() then
 		return
 	end
 
@@ -102,23 +99,19 @@ function Staff_Mana_Break(keys)
 		end
 	end
 
-	-- Burn mana if target is not magic immune
-	if not target:IsMagicImmune() then
+	-- Burn mana
+	local target_mana = target:GetMana()
+	target:ReduceMana(mana_burn)
 
-		-- Burn mana
-		local target_mana = target:GetMana()
-		target:ReduceMana(mana_burn)
-
-		-- Deal bonus damage (Damage_per_burned_mana = 1)
-		if target_mana > mana_burn then
-			ApplyDamage({attacker = caster, victim = target, ability = ability, damage = mana_burn, damage_type = DAMAGE_TYPE_PHYSICAL})
-		else
-			ApplyDamage({attacker = caster, victim = target, ability = ability, damage = target_mana, damage_type = DAMAGE_TYPE_PHYSICAL})
-		end
+	-- Deal bonus damage (Damage_per_burned_mana = 1)
+	if target_mana > mana_burn then
+		ApplyDamage({attacker = caster, victim = target, ability = ability, damage = mana_burn, damage_type = DAMAGE_TYPE_PHYSICAL})
+	else
+		ApplyDamage({attacker = caster, victim = target, ability = ability, damage = target_mana, damage_type = DAMAGE_TYPE_PHYSICAL})
 	end
 
 	-- Sound and effect
-	if not target:IsMagicImmune() and target:GetMana() > 1 then
+	if target:GetMana() > 1 then
 		-- Plays the particle
 		local manaburn_fx = ParticleManager:CreateParticle("particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 		ParticleManager:SetParticleControl(manaburn_fx, 0, target:GetAbsOrigin() )

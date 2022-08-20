@@ -20,11 +20,7 @@ function LifestealOnAttackLanded(keys)
 	local damage_on_attack = keys.DamageOnAttack
 
 	-- To prevent crashes:
-	if not target then
-		return
-	end
-
-	if target:IsNull() then
+	if not target or target:IsNull() then
 		return
 	end
 
@@ -42,15 +38,11 @@ function LifestealOnAttackLanded(keys)
 	local lifesteal_melee = ability:GetLevelSpecialValueFor("lifesteal_percent_melee", ability:GetLevel() - 1)
 	local lifesteal_ranged = ability:GetLevelSpecialValueFor("lifesteal_percent_ranged", ability:GetLevel() - 1)
 
-	if not attacker then
+	if not attacker or attacker:IsNull() then
 		return
 	end
 
-	if attacker:IsNull() then
-		return
-	end
-
-	if attacker:IsRealHero() then
+	if attacker:IsRealHero() and attacker:IsAlive() then
 		local lifesteal_amount	
 		if attacker:IsRangedAttacker() then
 			lifesteal_amount = damage_on_attack*lifesteal_ranged*0.01
@@ -58,7 +50,7 @@ function LifestealOnAttackLanded(keys)
 			lifesteal_amount = damage_on_attack*lifesteal_melee*0.01
 		end
 
-		if lifesteal_amount > 0 and attacker:IsAlive() then
+		if lifesteal_amount > 0 then
 			attacker:Heal(lifesteal_amount, attacker)
 		end
 	end

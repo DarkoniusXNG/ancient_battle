@@ -308,6 +308,7 @@ if IsServer() then
     local attacker = event.attacker
     local target = event.target
 
+    -- Prevent the code below from executing multiple times for no reason
     if not self:IsFirstItemInInventory() then
       return
     end

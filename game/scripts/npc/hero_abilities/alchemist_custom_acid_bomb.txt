@@ -5,7 +5,7 @@
 	// Author: Darkonius
 	// Notes: OK; 2022;
 	// Linkens: Blocks;
-	// TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important.
+	// TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important. Radius increase talent
 	//=================================================================================================================
 	"alchemist_custom_acid_bomb"
 	{
@@ -68,7 +68,7 @@
 				"var_type"          	"FIELD_INTEGER"
 				"damage_per_second" 	"20 30 40 50"
 			}
-			"05" // Unstable Concoction (250); original Acid Bomb (200); Maledict (180)
+			"05" // Unstable Concoction (250 + 125); original Acid Bomb (200); Maledict (180 + 75)
 			{
 				"var_type"          	"FIELD_INTEGER"
 				"radius"            	"250"

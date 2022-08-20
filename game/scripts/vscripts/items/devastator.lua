@@ -111,6 +111,10 @@ function modifier_item_devastator_passive:IsPurgable()
   return false
 end
 
+function modifier_item_devastator_passive:GetAttributes()
+  return MODIFIER_ATTRIBUTE_MULTIPLE
+end
+
 function modifier_item_devastator_passive:OnCreated()
   local ability = self:GetAbility()
   if ability and not ability:IsNull() then
@@ -133,7 +137,38 @@ function modifier_item_devastator_passive:GetModifierPreAttack_BonusDamage()
 end
 
 function modifier_item_devastator_passive:GetModifierProjectileName()
-  return "particles/items_fx/desolator_projectile.vpcf"
+  if self:IsFirstItemInInventory() then
+    return "particles/items_fx/desolator_projectile.vpcf"
+  end
+end
+
+function modifier_item_devastator_passive:IsFirstItemInInventory()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+
+  if not IsServer() then
+    return true
+  end
+
+  local same_items = {}
+  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
+    local item = parent:GetItemInSlot(item_slot)
+    if item then
+      if item:GetAbilityName() == ability:GetAbilityName() then
+        table.insert(same_items, item)
+      end
+    end
+  end
+
+  if #same_items <= 1 then
+    return true
+  end
+
+  if same_items[1] == ability then
+    return true
+  end
+
+  return false
 end
 
 if IsServer() then
@@ -141,6 +176,11 @@ if IsServer() then
     local parent = self:GetParent()
     local ability = self:GetAbility()
     local target = event.target
+	
+    -- Prevent the code below from executing multiple times for no reason
+    if not self:IsFirstItemInInventory() then
+      return
+    end
 
     if parent ~= event.attacker then
       return

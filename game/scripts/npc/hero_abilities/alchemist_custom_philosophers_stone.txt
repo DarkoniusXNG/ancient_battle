@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Philosopher's Stone (E) - New Spell,
 	// Author: Darkonius
-	// Notes: OK; 19.12.2019;
+	// Notes: OK; 2022;
 	// TO_DO: It will need rework into ability_lua if you implement spell steal
 	//=================================================================================================================
 	"alchemist_custom_philosophers_stone"
@@ -15,7 +15,7 @@
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
-		"AbilityCastRange"				"750"
+		"AbilityCastRange"				"600 700 800 900"
 		"AbilityCastPoint"				"0.3"
 		
 		"AbilityCooldown"				"15"

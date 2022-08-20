@@ -230,8 +230,7 @@ function modifier_mana_transfer_leash_debuff:RemoveOnDeath()
 end
 
 function modifier_mana_transfer_leash_debuff:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_TETHERED] = true,
 	}
-	return state
 end

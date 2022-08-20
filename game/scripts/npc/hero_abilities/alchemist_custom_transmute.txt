@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
 	// Author: Darkonius
-	// Notes: OK; 2022;
+	// Notes: OK; 2022; Shard reduces cd, increases cast range and stun duration, adds damage
 	// Linkens: Blocks;
 	// TO_DO:
 	//=================================================================================================================
@@ -21,9 +21,12 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
 
+		"HasShardUpgrade"               "1"
+		"HasScepterUpgrade"				"1"
+
 		"MaxLevel"						"1"
 		"RequiredLevel"        			"6"
-		
+
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"80"
@@ -31,15 +34,13 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"250"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.5"
 		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"150"
 		"AbilityProcsMagicStick"		"1"
-
-		"HasScepterUpgrade"				"1"
 
 		"precache"
 		{
@@ -50,27 +51,36 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"stun_duration"                               "3"
+			"gold_bounty_multiplier"                      "2.5"
+			"cooldown_heroes"                             "80"
+			"cooldown_creeps"                             "40"
+			"shard_stun_duration"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"stun_duration"				"4"
+				"value"                                   "4"
+				"RequiresShard"                           "1"
 			}
-			"02"
+			"shard_cooldown_heroes"
 			{
-				"var_type"                  "FIELD_FLOAT"
-				"gold_bounty_multiplier"    "2.5"
+				"value"                                   "60"
+				"RequiresShard"                           "1"
 			}
-			"03"
+			"shard_cooldown_creeps"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"cooldown_heroes"           "80"
+				"value"                                   "30"
+				"RequiresShard"                           "1"
 			}
-			"04"
+			"shard_bonus_cast_range"
 			{
-				"var_type"                  "FIELD_INTEGER"
-				"cooldown_creeps"           "40"
+				"value"                                   "350"
+				"RequiresShard"                           "1"
+			}
+			"shard_hero_damage"
+			{
+				"value"                                   "300"
+				"RequiresShard"                           "1"
 			}
 		}
 	}

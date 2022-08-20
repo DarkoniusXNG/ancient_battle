@@ -577,6 +577,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_heavens_halberd_debuff",        -- doesn't pierce BKB, doesn't get removed with BKB
 				"modifier_silver_edge_debuff",            -- doesn't pierce BKB, doesn't get removed with BKB
 				"modifier_item_nullifier_mute",           -- pierces BKB, doesn't get removed with BKB
+				"modifier_pull_staff_active_buff",        -- doesn't pierce BKB, doesn't get removed with BKB
 			}
 			
 			RemoveTableOfModifiersFromUnit(target, ability_debuffs)
@@ -601,18 +602,22 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_giant_growth_active",
 				"modifier_drunken_fist_knockback",
 				"modifier_drunken_fist_bonus",
-				"modifier_mana_flare_armor_buff",
-				"modifier_mana_flare_aura_applier",
+				--"modifier_mana_flare_armor_buff",
+				--"modifier_mana_flare_aura_applier",
 				"modifier_absorb_bonus_mana_scepter",
 				"modifier_paladin_divine_shield",
 				"modifier_paladin_divine_shield_upgraded",
 				"modifier_black_king_bar_immune",
 				"item_modifier_forgotten_king_bar_damage_shield",
 				"modifier_slippers_of_halcyon_caster",
-				"item_modifier_infused_robe_damage_barrier",
+				"modifier_infused_robe_damage_barrier",
 				"modifier_item_orb_of_reflection_active_reflect",
 				"modifier_custom_marksmanship_buff",
-				"modifier_custom_death_pact"
+				"modifier_custom_death_pact",
+				"modifier_item_custom_butterfly_active",
+				"modifier_item_custom_heart_active",
+				"modifier_pull_staff_active_buff",
+				"modifier_item_stoneskin_active",
 			}
 			
 			RemoveTableOfModifiersFromUnit(target, undispellable_with_normal_dispel_buffs)

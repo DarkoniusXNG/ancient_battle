@@ -18,7 +18,7 @@ end
 function alchemist_custom_chemical_rage:OnSpellStart()
 	local caster = self:GetCaster()
 
-	-- Talent that applies Strong Dispel
+	-- Talent that applies Super Strong Dispel
 	local talent = caster:FindAbilityByName("special_bonus_unique_alchemist_custom_2")
 	if talent and talent:GetLevel() > 0 then
 		-- Apply Super Strong Dispel
@@ -30,7 +30,7 @@ function alchemist_custom_chemical_rage:OnSpellStart()
 
 	-- Disjoint disjointable/dodgeable projectiles
 	ProjectileManager:ProjectileDodge(caster)
-	
+
 	-- Sound
 	caster:EmitSound("Hero_Alchemist.ChemicalRage.Cast")
 
