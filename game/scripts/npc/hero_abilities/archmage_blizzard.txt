@@ -16,18 +16,18 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
+
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_5"
 		"AbilityCastRange"				"800"							// like original Archmage
 		"AbilityCastPoint"				"0.3"
-		
+
 		"AbilityCooldown"				"15"							// like old Sniper's Shrapnel
-		
+
 		"AbilityManaCost"				"100 120 140 160"
 		"AbilityProcsMagicStick"		"1"
-	
+
 		"AOERadius"     				"%radius"
-		
+
 		"AbilitySpecial"
 		{
 			"01" // Underlord Firestorm (400); Archmage original (200); Shrapnel (450); Ice Vortex (275);
@@ -35,12 +35,12 @@
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"450"
 			}
-			"02" // Underlord Firestorm (6); Archmage original (6/8/10); Shrapnel (10);
+			"02" // Underlord Firestorm (6); Archmage original (6/8/10/12); Shrapnel (10);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"duration"				"9"
 			}
-			"03" // Underlord Firestorm (25/40/55/70); Archmage original (30/40/50); Shrapnel (25/40/55/70);
+			"03" // Underlord Firestorm (25/40/55/70); Archmage original (30/40/50/60); Shrapnel (25/40/55/70);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"damage"				"25 40 55 70"
@@ -71,7 +71,7 @@
 				"double_radius"			"850"
 			}
 		}
-	
+
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
@@ -81,7 +81,7 @@
 			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
 			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
 		}
-	
+
 		"OnSpellStart"
 		{
 			"SpawnUnit"
@@ -102,13 +102,13 @@
 					}
 				}
 			}
-			
+
 			"DestroyTrees"
 			{
 				"Target" 		"POINT"
 				"Radius"		"%radius"
 			}
-			
+
 			"FireEffect"
 			{
 				"TargetPoint"			"POINT"
@@ -120,21 +120,21 @@
 				}
 			}
 	    }
-	    
+
 		"Modifiers"
 	    {
 	        "modifier_blizzard_thinker"
 			{
 				"IsHidden"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
 					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
 				}
-				
+
 				"States"
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -147,7 +147,7 @@
 					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"		   	"MODIFIER_STATE_VALUE_ENABLED"	
 				}
-	
+
 				"OnCreated"
 				{
 					"RunScript"
@@ -156,7 +156,7 @@
 						"Function"		"BlizzardStart"
 						"Target"		"TARGET"
 					}
-					
+
 					"FireSound" 
 					{
 						"EffectName"	"hero_Crystal.freezingField.explosion"
@@ -168,7 +168,7 @@
 							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD"
 						}
 					}
-					
+
 					"ApplyModifier"
 					{
 						"ModifierName"  "modifier_blizzard_slow"
@@ -193,7 +193,7 @@
 						"Type"		"DAMAGE_TYPE_MAGICAL"
 						"Damage"	"%damage"
 					}
-					
+
 					"RunScript"
 					{
 						"ScriptFile"		"heroes/archmage/blizzard.lua"
@@ -209,7 +209,7 @@
 						"Function"		"BlizzardWave"
 						"Target"		"TARGET"
 					}
-					
+
 					"FireEffect"
 					{
 						"TargetPoint"			"TARGET"
@@ -220,7 +220,7 @@
 							"01"				"%radius 2 %double_radius"
 						}
 					}
-					
+
 					"FireSound"
 					{
 						"EffectName"	"hero_Crystal.freezingField.explosion"
@@ -232,7 +232,7 @@
 							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD"
 						}
 					}
-					
+
 					"ApplyModifier"
 					{
 						"ModifierName"  "modifier_blizzard_slow"
@@ -244,7 +244,7 @@
 							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 						}
 					}
-					
+
 					"Damage"
 					{
 						"Target"
@@ -257,14 +257,14 @@
 						"Type"		"DAMAGE_TYPE_MAGICAL"
 						"Damage"	"%damage"
 					}
-					
+
 					"RunScript"
 					{
 						"ScriptFile"		"heroes/archmage/blizzard.lua"
 						"Function"			"BlizzardDamageBuildings"
 					}
 				}
-				
+
 				"OnDestroy"
 				{
 					"RunScript"
@@ -274,20 +274,20 @@
 					}
 				}
 			}
-	
+
 			"modifier_blizzard_slow" // needs tooltip
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
-				
+
 				"Duration"			"%slow_duration"
-				
+
 				"EffectName"			"particles/generic_gameplay/generic_slowed_cold.vpcf"
-				
+
 				"StatusEffectName"		"particles/status_fx/status_effect_frost_lich.vpcf"
 				"StatusEffectPriority"	"10"
-				
+
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%movement_slow" 

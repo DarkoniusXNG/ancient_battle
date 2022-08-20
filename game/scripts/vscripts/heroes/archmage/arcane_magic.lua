@@ -4,6 +4,15 @@ LinkLuaModifier("modifier_archmage_aura_applier", "heroes/archmage/arcane_magic.
 LinkLuaModifier("modifier_archmage_aura_effect", "heroes/archmage/arcane_magic.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_archmage_arcane_magic_buff", "heroes/archmage/arcane_magic.lua", LUA_MODIFIER_MOTION_NONE)
 
+LinkLuaModifier("modifier_archmage_shard_teleport_buff", "heroes/archmage/modifier_archmage_shard_teleport_buff.lua", LUA_MODIFIER_MOTION_NONE)
+
+function archmage_arcane_magic:Spawn()
+  if IsServer() then
+    local caster = self:GetCaster()
+    caster:AddNewModifier(caster, nil, "modifier_archmage_shard_teleport_buff", {})
+  end
+end
+
 function archmage_arcane_magic:GetIntrinsicModifierName()
   return "modifier_archmage_aura_applier"
 end

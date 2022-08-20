@@ -28,10 +28,10 @@
 		
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original (60, 90 at last level)
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration"					"60"
+				"duration"					"30"
 			}
 			"02" // only in tooltip
 			{
@@ -52,22 +52,22 @@
 			"05"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lvl_1_count"				"1 0 0 0"
+				"lvl_1_count"				"2 0 0 0"
 			}
 			"06"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lvl_2_count"				"0 1 0 0"
+				"lvl_2_count"				"0 2 0 0"
 			}
 			"07"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lvl_3_count"				"0 0 1 0"
+				"lvl_3_count"				"0 0 2 0"
 			}
 			"08"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lvl_4_count"				"0 0 0 1"
+				"lvl_4_count"				"0 0 0 2"
 			}
 			"09"
 			{

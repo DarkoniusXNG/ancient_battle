@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Archmage: Conjure Image (F) - New Spell, Ultimate, Makes the illusion out of the target hero
+	// Archmage: Conjure Image (F) - New Spell, Ultimate, Makes a strong illusion out of the target hero
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 2022;
+	// Notes: OK; 2022; Scepter makes super illusions out of enemies
 	// TO_DO: Add a visual effect (particle);
 	// ================================================================================================================
 	"archmage_conjure_image"
@@ -21,6 +21,8 @@
 
 		"MaxLevel"               		"1"
 		"RequiredLevel"					"6"
+
+		"HasScepterUpgrade"				"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------

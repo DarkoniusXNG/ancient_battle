@@ -11,24 +11,24 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"custom/archmage_summon_earth_golem"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
+
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastPoint"				"0.3"
-		
+
 		"AbilityCooldown"				"50 45 40 35" // original: 30
-	
+
 		"AbilityManaCost"				"125"
 		"AbilityProcsMagicStick"		"1"
-	
+
 		"precache"
 		{
 			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 			"particle"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
 		}
-		
+
 		"AbilitySpecial"
 		{
-			"01" // original (60)
+			"01" // original (80, even longer at last level)
 			{
 				"var_type"					"FIELD_INTEGER"
 				"duration"					"60"
@@ -75,7 +75,7 @@
 				"spawn_distance"			"250"
 			}
 		}
-	
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -83,7 +83,7 @@
 				"EffectName"	"Hero_EarthSpirit.StoneRemnant.Destroy"
 				"Target"		"CASTER"
 			}		
-	
+
 			"SpawnUnit"
 			{
 				"UnitName"		"npc_dota_earth_golem_1"
@@ -111,20 +111,20 @@
 						"ScriptFile"	"heroes/archmage/summon.lua"
 						"Function"		"SetUnitsMoveForward"
 					}
-					
+
 					"AttachEffect"
 					{
 						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"TARGET"
 					}				
-	
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_phased"
 						"Target"		"TARGET"
 					}
-			
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_summoned"
@@ -132,7 +132,7 @@
 					}
 				}
 			}
-	
+
 			"SpawnUnit"
 			{
 				"UnitName"		"npc_dota_earth_golem_2"
@@ -160,20 +160,20 @@
 						"ScriptFile"	"heroes/archmage/summon.lua"
 						"Function"		"SetUnitsMoveForward"
 					}
-					
+
 					"AttachEffect"
 					{
 						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"TARGET"
 					}				
-	
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_phased"
 						"Target"		"TARGET"
 					}
-			
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_summoned"
@@ -181,7 +181,7 @@
 					}
 				}
 			}
-	
+
 			"SpawnUnit"
 			{
 				"UnitName"		"npc_dota_earth_golem_3"
@@ -197,7 +197,7 @@
 						"distance"		"%spawn_distance"
 					}
 				}
-				
+
 				"Duration"		"%duration"
 				"UnitCount"		"%lvl_3_count"
 				"GrantsGold"	"1"
@@ -210,20 +210,20 @@
 						"ScriptFile"	"heroes/archmage/summon.lua"
 						"Function"		"SetUnitsMoveForward"
 					}				
-	
+
 					"AttachEffect"
 					{
 						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"TARGET"
 					}				
-	
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_phased"
 						"Target"		"TARGET"
 					}
-			
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_summoned"
@@ -231,7 +231,7 @@
 					}
 				}
 			}
-			
+
 			"SpawnUnit"
 			{
 				"UnitName"		"npc_dota_earth_golem_4"
@@ -247,7 +247,7 @@
 						"distance"		"%spawn_distance"
 					}
 				}
-				
+
 				"Duration"		"%duration"
 				"UnitCount"		"%lvl_4_count"
 				"GrantsGold"	"1"
@@ -260,20 +260,20 @@
 						"ScriptFile"	"heroes/archmage/summon.lua"
 						"Function"		"SetUnitsMoveForward"
 					}				
-	
+
 					"AttachEffect"
 					{
 						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"TARGET"
 					}				
-	
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_phased"
 						"Target"		"TARGET"
 					}
-			
+
 					"ApplyModifier"
 					{
 						"ModifierName"	"modifier_earth_golem_summoned"
@@ -282,27 +282,27 @@
 				}
 			}
 		}
-	
+
 		"Modifiers"
 		{
 			"modifier_earth_golem_summoned" // doesn't need tooltip
 			{
 				"IsHidden"			"1"
 				"IsPurgable"		"0"
-	
+
 				"States"
 				{
 					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
-	
+
 			"modifier_earth_golem_phased" // doesn't need tooltip
 			{
 				"IsHidden"		"1"
 				"IsPurgable"	"0"
-				
+
 				"Duration"		"1"
-				
+
 				"States"
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
