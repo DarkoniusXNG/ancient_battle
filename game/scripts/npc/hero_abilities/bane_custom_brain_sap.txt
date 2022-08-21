@@ -45,15 +45,15 @@
 			}
 			"int_steal"                                   "2 3 4 5"
 			"int_steal_duration"                          "60"
-			"scepter_cooldown"
+			"shard_cooldown"
 			{
 				"value"                                   "5"
-				"RequiresScepter"                         "1"
+				"RequiresShard"                           "1"
 			}
-			"scepter_cast_point"
+			"shard_cast_point"
 			{
 				"value"                                   "0.1"
-				"RequiresScepter"                         "1"
+				"RequiresShard"                           "1"
 			}
 		}
 	}

@@ -215,6 +215,7 @@ function ancient_battle_gamemode:InitGameMode()
 	LinkLuaModifier("modifier_custom_passive_xp", "modifiers/modifier_custom_passive_xp.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_leash_debuff", "modifiers/modifier_custom_leash_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_strong_illusion", "modifiers/modifier_custom_strong_illusion.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_super_illusion", "modifiers/modifier_custom_super_illusion.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("Ancient Battle custom game initialized.")
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 128)

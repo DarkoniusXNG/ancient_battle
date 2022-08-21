@@ -15,12 +15,10 @@ function modifier_custom_blade_storm:IsPurgable()
 end
 
 function modifier_custom_blade_storm:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL
 	}
-
-	return funcs
 end
 
 function modifier_custom_blade_storm:GetOverrideAnimation(params)
@@ -32,12 +30,10 @@ function modifier_custom_blade_storm:GetAbsoluteNoDamageMagical()
 end
 
 function modifier_custom_blade_storm:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
 		[MODIFIER_STATE_SILENCED] = true,
 	}
-
-	return state
 end
 
 function modifier_custom_blade_storm:OnCreated()
@@ -46,6 +42,10 @@ function modifier_custom_blade_storm:OnCreated()
 
 	local radius = ability:GetSpecialValueFor("radius")
 	local think_interval = ability:GetSpecialValueFor("think_interval")
+	self.damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+	self.think_interval = think_interval
+	self.radius = radius
+	self.damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
 
 	if IsServer() then
 		-- Particle
@@ -64,61 +64,67 @@ end
 
 function modifier_custom_blade_storm:OnIntervalThink()
 	local parent = self:GetParent()
-	local ability = self:GetAbility()
-	
-	local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
-	local think_interval = ability:GetSpecialValueFor("think_interval")
-	local radius = ability:GetSpecialValueFor("radius")
-	local damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
-	
-	if IsServer() then
-		-- Talent that increases damage:
-		local talent = parent:FindAbilityByName("special_bonus_unique_blademaster_2")
-		if talent and talent:GetLevel() > 0 then
-			damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
-		end
-		-- Talent that increases radius:
-		local talent_2 = parent:FindAbilityByName("special_bonus_unique_blademaster_1")
-		if talent_2 and talent_2:GetLevel() > 0 then
-			radius = radius + talent_2:GetSpecialValueFor("value")
-		end
-		local damage_per_tick = damage_per_second*think_interval
-		local damage_to_buildings = damage_per_tick*damage_to_buildings_percent/100
-		local parent_team = parent:GetTeamNumber()
-		local parent_position = parent:GetAbsOrigin()
-		
-		-- Targetting constants
-		local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
-		local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
-		local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
-		
-		-- Creating the damage table
-		local damage_table = {}
-		damage_table.attacker = parent
-		damage_table.damage_type = ability:GetAbilityDamageType() or DAMAGE_TYPE_MAGICAL
-		damage_table.ability = ability
 
-		-- Damage enemies (not buildings) in a radius
-		local enemies = FindUnitsInRadius(parent_team, parent_position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
-		for _, enemy in pairs(enemies) do
-			-- Sound on enemy
-			enemy:EmitSound("Hero_Juggernaut.BladeFury.Impact")
-			-- Apply damage
-			damage_table.victim = enemy
-			damage_table.damage = damage_per_tick
-			ApplyDamage(damage_table)
-		end
-		
-		-- Damage enemy buildings in a radius
-		local buildings = FindUnitsInRadius(parent_team, parent_position, nil, radius, target_team, DOTA_UNIT_TARGET_BUILDING, target_flags, FIND_ANY_ORDER, false)
-		for _, enemy_building in pairs(buildings) do
-			-- Sound on building
-			enemy_building:EmitSound("Hero_Juggernaut.BladeFury.Impact")
-			-- Apply damage
-			damage_table.victim = enemy_building
-			damage_table.damage = damage_to_buildings
-			ApplyDamage(damage_table)
-		end
+	local damage_per_second = self.damage_per_second
+	local think_interval = self.think_interval
+	local radius = self.radius
+	local damage_to_buildings_percent = self.damage_to_buildings_percent
+
+	-- Talent that increases damage:
+	local talent = parent:FindAbilityByName("special_bonus_unique_blademaster_2")
+	if talent and talent:GetLevel() > 0 then
+		damage_per_second = damage_per_second + talent:GetSpecialValueFor("value")
+	end
+
+	-- Talent that increases radius:
+	local talent_2 = parent:FindAbilityByName("special_bonus_unique_blademaster_1")
+	if talent_2 and talent_2:GetLevel() > 0 then
+		radius = radius + talent_2:GetSpecialValueFor("value")
+	end
+
+	local damage_per_tick = damage_per_second*think_interval
+	local damage_to_buildings = damage_per_tick*damage_to_buildings_percent/100
+	local parent_team = parent:GetTeamNumber()
+	local parent_position = parent:GetAbsOrigin()
+
+	local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
+	local damage_type = DAMAGE_TYPE_MAGICAL
+
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		target_team = ability:GetAbilityTargetTeam()
+		target_flags = ability:GetAbilityTargetFlags()
+		damage_type = ability:GetAbilityDamageType()
+	end
+
+	-- Creating the damage table
+	local damage_table = {}
+	damage_table.attacker = parent
+	damage_table.damage_type = damage_type
+	damage_table.ability = ability
+
+	-- Damage enemies (not buildings) in a radius
+	local enemies = FindUnitsInRadius(parent_team, parent_position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+	for _, enemy in pairs(enemies) do
+		-- Sound on enemy
+		enemy:EmitSound("Hero_Juggernaut.BladeFury.Impact")
+		-- Apply damage
+		damage_table.victim = enemy
+		damage_table.damage = damage_per_tick
+		ApplyDamage(damage_table)
+	end
+	
+	-- Damage enemy buildings in a radius
+	local buildings = FindUnitsInRadius(parent_team, parent_position, nil, radius, target_team, DOTA_UNIT_TARGET_BUILDING, target_flags, FIND_ANY_ORDER, false)
+	for _, enemy_building in pairs(buildings) do
+		-- Sound on building
+		enemy_building:EmitSound("Hero_Juggernaut.BladeFury.Impact")
+		-- Apply damage
+		damage_table.victim = enemy_building
+		damage_table.damage = damage_to_buildings
+		ApplyDamage(damage_table)
 	end
 end
 

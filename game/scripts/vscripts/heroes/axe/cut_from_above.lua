@@ -39,7 +39,7 @@ function axe_custom_cut_from_above:OnSpellStart()
   
   -- Apply motion controller
   caster:AddNewModifier(caster, self, "modifier_axe_leap_from_above", {
-    duration = duration + 0.03,
+    duration = duration + 0.01,
     x_tick = x_motion_tick,
     y_tick = y_motion_tick,
     height = height,

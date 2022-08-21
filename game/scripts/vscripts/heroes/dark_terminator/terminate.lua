@@ -6,13 +6,13 @@ dark_terminator_terminate = class({})
 function dark_terminator_terminate:GetCastPoint()
 	local delay = self.BaseClass.GetCastPoint(self)
 	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_dark_terminator_terminate")
-	if talent and talent:GetLevel() ~= 0 then
+	if talent and talent:GetLevel() > 0 then
 		delay = delay - talent:GetSpecialValueFor("value")
 	end
 	return delay
 end
 
-function dark_terminator_terminate:OnAbilityPhaseStart(keys)
+function dark_terminator_terminate:OnAbilityPhaseStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
 
@@ -158,19 +158,17 @@ function modifier_dark_terminator_terminate_target:GetEffectAttachType()
     return PATTACH_OVERHEAD_FOLLOW
 end
 
-function modifier_dark_terminator_terminate_target:CheckStates()
-    local state = {
+function modifier_dark_terminator_terminate_target:CheckState()
+    return {
 		[MODIFIER_STATE_INVISIBLE] = false,
 		[MODIFIER_STATE_PROVIDES_VISION] = true,
     }
-    return state
 end
 
 function modifier_dark_terminator_terminate_target:DeclareFunctions()
-	local funcs = { 
+	return { 
 		MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
 	}
-	return funcs
 end
 
 function modifier_dark_terminator_terminate_target:GetModifierProvidesFOWVision()
@@ -197,6 +195,10 @@ function modifier_dark_terminator_terminate_stun:IsStunDebuff()
 	return true
 end
 
+function modifier_dark_terminator_terminate_stun:IsPurgable()
+    return true
+end
+
 function modifier_dark_terminator_terminate_stun:GetEffectName()
 	return "particles/generic_gameplay/generic_stunned.vpcf"
 end
@@ -206,11 +208,9 @@ function modifier_dark_terminator_terminate_stun:GetEffectAttachType()
 end
 
 function modifier_dark_terminator_terminate_stun:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 	}
-
-	return funcs
 end
 
 function modifier_dark_terminator_terminate_stun:GetOverrideAnimation(params)
@@ -218,9 +218,7 @@ function modifier_dark_terminator_terminate_stun:GetOverrideAnimation(params)
 end
 
 function modifier_dark_terminator_terminate_stun:CheckState()
-  local state = {
-    [MODIFIER_STATE_STUNNED] = true,
-  }
-
-  return state
+	return {
+		[MODIFIER_STATE_STUNNED] = true,
+	}
 end

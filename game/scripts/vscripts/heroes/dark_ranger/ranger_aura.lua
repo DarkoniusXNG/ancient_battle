@@ -49,7 +49,11 @@ end
 
 function modifier_custom_ranger_aura_applier:GetAuraRadius()
 	local ability = self:GetAbility()
-	return ability:GetSpecialValueFor("radius")
+	if ability and not ability:IsNull() then
+		return ability:GetSpecialValueFor("radius")
+	else
+		return 1200
+	end
 end
 
 function modifier_custom_ranger_aura_applier:GetAuraSearchTeam()
@@ -130,12 +134,12 @@ function modifier_custom_ranger_aura_effect:OnRefresh()
 	local percent = 0
 	local attack_range = 0
 
-	if self.ability then
+	if not self.ability:IsNull() then
 		percent = self.ability:GetSpecialValueFor("agility_to_ranged_damage")
 		attack_range = self.ability:GetSpecialValueFor("bonus_attack_range")
 	end
 
-	if self.caster then
+	if not self.caster:IsNull() then
 		agility = self.caster:GetAgility()
 
         -- Talent that increases damage
@@ -168,7 +172,7 @@ function modifier_custom_ranger_aura_effect:DeclareFunctions()
 end
 
 function modifier_custom_ranger_aura_effect:GetModifierPreAttack_BonusDamage()
-	if self:GetCaster():PassivesDisabled() then
+	if self.caster:IsNull() or self.caster:PassivesDisabled() then
 		return 0
 	end
 
@@ -194,7 +198,7 @@ function modifier_custom_ranger_aura_effect:GetModifierAttackRangeBonus()
 end
 
 function modifier_custom_ranger_aura_effect:OnTooltip()
-	if self:GetCaster():PassivesDisabled() then
+	if self.caster:IsNull() or self.caster:PassivesDisabled() then
 		return 0
 	end
 	return self.bonus_damage

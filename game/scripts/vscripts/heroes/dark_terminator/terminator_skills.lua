@@ -31,12 +31,10 @@ function modifier_dark_terminator_headshot_passive:RemoveOnDeath()
 end
 
 function modifier_dark_terminator_headshot_passive:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_EVASION_CONSTANT,
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-
-	return funcs
 end
 
 function modifier_dark_terminator_headshot_passive:GetModifierEvasion_Constant()

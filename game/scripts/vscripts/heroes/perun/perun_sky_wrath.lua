@@ -239,7 +239,12 @@ function modifier_custom_sky_true_sight:GetModifierAura()
 end
 
 function modifier_custom_sky_true_sight:GetAuraRadius()
-  return self:GetAbility():GetSpecialValueFor("true_sight_radius")
+  local ability = self:GetAbility()
+  if ability and not ability:IsNull() then
+    return ability:GetSpecialValueFor("true_sight_radius")
+  else
+    return 750
+  end
 end
 
 function modifier_custom_sky_true_sight:GetAuraSearchTeam()

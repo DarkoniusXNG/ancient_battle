@@ -65,7 +65,11 @@ function modifier_perun_electric_shield:IsPurgable()
 end
 
 function modifier_perun_electric_shield:IsDebuff()
-	if self:GetParent():GetTeamNumber() ~= self:GetCaster():GetTeamNumber() then
+	local caster = self:GetCaster()
+	if not caster or caster:IsNull() then
+		return true
+	end
+	if self:GetParent():GetTeamNumber() ~= caster:GetTeamNumber() then
 		return true
 	else
 		return false
@@ -111,25 +115,27 @@ if IsServer() then
 	function modifier_perun_electric_shield:OnRefresh()
 		local ability = self:GetAbility()
 		local caster = self:GetCaster()
-
-		local radius = ability:GetSpecialValueFor("radius")
-		local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
 		
-		-- Talent that increases radius
-		local talent1 = caster:FindAbilityByName("special_bonus_unique_perun_2")
-		if talent1 and talent1:GetLevel() > 0 then
-			radius = radius + talent1:GetSpecialValueFor("value")
+		if ability and not ability:IsNull() and caster and not caster:IsNull() then
+			local radius = ability:GetSpecialValueFor("radius")
+			local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+			
+			-- Talent that increases radius
+			local talent1 = caster:FindAbilityByName("special_bonus_unique_perun_2")
+			if talent1 and talent1:GetLevel() > 0 then
+				radius = radius + talent1:GetSpecialValueFor("value")
+			end
+			
+			-- Talent that increases damage
+			local talent2 = caster:FindAbilityByName("special_bonus_unique_perun_3")
+			if talent2 and talent2:GetLevel() > 0 then
+				damage_per_second = damage_per_second + talent2:GetSpecialValueFor("value")
+			end
+			
+			self.radius = radius
+			self.damage_per_second = damage_per_second
+			self.interval = ability:GetSpecialValueFor("damage_interval")
 		end
-		
-		-- Talent that increases damage
-		local talent2 = caster:FindAbilityByName("special_bonus_unique_perun_3")
-		if talent2 and talent2:GetLevel() > 0 then
-			damage_per_second = damage_per_second + talent2:GetSpecialValueFor("value")
-		end
-		
-		self.radius = radius
-		self.damage_per_second = damage_per_second
-		self.interval = ability:GetSpecialValueFor("damage_interval")
 	end
 
 	function modifier_perun_electric_shield:OnIntervalThink()

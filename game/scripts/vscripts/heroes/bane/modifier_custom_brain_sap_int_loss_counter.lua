@@ -27,7 +27,3 @@ end
 function modifier_custom_brain_sap_int_loss_counter:RemoveOnDeath()
 	return true
 end
-
---function modifier_custom_brain_sap_int_loss_counter:GetAttributes()
-	--return MODIFIER_ATTRIBUTE_MULTIPLE
---end

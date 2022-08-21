@@ -195,7 +195,7 @@ if IsServer() then
 			return
 		end
 
-		if dead:IsRealHero() then
+		if dead:IsRealHero() and not dead:IsClone() and not dead:IsTempestDouble() and not dead.original then
 			self.hero_kills = self.hero_kills + 1
 
 			local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_fleshheap_count.vpcf", PATTACH_OVERHEAD_FOLLOW, parent)

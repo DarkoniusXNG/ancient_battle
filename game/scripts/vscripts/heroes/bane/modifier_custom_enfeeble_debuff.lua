@@ -26,8 +26,10 @@ end
 
 function modifier_custom_enfeeble_debuff:OnRefresh()
 	local ability = self:GetAbility()
-	self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
-	self.spell_damage_reduction = ability:GetSpecialValueFor("spell_damage_reduction")
+	if ability and not ability:IsNull() then
+		self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
+		self.spell_damage_reduction = ability:GetSpecialValueFor("spell_damage_reduction")
+	end
 end
 
 function modifier_custom_enfeeble_debuff:DeclareFunctions()

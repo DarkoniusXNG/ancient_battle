@@ -19,12 +19,10 @@ function modifier_astral_charge_buff:RemoveOnDeath()
 end
 
 function modifier_astral_charge_buff:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 	}
-
-	return state
 end
 
 function modifier_astral_charge_buff:OnCreated()
@@ -54,8 +52,10 @@ function modifier_astral_charge_buff:OnIntervalThink()
 
 		-- Destroy trees around the parent
 		local position = parent:GetAbsOrigin()
-		local tree_radius = ability:GetSpecialValueFor("tree_destroy_radius")
-		GridNav:DestroyTreesAroundPoint(position, tree_radius, false)
+		if ability and not ability:IsNull() then
+			local tree_radius = ability:GetSpecialValueFor("tree_destroy_radius")
+			GridNav:DestroyTreesAroundPoint(position, tree_radius, false)
+		end
 	end
 end
 

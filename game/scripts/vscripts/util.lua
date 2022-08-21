@@ -127,15 +127,7 @@ end
 ]]
 function HideAndCopyHero(target, caster)
 	if target and caster then
-		local caster_team = caster:GetTeamNumber()
-		local playerID = caster:GetPlayerOwnerID()
-		local target_name = target:GetUnitName()
-		local target_origin = target:GetAbsOrigin()
-		local target_ability_count = target:GetAbilityCount()
-		local target_HP = target:GetHealth()
-		local target_MP = target:GetMana()
-		local target_level = target:GetLevel()
-		
+		-- Hiding
 		target:Interrupt()
 		target:InterruptChannel()
 		target:AddNoDraw() -- needed for hiding the original hero
@@ -161,20 +153,47 @@ function HideAndCopyHero(target, caster)
 		CustomPassiveBreak(target, 100)
 		
 		-- Cycle through remaining hidden modifiers and bugging visual effects and remove them
-		for i=1, #hidden_modifiers do
+		for i = 1, #hidden_modifiers do
 			target:RemoveModifierByName(hidden_modifiers[i])	
 		end
+		
+		return CopyHero(target, caster)
+	else
+		print("target or caster are nil values.")
+		return
+	end
+end
+
+--[[ This function creates a copy of the target for the caster, returns the hScript copy;
+	Copy/Clone of the target hero is not invulnerable! You need a modifier for that too;
+	Used in HideAndCopyHero
+]]
+function CopyHero(target, caster)
+	if target and caster then
+		local caster_team = caster:GetTeamNumber()
+		local playerID = caster:GetPlayerOwnerID()
+		local target_name = target:GetUnitName()
+		local target_origin = target:GetAbsOrigin()
+		local target_ability_count = target:GetAbilityCount()
+		local target_HP = target:GetHealth()
+		local target_MP = target:GetMana()
+		local target_level = target:GetLevel()
 		
 		local ability_table = {
 			"dark_ranger_charm", 			-- obvious reasons, weird interactions
 			"paladin_eternal_devotion", 	-- disabling just in case, playerID issues
 			"perun_electric_trap", 			-- crashes
-			"archmage_mass_teleport" 		-- preventing abuse
+			"archmage_mass_teleport", 		-- preventing abuse
+			"dark_terminator_blink",        -- preventing abuse
+			"special_bonus_reincarnation_250",
 		}
 		local item_table = {
 			"item_tpscroll", 				-- preventing abuse
 			"item_travel_boots", 			-- preventing abuse
-			"item_travel_boots_2" 			-- preventing abuse
+			"item_travel_boots_2", 			-- preventing abuse
+			"item_rapier",
+			"item_gem",
+			"item_aegis",
 		}
 		
 		-- Creating copy of the target hero
@@ -185,7 +204,7 @@ function HideAndCopyHero(target, caster)
 		FindClearSpaceForUnit(copy, target_origin, false)
 		
 		-- Levelling up the Copy of the hero
-		for i = 1,target_level-1 do
+		for i = 1, target_level-1 do
 			copy:HeroLevelUp(false) -- false because we don't want to see level up effects
 		end
 
@@ -211,8 +230,8 @@ function HideAndCopyHero(target, caster)
 		end
 
 		-- Remove tp scrolls and neutral items from the copy (they have special item slots)
-		local u1 = copy:GetItemInSlot(15)
-		local u2 = copy:GetItemInSlot(16)
+		local u1 = copy:GetItemInSlot(DOTA_ITEM_TP_SCROLL)
+		local u2 = copy:GetItemInSlot(DOTA_ITEM_NEUTRAL_SLOT)
 		if u1 then
 			copy:RemoveItem(u1)
 		end
@@ -237,7 +256,7 @@ function HideAndCopyHero(target, caster)
 						disable_ability[abilitySlot+1] = 1
 					end
 				end
-				if disable_ability[abilitySlot+1] == 0 then
+				if disable_ability[abilitySlot+1] == 0 and abilityLevel > 0 then
 					copyAbility:SetLevel(abilityLevel)
 				end
 			end
@@ -260,9 +279,10 @@ function HideAndCopyHero(target, caster)
 		return copy
 	else
 		print("target or caster are nil values.")
-		return nil
+		return
 	end
 end
+
 
 --[[ This function interrupts, hides the hero and disables all his passives and auras; If he is not alive it revives him first;
 	This function is meant to be used on heroes that will not be unhidden afterwards.

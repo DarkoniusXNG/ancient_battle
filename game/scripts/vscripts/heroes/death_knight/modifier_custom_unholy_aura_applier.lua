@@ -15,8 +15,7 @@ function modifier_custom_unholy_aura_applier:IsPurgable()
 end
 
 function modifier_custom_unholy_aura_applier:IsAura()
-	local parent = self:GetParent()
-	if parent:PassivesDisabled() then
+	if self:GetParent():PassivesDisabled() then
 		return false
 	end
 	return true
@@ -36,7 +35,11 @@ end
 
 function modifier_custom_unholy_aura_applier:GetAuraRadius()
 	local ability = self:GetAbility()
-	return ability:GetSpecialValueFor("aura_radius")
+	if ability and not ability:IsNull() then
+		return ability:GetSpecialValueFor("aura_radius")
+	else
+		return 1200
+	end
 end
 
 function modifier_custom_unholy_aura_applier:GetAuraSearchTeam()

@@ -36,12 +36,6 @@ function modifier_custom_brain_sap_int_loss:OnCreated()
 	end
 end
 
-function modifier_custom_brain_sap_int_loss:OnRefresh()
-	local ability = self:GetAbility()
-
-	self.int_steal_amount = ability:GetSpecialValueFor("int_steal")
-end
-
 function modifier_custom_brain_sap_int_loss:OnDestroy()
 	if IsServer() then
 		local counter_modifier = self:GetParent():FindModifierByName("modifier_custom_brain_sap_int_loss_counter")
@@ -52,10 +46,9 @@ function modifier_custom_brain_sap_int_loss:OnDestroy()
 end
 
 function modifier_custom_brain_sap_int_loss:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_STATS_INTELLECT_BONUS
 	}
-	return funcs
 end
 
 function modifier_custom_brain_sap_int_loss:GetModifierBonusStats_Intellect()

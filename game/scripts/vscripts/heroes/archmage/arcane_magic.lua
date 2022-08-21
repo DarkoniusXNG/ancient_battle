@@ -128,17 +128,16 @@ end
 
 function modifier_archmage_aura_effect:OnCreated()
   local ability = self:GetAbility()
-  if ability then
-    self.mana_cost_reduction = ability:GetSpecialValueFor("aura_mana_cost_reduction_pct")
-    self.spell_amp = ability:GetSpecialValueFor("aura_spell_amp")
-    self.mana_regen = ability:GetSpecialValueFor("aura_mana_regen")
-    self.bonus_magic_resist = ability:GetSpecialValueFor("aura_magic_resistance")
-  end
+
+  self.mana_cost_reduction = ability:GetSpecialValueFor("aura_mana_cost_reduction_pct")
+  self.spell_amp = ability:GetSpecialValueFor("aura_spell_amp")
+  self.mana_regen = ability:GetSpecialValueFor("aura_mana_regen")
+  self.bonus_magic_resist = ability:GetSpecialValueFor("aura_magic_resistance")
 end
 
 function modifier_archmage_aura_effect:OnRefresh()
   local ability = self:GetAbility()
-  if ability then
+  if ability and not ability:IsNull() then
     self.mana_cost_reduction = ability:GetSpecialValueFor("aura_mana_cost_reduction_pct")
     self.spell_amp = ability:GetSpecialValueFor("aura_spell_amp")
     self.mana_regen = ability:GetSpecialValueFor("aura_mana_regen")
@@ -200,7 +199,7 @@ function modifier_archmage_arcane_magic_buff:OnCreated()
   local mana_regen_amp = 100
 
   local ability = self:GetAbility()
-  if ability then
+  if ability and not ability:IsNull() then
     cd_reduction = ability:GetSpecialValueFor("buff_cd_reduction")
     mana_regen_amp = ability:GetSpecialValueFor("buff_mana_regen_amp")
   end

@@ -20,7 +20,11 @@ end
 
 function modifier_death_knight_death_pit_thinker:GetAuraRadius()
 	local ability = self:GetAbility()
-	return ability:GetSpecialValueFor("radius")
+	if ability and not ability:IsNull() then
+		return ability:GetSpecialValueFor("radius")
+	else
+		return 300
+	end
 end
 
 function modifier_death_knight_death_pit_thinker:GetAuraSearchTeam()
@@ -71,27 +75,31 @@ end
 
 -- OnIntervalThink is needed only for the particles to repeat
 function modifier_death_knight_death_pit_thinker:OnIntervalThink()
-	if IsServer() then
-		local ability = self:GetAbility()
-		local radius = ability:GetSpecialValueFor("radius")
-		
-		local caster = ability:GetCaster()
-		local location = self.location or ability:GetCursorPosition()
-		
-		local particle = ParticleManager:CreateParticle("particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay.vpcf", PATTACH_CUSTOMORIGIN, caster)
-    	ParticleManager:SetParticleControl(particle, 0, location)
-		ParticleManager:SetParticleControl(particle, 1, Vector(radius, radius, radius))
-		ParticleManager:ReleaseParticleIndex(particle)
+	local ability = self:GetAbility()
+	local radius = self:GetAuraRadius()
+
+	local caster
+	local location = self.location
+	if ability and not ability:IsNull() then
+		caster = ability:GetCaster()
+		location = location or ability:GetCursorPosition()
+	else
+		caster = self:GetParent()
+		location = location or caster:GetAbsOrigin()
 	end
+
+	local particle = ParticleManager:CreateParticle("particles/econ/items/undying/undying_pale_augur/undying_pale_augur_decay.vpcf", PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(particle, 0, location)
+	ParticleManager:SetParticleControl(particle, 1, Vector(radius, radius, radius))
+	ParticleManager:ReleaseParticleIndex(particle)
 end
 
---[[
 function modifier_death_knight_death_pit_thinker:OnDestroy()
-	if IsServer() then
-		if self.particle then
-			ParticleManager:DestroyParticle(self.particle, false)
-			ParticleManager:ReleaseParticleIndex(self.particle)
-		end
+	if not IsServer() then
+		return
+	end
+	local parent = self:GetParent()
+	if parent and not parent:IsNull() then
+		parent:ForceKill(false)
 	end
 end
-]]

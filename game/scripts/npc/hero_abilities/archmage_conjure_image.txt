@@ -31,7 +31,7 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"60.0"
+		"AbilityCooldown"				"100"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@
 			"02" // not in tooltip
 			{
 				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_out"				"-20"
+				"illusion_damage_out"				"-30"
 			}
 			"03" // not in tooltip
 			{
@@ -60,7 +60,7 @@
 			"04" // tooltip only (illusion_damage_out + 100)
 			{
 				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_dealt"				"80"
+				"illusion_damage_dealt"				"70"
 				"CalculateSpellDamageTooltip"		"0"
 			}
 			"05" // tooltip only (illusion_damage_in + 100)

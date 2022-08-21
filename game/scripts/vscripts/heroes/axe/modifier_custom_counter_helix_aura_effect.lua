@@ -15,11 +15,9 @@ function modifier_custom_counter_helix_aura_effect:IsDebuff()
 end
 
 function modifier_custom_counter_helix_aura_effect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_ATTACK_START,
 	}
-
-	return funcs
 end
 
 if IsServer() then
@@ -41,6 +39,9 @@ if IsServer() then
 
 		if parent == attacker and target:HasModifier("modifier_custom_counter_helix_aura_applier") and (not target:PassivesDisabled()) then
 			local ability = self:GetAbility()
+			if not ability or ability:IsNull() then
+				return
+			end
 			local chance = ability:GetSpecialValueFor("trigger_chance")
 
 			if ability:PseudoRandom(chance) and ability:IsCooldownReady() then

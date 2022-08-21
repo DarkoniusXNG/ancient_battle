@@ -23,7 +23,3 @@ end
 function modifier_custom_brain_sap_int_gain_counter:IsPurgable()
 	return false
 end
-
---function modifier_custom_brain_sap_int_gain_counter:GetAttributes()
-	--return MODIFIER_ATTRIBUTE_MULTIPLE
---end

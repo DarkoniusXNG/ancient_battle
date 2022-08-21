@@ -30,6 +30,7 @@
 		"AbilityCastRange"                                "500 700 900"
 		"AbilityCastPoint"                                "0.3"
 		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
+		"AnimationPlaybackRate"                           "0.5"
 		"AoERadius"                                       "275"
 
 		// Time		

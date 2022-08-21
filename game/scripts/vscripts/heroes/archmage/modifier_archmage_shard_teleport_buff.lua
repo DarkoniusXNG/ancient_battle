@@ -1,7 +1,8 @@
 modifier_archmage_shard_teleport_buff = class({})
 
-function modifier_archmage_shard_teleport_buff:IsHidden()
-  return true
+function modifier_archmage_shard_teleport_buff:IsHidden() -- needs tooltip
+  local parent = self:GetParent()
+  return not parent:HasShardCustom()
 end
 
 function modifier_archmage_shard_teleport_buff:IsDebuff()
@@ -50,4 +51,15 @@ function modifier_archmage_shard_teleport_buff:CheckState()
   end
   
   return {}
+end
+
+function modifier_archmage_shard_teleport_buff:GetEffectName()
+  local parent = self:GetParent()
+  if parent:HasShardCustom() and parent:IsChanneling() then
+    return "particles/items_fx/black_king_bar_avatar.vpcf"
+  end
+end
+
+function modifier_archmage_shard_teleport_buff:GetEffectAttachType()
+  return PATTACH_ABSORIGIN_FOLLOW
 end
