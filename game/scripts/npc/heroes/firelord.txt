@@ -29,11 +29,11 @@
 		"Ability8"                  "generic_hidden"
 		"Ability9"                  "generic_hidden"
 
-		"Ability10"                 "special_bonus_spell_amplify_8"         // lvl 10 talent: same as Shadow Fiend
+		"Ability10"                 "special_bonus_movement_speed_20"       // lvl 10 talent: unique special_bonus_spell_amplify_8
 		"Ability11"                 "special_bonus_attack_speed_25"         // lvl 10 talent: same as Shadow Fiend
 
-		"Ability12"                 "special_bonus_hp_175"					// lvl 15 talent: special_bonus_unique_fire_lord_1
-		"Ability13"                 "special_bonus_movement_speed_20"		// lvl 15 talent: unique
+		"Ability12"                 "special_bonus_hp_350"					// lvl 15 talent: unique
+		"Ability13"                 "special_bonus_spell_amplify_12"		// lvl 15 talent: special_bonus_unique_fire_lord_1
 
 		"Ability14"                 "special_bonus_evasion_20"              // lvl 20 talent: unique
 		"Ability15"                 "special_bonus_lifesteal_20"			// lvl 20 talent: special_bonus_unique_fire_lord_2
@@ -65,7 +65,7 @@
 		"AttributeBaseAgility"		"20"									// SF (20); Ursa (18); original (20);
 		"AttributeAgilityGain"		"3.5"									// SF (3.5); Ursa (2.6); original (1.6);
 		"AttributeBaseIntelligence"	"18"									// SF (18); original (18); - don't change!
-		"AttributeIntelligenceGain"	"2.0"									// SF (2.2); original (2.5); - don't change!
+		"AttributeIntelligenceGain"	"2.2"									// SF (2.2); original (2.5); - don't change!
 
 		// Movement
 		//----------------------------------------------------------------

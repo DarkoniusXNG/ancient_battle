@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Fire Lord: Incinerate (T) - New Spell, Sand King Caustic Finale + Ursa Fury Swipes, autocast, orb
 	// Author: Darkonius
-	// Notes: OK; 27.12.2019;
+	// Notes: OK; 2022;
 	// TO_DO: If too weak -> rework it so the physical damage goes through spell immunity.
 	//=================================================================================================================
 	"firelord_incinerate"
@@ -35,15 +35,15 @@
 		{
 			"01" // Caustic Finale (6); Ursa Fury Swipes (8/12/16/20);
 			{
-				"var_type"						"FIELD_FLOAT"
-				"bonus_reset_time"				"8"
+				"var_type"						"FIELD_INTEGER"
+				"bonus_reset_time"				"8 10 12 14"
 			}
 			"02" // Fire Lord unique because Fire Lord is ranged hero
 			{
 				"var_type"						"FIELD_INTEGER"
 				"damage_per_stack"				"6 9 12 15"
 			}
-			"03" // sand king caustic finale: 90/130/170/220; unique values because of Flaming Presence
+			"03" // old sand king caustic finale: 90/130/170/220; unique values because of Flaming Presence
 			{
 				"var_type"						"FIELD_INTEGER"
 				"incineration_damage"			"75 100 125 150"
@@ -51,7 +51,7 @@
 			"04" // like Sand King's Caustic Finale
 			{
 				"var_type"						"FIELD_INTEGER"
-				"incineration_radius"			"400"
+				"incineration_radius"			"500"
 			}
 		}
 

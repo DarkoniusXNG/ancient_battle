@@ -19,7 +19,7 @@
 		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
 		
 		"ArmorPhysical"				"2"										// 5.2.2016;
-		"MagicalResistance"			"50"									// 5.2.2016
+		"MagicalResistance"			"60"									// 2022
 		
 		// Attack
 		//----------------------------------------------------------------
@@ -30,13 +30,13 @@
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"800"									// 5.2.2016;
-		"AttackRange"				"450"									// 5.2.2016;
+		"AttackRange"				"500"									// 2022;
 		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 		"ProjectileSpeed"			"900"									// 5.2.2016;
 		
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"12"									// 12.5.2018;
+		"BountyXP"					"10"									// 2022;
 		"BountyGoldMin"				"22"									// 12.5.2018;
 		"BountyGoldMax"				"36"									// 12.5.2018;
 		
@@ -88,7 +88,7 @@
 		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
 		
 		"ArmorPhysical"				"3"										// 5.2.2016;
-		"MagicalResistance"			"50"									// 5.2.2016;
+		"MagicalResistance"			"60"									// 2022;
 		
 		// Attack
 		//----------------------------------------------------------------
@@ -99,13 +99,13 @@
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"800"									// 5.2.2016;
-		"AttackRange"				"450"									// 5.2.2016;
+		"AttackRange"				"500"									// 2022;
 		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 		"ProjectileSpeed"			"900"									// 5.2.2016;
 		
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"12"									// 12.5.2018;
+		"BountyXP"					"10"									// 2022;
 		"BountyGoldMin"				"22"									// 12.5.2018;
 		"BountyGoldMax"				"36"									// 12.5.2018;
 		
@@ -147,7 +147,7 @@
 		//----------------------------------------------------------------
 		"BaseClass"					"npc_dota_creature"
 		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
-		"ModelScale"				"1.00"									// 12.5.2018;
+		"ModelScale"				"0.95"									// 2022;
 		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
 		"Level"						"3"										// 5.2.2016;
 		"IsSummoned"				"1"
@@ -156,7 +156,7 @@
 		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
 		
 		"ArmorPhysical"				"4"										// 5.2.2016;
-		"MagicalResistance"			"50"									// 5.2.2016;
+		"MagicalResistance"			"60"									// 2022;
 		
 		// Attack
 		//----------------------------------------------------------------
@@ -167,13 +167,13 @@
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"800"									// 5.2.2016;
-		"AttackRange"				"450"									// 5.2.2016;
+		"AttackRange"				"500"									// 2022;
 		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 		"ProjectileSpeed"			"900"									// 5.2.2016;
 		
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"12"									// 12.5.2018;
+		"BountyXP"					"10"									// 2022;
 		"BountyGoldMin"				"22"									// 12.5.2018;
 		"BountyGoldMax"				"36"									// 12.5.2018;
 		
@@ -215,7 +215,7 @@
 		//----------------------------------------------------------------
 		"BaseClass"					"npc_dota_creature"
 		"Model"						"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
-		"ModelScale"				"1.2"									// 12.5.2018;
+		"ModelScale"				"1.1"									// 2022;
 		"SoundSet"					"Creep_Good_Range"						// 14.3.2016;
 		"Level"						"4"										// 5.2.2016;
 		"IsSummoned"				"1"
@@ -224,7 +224,7 @@
 		"SelectionGroup"			"Lava_spawns"							// 5.2.2016;
 		
 		"ArmorPhysical"				"5"										// 5.2.2016;
-		"MagicalResistance"			"50"									// 5.2.2016;
+		"MagicalResistance"			"60"									// 2022;
 		
 		// Attack
 		//----------------------------------------------------------------
@@ -235,13 +235,13 @@
 		"AttackRate"				"1.5"
 		"AttackAnimationPoint"		"0.4"
 		"AttackAcquisitionRange"	"800"									// 5.2.2016;
-		"AttackRange"				"450"									// 5.2.2016;
+		"AttackRange"				"500"									// 2022;
 		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 		"ProjectileSpeed"			"900"									// 5.2.2016;
 		
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"12"									// 12.5.2018;
+		"BountyXP"					"10"									// 2022;
 		"BountyGoldMin"				"22"									// 12.5.2018;
 		"BountyGoldMax"				"36"									// 12.5.2018;
 		

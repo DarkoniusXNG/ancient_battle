@@ -4,7 +4,7 @@
 	// Fire Lord: Soul Burn (Q) - New Spell, Damages targeted unit, reduces/amplifies attack damage and silences enemies.
 	// Author: Darkonius
 	// Linkens: Blocks;
-	// Notes: OK; 26.12.2019; Dynamic cooldown, lower when cast on allies or self
+	// Notes: OK; 2022; Dynamic cooldown, lower when cast on allies or self
 	// TO_DO:
 	//================================================================================================================= 
 	"firelord_soul_burn"
@@ -18,19 +18,22 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 
+		"HasShardUpgrade"               "1"
+
 		"AbilityCastAnimation"			"ACT_DOTA_RAZE_1"
 		"AbilityCastRange"				"700 750 800 850" // like Skywrath Mage Ancient Seal; old Bloodrage (800);
-		"AbilityCastPoint"				"0.2" // like Bloodrage
+		"AbilityCastPoint"				"0.4" // like old Bloodrage
 
 		"AbilityCooldown"				"14" // like Skywrath Mage Ancient Seal
 
-		"AbilityManaCost"				"80 90 100 110"
+		"AbilityManaCost"				"80 90 100 110" // like Skywrath Mage Ancient Seal
 		"AbilityProcsMagicStick"		"1"
 
 		"precache"
 		{
 			"particle" 	"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf"
 			"particle"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger.vpcf"
+			"particle"	"particles/items2_fx/orchid_pop.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
 		}
 
@@ -54,7 +57,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"creep_duration"			"6"
+				"creep_duration"			"6 7 8 9"
 			}
 			"05" // this is duration on allies; like Bloodseeker's Bloodrage
 			{
@@ -70,13 +73,19 @@
 			"07" // this amplifies only attack damage
 			{
 				"var_type"						"FIELD_INTEGER"
-				"damage_amp"					"25 30 35 40"
+				"damage_amp"					"20 30 40 50"
 				"CalculateSpellDamageTooltip"	"0"
 			}
 			"08" // like Bloodseeker's Bloodrage cooldown
 			{
 				"var_type"						"FIELD_INTEGER"
 				"cooldown_allies"				"9 8 7 6"
+			}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"shard_damage_percent"          "30"
+				"RequiresShard"                 "1"
 			}
 		}
 

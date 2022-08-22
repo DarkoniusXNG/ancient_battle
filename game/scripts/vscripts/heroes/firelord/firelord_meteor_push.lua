@@ -4,8 +4,6 @@ end
 
 LinkLuaModifier("modifier_firelord_meteor_burn_debuff", "heroes/firelord/firelord_meteor_push.lua", LUA_MODIFIER_MOTION_NONE )
 
----------------------------------------------------------------------------------------------------
-
 function firelord_meteor_push:GetAOERadius()
 	return self:GetSpecialValueFor("meteor_radius")
 end
@@ -42,7 +40,7 @@ function firelord_meteor_push:OnSpellStart()
 
 	--Start the meteor in the air in a place where it'll be moving the same speed when flying and when rolling.
 	--local meteor_fly_original_point = (point - (velocity * delay)) + Vector (0, 0, height)
-	local meteor_fly_original_point = caster_location + Vector (0, 0, height)
+	local meteor_fly_original_point = caster_location + Vector(0, 0, height)
 
 	--Create a particle effect consisting of the meteor falling from the sky and landing at the target point.
 	local particle_effect = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_chaos_meteor_fly.vpcf", PATTACH_ABSORIGIN, caster)
@@ -164,6 +162,7 @@ function firelord_meteor_push:ProcsMagicStick()
 end
 
 ---------------------------------------------------------------------------------------------------
+
 if modifier_firelord_meteor_burn_debuff == nil then
 	modifier_firelord_meteor_burn_debuff = class({})
 end
@@ -206,22 +205,6 @@ function modifier_firelord_meteor_burn_debuff:OnCreated()
 
 		-- Start interval
 		self:StartIntervalThink(damage_interval)
-	end
-end
-
-function modifier_firelord_meteor_burn_debuff:OnRefresh()
-	if IsServer() then
-		local ability = self:GetAbility()
-		local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
-		local damage_interval = ability:GetSpecialValueFor("damage_interval")
-	
-		self.damage_table = {
-			victim = self:GetParent(),
-			attacker = self:GetCaster(),
-			damage = damage_per_second*damage_interval,
-			damage_type = DAMAGE_TYPE_MAGICAL,
-			ability = ability,
-		}
 	end
 end
 

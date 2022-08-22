@@ -30,7 +30,7 @@
 		
 		"AbilitySpecial"
 		{
-			"01"
+			"01" // original (70);
 			{
 				"var_type"                                "FIELD_INTEGER"
 				"lava_spawn_duration"                     "40"
