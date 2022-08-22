@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// HERO: Electrician Chatterjee; 2022;
 	// Notes: OK;
-	// TO_DO: electrician_electric_shield fix and shard
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_electrician"
 	{
@@ -41,13 +41,13 @@
 		"Ability11"                                       "special_bonus_electrician_static_grip_damage"
 
 		"Ability12"                                       "special_bonus_electrician_electric_shield_damage"
-		"Ability13"                                       "special_bonus_spell_lifesteal_15"
+		"Ability13"                                       "special_bonus_electrician_cleansing_shock_pierce"
 
 		"Ability14"                                       "special_bonus_electrician_energy_absorption_cooldown"
 		"Ability15"                                       "special_bonus_electrician_cleansing_shock_stun"
 
 		"Ability16"                                       "special_bonus_electrician_static_grip_non_channel"
-		"Ability17"                                       "special_bonus_electrician_cleansing_shock_pierce"
+		"Ability17"                                       "special_bonus_spell_lifesteal_30"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -58,8 +58,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"BaseAttackSpeed"                                 "100"
-		"AttackDamageMin"                                 "30"
-		"AttackDamageMax"                                 "38"
+		"AttackDamageMin"                                 "35"
+		"AttackDamageMax"                                 "40"
 		"AttackRate"                                      "1.7"
 		"AttackAnimationPoint"                            "0.5"
 		"AttackAcquisitionRange"                          "600"

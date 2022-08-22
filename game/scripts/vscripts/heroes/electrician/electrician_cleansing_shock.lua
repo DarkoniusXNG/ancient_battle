@@ -1,10 +1,7 @@
 electrician_cleansing_shock = class({})
 
 LinkLuaModifier("modifier_electrician_cleansing_shock_ally", "heroes/electrician/electrician_cleansing_shock.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_electrician_cleansing_shock_enemy", "heroes/electrician/electrician_cleansing_shock.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
-LinkLuaModifier("modifier_special_bonus_unique_electrician_cleansing_shock_pierce", "heroes/electrician/electrician_cleansing_shock.lua", LUA_MODIFIER_MOTION_NONE)
-
---------------------------------------------------------------------------------
+LinkLuaModifier("modifier_electrician_cleansing_shock_enemy", "heroes/electrician/electrician_cleansing_shock.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- CastFilterResultTarget is not called on a Server at all?
 function electrician_cleansing_shock:CastFilterResultTarget(target)
@@ -13,7 +10,8 @@ function electrician_cleansing_shock:CastFilterResultTarget(target)
   if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
     local caster = self:GetCaster()
     -- Talent that allows to target Spell Immune units
-    if caster:HasModifier("modifier_special_bonus_unique_electrician_cleansing_shock_pierce") then
+    local talent = caster:FindAbilityByName("special_bonus_electrician_cleansing_shock_pierce")
+    if talent and talent:GetLevel() > 0 then
       return UF_SUCCESS
     end
   end
@@ -21,23 +19,8 @@ function electrician_cleansing_shock:CastFilterResultTarget(target)
   return default_result
 end
 
-if IsServer() then
-  function electrician_cleansing_shock:OnHeroCalculateStatBonus()
-    local caster = self:GetCaster()
-    -- Check for talent that allows targetting spell immune
-    local talent = caster:FindAbilityByName("special_bonus_electrician_cleansing_shock_pierce")
-    if talent and talent:GetLevel() > 0 then
-      if not caster:HasModifier("modifier_special_bonus_unique_electrician_cleansing_shock_pierce") then
-        caster:AddNewModifier(caster, talent, "modifier_special_bonus_unique_electrician_cleansing_shock_pierce", {})
-      end
-    else
-      caster:RemoveModifierByName("modifier_special_bonus_unique_electrician_cleansing_shock_pierce")
-    end
-  end
-end
-
 function electrician_cleansing_shock:GetManaCost(level)
-	local caster = self:GetCaster()
+  local caster = self:GetCaster()
   local base_mana_cost = self.BaseClass.GetManaCost(self, level)
   if caster:HasScepter() then
     return self:GetSpecialValueFor("mana_cost_scepter")
@@ -54,7 +37,7 @@ function electrician_cleansing_shock:OnSpellStart()
 	self.hitTargets = {}
 
 	if caster:HasScepter() then
-		self:ApplyEffect( caster )
+		self:ApplyEffect(caster)
 	end
 
 	-- do the visual effect for the initial target
@@ -62,9 +45,6 @@ function electrician_cleansing_shock:OnSpellStart()
 
 	-- cast sound
 	caster:EmitSound( "Hero_Tinker.Laser" )
-
-  -- cast animation
-  --caster:StartGesture( ACT_DOTA_CAST_ABILITY_1 )
 
 	-- trigger and get blocked by linkens
 	if not target:TriggerSpellAbsorb( self ) then
@@ -112,7 +92,7 @@ end
 --------------------------------------------------------------------------------
 
 -- helper function for applying the purge and move speed change
-function electrician_cleansing_shock:ApplyEffect( target )
+function electrician_cleansing_shock:ApplyEffect(target)
   local caster = self:GetCaster()
   local duration = self:GetSpecialValueFor("duration")
 
@@ -123,7 +103,7 @@ function electrician_cleansing_shock:ApplyEffect( target )
       local talent_1 = caster:FindAbilityByName("special_bonus_electrician_cleansing_shock_pierce")
       if not talent_1 then
         return
-      elseif talent_1:GetLevel() == 0 then
+      elseif talent_1:GetLevel() <= 0 then
         return
       end
     end
@@ -229,160 +209,133 @@ function electrician_cleansing_shock:FindBounceTarget( origin, radius )
 		end
 	end
 
-	return nil
-end
-
---------------------------------------------------------------------------------
-
-modifier_electrician_cleansing_shock_ally = class({})
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:IsDebuff()
-	return false
-end
-
-function modifier_electrician_cleansing_shock_ally:IsHidden()
-	return false
-end
-
-function modifier_electrician_cleansing_shock_ally:IsPurgable()
-	return true
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:OnCreated( event )
-	local spell = self:GetAbility()
-	local interval = spell:GetSpecialValueFor( "speed_update_interval" )
-	self.moveSpeed = spell:GetSpecialValueFor( "move_speed_bonus" )
-	self.intervalChange = self.moveSpeed / ( self:GetDuration() / interval )
-
-	self:StartIntervalThink( interval )
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:OnRefresh( event )
-	local spell = self:GetAbility()
-	local interval = spell:GetSpecialValueFor( "speed_update_interval" )
-	self.moveSpeed = spell:GetSpecialValueFor( "move_speed_bonus" )
-	self.intervalChange = self.moveSpeed / ( self:GetDuration() / interval )
-
-	self:StartIntervalThink( interval )
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:OnIntervalThink()
-	self.moveSpeed = self.moveSpeed - self.intervalChange
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:DeclareFunctions()
-	local func = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-	}
-
-	return func
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_ally:GetModifierMoveSpeedBonus_Percentage( event )
-	return self.moveSpeed
-end
-
---------------------------------------------------------------------------------
-
-modifier_electrician_cleansing_shock_enemy = class({})
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:IsDebuff()
-	return true
-end
-
-function modifier_electrician_cleansing_shock_enemy:IsHidden()
-	return false
-end
-
-function modifier_electrician_cleansing_shock_enemy:IsPurgable()
-	return true
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:OnCreated( event )
-  local parent = self:GetParent()
-  local spell = self:GetAbility()
-  local interval = spell:GetSpecialValueFor( "speed_update_interval" )
-  local slow = spell:GetSpecialValueFor( "slow" )
-  if IsServer() then
-    self.moveSpeed = parent:GetValueChangedByStatusResistance( slow )
-    self.intervalChange = self.moveSpeed / ( self:GetDuration() / interval )
-  else
-    self.moveSpeed = slow
-    self.intervalChange = slow / ( self:GetDuration() / interval )
-  end
-
-	self:StartIntervalThink( interval )
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:OnRefresh( event )
-  local parent = self:GetParent()
-  local spell = self:GetAbility()
-  local interval = spell:GetSpecialValueFor( "speed_update_interval" )
-  local slow = spell:GetSpecialValueFor( "slow" )
-  if IsServer() then
-    self.moveSpeed = parent:GetValueChangedByStatusResistance( slow )
-    self.intervalChange = self.moveSpeed / ( self:GetDuration() / interval )
-  else
-    self.moveSpeed = slow
-    self.intervalChange = slow / ( self:GetDuration() / interval )
-  end
-
-	self:StartIntervalThink( interval )
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:OnIntervalThink()
-	self.moveSpeed = self.moveSpeed - self.intervalChange
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:DeclareFunctions()
-	local func = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-	}
-
-	return func
-end
-
---------------------------------------------------------------------------------
-
-function modifier_electrician_cleansing_shock_enemy:GetModifierMoveSpeedBonus_Percentage( event )
-	return -self.moveSpeed
+	return
 end
 
 ---------------------------------------------------------------------------------------------------
 
--- Modifier on caster used for talent that allows piercing spell immunity
-modifier_special_bonus_unique_electrician_cleansing_shock_pierce = class({})
+modifier_electrician_cleansing_shock_ally = class({})
 
-function modifier_special_bonus_unique_electrician_cleansing_shock_pierce:IsHidden()
+function modifier_electrician_cleansing_shock_ally:IsDebuff()
+  return false
+end
+
+function modifier_electrician_cleansing_shock_ally:IsHidden()
+  return false
+end
+
+function modifier_electrician_cleansing_shock_ally:IsPurgable()
   return true
 end
 
-function modifier_special_bonus_unique_electrician_cleansing_shock_pierce:IsPurgable()
+function modifier_electrician_cleansing_shock_ally:OnCreated()
+  local ability = self:GetAbility()
+  local interval = 0.5
+  local move_speed = 30
+  local attack_speed = 60
+  if ability and not ability:IsNull() then
+    interval = ability:GetSpecialValueFor("speed_update_interval")
+    move_speed = ability:GetSpecialValueFor("move_speed_bonus")
+    attack_speed = ability:GetSpecialValueFor("attack_speed_bonus")
+  end
+
+  self.moveSpeed = move_speed
+  self.attackSpeed = attack_speed
+
+  local duration = self:GetDuration()
+  self.moveSpeedChange = self.moveSpeed / ( duration / interval )
+  self.attackSpeedChange = self.attackSpeed / ( duration / interval )
+
+  self:StartIntervalThink(interval)
+end
+
+function modifier_electrician_cleansing_shock_ally:OnRefresh()
+  self:OnCreated()
+end
+
+function modifier_electrician_cleansing_shock_ally:OnIntervalThink()
+  self.moveSpeed = self.moveSpeed - self.moveSpeedChange
+  self.attackSpeed = self.attackSpeed - self.attackSpeedChange
+end
+
+function modifier_electrician_cleansing_shock_ally:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+  }
+end
+
+function modifier_electrician_cleansing_shock_ally:GetModifierMoveSpeedBonus_Percentage()
+  return math.max(0, self.moveSpeed)
+end
+
+function modifier_electrician_cleansing_shock_ally:GetModifierAttackSpeedBonus_Constant()
+  return math.max(0, self.attackSpeed)
+end
+
+---------------------------------------------------------------------------------------------------
+
+modifier_electrician_cleansing_shock_enemy = class({})
+
+function modifier_electrician_cleansing_shock_enemy:IsDebuff()
+  return true
+end
+
+function modifier_electrician_cleansing_shock_enemy:IsHidden()
   return false
 end
 
-function modifier_special_bonus_unique_electrician_cleansing_shock_pierce:RemoveOnDeath()
-  return false
+function modifier_electrician_cleansing_shock_enemy:IsPurgable()
+  return true
+end
+
+function modifier_electrician_cleansing_shock_enemy:OnCreated()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+  local interval = 0.5
+  local move_slow = 40
+  local attack_slow = 40
+  if ability and not ability:IsNull() then
+    interval = ability:GetSpecialValueFor("speed_update_interval")
+    move_slow = ability:GetSpecialValueFor("move_slow")
+    attack_slow = ability:GetSpecialValueFor("attack_slow")
+  end
+
+  if IsServer() then
+    self.moveSpeed = parent:GetValueChangedByStatusResistance(move_slow)
+    self.attackSpeed = parent:GetValueChangedByStatusResistance(attack_slow)
+  else
+    self.moveSpeed = move_slow
+    self.attackSpeed = attack_slow
+  end
+
+  local duration = self:GetDuration()
+  self.moveSpeedChange = self.moveSpeed / ( duration / interval )
+  self.attackSpeedChange = self.attackSpeed / ( duration / interval )
+
+  self:StartIntervalThink(interval)
+end
+
+function modifier_electrician_cleansing_shock_enemy:OnRefresh()
+  self:OnCreated()
+end
+
+function modifier_electrician_cleansing_shock_enemy:OnIntervalThink()
+  self.moveSpeed = self.moveSpeed - self.moveSpeedChange
+  self.attackSpeed = self.attackSpeed - self.attackSpeedChange
+end
+
+function modifier_electrician_cleansing_shock_enemy:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+  }
+end
+
+function modifier_electrician_cleansing_shock_enemy:GetModifierMoveSpeedBonus_Percentage()
+  return math.min(0, 0 - math.abs(self.moveSpeed))
+end
+
+function modifier_electrician_cleansing_shock_enemy:GetModifierAttackSpeedBonus_Constant()
+  return math.min(0, 0 - math.abs(self.attackSpeed))
 end

@@ -33,49 +33,20 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01" // original: 300
+      "radius"                                            "350" // original: 300
+      "damage"                                            "90 160 230 300" // original (40/75/115/150 but pure);
+      "mana_absorb_base"                                  "12 16 20 24" // original: 12/16/20/24
+      "mana_absorb_percentage" 
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "350"
-      }
-      "02" // original (40/75/115/150 but pure);
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "90 160 230 300"
-      }
-      "03" // original: 12/16/20/24
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_absorb_base"                                "16 28 40 52"
-      }
-      "04" // original: 8/10/12/14%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_absorb_percentage"                          "8 10 12 14"
+        "value"                                           "8 10 12 14" // original: 8/10/12/14%
         "LinkedSpecialBonus"                              "special_bonus_electrician_energy_absorption_mana"
       }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "speed_absorb_heroes"                             "10 15 20 25"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "speed_absorb_non_heroes"                         "5"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "7.0"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_mana_cap"                                  "300 400 500 600"
-      }
+      "speed_absorb_heroes"                               "10 15 20 25"
+      "speed_absorb_non_heroes"                           "10"
+      "duration"                                          "7.0"
+      "bonus_mana_cap"                                    "300 400 500 600"
     }
 
     // Precache

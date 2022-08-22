@@ -8,14 +8,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/electrician/electrician_static_grip.lua"
+    "AbilityTextureName"                                  "custom/electrician_static_grip"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
-    "AbilityTextureName"                                  "custom/electrician_static_grip"
-    "ScriptFile"                                          "heroes/electrician/electrician_static_grip.lua"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -34,35 +34,21 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
+      "channel_time"                                      "1.75 2.5 3.25 4.0"
+      "damage_interval"
       {
-        "var_type"                                        "FIELD_FLOAT"
-        "channel_time"                                    "1.75 2.5 3.25 4.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_interval"                                 "0.25"
+        "value"                                           "0.25"
         "CalculateSpellDamageTooltip"                     "0"
       }
-      "03"
+      "damage_per_second"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second"                               "50 60 70 80"
+        "value"                                           "50 60 70 80"
         "LinkedSpecialBonus"                              "special_bonus_electrician_static_grip_damage"
       }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "pull_speed"                                      "140"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "pull_buffer"                                     "150"
-      }
+      "pull_speed"                                        "140"
+      "pull_buffer"                                       "150"
     }
 
     // Precache
@@ -92,7 +78,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "30"
+        "value"                                           "40"
       }
     }
   }
