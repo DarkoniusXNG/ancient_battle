@@ -515,7 +515,7 @@ end
 
 modifier_pull_staff_echo_strike_slow = class({})
 
-function modifier_pull_staff_echo_strike_slow:IsHidden()
+function modifier_pull_staff_echo_strike_slow:IsHidden() -- needs tooltip
   return false
 end
 

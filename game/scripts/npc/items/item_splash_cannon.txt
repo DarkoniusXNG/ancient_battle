@@ -80,7 +80,7 @@
       "bonus_health_regen"                              "3"
       "bonus_attack_range"                              "160" // ranged only
       "bonus_damage"                                    "25"
-      "passive_splash_radius"                           "250"
+      "passive_splash_radius"                           "300"
       "passive_splash_percent"                          "40"
       "active_damage"                                   "100"
       "active_radius"                                   "500"

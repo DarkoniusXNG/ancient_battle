@@ -169,5 +169,6 @@ function modifier_item_old_hex:CheckState()
     [MODIFIER_STATE_MUTED] = true,
     [MODIFIER_STATE_PASSIVES_DISABLED] = true,
     [MODIFIER_STATE_BLOCK_DISABLED] = true,
+    [MODIFIER_STATE_EVADE_DISABLED] = true,
   }
 end
