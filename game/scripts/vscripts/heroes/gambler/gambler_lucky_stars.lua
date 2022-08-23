@@ -5,11 +5,7 @@ function LuckyStars(keys)
 	local ability = keys.ability
 
 	-- To prevent crashes:
-	if not target then
-		return
-	end
-
-	if target:IsNull() then
+	if not target or target:IsNull() then
 		return
 	end
 
@@ -23,7 +19,8 @@ function LuckyStars(keys)
 	local caster_location = caster:GetAbsOrigin()
 
 	-- Give gold (unreliable) to the caster
-	caster:ModifyGold(bonus_gold, false, 0)
+	--caster:ModifyGold(bonus_gold, false, DOTA_ModifyGold_Unspecified)
+	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), bonus_gold, false, DOTA_ModifyGold_Unspecified)
 
 	-- Coin particles
 	local particleName = "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"		

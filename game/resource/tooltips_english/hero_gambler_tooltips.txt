@@ -9,6 +9,7 @@
 		"DOTA_Tooltip_ability_gambler_roll_the_dice_damage_min"                           "DAMAGE MIN:"
 		"DOTA_Tooltip_ability_gambler_roll_the_dice_damage_max"                           "DAMAGE MAX:"
 		"DOTA_Tooltip_ability_gambler_roll_the_dice_shard_description"                    "Increases the cast range of Roll The Dice."
+		"DOTA_Tooltip_ability_gambler_roll_the_dice_shard_bonus_cast_range"               "SHARD BONUS CAST RANGE:"
 
 		"DOTA_Tooltip_ability_gambler_bet"                      "Bet"
 		"DOTA_Tooltip_ability_gambler_bet_Description"			"Gambler bets on enemy deaths or heals allies. If enemy hero dies with a bet debuff, Gambler and the killer will gain extra gold. Gambler gets more gold if his ally lands a killing blow. Gambler gets less gold if the enemy hero was alone and low on hp. When cast on allies it only heals them."
@@ -29,9 +30,9 @@
 		"DOTA_Tooltip_modifier_gambler_bet_debuff_Description"                            "Gambler placed a bet that you will die soon."
 
 		"DOTA_Tooltip_ability_gambler_russian_roulette"                                   "Russian Roulette"
-		"DOTA_Tooltip_ability_gambler_russian_roulette_Description"                       "Gambler challenges his enemies and allies to test their luck. When activated, enemy units around Gambler (including himself) are mini-stunned, rooted and disarmed for the duration. After a delay, his magical gun damages random units in a radius (including allies). Damage is dependent on unit's level (damage = base + damage per level x level). Gambler can commit suicide and deny allies with this spell."
+		"DOTA_Tooltip_ability_gambler_russian_roulette_Description"                       "Gambler challenges his enemies and allies to test their luck. When activated, Gambler disarm himself and enemy units around him become mini-stunned, rooted and disarmed for the duration. After a delay, his gun damages random units in a radius around him. Damage is dependent on unit's level (damage = base + damage per level x level). Gambler can deny himself or his allies with this spell."
 		"DOTA_Tooltip_ability_gambler_russian_roulette_Lore"				              "True gamblers always like to gamble with life."
-		"DOTA_Tooltip_ability_gambler_russian_roulette_Note0"							  "Gambler cannot dispel the root and disarm from himself while loading the gun."
+		"DOTA_Tooltip_ability_gambler_russian_roulette_Note0"							  "Gambler cannot dispel the disarm from himself while loading the gun."
 		"DOTA_Tooltip_ability_gambler_russian_roulette_radius"                            "RADIUS:"
 		"DOTA_Tooltip_ability_gambler_russian_roulette_disable_duration"                  "DURATION:"
 		"DOTA_Tooltip_ability_gambler_russian_roulette_base_damage"                       "BASE DAMAGE:"
@@ -59,15 +60,14 @@
 		"DOTA_Tooltip_ability_gambler_chip_stack_gold_to_damage_ratio"                    "%NETWORTH TO DAMAGE:"
 
 		"DOTA_Tooltip_ability_gambler_all_in"                                             "All In"
-		"DOTA_Tooltip_ability_gambler_all_in_Description"                                 "Gambler invests everything to deal damage. Deals damage to the enemy hero for the percent of Gambler's networth but it can backfire and damage Gambler himself. Damage is capped as well."
+		"DOTA_Tooltip_ability_gambler_all_in_Description"                                 "Gambler invests his gold and life to deal damage. Deals damage to the enemy hero for the percent of Gambler's networth but it can backfire and damage Gambler himself. Damage is capped as well."
 		"DOTA_Tooltip_ability_gambler_all_in_Lore"								          "Gambler's signature ability."
 		"DOTA_Tooltip_ability_gambler_all_in_gold_cost"                                   "GOLD COST:"
 		"DOTA_Tooltip_ability_gambler_all_in_damage_cap"                                  "DAMAGE CAP:"
 		"DOTA_Tooltip_ability_gambler_all_in_chance_to_backfire"                          "%CHANCE TO BACKFIRE:"
 		"DOTA_Tooltip_ability_gambler_all_in_net_worth_to_damage_ratio"                   "%NETWORTH TO DAMAGE:"
 		"DOTA_Tooltip_ability_gambler_all_in_damage_cap_scepter"                          "SCEPTER DAMAGE CAP:"
-		"DOTA_Tooltip_ability_gambler_all_in_net_worth_to_damage_ratio_scepter"           "%SCEPTER NETWORTH TO DAMAGE:"
-		"DOTA_Tooltip_ability_gambler_all_in_scepter_description"				          "Increases damage cap and networth to damage percentage."
+		"DOTA_Tooltip_ability_gambler_all_in_scepter_description"				          "Increases damage cap."
 		
 		"DOTA_Tooltip_ability_special_bonus_unique_chaos_knight_3"                        "+{s:value} Min/Max Dice Stun Duration"
 		"DOTA_Tooltip_ability_special_bonus_unique_chaos_knight_8"                        "-{s:value}s Roll the Dice Cooldown"

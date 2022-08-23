@@ -4,7 +4,7 @@
 	// Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
 	// Author: Darkonius
 	// Notes: OK; 2022; Can Crit on buildings; Chance to proc is Pseudo-Random;
-	// TO_DO: If its too weak increase proc chance to a maximum 12%
+	// TO_DO: If it's too weak increase proc chance to a maximum 12%
 	//=================================================================================================================
 	"gambler_lucky_stars"
 	{

@@ -71,7 +71,7 @@
 			"05"
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"damage_max"                              "180 220 260 300"
+				"damage_max"                              "150 200 250 300"
 			}
 			"06"
 			{

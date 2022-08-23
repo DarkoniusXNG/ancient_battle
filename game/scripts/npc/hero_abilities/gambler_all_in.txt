@@ -4,8 +4,8 @@
 	// Gambler: All In (R) - New Spell, Ultimate, Deals damage based on Gambler's net worth, can backfire
 	// Author: Darkonius; 
 	// Linkens: Blocks only if it would hit;
-	// Notes: 30.10.2019; Chance for Success is True Random; Has Aghanim Scepter upgrade;
-	// TO_DO: If its too weak increase damage cap from 600/875/1100 (scepter: 875/1100/1400) to 900/1100/1300 (scepter: 1100/1300/1500).
+	// Notes: 2022; Chance for Success is True Random; Has Aghanim Scepter upgrade;
+	// TO_DO:
 	//=================================================================================================================
 	"gambler_all_in"
 	{
@@ -28,7 +28,7 @@
 		
 		"AbilityCooldown"				"70 60 50" // original: 60 or 30
 		
-		"AbilityManaCost"				"200 420 650"
+		"AbilityManaCost"				"200 400 600"
 		"AbilityProcsMagicStick" 		"1"
 		"AbilityGoldCost"				"500"
 		
@@ -48,11 +48,11 @@
 				"var_type"								"FIELD_INTEGER"
 				"gold_cost"								"500"
 			}
-			"02" // Lina ult: 450/650/850; Lion ult: 600/725/850 (800/925/1050)
+			"02" // Lina ult: 500/700/900; Lion ult: 600/725/850 (700/825/950)
 			{
 				"var_type"								"FIELD_INTEGER"
-				"damage_cap"							"600 875 1100"
-				"CalculateSpellDamageTooltip"			"0"
+				"damage_cap"							"600 900 1200"
+				"CalculateSpellDamageTooltip"			"1"
 			}
 			"03" // tooltip only; original: 30/25/20%
 			{
@@ -62,21 +62,14 @@
 			"04"
 			{
 				"var_type"								"FIELD_INTEGER"
-				"net_worth_to_damage_ratio"				"10 12 15"
-				"CalculateSpellDamageTooltip"			"0"
+				"net_worth_to_damage_ratio"				"10"
+				"CalculateSpellDamageTooltip"			"1"
 			}
-			"05" // Lion ult scepter: 725/875/1075 (925/1075/1225)
+			"05" // Lion ult scepter: 700/825/950
 			{
 				"var_type"								"FIELD_INTEGER"
 				"damage_cap_scepter"					"800 1100 1400"
-				"CalculateSpellDamageTooltip"			"0"
-				"RequiresScepter"                       "1"
-			}
-			"06"
-			{
-				"var_type"								"FIELD_INTEGER"
-				"net_worth_to_damage_ratio_scepter"		"12 15 20"
-				"CalculateSpellDamageTooltip"			"0"
+				"CalculateSpellDamageTooltip"			"1"
 				"RequiresScepter"                       "1"
 			}
 			"07" // only here; 100% - chance_to_backfire

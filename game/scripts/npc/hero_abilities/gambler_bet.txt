@@ -1,11 +1,11 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Gambler: Bet (Q) - New Spell, Gambler bets that a target enemy hero will die in 15 seconds or less. Gambler gets more money if his ally kills the target. Heals allies.
+	// Gambler: Bet (Q) - New Spell, Gambler bets that a target enemy hero will die. Gambler gets more money if his ally kills the target. Heals allies.
 	// Author: Darkonius
 	// Linkens: Doesn't Block (because its global)
 	// How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
-	// Notes: OK; 30.10.2019;
+	// Notes: OK; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"gambler_bet"
@@ -50,7 +50,7 @@
 			"02" // Ante Up (60)
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration"					"30.0"
+				"duration"					"60"
 			}
 			"03"
 			{
@@ -60,7 +60,7 @@
 			"04" // max gold that caster can get when he (caster) kills the target
 			{
 				"var_type"					"FIELD_INTEGER"
-				"max_gold_caster"			"100 150 200 250"
+				"max_gold_caster"			"250"
 			}
 			"05" // tooltip only; min gold that caster can get when he (caster) kills the target (should be equal to AbilityGoldCost)
 			{
@@ -70,12 +70,12 @@
 			"06" // max gold that caster can get when somebody else kills the target
 			{
 				"var_type"					"FIELD_INTEGER"
-				"max_gold"					"500 750 1000 1250"
+				"max_gold"					"1250"
 			}
 			"07" // tooltip only; min gold that caster can get when his ally kills the target
 			{
 				"var_type"					"FIELD_INTEGER"
-				"min_gold"					"0 0 1 1"
+				"min_gold"					"50 75 100 125"
 			}
 			"08" // bonus gold for the ally that killed the target
 			{

@@ -3,7 +3,7 @@
 	//=================================================================================================================
 	// Fire Lord: Summon Lava Spawn (W) - New Spell, Creates 1 Lava Spawn that can split into 2 after attacking several times, new ones can split too
 	// Author: Darkonius
-	// Notes: OK; 26.12.2019;
+	// Notes: OK; 2022;
 	// TO_DO:
 	// ================================================================================================================
 	"firelord_summon_lava_spawn"
@@ -15,7 +15,7 @@
 		"AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
 		"AbilityCastPoint"				"0.3"
 		
-		"AbilityCooldown"				"40.0"
+		"AbilityCooldown"				"30"
 	
 		"AbilityManaCost"				"90"
 		"AbilityProcsMagicStick"		"1"
