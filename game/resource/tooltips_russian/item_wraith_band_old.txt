@@ -1,0 +1,10 @@
+
+		"DOTA_Tooltip_ability_item_recipe_wraith_band_old"                     "Recipe for Old Wraith Band"
+		"DOTA_Tooltip_ability_item_recipe_wraith_band_old_Description"         ""
+
+		"DOTA_Tooltip_ability_item_wraith_band_old"                            "Old Wraith Band"
+		"DOTA_Tooltip_ability_item_wraith_band_old_Description"                ""
+		"DOTA_Tooltip_ability_item_wraith_band_old_Lore"                       "Not Wraith Pact"
+		"DOTA_Tooltip_ability_item_wraith_band_old_bonus_agility"              "+$agi"
+		"DOTA_Tooltip_ability_item_wraith_band_old_bonus_intellect"            "+$int"
+		"DOTA_Tooltip_ability_item_wraith_band_old_bonus_strength"             "+$str"

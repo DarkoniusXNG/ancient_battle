@@ -3,4 +3,5 @@
 Maybe I will change how this works in the future.
 3) generate_tooltips.bat will merge .txt files in alphabetical order. That's why there are .txt files with names 0000000 and zzzzzzzz.
 Those files include addon_english.txt unique Keyvalues and brackets.
-4) All tooltip .txt files need to have the same encoding: UCS-2 LE BOM
+4) All tooltip .txt files need to have the same encoding: UTF-8
+5) Convert it into UTF-16 LE BOM

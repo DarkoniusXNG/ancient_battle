@@ -1,0 +1,5 @@
+
+		"DOTA_Tooltip_ability_item_custom_stout_shield"                              "Stout Shield"
+		"DOTA_Tooltip_ability_item_custom_stout_shield_Description"                  "<h1>Passive: Damage Block</h1>Grants a %block_chance%%% chance to block %damage_block_melee% damage from incoming attacks on melee heroes, and %damage_block_ranged% damage on ranged."
+		"DOTA_Tooltip_ability_item_custom_stout_shield_Lore"                         "One man's wine barrel bottom is another man's shield."
+		"DOTA_Tooltip_ability_item_custom_stout_shield_Note0"                        "Multiple sources of damage block stack."

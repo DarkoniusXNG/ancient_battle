@@ -1,0 +1,10 @@
+
+		"DOTA_Tooltip_ability_item_recipe_null_talisman_old"                     "Recipe for Old Null Talisman"
+		"DOTA_Tooltip_ability_item_recipe_null_talisman_old_Description"         ""
+
+		"DOTA_Tooltip_ability_item_null_talisman_old"                            "Old Null Talisman"
+		"DOTA_Tooltip_ability_item_null_talisman_old_Description"                ""
+		"DOTA_Tooltip_ability_item_null_talisman_old_Lore"                       "Talisman"
+		"DOTA_Tooltip_ability_item_null_talisman_old_bonus_intellect"            "+$int"
+		"DOTA_Tooltip_ability_item_null_talisman_old_bonus_strength"             "+$str"
+		"DOTA_Tooltip_ability_item_null_talisman_old_bonus_agility"              "+$agi"

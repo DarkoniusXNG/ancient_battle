@@ -1,0 +1,10 @@
+
+		"DOTA_Tooltip_ability_item_recipe_bracer_old"                     "Recipe for Old Bracer"
+		"DOTA_Tooltip_ability_item_recipe_bracer_old_Description"         ""
+
+		"DOTA_Tooltip_ability_item_bracer_old"                            "Old Bracer"
+		"DOTA_Tooltip_ability_item_bracer_old_Description"                ""
+		"DOTA_Tooltip_ability_item_bracer_old_Lore"                       "Runed Bracer"
+		"DOTA_Tooltip_ability_item_bracer_old_bonus_strength"             "+$str"
+		"DOTA_Tooltip_ability_item_bracer_old_bonus_agility"              "+$agi"
+		"DOTA_Tooltip_ability_item_bracer_old_bonus_intellect"            "+$int"

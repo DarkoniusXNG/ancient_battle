@@ -1,0 +1,62 @@
+
+		// ******************** DARK TERMINATOR ********************
+		"npc_dota_hero_sniper"                                                  "Dark Terminator"
+
+		"DOTA_Tooltip_ability_dark_terminator_cloak"                                     "Cloak"
+		"DOTA_Tooltip_ability_dark_terminator_cloak_Description"                         "Dark Terminator becomes invisible and moves faster until he attacks or uses an ability. While invisible he is not showing on the minimap, he doesn't have a health bar and he has low aggro priority."
+		"DOTA_Tooltip_ability_dark_terminator_cloak_Lore"								 "Cloaking engaged."
+		"DOTA_Tooltip_ability_dark_terminator_cloak_Note0"							     "Will not break channeling of spells and items upon activation."
+		"DOTA_Tooltip_ability_dark_terminator_cloak_duration"                            "DURATION:"
+		"DOTA_Tooltip_ability_dark_terminator_cloak_bonus_move_speed"                    "%BONUS MOVE SPEED:"
+		"DOTA_Tooltip_ability_dark_terminator_cloak_fade_time"                           "FADE TIME:"
+
+		"DOTA_Tooltip_modifier_dark_terminator_cloak"                                    "Cloaked"
+		"DOTA_Tooltip_modifier_dark_terminator_cloak_Description"                        "Invisible, increased movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% and not on enemy minimap."
+
+		"DOTA_Tooltip_ability_dark_terminator_blink"                                     "Global Blink"
+		"DOTA_Tooltip_ability_dark_terminator_blink_Description"                         "Teleports Dark Terminator to the target point that can be anywhere on the map."
+		"DOTA_Tooltip_ability_dark_terminator_blink_Lore"                                "Confirmed that Long distance teleport is equal to Global teleport."
+		"DOTA_Tooltip_ability_dark_terminator_blink_cast_point"                          "CAST TIME:"
+
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills"                         "Terminator"
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Description"             "Provides bonus evasion and a chance to deal bonus damage on each attack. Bonus damage is equal to %damage_percent%%% of Dark Terminator's current attack damage and ignores armor."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Lore"                    "Drunken Brawler and Chaos Damage combined."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Note0"                   "Bonus damage doesn't ignore Damage Block."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Note1"                   "Bonus damage is dealt in a seperate instance."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Note2"                   "Bonus damage doesn't work against buildings."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Note3"                   "Illusions fully benefit from this ability."
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_evasion_chance"          "%EVASION:"
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_damage_proc_chance"      "%CHANCE:"
+
+		"DOTA_Tooltip_ability_dark_terminator_take_aim"                                  "Take Aim"
+		"DOTA_Tooltip_ability_dark_terminator_take_aim_Description"                      "Grants bonus attack range."
+		"DOTA_Tooltip_ability_dark_terminator_take_aim_Lore"                             ""
+		"DOTA_Tooltip_ability_dark_terminator_take_aim_bonus_attack_range"               "BONUS ATTACK RANGE:"
+
+		"DOTA_Tooltip_ability_dark_terminator_confuse"                                   "Confuse"
+		"DOTA_Tooltip_ability_dark_terminator_confuse_Description"                       "Confuses the enemy by creating strong illusions of Dark Terminator."
+		"DOTA_Tooltip_ability_dark_terminator_confuse_Lore"                              "Imita|tcffffcc00rion"
+		"DOTA_Tooltip_ability_dark_terminator_confuse_Note0"                             "Dark Terminator is not invulnerable when casting Confuse."
+		"DOTA_Tooltip_ability_dark_terminator_confuse_Note1"                             "Confuse doesn't dispel when used."
+		"DOTA_Tooltip_ability_dark_terminator_confuse_illusion_duration"                 "ILLUSION DURATION:"
+		"DOTA_Tooltip_ability_dark_terminator_confuse_outgoing_damage_tooltip"           "%ILLUSION DAMAGE:"
+		"DOTA_Tooltip_ability_dark_terminator_confuse_incoming_damage_tooltip"           "%ILLUSION DAMAGE TAKEN:"
+		"DOTA_Tooltip_ability_dark_terminator_confuse_illusion_count"                    "ILLUSION COUNT:"
+
+		"DOTA_Tooltip_ability_dark_terminator_terminate"                                 "Terminate"
+		"DOTA_Tooltip_ability_dark_terminator_terminate_Description"                     "Dark Terminator locks onto a target enemy unit and, after a short aiming duration, fires a devastating shot that deals damage and mini-stuns the target. <br><br><font color='#70EA72'>Slower projectile. Crosshair effect is visible to everyone.</font>"
+		"DOTA_Tooltip_ability_dark_terminator_terminate_Lore"                            "Killing all living things is normal for the Dark Terminator."
+		"DOTA_Tooltip_ability_dark_terminator_terminate_Note0"                           "Invisibility doesn't disjoint the projectile."
+		"DOTA_Tooltip_ability_dark_terminator_terminate_damage"                          "DAMAGE:"
+		"DOTA_Tooltip_ability_dark_terminator_terminate_scepter_description"             "Increases damage and stun duration. Stun pierces spell immunity."
+		"DOTA_Tooltip_ability_dark_terminator_terminate_scepter_damage"                  "SCEPTER DAMAGE:"
+		"DOTA_Tooltip_ability_dark_terminator_terminate_scepter_stun_duration"           "SCEPTER STUN DURATION:"
+
+		"DOTA_Tooltip_modifier_dark_terminator_terminate_target"                         "Terminate"
+		"DOTA_Tooltip_modifier_dark_terminator_terminate_target_Description"             "Dark Terminator is aiming your head!"
+
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_proc_chance"             "+{s:value}% Terminator Damage Chance"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_confuse_illusion_damage" "+{s:value}% Confuse Damage"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_confuse_extra_illusion"  "+{s:value} Confuse Illusion"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_terminate"               "-{s:value}s Terminate Cast Time"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_take_aim"                "+{s:value} Take Aim Attack Range"
