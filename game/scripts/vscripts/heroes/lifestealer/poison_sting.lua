@@ -132,7 +132,7 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnIntervalThink()
 		victim = parent,
 		damage = damage_per_interval,
 		damage_type = DAMAGE_TYPE_MAGICAL,
-		damage_flags = DOTA_DAMAGE_FLAG_HPLOSS,
+		--damage_flags = DOTA_DAMAGE_FLAG_HPLOSS,
 		attacker = caster,
 		ability = self:GetAbility()
 	})
