@@ -64,6 +64,11 @@ function AllInSuccess(event)
 		ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 		ParticleManager:SetParticleControl(particle, 3, color)
 		ParticleManager:ReleaseParticleIndex(particle)
+
+		if target:IsNull() or target:IsAlive() then
+			-- Give the spent gold back
+			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), ability:GetSpecialValueFor("gold_cost"), false, DOTA_ModifyGold_Unspecified)
+		end
 	end
 end
 

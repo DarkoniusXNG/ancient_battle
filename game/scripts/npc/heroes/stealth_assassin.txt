@@ -28,11 +28,11 @@
 		"Ability8"				"generic_hidden"
 		"Ability9"				"generic_hidden"
 
-		"Ability10"				"special_bonus_hp_regen_6"				    // lvl 10 talent: Riki (special_bonus_hp_regen_8)
-		"Ability11"				"special_bonus_unique_riki_3"				// lvl 10 talent: Smoke Screen talent
+		"Ability10"				"special_bonus_hp_regen_6"				    // lvl 10 talent: unique
+		"Ability11"				"special_bonus_unique_riki_7"				// lvl 10 talent: Smoke Screen radius talent 
 
-		"Ability12"				"special_bonus_hp_300"                      // lvl 15 talent: Riki (special_bonus_attack_damage_35)
-		"Ability13"				"special_bonus_unique_riki_7"				// lvl 15 talent: Smoke Screen talent
+		"Ability12"				"special_bonus_hp_300"                      // lvl 15 talent: unique
+		"Ability13"				"special_bonus_unique_riki_3"				// lvl 15 talent: Smoke Screen cooldown talent
 
 		"Ability14"				"special_bonus_20_crit_15"					// lvl 20 talent: unique 
 		"Ability15"				"special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent;
@@ -51,6 +51,7 @@
 		"AttackDamageMin"			"21"									// Riki (41); original (2);
 		"AttackDamageMax"			"25"									// Riki (45); original (12);
 		"AttackRate"				"1.7"									// like Riki
+		"BaseAttackSpeed"           "100"                                   // Riki (100);
 		"AttackAnimationPoint"		"0.3"									// like Riki
 		"AttackAcquisitionRange"	"600"									// like Riki
 		"AttackRange"				"128"									// Riki (150); original (100 or 128);

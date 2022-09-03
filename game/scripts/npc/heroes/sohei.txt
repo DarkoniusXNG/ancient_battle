@@ -52,10 +52,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"BaseAttackSpeed"                                 "100"
 		"AttackDamageMin"                                 "31"                        
-        "AttackDamageMax"                                 "33"
+		"AttackDamageMax"                                 "33"
 		"AttackRate"                                      "1.7"
+		"BaseAttackSpeed"                                 "100"
 		"AttackAnimationPoint"                            "0.33"
 		"AttackAcquisitionRange"                          "600"
 		"AttackRange"                                     "150"

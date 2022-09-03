@@ -12,7 +12,7 @@
 		"Role"					"Carry,Support,Durable,Disabler,Initiator"
 		"Rolelevels"			"2,2,2,2,2"
 		"Complexity"			"2"
-		
+
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"			"6"
@@ -30,7 +30,7 @@
 		"Ability10"				"special_bonus_attack_speed_15"			// lvl 10 talent: same as dota Alchemist
 		"Ability11"				"special_bonus_corruption_3"			// lvl 10 talent: unique
 
-		"Ability12"				"special_bonus_attack_damage_20"		// lvl 15 talent; same as dota Alchemist
+		"Ability12"				"special_bonus_unique_alchemist_7"		// lvl 15 talent; same as dota Alchemist
 		"Ability13"				"special_bonus_hp_350"					// lvl 15 talent; same as dota Alchemist
 
 		"Ability14"				"special_bonus_cleave_25"				// lvl 20 talent: same as dota Alchemist
@@ -38,6 +38,8 @@
 
 		"Ability16"				"special_bonus_unique_alchemist_custom_2"	// lvl 25 talent; Chemical Rage Super Strong Dispel
 		"Ability17"				"special_bonus_unique_alchemist_custom_1"	// lvl 25 talent; Chemical Rage Base Attack Time;
+
+		// special_bonus_attack_damage_20 - old lvl 15 talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -50,6 +52,7 @@
 		"AttackDamageMin"			"24"							// original (3); dota (27);
 		"AttackDamageMax"			"33" 							// original (30); dota (33);
 		"AttackRate"				"1.7"							// like dota Alchemist
+		"BaseAttackSpeed"           "100"							// Default
 		"AttackAnimationPoint"		"0.35"							// like dota Alchemist
 		"AttackRange"				"150"							// like dota Alchemist
 		"AttackAcquisitionRange"	"800"							// Default

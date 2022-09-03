@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//================================================================================================================
-	// HERO: Dark Terminator; 2021;
+	// HERO: Dark Terminator; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_dark_terminator"
@@ -51,12 +51,12 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_RANGED_ATTACK"            // like original
-		"BaseAttackSpeed"                                 "90"                                     // Sniper (100); original (100); concept (50);
 		"AttackDamageMin"                                 "42"                                     // Sniper (13); original (42); concept (9);
 		"AttackDamageMax"                                 "52"                                     // Sniper (19); original (52); concept (15);
 		"AttackRate"                                      "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
+		"BaseAttackSpeed"                                 "90"                                     // Sniper (100); original (100); concept (50);
 		"AttackAnimationPoint"                            "0.17"                                   // like Sniper
-		"AttackRange"                                     "500"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
+		"AttackRange"                                     "550"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
 		"AttackAcquisitionRange"                          "800"                                    // Default
 
 		"ProjectileModel"                                 "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"

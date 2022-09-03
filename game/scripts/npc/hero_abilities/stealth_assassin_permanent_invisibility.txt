@@ -4,7 +4,7 @@
 	// Stealth Assassin: Permanent Invisibility (T) - Modified Riki Permanent Invisibility
 	// Author: Valve
 	// Notes: OK; 19.12.2019;
-	// TO_DO: Rework to be toggleable
+	// TO_DO: Rework in lua to be toggleable and to be disabled with silence
 	//=================================================================================================================
 	"stealth_assassin_permanent_invisibility"
 	{

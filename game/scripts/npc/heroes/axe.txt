@@ -12,7 +12,7 @@
 		"Role"						"Initiator,Durable,Disabler,Jungler"	// Roles
 		"Rolelevels"				"3,3,2,2"
 		"Complexity"				"1"
-		
+
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"				"6"
@@ -28,7 +28,7 @@
 		"Ability9"					"generic_hidden"
 
 		"Ability10"					"special_bonus_mp_regen_3"              // lvl 10 talent: unique
-		"Ability11"					"special_bonus_movement_speed_30"		// lvl 10 talent: unique
+		"Ability11"					"special_bonus_unique_axe_7"			// lvl 10 talent: same as dota Axe
 
 		"Ability12"					"special_bonus_magic_resistance_15"		// lvl 15 talent: unique
 		"Ability13"					"special_bonus_attack_speed_40"		    // lvl 15 talent: unique
@@ -38,7 +38,9 @@
 
 		"Ability16"					"special_bonus_unique_axe_2"			// lvl 25 talent; Berserker's Call talent
 		"Ability17"					"special_bonus_unique_axe_counter_helix_damage"  // lvl 25 talent; Counter Helix bonus damage talent
-		
+
+		//special_bonus_movement_speed_30 - old lvl 10 talent
+
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
 		"ArmorPhysical"				"-2"									// unique; dota Axe (-1);

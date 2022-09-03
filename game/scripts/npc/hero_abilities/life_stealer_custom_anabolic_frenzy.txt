@@ -48,20 +48,20 @@
 				"var_type"							"FIELD_INTEGER"
 				"passive_bonus_movement_speed_pct"	"3 5 7 9"
 			}
-			"02" // old spell (10/20/30/40); Ghoul Frenzy (20/30/40/50);
+			"02" // old spell (10/20/30/40); Ghoul Frenzy (25/40/55/70);
 			{
 				"var_type"							"FIELD_INTEGER"
-				"passive_bonus_attack_speed"		"20 30 40 50"
+				"passive_bonus_attack_speed"		"25 40 55 70"
 			}
 			"03" // Rage bonus ms (15/16/17/18%)
 			{
 				"var_type"							"FIELD_INTEGER"
 				"active_bonus_movement_speed_pct"	"15 16 17 18"
 			}
-			"04" // dota lifestealer lvl 10 talent provides 30 AS and base attack speed is 20 more; TLDR: 50 should be max
+			"04" // dota lifestealer vanilla base attack speed is 20 more;
 			{
 				"var_type"							"FIELD_INTEGER"
-				"active_bonus_attack_speed"			"20 30 40 50"
+				"active_bonus_attack_speed"			"15 20 25 30"
 			}
 			"05" // Visage Grave Chill (15/20/25/30%); Open Wounds (50%);
 			{

@@ -28,9 +28,9 @@
 		"Ability7"					"bane_nightmare_end"
 		"Ability8"					"generic_hidden"
 		"Ability9"					"generic_hidden"
-		
-		"Ability10"					"special_bonus_armor_5"					// lvl 10 talent:
-		"Ability11"					"special_bonus_cast_range_100"			// lvl 10 talent: unique
+
+		"Ability10"					"special_bonus_armor_5"					// lvl 10 talent: unique
+		"Ability11"					"special_bonus_unique_bane_10"			// lvl 10 talent: Nightmare heals talent
 
 		"Ability12"					"special_bonus_hp_250"					// lvl 15 talent: unique
 		"Ability13"					"special_bonus_unique_bane_9"		    // lvl 15 talent: Fiend's Grip Max Mana Drain talent
@@ -40,6 +40,8 @@
 
 		"Ability16"					"special_bonus_unique_bane_custom_2"	// lvl 25 talent; Brain Sap Damage/Heal talent
 		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; Fiend's Grip Duration talent
+
+		// special_bonus_cast_range_100 - old 10 talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

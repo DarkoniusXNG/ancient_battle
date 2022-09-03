@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//====================================================================================================
-	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
+	// Brewmaster: Drunken Haze (W) - like old Brewmaster's Drunken Haze, slightly different
 	// Author: Darkonius
 	// Linkens: Blocks;
 	// Notes: OK; 2022; Projectile can be disjointed;

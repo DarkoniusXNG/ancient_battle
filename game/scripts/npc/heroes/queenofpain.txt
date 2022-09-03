@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Queen of Pain; 11.10.2019;
+	// HERO: Queen of Pain; 2022;
 	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_queenofpain"	
@@ -28,17 +28,24 @@
 		"Ability8"			"generic_hidden"
 		"Ability9"			"generic_hidden"
 
-		"Ability10"			"special_bonus_attack_damage_25"		// lvl 10 talent: same as dota QoP
-		"Ability11"			"special_bonus_strength_10"				// lvl 10 talent: same as dota QoP
+		"Ability10"			"special_bonus_intelligence_25"			// lvl 10 talent: slightly better than dota QoP
+		"Ability11"			"special_bonus_strength_10"				// lvl 10 talent: slightly worse than dota QoP
 
-		"Ability12"			"special_bonus_cooldown_reduction_12"	// lvl 15 talent: same as dota QoP
-		"Ability13"			"special_bonus_intelligence_35"			// lvl 15 talent: unique
+		"Ability12"			"special_bonus_attack_speed_30"			// lvl 15 talent: same as dota QoP
+		"Ability13"			"special_bonus_cooldown_reduction_12"	// lvl 15 talent: unique
 
-		"Ability14"			"special_bonus_attack_range_125"		// lvl 20 talent: unique
-		"Ability15"			"special_bonus_spell_lifesteal_30"		// lvl 20 talent: same as dota QoP
+		"Ability14"			"special_bonus_unique_queen_of_pain_2"	// lvl 20 talent: Scream of Pain damage talent
+		"Ability15"			"special_bonus_unique_queen_of_pain_3"	// lvl 20 talent: Sonic Wave cooldown talent
 
-		"Ability16"			"special_bonus_unique_queen_of_pain_2"	// lvl 25 talent: same as dota QoP
-		"Ability17"			"special_bonus_spell_block_15"			// lvl 25 talent: same as dota QoP
+		"Ability16"			"special_bonus_spell_block_15"			// lvl 25 talent: unique
+		"Ability17"			"special_bonus_unique_queen_of_pain_7"	// lvl 25 talent: Sonic Wave damage talent
+
+		// special_bonus_intelligence_35 - old lvl 15 talent
+		// special_bonus_spell_lifesteal_30 - old lvl 20 talent
+		// special_bonus_attack_range_125 - old lvl 20 talent
+		// special_bonus_unique_queen_of_pain_5 - Sonic Wave fear talent
+		// special_bonus_unique_queen_of_pain_6 - Blink cooldown talent
+		// special_bonus_attack_damage_25 - old lvl 10 talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -48,9 +55,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"21"									// QoP (20);
-		"AttackDamageMax"			"31"									// QoP (28);
-		"AttackRate"				"1.5"									// like QoP
+		"AttackDamageMin"			"24"									// QoP (24);
+		"AttackDamageMax"			"31"									// QoP (30);
+		"AttackRate"				"1.7"									// QoP (1.5);
+		"BaseAttackSpeed"           "100"                                   // Default
 		"AttackAnimationPoint"		"0.56"									// like QoP
 		"AttackAcquisitionRange"	"800"									// like QoP
 		"AttackRange"				"600"									// QoP (550);
@@ -70,11 +78,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"			"18"								// QoP (18);
-		"AttributeStrengthGain"			"2.3"								// QoP (2.3);
+		"AttributeStrengthGain"			"2.3"								// QoP (2.4);
 		"AttributeBaseIntelligence"		"25"								// QoP (25);
-		"AttributeIntelligenceGain"		"2.9"								// QoP (2.9);
+		"AttributeIntelligenceGain"		"3.3"								// QoP (3.4);
 		"AttributeBaseAgility"			"22"								// QoP (22);
-		"AttributeAgilityGain"			"2.2"								// QoP (2.2);
+		"AttributeAgilityGain"			"2.4"								// QoP (2.5);
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

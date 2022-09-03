@@ -57,7 +57,7 @@
 		"DOTA_Tooltip_modifier_mass_haste_buff_Description"                               "Hasted, phased and increased attack speed."
 
 		"DOTA_Tooltip_ability_void_demon_time_stop"                                       "Time Stop"
-		"DOTA_Tooltip_ability_void_demon_time_stop_Description"                           "Void Demon stops time for enemies and allies around him for the duration. Stopping time freezes and stuns ALL units that were near Void Demon ONLY UPON CAST. Time Stop debuff also disables evasion.\n\nUpgradable by Aghanim's Scepter."
+		"DOTA_Tooltip_ability_void_demon_time_stop_Description"                           "Void Demon stops time for enemies and allies around him for the duration. Stopping time freezes and stuns ALL units that were near Void Demon but ONLY UPON CAST. Time Stop debuff also disables evasion."
 		"DOTA_Tooltip_ability_void_demon_time_stop_Lore"								  "Time Lord's teachings are very useful to Balanar."
 		"DOTA_Tooltip_ability_void_demon_time_stop_Note0"								  "Stuns all units and buildings, friendly or enemy, except those owned by Void Demon."
 		"DOTA_Tooltip_ability_void_demon_time_stop_Note1"								  "Some heroes and units are not affected by Time Stop. Examples: Fountains, Astral Trekker with Time Constant, Time Lord etc."

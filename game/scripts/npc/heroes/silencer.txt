@@ -12,7 +12,7 @@
 		"Complexity"		"2"
 		"Team"				"Good"
 		"BotImplemented"    "0"
-		
+
 		"AbilityLayout"			"6"
 		"Ability1"				"silencer_custom_curse_of_the_silent"	// Q (4 levels)
 		"Ability2"				"silencer_custom_glaives_of_silence"	// W (4 levels; lvl 3 required)
@@ -35,35 +35,35 @@
 
 		"Ability16"				"special_bonus_attack_range_200"		// lvl 25 talent; unique
 		"Ability17"				"special_bonus_unique_silencer_7"		// lvl 25 talent; Global Silence cd talent
-		
-		"ArmorPhysical"					"-1"								// like dota Silencer
+
+		"ArmorPhysical"					"-1"								// dota Silencer (-1)
 		"MagicalResistance"				"25"								// Default
-		
+
 		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageMin"				"18"								// like dota Silencer
 		"AttackDamageMax"				"32"								// like dota Silencer
-		"AttackRate"					"1.7"								// like dota Silencer
-		"BaseAttackSpeed"               "100"                               // dota Silencer (115)
+		"AttackRate"					"1.7"								// dota Silencer (1.6)
+		"BaseAttackSpeed"               "100"                               // dota Silencer (100)
 		"AttackAnimationPoint"			"0.5"								// like dota Silencer
 		"AttackAcquisitionRange"		"800"								// like dota Silencer
 		"AttackRange"					"600"								// like dota Silencer
 		"ProjectileSpeed"				"900"								// dota Silencer (900)
-		
+
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"			"19"								// dota Silencer (19);
-		"AttributeStrengthGain"			"2.2"								// dota Silencer (2.4); original(2.2);
+		"AttributeStrengthGain"			"2.2"								// dota Silencer (2.2); original(2.2);
 		"AttributeBaseAgility"			"18"								// dota Silencer (22);
 		"AttributeAgilityGain"			"1.8"								// dota Silencer (2.4);
 		"AttributeBaseIntelligence"		"27"								// dota Silencer (25);
 		"AttributeIntelligenceGain"		"2.9"								// dota Silencer (2.9);
-		
+
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"					"200"								// like dota Silencer
 		"StatusHealthRegen"				"0.0"								// like dota Silencer
 		"StatusMana"					"75"								// like dota Silencer
 		"StatusManaRegen"				"0.0"								// like dota Silencer
-		
+
 		"MovementSpeed"					"300"								// dota Silencer (290);
 		"MovementTurnRate"				"0.6"								// like dota Silencer
 	}

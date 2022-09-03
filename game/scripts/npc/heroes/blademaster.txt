@@ -33,16 +33,18 @@
 		"Ability10"                 "special_bonus_unique_blademaster_1"		// lvl 10 talent; Blade Storm radius talent
 		"Ability11"                 "special_bonus_unique_naga_siren_4"			// lvl 10 talent; Mirror Image Damage talent
 
-		"Ability12"                 "special_bonus_attack_speed_25"				// lvl 15 talent: Juggernaut (+20)
+		"Ability12"                 "special_bonus_unique_legion_commander_3"	// lvl 15 talent: Counter Atttack chance talent
 		"Ability13"                 "special_bonus_unique_naga_siren"			// lvl 15 talent: Bonus Mirror Image Illusion talent
 
-		"Ability14"                 "special_bonus_unique_legion_commander_3"	// lvl 20 talent; Counter Atttack chance talent
+		"Ability14"                 "special_bonus_unique_juggernaut_omnislash_cast_range"	// lvl 20 talent: Omnislash cast range talent
 		"Ability15"                 "special_bonus_unique_blademaster_2"	    // lvl 20 talent; Blade Storm damage talent
 
 		"Ability16"                 "special_bonus_unique_naga_siren_6"			// lvl 25 talent; Mirror Image cd talent
-		"Ability17"                 "special_bonus_unique_juggernaut_2"			// lvl 25 talent; Omnislash duration talent
+		"Ability17"                 "special_bonus_unique_juggernaut_omnislash_duration"	// lvl 25 talent; Omnislash duration talent
 		
-		// special_bonus_evasion_30
+		// special_bonus_evasion_30 - old lvl 25 talent
+		// special_bonus_attack_speed_25 - old lvl 15 talent
+		// special_bonus_unique_legion_commander_7 - Counter Attack lifesteal talent
 		
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -52,16 +54,17 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"20"									// Juggernaut (16); Naga Siren (23);
+		"AttackDamageMin"			"24"									// Juggernaut (16); Naga Siren (23);
 		"AttackDamageMax"			"34"									// Juggernaut (20); Naga Siren (25);
 		"AttackRate"				"1.7"									// Naga Siren (1.7); Juggernaut (1.4); original (1.77);
+		"BaseAttackSpeed"			"125"									// Naga Siren (110); Juggernaut (110); original (100);
 		"AttackAnimationPoint"		"0.33"									// like Juggernaut
 		"AttackAcquisitionRange"	"600"									// like Juggernaut
 		"AttackRange"				"150"									// like Juggernaut
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"295"									// Clinkz (290); Juggernaut (305); Naga Siren (330); original (320);
+		"MovementSpeed"				"295"									// Clinkz (290); Juggernaut (300); Naga Siren (330); original (320);
 		"MovementTurnRate"			"0.6"									// like Juggernaut
 		"HasAggressiveStance"		"1"										// like Juggernaut
 		
@@ -75,7 +78,7 @@
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength"		"20"									// Juggernaut (20); Naga Siren (21); original (18);
 		"AttributeStrengthGain"		"2.2"									// Juggernaut (2.2); Naga Siren (2.8); original (2.0);
-		"AttributeBaseAgility"		"26"									// Juggernaut (34); Naga Siren (21); original (24);
+		"AttributeBaseAgility"		"26"									// Juggernaut (34); Naga Siren (21); original (22);
 		"AttributeAgilityGain"		"2.8"									// Juggernaut (2.8); Naga Siren (3.3); original (1.75);
 		"AttributeBaseIntelligence"	"16"									// Juggernaut (14); Naga Siren (21); original (16);
 		"AttributeIntelligenceGain"	"2.0"									// Juggernaut (1.4); Naga Siren (2.0); original (2.25);

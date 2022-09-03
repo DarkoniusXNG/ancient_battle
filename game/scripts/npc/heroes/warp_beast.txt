@@ -39,11 +39,14 @@
         "Ability12"                                       "special_bonus_lifesteal_15"
         "Ability13"                                       "special_bonus_unique_warp_beast_latch_attackspeed"
 
-        "Ability14"                                       "special_bonus_unique_void_spirit_4" //"special_bonus_unique_warp_beast_mana_eater"
-        "Ability15"                                       "special_bonus_unique_warp_beast_jump_hero_damage" //"special_bonus_unique_warp_beast_jump_radius"
+        "Ability14"                                       "special_bonus_unique_void_spirit_4"
+        "Ability15"                                       "special_bonus_unique_warp_beast_jump_hero_damage"
 
         "Ability16"                                       "special_bonus_unique_warp_beast_warp_mana_pool"
         "Ability17"                                       "special_bonus_unique_warp_beast_warp_silence"
+		
+		// special_bonus_unique_warp_beast_jump_radius - old lvl 20 talent
+		// special_bonus_unique_warp_beast_mana_eater - old 20 talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -53,10 +56,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"BaseAttackSpeed"                                 "100"
-		"AttackDamageMin"                                 "33" // Phantom Assassin (32); Faceless Void (37);
-		"AttackDamageMax"                                 "39" // Phantom Assassin (34); Faceless Void (43);
+		"AttackDamageMin"                                 "33" // Phantom Assassin (31); Faceless Void (37);
+		"AttackDamageMax"                                 "39" // Phantom Assassin (33); Faceless Void (43);
 		"AttackRate"                                      "1.7"
+		"BaseAttackSpeed"                                 "100"
 		"AttackAnimationPoint"                            "0.38"
 		"AttackAcquisitionRange"                          "600"
 		"AttackRange"                                     "150"
@@ -75,10 +78,10 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
         "AttributePrimary"                                "DOTA_ATTRIBUTE_AGILITY"
-        "AttributeBaseStrength"                           "23"                  // Faceless Void (20); Phantom Assassin (21); Void Spirit (22); original (26);
-        "AttributeStrengthGain"                           "2.0"                 // Anti-Mage (1.6); Faceless Void (2.4); Phantom Assassin (2.2); Ember/Void Spirit (2.6); original (1.3);
+        "AttributeBaseStrength"                           "23"                  // Faceless Void (20); Phantom Assassin (19); Void Spirit (22); original (26);
+        "AttributeStrengthGain"                           "2.0"                 // Anti-Mage (1.6); Faceless Void (2.4); Phantom Assassin (2.0); Ember/Void Spirit (2.6); original (1.3);
         "AttributeBaseAgility"                            "23"                  // Anti-Mage (24); Faceless Void (19); Phantom Assassin (23); original (30);
-        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (2.8); Faceless Void (3.0); Phantom Assassin (3.4); original (2.0);
+        "AttributeAgilityGain"                            "3.0"                 // Anti-Mage (2.8); Faceless Void (3.0); Phantom Assassin (3.2); original (2.0);
         "AttributeBaseIntelligence"                       "12"                  // Anti-Mage (12); Faceless Void (15); Phantom Assassin (15); original (19);
         "AttributeIntelligenceGain"                       "1.5"                 // Anti-Mage (1.8); Faceless Void (1.5); Phantom Assassin (1.4); original (2.4);
 

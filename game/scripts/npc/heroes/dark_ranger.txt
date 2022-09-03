@@ -31,20 +31,22 @@
 		"Ability8"                  "generic_hidden"
 		"Ability9"                  "generic_hidden"
 
-		"Ability10"                 "special_bonus_unique_drow_ranger_5"    // lvl 10 talent; Gust blind chance talent
-		"Ability11"                 "special_bonus_attack_damage_15"	// lvl 10 talent; special_bonus_unique_dark_ranger_1 - Dark Arrows damage talent
+		"Ability10"                 "special_bonus_unique_drow_ranger_gust_selfmovespeed"	// lvl 10 talent; Gust bonus ms talent
+		"Ability11"                 "special_bonus_attack_damage_15"						// lvl 10 talent; special_bonus_unique_dark_ranger_1
 
-		"Ability12"                 "special_bonus_unique_drow_ranger_4"    // lvl 15 talent; Gust width talent
-		"Ability13"                 "special_bonus_unique_dark_ranger_2"	// lvl 15 talent; Ranger Aura bonus damage talent
+		"Ability12"                 "special_bonus_unique_drow_ranger_gust_invis"			// lvl 15 talent; Gust reveals invis talent
+		"Ability13"                 "special_bonus_unique_dark_ranger_2"					// lvl 15 talent; Ranger Aura bonus damage talent
 
-		"Ability14"                 "special_bonus_unique_drow_ranger_7"	// lvl 20 talent; Gust cooldown talent
-		"Ability15"                 "special_bonus_unique_dark_ranger_3"	// lvl 20 talent; Ranger Aura bonus attack range talent
+		"Ability14"                 "special_bonus_unique_drow_ranger_7"					// lvl 20 talent; Gust cooldown talent
+		"Ability15"                 "special_bonus_unique_dark_ranger_3"					// lvl 20 talent; Ranger Aura bonus attack range talent
 
-		"Ability16"                 "special_bonus_agility_80"    // lvl 25 talent; special_bonus_unique_dark_ranger_4 - Marksmanship Split Shot talent
-		"Ability17"                 "special_bonus_unique_dark_ranger_5"	// lvl 25 talent; Life Drain pure talent
+		"Ability16"                 "special_bonus_agility_80"								// lvl 25 talent; special_bonus_unique_dark_ranger_4 - Marksmanship Split Shot talent
+		"Ability17"                 "special_bonus_unique_dark_ranger_5"					// lvl 25 talent; Life Drain pure talent
 		
-		// special_bonus_cast_range_200
-		// special_bonus_evasion_50
+		// special_bonus_cast_range_200 - old lvl 20 talent
+		// special_bonus_evasion_50 - old lvl 25 talent
+		// special_bonus_unique_drow_ranger_4 - old lvl 15 talent - Gust bonus width talent
+		// special_bonus_unique_drow_ranger_5 - old lvl 10 talent - Gust blind talent
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------
@@ -57,15 +59,16 @@
 		"AttackDamageMin"			"25"									// Drow Ranger (29);
 		"AttackDamageMax"			"35"									// Drow Ranger (36);
 		"AttackRate"				"1.7"									// Default
+		"BaseAttackSpeed"           "100"									// Default
 		"AttackAnimationPoint"		"0.65"									// Drow Ranger (0.5);
 		"AttackAcquisitionRange"	"800"									// like Drow Ranger
-		"AttackRange"				"550"									// Unique for Dark Ranger
+		"AttackRange"				"550"									// Unique for Dark Ranger; original (600); Drow Ranger (625);
 		"ProjectileSpeed"			"1250"									// like Drow Ranger
 		
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// Drow Ranger (290);
-		"MovementTurnRate"			"0.7"									// like Drow Ranger
+		"MovementSpeed"				"295"									// Drow Ranger (295); original (320);
+		"MovementTurnRate"			"0.7"									// Drow Ranger (0.7); original (0.6);
 		
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
@@ -75,7 +78,7 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (18);
+		"AttributeBaseStrength"			"18"								// original (18); Drow Ranger (16);
 		"AttributeStrengthGain"			"1.9"								// original (1.9); Drow Ranger (1.9);
 		"AttributeBaseAgility"			"21"								// original (21); Drow Ranger (20);
 		"AttributeAgilityGain"			"1.6"								// original (1.5); Drow Ranger (2.9);
