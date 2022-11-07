@@ -1,3 +1,6 @@
+# Dependency directories
+node_modules
+
 # Dota 2 Binaries
 tools_thumbnail_cache.bin
 tools_asset_info.bin
