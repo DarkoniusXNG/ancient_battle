@@ -1,125 +1,125 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Mana Eater: Mystic Bolt (Q) - New Spell, Tracking Projectile that has damage related to the current mana of the caster
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2021; Doesn't trigger Mana Flare.
-	// TO_DO: Rework to lua; dynamic mana cost;
-	//=================================================================================================================
-	"mana_eater_mystic_bolt"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"    		"custom/mana_eater_mystic_bolt"
-		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.1"
-		"AbilityCastRange" 				"500"	
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "5.0 4.5 4.0 3.5"
-		
-		// Mana Cost + Magic Stick/Wand
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"		// mana cost is handled by lua
-		"AbilityProcsMagicStick"		"1"
-		
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
-			"particle"					"particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // 950
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bolt_speed"			"500"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bolt_vision"			"250"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"vision_duration"		"3.5"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"base_damage"			"50 100 150 200"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"damage_per_mana"				"1.0"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-		}
+  //=================================================================================================================
+  // Mana Eater: Mystic Bolt (Q) - New Spell, Tracking Projectile that has damage related to the current mana of the caster
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2021; Doesn't trigger Mana Flare.
+  // TO_DO: Rework to lua; dynamic mana cost;
+  //=================================================================================================================
+  "mana_eater_mystic_bolt"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/mana_eater_mystic_bolt"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.1"
+    "AbilityCastRange"                                    "500"  
+    
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "5.0 4.5 4.0 3.5"
+    
+    // Mana Cost + Magic Stick/Wand
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "0"    // mana cost is handled by lua
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // 950
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bolt_speed"                                      "500"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bolt_vision"                                     "250"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "vision_duration"                                 "3.5"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "base_damage"                                     "50 100 150 200"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_per_mana"                                 "1.0"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-				"EffectName"			"particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf"
-				"Dodgeable"				"1"
-				"ProvidesVision"		"1"
-				"VisionRadius"			"%bolt_vision"
-				"MoveSpeed"				"%bolt_speed"
-				"SourceAttachment"		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
+    "OnSpellStart"
+    {
+      "TrackingProjectile"
+      {
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+        "EffectName"                                      "particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf"
+        "Dodgeable"                                       "1"
+        "ProvidesVision"                                  "1"
+        "VisionRadius"                                    "%bolt_vision"
+        "MoveSpeed"                                       "%bolt_speed"
+        "SourceAttachment"                                "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+      }
 
-			"FireSound"
-			{
-				"EffectName"			"Hero_SkywrathMage.ArcaneBolt.Cast"
-				"Target"				"CASTER"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mana_eater/mystic_bolt.lua"
-				"Function"		"MysticBoltSpendMana"
-			}
-		}
-		
-		"OnProjectileHitUnit"
-		{
-			"DeleteOnHit"	"1"
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_SkywrathMage.ArcaneBolt.Cast"
+        "Target"                                          "CASTER"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/mana_eater/mystic_bolt.lua"
+        "Function"                                        "MysticBoltSpendMana"
+      }
+    }
+    
+    "OnProjectileHitUnit"
+    {
+      "DeleteOnHit"                                       "1"
 
-			"FireSound"
-			{
-				"EffectName"	"Hero_SkywrathMage.ArcaneBolt.Impact"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_SkywrathMage.ArcaneBolt.Impact"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+      }
 
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mana_eater/mystic_bolt.lua"
-				"Function"		"MysticBoltHit"
-			}
-		}
-	}
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/mana_eater/mystic_bolt.lua"
+        "Function"                                        "MysticBoltHit"
+      }
+    }
+  }
 }

@@ -1,36 +1,36 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Fountain and Towers: True Strike
-	// Author: Darkonius
-	// Notes: OK; 27.12.2016;
-	// TO_DO:
-	//=================================================================================================================
-	"custom_building_true_strike"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"										"ability_datadriven"
-		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"							"custom/custom_building_true_strike"
-		"MaxLevel"										"1"
+  //=================================================================================================================
+  // Fountain and Towers: True Strike
+  // Author: Darkonius
+  // Notes: OK; 27.12.2016;
+  // TO_DO:
+  //=================================================================================================================
+  "custom_building_true_strike"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "custom/custom_building_true_strike"
+    "MaxLevel"                                            "1"
 
-		"Modifiers"
-		{
-			"modifier_custom_building_true_strike_buff" // doesn't need tooltip
-			{
-				"Passive"								"1"
-				"IsHidden"								"1"
-				"IsBuff"								"1"
-				"IsPurgable"							"0"
+    "Modifiers"
+    {
+      "modifier_custom_building_true_strike_buff" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Attributes"							"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 
-				"States"
-				{
-					"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
+        "States"
+        {
+          "MODIFIER_STATE_CANNOT_MISS"                    "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
 }

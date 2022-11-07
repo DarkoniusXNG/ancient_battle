@@ -1,116 +1,116 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blademaster: Blade Dance (T) - Datadriven, passive, chance to critical strike
-	// Author: Darkonius
-	// Notes: OK; 2022; Chance to crit is pseudo-random; Can crit on buildings;
-	// TO_DO:
-	//=================================================================================================================
-	"blademaster_custom_blade_dance"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/blademaster_custom_blade_dance"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+  //=================================================================================================================
+  // Blademaster: Blade Dance (T) - Datadriven, passive, chance to critical strike
+  // Author: Darkonius
+  // Notes: OK; 2022; Chance to crit is pseudo-random; Can crit on buildings;
+  // TO_DO:
+  //=================================================================================================================
+  "blademaster_custom_blade_dance"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/blademaster_custom_blade_dance"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
 
-		"precache"
-		{
-			"particle"  "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
-			"particle"  "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"crit_damage"               "200"
-			}
-			"02"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"crit_chance"               "15 20 25 30"
-			}
-		}
+    "precache"
+    {
+      "particle"                                          "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
+      "particle"                                          "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "crit_damage"                                     "200"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "crit_chance"                                     "15 20 25 30"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_blade_dance_passive" // doesn't need tooltip
-			{
-				"Passive"   	"1"
-				"IsHidden"  	"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"AllowIllusionDuplicate"	"1"
-				
-				"OnAttackStart"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"  "modifier_custom_blade_dance_buff"
-						"Target"        "CASTER"
-					}
+    "Modifiers"
+    {
+      "modifier_custom_blade_dance_passive" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "AllowIllusionDuplicate"                          "1"
+        
+        "OnAttackStart"
+        {
+          "RemoveModifier"
+          {
+            "ModifierName"                                "modifier_custom_blade_dance_buff"
+            "Target"                                      "CASTER"
+          }
 
-					"Random"
-					{
-						"Chance" 		"%crit_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_JUGG_CRIT"
-						
-						"OnSuccess"
-						{
-							"FireSound"
-							{
-								"EffectName"    "Hero_Juggernaut.BladeDance"
-								"Target"        "CASTER"
-							}
+          "Random"
+          {
+            "Chance"                                      "%crit_chance"
+            "PseudoRandom"                                "DOTA_PSEUDO_RANDOM_JUGG_CRIT"
+            
+            "OnSuccess"
+            {
+              "FireSound"
+              {
+                "EffectName"                              "Hero_Juggernaut.BladeDance"
+                "Target"                                  "CASTER"
+              }
 
-							"FireEffect"
-							{
-								"EffectName"        "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
-								"EffectAttachType"  "attach_sword"
-								"Target"            "CASTER"
-							}
+              "FireEffect"
+              {
+                "EffectName"                              "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
+                "EffectAttachType"                        "attach_sword"
+                "Target"                                  "CASTER"
+              }
 
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_custom_blade_dance_buff"
-								"Target"        "CASTER"    
-							}        
-						}
-					}
-				}
-			}
+              "ApplyModifier"
+              {
+                "ModifierName"                            "modifier_custom_blade_dance_buff"
+                "Target"                                  "CASTER"    
+              }        
+            }
+          }
+        }
+      }
 
-			"modifier_custom_blade_dance_buff" // doesn't need tooltip
-			{
-				"IsHidden"  	"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" 	"%crit_damage"
-				}
+      "modifier_custom_blade_dance_buff" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"    "%crit_damage"
+        }
 
-				"OnAttackLanded"
-				{
-					"FireEffect"
-					{
-						"EffectName"        "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
-						"EffectAttachType"  "attach_hitloc"
-						"Target"            "TARGET"
-					}
-					
-					"RemoveModifier"
-					{
-						"ModifierName"      "modifier_custom_blade_dance_buff"
-						"Target"            "CASTER"    
-					}
-				}
-			}
-		}
-	}
+        "OnAttackLanded"
+        {
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
+            "EffectAttachType"                            "attach_hitloc"
+            "Target"                                      "TARGET"
+          }
+          
+          "RemoveModifier"
+          {
+            "ModifierName"                                "modifier_custom_blade_dance_buff"
+            "Target"                                      "CASTER"    
+          }
+        }
+      }
+    }
+  }
 }

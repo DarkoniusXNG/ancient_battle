@@ -1,223 +1,223 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Custom Diffusal Blade
-	// Notes: OK; 25.12.2019;
-	//=================================================================================================================
-	"item_recipe_custom_diffusal_blade"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"300"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_diffusal_blade"
-		"ItemRequirements"
-		{
-			"01"						"item_blade_of_alacrity;item_blade_of_alacrity;item_staff_of_wizardry"
-		}
-	}
-	
-	//=================================================================================================================
-	// Custom Diffusal Blade - 2x Blade of Alacrity (1000) + Staff of Wizardry (1000) + Recipe (300) = 3300
-	// Notes: OK; 25.12.2019; Has 16 charges; 100% damage mana burn; slow is not decaying;
-	// TO_DO:
-	//=================================================================================================================
-	"item_custom_diffusal_blade"
-	{
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_diffusal_blade"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"15.0"
-		"AbilitySharedCooldown"			"diffusal"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		"ItemCost"						"3300"
-		"ItemShopTags"					"agi;int;unique;hard_to_tag"
-		"ItemQuality"					"artifact"
-		"ItemAliases"					"diffusal blade"
-		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
-		
-		"ItemPermanent"					"1"
-		"ItemInitialCharges"			"16"
-		"ItemRequiresCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_agi"                               "20"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_int"                               "10"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"mana_burn"                               "40"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"mana_burn_illusion_melee"                "16"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"mana_burn_illusion_ranged"               "8"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"purge_summoned_damage"                   "99999"
-			}
-			"07"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"purge_slow_duration"                     "3.0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"item_modifier_custom_purged_ally"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"0.25"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"items/custom_diffusal_blade.lua"
-				"Function"		"Diffusal_Purge_Start"
-			}
-			
-			"SpendCharge"
-			{}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_custom_diffusal_blade_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-				}
-			}
-			
-			"item_modifier_custom_purged_enemy_hero" // needs tooltip
-			{
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-				
-				"TextureName"		"custom/custom_diffusal_blade"
-				
-				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
-				"EffectAttachType"			"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
-				}
-			}
-			
-			"item_modifier_custom_purged_enemy_creep" // needs tooltip
-			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				
-				"TextureName"	"custom/custom_diffusal_blade"
-				
-				"EffectName"				"particles/items_fx/diffusal_slow.vpcf"
-				"EffectAttachType"			"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			
-			"item_modifier_custom_purged_ally" // doesn't need tooltip
-			{
-				"IsHidden"			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/custom_diffusal_blade.lua"
-						"Function"		"DispelAlly"
-						"TARGET"		"TARGET"
-					}
-				}
-			}
-			
-			"modifier_item_custom_diffusal_blade_mana_break" // doesn't need tooltip
-			{
-				"Passive"					"1"
-				"IsHidden"					"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
-		
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items/custom_diffusal_blade.lua"
-						"Function"			"Mana_Break"
-					}
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // Recipe: Custom Diffusal Blade
+  // Notes: OK; 25.12.2019;
+  //=================================================================================================================
+  "item_recipe_custom_diffusal_blade"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "300"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_diffusal_blade"
+    "ItemRequirements"
+    {
+      "01"                                                "item_blade_of_alacrity;item_blade_of_alacrity;item_staff_of_wizardry"
+    }
+  }
+  
+  //=================================================================================================================
+  // Custom Diffusal Blade - 2x Blade of Alacrity (1000) + Staff of Wizardry (1000) + Recipe (300) = 3300
+  // Notes: OK; 25.12.2019; Has 16 charges; 100% damage mana burn; slow is not decaying;
+  // TO_DO:
+  //=================================================================================================================
+  "item_custom_diffusal_blade"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_diffusal_blade"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "15.0"
+    "AbilitySharedCooldown"                               "diffusal"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "0"
+    "ItemCost"                                            "3300"
+    "ItemShopTags"                                        "agi;int;unique;hard_to_tag"
+    "ItemQuality"                                         "artifact"
+    "ItemAliases"                                         "diffusal blade"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    
+    "ItemPermanent"                                       "1"
+    "ItemInitialCharges"                                  "16"
+    "ItemRequiresCharges"                                 "1"
+    "ItemDisplayCharges"                                  "1"
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agi"                                       "20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_int"                                       "10"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_burn"                                       "40"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_burn_illusion_melee"                        "16"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_burn_illusion_ranged"                       "8"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "purge_summoned_damage"                           "99999"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "purge_slow_duration"                             "3.0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "item_modifier_custom_purged_ally"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "0.25"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "items/custom_diffusal_blade.lua"
+        "Function"                                        "Diffusal_Purge_Start"
+      }
+      
+      "SpendCharge"
+    {}
+    }
+    
+    "Modifiers"
+    {
+      "modifier_item_custom_diffusal_blade_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+        }
+      }
+      
+      "item_modifier_custom_purged_enemy_hero" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "TextureName"                                     "custom/custom_diffusal_blade"
+        
+        "EffectName"                                      "particles/items_fx/diffusal_slow.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "-100" 
+        }
+      }
+      
+      "item_modifier_custom_purged_enemy_creep" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "TextureName"                                     "custom/custom_diffusal_blade"
+        
+        "EffectName"                                      "particles/items_fx/diffusal_slow.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "-100" 
+        }
+        
+        "States"
+        {
+          "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+      
+      "item_modifier_custom_purged_ally" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "items/custom_diffusal_blade.lua"
+            "Function"                                    "DispelAlly"
+            "TARGET"                                      "TARGET"
+          }
+        }
+      }
+      
+      "modifier_item_custom_diffusal_blade_mana_break" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnAttackLanded"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "items/custom_diffusal_blade.lua"
+            "Function"                                    "Mana_Break"
+          }
+        }
+      }
+    }
+  }
 }

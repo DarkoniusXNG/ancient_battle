@@ -1,111 +1,111 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Void Demon: Time Void (Q) - New Spell, Mini-Stuns and Slows a single target
-	// Author: Darkonius
-	// Notes: OK; 26.8.2019;
-	// Linkens: Blocks;
-	// TO_DO:
-	//=================================================================================================================
-	"void_demon_time_void"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/void_demon_time_void"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"525"
-		"AbilityCastPoint"				"0.3"
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
-		
-		"AbilityCooldown"				"11 10 9 8"
-		
-		"AbilityManaCost"				"80 90 100 110"
-		"AbilityProcsMagicStick"		"1"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"90 160 255 335"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"2.5 3.0 3.5 4.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_speed_slow"		"-50"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"mini_stun_duration"	"0.1"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"		"TARGET"
-			}
+  //=================================================================================================================
+  // Void Demon: Time Void (Q) - New Spell, Mini-Stuns and Slows a single target
+  // Author: Darkonius
+  // Notes: OK; 26.8.2019;
+  // Linkens: Blocks;
+  // TO_DO:
+  //=================================================================================================================
+  "void_demon_time_void"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/void_demon_time_void"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "525"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+    
+    "AbilityCooldown"                                     "11 10 9 8"
+    
+    "AbilityManaCost"                                     "80 90 100 110"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "90 160 255 335"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "2.5 3.0 3.5 4.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-50"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_slow"                               "-50"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "mini_stun_duration"                              "0.1"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Nightstalker.Void"
+        "Target"                                          "TARGET"
+      }
 
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/void_demon/time_void.lua"
-				"Function"		"TimeVoidStart"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_time_void_slow_debuff"  // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/void_demon/time_void.lua"
+        "Function"                                        "TimeVoidStart"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_time_void_slow_debuff"  // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"EffectName"		"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
-				"EffectAttachType"	"follow_origin"
+        "EffectName"                                      "particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
-				}
-			}
-			
-			"modifier_time_void_mini_stun"  // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsDebuff"		"1"
-				"IsStunDebuff"	"1"
-				"IsPurgable"	"1"
-				
-				"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+        }
+      }
+      
+      "modifier_time_void_mini_stun"  // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "IsStunDebuff"                                    "1"
+        "IsPurgable"                                      "1"
+        
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
 
-				"EffectName"    		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"  	"follow_overhead"
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
 
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
 }

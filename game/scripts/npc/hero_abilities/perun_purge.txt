@@ -1,160 +1,160 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Lightning Shaman: Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2021;
-	// TO_DO: Rework to lua; Add Aghanim Scepter Upgrade (Applies Break on enemies); Different cooldowns on allies and enemies; status resistance fix
-	//=================================================================================================================
-	"perun_purge"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/perun_purge"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL" // DAMAGE_TYPE_PURE
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Lightning Shaman: Purge (F) - New Spell, Satyr Trickster Purge + Diffusal Purge + Shadow Demon Demonic Purge
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2021;
+  // TO_DO: Rework to lua; Add Aghanim Scepter Upgrade (Applies Break on enemies); Different cooldowns on allies and enemies; status resistance fix
+  //=================================================================================================================
+  "perun_purge"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/perun_purge"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL" // DAMAGE_TYPE_PURE
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"MaxLevel"						"1"
-		"RequiredLevel"        			"6"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"50.0"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "50.0"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.3"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.3"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"200"
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "200"
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_creep_duration"	"8.0"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_hero_duration"	"4.0"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"summon_damage"			"1000"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"base_damage"			"250"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_creep_duration"                             "8.0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "slow_hero_duration"                              "4.0"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "summon_damage"                                   "1000"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "base_damage"                                     "250"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"DOTA_Item.DiffusalBlade.Activate"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "DOTA_Item.DiffusalBlade.Activate"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+      }
 
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/perun/perun_purge.lua"
-				"Function"		"PurgeStart"
-			}
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/perun/perun_purge.lua"
+        "Function"                                        "PurgeStart"
+      }
 
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_purge_ally"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"1"
-			}
-		}
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_purge_ally"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "1"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_purge_enemy_hero" // needs tooltip
-			{
-				"IsDebuff"				"1"
-				"IsPurgable"			"0"
+    "Modifiers"
+    {
+      "modifier_purge_enemy_hero" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/perun/perun_purge.lua"
-						"Function"		"StrongDispelEnemy"
-						"TARGET"		"TARGET"
-					}
-				}
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/perun/perun_purge.lua"
+            "Function"                                    "StrongDispelEnemy"
+            "TARGET"                                      "TARGET"
+          }
+        }
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
-				}
-			}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "-100" 
+        }
+      }
 
-			"modifier_purge_ally" // doesn't need tooltip
-			{
-				"IsHidden"				"1"
-				"IsDebuff"				"0"
-				"IsPurgable"	        "0"
+      "modifier_purge_ally" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "0"
+        "IsPurgable"                                      "0"
 
-				"Duration"              "1"
+        "Duration"                                        "1"
 
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/perun/perun_purge.lua"
-						"Function"		"StrongDispelAlly"
-						"TARGET"		"TARGET"
-					}
-				}
-			}
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/perun/perun_purge.lua"
+            "Function"                                    "StrongDispelAlly"
+            "TARGET"                                      "TARGET"
+          }
+        }
+      }
 
-			"modifier_purge_enemy_creep" // needs tooltip
-			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"0"
+      "modifier_purge_enemy_creep" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/perun/perun_purge.lua"
-						"Function"		"StrongDispelEnemy"
-						"TARGET"		"TARGET"
-					}
-				}
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/perun/perun_purge.lua"
+            "Function"                                    "StrongDispelEnemy"
+            "TARGET"                                      "TARGET"
+          }
+        }
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"-100" 
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "-100" 
+        }
+      }
+    }
+  }
 }

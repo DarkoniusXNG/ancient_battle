@@ -1,162 +1,162 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blood Mage: Banish - like Pugna Decrepify
-	// Author: Darkonius
-	// Notes: OK; 2022; Original cooldown was 0;
-	// Linkens: Blocks;
-	// TO_DO:
-	//=================================================================================================================
-	"blood_mage_banish"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/blood_mage_banish"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-		
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_DEAFENING_BLAST"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.2"
-		
-		"AbilityCooldown"				"15.0 12.0 9.0 6.0"
-		
-		"AbilityManaCost"				"75 70 65 60"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"  	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-			"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01" // original: 66%
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_spell_damage"                      "-30 -40 -50 -60"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"02" // original: 66%
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_spell_damage_allies"               "-25"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"03" // original: 50%
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"move_speed_slow"                         "-30 -40 -50 -60"
-			}
-			"04" // original: 4/5/6
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"hero_duration"                           "3.5"
-				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_1"
-			}
-			"05" // original: 12/15/18
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"creep_duration"                          "5.0"
-				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_1"
-			}
-			"06" // original: 66%
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"heal_amp_pct"                            "75"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.Decrepify"
-				"Target" 		"TARGET"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/blood_mage/banish.lua"
-				"Function"		"BanishStart"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_banished_ally" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsBuff"            "1"
-				"IsDebuff"			"0"
-				"IsPurgable"		"1"
-		
-				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%bonus_spell_damage_allies"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"			"1"
-				}
+  //=================================================================================================================
+  // Blood Mage: Banish - like Pugna Decrepify
+  // Author: Darkonius
+  // Notes: OK; 2022; Original cooldown was 0;
+  // Linkens: Blocks;
+  // TO_DO:
+  //=================================================================================================================
+  "blood_mage_banish"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/blood_mage_banish"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_DEAFENING_BLAST"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.2"
+    
+    "AbilityCooldown"                                     "15.0 12.0 9.0 6.0"
+    
+    "AbilityManaCost"                                     "75 70 65 60"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01" // original: 66%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_spell_damage"                              "-30 -40 -50 -60"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02" // original: 66%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_spell_damage_allies"                       "-25"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "03" // original: 50%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-30 -40 -50 -60"
+      }
+      "04" // original: 4/5/6
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "hero_duration"                                   "3.5"
+        "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_1"
+      }
+      "05" // original: 12/15/18
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "creep_duration"                                  "5.0"
+        "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_1"
+      }
+      "06" // original: 66%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "heal_amp_pct"                                    "75"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Pugna.Decrepify"
+        "Target"                                          "TARGET"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/blood_mage/banish.lua"
+        "Function"                                        "BanishStart"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_banished_ally" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsDebuff"                                        "0"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE"  "%bonus_spell_damage_allies"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
+        }
 
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}			
-			}
+        "States"
+        {
+          "MODIFIER_STATE_DISARMED"                       "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_ATTACK_IMMUNE"                  "MODIFIER_STATE_VALUE_ENABLED"
+        }      
+      }
 
-			"modifier_banished_enemy" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-		
-				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%bonus_spell_damage"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%move_speed_slow"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"			"1"
-				}
+      "modifier_banished_enemy" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE"  "%bonus_spell_damage"
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
+        }
 
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}			
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Banish bonus duration talent
-	//=================================================================================================================
-	"special_bonus_unique_blood_mage_1"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "States"
+        {
+          "MODIFIER_STATE_DISARMED"                       "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_ATTACK_IMMUNE"                  "MODIFIER_STATE_VALUE_ENABLED"
+        }      
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Banish bonus duration talent
+  //=================================================================================================================
+  "special_bonus_unique_blood_mage_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"value"                                   "1.5"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value"                                           "1.5"
+      }
+    }
+  }
 }

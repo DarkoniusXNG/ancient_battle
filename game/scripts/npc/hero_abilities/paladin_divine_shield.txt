@@ -1,116 +1,116 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Paladin: Divine Shield (R) - New Spell, immunity to magic, physical and pure damage, has aghanim upgrade which gives full spell immunity
-	// Author: Darkonius
-	// Notes: OK; 1.11.2018; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
-	// Notes: If you need to nerf duration nerf it by 1 second; If ability needs a buff, reduce mana cost;
-	// TO_DO: 
-	//=================================================================================================================
-	"paladin_divine_shield"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/paladin_divine_shield"
-		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"550 650 750"		// False Promise is 1000; Repel is 500; Shallow Grave is 550/700/850/1000;
-		"AbilityCastPoint"				"0.3"				// False Promise is 0.3; Shallow Grave is 0.4;
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		
-		"AbilityCooldown"				"50.0 40.0 30.0"	// False Promise is 100/65/30; Ursa Enrage: 50/40/30;
-		"AbilityManaCost"				"125 150 175"		// False Promise is 100; Shallow Grave is 150; Repel is 85;
-		"AbilityProcsMagicStick"		"1"
-		"HasScepterUpgrade" 			"1"
-		
-		"precache"
-		{
-			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-			"particle"				"particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
-			"particle"				"particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01" // Repel is 4/5/6/7; False Promise is 8/9/10; Shallow Grave is 5; Ursa Enrage: 4;
-			{
-				"var_type"					"FIELD_FLOAT"
-				"shield_duration"			"5.0 6.0 7.0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"Target" 			"TARGET"
-				"EffectName" 		"Hero_Omniknight.Repel"
-			}
-			
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "TARGET"
-			}
-			
-			"RunScript"
-			{
-				"Target"			"TARGET"
-				"ScriptFile"		"heroes/paladin/paladin_divine_shield.lua"
-				"Function"			"DivineShield"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_paladin_divine_shield" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-				
-				"EffectName"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-				"EffectAttachType"		"follow_origin"
+  //=================================================================================================================
+  // Paladin: Divine Shield (R) - New Spell, immunity to magic, physical and pure damage, has aghanim upgrade which gives full spell immunity
+  // Author: Darkonius
+  // Notes: OK; 1.11.2018; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
+  // Notes: If you need to nerf duration nerf it by 1 second; If ability needs a buff, reduce mana cost;
+  // TO_DO: 
+  //=================================================================================================================
+  "paladin_divine_shield"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/paladin_divine_shield"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "550 650 750"    // False Promise is 1000; Repel is 500; Shallow Grave is 550/700/850/1000;
+    "AbilityCastPoint"                                    "0.3"        // False Promise is 0.3; Shallow Grave is 0.4;
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
+    
+    "AbilityCooldown"                                     "50.0 40.0 30.0"  // False Promise is 100/65/30; Ursa Enrage: 50/40/30;
+    "AbilityManaCost"                                     "125 150 175"    // False Promise is 100; Shallow Grave is 150; Repel is 85;
+    "AbilityProcsMagicStick"                              "1"
+    "HasScepterUpgrade"                                   "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+      "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
+      "particle"                                          "particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01" // Repel is 4/5/6/7; False Promise is 8/9/10; Shallow Grave is 5; Ursa Enrage: 4;
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "shield_duration"                                 "5.0 6.0 7.0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "Hero_Omniknight.Repel"
+      }
+      
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_omniknight/omniknight_repel_cast.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "Target"                                          "TARGET"
+      }
+      
+      "RunScript"
+      {
+        "Target"                                          "TARGET"
+        "ScriptFile"                                      "heroes/paladin/paladin_divine_shield.lua"
+        "Function"                                        "DivineShield"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_paladin_divine_shield" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "EffectName"                                      "particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-				}
-			}
-			
-			"modifier_paladin_divine_shield_upgraded" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-				
-				//"StatusEffectName"        "particles/status_fx/status_effect_ghost.vpcf"        
-				//"StatusEffectPriority"  	"12"
-				
-				"EffectName"			"particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
-				"EffectAttachType"		"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"	
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+        }
+      }
+      
+      "modifier_paladin_divine_shield_upgraded" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        //"StatusEffectName"        "particles/status_fx/status_effect_ghost.vpcf"        
+        //"StatusEffectPriority"    "12"
+        
+        "EffectName"                                      "particles/econ/items/omniknight/omni_ti8_head/omniknight_repel_buff_ti8.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+        }
+        
+        "States"
+        {
+          "MODIFIER_STATE_MAGIC_IMMUNE"                   "MODIFIER_STATE_VALUE_ENABLED"  
+        }
+      }
+    }
+  }
 }

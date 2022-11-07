@@ -1,120 +1,120 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Dark Terminator: Confuse - Like Manta but 1 illusion or 2 with the talent; No Dispel and no invulnerability;
-	// Author: Darkonius
-	// Notes: OK; 2022; Doesn't apply dispel to caster; Not invulnerable during cast;
-	// TO_DO: 
-	//=================================================================================================================
-	"dark_terminator_confuse"
-	{
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/dark_terminator/confuse.lua"
-		"AbilityTextureName"                              "custom/dark_terminator_confuse"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  //=================================================================================================================
+  // Dark Terminator: Confuse - Like Manta but 1 illusion or 2 with the talent; No Dispel and no invulnerability;
+  // Author: Darkonius
+  // Notes: OK; 2022; Doesn't apply dispel to caster; Not invulnerable during cast;
+  // TO_DO: 
+  //=================================================================================================================
+  "dark_terminator_confuse"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dark_terminator/confuse.lua"
+    "AbilityTextureName"                                  "custom/dark_terminator_confuse"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-		"MaxLevel"                                        "1"
-		"RequiredLevel"                                   "12"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "12"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.0"
-		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_1"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "100"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "100"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "125" // CK Phantasm (125/200/275)
-		"AbilityProcsMagicStick"                          "1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "125" // CK Phantasm (125/200/275)
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // CK Phantasm (30);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"illusion_duration"                       "60"
-			}
-			"02" // not in tooltip
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage"                         "-75"
-				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
-			}
-			"03" // like original
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"outgoing_damage_tooltip"                 "25"
-				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_illusion_damage"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"04" // not in tooltip
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"incoming_damage"                         "0"
-			}
-			"05" // like original
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"incoming_damage_tooltip"                 "100"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"illusion_count"                          "1"
-				"LinkedSpecialBonus"                      "special_bonus_unique_dark_terminator_confuse_extra_illusion"
-			}		
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // CK Phantasm (30);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "illusion_duration"                               "60"
+      }
+      "02" // not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "outgoing_damage"                                 "-75"
+        "LinkedSpecialBonus"                              "special_bonus_unique_dark_terminator_confuse_illusion_damage"
+      }
+      "03" // like original
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "outgoing_damage_tooltip"                         "25"
+        "LinkedSpecialBonus"                              "special_bonus_unique_dark_terminator_confuse_illusion_damage"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "04" // not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "incoming_damage"                                 "0"
+      }
+      "05" // like original
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "incoming_damage_tooltip"                         "100"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_count"                                  "1"
+        "LinkedSpecialBonus"                              "special_bonus_unique_dark_terminator_confuse_extra_illusion"
+      }    
+    }
+  }
 
-	//=================================================================================================================
-	// Confuse talent extra illusion
-	//=================================================================================================================
-	"special_bonus_unique_dark_terminator_confuse_extra_illusion"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
+  //=================================================================================================================
+  // Confuse talent extra illusion
+  //=================================================================================================================
+  "special_bonus_unique_dark_terminator_confuse_extra_illusion"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Confuse talent bonus illusion damage
-	//=================================================================================================================
-	"special_bonus_unique_dark_terminator_confuse_illusion_damage"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "25"
-			}
-		}
-	}
+  //=================================================================================================================
+  // Confuse talent bonus illusion damage
+  //=================================================================================================================
+  "special_bonus_unique_dark_terminator_confuse_illusion_damage"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "25"
+      }
+    }
+  }
 }

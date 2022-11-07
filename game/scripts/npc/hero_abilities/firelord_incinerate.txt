@@ -1,136 +1,136 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Fire Lord: Incinerate (T) - New Spell, Sand King Caustic Finale + Ursa Fury Swipes, autocast, orb
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO: If too weak -> rework it so the physical damage goes through spell immunity.
-	//=================================================================================================================
-	"firelord_incinerate"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/firelord_incinerate"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	    "AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Fire Lord: Incinerate (T) - New Spell, Sand King Caustic Finale + Ursa Fury Swipes, autocast, orb
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO: If too weak -> rework it so the physical damage goes through spell immunity.
+  //=================================================================================================================
+  "firelord_incinerate"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/firelord_incinerate"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"0.0"
+    "AbilityCastRange"                                    "500"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "0.0"
 
-		"AbilityManaCost"				"5 10 15 20"
+    "AbilityManaCost"                                     "5 10 15 20"
 
-		"precache"
-		{
-			"particle" 	"particles/custom/ogre_magi_fireblast.vpcf"
-			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/custom/ogre_magi_fireblast.vpcf"
+      "particle"                                          "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // Caustic Finale (6); Ursa Fury Swipes (8/12/16/20);
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_reset_time"				"8 10 12 14"
-			}
-			"02" // Fire Lord unique because Fire Lord is ranged hero
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_per_stack"				"6 9 12 15"
-			}
-			"03" // old sand king caustic finale: 90/130/170/220; unique values because of Flaming Presence
-			{
-				"var_type"						"FIELD_INTEGER"
-				"incineration_damage"			"75 100 125 150"
-			}
-			"04" // like Sand King's Caustic Finale
-			{
-				"var_type"						"FIELD_INTEGER"
-				"incineration_radius"			"500"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01" // Caustic Finale (6); Ursa Fury Swipes (8/12/16/20);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_reset_time"                                "8 10 12 14"
+      }
+      "02" // Fire Lord unique because Fire Lord is ranged hero
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_stack"                                "6 9 12 15"
+      }
+      "03" // old sand king caustic finale: 90/130/170/220; unique values because of Flaming Presence
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "incineration_damage"                             "75 100 125 150"
+      }
+      "04" // like Sand King's Caustic Finale
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "incineration_radius"                             "500"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_incinerate_orb"
-			{	
-				"Passive"		"1"		// this is needed for applying when learned
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+    "Modifiers"
+    {
+      "modifier_incinerate_orb"
+      {  
+        "Passive"                                         "1"    // this is needed for applying when learned
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Orb"
-	            {
-	                "Priority"  		"DOTA_ORB_PRIORITY_ABILITY"
-	                "ProjectileName" 	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
-	                "CastAttack"    	"1" 
-	            }
+        "Orb"
+        {
+          "Priority"                                      "DOTA_ORB_PRIORITY_ABILITY"
+          "ProjectileName"                                "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
+          "CastAttack"                                    "1" 
+        }
 
-	            "OnOrbFire"
-	            {
-	                "SpendMana"
-	                {
-	                    "Mana" 		"%AbilityManaCost"
-	                }
-	            }
+        "OnOrbFire"
+        {
+          "SpendMana"
+          {
+            "Mana"                                        "%AbilityManaCost"
+          }
+        }
 
-	            "OnOrbImpact"
-	            {
-	               	"RunScript"
-					{
-						"ScriptFile"	"heroes/firelord/firelord_incinerate.lua"
-						"Function"		"IncinerateAttack"
-					}
-	          	}
-			}
+        "OnOrbImpact"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/firelord/firelord_incinerate.lua"
+            "Function"                                    "IncinerateAttack"
+          }
+        }
+      }
 
-			"modifier_incinerate_stack"
-			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"0"
+      "modifier_incinerate_stack"
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"OnDeath"
-				{
-					"FireEffect"
-					{
-						"EffectName"        "particles/custom/ogre_magi_fireblast.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"
-					    {
-					       "Center" "UNIT"
-					       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-					   	}
-					}
+        "OnDeath"
+        {
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/custom/ogre_magi_fireblast.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"
+            {
+              "Center"                                    "UNIT"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
+            }
+          }
 
-					"Damage"
-					{
-						"Target"
-						{
-							"Center"  	"UNIT"
-							"Radius" 	"%incineration_radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"%incineration_damage"
-					}
+          "Damage"
+          {
+            "Target"
+            {
+              "Center"                                    "UNIT"
+              "Radius"                                    "%incineration_radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            }
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%incineration_damage"
+          }
 
-					"FireSound"
-	              	{
-	                   "EffectName" 	"Hero_Nevermore.Raze_Flames"
-	                   "Target"
-					    {
-					       "Center" "UNIT"
-					       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-					   	}
-	               	}
-				}
-			}
-		}
-	}
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Nevermore.Raze_Flames"
+            "Target"
+            {
+              "Center"                                    "UNIT"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
+            }
+          }
+        }
+      }
+    }
+  }
 }

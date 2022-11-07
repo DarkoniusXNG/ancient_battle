@@ -1,174 +1,174 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Sohei: Dash
-	//=================================================================================================================
-	"sohei_dash"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "ability_lua"
-		"ScriptFile"                                          "heroes/sohei/sohei_dash.lua"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"AbilityTextureName"                                  "custom/ronin_dash"
-		"AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
-		"AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
-		"AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
-		"SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Sohei: Dash
+  //=================================================================================================================
+  "sohei_dash"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/sohei/sohei_dash.lua"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "AbilityTextureName"                                  "custom/ronin_dash"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"HasScepterUpgrade"                                   "0"
-		"HasShardUpgrade"                                     "1"
+    "HasScepterUpgrade"                                   "0"
+    "HasShardUpgrade"                                     "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                    "0.0"
-		"AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastRange"                                    "0"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+    "AbilityCastRange"                                    "0"
 
-		// Time
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                     "0"
-		"AbilityCharges"                                      "2 2 3 4"
-		"AbilityChargeRestoreTime"                            "20 18 16 14"
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "0"
+    "AbilityCharges"                                      "2 2 3 4"
+    "AbilityChargeRestoreTime"                            "20 18 16 14"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                     "40 45 50 55"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "40 45 50 55"
 
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-		  "particle"                                          "particles/econ/items/juggernaut/bladekeeper_omnislash/_dc_juggernaut_omni_slash_trail.vpcf"
-		  //"particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-		  "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
-		}
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/econ/items/juggernaut/bladekeeper_omnislash/_dc_juggernaut_omni_slash_trail.vpcf"
+      //"particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+      "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"dash_speed"                                          "4000" // max Dash speed
-			"move_speed_multiplier"                               "7.5"
-			"dash_width"                                          "175"
-			"dash_range" // max Dash range
-			{
-				"value"                                           "600"
-				"LinkedSpecialBonus"                              "special_bonus_sohei_dash_cast_range"
-			}
-			"damage"
-			{
-				"value"                                           "75 100 125 150"
-				"LinkedSpecialBonus"                              "special_bonus_unique_sohei_7"
-			}
-			"move_speed_slow_pct" // old Faceless Void Time Walk (20/30/40/50%)
-			{
-				"value"                                           "20 30 40 50"
-				"LinkedSpecialBonus"                              "special_bonus_sohei_dash_slow"
-			}
-			"slow_duration"                                       "2.0"
-			// "shard_damage_to_heal_ratio"
-			// {
-				// "value"                                           "1"
-				// "RequiresShard"                                   "1"
-				// "CalculateSpellDamageTooltip"                     "0"
-				// "DamageTypeTooltip"                               "DAMAGE_TYPE_NONE"
-			// }
-			// "shard_hp_as_heal"
-			// {
-				// "value"                                           "5"
-				// "RequiresShard"                                   "1"
-			// }
-			"shard_push_pull_length"
-			{
-				"value"                                           "600"
-				"RequiresShard"                                   "1"
-			}
-			"shard_push_pull_speed"
-			{
-				"value"                                           "1200"
-				"RequiresShard"                                   "1"
-			}
-			// "shard_bonus_dash_range"
-			// {
-				// "value"                                           "200"
-				// "RequiresShard"                                   "1"
-			// }
-			"shard_unit_cast_range"
-			{
-				"value"                                           "600"
-				"RequiresShard"                                   "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "dash_speed"                                        "4000" // max Dash speed
+      "move_speed_multiplier"                             "7.5"
+      "dash_width"                                        "175"
+      "dash_range" // max Dash range
+      {
+        "value"                                           "600"
+        "LinkedSpecialBonus"                              "special_bonus_sohei_dash_cast_range"
+      }
+      "damage"
+      {
+        "value"                                           "75 100 125 150"
+        "LinkedSpecialBonus"                              "special_bonus_unique_sohei_7"
+      }
+      "move_speed_slow_pct" // old Faceless Void Time Walk (20/30/40/50%)
+      {
+        "value"                                           "20 30 40 50"
+        "LinkedSpecialBonus"                              "special_bonus_sohei_dash_slow"
+      }
+      "slow_duration"                                     "2.0"
+      // "shard_damage_to_heal_ratio"
+      // {
+        // "value"                                           "1"
+        // "RequiresShard"                                   "1"
+        // "CalculateSpellDamageTooltip"                     "0"
+        // "DamageTypeTooltip"                               "DAMAGE_TYPE_NONE"
+      // }
+      // "shard_hp_as_heal"
+      // {
+        // "value"                                           "5"
+        // "RequiresShard"                                   "1"
+      // }
+      "shard_push_pull_length"
+      {
+        "value"                                           "600"
+        "RequiresShard"                                   "1"
+      }
+      "shard_push_pull_speed"
+      {
+        "value"                                           "1200"
+        "RequiresShard"                                   "1"
+      }
+      // "shard_bonus_dash_range"
+      // {
+        // "value"                                           "200"
+        // "RequiresShard"                                   "1"
+      // }
+      "shard_unit_cast_range"
+      {
+        "value"                                           "600"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Dash talent: Increases damage
-	//=================================================================================================================
-	"special_bonus_unique_sohei_7"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Dash talent: Increases damage
+  //=================================================================================================================
+  "special_bonus_unique_sohei_7"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "100"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Dash talent: Increases slow
-	//=================================================================================================================
-	"special_bonus_sohei_dash_slow"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "100"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Dash talent: Increases slow
+  //=================================================================================================================
+  "special_bonus_sohei_dash_slow"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "20"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Dash talent: Increases max dash range
-	//=================================================================================================================
-	"special_bonus_sohei_dash_cast_range"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "20"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Dash talent: Increases max dash range
+  //=================================================================================================================
+  "special_bonus_sohei_dash_cast_range"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "200"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "200"
+      }
+    }
+  }
 }

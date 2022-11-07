@@ -1,99 +1,99 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Archmage: Conjure Image (F) - New Spell, Ultimate, Makes a strong illusion out of the target hero
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2022; Scepter makes super illusions out of enemies
-	// TO_DO: Add a visual effect (particle);
-	// ================================================================================================================
-	"archmage_conjure_image"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/archmage_conjure_image"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+  //=================================================================================================================
+  // Archmage: Conjure Image (F) - New Spell, Ultimate, Makes a strong illusion out of the target hero
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2022; Scepter makes super illusions out of enemies
+  // TO_DO: Add a visual effect (particle);
+  // ================================================================================================================
+  "archmage_conjure_image"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/archmage_conjure_image"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
 
-		"MaxLevel"               		"1"
-		"RequiredLevel"					"6"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
 
-		"HasScepterUpgrade"				"1"
+    "HasScepterUpgrade"                                   "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"900"
-		"AbilityCastPoint"				"0.25"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "900"
+    "AbilityCastPoint"                                    "0.25"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"100"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "100"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150"
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "150"
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"duration"							"60"
-			}
-			"02" // not in tooltip
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_out"				"-30"
-			}
-			"03" // not in tooltip
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_in"				"0"
-			}
-			"04" // tooltip only (illusion_damage_out + 100)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_dealt"				"70"
-				"CalculateSpellDamageTooltip"		"0"
-			}
-			"05" // tooltip only (illusion_damage_in + 100)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"illusion_damage_taken"				"100"
-				"CalculateSpellDamageTooltip"		"0"
-			}
-			
-		}
-		
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Terrorblade.ConjureImage"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/archmage/conjure_image.lua"
-				"Function"		"ConjureImage"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "60"
+      }
+      "02" // not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_damage_out"                             "-30"
+      }
+      "03" // not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_damage_in"                              "0"
+      }
+      "04" // tooltip only (illusion_damage_out + 100)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_damage_dealt"                           "70"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "05" // tooltip only (illusion_damage_in + 100)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_damage_taken"                           "100"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      
+    }
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Terrorblade.ConjureImage"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/archmage/conjure_image.lua"
+        "Function"                                        "ConjureImage"
+      }
+    }
+  }
 }

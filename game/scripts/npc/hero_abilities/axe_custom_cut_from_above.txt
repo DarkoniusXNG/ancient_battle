@@ -1,71 +1,71 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Axe: Cut from Above (R) - like Axe Culling Blade from Holdout Game Mode
-	// Author: Darkonius
-	// Linkens: Doesn't Block (INTENTIONAL); 
-	// Notes: 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"axe_custom_cut_from_above"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/axe/cut_from_above.lua"
-		"AbilityTextureName"                              "custom/axe_custom_cut_from_above"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"                           "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Axe: Cut from Above (R) - like Axe Culling Blade from Holdout Game Mode
+  // Author: Darkonius
+  // Linkens: Doesn't Block (INTENTIONAL); 
+  // Notes: 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "axe_custom_cut_from_above"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/axe/cut_from_above.lua"
+    "AbilityTextureName"                                  "custom/axe_custom_cut_from_above"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"HasScepterUpgrade"                               "1"
+    "HasScepterUpgrade"                                   "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"                                "500 700 900"
-		"AbilityCastPoint"                                "0.3"
-		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
-		"AnimationPlaybackRate"                           "0.5"
-		"AoERadius"                                       "275"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "500 700 900"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
+    "AnimationPlaybackRate"                               "0.5"
+    "AoERadius"                                           "275"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "40 30 20"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "40 30 20"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "60 120 180"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "60 120 180"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"damage_kill_threshold"                       "250 350 450"
-			"scepter_damage_kill_threshold"
-			{
-				"value"                                   "350 500 650"
-				"RequiresScepter"                         "1"
-			}
-			"scepter_bonus_cast_range"
-			{
-				"value"                                   "400"
-				"RequiresScepter"                         "1"
-			}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "damage_kill_threshold"                             "250 350 450"
+      "scepter_damage_kill_threshold"
+      {
+        "value"                                           "350 500 650"
+        "RequiresScepter"                                 "1"
+      }
+      "scepter_bonus_cast_range"
+      {
+        "value"                                           "400"
+        "RequiresScepter"                                 "1"
+      }
 
-			"leap_speed"                                  "500"
-			"leap_duration"                               "0.5"
-			"leap_height"                                 "250"
-			"radius"                                      "275"
+      "leap_speed"                                        "500"
+      "leap_duration"                                     "0.5"
+      "leap_height"                                       "250"
+      "radius"                                            "275"
 
-			"bonus_move_speed_on_kill"                    "20 30 40"
-			"bonus_attack_speed_on_kill"                  "20 30 40"
-			"buff_duration"                               "10"
-			"buff_radius"                                 "1200"
-		}
-	}
+      "bonus_move_speed_on_kill"                          "20 30 40"
+      "bonus_attack_speed_on_kill"                        "20 30 40"
+      "buff_duration"                                     "10"
+      "buff_radius"                                       "1200"
+    }
+  }
 }

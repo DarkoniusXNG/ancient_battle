@@ -1,40 +1,40 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blademaster: Shadow Walk (E) - like old Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
-	// Author: Darkonius
-	// Notes: OK; 2022; Dispellable with Basic Dispel;
-	// Notes:
-	// TO_DO:
-	//=================================================================================================================
-	"blademaster_shadow_walk"
-	{
-		"BaseClass"             		"ability_lua"
-		"ScriptFile"					"heroes/blademaster/shadow_walk.lua"
-		"AbilityTextureName"			"custom/blademaster_shadow_walk"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-	
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"20 19 18 17"
-	
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"1"
-	
-		"precache"
-		{
-		  	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-		  	"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
-		}
-		
-		"AbilityValues"
-		{
-			"duration"                                    "20 25 30 35"
-			"bonus_move_speed"                            "10 20 30 40"
-			"bonus_damage"                                "40 70 100 130"
-			"fade_time"                                   "1.0 0.8 0.6 0.4"
-		}
-	}
+  //=================================================================================================================
+  // Blademaster: Shadow Walk (E) - like old Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
+  // Author: Darkonius
+  // Notes: OK; 2022; Dispellable with Basic Dispel;
+  // Notes:
+  // TO_DO:
+  //=================================================================================================================
+  "blademaster_shadow_walk"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blademaster/shadow_walk.lua"
+    "AbilityTextureName"                                  "custom/blademaster_shadow_walk"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastPoint"                                    "0"
+    "AbilityCooldown"                                     "20 19 18 17"
+    
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+    }
+    
+    "AbilityValues"
+    {
+      "duration"                                          "20 25 30 35"
+      "bonus_move_speed"                                  "10 20 30 40"
+      "bonus_damage"                                      "40 70 100 130"
+      "fade_time"                                         "1.0 0.8 0.6 0.4"
+    }
+  }
 }

@@ -1,143 +1,143 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Alchemist: Healing Spray (Q) - New Spell, Creates a pool of healing spray that heals and decreases incoming damage
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"alchemist_custom_healing_spray"
-	{
-		"BaseClass"                     "ability_datadriven"
-		"AbilityTextureName"            "custom/alchemist_custom_healing_spray"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
-		"AbilityCastRange"              "900"             // like Acid Spray
-		"AbilityCastPoint"              "0.2"             // like Acid Spray
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
+  //=================================================================================================================
+  // Alchemist: Healing Spray (Q) - New Spell, Creates a pool of healing spray that heals and decreases incoming damage
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "alchemist_custom_healing_spray"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/alchemist_custom_healing_spray"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    
+    "AbilityCastRange"                                    "900"             // like Acid Spray
+    "AbilityCastPoint"                                    "0.2"             // like Acid Spray
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
-		"AbilityCooldown"               "20.0"            // Acid Spray (22); Wisp Overcharge (18);
+    "AbilityCooldown"                                     "20.0"            // Acid Spray (22); Wisp Overcharge (18);
 
-		"AbilityManaCost"               "150 160 170 180"
-		"AbilityProcsMagicStick"		"1"
-		
-		"AOERadius"                     "%radius"
-		
-		"AbilitySpecial"
-		{
-			"01" // original: 250; smaller than Acid Spray (475/525/575/625)
-			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "400 450 500 550"
-			}
-			"02" // original: 3/4/5; Acid Spray: 16; Wisp Overcharge: 8
-			{
-				"var_type"              "FIELD_INTEGER"
-				"duration"         		"16"
-			}
-			"03" // original: 30/45/60;
-			{
-				"var_type"              "FIELD_INTEGER"
-				"heal_per_wave"         "15 30 45 60"
-			}
-			"04"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"wave_interval"         "1"
-			}
-			"05" // like old Wisp Overcharge
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"damage_decrease"      			"-5 -10 -15 -20"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-		}
+    "AbilityManaCost"                                     "150 160 170 180"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AOERadius"                                           "%radius"
+    
+    "AbilitySpecial"
+    {
+      "01" // original: 250; smaller than Acid Spray (475/525/575/625)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400 450 500 550"
+      }
+      "02" // original: 3/4/5; Acid Spray: 16; Wisp Overcharge: 8
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "16"
+      }
+      "03" // original: 30/45/60;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "heal_per_wave"                                   "15 30 45 60"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "wave_interval"                                   "1"
+      }
+      "05" // like old Wisp Overcharge
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_decrease"                                 "-5 -10 -15 -20"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"CreateThinker"
-			{
-				"ModifierName"			"modifier_healing_spray_thinker"
-				"Target" 				"POINT"
-			}
-	    }
-	    
-		"Modifiers"
-	    {
-	        "modifier_healing_spray_thinker" // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsPurgable"	"0"
-				
-				"Aura"					"modifier_healing_spray_buff"
-				"Aura_Radius"			"%radius"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Duration"				"%duration"
+    "OnSpellStart"
+    {
+      "CreateThinker"
+      {
+        "ModifierName"                                    "modifier_healing_spray_thinker"
+        "Target"                                          "POINT"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_healing_spray_thinker" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
+        
+        "Aura"                                            "modifier_healing_spray_buff"
+        "Aura_Radius"                                     "%radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Duration"                                        "%duration"
 
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/alchemist/healing_spray.lua"
-						"Function"		"HealingSpraySound"
-					}
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/alchemist/healing_spray.lua"
+            "Function"                                    "HealingSpraySound"
+          }
 
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						"ControlPoints"
-						{
-							"00" "0 0 0"
-							"01" "%radius 1 1"
-							"15" "25 150 25"
-							"16" "0 0 0"
-						}
-					}
-				}
-			}
-			
-			"modifier_healing_spray_buff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"				"%damage_decrease"
-				}
-				
-				"OnCreated"
-				{
-					"Heal"
-					{
-						"Target"	 	"TARGET"
-						"HealAmount"	"%heal_per_wave"
-					}
-				}
-				
-				"ThinkInterval"		"%wave_interval"
-				"OnIntervalThink"
-				{
-					"FireSound"
-					{
-						"EffectName" 	"Hero_Alchemist.AcidSpray.Damage"
-						"Target"		"TARGET"
-					}
-					
-					"Heal"
-					{
-						"Target"	 	"TARGET"
-						"HealAmount"	"%heal_per_wave"
-					}
-				}
-			}
-		}              
-	}
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+            "ControlPoints"
+            {
+              "00"                                        "0 0 0"
+              "01"                                        "%radius 1 1"
+              "15"                                        "25 150 25"
+              "16"                                        "0 0 0"
+            }
+          }
+        }
+      }
+      
+      "modifier_healing_spray_buff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"  "%damage_decrease"
+        }
+        
+        "OnCreated"
+        {
+          "Heal"
+          {
+            "Target"                                      "TARGET"
+            "HealAmount"                                  "%heal_per_wave"
+          }
+        }
+        
+        "ThinkInterval"                                   "%wave_interval"
+        "OnIntervalThink"
+        {
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Alchemist.AcidSpray.Damage"
+            "Target"                                      "TARGET"
+          }
+          
+          "Heal"
+          {
+            "Target"                                      "TARGET"
+            "HealAmount"                                  "%heal_per_wave"
+          }
+        }
+      }
+    }              
+  }
 }

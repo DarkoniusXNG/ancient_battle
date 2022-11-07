@@ -1,123 +1,123 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Sohei: Flurry of Blows
-	//=================================================================================================================
-	"sohei_flurry_of_blows"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/sohei/sohei_flurry_of_blows.lua"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityTextureName"                              "custom/ronin_flurry_of_blows"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"AbilityUnitDamageType"                           "DAMAGE_TYPE_PHYSICAL"
-		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES" // this is for UI tooltip
+  //=================================================================================================================
+  // Sohei: Flurry of Blows
+  //=================================================================================================================
+  "sohei_flurry_of_blows"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/sohei/sohei_flurry_of_blows.lua"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityTextureName"                                  "custom/ronin_flurry_of_blows"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY" // this is for UI tooltip
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // this is for UI tooltip
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES" // this is for UI tooltip
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.5" // original (1); Eclipse (0.5);
-		"AbilityCastRange"                                "675" // original (400); Eclipse radius (675);
-		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_4"
-		"AnimationPlaybackRate"                           "3"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.5" // original (1); Eclipse (0.5);
+    "AbilityCastRange"                                    "675" // original (400); Eclipse radius (675);
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
+    "AnimationPlaybackRate"                               "3"
 
-		// Time
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "95"
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "95"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "100 150 200"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "100 150 200"
 
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"particle"                                    "particles/hero/sohei/flurry_of_blows_ground.vpcf"
-			"particle"                                    "particles/status_fx/status_effect_omnislash.vpcf"
-			"soundfile"                                   "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
-		}
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/hero/sohei/flurry_of_blows_ground.vpcf"
+      "particle"                                          "particles/status_fx/status_effect_omnislash.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"flurry_radius" // original (450); Eclipse radius (675);
-			{
-				"value"                                           "675"
-				"LinkedSpecialBonus"                              "special_bonus_sohei_fob_radius"
-			}
-			"max_attacks" // original (6/9/12); Eclipse (6/9/12);
-			{
-				"value"                                           "6 9 12"
-				"special_bonus_unique_sohei_8"                    "+6"
-			}
-			"max_duration" // min is: max_attacks * attack_interval
-			{
-				"value"                                           "3.6 5.4 7.2"
-				"special_bonus_unique_sohei_8"                    "+3.6"
-			}
-			"attack_interval"                                     "0.6" // original (0.4); Eclipse beam interval (0.6);
-			"bonus_damage" // original (0);
-			{
-				"value"                                           "20 25 30"
-				"CalculateSpellDamageTooltip"                     "0"
-				"DamageTypeTooltip"                               "DAMAGE_TYPE_MAGICAL"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "flurry_radius" // original (450); Eclipse radius (675);
+      {
+        "value"                                           "675"
+        "LinkedSpecialBonus"                              "special_bonus_sohei_fob_radius"
+      }
+      "max_attacks" // original (6/9/12); Eclipse (6/9/12);
+      {
+        "value"                                           "6 9 12"
+        "special_bonus_unique_sohei_8"                    "+6"
+      }
+      "max_duration" // min is: max_attacks * attack_interval
+      {
+        "value"                                           "3.6 5.4 7.2"
+        "special_bonus_unique_sohei_8"                    "+3.6"
+      }
+      "attack_interval"                                   "0.6" // original (0.4); Eclipse beam interval (0.6);
+      "bonus_damage" // original (0);
+      {
+        "value"                                           "20 25 30"
+        "CalculateSpellDamageTooltip"                     "0"
+        "DamageTypeTooltip"                               "DAMAGE_TYPE_MAGICAL"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Flurry of Blows talent: Increases radius
-	//=================================================================================================================
-	"special_bonus_sohei_fob_radius"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Flurry of Blows talent: Increases radius
+  //=================================================================================================================
+  "special_bonus_sohei_fob_radius"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "250"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Flurry of Blows talent: Increases max number of attacks and max duration
-	//=================================================================================================================
-	"special_bonus_unique_sohei_8"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "250"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Flurry of Blows talent: Increases max number of attacks and max duration
+  //=================================================================================================================
+  "special_bonus_unique_sohei_8"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "6"
-			}
-			"02"
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"value2"                                          "3.6"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "6"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value2"                                          "3.6"
+      }
+    }
+  }
 }

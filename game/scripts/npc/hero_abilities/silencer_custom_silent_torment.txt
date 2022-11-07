@@ -1,156 +1,156 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Silencer: Silent Torment (T) - New Spell, Skillshot; Dps + slow and more dps if silenced
-	// Author: Darkonius
-	// Notes: OK; 20.9.2017;
-	// TO_DO: Rework to lua - it doesn't work on ancients for some reason
-	//=================================================================================================================
-	"silencer_custom_silent_torment"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/silencer_custom_silent_torment"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.3"
+  //=================================================================================================================
+  // Silencer: Silent Torment (T) - New Spell, Skillshot; Dps + slow and more dps if silenced
+  // Author: Darkonius
+  // Notes: OK; 20.9.2017;
+  // TO_DO: Rework to lua - it doesn't work on ancients for some reason
+  //=================================================================================================================
+  "silencer_custom_silent_torment"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/silencer_custom_silent_torment"  
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.3"
 
-		"AbilityCooldown"				"20.0 18.0 16.0 14.0"
-	
-		"AbilityManaCost"				"100 110 120 130"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"		"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
-			"particle"		"particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
-		}
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"15 20 25 30"				
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"		"900"					
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"distance"				"850"			
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250"						
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"debuff_duration"		"8.0"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"move_speed_slow"		"-15 -20 -25 -30"			
-			}
-			"07" // minimum slow duration if its applied last tick of the main debuff
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"3.0"
-			}
-			"08" // not in tooltip
-			{
-				"var_type"				"FIELD_FLOAT"
-				"tick_interval"			"0.2"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Silencer.Curse.Cast"
-				"Target"		"CASTER"
-			}
+    "AbilityCooldown"                                     "20.0 18.0 16.0 14.0"
+    
+    "AbilityManaCost"                                     "100 110 120 130"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+      "particle"                                          "particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
+    }
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "15 20 25 30"        
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "projectile_speed"                                "900"          
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "distance"                                        "850"      
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "250"            
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "debuff_duration"                                 "8.0"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-15 -20 -25 -30"      
+      }
+      "07" // minimum slow duration if its applied last tick of the main debuff
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "slow_duration"                                   "3.0"
+      }
+      "08" // not in tooltip
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "tick_interval"                                   "0.2"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Silencer.Curse.Cast"
+        "Target"                                          "CASTER"
+      }
 
-			"LinearProjectile"
-			{
-				"EffectName"			"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
-				"MoveSpeed"				"%projectile_speed"
-				"StartPosition"			"attach_attack1"
-				"FixedDistance"			"%distance"
-				"StartRadius"			"%radius"
-				"EndRadius"				"%radius"
-				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"HasFrontalCone"		"0"
-				"ProvidesVision"		"1"
-				"VisionRadius"			"300"
-			}
-		}
+      "LinearProjectile"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+        "MoveSpeed"                                       "%projectile_speed"
+        "StartPosition"                                   "attach_attack1"
+        "FixedDistance"                                   "%distance"
+        "StartRadius"                                     "%radius"
+        "EndRadius"                                       "%radius"
+        "TargetTeams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "TargetTypes"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "HasFrontalCone"                                  "0"
+        "ProvidesVision"                                  "1"
+        "VisionRadius"                                    "300"
+      }
+    }
 
-		"OnProjectileHitUnit"
-		{
-			"DeleteOnHit" 				"0"
-			
-			"ApplyModifier"
-			{
-				"ModifierName"			"modifier_silent_torment_debuff"
-				"Target" 				"TARGET"
-				"Duration"				"%debuff_duration"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_silent_torment_debuff" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-				
-				"EffectName"		"particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"ThinkInterval"  	"%tick_interval"
-				
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/silencer/silent_torment.lua"
-						"Function"		"SilentTormentDamageSlow"
-					}
-				}
-			}
-			
-			"modifier_silent_torment_slow" // needs tooltip (this modifier is applied only if the target is silenced)
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-				
-				"Duration"			"%slow_duration"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow" 
-				}
-			}
-		}
-	}
+    "OnProjectileHitUnit"
+    {
+      "DeleteOnHit"                                       "0"
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_silent_torment_debuff"
+        "Target"                                          "TARGET"
+        "Duration"                                        "%debuff_duration"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_silent_torment_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "ThinkInterval"                                   "%tick_interval"
+        
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/silencer/silent_torment.lua"
+            "Function"                                    "SilentTormentDamageSlow"
+          }
+        }
+      }
+      
+      "modifier_silent_torment_slow" // needs tooltip (this modifier is applied only if the target is silenced)
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "Duration"                                        "%slow_duration"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow" 
+        }
+      }
+    }
+  }
 }

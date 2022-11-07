@@ -28,10 +28,10 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-        "duration"                                        "6"
-        "bonus_attack_speed"                              "90 120 150 180"
-        "bonus_move_speed"                                "20 30 40 50"
-        "bonus_damage_pct"                                "10"
+      "duration"                                          "6"
+      "bonus_attack_speed"                                "90 120 150 180"
+      "bonus_move_speed"                                  "20 30 40 50"
+      "bonus_damage_pct"                                  "10"
     }
   }
 }

@@ -1,86 +1,86 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Stealth Assassin - Ryu; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_stealth_assassin"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------	
-		"override_hero"				"npc_dota_hero_riki"
-		"Team"						"Good"
-		"BotImplemented"			"0"
-		"Role"						"Carry,Escape,Disabler,Nuker"			// Roles
-		"Rolelevels"				"2,3,1,1"
-		"Complexity"				"1"
+  //=================================================================================================================
+  // HERO: Stealth Assassin - Ryu; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_stealth_assassin"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------  
+    "override_hero"                                       "npc_dota_hero_riki"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Escape,Disabler,Nuker"      // Roles
+    "Rolelevels"                                          "2,3,1,1"
+    "Complexity"                                          "1"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"			"6"
-		"Ability1"				"riki_smoke_screen"							// Q, DOTA_VERSION (4 levels)
-		"Ability2"				"stealth_assassin_blink_strike"				// W (4 levels)
-		"Ability3"				"stealth_assassin_desolate"					// E, passive (4 levels)
-		"Ability4"				"stealth_assassin_permanent_invisibility"	// T, passive (4 levels)
-		"Ability5"				"stealth_assassin_ambush"					// F, Secondary Ultimate (1 level)
-		"Ability6"				"stealth_assassin_death_ward"				// R, Primary Ultimate (3 levels)
-		"Ability7"				"generic_hidden"
-		"Ability8"				"generic_hidden"
-		"Ability9"				"generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "Ability1"                                            "riki_smoke_screen"              // Q, DOTA_VERSION (4 levels)
+    "Ability2"                                            "stealth_assassin_blink_strike"        // W (4 levels)
+    "Ability3"                                            "stealth_assassin_desolate"          // E, passive (4 levels)
+    "Ability4"                                            "stealth_assassin_permanent_invisibility"  // T, passive (4 levels)
+    "Ability5"                                            "stealth_assassin_ambush"          // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "stealth_assassin_death_ward"        // R, Primary Ultimate (3 levels)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"				"special_bonus_hp_regen_6"				    // lvl 10 talent: unique
-		"Ability11"				"special_bonus_unique_riki_7"				// lvl 10 talent: Smoke Screen radius talent 
+    "Ability10"                                           "special_bonus_hp_regen_6"            // lvl 10 talent: unique
+    "Ability11"                                           "special_bonus_unique_riki_7"        // lvl 10 talent: Smoke Screen radius talent 
 
-		"Ability12"				"special_bonus_hp_300"                      // lvl 15 talent: unique
-		"Ability13"				"special_bonus_unique_riki_3"				// lvl 15 talent: Smoke Screen cooldown talent
+    "Ability12"                                           "special_bonus_hp_300"                      // lvl 15 talent: unique
+    "Ability13"                                           "special_bonus_unique_riki_3"        // lvl 15 talent: Smoke Screen cooldown talent
 
-		"Ability14"				"special_bonus_20_crit_15"					// lvl 20 talent: unique 
-		"Ability15"				"special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent;
+    "Ability14"                                           "special_bonus_20_crit_15"          // lvl 20 talent: unique 
+    "Ability15"                                           "special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent;
 
-		"Ability16"				"special_bonus_agility_40"					// lvl 25 talent: unique
-		"Ability17"				"special_bonus_unique_witch_doctor_5"		// lvl 25 talent: Death Ward damage talent
+    "Ability16"                                           "special_bonus_agility_40"          // lvl 25 talent: unique
+    "Ability17"                                           "special_bonus_unique_witch_doctor_5"    // lvl 25 talent: Death Ward damage talent
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// Riki (3);
-		"MagicalResistance"			"25"									// Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                    // Riki (3);
+    "MagicalResistance"                                   "25"                  // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"21"									// Riki (41); original (2);
-		"AttackDamageMax"			"25"									// Riki (45); original (12);
-		"AttackRate"				"1.7"									// like Riki
-		"BaseAttackSpeed"           "100"                                   // Riki (100);
-		"AttackAnimationPoint"		"0.3"									// like Riki
-		"AttackAcquisitionRange"	"600"									// like Riki
-		"AttackRange"				"128"									// Riki (150); original (100 or 128);
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "21"                  // Riki (41); original (2);
+    "AttackDamageMax"                                     "25"                  // Riki (45); original (12);
+    "AttackRate"                                          "1.7"                  // like Riki
+    "BaseAttackSpeed"                                     "100"                                   // Riki (100);
+    "AttackAnimationPoint"                                "0.3"                  // like Riki
+    "AttackAcquisitionRange"                              "600"                  // like Riki
+    "AttackRange"                                         "128"                  // Riki (150); original (100 or 128);
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"285"									// Riki (320); Anti-Mage (310);
-		"MovementTurnRate"			"0.6"									// like Riki
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "285"                  // Riki (320); Anti-Mage (310);
+    "MovementTurnRate"                                    "0.6"                  // like Riki
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"									// Default
-		"VisionNighttimeRange"		"800"									// Default
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                  // Default
+    "VisionNighttimeRange"                                "800"                  // Default
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"18"									// Riki (18); original (18); - don't change!
-		"AttributeStrengthGain"		"1.9"									// Riki (2.4); original (2.0); - don't decrease!
-		"AttributeBaseIntelligence"	"14"									// Riki (14); original (16); Anti-Mage (12);
-		"AttributeIntelligenceGain"	"1.3"									// Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
-		"AttributeBaseAgility"		"30"									// Riki (18); original (22);
-		"AttributeAgilityGain"		"2.9"									// Riki (1.4); original (2.9); Anti-Mage (3.2) - don't increase!
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributeBaseStrength"                               "18"                  // Riki (18); original (18); - don't change!
+    "AttributeStrengthGain"                               "1.9"                  // Riki (2.4); original (2.0); - don't decrease!
+    "AttributeBaseIntelligence"                           "14"                  // Riki (14); original (16); Anti-Mage (12);
+    "AttributeIntelligenceGain"                           "1.3"                  // Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
+    "AttributeBaseAgility"                                "30"                  // Riki (18); original (22);
+    "AttributeAgilityGain"                                "2.9"                  // Riki (1.4); original (2.9); Anti-Mage (3.2) - don't increase!
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// Riki (3.0); original (1.5);
-		"StatusHealth"				"200"									// Riki (200); original (230);
-		"StatusMana"				"75"									// like Riki
-		"StatusManaRegen"			"0.0"									// like Riki
-	}
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "1.5"                  // Riki (3.0); original (1.5);
+    "StatusHealth"                                        "200"                  // Riki (200); original (230);
+    "StatusMana"                                          "75"                  // like Riki
+    "StatusManaRegen"                                     "0.0"                  // like Riki
+  }
 }

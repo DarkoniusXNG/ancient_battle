@@ -1,104 +1,104 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Paladin: Divine Retribution (F) - New Spell, passive, For every allied hero death in vicinity, Paladin gains damage and armor.
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"paladin_divine_retribution"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/paladin_divine_retribution"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Paladin: Divine Retribution (F) - New Spell, passive, For every allied hero death in vicinity, Paladin gains damage and armor.
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "paladin_divine_retribution"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/paladin_divine_retribution"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"MaxLevel"						"1"
-		"RequiredLevel"					"3"
-		
-		"precache"
-		{
-			"particle"					"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-		}
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // in tooltip
-			{
-				"var_type"						"FIELD_INTEGER"
-				"buff_duration"					"30"
-			}
-			"02" // in tooltip
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_bonus_percentage"		"50"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"03" // in tooltip
-			{
-				"var_type"						"FIELD_INTEGER"
-				"armor_bonus"					"10"
-			}
-			"04" // in tooltip
-			{
-				"var_type"						"FIELD_INTEGER"
-				"aura_radius"					"1200"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_retribution_aura_applier" // doesn't need tooltip
-			{
-				"Passive" 				"1"
-				"IsHidden"    			"1"
-				
-				"Aura"        			"modifier_retribution_aura_effect"
-				"Aura_Radius" 			"%aura_radius"
-				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"  			"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster" 	"0"
-				
-				"AllowIllusionDuplicate"	"0"
-			}
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "3"
+    
+    "precache"
+    {
+      "particle"                                          "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+    }
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "buff_duration"                                   "30"
+      }
+      "02" // in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_bonus_percentage"                         "50"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "03" // in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "armor_bonus"                                     "10"
+      }
+      "04" // in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "1200"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_retribution_aura_applier" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        
+        "Aura"                                            "modifier_retribution_aura_effect"
+        "Aura_Radius"                                     "%aura_radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO"
+        "Aura_ApplyToCaster"                              "0"
+        
+        "AllowIllusionDuplicate"                          "0"
+      }
 
-			"modifier_retribution_aura_effect" // doesn't need tooltip
-			{
-				"IsHidden"    	"1"
-				"IsPurgable"	"0"
-				
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/paladin/paladin_divine_retribution.lua"
-						"Function"			"RetributionStart"
-					}
-				}
-			}
-			
-			"modifier_retribution_buff" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"1"
-				"Attributes"    		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"StatusEffectName"     	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
-				"StatusEffectPriority" 	"10"
+      "modifier_retribution_aura_effect" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
+        
+        "OnDeath"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/paladin/paladin_divine_retribution.lua"
+            "Function"                                    "RetributionStart"
+          }
+        }
+      }
+      
+      "modifier_retribution_buff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "1"
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE"
+        
+        "StatusEffectName"                                "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+        "StatusEffectPriority"                            "10"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_bonus_percentage"
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    		"%armor_bonus"
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"  "%damage_bonus_percentage"
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_bonus"
+        }
+      }
+    }
+  }
 }

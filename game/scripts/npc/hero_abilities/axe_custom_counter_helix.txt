@@ -1,75 +1,75 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
-	// Author: Darkonius
-	// Notes: OK; 2022; Pseudo-Random, triggers OnAttackStart
-	// TO_DO: aghs shard: apply counter helix on Axe attack
-	//=================================================================================================================
-	"axe_custom_counter_helix"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/axe/counter_helix.lua"
-		"AbilityTextureName"			"axe_counter_helix"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Axe: Counter Helix (T) - like Old Axe Counter Helix, improved physical damage
+  // Author: Darkonius
+  // Notes: OK; 2022; Pseudo-Random, triggers OnAttackStart
+  // TO_DO: aghs shard: apply counter helix on Axe attack
+  //=================================================================================================================
+  "axe_custom_counter_helix"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/axe/counter_helix.lua"
+    "AbilityTextureName"                                  "axe_counter_helix"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilityCooldown"				"0.45 0.4 0.35 0.3"
-		"AbilityManaCost"				"0"
+    "AbilityCooldown"                                     "0.45 0.4 0.35 0.3"
+    "AbilityManaCost"                                     "0"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"100 150 200 250"
-				"LinkedSpecialBonus"        "special_bonus_unique_axe_counter_helix_damage"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"275"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"trigger_chance"			"20"
-			}
-			"04" // not in tooltip; only here
-			{
-				"var_type"					"FIELD_INTEGER"
-				"trigger_radius"			"1800"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "100 150 200 250"
+        "LinkedSpecialBonus"                              "special_bonus_unique_axe_counter_helix_damage"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "275"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "trigger_chance"                                  "20"
+      }
+      "04" // not in tooltip; only here
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "trigger_radius"                                  "1800"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Counter Helix talent: bonus damage
-	//=================================================================================================================
-	"special_bonus_unique_axe_counter_helix_damage"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Counter Helix talent: bonus damage
+  //=================================================================================================================
+  "special_bonus_unique_axe_counter_helix_damage"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "250"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "250"
+      }
+    }
+  }
 }

@@ -1,119 +1,119 @@
 "DOTAUnits" //or DOTAHeroes
 {
-	//=================================================================================================================
-	// HERO: Sohei
-	// Notes: OK; 2022;
-	//=================================================================================================================
-	"npc_dota_hero_sohei"
-	{
-		"BaseClass"                                       "npc_dota_hero_juggernaut"
-		"Model"                                           "models/heroes/sohei/sohei.vmdl"
-		"SoundSet"                                        "Sohei"
-		"Role"                                            "Carry,Escape,Initiator"
-        "Rolelevels"                                      "2,2,2"
-		"Complexity"                                      "3"
-		"Team"                                            "Good"
-        "HeroID"                                          "125"
-		"ModelScale"                                      "0.85"
-		"VersusScale"                                     "0.85"
-		"SpectatorLoadoutScale"                           "1.0"
-		"LoadoutScale"                                    "1.0"
-		"HeroGlowColor"                                   "222 120 36"
+  //=================================================================================================================
+  // HERO: Sohei
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "npc_dota_hero_sohei"
+  {
+    "BaseClass"                                           "npc_dota_hero_juggernaut"
+    "Model"                                               "models/heroes/sohei/sohei.vmdl"
+    "SoundSet"                                            "Sohei"
+    "Role"                                                "Carry,Escape,Initiator"
+    "Rolelevels"                                          "2,2,2"
+    "Complexity"                                          "3"
+    "Team"                                                "Good"
+    "HeroID"                                              "125"
+    "ModelScale"                                          "0.85"
+    "VersusScale"                                         "0.85"
+    "SpectatorLoadoutScale"                               "1.0"
+    "LoadoutScale"                                        "1.0"
+    "HeroGlowColor"                                       "222 120 36"
 
-		//"HeroSelectSoundEffect"                           "Hero_FacelessVoid.Pick"
+    //"HeroSelectSoundEffect"                           "Hero_FacelessVoid.Pick"
 
-        "Ability1"                                        "sohei_dash"
-		"Ability2"                                        "sohei_guard"
-		"Ability3"                                        "sohei_momentum_strike"
-		"Ability4"                                        "sohei_momentum"
-		"Ability5"                                        "sohei_palm_of_life"
-		"Ability6"                                        "sohei_flurry_of_blows"
-		"Ability7"                                        "generic_hidden"
-		"Ability8"                                        "generic_hidden"
-		"Ability9"                                        "generic_hidden"
+    "Ability1"                                            "sohei_dash"
+    "Ability2"                                            "sohei_guard"
+    "Ability3"                                            "sohei_momentum_strike"
+    "Ability4"                                            "sohei_momentum"
+    "Ability5"                                            "sohei_palm_of_life"
+    "Ability6"                                            "sohei_flurry_of_blows"
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                                       "special_bonus_strength_10"
-		"Ability11"                                       "special_bonus_sohei_dash_cast_range"
+    "Ability10"                                           "special_bonus_strength_10"
+    "Ability11"                                           "special_bonus_sohei_dash_cast_range"
 
-		"Ability12"                                       "special_bonus_sohei_dash_slow"
-		"Ability13"                                       "special_bonus_sohei_guard_knockback"
+    "Ability12"                                           "special_bonus_sohei_dash_slow"
+    "Ability13"                                           "special_bonus_sohei_guard_knockback"
 
-		"Ability14"                                       "special_bonus_unique_sohei_7"
-		"Ability15"                                       "special_bonus_sohei_stun"
+    "Ability14"                                           "special_bonus_unique_sohei_7"
+    "Ability15"                                           "special_bonus_sohei_stun"
 
-		"Ability16"                                       "special_bonus_unique_sohei_5"
-		"Ability17"                                       "special_bonus_sohei_fob_radius"
+    "Ability16"                                           "special_bonus_unique_sohei_5"
+    "Ability17"                                           "special_bonus_sohei_fob_radius"
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"                                   "5"
-		"MagicalResistance"                               "25"
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "5"
+    "MagicalResistance"                                   "25"
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"                                 "31"                        
-		"AttackDamageMax"                                 "33"
-		"AttackRate"                                      "1.7"
-		"BaseAttackSpeed"                                 "100"
-		"AttackAnimationPoint"                            "0.33"
-		"AttackAcquisitionRange"                          "600"
-		"AttackRange"                                     "150"
-		"AttackSpeedActivityModifiers"
-		{
-			"fast"    "170"
-			"faster"  "275"
-			"fastest" "350"
-		}
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "31"                        
+    "AttackDamageMax"                                     "33"
+    "AttackRate"                                          "1.7"
+    "BaseAttackSpeed"                                     "100"
+    "AttackAnimationPoint"                                "0.33"
+    "AttackAcquisitionRange"                              "600"
+    "AttackRange"                                         "150"
+    "AttackSpeedActivityModifiers"
+    {
+      "fast"                                              "170"
+      "faster"                                            "275"
+      "fastest"                                           "350"
+    }
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"                                   "300"
-		"MovementTurnRate"                                "1.5"
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "300"
+    "MovementTurnRate"                                    "1.5"
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"                              "1800"
-		"VisionNighttimeRange"                            "1200"
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "1200"
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-        "AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"
-        "AttributeBaseStrength"                           "23"                  //
-        "AttributeStrengthGain"                           "3.5"                 //
-		"AttributeBaseAgility"                            "18"                  //
-        "AttributeAgilityGain"                            "1.5"                 //
-        "AttributeBaseIntelligence"                       "17"                  //
-        "AttributeIntelligenceGain"                       "1.5"                 //
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "23"                  //
+    "AttributeStrengthGain"                               "3.5"                 //
+    "AttributeBaseAgility"                                "18"                  //
+    "AttributeAgilityGain"                                "1.5"                 //
+    "AttributeBaseIntelligence"                           "17"                  //
+    "AttributeIntelligenceGain"                           "1.5"                 //
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "3.25"
-		"StatusHealth"                                    "200"
-		"StatusMana"                                      "75"                  // Default
-		"StatusManaRegen"                                 "0.0"                 // Default
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "3.25"
+    "StatusHealth"                                        "200"
+    "StatusMana"                                          "75"                  // Default
+    "StatusManaRegen"                                     "0.0"                 // Default
 
-		// Combat
-		//-------------------------------------------------------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"				// Default
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"				// Default
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"		// Default
+    // Combat
+    //-------------------------------------------------------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"        // Default
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"        // Default
+    "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"    // Default
 
-		// Bounds
-		//-------------------------------------------------------------------------------------------------------------
-		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"			  			// Default
-		//"HealthBarOffset"			"170"
+    // Bounds
+    //-------------------------------------------------------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"              // Default
+    //"HealthBarOffset"      "170"
 
-		// Inventory
-		"HasInventory"                                    "1"
-		"DisableWearables"                                "1"
+    // Inventory
+    "HasInventory"                                        "1"
+    "DisableWearables"                                    "1"
 
-		"particle_folder"                                 "particles/hero/sohei"
-		"GameSoundsFile"                                  "soundevents/units/game_sounds_sohei.vsndevts"
-		"VoiceFile"                                       "soundevents/voscripts/game_sounds_vo_juggernaut.vsndevts"
-		// soundevents/voscripts/game_sounds_vo_sohei.vsndevts
+    "particle_folder"                                     "particles/hero/sohei"
+    "GameSoundsFile"                                      "soundevents/units/game_sounds_sohei.vsndevts"
+    "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_juggernaut.vsndevts"
+    // soundevents/voscripts/game_sounds_vo_sohei.vsndevts
 
-		"BotImplemented"                                  "0"
-	}
+    "BotImplemented"                                      "0"
+  }
 }

@@ -1,41 +1,41 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Primal Split Earth Spirit: Spell Immunity (E) - passive, spell and magic immunity
-	// Author: Darkonius
-	// Notes: OK; 26.6.2017;
-	// TO_DO:
-	//====================================================================================================
-	"primal_split_earth_spirit_spell_immunity"
-	{
-	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"    "custom/primal_split_earth_spirit_spell_immunity"
+  //====================================================================================================
+  // Primal Split Earth Spirit: Spell Immunity (E) - passive, spell and magic immunity
+  // Author: Darkonius
+  // Notes: OK; 26.6.2017;
+  // TO_DO:
+  //====================================================================================================
+  "primal_split_earth_spirit_spell_immunity"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "custom/primal_split_earth_spirit_spell_immunity"
 
-	    "MaxLevel"              "1"
-	
-	    "Modifiers"
-	    {
-	        "modifier_earth_spirit_custom_spell_immunity" // doesn't need tooltip
-	        {
-	            "Passive"		"1"
-	            "IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-	    
-	            "EffectName"        "particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
-	            "EffectAttachType"  "follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-				}
-	    
-	            "States"
-	            {
-	                "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	        }
-	    }
-	}
+    "MaxLevel"                                            "1"
+    
+    "Modifiers"
+    {
+      "modifier_earth_spirit_custom_spell_immunity" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "EffectName"                                      "particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
+        }
+        
+        "States"
+        {
+          "MODIFIER_STATE_MAGIC_IMMUNE"                   "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
 }

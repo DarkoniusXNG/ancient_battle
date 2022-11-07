@@ -1,89 +1,89 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Archmage; 2022;
-	// Notes: OK; Arcane Magic provides bonus mana regen;
-	// TO_DO: 
-	//=================================================================================================================
-	"npc_dota_hero_archmage"
-	{
-		"override_hero"				"npc_dota_hero_keeper_of_the_light"
-		"HeroSelectSoundEffect"		"Hero_KeeperOfTheLight.Pick"
-		"BotImplemented"			"0"								
-		"Role"						"Support,Nuker,Disabler,Jungler,Pusher,Escape"
-		"Rolelevels"				"3,1,2,3,3,1"
-		"Complexity"				"3"
-		"Team"						"Good"
-		
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"			"6"
-		"AbilityTalentStart"    "10"
-		"Ability1"				"archmage_blizzard"							// Q (4 levels)
-		"Ability2"				"archmage_summon_water_elemental"			// W (4 levels)
-		"Ability3"				"archmage_arcane_magic"						// E (4 levels)
-		"Ability4"				"archmage_summon_earth_golem"				// T (4 levels)
-		"Ability5"				"archmage_conjure_image"					// F, Secondary Ultimate (1 level)
-		"Ability6"				"archmage_mass_teleport"					// R, Primary Ultimate (3 levels)
-		"Ability7"				"generic_hidden"
-		"Ability8"				"generic_hidden"
-		"Ability9"				"generic_hidden"
+  //=================================================================================================================
+  // HERO: Archmage; 2022;
+  // Notes: OK; Arcane Magic provides bonus mana regen;
+  // TO_DO: 
+  //=================================================================================================================
+  "npc_dota_hero_archmage"
+  {
+    "override_hero"                                       "npc_dota_hero_keeper_of_the_light"
+    "HeroSelectSoundEffect"                               "Hero_KeeperOfTheLight.Pick"
+    "BotImplemented"                                      "0"                
+    "Role"                                                "Support,Nuker,Disabler,Jungler,Pusher,Escape"
+    "Rolelevels"                                          "3,1,2,3,3,1"
+    "Complexity"                                          "3"
+    "Team"                                                "Good"
+    
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "archmage_blizzard"              // Q (4 levels)
+    "Ability2"                                            "archmage_summon_water_elemental"      // W (4 levels)
+    "Ability3"                                            "archmage_arcane_magic"            // E (4 levels)
+    "Ability4"                                            "archmage_summon_earth_golem"        // T (4 levels)
+    "Ability5"                                            "archmage_conjure_image"          // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "archmage_mass_teleport"          // R, Primary Ultimate (3 levels)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"				"special_bonus_attack_damage_30"            // lvl 10 talent; Nature's Prophet (+20)
-		"Ability11"				"special_bonus_movement_speed_25"           // lvl 10 talent; KOTL (+20)
+    "Ability10"                                           "special_bonus_attack_damage_30"            // lvl 10 talent; Nature's Prophet (+20)
+    "Ability11"                                           "special_bonus_movement_speed_25"           // lvl 10 talent; KOTL (+20)
 
-		"Ability12"				"special_bonus_armor_8"                     // lvl 15 talent; unique
-		"Ability13"				"special_bonus_magic_resistance_25"         // lvl 15 talent; unique
+    "Ability12"                                           "special_bonus_armor_8"                     // lvl 15 talent; unique
+    "Ability13"                                           "special_bonus_magic_resistance_25"         // lvl 15 talent; unique
 
-		"Ability14"				"special_bonus_status_resistance_10"        // lvl 20 talent; unique
-		"Ability15"				"special_bonus_attack_speed_100"            // lvl 20 talent; unique
+    "Ability14"                                           "special_bonus_status_resistance_10"        // lvl 20 talent; unique
+    "Ability15"                                           "special_bonus_attack_speed_100"            // lvl 20 talent; unique
 
-		"Ability16"				"special_bonus_unique_archmage_1"		    // lvl 25 talent; Arcane Magic talent
-		"Ability17"				"special_bonus_spell_block_20"				// lvl 25 talent; unique
+    "Ability16"                                           "special_bonus_unique_archmage_1"        // lvl 25 talent; Arcane Magic talent
+    "Ability17"                                           "special_bonus_spell_block_20"        // lvl 25 talent; unique
 
-		"Ability18"             "generic_hidden"
-		
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-1"									// KOTL (0); Crystal Maiden (-1);
-		"MagicalResistance"			"25"									// Default
-		
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"			// like KOTL
-		"AttackDamageMin"			"36"									// unique for Archmage; starting dmg: 50
-		"AttackDamageMax"			"50"									// unique for Archmage; starting dmg: 64
-		"AttackRate"				"1.7"									// Default
-		"AttackAnimationPoint"		"0.3"									// like KOTL
-		"AttackAcquisitionRange"	"800"									// like KOTL
-		"AttackRange"				"600"									// like KOTL
-		"ProjectileSpeed"			"900"									// like KOTL
-		
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"320"									// KOTL (330); Furion (295); original (320); Sniper (285); Crystal Maiden (280);
-		"MovementTurnRate"			"0.6"									// like KOTL
-		
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"			"1800"								// Default
-		"VisionNighttimeRange"			"800"								// Default
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"			// like KOTL
-		"AttributeBaseStrength"			"18"								// KOTL (18); original (14); Crystal Maiden (18); Furion (21);
-		"AttributeStrengthGain"			"2.2"								// KOTL (2.3); original (1.8); Crystal Maiden (2.2); Furion (2.6);
-		"AttributeBaseAgility"			"17"								// KOTL (15); original (17); Crystal Maiden (16); Furion (22);
-		"AttributeAgilityGain"			"1.6"								// KOTL (1.6); original (1.0); Crystal Maiden (1.6); Furion (3.6);
-		"AttributeBaseIntelligence"		"14"								// KOTL (23); original (19); Crystal Maiden (16); Furion (23);
-		"AttributeIntelligenceGain"		"3.2"								// KOTL (3.2); original (3.2); Crystal Maiden (3.3); Furion (3.7);
-		
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.5"									// unique
-		"StatusHealth"				"200"									// like KOTL
-		"StatusMana"				"75"									// like KOTL
-		"StatusManaRegen"			"0.0"									// like KOTL
-	}
+    "Ability18"                                           "generic_hidden"
+    
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "-1"                  // KOTL (0); Crystal Maiden (-1);
+    "MagicalResistance"                                   "25"                  // Default
+    
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"      // like KOTL
+    "AttackDamageMin"                                     "36"                  // unique for Archmage; starting dmg: 50
+    "AttackDamageMax"                                     "50"                  // unique for Archmage; starting dmg: 64
+    "AttackRate"                                          "1.7"                  // Default
+    "AttackAnimationPoint"                                "0.3"                  // like KOTL
+    "AttackAcquisitionRange"                              "800"                  // like KOTL
+    "AttackRange"                                         "600"                  // like KOTL
+    "ProjectileSpeed"                                     "900"                  // like KOTL
+    
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "320"                  // KOTL (330); Furion (295); original (320); Sniper (285); Crystal Maiden (280);
+    "MovementTurnRate"                                    "0.6"                  // like KOTL
+    
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                // Default
+    "VisionNighttimeRange"                                "800"                // Default
+    
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"      // like KOTL
+    "AttributeBaseStrength"                               "18"                // KOTL (18); original (14); Crystal Maiden (18); Furion (21);
+    "AttributeStrengthGain"                               "2.2"                // KOTL (2.3); original (1.8); Crystal Maiden (2.2); Furion (2.6);
+    "AttributeBaseAgility"                                "17"                // KOTL (15); original (17); Crystal Maiden (16); Furion (22);
+    "AttributeAgilityGain"                                "1.6"                // KOTL (1.6); original (1.0); Crystal Maiden (1.6); Furion (3.6);
+    "AttributeBaseIntelligence"                           "14"                // KOTL (23); original (19); Crystal Maiden (16); Furion (23);
+    "AttributeIntelligenceGain"                           "3.2"                // KOTL (3.2); original (3.2); Crystal Maiden (3.3); Furion (3.7);
+    
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "1.5"                  // unique
+    "StatusHealth"                                        "200"                  // like KOTL
+    "StatusMana"                                          "75"                  // like KOTL
+    "StatusManaRegen"                                     "0.0"                  // like KOTL
+  }
 }

@@ -1,67 +1,67 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Gambler: Chip Stack (F) - New Spell, Deals single target damage based on target's net worth
-	// Author: Darkonius;
-	// Linkens: Blocks;
-	// Notes: OK; 2022;
-	// TO_DO: If it's too strong put tracking projectile or damage cap.
-	//=================================================================================================================
-	"gambler_chip_stack"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName" 			"alchemist_goblins_greed"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"MaxLevel"						"1"
-		
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.4"
-		
-		"AbilityCooldown"				"70.0" // original: 6 seconds
-		
-		"AbilityManaCost"				"350"
-		"AbilityProcsMagicStick" 		"1"
-		
-		"precache"
-		{
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
-			"particle"				"particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"gold_to_damage_ratio"			"10"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"		"heroes/gambler/gambler_chip_stack.lua"
-				"Function"			"ChipStack"
-			}
-			
-			"FireEffect"
-			{
-				"EffectName" 		"particles/items2_fx/hand_of_midas.vpcf"
-				"Target" 			"TARGET"
-				"EffectAttachType" 	"follow_origin"
-			}
-		}
-	}
+  //=================================================================================================================
+  // Gambler: Chip Stack (F) - New Spell, Deals single target damage based on target's net worth
+  // Author: Darkonius;
+  // Linkens: Blocks;
+  // Notes: OK; 2022;
+  // TO_DO: If it's too strong put tracking projectile or damage cap.
+  //=================================================================================================================
+  "gambler_chip_stack"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "alchemist_goblins_greed"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "MaxLevel"                                            "1"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastRange"                                    "500"
+    "AbilityCastPoint"                                    "0.4"
+    
+    "AbilityCooldown"                                     "70.0" // original: 6 seconds
+    
+    "AbilityManaCost"                                     "350"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "gold_to_damage_ratio"                            "10"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/gambler/gambler_chip_stack.lua"
+        "Function"                                        "ChipStack"
+      }
+      
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/items2_fx/hand_of_midas.vpcf"
+        "Target"                                          "TARGET"
+        "EffectAttachType"                                "follow_origin"
+      }
+    }
+  }
 }

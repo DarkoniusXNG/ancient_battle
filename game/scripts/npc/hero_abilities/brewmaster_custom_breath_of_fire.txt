@@ -1,105 +1,105 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
-	// Authors: Jastuchko + Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//====================================================================================================
-	"brewmaster_custom_breath_of_fire"
-	{
-		"BaseClass"           		 	"ability_lua"
-		"ScriptFile"					"heroes/brewmaster/breath_of_fire.lua"
-		"AbilityTextureName"            "custom/brewmaster_custom_breath_of_fire"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
-		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
-		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //====================================================================================================
+  // Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
+  // Authors: Jastuchko + Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //====================================================================================================
+  "brewmaster_custom_breath_of_fire"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/brewmaster/breath_of_fire.lua"
+    "AbilityTextureName"                                  "custom/brewmaster_custom_breath_of_fire"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"   
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"AbilityCastRange"              "750"								// Dragon Knight: 600
-		"AbilityCastPoint"              "0.3"								// Dragon Knight: 0.2
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastRange"                                    "750"                // Dragon Knight: 600
+    "AbilityCastPoint"                                    "0.3"                // Dragon Knight: 0.2
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
-		"AbilityCooldown"               "10.0"								// original: 10 seconds; Dragon Knight: 14/13/12/11 seconds
+    "AbilityCooldown"                                     "10.0"                // original: 10 seconds; Dragon Knight: 14/13/12/11 seconds
 
-		"AbilityManaCost"               "100 110 120 130"					// original: 70; Dragon Knight: 100/110/120/130
-		"AbilityProcsMagicStick"		"1"
+    "AbilityManaCost"                                     "100 110 120 130"          // original: 70; Dragon Knight: 100/110/120/130
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
-			"particle" 			"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-			"particle"			"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+      "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // original: 65/125/170; Dragon Knight: 90/170/240/300
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"initial_damage"        			"90 170 240 300"
-			}
-			"02" // Dragon Knight: 1050
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"speed"        			            "1100"
-			}
-			"03" // same as melee attack range
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"start_radius"                      "150"
-			}
-			"04" // Dragon Knight: 250
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"end_radius"                        "250"
-			}
-			"05" // Dragon Knight: 750;
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"distance"      		            "750"
-			}
-			"06" // original: 5 seconds; Cinder Brew: 5 seconds;
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"burn_duration"      				"5"
-			}
-			"07" // original: 1 second
-			{
-				"var_type"                  		"FIELD_FLOAT"
-				"burn_damage_interval"      		"0.2"
-			}
-			"06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps; Cinder Brew: 20/30/40/50;
-			{
-				"var_type"                  		"FIELD_INTEGER"
-				"burn_damage_per_second"     		"20 30 40 50"
-				"LinkedSpecialBonus"                "special_bonus_unique_brewmaster_drunken_haze_burn"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01" // original: 65/125/170; Dragon Knight: 90/170/240/300
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "initial_damage"                                  "90 170 240 300"
+      }
+      "02" // Dragon Knight: 1050
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "speed"                                           "1100"
+      }
+      "03" // same as melee attack range
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "start_radius"                                    "150"
+      }
+      "04" // Dragon Knight: 250
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "end_radius"                                      "250"
+      }
+      "05" // Dragon Knight: 750;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "distance"                                        "750"
+      }
+      "06" // original: 5 seconds; Cinder Brew: 5 seconds;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "burn_duration"                                   "5"
+      }
+      "07" // original: 1 second
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "burn_damage_interval"                            "0.2"
+      }
+      "06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps; Cinder Brew: 20/30/40/50;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "burn_damage_per_second"                          "20 30 40 50"
+        "LinkedSpecialBonus"                              "special_bonus_unique_brewmaster_drunken_haze_burn"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Breathe Fire + Drunken Haze talent - increases burn damage
-	//=================================================================================================================
-	"special_bonus_unique_brewmaster_drunken_haze_burn"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Breathe Fire + Drunken Haze talent - increases burn damage
+  //=================================================================================================================
+  "special_bonus_unique_brewmaster_drunken_haze_burn"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "10"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "10"
+      }
+    }
+  }
 }

@@ -1,104 +1,104 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Queen of Pain: Scream of Terror (T) - New Spell, AoE Spell; Reduces Attack Damage and Armor of Enemies
-	// Author: Darkonius
-	// Notes: OK; 31.1.2017;
-	// TO_DO: Add Fear
-	//=================================================================================================================
-	"queenofpain_custom_scream_of_terror"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
- 		"BaseClass"              		"ability_datadriven"
-		"AbilityTextureName"     		"custom/queenofpain_custom_scream_of_terror"
-    	"AbilityBehavior"        		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    	"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-    	"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastPoint"       		"0.3"
-    	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
-    	"AnimationPlaybackRate"  		"1"
-    	"AnimationIgnoresModelScale" 	"1"
+  //=================================================================================================================
+  // Queen of Pain: Scream of Terror (T) - New Spell, AoE Spell; Reduces Attack Damage and Armor of Enemies
+  // Author: Darkonius
+  // Notes: OK; 31.1.2017;
+  // TO_DO: Add Fear
+  //=================================================================================================================
+  "queenofpain_custom_scream_of_terror"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/queenofpain_custom_scream_of_terror"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_ATTACK"
+    "AnimationPlaybackRate"                               "1"
+    "AnimationIgnoresModelScale"                          "1"
 
-    	// Stats
-    	//----------------------------------------------------------------------------------------
-    	"AbilityManaCost"         		"75 80 90 100"
-    	"AbilityCooldown"         		"14.0"
-    	"AbilityProcsMagicStick" 		"1"
-		
-		"precache" 
-		{
-			"particle"		"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf"
-			"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"375"
-			}    			
-    		"02"
-    		{ 
-        		"var_type"  					"FIELD_INTEGER"
-        		"damage_reduction" 				"-30 -40 -50 -60"
-				"CalculateSpellDamageTooltip"	"0"
-    		}
-			"04"
-			{
-				"var_type"  				"FIELD_INTEGER"
-        		"armor_reduction" 			"-3 -4 -5 -6"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"7.0"
-			}
-    	}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"		"Hero_VengefulSpirit.WaveOfTerror"
-				"Target"			"CASTER"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName" 	"modifier_scream_of_terror_debuff"
-				"Target"
-				{
-					"Center" 	"CASTER"
-					"Radius" 	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_scream_of_terror_debuff" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
+    // Stats
+    //----------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "75 80 90 100"
+    "AbilityCooldown"                                     "14.0"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache" 
+    {
+      "particle"                                          "particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "375"
+      }          
+      "02"
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_reduction"                                "-30 -40 -50 -60"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "armor_reduction"                                 "-3 -4 -5 -6"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "7.0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_VengefulSpirit.WaveOfTerror"
+        "Target"                                          "CASTER"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_scream_of_terror_debuff"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%duration"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_scream_of_terror_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf"
-				"EffectAttachType"		"follow_origin"
+        "EffectName"                                      "particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%armor_reduction"
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%damage_reduction"
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reduction"
+        }
+      }
+    }
+  }
 }

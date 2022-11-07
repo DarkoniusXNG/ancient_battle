@@ -1,73 +1,73 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Horde: Spooky Scary Skeleton - Level 1
-	// Notes: OK; 19.6.2017;
-	//=================================================================================
-	"npc_dota_spooky_scary_skeleton"
-	{
-		"BaseClass"			"npc_dota_creature"
-		"Model"				"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" 
-		"ModelScale"		"1.0"
-		"SoundSet"			"Undying_Zombie"
-		"CanBeDominated"  	"1"
-		"Level"				"1"
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					""
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"					"1"
-		"MagicalResistance"				"25"
+  //=================================================================================
+  // Horde: Spooky Scary Skeleton - Level 1
+  // Notes: OK; 19.6.2017;
+  //=================================================================================
+  "npc_dota_spooky_scary_skeleton"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" 
+    "ModelScale"                                          "1.0"
+    "SoundSet"                                            "Undying_Zombie"
+    "CanBeDominated"                                      "1"
+    "Level"                                               "1"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            ""
+    "Ability2"                                            ""
+    "Ability3"                                            ""
+    "Ability4"                                            ""
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "1"
+    "MagicalResistance"                                   "25"
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"				"24"
-		"AttackDamageMax"				"25"
-		"AttackRate"					"1.0"
-		"AttackAnimationPoint"			"0.56"
-		"AttackAcquisitionRange"		"800"
-		"AttackRange"					"150"
-		
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"20"
-		"BountyGoldMin"				"10"
-		"BountyGoldMax"				"10"
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "24"
+    "AttackDamageMax"                                     "25"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.56"
+    "AttackAcquisitionRange"                              "800"
+    "AttackRange"                                         "150"
+    
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "20"
+    "BountyGoldMin"                                       "10"
+    "BountyGoldMax"                                       "10"
 
-		// Bounds
-		//----------------------------------------------------------------
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
-		"HealthBarOffset"			"140"
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"
+    "HealthBarOffset"                                     "140"
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"400"
-		"MovementTurnRate"			"0.5"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "400"
+    "MovementTurnRate"                                    "0.5"
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"200"
-		"StatusHealthRegen"			"0.5"
-		"StatusMana"				"0"
-		"StatusManaRegen"			"0"
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "200"
+    "StatusHealthRegen"                                   "0.5"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
 
-		// Combat
-		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1200"
-		"VisionNighttimeRange"		"1800"
-	}
+    // Combat
+    //----------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1200"
+    "VisionNighttimeRange"                                "1800"
+  }
 }

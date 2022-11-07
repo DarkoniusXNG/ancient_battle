@@ -1,49 +1,49 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Custom Stout Shield
-	// Notes: OK; 19.12.2019;
-	//=================================================================================================================
-	"item_custom_stout_shield"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"Model"							"models/props_gameplay/stout_shield.vmdl"
+  //=================================================================================================================
+  // Custom Stout Shield
+  // Notes: OK; 19.12.2019;
+  //=================================================================================================================
+  "item_custom_stout_shield"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "Model"                                               "models/props_gameplay/stout_shield.vmdl"
 
-		"BaseClass"						"item_lua"
-		"ScriptFile"					"items/custom_stout_shield.lua"
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/custom_stout_shield.lua"
 
-		"AbilityTextureName"			"item_stout_shield"
+    "AbilityTextureName"                                  "item_stout_shield"
 
-		"ItemCost"						"200"
-		"ItemShopTags"					"block"
-		"ItemSellable"					"1"
-		"ItemPurchasable"				"1"
-		"ItemDroppable"					"1"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
-		"ItemQuality"					"component"
-		"SideShop"						"1"
+    "ItemCost"                                            "200"
+    "ItemShopTags"                                        "block"
+    "ItemSellable"                                        "1"
+    "ItemPurchasable"                                     "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+    "ItemQuality"                                         "component"
+    "SideShop"                                            "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_block_melee"                      "20"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_block_ranged"                     "9"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"block_chance"                            "50"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_block_melee"                              "20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_block_ranged"                             "9"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "block_chance"                                    "50"
+      }
+    }
+  }
 }

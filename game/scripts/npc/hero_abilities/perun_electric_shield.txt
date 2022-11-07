@@ -1,128 +1,128 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Lightning Shaman: Electric Shield (T) - like Dark Seer Ion Shell but gives FOW vision
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// Linkens: Doesn't block (INTENTIONAL);
-	// TO_DO:
-	//=================================================================================================================
-	"perun_electric_shield"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/perun/electric_shield.lua"
-		"AbilityTextureName"			"custom/perun_electric_shield"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		//"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Lightning Shaman: Electric Shield (T) - like Dark Seer Ion Shell but gives FOW vision
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // Linkens: Doesn't block (INTENTIONAL);
+  // TO_DO:
+  //=================================================================================================================
+  "perun_electric_shield"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/perun/electric_shield.lua"
+    "AbilityTextureName"                                  "custom/perun_electric_shield"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"HasShardUpgrade"               "1"
+    "HasShardUpgrade"                                     "1"
 
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.4"
-		
-		"AoERadius"						"%radius"
-		
-		"AbilityCooldown"				"9"
-		
-		"AbilityManaCost"				"100 110 120 130"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
-			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_ion_shell.vpcf"
-			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_ion_shell_damage.vpcf"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "275"
-				"LinkedSpecialBonus"                      "special_bonus_unique_perun_2"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "30 50 70 90"
-				"LinkedSpecialBonus"                      "special_bonus_unique_perun_3"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration"                                "25"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"damage_interval"                         "0.1"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"shard_duration"                          "45"
-				"RequiresShard"                           "1"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"shard_ally_bonus_hp"                     "400"
-				"RequiresShard"                           "1"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Electric Shield: bonus radius/AoE talent
-	//=================================================================================================================
-	"special_bonus_unique_perun_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.4"
+    
+    "AoERadius"                                           "%radius"
+    
+    "AbilityCooldown"                                     "9"
+    
+    "AbilityManaCost"                                     "100 110 120 130"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_dark_seer/dark_seer_ion_shell.vpcf"
+      "particle"                                          "particles/units/heroes/hero_dark_seer/dark_seer_ion_shell_damage.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "275"
+        "LinkedSpecialBonus"                              "special_bonus_unique_perun_2"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "30 50 70 90"
+        "LinkedSpecialBonus"                              "special_bonus_unique_perun_3"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "25"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_interval"                                 "0.1"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shard_duration"                                  "45"
+        "RequiresShard"                                   "1"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shard_ally_bonus_hp"                             "400"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Electric Shield: bonus radius/AoE talent
+  //=================================================================================================================
+  "special_bonus_unique_perun_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "75"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Electric Shield: bonus damage talent
-	//=================================================================================================================
-	"special_bonus_unique_perun_3"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "75"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Electric Shield: bonus damage talent
+  //=================================================================================================================
+  "special_bonus_unique_perun_3"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "50"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "50"
+      }
+    }
+  }
 }

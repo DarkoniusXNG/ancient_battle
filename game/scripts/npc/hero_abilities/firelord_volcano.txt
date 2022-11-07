@@ -1,286 +1,286 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"firelord_volcano"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/firelord_volcano"
-		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "firelord_volcano"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/firelord_volcano"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilityCastRange"				"1000" // like Gyrocopter Call Down
-		"AbilityCastPoint"				"1.67" // like Shadow Fiend Requiem
-		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_6"
-		"AbilityCooldown"				"120 110 100" // like Shadow Fiend Requiem or KOTL Will-O-Wisp
-		"AbilityManaCost"				"150 175 200"
-		"AbilityProcsMagicStick"		"1"
+    "AbilityCastRange"                                    "1000" // like Gyrocopter Call Down
+    "AbilityCastPoint"                                    "1.67" // like Shadow Fiend Requiem
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_6"
+    "AbilityCooldown"                                     "120 110 100" // like Shadow Fiend Requiem or KOTL Will-O-Wisp
+    "AbilityManaCost"                                     "150 175 200"
+    "AbilityProcsMagicStick"                              "1"
 
-		"HasScepterUpgrade" 			"1"
+    "HasScepterUpgrade"                                   "1"
 
-		"AOERadius"     				"%radius"
+    "AOERadius"                                           "%radius"
 
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
-			"particle"	"particles/custom/sf_fire_arcana_wings.vpcf"
-			"particle"  "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
-			"particle"  "particles/custom/sf_fire_arcana_base_attack_impact.vpcf"
-			"particle"	"particles/custom/custom_stunned.vpcf"
-			"particle"  "particles/units/heroes/hero_monkey_king/monkey_king_furarmy_ring.vpcf"
-			"model"     "models/particle/soil_rupture.vmdl"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+      "particle"                                          "particles/custom/sf_fire_arcana_wings.vpcf"
+      "particle"                                          "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
+      "particle"                                          "particles/custom/sf_fire_arcana_base_attack_impact.vpcf"
+      "particle"                                          "particles/custom/custom_stunned.vpcf"
+      "particle"                                          "particles/units/heroes/hero_monkey_king/monkey_king_furarmy_ring.vpcf"
+      "model"                                             "models/particle/soil_rupture.vmdl"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // like KOTL Will-O-Wisp
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"725"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movement_slow"			"-40 -50 -60"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"3.0"
-			}
-			"04" // KOTL Will-O-Wisp interval is 3.15
-			{
-				"var_type"				"FIELD_FLOAT"
-				"wave_interval"			"3.0"
-			}		
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"wave_damage"			"140 200 260"
-			}
-			"06" // like KOTL Will-O-Wisp hypnotized duration
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_duration"			"1.3"
-			}
-			"07" // number of waves is volcano_duration/wave_interval + 1: 4/5/6
-			{
-				"var_type"				"FIELD_FLOAT"
-				"volcano_duration"		"10 13 16"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01" // like KOTL Will-O-Wisp
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "725"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movement_slow"                                   "-40 -50 -60"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "slow_duration"                                   "3.0"
+      }
+      "04" // KOTL Will-O-Wisp interval is 3.15
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "wave_interval"                                   "3.0"
+      }    
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "wave_damage"                                     "140 200 260"
+      }
+      "06" // like KOTL Will-O-Wisp hypnotized duration
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_duration"                                   "1.3"
+      }
+      "07" // number of waves is volcano_duration/wave_interval + 1: 4/5/6
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "volcano_duration"                                "10 13 16"
+      }
+    }
 
-		"OnAbilityPhaseStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Nevermore.RequiemOfSoulsCast"
-				"Target" 		"CASTER"
-			}
-		}
+    "OnAbilityPhaseStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Nevermore.RequiemOfSoulsCast"
+        "Target"                                          "CASTER"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"SpawnUnit"
-			{
-				"UnitName" 			"npc_dota_firelord_volcano"
-				"Target" 			"POINT"
-				"UnitCount"			"1"
-				"Duration"			"%volcano_duration"
-				"GrantsGold"		"0"
-				"GrantsXP"			"0"
-				"OnSpawn"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_volcano_thinker"
-						"Target"		"TARGET"
-						"Duration"		"%volcano_duration"
-					}
-				}
-			}
-			"DestroyTrees"
-			{
-				"Target" 		"POINT"
-				"Radius"		"%radius"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_EmberSpirit.FlameGuard.Loop"
-				"Target" 		"CASTER"
-			}
-	    }
-	    "Modifiers"
-	    {
-	        "modifier_volcano_thinker"
-			{
-				"IsHidden"		"1"
-				"IsPurgable"	"0"
-				"Duration"		"%volcano_duration"
+    "OnSpellStart"
+    {
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_firelord_volcano"
+        "Target"                                          "POINT"
+        "UnitCount"                                       "1"
+        "Duration"                                        "%volcano_duration"
+        "GrantsGold"                                      "0"
+        "GrantsXP"                                        "0"
+        "OnSpawn"
+        {
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_volcano_thinker"
+            "Target"                                      "TARGET"
+            "Duration"                                    "%volcano_duration"
+          }
+        }
+      }
+      "DestroyTrees"
+      {
+        "Target"                                          "POINT"
+        "Radius"                                          "%radius"
+      }
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_EmberSpirit.FlameGuard.Loop"
+        "Target"                                          "CASTER"
+      }
+    }
+    "Modifiers"
+    {
+      "modifier_volcano_thinker"
+      {
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
+        "Duration"                                        "%volcano_duration"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-				}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
+          "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+        }
 
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_TEAM_MOVE_TO"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_TEAM_SELECT"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"		   	"MODIFIER_STATE_VALUE_ENABLED"	
-				}
+        "States"
+        {
+          "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_NO_TEAM_MOVE_TO"                "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_NO_TEAM_SELECT"                 "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_COMMAND_RESTRICTED"             "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_ATTACK_IMMUNE"                  "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_MAGIC_IMMUNE"                   "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_NOT_ON_MINIMAP"                 "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_UNSELECTABLE"                   "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_NO_HEALTH_BAR"                  "MODIFIER_STATE_VALUE_ENABLED"  
+        }
 
-				"EffectName"		"particles/custom/sf_fire_arcana_wings.vpcf"
-				"EffectAttachType"	"follow_origin"
+        "EffectName"                                      "particles/custom/sf_fire_arcana_wings.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"Target"			"TARGET"
-				"ControlPointEntities"
-				{
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"
-				}
+        "Target"                                          "TARGET"
+        "ControlPointEntities"
+        {
+          "TARGET"                                        "attach_origin"
+          "TARGET"                                        "attach_origin"
+        }
 
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"  "modifier_volcano_slow"
-						"Target"
-						{
-							"Center"  		"TARGET"
-							"Radius" 		"%radius"
-							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-							"Flags"    		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					}
+        "OnCreated"
+        {
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_volcano_slow"
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            }
+          }
 
-					"Damage"
-					{
-						"Target"
-						{
-							"Center"  		"TARGET"
-							"Radius" 		"%radius"
-							"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-							"Flags"    		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-						"Type"		"DAMAGE_TYPE_PHYSICAL"
-						"Damage"	"%wave_damage"
-					}
+          "Damage"
+          {
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            }
+            "Type"                                        "DAMAGE_TYPE_PHYSICAL"
+            "Damage"                                      "%wave_damage"
+          }
 
-					"FireEffect"
-					{
-						"EffectName"        "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "TARGET"
-					}
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }
 
-					"FireSound"
-					{
-						"EffectName"	"Hero_Nevermore.RequiemOfSouls"
-						"Target"		"CASTER"
-					}
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Nevermore.RequiemOfSouls"
+            "Target"                                      "CASTER"
+          }
 
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/firelord/firelord_volcano.lua"
-						"Function"		"VolcanoAoEIndicator"
-					}
-				}
-				"ThinkInterval"  		"%wave_interval"
-				"OnIntervalThink"
-				{
-					"FireEffect"
-					{
-						"EffectName"        "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "TARGET"
-					}
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/firelord/firelord_volcano.lua"
+            "Function"                                    "VolcanoAoEIndicator"
+          }
+        }
+        "ThinkInterval"                                   "%wave_interval"
+        "OnIntervalThink"
+        {
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/custom/warlock_rain_of_chaos_explosion.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }
 
-					"FireSound"
-					{
-						"EffectName"	"Hero_Nevermore.ROS_Flames"
-						"Target"		"CASTER"
-					}
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Nevermore.ROS_Flames"
+            "Target"                                      "CASTER"
+          }
 
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/firelord/firelord_volcano.lua"
-						"Function"		"VolcanoWave"
-						"Target"
-						{
-							"Center"  	"TARGET"
-							"Radius" 	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					}
-				}
-			}
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/firelord/firelord_volcano.lua"
+            "Function"                                    "VolcanoWave"
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            }
+          }
+        }
+      }
 
-			"modifier_volcano_stun" // needs tooltip
-			{
-				"IsDebuff"			"1"
-				"IsStunDebuff"		"1"
-				"IsPurgable"		"0"
+      "modifier_volcano_stun" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsStunDebuff"                                    "1"
+        "IsPurgable"                                      "0"
 
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
 
-				"EffectName"        "particles/custom/sf_fire_arcana_base_attack_impact.vpcf"
-				"EffectAttachType"  "follow_origin"
+        "EffectName"                                      "particles/custom/sf_fire_arcana_base_attack_impact.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Nevermore.RequiemOfSouls.Damage"
-						"Target"
-						{
-							"Center" 	"TARGET"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					}
-				}
+        "OnCreated"
+        {
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Nevermore.RequiemOfSouls.Damage"
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            }
+          }
+        }
 
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
 
-			"modifier_volcano_slow"	// needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+      "modifier_volcano_slow"  // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"Duration"			"%slow_duration"
+        "Duration"                                        "%slow_duration"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%movement_slow" 
-				}
-			}
-		}	
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%movement_slow" 
+        }
+      }
+    }  
+  }
 }

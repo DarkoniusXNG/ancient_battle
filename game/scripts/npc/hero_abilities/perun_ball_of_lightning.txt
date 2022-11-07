@@ -1,154 +1,154 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Lightning Shaman: Ball of Lightning (Q) - New Spell, Int Based Radius Damage Nuke, Skillshot
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"perun_ball_of_lightning"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/perun_ball_of_lightning"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-			"particle"			"particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
-			//"particle"			"particles/projectile_linear/sven_spell_storm_bolt.vpcf"
-			"particle"          "particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
-		}
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"                                "1400" // same as ball_range
-		"AbilityCastPoint"                                "0.1"  // Arcane Bolt (0.1);
+  //=================================================================================================================
+  // Lightning Shaman: Ball of Lightning (Q) - New Spell, Int Based Radius Damage Nuke, Skillshot
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "perun_ball_of_lightning"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/perun_ball_of_lightning"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
+      //"particle"      "particles/projectile_linear/sven_spell_storm_bolt.vpcf"
+      "particle"                                          "particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
+    }
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "1400" // same as ball_range
+    "AbilityCastPoint"                                    "0.1"  // Arcane Bolt (0.1);
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "6 5 4 3" // Arcane Bolt (5/4/3/2);
-		
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "90" // Arcane Bolt (90);
-		"AbilityProcsMagicStick"                          "1"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "6 5 4 3" // Arcane Bolt (5/4/3/2);
+    
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "90" // Arcane Bolt (90);
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // original (800); Illusory Orb (651);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"ball_speed"                              "800"
-			}
-			"02" // original (150); Illusory Orb (225);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"ball_width"                              "225"
-			}
-			"03" // original (1500); Illusory Orb (1950);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"ball_range"                              "1400"
-			}
-			"04" // original (325); Illusory Orb (450); Arcane Bolt (325);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"ball_vision"                             "325"
-			}
-			"05" // original (2); Illusory Orb (5); Arcane Bolt (3.34);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"vision_duration"                         "3.0"
-			}
-			"06" // original (50/70/90/110); Arcane Bolt (75/95/115/135);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"base_damage"                             "75 100 125 150"
-			}
-			"07" // original (1/1.2/1.4/1.6); Arcane Bolt (1.4);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"int_multiplier"                          "1.4"
-				"CalculateSpellDamageTooltip"             "1"
-			}
-			"08"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_radius"                           "300"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"LinearProjectile"
-			{
-				"Target"      		"POINT"
-				//"EffectName"		"particles/projectile_linear/sven_spell_storm_bolt.vpcf"
-				"EffectName"		"particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
-				"MoveSpeed"   		"%ball_speed"
-				"StartRadius"   	"%ball_width"
-				"StartPosition" 	"attach_origin"
-				"EndRadius"     	"%ball_width"
-				"FixedDistance" 	"%ball_range"
-				"TargetTeams"   	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"   	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				"HasFrontalCone"    "0"
-				"ProvidesVision"	"1"
-				"VisionRadius"		"%ball_vision"
-			}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // original (800); Illusory Orb (651);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "ball_speed"                                      "800"
+      }
+      "02" // original (150); Illusory Orb (225);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ball_width"                                      "225"
+      }
+      "03" // original (1500); Illusory Orb (1950);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ball_range"                                      "1400"
+      }
+      "04" // original (325); Illusory Orb (450); Arcane Bolt (325);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ball_vision"                                     "325"
+      }
+      "05" // original (2); Illusory Orb (5); Arcane Bolt (3.34);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "vision_duration"                                 "3.0"
+      }
+      "06" // original (50/70/90/110); Arcane Bolt (75/95/115/135);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "base_damage"                                     "75 100 125 150"
+      }
+      "07" // original (1/1.2/1.4/1.6); Arcane Bolt (1.4);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "int_multiplier"                                  "1.4"
+        "CalculateSpellDamageTooltip"                     "1"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_radius"                                   "300"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "LinearProjectile"
+      {
+        "Target"                                          "POINT"
+        //"EffectName"    "particles/projectile_linear/sven_spell_storm_bolt.vpcf"
+        "EffectName"                                      "particles/units/heroes/hero_puck/puck_illusory_orb.vpcf"
+        "MoveSpeed"                                       "%ball_speed"
+        "StartRadius"                                     "%ball_width"
+        "StartPosition"                                   "attach_origin"
+        "EndRadius"                                       "%ball_width"
+        "FixedDistance"                                   "%ball_range"
+        "TargetTeams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "TargetTypes"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        "HasFrontalCone"                                  "0"
+        "ProvidesVision"                                  "1"
+        "VisionRadius"                                    "%ball_vision"
+      }
 
-			"FireSound"
-			{
-				"EffectName"			"Hero_Sven.StormBolt"
-				"Target"				"CASTER"
-			}
-		}
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Sven.StormBolt"
+        "Target"                                          "CASTER"
+      }
+    }
 
-		"OnProjectileHitUnit"
-		{
-			"FireSound"
-			{
-				"EffectName"			"Hero_StormSpirit.StaticRemnantExplode"
-				"Target"				"TARGET"
-			}
-			
-			"FireEffect"
-			{
-				"Target"					"TARGET"
-				"EffectName"				"particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
-				"EffectAttachType"			"start_at_origin"
-			}
-			
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center" 	"POINT"
-					"Radius" 	"%damage_radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY" 
-					"Types" 	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				}
-				"Action"
-				{	
-					"RunScript"
-					{
-						"ScriptFile"			"heroes/perun/perun_ball.lua"
-						"Function"				"BallHit"
-						"Target"				"TARGET"
-					}
-				}
-			}
-		}
-	}
+    "OnProjectileHitUnit"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_StormSpirit.StaticRemnantExplode"
+        "Target"                                          "TARGET"
+      }
+      
+      "FireEffect"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf"
+        "EffectAttachType"                                "start_at_origin"
+      }
+      
+      "ActOnTargets"
+      {
+        "Target"
+        {
+          "Center"                                        "POINT"
+          "Radius"                                        "%damage_radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+          "Types"                                         "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        }
+        "Action"
+        {  
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/perun/perun_ball.lua"
+            "Function"                                    "BallHit"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,139 +1,139 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
-	// Author: Darkonius
-	// Notes: OK; 20.11.2019; Has Aghanim Scepter Upgrade - increases dmg and radius
-	// Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
-	// TO_DO:
-	//=================================================================================================================
-	"astral_trekker_astral_stomp"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"    		"custom/astral_trekker_astral_stomp"
-		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"HasScepterUpgrade"				"1"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation" 			"ACT_DOTA_SPAWN"
-		"AbilityCastPoint" 				"0.5"
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "13.0"
-		
-		// Mana Cost + Magic Stick/Wand
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"115 120 125 130"
-		"AbilityProcsMagicStick"		"1"
-		
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-			"particle"					"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // unique
-			{ 
-				"var_type"  		"FIELD_FLOAT"
-				"stun_duration" 	"1.5 2.0 2.5 3.0"
-			}
-			"02" // same as Hoof Stomp
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"315"
-			}
-			"03" // same as Hoof Stomp
-			{
-				"var_type"			"FIELD_INTEGER"
-				"base_damage"		"80 110 140 170"
-			}
-			"04" // this is not in tooltip
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_level_1"	"100"
-			}
-			"05" // this is not in tooltip
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_level_2"	"150"
-			}
-			"06" // this is not in tooltip
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_level_3"	"200"
-			}
-			"07" // unique (visible with aghanim scepter)
-			{
-				"var_type"				"FIELD_INTEGER"
-				"base_damage_scepter"	"125 150 175 200"
-				"RequiresScepter"       "1"
-			}
-			"08" // unique (visible with aghanim scepter)
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius_scepter"	"800"
-				"RequiresScepter"   "1"
-			}
-		}
-		
-		"OnSpellStart"	
-		{		
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-				"EffectAttachType" 	"follow_origin"
-				"EffectRadius"		"%radius"
-				"Target" 			"CASTER"
-				"ControlPoints"
-				{
-					"01"	"%radius 0 %radius"
-				}
-			}
-			
-			"FireSound"
-			{
-				"EffectName"		"Hero_Centaur.HoofStomp"
-				"Target" 			"CASTER"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/astral_trekker/astral_stomp.lua"
-				"Function"		"AstralStomp"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_astral_stomp"	// needs tooltip
-			{
-				"IsHidden"		"0"		
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
-				
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"			
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // Astral Trekker: Astral Stomp (W) - Similar to Centaur Hoof Stomp but with damage tied to Ultimate Giant Growth
+  // Author: Darkonius
+  // Notes: OK; 20.11.2019; Has Aghanim Scepter Upgrade - increases dmg and radius
+  // Notes: Can be dispelled with basic dispel! Damage Type: Astral (new Damage type);
+  // TO_DO:
+  //=================================================================================================================
+  "astral_trekker_astral_stomp"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/astral_trekker_astral_stomp"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "HasScepterUpgrade"                                   "1"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastAnimation"                                "ACT_DOTA_SPAWN"
+    "AbilityCastPoint"                                    "0.5"
+    
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "13.0"
+    
+    // Mana Cost + Magic Stick/Wand
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "115 120 125 130"
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // unique
+      { 
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_duration"                                   "1.5 2.0 2.5 3.0"
+      }
+      "02" // same as Hoof Stomp
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "315"
+      }
+      "03" // same as Hoof Stomp
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "base_damage"                                     "80 110 140 170"
+      }
+      "04" // this is not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_level_1"                                  "100"
+      }
+      "05" // this is not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_level_2"                                  "150"
+      }
+      "06" // this is not in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_level_3"                                  "200"
+      }
+      "07" // unique (visible with aghanim scepter)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "base_damage_scepter"                             "125 150 175 200"
+        "RequiresScepter"                                 "1"
+      }
+      "08" // unique (visible with aghanim scepter)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius_scepter"                                  "800"
+        "RequiresScepter"                                 "1"
+      }
+    }
+    
+    "OnSpellStart"  
+    {    
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "EffectRadius"                                    "%radius"
+        "Target"                                          "CASTER"
+        "ControlPoints"
+        {
+          "01"                                            "%radius 0 %radius"
+        }
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Centaur.HoofStomp"
+        "Target"                                          "CASTER"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/astral_trekker/astral_stomp.lua"
+        "Function"                                        "AstralStomp"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_astral_stomp"  // needs tooltip
+      {
+        "IsHidden"                                        "0"    
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+        
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
+        
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"      
+        }
+      }
+    }
+  }
 }

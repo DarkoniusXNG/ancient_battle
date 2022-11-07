@@ -1,39 +1,39 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Lifestealer: Poison Sting - like Venomancer Poison Sting + heal reduction
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"life_stealer_custom_poison_sting"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/lifestealer/poison_sting.lua"
-		"AbilityTextureName"			"custom/life_stealer_custom_poison_sting"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"particle"                  "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"duration"                  "2.0" // Ghoul Frenzy (1.5); old Poison Sting (2); Venomancer Poison Sting (6/9/12/15);
-			"damage"                    "15 30 45 60" // old Poison Sting (2/4/7/10); Venomancer Poison Sting (8/16/24/32);
-			"move_speed_slow"           "-10 -15 -20 -25" // Ghoul Frenzy (10/15/20/25%); old Poison Sting (10/20/30/40%); Venomancer Poison Sting (8/10/12/14%);
-			"heal_reduction"            "10 15 20 25"
-		}
-	}
+  //=================================================================================================================
+  // Lifestealer: Poison Sting - like Venomancer Poison Sting + heal reduction
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "life_stealer_custom_poison_sting"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/lifestealer/poison_sting.lua"
+    "AbilityTextureName"                                  "custom/life_stealer_custom_poison_sting"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "duration"                                          "2.0" // Ghoul Frenzy (1.5); old Poison Sting (2); Venomancer Poison Sting (6/9/12/15);
+      "damage"                                            "15 30 45 60" // old Poison Sting (2/4/7/10); Venomancer Poison Sting (8/16/24/32);
+      "move_speed_slow"                                   "-10 -15 -20 -25" // Ghoul Frenzy (10/15/20/25%); old Poison Sting (10/20/30/40%); Venomancer Poison Sting (8/10/12/14%);
+      "heal_reduction"                                    "10 15 20 25"
+    }
+  }
 }

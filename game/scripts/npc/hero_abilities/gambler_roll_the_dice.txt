@@ -1,95 +1,95 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Gambler: Roll the Dice (W) - Modified Chaos Knight Chaos Bolt
-	// Author: Valve
-	// Linkens: Blocks;
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"gambler_roll_the_dice"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"chaos_knight_chaos_bolt"
-		"AbilityTextureName"			"custom/gambler_roll_the_dice"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+  //=================================================================================================================
+  // Gambler: Roll the Dice (W) - Modified Chaos Knight Chaos Bolt
+  // Author: Valve
+  // Linkens: Blocks;
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "gambler_roll_the_dice"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "chaos_knight_chaos_bolt"
+    "AbilityTextureName"                                  "custom/gambler_roll_the_dice"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
 
-		"HasShardUpgrade"               "1"
+    "HasShardUpgrade"                                     "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.4"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "500"
+    "AbilityCastPoint"                                    "0.4"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"13 12 11 10"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "13 12 11 10"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110 120 130 140"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "110 120 130 140"
 
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
-			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
-			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
+      "particle"                                          "particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"chaos_bolt_speed"                        "700"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"stun_min"                                "1"
-				"LinkedSpecialBonus"                      "special_bonus_unique_chaos_knight_3"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"stun_max"                                "2.5 3.0 3.5 4.0"
-				"LinkedSpecialBonus"                      "special_bonus_unique_chaos_knight_3"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_min"                              "75"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_max"                              "150 200 250 300"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"fake_bolt_distance"                      "675"
-			}
-			"07"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"shard_bonus_cast_range"                  "500"
-				"RequiresShard"                           "1"
-			}
-			"08"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"shard_illusion_duration"                 "6.0"
-				"RequiresShard"                           "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "chaos_bolt_speed"                                "700"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_min"                                        "1"
+        "LinkedSpecialBonus"                              "special_bonus_unique_chaos_knight_3"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_max"                                        "2.5 3.0 3.5 4.0"
+        "LinkedSpecialBonus"                              "special_bonus_unique_chaos_knight_3"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_min"                                      "75"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_max"                                      "150 200 250 300"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "fake_bolt_distance"                              "675"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "shard_bonus_cast_range"                          "500"
+        "RequiresShard"                                   "1"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "shard_illusion_duration"                         "6.0"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
 }

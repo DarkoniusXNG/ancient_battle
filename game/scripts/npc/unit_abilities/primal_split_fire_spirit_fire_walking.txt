@@ -1,44 +1,44 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Primal Split Fire Spirit: Fire Walking (W) - passive, phased unobstructed movement, burns trees
-	// Author: Darkonius
-	// Notes: OK; 27.6.2017;
-	// TO_DO:
-	//====================================================================================================
-	"primal_split_fire_spirit_fire_walking"
-	{
-		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"custom/primal_split_fire_spirit_fire_walking"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"MaxLevel"					"1"
-		
-		"Modifiers"
-	    {
-			"modifier_fire_spirit_custom_fire_walking" // doesn't need tooltip
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"					"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				
-				"ThinkInterval"		"0.2"
-				
-				"OnIntervalThink"
-				{
-					"DestroyTrees"
-					{
-						"Target"	"CASTER"
-						"Radius"	"150"
-					}
-				}
-			}
-		}
-	}
+  //====================================================================================================
+  // Primal Split Fire Spirit: Fire Walking (W) - passive, phased unobstructed movement, burns trees
+  // Author: Darkonius
+  // Notes: OK; 27.6.2017;
+  // TO_DO:
+  //====================================================================================================
+  "primal_split_fire_spirit_fire_walking"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/primal_split_fire_spirit_fire_walking"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"                                            "1"
+    
+    "Modifiers"
+    {
+      "modifier_fire_spirit_custom_fire_walking" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "States"
+        {
+          "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"  "MODIFIER_STATE_VALUE_ENABLED"
+        }
+        
+        "ThinkInterval"                                   "0.2"
+        
+        "OnIntervalThink"
+        {
+          "DestroyTrees"
+          {
+            "Target"                                      "CASTER"
+            "Radius"                                      "150"
+          }
+        }
+      }
+    }
+  }
 }

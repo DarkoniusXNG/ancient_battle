@@ -1,43 +1,43 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Bane: Terror Blink (T) - New Spell, Blinks on target point, disarmed, then returns to starting point
-	// Author: Darkonius
-	// Notes: OK; 2022; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
-	// TO_DO: If too weak increase duration to 8 seconds.
-	//=================================================================================================================
-	"bane_custom_terror_blink"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/bane/terror_blink.lua"
-		"AbilityTextureName"			"custom/bane_custom_night_terror"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"850 950 1050 1150"
-		"AbilityCastPoint"				"0.4"					// like Anti-Mage Blink
+  //=================================================================================================================
+  // Bane: Terror Blink (T) - New Spell, Blinks on target point, disarmed, then returns to starting point
+  // Author: Darkonius
+  // Notes: OK; 2022; Ability disabled with Root; If caster is invulnerable, rooted or buff is dispelled, it doesn't return.
+  // TO_DO: If too weak increase duration to 8 seconds.
+  //=================================================================================================================
+  "bane_custom_terror_blink"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/bane/terror_blink.lua"
+    "AbilityTextureName"                                  "custom/bane_custom_night_terror"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "850 950 1050 1150"
+    "AbilityCastPoint"                                    "0.4"          // like Anti-Mage Blink
 
-		"AbilityCooldown"				"11 10 9 8"
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_spectre/spectre_shadow_path.vpcf"
-			"particle"	"particles/econ/items/invoker/invoker_ti6/invoker_deafening_blast_disarm_ti6_debuff.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"5.0"
-			}
-		}
-	}
+    "AbilityCooldown"                                     "11 10 9 8"
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_spectre/spectre_shadow_path.vpcf"
+      "particle"                                          "particles/econ/items/invoker/invoker_ti6/invoker_deafening_blast_disarm_ti6_debuff.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "5.0"
+      }
+    }
+  }
 }

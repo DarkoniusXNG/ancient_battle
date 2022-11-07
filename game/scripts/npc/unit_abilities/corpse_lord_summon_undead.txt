@@ -1,118 +1,118 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Horde Corpse Lord: Summon Undead
-	// Author: Valve + Darkonius
-	// Notes: OK; 16.9.2018;
-	// TO_DO:
-	//=================================================================================================================
-	"corpse_lord_summon_undead"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName" 			"undying_soul_rip"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		
-		"AbilityCastPoint"				"0.0"
-		"AbilityChannelTime"			"2.5"
-		"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
-		"AbilityCooldown"				"10.0"
-		"AbilityManaCost"				"100"
-		"AbilityProcsMagicStick"		"1"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"number_of_zombies"		"5"
-			}
-		}
+  //=================================================================================================================
+  // Horde Corpse Lord: Summon Undead
+  // Author: Valve + Darkonius
+  // Notes: OK; 16.9.2018;
+  // TO_DO:
+  //=================================================================================================================
+  "corpse_lord_summon_undead"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "undying_soul_rip"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityChannelTime"                                  "2.5"
+    "AbilityCastAnimation"                                "ACT_DOTA_VICTORY"
+    "AbilityCooldown"                                     "10.0"
+    "AbilityManaCost"                                     "100"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "number_of_zombies"                               "5"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"				"CASTER"
-				"ModifierName"			"corpse_lord_channel_started"
-			}
-			
-			"FireSound"
-			{
-				"EffectName"			"Ability.SummonUndead"
-				"Target"				"CASTER"
-			}
-		}
-		
-		"OnChannelSucceeded"
-		{
-			"SpawnUnit"
-			{
-				"UnitName"			"npc_dota_combie"
-				"UnitCount"			"%number_of_zombies"
-				"UnitLimit"			"15"
-				"SpawnRadius"		"175"
-				"Target"			"CASTER"
-				"OnSpawn"
-				{
-					"AttachEffect"
-					{
-						"EffectName"		"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-						
-						"ControlPoints"
-						{
-							"00"		"0 0 0"
-							"01"		"50 100 0"
-							"02"		"4 10 .5"
-							"03"		"20 200 0"
-							"04"		"0 0 0"
-							"05"		"0 0 0"
-						}
-					}
-					
-					"FireSound"
-					{
-						"EffectName"		"Ability.SummonUndeadSuccess"
-						"Target"			"CASTER"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"	"spawns.lua"
-						"Function"		"AttackMoveCommand"
-					}
-				}
-			}
-		}
-		
-		"OnChannelFinish"
-		{
-			"RemoveModifier"
-			{
-				"Target"				"CASTER"
-				"ModifierName"			"corpse_lord_channel_started"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"corpse_lord_channel_started" // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"		"particles/generic_aoe_persistent_circle_1/generic_aoe_persist_summon_1.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"CASTER"
-					}
-				}
-			}
-		}
-	}
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "Target"                                          "CASTER"
+        "ModifierName"                                    "corpse_lord_channel_started"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Ability.SummonUndead"
+        "Target"                                          "CASTER"
+      }
+    }
+    
+    "OnChannelSucceeded"
+    {
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_combie"
+        "UnitCount"                                       "%number_of_zombies"
+        "UnitLimit"                                       "15"
+        "SpawnRadius"                                     "175"
+        "Target"                                          "CASTER"
+        "OnSpawn"
+        {
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+            
+            "ControlPoints"
+            {
+              "00"                                        "0 0 0"
+              "01"                                        "50 100 0"
+              "02"                                        "4 10 .5"
+              "03"                                        "20 200 0"
+              "04"                                        "0 0 0"
+              "05"                                        "0 0 0"
+            }
+          }
+          
+          "FireSound"
+          {
+            "EffectName"                                  "Ability.SummonUndeadSuccess"
+            "Target"                                      "CASTER"
+          }
+          
+          "RunScript"
+          {
+            "ScriptFile"                                  "spawns.lua"
+            "Function"                                    "AttackMoveCommand"
+          }
+        }
+      }
+    }
+    
+    "OnChannelFinish"
+    {
+      "RemoveModifier"
+      {
+        "Target"                                          "CASTER"
+        "ModifierName"                                    "corpse_lord_channel_started"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "corpse_lord_channel_started" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/generic_aoe_persistent_circle_1/generic_aoe_persist_summon_1.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "CASTER"
+          }
+        }
+      }
+    }
+  }
 }

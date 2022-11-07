@@ -1,205 +1,205 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Custom Mask of Madness
-	// Notes: OK; 10.9.2019;
-	// TO_DO:
-	//=================================================================================================================
-	"item_recipe_custom_mask_of_madness"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_mask_of_madness"
-		"ItemRequirements"
-		{
-			"01"						"item_lifesteal;item_quarterstaff"
-		}
-	}
-	
-	//=================================================================================================================
-	// Custom Mask of Madness - Morbid Mask (900) + Quarterstaff (875) = 1775
-	// Notes: OK; 25.12.2019; Can be disassembled!
-	// TO_DO:
-	//=================================================================================================================
-	"item_custom_mask_of_madness"
-	{
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_mask_of_madness"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"16" // duration + 10
-		"AbilityManaCost"				"25"
-		
-		"ItemCost"						"1775"
-		"ItemShopTags"					"unique;hard_to_tag"
-		"ItemQuality"					"artifact"
-		"ItemAliases"					"mom;mask of madness"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_ALWAYS"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_dmg"						"10"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_attack_speed"			"10"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"lifesteal_percent_melee"		"20"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"lifesteal_percent_ranged"		"15"
-			}
-			"05"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"berserk_bonus_attack_speed"	"110"
-			}
-			"06"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_move_speed_melee"		"17"
-			}
-			"07"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_move_speed_ranged"		"12"
-			}
-			"08"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_attack_damage_melee"		"30"
-			}
-			"09"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"bonus_attack_damage_ranged"	"15"
-			}
-			"10"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"6"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/custom_mask_of_madness.lua"
-				"Function"		"BerserkStart"
-			}
-			
-			"FireSound"
-			{
-				"EffectName"		"DOTA_Item.MaskOfMadness.Activate"
-				"Target"			"CASTER"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_custom_mask_of_madness_lifesteal" // doesn't need tooltip
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items/custom_mask_of_madness.lua"
-						"Function"			"LifestealOnAttackLanded"
-						"DamageOnAttack"	"%attack_damage"
-					}
-				}
-			}
-			
-			"modifier_item_custom_mask_of_madness_passives" // doesn't need tooltip
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"
-				}
-			}
-			
-			"modifier_item_custom_berserk_melee" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-				
-				"EffectName"			"particles/items2_fx/mask_of_madness.vpcf"
-				"EffectAttachType"		"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"			"%bonus_move_speed_melee"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"%berserk_bonus_attack_speed"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"			"%bonus_attack_damage_melee"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%bonus_attack_damage_melee"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			
-			"modifier_item_custom_berserk_ranged" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-				
-				"EffectName"			"particles/items2_fx/mask_of_madness.vpcf"
-				"EffectAttachType"		"follow_origin"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"			"%bonus_move_speed_ranged"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"			"%berserk_bonus_attack_speed"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"			"%bonus_attack_damage_ranged"
-					"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"	"%bonus_attack_damage_ranged"
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // Recipe: Custom Mask of Madness
+  // Notes: OK; 10.9.2019;
+  // TO_DO:
+  //=================================================================================================================
+  "item_recipe_custom_mask_of_madness"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_mask_of_madness"
+    "ItemRequirements"
+    {
+      "01"                                                "item_lifesteal;item_quarterstaff"
+    }
+  }
+  
+  //=================================================================================================================
+  // Custom Mask of Madness - Morbid Mask (900) + Quarterstaff (875) = 1775
+  // Notes: OK; 25.12.2019; Can be disassembled!
+  // TO_DO:
+  //=================================================================================================================
+  "item_custom_mask_of_madness"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_mask_of_madness"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "16" // duration + 10
+    "AbilityManaCost"                                     "25"
+    
+    "ItemCost"                                            "1775"
+    "ItemShopTags"                                        "unique;hard_to_tag"
+    "ItemQuality"                                         "artifact"
+    "ItemAliases"                                         "mom;mask of madness"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_ALWAYS"
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_dmg"                                       "10"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_attack_speed"                              "10"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lifesteal_percent_melee"                         "20"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lifesteal_percent_ranged"                        "15"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "berserk_bonus_attack_speed"                      "110"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_move_speed_melee"                          "17"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_move_speed_ranged"                         "12"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_attack_damage_melee"                       "30"
+      }
+      "09"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_attack_damage_ranged"                      "15"
+      }
+      "10"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "6"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "items/custom_mask_of_madness.lua"
+        "Function"                                        "BerserkStart"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "DOTA_Item.MaskOfMadness.Activate"
+        "Target"                                          "CASTER"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_item_custom_mask_of_madness_lifesteal" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnAttackLanded"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "items/custom_mask_of_madness.lua"
+            "Function"                                    "LifestealOnAttackLanded"
+            "DamageOnAttack"                              "%attack_damage"
+          }
+        }
+      }
+      
+      "modifier_item_custom_mask_of_madness_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_dmg"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+        }
+      }
+      
+      "modifier_item_custom_berserk_melee" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/items2_fx/mask_of_madness.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed_melee"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%berserk_bonus_attack_speed"
+          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%bonus_attack_damage_melee"
+          "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"  "%bonus_attack_damage_melee"
+        }
+        
+        "States"
+        {
+          "MODIFIER_STATE_SILENCED"                       "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+      
+      "modifier_item_custom_berserk_ranged" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/items2_fx/mask_of_madness.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed_ranged"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%berserk_bonus_attack_speed"
+          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%bonus_attack_damage_ranged"
+          "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE"  "%bonus_attack_damage_ranged"
+        }
+      }
+    }
+  }
 }

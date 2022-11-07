@@ -1,40 +1,40 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Phoenix Egg: Passives
-	// Author: Darkonius
-	// Notes: OK; 26.10.2019;
-	// TO_DO: Particles and sounds
-	//=================================================================================================================
-  	"custom_egg_passives"
-	{
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/blood_mage/custom_egg_passives.lua"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"                              "rubick_empty1"
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Phoenix Egg: Passives
+  // Author: Darkonius
+  // Notes: OK; 26.10.2019;
+  // TO_DO: Particles and sounds
+  //=================================================================================================================
+  "custom_egg_passives"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blood_mage/custom_egg_passives.lua"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityTextureName"                                  "rubick_empty1"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"MaxLevel"                                        "1"
+    "MaxLevel"                                            "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"melee_hero_hits_to_kill"                 "4"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"ranged_hero_hits_to_kill"                "4"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"creep_hits_to_kill"                      "16"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "melee_hero_hits_to_kill"                         "4"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ranged_hero_hits_to_kill"                        "4"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "creep_hits_to_kill"                              "16"
+      }
     }
+  }
 }

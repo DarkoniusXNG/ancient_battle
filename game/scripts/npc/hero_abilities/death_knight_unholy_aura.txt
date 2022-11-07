@@ -1,45 +1,45 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Death Knight: Unholy Aura (F) - New Spell, Passive, gives bonus move speed and hp regeneration
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"death_knight_unholy_aura"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/death_knight/unholy_aura.lua"
-		"AbilityTextureName"     		"custom/death_knight_unholy_aura"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Death Knight: Unholy Aura (F) - New Spell, Passive, gives bonus move speed and hp regeneration
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "death_knight_unholy_aura"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/death_knight/unholy_aura.lua"
+    "AbilityTextureName"                                  "custom/death_knight_unholy_aura"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"precache"
-		{
-			"particle"			"particles/custom/doom_bringer_doom.vpcf"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/custom/doom_bringer_doom.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // old Necronomicon Archer Aura (5/7/9%); old Empowering Haste (4/6/8/10%); original (10/20/30%);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"aura_move_speed_bonus"                   "5 7 9 11"
-			}
-			"02" // Satyr Tormenter Unholy Aura (5); Headdress (2); original (0.5/1/1.5);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"aura_health_regen_bonus"                 "2.0 4.0 6.0 8.0"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"aura_radius"                             "1200"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // old Necronomicon Archer Aura (5/7/9%); old Empowering Haste (4/6/8/10%); original (10/20/30%);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_move_speed_bonus"                           "5 7 9 11"
+      }
+      "02" // Satyr Tormenter Unholy Aura (5); Headdress (2); original (0.5/1/1.5);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "aura_health_regen_bonus"                         "2.0 4.0 6.0 8.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "1200"
+      }
+    }
+  }
 }

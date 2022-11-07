@@ -1,313 +1,313 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Archmage: Summon Earth Golem (T) - New Spell, Creates 1 Earth Golem that has Hurl Boulder (Stun).
-	// Author: Darkonius
-	// Notes: OK; 2022; Earth Golems have spell-immunity.
-	// TO_DO:
-	// ================================================================================================================
-	"archmage_summon_earth_golem"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/archmage_summon_earth_golem"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  //=================================================================================================================
+  // Archmage: Summon Earth Golem (T) - New Spell, Creates 1 Earth Golem that has Hurl Boulder (Stun).
+  // Author: Darkonius
+  // Notes: OK; 2022; Earth Golems have spell-immunity.
+  // TO_DO:
+  // ================================================================================================================
+  "archmage_summon_earth_golem"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/archmage_summon_earth_golem"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastPoint"				"0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastPoint"                                    "0.3"
 
-		"AbilityCooldown"				"50 45 40 35" // original: 30
+    "AbilityCooldown"                                     "50 45 40 35" // original: 30
 
-		"AbilityManaCost"				"125"
-		"AbilityProcsMagicStick"		"1"
+    "AbilityManaCost"                                     "125"
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
-			"particle"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // original (80, even longer at last level)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration"					"60"
-			}
-			"02" // only in tooltip
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_tooltip"				"35 45 55 65"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"03" // only in tooltip; original (450/675/900/1100)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"hp_tooltip"				"500 600 700 800"
-			}
-			"04" // original (240)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"ms_tooltip"				"250 260 270 280"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lvl_1_count"				"1 0 0 0"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lvl_2_count"				"0 1 0 0"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lvl_3_count"				"0 0 1 0"
-			}
-			"08"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lvl_4_count"				"0 0 0 1"
-			}
-			"09"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"spawn_distance"			"250"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01" // original (80, even longer at last level)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "60"
+      }
+      "02" // only in tooltip
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_tooltip"                                  "35 45 55 65"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "03" // only in tooltip; original (450/675/900/1100)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "hp_tooltip"                                      "500 600 700 800"
+      }
+      "04" // original (240)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ms_tooltip"                                      "250 260 270 280"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lvl_1_count"                                     "1 0 0 0"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lvl_2_count"                                     "0 1 0 0"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lvl_3_count"                                     "0 0 1 0"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lvl_4_count"                                     "0 0 0 1"
+      }
+      "09"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "spawn_distance"                                  "250"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_EarthSpirit.StoneRemnant.Destroy"
-				"Target"		"CASTER"
-			}		
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_EarthSpirit.StoneRemnant.Destroy"
+        "Target"                                          "CASTER"
+      }    
 
-			"SpawnUnit"
-			{
-				"UnitName"		"npc_dota_earth_golem_1"
-				"Target"		
-				{
-					"Center"		    "CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "heroes/archmage/summon.lua"
-						"Function"      "GetSummonPoints"
-						"Target"		"CASTER"
-						"Count"			"1"
-						"distance"		"%spawn_distance"
-					}
-				}
-				"Duration"		"%duration"
-				"UnitCount"		"%lvl_1_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
-				"SpawnRadius"	"10"
-				"OnSpawn"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/archmage/summon.lua"
-						"Function"		"SetUnitsMoveForward"
-					}
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_earth_golem_1"
+        "Target"    
+        {
+          "Center"                                        "CASTER"
+          "ScriptSelectPoints"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "GetSummonPoints"
+            "Target"                                      "CASTER"
+            "Count"                                       "1"
+            "distance"                                    "%spawn_distance"
+          }
+        }
+        "Duration"                                        "%duration"
+        "UnitCount"                                       "%lvl_1_count"
+        "GrantsGold"                                      "1"
+        "GrantsXP"                                        "1"
+        "SpawnRadius"                                     "10"
+        "OnSpawn"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "SetUnitsMoveForward"
+          }
 
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}				
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }        
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_phased"
-						"Target"		"TARGET"
-					}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_phased"
+            "Target"                                      "TARGET"
+          }
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_summoned"
-						"Target" 		"TARGET"
-					}
-				}
-			}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_summoned"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
 
-			"SpawnUnit"
-			{
-				"UnitName"		"npc_dota_earth_golem_2"
-				"Target"		
-				{
-					"Center"		    "CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "heroes/archmage/summon.lua"
-						"Function"      "GetSummonPoints"
-						"Target"		"CASTER"
-						"Count"			"1"
-						"distance"		"%spawn_distance"
-					}
-				}
-				"Duration"		"%duration"
-				"UnitCount"		"%lvl_2_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
-				"SpawnRadius"	"10"
-				"OnSpawn"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/archmage/summon.lua"
-						"Function"		"SetUnitsMoveForward"
-					}
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_earth_golem_2"
+        "Target"    
+        {
+          "Center"                                        "CASTER"
+          "ScriptSelectPoints"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "GetSummonPoints"
+            "Target"                                      "CASTER"
+            "Count"                                       "1"
+            "distance"                                    "%spawn_distance"
+          }
+        }
+        "Duration"                                        "%duration"
+        "UnitCount"                                       "%lvl_2_count"
+        "GrantsGold"                                      "1"
+        "GrantsXP"                                        "1"
+        "SpawnRadius"                                     "10"
+        "OnSpawn"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "SetUnitsMoveForward"
+          }
 
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}				
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }        
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_phased"
-						"Target"		"TARGET"
-					}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_phased"
+            "Target"                                      "TARGET"
+          }
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_summoned"
-						"Target" 		"TARGET"
-					}
-				}
-			}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_summoned"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
 
-			"SpawnUnit"
-			{
-				"UnitName"		"npc_dota_earth_golem_3"
-				"Target"
-				{
-					"Center"		    "CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "heroes/archmage/summon.lua"
-						"Function"      "GetSummonPoints"
-						"Target"		"CASTER"
-						"Count"			"1"
-						"distance"		"%spawn_distance"
-					}
-				}
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_earth_golem_3"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "ScriptSelectPoints"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "GetSummonPoints"
+            "Target"                                      "CASTER"
+            "Count"                                       "1"
+            "distance"                                    "%spawn_distance"
+          }
+        }
 
-				"Duration"		"%duration"
-				"UnitCount"		"%lvl_3_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
-				"SpawnRadius"	"10"
-				"OnSpawn"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/archmage/summon.lua"
-						"Function"		"SetUnitsMoveForward"
-					}				
+        "Duration"                                        "%duration"
+        "UnitCount"                                       "%lvl_3_count"
+        "GrantsGold"                                      "1"
+        "GrantsXP"                                        "1"
+        "SpawnRadius"                                     "10"
+        "OnSpawn"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "SetUnitsMoveForward"
+          }        
 
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}				
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }        
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_phased"
-						"Target"		"TARGET"
-					}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_phased"
+            "Target"                                      "TARGET"
+          }
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_summoned"
-						"Target" 		"TARGET"
-					}
-				}
-			}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_summoned"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
 
-			"SpawnUnit"
-			{
-				"UnitName"		"npc_dota_earth_golem_4"
-				"Target"
-				{
-					"Center"		    "CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "heroes/archmage/summon.lua"
-						"Function"      "GetSummonPoints"
-						"Target"		"CASTER"
-						"Count"			"1"
-						"distance"		"%spawn_distance"
-					}
-				}
+      "SpawnUnit"
+      {
+        "UnitName"                                        "npc_dota_earth_golem_4"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "ScriptSelectPoints"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "GetSummonPoints"
+            "Target"                                      "CASTER"
+            "Count"                                       "1"
+            "distance"                                    "%spawn_distance"
+          }
+        }
 
-				"Duration"		"%duration"
-				"UnitCount"		"%lvl_4_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
-				"SpawnRadius"	"10"
-				"OnSpawn"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/archmage/summon.lua"
-						"Function"		"SetUnitsMoveForward"
-					}				
+        "Duration"                                        "%duration"
+        "UnitCount"                                       "%lvl_4_count"
+        "GrantsGold"                                      "1"
+        "GrantsXP"                                        "1"
+        "SpawnRadius"                                     "10"
+        "OnSpawn"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/archmage/summon.lua"
+            "Function"                                    "SetUnitsMoveForward"
+          }        
 
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}				
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_brewmaster/brewmaster_earth_death_ambient.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }        
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_phased"
-						"Target"		"TARGET"
-					}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_phased"
+            "Target"                                      "TARGET"
+          }
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_earth_golem_summoned"
-						"Target" 		"TARGET"
-					}
-				}
-			}
-		}
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_earth_golem_summoned"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_earth_golem_summoned" // doesn't need tooltip
-			{
-				"IsHidden"			"1"
-				"IsPurgable"		"0"
+    "Modifiers"
+    {
+      "modifier_earth_golem_summoned" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"States"
-				{
-					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
+        "States"
+        {
+          "MODIFIER_STATE_DOMINATED"                      "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
 
-			"modifier_earth_golem_phased" // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsPurgable"	"0"
+      "modifier_earth_golem_phased" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"Duration"		"1"
+        "Duration"                                        "1"
 
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
+        "States"
+        {
+          "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
 }

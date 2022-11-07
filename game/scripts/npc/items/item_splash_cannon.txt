@@ -66,30 +66,30 @@
       "particle"                                          "particles/econ/items/clockwerk/clockwerk_paraflare/clockwerk_para_rocket_flare_explosion.vpcf"
       "particle"                                          "particles/base_attacks/ranged_tower_bad.vpcf"
       "particle"                                          "particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
-	  "soundfile"                                         "soundevents/items/custom_items.vsndevts"
+      "soundfile"                                         "soundevents/items/custom_items.vsndevts"
     }
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "bonus_agility"                                   "25"
-      "bonus_strength"                                  "20"
-      "bonus_intellect"                                 "20"
-      "bonus_health"                                    "250"
-      "bonus_health_regen"                              "3"
-      "bonus_attack_range"                              "160" // ranged only
-      "bonus_damage"                                    "25"
-      "passive_splash_radius"                           "300"
-      "passive_splash_percent"                          "40"
-      "active_damage"                                   "100"
-      "active_radius"                                   "500"
-      "active_splash_percent"                           "200"
-      "knockback_distance"                              "250"
-      "knockback_duration"                              "0.5"
-      "projectile_speed"                                "1800"
-      "recoil_distance"                                 "250"
-      "recoil_duration"                                 "0.2"
+      "bonus_agility"                                     "25"
+      "bonus_strength"                                    "20"
+      "bonus_intellect"                                   "20"
+      "bonus_health"                                      "250"
+      "bonus_health_regen"                                "3"
+      "bonus_attack_range"                                "160" // ranged only
+      "bonus_damage"                                      "25"
+      "passive_splash_radius"                             "300"
+      "passive_splash_percent"                            "40"
+      "active_damage"                                     "100"
+      "active_radius"                                     "500"
+      "active_splash_percent"                             "200"
+      "knockback_distance"                                "250"
+      "knockback_duration"                                "0.5"
+      "projectile_speed"                                  "1800"
+      "recoil_distance"                                   "250"
+      "recoil_duration"                                   "0.2"
     }
   }
 }

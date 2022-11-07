@@ -1,162 +1,162 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2022; Life Drain works only if the caster doesn't have max health;
-	// Notes: The link will not break if the target goes out of vision;
-	// TO_DO: shard: Life Drain applies Dark Arrow debuff
-	//=================================================================================================================
-	"dark_ranger_life_drain"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/dark_ranger_life_drain"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"550" // it should be equal to Dark Ranger's starting attack range
-		"AbilityCastPoint"				"0.2"
-		"AbilityChannelTime"			"7.0"
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"7.0"
+  //=================================================================================================================
+  // Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2022; Life Drain works only if the caster doesn't have max health;
+  // Notes: The link will not break if the target goes out of vision;
+  // TO_DO: shard: Life Drain applies Dark Arrow debuff
+  //=================================================================================================================
+  "dark_ranger_life_drain"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/dark_ranger_life_drain"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "550" // it should be equal to Dark Ranger's starting attack range
+    "AbilityCastPoint"                                    "0.2"
+    "AbilityChannelTime"                                  "7.0"
+    
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "7.0"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"75 100 125 150"
-		"AbilityProcsMagicStick"		"1"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"health_drain"						"75 100 125 150"
-				"CalculateSpellDamageTooltip"		"1"
-			}
-			"02"
-			{
-				"var_type"							"FIELD_FLOAT"
-				"tick_rate"							"0.2"
-			}
-			"03" // needs to be same as AbilityChannelTime
-			{
-				"var_type"							"FIELD_INTEGER"
-				"duration"							"7"
-			}
-			"04" // don't change!
-			{
-				"var_type"							"FIELD_INTEGER"
-				"break_distance"					"850"
-			}
-		}
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "75 100 125 150"
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "health_drain"                                    "75 100 125 150"
+        "CalculateSpellDamageTooltip"                     "1"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "tick_rate"                                       "0.2"
+      }
+      "03" // needs to be same as AbilityChannelTime
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "7"
+      }
+      "04" // don't change!
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "break_distance"                                  "850"
+      }
+    }
 
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+    }
 
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-				"Function"		"LifeDrainStart"
-			}
-		}
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/dark_ranger/dark_ranger_life_drain.lua"
+        "Function"                                        "LifeDrainStart"
+      }
+    }
 
-		"OnChannelFinish"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-				"Function"		"LifeDrainEnd"
-			}
-		}
-		
-		"OnChannelInterrupted"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-				"Function"		"LifeDrainEnd"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_dark_ranger_life_drain"	// doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				
-				"Duration"		"%duration"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-						"Function"		"LifeDrainParticle"
-					}
-				}
+    "OnChannelFinish"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/dark_ranger/dark_ranger_life_drain.lua"
+        "Function"                                        "LifeDrainEnd"
+      }
+    }
+    
+    "OnChannelInterrupted"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/dark_ranger/dark_ranger_life_drain.lua"
+        "Function"                                        "LifeDrainEnd"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_dark_ranger_life_drain"  // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "Duration"                                        "%duration"
+        
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/dark_ranger/dark_ranger_life_drain.lua"
+            "Function"                                    "LifeDrainParticle"
+          }
+        }
 
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-						"Function"		"LifeDrainEnd"
-					}
-				}
+        "OnDestroy"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/dark_ranger/dark_ranger_life_drain.lua"
+            "Function"                                    "LifeDrainEnd"
+          }
+        }
 
-				"ThinkInterval"		"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/dark_ranger/dark_ranger_life_drain.lua"
-						"Function"		"LifeDrainHealthTransfer"
-					}
-				}
-			}
-		}
-	}
+        "ThinkInterval"                                   "%tick_rate"
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/dark_ranger/dark_ranger_life_drain.lua"
+            "Function"                                    "LifeDrainHealthTransfer"
+          }
+        }
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Life Drain talent - makes it Pure and allows it to work while full hp
-	//=================================================================================================================
-	"special_bonus_unique_dark_ranger_5"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Life Drain talent - makes it Pure and allows it to work while full hp
+  //=================================================================================================================
+  "special_bonus_unique_dark_ranger_5"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 }

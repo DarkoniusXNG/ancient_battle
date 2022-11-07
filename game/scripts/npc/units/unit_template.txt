@@ -1,167 +1,167 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Unit Name
-	// Notes: Template; OK; 2022;
-	//=================================================================================
-	"npc_dota_custom_unit"
-	{
-		"BaseClass"         		"npc_dota_creature"						// npc_dota_base
-		"Model"           			"models/development/invisiblebox.vmdl"  // Model.
-		//"SoundSet"          		"Creep_Good_Range"          			// Name of sound set.
-		//"GameSoundsFile"          "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
-		//"IdleSoundLoop"           "Hero_DragonKnight.Tutorial_Intro"		// will be played constantly after the unit spawns. Some heroes don't have a loop sound defined, but as in the example above it's possible to use this as an Spawn sound for the unit if you add the string of a non-loopable sound.
-		"Level"           					"1"
-		//"MinimapIcon"     				"minimap_candybucket"
-		//"MinimapIconSize" 				"1000"
-		"UnitLabel"         				"dummy_unit"
-		
-		//"IsSummoned"      				"1"
-		//"IsNeutralUnitType"				"0"						// 0 is default
-		//"CanBeDominated"  				"0"						// 1 is default; Can be Dominated with Helm of the Dominator? 1 - yes; 0 - no;
-		//"ConsideredHero"  				"1"
-		//"IsAncient"       				"1"						// 0 is default
-		//"AutoAttacksByDefault"         	"0" 					// 1 is default; 0 - Ignores Auto Attack Behavior setting, forces to not autoattack. Used on Visage Familiars.
-		
-		//"SelectionGroup"               	"string"   				// will make it so that all the units of this type are in a group which can be accessed through tab.           
-		//"SelectOnSpawn"                	"1"						// forces the unit into the selection of the hero, even if the "Auto Select Summoned Units" setting is turned off. It's used on Visage Familiars.
-		//"IgnoreAddSummonedToSelection" 	"1"						// 0 is default; if set to 1, makes the "Auto Select Summoned Units" ignore this unit when it spawns.
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"          "dummy_unit"     						// Ability 1.
-		//"Ability2"          ""      								// Ability 2.
-		//"Ability3"          ""      								// Ability 3.
-		//"Ability4"          ""      								// Ability 4.
-		//"Ability5"          ""      								// Ability 5.
-		//"Ability6"          ""      								// Ability 6 - Extra.
-		//"Ability7"          ""      								// Ability 7 - Extra.
-		//"Ability8"          ""      								// Ability 8 - Extra.
+  //=================================================================================
+  // Unit Name
+  // Notes: Template; OK; 2022;
+  //=================================================================================
+  "npc_dota_custom_unit"
+  {
+    "BaseClass"                                           "npc_dota_creature"            // npc_dota_base
+    "Model"                                               "models/development/invisiblebox.vmdl"  // Model.
+    //"SoundSet"              "Creep_Good_Range"                // Name of sound set.
+    //"GameSoundsFile"          "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+    //"IdleSoundLoop"           "Hero_DragonKnight.Tutorial_Intro"    // will be played constantly after the unit spawns. Some heroes don't have a loop sound defined, but as in the example above it's possible to use this as an Spawn sound for the unit if you add the string of a non-loopable sound.
+    "Level"                                               "1"
+    //"MinimapIcon"             "minimap_candybucket"
+    //"MinimapIconSize"         "1000"
+    "UnitLabel"                                           "dummy_unit"
+    
+    //"IsSummoned"              "1"
+    //"IsNeutralUnitType"        "0"            // 0 is default
+    //"CanBeDominated"          "0"            // 1 is default; Can be Dominated with Helm of the Dominator? 1 - yes; 0 - no;
+    //"ConsideredHero"          "1"
+    //"IsAncient"               "1"            // 0 is default
+    //"AutoAttacksByDefault"           "0"           // 1 is default; 0 - Ignores Auto Attack Behavior setting, forces to not autoattack. Used on Visage Familiars.
+    
+    //"SelectionGroup"                 "string"           // will make it so that all the units of this type are in a group which can be accessed through tab.           
+    //"SelectOnSpawn"                  "1"            // forces the unit into the selection of the hero, even if the "Auto Select Summoned Units" setting is turned off. It's used on Visage Familiars.
+    //"IgnoreAddSummonedToSelection"   "1"            // 0 is default; if set to 1, makes the "Auto Select Summoned Units" ignore this unit when it spawns.
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "dummy_unit"                 // Ability 1.
+    //"Ability2"          ""                      // Ability 2.
+    //"Ability3"          ""                      // Ability 3.
+    //"Ability4"          ""                      // Ability 4.
+    //"Ability5"          ""                      // Ability 5.
+    //"Ability6"          ""                      // Ability 6 - Extra.
+    //"Ability7"          ""                      // Ability 7 - Extra.
+    //"Ability8"          ""                      // Ability 8 - Extra.
 
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"       		"0"     						// Physical protection.
-		"MagicalResistance"       	"0"     						// Magical protection.
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                 // Physical protection.
+    "MagicalResistance"                                   "0"                 // Magical protection.
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"    	"DOTA_UNIT_CAP_NO_ATTACK"     	// Type of attack - melee, ranged or no attack
-		"AttackDamageMin"     		"0"     						// Damage range min.
-		"AttackDamageMax"     		"0"     						// Damage range max.
-		//"AttackDamageType"      	"DAMAGE_TYPE_ArmorPhysical"		// Useless, worthless/unsupported
-		"AttackRate"        		"1.0"     						// Speed of attack.
-		"AttackAnimationPoint"    	"0.5"   						// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"  	"800"   						// Range within a target can be acquired.
-		"AttackRange"       		"600"   						// Range within a target can be attacked.
-		//"AttackRangeBuffer"       "250"     						// Extra range the target can move without cancelling the attack
-		//"ProjectileModel"     	"" 								// Particle system model for projectile.
-		//"ProjectileSpeed"     	"900"   						// Speed of projectile (important if unit is ranged).
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_NO_ATTACK"       // Type of attack - melee, ranged or no attack
+    "AttackDamageMin"                                     "0"                 // Damage range min.
+    "AttackDamageMax"                                     "0"                 // Damage range max.
+    //"AttackDamageType"        "DAMAGE_TYPE_ArmorPhysical"    // Useless, worthless/unsupported
+    "AttackRate"                                          "1.0"                 // Speed of attack.
+    "AttackAnimationPoint"                                "0.5"               // Normalized time in animation cycle to attack.
+    "AttackAcquisitionRange"                              "800"               // Range within a target can be acquired.
+    "AttackRange"                                         "600"               // Range within a target can be attacked.
+    //"AttackRangeBuffer"       "250"                 // Extra range the target can move without cancelling the attack
+    //"ProjectileModel"       ""                 // Particle system model for projectile.
+    //"ProjectileSpeed"       "900"               // Speed of projectile (important if unit is ranged).
 
-		// Attributes
-		//----------------------------------------------------------------
-		//"AttributePrimary"      		"DOTA_ATTRIBUTE_STRENGTH"
-		//"AttributeBaseStrength"   	"0"     						// Base strength
-		//"AttributeStrengthGain"   	"0"     						// Strength bonus per level.
-		//"AttributeBaseIntelligence" 	"0"    	 						// Base intelligence
-		//"AttributeIntelligenceGain" 	"0"     						// Intelligence bonus per level.
-		//"AttributeBaseAgility"    	"0"     						// Base agility
-		//"AttributeAgilityGain"    	"0"     						// Agility bonus per level.
+    // Attributes
+    //----------------------------------------------------------------
+    //"AttributePrimary"          "DOTA_ATTRIBUTE_STRENGTH"
+    //"AttributeBaseStrength"     "0"                 // Base strength
+    //"AttributeStrengthGain"     "0"                 // Strength bonus per level.
+    //"AttributeBaseIntelligence"   "0"                   // Base intelligence
+    //"AttributeIntelligenceGain"   "0"                 // Intelligence bonus per level.
+    //"AttributeBaseAgility"      "0"                 // Base agility
+    //"AttributeAgilityGain"      "0"                 // Agility bonus per level.
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"          		"0"     						// Experience earn.
-		"BountyGoldMin"       		"0"     						// Gold earned min.
-		"BountyGoldMax"       		"0"     						// Gold earned max.
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "0"                 // Experience earn.
+    "BountyGoldMin"                                       "0"                 // Gold earned min.
+    "BountyGoldMax"                                       "0"                 // Gold earned max.
 
-		// Bounds
-		//----------------------------------------------------------------
-		"BoundsHullName"      		"DOTA_HULL_SIZE_SMALL"      	// Hull type used for navigation/locomotion. DOTA_HULL_SIZE_HERO
-		//"HealthBarOffset"         "250"							// Health bar height from the ground; By default this value is set to "-1" to use the models default height.
-		//"RingRadius"              "70"							// 50 is default; Visible selection ring when the unit is selected.
-		
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_NONE"		// Type of locomotion - ground, air or none; DOTA_UNIT_CAP_MOVE_GROUND DOTA_UNIT_CAP_MOVE_FLY
-		"MovementSpeed"       		"0"   							// Speed
-		"MovementTurnRate"      	"1.0"   						// Turning rate.
-		//"HasAggressiveStance"     "0"								// Plays alternate idle/run animation when near enemies
-		//"FollowRange"       		"250"   						// Distance to keep when following; Healing Ward/Sigil have it set at 250.
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"        // Hull type used for navigation/locomotion. DOTA_HULL_SIZE_HERO
+    //"HealthBarOffset"         "250"              // Health bar height from the ground; By default this value is set to "-1" to use the models default height.
+    //"RingRadius"              "70"              // 50 is default; Visible selection ring when the unit is selected.
+    
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_NONE"    // Type of locomotion - ground, air or none; DOTA_UNIT_CAP_MOVE_GROUND DOTA_UNIT_CAP_MOVE_FLY
+    "MovementSpeed"                                       "0"                 // Speed
+    "MovementTurnRate"                                    "1.0"               // Turning rate.
+    //"HasAggressiveStance"     "0"                // Plays alternate idle/run animation when near enemies
+    //"FollowRange"           "250"               // Distance to keep when following; Healing Ward/Sigil have it set at 250.
 
-		// Status (most important thing for units)
-		//----------------------------------------------------------------
-		"StatusHealth"        		"150"     						// Base health.
-		"StatusHealthRegen"     	"0"     						// Health regeneration rate.
-		"StatusMana"        		"0"     						// Base mana.
-		"StatusManaRegen"     		"0"     						// Mana regeneration rate.
-		//"StatusStartingMana"      "-1"							// "-1" is full mana; It can be changed to any integer value so the units don't spawn with a filled pool.
+    // Status (most important thing for units)
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "150"                 // Base health.
+    "StatusHealthRegen"                                   "0"                 // Health regeneration rate.
+    "StatusMana"                                          "0"                 // Base mana.
+    "StatusManaRegen"                                     "0"                 // Mana regeneration rate.
+    //"StatusStartingMana"      "-1"              // "-1" is full mana; It can be changed to any integer value so the units don't spawn with a filled pool.
 
-		// Combat
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_GOODGUYS"					// DOTA_TEAM_NEUTRALS; DOTA_TEAM_BADGUYS;
-		"CombatClassAttack"     	"DOTA_COMBAT_CLASS_ATTACK_HERO"			// Attack Type; DOTA_COMBAT_CLASS_ATTACK_HERO; Deprecated: DOTA_COMBAT_CLASS_ATTACK_LIGHT; DOTA_COMBAT_CLASS_ATTACK_SIEGE; DOTA_COMBAT_CLASS_ATTACK_PIERCE; DOTA_COMBAT_CLASS_ATTACK_BASIC
-		"CombatClassDefend"     	"DOTA_COMBAT_CLASS_DEFEND_HERO"			// Armor Type; DOTA_COMBAT_CLASS_DEFEND_HERO; Deprecated: DOTA_COMBAT_CLASS_DEFEND_STRONG; DOTA_COMBAT_CLASS_DEFEND_SOFT; DOTA_COMBAT_CLASS_DEFEND_BASIC; DOTA_COMBAT_CLASS_DEFEND_STRUCTURE;
-		"UnitRelationshipClass"   	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"	// Attack Priority; DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"    	"0"   							// Range of vision during day light. (can't exceed 1800)
-		"VisionNighttimeRange"    	"0"   							// Range of vision at night time. (can't exceed 1800)
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_GOODGUYS"          // DOTA_TEAM_NEUTRALS; DOTA_TEAM_BADGUYS;
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"      // Attack Type; DOTA_COMBAT_CLASS_ATTACK_HERO; Deprecated: DOTA_COMBAT_CLASS_ATTACK_LIGHT; DOTA_COMBAT_CLASS_ATTACK_SIEGE; DOTA_COMBAT_CLASS_ATTACK_PIERCE; DOTA_COMBAT_CLASS_ATTACK_BASIC
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"      // Armor Type; DOTA_COMBAT_CLASS_DEFEND_HERO; Deprecated: DOTA_COMBAT_CLASS_DEFEND_STRONG; DOTA_COMBAT_CLASS_DEFEND_SOFT; DOTA_COMBAT_CLASS_DEFEND_BASIC; DOTA_COMBAT_CLASS_DEFEND_STRUCTURE;
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"  // Attack Priority; DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "0"                 // Range of vision during day light. (can't exceed 1800)
+    "VisionNighttimeRange"                                "0"                 // Range of vision at night time. (can't exceed 1800)
 
-		// Bots
-		//----------------------------------------------------------------
-		//"AttackDesire"        		"1.5"   					// How much bots want to attack them vs other non-hero things
-		//"UseNeutralCreepBehavior"   	"0"							// Use default neutral creep behaviour or not
-		
-		//"HasInventory"    			"1"							// 0 is default for units
-		//"WakesNeutrals"               "1"							// 1 is default; Unit will or will not aggro units on the Neutral team within their acquisition range.
-		
-		// "Creature"
-		// {
-			// "EquippedItems"
-			// {
-				// "Travels"
-				// {
-					// "Item"    "item_cyclone"
-				// }
-				// "Blink"
-				// {
-					// "Item"    "item_blink"
-				// }
-				// "Octarine"
-				// {
-					// "Item"    "item_octarine_core"
-				// }
-				// "Aghanims"
-				// {
-					// "Item"    "item_ultimate_scepter"
-				// }
-				// "Hex"
-				// {
-					// "Item"    "item_sheepstick"
-				// }
-				// "Sphere"
-				// {
-					// "Item"    "item_sphere"
-				// }
-				// "ForceStaff"    
-				// {    
-					// "Item"    "item_force_staff"    
-				// }
-				// "PhaseBoots"
-				// {    
-					// "Item"    "item_phase_boots"
-				// }
-				// "Drums"
-				// {    
-					// "Item"      "item_ancient_janggo"
-					// "Charges"   "10"
-				// }
-				// "Urn"
-				// {
-					// "Item"      "item_urn_of_shadows"
-					// "Charges"   "10"
-				// }
-			// }
-		// }
-	}
+    // Bots
+    //----------------------------------------------------------------
+    //"AttackDesire"            "1.5"             // How much bots want to attack them vs other non-hero things
+    //"UseNeutralCreepBehavior"     "0"              // Use default neutral creep behaviour or not
+    
+    //"HasInventory"          "1"              // 0 is default for units
+    //"WakesNeutrals"               "1"              // 1 is default; Unit will or will not aggro units on the Neutral team within their acquisition range.
+    
+    // "Creature"
+    // {
+      // "EquippedItems"
+      // {
+        // "Travels"
+        // {
+          // "Item"    "item_cyclone"
+        // }
+        // "Blink"
+        // {
+          // "Item"    "item_blink"
+        // }
+        // "Octarine"
+        // {
+          // "Item"    "item_octarine_core"
+        // }
+        // "Aghanims"
+        // {
+          // "Item"    "item_ultimate_scepter"
+        // }
+        // "Hex"
+        // {
+          // "Item"    "item_sheepstick"
+        // }
+        // "Sphere"
+        // {
+          // "Item"    "item_sphere"
+        // }
+        // "ForceStaff"    
+        // {    
+          // "Item"    "item_force_staff"    
+        // }
+        // "PhaseBoots"
+        // {    
+          // "Item"    "item_phase_boots"
+        // }
+        // "Drums"
+        // {    
+          // "Item"      "item_ancient_janggo"
+          // "Charges"   "10"
+        // }
+        // "Urn"
+        // {
+          // "Item"      "item_urn_of_shadows"
+          // "Charges"   "10"
+        // }
+      // }
+    // }
+  }
 }

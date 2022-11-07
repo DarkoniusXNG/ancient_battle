@@ -1,89 +1,89 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Bane; 2022;
-	// TO_DO: 
-	//=================================================================================================================
-	"npc_dota_hero_custom_bane"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"				"npc_dota_hero_bane"
-		"Team"						"Bad"
-		"BotImplemented"			"0"
-		"Role"						"Support,Disabler,Nuker,Durable,Initiator"		// Roles
-		"Rolelevels"				"2,3,1,2,3"
-		"Complexity"				"2"
+  //=================================================================================================================
+  // HERO: Bane; 2022;
+  // TO_DO: 
+  //=================================================================================================================
+  "npc_dota_hero_custom_bane"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "override_hero"                                       "npc_dota_hero_bane"
+    "Team"                                                "Bad"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Support,Disabler,Nuker,Durable,Initiator"    // Roles
+    "Rolelevels"                                          "2,3,1,2,3"
+    "Complexity"                                          "2"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"				"6"
-		"AbilityTalentStart"        "10"
-		"Ability1"					"bane_custom_enfeeble"					// Q (4 levels)
-		"Ability2"					"bane_custom_brain_sap"					// W (4 levels)
-		"Ability3"					"bane_nightmare"						// E, DOTA_VERSION (4 levels)
-		"Ability4"					"bane_custom_terror_blink"				// T (4 levels)
-		"Ability5"					"bane_custom_atropos_end"				// F, Secondary Ultimate (1 level)
-		"Ability6"					"bane_fiends_grip"						// R, Primary Ultimate, DOTA_VERSION (3 levels)
-		"Ability7"					"bane_nightmare_end"
-		"Ability8"					"generic_hidden"
-		"Ability9"					"generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "bane_custom_enfeeble"          // Q (4 levels)
+    "Ability2"                                            "bane_custom_brain_sap"          // W (4 levels)
+    "Ability3"                                            "bane_nightmare"            // E, DOTA_VERSION (4 levels)
+    "Ability4"                                            "bane_custom_terror_blink"        // T (4 levels)
+    "Ability5"                                            "bane_custom_atropos_end"        // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "bane_fiends_grip"            // R, Primary Ultimate, DOTA_VERSION (3 levels)
+    "Ability7"                                            "bane_nightmare_end"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"					"special_bonus_armor_5"					// lvl 10 talent: unique
-		"Ability11"					"special_bonus_unique_bane_10"			// lvl 10 talent: Nightmare heals talent
+    "Ability10"                                           "special_bonus_armor_5"          // lvl 10 talent: unique
+    "Ability11"                                           "special_bonus_unique_bane_10"      // lvl 10 talent: Nightmare heals talent
 
-		"Ability12"					"special_bonus_hp_250"					// lvl 15 talent: unique
-		"Ability13"					"special_bonus_unique_bane_9"		    // lvl 15 talent: Fiend's Grip Max Mana Drain talent
+    "Ability12"                                           "special_bonus_hp_250"          // lvl 15 talent: unique
+    "Ability13"                                           "special_bonus_unique_bane_9"        // lvl 15 talent: Fiend's Grip Max Mana Drain talent
 
-		"Ability14"					"special_bonus_attack_speed_100"		// lvl 20 talent: unique
-		"Ability15"					"special_bonus_unique_bane_5"		    // lvl 20 talent: Nightmare cooldown talent
+    "Ability14"                                           "special_bonus_attack_speed_100"    // lvl 20 talent: unique
+    "Ability15"                                           "special_bonus_unique_bane_5"        // lvl 20 talent: Nightmare cooldown talent
 
-		"Ability16"					"special_bonus_unique_bane_custom_2"	// lvl 25 talent; Brain Sap Damage/Heal talent
-		"Ability17"					"special_bonus_unique_bane_3"			// lvl 25 talent; Fiend's Grip Duration talent
+    "Ability16"                                           "special_bonus_unique_bane_custom_2"  // lvl 25 talent; Brain Sap Damage/Heal talent
+    "Ability17"                                           "special_bonus_unique_bane_3"      // lvl 25 talent; Fiend's Grip Duration talent
 
-		// special_bonus_cast_range_100 - old 10 talent
+    // special_bonus_cast_range_100 - old 10 talent
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1"										// like dota Bane
-		"MagicalResistance"			"25"									// Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "1"                    // like dota Bane
+    "MagicalResistance"                                   "25"                  // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"33"									// like dota Bane
-		"AttackDamageMax"			"39"									// like dota Bane
-		"AttackRate"				"1.7"									// like dota Bane
-		"AttackAnimationPoint"		"0.3"									// like dota Bane
-		"AttackAcquisitionRange"	"800"									// like dota Bane
-		"AttackRange"				"400"									// like dota Bane
-		"ProjectileSpeed"			"900"									// like dota Bane
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "33"                  // like dota Bane
+    "AttackDamageMax"                                     "39"                  // like dota Bane
+    "AttackRate"                                          "1.7"                  // like dota Bane
+    "AttackAnimationPoint"                                "0.3"                  // like dota Bane
+    "AttackAcquisitionRange"                              "800"                  // like dota Bane
+    "AttackRange"                                         "400"                  // like dota Bane
+    "ProjectileSpeed"                                     "900"                  // like dota Bane
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"305"									// like dota Bane
-		"MovementTurnRate"			"0.6"									// like dota Bane
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "305"                  // like dota Bane
+    "MovementTurnRate"                                    "0.6"                  // like dota Bane
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"									// Default
-		"VisionNighttimeRange"		"800"									// Default
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                  // Default
+    "VisionNighttimeRange"                                "800"                  // Default
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"		"22"									// like dota Bane
-		"AttributeStrengthGain"		"2.5"									// like dota Bane
-		"AttributeBaseAgility"		"22"									// like dota Bane
-		"AttributeAgilityGain"		"2.5"									// like dota Bane
-		"AttributeBaseIntelligence"	"22"									// like dota Bane
-		"AttributeIntelligenceGain"	"2.5"									// like dota Bane
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributeBaseStrength"                               "22"                  // like dota Bane
+    "AttributeStrengthGain"                               "2.5"                  // like dota Bane
+    "AttributeBaseAgility"                                "22"                  // like dota Bane
+    "AttributeAgilityGain"                                "2.5"                  // like dota Bane
+    "AttributeBaseIntelligence"                           "22"                  // like dota Bane
+    "AttributeIntelligenceGain"                           "2.5"                  // like dota Bane
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.25"									// like dota Bane
-		"StatusHealth"				"150"									// Default; dota Bane (200);
-		"StatusMana"				"0"										// Default; dota Bane (75);
-		"StatusManaRegen"			"0.0"									// like dota Bane
-	}
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.25"                  // like dota Bane
+    "StatusHealth"                                        "150"                  // Default; dota Bane (200);
+    "StatusMana"                                          "0"                    // Default; dota Bane (75);
+    "StatusManaRegen"                                     "0.0"                  // like dota Bane
+  }
 }

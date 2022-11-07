@@ -1,87 +1,87 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
-	// Author: Darkonius
-	// Notes: OK; 2022; Shard reduces cd, increases cast range and stun duration, adds damage
-	// Linkens: Blocks;
-	// TO_DO:
-	//=================================================================================================================
-	"alchemist_custom_transmute"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/alchemist/transmute.lua"
-		"AbilityTextureName"			"custom/alchemist_custom_transmute"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+  //=================================================================================================================
+  // Alchemist: Transmute (T) - New Spell, Single target spell, Kills creeps instantly for bonus gold, stuns heroes through spell immunity.
+  // Author: Darkonius
+  // Notes: OK; 2022; Shard reduces cd, increases cast range and stun duration, adds damage
+  // Linkens: Blocks;
+  // TO_DO:
+  //=================================================================================================================
+  "alchemist_custom_transmute"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/alchemist/transmute.lua"
+    "AbilityTextureName"                                  "custom/alchemist_custom_transmute"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
 
-		"HasShardUpgrade"               "1"
-		"HasScepterUpgrade"				"1"
+    "HasShardUpgrade"                                     "1"
+    "HasScepterUpgrade"                                   "1"
 
-		"MaxLevel"						"1"
-		"RequiredLevel"        			"6"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "80"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"250"
-		"AbilityCastPoint"				"0.5"
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_1"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "250"
+    "AbilityCastPoint"                                    "0.5"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150"
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "150"
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
-			"particle"  "particles/items2_fx/hand_of_midas.vpcf"
-			"particle"  "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+      "particle"                                          "particles/items2_fx/hand_of_midas.vpcf"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"stun_duration"                               "3"
-			"gold_bounty_multiplier"                      "2.5"
-			"cooldown_heroes"                             "80"
-			"cooldown_creeps"                             "40"
-			"shard_stun_duration"
-			{
-				"value"                                   "4"
-				"RequiresShard"                           "1"
-			}
-			"shard_cooldown_heroes"
-			{
-				"value"                                   "60"
-				"RequiresShard"                           "1"
-			}
-			"shard_cooldown_creeps"
-			{
-				"value"                                   "30"
-				"RequiresShard"                           "1"
-			}
-			"shard_bonus_cast_range"
-			{
-				"value"                                   "350"
-				"RequiresShard"                           "1"
-			}
-			"shard_hero_damage"
-			{
-				"value"                                   "300"
-				"RequiresShard"                           "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "stun_duration"                                     "3"
+      "gold_bounty_multiplier"                            "2.5"
+      "cooldown_heroes"                                   "80"
+      "cooldown_creeps"                                   "40"
+      "shard_stun_duration"
+      {
+        "value"                                           "4"
+        "RequiresShard"                                   "1"
+      }
+      "shard_cooldown_heroes"
+      {
+        "value"                                           "60"
+        "RequiresShard"                                   "1"
+      }
+      "shard_cooldown_creeps"
+      {
+        "value"                                           "30"
+        "RequiresShard"                                   "1"
+      }
+      "shard_bonus_cast_range"
+      {
+        "value"                                           "350"
+        "RequiresShard"                                   "1"
+      }
+      "shard_hero_damage"
+      {
+        "value"                                           "300"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
 }

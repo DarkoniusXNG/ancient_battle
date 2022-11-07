@@ -1,155 +1,155 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Custom Rod of Atos
-	// Notes: OK; 2022;
-	//=================================================================================================================
-	"item_recipe_custom_rod_of_atos"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
+  //=================================================================================================================
+  // Recipe: Custom Rod of Atos
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "item_recipe_custom_rod_of_atos"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"330"	
-		"ItemShopTags"					""
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "330"  
+    "ItemShopTags"                                        ""
 
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_rod_of_atos"
-		"ItemRequirements"
-		{
-			"01"						"item_staff_of_wizardry;item_soul_gem;item_atma"
-		}
-	}
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_rod_of_atos"
+    "ItemRequirements"
+    {
+      "01"                                                "item_staff_of_wizardry;item_soul_gem;item_atma"
+    }
+  }
 
-	//=================================================================================================================
-	// Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1000) + Atma (420) + Recipe (330) = 2750
-	// Notes: OK; 2022;
-	//=================================================================================================================
-	"item_custom_rod_of_atos"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_rod_of_atos"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1000) + Atma (420) + Recipe (330) = 2750
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "item_custom_rod_of_atos"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_rod_of_atos"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		// Stats		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"18"
-		"AbilitySharedCooldown"			"atos"
-		"AbilityCastRange"				"1100"
-		"AbilityCastPoint"				"0.0"
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "18"
+    "AbilitySharedCooldown"                               "atos"
+    "AbilityCastRange"                                    "1100"
+    "AbilityCastPoint"                                    "0.0"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"
-		"ItemCost"						"2750"
-		"ItemShopTags"					"int;agi;str"
-		"ItemQuality"					"rare"
-		"ItemAliases"					"rod of atos"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "50"
+    "ItemCost"                                            "2750"
+    "ItemShopTags"                                        "int;agi;str"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "rod of atos"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{			
-			"01" // Soul Gem (5) + Atma (4) + Staff of Wizardry (10)
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"20"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"10"
-			}
-			"03"
-			{			
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"10"
-			}
-			//"04"
-			//{
-				//"var_type"				"FIELD_INTEGER"
-				//"move_speed_slow"		"-60"
-			//}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_speed_slow"		"-120"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"3.0"
-			}
-		}
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {      
+      "01" // Soul Gem (5) + Atma (4) + Staff of Wizardry (10)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_int"                                       "20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agi"                                       "10"
+      }
+      "03"
+      {      
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_str"                                       "10"
+      }
+      //"04"
+      //{
+        //"var_type"        "FIELD_INTEGER"
+        //"move_speed_slow"    "-60"
+      //}
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_slow"                               "-120"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "3.0"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/custom_rod_of_atos.lua"
-				"Function"		"Cripple"
-			}
-		}
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "items/custom_rod_of_atos.lua"
+        "Function"                                        "Cripple"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_item_custom_rod_of_atos_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+    "Modifiers"
+    {
+      "modifier_item_custom_rod_of_atos_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"  
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agi"
-				}
-			}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
+          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
+        }
+      }
 
-			"item_modifier_custom_rod_of_atos_crippled"	// needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+      "item_modifier_custom_rod_of_atos_crippled"  // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"TextureName"		"custom/custom_rod_of_atos"
+        "TextureName"                                     "custom/custom_rod_of_atos"
 
-				"Duration"			"%duration"
+        "Duration"                                        "%duration"
 
-				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
-				"EffectAttachType"		"follow_origin"
+        "EffectName"                                      "particles/items2_fx/rod_of_atos.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"States"	
-				{
-					"MODIFIER_STATE_ROOTED" 	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
-				}
+        "States"  
+        {
+          "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
+        }
 
-				"Properties"
-				{
-					//"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed_slow"
-					"MODIFIER_PROPERTY_DISABLE_HEALING"					"1"
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          //"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"     "%move_speed_slow"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+          "MODIFIER_PROPERTY_DISABLE_HEALING"             "1"
+        }
+      }
+    }
+  }
 }

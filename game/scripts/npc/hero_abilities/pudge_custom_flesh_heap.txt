@@ -1,41 +1,41 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Pudge: Flesh Heap - Retroactive; gains strength only on kills and gains strength from creeps
-	//=================================================================================================================
-	"pudge_custom_flesh_heap"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "ability_lua"
-		"ScriptFile"                                          "heroes/pudge/flesh_heap.lua"
-		"AbilityTextureName"                                  "pudge_flesh_heap"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Pudge: Flesh Heap - Retroactive; gains strength only on kills and gains strength from creeps
+  //=================================================================================================================
+  "pudge_custom_flesh_heap"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/pudge/flesh_heap.lua"
+    "AbilityTextureName"                                  "pudge_flesh_heap"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"magic_resistance"                                "24 26 28 30"
-			}
-			"02"
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"str_per_hero_kill"                               "1.5 2 2.5 3.0"
-			}
-			"03"
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"str_per_creep_kill"                              "0.03"
-			}
-			"04"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"range"                                           "250"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "magic_resistance"                                "24 26 28 30"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "str_per_hero_kill"                               "1.5 2 2.5 3.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "str_per_creep_kill"                              "0.03"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "range"                                           "250"
+      }
+    }
+  }
 }

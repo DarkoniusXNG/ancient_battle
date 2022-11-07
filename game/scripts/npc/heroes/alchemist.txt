@@ -1,88 +1,88 @@
 "DOTAHeroes"
 {
-	//================================================================================================================
-	// HERO: Alchemist; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_custom_alchemist"
-	{
-		"override_hero"			"npc_dota_hero_alchemist"
-		"Team"					"Good"
-		"BotImplemented"		"0"
-		"Role"					"Carry,Support,Durable,Disabler,Initiator"
-		"Rolelevels"			"2,2,2,2,2"
-		"Complexity"			"2"
+  //================================================================================================================
+  // HERO: Alchemist; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_custom_alchemist"
+  {
+    "override_hero"                                       "npc_dota_hero_alchemist"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Support,Durable,Disabler,Initiator"
+    "Rolelevels"                                          "2,2,2,2,2"
+    "Complexity"                                          "2"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"			"6"
-		"AbilityTalentStart"    "10"
-		"Ability1"				"alchemist_custom_healing_spray"		// Q (4 levels)
-		"Ability2"				"alchemist_custom_acid_bomb"			// W (4 levels)
-		"Ability3"				"alchemist_custom_philosophers_stone"	// E (4 levels)
-		"Ability4"				"alchemist_goblins_greed"				// E, DOTA_VERSION (4 levels)
-		"Ability5"				"alchemist_custom_transmute"			// F, Secondary Ultimate (1 level)
-		"Ability6"				"alchemist_custom_chemical_rage"		// R, Primary Ultimate (3 levels)
-		"Ability7"				"generic_hidden"
-		"Ability8"				"generic_hidden"
-		"Ability9"				"generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "alchemist_custom_healing_spray"    // Q (4 levels)
+    "Ability2"                                            "alchemist_custom_acid_bomb"      // W (4 levels)
+    "Ability3"                                            "alchemist_custom_philosophers_stone"  // E (4 levels)
+    "Ability4"                                            "alchemist_goblins_greed"        // E, DOTA_VERSION (4 levels)
+    "Ability5"                                            "alchemist_custom_transmute"      // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "alchemist_custom_chemical_rage"    // R, Primary Ultimate (3 levels)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"				"special_bonus_attack_speed_15"			// lvl 10 talent: same as dota Alchemist
-		"Ability11"				"special_bonus_corruption_3"			// lvl 10 talent: unique
+    "Ability10"                                           "special_bonus_attack_speed_15"      // lvl 10 talent: same as dota Alchemist
+    "Ability11"                                           "special_bonus_corruption_3"      // lvl 10 talent: unique
 
-		"Ability12"				"special_bonus_unique_alchemist_7"		// lvl 15 talent; same as dota Alchemist
-		"Ability13"				"special_bonus_hp_350"					// lvl 15 talent; same as dota Alchemist
+    "Ability12"                                           "special_bonus_unique_alchemist_7"    // lvl 15 talent; same as dota Alchemist
+    "Ability13"                                           "special_bonus_hp_350"          // lvl 15 talent; same as dota Alchemist
 
-		"Ability14"				"special_bonus_cleave_25"				// lvl 20 talent: same as dota Alchemist
-		"Ability15"				"special_bonus_spell_amplify_15"		// lvl 20 talent: unique
+    "Ability14"                                           "special_bonus_cleave_25"        // lvl 20 talent: same as dota Alchemist
+    "Ability15"                                           "special_bonus_spell_amplify_15"    // lvl 20 talent: unique
 
-		"Ability16"				"special_bonus_unique_alchemist_custom_2"	// lvl 25 talent; Chemical Rage Super Strong Dispel
-		"Ability17"				"special_bonus_unique_alchemist_custom_1"	// lvl 25 talent; Chemical Rage Base Attack Time;
+    "Ability16"                                           "special_bonus_unique_alchemist_custom_2"  // lvl 25 talent; Chemical Rage Super Strong Dispel
+    "Ability17"                                           "special_bonus_unique_alchemist_custom_1"  // lvl 25 talent; Chemical Rage Base Attack Time;
 
-		// special_bonus_attack_damage_20 - old lvl 15 talent
+    // special_bonus_attack_damage_20 - old lvl 15 talent
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"								// Default; original (0); dota (-1);
-		"MagicalResistance"			"25"							// Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                // Default; original (0); dota (-1);
+    "MagicalResistance"                                   "25"              // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"24"							// original (3); dota (27);
-		"AttackDamageMax"			"33" 							// original (30); dota (33);
-		"AttackRate"				"1.7"							// like dota Alchemist
-		"BaseAttackSpeed"           "100"							// Default
-		"AttackAnimationPoint"		"0.35"							// like dota Alchemist
-		"AttackRange"				"150"							// like dota Alchemist
-		"AttackAcquisitionRange"	"800"							// Default
-		
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"290"							// original (270); dota (305);
-		"MovementTurnRate"			"0.6"							// like dota Alchemist
-		"HasAggressiveStance"		"1"								// like dota Alchemist
-		
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"							// Default
-		"VisionNighttimeRange"		"800"							// Default
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"		// like dota Alchemist and original Alchemist
-		"AttributeBaseStrength"		"25"							// original (25); dota (25);
-		"AttributeStrengthGain"		"2.5"							// original (3.3); dota (2.7);
-		"AttributeBaseAgility"		"11"							// original (10); dota (22);
-		"AttributeAgilityGain"		"1.2"							// original (1.0); dota (1.5);
-		"AttributeBaseIntelligence"	"25"							// original (18); dota (25);
-		"AttributeIntelligenceGain"	"1.0"							// original (2.0); dota (1.8);
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "24"              // original (3); dota (27);
+    "AttackDamageMax"                                     "33"               // original (30); dota (33);
+    "AttackRate"                                          "1.7"              // like dota Alchemist
+    "BaseAttackSpeed"                                     "100"              // Default
+    "AttackAnimationPoint"                                "0.35"              // like dota Alchemist
+    "AttackRange"                                         "150"              // like dota Alchemist
+    "AttackAcquisitionRange"                              "800"              // Default
+    
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "290"              // original (270); dota (305);
+    "MovementTurnRate"                                    "0.6"              // like dota Alchemist
+    "HasAggressiveStance"                                 "1"                // like dota Alchemist
+    
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"              // Default
+    "VisionNighttimeRange"                                "800"              // Default
+    
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"    // like dota Alchemist and original Alchemist
+    "AttributeBaseStrength"                               "25"              // original (25); dota (25);
+    "AttributeStrengthGain"                               "2.5"              // original (3.3); dota (2.7);
+    "AttributeBaseAgility"                                "11"              // original (10); dota (22);
+    "AttributeAgilityGain"                                "1.2"              // original (1.0); dota (1.5);
+    "AttributeBaseIntelligence"                           "25"              // original (18); dota (25);
+    "AttributeIntelligenceGain"                           "1.0"              // original (2.0); dota (1.8);
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.0"							// dota Alchemist (0.25)
-		"StatusHealth"				"200"							// like dota Alchemist
-		"StatusMana"				"75"							// like dota Alchemist
-		"StatusManaRegen"			"0.0"							// like dota Alchemist
-	}
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.0"              // dota Alchemist (0.25)
+    "StatusHealth"                                        "200"              // like dota Alchemist
+    "StatusMana"                                          "75"              // like dota Alchemist
+    "StatusManaRegen"                                     "0.0"              // like dota Alchemist
+  }
 }

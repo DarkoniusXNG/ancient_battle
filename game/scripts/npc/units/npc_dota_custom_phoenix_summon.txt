@@ -1,96 +1,96 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Blood Mage Summon Phoenix unit
-	// Notes: OK; 25.2.2020;
-	//=================================================================================
-	"npc_dota_custom_phoenix_summon"
-	{
-		"BaseClass"         		"npc_dota_creature"
-		"Model"           			"models/heroes/phoenix/phoenix_bird.vmdl"
-		"ModelScale"        		"1.0"							// dota Phoenix (0.95);
+  //=================================================================================
+  // Blood Mage Summon Phoenix unit
+  // Notes: OK; 25.2.2020;
+  //=================================================================================
+  "npc_dota_custom_phoenix_summon"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/phoenix/phoenix_bird.vmdl"
+    "ModelScale"                                          "1.0"              // dota Phoenix (0.95);
 
-		"SoundSet"          		"Hero_Phoenix"					// careful
-		"GameSoundsFile"          	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"	// careful
-		"IdleSoundLoop"           	"Hero_Phoenix.IdleLoop"			// careful
+    "SoundSet"                                            "Hero_Phoenix"          // careful
+    "GameSoundsFile"                                      "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"  // careful
+    "IdleSoundLoop"                                       "Hero_Phoenix.IdleLoop"      // careful
 
-		"Level"           			"6"
-		"UnitLabel"         		"phoenix"
+    "Level"                                               "6"
+    "UnitLabel"                                           "phoenix"
 
-		"IsSummoned"      			"1"
-		"CanBeDominated"  			"0"
-		"ConsideredHero"  			"1"
-		"IsAncient"       			"1"
+    "IsSummoned"                                          "1"
+    "CanBeDominated"                                      "0"
+    "ConsideredHero"                                      "1"
+    "IsAncient"                                           "1"
 
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"          "custom_phoenix_turn_into_egg"
-		"Ability2"          "custom_unit_spell_immunity"
-		"Ability3"          "custom_phoenix_phoenix_fire"
-		"Ability4"          "custom_phoenix_splash_attack"
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "custom_phoenix_turn_into_egg"
+    "Ability2"                                            "custom_unit_spell_immunity"
+    "Ability3"                                            "custom_phoenix_phoenix_fire"
+    "Ability4"                                            "custom_phoenix_splash_attack"
 
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"       		"1"     						// Physical protection.
-		"MagicalResistance"       	"0"     						// Handled by custom_unit_spell_immunity;
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "1"                 // Physical protection.
+    "MagicalResistance"                                   "0"                 // Handled by custom_unit_spell_immunity;
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"    	"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"     		"61"     						// original (61);
-		"AttackDamageMax"     		"75"     						// original (75);
-		"AttackRate"        		"1.4"     						// original (1.4);
-		"AttackAnimationPoint"    	"0.43"							// dota Phoenix (0.35);
-		"AttackAcquisitionRange"  	"600"
-		"AttackRange"       		"600"   						// original (600); dota Phoenix (500);
-		"ProjectileModel"     		"particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
-		"ProjectileSpeed"     		"1500"   						// original (1800); dota Phoenix (1100);
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "61"                 // original (61);
+    "AttackDamageMax"                                     "75"                 // original (75);
+    "AttackRate"                                          "1.4"                 // original (1.4);
+    "AttackAnimationPoint"                                "0.43"              // dota Phoenix (0.35);
+    "AttackAcquisitionRange"                              "600"
+    "AttackRange"                                         "600"               // original (600); dota Phoenix (500);
+    "ProjectileModel"                                     "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
+    "ProjectileSpeed"                                     "1500"               // original (1800); dota Phoenix (1100);
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"          		"50"
-		"BountyGoldMin"       		"30"
-		"BountyGoldMax"       		"50"
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "50"
+    "BountyGoldMin"                                       "30"
+    "BountyGoldMax"                                       "50"
 
-		// Bounds
-		//----------------------------------------------------------------
-		"BoundsHullName"      		"DOTA_HULL_SIZE_HERO"
-		//"HealthBarOffset"         "250"
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
+    //"HealthBarOffset"         "250"
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"       		"320"
-		"MovementTurnRate"      	"0.4"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_FLY"
+    "MovementSpeed"                                       "320"
+    "MovementTurnRate"                                    "0.4"
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"        		"1500"     						// original (1250);
-		"StatusHealthRegen"     	"0"     						// Handled by custom_phoenix_phoenix_fire;
-		"StatusMana"        		"0"
-		"StatusManaRegen"     		"0"
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "1500"                 // original (1250);
+    "StatusHealthRegen"                                   "0"                 // Handled by custom_phoenix_phoenix_fire;
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
 
-		// Combat
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_GOODGUYS"
-		"CombatClassAttack"     	"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"     	"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"   	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_GOODGUYS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"    	"1600"							// original (1600);
-		"VisionNighttimeRange"    	"800"							// original (900);
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1600"              // original (1600);
+    "VisionNighttimeRange"                                "800"              // original (900);
 
-		"Creature"
-		{
-			"DisableResistance"     "50"
+    "Creature"
+    {
+      "DisableResistance"                                 "50"
 
-			"AttachWearables"
-	        {
-	            "Wearable1"	{	"ItemDef"	"535"	} // phoenix ambient 
-	            "Wearable2"	{	"ItemDef"	"7458"	} // Solar Forge
-	        }
-		}
-	}
+      "AttachWearables"
+      {
+      "Wearable1"                                         "ItemDef"  "535"  } // phoenix ambient 
+      "Wearable2"                                         "ItemDef"  "7458"  } // Solar Forge
+      }
+    }
+  }
 }

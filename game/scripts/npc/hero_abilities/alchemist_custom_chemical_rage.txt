@@ -1,116 +1,116 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Alchemist: Chemical Rage (R) - New Spell, Similar to DotA's Chemical Rage
-	// Author: Darkonius
-	// Notes: OK; 2022; Uses built-in modifiers; Has Aghanim Scepter upgrade;
-	// TO_DO:
-	//=================================================================================================================
-	"alchemist_custom_chemical_rage"
-	{
-		"BaseClass"                     "ability_lua"
-		"ScriptFile"					"heroes/alchemist/custom_chemical_rage.lua"
-		"AbilityTextureName"            "custom/alchemist_custom_chemical_rage"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		
-		"AbilityCastAnimation"          "ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_START"
-		"AbilityCastPoint"              "0.0"
-		"AbilityCooldown"               "55 50 45"
+  //=================================================================================================================
+  // Alchemist: Chemical Rage (R) - New Spell, Similar to DotA's Chemical Rage
+  // Author: Darkonius
+  // Notes: OK; 2022; Uses built-in modifiers; Has Aghanim Scepter upgrade;
+  // TO_DO:
+  //=================================================================================================================
+  "alchemist_custom_chemical_rage"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/alchemist/custom_chemical_rage.lua"
+    "AbilityTextureName"                                  "custom/alchemist_custom_chemical_rage"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_START"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "55 50 45"
 
-		"AbilityManaCost"               "50 100 150"
-		"AbilityProcsMagicStick"		"1"
-		"HasScepterUpgrade"				"1"
+    "AbilityManaCost"                                     "50 100 150"
+    "AbilityProcsMagicStick"                              "1"
+    "HasScepterUpgrade"                                   "1"
 
-		"AbilityValues" // built-in: duration; base_attack_time; bonus_health; bonus_health_regen; bonus_mana_regen; bonus_movespeed;
-		{
-			"duration"									"25.0"
-			"transformation_time"						"0.35"
-			"base_attack_time"							"1.2 1.1 1.0"
-			"bonus_health"								"0"
-			"bonus_health_regen"
-			{
-				"value"									"0"
-				"special_bonus_unique_alchemist_4"		"+50"
-			}
-			"bonus_mana_regen"							"0"
-			"bonus_movespeed"
-			{
-				"value"									"0"
-				"special_bonus_unique_alchemist_6"		"+50"
-			}
-			"scepter_gold_damage"
-			{
-				"value"									"2"
-				"RequiresScepter"						"1"
-			}
-			"scepter_bonus_damage"
-			{
-				"value"									"20"
-				"RequiresScepter"						"1"
-			}
-			"scepter_spell_amp"
-			{
-				"value"									"5"
-				"RequiresScepter"						"1"
-			}
-			// custom ability specials start here
-			"custom_bonus_move_speed"					"15 20 25"
-			"custom_bonus_health_regen"					"50 75 100"
-			"custom_bonus_mana_regen"					"1 2 3"
-			"custom_base_attack_time"
-			{
-				"value"									"1.2 1.1 1.0"
-				"LinkedSpecialBonus"					"special_bonus_unique_alchemist_custom_1"
-			}
-			"think_interval"							"0.2"
-		}
-	}
-	
-	//=================================================================================================================
-	// Chemical Rage BAT Reduction
-	//=================================================================================================================
-	"special_bonus_unique_alchemist_custom_1"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityValues" // built-in: duration; base_attack_time; bonus_health; bonus_health_regen; bonus_mana_regen; bonus_movespeed;
+    {
+      "duration"                                          "25.0"
+      "transformation_time"                               "0.35"
+      "base_attack_time"                                  "1.2 1.1 1.0"
+      "bonus_health"                                      "0"
+      "bonus_health_regen"
+      {
+        "value"                                           "0"
+        "special_bonus_unique_alchemist_4"                "+50"
+      }
+      "bonus_mana_regen"                                  "0"
+      "bonus_movespeed"
+      {
+        "value"                                           "0"
+        "special_bonus_unique_alchemist_6"                "+50"
+      }
+      "scepter_gold_damage"
+      {
+        "value"                                           "2"
+        "RequiresScepter"                                 "1"
+      }
+      "scepter_bonus_damage"
+      {
+        "value"                                           "20"
+        "RequiresScepter"                                 "1"
+      }
+      "scepter_spell_amp"
+      {
+        "value"                                           "5"
+        "RequiresScepter"                                 "1"
+      }
+      // custom ability specials start here
+      "custom_bonus_move_speed"                           "15 20 25"
+      "custom_bonus_health_regen"                         "50 75 100"
+      "custom_bonus_mana_regen"                           "1 2 3"
+      "custom_base_attack_time"
+      {
+        "value"                                           "1.2 1.1 1.0"
+        "LinkedSpecialBonus"                              "special_bonus_unique_alchemist_custom_1"
+      }
+      "think_interval"                                    "0.2"
+    }
+  }
+  
+  //=================================================================================================================
+  // Chemical Rage BAT Reduction
+  //=================================================================================================================
+  "special_bonus_unique_alchemist_custom_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"value"                                           "-0.5"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value"                                           "-0.5"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Chemical Rage Applies Super Strong Dispel
-	//=================================================================================================================
-	"special_bonus_unique_alchemist_custom_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Chemical Rage Applies Super Strong Dispel
+  //=================================================================================================================
+  "special_bonus_unique_alchemist_custom_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 }

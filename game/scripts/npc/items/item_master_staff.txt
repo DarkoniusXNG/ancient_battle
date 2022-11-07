@@ -1,154 +1,154 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Master Staff
-	// Notes: OK; 16.9.2018; 
-	//=================================================================================================================
-	"item_recipe_master_staff"
-	{
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
+  //=================================================================================================================
+  // Recipe: Master Staff
+  // Notes: OK; 16.9.2018; 
+  //=================================================================================================================
+  "item_recipe_master_staff"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_master_staff"
-		"ItemRequirements"
-		{
-			"01"						"item_nullifier;item_mystic_booster"
-		}
-	}
-	
-	//=================================================================================================================
-	// Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
-	// Notes: OK; 25.12.2019; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
-	// TO_DO: 
-	//=================================================================================================================
-	"item_master_staff"
-	{
-		"BaseClass"           			"item_datadriven"
-		"AbilityTextureName"      		"custom/master_staff"
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_master_staff"
+    "ItemRequirements"
+    {
+      "01"                                                "item_nullifier;item_mystic_booster"
+    }
+  }
+  
+  //=================================================================================================================
+  // Master Staff - Nullifier (4700) + Mystic Booster (5700) = 10400
+  // Notes: OK; 25.12.2019; Doesn't have a projectile; Doesn't slow like Nullifier; Same cast range as Nullifier;
+  // TO_DO: 
+  //=================================================================================================================
+  "item_master_staff"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/master_staff"
 
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"15.0"
-		"AbilityManaCost"				"250"
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "15.0"
+    "AbilityManaCost"                                     "250"
 
-		"ItemCost"						"10400"
-		"ItemShopTags"					"damage;int;str"
-		"ItemQuality"					"epic"
-		"ItemAliases"					"master staff; nullifier staff"
-		"ItemPermanent"					"1"
-		"ItemSellable" 					"1"
-		"ItemDroppable" 				"1"
-		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
-		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemCost"                                            "10400"
+    "ItemShopTags"                                        "damage;int;str"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "master staff; nullifier staff"
+    "ItemPermanent"                                       "1"
+    "ItemSellable"                                        "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // like Reaver
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"25"
-			}
-			"02" // like Nullifier
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"5"
-			}
-			"03" // like Nullifier
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_hp_regen"		"6"
-			}
-			"04" // like Mystic Staff
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"25"
-			}
-			"05" // Nullifier (65) + Mystic Booster (10)
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"75"
-			}
-			"06" // like Nullifier
-			{
-				"var_type"				"FIELD_FLOAT"
-				"mute_duration"			"6.0"
-			}
-		}
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // like Reaver
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_str"                                       "25"
+      }
+      "02" // like Nullifier
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_armor"                                     "5"
+      }
+      "03" // like Nullifier
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "bonus_hp_regen"                                  "6"
+      }
+      "04" // like Mystic Staff
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_int"                                       "25"
+      }
+      "05" // Nullifier (65) + Mystic Booster (10)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_dmg"                                       "75"
+      }
+      "06" // like Nullifier
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "mute_duration"                                   "6.0"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/master_staff.lua"
-				"Function"		"Mute_Disable_Start"
-			}
-		}
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "items/master_staff.lua"
+        "Function"                                        "Mute_Disable_Start"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_item_master_staff_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+    "Modifiers"
+    {
+      "modifier_item_master_staff_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"  
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%bonus_armor"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
-				}
-			}
-			
-			"modifier_item_master_staff_muted" // needs tooltip
-			{
-				"IsHidden"              "0"
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_dmg"
+          "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%bonus_hp_regen"
+        }
+      }
+      
+      "modifier_item_master_staff_muted" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"TextureName"			"custom/master_staff"
+        "TextureName"                                     "custom/master_staff"
 
-				"EffectName"			"particles/items4_fx/nullifier_mute_debuff.vpcf"
-				"EffectAttachType"		"follow_origin"
+        "EffectName"                                      "particles/items4_fx/nullifier_mute_debuff.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				"States"
-				{
-					"MODIFIER_STATE_MUTED" 		"MODIFIER_STATE_VALUE_ENABLED" 
-				}
+        "States"
+        {
+          "MODIFIER_STATE_MUTED"                          "MODIFIER_STATE_VALUE_ENABLED" 
+        }
 
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/master_staff.lua"
-						"Function"		"Mute_Disable_End"
-					}
-				}
-			}
-		}
-	}
+        "OnDestroy"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "items/master_staff.lua"
+            "Function"                                    "Mute_Disable_End"
+          }
+        }
+      }
+    }
+  }
 }
