@@ -14,7 +14,7 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
+
     "AbilityCastRange"                                    "900"             // like Acid Spray
     "AbilityCastPoint"                                    "0.2"             // like Acid Spray
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
@@ -23,9 +23,10 @@
 
     "AbilityManaCost"                                     "150 160 170 180"
     "AbilityProcsMagicStick"                              "1"
-    
     "AOERadius"                                           "%radius"
-    
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
       "01" // original: 250; smaller than Acid Spray (475/525/575/625)
@@ -64,14 +65,14 @@
         "Target"                                          "POINT"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_healing_spray_thinker" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Aura"                                            "modifier_healing_spray_buff"
         "Aura_Radius"                                     "%radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -101,18 +102,18 @@
           }
         }
       }
-      
+
       "modifier_healing_spray_buff" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"  "%damage_decrease"
         }
-        
+
         "OnCreated"
         {
           "Heal"
@@ -121,7 +122,7 @@
             "HealAmount"                                  "%heal_per_wave"
           }
         }
-        
+
         "ThinkInterval"                                   "%wave_interval"
         "OnIntervalThink"
         {
@@ -130,7 +131,7 @@
             "EffectName"                                  "Hero_Alchemist.AcidSpray.Damage"
             "Target"                                      "TARGET"
           }
-          
+
           "Heal"
           {
             "Target"                                      "TARGET"

@@ -14,7 +14,7 @@
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
+
     "AbilityCastAnimation"                                "ACT_DOTA_ALCHEMIST_CHEMICAL_RAGE_START"
     "AbilityCastPoint"                                    "0.0"
     "AbilityCooldown"                                     "55 50 45"
@@ -67,7 +67,7 @@
       "think_interval"                                    "0.2"
     }
   }
-  
+
   //=================================================================================================================
   // Chemical Rage BAT Reduction
   //=================================================================================================================

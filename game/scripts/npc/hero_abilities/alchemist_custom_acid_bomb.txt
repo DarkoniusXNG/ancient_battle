@@ -19,7 +19,7 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "700"                  // like Paralyzing Cask and original Acid Bomb
@@ -34,16 +34,17 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "100 110 120 130"              // unique
     "AbilityProcsMagicStick"                              "1"
-    
     "AOERadius"                                           "%radius"
-    
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_witchdoctor/witchdoctor_cask_explosion_flash.vpcf"
       "particle"                                          "particles/units/heroes/hero_witchdoctor/witchdoctor_maledict_aoe.vpcf"
       "particle"                                          "particles/status_fx/status_effect_maledict.vpcf"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
@@ -74,7 +75,7 @@
         "radius"                                          "250"
       }
     }
-    
+
     "OnSpellStart"
     {
       "TrackingProjectile"
@@ -114,17 +115,17 @@
         "IsDebuff"                                        "1"
         "IsStunDebuff"                                    "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
         "EffectAttachType"                                "follow_overhead"
-        
+
         "OverrideAnimation"                               "ACT_DOTA_DISABLED"
         
         "States"
         {
           "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
         }
-        
+
         "OnCreated"
         {
           "FireEffect"
@@ -140,7 +141,7 @@
               "TARGET"                                    "attach_hitloc"
             }
           }
-          
+
           "FireEffect"
           {
             "EffectName"                                  "particles/units/heroes/hero_witchdoctor/witchdoctor_maledict_aoe.vpcf"
@@ -148,7 +149,7 @@
             "EffectRadius"                                "%radius"
             "Target"                                      "TARGET"
           }
-          
+
           "FireSound"
           {
             "EffectName"                                  "Hero_Alchemist.UnstableConcoction.Stun"
@@ -156,17 +157,17 @@
           }
         }
       }
-      
+
       "modifier_custom_acid_bomb_debuff" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsStunDebuff"                                    "1"
         "IsPurgable"                                      "1"
-        
+
         "StatusEffectName"                                "particles/status_fx/status_effect_maledict.vpcf"
         "StatusEffectPriority"                            "10"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reduction"
