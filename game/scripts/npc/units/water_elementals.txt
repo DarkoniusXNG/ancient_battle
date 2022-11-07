@@ -79,7 +79,10 @@
     {
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "507"    } //morphling ambient 
+        "Wearable1" //morphling ambient 
+        {
+          "ItemDef"                                       "507"
+        } 
       }
     }
   }
@@ -163,7 +166,10 @@
     {
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "507"    } //morphling ambient 
+        "Wearable1" //morphling ambient 
+        {
+          "ItemDef"                                       "507"
+        } 
       }
     }
   }
@@ -247,7 +253,10 @@
     {
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "507"    } //morphling ambient 
+        "Wearable1" //morphling ambient 
+        {
+          "ItemDef"                                       "507"
+        } 
       }
     }
   }
@@ -331,7 +340,10 @@
     {
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "507"    } //morphling ambient 
+        "Wearable1" //morphling ambient 
+        {
+          "ItemDef"                                       "507"
+        } 
       }
     }
   }

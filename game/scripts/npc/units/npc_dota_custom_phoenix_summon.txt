@@ -88,8 +88,14 @@
 
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "535"  } // phoenix ambient 
-      "Wearable2"                                         "ItemDef"  "7458"  } // Solar Forge
+        "Wearable1" // phoenix ambient
+        {
+          "ItemDef"                                       "535"
+        } 
+        "Wearable2" // Solar Forge
+        {
+          "ItemDef"                                       "7458"
+        } 
       }
     }
   }

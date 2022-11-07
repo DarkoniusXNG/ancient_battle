@@ -126,10 +126,22 @@
       
       "AttachWearables"
       {
-      "Wearable1"                                         "ItemDef"  "331" }
-      "Wearable2"                                         "ItemDef"  "332" }
-      "Wearable3"                                         "ItemDef"  "333" }
-      "Wearable4"                                         "ItemDef"  "334" }
+        "Wearable1"
+        {
+          "ItemDef"                                       "331"
+        }
+        "Wearable2"
+        {
+          "ItemDef"                                       "332"
+        }
+        "Wearable3"
+        {
+          "ItemDef"                                       "333"
+        }
+        "Wearable4"
+        {
+          "ItemDef"                                       "334"
+        }
       }
     }
   }
