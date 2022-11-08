@@ -1,0 +1,37 @@
+{
+  "name": "ancient_battle_of_alphas",
+  "version": "1.0.6",
+  "description": "Ancient Battle Dota 2 Custom Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarkoniusXNG/ancient_battle.git"
+  },
+  "keywords": [
+    "dota2",
+    "customgame",
+    "darkoniusXNG"
+  ],
+  "author": "DarkoniusXNG (Darko V.)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DarkoniusXNG/ancient_battle/issues"
+  },
+  "homepage": "https://github.com/DarkoniusXNG/ancient_battle#readme",
+  "devDependencies": {
+    "after": "^0.8.2",
+    "async-each": "^1.0.3",
+    "semistandard": "^16.0.1",
+    "spok": "^0.8.1",
+    "tape": "^4.16.0"
+  },
+  "dependencies": {
+    "@types/node": "^9.6.61",
+    "ap": "^0.2.0",
+    "request": "^2.88.2",
+    "xtend": "^4.0.2"
+  }
+}

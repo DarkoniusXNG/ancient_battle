@@ -1,49 +1,49 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Dark Terminator: Cloak - invisibility + ms bonus; Still has collision; Also some blur effects;
-	// Author: Darkonius
-	// Notes: OK; 2022; Not on minimap for enemies; no health bar; low attack priority;
-	// TO_DO:
-	//=================================================================================================================
-	"dark_terminator_cloak"
-	{
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/dark_terminator/cloak.lua"
-		"AbilityTextureName"                              "custom/dark_terminator_cloak"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Dark Terminator: Cloak - invisibility + ms bonus; Still has collision; Also some blur effects;
+  // Author: Darkonius
+  // Notes: OK; 2022; Not on minimap for enemies; no health bar; low attack priority;
+  // TO_DO:
+  //=================================================================================================================
+  "dark_terminator_cloak"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dark_terminator/cloak.lua"
+    "AbilityTextureName"                                  "custom/dark_terminator_cloak"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilityCastPoint"                                "0.0"
+    "AbilityCastPoint"                                    "0.0"
 
-		"AbilityCooldown"                                 "23 22 21 20"
+    "AbilityCooldown"                                     "23 22 21 20"
 
-		"AbilityManaCost"                                 "75"
-		"AbilityProcsMagicStick"                          "1"
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"particle"                                    "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-			"soundfile"                                   "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+    }
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration"                                "20"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_move_speed"                        "15 20 25 30"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"fade_time"                               "1.0"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_move_speed"                                "15 20 25 30"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "fade_time"                                       "1.0"
+      }
+    }
+  }
 }

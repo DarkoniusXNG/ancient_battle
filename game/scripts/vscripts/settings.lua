@@ -240,17 +240,18 @@ if GetMapName() == "holdout" then
 end
 
 if GetMapName() == "3vs3" then
+	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
 	END_GAME_ON_KILLS = true
-	KILLS_TO_END_GAME_FOR_TEAM = 30			-- How many kills for a team should signify an end of game?
+	KILLS_TO_END_GAME_FOR_TEAM = 40			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?
-	BUYBACK_COOLDOWN_TIME = 0.0
-	MAX_RESPAWN_TIME = 25.0
+	BUYBACK_COOLDOWN_TIME = 35.0
+	MAX_RESPAWN_TIME = 35.0
 	FOUNTAIN_CONSTANT_MANA_REGEN = 5
 	FOUNTAIN_PERCENTAGE_MANA_REGEN = 5
 	FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 5

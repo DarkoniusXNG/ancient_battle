@@ -1,0 +1,18 @@
+//==================================================================
+// Old Scythe of Vyse
+//==================================================================
+
+"DOTA_Tooltip_Ability_item_sheepstick_old"                      "Old Scythe of Vyse"
+"DOTA_Tooltip_Ability_item_recipe_sheepstick_old"               "Old Scythe of Vyse Recipe"
+"DOTA_Tooltip_ability_item_sheepstick_old_Description"          "<h1>Active: Greater Hex</h1>Turns a target unit into a harmless critter for %hex_duration% seconds. Unit affected by Greater Hex is hexed, have disabled passive abilities, disabled damage block and disabled evasion.<br>Instantly destroys illusions.<br><br>Range: %abilitycastrange%"
+"DOTA_Tooltip_ability_item_sheepstick_old_Note0"                "Greater Hex can be dispelled with Strong Dispel."
+"DOTA_Tooltip_ability_item_sheepstick_old_Lore"                 "The most guarded relic among the cult of Vyse, it is the most coveted weapon among magi."
+"DOTA_Tooltip_Ability_item_sheepstick_old_bonus_damage"         "+$damage"
+"DOTA_Tooltip_Ability_item_sheepstick_old_bonus_attack_speed"   "+$attack"
+"DOTA_Tooltip_ability_item_sheepstick_old_bonus_strength"       "+$str"
+"DOTA_Tooltip_ability_item_sheepstick_old_bonus_agility"        "+$agi"
+"DOTA_Tooltip_ability_item_sheepstick_old_bonus_intellect"      "+$int"
+"DOTA_Tooltip_ability_item_sheepstick_old_bonus_mana_regen"     "+$mana_regen"
+
+"DOTA_Tooltip_modifier_item_old_hex"                            "Greater Hex"
+"DOTA_Tooltip_modifier_item_old_hex_Description"                "Hexed, disabled passives, disabled evasion and disabled damage block."

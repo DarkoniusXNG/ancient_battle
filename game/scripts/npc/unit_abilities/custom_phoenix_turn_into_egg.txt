@@ -1,46 +1,46 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Phoenix: Turn Into Egg After Death
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO: 
-	//=================================================================================================================
-	"custom_phoenix_turn_into_egg"
-	{
-		"BaseClass"                     "ability_datadriven"
-		"AbilityTextureName"            "custom/custom_phoenix_reborn"
-		"MaxLevel"                      "1"
+  //=================================================================================================================
+  // Phoenix: Turn Into Egg After Death
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO: 
+  //=================================================================================================================
+  "custom_phoenix_turn_into_egg"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/custom_phoenix_reborn"
+    "MaxLevel"                                            "1"
 
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"egg_duration"      "6"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "egg_duration"                                    "6"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_phoenix_reborn" // doesn't need tooltip
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
-						"Function"      "PhoenixIntoEgg"
-					}
-				}
-			}
-		}
-	}
+    "Modifiers"
+    {
+      "modifier_custom_phoenix_reborn" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnDeath"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/blood_mage/summon_phoenix.lua"
+            "Function"                                    "PhoenixIntoEgg"
+          }
+        }
+      }
+    }
+  }
 }

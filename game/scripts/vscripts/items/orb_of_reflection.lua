@@ -95,81 +95,108 @@ function modifier_item_orb_of_reflection_passives:GetModifierManaBonus()
 	return self:GetAbility():GetSpecialValueFor("bonus_mana")
 end
 
-function modifier_item_orb_of_reflection_passives:OnTakeDamage(event)
-	local parent = self:GetParent()
+function modifier_item_orb_of_reflection_passives:IsFirstItemInInventory()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
 
-	-- Trigger only for this modifier
-	if parent ~= event.unit then
-		return nil
-	end
+  if not IsServer() then
+    return true
+  end
 
-	-- Don't trigger on illusions
-	if parent:IsIllusion() then
-		return nil
-	end
-	
-	-- If there is a stronger reflection modifier, don't continue
-	if parent:HasModifier("modifier_item_orb_of_reflection_active_reflect") or parent:HasModifier("modifier_item_blade_mail_reflect") then
-		return nil
-	end
-	
-	if not IsServer() then
-		return nil
-	end
-	
-	if event.original_damage > 0 then
-		local damage_flags = event.damage_flags
-		local attacker = event.attacker
+  local same_items = {}
+  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
+    local item = parent:GetItemInSlot(item_slot)
+    if item then
+      if item:GetAbilityName() == ability:GetAbilityName() then
+        table.insert(same_items, item)
+      end
+    end
+  end
 
-		-- Don't trigger on damage with these flags
-		if HasBit(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) then
-			return nil
+  if #same_items <= 1 then
+    return true
+  end
+
+  if same_items[1] == ability then
+    return true
+  end
+
+  return false
+end
+
+if IsServer() then
+	function modifier_item_orb_of_reflection_passives:OnTakeDamage(event)
+		local parent = self:GetParent()
+
+		-- Prevent stacking multiple passive damage returns
+		if not self:IsFirstItemInInventory() then
+			return
 		end
 
-		-- To prevent crashes
-		if not attacker then
-			return nil
+		-- Trigger only for this modifier
+		if parent ~= event.unit then
+			return
 		end
 
-		-- To prevent crashes
-		if attacker:IsNull() then
-			return nil
+		-- Don't trigger on illusions
+		if parent:IsIllusion() then
+			return
 		end
 
-		-- Don't trigger on self damage or on damage from allies
-		if attacker == parent or attacker:GetTeamNumber() == parent:GetTeamNumber() then
-			return nil
+		-- If there is a stronger reflection modifier, don't continue
+		if parent:HasModifier("modifier_item_orb_of_reflection_active_reflect") or parent:HasModifier("modifier_item_blade_mail_reflect") then
+			return
 		end
 
-		-- Don't trigger if attacker is dead
-		if not attacker:IsAlive() then
-			return nil
+		if event.original_damage > 0 then
+			local damage_flags = event.damage_flags
+			local attacker = event.attacker
+
+			-- Don't trigger on damage with these flags
+			if HasBit(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) then
+				return
+			end
+
+			-- To prevent crashes
+			if not attacker or attacker:IsNull() then
+				return
+			end
+
+			-- Don't trigger on self damage or on damage from allies
+			if attacker == parent or attacker:GetTeamNumber() == parent:GetTeamNumber() then
+				return
+			end
+
+			-- Don't trigger if attacker is dead
+			if not attacker:IsAlive() then
+				return
+			end
+
+			-- Don't trigger on buildings, towers and fountains
+			if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
+				return
+			end
+
+			-- Damage before reductions
+			local damage = event.original_damage
+			local ability = self:GetAbility()
+
+			-- Fetch the damage return amount/percentage
+			local damage_return = ability:GetSpecialValueFor("passive_damage_return")
+
+			-- Calculating damage that will be returned to attacker
+			local new_damage = damage*damage_return/100
+
+			local damage_table = {}
+			damage_table.victim = attacker
+			damage_table.attacker = parent
+			damage_table.damage_type = event.damage_type -- Same damage type as original damage
+			damage_table.ability = ability
+			damage_table.damage = new_damage
+			damage_table.damage_flags = bit.bor(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
+
+			ApplyDamage(damage_table)
 		end
-
-		-- Don't trigger on buildings, towers and fountains
-		if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
-			return nil
-		end
-
-		-- Damage before reductions
-		local damage = event.original_damage
-		local ability = self:GetAbility()
-
-		-- Fetch the damage return amount/percentage
-		local damage_return = ability:GetSpecialValueFor("passive_damage_return")
-
-		-- Calculating damage that will be returned to attacker
-		local new_damage = damage*damage_return/100
-
-		local damage_table = {}
-		damage_table.victim = attacker
-		damage_table.attacker = parent
-		damage_table.damage_type = event.damage_type -- Same damage type as original damage
-		damage_table.ability = ability
-		damage_table.damage = new_damage
-		damage_table.damage_flags = bit.bor(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
-
-		ApplyDamage(damage_table)
 	end
 end
 
@@ -196,8 +223,6 @@ end
 function modifier_item_orb_of_reflection_active_reflect:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW -- follow_origin
 end
-
--- "TextureName"		"custom/orb_of_reflection"
 
 function modifier_item_orb_of_reflection_active_reflect:GetStatusEffectName()
 	return "particles/status_fx/status_effect_blademail.vpcf"
@@ -226,72 +251,65 @@ function modifier_item_orb_of_reflection_active_reflect:DeclareFunctions()
 	}
 end
 
-function modifier_item_orb_of_reflection_active_reflect:OnTakeDamage(event)
-	local parent = self:GetParent()
+if IsServer() then
+	function modifier_item_orb_of_reflection_active_reflect:OnTakeDamage(event)
+		local parent = self:GetParent()
 
-	-- Trigger only for this modifier
-	if parent ~= event.unit then
-		return nil
-	end
-
-	-- Don't trigger on illusions
-	if parent:IsIllusion() then
-		return nil
-	end
-
-	if not IsServer() then
-		return nil
-	end
-	
-	-- If there is a Blade Mail modifier, remove it
-	if parent:HasModifier("modifier_item_blade_mail_reflect") then
-		parent:RemoveModifierByName("modifier_item_blade_mail_reflect")
-	end
-
-	if event.original_damage > 0 then
-		local damage_flags = event.damage_flags
-		local attacker = event.attacker
-
-		-- Don't trigger on damage with these flags
-		if HasBit(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) then
-			return nil
+		-- Trigger only for this modifier
+		if parent ~= event.unit then
+			return
 		end
 
-		-- To prevent crashes
-		if not attacker then
-			return nil
+		-- Don't trigger on illusions
+		if parent:IsIllusion() then
+			return
 		end
 
-		-- To prevent crashes
-		if attacker:IsNull() then
-			return nil
+		-- If there is a Blade Mail modifier, remove it
+		if parent:HasModifier("modifier_item_blade_mail_reflect") then
+			parent:RemoveModifierByName("modifier_item_blade_mail_reflect")
 		end
 
-		-- Don't trigger on self damage or on damage from allies
-		if attacker == parent or attacker:GetTeamNumber() == parent:GetTeamNumber() then
-			return nil
+		if event.original_damage > 0 then
+			local damage_flags = event.damage_flags
+			local attacker = event.attacker
+
+			-- Don't trigger on damage with these flags
+			if HasBit(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) or HasBit(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) then
+				return
+			end
+
+			-- To prevent crashes
+			if not attacker or attacker:IsNull() then
+				return
+			end
+
+			-- Don't trigger on self damage or on damage from allies
+			if attacker == parent or attacker:GetTeamNumber() == parent:GetTeamNumber() then
+				return
+			end
+
+			-- Don't trigger if attacker is dead
+			if not attacker:IsAlive() then
+				return
+			end
+
+			-- Don't trigger on buildings, towers and fountains
+			if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
+				return
+			end
+
+			local damage_table = {}
+			damage_table.victim = attacker
+			damage_table.attacker = parent
+			damage_table.damage_type = DAMAGE_TYPE_PURE
+			damage_table.ability = self:GetAbility()
+			damage_table.damage = event.original_damage
+			damage_table.damage_flags = bit.bor(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
+
+			ApplyDamage(damage_table)
+
+			EmitSoundOnClient("DOTA_Item.BladeMail.Damage", attacker:GetPlayerOwner())
 		end
-
-		-- Don't trigger if attacker is dead
-		if not attacker:IsAlive() then
-			return nil
-		end
-
-		-- Don't trigger on buildings, towers and fountains
-		if attacker:IsBuilding() or attacker:IsTower() or attacker:IsFountain() then
-			return nil
-		end
-
-		local damage_table = {}
-		damage_table.victim = attacker
-		damage_table.attacker = parent
-		damage_table.damage_type = DAMAGE_TYPE_PURE
-		damage_table.ability = self:GetAbility()
-		damage_table.damage = event.original_damage
-		damage_table.damage_flags = bit.bor(damage_flags, DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
-
-		ApplyDamage(damage_table)
-		
-		EmitSoundOnClient("DOTA_Item.BladeMail.Damage", attacker:GetPlayerOwner())
 	end
 end

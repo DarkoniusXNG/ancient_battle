@@ -1,45 +1,49 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blademaster: Counter Attack (F) - Modified Legion Commander Moment of Courage. 1 level and lower Lifesteal!
-	// Author: Valve + Darkonius
-	// Notes: OK; 2022; Blademaster can crit on Counter-Attack;
-	// Notes: Can counter-attack buildings;
-	// TO_DO:
-	//=================================================================================================================
-	"blademaster_counter_attack"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"legion_commander_moment_of_courage"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilitySound"					"Hero_LegionCommander.Courage"
+  //=================================================================================================================
+  // Blademaster: Counter Attack (F) - Modified Legion Commander Moment of Courage. 1 level and lower Lifesteal!
+  // Author: Valve + Darkonius
+  // Notes: OK; 2022; Blademaster can crit on Counter-Attack;
+  // Notes: Can counter-attack buildings;
+  // TO_DO:
+  //=================================================================================================================
+  "blademaster_counter_attack"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "legion_commander_moment_of_courage"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilitySound"                                        "Hero_LegionCommander.Courage"
 
-		"MaxLevel"						"1"
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.8"
-		
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
-		  	"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_courage_tgt.vpcf" 
-			"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"trigger_chance"			
-			{
-				"value"					"25"
-				"LinkedSpecialBonus"	"special_bonus_unique_legion_commander_3"
-			}
-			"buff_duration"				"1.0" // not in tooltip
-			"hp_leech_percent"			"15"
-		}
-	}
+    "MaxLevel"                                            "1"
+    
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "0.8"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_legion_commander/legion_commander_courage_tgt.vpcf" 
+      "particle"                                          "particles/units/heroes/hero_legion_commander/legion_commander_courage_hit.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "trigger_chance"      
+      {
+        "value"                                           "25"
+        "LinkedSpecialBonus"                              "special_bonus_unique_legion_commander_3"
+      }
+      "buff_duration"                                     "1.0" // not in tooltip
+      "hp_leech_percent"      
+      {
+        "value"                                           "15"
+        "special_bonus_unique_legion_commander_7"         "+50"
+      }
+    }
+  }
 }

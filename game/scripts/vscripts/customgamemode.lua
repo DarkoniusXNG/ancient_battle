@@ -208,12 +208,14 @@ function ancient_battle_gamemode:InitGameMode()
 	gamemode:SetItemAddedToInventoryFilter(Dynamic_Wrap(ancient_battle_gamemode, "InventoryFilter"), self)
 
 	-- Lua Modifiers
-	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_building_invulnerable", "modifiers/modifier_custom_building_invulnerable.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_tower_buff", "modifiers/modifier_custom_tower_buff.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_courier", "modifiers/modifier_custom_courier.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_passive_gold", "modifiers/modifier_custom_passive_gold.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_passive_xp", "modifiers/modifier_custom_passive_xp.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_leash_debuff", "modifiers/modifier_custom_leash_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_strong_illusion", "modifiers/modifier_custom_strong_illusion.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_super_illusion", "modifiers/modifier_custom_super_illusion.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("Ancient Battle custom game initialized.")
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 128)

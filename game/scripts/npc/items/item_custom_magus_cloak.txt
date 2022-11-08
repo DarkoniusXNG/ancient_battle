@@ -1,93 +1,93 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Magus Cloak
-	//=================================================================================================================
-	"item_recipe_custom_magus_cloak"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                     "item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
+  //=================================================================================================================
+  // Recipe: Magus Cloak
+  //=================================================================================================================
+  "item_recipe_custom_magus_cloak"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"260"
-		"ItemShopTags"					""
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "260"
+    "ItemShopTags"                                        ""
 
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_magus_cloak"
-		"ItemRequirements"
-		{
-			"01"						"item_null_talisman_old;item_sobi_mask;item_faerie_fire"
-		}
-	}
-	
-	//=================================================================================================================
-	// Magus Cloak - Old Null Talisman (395) + Sage Mask (175) + Faerie Fire (70) + Recipe (260) = 900
-	// Notes: OK; 2022;
-	//=================================================================================================================
-	"item_custom_magus_cloak"
-	{
-        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_magus_cloak"
+    "ItemRequirements"
+    {
+      "01"                                                "item_null_talisman_old;item_sobi_mask;item_faerie_fire"
+    }
+  }
+  
+  //=================================================================================================================
+  // Magus Cloak - Old Null Talisman (395) + Sage Mask (175) + Faerie Fire (70) + Recipe (260) = 900
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "item_custom_magus_cloak"
+  {
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-        "BaseClass"                                       "item_lua"
-		"ScriptFile"                                      "items/magus_cloak.lua"
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/magus_cloak.lua"
 
-		"AbilityTextureName"                              "custom/magus_cloak"
+    "AbilityTextureName"                                  "custom/magus_cloak"
 
-		"ItemCost"                                        "900"
-		"ItemShopTags"                                    "damage;int;agi;str;regen_mana"
-		"ItemSellable"                                    "1"
-		"ItemPurchasable"                                 "1"
-		"ItemDroppable"                                   "1"
-        "ItemShareability"                                "ITEM_NOT_SHAREABLE"
-		"ItemDeclarations"                                "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemQuality"                                     "rare"
-		"ItemAliases"                                     "magus;magus cloak;mc"
-		"ItemDisassembleRule"                             "DOTA_ITEM_DISASSEMBLE_NEVER"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // better than Null Talisman
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_intellect"                         "6"
-			}
-			"02" // better than Null Talisman
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_strength"                          "3"
-			}
-			"03" // better than Null Talisman
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_agility"                           "3"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_damage"                            "2"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_spell_amp"                         "3"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"bonus_mana_regen"                        "0.75"
-			}
-			"07" // it should stack with other magus cloaks
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_cast_range"                        "25"
-			}
-		}
-	}
+    "ItemCost"                                            "900"
+    "ItemShopTags"                                        "damage;int;agi;str;regen_mana"
+    "ItemSellable"                                        "1"
+    "ItemPurchasable"                                     "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "magus;magus cloak;mc"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // better than Null Talisman
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_intellect"                                 "6"
+      }
+      "02" // better than Null Talisman
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_strength"                                  "3"
+      }
+      "03" // better than Null Talisman
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agility"                                   "3"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_damage"                                    "2"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_spell_amp"                                 "3"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "bonus_mana_regen"                                "0.75"
+      }
+      "07" // it should stack with other magus cloaks
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_cast_range"                                "25"
+      }
+    }
+  }
 }

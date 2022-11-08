@@ -1,58 +1,58 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Bane: Atropos End (F) - New Spell, Removes Nightmare, other debuffs and stuns from caster. Doesn't work while silenced or hexed;
-	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Magic Stick/Wand doesn't proc! (INTENTIONAL)
-	// TO_DO: If needed add terror blink buff to dispel list
-	//=================================================================================================================
-	"bane_custom_atropos_end"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-		"AbilityTextureName"			"bane_nightmare_end"
-		"MaxLevel"						"1"
-		"RequiredLevel"          		"6"
-		
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"0"
-		"AbilityCooldown"				"50.0"
+  //=================================================================================================================
+  // Bane: Atropos End (F) - New Spell, Removes Nightmare, other debuffs and stuns from caster. Doesn't work while silenced or hexed;
+  // Author: Darkonius
+  // Notes: OK; 14.10.2018; Magic Stick/Wand doesn't proc! (INTENTIONAL)
+  // TO_DO: If needed add terror blink buff to dispel list
+  //=================================================================================================================
+  "bane_custom_atropos_end"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+    "AbilityTextureName"                                  "bane_nightmare_end"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
+    
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "0"
+    "AbilityCooldown"                                     "50.0"
 
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_creeps.vsndevts"
-			"particle"			"particles/generic_gameplay/generic_purge.vpcf"
-		}
-		
-		"OnToggleOn"
-		{
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_bane_nightmare"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_creeps.vsndevts"
+      "particle"                                          "particles/generic_gameplay/generic_purge.vpcf"
+    }
+    
+    "OnToggleOn"
+    {
+      "RemoveModifier"
+      {
+        "ModifierName"                                    "modifier_bane_nightmare"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+        }
+      }
 
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_bane_nightmare_invulnerable"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"		"heroes/bane/atropos_end.lua"
-				"Function"			"AtroposEndStrongDispel"
-			}
-		}
-	}
+      "RemoveModifier"
+      {
+        "ModifierName"                                    "modifier_bane_nightmare_invulnerable"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+        }
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/bane/atropos_end.lua"
+        "Function"                                        "AtroposEndStrongDispel"
+      }
+    }
+  }
 }

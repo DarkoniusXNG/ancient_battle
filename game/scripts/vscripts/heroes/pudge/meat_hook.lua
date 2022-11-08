@@ -16,19 +16,19 @@ function pudge_custom_meat_hook:GetCooldown(level)
   local caster = self:GetCaster()
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-	-- Talent that decreases cooldown
-	local talent = caster:FindAbilityByName("special_bonus_unique_pudge_custom_3")
-	if talent and talent:GetLevel() > 0 then
-		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-	end
-  
+  -- Talent that decreases cooldown
+  local talent = caster:FindAbilityByName("special_bonus_unique_pudge_custom_3")
+  if talent and talent:GetLevel() > 0 then
+    return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+  end
+
   return base_cooldown
 end
 
 function pudge_custom_meat_hook:OnSpellStart()
 	self.bChainAttached = false
 	-- Interrupt previous instance ? in case of refresher or wtf mode?
-	if self.hVictim ~= nil then
+	if self.hVictim then
 		self.hVictim:InterruptMotionControllers( true )
 	end
 
@@ -36,11 +36,9 @@ function pudge_custom_meat_hook:OnSpellStart()
 
 	self.hook_damage = self:GetSpecialValueFor( "damage" )
 	self.hook_speed = self:GetSpecialValueFor( "hook_speed" )
-	self.hook_width = self:GetSpecialValueFor( "hook_width" )
-	self.hook_distance = self:GetSpecialValueFor( "hook_distance" )
-	self.hook_followthrough_constant = self:GetSpecialValueFor( "hook_followthrough_constant" )
-	self.vision_radius = self:GetSpecialValueFor( "vision_radius" )
-	self.vision_duration = self:GetSpecialValueFor( "vision_duration" )
+	local hook_width = self:GetSpecialValueFor("hook_width")
+	local hook_distance = self:GetSpecialValueFor("hook_distance") + caster:GetCastRangeBonus()
+	local hook_followthrough_constant = self:GetSpecialValueFor("hook_followthrough_constant")
 	
 	-- Talent that increases damage
 	local talent_1 = caster:FindAbilityByName("special_bonus_unique_pudge_custom_2")
@@ -60,27 +58,27 @@ function pudge_custom_meat_hook:OnSpellStart()
 	end
 
 	self.vStartPosition = caster:GetOrigin()
-	self.vProjectileLocation = vStartPosition
+	self.vProjectileLocation = self.vStartPosition
 
 	local vDirection = self:GetCursorPosition() - self.vStartPosition
 	vDirection.z = 0.0
 
-	local vDirection = ( vDirection:Normalized() ) * self.hook_distance
+	local vDirection = ( vDirection:Normalized() ) * hook_distance
 	self.vTargetPosition = self.vStartPosition + vDirection
 
-	-- self stun ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-	local flFollowthroughDuration = ( self.hook_distance / self.hook_speed * self.hook_followthrough_constant )
+	-- self stun duration based on max distance hook and hook speed
+	local flFollowthroughDuration = ( hook_distance / self.hook_speed * hook_followthrough_constant )
 	caster:AddNewModifier( caster, self, "modifier_pudge_meat_hook_followthrough_lua", { duration = flFollowthroughDuration } )
 
 	self.vHookOffset = Vector( 0, 0, 96 )
 	local vHookTarget = self.vTargetPosition + self.vHookOffset
-	local vKillswitch = Vector( ( ( self.hook_distance / self.hook_speed ) * 2 ), 0, 0 )
+	local vKillswitch = Vector( ( ( hook_distance / self.hook_speed ) * 2 ), 0, 0 )
 
 	self.nChainParticleFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_pudge/pudge_meathook.vpcf", PATTACH_CUSTOMORIGIN, caster )
 	ParticleManager:SetParticleAlwaysSimulate( self.nChainParticleFXIndex )
 	ParticleManager:SetParticleControlEnt( self.nChainParticleFXIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", caster:GetOrigin() + self.vHookOffset, true )
 	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 1, vHookTarget )
-	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 2, Vector( self.hook_speed, self.hook_distance, self.hook_width ) )
+	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 2, Vector( self.hook_speed, hook_distance, hook_width ) )
 	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 3, vKillswitch )
 	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 4, Vector( 1, 0, 0 ) )
 	ParticleManager:SetParticleControl( self.nChainParticleFXIndex, 5, Vector( 0, 0, 0 ) )
@@ -92,9 +90,9 @@ function pudge_custom_meat_hook:OnSpellStart()
 		Ability = self,
 		vSpawnOrigin = caster:GetOrigin(),
 		vVelocity = vDirection:Normalized() * self.hook_speed,
-		fDistance = self.hook_distance,
-		fStartRadius = self.hook_width,
-		fEndRadius = self.hook_width,
+		fDistance = hook_distance,
+		fStartRadius = hook_width,
+		fEndRadius = hook_width,
 		Source = caster,
 		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_BOTH,
 		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
@@ -105,7 +103,6 @@ function pudge_custom_meat_hook:OnSpellStart()
 
 	self.bRetracting = false
 	self.hVictim = nil
-	self.bDiedInHook = false
 end
 
 function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
@@ -121,7 +118,7 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 		end
 
 		local bTargetPulled = false
-		if hTarget ~= nil then
+		if hTarget then
 			hTarget:EmitSound("Hero_Pudge.AttackHookImpact")
 
 			-- Interrupt existing motion controllers (it should also interrupt existing instances of hook)
@@ -129,7 +126,7 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 				hTarget:InterruptMotionControllers(false)
 			end
 			
-			hTarget:AddNewModifier( caster, self, "modifier_pudge_custom_meat_hook", nil )
+			hTarget:AddNewModifier( caster, self, "modifier_pudge_custom_meat_hook", {} )
 			
 			if hTarget:GetTeamNumber() ~= caster:GetTeamNumber() then
 				local damage = {
@@ -137,14 +134,10 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 						attacker = caster,
 						damage = self.hook_damage,
 						damage_type = DAMAGE_TYPE_PURE,		
-						ability = this
+						ability = self
 					}
 
 				ApplyDamage( damage )
-
-				if not hTarget:IsAlive() then
-					self.bDiedInHook = true
-				end
 
 				if not hTarget:IsMagicImmune() then
 					hTarget:Interrupt()
@@ -155,25 +148,28 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 				ParticleManager:ReleaseParticleIndex( nFXIndex )
 			end
 
-			AddFOWViewer( caster:GetTeamNumber(), hTarget:GetOrigin(), self.vision_radius, self.vision_duration, false )
+			local vision_radius = self:GetSpecialValueFor("vision_radius")
+			local vision_duration = self:GetSpecialValueFor("vision_duration")
+			AddFOWViewer( caster:GetTeamNumber(), hTarget:GetOrigin(), vision_radius, vision_duration, false )
 			self.hVictim = hTarget
 			bTargetPulled = true
 		end
 
 		local vHookPos = self.vTargetPosition
 		local flPad = caster:GetPaddedCollisionRadius()
-		if hTarget ~= nil then
+		if hTarget then
 			vHookPos = hTarget:GetOrigin()
 			flPad = flPad + hTarget:GetPaddedCollisionRadius()
 		end
 
 		--Missing: Setting target facing angle
-		local vVelocity = self.vStartPosition - vHookPos
+		local vVelocity = self.vStartPosition - vHookPos --caster:GetAbsOrigin() - vHookPos
 		vVelocity.z = 0.0
 
 		local flDistance = vVelocity:Length2D() - flPad
 		vVelocity = vVelocity:Normalized() * self.hook_speed
 
+		-- Invisible projectile going backwards - hook retracting
 		local info = {
 			Ability = self,
 			vSpawnOrigin = vHookPos,
@@ -202,21 +198,23 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 
 		self.bRetracting = true
 	else
-		-- Is this happening when a unit is between the hooked target and the caster?
+		-- Hook is retracting
+		-- hit unit is either the already hit unit or a unit near the hit unit while the hook is retracting
 		local hHook = caster:GetTogglableWearable( DOTA_LOADOUT_TYPE_WEAPON )
-		if hHook ~= nil then
+		if hHook then
 			hHook:RemoveEffects( EF_NODRAW )
 		end
 
-		if self.hVictim ~= nil then
+		if self.hVictim then
 			local vFinalHookPos = vLocation
-			self.hVictim:InterruptMotionControllers( true ) -- why interrupt????????????????????????????????????????????????
-			self.hVictim:RemoveModifierByName( "modifier_pudge_custom_meat_hook" ) -- why remove ???????????????????????????????????????????????????????????????????????????/
+			self.hVictim:InterruptMotionControllers( true )
+			--self.hVictim:RemoveModifierByName("modifier_pudge_custom_meat_hook")
 
 			local vVictimPosCheck = self.hVictim:GetOrigin() - vFinalHookPos 
 			local flPad = caster:GetPaddedCollisionRadius() + self.hVictim:GetPaddedCollisionRadius()
 			if vVictimPosCheck:Length2D() > flPad then
 				FindClearSpaceForUnit( self.hVictim, self.vStartPosition, false )
+				--FindClearSpaceForUnit( self.hVictim, caster:GetAbsOrigin(), false )
 			end
 		end
 
@@ -267,11 +265,9 @@ function modifier_pudge_custom_meat_hook:OnCreated(event)
 end
 
 function modifier_pudge_custom_meat_hook:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 	}
-
-	return funcs
 end
 
 function modifier_pudge_custom_meat_hook:GetOverrideAnimation()
@@ -293,11 +289,11 @@ function modifier_pudge_custom_meat_hook:CheckState()
 	return state
 end
 
-function modifier_pudge_custom_meat_hook:UpdateHorizontalMotion( me, dt )
-	if IsServer() then
+if IsServer() then
+	function modifier_pudge_custom_meat_hook:UpdateHorizontalMotion( me, dt )
 		local caster = self:GetCaster()
 		local ability = self:GetAbility()
-		if ability.hVictim ~= nil then
+		if ability.hVictim then
 			ability.hVictim:SetOrigin( ability.vProjectileLocation )
 			local vToCaster = ability.vStartPosition - caster:GetOrigin()
 			local flDist = vToCaster:Length2D()
@@ -308,78 +304,24 @@ function modifier_pudge_custom_meat_hook:UpdateHorizontalMotion( me, dt )
 			end                   
 		end
 	end
-end
 
-function modifier_pudge_custom_meat_hook:OnHorizontalMotionInterrupted()
-	if IsServer() then
-		--if self:GetAbility().hVictim ~= nil then
+	function modifier_pudge_custom_meat_hook:OnHorizontalMotionInterrupted()
+		--if self:GetAbility().hVictim then
 			ParticleManager:SetParticleControlEnt( self:GetAbility().nChainParticleFXIndex, 1, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_weapon_chain_rt", self:GetCaster():GetAbsOrigin() + self:GetAbility().vHookOffset, true )
 			self:Destroy()
 		--end
 	end
-end
 
-function modifier_pudge_custom_meat_hook:OnDestroy()
-	if IsServer() then
+	function modifier_pudge_custom_meat_hook:OnDestroy()
 		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
 			parent:RemoveHorizontalMotionController(self)
+			--local parent_origin = parent:GetAbsOrigin()
+			--FindClearSpaceForUnit(parent, parent_origin, false)
+			--ResolveNPCPositions(parent_origin, 128)
 		end
 	end
 end
-
--- if IsServer() then
-  -- function modifier_pull_staff_active_buff:OnCreated(event)
-    -- local parent = self:GetParent()
-
-    -- -- Data sent with AddNewModifier (not available on the client)
-    -- self.direction = Vector(event.direction_x, event.direction_y, 0)
-    -- self.distance = event.distance + 1
-    -- self.speed = event.speed
-
-    -- if self:ApplyHorizontalMotionController() == false then
-      -- self:Destroy()
-      -- return
-    -- end
-  -- end
-
-  -- function modifier_pull_staff_active_buff:UpdateHorizontalMotion(parent, deltaTime)
-    -- local parentOrigin = parent:GetAbsOrigin()
-
-    -- local tickTraveled = deltaTime * self.speed
-    -- tickTraveled = math.min(tickTraveled, self.distance)
-    -- if tickTraveled <= 0 then
-      -- self:Destroy()
-    -- end
-    -- local tickOrigin = parentOrigin + tickTraveled * self.direction
-    -- tickOrigin = Vector(tickOrigin.x, tickOrigin.y, GetGroundHeight(tickOrigin, parent))
-
-    -- parent:SetAbsOrigin(tickOrigin)
-
-    -- self.distance = self.distance - tickTraveled
-
-    -- GridNav:DestroyTreesAroundPoint(tickOrigin, 200, false)
-  -- end
-
-  -- function modifier_pull_staff_active_buff:OnHorizontalMotionInterrupted()
-    -- self:Destroy()
-  -- end
-
-  -- function modifier_pull_staff_active_buff:OnDestroy()
-    -- local parent = self:GetParent()
-    -- if parent and not parent:IsNull() then
-      -- parent:RemoveHorizontalMotionController(self)
-      -- FindClearSpaceForUnit(parent, parent:GetAbsOrigin(), false)
-      -- local parent_origin = parent:GetAbsOrigin()
-      -- ResolveNPCPositions(parent_origin, 128)
-      -- if parent.pull_staff_particle then
-        -- ParticleManager:DestroyParticle(parent.pull_staff_particle, false)
-        -- ParticleManager:ReleaseParticleIndex(parent.pull_staff_particle)
-        -- parent.pull_staff_particle = nil
-      -- end
-    -- end
-  -- end
--- end
 
 ---------------------------------------------------------------------------------------------------
 
@@ -390,9 +332,7 @@ function modifier_pudge_meat_hook_followthrough_lua:IsHidden()
 end
 
 function modifier_pudge_meat_hook_followthrough_lua:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_STUNNED] = true,
 	}
-
-	return state
 end

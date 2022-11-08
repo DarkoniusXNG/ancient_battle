@@ -1,216 +1,215 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Gambler: Russian Roulette (E) - New Spell, mini-stuns, roots and disarms enemies, and the caster; has a chance to do damage on any target
-	// Author: Darkonius;
-	// Notes: OK; 2022; Roulette can hit units that wander into a radius after a delay.
-	// Notes: Ministun is applied only to enemies; Root and disarm are applied to enemies; Reveal is dispellable on Gambler; 
-	// TO_DO:
-	//=================================================================================================================
-	"gambler_russian_roulette"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/gambler_russian_roulette"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.1"
+  //=================================================================================================================
+  // Gambler: Russian Roulette (E) - New Spell, mini-stuns, roots and disarms enemies, and the caster; has a chance to do damage to any target
+  // Author: Darkonius;
+  // Notes: OK; 2022; Roulette can hit units that wander into a radius after a delay.
+  // Notes: 
+  // TO_DO:
+  //=================================================================================================================
+  "gambler_russian_roulette"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/gambler_russian_roulette"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.1"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"13"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "13"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 110 120 130"		
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "100 110 120 130"    
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"400"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"disable_duration"			"2.0"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"base_damage"				"100 175 250 325"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"level_multiplier"			"25"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"activate_duration"			"1.5"
-			}
-			"06" // old value: 17%
-			{
-				"var_type"					"FIELD_INTEGER"
-				"chance_to_hit"				"30"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"mini_stun_duration"		"0.3"
-			}
-		}
-		
-		"precache"
-		{
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
-			"particle"					"particles/units/heroes/hero_sniper/sniper_assassinate.vpcf"
-			"particle"					"particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-			"particle"					"particles/status_fx/status_effect_legion_commander_duel.vpcf"
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"Target"				"CASTER"
-				"EffectName"			"Ability.AssassinateLoad"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_roulette_debuff"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-				}
-				"Duration"		"%disable_duration"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_roulette_mini_stun"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%mini_stun_duration"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_roulette_caster_buff"
-				"Target"		"CASTER"
-				"Duration"		"%activate_duration"
-			}
-		}
-		
-		"OnProjectileHitUnit"
-		{
-			"FireSound"
-			{
-				"Target"			"TARGET"
-				"EffectName"		"Hero_Sniper.AssassinateDamage"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"		"heroes/gambler/gambler_roulette.lua"
-				"Function"			"RouletteProjectileHit"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_roulette_debuff" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "disable_duration"                                "2.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "base_damage"                                     "100 175 250 325"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "level_multiplier"                                "25"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "activate_duration"                               "1.5"
+      }
+      "06" // old value: 17%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "chance_to_hit"                                   "30"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "mini_stun_duration"                              "0.1"
+      }
+    }
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+      "particle"                                          "particles/status_fx/status_effect_legion_commander_duel.vpcf"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "Target"                                          "CASTER"
+        "EffectName"                                      "Ability.AssassinateLoad"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_roulette_debuff"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%disable_duration"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_roulette_mini_stun"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%mini_stun_duration"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_roulette_caster_buff"
+        "Target"                                          "CASTER"
+        "Duration"                                        "%activate_duration"
+      }
+    }
+    
+    "OnProjectileHitUnit"
+    {
+      "FireSound"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "Hero_Sniper.AssassinateDamage"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/gambler/gambler_roulette.lua"
+        "Function"                                        "RouletteProjectileHit"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_roulette_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"StatusEffectName"     	"particles/status_fx/status_effect_legion_commander_duel.vpcf"
-				"StatusEffectPriority" 	"10"
-				
-				"Priority"          "MODIFIER_PRIORITY_ULTRA"
-				
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
-				}
-			}
-			
-			"modifier_roulette_caster_buff" // doesn't need tooltip
-			{
-				"IsHidden"			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				
-				"OnDestroy"
-				{
-					"FireSound"
-					{
-						"Target"			"CASTER"
-						"EffectName"		"Ability.Assassinate"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/gambler/gambler_roulette.lua"
-						"Function"			"RouletteStart"
-					}
-					
-					"FireSound"
-					{
-						"Target"			"CASTER"
-						"EffectName"		"Hero_Sniper.AssassinateProjectile"
-					}
-				}
-			}
-			
-			"modifier_roulette_mini_stun" // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsDebuff"		"1"
-				"IsStunDebuff"	"1"
-				"IsPurgable"	"1"
-				
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
-				
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED" 	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
+        "StatusEffectName"                                "particles/status_fx/status_effect_legion_commander_duel.vpcf"
+        "StatusEffectPriority"                            "10"
+        
+        "Priority"                                        "MODIFIER_PRIORITY_ULTRA"
+        
+        "States"
+        {
+          "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_DISARMED"                       "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
+        }
+      }
+      
+      "modifier_roulette_caster_buff" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "States"
+        {
+          //"MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_DISARMED"                       "MODIFIER_STATE_VALUE_ENABLED"
+        }
+        
+        "OnDestroy"
+        {
+          "FireSound"
+          {
+            "Target"                                      "CASTER"
+            "EffectName"                                  "Ability.Assassinate"
+          }
+          
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/gambler/gambler_roulette.lua"
+            "Function"                                    "RouletteStart"
+          }
+          
+          "FireSound"
+          {
+            "Target"                                      "CASTER"
+            "EffectName"                                  "Hero_Sniper.AssassinateProjectile"
+          }
+        }
+      }
+      
+      "modifier_roulette_mini_stun" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "IsStunDebuff"                                    "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+        
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
+        
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
 }

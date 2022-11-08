@@ -27,17 +27,17 @@ function paladin_storm_hammer:OnSpellStart()
 	local caster = self:GetCaster()
 
 	local info = {
-			EffectName = "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf",
-			Ability = self,
-			iMoveSpeed = bolt_speed,
-			Source = caster,
-			Target = self:GetCursorTarget(),
-			bDodgeable = true,
-			bProvidesVision = true,
-			iVisionTeamNumber = caster:GetTeamNumber(),
-			iVisionRadius = vision_radius,
-			iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_2, 
-		}
+		EffectName = "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf",
+		Ability = self,
+		iMoveSpeed = bolt_speed,
+		Source = caster,
+		Target = self:GetCursorTarget(),
+		bDodgeable = true,
+		bProvidesVision = true,
+		iVisionTeamNumber = caster:GetTeamNumber(),
+		iVisionRadius = vision_radius,
+		iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_2, 
+	}
 
 	ProjectileManager:CreateTrackingProjectile(info)
 	
@@ -119,7 +119,7 @@ function paladin_storm_hammer:DispelEnemy(target)
 	target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 
 	-- Kill the target if its summoned, dominated or an illusion
-	if target:IsSummoned() or target:IsDominated() or target:IsIllusion() then
+	if target:IsSummoned() or target:IsDominated() or (target:IsIllusion() and not target:IsStrongIllusionCustom()) then
 		target:Kill(nil, self:GetCaster())
 	end
 end

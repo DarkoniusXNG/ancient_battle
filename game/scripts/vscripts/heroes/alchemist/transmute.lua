@@ -2,20 +2,6 @@ alchemist_custom_transmute = class({})
 
 LinkLuaModifier("modifier_custom_transmuted_hero", "heroes/alchemist/transmute.lua", LUA_MODIFIER_MOTION_NONE)
 
--- function alchemist_custom_transmute:OnHeroCalculateStatBonus()
-  -- local caster = self:GetCaster()
-
-  -- if caster:HasShardCustom() then
-    -- self:SetHidden(false)
-    -- if self:GetLevel() <= 0 then
-      -- self:SetLevel(1)
-    -- end
-  -- else
-    -- self:SetHidden(true)
-    -- --self:SetLevel(0)
-  -- end
--- end
-
 function alchemist_custom_transmute:CastFilterResultTarget(target)
   local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
 
@@ -24,7 +10,7 @@ function alchemist_custom_transmute:CastFilterResultTarget(target)
   elseif target:IsCourier() then
     return UF_FAIL_COURIER
   end
-  
+
   return defaultFilterResult
 end
 
@@ -35,9 +21,15 @@ function alchemist_custom_transmute:GetCustomCastErrorTarget(target)
 end
 
 function alchemist_custom_transmute:GetCooldown(level)
-  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+  --local base_cooldown = self.BaseClass.GetCooldown(self, level)
+  local caster = self:GetCaster()
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
+
+  if caster:HasShardCustom() then
+    cooldown_heroes = self:GetSpecialValueFor("shard_cooldown_heroes")
+    cooldown_creeps = self:GetSpecialValueFor("shard_cooldown_creeps")
+  end
 
   if IsServer() then
     local target = self:GetCursorTarget()
@@ -48,18 +40,29 @@ function alchemist_custom_transmute:GetCooldown(level)
     end
   end
 
-  return base_cooldown
+  return cooldown_heroes
+end
+
+function alchemist_custom_transmute:GetCastRange(location, target)
+  local caster = self:GetCaster()
+  local base_cast_range = self.BaseClass.GetCastRange(self, location, target)
+
+  if caster:HasShardCustom() then
+    return base_cast_range + self:GetSpecialValueFor("shard_bonus_cast_range")
+  end
+
+  return base_cast_range
 end
 
 function alchemist_custom_transmute:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
-  
+
   -- Don't continue if target and caster entities exist
   if not target or not caster then
     return
   end
-  
+
   -- Sound
   target:EmitSound("DOTA_Item.Hand_Of_Midas")
 
@@ -67,9 +70,13 @@ function alchemist_custom_transmute:OnSpellStart()
   if target:TriggerSpellAbsorb(self) then
     return
   end
-  
+
   local stun_hero_duration = self:GetSpecialValueFor("stun_duration")
   local gold_bounty_multiplier = self:GetSpecialValueFor("gold_bounty_multiplier")
+
+  if caster:HasShardCustom() then
+    stun_hero_duration = self:GetSpecialValueFor("shard_stun_duration")
+  end
 
   if target:IsHero() or target:IsConsideredHero() then
     -- Target is a real hero, illusion of a hero or a hero creep.
@@ -77,6 +84,16 @@ function alchemist_custom_transmute:OnSpellStart()
     stun_hero_duration = target:GetValueChangedByStatusResistance(stun_hero_duration)
     -- Apply spell effect
     target:AddNewModifier(caster, self, "modifier_custom_transmuted_hero", {duration = stun_hero_duration})
+	
+	if caster:HasShardCustom() then
+      ApplyDamage({
+        victim = target,
+        attacker = caster,
+        damage = self:GetSpecialValueFor("shard_hero_damage"),
+        damage_type = DAMAGE_TYPE_MAGICAL,
+        ability = self,
+      })
+    end
   else
     --local min_gold_bounty = target:GetMinimumGoldBounty()
     local max_gold_bounty = target:GetMaximumGoldBounty()
@@ -135,12 +152,10 @@ function modifier_custom_transmuted_hero:IsPurgable()
 end
 
 function modifier_custom_transmuted_hero:CheckState()
-  local state = {
+  return {
     [MODIFIER_STATE_STUNNED] = true,
     [MODIFIER_STATE_FROZEN] = true,
   }
-
-  return state
 end
 
 --function modifier_custom_transmuted_hero:GetEffectName()

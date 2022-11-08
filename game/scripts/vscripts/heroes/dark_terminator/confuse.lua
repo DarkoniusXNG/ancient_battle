@@ -10,18 +10,14 @@ function dark_terminator_confuse:OnSpellStart()
 
 	-- Talent that increases illusion damage:
 	local talent_1 = caster:FindAbilityByName("special_bonus_unique_dark_terminator_confuse_illusion_damage")
-	if talent_1 then
-		if talent_1:GetLevel() ~= 0 then
-			outgoing_damage = outgoing_damage + talent_1:GetSpecialValueFor("value")
-		end
+	if talent_1 and talent_1:GetLevel() > 0 then
+		outgoing_damage = outgoing_damage + talent_1:GetSpecialValueFor("value")
 	end
 
 	-- Talent that increases number of illusions:
 	local talent_2 = caster:FindAbilityByName("special_bonus_unique_dark_terminator_confuse_extra_illusion")
-	if talent_2 then
-		if talent_2:GetLevel() ~= 0 then
-			number_of_illusions = number_of_illusions + talent_2:GetSpecialValueFor("value")
-		end
+	if talent_2 and talent_2:GetLevel() > 0 then
+		number_of_illusions = number_of_illusions + talent_2:GetSpecialValueFor("value")
 	end
 
 	-- Sound
@@ -40,9 +36,15 @@ function dark_terminator_confuse:OnSpellStart()
 	illusion_table.bounty_base = 100
 	illusion_table.bounty_growth = 0
 	illusion_table.outgoing_damage_structure = outgoing_damage
+	illusion_table.outgoing_damage_roshan = outgoing_damage
 	illusion_table.duration = duration
 
 	local padding = 108
 
 	local illusions = CreateIllusions(caster, caster, illusion_table, number_of_illusions, padding, true, true)
+	for _, illu in pairs(illusions) do
+		if illu then
+			illu:AddNewModifier(caster, self, "modifier_custom_strong_illusion", {})
+		end
+	end
 end

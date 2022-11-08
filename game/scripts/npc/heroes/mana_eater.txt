@@ -1,88 +1,88 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Mana Eater; 2022;
-	// Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
-	// TO_DO: special_bonus_unique_mana_eater_1; mana_eater_mana_flare
-	//=================================================================================================================
-	"npc_dota_hero_mana_eater"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------	
-		"override_hero"				"npc_dota_hero_puck"
-		"Team"						"Good"
-		"BotImplemented"			"0"
-		"Role"						"Initiator,Disabler,Nuker,Support,Carry"	// Roles
-		"Rolelevels"				"3,2,3,2,1"
-		"Complexity"				"3"
-		
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"             "6"
-		"AbilityTalentStart"        "10"
-		"Ability1"                  "mana_eater_mystic_bolt"				// Q (4 levels)
-		"Ability2"                  "mana_eater_anti_magic_field"			// W (4 levels)
-		"Ability3"                  "generic_hidden"						// mana_eater_mana_flare E (4 levels)
-		"Ability4"                  "mana_eater_mana_shell"					// innate ability
-		"Ability5"                  "mana_eater_emp"						// F, Secondary Ultimate (4 levels)
-		"Ability6"                  "mana_eater_absorb_mana"				// R, Primary Ultimate (3 levels)
-		"Ability7"                  "mana_eater_mana_regen"					// innate ability
-		"Ability8"                  "generic_hidden"
-		"Ability9"                  "generic_hidden"
+  //=================================================================================================================
+  // HERO: Mana Eater; 2022;
+  // Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
+  // TO_DO: special_bonus_unique_mana_eater_1; mana_eater_mana_flare
+  //=================================================================================================================
+  "npc_dota_hero_mana_eater"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------  
+    "override_hero"                                       "npc_dota_hero_puck"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Initiator,Disabler,Nuker,Support,Carry"  // Roles
+    "Rolelevels"                                          "3,2,3,2,1"
+    "Complexity"                                          "3"
+    
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "mana_eater_mystic_bolt"        // Q (4 levels)
+    "Ability2"                                            "mana_eater_anti_magic_field"      // W (4 levels)
+    "Ability3"                                            "generic_hidden"            // mana_eater_mana_flare E (4 levels)
+    "Ability4"                                            "mana_eater_mana_shell"          // innate ability
+    "Ability5"                                            "mana_eater_emp"            // F, Secondary Ultimate (4 levels)
+    "Ability6"                                            "mana_eater_absorb_mana"        // R, Primary Ultimate (3 levels)
+    "Ability7"                                            "mana_eater_mana_regen"          // innate ability
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                 "special_bonus_mp_200"                  // lvl 10 talent; unique
-		"Ability11"                 "special_bonus_hp_200"                  // lvl 10 talent; unique
+    "Ability10"                                           "special_bonus_mp_200"                  // lvl 10 talent; unique
+    "Ability11"                                           "special_bonus_hp_200"                  // lvl 10 talent; unique
 
-		"Ability12"                 "special_bonus_attack_damage_40"        // lvl 15 talent; unique
-		"Ability13"                 "special_bonus_spell_amplify_12"        // lvl 15 talent; Puck (12%)
+    "Ability12"                                           "special_bonus_attack_damage_40"        // lvl 15 talent; unique
+    "Ability13"                                           "special_bonus_spell_amplify_12"        // lvl 15 talent; Puck (12%)
 
-		"Ability14"                 "special_bonus_armor_10"                // lvl 20 talent; unique
-		"Ability15"                 "special_bonus_attack_speed_50"     // lvl 20 talent> special_bonus_unique_mana_eater_1 - Anti-Magic Field provides attack speed talent
+    "Ability14"                                           "special_bonus_armor_10"                // lvl 20 talent; unique
+    "Ability15"                                           "special_bonus_attack_speed_50"     // lvl 20 talent> special_bonus_unique_mana_eater_1 - Anti-Magic Field provides attack speed talent
 
-		"Ability16"                 "special_bonus_cast_range_400"          // lvl 25 talent; unique
-		"Ability17"                 "special_bonus_unique_mana_eater_2"     // lvl 25 talent; Mana Shell Mana Gain on Damage Done talent
-		
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"					"-3"								// Puck (-3)
-		"MagicalResistance"				"25"								// Default
-		
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"				"25"								// Puck (22);
-		"AttackDamageMax"				"35"								// Puck (30);
-		"AttackRate"					"1.7"								// like Puck
-		"AttackAnimationPoint"			"0.5"								// like Puck
-		"AttackAcquisitionRange"		"800"								// like Puck
-		"AttackRange"					"600"								// Puck (550);
-		"ProjectileSpeed"				"900"								// like Puck
-		
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"					"305"								// Puck (290); Skywrath Mage (325); Arc Warden (280);
-		"MovementTurnRate"				"0.5"								// like Puck
-		
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"			"1800"								// Default
-		"VisionNighttimeRange"			"800"								// Default
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"			// Unique for Mana Eater
-		"AttributeBaseStrength"			"19"								// Puck (17); Vengeful Spirit (19); Troll Warlord (21);
-		"AttributeStrengthGain"			"2.6"								// Puck (2.4); Vengeful Spirit (2.6); Troll Warlord (2.5);
-		"AttributeBaseAgility"			"27"								// Puck (22); Troll Warlord (21); Vengeful Spirit (20); optimal (23);
-		"AttributeAgilityGain"			"3.5"								// Puck (2.5); Troll Warlord (3.3); Vengeful Spirit (3.2); optimal (2.8);
-		"AttributeBaseIntelligence"		"13"								// Troll Warlord (13); Vengeful Spirit (19); - don't change!
-		"AttributeIntelligenceGain"		"0.6"								// Troll Warlord (1.0); Vengeful Spirit (1.5); - don't change!
-		
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.5"									// Puck (0.5)
-		"StatusHealth"				"200"									// like Puck
-		"StatusMana"				"0"										// Unique for Mana Eater
-		"StatusManaRegen"			"0.0"									// Negative mana regeneration is dynamic and handled in lua
-	}
+    "Ability16"                                           "special_bonus_cast_range_400"          // lvl 25 talent; unique
+    "Ability17"                                           "special_bonus_unique_mana_eater_2"     // lvl 25 talent; Mana Shell Mana Gain on Damage Done talent
+    
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "-3"                // Puck (-3)
+    "MagicalResistance"                                   "25"                // Default
+    
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "25"                // Puck (22);
+    "AttackDamageMax"                                     "35"                // Puck (30);
+    "AttackRate"                                          "1.7"                // like Puck
+    "AttackAnimationPoint"                                "0.5"                // like Puck
+    "AttackAcquisitionRange"                              "800"                // like Puck
+    "AttackRange"                                         "600"                // Puck (550);
+    "ProjectileSpeed"                                     "900"                // like Puck
+    
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "305"                // Puck (290); Skywrath Mage (325); Arc Warden (280);
+    "MovementTurnRate"                                    "0.5"                // like Puck
+    
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                // Default
+    "VisionNighttimeRange"                                "800"                // Default
+    
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"      // Unique for Mana Eater
+    "AttributeBaseStrength"                               "19"                // Puck (17); Vengeful Spirit (19); Troll Warlord (21);
+    "AttributeStrengthGain"                               "2.6"                // Puck (2.4); Vengeful Spirit (2.6); Troll Warlord (2.5);
+    "AttributeBaseAgility"                                "27"                // Puck (22); Troll Warlord (21); Vengeful Spirit (20); optimal (23);
+    "AttributeAgilityGain"                                "3.5"                // Puck (2.5); Troll Warlord (3.3); Vengeful Spirit (3.2); optimal (2.8);
+    "AttributeBaseIntelligence"                           "13"                // Troll Warlord (13); Vengeful Spirit (19); - don't change!
+    "AttributeIntelligenceGain"                           "0.6"                // Troll Warlord (1.0); Vengeful Spirit (1.5); - don't change!
+    
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.5"                  // Puck (0.5)
+    "StatusHealth"                                        "200"                  // like Puck
+    "StatusMana"                                          "0"                    // Unique for Mana Eater
+    "StatusManaRegen"                                     "0.0"                  // Negative mana regeneration is dynamic and handled in lua
+  }
 }

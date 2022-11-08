@@ -1,140 +1,140 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
-	// Author: Jastuchko + Darkonius
-	// Notes: OK; 2021; Slow works on towers; Passive works on illusions.
-	// TO_DO: Rework to lua; status resistance fix; shard
-	//====================================================================================================
-	"lich_custom_freezing_touch"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"custom/lich_custom_freezing_touch"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"		"SPELL_DISPELLABLE_YES"
+  //====================================================================================================
+  // Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
+  // Author: Jastuchko + Darkonius
+  // Notes: OK; 2021; Slow works on towers; Passive works on illusions.
+  // TO_DO: Rework to lua; status resistance fix; shard
+  //====================================================================================================
+  "lich_custom_freezing_touch"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/lich_custom_freezing_touch"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"MaxLevel"               	"1"
-		"RequiredLevel"				"12"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "12"
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration"                                "3"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"move_speed_slow"                         "-30"
-				"LinkedSpecialBonus"                      "special_bonus_unique_lich_custom_4"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"attack_speed_slow"                       "-60"
-				"LinkedSpecialBonus"                      "special_bonus_unique_lich_custom_4"
-				"LinkedSpecialBonusField"                 "value2"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "3"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-30"
+        "LinkedSpecialBonus"                              "special_bonus_unique_lich_custom_4"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_slow"                               "-60"
+        "LinkedSpecialBonus"                              "special_bonus_unique_lich_custom_4"
+        "LinkedSpecialBonusField"                         "value2"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_lich_custom_freezing_touch_passive" // doesn't need tooltip
-			{
-				"Passive"		"1"
-				"IsHidden"		"1"
-				"IsPurgable"    "0"
-				
-				"AllowIllusionDuplicate"	"1"
+    "Modifiers"
+    {
+      "modifier_lich_custom_freezing_touch_passive" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
+        
+        "AllowIllusionDuplicate"                          "1"
 
-				"OnDealDamage"
-				{
-					"ApplyModifier"
-					{
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-							"Types" 	"DOTA_UNIT_TARGET_ALL"
-						}
-						"ModifierName"		"modifier_lich_custom_freezing_touch_debuff"
-						"Duration"			"%duration"
-					}
-				}
-			}
-			
-			"modifier_lich_custom_freezing_touch_debuff" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
-				
-				"StatusEffectName"     "particles/status_fx/status_effect_frost_lich.vpcf"
-				"StatusEffectPriority" "12"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
-				}
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Freezing Touch bonus slow talent
-	//=================================================================================================================
-	"special_bonus_unique_lich_custom_4"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "OnDealDamage"
+        {
+          "ApplyModifier"
+          {
+            "Target"
+            {
+              "Center"                                    "UNIT"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_BOTH"
+              "Types"                                     "DOTA_UNIT_TARGET_ALL"
+            }
+            "ModifierName"                                "modifier_lich_custom_freezing_touch_debuff"
+            "Duration"                                    "%duration"
+          }
+        }
+      }
+      
+      "modifier_lich_custom_freezing_touch_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "StatusEffectName"                                "particles/status_fx/status_effect_frost_lich.vpcf"
+        "StatusEffectPriority"                            "12"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+        }
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Freezing Touch bonus slow talent
+  //=================================================================================================================
+  "special_bonus_unique_lich_custom_4"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // ms slow
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "-20"
-			}
-			"02" // as slow
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value2"                                  "-40"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Freezing Touch heal reduction talent
-	//=================================================================================================================
-	"special_bonus_unique_lich_custom_7"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // ms slow
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "-20"
+      }
+      "02" // as slow
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value2"                                          "-40"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Freezing Touch heal reduction talent
+  //=================================================================================================================
+  "special_bonus_unique_lich_custom_7"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "25"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "25"
+      }
+    }
+  }
 }

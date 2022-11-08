@@ -1,135 +1,135 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
-	// Author: Darkonius
-	// Notes: OK; 2022; Can Crit on buildings; Chance to proc is Pseudo-Random;
-	// TO_DO: If its too weak increase proc chance to a maximum 12%
-	//=================================================================================================================
-	"gambler_lucky_stars"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/gambler_lucky_stars"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+  //=================================================================================================================
+  // Gambler: Lucky Stars (T) - New Spell, Chance to deal critical strike and gain bonus gold OnAttackLanded
+  // Author: Darkonius
+  // Notes: OK; 2022; Can Crit on buildings; Chance to proc is Pseudo-Random;
+  // TO_DO: If it's too weak increase proc chance to a maximum 12%
+  //=================================================================================================================
+  "gambler_lucky_stars"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/gambler_lucky_stars"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
 
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
-			"particle"		"particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"
-			"particle"		"particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_weapon_blur_critical.vpcf"
-		}
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+      "particle"                                          "particles/units/heroes/hero_chaos_knight/chaos_knight_weapon_blur_critical.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // Phantom Assassin crit: 200/325/450%
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"crit_damage"                             "150 250 350 450"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"crit_chance"                             "5 6 7 8"
-			}
-			"03" // Alchemist Greevil's Greed gold bonus cap: 15/18/21/24
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_gold"                              "40 48 56 64"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // Phantom Assassin crit: 200/325/450%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "crit_damage"                                     "150 250 350 450"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "crit_chance"                                     "5 6 7 8"
+      }
+      "03" // Alchemist Greevil's Greed gold bonus cap: 15/18/21/24
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_gold"                                      "40 48 56 64"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_gambler_lucky_stars_passive" // doesn't need tooltip
-			{
-				"Passive"   				"1"
-				"IsHidden"  				"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
+    "Modifiers"
+    {
+      "modifier_gambler_lucky_stars_passive" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"AllowIllusionDuplicate"	"1"
+        "AllowIllusionDuplicate"                          "1"
 
-				"OnAttackStart"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName" 	"modifier_gambler_lucky_crit"
-						"Target" 		"CASTER"
-					}
+        "OnAttackStart"
+        {
+          "RemoveModifier"
+          {
+            "ModifierName"                                "modifier_gambler_lucky_crit"
+            "Target"                                      "CASTER"
+          }
 
-					"Random"
-					{
-						"Chance" 		"%crit_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT"
+          "Random"
+          {
+            "Chance"                                      "%crit_chance"
+            "PseudoRandom"                                "DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT"
 
-						"OnSuccess"
-						{
-							"FireSound"
-							{
-								"EffectName"		"Hero_ChaosKnight.ChaosStrike"
-								"Target"			"CASTER"
-							}
+            "OnSuccess"
+            {
+              "FireSound"
+              {
+                "EffectName"                              "Hero_ChaosKnight.ChaosStrike"
+                "Target"                                  "CASTER"
+              }
 
-							"FireEffect"
-							{
-								"EffectName" 		"particles/units/heroes/hero_chaos_knight/chaos_knight_weapon_blur_critical.vpcf"
-								"EffectAttachType"  "attach_attack1"
-								"Target"    		"CASTER"
-							}
+              "FireEffect"
+              {
+                "EffectName"                              "particles/units/heroes/hero_chaos_knight/chaos_knight_weapon_blur_critical.vpcf"
+                "EffectAttachType"                        "attach_attack1"
+                "Target"                                  "CASTER"
+              }
 
-							"ApplyModifier"
-							{
-								"ModifierName" 		"modifier_gambler_lucky_crit"
-								"Target"    		"CASTER"    
-							}        
-						}
-					}
-				}
-			}
+              "ApplyModifier"
+              {
+                "ModifierName"                            "modifier_gambler_lucky_crit"
+                "Target"                                  "CASTER"    
+              }        
+            }
+          }
+        }
+      }
 
-			"modifier_gambler_lucky_crit" // doesn't need tooltip
-			{
-				"IsHidden"  	"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+      "modifier_gambler_lucky_crit" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_damage"
-				}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"    "%crit_damage"
+        }
 
-				"States"
-				{
-					"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
+        "States"
+        {
+          "MODIFIER_STATE_CANNOT_MISS"                    "MODIFIER_STATE_VALUE_ENABLED"
+        }
 
-				"OnAttackLanded"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"  "modifier_gambler_lucky_crit"
-						"Target"   		"CASTER"    
-					}
+        "OnAttackLanded"
+        {
+          "RemoveModifier"
+          {
+            "ModifierName"                                "modifier_gambler_lucky_crit"
+            "Target"                                      "CASTER"    
+          }
 
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/gambler/gambler_lucky_stars.lua"
-						"Function"		"LuckyStars"
-						"Target"		"TARGET"
-					}
-				}
-			}
-		}
-	}
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/gambler/gambler_lucky_stars.lua"
+            "Function"                                    "LuckyStars"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
+  }
 }

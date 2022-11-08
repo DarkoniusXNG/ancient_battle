@@ -1,89 +1,89 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Paladin; 2022;
-	// Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_paladin"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"				"npc_dota_hero_omniknight"
-		"Team"						"Good"
-		"BotImplemented"			"0"
-		"Role"						"Carry,Nuker,Support,Initiator,Durable,Disabler"	// Roles
-		"Rolelevels"				"1,2,3,3,3,3"
-		"Complexity"				"1"
-		
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"             "6"
-		"AbilityTalentStart"        "10"
-		"Ability1"                  "paladin_holy_purification"				// Q (4 levels)
-		"Ability2"                  "paladin_storm_hammer"					// W (4 levels)
-		"Ability3"                  "paladin_holy_strike"					// E (4 levels)
-		"Ability4"                  "paladin_eternal_devotion"				// T, passive (4 levels)
-		"Ability5"                  "paladin_divine_retribution"			// F, passive (1 level)
-		"Ability6"                  "paladin_divine_shield"					// R, Primary Ultimate (3 levels)
-		"Ability7"                  "generic_hidden"
-		"Ability8"                  "generic_hidden"
-		"Ability9"                  "generic_hidden"
+  //=================================================================================================================
+  // HERO: Paladin; 2022;
+  // Notes: OK; Eternal Devotion provides bonus armor; Divine Retrubution provides bonus damage and bonus armor;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_paladin"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "override_hero"                                       "npc_dota_hero_omniknight"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Nuker,Support,Initiator,Durable,Disabler"  // Roles
+    "Rolelevels"                                          "1,2,3,3,3,3"
+    "Complexity"                                          "1"
+    
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "paladin_holy_purification"        // Q (4 levels)
+    "Ability2"                                            "paladin_storm_hammer"          // W (4 levels)
+    "Ability3"                                            "paladin_holy_strike"          // E (4 levels)
+    "Ability4"                                            "paladin_eternal_devotion"        // T, passive (4 levels)
+    "Ability5"                                            "paladin_divine_retribution"      // F, passive (1 level)
+    "Ability6"                                            "paladin_divine_shield"          // R, Primary Ultimate (3 levels)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                 "special_bonus_attack_base_damage_50"   // lvl 10 talent; same as Omniknight
-		"Ability11"                 "special_bonus_unique_paladin_1"        // lvl 10 talent; Purification AoE talent
+    "Ability10"                                           "special_bonus_attack_base_damage_50"   // lvl 10 talent; same as Omniknight
+    "Ability11"                                           "special_bonus_unique_paladin_1"        // lvl 10 talent; Purification AoE talent
 
-		"Ability12"                 "special_bonus_unique_paladin_5"		// lvl 20 talent; Wrath of God (Eternal Devotion more angels)
-		"Ability13"                 "special_bonus_unique_paladin_3"		// lvl 15 talent; Purification cd talent
+    "Ability12"                                           "special_bonus_unique_paladin_5"    // lvl 20 talent; Wrath of God (Eternal Devotion more angels)
+    "Ability13"                                           "special_bonus_unique_paladin_3"    // lvl 15 talent; Purification cd talent
 
-		"Ability14"                 "special_bonus_unique_paladin_4"        // lvl 25 talent; Storm Hammer Dispels enemies talent
-		"Ability15"                 "special_bonus_unique_paladin_2"		// lvl 20 talent; Global Eternal Devotion talent
+    "Ability14"                                           "special_bonus_unique_paladin_4"        // lvl 25 talent; Storm Hammer Dispels enemies talent
+    "Ability15"                                           "special_bonus_unique_paladin_2"    // lvl 20 talent; Global Eternal Devotion talent
 
-		"Ability16"                 "special_bonus_unique_paladin_6"		// lvl 25 talent; Purification bonus dmg/heal talent
-		"Ability17"                 "special_bonus_unique_paladin_7"        // lvl 15 talent; Storm Hammer stun duration talent
-		
-		// available: special_bonus_unique_paladin_8 - Storm Hammer cooldown talent
+    "Ability16"                                           "special_bonus_unique_paladin_6"    // lvl 25 talent; Purification bonus dmg/heal talent
+    "Ability17"                                           "special_bonus_unique_paladin_7"        // lvl 15 talent; Storm Hammer stun duration talent
+    
+    // available: special_bonus_unique_paladin_8 - Storm Hammer cooldown talent
 
-		// Armor
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"										// Omniknight (1); original (2);
-		"MagicalResistance"			"25"									// Default
+    // Armor
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                    // Omniknight (1); original (2);
+    "MagicalResistance"                                   "25"                  // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"									// Omniknight (31); original (2);
-		"AttackDamageMax"			"40" 									// Omniknight (41); original (12);
-		"AttackRate"				"1.7"									// like Omniknight
-		"AttackAnimationPoint"		"0.433"									// like Omniknight
-		"AttackRange"				"150"									// like Omniknight
-		"AttackAcquisitionRange"	"600"									// like Omniknight
-		
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"300"									// Omniknight (315); original (290);
-		"MovementTurnRate"			"0.6"									// Omniknight (0.6); original (0.6);
-		
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"									// Default
-		"VisionNighttimeRange"		"800"									// Default
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"22"									// Omniknight (23); original (22);
-		"AttributeStrengthGain"		"3.1"									// Omniknight (3.1); original (2.7);
-		"AttributeBaseAgility"		"13"									// Omniknight (15); original (13); - don't change!
-		"AttributeAgilityGain"		"1.5"									// Omniknight (2.0); original (1.5); - don't change!
-		"AttributeBaseIntelligence"	"17"									// Omniknight (15); original (17); - don't change!
-		"AttributeIntelligenceGain"	"1.8"									// Omniknight (1.8); original (1.8); - don't change!
-		
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.25"									// Omniknight (0.25); original (0.25);
-		"StatusHealth"				"210"									// Omniknight (200); original (100 or 210);
-		"StatusMana"				"75"									// Omniknight (75); original (51 or 100);
-		"StatusManaRegen"			"0.0"									// Omniknight (0.0); original (0.01);
-	}
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "30"                  // Omniknight (31); original (2);
+    "AttackDamageMax"                                     "40"                   // Omniknight (41); original (12);
+    "AttackRate"                                          "1.7"                  // like Omniknight
+    "AttackAnimationPoint"                                "0.433"                  // like Omniknight
+    "AttackRange"                                         "150"                  // like Omniknight
+    "AttackAcquisitionRange"                              "600"                  // like Omniknight
+    
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "300"                  // Omniknight (315); original (290);
+    "MovementTurnRate"                                    "0.6"                  // Omniknight (0.6); original (0.6);
+    
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                  // Default
+    "VisionNighttimeRange"                                "800"                  // Default
+    
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "22"                  // Omniknight (23); original (22);
+    "AttributeStrengthGain"                               "3.1"                  // Omniknight (3.1); original (2.7);
+    "AttributeBaseAgility"                                "13"                  // Omniknight (15); original (13); - don't change!
+    "AttributeAgilityGain"                                "1.5"                  // Omniknight (2.0); original (1.5); - don't change!
+    "AttributeBaseIntelligence"                           "17"                  // Omniknight (15); original (17); - don't change!
+    "AttributeIntelligenceGain"                           "1.8"                  // Omniknight (1.8); original (1.8); - don't change!
+    
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.25"                  // Omniknight (0.25); original (0.25);
+    "StatusHealth"                                        "210"                  // Omniknight (200); original (100 or 210);
+    "StatusMana"                                          "75"                  // Omniknight (75); original (51 or 100);
+    "StatusManaRegen"                                     "0.0"                  // Omniknight (0.0); original (0.01);
+  }
 }

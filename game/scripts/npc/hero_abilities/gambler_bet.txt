@@ -1,190 +1,190 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Gambler: Bet (Q) - New Spell, Gambler bets that a target enemy hero will die in 15 seconds or less. Gambler gets more money if his ally kills the target. Heals allies.
-	// Author: Darkonius
-	// Linkens: Doesn't Block (because its global)
-	// How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
-	// Notes: OK; 30.10.2019;
-	// TO_DO:
-	//=================================================================================================================
-	"gambler_bet"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName" 			"custom/gambler_bet"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-		"AbilityCastPoint"				"0.3"
-		
-		"AbilityCooldown"				"30"    				// Ante Up (60)
-		"AbilityManaCost"				"50"					// Ante Up (100)
-		"AbilityProcsMagicStick" 		"1"
-		"AbilityGoldCost"				"50 75 100 125"			// Ante Up (100)
-		"AbilityCastRange"				"0" 					// global (20 000)
+  //=================================================================================================================
+  // Gambler: Bet (Q) - New Spell, Gambler bets that a target enemy hero will die. Gambler gets more money if his ally kills the target. Heals allies.
+  // Author: Darkonius
+  // Linkens: Doesn't Block (because its global)
+  // How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "gambler_bet"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/gambler_bet"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+    "AbilityCastPoint"                                    "0.3"
+    
+    "AbilityCooldown"                                     "30"            // Ante Up (60)
+    "AbilityManaCost"                                     "50"          // Ante Up (100)
+    "AbilityProcsMagicStick"                              "1"
+    "AbilityGoldCost"                                     "50 75 100 125"      // Ante Up (100)
+    "AbilityCastRange"                                    "0"           // global (20 000)
 
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-			"particle"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
-			"particle"		"particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_shield.vpcf"
-			"particle"		"particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
+      "particle"                                          "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_shield.vpcf"
+      "particle"                                          "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // tooltip only; same as AbilityGoldCost
-			{
-				"var_type"					"FIELD_INTEGER"
-				"gold_cost"					"50 75 100 125"
-			}
-			"02" // Ante Up (60)
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"30.0"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1000"
-			}
-			"04" // max gold that caster can get when he (caster) kills the target
-			{
-				"var_type"					"FIELD_INTEGER"
-				"max_gold_caster"			"100 150 200 250"
-			}
-			"05" // tooltip only; min gold that caster can get when he (caster) kills the target (should be equal to AbilityGoldCost)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"min_gold_caster"			"50 75 100 125"
-			}
-			"06" // max gold that caster can get when somebody else kills the target
-			{
-				"var_type"					"FIELD_INTEGER"
-				"max_gold"					"500 750 1000 1250"
-			}
-			"07" // tooltip only; min gold that caster can get when his ally kills the target
-			{
-				"var_type"					"FIELD_INTEGER"
-				"min_gold"					"0 0 1 1"
-			}
-			"08" // bonus gold for the ally that killed the target
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_gold"				"70 90 110 130"
-			}
-			"09"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"heal"						"180 270 360 450"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // tooltip only; same as AbilityGoldCost
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "gold_cost"                                       "50 75 100 125"
+      }
+      "02" // Ante Up (60)
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "60"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "1000"
+      }
+      "04" // max gold that caster can get when he (caster) kills the target
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_gold_caster"                                 "250"
+      }
+      "05" // tooltip only; min gold that caster can get when he (caster) kills the target (should be equal to AbilityGoldCost)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "min_gold_caster"                                 "50 75 100 125"
+      }
+      "06" // max gold that caster can get when somebody else kills the target
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_gold"                                        "1250"
+      }
+      "07" // tooltip only; min gold that caster can get when his ally kills the target
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "min_gold"                                        "50 75 100 125"
+      }
+      "08" // bonus gold for the ally that killed the target
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_gold"                                      "70 90 110 130"
+      }
+      "09"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "heal"                                            "180 270 360 450"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_gambler_bet_debuff"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-				"Duration"		"%duration"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_bet_heal"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
-				}
-				"Duration"		"0.3"
-			}
-			
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_gambler_bet_debuff"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+        "Duration"                                        "%duration"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_bet_heal"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO"
+        }
+        "Duration"                                        "0.3"
+      }
+      
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
+        "EffectAttachType"                                "start_at_customorigin"
 
-				"ControlPointEntities"
-				{
-					"CASTER" "attach_attack1"
-					"TARGET" "attach_hitloc"
-				}
+        "ControlPointEntities"
+        {
+          "CASTER"                                        "attach_attack1"
+          "TARGET"                                        "attach_hitloc"
+        }
 
-			}
-			
-			"FireSound"
-			{
-				"EffectName"	"Hero_BountyHunter.Target"
-				"Target"
-				{
-					"Center" 	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_gambler_bet_debuff" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-				
-				"EffectName"        "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_shield.vpcf"
-				"EffectAttachType"  "follow_overhead"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/gambler/gambler_bet.lua"
-						"Function"			"gambler_bet_on_spell_start"
-					}
-				}
-				
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/gambler/gambler_bet.lua"
-						"Function"			"gambler_bet_on_target_death"
-					}
-				}
-			}
-			
-			"modifier_bet_heal" // doesn't need tooltip
-			{
-				"IsHidden"			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"OnCreated"
-				{
-					"Heal"
-					{
-						"HealAmount"		"%heal"
-						"Target"			"TARGET"
-					}
-				}
-			}
-		}
-	}
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_BountyHunter.Target"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_gambler_bet_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "EffectName"                                      "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_shield.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+        
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/gambler/gambler_bet.lua"
+            "Function"                                    "gambler_bet_on_spell_start"
+          }
+        }
+        
+        "OnTakeDamage"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/gambler/gambler_bet.lua"
+            "Function"                                    "gambler_bet_on_target_death"
+          }
+        }
+      }
+      
+      "modifier_bet_heal" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnCreated"
+        {
+          "Heal"
+          {
+            "HealAmount"                                  "%heal"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,68 +1,68 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Primal Split Earth Spirit: Demolish (R) - passive, 100% attack damage as pure damage in a radius + bonus flat physical damage to buildings
-	// Author: Darkonius
-	// Notes: OK; 24.8.2019;
-	// TO_DO: Add sound?
-	//====================================================================================================
-	"primal_split_earth_spirit_demolish"
-	{
-	    "BaseClass"             	"ability_datadriven"
-	    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"    	"custom/primal_split_earth_spirit_demolish"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
-		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
+  //====================================================================================================
+  // Primal Split Earth Spirit: Demolish (R) - passive, 100% attack damage as pure damage in a radius + bonus flat physical damage to buildings
+  // Author: Darkonius
+  // Notes: OK; 24.8.2019;
+  // TO_DO: Add sound?
+  //====================================================================================================
+  "primal_split_earth_spirit_demolish"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "custom/primal_split_earth_spirit_demolish"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
 
-	    "MaxLevel"              	"1"
-	
-		"AbilitySpecial"
-	    {
-	        "01"
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"radius_damage_percent"        	"100"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"02"
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"radius"              			"200"
-			}
-			"03"
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"bonus_damage_to_buildings"		"270"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-	    }
-	
-	    "Modifiers"
-	    {
-	        "modifier_earth_spirit_custom_demolish" // doesn't need tooltip
-	        {
-	            "Passive"		"1"
-	            "IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-	
-	            "OnAttackLanded"
-	            {
-					"FireEffect"
-					{
-						"EffectName"        "particles/units/heroes/hero_brewmaster/brewmaster_pulverize.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "TARGET"
-					}
-					
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/brewmaster/primal_split_earth_spirit_demolish.lua"
-						"Function"			"DemolishDamage"
-						"Damage"			"%attack_damage"
-					}
-	            }
-	        }
-	    }
-	}
+    "MaxLevel"                                            "1"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius_damage_percent"                           "100"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "200"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_damage_to_buildings"                       "270"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_earth_spirit_custom_demolish" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnAttackLanded"
+        {
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_brewmaster/brewmaster_pulverize.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }
+          
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/brewmaster/primal_split_earth_spirit_demolish.lua"
+            "Function"                                    "DemolishDamage"
+            "Damage"                                      "%attack_damage"
+          }
+        }
+      }
+    }
+  }
 }

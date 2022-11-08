@@ -1,34 +1,30 @@
-"use strict";
+'use strict';
 
-function UpdateTimer()
-{
-	var gameTime = Game.GetGameTime();
-	var transitionTime = Game.GetStateTransitionTime();
+function UpdateTimer () {
+  const gameTime = Game.GetGameTime();
+  const transitionTime = Game.GetStateTransitionTime();
 
-	var timerValue = Math.max(0, Math.floor( transitionTime - gameTime ));
-	
-	if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION ) )
-	{
-		timerValue = 0;
-	}
-	$("#TimerPanel").SetDialogVariableInt("timer_seconds", timerValue);
+  let timerValue = Math.max(0, Math.floor(transitionTime - gameTime));
 
-	var banPhaseInstructions = $("#BanPhaseInstructions");
-	var pickPhaseInstructions = $("#PickPhaseInstructions");
+  if (Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION)) {
+    timerValue = 0;
+  }
+  $('#TimerPanel').SetDialogVariableInt('timer_seconds', timerValue);
 
-	var bIsInBanPhase = Game.IsInBanPhase();
+  const banPhaseInstructions = $('#BanPhaseInstructions');
+  const pickPhaseInstructions = $('#PickPhaseInstructions');
 
-	banPhaseInstructions.SetHasClass("Visible", bIsInBanPhase == true);
-	pickPhaseInstructions.SetHasClass("Visible", bIsInBanPhase == false);
+  const bIsInBanPhase = Game.IsInBanPhase();
 
-	$.Schedule( 0.1, UpdateTimer );
+  banPhaseInstructions.SetHasClass('Visible', bIsInBanPhase == true);
+  pickPhaseInstructions.SetHasClass('Visible', bIsInBanPhase == false);
+
+  $.Schedule(0.1, UpdateTimer);
 }
 
-(function()
-{
-	var timerPanel = $.CreatePanel("Panel", $.GetContextPanel(), "TimerPanel");
-	timerPanel.BLoadLayout( "file://{resources}/layout/custom_game/hero_select_overlay_timer.xml", false, false );
+(function () {
+  const timerPanel = $.CreatePanel('Panel', $.GetContextPanel(), 'TimerPanel');
+  timerPanel.BLoadLayout('file://{resources}/layout/custom_game/hero_select_overlay_timer.xml', false, false);
 
-	UpdateTimer();
+  UpdateTimer();
 })();
-

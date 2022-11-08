@@ -1,73 +1,73 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Sohei: Guard - Reflect all projectiles (attack, spell) for the duration. Can be used while stunned but it will cost hp. Cancels Flurry of BLows.
-	//=================================================================================================================
-	"sohei_guard"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/sohei/sohei_guard.lua"
-		"AbilityTextureName"                              "custom/ronin_guard"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  //=================================================================================================================
+  // Sohei: Guard - Reflect all projectiles (attack, spell) for the duration. Can be used while stunned but it will cost hp. Cancels Flurry of BLows.
+  //=================================================================================================================
+  "sohei_guard"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/sohei/sohei_guard.lua"
+    "AbilityTextureName"                                  "custom/ronin_guard"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.0"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
 
-		// Time
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "30 25 20 15"
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "30 25 20 15"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "80"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "80"
 
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"particle"                                    "particles/hero/sohei/guard.vpcf"
-			"particle"                                    "particles/hero/sohei/knockback.vpcf"
-			"particle"                                    "particles/hero/sohei/reflect_sakura_leaves.vpcf"
-			"soundfile"                                   "soundevents/units/game_sounds_sohei.vsndevts"
-		}
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/hero/sohei/guard.vpcf"
+      "particle"                                          "particles/hero/sohei/knockback.vpcf"
+      "particle"                                          "particles/hero/sohei/reflect_sakura_leaves.vpcf"
+      "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"guard_duration"                          "2.0"
-			"hp_cost"                                 "25"
-		}
-	}
-	
-	//=================================================================================================================
-	// Guard talent: Applies Ki Strike knockback (if Ki Strike is learned) to enemies around the target
-	//=================================================================================================================
-	"special_bonus_sohei_guard_knockback"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                           "special_bonus_undefined"
-		"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "guard_duration"                                    "2.0"
+      "hp_cost"                                           "25"
+    }
+  }
+  
+  //=================================================================================================================
+  // Guard talent: Applies Ki Strike knockback (if Ki Strike is learned) to enemies around the target
+  //=================================================================================================================
+  "special_bonus_sohei_guard_knockback"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"value"                                           "400"     // Knockback max distance
-			}
-			"02"
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"duration"                                        "0.2"     // Knockback max duration
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "400"     // Knockback max distance
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "0.2"     // Knockback max duration
+      }
+    }
+  }
 }

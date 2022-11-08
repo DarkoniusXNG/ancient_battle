@@ -1,76 +1,76 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Queen of Pain: Pain Steal (F) - New Spell, Passive Spell; Percentage of the damage dealt to her allies heals her.
-	// Author: Darkonius
-	// Notes: OK; 30.1.2017;
-	// TO_DO:
-	//=================================================================================================================
-	"queenofpain_custom_pain_steal"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"              		"ability_datadriven"
-		"AbilityTextureName"     		"custom/queenofpain_custom_pain_steal"
-		"AbilityBehavior"        		"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    	"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"MaxLevel"               		"1"
-		"RequiredLevel"					"3"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1200"
-			}    			
-    		"02"
-    		{ 
-        		"var_type"  				"FIELD_INTEGER"
-        		"pain_steal" 				"15"
-    		}
-			"03"
-			{
-				"var_type"  				"FIELD_INTEGER"
-        		"pain_steal_creeps" 		"5"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_pain_steal_aura_applier" // doesn't need tooltip
-			{
-				"Passive" 					"1"
-				"IsHidden"    				"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
+  //=================================================================================================================
+  // Queen of Pain: Pain Steal (F) - New Spell, Passive Spell; Percentage of the damage dealt to her allies heals her.
+  // Author: Darkonius
+  // Notes: OK; 30.1.2017;
+  // TO_DO:
+  //=================================================================================================================
+  "queenofpain_custom_pain_steal"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/queenofpain_custom_pain_steal"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "3"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "1200"
+      }          
+      "02"
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "pain_steal"                                      "15"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "pain_steal_creeps"                               "5"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_pain_steal_aura_applier" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"AllowIllusionDuplicate"	"1"
+        "AllowIllusionDuplicate"                          "1"
 
-				"Aura"        			"modifier_pain_steal_aura_effect"
-				"Aura_Radius" 			"%radius"
-				"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"  			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_ApplyToCaster" 	"0"
-			}
-			
-			"modifier_pain_steal_aura_effect" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-				
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/queen_of_pain/pain_steal.lua"
-						"Function"			"PainStealStart"
-						"DamageTaken"		"%attack_damage"
-					}
-				}
-			}
-		}
-	}
+        "Aura"                                            "modifier_pain_steal_aura_effect"
+        "Aura_Radius"                                     "%radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Aura_ApplyToCaster"                              "0"
+      }
+      
+      "modifier_pain_steal_aura_effect" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnTakeDamage"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/queen_of_pain/pain_steal.lua"
+            "Function"                                    "PainStealStart"
+            "DamageTaken"                                 "%attack_damage"
+          }
+        }
+      }
+    }
+  }
 }

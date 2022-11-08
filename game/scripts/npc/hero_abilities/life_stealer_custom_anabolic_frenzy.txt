@@ -1,146 +1,146 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Lifestealer: Anabolic Frenzy - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
-	// Author: Darkonius
-	// Linkens: Blocks
-	// Notes: OK; 2022;
-	// TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
-	//=================================================================================================================
-	"life_stealer_custom_anabolic_frenzy"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/life_stealer_custom_anabolic_frenzy"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Lifestealer: Anabolic Frenzy - New Spell, Passive that gives ms and as + Active similar to Visage's Grave Chill
+  // Author: Darkonius
+  // Linkens: Blocks
+  // Notes: OK; 2022;
+  // TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
+  //=================================================================================================================
+  "life_stealer_custom_anabolic_frenzy"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/life_stealer_custom_anabolic_frenzy"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"AbilityCastPoint"				"0.2"
-		
-		// Cooldown		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"22 20 18 16"
+    "AbilityCastPoint"                                    "0.2"
+    
+    // Cooldown    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "22 20 18 16"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110 120 130 140"
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "90"
+    "AbilityProcsMagicStick"                              "1"
 
-		// Cast Range
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"400"
-		
-		"precache"
-		{
-			"particle"		"particles/status_fx/status_effect_poison_dazzle.vpcf"
-		}
+    // Cast Range
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "400"
+    
+    "precache"
+    {
+      "particle"                                          "particles/status_fx/status_effect_poison_dazzle.vpcf"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // old spell (3/5/7/9%)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"passive_bonus_movement_speed_pct"	"3 5 7 9"
-			}
-			"02" // old spell (10/20/30/40); Ghoul Frenzy (20/30/40/50);
-			{
-				"var_type"							"FIELD_INTEGER"
-				"passive_bonus_attack_speed"		"20 30 40 50"
-			}
-			"03" // Rage bonus ms (15/16/17/18%)
-			{
-				"var_type"							"FIELD_INTEGER"
-				"active_bonus_movement_speed_pct"	"15 16 17 18"
-			}
-			"04"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"active_bonus_attack_speed"			"30"
-			}
-			"05" // Visage Grave Chill (15/20/25/30%); Open Wounds (50%);
-			{
-				"var_type"							"FIELD_INTEGER"
-				"movement_speed_slow"				"-15 -20 -25 -30"
-			}
-			"06"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"attack_speed_slow"					"-30"
-			}
-			"07" // Visage Grave Chill: 6 seconds; Empowering Haste: 6 seconds; old Open Wounds: 8 seconds
-			{
-				"var_type"							"FIELD_FLOAT"
-				"duration"							"6.0"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_LifeStealer.OpenWounds.Cast"
-				"Target" 		"TARGET"
-			}
-	
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/lifestealer/anabolic_frenzy.lua"
-				"Function"		"AnabolicFrenzyStart"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_anabolic_frenzy_passive"	// doesn't need tooltip
-			{
-				"Passive"					"1"
-				"IsHidden"					"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // old spell (3/5/7/9%)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "passive_bonus_movement_speed_pct"                "3 5 7 9"
+      }
+      "02" // old spell (10/20/30/40); Ghoul Frenzy (25/40/55/70);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "passive_bonus_attack_speed"                      "25 40 55 70"
+      }
+      "03" // Rage bonus ms (15/16/17/18%)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "active_bonus_movement_speed_pct"                 "15 16 17 18"
+      }
+      "04" // dota lifestealer vanilla base attack speed is 20 more;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "active_bonus_attack_speed"                       "15 20 25 30"
+      }
+      "05" // Visage Grave Chill (15/20/25/30%); Open Wounds (50%);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movement_speed_slow"                             "-15 -20 -25 -30"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_slow"                               "-15 -20 -25 -30"
+      }
+      "07" // Visage Grave Chill: 6 seconds; Empowering Haste: 6 seconds; old Open Wounds: 8 seconds
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "6.0"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_LifeStealer.OpenWounds.Cast"
+        "Target"                                          "TARGET"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/lifestealer/anabolic_frenzy.lua"
+        "Function"                                        "AnabolicFrenzyStart"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_anabolic_frenzy_passive"  // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"AllowIllusionDuplicate"	"1"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%passive_bonus_movement_speed_pct"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%passive_bonus_attack_speed"
-				}
-			}
-			
-			"modifier_anabolic_frenzy_active"	// needs tooltip
-			{
-				"IsHidden"					"0"
-				"IsBuff"					"1"
-				"IsPurgable"				"1"
+        "AllowIllusionDuplicate"                          "1"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%passive_bonus_movement_speed_pct"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%passive_bonus_attack_speed"
+        }
+      }
+      
+      "modifier_anabolic_frenzy_active"  // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "1"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%active_bonus_movement_speed_pct"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%active_bonus_attack_speed"
-				}
-			}
-			
-			"modifier_anabolic_frenzy_slow"		// needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
-				
-				"StatusEffectName" 		"particles/status_fx/status_effect_poison_dazzle.vpcf" 	   
-				"StatusEffectPriority"  "5"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%active_bonus_movement_speed_pct"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%active_bonus_attack_speed"
+        }
+      }
+      
+      "modifier_anabolic_frenzy_slow"    // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "StatusEffectName"                                "particles/status_fx/status_effect_poison_dazzle.vpcf"      
+        "StatusEffectPriority"                            "5"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%movement_speed_slow"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+        }
+      }
+    }
+  }
 }

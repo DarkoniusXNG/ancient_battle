@@ -26,13 +26,16 @@ end
 
 function modifier_custom_enfeeble_debuff:OnRefresh()
 	local ability = self:GetAbility()
-	self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
-	self.spell_damage_reduction = ability:GetSpecialValueFor("spell_damage_reduction")
+	if ability and not ability:IsNull() then
+		self.attack_damage_reduction = ability:GetSpecialValueFor("attack_damage_reduction")
+		self.spell_damage_reduction = ability:GetSpecialValueFor("spell_damage_reduction")
+	end
 end
 
 function modifier_custom_enfeeble_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_PROPERTY_TOTALDAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_TOOLTIP
 	}
 end
@@ -41,8 +44,19 @@ function modifier_custom_enfeeble_debuff:GetModifierDamageOutgoing_Percentage()
 	return self.attack_damage_reduction
 end
 
+function modifier_custom_enfeeble_debuff:GetModifierTotalDamageOutgoing_Percentage(event)
+	local damaging_ability = event.inflictor
+	if not damaging_ability or event.damage_category ~= DOTA_DAMAGE_CATEGORY_SPELL then
+		return 0
+	end
+	if not damaging_ability:IsItem() then
+		return 0 - math.abs(self.spell_damage_reduction)
+	end
+	return 0
+end
+
 function modifier_custom_enfeeble_debuff:OnTooltip()
-	return self.spell_damage_reduction
+	return math.abs(self.spell_damage_reduction)
 end
 
 function modifier_custom_enfeeble_debuff:GetEffectName()

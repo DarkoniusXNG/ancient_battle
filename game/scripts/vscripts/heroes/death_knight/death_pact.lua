@@ -69,6 +69,7 @@ function modifier_custom_death_pact:IsPurgable()
 	return false
 end
 
+-- It's not called Death Pact for nothing
 function modifier_custom_death_pact:RemoveOnDeath()
 	return false
 end
@@ -94,12 +95,10 @@ function modifier_custom_death_pact:OnRefresh(event)
 end
 
 function modifier_custom_death_pact:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
 		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
 	}
-
-	return funcs
 end
 
 function modifier_custom_death_pact:GetModifierBaseAttack_BonusDamage()

@@ -25,16 +25,16 @@ end
 
 function modifier_custom_blood_mirror_buff_caster_redirect:OnRefresh()
 	local ability = self:GetAbility()
-	self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
+	if ability and not ability:IsNull() then
+		self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
+	end
 end
 
 function modifier_custom_blood_mirror_buff_caster_redirect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
 		MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
-
-	return funcs
 end
 
 function modifier_custom_blood_mirror_buff_caster_redirect:GetModifierIncomingDamage_Percentage(kv)
@@ -43,22 +43,18 @@ function modifier_custom_blood_mirror_buff_caster_redirect:GetModifierIncomingDa
 	local reduction = self.damage_redirect_percent
 	local ability = self:GetAbility()
 
-	if ability then
+	if ability and not ability:IsNull() then
 		reduction = ability:GetSpecialValueFor("redirected_damage")
 	end
 
-	if not redirect_target then
-		return 0
-	end
-
-	if redirect_target:IsNull() then
+	if not redirect_target or redirect_target:IsNull() then
 		return 0
 	end
 
 	-- Checking if the redirect_target has a debuff because it can be dispelled
 	if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_enemy") then
 		-- Apply damage reduction
-		return -(reduction)
+		return 0 - math.abs(reduction)
 	else
 		return 0
 	end
@@ -73,7 +69,7 @@ function modifier_custom_blood_mirror_buff_caster_redirect:OnTakeDamage(event)
 		local redirected_damage = self.damage_redirect_percent
 		local ability = self:GetAbility()
 
-		if ability then
+		if ability and not ability:IsNull() then
 			redirected_damage = ability:GetSpecialValueFor("redirected_damage")
 			damage_table.ability = ability
 		end
@@ -84,12 +80,8 @@ function modifier_custom_blood_mirror_buff_caster_redirect:OnTakeDamage(event)
 		damage_table.damage_type = event.damage_type -- DAMAGE_TYPE_PHYSICAL
 		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_HPLOSS, DOTA_DAMAGE_FLAG_REFLECTION)
 
-		if not redirect_target then
-			return nil
-		end
-
-		if redirect_target:IsNull() then
-			return nil
+		if not redirect_target or redirect_target:IsNull() then
+			return
 		end
 
         -- Redirect damage to caster if he is alive and if he has that buff

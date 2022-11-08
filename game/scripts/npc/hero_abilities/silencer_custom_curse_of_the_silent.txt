@@ -1,65 +1,65 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Silencer: Curse of the Silent (Q) - New Spell, Affected enemies lose mana until they cast a spell, Star Fall at the end of duration if not casted a spell
-	// Author: Darkonius
-	// Notes: OK; 26.8.2019;
-	// TO_DO:
-	//=================================================================================================================
-	"silencer_custom_curse_of_the_silent"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/silencer/curse_of_the_silent.lua"
-		"AbilityTextureName" 			"custom/silencer_custom_curse_of_the_silent"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.3"
-		
-		"AbilityCooldown"				"20.0 16.0 12.0 8.0"
+  //=================================================================================================================
+  // Silencer: Curse of the Silent (Q) - New Spell, Affected enemies lose mana until they cast a spell, Star Fall at the end of duration if not casted a spell
+  // Author: Darkonius
+  // Notes: OK; 26.8.2019;
+  // TO_DO:
+  //=================================================================================================================
+  "silencer_custom_curse_of_the_silent"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/silencer/curse_of_the_silent.lua"
+    "AbilityTextureName"                                  "custom/silencer_custom_curse_of_the_silent"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.3"
+    
+    "AbilityCooldown"                                     "20.0 16.0 12.0 8.0"
 
-		"AbilityManaCost"				"75 95 115 135"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"		"particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
-			"particle"		"particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
-		}
+    "AbilityManaCost"                                     "75 95 115 135"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
+      "particle"                                          "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // should be similar to the old Curse of the Silent
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"mana_loss_per_second"                    "10 20 30 40"
-			}
-			"02" // old Curse of the Silent (350)
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "425"
-			}
-			"03" // same as old Curse of the Silent
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"duration"                                "6.0"
-			}
-			"04" // should be similar to Mirana Starstorm
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_if_no_spell_casted"               "75 150 225 300"
-			}
-			"05" // not in tooltip
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"tick_interval"                           "1.0"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01" // should be similar to the old Curse of the Silent
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_loss_per_second"                            "10 20 30 40"
+      }
+      "02" // old Curse of the Silent (350)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "425"
+      }
+      "03" // same as old Curse of the Silent
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "6.0"
+      }
+      "04" // should be similar to Mirana Starstorm
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_if_no_spell_casted"                       "75 150 225 300"
+      }
+      "05" // not in tooltip
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "tick_interval"                                   "1.0"
+      }
+    }
+  }
 }

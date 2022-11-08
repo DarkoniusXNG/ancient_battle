@@ -1,86 +1,87 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Void Demon; 29.10.2019;
-	// Notes: OK; Mass Haste provides max movement speed and bonus attack speed;
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_void_demon"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------	
-		"override_hero"				"npc_dota_hero_night_stalker"
-		"BotImplemented"			"0"
-		"Team"						"Bad"
-		"Role"						"Carry,Initiator,Durable,Disabler,Nuker,Escape"	// Roles
-		"Rolelevels"				"1,3,2,3,1,2"
-		"Complexity"				"2"
+  //=================================================================================================================
+  // HERO: Void Demon; 29.10.2019;
+  // Notes: OK; Mass Haste provides max movement speed and bonus attack speed;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_void_demon"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------  
+    "override_hero"                                       "npc_dota_hero_night_stalker"
+    "BotImplemented"                                      "0"
+    "Team"                                                "Bad"
+    "Role"                                                "Carry,Initiator,Durable,Disabler,Nuker,Escape"  // Roles
+    "Rolelevels"                                          "1,3,2,3,1,2"
+    "Complexity"                                          "2"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"		"6"
-		"Ability1"			"void_demon_time_void"						// Q (4 levels)
-		"Ability2"			"void_demon_incapacitate"					// W (4 levels)
-		"Ability3"			"void_demon_time_slow"						// E (4 levels)
-		"Ability4"			"void_demon_backtrack"						// T, passive (1 level)
-		"Ability5"			"void_demon_mass_haste"						// Secondary Ultimate (F) - 3 levels
-		"Ability6"			"void_demon_time_stop"						// Primary Ultimate (R)	- 4 levels		
-		"Ability7"			"generic_hidden"
-		"Ability8"			"generic_hidden"
-		"Ability9"			"generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "Ability1"                                            "void_demon_time_void"            // Q (4 levels)
+    "Ability2"                                            "void_demon_incapacitate"          // W (4 levels)
+    "Ability3"                                            "void_demon_time_slow"            // E (4 levels)
+    "Ability4"                                            "void_demon_backtrack"            // T, passive (1 level)
+    "Ability5"                                            "void_demon_mass_haste"            // Secondary Ultimate (F) - 3 levels
+    "Ability6"                                            "void_demon_time_stop"            // Primary Ultimate (R)  - 4 levels    
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"			"special_bonus_hp_200"                      // lvl 10 talent; same as Night Stalker
-		"Ability11"			"special_bonus_attack_speed_20"				// lvl 10 talent; unique
+    "Ability10"                                           "special_bonus_strength_15"                 // lvl 10 talent;
+    "Ability11"                                           "special_bonus_attack_speed_20"        // lvl 10 talent;
 
-		"Ability12"			"special_bonus_unique_night_stalker"		// lvl 15 talent; unique, incapacitate applies silence too
-		"Ability13"			"special_bonus_strength_15"                 // lvl 15 talent; same as Night Stalker 
+    "Ability12"                                           "special_bonus_unique_night_stalker"    // lvl 15 talent; Incapacitate applies silence too
+    "Ability13"                                           "special_bonus_cooldown_reduction_10"       // lvl 15 talent;
 
-		"Ability14"			"special_bonus_cooldown_reduction_10"       // lvl 20 talent; unique
-		"Ability15"			"special_bonus_attack_damage_50"			// lvl 20 talent; similar to Night Stalker
+    "Ability14"                                           "special_bonus_movement_speed_50"      // lvl 20 talent;
+    "Ability15"                                           "special_bonus_attack_damage_50"      // lvl 20 talent;
 
-		"Ability16"			"special_bonus_armor_20"					// lvl 25 talent; unique
-		"Ability17"			"special_bonus_magic_resistance_50"			// lvl 25 talent; unique
+    "Ability16"                                           "special_bonus_armor_20"          // lvl 25 talent;
+    "Ability17"                                           "special_bonus_magic_resistance_50"      // lvl 25 talent;
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"2"										// Night Stalker (2);
-		"MagicalResistance"			"25"									// Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "2"                    // Night Stalker (2);
+    "MagicalResistance"                                   "25"                  // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"38"									// like Night Stalker
-		"AttackDamageMax"			"42"									// like Night Stalker
-		"AttackRate"				"1.7"									// Default
-		"AttackAnimationPoint"		"0.55"									// like Night Stalker
-		"AttackAcquisitionRange"	"600"									// like Night Stalker
-		"AttackRange"				"150"									// like Night Stalker
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "38"                  // Night Stalker (40)
+    "AttackDamageMax"                                     "42"                  // Night Stalker (44)
+    "AttackRate"                                          "1.55"                  // Night Stalker (1.7)
+    "BaseAttackSpeed"                                     "100"                                   // Default
+    "AttackAnimationPoint"                                "0.55"                  // like Night Stalker
+    "AttackAcquisitionRange"                              "600"                  // like Night Stalker
+    "AttackRange"                                         "150"                  // like Night Stalker
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"300"									// Night Stalker (295); original (290); Omniknight (300);
-		"MovementTurnRate"			"0.5"									// like Night Stalker
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "300"                  // Night Stalker (295); original (290); Omniknight (300);
+    "MovementTurnRate"                                    "0.5"                  // like Night Stalker
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"									// Default
-		"VisionNighttimeRange"		"1800"									// like Night Stalker
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                  // Default
+    "VisionNighttimeRange"                                "1800"                  // like Night Stalker
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"23"									// Night Stalker (23); original (18);
-		"AttributeStrengthGain"		"3.2"									// Night Stalker (3.2); original (1.0);
-		"AttributeBaseAgility"		"19"									// Night Stalker (18); Troll Warlord (21); original (19);
-		"AttributeAgilityGain"		"2.5"									// Night Stalker (2.3); Troll Warlord (2.9); original (2.5);
-		"AttributeBaseIntelligence"	"18"									// Night Stalker (13); original (18 or 20);
-		"AttributeIntelligenceGain"	"2.0"									// Night Stalker (1.6); original (2.0);
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "23"                  // Night Stalker (23); original (18);
+    "AttributeStrengthGain"                               "3.0"                  // Night Stalker (3.0); original (1.0);
+    "AttributeBaseAgility"                                "19"                  // Night Stalker (18); Troll Warlord (21); original (19);
+    "AttributeAgilityGain"                                "2.5"                  // Night Stalker (2.2); Troll Warlord (2.9); original (2.5);
+    "AttributeBaseIntelligence"                           "18"                  // Night Stalker (15); original (18 or 20);
+    "AttributeIntelligenceGain"                           "2.0"                  // Night Stalker (1.6); original (2.0);
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"1.75"									// Faceless Void (0.5); Night Stalker (1.75)
-		"StatusHealth"				"200"									// like Night Stalker
-		"StatusMana"				"75"									// like Night Stalker
-		"StatusManaRegen"			"0.0"									// like Night Stalker
-	}	
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "1.75"                  // Faceless Void (0.5); Night Stalker (2.0)
+    "StatusHealth"                                        "200"                  // like Night Stalker
+    "StatusMana"                                          "75"                  // like Night Stalker
+    "StatusManaRegen"                                     "0.0"                  // like Night Stalker
+  }  
 }

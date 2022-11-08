@@ -1,0 +1,7 @@
+
+		"DOTA_Tooltip_ability_item_custom_arcane_ring"                              "Arcane Ring"
+		"DOTA_Tooltip_ability_item_custom_arcane_ring_Description"                  "<h1>Active: Arcane Replenish</h1> Restores %mana_replenish% mana and grants %buff_spell_amp%%% spell amp and %buff_cdr%%% cooldown reduction to all nearby allies for %active_duration% seconds. <br><br> Radius: %active_radius%"
+		"DOTA_Tooltip_ability_item_custom_arcane_ring_Lore"                         "Once a prized heirloom of a minor lord's house."
+		"DOTA_Tooltip_ability_item_custom_arcane_ring_bonus_mana"                   "+$mana"
+		"DOTA_Tooltip_ability_item_custom_arcane_ring_bonus_armor"                  "+$armor"
+		

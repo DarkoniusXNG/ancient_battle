@@ -1,120 +1,120 @@
 "DOTAUnits" //or DOTAHeroes
 {
-	//=================================================================================================================
-	// HERO: Electrician Chatterjee; 2022;
-	// Notes: OK;
-	// TO_DO: electrician_electric_shield fix and shard
-	//=================================================================================================================
-	"npc_dota_hero_electrician"
-	{
-		"BaseClass"                                       "npc_dota_hero_dazzle"
-		"Model"                                           "models/heroes/electrician/electrician.vmdl"
-		//"SoundSet"                                        "Hero_Electrician"
-		"Role"                                            "Nuker,Support,Initiator,Durable,Disabler,Pusher"
-		"Rolelevels"                                      "1,3,3,3,2,1"
-		"Complexity"                                      "1"
-		"Team"                                            "Good"
-		"HeroID"                                          "130"
-		"ModelScale"                                      "0.79"
-		"VersusScale"                                     "0.79"
-		"SpectatorLoadoutScale"                           "1.0"
-		"LoadoutScale"                                    "0.85"
-		"HeroGlowColor"                                   "222 60 236"
+  //=================================================================================================================
+  // HERO: Electrician Chatterjee; 2022;
+  // Notes: OK;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_electrician"
+  {
+    "BaseClass"                                           "npc_dota_hero_dazzle"
+    "Model"                                               "models/heroes/electrician/electrician.vmdl"
+    //"SoundSet"                                        "Hero_Electrician"
+    "Role"                                                "Nuker,Support,Initiator,Durable,Disabler,Pusher"
+    "Rolelevels"                                          "1,3,3,3,2,1"
+    "Complexity"                                          "1"
+    "Team"                                                "Good"
+    "HeroID"                                              "130"
+    "ModelScale"                                          "0.79"
+    "VersusScale"                                         "0.79"
+    "SpectatorLoadoutScale"                               "1.0"
+    "LoadoutScale"                                        "0.85"
+    "HeroGlowColor"                                       "222 60 236"
 
-		//"HeroSelectSoundEffect"                           "Hero_FacelessVoid.Pick"
+    //"HeroSelectSoundEffect"                           "Hero_FacelessVoid.Pick"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"                                   "4"
-		"AbilityTalentStart"                              "10"
-		"Ability1"                                        "electrician_static_grip"
-		"Ability2"                                        "electrician_electric_shield"
-		"Ability3"                                        "electrician_energy_absorption"
-		"Ability4"                                        "generic_hidden"
-		"Ability5"                                        "generic_hidden"
-		"Ability6"                                        "electrician_cleansing_shock"
-		"Ability7"                                        "generic_hidden"
-		"Ability8"                                        "generic_hidden"
-		"Ability9"                                        "generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "4"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "electrician_static_grip"
+    "Ability2"                                            "electrician_electric_shield"
+    "Ability3"                                            "electrician_energy_absorption"
+    "Ability4"                                            "generic_hidden"
+    "Ability5"                                            "generic_hidden"
+    "Ability6"                                            "electrician_cleansing_shock"
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                                       "special_bonus_electrician_energy_absorption_mana"
-		"Ability11"                                       "special_bonus_electrician_static_grip_damage"
+    "Ability10"                                           "special_bonus_electrician_energy_absorption_mana"
+    "Ability11"                                           "special_bonus_electrician_static_grip_damage"
 
-		"Ability12"                                       "special_bonus_electrician_electric_shield_damage"
-		"Ability13"                                       "special_bonus_spell_lifesteal_15"
+    "Ability12"                                           "special_bonus_electrician_electric_shield_damage"
+    "Ability13"                                           "special_bonus_electrician_cleansing_shock_pierce"
 
-		"Ability14"                                       "special_bonus_electrician_energy_absorption_cooldown"
-		"Ability15"                                       "special_bonus_electrician_cleansing_shock_stun"
+    "Ability14"                                           "special_bonus_electrician_energy_absorption_cooldown"
+    "Ability15"                                           "special_bonus_electrician_cleansing_shock_stun"
 
-		"Ability16"                                       "special_bonus_electrician_static_grip_non_channel"
-		"Ability17"                                       "special_bonus_electrician_cleansing_shock_pierce"
+    "Ability16"                                           "special_bonus_electrician_static_grip_non_channel"
+    "Ability17"                                           "special_bonus_spell_lifesteal_30"
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"                                   "3"                   // original (0);
-		"MagicalResistance"                               "25"
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "3"                   // original (0);
+    "MagicalResistance"                                   "25"
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"                              "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"BaseAttackSpeed"                                 "100"
-		"AttackDamageMin"                                 "30"
-		"AttackDamageMax"                                 "38"
-		"AttackRate"                                      "1.7"
-		"AttackAnimationPoint"                            "0.5"
-		"AttackAcquisitionRange"                          "600"
-		"AttackRange"                                     "150"
-		"ProjectileSpeed"                                 "0"
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "BaseAttackSpeed"                                     "100"
+    "AttackDamageMin"                                     "35"
+    "AttackDamageMax"                                     "40"
+    "AttackRate"                                          "1.7"
+    "AttackAnimationPoint"                                "0.5"
+    "AttackAcquisitionRange"                              "600"
+    "AttackRange"                                         "150"
+    "ProjectileSpeed"                                     "0"
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"                                   "300"
-		"MovementTurnRate"                                "0.6"
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "300"
+    "MovementTurnRate"                                    "0.6"
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"                              "1800"
-		"VisionNighttimeRange"                            "800"
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "800"
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"                           "23"
-		"AttributeStrengthGain"                           "2.5"
-		"AttributeBaseAgility"                            "13"
-		"AttributeAgilityGain"                            "2.0"
-		"AttributeBaseIntelligence"                       "21"
-		"AttributeIntelligenceGain"                       "3.4"
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "23"
+    "AttributeStrengthGain"                               "2.5"
+    "AttributeBaseAgility"                                "13"
+    "AttributeAgilityGain"                                "2.0"
+    "AttributeBaseIntelligence"                           "21"
+    "AttributeIntelligenceGain"                           "3.4"
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"                                    "200"                 // original (127);
-		"StatusHealthRegen"                               "1.0"                 // original (1.0);
-		"StatusMana"                                      "75"                  // original (25);
-		"StatusManaRegen"                                 "0.0"                 // Default;
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealth"                                        "200"                 // original (127);
+    "StatusHealthRegen"                                   "1.0"                 // original (1.0);
+    "StatusMana"                                          "75"                  // original (25);
+    "StatusManaRegen"                                     "0.0"                 // Default;
 
-		// Combat
-		//-------------------------------------------------------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"				// Default
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"				// Default
-		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"		// Default
+    // Combat
+    //-------------------------------------------------------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"        // Default
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"        // Default
+    "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"    // Default
 
-		// Bounds
-		//-------------------------------------------------------------------------------------------------------------
-		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"			  			// Default
-		//"HealthBarOffset"			"170"
+    // Bounds
+    //-------------------------------------------------------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"              // Default
+    //"HealthBarOffset"      "170"
 
-		//Inventory
-		//-------------------------------------------------------------------------------------------------------------
-		"HasInventory"                                    "1"
-		"DisableWearables"                                "1"
+    //Inventory
+    //-------------------------------------------------------------------------------------------------------------
+    "HasInventory"                                        "1"
+    "DisableWearables"                                    "1"
 
-		"particle_folder"                                 "particles/units/heroes/hero_electrician"
-		//"GameSoundsFile"                                  "soundevents/game_sounds_heroes/game_sounds_electrician.vsndevts"
-		"VoiceFile"                                       "soundevents/voscripts/game_sounds_vo_enchantress.vsndevts"
-		// "soundevents/voscripts/game_sounds_vo_electrician.vsndevts"
+    "particle_folder"                                     "particles/units/heroes/hero_electrician"
+    //"GameSoundsFile"                                  "soundevents/game_sounds_heroes/game_sounds_electrician.vsndevts"
+    "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_enchantress.vsndevts"
+    // "soundevents/voscripts/game_sounds_vo_electrician.vsndevts"
 
-		"BotImplemented"                                  "0"
-	}
+    "BotImplemented"                                      "0"
+  }
 }

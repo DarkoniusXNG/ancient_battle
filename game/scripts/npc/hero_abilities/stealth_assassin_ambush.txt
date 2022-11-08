@@ -1,138 +1,139 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Stealth Assassin: Ambush (F) - New Spell, deals health percent damage, applies mini stun
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 10.3.2020; Stun is not dispellable;
-	// TO_DO: Add animation or particle to the spell;
-	//=================================================================================================================
-	"stealth_assassin_ambush"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/stealth_assassin_ambush"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"RequiredLevel"					"6"
-		"MaxLevel"						"1"
+  //=================================================================================================================
+  // Stealth Assassin: Ambush (F) - New Spell, deals health percent damage, applies mini stun
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 10.3.2020; Stun is not dispellable;
+  // TO_DO: Add animation or particle to the spell;
+  //=================================================================================================================
+  "stealth_assassin_ambush"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/stealth_assassin_ambush"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilityCastRange"				"200"
-		"AbilityCastPoint"				"0.3"
+    "RequiredLevel"                                       "12"
+    "MaxLevel"                                            "1"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"100" // Scout Marksman Shot (50/40/30);
+    "AbilityCastRange"                                    "200"
+    "AbilityCastPoint"                                    "0.3"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"175" // Scout Marksman Shot (125/175/225);
-		"AbilityProcsMagicStick"		"1"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "100" // Scout Marksman Shot (50/40/30);
 
-		"precache"
-		{
-			"soundfile"                 "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
-		}
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "175" // Scout Marksman Shot (125/175/225);
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // Scout Marksman Shot (250);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"base_damage"                             "250"
-			}
-			"02" // Scout Marksman Shot (10/20/30%)
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"max_hp_percent_damage"                   "20"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"03" // old Spectre Desolate (325); Arc Warden Flux search radius (225);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "325"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"duration"                                "0.1"
-			}
-			"05" // Scout Marksman Shot (4);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"slow_duration"                           "4.0"
-			}
-			"06" // Scout Marksman Shot (20/30/40%);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"move_speed_slow"                         "-30"
-			}
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+    }
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_OgreMagi.Fireblast.Target"
-				"Target" 		"TARGET"
-			}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // Scout Marksman Shot (250);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "base_damage"                                     "250"
+      }
+      "02" // Scout Marksman Shot (10/20/30%)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_hp_percent_damage"                           "20"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "03" // old Spectre Desolate (325); Arc Warden Flux search radius (225);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "325"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "0.1"
+      }
+      "05" // Scout Marksman Shot (4);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "slow_duration"                                   "4.0"
+      }
+      "06" // Scout Marksman Shot (20/30/40%);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-30"
+      }
+    }
 
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/ryu/stealth_assassin_ambush.lua"
-				"Function"		"AmbushStart"
-			}
-		}
-		"Modifiers"
-	    {
-			"modifier_ambushed"	// doesn't need tooltip
-			{
-				"IsDebuff"         	"1"
-				"IsStunDebuff"		"1"
-				"IsHidden"         	"1"
-				"IsPurgable"       	"0"
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_OgreMagi.Fireblast.Target"
+        "Target"                                          "TARGET"
+      }
 
-				"Duration"			"%duration"
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/ryu/stealth_assassin_ambush.lua"
+        "Function"                                        "AmbushStart"
+      }
+    }
+    "Modifiers"
+    {
+      "modifier_ambushed"  // doesn't need tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsStunDebuff"                                    "1"
+        "IsHidden"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
+        "Duration"                                        "%duration"
 
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
 
-				"OnCreated" 
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/ryu/stealth_assassin_ambush.lua"
-						"Function"		"AmbushFail"
-						"Target"		"TARGET"
-					}
-				}
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
 
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
+        "OnCreated" 
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/ryu/stealth_assassin_ambush.lua"
+            "Function"                                    "AmbushFail"
+            "Target"                                      "TARGET"
+          }
+        }
 
-			"modifier_ambushed_slow_debuff"  // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_slow"
-				}
-			}
-		}
-	}
+      "modifier_ambushed_slow_debuff"  // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+        }
+      }
+    }
+  }
 }

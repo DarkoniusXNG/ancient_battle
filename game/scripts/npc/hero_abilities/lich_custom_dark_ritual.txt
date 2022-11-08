@@ -1,82 +1,59 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Lich: Sacrifice (E) - Datadriven Lich Dark Ritual(Sacrifice), nobody gets XP, decreased cooldown, increased cast range
-	// Author: Jastuchko + Darkonius
-	// Notes: OK; 2021;
-	// TO_DO: Rework to lua;
-	//====================================================================================================
-	"lich_custom_dark_ritual"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/lich_custom_dark_ritual"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		
-		"AbilityCastRange"				"500"             // old dota (400)
-		"AbilityCastPoint"				"0.4"
-		
-		"AbilityCooldown"				"36 30 24 18"     // original (15); old dota (60/46/32/18);
-		
-		"AbilityManaCost"				"0"               // original (25); old dota (0);
-		"AbilityProcsMagicStick"		"1"
+  //====================================================================================================
+  // Lich: Sacrifice (E) - Lich Dark Ritual(Sacrifice), nobody gets XP, decreased cooldown, increased cast range
+  // Author: Jastuchko + Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //====================================================================================================
+  "lich_custom_dark_ritual"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/lich/dark_ritual.lua"
+    "AbilityTextureName"                                  "custom/lich_custom_dark_ritual"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_CUSTOM"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    
+    "AbilityCastRange"                                    "500"         // old dota (400)
+    "AbilityCastPoint"                                    "0.4"
+    "AbilityCooldown"                                     "45 35 25 15" // original (15); old dota (60/46/32/18);
+    "AbilityManaCost"                                     "0"           // original (25); old dota (0);
+    "AbilityProcsMagicStick"                              "1"
 
-		"AbilitySpecial"
-		{
-			"01" // original (33/66/100%)
-			{
-				"var_type"				"FIELD_INTEGER"
-				"health_conversion"		"55 70 85 100"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "health_conversion"                               "55 70 85 100" // original (33/66/100%)
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Dark Ritual works on enemies and ancients talent
+  //=================================================================================================================
+  "special_bonus_unique_lich_custom_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Lich.SinisterGaze.Cast" // "Ability.DarkRitual"
-				"Target" 		"CASTER"
-			}
-
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"
-				"EffectAttachType" 	"follow_origin"
-				"Target" 			"TARGET"
-			}
-
-			"RunScript"
-			{
-				"ScriptFile"    "heroes/lich/dark_ritual.lua"
-				"Function"      "DarkRitual"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Sacrifice works on enemies and ancients talent
-	//=================================================================================================================
-	"special_bonus_unique_lich_custom_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 }

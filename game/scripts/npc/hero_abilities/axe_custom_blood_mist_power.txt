@@ -1,77 +1,77 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Axe: Blood Mist Power (F) - New Spell, Second Ultimate, No target spell, When activated damage dealt with spells (not items!) becomes pure
-	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Uses damage filter; Requires level 12;
-	// TO_DO:
-	//=================================================================================================================
-	"axe_custom_blood_mist_power"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"     		"custom/axe_custom_blood_mist_power"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		"MaxLevel"               		"1"
-		"RequiredLevel"          		"12"
-		
-		"AbilityCastPoint"				"0"
-		"AbilityManaCost"				"150"
-		"AbilityCooldown"				"35.0"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"			"particles/custom/axe_custom_blood_mist.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"15"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"axe_axe_anger_02" 
-				"Target" 		"CASTER"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName" 	"modifier_blood_mist_power_buff"
-				"Target"		"CASTER"
-				"Duration"		"%duration"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_blood_mist_power_buff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-				
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/custom/axe_custom_blood_mist.vpcf"
-						"EffectAttachType"  "follow_overhead"
-						"Target"            "TARGET"
-					}
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // Axe: Blood Mist Power (F) - New Spell, Second Ultimate, No target spell, When activated damage dealt with spells (not items!) becomes pure
+  // Author: Darkonius
+  // Notes: OK; 14.10.2018; Uses damage filter; Requires level 12;
+  // TO_DO:
+  //=================================================================================================================
+  "axe_custom_blood_mist_power"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/axe_custom_blood_mist_power"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "12"
+    
+    "AbilityCastPoint"                                    "0"
+    "AbilityManaCost"                                     "150"
+    "AbilityCooldown"                                     "35.0"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/custom/axe_custom_blood_mist.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "15"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "axe_axe_anger_02" 
+        "Target"                                          "CASTER"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_blood_mist_power_buff"
+        "Target"                                          "CASTER"
+        "Duration"                                        "%duration"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_blood_mist_power_buff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "1"
+        
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/custom/axe_custom_blood_mist.vpcf"
+            "EffectAttachType"                            "follow_overhead"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
+  }
 }

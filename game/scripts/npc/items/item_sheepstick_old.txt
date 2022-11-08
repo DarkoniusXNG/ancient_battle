@@ -1,0 +1,71 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Old Scythe of Vyse (Old Sheepstick)
+  //=================================================================================================================
+  "item_recipe_sheepstick_old"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_sheepstick_old"
+    "ItemRequirements"
+    {
+      "01"                                                "item_sheepstick;item_demon_edge;item_blitz_knuckles"
+    }
+  }
+  
+  //=================================================================================================================
+  // Old Scythe of Vyse (Old Sheepstick): Sheepstick (5675) + Demon Edge (2200) + Blitz Knuckles (1000) + Recipe (0) = 8875
+  //=================================================================================================================
+  "item_sheepstick_old"
+  {
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/sheepstick_old.lua"
+    "AbilityTextureName"                                  "custom/sheepstick_old"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
+
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "1000"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "20"
+    "AbilitySharedCooldown"                               "sheepsticks"
+    "AbilityManaCost"                                     "150"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "8875"
+    "ItemShopTags"                                        "int;regen_mana;agi;hard_to_tag"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "hex 2;sheepstick 2;scythe of vyse 2"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "AbilityValues"
+    {
+      "bonus_damage"                                      "40"
+      "bonus_attack_speed"                                "35"
+      "bonus_strength"                                    "10"
+      "bonus_agility"                                     "10"
+      "bonus_intellect"                                   "35"
+      "bonus_mana_regen"                                  "9.0"
+      "hex_duration"                                      "3.5"
+      "hex_move_speed"                                    "100"
+    }
+  }
+}

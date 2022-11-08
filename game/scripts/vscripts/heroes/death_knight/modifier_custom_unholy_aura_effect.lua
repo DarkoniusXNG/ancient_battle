@@ -22,21 +22,22 @@ end
 
 function modifier_custom_unholy_aura_effect:OnRefresh()
 	local ability = self:GetAbility()
-	self.bonus_hp_regen = ability:GetSpecialValueFor("aura_health_regen_bonus")
-	self.bonus_move_speed = ability:GetSpecialValueFor("aura_move_speed_bonus")
+	if ability and not ability:IsNull() then
+		self.bonus_hp_regen = ability:GetSpecialValueFor("aura_health_regen_bonus")
+		self.bonus_move_speed = ability:GetSpecialValueFor("aura_move_speed_bonus")
+	end
 end
 
 function modifier_custom_unholy_aura_effect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 	}
-
-	return funcs
 end
 
 function modifier_custom_unholy_aura_effect:GetModifierConstantHealthRegen()
-	if self:GetCaster():PassivesDisabled() then
+	local caster = self:GetCaster()
+	if caster:IsNull() or caster:PassivesDisabled() then
 		return 0
 	end
 
@@ -44,7 +45,8 @@ function modifier_custom_unholy_aura_effect:GetModifierConstantHealthRegen()
 end
 
 function modifier_custom_unholy_aura_effect:GetModifierMoveSpeedBonus_Percentage()
-    if self:GetCaster():PassivesDisabled() then
+	local caster = self:GetCaster()
+	if caster:IsNull() or caster:PassivesDisabled() then
 		return 0
 	end
 

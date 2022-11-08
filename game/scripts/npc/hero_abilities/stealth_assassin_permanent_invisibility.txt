@@ -1,40 +1,40 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Stealth Assassin: Permanent Invisibility (T) - Modified Riki Permanent Invisibility
-	// Author: Valve
-	// Notes: OK; 19.12.2019;
-	// TO_DO: Rework to be toggleable
-	//=================================================================================================================
-	"stealth_assassin_permanent_invisibility"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"riki_permanent_invisibility"
-		"AbilityTextureName"			"custom/stealth_assassin_permanent_invisibility"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"			// not needed but the console is complaining
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"	// not needed but the console is complaining
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Stealth Assassin: Permanent Invisibility (T) - Modified Riki Permanent Invisibility
+  // Author: Valve
+  // Notes: OK; 19.12.2019;
+  // TO_DO: Rework in lua to be toggleable and to be disabled with silence
+  //=================================================================================================================
+  "stealth_assassin_permanent_invisibility"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "riki_permanent_invisibility"
+    "AbilityTextureName"                                  "custom/stealth_assassin_permanent_invisibility"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"      // not needed but the console is complaining
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"  // not needed but the console is complaining
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"RequiredLevel"					"3"
-		"MaxLevel"						"4"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"fade_delay"                              "6 5 4 3"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"movement_speed"                          "20 30 40 50"
-			}
-		}
-	}
+    "RequiredLevel"                                       "3"
+    "MaxLevel"                                            "4"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "fade_delay"                                      "6 5 4 3"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movement_speed"                                  "20 30 40 50"
+      }
+    }
+  }
 }

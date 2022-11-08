@@ -19,11 +19,9 @@ function modifier_custom_terror_buff:RemoveOnDeath()
 end
 
 function modifier_custom_terror_buff:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_DISARMED] = true,
 	}
-
-	return state
 end
 
 function modifier_custom_terror_buff:GetEffectName()

@@ -39,14 +39,28 @@ function death_knight_resurrection:OnSpellStart()
 	end
 
 	local center = caster:GetAbsOrigin() or Vector(0,0,0)
+	local target_flags = bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS)
+	-- Aghs scepter allows resurrecting Ancients
+	if caster:HasScepter() then
+		target_flags = DOTA_UNIT_TARGET_FLAG_DEAD
+	end
 
-	local units = FindUnitsInRadius(caster_team, center, nil, radius, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC, bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS), FIND_ANY_ORDER, false)
+	local units = FindUnitsInRadius(
+		caster_team,
+		center,
+		nil,
+		radius,
+		DOTA_UNIT_TARGET_TEAM_BOTH,
+		DOTA_UNIT_TARGET_BASIC,
+		target_flags,
+		FIND_ANY_ORDER,
+		false
+	)
+
 	local number_of_resurrections = 0
-
 	for _, unit in pairs(units) do
 		if unit and not unit:IsNull() then
-			if not unit:IsAlive() and number_of_resurrections < resurrections_limit then
-				local unit_name = unit:GetUnitName()
+			if not unit:IsAlive() and number_of_resurrections < resurrections_limit and not unit:IsRoshan() then
 				if not unit:IsLaneCreepCustom() then
 					--print("Resurrecting non-lane creep.")
 					unit:SetTeam(caster_team)
@@ -59,7 +73,7 @@ function death_knight_resurrection:OnSpellStart()
 					self:FireParticleOnceForUnit(unit)
 				else
 					--print("Resurrecting Lane Creep.")
-					local resurected = CreateUnitByName(unit_name, unit:GetAbsOrigin(), true, caster, caster, caster_team)
+					local resurected = CreateUnitByName(unit:GetUnitName(), unit:GetAbsOrigin(), true, caster, caster, caster_team)
 					resurected:SetOwner(caster)
 					resurected:SetControllableByPlayer(playerID, true)
 					resurected:AddNewModifier(caster, self, "modifier_custom_resurrected", {})
@@ -69,6 +83,32 @@ function death_knight_resurrection:OnSpellStart()
 				end
 				
 				number_of_resurrections = number_of_resurrections + 1
+			end
+		end
+	end
+	
+	-- Aghs scepter allows resurrecting allied heroes
+	if caster:HasScepter() then
+		local allied_heroes = FindUnitsInRadius(
+			caster_team,
+			center,
+			nil,
+			radius,
+			DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+			DOTA_UNIT_TARGET_HERO,
+			bit.bor(DOTA_UNIT_TARGET_FLAG_DEAD, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS),
+			FIND_ANY_ORDER,
+			false
+		)
+		
+		for _, hero in pairs(allied_heroes) do
+			if hero and not hero:IsNull() then
+				if hero:IsRealHero() and not hero:IsAlive() and not hero:IsReincarnating() and not hero.original then
+					local death_location = hero:GetAbsOrigin()
+					hero:RespawnHero(false, false)
+					FindClearSpaceForUnit(hero, death_location, false)
+					self:FireParticleOnceForUnit(hero)
+				end
 			end
 		end
 	end
@@ -116,11 +156,9 @@ function modifier_custom_resurrected:StatusEffectPriority()
 end
 
 function modifier_custom_resurrected:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_MAGIC_IMMUNE] = true, -- To prevent Purge instant kill
 		[MODIFIER_STATE_DOMINATED] = true,
 	}
-
-	return state
 end
 

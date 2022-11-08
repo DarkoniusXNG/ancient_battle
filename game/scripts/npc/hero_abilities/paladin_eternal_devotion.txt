@@ -1,91 +1,91 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Paladin: Eternal Devotion (T) - New Spell, passive, on death applies Guardian Angel (physical immunity) and summons an Angel
-	// Author: Darkonius
-	// Notes: OK; 2022; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
-	// TO_DO:
-	//=================================================================================================================
-	"paladin_eternal_devotion"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/paladin/eternal_devotion.lua"
-		"AbilityTextureName"			"custom/paladin_eternal_devotion"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Paladin: Eternal Devotion (T) - New Spell, passive, on death applies Guardian Angel (physical immunity) and summons an Angel
+  // Author: Darkonius
+  // Notes: OK; 2022; Death Effect (Guardian Angel buff) is not disabled with Break (Silver Edge).
+  // TO_DO:
+  //=================================================================================================================
+  "paladin_eternal_devotion"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/paladin/eternal_devotion.lua"
+    "AbilityTextureName"                                  "custom/paladin_eternal_devotion"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"precache"
-		{
-			"particle"		"particles/status_fx/status_effect_ghost.vpcf"
-			"particle"		"particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
-			"particle"		"particles/custom/aura_devotion.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"aura_bonus_armor"								"2 3 4 5"
-			"aura_radius"									"1200"
-			"buff_health_regen"								"25"
-			"buff_radius"									"1800"
-			"buff_duration"									"6.5 7 7.5 8"
-			"angel_revenge_damage_multiplier"
-			{
-				"value"										"1.0 1.5 2.0 2.5"
-				"CalculateSpellDamageTooltip"				"0"
-			}
-			"angel_min_duration"							"10"
-		}
-	}
-	
-	//=================================================================================================================
-	// Eternal Devotion: Global Guardian Angel buff
-	//=================================================================================================================
-	"special_bonus_unique_paladin_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "precache"
+    {
+      "particle"                                          "particles/status_fx/status_effect_ghost.vpcf"
+      "particle"                                          "particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
+      "particle"                                          "particles/custom/aura_devotion.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "aura_bonus_armor"                                  "2 3 4 5"
+      "aura_radius"                                       "1200"
+      "buff_health_regen"                                 "25"
+      "buff_radius"                                       "1800"
+      "buff_duration"                                     "6.5 7 7.5 8"
+      "angel_revenge_damage_multiplier"
+      {
+        "value"                                           "1.0 1.5 2.0 2.5"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "angel_min_duration"                                "10"
+    }
+  }
+  
+  //=================================================================================================================
+  // Eternal Devotion: Global Guardian Angel buff
+  //=================================================================================================================
+  "special_bonus_unique_paladin_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Eternal Devotion: Wrath of God - For each enemy in the radius an angel spawns
-	//=================================================================================================================
-	"special_bonus_unique_paladin_5"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Eternal Devotion: Wrath of God - For each enemy in the radius an angel spawns
+  //=================================================================================================================
+  "special_bonus_unique_paladin_5"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 }

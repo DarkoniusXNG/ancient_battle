@@ -1,86 +1,83 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Bane: Brain Sap - custom, steals intelligence too
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"bane_custom_brain_sap"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"                	"heroes/bane/brain_sap.lua"
-		"AbilityTextureName"			"bane_brain_sap"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilitySound"					"Hero_Bane.BrainSap"
+  //=================================================================================================================
+  // Bane: Brain Sap - custom, steals intelligence too
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "bane_custom_brain_sap"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/bane/brain_sap.lua"
+    "AbilityTextureName"                                  "bane_brain_sap"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilitySound"                                        "Hero_Bane.BrainSap"
 
-		"HasScepterUpgrade"				"1"
+    "HasShardUpgrade"                                     "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastPoint"				"0.4"
-		"AbilityCastRange"				"600"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastPoint"                                    "0.4"
+    "AbilityCastRange"                                    "600"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"14 13 12 11"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "14 13 12 11"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"110 130 150 170"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_and_heal"				"75 150 225 300"
-				"LinkedSpecialBonus"			"special_bonus_unique_bane_custom_2"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"int_steal"						"2 3 4 5"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"int_steal_duration"			"60.0"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"cooldown_scepter"				"3"
-				"RequiresScepter"               "1"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Banish bonus duration talent
-	//=================================================================================================================
-	"special_bonus_unique_bane_custom_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "100 140 180 220"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "300"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "damage_and_heal"
+      {
+        "value"                                           "75 150 225 300"
+        "LinkedSpecialBonus"                              "special_bonus_unique_bane_custom_2"
+      }
+      "int_steal"                                         "2 3 4 5"
+      "int_steal_duration"                                "60"
+      "shard_cooldown"
+      {
+        "value"                                           "5"
+        "RequiresShard"                                   "1"
+      }
+      "shard_cast_point"
+      {
+        "value"                                           "0.1"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Banish bonus duration talent
+  //=================================================================================================================
+  "special_bonus_unique_bane_custom_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "300"
+      }
+    }
+  }
 }

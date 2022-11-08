@@ -1,113 +1,113 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Axe: Red Mist Curse (W) - New Spell, like Ogre Magi Ignite but gives FOW vision, no projectile and single target affected.
-	// Author: Darkonius
-	// Notes: OK; 25.2.2020;
-	// Linkens: Blocks;
-	// TO_DO: 
-	//=================================================================================================================
-	"axe_custom_red_mist_curse"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/axe_custom_red_mist_curse"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"750"						// like Battle Hunger
-		"AbilityCastPoint"				"0.3"						// like Battle Hunger
+  //=================================================================================================================
+  // Axe: Red Mist Curse (W) - New Spell, like Ogre Magi Ignite but gives FOW vision, no projectile and single target affected.
+  // Author: Darkonius
+  // Notes: OK; 25.2.2020;
+  // Linkens: Blocks;
+  // TO_DO: 
+  //=================================================================================================================
+  "axe_custom_red_mist_curse"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/axe_custom_red_mist_curse"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "750"            // like Battle Hunger
+    "AbilityCastPoint"                                    "0.3"            // like Battle Hunger
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"15.0"                      // Ignite (15); Leech Seed (22/19/16/13);
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "15.0"                      // Ignite (15); Leech Seed (22/19/16/13);
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"60 70 80 90"               // Ignite (90); Battle Hunger (50/60/70/80);
-		"AbilityProcsMagicStick"		"1"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // Battle Hunger (12); Dual Breath (5); Ignite (5/6/7/8); Leech Seed (5); Shadow Word (12);
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration"					"5 6 7 8"
-			}
-			"02" // Shadow Word (15/25/35/45); Ignite (26/34/42/50); Leech Seed (15/30/45/60);
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_per_second"			"25 35 45 55"
-			}
-			"03" // Battle Hunger (12%); Ignite (20%/22%/24%/26%); Leech Seed (18%/24%/30%/36%);
-			{
-				"var_type"					"FIELD_INTEGER"
-				"move_speed_slow"			"-12 -17 -22 -27"
-			}
-		}
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "60 70 80 90"               // Ignite (90); Battle Hunger (50/60/70/80);
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // Battle Hunger (12); Dual Breath (5); Ignite (5/6/7/8); Leech Seed (5); Shadow Word (12);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "5 6 7 8"
+      }
+      "02" // Shadow Word (15/25/35/45); Ignite (26/34/42/50); Leech Seed (15/30/45/60);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "25 35 45 55"
+      }
+      "03" // Battle Hunger (12%); Ignite (20%/22%/24%/26%); Leech Seed (18%/24%/30%/36%);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_slow"                                 "-12 -17 -22 -27"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/axe/red_mist_curse.lua"
-				"Function"		"RedMistCurse"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_red_mist_curse_debuff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				
-				"StatusEffectName" 		"particles/status_fx/status_effect_battle_hunger.vpcf" 	   
-				"StatusEffectPriority"  "9"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		"%move_speed_slow"
-					"MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"			"1"
-				}
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/axe/red_mist_curse.lua"
+        "Function"                                        "RedMistCurse"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_red_mist_curse_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "StatusEffectName"                                "particles/status_fx/status_effect_battle_hunger.vpcf"      
+        "StatusEffectPriority"                            "9"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+          "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"       "1"
+        }
 
-				"ThinkInterval"  	"1.0"
-				"OnIntervalThink"
-				{
-					"Damage"
-					{
-						"Target"		"TARGET"
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"%damage_per_second"
-					}
-				}
+        "ThinkInterval"                                   "1.0"
+        "OnIntervalThink"
+        {
+          "Damage"
+          {
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%damage_per_second"
+          }
+        }
 
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
-						"EffectAttachType"  "follow_overhead"
-						"Target"            "TARGET"
-					}
-					
-					"FireSound"
-					{
-						"EffectName"	"Hero_Axe.Battle_Hunger"
-						"Target" 		"TARGET"
-					}
-				}
-			}
-		}
-	}
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+            "EffectAttachType"                            "follow_overhead"
+            "Target"                                      "TARGET"
+          }
+          
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Axe.Battle_Hunger"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,136 +1,148 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Horde: Minor Lich - Level 4
-	// Notes: OK; 17.5.2018;
-	//=================================================================================
-	"npc_dota_custom_minor_lich"
-	{
-		"BaseClass"				"npc_dota_creature"
-		"Model"					"models/heroes/lich/lich.vmdl"
-		"ModelScale"			"0.75"
-		"GameSoundsFile"		"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-		"SoundSet"				"Hero_Lich"
-		"IdleSoundLoop"			"Hero_Lich.IdleLoop"
-		"VoiceFile"				"soundevents/voscripts/game_sounds_vo_lich.vsndevts"
-		"CanBeDominated"  		"0"
-		"ConsideredHero"		"1"
-		"Level"					"4"
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"lich_custom_minor_frost_blast"
-		"Ability2"					"lich_custom_minor_chain_frost"
-		"Ability3"					""
-		"Ability4"					""
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"0"
-		"MagicalResistance"			"60"
+  //=================================================================================
+  // Horde: Minor Lich - Level 4
+  // Notes: OK; 17.5.2018;
+  //=================================================================================
+  "npc_dota_custom_minor_lich"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/lich/lich.vmdl"
+    "ModelScale"                                          "0.75"
+    "GameSoundsFile"                                      "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+    "SoundSet"                                            "Hero_Lich"
+    "IdleSoundLoop"                                       "Hero_Lich.IdleLoop"
+    "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_lich.vsndevts"
+    "CanBeDominated"                                      "0"
+    "ConsideredHero"                                      "1"
+    "Level"                                               "4"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "lich_custom_minor_frost_blast"
+    "Ability2"                                            "lich_custom_minor_chain_frost"
+    "Ability3"                                            ""
+    "Ability4"                                            ""
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "60"
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"50"
-		"AttackDamageMax"			"60"
-		"AttackRate"				"1.5"
-		"AttackAnimationPoint"		"0.3"
-		"AttackAcquisitionRange"	"800"
-		"AttackRange"				"600"
-		"ProjectileModel"			"particles/units/heroes/hero_lich/lich_base_attack.vpcf"		
-		"ProjectileSpeed"			"1500"
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "50"
+    "AttackDamageMax"                                     "60"
+    "AttackRate"                                          "1.5"
+    "AttackAnimationPoint"                                "0.3"
+    "AttackAcquisitionRange"                              "800"
+    "AttackRange"                                         "600"
+    "ProjectileModel"                                     "particles/units/heroes/hero_lich/lich_base_attack.vpcf"    
+    "ProjectileSpeed"                                     "1500"
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"70"
-		"BountyGoldMin"				"150"
-		"BountyGoldMax"				"150"
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "70"
+    "BountyGoldMin"                                       "150"
+    "BountyGoldMax"                                       "150"
 
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"				"70"
-		"HealthBarOffset"			"200"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+    // Bounds
+    //----------------------------------------------------------------
+    "RingRadius"                                          "70"
+    "HealthBarOffset"                                     "200"
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"350"
-		"MovementTurnRate"			"0.5"
-		
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"700"
-		"StatusHealthRegen"			"1.5"
-		"StatusMana"				"1000"
-		"StatusManaRegen"			"2.0"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "350"
+    "MovementTurnRate"                                    "0.5"
+    
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "700"
+    "StatusHealthRegen"                                   "1.5"
+    "StatusMana"                                          "1000"
+    "StatusManaRegen"                                     "2.0"
 
-		// Combat
-		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"
-		"VisionNighttimeRange"		"800"
-		
-		"Creature"
-		{
-			"States"
-			{
-				"Invade"
-				{
-					"Name"				"Invade"
-					"Aggression"		"70.0"
-					"Avoidance"			"15.0"
-					"Support"			"0.0"
-					"RoamDistance"		"500.0"
-				}
-			}
+    // Combat
+    //----------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "800"
+    
+    "Creature"
+    {
+      "States"
+      {
+        "Invade"
+        {
+          "Name"                                          "Invade"
+          "Aggression"                                    "70.0"
+          "Avoidance"                                     "15.0"
+          "Support"                                       "0.0"
+          "RoamDistance"                                  "500.0"
+        }
+      }
 
-			"DefaultState"				"Invade"
-			
-			"OffensiveAbilities"
-			{
-				"Ability1"				
-				{
-					"Name"				"lich_custom_minor_chain_frost"
-					"AOE"				"1"
-					"Radius"			"575"
-					"MinimumTargets"	"2"
-				}
-				
-				"Ability2"
-				{
-					"Name"				"lich_custom_minor_frost_blast"
-				}
-			}
-			
-			"ItemDrops"
-            {
-                "Trinkets"
-                {
-                    "Item"
-                    {
-                        "1"             "item_broadsword"
-                        "2"             "item_claymore"
-                        "3"            	"item_mithril_hammer"
-						"4"				"item_platemail"
-                    }
-                    "Chance"            "8"
-                }
-            }
-			
-			"AttachWearables"
-			{
-				"Wearable1"	{ "ItemDef" "331" }
-				"Wearable2"	{ "ItemDef"	"332" }
-				"Wearable3" { "ItemDef"	"333" }
-				"Wearable4" { "ItemDef"	"334" }
-			}
-		}
-	}
+      "DefaultState"                                      "Invade"
+      
+      "OffensiveAbilities"
+      {
+        "Ability1"        
+        {
+          "Name"                                          "lich_custom_minor_chain_frost"
+          "AOE"                                           "1"
+          "Radius"                                        "575"
+          "MinimumTargets"                                "2"
+        }
+        
+        "Ability2"
+        {
+          "Name"                                          "lich_custom_minor_frost_blast"
+        }
+      }
+      
+      "ItemDrops"
+      {
+        "Trinkets"
+        {
+          "Item"
+          {
+            "1"                                           "item_broadsword"
+            "2"                                           "item_claymore"
+            "3"                                           "item_mithril_hammer"
+            "4"                                           "item_platemail"
+          }
+          "Chance"                                        "8"
+        }
+      }
+      
+      "AttachWearables"
+      {
+        "Wearable1"
+        {
+          "ItemDef"                                       "331"
+        }
+        "Wearable2"
+        {
+          "ItemDef"                                       "332"
+        }
+        "Wearable3"
+        {
+          "ItemDef"                                       "333"
+        }
+        "Wearable4"
+        {
+          "ItemDef"                                       "334"
+        }
+      }
+    }
+  }
 }

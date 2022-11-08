@@ -8,6 +8,8 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/electrician/electrician_cleansing_shock.lua"
+    "AbilityTextureName"                                  "custom/electrician_cleansing_shock"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -15,8 +17,6 @@
     //"AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    "AbilityTextureName"                                  "custom/electrician_cleansing_shock"
-    "ScriptFile"                                          "heroes/electrician/electrician_cleansing_shock.lua"
 
     "HasScepterUpgrade"                                   "1"
 
@@ -36,54 +36,29 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
+      "duration"                                          "5.0"
+      "move_speed_bonus"                                  "30 40 50"
+      "attack_speed_bonus"                                "60 80 100"
+      "move_slow"                                         "40 60 80"
+      "attack_slow"                                       "40 60 80"
+      "speed_update_interval"                             "0.5"
+      "bounces"                                           "0 1 2"
+      "bounce_range"                                      "600"
+      "bounces_scepter"
       {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "5.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_bonus"                                "30 40 50"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "slow"                                            "40 60 80"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "speed_update_interval"                           "0.5"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bounces"                                         "0 1 2"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bounce_range"                                    "600"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bounces_scepter"                                 "2 3 4"
+        "value"                                           "2 3 4"
         "RequiresScepter"                                 "1"
       }
-      "08"
+      "summon_illusion_damage_scepter"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "summon_illusion_damage_scepter"                  "700 1000 1300"
+        "value"                                           "700 1000 1300"
         "RequiresScepter"                                 "1"
       }
-      "09"
+      "mana_cost_scepter"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_cost_scepter"                               "0"
+        "value"                                           "0"
         "RequiresScepter"                                 "1"
       }
     }

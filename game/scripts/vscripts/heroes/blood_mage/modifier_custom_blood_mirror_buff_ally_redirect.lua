@@ -25,16 +25,16 @@ end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:OnRefresh()
 	local ability = self:GetAbility()
-	self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
+	if ability and not ability:IsNull() then
+		self.damage_redirect_percent = ability:GetSpecialValueFor("redirected_damage")
+	end
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
 		MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
-
-	return funcs
 end
 
 function modifier_custom_blood_mirror_buff_ally_redirect:GetModifierIncomingDamage_Percentage(kv)
@@ -42,15 +42,15 @@ function modifier_custom_blood_mirror_buff_ally_redirect:GetModifierIncomingDama
 	local reduction = self.damage_redirect_percent
 	local ability = self:GetAbility()
 
-	if ability then
+	if ability and not ability:IsNull() then
 		reduction = ability:GetSpecialValueFor("redirected_damage")
 		redirect_target = ability:GetCaster()
 	end
 
 	-- Checking if the redirect_target has a debuff (just in case)
-	if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
+	if not redirect_target:IsNull() and redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
 		-- Apply damage reduction only if caster is alive and has a buff
-		return -(reduction)
+		return 0 - math.abs(reduction)
 	else
 		return 0
 	end
@@ -64,7 +64,7 @@ function modifier_custom_blood_mirror_buff_ally_redirect:OnTakeDamage(event)
 		local redirected_damage = self.damage_redirect_percent
 		local ability = self:GetAbility()
 
-		if ability then
+		if ability and not ability:IsNull() then
 			redirected_damage = ability:GetSpecialValueFor("redirected_damage")
 			redirect_target = ability:GetCaster()
 			damage_table.ability = ability
@@ -77,7 +77,7 @@ function modifier_custom_blood_mirror_buff_ally_redirect:OnTakeDamage(event)
 		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_HPLOSS, DOTA_DAMAGE_FLAG_REFLECTION)
 
         -- Redirect damage to caster if he is alive and if he has that buff
-		if redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
+		if not redirect_target:IsNull() and redirect_target:IsAlive() and redirect_target:HasModifier("modifier_custom_blood_mirror_debuff_caster") then
 			ApplyDamage(damage_table)
 		end
     end

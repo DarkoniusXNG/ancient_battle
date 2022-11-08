@@ -28,7 +28,11 @@ end
 
 function modifier_custom_counter_helix_aura_applier:GetAuraRadius()
 	local ability = self:GetAbility()
-	return ability:GetSpecialValueFor("trigger_radius")
+	if ability and not ability:IsNull() then
+		return ability:GetSpecialValueFor("trigger_radius")
+	else
+		return 800
+	end
 end
 
 function modifier_custom_counter_helix_aura_applier:GetAuraSearchTeam()

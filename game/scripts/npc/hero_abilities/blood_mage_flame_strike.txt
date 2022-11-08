@@ -1,104 +1,104 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blood Mage: Flame Strike - Summons a column of flames that damages enemies
-	// Author: 
-	// Notes: OK; 2022; Flame Strike deals 25% of the damage to buildings;
-	// TO_DO:
-	//=================================================================================================================
-	"blood_mage_flame_strike"
-	{
-		"BaseClass"                     "ability_lua"
-		"ScriptFile"					"heroes/blood_mage/flame_strike.lua"
-		"AbilityTextureName"			"custom/blood_mage_flame_strike"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-	
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_SUN_STRIKE"
-		"AbilityCastRange"				"800"                       // Nether Blast (400); original (800);
-		"AbilityCastPoint"				"0"
-		"AoERadius"                     "%radius"
-		
-		"AbilityCooldown"				"10"                        // Nether Blast (5); original (10);
-		"AbilityManaCost"				"115 125 135 145"
-		"AbilityProcsMagicStick"		"1"
-		
-		"precache"
-		{
-			"particle"	"particles/blood_mage/invoker_sun_strike_team_immortal1.vpcf"
-			"particle"  "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
-			"particle"  "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
-			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01" // Nether Blast (400); Sun Strike (175); Light Strike Array (225); original (200);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "300"
-			}
-			"02" // Nether Blast total damage to buildings (50/87.5/125/162.5); original Pillar damage (120.15/213.6/293.7);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"initial_damage"                          "70 130 190 250"
-				"LinkedSpecialBonus"                      "special_bonus_unique_blood_mage_2"
-			}
-			"03" // initial_damage + damage_per_second = 100/175/250/325
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "30 45 60 75"
-			}
-			"04" // original (6);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration"                                "6"
-			}
-			"05" // original (1.33 -> 0.9); original Pillar duration (2.67s); Sun Strike (1.7); Light Strike (0.5);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"delay"                                   "1.6"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"damage_interval"                         "0.5"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"07"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"buildings_damage"                        "25"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-		}
-	}
+  //=================================================================================================================
+  // Blood Mage: Flame Strike - Summons a column of flames that damages enemies
+  // Author: 
+  // Notes: OK; 2022; Flame Strike deals 25% of the damage to buildings;
+  // TO_DO:
+  //=================================================================================================================
+  "blood_mage_flame_strike"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blood_mage/flame_strike.lua"
+    "AbilityTextureName"                                  "custom/blood_mage_flame_strike"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_SUN_STRIKE"
+    "AbilityCastRange"                                    "800"                       // Nether Blast (400); original (800);
+    "AbilityCastPoint"                                    "0"
+    "AoERadius"                                           "%radius"
+    
+    "AbilityCooldown"                                     "10"                        // Nether Blast (5); original (10);
+    "AbilityManaCost"                                     "115 125 135 145"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "particle"                                          "particles/blood_mage/invoker_sun_strike_team_immortal1.vpcf"
+      "particle"                                          "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+      "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+      "particle"                                          "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01" // Nether Blast (400); Sun Strike (175); Light Strike Array (225); original (200);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "300"
+      }
+      "02" // Nether Blast total damage to buildings (50/87.5/125/162.5); original Pillar damage (120.15/213.6/293.7);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "initial_damage"                                  "70 130 190 250"
+        "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_2"
+      }
+      "03" // initial_damage + damage_per_second = 100/175/250/325
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "30 45 60 75"
+      }
+      "04" // original (6);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "6"
+      }
+      "05" // original (1.33 -> 0.9); original Pillar duration (2.67s); Sun Strike (1.7); Light Strike (0.5);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "delay"                                           "1.6"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_interval"                                 "0.5"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "buildings_damage"                                "25"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Flame Strike bonus damage talent
-	//=================================================================================================================
-	"special_bonus_unique_blood_mage_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Flame Strike bonus damage talent
+  //=================================================================================================================
+  "special_bonus_unique_blood_mage_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "250"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "250"
+      }
+    }
+  }
 }

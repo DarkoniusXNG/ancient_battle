@@ -1,0 +1,17 @@
+//=============================================================================
+// Bloodstone
+//=============================================================================
+
+"DOTA_Tooltip_Ability_item_custom_bloodstone"                        "Old Bloodstone"
+"DOTA_Tooltip_Ability_item_recipe_custom_bloodstone"                 "Old Bloodstone Recipe"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_Description"            "<h1>Active: Pocket Deny</h1>Instantly causes you to die.<br><br>Must ground target to cast.  Cannot self cast.\n<h1>Passive: Blood Battery</h1>Begins with %ItemInitialCharges% charges, and gains %charge_gain_per_kill% charge each time an enemy hero dies within %charge_gain_radius% range. <br><br>Each charge grants %mana_regen_per_charge% mana regen, %health_regen_per_charge% health regen and reduces respawn time by %respawn_time_reduction_per_charge% second. You lose %charge_loss_on_death% charges on death.\n<h1>Passive: Blood Flare</h1>On death; heals allies within %death_heal_radius% radius for %death_heal_base% + %death_heal_per_charge% per charge and restores %death_mana_restore% mana. At death location you will gain %death_vision_radius% flying vision for %death_vision_duration% seconds."
+"DOTA_Tooltip_Ability_item_custom_bloodstone_Lore"                   "The Bloodstone's bright ruby color is unmistakable on the battlefield, as the owner seems to have infinite vitality and spirit."
+"DOTA_Tooltip_Ability_item_custom_bloodstone_Note0"                  "Mana Regen Amp and charges from multiple Old Bloodstones doesn't stack."
+"DOTA_Tooltip_Ability_item_custom_bloodstone_Note1"                  "Dying to neutrals does not remove a charge."
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_health"           "+$health"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_mana"             "+$mana"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_health_regen"     "+$hp_regen"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_mana_regen"       "+$mana_regen"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_mana_regen_amp"         "%+Mana Regen Amplification"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_strength"         "+$str"
+"DOTA_Tooltip_Ability_item_custom_bloodstone_bonus_armor"            "+$armor"

@@ -3,27 +3,25 @@ function AllInSuccess(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
-	
+
 	local gold_damage_type = ability:GetAbilityDamageType()
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local gold_damage_ratio = ability:GetLevelSpecialValueFor("net_worth_to_damage_ratio", ability_level)
-	local scepter_gold_damage_ratio = ability:GetLevelSpecialValueFor("net_worth_to_damage_ratio_scepter", ability_level)
 	local damage_cap = ability:GetLevelSpecialValueFor("damage_cap", ability_level)
 	local scepter_damage_cap = ability:GetLevelSpecialValueFor("damage_cap_scepter", ability_level)
-	
+
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
+	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 		-- Checking if caster has aghanim scepter
 		if caster:HasScepter() then
-			gold_damage_ratio = scepter_gold_damage_ratio
 			damage_cap = scepter_damage_cap
 		end
-		
+
 		-- Gold (Net worth) variables
 		local current_gold = caster:GetGold()
 		local items_worth = 0
-		
+
 		-- Getting the gold value of caster's items and adding to items_worth
 		for i = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
 			local item = caster:GetItemInSlot(i)
@@ -31,22 +29,22 @@ function AllInSuccess(event)
 				items_worth = items_worth + item:GetCost()
 			end
 		end
-		
+
 		-- Setting the damage
 		local gold_damage = math.ceil((current_gold + items_worth)*gold_damage_ratio*0.01)
-		
+
 		-- Cap the damage if it is over the damage cap
 		if gold_damage > damage_cap then  
 			gold_damage = damage_cap
 		end
-		
+
 		-- Applying the damage
 		ApplyDamage({victim = target, attacker = caster, damage = gold_damage, damage_type = gold_damage_type, ability = ability})
 
 		-- Victory Particle
 		local duel_victory_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 		ParticleManager:ReleaseParticleIndex(duel_victory_particle)
-		
+
 		-- Sounds
 		local damage_sound_cap = damage_cap*0.8
 		if gold_damage > damage_sound_cap then
@@ -54,7 +52,7 @@ function AllInSuccess(event)
 		else
 			caster:EmitSound("Hero_OgreMagi.Fireblast.x2")
 		end
-		
+
 		-- Message particle
 		local symbol = 2
 		local color = Vector(1, 200, 1) -- Green
@@ -66,6 +64,11 @@ function AllInSuccess(event)
 		ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
 		ParticleManager:SetParticleControl(particle, 3, color)
 		ParticleManager:ReleaseParticleIndex(particle)
+
+		if target:IsNull() or target:IsAlive() then
+			-- Give the spent gold back
+			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), ability:GetSpecialValueFor("gold_cost"), false, DOTA_ModifyGold_Unspecified)
+		end
 	end
 end
 
@@ -74,25 +77,23 @@ function AllInFailure(event)
  	local caster = event.caster
  	local target = event.target
 	local ability = event.ability
-	
+
 	local gold_damage_type = ability:GetAbilityDamageType()
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local gold_damage_ratio = ability:GetLevelSpecialValueFor("net_worth_to_damage_ratio", ability_level)
-	local scepter_gold_damage_ratio = ability:GetLevelSpecialValueFor("net_worth_to_damage_ratio_scepter", ability_level)
 	local damage_cap = ability:GetLevelSpecialValueFor("damage_cap", ability_level)
 	local scepter_damage_cap = ability:GetLevelSpecialValueFor("damage_cap_scepter", ability_level)
-	
+
 	-- Checking if caster has aghanim scepter
 	if caster:HasScepter() then
-		gold_damage_ratio = scepter_gold_damage_ratio
 		damage_cap = scepter_damage_cap
 	end
-	
+
 	-- Gold (Net worth) variables
 	local current_gold = caster:GetGold()
 	local items_worth = 0
-	
+
 	-- Getting the gold value of caster's items and adding to items_worth
 	for i = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
 		local item = caster:GetItemInSlot(i)
@@ -100,21 +101,21 @@ function AllInFailure(event)
 			items_worth = items_worth + item:GetCost()
 		end
 	end
-	
+
 	-- Setting the damage
 	local gold_damage = math.ceil((current_gold + items_worth)*gold_damage_ratio*0.01)
-	
+
 	-- Cap the damage if it is over the damage cap.
 	if gold_damage > damage_cap then  
 		gold_damage = damage_cap
 	end
-	
+
 	-- Applying the damage
 	ApplyDamage({victim = caster, attacker = target, damage = gold_damage, damage_type = gold_damage_type, ability = ability})
-	
+
 	-- Sound
 	caster:EmitSound("Hero_Rubick.SpellSteal.Target")
-	
+
 	-- Message particle
 	local symbol = 2
 	local color = Vector(255, 1, 1) -- Red

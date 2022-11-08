@@ -1,0 +1,16 @@
+//=====================================================================
+// Butterfly
+//=====================================================================
+
+"DOTA_Tooltip_Ability_item_custom_butterfly"                          "Butterfly"
+"DOTA_Tooltip_Ability_item_recipe_custom_butterfly"                   "Butterfly Recipe"
+"DOTA_Tooltip_Ability_item_custom_butterfly_Description"              "<h1>Active: Flutter</h1> Grants %buff_ms_per_agility%%% movement speed for each point of Agility and %buff_evasion%%% evasion for %buff_duration% seconds."
+"DOTA_Tooltip_Ability_item_custom_butterfly_Lore"                     "Only the mightiest and most experienced of warriors can wield the Butterfly, but it provides incredible dexterity in combat."
+"DOTA_Tooltip_Ability_item_custom_butterfly_Note0"                    "Stacks diminishingly with other sources of Evasion."
+"DOTA_Tooltip_Ability_item_custom_butterfly_bonus_agility"            "+$agi"
+"DOTA_Tooltip_Ability_item_custom_butterfly_bonus_damage"             "+$damage"
+"DOTA_Tooltip_Ability_item_custom_butterfly_bonus_evasion"            "%+$evasion"
+"DOTA_Tooltip_Ability_item_custom_butterfly_bonus_attack_speed"       "+$attack"
+
+"DOTA_Tooltip_modifier_item_custom_butterfly_active"                  "Flutter"
+"DOTA_Tooltip_modifier_item_custom_butterfly_active_Description"      "%dMODIFIER_PROPERTY_EVASION_CONSTANT%%% evasion and %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% bonus movement speed."

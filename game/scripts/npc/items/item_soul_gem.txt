@@ -1,63 +1,63 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// 1253 - Soul Gem - Gives stats, item cost must be between 450 and 1500.
-	// Notes: OK; 2022;
-	//=================================================================================================================
-	"item_soul_gem"
-	{
-		"BaseClass"           			"item_datadriven"
-		"AbilityTextureName"      		"custom/soul_gem"
-		
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"ItemCost"						"1000"
-		"ItemShopTags"					"agi;int;str"
-		"ItemQuality"					"component"
-		"ItemAliases"					"soul gem"
-		"ItemSellable" 					"1"
-		"ItemDroppable" 				"1"
-		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
+  //=================================================================================================================
+  // 1253 - Soul Gem - Gives stats, item cost must be between 450 and 1500.
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "item_soul_gem"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/soul_gem"
+    
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    "ItemCost"                                            "1000"
+    "ItemShopTags"                                        "agi;int;str"
+    "ItemQuality"                                         "component"
+    "ItemAliases"                                         "soul gem"
+    "ItemSellable"                                        "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"5"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"5"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_soul_gem_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-				}
-			}
-		}
-	}
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_str"                                       "5"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agi"                                       "5"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_int"                                       "5"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_item_soul_gem_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"  
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
+          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+        }
+      }
+    }
+  }
 }

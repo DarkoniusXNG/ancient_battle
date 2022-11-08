@@ -26,7 +26,7 @@ function PurgeStart(event)
 		else
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_purge_enemy_creep", {["duration"] = creep_duration})
 			
-			if target:IsSummoned() or target:IsDominated() or target:IsIllusion() then
+			if target:IsSummoned() or target:IsDominated() or (target:IsIllusion() and not target:IsStrongIllusionCustom()) then
 				damage_table.damage = base_damage + summon_damage
 				ApplyDamage(damage_table)
 			else

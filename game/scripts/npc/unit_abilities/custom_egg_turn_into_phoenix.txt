@@ -1,43 +1,43 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Phoenix Egg: Turn into Phoenix if not killed
-	// Author: Darkonius
-	// Notes: OK; 21.9.2019;
-	// TO_DO: Sounds
-	//=================================================================================================================
-	"custom_egg_turn_into_phoenix"
-	{
-		"BaseClass"                     "ability_datadriven"
-		"AbilityTextureName"            "custom/blood_mage_summon_phoenix"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Phoenix Egg: Turn into Phoenix if not killed
+  // Author: Darkonius
+  // Notes: OK; 21.9.2019;
+  // TO_DO: Sounds
+  //=================================================================================================================
+  "custom_egg_turn_into_phoenix"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/blood_mage_summon_phoenix"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"MaxLevel"                      "1"
+    "MaxLevel"                                            "1"
 
-		"precache"
-		{
-			"particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_death.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_supernova_death.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_phoenix_egg" // doesn't need tooltip
-			{
-				"Passive"   	"1"
-				"IsHidden"		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
-						"Function"      "PhoenixEggDeathCheck"
-					}               
-				}      
-			}
-		}
-	}
+    "Modifiers"
+    {
+      "modifier_custom_phoenix_egg" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "OnDeath"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/blood_mage/summon_phoenix.lua"
+            "Function"                                    "PhoenixEggDeathCheck"
+          }               
+        }      
+      }
+    }
+  }
 }

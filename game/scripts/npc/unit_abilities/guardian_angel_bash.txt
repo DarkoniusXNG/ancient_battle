@@ -1,47 +1,47 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Paladin's Guardian Angel: Bash (W) - Modified Slardar Bash
-	// Author: Valve + Darkonius
-	// Notes: OK; 26.12.2016;
-	// TO_DO:
-	//=================================================================================================================
-	"guardian_angel_bash"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/paladin/bash.lua"
-		"AbilityTextureName"			"custom/guardian_angel_bash"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+  //=================================================================================================================
+  // Paladin's Guardian Angel: Bash (W) - chance based old Slardar Bash
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "guardian_angel_bash"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/paladin/bash.lua"
+    "AbilityTextureName"                                  "custom/guardian_angel_bash"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
 
-		"MaxLevel"						"1"
-		
-		"precache"
-		{
-			"soundfile"   	"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
-			"particle"		"particles/generic_gameplay/generic_bashed.vpcf"
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"chance"				"25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_creep"		"2.0"
-			}
-		}
-	}
+    "MaxLevel"                                            "1"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+      "particle"                                          "particles/generic_gameplay/generic_bashed.vpcf"
+    }
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "chance"                                          "25"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "1.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration_creep"                                  "2.0"
+      }
+    }
+  }
 }

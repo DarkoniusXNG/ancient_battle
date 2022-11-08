@@ -15,17 +15,35 @@ function ConjureImage(event)
 		local damage_taken = ability:GetLevelSpecialValueFor("illusion_damage_in", ability_level)
 
 		--target:CreateIllusion(caster, ability, duration, nil, damage_dealt, damage_taken)
+		
+		-- Scepter super illusion
+		if caster:HasScepter() and target:GetTeamNumber() ~= caster_team and target:IsRealHero() and not caster:IsClone() and not caster:IsTempestDouble() and not target:IsClone() and not target:IsTempestDouble() and not caster.original and not target.original then
+			local gold_bounty_base = 180
+			local actual_gold_bounty = gold_bounty_base + 4 * target:GetLevel()
+			local copy = CopyHero(target, caster)
+			copy:AddNewModifier(caster, ability, "modifier_custom_super_illusion", {mute = 1, attack_dmg_reduction = damage_dealt, bounty = actual_gold_bounty})
+			copy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
+			return
+		end
 
 		illusion_table = {}
 		illusion_table.outgoing_damage = damage_dealt
 		illusion_table.incoming_damage = damage_taken
-		illusion_table.bounty_base = 50
-		illusion_table.bounty_growth = 0
+		illusion_table.bounty_base = 1
+		illusion_table.bounty_growth = 4
 		illusion_table.outgoing_damage_structure = damage_dealt
+		illusion_table.outgoing_damage_roshan = damage_dealt
 		illusion_table.duration = duration
 
 		local padding = 108
 
 		local illusions = CreateIllusions(caster, target, illusion_table, 1, padding, true, true)
+		for _, illu in pairs(illusions) do
+			if illu then
+				illu:AddNewModifier(caster, ability, "modifier_custom_strong_illusion", {})
+				--illu:AddNewModifier(caster, ability, "modifier_vengefulspirit_hybrid_special", {}) -- teleports the caster to the target, because caster is alive
+				--illu:AddNewModifier(caster, ability, "modifier_arc_warden_tempest_double", {}) -- does nothing except arc warden tempest double tooltips and visual effect
+			end
+		end
 	end
 end

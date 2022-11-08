@@ -1,281 +1,281 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Summon Earth Golem: Earth Golem level 1
-	// Notes: OK; 2022;
-	//=================================================================================
-	"npc_dota_earth_golem_1"
-	{
-		// General
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
-		"ModelScale"				"0.6"
-		"SoundSet"					"n_creep_Melee"
-		"Level"						"1"										// 7.3.2016;
-		"CanBeDominated"			"1"										// 7.3.2016;
-		"IsSummoned"				"1"										// 7.3.2016;
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"earth_golem_hurl_boulder"				// Ability 1
-		"Ability2"                  "custom_unit_spell_immunity"
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"0"										// 7.3.2016; like Mud Golem
-		"MagicalResistance"			"50"									// 7.3.2016; like Mud Golem
+  //=================================================================================
+  // Summon Earth Golem: Earth Golem level 1
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_earth_golem_1"
+  {
+    // General
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
+    "ModelScale"                                          "0.6"
+    "SoundSet"                                            "n_creep_Melee"
+    "Level"                                               "1"                    // 7.3.2016;
+    "CanBeDominated"                                      "1"                    // 7.3.2016;
+    "IsSummoned"                                          "1"                    // 7.3.2016;
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "earth_golem_hurl_boulder"        // Ability 1
+    "Ability2"                                            "custom_unit_spell_immunity"
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                    // 7.3.2016; like Mud Golem
+    "MagicalResistance"                                   "50"                  // 7.3.2016; like Mud Golem
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"35"									// 2022
-		"AttackDamageMax"			"35"									// 2022
-		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
-		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
-		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
-		"AttackRange"				"128"									// 4.11.2016;
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "35"                  // 2022
+    "AttackDamageMax"                                     "35"                  // 2022
+    "AttackRate"                                          "1.35"                  // 7.3.2016; like Mud Golem
+    "AttackAnimationPoint"                                "0.3"                  // 11.3.2016; like Mud Golem
+    "AttackAcquisitionRange"                              "500"                  // 7.3.2016; like Mud Golem
+    "AttackRange"                                         "128"                  // 4.11.2016;
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"75"									// 7.3.2016; Earth Golem unique
-		"BountyGoldMin"				"30"									// 7.3.2016;
-		"BountyGoldMax"				"34"									// 4.11.2016;
-		
-		// Bounds
-		//----------------------------------------------------------------
-		"BoundsHullName"            "DOTA_HULL_SIZE_SMALL"					// 7.3.2016;
-		"HealthBarOffset"           "140"									// 7.3.2016;
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "75"                  // 7.3.2016; Earth Golem unique
+    "BountyGoldMin"                                       "30"                  // 7.3.2016;
+    "BountyGoldMax"                                       "34"                  // 4.11.2016;
+    
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"          // 7.3.2016;
+    "HealthBarOffset"                                     "140"                  // 7.3.2016;
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"				// 7.3.2016;
-		"MovementSpeed"				"250"									// 7.3.2016; Earth Golem unique
-		"MovementTurnRate"			"0.5"									// 7.3.2016; like Mud Golem
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"        // 7.3.2016;
+    "MovementSpeed"                                       "250"                  // 7.3.2016; Earth Golem unique
+    "MovementTurnRate"                                    "0.5"                  // 7.3.2016; like Mud Golem
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"500"									// 7.3.2016;
-		"StatusHealthRegen"			"0.5"									// 7.3.2016; like Mud Golem
-		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
-		"StatusManaRegen"			"1"										// 4.11.2016; like Mud Golem
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "500"                  // 7.3.2016;
+    "StatusHealthRegen"                                   "0.5"                  // 7.3.2016; like Mud Golem
+    "StatusMana"                                          "400"                  // 7.3.2016; like Mud Golem
+    "StatusManaRegen"                                     "1"                    // 4.11.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"800"									// 7.3.2016; like Mud Golem
-		"VisionNighttimeRange"		"800"									// 7.3.2016; like Mud Golem
-	}
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 4.11.2016;
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "800"                  // 7.3.2016; like Mud Golem
+    "VisionNighttimeRange"                                "800"                  // 7.3.2016; like Mud Golem
+  }
 
-	//=================================================================================
-	// Summon Earth Golem: Earth Golem level 2
-	// Notes: OK; 2022;
-	//=================================================================================
-	"npc_dota_earth_golem_2"
-	{
-		// General
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"
-		"ModelScale"				"0.9"									// 8.3.2016;
-		"SoundSet"					"n_creep_Melee"
-		"Level"						"2"										// 7.3.2016;
-		"CanBeDominated"			"1"										// 7.3.2016;
-		"IsSummoned"				"1"										// 7.3.2016;
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"earth_golem_hurl_boulder"				// Ability 1
-		"Ability2"                  "custom_unit_spell_immunity"
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"1"										// 4.11.2016;
-		"MagicalResistance"			"50"									// 7.3.2016; like Mud Golem
+  //=================================================================================
+  // Summon Earth Golem: Earth Golem level 2
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_earth_golem_2"
+  {
+    // General
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"
+    "ModelScale"                                          "0.9"                  // 8.3.2016;
+    "SoundSet"                                            "n_creep_Melee"
+    "Level"                                               "2"                    // 7.3.2016;
+    "CanBeDominated"                                      "1"                    // 7.3.2016;
+    "IsSummoned"                                          "1"                    // 7.3.2016;
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "earth_golem_hurl_boulder"        // Ability 1
+    "Ability2"                                            "custom_unit_spell_immunity"
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "1"                    // 4.11.2016;
+    "MagicalResistance"                                   "50"                  // 7.3.2016; like Mud Golem
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"45"									// 2022;
-		"AttackDamageMax"			"45"									// 2022;
-		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
-		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
-		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
-		"AttackRange"				"128"									// 4.11.2016;
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "45"                  // 2022;
+    "AttackDamageMax"                                     "45"                  // 2022;
+    "AttackRate"                                          "1.35"                  // 7.3.2016; like Mud Golem
+    "AttackAnimationPoint"                                "0.3"                  // 11.3.2016; like Mud Golem
+    "AttackAcquisitionRange"                              "500"                  // 7.3.2016; like Mud Golem
+    "AttackRange"                                         "128"                  // 4.11.2016;
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"75"									// 7.3.2016; Earth Golem unique
-		"BountyGoldMin"				"30"									// 7.3.2016;
-		"BountyGoldMax"				"34"									// 4.11.2016;
-		
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"                "60"									// 7.3.2016;
-		"BoundsHullName"            "DOTA_HULL_SIZE_SMALL"					// 7.3.2016;
-		"HealthBarOffset"           "190"									// 7.3.2016;
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "75"                  // 7.3.2016; Earth Golem unique
+    "BountyGoldMin"                                       "30"                  // 7.3.2016;
+    "BountyGoldMax"                                       "34"                  // 4.11.2016;
+    
+    // Bounds
+    //----------------------------------------------------------------
+    "RingRadius"                                          "60"                  // 7.3.2016;
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"          // 7.3.2016;
+    "HealthBarOffset"                                     "190"                  // 7.3.2016;
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"				// 7.3.2016;
-		"MovementSpeed"				"260"									// 4.11.2016; Earth Golem unique
-		"MovementTurnRate"			"0.5"									// 7.3.2016; like Mud Golem
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"        // 7.3.2016;
+    "MovementSpeed"                                       "260"                  // 4.11.2016; Earth Golem unique
+    "MovementTurnRate"                                    "0.5"                  // 7.3.2016; like Mud Golem
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"600"									// 7.3.2016;
-		"StatusHealthRegen"			"0.5"									// 7.3.2016; like Mud Golem
-		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
-		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "600"                  // 7.3.2016;
+    "StatusHealthRegen"                                   "0.5"                  // 7.3.2016; like Mud Golem
+    "StatusMana"                                          "400"                  // 7.3.2016; like Mud Golem
+    "StatusManaRegen"                                     "1.0"                  // 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"800"									// 7.3.2016; like Mud Golem
-		"VisionNighttimeRange"		"800"									// 7.3.2016; like Mud Golem
-	}
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 4.11.2016;
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "800"                  // 7.3.2016; like Mud Golem
+    "VisionNighttimeRange"                                "800"                  // 7.3.2016; like Mud Golem
+  }
 
-	//=================================================================================
-	// Summon Earth Golem: Earth Golem level 3
-	// Notes: OK; 2022;
-	//=================================================================================
-	"npc_dota_earth_golem_3"
-	{
-		// General
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
-		"ModelScale"				"0.7"									// 8.3.2016;
-		"SoundSet"					"n_creep_Melee"
-		"Level"						"3"										// 7.3.2016;
-		"CanBeDominated"			"1"										// 7.3.2016;
-		"IsSummoned"				"1"										// 7.3.2016;
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"earth_golem_hurl_boulder"				// Ability 1
-		"Ability2"                  "custom_unit_spell_immunity"
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"2"										// 4.11.2016;
-		"MagicalResistance"			"50"									// 7.3.2016; like Mud Golem
+  //=================================================================================
+  // Summon Earth Golem: Earth Golem level 3
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_earth_golem_3"
+  {
+    // General
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
+    "ModelScale"                                          "0.7"                  // 8.3.2016;
+    "SoundSet"                                            "n_creep_Melee"
+    "Level"                                               "3"                    // 7.3.2016;
+    "CanBeDominated"                                      "1"                    // 7.3.2016;
+    "IsSummoned"                                          "1"                    // 7.3.2016;
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "earth_golem_hurl_boulder"        // Ability 1
+    "Ability2"                                            "custom_unit_spell_immunity"
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "2"                    // 4.11.2016;
+    "MagicalResistance"                                   "50"                  // 7.3.2016; like Mud Golem
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"55"									// 2022
-		"AttackDamageMax"			"55"									// 2022
-		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
-		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
-		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
-		"AttackRange"				"128"									// 4.11.2016;
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "55"                  // 2022
+    "AttackDamageMax"                                     "55"                  // 2022
+    "AttackRate"                                          "1.35"                  // 7.3.2016; like Mud Golem
+    "AttackAnimationPoint"                                "0.3"                  // 11.3.2016; like Mud Golem
+    "AttackAcquisitionRange"                              "500"                  // 7.3.2016; like Mud Golem
+    "AttackRange"                                         "128"                  // 4.11.2016;
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"75"									// 7.3.2016; Earth Golem unique
-		"BountyGoldMin"				"30"									// 7.3.2016;
-		"BountyGoldMax"				"34"									// 4.11.2016;
-		
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"                "60"									// 7.3.2016; like Mud Golem
-		"BoundsHullName"            "DOTA_HULL_SIZE_SMALL"					// 7.3.2016;
-		"HealthBarOffset"           "190"									// 7.3.2016; like Mud Golem
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "75"                  // 7.3.2016; Earth Golem unique
+    "BountyGoldMin"                                       "30"                  // 7.3.2016;
+    "BountyGoldMax"                                       "34"                  // 4.11.2016;
+    
+    // Bounds
+    //----------------------------------------------------------------
+    "RingRadius"                                          "60"                  // 7.3.2016; like Mud Golem
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"          // 7.3.2016;
+    "HealthBarOffset"                                     "190"                  // 7.3.2016; like Mud Golem
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"				// 7.3.2016;
-		"MovementSpeed"				"270"									// 4.11.2016; Earth Golem unique
-		"MovementTurnRate"			"0.5"									// 7.3.2016; like Mud Golem
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"        // 7.3.2016;
+    "MovementSpeed"                                       "270"                  // 4.11.2016; Earth Golem unique
+    "MovementTurnRate"                                    "0.5"                  // 7.3.2016; like Mud Golem
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"700"									// 7.3.2016;
-		"StatusHealthRegen"			"0.5"									// 7.3.2016; like Mud Golem
-		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
-		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "700"                  // 7.3.2016;
+    "StatusHealthRegen"                                   "0.5"                  // 7.3.2016; like Mud Golem
+    "StatusMana"                                          "400"                  // 7.3.2016; like Mud Golem
+    "StatusManaRegen"                                     "1.0"                  // 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"800"									// 7.3.2016; like Mud Golem
-		"VisionNighttimeRange"		"800"									// 7.3.2016; like Mud Golem
-	}
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 4.11.2016;
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "800"                  // 7.3.2016; like Mud Golem
+    "VisionNighttimeRange"                                "800"                  // 7.3.2016; like Mud Golem
+  }
 
-	//=================================================================================
-	// Summon Earth Golem: Earth Golem level 4
-	// Notes: OK; 2022;
-	//=================================================================================
-	"npc_dota_earth_golem_4"
-	{
-		// General
-		"BaseClass"					"npc_dota_creature"
-		"Model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"
-		"ModelScale"				"1.1"									// 7.3.2016;
-		"SoundSet"					"n_creep_Melee"
-		"Level"						"4"										// 7.3.2016;
-		"CanBeDominated"			"1"										// 7.3.2016;
-		"IsSummoned"				"1"										// 7.3.2016;
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"earth_golem_hurl_boulder"				// Ability 1
-		"Ability2"                  "custom_unit_spell_immunity"
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"3"										// 4.11.2016;
-		"MagicalResistance"			"50"									// 7.3.2016; like Mud Golem
+  //=================================================================================
+  // Summon Earth Golem: Earth Golem level 4
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_earth_golem_4"
+  {
+    // General
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"
+    "ModelScale"                                          "1.1"                  // 7.3.2016;
+    "SoundSet"                                            "n_creep_Melee"
+    "Level"                                               "4"                    // 7.3.2016;
+    "CanBeDominated"                                      "1"                    // 7.3.2016;
+    "IsSummoned"                                          "1"                    // 7.3.2016;
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "earth_golem_hurl_boulder"        // Ability 1
+    "Ability2"                                            "custom_unit_spell_immunity"
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "3"                    // 4.11.2016;
+    "MagicalResistance"                                   "50"                  // 7.3.2016; like Mud Golem
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"65"									// 2022;
-		"AttackDamageMax"			"65"									// 8.3.2016;
-		"AttackRate"				"1.35"									// 7.3.2016; like Mud Golem
-		"AttackAnimationPoint"		"0.3"									// 11.3.2016; like Mud Golem
-		"AttackAcquisitionRange"	"500"									// 7.3.2016; like Mud Golem
-		"AttackRange"				"128"									// 4.11.2016;
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "65"                  // 2022;
+    "AttackDamageMax"                                     "65"                  // 8.3.2016;
+    "AttackRate"                                          "1.35"                  // 7.3.2016; like Mud Golem
+    "AttackAnimationPoint"                                "0.3"                  // 11.3.2016; like Mud Golem
+    "AttackAcquisitionRange"                              "500"                  // 7.3.2016; like Mud Golem
+    "AttackRange"                                         "128"                  // 4.11.2016;
 
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"75"									// 7.3.2016; Earth Golem unique
-		"BountyGoldMin"				"30"									// 7.3.2016;
-		"BountyGoldMax"				"34"									// 4.11.2016;
-		
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"                "60"									// 7.3.2016; like Mud Golem
-		"BoundsHullName"            "DOTA_HULL_SIZE_SMALL"					// 7.3.2016;
-		"HealthBarOffset"           "190"									// 7.3.2016; like Mud Golem
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "75"                  // 7.3.2016; Earth Golem unique
+    "BountyGoldMin"                                       "30"                  // 7.3.2016;
+    "BountyGoldMax"                                       "34"                  // 4.11.2016;
+    
+    // Bounds
+    //----------------------------------------------------------------
+    "RingRadius"                                          "60"                  // 7.3.2016; like Mud Golem
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"          // 7.3.2016;
+    "HealthBarOffset"                                     "190"                  // 7.3.2016; like Mud Golem
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"				// 7.3.2016;
-		"MovementSpeed"				"280"									// 4.11.2016;
-		"MovementTurnRate"			"0.5"									// 7.3.2016; like Mud Golem
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"        // 7.3.2016;
+    "MovementSpeed"                                       "280"                  // 4.11.2016;
+    "MovementTurnRate"                                    "0.5"                  // 7.3.2016; like Mud Golem
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"800"									// 7.3.2016; like Mud Golem
-		"StatusHealthRegen"			"0.5"									// 7.3.2016; like Mud Golem
-		"StatusMana"				"400"									// 7.3.2016; like Mud Golem
-		"StatusManaRegen"			"1.0"									// 7.3.2016; like Mud Golem
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "800"                  // 7.3.2016; like Mud Golem
+    "StatusHealthRegen"                                   "0.5"                  // 7.3.2016; like Mud Golem
+    "StatusMana"                                          "400"                  // 7.3.2016; like Mud Golem
+    "StatusManaRegen"                                     "1.0"                  // 7.3.2016; like Mud Golem
 
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 4.11.2016;
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"800"									// 7.3.2016; like Mud Golem
-		"VisionNighttimeRange"		"800"									// 7.3.2016; like Mud Golem
-	}
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 4.11.2016;
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "800"                  // 7.3.2016; like Mud Golem
+    "VisionNighttimeRange"                                "800"                  // 7.3.2016; like Mud Golem
+  }
 }

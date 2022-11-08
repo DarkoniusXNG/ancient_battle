@@ -1,169 +1,82 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// 1262 - Recipe: Infused Robe
-	// Notes: OK; 16.9.2018;
-	//=================================================================================================================
-	"item_recipe_infused_robe"
-	{
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
+  //=================================================================================================================
+  // 1262 - Recipe: Infused Robe
+  // Notes: OK; 2022;
+  //=================================================================================================================
+  "item_recipe_infused_robe"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"425"	
-		"ItemShopTags"					""
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "250"  
+    "ItemShopTags"                                        ""
 
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_infused_robe"
-		"ItemRequirements"
-		{
-			"01"						"item_hood_of_defiance;item_vanguard;item_infused_raindrop"
-		}
-	}
-	
-	//=================================================================================================================
-	// 1263 - Infused Robe - Hood of Defiance (1650) + Vanguard (2150) + Infused Raindrop (225) + Recipe (425) = 4450
-	// Notes: OK; 25.12.2019; Uses damage filter; Damage block chance is True Random;
-	// TO_DO: 
-	//=================================================================================================================
-	"item_infused_robe"
-	{
-		"BaseClass"           			"item_datadriven"
-		"AbilityTextureName"      		"custom/infused_robe"
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_infused_robe"
+    "ItemRequirements"
+    {
+      "01"                                                "item_hood_of_defiance;item_vanguard;item_infused_raindrop"
+    }
+  }
+  
+  //=================================================================================================================
+  // 1263 - Infused Robe - Hood of Defiance (1500) + Vanilla Vanguard (1825) + Stout Shield (200) + Infused Raindrop (225) + Recipe (250) = 4000
+  // Notes: OK; 2022; Attack Damage block chance is Valve's Pseudo Random; Spell Damage block chance is custom Pseudo Random;
+  // TO_DO: 
+  //=================================================================================================================
+  "item_infused_robe"
+  {
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/infused_robe.lua"
+    "AbilityTextureName"                                  "custom/infused_robe"
 
-		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"        		"0.0"
-		"AbilityCooldown"       		"60"
-		"AbilitySharedCooldown"			"hood_of_defiance"
-		"AbilityManaCost"       		"100"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-		"ItemCost"            			"4450"
-		"ItemShopTags"					"regen_health;magic_resist;block;health_pool"
-		"ItemQuality"					"epic"
-		"ItemAliases"					"infused robe"
-		"ItemSellable" 					"1"
-		"ItemDroppable" 				"1"
-		"ItemShareability"        		"ITEM_NOT_SHAREABLE"
-		"ItemDeclarations"        		"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "30"
+    "AbilitySharedCooldown"                               "hood_of_defiance"
+    "AbilityManaCost"                                     "100"
 
-		"precache"
-		{
-			"particle"              "particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
-			"soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
-		}
+    "ItemCost"                                            "4000"
+    "ItemShopTags"                                        "regen_health;magic_resist;block;health_pool"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "infused robe"
+    "ItemSellable"                                        "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // like Vanguard lowest value
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_block"				"35"
-			}
-			"02" // like Vanguard
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_block_chance"		"50"
-			}
-			"03" // like Hood
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_magic_resist"		"25"
-			}
-			"04" // Hood (8) + Vanguard (7)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_hp_regen"			"15"
-			}
-			"05" // like Vanguard
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_hp"					"250"
-			}
-			"06" // like Raindrop
-			{
-				"var_type"					"FIELD_FLOAT"
-				"bonus_mana_regen"			"0.75"
-			}
-			"07" // Hood (325); Raindrop (120); Aphotic Shield (110/140/170/200 but with lvl 25 talent its: 335/365/395/425)
-			{
-				"var_type"					"FIELD_INTEGER"
-				"barrier_block"				"325"
-			}
-			"08" // Hood (12); Aphotic Shield (15);
-			{
-				"var_type"					"FIELD_INTEGER"
-				"barrier_duration"			"12"
-			}
-		}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+    }
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"    "Hero_Abaddon.AphoticShield.Cast"
-				"Target"        "CASTER"
-			}
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_hp"                                          "250" // like Vanguard
+      "bonus_hp_regen"                                    "15.5" // Hood (8.5) + Vanguard (7)
+      "bonus_mana_regen"                                  "0.8" // like Raindrop
+      "bonus_magic_resist"                                "25" // Hood (18); Eternal Shroud (25)
 
-			"RemoveModifier"
-			{
-				"ModifierName"	"item_modifier_infused_robe_damage_barrier"
-				"Target" 		"CASTER"
-			}
+      "passive_attack_damage_block_melee"                 "65"
+      "passive_attack_damage_block_ranged"                "35"
+      "passive_attack_damage_block_chance"                "60"
 
-			"ApplyModifier"
-			{
-				"ModifierName"  "item_modifier_infused_robe_damage_barrier"
-				"Target"        "CASTER"
-				"Duration"      "%barrier_duration"
-			}
-		}
+      "passive_spell_damage_block"                        "35"
+      "passive_spell_damage_block_chance"                 "50"
 
-		"Modifiers"
-		{
-			"modifier_item_infused_robe_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"					"%bonus_hp"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	    	"%bonus_mana_regen"
-				}
-			}
-
-			"item_modifier_infused_robe_damage_block" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-			}
-
-			"item_modifier_infused_robe_damage_barrier" // needs tooltip (anti-damage shell)
-			{
-				"IsHidden"			"0"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-
-				"TextureName"		"custom/infused_robe"
-
-				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield_oldbase.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-		}
-	}
+      "barrier_block"                                     "420" // Hood (350); Raindrop (120); Eternal Shroud (400);
+      "barrier_duration"                                  "12" // Hood (12); Aphotic Shield (15);
+    }
+  }
 }

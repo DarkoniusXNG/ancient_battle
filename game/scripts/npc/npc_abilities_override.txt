@@ -1,7 +1,7 @@
 // Dota Abilities Override File
 "DOTAAbilities"
 {
-  "Version"   "1"
+  "Version"                                               "1"
   
   // -----------------------------------------------------------
   // - UNCOMMENT ANY ITEM YOU DON'T WANT TO APPEAR IN THE SHOP -
@@ -19,7 +19,7 @@
   //"item_quarterstaff"     "REMOVE"
   //"item_quelling_blade"     "REMOVE"
   //"item_ring_of_protection"     "REMOVE"
-  "item_stout_shield"     "REMOVE"
+  "item_stout_shield"                                     "REMOVE"
   //"item_gauntlets"      "REMOVE"
   //"item_slippers"     "REMOVE"
   //"item_mantle"     "REMOVE"
@@ -78,8 +78,8 @@
   //"item_oblivion_staff"     "REMOVE"
   //"item_recipe_pers"      "REMOVE"
   //"item_pers"     "REMOVE"
-  "item_recipe_poor_mans_shield"      "REMOVE"
-  "item_poor_mans_shield"             "REMOVE"
+  "item_recipe_poor_mans_shield"                          "REMOVE"
+  "item_poor_mans_shield"                                 "REMOVE"
   //"item_recipe_bracer"      "REMOVE"
   //"item_bracer"     "REMOVE"
   //"item_recipe_wraith_band"     "REMOVE"
@@ -131,8 +131,8 @@
   //"item_refresher"      "REMOVE"
   //"item_recipe_assault"     "REMOVE"
   //"item_assault"      "REMOVE"
-  //"item_recipe_heart"     "REMOVE"
-  //"item_heart"      "REMOVE"
+  "item_recipe_heart"                                     "REMOVE"
+  "item_heart"                                            "REMOVE"
   //"item_recipe_black_king_bar"      "REMOVE"
   //"item_black_king_bar"     "REMOVE"
   //"item_aegis"      "REMOVE"
@@ -155,8 +155,8 @@
   //"item_monkey_king_bar"      "REMOVE"
   //"item_recipe_radiance"      "REMOVE"
   //"item_radiance"     "REMOVE"
-  //"item_recipe_butterfly"     "REMOVE"
-  //"item_butterfly"      "REMOVE"
+  "item_recipe_butterfly"                                 "REMOVE"
+  "item_butterfly"                                        "REMOVE"
   //"item_recipe_greater_crit"      "REMOVE"
   //"item_greater_crit"     "REMOVE"
   //"item_recipe_basher"      "REMOVE"
@@ -189,12 +189,12 @@
   //"item_desolator"      "REMOVE"
   //"item_recipe_yasha"     "REMOVE"
   //"item_yasha"      "REMOVE"
-  "item_recipe_mask_of_madness"     "REMOVE"
-  "item_mask_of_madness"      		"REMOVE"
-  "item_recipe_diffusal_blade"      "REMOVE"
-  "item_recipe_diffusal_blade_2"    "REMOVE"
-  "item_diffusal_blade"     		"REMOVE"
-  "item_diffusal_blade_2"     		"REMOVE"
+  "item_recipe_mask_of_madness"                           "REMOVE"
+  "item_mask_of_madness"                                  "REMOVE"
+  "item_recipe_diffusal_blade"                            "REMOVE"
+  "item_recipe_diffusal_blade_2"                          "REMOVE"
+  "item_diffusal_blade"                                   "REMOVE"
+  "item_diffusal_blade_2"                                 "REMOVE"
   //"item_recipe_ethereal_blade"      "REMOVE"
   //"item_ethereal_blade"     "REMOVE"
   //"item_recipe_soul_ring"     "REMOVE"
@@ -209,39 +209,39 @@
   //"item_smoke_of_deceit"      "REMOVE"
   //"item_recipe_veil_of_discord"     "REMOVE"
   //"item_veil_of_discord"      "REMOVE"
-  "item_recipe_rod_of_atos"     	"REMOVE"
-  "item_rod_of_atos"      			"REMOVE"
+  "item_recipe_rod_of_atos"                               "REMOVE"
+  "item_rod_of_atos"                                      "REMOVE"
   //"item_recipe_abyssal_blade"     "REMOVE"
   //"item_abyssal_blade"      "REMOVE"
   //"item_recipe_heavens_halberd"     "REMOVE"
   //"item_heavens_halberd"      "REMOVE"
-  "item_recipe_ring_of_aquila"      "REMOVE"
-  "item_ring_of_aquila"             "REMOVE"
+  "item_recipe_ring_of_aquila"                            "REMOVE"
+  "item_ring_of_aquila"                                   "REMOVE"
   //"item_recipe_tranquil_boots"      "REMOVE"
   //"item_tranquil_boots"     "REMOVE"
   //"item_shadow_amulet"      "REMOVE"
-    
-  "item_halloween_candy_corn"     	"REMOVE"
-  "item_mystery_hook"     			"REMOVE"
-  "item_mystery_arrow"      		"REMOVE"
-  "item_mystery_missile"      		"REMOVE"
-  "item_mystery_toss"     			"REMOVE"
-  "item_mystery_vacuum"     		"REMOVE"
-  "item_halloween_rapier"     		"REMOVE"
-  "item_greevil_whistle"      		"REMOVE"
-  "item_greevil_whistle_toggle"     "REMOVE"
-  "item_present"      				"REMOVE"
-  "item_winter_stocking"      		"REMOVE"
-  "item_winter_skates"      		"REMOVE"
-  "item_winter_cake"      			"REMOVE"
-  "item_winter_cookie"      		"REMOVE"
-  "item_winter_coco"      			"REMOVE"
-  "item_winter_ham"     			"REMOVE"
-  "item_winter_kringle"     		"REMOVE"
-  "item_winter_mushroom"      		"REMOVE"
-  "item_winter_greevil_treat"     	"REMOVE"
-  "item_winter_greevil_garbage"     "REMOVE"
-  "item_winter_greevil_chewy"     	"REMOVE"
+  
+  // "item_halloween_candy_corn"       "REMOVE"
+  // "item_mystery_hook"           "REMOVE"
+  // "item_mystery_arrow"          "REMOVE"
+  // "item_mystery_missile"          "REMOVE"
+  // "item_mystery_toss"           "REMOVE"
+  // "item_mystery_vacuum"         "REMOVE"
+  // "item_halloween_rapier"         "REMOVE"
+  // "item_greevil_whistle"          "REMOVE"
+  // "item_greevil_whistle_toggle"     "REMOVE"
+  // "item_present"              "REMOVE"
+  // "item_winter_stocking"          "REMOVE"
+  // "item_winter_skates"          "REMOVE"
+  // "item_winter_cake"            "REMOVE"
+  // "item_winter_cookie"          "REMOVE"
+  // "item_winter_coco"            "REMOVE"
+  // "item_winter_ham"           "REMOVE"
+  // "item_winter_kringle"         "REMOVE"
+  // "item_winter_mushroom"          "REMOVE"
+  // "item_winter_greevil_treat"       "REMOVE"
+  // "item_winter_greevil_garbage"     "REMOVE"
+  // "item_winter_greevil_chewy"       "REMOVE"
   
   //"item_recipe_moon_shard"      "REMOVE"
   //"item_moon_shard"     "REMOVE"  
@@ -263,25 +263,25 @@
   //"item_recipe_glimmer_cape"      "REMOVE"  
   //"item_glimmer_cape"     "REMOVE"
   
-	// "item_recipe_bloodthorn"      "REMOVE"
-	// "item_bloodthorn"      "REMOVE"
-	// "item_wind_lace"      "REMOVE"
-	// "item_infused_raindrop"      "REMOVE"
-	// "item_blight_stone"      "REMOVE"
-	// "item_recipe_echo_sabre"      "REMOVE"
-	// "item_echo_sabre"      "REMOVE"
-	// "item_tome_of_knowledge"      "REMOVE"
-	// "item_recipe_hurricane_pike"      "REMOVE"
-	// "item_hurricane_pike"      "REMOVE"
-	"item_banana"      "REMOVE"
+  // "item_recipe_bloodthorn"      "REMOVE"
+  // "item_bloodthorn"      "REMOVE"
+  // "item_wind_lace"      "REMOVE"
+  // "item_infused_raindrop"      "REMOVE"
+  // "item_blight_stone"      "REMOVE"
+  // "item_recipe_echo_sabre"      "REMOVE"
+  // "item_echo_sabre"      "REMOVE"
+  // "item_tome_of_knowledge"      "REMOVE"
+  // "item_recipe_hurricane_pike"      "REMOVE"
+  // "item_hurricane_pike"      "REMOVE"
+  "item_banana"                                           "REMOVE"
   // Neutral items
   //"item_keen_optic"               "REMOVE"
   //"item_royal_jelly"              "REMOVE"
   //"item_ocean_heart"              "REMOVE"
-  "item_iron_talon"               "REMOVE"
-  "item_recipe_iron_talon"        "REMOVE"
+  "item_iron_talon"                                       "REMOVE"
+  "item_recipe_iron_talon"                                "REMOVE"
   //"item_mango_tree"               "REMOVE"
-  "item_arcane_ring"              "REMOVE"
+  "item_arcane_ring"                                      "REMOVE"
   //"item_elixer"                   "REMOVE"
   //"item_broom_handle"             "REMOVE"
   //"item_ironwood_tree"            "REMOVE"
@@ -325,7 +325,7 @@
   //"item_the_leveller"             "REMOVE"
   //"item_minotaur_horn"            "REMOVE"
   //"item_force_boots"              "REMOVE"
-  //"item_desolator_2"				"REMOVE"
+  //"item_desolator_2"        "REMOVE"
   //"item_seer_stone"               "REMOVE"
   //"item_mirror_shield"            "REMOVE"
   //"item_fallen_sky"               "REMOVE"
@@ -342,402 +342,417 @@
   //"item_phoenix_ash"              "REMOVE"
   //"item_horizon"                  "REMOVE"
   //"item_dimensional_doorway"      "REMOVE"
-	
-	//=================================================================================================================
-	// Blink Dagger - Shares the cooldown with Blink Sword.
-	//=================================================================================================================
-	"item_blink"
-	{
-		"AbilitySharedCooldown"			"blink"
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Cheese - purchasable, more expensive
-	// Notes: OK; 29.10.2016;
-	//=================================================================================================================
-	"item_cheese"
-	{
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
-		// Stats	
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityCooldown"				"40.0"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"									"2000"
-		//"ItemShopTags"							""
-		//"ItemQuality"								"epic"
-		"ItemPurchasable"							"1"
-		//"ItemStackable"							"1"
-		//"ItemShareability"						"ITEM_FULLY_SHAREABLE"
-		//"ItemPermanent"							"0"
-		//"ItemInitialCharges"						"1"
-		//"ItemDeclarations"						"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		//"ItemContributesToNetWorthWhenDropped"	"0"
 
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		// "AbilitySpecial"
-		// {
-			// "01"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "health_restore"		"2500"
-			// }
-			// "02"
-			// {
-				// "var_type"				"FIELD_INTEGER"
-				// "mana_restore"			"1000"
-			// }
-		// }
-	}
-	
-	//=================================================================================================================
-	// Black King Bar - Shares the cooldown with Ultimate King Bar
-	//=================================================================================================================
-	"item_black_king_bar"
-	{
-		"AbilitySharedCooldown"			"black_king_bar"
-	}
-	
-	//=================================================================================================================
-	// Blade Mail - Shares cooldown with Orb of Reflection
-	//=================================================================================================================
-	"item_blade_mail"
-	{
-		"AbilitySharedCooldown"			"reflection_items"
-	}
-	
-	//=================================================================================================================
-	// Hood of Defiance - Shares cooldown with Infused Robe
-	//=================================================================================================================
-	"item_hood_of_defiance"
-	{
-		"AbilitySharedCooldown"			"hood_of_defiance"
-	}
-	
-	"item_tpscroll"
-	{
-		"SideShop"						"1"
-		"ItemCost"                      "1"
-		"ItemPermanent"                 "1"
-		"ItemRequiresCharges"           "0"
-		"ItemDisplayCharges"            "0"
-		"ItemKillable"                  "0"
-		"ItemDroppable"                 "1"
-	}
-	
-	"item_ring_of_protection"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_magic_stick"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_quelling_blade"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Orb of Venom
-	//=================================================================================================================
-	"item_orb_of_venom"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Sage Mask
-	//=================================================================================================================
-	"item_sobi_mask"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Ring of Regen
-	//=================================================================================================================
-	"item_ring_of_regen"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_boots"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_boots_of_elves"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_belt_of_strength"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_robe"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Ring of Health
-	//=================================================================================================================
-	"item_ring_of_health"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_crown"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_gloves"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_chainmail"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Blight Stone
-	//=================================================================================================================
-	"item_blight_stone"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_cloak"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_void_stone"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_helm_of_iron_will"
-	{
-		"SideShop"						"1"
-	}
-	
-	//=================================================================================================================
-	// Quarterstaff
-	//=================================================================================================================
-	"item_quarterstaff"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_energy_booster"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_vitality_booster"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_lifesteal"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_broadsword"
-	{
-		"SideShop"						"1"
-	}
-	
-	"item_blades_of_attack"
-	{
-		"SideShop"						"1"
-	}
+  //=================================================================================================================
+  // Blink Dagger - Shares the cooldown with Blink Sword (Super Blink) and other blink daggers
+  //=================================================================================================================
+  "item_blink"
+  {
+    "AbilitySharedCooldown"                               "blink"
+    "SideShop"                                            "1"
+  }
 
-	//=================================================================================================================
-	// Aghanim's Shard
-	//=================================================================================================================
-	"item_aghanims_shard"
-	{
-		"ItemInitialStockTime"			"780.0" // 60 seconds pregame + 12 * 60 seconds
-	}
+  //=================================================================================================================
+  // Cheese - purchasable, more expensive
+  // Notes: OK; 29.10.2016;
+  //=================================================================================================================
+  "item_cheese"
+  {
+    //"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    
+    // Stats  
+    //-------------------------------------------------------------------------------------------------------------
+    //"AbilityCooldown"        "40.0"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "2000"
+    //"ItemShopTags"              ""
+    //"ItemQuality"                "epic"
+    "ItemPurchasable"                                     "1"
+    //"ItemStackable"              "1"
+    //"ItemShareability"            "ITEM_FULLY_SHAREABLE"
+    //"ItemPermanent"              "0"
+    //"ItemInitialCharges"            "1"
+    //"ItemDeclarations"            "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    //"ItemContributesToNetWorthWhenDropped"  "0"
 
-	//=================================================================================================================
-	// Recipe: Wraith Band
-	//=================================================================================================================
-	"item_recipe_wraith_band"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"74"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"110"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_wraith_band"
-		"ItemRequirements"
-		{
-			"01"						"item_wraith_band_old"
-		}
-	}
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    // "AbilitySpecial"
+    // {
+      // "01"
+      // {
+        // "var_type"        "FIELD_INTEGER"
+        // "health_restore"    "2500"
+      // }
+      // "02"
+      // {
+        // "var_type"        "FIELD_INTEGER"
+        // "mana_restore"      "1000"
+      // }
+    // }
+  }
 
-	//=================================================================================================================
-	// Recipe: Bracer
-	//=================================================================================================================
-	"item_recipe_bracer"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"72"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"110"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_bracer"
-		"ItemRequirements"
-		{
-			"01"						"item_bracer_old"
-		}
-	}
-	
-	//=================================================================================================================
-	// Recipe: Null Talisman
-	//=================================================================================================================
-	"item_recipe_null_talisman"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"76"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"110"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_null_talisman"
-		"ItemRequirements"
-		{
-			"01"						"item_null_talisman_old"
-		}
-	}
+  //=================================================================================================================
+  // Black King Bar - Shares the cooldown with Ultimate King Bar
+  //=================================================================================================================
+  "item_black_king_bar"
+  {
+    "AbilitySharedCooldown"                               "black_king_bar"
+  }
 
-	//=================================================================================================================
-	// Recipe: Gleipnir
-	//=================================================================================================================
-	"item_recipe_gungir"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1565"
-		"Model"							"models/props_gameplay/recipe.vmdl"
+  //=================================================================================================================
+  // Blade Mail - Shares cooldown with Orb of Reflection
+  //=================================================================================================================
+  "item_blade_mail"
+  {
+    "AbilitySharedCooldown"                               "reflection_items"
+  }
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"500"	
-		"ItemShopTags"					""
+  //=================================================================================================================
+  // Hood of Defiance - Shares cooldown with Infused Robe
+  //=================================================================================================================
+  "item_hood_of_defiance"
+  {
+    "AbilitySharedCooldown"                               "hood_of_defiance"
+  }
 
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_gungir"
-		"ItemRequirements"
-		{
-			"01"						"item_maelstrom;item_ultimate_orb;item_crown;item_atma"
-		}
-	}
-	
-	//=================================================================================================================
-	// Filler buildings ability (Shrines)
-	//=================================================================================================================
-	"filler_ability"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"                               "6226"
-		"AbilityBehavior"                  "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"MaxLevel"                         "1"
+  //=================================================================================================================
+  // Scythe of Vyse - Shares cooldown with old Scythe of Vyse
+  //=================================================================================================================
+  "item_sheepstick"
+  {
+    "AbilitySharedCooldown"                               "sheepsticks"
+  }
 
-		"AbilityCastAnimation"             "ACT_DOTA_CAST_ABILITY_2"
+  "item_tpscroll"
+  {
+    "SideShop"                                            "1"
+    "ItemCost"                                            "1"
+    "ItemPermanent"                                       "1"
+    "ItemRequiresCharges"                                 "0"
+    "ItemDisplayCharges"                                  "0"
+    "ItemKillable"                                        "0"
+    "ItemDroppable"                                       "1"
+  }
 
-		// Time
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                  "180"
+  "item_ring_of_protection"
+  {
+    "SideShop"                                            "1"
+  }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"hp_heal"                      "90"
-			}
-			"02"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"mp_heal"                      "50"
-			}
-			"03"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"hp_heal_growth"               "0"
-			}
-			"04"
-			{
-				"var_type"                     "FIELD_FLOAT"
-				"mp_heal_growth"               "0"
-			}
-			"05"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"hp_heal_pct"                  "2"
-			}
-			"06"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"mp_heal_pct"                  "2"
-			}
-			"07"
-			{
-				"var_type"                     "FIELD_FLOAT"
-				"duration"                     "5"
-			}
-			"08"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"radius"                       "500"
-			}
-			"09"
-			{
-				"var_type"                     "FIELD_INTEGER"
-				"initial_cooldown"             "180"
-			}
-		}
-	}
+  "item_magic_stick"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_quelling_blade"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_orb_of_venom"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_sobi_mask"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_ring_of_regen"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_boots"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_boots_of_elves"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_belt_of_strength"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_robe"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_ring_of_health"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_crown"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_gloves"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_chainmail"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_blight_stone"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_cloak"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_void_stone"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_helm_of_iron_will"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_quarterstaff"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_energy_booster"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_vitality_booster"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_lifesteal"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_broadsword"
+  {
+    "SideShop"                                            "1"
+  }
+
+  "item_blades_of_attack"
+  {
+    "SideShop"                                            "1"
+  }
+
+  //=================================================================================================================
+  // Aghanim's Shard
+  //=================================================================================================================
+  "item_aghanims_shard"
+  {
+    "ItemInitialStockTime"                                "780.0" // 60 seconds pregame + 12 * 60 seconds
+  }
+
+  //=================================================================================================================
+  // Recipe: Wraith Band
+  //=================================================================================================================
+  "item_recipe_wraith_band"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "74"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "110"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_wraith_band"
+    "ItemRequirements"
+    {
+      "01"                                                "item_wraith_band_old"
+    }
+  }
+
+  //=================================================================================================================
+  // Recipe: Bracer
+  //=================================================================================================================
+  "item_recipe_bracer"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "72"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "110"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_bracer"
+    "ItemRequirements"
+    {
+      "01"                                                "item_bracer_old"
+    }
+  }
+
+  //=================================================================================================================
+  // Recipe: Null Talisman
+  //=================================================================================================================
+  "item_recipe_null_talisman"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "76"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "110"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_null_talisman"
+    "ItemRequirements"
+    {
+      "01"                                                "item_null_talisman_old"
+    }
+  }
+
+  //=================================================================================================================
+  // Recipe: Gleipnir
+  //=================================================================================================================
+  "item_recipe_gungir"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "1565"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "500"  
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_gungir"
+    "ItemRequirements"
+    {
+      "01"                                                "item_maelstrom;item_ultimate_orb;item_crown;item_atma"
+    }
+  }
+
+  //=================================================================================================================
+  // Recipe: Vanguard
+  //=================================================================================================================
+  "item_recipe_vanguard"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "124"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+    
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_vanguard"
+    "ItemRequirements"
+    {
+      "01"                                                "item_custom_stout_shield;item_ring_of_health;item_vitality_booster"
+    }
+  }
+
+  //=================================================================================================================
+  // Filler buildings ability (Shrines)
+  //=================================================================================================================
+  "filler_ability"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"                                                  "6226"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"                                            "1"
+
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "180"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "hp_heal"                                         "90"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mp_heal"                                         "50"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "hp_heal_growth"                                  "0"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "mp_heal_growth"                                  "0"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "hp_heal_pct"                                     "2"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mp_heal_pct"                                     "2"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "5"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "500"
+      }
+      "09"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "initial_cooldown"                                "180"
+      }
+    }
+  }
 }

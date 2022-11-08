@@ -1,92 +1,92 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Horde: Combie - Level 2
-	// Notes: OK; 17.5.2018;
-	//=================================================================================
-	"npc_dota_combie"
-	{
-		"BaseClass"			"npc_dota_creature"	
-		"Model"				"models/heroes/undying/undying_minion.vmdl"
-		"SoundSet"			"Undying_Zombie"				
-		"ModelScale"		"0.8"
-		"CanBeDominated"  	"1"
-		"Level"				"2"
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"combie_death_lust"
-		"Ability2"					""
-		"Ability3"					""
-		"Ability4"					""
-		
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"1"
-		"MagicalResistance"			"33"
+  //=================================================================================
+  // Horde: Combie - Level 2
+  // Notes: OK; 17.5.2018;
+  //=================================================================================
+  "npc_dota_combie"
+  {
+    "BaseClass"                                           "npc_dota_creature"  
+    "Model"                                               "models/heroes/undying/undying_minion.vmdl"
+    "SoundSet"                                            "Undying_Zombie"        
+    "ModelScale"                                          "0.8"
+    "CanBeDominated"                                      "1"
+    "Level"                                               "2"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "combie_death_lust"
+    "Ability2"                                            ""
+    "Ability3"                                            ""
+    "Ability4"                                            ""
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "1"
+    "MagicalResistance"                                   "33"
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"27"
-		"AttackDamageMax"			"30"
-		"AttackRate"				"1.2"
-		"AttackAnimationPoint"		"0.33"
-		"AttackAcquisitionRange"	"800"
-		"AttackRange"				"150"
-		
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"55"
-		"BountyGoldMin"				"20"
-		"BountyGoldMax"				"20"
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "27"
+    "AttackDamageMax"                                     "30"
+    "AttackRate"                                          "1.2"
+    "AttackAnimationPoint"                                "0.33"
+    "AttackAcquisitionRange"                              "800"
+    "AttackRange"                                         "150"
+    
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "55"
+    "BountyGoldMin"                                       "20"
+    "BountyGoldMax"                                       "20"
 
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"				"70"
-		"HealthBarOffset"			"160"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+    // Bounds
+    //----------------------------------------------------------------
+    "RingRadius"                                          "70"
+    "HealthBarOffset"                                     "160"
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"  
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"420"
-		"MovementTurnRate"			"0.5"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "420"
+    "MovementTurnRate"                                    "0.5"
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"250"
-		"StatusHealthRegen"			"0.5"
-		"StatusMana"				"0"
-		"StatusManaRegen"			"0"
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "250"
+    "StatusHealthRegen"                                   "0.5"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
 
-		// Combat
-		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1400"
-		"VisionNighttimeRange"		"1800"
-		
-		"Creature"
+    // Combat
+    //----------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1400"
+    "VisionNighttimeRange"                                "1800"
+    
+    "Creature"
+    {
+      "ItemDrops"
+      {
+        "Trinkets"
         {
-            "ItemDrops"
-            {
-                "Trinkets"
-                {
-                    "Item"
-                    {
-                        "1"             "item_belt_of_strength"
-                        "2"             "item_robe"
-                        "3"             "item_boots_of_elves"
-                        "4"             "item_gloves"
-                    }
-                    "Chance"            "5"
-                }
-            }
+          "Item"
+          {
+            "1"                                           "item_belt_of_strength"
+            "2"                                           "item_robe"
+            "3"                                           "item_boots_of_elves"
+            "4"                                           "item_gloves"
+          }
+          "Chance"                                        "5"
         }
-	}
+      }
+    }
+  }
 }

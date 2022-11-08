@@ -1,66 +1,66 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Silencer: Last Word (E) - New Spell; Passive + Active; Old Last Word Aura + Old Last Word Active with disarm
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 26.8.2019;
-	// TO_DO: 
-	//=================================================================================================================
-	"silencer_custom_last_word"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/silencer/last_word.lua"
-		"AbilityTextureName"			"silencer_last_word"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastPoint"				"0.3"
-		"AbilityCastRange"				"900"
+  //=================================================================================================================
+  // Silencer: Last Word (E) - New Spell; Passive + Active; Old Last Word Aura + Old Last Word Active with disarm
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 26.8.2019;
+  // TO_DO: 
+  //=================================================================================================================
+  "silencer_custom_last_word"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/silencer/last_word.lua"
+    "AbilityTextureName"                                  "silencer_last_word"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastRange"                                    "900"
 
-		"AbilityCooldown"				"22 18 14 10"
-		
-		"AbilityManaCost"				"120"
-		"AbilityProcsMagicStick"		"1"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"150 200 250 300"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"debuff_duration"				"4.0"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"silence_duration_active"		"3.0 4.0 5.0 6.0"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"disarm_duration"				"2.5 3.0 3.5 4.0"
-			}
-			"05" // old aura_radius was 750
-			{
-				"var_type"						"FIELD_INTEGER"
-				"aura_radius"					"500"
-			}
-			"06"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"silence_duration_passive"		"0.75 1.5 2.25 3.0"
-			}
-		}
-	}
+    "AbilityCooldown"                                     "22 18 14 10"
+    
+    "AbilityManaCost"                                     "120"
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "150 200 250 300"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "debuff_duration"                                 "4.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "silence_duration_active"                         "3.0 4.0 5.0 6.0"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "disarm_duration"                                 "2.5 3.0 3.5 4.0"
+      }
+      "05" // old aura_radius was 750
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "500"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "silence_duration_passive"                        "0.75 1.5 2.25 3.0"
+      }
+    }
+  }
 }

@@ -1,168 +1,168 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Mana Eater: Mana Flare (E) - New Spell, like Pugna's Nether Ward but the hero itself is the source + self root + bonus armor + flare splashes
-	// Author: Darkonius
-	// Notes: OK; 2021; Pure damage;
-	// TO_DO: Rework to lua; Add Root to caster; Merge modifier_mana_flare_armor_buff and modifier_mana_flare_aura_applier; add splash
-	//=================================================================================================================
-	"mana_eater_mana_flare"
-	{
-		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"custom/mana_eater_mana_flare"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_PURE"
-		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"		"SPELL_DISPELLABLE_NO"
-		
-		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
-		"AnimationPlaybackRate"		"0.3"
-		
-		"AbilityCastPoint"			"0.0"                 // was 0.75
-		"AbilityCooldown"			"0.5"
-		"AbilityManaCost"			"50"                  // Nether Ward (80); original (50);
-		"AbilityProcsMagicStick"	"1"
-		
-		"AbilitySpecial"
-		{
-			"01" // Nether Ward (18/22/26/30); original (30);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration"                                "15"
-			}
-			"02" // Nether Ward (35); original (20); cooldown starts when buff is removed;
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"cooldown"                                "15"
-			}
-			"03" // Nether Ward (1600); original(750);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"aura_radius"                             "1800"
-			}
-			"04" // original (12);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_armor"                             "20"
-			}
-			"05" // Nether Ward (50 + 1/1.25/1.5/1.75); original (4 for units 1 for heroes);
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"damage_per_used_mana"                    "1.25 1.5 1.75 2.0"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"06" // original (200);
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"splash_radius"                           "300"
-			}
-		}
-	
-		"precache"
-		{
-			"particle"  "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf"  // used
-			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
-			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
-			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
-			//"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
-			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_heavy_ti_5.vpcf"  // used
-			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_medium_ti_5.vpcf" // used
-			"particle"  "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"  // used
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mana_eater/mana_flare.lua"
-				"Function"		"ManaFlareStart"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_mana_flare_armor_buff"
-				"Target" 		"CASTER"
-			}
-			
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_mana_flare_aura_applier"
-				"Target" 		"CASTER"
-			}
-			
-			"FireSound"
-			{
-				"EffectName"	"Hero_Juggernaut.HealingWard.Loop"
-				"Target"		"CASTER"
-			}
-		}
-	
-		// "OnChannelFinish"
-		// {
-			// "RunScript"
-			// {
-				// "ScriptFile"	"heroes/mana_eater/mana_flare.lua"
-				// "Function"		"ManaFlareEnd"
-			// }
-		// }
-		
-		// "OnChannelInterrupted"
-		// {
-			// "RunScript"
-			// {
-				// "ScriptFile"	"heroes/mana_eater/mana_flare.lua"
-				// "Function"		"ManaFlareEnd"
-			// }
-		// }
-	
-		"Modifiers"
-		{
-			"modifier_mana_flare_armor_buff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-				}
-			}
-	
-			"modifier_mana_flare_aura_applier" // doesn't need tooltip
-			{
-				"IsHidden"				"1"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-				
-	            "Aura"              "modifier_mana_flare_debuff"
-	            "Aura_Radius"       "%radius"
-	            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Aura_Types"        "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	
-	            "EffectName"        "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf"
-	            "EffectAttachType"  "follow_origin"
-			}
-	
-	        "modifier_mana_flare_debuff" // needs tooltip, visible on enemies
-	        {
-	            "IsHidden"			"0"
-				"IsDebuff"          "1"
-				"IsPurgable"		"0"
-	        
-	            "OnSpentMana"
-	            {
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "heroes/mana_eater/mana_flare.lua"
-	                    "Function"      "ManaFlareDamage"
-	                }
-	            }
-	        }
-	    }
-	}
+  //=================================================================================================================
+  // Mana Eater: Mana Flare (E) - New Spell, like Pugna's Nether Ward but the hero itself is the source + self root + bonus armor + flare splashes
+  // Author: Darkonius
+  // Notes: OK; 2021; Pure damage;
+  // TO_DO: Rework to lua; Add Root to caster; Merge modifier_mana_flare_armor_buff and modifier_mana_flare_aura_applier; add splash
+  //=================================================================================================================
+  "mana_eater_mana_flare"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/mana_eater_mana_flare"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+    "AnimationPlaybackRate"                               "0.3"
+    
+    "AbilityCastPoint"                                    "0.0"                 // was 0.75
+    "AbilityCooldown"                                     "0.5"
+    "AbilityManaCost"                                     "50"                  // Nether Ward (80); original (50);
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01" // Nether Ward (18/22/26/30); original (30);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "15"
+      }
+      "02" // Nether Ward (35); original (20); cooldown starts when buff is removed;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "cooldown"                                        "15"
+      }
+      "03" // Nether Ward (1600); original(750);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "1800"
+      }
+      "04" // original (12);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_armor"                                     "20"
+      }
+      "05" // Nether Ward (50 + 1/1.25/1.5/1.75); original (4 for units 1 for heroes);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_per_used_mana"                            "1.25 1.5 1.75 2.0"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "06" // original (200);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "splash_radius"                                   "300"
+      }
+    }
+    
+    "precache"
+    {
+      "particle"                                          "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf"  // used
+      //"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
+      //"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
+      //"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
+      //"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
+      "particle"                                          "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_heavy_ti_5.vpcf"  // used
+      "particle"                                          "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_medium_ti_5.vpcf" // used
+      "particle"                                          "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"  // used
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+    }
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/mana_eater/mana_flare.lua"
+        "Function"                                        "ManaFlareStart"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_mana_flare_armor_buff"
+        "Target"                                          "CASTER"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_mana_flare_aura_applier"
+        "Target"                                          "CASTER"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Juggernaut.HealingWard.Loop"
+        "Target"                                          "CASTER"
+      }
+    }
+    
+    // "OnChannelFinish"
+    // {
+      // "RunScript"
+      // {
+        // "ScriptFile"  "heroes/mana_eater/mana_flare.lua"
+        // "Function"    "ManaFlareEnd"
+      // }
+    // }
+    
+    // "OnChannelInterrupted"
+    // {
+      // "RunScript"
+      // {
+        // "ScriptFile"  "heroes/mana_eater/mana_flare.lua"
+        // "Function"    "ManaFlareEnd"
+      // }
+    // }
+    
+    "Modifiers"
+    {
+      "modifier_mana_flare_armor_buff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
+        }
+      }
+      
+      "modifier_mana_flare_aura_applier" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Aura"                                            "modifier_mana_flare_debuff"
+        "Aura_Radius"                                     "%radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        
+        "EffectName"                                      "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_aproset.vpcf"
+        "EffectAttachType"                                "follow_origin"
+      }
+      
+      "modifier_mana_flare_debuff" // needs tooltip, visible on enemies
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
+        
+        "OnSpentMana"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/mana_eater/mana_flare.lua"
+            "Function"                                    "ManaFlareDamage"
+          }
+        }
+      }
+    }
+  }
 }

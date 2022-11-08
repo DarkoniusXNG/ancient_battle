@@ -1,0 +1,13 @@
+//=============================================================================
+// Enrage Crystal
+//=============================================================================
+
+"DOTA_Tooltip_Ability_item_enrage_crystal"                                          "Enrage Crystal"
+"DOTA_Tooltip_Ability_item_recipe_enrage_crystal"                                   "Enrage Crystal Recipe"
+"DOTA_Tooltip_Ability_item_enrage_crystal_Description"                              "<h1>Active: Hatred</h1> Removes most debuffs and stuns from the caster. Can be used while stunned but not while hexed or muted.<br>Dispel Type: <span class=\"GameplayValues GameplayVariable\">Strong Dispel</span>"
+"DOTA_Tooltip_Ability_item_enrage_crystal_Lore"                                     "A crystal full of rage."
+"DOTA_Tooltip_Ability_item_enrage_crystal_bonus_strength"                           "+$str"
+"DOTA_Tooltip_Ability_item_enrage_crystal_bonus_damage"                             "+$damage"
+"DOTA_Tooltip_Ability_item_enrage_crystal_bonus_status_resist"                      "%+Status Resistance"
+"DOTA_Tooltip_Ability_item_enrage_crystal_hp_regen_amp"                             "%+Health Regen Amp"
+"DOTA_Tooltip_Ability_item_enrage_crystal_lifesteal_amp"                            "%+Lifesteal Amp"

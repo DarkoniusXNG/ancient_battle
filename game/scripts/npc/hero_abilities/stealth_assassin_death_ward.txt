@@ -1,100 +1,100 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Stealth Assassin: Death Ward (R) - Non-channeling Witch Doctor Death Ward; auras work on the ward;
-	// Author: Darkonius
-	// Notes: OK; 10.3.2020; Has Aghanim Scepter upgrade; Scepter bounces cannot crit!
-	// TO_DO:
-	//=================================================================================================================
-	"stealth_assassin_death_ward"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/ryu/death_ward.lua"
-		"AbilityTextureName"			"custom/stealth_assassin_death_ward"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+  //=================================================================================================================
+  // Stealth Assassin: Death Ward (R) - Non-channeling Witch Doctor Death Ward; auras work on the ward;
+  // Author: Darkonius
+  // Notes: OK; 10.3.2020; Has Aghanim Scepter upgrade; Scepter bounces cannot crit!
+  // TO_DO:
+  //=================================================================================================================
+  "stealth_assassin_death_ward"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/ryu/death_ward.lua"
+    "AbilityTextureName"                                  "custom/stealth_assassin_death_ward"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
 
-		"HasScepterUpgrade"				"1"
+    "HasScepterUpgrade"                                   "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"200"
-		"AbilityCastPoint"				"0.4"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "200"
+    "AbilityCastPoint"                                    "0.4"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80.0"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "80.0"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"200 250 300"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "200 250 300"
 
-		"precache"
-		{
-			"model"		"models/heroes/witchdoctor/witchdoctor_ward.vmdl"
-			"model"		"models/heroes/witchdoctor/witchdoctor_skull.vmdl"
-			"particle"  "particles/units/heroes/hero_witchdoctor/witchdoctor_deathward_glow.vpcf"
-			"particle"	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_attack.vpcf"
-			"particle"	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_skull.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+    "precache"
+    {
+      "model"                                             "models/heroes/witchdoctor/witchdoctor_ward.vmdl"
+      "model"                                             "models/heroes/witchdoctor/witchdoctor_skull.vmdl"
+      "particle"                                          "particles/units/heroes/hero_witchdoctor/witchdoctor_deathward_glow.vpcf"
+      "particle"                                          "particles/units/heroes/hero_witchdoctor/witchdoctor_ward_attack.vpcf"
+      "particle"                                          "particles/units/heroes/hero_witchdoctor/witchdoctor_ward_skull.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage"                                  "70 125 180"
-				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_5"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"attack_range_tooltip"                    "700"
-				"LinkedSpecialBonus"                      "special_bonus_unique_witch_doctor_1"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bounces_scepter"                         "2 3 4"
-				"RequiresScepter"                         "1"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bounce_radius"                           "650"
-				"RequiresScepter"                         "1"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"duration_tooltip"                        "8"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"melee_hero_hits_to_kill"                 "4"
-			}
-			"07"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"ranged_hero_hits_to_kill"                "5"
-			}
-			"08"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"creep_hits_to_kill"                      "16"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "70 125 180"
+        "LinkedSpecialBonus"                              "special_bonus_unique_witch_doctor_5"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_range_tooltip"                            "700"
+        "LinkedSpecialBonus"                              "special_bonus_unique_witch_doctor_1"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bounces_scepter"                                 "2 3 4"
+        "RequiresScepter"                                 "1"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bounce_radius"                                   "650"
+        "RequiresScepter"                                 "1"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration_tooltip"                                "8"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "melee_hero_hits_to_kill"                         "4"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ranged_hero_hits_to_kill"                        "5"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "creep_hits_to_kill"                              "16"
+      }
+    }
+  }
 }

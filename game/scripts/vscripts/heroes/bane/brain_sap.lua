@@ -12,7 +12,7 @@ function bane_custom_brain_sap:CastFilterResultTarget(target)
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
 	if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
-		if caster:HasScepter() then
+		if caster:HasShardCustom() then
 			return UF_SUCCESS
 		end
 
@@ -22,12 +22,23 @@ function bane_custom_brain_sap:CastFilterResultTarget(target)
 	return default_result
 end
 
+function bane_custom_brain_sap:GetCastPoint()
+	local caster = self:GetCaster()
+	local delay = self.BaseClass.GetCastPoint(self)
+
+	if caster:HasShardCustom() then
+		delay = self:GetSpecialValueFor("shard_cast_point")
+	end
+
+	return delay
+end
+
 function bane_custom_brain_sap:GetCooldown(nLevel)
 	local caster = self:GetCaster()
 	local cooldown = self.BaseClass.GetCooldown(self, nLevel)
 
-	if caster:HasScepter() then
-		cooldown = self:GetSpecialValueFor("cooldown_scepter")
+	if caster:HasShardCustom() then
+		cooldown = self:GetSpecialValueFor("shard_cooldown")
 	end
 
 	return cooldown
@@ -64,7 +75,7 @@ function bane_custom_brain_sap:OnSpellStart()
 		end
 
 		-- Apply intelligence loss/gain modifiers before the damage
-		if target:IsRealHero() and not target:IsClone() then
+		if target:IsRealHero() and not target:IsClone() and not target:IsTempestDouble() and not target.original then
 			local int_steal_duration = self:GetSpecialValueFor("int_steal_duration")
 
 			target:AddNewModifier(caster, self, "modifier_custom_brain_sap_int_loss_counter", {duration = int_steal_duration})

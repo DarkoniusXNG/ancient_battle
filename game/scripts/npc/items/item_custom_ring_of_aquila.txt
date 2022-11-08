@@ -1,97 +1,97 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Recipe: Custom Ring of Aquila
-	//=================================================================================================================
-	"item_recipe_custom_ring_of_aquila"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                     "item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
+  //=================================================================================================================
+  // Recipe: Custom Ring of Aquila
+  //=================================================================================================================
+  "item_recipe_custom_ring_of_aquila"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"155"
-		"ItemShopTags"					""
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "155"
+    "ItemShopTags"                                        ""
 
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_ring_of_aquila"
-		"ItemRequirements"
-		{
-			"01"						"item_wraith_band_old;item_ring_of_protection;item_sobi_mask"
-		}
-	}
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_ring_of_aquila"
+    "ItemRequirements"
+    {
+      "01"                                                "item_wraith_band_old;item_ring_of_protection;item_sobi_mask"
+    }
+  }
 
-	//=================================================================================================================
-	// Custom Ring of Aquila - Old Wraith Band (395) + Ring of Protection (175) + Sage Mask (175) + Recipe (155) = 900
-	// Notes: OK; 2022; No Aura;
-	//=================================================================================================================
-	"item_custom_ring_of_aquila"
-	{
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Custom Ring of Aquila - Old Wraith Band (395) + Ring of Protection (175) + Sage Mask (175) + Recipe (155) = 900
+  // Notes: OK; 2022; No Aura;
+  //=================================================================================================================
+  "item_custom_ring_of_aquila"
+  {
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"BaseClass"					"item_lua"
-		"ScriptFile"				"items/custom_ring_of_aquila.lua"
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/custom_ring_of_aquila.lua"
 
-		"AbilityTextureName"		"item_ring_of_aquila"
+    "AbilityTextureName"                                  "item_ring_of_aquila"
 
-		"ItemCost"					"900"
-		"ItemShopTags"              "damage;agi;int;str;regen_mana;armor"
-		"ItemSellable" 				"1"
-		"ItemPurchasable"			"1"
-		"ItemDroppable"				"1"
-		"ItemShareability"        	"ITEM_NOT_SHAREABLE"
-		"ItemDeclarations"        	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemQuality"  				"rare"
-		"ItemAliases"               "roa;ring of aquila;aquila"
-		"ItemDisassembleRule" 		"DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemCost"                                            "900"
+    "ItemShopTags"                                        "damage;agi;int;str;regen_mana;armor"
+    "ItemSellable"                                        "1"
+    "ItemPurchasable"                                     "1"
+    "ItemDroppable"                                       "1"
+    "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "roa;ring of aquila;aquila"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
-		"UIPickupSound"				"Item.PickUpRingShop"
-		"UIDropSound"				"Item.DropRingShop"
-		"WorldDropSound"			"Item.DropRingWorld"
+    "UIPickupSound"                                       "Item.PickUpRingShop"
+    "UIDropSound"                                         "Item.DropRingShop"
+    "WorldDropSound"                                      "Item.DropRingWorld"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // better than Wraith Band
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_agility"                           "6"
-			}
-			"02" // better than Wraith Band
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_strength"                          "3"
-			}
-			"03" // better than Wraith Band
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_intellect"                         "3"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_damage"                            "2"
-			}
-			"05"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_attack_speed"                      "5"
-			}
-			"06" // like Ring of Protection
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_armor"                             "2"
-			}
-			"07" // like Sage Mask
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"bonus_mana_regen"                        "0.75"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // better than Wraith Band
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agility"                                   "6"
+      }
+      "02" // better than Wraith Band
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_strength"                                  "3"
+      }
+      "03" // better than Wraith Band
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_intellect"                                 "3"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_damage"                                    "2"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_attack_speed"                              "5"
+      }
+      "06" // like Ring of Protection
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_armor"                                     "2"
+      }
+      "07" // like Sage Mask
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "bonus_mana_regen"                                "0.75"
+      }
+    }
+  }
 }

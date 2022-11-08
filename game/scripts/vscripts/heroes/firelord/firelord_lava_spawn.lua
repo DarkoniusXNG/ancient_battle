@@ -4,7 +4,7 @@ function GetSummonPoints(event)
 	local distance = event.distance
     local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
-    
+
 	local front_position = origin + fv*distance
 
     local result = {}
@@ -19,7 +19,7 @@ function SetUnitsMoveForward(event)
 	local target = event.target
     local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
-	
+
 	target:SetForwardVector(fv)
 
 	-- Keep the unit creation time of the first one created (needed for calculation of remaining time)
@@ -32,7 +32,7 @@ function LavaSpawnAttackCounter(event)
 	local attacker = event.attacker
 	local ability = event.ability
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local playerID = caster:GetPlayerID()
 	local attacks_to_split = ability:GetLevelSpecialValueFor("attacks_to_split", ability_level)
 	local lava_spawn_duration = ability:GetLevelSpecialValueFor("lava_spawn_duration", ability_level)
@@ -52,17 +52,17 @@ function LavaSpawnAttackCounter(event)
 		lava_spawn:SetControllableByPlayer(playerID, true)
 		--local attacker_creation_time = attacker:GetCreationTime() 					-- uncomment for debugging
 		--print("Creation time of the one that replicated: "..attacker_creation_time)	-- uncomment for debugging
-		
+
 		-- Getting the creation time of the first one
 		local first_creation_time = caster.creation_time
 		local current_time = GameRules:GetGameTime()
 		local remaining_time = lava_spawn_duration - (current_time - first_creation_time) + 1
-		
+
 		ability:ApplyDataDrivenModifier(caster, lava_spawn, "modifier_lava_spawn", nil)
 		ability:ApplyDataDrivenModifier(caster, lava_spawn, "modifier_lava_spawn_replicate", nil)
 		ability:ApplyDataDrivenModifier(caster, lava_spawn, "modifier_lavaspawn_phased", {["duration"] = 1.0})
 		--lava_spawn:SetHealth(attacker:GetHealth()) 		-- uncomment this if you don't want them to spawn with full hp
-		
+
 		if remaining_time > 0 then
 			lava_spawn:AddNewModifier(caster, ability, "modifier_kill", {duration = remaining_time})
 		else

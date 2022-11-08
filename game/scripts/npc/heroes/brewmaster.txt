@@ -1,85 +1,85 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Brewmaster; 2022;
-	// TO_DO: special_bonus_unique_brewmaster_custom_1
-	//=================================================================================================================
-	"npc_dota_hero_custom_brewmaster"
-	{
-		"override_hero"				"npc_dota_hero_brewmaster"
-		"Team"						"Good"
-		"BotImplemented"			"0"
-		"Role"						"Carry,Initiator,Durable,Disabler,Nuker"	// roles
-		"Rolelevels"				"2,3,2,2,2"
-		"Complexity"				"3"
+  //=================================================================================================================
+  // HERO: Brewmaster; 2022;
+  // TO_DO: special_bonus_unique_brewmaster_custom_1
+  //=================================================================================================================
+  "npc_dota_hero_custom_brewmaster"
+  {
+    "override_hero"                                       "npc_dota_hero_brewmaster"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Initiator,Durable,Disabler,Nuker"  // roles
+    "Rolelevels"                                          "2,3,2,2,2"
+    "Complexity"                                          "3"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"             "6"
-		"AbilityTalentStart"        "10"
-		"Ability1"                  "brewmaster_custom_breath_of_fire"					// Q (4 levels)
-		"Ability2"                  "brewmaster_custom_drunken_haze"					// W (4 levels)
-		"Ability3"                  "brewmaster_custom_keg_clap"						// E (4 levels)
-		"Ability4"                  "brewmaster_custom_drunken_brawler"					// T, passive (4 levels)
-		"Ability5"                  "brewmaster_custom_drunken_fist"					// F, Secondary Ultimate (3 levels)
-		"Ability6"                  "brewmaster_custom_primal_split"					// R, Primary Ultimate (1 level)
-		"Ability7"                  "generic_hidden"
-		"Ability8"                  "generic_hidden"
-		"Ability9"                  "generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "brewmaster_custom_breath_of_fire"          // Q (4 levels)
+    "Ability2"                                            "brewmaster_custom_drunken_haze"          // W (4 levels)
+    "Ability3"                                            "brewmaster_custom_keg_clap"            // E (4 levels)
+    "Ability4"                                            "brewmaster_custom_drunken_brawler"          // T, passive (4 levels)
+    "Ability5"                                            "brewmaster_custom_drunken_fist"          // F, Secondary Ultimate (3 levels)
+    "Ability6"                                            "brewmaster_custom_primal_split"          // R, Primary Ultimate (1 level)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                 "special_bonus_magic_resistance_15"					// lvl 10 talent: unique
-		"Ability11"                 "special_bonus_attack_damage_15"					// lvl 10 talent: dota Brewmaster (+15)
+    "Ability10"                                           "special_bonus_magic_resistance_15"          // lvl 10 talent: unique
+    "Ability11"                                           "special_bonus_attack_damage_15"          // lvl 10 talent: dota Brewmaster (+15)
 
-		"Ability12"                 "special_bonus_unique_brewmaster_drunken_haze_burn"	// lvl 15 talent: Drunken Haze burn damage talent
-		"Ability13"                 "special_bonus_hp_350"					            // lvl 15 talent: dota Brewmaster (+350)
+    "Ability12"                                           "special_bonus_unique_brewmaster_drunken_haze_burn"  // lvl 15 talent: Drunken Haze burn damage talent
+    "Ability13"                                           "special_bonus_hp_350"                      // lvl 15 talent: dota Brewmaster (+350)
 
-		"Ability14"                 "special_bonus_spell_lifesteal_25"					// lvl 20 talent; special_bonus_unique_brewmaster_custom_1
-		"Ability15"                 "special_bonus_attack_speed_80"					    // lvl 20 talent; dota Brewmaster (+80)
+    "Ability14"                                           "special_bonus_spell_lifesteal_25"          // lvl 20 talent; special_bonus_unique_brewmaster_custom_1
+    "Ability15"                                           "special_bonus_attack_speed_80"              // lvl 20 talent; dota Brewmaster (+80)
 
-		"Ability16"                 "special_bonus_unique_brewmaster_drunken_haze_fizzle"  // lvl 25 talent; Drunken Haze causes fizzle talent
-		"Ability17"                 "special_bonus_spell_amplify_25"					   // lvl 25 talent; unique
+    "Ability16"                                           "special_bonus_unique_brewmaster_drunken_haze_fizzle"  // lvl 25 talent; Drunken Haze causes fizzle talent
+    "Ability17"                                           "special_bonus_spell_amplify_25"             // lvl 25 talent; unique
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-2"								// dota Brewmaster (-1)
-		"MagicalResistance"			"25"								// Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "-2"                // dota Brewmaster (-1)
+    "MagicalResistance"                                   "25"                // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"			"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"				"29"							// original (2); dota (29);
-		"AttackDamageMax"				"36"							// original (12); dota (36);
-		"AttackRate"					"1.7"							// Default
-		"AttackAnimationPoint"			"0.35"							// like dota Brewmaster
-		"AttackAcquisitionRange"		"600"							// like dota Brewmaster
-		"AttackRange"					"150"							// like dota Brewmaster
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "29"              // original (2); dota (29);
+    "AttackDamageMax"                                     "36"              // original (12); dota (36);
+    "AttackRate"                                          "1.7"              // Default
+    "AttackAnimationPoint"                                "0.35"              // like dota Brewmaster
+    "AttackAcquisitionRange"                              "600"              // like dota Brewmaster
+    "AttackRange"                                         "150"              // like dota Brewmaster
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"					"310"							// like dota Brewmaster
-		"MovementTurnRate"				"0.6"							// like dota Brewmaster
-		"HasAggressiveStance"			"1"
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "310"              // like dota Brewmaster
+    "MovementTurnRate"                                    "0.6"              // like dota Brewmaster
+    "HasAggressiveStance"                                 "1"
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"			"1800"							// Default
-		"VisionNighttimeRange"			"800"							// Default
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"              // Default
+    "VisionNighttimeRange"                                "800"              // Default
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"23"							// original (22); dota (23);
-		"AttributeStrengthGain"			"3.0"							// original (3.0); dota (3.7);
-		"AttributeBaseAgility"			"19"							// original (14); dota (19);
-		"AttributeAgilityGain"			"1.5"							// original (1.5); dota (2);
-		"AttributeBaseIntelligence"		"15"							// original (15); dota (15);
-		"AttributeIntelligenceGain"		"1.6"							// original (1.5); dota (1.6);
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "23"              // original (22); dota (23);
+    "AttributeStrengthGain"                               "3.0"              // original (3.0); dota (3.7);
+    "AttributeBaseAgility"                                "19"              // original (14); dota (19);
+    "AttributeAgilityGain"                                "1.5"              // original (1.5); dota (2);
+    "AttributeBaseIntelligence"                           "15"              // original (15); dota (15);
+    "AttributeIntelligenceGain"                           "1.6"              // original (1.5); dota (1.6);
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"			"0.5"							// like dota Brewmaster
-		"StatusHealth"				"200"							// like dota Brewmaster
-		"StatusMana"				"75"							// like dota Brewmaster
-		"StatusManaRegen"			"1.0"							// unique
-	}
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.5"              // like dota Brewmaster
+    "StatusHealth"                                        "200"              // like dota Brewmaster
+    "StatusMana"                                          "75"              // like dota Brewmaster
+    "StatusManaRegen"                                     "1.0"              // unique
+  }
 }

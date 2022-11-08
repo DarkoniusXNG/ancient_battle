@@ -1,87 +1,87 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Lich; 2022;
-	// Notes: OK; Dark Ritual (Sacrifice) provides additional mana;
-	// TO_DO: special_bonus_unique_lich_custom_1 - special_bonus_unique_lich_custom_7
-	//=================================================================================================================
-	"npc_dota_hero_custom_lich"
-	{
-		"override_hero"				"npc_dota_hero_lich"
-		"Team"						"Bad"
-		"BotImplemented"			"0"
-		"HeroSelectSoundEffect"		"Hero_Lich.Pick"						// Hero Pick sound
-		"Role"						"Support,Nuker,Pusher,Disabler"			// Roles
-		"Rolelevels"				"3,2,3,2"
-		"Complexity"				"1"
-		
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"             "6"
-		"AbilityTalentStart"        "10"
-		"Ability1"                  "lich_custom_frost_nova"				// Q (4 levels)
-		"Ability2"                  "lich_custom_frost_armor"				// W (4 levels)
-		"Ability3"                  "lich_custom_dark_ritual"				// E (4 levels)
-		"Ability4"                  "lich_custom_death_and_decay"			// T (4 levels)
-		"Ability5"                  "lich_custom_freezing_touch"			// F, passive, Secondary Ultimate (1 level, level 12 required)
-		"Ability6"                  "lich_custom_ice_storm"					// R, Primary Ultimate (3 levels, level 6 required)
-		"Ability7"                  "generic_hidden"
-		"Ability8"                  "generic_hidden"
-		"Ability9"                  "generic_hidden"
+  //=================================================================================================================
+  // HERO: Lich; 2022;
+  // Notes: OK; Dark Ritual provides additional mana;
+  // TO_DO: special_bonus_unique_lich_custom_1 - special_bonus_unique_lich_custom_7
+  //=================================================================================================================
+  "npc_dota_hero_custom_lich"
+  {
+    "override_hero"                                       "npc_dota_hero_lich"
+    "Team"                                                "Bad"
+    "BotImplemented"                                      "0"
+    "HeroSelectSoundEffect"                               "Hero_Lich.Pick"            // Hero Pick sound
+    "Role"                                                "Support,Nuker,Pusher,Disabler"      // Roles
+    "Rolelevels"                                          "3,2,3,2"
+    "Complexity"                                          "1"
+    
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "lich_custom_frost_nova"        // Q (4 levels)
+    "Ability2"                                            "lich_custom_frost_armor"        // W (4 levels)
+    "Ability3"                                            "lich_custom_dark_ritual"        // E (4 levels)
+    "Ability4"                                            "lich_custom_death_and_decay"      // T (4 levels)
+    "Ability5"                                            "lich_custom_freezing_touch"      // F, passive, Secondary Ultimate (1 level, level 12 required)
+    "Ability6"                                            "lich_custom_ice_storm"          // R, Primary Ultimate (3 levels, level 6 required)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                 "special_bonus_movement_speed_percentage_5"		// lvl 10 talent; special_bonus_unique_lich_custom_1 - Ice Armor autocast aura talent
-		"Ability11"                 "special_bonus_armor_4"							// lvl 10 talent; special_bonus_unique_lich_custom_2 - Sacrifice works on ancients and enemy units talent
+    "Ability10"                                           "special_bonus_movement_speed_percentage_5"    // lvl 10 talent; special_bonus_unique_lich_custom_1 - Ice Armor autocast aura talent
+    "Ability11"                                           "special_bonus_unique_lich_custom_2"      // lvl 10 talent; Dark Ritual works on ancients and enemy units talent
 
-		"Ability12"                 "special_bonus_cast_range_100"					// lvl 15 talent: special_bonus_unique_lich_custom_3 - Death and Decay heals talent
-		"Ability13"                 "special_bonus_attack_damage_120"				// lvl 15 talent; unique
+    "Ability12"                                           "special_bonus_cast_range_100"          // lvl 15 talent: special_bonus_unique_lich_custom_3 - Death and Decay heals talent
+    "Ability13"                                           "special_bonus_attack_damage_120"        // lvl 15 talent; unique
 
-		"Ability14"                 "special_bonus_attack_range_100"				// lvl 20 talent: special_bonus_unique_lich_custom_4 - Freezing Touch slow talent
-		"Ability15"                 "special_bonus_spell_amplify_10"				// lvl 20 talent: special_bonus_unique_lich_custom_5 - Frost Blast bounces talent
+    "Ability14"                                           "special_bonus_attack_range_100"        // lvl 20 talent: special_bonus_unique_lich_custom_4 - Freezing Touch slow talent
+    "Ability15"                                           "special_bonus_spell_amplify_10"        // lvl 20 talent: special_bonus_unique_lich_custom_5 - Frost Blast bounces talent
 
-		"Ability16"                 "special_bonus_hp_regen_50"						// lvl 25 talent: special_bonus_unique_lich_custom_6 - Ice Armor provides regen talent
-		"Ability17"                 "special_bonus_attack_speed_120"				// lvl 25 talent; special_bonus_unique_lich_custom_7 - Freezing Touch heal reduction talent
-		
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"-1"									// like dota Lich
-		"MagicalResistance"			"25"									// Default
+    "Ability16"                                           "special_bonus_hp_regen_50"            // lvl 25 talent: special_bonus_unique_lich_custom_6 - Ice Armor provides regen talent
+    "Ability17"                                           "special_bonus_attack_speed_120"        // lvl 25 talent; special_bonus_unique_lich_custom_7 - Freezing Touch heal reduction talent
+    
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "-1"                  // like dota Lich
+    "MagicalResistance"                                   "25"                  // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"			"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"				"28"								// dota Lich (24)
-		"AttackDamageMax"				"37"								// dota Lich (33)
-		"AttackRate"					"1.7"								// like dota Lich
-		"AttackAnimationPoint"			"0.46"								// like dota Lich
-		"AttackAcquisitionRange"		"800"								// like dota Lich
-		"AttackRange"					"600"								// dota Lich (550); original (600);
-		"ProjectileSpeed"				"900"								// like dota Lich
-		
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"					"295"								// dota Lich (295); original (290);
-		"MovementTurnRate"				"0.5"								// dota Lich (0.6); original (0.5);
-		
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"			"1800"								// Default
-		"VisionNighttimeRange"			"800"								// Default
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"			"20"								// dota Lich (20); original (15)
-		"AttributeStrengthGain"			"2.0"								// dota Lich (2.1); original (2.0) - don't change!
-		"AttributeBaseAgility"			"15"								// dota Lich (15); original (14)
-		"AttributeAgilityGain"			"2.0"								// dota Lich (2.0); original (1.0)
-		"AttributeBaseIntelligence"		"20"								// dota Lich (24); original (20); - don't change!
-		"AttributeIntelligenceGain"		"3.5"								// dota Lich (4.1); original (3.4)
-		
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"				"0.25"								// dota Lich (0.25)
-		"StatusHealth"					"200"								// dota Lich (200)
-		"StatusMana"					"0"									// dota Lich (75)
-		"StatusManaRegen"				"0.75"								// dota Lich (0.75)
-	}
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "28"                // dota Lich (24)
+    "AttackDamageMax"                                     "37"                // dota Lich (33)
+    "AttackRate"                                          "1.7"                // like dota Lich
+    "AttackAnimationPoint"                                "0.46"                // like dota Lich
+    "AttackAcquisitionRange"                              "800"                // like dota Lich
+    "AttackRange"                                         "600"                // dota Lich (550); original (600);
+    "ProjectileSpeed"                                     "900"                // like dota Lich
+    
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementSpeed"                                       "295"                // dota Lich (295); original (290);
+    "MovementTurnRate"                                    "0.5"                // dota Lich (0.6); original (0.5);
+    
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                // Default
+    "VisionNighttimeRange"                                "800"                // Default
+    
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributeBaseStrength"                               "20"                // dota Lich (20); original (15)
+    "AttributeStrengthGain"                               "2.0"                // dota Lich (2.1); original (2.0) - don't change!
+    "AttributeBaseAgility"                                "15"                // dota Lich (15); original (14)
+    "AttributeAgilityGain"                                "2.0"                // dota Lich (2.0); original (1.0)
+    "AttributeBaseIntelligence"                           "20"                // dota Lich (24); original (20); - don't change!
+    "AttributeIntelligenceGain"                           "3.5"                // dota Lich (4.1); original (3.4)
+    
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.25"                // dota Lich (0.25)
+    "StatusHealth"                                        "200"                // dota Lich (200)
+    "StatusMana"                                          "0"                  // dota Lich (75)
+    "StatusManaRegen"                                     "0.75"                // dota Lich (0.75)
+  }
 }

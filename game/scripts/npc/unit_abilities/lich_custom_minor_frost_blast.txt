@@ -1,146 +1,146 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Horde Minor Lich: Minor Frost Blast
-	// Author: Darkonius
-	// Notes: OK; 16.9.2018; Ignores Spell Block (Linkens) and Spell Reflect (Lotus Orb);
-	// TO_DO:
-	//=================================================================================================================
-	"lich_custom_minor_frost_blast"
-	{
-		"BaseClass"					"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"		"lich_frost_nova"
-		"MaxLevel"					"1"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.4"
-		"AoERadius"						"200"
+  //=================================================================================================================
+  // Horde Minor Lich: Minor Frost Blast
+  // Author: Darkonius
+  // Notes: OK; 16.9.2018; Ignores Spell Block (Linkens) and Spell Reflect (Lotus Orb);
+  // TO_DO:
+  //=================================================================================================================
+  "lich_custom_minor_frost_blast"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityTextureName"                                  "lich_frost_nova"
+    "MaxLevel"                                            "1"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.4"
+    "AoERadius"                                           "200"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8.0"
-		
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"75"
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "8.0"
+    
+    // Damage.
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityDamage"                                       "75"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"200"
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "200"
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{			
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"200"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_movement_speed"	"-40"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed"		"-40"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"aoe_damage"			"150"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"3.0"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {      
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "200"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_movement_speed"                             "-40"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_attack_speed"                               "-40"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aoe_damage"                                      "150"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "3.0"
+      }
+    }
 
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-		}
-		
-		"OnSpellStart"
-		{
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"Target"			"TARGET"
-			}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+      "particle"                                          "particles/status_fx/status_effect_frost_lich.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "Target"                                          "TARGET"
+      }
 
-			"FireSound"
-			{
-				"EffectName"		"Ability.FrostNova"
-				"Target"			"TARGET"
-			}
+      "FireSound"
+      {
+        "EffectName"                                      "Ability.FrostNova"
+        "Target"                                          "TARGET"
+      }
 
-			"Damage"
-			{
-				"Type"				"DAMAGE_TYPE_MAGICAL"
-				"Target"			"TARGET"
-				"Damage"			"%AbilityDamage"
-			}
+      "Damage"
+      {
+        "Type"                                            "DAMAGE_TYPE_MAGICAL"
+        "Target"                                          "TARGET"
+        "Damage"                                          "%AbilityDamage"
+      }
 
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  		"TARGET"
-					"Radius" 		"%radius"
-					"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				}
+      "ActOnTargets"
+      {
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        }
 
-				"Action"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"    	"modifier_frost_nova_slow"
-						"Target"			"TARGET"
-						"Duration"			"%duration"
-					}
+        "Action"
+        {
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_frost_nova_slow"
+            "Target"                                      "TARGET"
+            "Duration"                                    "%duration"
+          }
 
-					"Damage"
-					{
-						"Type"		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage"	"%aoe_damage"
-					}
-				}
-			}
-		}
+          "Damage"
+          {
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Target"                                      "TARGET"
+            "Damage"                                      "%aoe_damage"
+          }
+        }
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_frost_nova_slow" // needs tooltip
-			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
+    "Modifiers"
+    {
+      "modifier_frost_nova_slow" // needs tooltip
+      {
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
-				"StatusEffectPriority"		"10"
+        "StatusEffectName"                                "particles/status_fx/status_effect_frost_lich.vpcf"
+        "StatusEffectPriority"                            "10"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
-				}
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%slow_movement_speed"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%slow_attack_speed"
+        }
+      }
+    }
+  }
 }

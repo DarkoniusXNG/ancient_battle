@@ -1,63 +1,63 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Fountain: True Sight Aura
-	// Author: Darkonius
-	// Notes: OK; 3.1.2017;
-	// TO_DO:
-	//=================================================================================================================
-	"custom_fountain_true_sight"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"										"ability_datadriven"
-		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"							"custom/custom_fountain_true_sight"
-		"MaxLevel"										"1"
+  //=================================================================================================================
+  // Fountain: True Sight Aura
+  // Author: Darkonius
+  // Notes: OK; 3.1.2017;
+  // TO_DO:
+  //=================================================================================================================
+  "custom_fountain_true_sight"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "custom/custom_fountain_true_sight"
+    "MaxLevel"                                            "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"								"FIELD_INTEGER"
-				"aura_radius"							"1800"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "1800"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_fountain_true_sight_aura_applier" // doesn't need tooltip
-			{
-				"Passive"								"1"
-				"IsHidden"								"1"
-				"IsBuff"								"1"
-				"IsPurgable"							"0"
+    "Modifiers"
+    {
+      "modifier_custom_fountain_true_sight_aura_applier" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Attributes"							"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 
-				"Aura"									"modifier_custom_fountain_reveal"
-				"Aura_Radius"							"%aura_radius"
-				"Aura_Teams"							"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"							"DOTA_UNIT_TARGET_ALL"
-				"Aura_Flags"							"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Aura_ApplyToCaster"					"0"
-			}
+        "Aura"                                            "modifier_custom_fountain_reveal"
+        "Aura_Radius"                                     "%aura_radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_ALL"
+        "Aura_Flags"                                      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        "Aura_ApplyToCaster"                              "0"
+      }
 
-			"modifier_custom_fountain_reveal" // doesn't need tooltip
-			{
-				"IsHidden"			"1"
-				"IsDebuff"			"1"
-				"IsPurgable"		"0"
+      "modifier_custom_fountain_reveal" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"Priority"			"MODIFIER_PRIORITY_ULTRA"
+        "Priority"                                        "MODIFIER_PRIORITY_ULTRA"
 
-				"States"
-				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
-				}
-			}
-		}
-	}
+        "States"
+        {
+          "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
+        }
+      }
+    }
+  }
 }

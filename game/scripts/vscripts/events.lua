@@ -342,6 +342,21 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 				respawn_time = respawn_time_after_30
 			end
 
+			-- Old Bloodstone respawn reduction (this example doesn't check items in backpack because bloodstone cannot go in backpack)
+			for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
+				local item = killed_unit:GetItemInSlot(i)
+				if item then
+					if item:GetName() == "item_custom_bloodstone" then
+						local current_charges = item:GetCurrentCharges()
+						local charges_before_death = math.ceil(current_charges + item:GetSpecialValueFor("charge_loss_on_death"))
+						local reduction_per_charge = item:GetSpecialValueFor("respawn_time_reduction_per_charge")
+						local respawn_reduction = charges_before_death * reduction_per_charge
+						respawn_time = math.max(1, respawn_time - respawn_reduction)
+						break -- break for loop, to prevent multiple bloodstones granting respawn reduction
+					end
+				end
+			end
+
 			-- Maximum Respawn Time
 			if respawn_time > MAX_RESPAWN_TIME then
 				respawn_time = MAX_RESPAWN_TIME
@@ -379,14 +394,6 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 			--GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
 			GameRules:GetGameModeEntity():SetCustomRadiantScore(GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
 			GameRules:GetGameModeEntity():SetCustomDireScore(GetTeamHeroKills(DOTA_TEAM_BADGUYS))
-		end
-	end
-
-	-- Axe Chop Sound with Cut From Above (Culling Blade) when he kills heroes (not illusions)
-	if killed_unit:IsRealHero() and killer_unit:HasAbility("holdout_culling_blade") and killing_ability then
-		local ability = killer_unit:FindAbilityByName("holdout_culling_blade")
-		if killing_ability == ability then
-			killer_unit:EmitSound("Hero_Axe.Culling_Blade_Success")
 		end
 	end
 

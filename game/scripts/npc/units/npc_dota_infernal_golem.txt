@@ -1,77 +1,77 @@
 "DOTAUnits"
 {
-	//=================================================================================
-	// Silencer Summon Infernal Golems: INFERNAL GOLEM
-	// Notes: OK; 27.12.2016;
-	//=================================================================================
-	"npc_dota_infernal_golem"
-	{										
-		// General
-		//----------------------------------------------------------------
-		"BaseClass"					"npc_dota_creature"						//"npc_dota_warlock_golem"
-		"Model"						"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
-		"SoundSet"					"Hero_WarlockGolem"
-		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
-		"IsSummoned"				"1"
-		"IsAncient"					"1"
-		"ModelScale"				"1"
-		"ConsideredHero"			"1"
-		
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"infernal_golem_permanent_immolation"	// Ability 1
-		"Ability2"					""										// Ability 2
-		
-		// Protection
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"10"									// 4.11.2016;
-		"MagicalResistance"			"50"									// 27.12.2016;
+  //=================================================================================
+  // Silencer Summon Infernal Golems: INFERNAL GOLEM
+  // Notes: OK; 27.12.2016;
+  //=================================================================================
+  "npc_dota_infernal_golem"
+  {                    
+    // General
+    //----------------------------------------------------------------
+    "BaseClass"                                           "npc_dota_creature"            //"npc_dota_warlock_golem"
+    "Model"                                               "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+    "SoundSet"                                            "Hero_WarlockGolem"
+    "IdleSoundLoop"                                       "Hero_WarlockGolem.Spawn_Loop"
+    "IsSummoned"                                          "1"
+    "IsAncient"                                           "1"
+    "ModelScale"                                          "1"
+    "ConsideredHero"                                      "1"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "infernal_golem_permanent_immolation"  // Ability 1
+    "Ability2"                                            ""                    // Ability 2
+    
+    // Protection
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "10"                  // 4.11.2016;
+    "MagicalResistance"                                   "50"                  // 27.12.2016;
 
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"75"									// like Warlock Golem level 1
-		"AttackDamageMax"			"75"									// like Warlock Golem level 1	
-		"AttackRate"				"1.2"									// 4.11.2016;
-		"AttackAnimationPoint"		"0.26"									// like Warlock golem
-		"AttackAcquisitionRange"	"500"									// like Warlock Golem
-		"AttackRange"				"200"									// 4.11.2016;
-		"ProjectileModel"			""										// like Warlock Golem
-		"ProjectileSpeed"			"0"										// like Warlock Golem		   
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "75"                  // like Warlock Golem level 1
+    "AttackDamageMax"                                     "75"                  // like Warlock Golem level 1  
+    "AttackRate"                                          "1.2"                  // 4.11.2016;
+    "AttackAnimationPoint"                                "0.26"                  // like Warlock golem
+    "AttackAcquisitionRange"                              "500"                  // like Warlock Golem
+    "AttackRange"                                         "200"                  // 4.11.2016;
+    "ProjectileModel"                                     ""                    // like Warlock Golem
+    "ProjectileSpeed"                                     "0"                    // like Warlock Golem       
 
-		// Bounds
-		//----------------------------------------------------------------
-		"HealthBarOffset"			"270"									// 4.11.2016;
-		
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"98"									// like Warlock Golem
-		"BountyGoldMin"				"150"									// 4.11.2016;
-		"BountyGoldMax"				"150"									// 4.11.2016;
+    // Bounds
+    //----------------------------------------------------------------
+    "HealthBarOffset"                                     "270"                  // 4.11.2016;
+    
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "98"                  // like Warlock Golem
+    "BountyGoldMin"                                       "150"                  // 4.11.2016;
+    "BountyGoldMax"                                       "150"                  // 4.11.2016;
 
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"340"									// 4.11.2016;
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "340"                  // 4.11.2016;
 
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"1250"									// 4.11.2016;
-		"StatusHealthRegen"			"50"									// 4.11.2016;
-		"StatusMana"				"0"										// He has no spells with mana cost.
-		"StatusManaRegen"			"0"										// He has no spells with mana cost.		 
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1800"									// Default, like Warlock Golem
-		"VisionNighttimeRange"		"800"									// Default, worse than Warlock Golem
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "1250"                  // 4.11.2016;
+    "StatusHealthRegen"                                   "50"                  // 4.11.2016;
+    "StatusMana"                                          "0"                    // He has no spells with mana cost.
+    "StatusManaRegen"                                     "0"                    // He has no spells with mana cost.     
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                  // Default, like Warlock Golem
+    "VisionNighttimeRange"                                "800"                  // Default, worse than Warlock Golem
 
-		// Combat
-		//----------------------------------------------------------------
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"	// 29.4.2016;
-		
-		"VoiceFile" 				"soundevents/voscripts/game_sounds_vo_warlock_golem.vsndevts"
-	}
+    // Combat
+    //----------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 29.4.2016;
+    
+    "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_warlock_golem.vsndevts"
+  }
 }

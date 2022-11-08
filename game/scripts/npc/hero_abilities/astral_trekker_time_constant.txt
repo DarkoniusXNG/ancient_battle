@@ -1,61 +1,61 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Astral Trekker: Time Constant (T) - New Spell; Passive; Immunity to time altering spells and some slows; Super Strong Dispel;
-	// Author: Darkonius
-	// Notes: OK; 14.10.2018;
-	// TO_DO:
-	//=================================================================================================================
-	"astral_trekker_time_constant"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"    		"custom/astral_trekker_time_constant"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"MaxLevel"               		"1"
-		"RequiredLevel"					"3"
-		
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
-			"particle"			"particles/units/heroes/hero_tidehunter/tidehunter_krakenshell_purge.vpcf"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ms_threshold"			"180"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"as_threshold"			"30"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_time_constant" // doesn't need tooltip
-			{
-				"Passive"					"1"
-				"IsHidden"					"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
-				
-				"AllowIllusionDuplicate"	"1"
-				
-				"ThinkInterval"				"0.3"
+  //=================================================================================================================
+  // Astral Trekker: Time Constant (T) - New Spell; Passive; Immunity to time altering spells and some slows; Super Strong Dispel;
+  // Author: Darkonius
+  // Notes: OK; 14.10.2018;
+  // TO_DO:
+  //=================================================================================================================
+  "astral_trekker_time_constant"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/astral_trekker_time_constant"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "3"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_tidehunter/tidehunter_krakenshell_purge.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ms_threshold"                                    "180"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "as_threshold"                                    "30"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_time_constant" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "AllowIllusionDuplicate"                          "1"
+        
+        "ThinkInterval"                                   "0.3"
 
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/astral_trekker/time_constant.lua"
-						"Function"		"PurgeTimeDebuffs"
-					}
-				}
-			}
-		}
-	}
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/astral_trekker/time_constant.lua"
+            "Function"                                    "PurgeTimeDebuffs"
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,74 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Custom Butterfly
+  //=================================================================================================================
+  "item_recipe_custom_butterfly"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "0"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_butterfly"
+    "ItemRequirements"
+    {
+      "01"                                                "item_eagle;item_talisman_of_evasion;item_quarterstaff"
+    }
+  }
+
+  //=================================================================================================================
+  // Custom Butterfly
+  //=================================================================================================================
+  "item_custom_butterfly"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/butterfly.lua"
+    "AbilityTextureName"                                  "item_butterfly"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "15"
+    "AbilityManaCost"                                     "0"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "4975"
+    "ItemShopTags"                                        "agi;damage;evasion;attack_speed"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "bfly;butterfly"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_agility"                                     "35"
+      "bonus_evasion"                                     "20"
+      "bonus_attack_speed"                                "15"
+      "bonus_damage"                                      "15"
+
+      "buff_ms_per_agility"                               "0.1"
+      "buff_evasion"                                      "100"
+      "buff_duration"                                     "3.0"
+    }
+
+    "precache"
+    {
+      "particle"                                          "particles/ui/blessing_icon_unlock_green.vpcf"
+    }
+  }
+}

@@ -1,103 +1,103 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Fire Lord: Flaming Presence (F) - New Spell, Aura that damages and amplifies all damage they take from attacks and spells.
-	// Author: Darkonius
-	// Notes: OK; 26.12.2019;
-	// TO_DO: 
-	//=================================================================================================================
-	"firelord_flaming_presence"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/firelord_flaming_presence"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"MaxLevel"               		"1"
-		"RequiredLevel"          		"6"
-		
-		"precache"
-		{
-			"particle"			"particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_increase"				"15"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"aura_radius"					"700"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage_per_second"				"32"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_firelord_presence_aura_applier" // doesn't need tooltip
-			{
-				"Passive" 			"1"
-				"IsHidden" 			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
+  //=================================================================================================================
+  // Fire Lord: Flaming Presence (F) - New Spell, Aura that damages and amplifies all damage they take from attacks and spells.
+  // Author: Darkonius
+  // Notes: OK; 26.12.2019;
+  // TO_DO: 
+  //=================================================================================================================
+  "firelord_flaming_presence"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/firelord_flaming_presence"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_increase"                                 "15"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "700"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "32"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_firelord_presence_aura_applier" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Aura" 				"modifier_firelord_presence_aura_effect"
-				"Aura_Radius" 		"%aura_radius"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Aura"                                            "modifier_firelord_presence_aura_effect"
+        "Aura_Radius"                                     "%aura_radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-				"AllowIllusionDuplicate"	"1"
-				
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"CASTER"
+        "AllowIllusionDuplicate"                          "1"
+        
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_doom_bringer/doom_scorched_earth.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "CASTER"
 
-						"ControlPoints"
-						{
-							"01"	"%aura_radius 0 0"
-						}
-					}
-				}
-			}
-			
-			"modifier_firelord_presence_aura_effect" // needs tooltip
-			{
-				"IsHidden" 			"0"
-				"IsPurgable"		"0"
-				"IsDebuff"			"1"
-				
-				"ThinkInterval"		"1.0"
-				
-				"OnIntervalThink"    	
-				{
-					"Damage"
-					{		
-						"Target"	"TARGET"
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Damage" 	"%damage_per_second"
-					}
-				}
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"				"%damage_increase"
-				}
-			}
-		}
-	}
+            "ControlPoints"
+            {
+              "01"                                        "%aura_radius 0 0"
+            }
+          }
+        }
+      }
+      
+      "modifier_firelord_presence_aura_effect" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsPurgable"                                      "0"
+        "IsDebuff"                                        "1"
+        
+        "ThinkInterval"                                   "1.0"
+        
+        "OnIntervalThink"      
+        {
+          "Damage"
+          {    
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%damage_per_second"
+          }
+        }
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"  "%damage_increase"
+        }
+      }
+    }
+  }
 }

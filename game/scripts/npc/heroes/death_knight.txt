@@ -1,85 +1,85 @@
 "DOTAHeroes"
 {
-	//================================================================================================================
-	// HERO: Death Knight; 2022;
-	// Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
-	// TO_DO: special_bonus_unique_death_knight_5
-	//=================================================================================================================
-	"npc_dota_hero_death_knight"
-	{
-		"override_hero"				"npc_dota_hero_abaddon"
-		"Team"						"Bad"
-		"BotImplemented"			"0"
-		"Role"						"Carry,Durable,Disabler"				// Roles
-		"Rolelevels"				"3,3,1"
-		"Complexity"				"1"
-		
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"             "6"
-		"AbilityTalentStart"        "10"
-		"Ability1"                  "death_knight_death_coil"				// Q (4 levels)
-		"Ability2"                  "death_knight_death_pact"				// W (4 levels)
-		"Ability3"                  "death_knight_death_pit"				// E (4 levels)
-		"Ability4"                  "death_knight_unholy_aura"				// T (4 levels)
-		"Ability5"                  "death_knight_chilling_touch"			// F, Secondary Ultimate (3 levels)
-		"Ability6"                  "death_knight_resurrection"				// R, Primary Ultimate (1 level)
-		"Ability7"                  "generic_hidden"
-		"Ability8"                  "generic_hidden"
-		"Ability9"                  "generic_hidden"
+  //================================================================================================================
+  // HERO: Death Knight; 2022;
+  // Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
+  // TO_DO: special_bonus_unique_death_knight_5
+  //=================================================================================================================
+  "npc_dota_hero_death_knight"
+  {
+    "override_hero"                                       "npc_dota_hero_abaddon"
+    "Team"                                                "Bad"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Durable,Disabler"        // Roles
+    "Rolelevels"                                          "3,3,1"
+    "Complexity"                                          "1"
+    
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "death_knight_death_coil"        // Q (4 levels)
+    "Ability2"                                            "death_knight_death_pact"        // W (4 levels)
+    "Ability3"                                            "death_knight_death_pit"        // E (4 levels)
+    "Ability4"                                            "death_knight_unholy_aura"        // T (4 levels)
+    "Ability5"                                            "death_knight_chilling_touch"      // F, Secondary Ultimate (3 levels)
+    "Ability6"                                            "death_knight_resurrection"        // R, Primary Ultimate (1 level)
+    "Ability7"                                            "generic_hidden"
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                 "special_bonus_movement_speed_15"	    // lvl 10 talent; same as Abaddon
-		"Ability11"                 "special_bonus_strength_8"              // lvl 10 talent; same as Abaddon
+    "Ability10"                                           "special_bonus_movement_speed_15"      // lvl 10 talent; same as Abaddon
+    "Ability11"                                           "special_bonus_strength_8"              // lvl 10 talent; same as Abaddon
 
-		"Ability12"                 "special_bonus_unique_death_knight_4"   // lvl 15 talent; Death Pit heal reduction increase talent;
-		"Ability13"                 "special_bonus_unique_death_knight_2"   // lvl 15 talent; Death Pact duration talent;
+    "Ability12"                                           "special_bonus_unique_death_knight_4"   // lvl 15 talent; Death Pit heal reduction increase talent;
+    "Ability13"                                           "special_bonus_unique_death_knight_2"   // lvl 15 talent; Death Pact duration talent;
 
-		"Ability14"                 "special_bonus_unique_death_knight_6"   // lvl 20 talent; Resurrection cooldown talent
-		"Ability15"                 "special_bonus_night_vision_1000"		// lvl 20 talent; special_bonus_unique_death_knight_5 - Chilling Touch bonus damage talent
+    "Ability14"                                           "special_bonus_unique_death_knight_6"   // lvl 20 talent; Resurrection cooldown talent
+    "Ability15"                                           "special_bonus_night_vision_1000"    // lvl 20 talent; special_bonus_unique_death_knight_5 - Chilling Touch bonus damage talent
 
-		"Ability16"                 "special_bonus_unique_death_knight_1"   // lvl 25 talent; Death Coil heal increase talent;
-		"Ability17"                 "special_bonus_unique_death_knight_3"   // lvl 25 talent; Death Pact hp and dmg gain increase talent;
+    "Ability16"                                           "special_bonus_unique_death_knight_1"   // lvl 25 talent; Death Coil heal increase talent;
+    "Ability17"                                           "special_bonus_unique_death_knight_3"   // lvl 25 talent; Death Pact hp and dmg gain increase talent;
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"									    // Abaddon (-1); original (1);
-		"MagicalResistance"			"25"									// Default
-		
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"30"									// Abaddon (28);
-		"AttackDamageMax"			"40" 									// Abaddon (38);
-		"AttackRate"				"1.7"									// Default; original (1.88);
-		"AttackAnimationPoint"		"0.56"									// like Abaddon
-		"AttackRange"				"150"									// like Abaddon
-		"AttackAcquisitionRange"	"600"									// like Abaddon
-		
-		// Movement
-		//----------------------------------------------------------------
-		"MovementSpeed"				"300"									// original (320); Abaddon (325);
-		"MovementTurnRate"			"0.6"									// like Abaddon
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"			"1800"								// Default
-		"VisionNighttimeRange"			"800"								// Default
-		
-		// Attributes
-		//----------------------------------------------------------------
-		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"22"								// Abaddon (22); original (23);
-		"AttributeStrengthGain"			"2.5"								// Abaddon (2.8); original (2.7);
-		"AttributeBaseAgility"			"12"								// Abaddon (23); original (12);
-		"AttributeAgilityGain"			"1.5"								// Abaddon (1.5); original (1.5);
-		"AttributeBaseIntelligence"		"18"								// Abaddon (18); original (17);
-		"AttributeIntelligenceGain"		"2.0"								// Abaddon (2.0); original (1.8);
-		
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealthRegen"				"0.0"								// Abaddon (1.0); original (-1.15/-0.3 on Blight);
-		"StatusHealth"					"170"								// Abaddon (200); original (215);
-		"StatusMana"					"50"								// Abaddon (75); original (51);
-		"StatusManaRegen"				"0.0"								// Abaddon (0); original (0.01);
-	}
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                      // Abaddon (-1); original (1);
+    "MagicalResistance"                                   "25"                  // Default
+    
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "30"                  // Abaddon (28);
+    "AttackDamageMax"                                     "40"                   // Abaddon (38);
+    "AttackRate"                                          "1.7"                  // Default; original (1.88);
+    "AttackAnimationPoint"                                "0.56"                  // like Abaddon
+    "AttackRange"                                         "150"                  // like Abaddon
+    "AttackAcquisitionRange"                              "600"                  // like Abaddon
+    
+    // Movement
+    //----------------------------------------------------------------
+    "MovementSpeed"                                       "300"                  // original (320); Abaddon (325);
+    "MovementTurnRate"                                    "0.6"                  // like Abaddon
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                // Default
+    "VisionNighttimeRange"                                "800"                // Default
+    
+    // Attributes
+    //----------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "22"                // Abaddon (22); original (23);
+    "AttributeStrengthGain"                               "2.5"                // Abaddon (2.8); original (2.7);
+    "AttributeBaseAgility"                                "12"                // Abaddon (23); original (12);
+    "AttributeAgilityGain"                                "1.5"                // Abaddon (1.5); original (1.5);
+    "AttributeBaseIntelligence"                           "18"                // Abaddon (18); original (17);
+    "AttributeIntelligenceGain"                           "2.0"                // Abaddon (2.0); original (1.8);
+    
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.0"                // Abaddon (1.0); original (-1.15/-0.3 on Blight);
+    "StatusHealth"                                        "170"                // Abaddon (200); original (215);
+    "StatusMana"                                          "50"                // Abaddon (75); original (51);
+    "StatusManaRegen"                                     "0.0"                // Abaddon (0); original (0.01);
+  }
 }

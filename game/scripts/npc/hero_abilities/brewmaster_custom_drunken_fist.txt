@@ -1,165 +1,165 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Brewmaster: Drunken Fist (F) - New Spell, Ultimate, Cleave + Knockback in front of the caster
-	// Authors: Jastuchko + Darkonius
-	// Notes: OK; 24.8.2019;
-	// TO_DO: 
-	//====================================================================================================
-	"brewmaster_custom_drunken_fist"
-	{
-		"BaseClass"            			"ability_datadriven"
-		"AbilityTextureName"            "custom/brewmaster_custom_drunken_fist"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //====================================================================================================
+  // Brewmaster: Drunken Fist (F) - New Spell, Ultimate, Cleave + Knockback in front of the caster
+  // Authors: Jastuchko + Darkonius
+  // Notes: OK; 24.8.2019;
+  // TO_DO: 
+  //====================================================================================================
+  "brewmaster_custom_drunken_fist"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/brewmaster_custom_drunken_fist"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"MaxLevel"               		"3"
-		"RequiredLevel"					"6"
-		"LevelsBetweenUpgrades"			"5"
+    "MaxLevel"                                            "3"
+    "RequiredLevel"                                       "6"
+    "LevelsBetweenUpgrades"                               "5"
 
-		"AbilityCastPoint"              "0.0"
+    "AbilityCastPoint"                                    "0.0"
 
-		"AbilityCooldown"               "25.0 20.0 15.0"			// similar to Tiny Tree Grab
+    "AbilityCooldown"                                     "25.0 20.0 15.0"      // similar to Tiny Tree Grab
 
-		"AbilityManaCost"               "40 45 50"
-		"AbilityProcsMagicStick"		"1"
+    "AbilityManaCost"                                     "40 45 50"
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
-			"particle"	"particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_tiny.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // ideal
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"duration"             			"8"
-			}
-			"02" // same as cleave
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"push_start_radius"      		"150"
-			}
-			"03" // same as cleave
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"push_distance"   				"625"
-			}
-			"04" // same as cleave
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"push_end_radius"   			"330"
-			}
-			"05" // Maximum allowed: 250; Minimum allowed: 150;
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"knockback_distance"    		"150"
-			}
-			"06"
-			{
-				"var_type"              		"FIELD_FLOAT"
-				"knockback_duration"    		"0.5"
-			}
-			"07"
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"knockback_height"    			"50"
-			}
-			"08"// Broodmother Insatiable Hunger: 60/100/140; Lone Druid Battle Cry: 70/100/130;
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"bonus_damage"          		"50 65 80"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"09" // percentage bonus movement speed
-			{
-				"var_type"              		"FIELD_INTEGER"
-				"bonus_move_speed"          	"30"
-			}
-			"10"
-			{
-				"var_type"                  	"FIELD_INTEGER"
-				"cleave_damage"             	"100"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"11"
-			{
-				"var_type"                  	"FIELD_INTEGER"
-				"cleave_start_radius"        	"150"
-			}
-			"12"
-			{
-				"var_type"                  	"FIELD_INTEGER"
-				"cleave_distance"        		"625"
-			}
-			"13"
-			{
-				"var_type"                  	"FIELD_INTEGER"
-				"cleave_end_radius"        		"330"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01" // ideal
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "8"
+      }
+      "02" // same as cleave
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "push_start_radius"                               "150"
+      }
+      "03" // same as cleave
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "push_distance"                                   "625"
+      }
+      "04" // same as cleave
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "push_end_radius"                                 "330"
+      }
+      "05" // Maximum allowed: 250; Minimum allowed: 150;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "knockback_distance"                              "150"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "knockback_duration"                              "0.5"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "knockback_height"                                "50"
+      }
+      "08"// Broodmother Insatiable Hunger: 60/100/140; Lone Druid Battle Cry: 70/100/130;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_damage"                                    "50 65 80"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "09" // percentage bonus movement speed
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_move_speed"                                "30"
+      }
+      "10"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "cleave_damage"                                   "100"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "11"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "cleave_start_radius"                             "150"
+      }
+      "12"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "cleave_distance"                                 "625"
+      }
+      "13"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "cleave_end_radius"                               "330"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"    "brewmaster_brew_attack_07"
-				"Target"        "CASTER"
-			}
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "brewmaster_brew_attack_07"
+        "Target"                                          "CASTER"
+      }
 
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_drunken_fist_knockback"
-				"Target"        "CASTER"      
-				"Duration"  	"%duration"
-			}
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_drunken_fist_knockback"
+        "Target"                                          "CASTER"      
+        "Duration"                                        "%duration"
+      }
 
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_drunken_fist_bonus"
-				"Target"        "CASTER"
-				"Duration"  	"%duration"
-			}
-		}
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_drunken_fist_bonus"
+        "Target"                                          "CASTER"
+        "Duration"                                        "%duration"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_drunken_fist_knockback"	// doesn't need tooltip
-			{
-				"IsHidden"          "1"
-				"IsBuff"          	"1"
-				"IsPurgable"        "0"
+    "Modifiers"
+    {
+      "modifier_drunken_fist_knockback"  // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/brewmaster/drunken_fist.lua"
-						"Function"			"DrunkenFistCleave"
-						"DamageOnAttack"	"%attack_damage"
-					}
-				}
-			}
+        "OnAttackLanded"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/brewmaster/drunken_fist.lua"
+            "Function"                                    "DrunkenFistCleave"
+            "DamageOnAttack"                              "%attack_damage"
+          }
+        }
+      }
 
-			"modifier_drunken_fist_bonus" // needs tooltip
-			{
-				"IsHidden"          "0"
-				"IsBuff"          	"1"
-				"IsPurgable"        "0"
+      "modifier_drunken_fist_bonus" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%bonus_damage"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_move_speed"
-				}           
-			}
-		}
-	}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"      "%bonus_damage"
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed"
+        }           
+      }
+    }
+  }
 }

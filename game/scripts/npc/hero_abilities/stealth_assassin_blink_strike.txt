@@ -1,81 +1,81 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Stealth Assassin: Blink Strike (W) - New Spell, similar to Antimage's Blink but with damage in a radius
-	// Author: Darkonius
-	// Notes: OK; 4.3.2020;
-	// TO_DO: If too weak ADD attack damage to the blink damage;
-	//=================================================================================================================
-	"stealth_assassin_blink_strike"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/stealth_assassin_blink_strike"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"0.4"                           // Anti-Mage (0.4); QoP (0.33);
-		"AoERadius" 					"%radius"
+  //=================================================================================================================
+  // Stealth Assassin: Blink Strike (W) - New Spell, similar to Antimage's Blink but with damage in a radius
+  // Author: Darkonius
+  // Notes: OK; 4.3.2020;
+  // TO_DO: If too weak ADD attack damage to the blink damage;
+  //=================================================================================================================
+  "stealth_assassin_blink_strike"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/stealth_assassin_blink_strike"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "0"
+    "AbilityCastPoint"                                    "0.4"                           // Anti-Mage (0.4); QoP (0.33);
+    "AoERadius"                                           "%radius"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"12 10 8 6"                     // Anti-Mage and QoP (15/12/9/6); Riki 6.82 (20/15/10/5);
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "12 10 8 6"                     // Anti-Mage and QoP (15/12/9/6); Riki 6.82 (20/15/10/5);
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"60"                            // Anti-Mage and QoP Blink (60);
-		"AbilityProcsMagicStick"		"1"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // Anti-Mage (925/1000/1075/1150); QoP (1300);  Riki 6.82 (700);
-			{
-				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"850 950 1050 1150"
-			}
-			"02" // don't change
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"75 125 175 225"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"375"
-			}
-		}
-		
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
-			"particle"		"particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
-		}
-		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Antimage.Blink_out"
-				"Target"		"CASTER"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/ryu/blink_strike.lua"
-				"Function"		"Blink"
-				"Target"		"POINT"
-			}
-		}
-	}
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "60"                            // Anti-Mage and QoP Blink (60);
+    "AbilityProcsMagicStick"                              "1"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // Anti-Mage (925/1000/1075/1150); QoP (1300);  Riki 6.82 (700);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "blink_range"                                     "850 950 1050 1150"
+      }
+      "02" // don't change
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage"                                          "75 125 175 225"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "375"
+      }
+    }
+    
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Antimage.Blink_out"
+        "Target"                                          "CASTER"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/ryu/blink_strike.lua"
+        "Function"                                        "Blink"
+        "Target"                                          "POINT"
+      }
+    }
+  }
 }

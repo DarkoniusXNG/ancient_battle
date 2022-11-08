@@ -28,6 +28,7 @@ function modifier_custom_chemical_rage_buff:DeclareFunctions()
 		MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+		MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
 	}
 end
 
@@ -37,17 +38,17 @@ function modifier_custom_chemical_rage_buff:OnCreated()
 
 	local think_interval = ability:GetSpecialValueFor("think_interval")
 	local base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
-	
+
 	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
 	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
 	self.bonus_mana_regen = ability:GetSpecialValueFor("custom_bonus_mana_regen")
-	
+
 	-- Talent that reduces BAT
 	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
 	if talent and talent:GetLevel() > 0 then
 		base_attack_time = base_attack_time - math.abs(talent:GetSpecialValueFor("value"))
 	end
-	
+
 	self.base_attack_time = base_attack_time
 
 	if IsServer() then
@@ -60,19 +61,21 @@ function modifier_custom_chemical_rage_buff:OnRefresh()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 
-	local base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
+	if ability and not ability:IsNull() then
+		local base_attack_time = ability:GetSpecialValueFor("custom_base_attack_time")
 
-	self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
-	self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
-	self.bonus_mana_regen = ability:GetSpecialValueFor("custom_bonus_mana_regen")
-	
-	-- Talent that reduces BAT
-	local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
-	if talent and talent:GetLevel() > 0 then
-		base_attack_time = base_attack_time - math.abs(talent:GetSpecialValueFor("value"))
+		self.bonus_move_speed = ability:GetSpecialValueFor("custom_bonus_move_speed")
+		self.bonus_hp_regen = ability:GetSpecialValueFor("custom_bonus_health_regen")
+		self.bonus_mana_regen = ability:GetSpecialValueFor("custom_bonus_mana_regen")
+
+		-- Talent that reduces BAT
+		local talent = parent:FindAbilityByName("special_bonus_unique_alchemist_custom_1")
+		if talent and talent:GetLevel() > 0 then
+			base_attack_time = base_attack_time - math.abs(talent:GetSpecialValueFor("value"))
+		end
+
+		self.base_attack_time = base_attack_time
 	end
-	
-	self.base_attack_time = base_attack_time
 end
 
 function modifier_custom_chemical_rage_buff:OnIntervalThink()
@@ -151,4 +154,8 @@ function modifier_custom_chemical_rage_buff:ScepterBuffEnd(caster)
 		caster:SetBaseStrength(strength_new)
 		caster:CalculateStatBonus(true)
 	end
+end
+
+function modifier_custom_chemical_rage_buff:GetModifierIgnoreMovespeedLimit()
+	return 1
 end

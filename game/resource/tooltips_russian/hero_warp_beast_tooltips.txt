@@ -1,0 +1,54 @@
+
+		// ******************** WARP BEAST ********************
+		"DOTA_Tooltip_Ability_warp_beast_temporal_jump"                   "Temporal Jump"
+		"DOTA_Tooltip_Ability_warp_beast_temporal_jump_Description"       "Warp Beast jumps to the targeted location over %jump_time% seconds and creates an expanding wave upon landing which spreads over a radius and hits affected enemies with an attack. Heroes take extra damage. Has %charges% charges."
+		"DOTA_Tooltip_Ability_warp_beast_temporal_jump_Note0"             "Warp Beast cannot use Latch or Temporal Jump again until he lands."
+		"DOTA_Tooltip_Ability_warp_beast_temporal_jump_radius"            "RADIUS:"
+		"DOTA_Tooltip_Ability_warp_beast_temporal_jump_bonus_hero_damage" "BONUS HERO DAMAGE:"
+
+		"DOTA_Tooltip_modifier_temporal_jump"                       "Jumping"
+		"DOTA_Tooltip_modifier_temporal_jump_Description"           "Upon landing, Warp Beast attacks everything in an expanding area while looking like a total badass. "
+		"DOTA_Tooltip_modifier_temporal_jump_charges"				"Temporal Jump Charges"
+
+		"DOTA_Tooltip_Ability_warp_beast_latch"                                "Latch"
+		"DOTA_Tooltip_Ability_warp_beast_latch_Description"                    "Warp Beast latches onto the back of a unit or building. When cast on an enemy, Warp Beast will continually attack the target for %duration% seconds, granting him bonus attack speed while latched. Latched units cannot reliably target Warp Beast with spells or attacks."
+		"DOTA_Tooltip_Ability_warp_beast_latch_Note0"                          "Warp Beast cannot use spells or items while latched onto an enemy."
+		"DOTA_Tooltip_Ability_warp_beast_latch_Note1"                          "Latch will be removed if Warp Beast becomes stunned. Issuing an order while latched onto an ally also removes it."
+		"DOTA_Tooltip_Ability_warp_beast_latch_attackspeed_bonus"              "ATTACK SPEED BONUS:"
+		"DOTA_Tooltip_Ability_warp_beast_latch_duration"                       "DURATION:"
+
+		"DOTA_Tooltip_modifier_latch"                       "Latched"
+		"DOTA_Tooltip_modifier_latch_Description"           "You are latched on a target. You will unlatch if you become stunned or if the target removes the effect."
+		"DOTA_Tooltip_modifier_latch_target"                   "Latched"
+		"DOTA_Tooltip_modifier_latch_target_Description"       "Warp Beast is latched onto you!"
+
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater"                                "Mana Vessel"
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater_Description"                    "Warp Beast steals mana when attacking. If Warp Beast kills a unit, he will also gain mana equal to %kill_drain_percentage%% of the unit's max mana. Any excess mana gained will be stored as bonus mana which lasts for %bonus_duration% seconds or until spent, up to a limit.\nGains evasion based on current mana percentage."
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater_Note0"                          "If the unit has no mana or is an illusion, this passive won't trigger."
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater_drain_amount"                   "MANA GAIN AMOUNT:"
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater_bonus_mana_cap"                 "EXCESS MANA LIMIT:"
+		"DOTA_Tooltip_Ability_warp_beast_mana_eater_evasion_per_mana_percentage"    "%MAX EVASION:"
+
+		"DOTA_Tooltip_modifier_mana_eater_bonus_mana_count"					"Excess Mana"
+		"DOTA_Tooltip_modifier_mana_eater_bonus_mana_count_Description"		"Bonus Mana gained with Warp."
+
+		"DOTA_Tooltip_Ability_warp_beast_warp"                                 "Warp"
+		"DOTA_Tooltip_Ability_warp_beast_warp_Description"                     "While toggled, whenever Warp Beast attempts to cast a spell or use an item on a target or location beyond its cast range, he will warp to a random position within range of the ability, spending mana based on how much further the target or location is from its range.\nWarp Beast gains mana when attacking units with mana. If Warp Beast kills a unit, he will also gain mana equal to %kill_drain_percentage%%% of the unit's max mana. Any excess mana gained will be stored as bonus mana which lasts for %bonus_duration% seconds or until spent, up to a limit."
+		"DOTA_Tooltip_Ability_warp_beast_warp_Note0"                           "Warp Beast cannot warp while Stunned, Rooted or Silenced."
+		"DOTA_Tooltip_Ability_warp_beast_warp_warp_duration"                   "WARP DURATION:"
+		"DOTA_Tooltip_Ability_warp_beast_warp_distance_per_mana"               "DISTANCE PER MANA:"
+		"DOTA_Tooltip_Ability_warp_beast_warp_drain_amount"                    "MANA GAIN AMOUNT:"
+		"DOTA_Tooltip_Ability_warp_beast_warp_bonus_mana_cap"                  "EXCESS MANA LIMIT:"
+
+		"DOTA_Tooltip_modifier_warp_indicator"                    "Warp Activated"
+		"DOTA_Tooltip_modifier_warp_indicator_Description"        "Ready to warp upon casting an ability or item. Cannot warp if Stunned, Rooted or Silenced."
+
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_latch_attackspeed"		"+{s:value} Latch Attack Speed"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_mana_eater"				"+{s:value} Warp Mana Gain Amount"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_warp_mana_pool"			"+{s:value} Warp Distance Per Mana"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_jump_radius"				"+{s:value} Temporal Jump Wave Radius"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_jump_hero_damage"         "+{s:value} Temporal Jump Hero Damage"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_warp_silence"				"{s:value}s Silence on Warp"
+		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_warp_silence_Description"	"Silences enemies in a 550 radius from the Warp point."
+
+		"DOTA_Tooltip_ability_void_spirit_resonant_pulse_Description"			"Warp Beast wraps himself in a protective shield that absorbs physical damage and emits a single damaging pulse around him. The shield gains increased damage absorption for each enemy hero the pulse hits."

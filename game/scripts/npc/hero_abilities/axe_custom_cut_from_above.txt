@@ -1,101 +1,71 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Axe: Cut from Above (R) - Modified Axe Culling Blade from Holdout Game Mode
-	// Author: Author of Valve Holdout Game Mode (Hardcoded)
-	// Linkens: Doesn't Block (INTENTIONAL); 
-	// Notes: 20.11.2019; Doesn't kill couriers. DON'T CHANGE THE NAME OF THE SPELL: holdout_culling_blade !!!
-	//=================================================================================================================
-	"holdout_culling_blade"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityTextureName"				"custom/axe_custom_cut_from_above"
-		"AbilityType"						"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"				"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"					"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"				"SPELL_DISPELLABLE_YES"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500 700 900"
-		"AbilityCastPoint"				"0.0"
-		"AoERadius" 					"175 225 275"
-		"HasScepterUpgrade" 			"0"
+  //=================================================================================================================
+  // Axe: Cut from Above (R) - like Axe Culling Blade from Holdout Game Mode
+  // Author: Darkonius
+  // Linkens: Doesn't Block (INTENTIONAL); 
+  // Notes: 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "axe_custom_cut_from_above"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/axe/cut_from_above.lua"
+    "AbilityTextureName"                                  "custom/axe_custom_cut_from_above"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"40"
+    "HasScepterUpgrade"                                   "1"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"60 120 180"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"leap_distance"				"500 700 900"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"leap_speed"				"1000 1100 1200"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"leap_acceleration"			"7000.0"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"leap_radius"				"175 225 275"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"kill_threshold"			"250 350 450"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"150 250 350"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"speed_bonus"				"40"
-			}
-			"08"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"speed_duration"			"10.0"
-			}
-			"09"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"speed_aoe"					"1200"
-			}
-			"10" // not anymore
-			{
-				"var_type"					"FIELD_FLOAT"
-				"cooldown_scepter"			"6.0"
-			}
-			"11" // not anymore
-			{
-				"var_type"					"FIELD_INTEGER"
-				"kill_threshold_scepter"	"350 450 550"
-			}
-			"12" // not anymore
-			{
-				"var_type"					"FIELD_FLOAT"
-				"speed_duration_scepter"	"10"
-			}
-		}
-	}
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "500 700 900"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
+    "AnimationPlaybackRate"                               "0.5"
+    "AoERadius"                                           "275"
+
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "40 30 20"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "60 120 180"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "damage_kill_threshold"                             "250 350 450"
+      "scepter_damage_kill_threshold"
+      {
+        "value"                                           "350 500 650"
+        "RequiresScepter"                                 "1"
+      }
+      "scepter_bonus_cast_range"
+      {
+        "value"                                           "400"
+        "RequiresScepter"                                 "1"
+      }
+
+      "leap_speed"                                        "500"
+      "leap_duration"                                     "0.5"
+      "leap_height"                                       "250"
+      "radius"                                            "275"
+
+      "bonus_move_speed_on_kill"                          "20 30 40"
+      "bonus_attack_speed_on_kill"                        "20 30 40"
+      "buff_duration"                                     "10"
+      "buff_radius"                                       "1200"
+    }
+  }
 }

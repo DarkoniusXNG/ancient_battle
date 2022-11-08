@@ -1,26 +1,26 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Dark Terminator: Take Aim - custom Sniper's Take Aim - unused
-	// Author: Darkonius
-	// Notes: OK; 3.3.2020;
-	// TO_DO:
-	//=================================================================================================================
-	"dark_terminator_take_aim"
-	{
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/dark_terminator/take_aim.lua"
-		"AbilityTextureName"                              "custom/dark_terminator_take_aim"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Dark Terminator: Take Aim - custom Sniper's Take Aim - unused
+  // Author: Darkonius
+  // Notes: OK; 3.3.2020;
+  // TO_DO:
+  //=================================================================================================================
+  "dark_terminator_take_aim"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dark_terminator/take_aim.lua"
+    "AbilityTextureName"                                  "custom/dark_terminator_take_aim"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_attack_range"                      "100 200 300 400"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_attack_range"                              "100 200 300 400"
+      }
+    }
+  }
 }

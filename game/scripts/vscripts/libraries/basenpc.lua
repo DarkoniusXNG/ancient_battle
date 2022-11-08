@@ -58,8 +58,12 @@ if CDOTA_BaseNPC then
       -- custom:
       "item_modifier_forgotten_king_bar_damage_shield",
       "modifier_slippers_of_halcyon_caster",
-      "item_modifier_infused_robe_damage_barrier",
+      "modifier_infused_robe_damage_barrier",
       "modifier_item_orb_of_reflection_active_reflect",
+      "modifier_item_custom_butterfly_active",
+      "modifier_item_custom_heart_active",
+      "modifier_pull_staff_active_buff",
+      "modifier_item_stoneskin_active",
     }
 
     local undispellable_item_debuffs = {
@@ -68,6 +72,7 @@ if CDOTA_BaseNPC then
       "modifier_silver_edge_debuff",            -- Silver Edge debuff
       "modifier_item_nullifier_mute",           -- Nullifier debuff
       -- custom:
+      "modifier_pull_staff_active_buff",
     }
 
     local undispellable_ability_debuffs = {
@@ -159,8 +164,8 @@ if CDOTA_BaseNPC then
       "modifier_giant_growth_active",
       "modifier_drunken_fist_knockback",
       "modifier_drunken_fist_bonus",
-      "modifier_mana_flare_armor_buff",
-      "modifier_mana_flare_aura_applier",
+      --"modifier_mana_flare_armor_buff",
+      --"modifier_mana_flare_aura_applier",
       "modifier_absorb_bonus_mana_scepter",
       "modifier_paladin_divine_shield",
       "modifier_paladin_divine_shield_upgraded",
@@ -171,7 +176,6 @@ if CDOTA_BaseNPC then
     local problematic_modifiers = {
       "modifier_abaddon_borrowed_time",         -- transformation modifier and an ultimate
       "modifier_abaddon_borrowed_time_damage_redirect",
-      --"modifier_alchemist_chemical_rage",     -- transformation modifier and an ultimate
       --"modifier_batrider_firefly",            -- Removes only one instance, bugs out the caster
       --"modifier_brewmaster_primal_split_duration", -- Coding nightmare
       --"modifier_bristleback_warpath",         -- Removing this breaks the ability

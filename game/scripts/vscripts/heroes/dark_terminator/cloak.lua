@@ -40,24 +40,23 @@ end
 
 function modifier_dark_terminator_cloak:OnCreated()
   self.fade_time = self:GetAbility():GetSpecialValueFor("fade_time")
+  self.move_speed = self:GetAbility():GetSpecialValueFor("bonus_move_speed")
 
   local particle = ParticleManager:CreateParticle("particles/generic_hero_status/status_invisibility_start.vpcf", PATTACH_ABSORIGIN, self:GetParent())
   ParticleManager:ReleaseParticleIndex(particle)
 end
 
 function modifier_dark_terminator_cloak:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
 		MODIFIER_EVENT_ON_ABILITY_EXECUTED,
 		MODIFIER_EVENT_ON_ATTACK,
 	}
-
-	return funcs
 end
 
 function modifier_dark_terminator_cloak:GetModifierMoveSpeedBonus_Percentage()
-	return self:GetAbility():GetSpecialValueFor("bonus_move_speed")
+	return self.move_speed or self:GetAbility():GetSpecialValueFor("bonus_move_speed")
 end
 
 function modifier_dark_terminator_cloak:GetModifierInvisibilityLevel()
@@ -98,7 +97,7 @@ end
 
 function modifier_dark_terminator_cloak:CheckState()
 	local state = {
-		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- its not part of the ability on purpose
+		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- it's not part of the ability on purpose
 		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,

@@ -1,104 +1,104 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Phoenix: Phoenix Fire
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO: Particles and sounds
-	//=================================================================================================================
-	"custom_phoenix_phoenix_fire"
-	{
-		"BaseClass"                     "ability_datadriven"
-		"AbilityTextureName"            "custom/custom_phoenix_fire"
-		"MaxLevel"                      "1"
+  //=================================================================================================================
+  // Phoenix: Phoenix Fire
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO: Particles and sounds
+  //=================================================================================================================
+  "custom_phoenix_phoenix_fire"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/custom_phoenix_fire"
+    "MaxLevel"                                            "1"
 
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"initial_damage"                          "100"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_per_second"                       "35"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"radius"                                  "700"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"damage_to_self"                          "25"
-				"CalculateSpellDamageTooltip"             "0"
-			}
-		}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "initial_damage"                                  "100"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "35"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "700"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_to_self"                                  "25"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_phoenix_fire_aura_applier" // doesn't need tooltip
-			{
-				"Passive"           "1"
-				"IsHidden"			"1"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"Aura" 				"modifier_custom_phoenix_fire_aura_effect"
-				"Aura_Radius" 		"%radius"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "Modifiers"
+    {
+      "modifier_custom_phoenix_fire_aura_applier" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Aura"                                            "modifier_custom_phoenix_fire_aura_effect"
+        "Aura_Radius"                                     "%radius"
+        "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-				"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
-				"EffectAttachType"  "follow_origin"
-				
-				"ThinkInterval"     "1"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/blood_mage/summon_phoenix.lua"
-						"Function"      "PhoenixDegen"
-					}
-				}
-			}
-			
-			"modifier_custom_phoenix_fire_aura_effect" // needs tooltip
-			{
-				"IsHidden" 			"0"
-				"IsPurgable"		"0"
-				"IsDebuff"			"1"
+        "EffectName"                                      "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "ThinkInterval"                                   "1"
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/blood_mage/summon_phoenix.lua"
+            "Function"                                    "PhoenixDegen"
+          }
+        }
+      }
+      
+      "modifier_custom_phoenix_fire_aura_effect" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsPurgable"                                      "0"
+        "IsDebuff"                                        "1"
 
-				"OnCreated"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Damage"    "%initial_damage"
-					}
-				}
-				
-				"ThinkInterval"     "1"
-				"OnIntervalThink"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Damage"    "%damage_per_second"
-					}
-				}
-			}
-		}
-	}
+        "OnCreated"
+        {
+          "Damage"
+          {
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%initial_damage"
+          }
+        }
+        
+        "ThinkInterval"                                   "1"
+        "OnIntervalThink"
+        {
+          "Damage"
+          {
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%damage_per_second"
+          }
+        }
+      }
+    }
+  }
 }

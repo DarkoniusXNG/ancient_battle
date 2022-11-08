@@ -1,158 +1,40 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Blademaster: Shadow Walk (E) - Datadriven, Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
-	// Author: Darkonius
-	// Notes: OK; 14.10.2018; Uses built-in modifier: modifier_invisible; Dispellable with Basic Dispel;
-	// Notes: Bonus Damage can damage buildings; No fade time;
-	// TO_DO: Rework into ability_lua because damage is blocked with damage block
-	//=================================================================================================================
-	"blademaster_shadow_walk"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/blademaster_shadow_walk"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-	
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"20.0 19.0 18.0 17.0"
-	
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"1"
-	
-		"precache"
-		{
-		  	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-		  	"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"20 25 30 35"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_move_speed"	"10 20 30 40"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"30 60 90 120"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"FireEffect"
-			{
-				"Target"			"CASTER"
-				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-				"EffectAttachType"	"attach_origin"
-			}
-	
-			"FireSound"
-			{
-				"Target"			"CASTER"
-				"EffectName"		"Hero_BountyHunter.WindWalk"
-			}
-	
-			"ApplyModifier" // this modifier only applies transparency, not actual invisibility
-			{
-				"ModifierName" 		"modifier_invisible"
-				"Target"			"CASTER"
-				"Duration"			"%duration"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName" 		"modifier_custom_wind_walk_buff"
-				"Target"			"CASTER"
-				"Duration"			"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_custom_wind_walk_buff" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsBuff"			"1"
-				"IsPurgable"		"1"
-				
-				"Duration"          "%duration"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_move_speed"
-				}
-				
-				"States"
-				{
-					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				
-				"OnAttackLanded"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName" 	"modifier_custom_wind_walk_buff"
-						"Target"		"CASTER"
-					}
-	
-					"Damage"
-					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-						"Type"			"DAMAGE_TYPE_PHYSICAL"
-						"Damage"		"%bonus_damage"
-					}
-	
-					"FireEffect"
-					{
-						"EffectName"		"particles/msg_fx/msg_crit.vpcf"
-						"EffectAttachType"	"follow_overhead"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-						"ControlPoints"
-						{
-							"01"		"9 %bonus_damage 4"		//pre number post
-							"02"		"1 4 0"					//lifetime digits
-							"03"		"255 0 0"				//color
-						}
-					}
-				}
-	
-				"OnAbilityExecuted"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName" 	"modifier_custom_wind_walk_buff"
-						"Target"		"CASTER"
-					}
-				}
-				
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName" 	"modifier_invisible"
-						"Target"		"CASTER"
-					}
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // Blademaster: Shadow Walk (E) - like old Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
+  // Author: Darkonius
+  // Notes: OK; 2022; Dispellable with Basic Dispel;
+  // Notes:
+  // TO_DO:
+  //=================================================================================================================
+  "blademaster_shadow_walk"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blademaster/shadow_walk.lua"
+    "AbilityTextureName"                                  "custom/blademaster_shadow_walk"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastPoint"                                    "0"
+    "AbilityCooldown"                                     "20 19 18 17"
+    
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+    }
+    
+    "AbilityValues"
+    {
+      "duration"                                          "20 25 30 35"
+      "bonus_move_speed"                                  "10 20 30 40"
+      "bonus_damage"                                      "40 70 100 130"
+      "fade_time"                                         "1.0 0.8 0.6 0.4"
+    }
+  }
 }

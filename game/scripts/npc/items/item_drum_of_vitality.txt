@@ -1,146 +1,146 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// 1274 - Recipe: Drum of Vitality
-	// Notes: OK; 25.12.2019;
-	//=================================================================================================================
-	"item_recipe_drum_of_vitality"
-	{
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/custom_recipe"
-		"Model"							"models/props_gameplay/recipe.vmdl"
+  //=================================================================================================================
+  // 1274 - Recipe: Drum of Vitality
+  // Notes: OK; 25.12.2019;
+  //=================================================================================================================
+  "item_recipe_drum_of_vitality"
+  {
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"260"
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_drum_of_vitality"
-		"ItemRequirements"
-		{
-			"01"						"item_bracer_old;item_ring_of_regen;item_faerie_fire"
-		}
-	}
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "260"
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_drum_of_vitality"
+    "ItemRequirements"
+    {
+      "01"                                                "item_bracer_old;item_ring_of_regen;item_faerie_fire"
+    }
+  }
 
-	//=================================================================================================================
-	// 1275 - Drum of Vitality - Old Bracer (395) + Ring of Regen (175) + Faerie Fire (70) + Recipe (260) = 900
-	// Notes: OK; 2022; Item cost should be the same as Ring of Aquila;
-	// TO_DO:
-	//=================================================================================================================
-	"item_drum_of_vitality"
-	{
-		"ID"							"1275"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"custom/drum_of_vitality"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"5.0"
-		
-		"AbilityManaCost"				"0"
-		"ItemCost"						"900"
-		"ItemShopTags"					"str;agi;int;damage;regen_health;hard_to_tag"
-		"ItemQuality"					"rare"
-		"ItemAliases"					"drum of vitality"
-		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
-		
-		"ItemPermanent"					"1"
-		"ItemInitialCharges"			"10"
-		"ItemRequiresCharges"			"1"
-		"ItemDisplayCharges"			"1"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // better than Bracer
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_str"                               "6"
-			}
-			"02" // better than Bracer
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_agi"                               "3"
-			}
-			"03" // better than Bracer
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_int"                               "3"
-			}
-			"04"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_dmg"                               "2"
-			}
-			"05" // 1.25 +
-			{
-				"var_type"                                "FIELD_FLOAT"
-				"bonus_hp_regen"                          "2.0"
-			}
-			"06"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"bonus_magic_resistance"                  "5"
-			}
-			"07" // 85 +
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"heal"                                    "100"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"Heal"
-			{
-				"HealAmount"	"%heal"
-				"Target"		"CASTER"
-			}
-			
-			"FireSound"
-			{
-				"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
-				"Target"		"CASTER"
-			}
-			
-			"FireEffect"
-			{
-				"Target"			"CASTER"
-				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-			
-			"SpendCharge"
-			{}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_drum_of_vitality_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
-				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_hp_regen"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"        "%bonus_magic_resistance"
-				}
-			}
-		}
-	}
+  //=================================================================================================================
+  // 1275 - Drum of Vitality - Old Bracer (395) + Ring of Regen (175) + Faerie Fire (70) + Recipe (260) = 900
+  // Notes: OK; 2022; Item cost should be the same as Ring of Aquila;
+  // TO_DO:
+  //=================================================================================================================
+  "item_drum_of_vitality"
+  {
+    "ID"                                                  "1275"
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/drum_of_vitality"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "5.0"
+    
+    "AbilityManaCost"                                     "0"
+    "ItemCost"                                            "900"
+    "ItemShopTags"                                        "str;agi;int;damage;regen_health;hard_to_tag"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "drum of vitality"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
+    
+    "ItemPermanent"                                       "1"
+    "ItemInitialCharges"                                  "10"
+    "ItemRequiresCharges"                                 "1"
+    "ItemDisplayCharges"                                  "1"
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // better than Bracer
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_str"                                       "6"
+      }
+      "02" // better than Bracer
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_agi"                                       "3"
+      }
+      "03" // better than Bracer
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_int"                                       "3"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_dmg"                                       "2"
+      }
+      "05" // 1.25 +
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "bonus_hp_regen"                                  "2.0"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_magic_resistance"                          "5"
+      }
+      "07" // 85 +
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "heal"                                            "100"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "Heal"
+      {
+        "HealAmount"                                      "%heal"
+        "Target"                                          "CASTER"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "DOTA_Item.FaerieSpark.Activate"
+        "Target"                                          "CASTER"
+      }
+      
+      "FireEffect"
+      {
+        "Target"                                          "CASTER"
+        "EffectName"                                      "particles/items3_fx/fish_bones_active.vpcf"
+        "EffectAttachType"                                "follow_origin"
+      }
+      
+      "SpendCharge"
+    {}
+    }
+    
+    "Modifiers"
+    {
+      "modifier_item_drum_of_vitality_passives" // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
+          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+          "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%bonus_hp_regen"
+          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_dmg"
+          "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"    "%bonus_magic_resistance"
+        }
+      }
+    }
+  }
 }

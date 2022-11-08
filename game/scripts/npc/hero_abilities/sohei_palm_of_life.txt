@@ -1,78 +1,78 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Sohei: Palm of Life - Heals allies, damages enemies. Applies Super Strong Dispel.
-	//=================================================================================================================
-	"sohei_palm_of_life"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "heroes/sohei/sohei_palm_of_life.lua"
-		"AbilityTextureName"                              "custom/ronin_palm_of_life"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitDamageType"                           "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_YES"
-		
-		"MaxLevel"                                        "1"
-		"RequiredLevel"                                   "6"
+  //=================================================================================================================
+  // Sohei: Palm of Life - Heals allies, damages enemies. Applies Super Strong Dispel.
+  //=================================================================================================================
+  "sohei_palm_of_life"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/sohei/sohei_palm_of_life.lua"
+    "AbilityTextureName"                                  "custom/ronin_palm_of_life"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
 
-		"HasScepterUpgrade"                               "1"
+    "HasScepterUpgrade"                                   "1"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"                                "0.3"
-		"AbilityCastAnimation"                            "ACT_DOTA_OVERRIDE_ABILITY_2"
-		"AnimationPlaybackRate"                           "2"
-		"AbilityCastRange"                                "250"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCastAnimation"                                "ACT_DOTA_OVERRIDE_ABILITY_2"
+    "AnimationPlaybackRate"                               "2"
+    "AbilityCastRange"                                    "250"
 
-		// Time
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "20"
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "20"
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "75"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "75"
 
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"particle"                                    "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-			"particle"                                    "particles/hero/sohei/guard.vpcf"
-			"soundfile"                                   "soundevents/units/game_sounds_sohei.vsndevts"
-			"soundfile"                                   "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-		}
+    // Precache
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+      "particle"                                          "particles/hero/sohei/guard.vpcf"
+      "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    }
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"base_heal"                                   "250"
-			"bonus_magic_resistance"                      "50"
-			"duration"                                    "5"
-			"post_heal"                                   "75"
-			"damage_taken_as_heal"
-			{
-				"value"                                   "25"
-				"CalculateSpellDamageTooltip"             "0"
-				"DamageTypeTooltip"                       "DAMAGE_TYPE_NONE"
-			}
-			"base_damage"                                 "75"
-			"str_diff_multiplier"                         "15"
-			"scepter_max_hp_as_heal"
-			{
-				"value"				                      "8"
-				"RequiresScepter"                         "1"
-			}
-			"scepter_str_diff_multiplier"
-			{
-				"value"                                   "25"
-				"RequiresScepter"                         "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "base_heal"                                         "250"
+      "bonus_magic_resistance"                            "50"
+      "duration"                                          "5"
+      "post_heal"                                         "75"
+      "damage_taken_as_heal"
+      {
+        "value"                                           "25"
+        "CalculateSpellDamageTooltip"                     "0"
+        "DamageTypeTooltip"                               "DAMAGE_TYPE_NONE"
+      }
+      "base_damage"                                       "75"
+      "str_diff_multiplier"                               "15"
+      "scepter_max_hp_as_heal"
+      {
+        "value"                                           "8"
+        "RequiresScepter"                                 "1"
+      }
+      "scepter_str_diff_multiplier"
+      {
+        "value"                                           "25"
+        "RequiresScepter"                                 "1"
+      }
+    }
+  }
 }

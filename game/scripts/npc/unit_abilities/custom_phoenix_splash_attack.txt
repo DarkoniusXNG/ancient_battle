@@ -1,42 +1,42 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Phoenix: Splash Attack - passive, dealing 100% attack damage as magic damage in a radius around the attacked target;
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//====================================================================================================
-	"custom_phoenix_splash_attack"
-	{
-	    "BaseClass"                                       "ability_lua"
-		"ScriptFile"                                      "horde/physical_splash_attack.lua"
-	    "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"                              "custom/custom_unit_splash_attack"
-		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"                          "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityUnitDamageType"                           "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
-	    "MaxLevel"                                        "1"
+  //====================================================================================================
+  // Phoenix: Splash Attack - passive, dealing 100% attack damage as magic damage in a radius around the attacked target;
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //====================================================================================================
+  "custom_phoenix_splash_attack"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "horde/physical_splash_attack.lua"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "custom/custom_unit_splash_attack"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+    "MaxLevel"                                            "1"
 
-		"precache"
-		{
-			"particle"	"particles/items/powertreads_splash.vpcf"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/items/powertreads_splash.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"400"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_percent"			"100"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_percent"                                  "100"
+      }
+    }
+  }
 }

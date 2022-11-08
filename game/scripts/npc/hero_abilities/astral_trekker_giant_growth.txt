@@ -1,165 +1,165 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
-	// Author: Darkonius
-	// Notes: OK; 2021;
-	// TO_DO: special_bonus_unique_astral_trekker_2
-	//=================================================================================================================
-	"astral_trekker_giant_growth"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"    		"custom/astral_trekker_giant_growth"
-		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+  //=================================================================================================================
+  // Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
+  // Author: Darkonius
+  // Notes: OK; 2021;
+  // TO_DO: special_bonus_unique_astral_trekker_2
+  //=================================================================================================================
+  "astral_trekker_giant_growth"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/astral_trekker_giant_growth"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		"MaxLevel"               		"3"
-		"RequiredLevel"					"6"
-		"LevelsBetweenUpgrades"			"5"
-		
-		"HasScepterUpgrade" 			"0"
+    "MaxLevel"                                            "3"
+    "RequiredLevel"                                       "6"
+    "LevelsBetweenUpgrades"                               "5"
+    
+    "HasScepterUpgrade"                                   "0"
 
-		"AbilityCastPoint" 				"0.0"
+    "AbilityCastPoint"                                    "0.0"
 
-		"AbilityCooldown"               "80"
-		
-		"AbilityManaCost"				"75"
-		"AbilityProcsMagicStick"		"1"
-		
-		"AbilitySpecial"
-		{
-			"01" // Kunkka's Tidebringer (30/60/90/120); Tiny Grow (30/70/110);
-			{ 
-				"var_type"  					"FIELD_INTEGER"
-				"passive_bonus_damage" 			"60 90 120"
-				"CalculateSpellDamageTooltip"	"0"
-			}
-			"02" // Tiny Grow (-20/-30/-40)
-			{
-				"var_type"						"FIELD_INTEGER"
-				"passive_bonus_attack_speed"	"-20 -35 -50"
-			}
-			"03"
-			{ 
-				"var_type"  					"FIELD_INTEGER"
-				"passive_bonus_health" 			"250 500 750"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"active_bonus_resistance"		"35 55 75"
-				"LinkedSpecialBonus"            "special_bonus_unique_astral_trekker_2"
-			}
-			"05" // Tiny Grow (12/18/24);
-			{ 
-				"var_type"  					"FIELD_INTEGER"
-				"active_bonus_armor" 			"12 18 24"
-			}
-			"06"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"duration"						"40"
-			}
-			"07" // this is used in lua
-			{
-				"var_type"						"FIELD_FLOAT"
-				"growth_size"					"1.2 1.4 1.6"
-			}
-			"08" // this is in tooltip only
-			{
-				"var_type"  					"FIELD_INTEGER"
-				"stomp_bonus_damage" 			"100 150 200"
-			}
-		}
+    "AbilityCooldown"                                     "80"
+    
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01" // Kunkka's Tidebringer (30/60/90/120); Tiny Grow (30/70/110);
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "passive_bonus_damage"                            "60 90 120"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02" // Tiny Grow (-20/-30/-40)
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "passive_bonus_attack_speed"                      "-20 -35 -50"
+      }
+      "03"
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "passive_bonus_health"                            "250 500 750"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "active_bonus_resistance"                         "35 55 75"
+        "LinkedSpecialBonus"                              "special_bonus_unique_astral_trekker_2"
+      }
+      "05" // Tiny Grow (12/18/24);
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "active_bonus_armor"                              "12 18 24"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "40"
+      }
+      "07" // this is used in lua
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "growth_size"                                     "1.2 1.4 1.6"
+      }
+      "08" // this is in tooltip only
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "stomp_bonus_damage"                              "100 150 200"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"   			"CASTER"
-				"ModifierName"		"modifier_giant_growth_active"
-				"Duration"			"%duration"
-			}
-			
-			"FireSound"
-			{
-				"EffectName"		"Hero_Spirit_Breaker.NetherStrike.Begin"
-				"Target" 			"CASTER"
-			}
-		}
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "Target"                                          "CASTER"
+        "ModifierName"                                    "modifier_giant_growth_active"
+        "Duration"                                        "%duration"
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Spirit_Breaker.NetherStrike.Begin"
+        "Target"                                          "CASTER"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_giant_growth_active" // needs tooltip
-			{
-				"IsHidden"			"0"
-				"IsBuff"			"1"
-				"IsPurgable"		"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_bonus_armor"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%active_bonus_resistance"
-				}
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/astral_trekker/giant_growth.lua"
-						"Function"		"GrowStart"
-					}
-				}
-				
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/astral_trekker/giant_growth.lua"
-						"Function"		"GrowEnd"
-					}
-				}
-			}
-			
-			"modifier_giant_growth_passive"		// doesn't need tooltip
-			{
-				"Passive"					"1"
-				"IsHidden"					"1"
-				"IsBuff"					"1"
-				"IsPurgable"				"0"
-				
-				"AllowIllusionDuplicate"	"1"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%passive_bonus_damage"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%passive_bonus_attack_speed"
-					"MODIFIER_PROPERTY_HEALTH_BONUS"				"%passive_bonus_health"
-				}
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Giant Growth bonus magic resistance talent
-	//=================================================================================================================
-	"special_bonus_unique_astral_trekker_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "20"
-			}
-		}
-	}
+    "Modifiers"
+    {
+      "modifier_giant_growth_active" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%active_bonus_armor"
+          "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"    "%active_bonus_resistance"
+        }
+        
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/astral_trekker/giant_growth.lua"
+            "Function"                                    "GrowStart"
+          }
+        }
+        
+        "OnDestroy"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/astral_trekker/giant_growth.lua"
+            "Function"                                    "GrowEnd"
+          }
+        }
+      }
+      
+      "modifier_giant_growth_passive"    // doesn't need tooltip
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
+        "IsBuff"                                          "1"
+        "IsPurgable"                                      "0"
+        
+        "AllowIllusionDuplicate"                          "1"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"      "%passive_bonus_damage"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%passive_bonus_attack_speed"
+          "MODIFIER_PROPERTY_HEALTH_BONUS"                "%passive_bonus_health"
+        }
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Giant Growth bonus magic resistance talent
+  //=================================================================================================================
+  "special_bonus_unique_astral_trekker_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "20"
+      }
+    }
+  }
 }

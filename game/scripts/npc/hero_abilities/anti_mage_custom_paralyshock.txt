@@ -1,0 +1,52 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Anti Mage: Paralyshock (F) - Dispels, Slows (move speed, attack speed, cast speed, turn speed) + damages summons
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2022;
+  // TO_DO: ALL
+  //=================================================================================================================
+  "anti_mage_custom_paralyshock"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/anti_mage/paralyshock.lua"
+    "AbilityTextureName"                                  "custom/anti_mage_custom_paralyshock"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
+
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "50"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.3"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "100"
+    "AbilityProcsMagicStick"                              "1"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "slow_creep_duration"                               "8.0"
+      "slow_hero_duration"                                "4.0"
+      "move_speed_slow_pct"                               "100"
+      "attack_speed_slow_pct"                             "50"
+      "turn_speed_slow_pct"                               "50"
+      "cast_speed_slow_pct"                               "50"
+      "summon_damage"                                     "1000"
+    }
+  }
+}

@@ -1,165 +1,165 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Brewmaster: Drunken Haze (W) - Datadriven Brewmaster's Drunken Haze, slightly modified
-	// Author: Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2022; Projectile can be disjointed;
-	// TO_DO: Cast Animation is weird.
-	//====================================================================================================
-	"brewmaster_custom_drunken_haze"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/brewmaster_custom_drunken_haze"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //====================================================================================================
+  // Brewmaster: Drunken Haze (W) - like old Brewmaster's Drunken Haze, slightly different
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2022; Projectile can be disjointed;
+  // TO_DO: Cast Animation is weird.
+  //====================================================================================================
+  "brewmaster_custom_drunken_haze"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/brewmaster_custom_drunken_haze"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.4"									// dota: 0.2;
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCastRange"				"850"									// original: 550
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.4"                  // dota: 0.2;
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastRange"                                    "850"                  // original: 550
 
-		"AoERadius"						"%radius"
+    "AoERadius"                                           "%radius"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"13 11 9 7"						        // original: 12 seconds
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "13 11 9 7"                    // original: 12 seconds
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"70"									// original: 70
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "70"                  // original: 70
+    "AbilityProcsMagicStick"                              "1"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // original: 200
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"400"
-			}
-			"02" // original: 5 seconds;
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration_heroes"			"5"
-			}
-			"03" // original: 12 seconds;
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration_creeps"			"7"
-			}
-			"04" // original: 15/30/50%;
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_slow"				"-15 -25 -35 -45"
-			}
-			"05" // original: 45/65/80%;
-			{
-				"var_type"					"FIELD_INTEGER"
-				"miss_chance"				"50 60 70 80"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"projectile_speed"			"1400"
-			}
-		}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // original: 200
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400"
+      }
+      "02" // original: 5 seconds;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration_heroes"                                 "5"
+      }
+      "03" // original: 12 seconds;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration_creeps"                                 "7"
+      }
+      "04" // original: 15/30/50%;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movement_slow"                                   "-15 -25 -35 -45"
+      }
+      "05" // original: 45/65/80%;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "miss_chance"                                     "50 60 70 80"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "projectile_speed"                                "1400"
+      }
+    }
 
-		"precache"
-		{
-			"particle"	"particles/custom/brewmaster_drunken_haze.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/custom/brewmaster_drunken_haze.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+    }
 
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"           	"TARGET"
-				"EffectName"       	"particles/custom/brewmaster_drunken_haze.vpcf"
-				"Dodgeable"        	"1"
-				"ProvidesVision"   	"0"
-				"MoveSpeed"        	"%projectile_speed"
-				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1" // DOTA_PROJECTILE_ATTACHMENT_ATTACK_2
-			}
+    "OnSpellStart"
+    {
+      "TrackingProjectile"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "particles/custom/brewmaster_drunken_haze.vpcf"
+        "Dodgeable"                                       "1"
+        "ProvidesVision"                                  "0"
+        "MoveSpeed"                                       "%projectile_speed"
+        "SourceAttachment"                                "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1" // DOTA_PROJECTILE_ATTACHMENT_ATTACK_2
+      }
 
-			"FireSound"
-			{
-				"EffectName"	"Hero_Brewmaster.CinderBrew.Cast" // "Hero_Brewmaster.DrunkenHaze.Cast"
-				"Target"		"CASTER"
-			}
-		}
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Brewmaster.CinderBrew.Cast" // "Hero_Brewmaster.DrunkenHaze.Cast"
+        "Target"                                          "CASTER"
+      }
+    }
 
-		"OnProjectileHitUnit"
-		{
-			"DeleteOnHit"	"1"
+    "OnProjectileHitUnit"
+    {
+      "DeleteOnHit"                                       "1"
 
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/brewmaster/drunken_haze.lua"
-				"Function"		"DrunkenHazeStart"
-			}
-		}
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/brewmaster/drunken_haze.lua"
+        "Function"                                        "DrunkenHazeStart"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_drunken_haze_debuff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
+    "Modifiers"
+    {
+      "modifier_custom_drunken_haze_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
 
-				//"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-				"EffectName"            "particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_debuff.vpcf"
-				"EffectAttachType"		"follow_origin"
+        //"EffectName"      "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+        "EffectName"                                      "particles/units/heroes/hero_brewmaster/brewmaster_cinder_brew_debuff.vpcf"
+        "EffectAttachType"                                "follow_origin"
 
-				//"StatusEffectName"		"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
-				"StatusEffectName"      "particles/status_fx/status_effect_brewmaster_cinder_brew.vpcf"
-				"StatusEffectPriority"	"5"
+        //"StatusEffectName"    "particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+        "StatusEffectName"                                "particles/status_fx/status_effect_brewmaster_cinder_brew.vpcf"
+        "StatusEffectPriority"                            "5"
 
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MISS_PERCENTAGE"				"%miss_chance"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_slow"
-				}
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MISS_PERCENTAGE"             "%miss_chance"
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%movement_slow"
+        }
 
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Brewmaster.CinderBrew.Target" // "Hero_Brewmaster.DrunkenHaze.Target"
-						"Target"		"TARGET"	
-					}
-				}
-			}
-		}
-	}
+        "OnCreated"
+        {
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Brewmaster.CinderBrew.Target" // "Hero_Brewmaster.DrunkenHaze.Target"
+            "Target"                                      "TARGET"  
+          }
+        }
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Drunken Haze talent - spells have a chance to fizzle
-	//=================================================================================================================
-	"special_bonus_unique_brewmaster_drunken_haze_fizzle"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Drunken Haze talent - spells have a chance to fizzle
+  //=================================================================================================================
+  "special_bonus_unique_brewmaster_drunken_haze_fizzle"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "1"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
 }

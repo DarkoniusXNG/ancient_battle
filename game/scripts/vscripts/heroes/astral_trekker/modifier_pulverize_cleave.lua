@@ -22,43 +22,39 @@ function modifier_pulverize_cleave:AllowIllusionDuplicate()
 	return false -- this does nothing apparently
 end
 
-function modifier_pulverize_cleave:OnCreated(kv)
+function modifier_pulverize_cleave:OnCreated()
 	local ability = self:GetAbility()
-	self.cleave_chance = ability:GetSpecialValueFor("cleave_chance")
-	self.cleave_damage_percent = ability:GetSpecialValueFor("cleave_damage")
-	self.cleave_start_radius = ability:GetSpecialValueFor("cleave_start_radius")
-	self.cleave_distance = ability:GetSpecialValueFor("cleave_distance")
-	self.cleave_end_radius = ability:GetSpecialValueFor("cleave_end_radius")
+	if ability and not ability:IsNull() then
+		self.cleave_chance = ability:GetSpecialValueFor("cleave_chance")
+		self.cleave_damage_percent = ability:GetSpecialValueFor("cleave_damage")
+		self.cleave_start_radius = ability:GetSpecialValueFor("cleave_start_radius")
+		self.cleave_distance = ability:GetSpecialValueFor("cleave_distance")
+		self.cleave_end_radius = ability:GetSpecialValueFor("cleave_end_radius")
+	end
 end
 
 modifier_pulverize_cleave.OnRefresh = modifier_pulverize_cleave.OnCreated
 
 function modifier_pulverize_cleave:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-
-	return funcs
 end
 
-function modifier_pulverize_cleave:OnAttackLanded(event)
-	if IsServer() then
+if IsServer() then	
+	function modifier_pulverize_cleave:OnAttackLanded(event)
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 		if parent == event.attacker then
 			-- If break is applied don't do anything
 			if parent:PassivesDisabled() then
-				return nil
+				return
 			end
 
 			local target = event.target
 			
 			-- To prevent crashes:
-			if not target then
-				return
-			end
-
-			if target:IsNull() then
+			if not target or target:IsNull() then
 				return
 			end
 
@@ -69,11 +65,15 @@ function modifier_pulverize_cleave:OnAttackLanded(event)
 
 			-- Prevent building up the proc chance on buildings, wards and allies
 			if target:GetTeamNumber() == parent:GetTeamNumber() or target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
-				return nil
+				return
 			end
 
+			if not ability or ability:IsNull() then
+				return
+			end
+			
 			if not ability:XNGRandom(self.cleave_chance) then
-				return nil
+				return
 			end
 
 			local cleave_origin = parent:GetAbsOrigin()

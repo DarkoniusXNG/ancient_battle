@@ -1,52 +1,52 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Mana Eater: Mana Shell (T) - New Spell, Passive Spell; Percentage of the damage dealt to Mana Eater gives him mana.
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"mana_eater_mana_shell"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"              		"ability_lua"
-		"ScriptFile"					"heroes/mana_eater/mana_shell.lua"
-		"AbilityTextureName"     		"custom/mana_eater_mana_shell"
-		"AbilityBehavior"        		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  //=================================================================================================================
+  // Mana Eater: Mana Shell (T) - New Spell, Passive Spell; Percentage of the damage dealt to Mana Eater gives him mana.
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "mana_eater_mana_shell"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/mana_eater/mana_shell.lua"
+    "AbilityTextureName"                                  "custom/mana_eater_mana_shell"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"MaxLevel"						"1"
-		
-		"AbilitySpecial"
-		{
-			"01"
-    		{ 
-        		"var_type"  				"FIELD_INTEGER"
-        		"mana_percentage" 			"50"
-    		}
-		}
-	}
-	
-	//=================================================================================================================
-	// Mana Shell: Mana Gain on Damage Done talent
-	//=================================================================================================================
-	"special_bonus_unique_mana_eater_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"                                            "1"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      { 
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_percentage"                                 "50"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Mana Shell: Mana Gain on Damage Done talent
+  //=================================================================================================================
+  "special_bonus_unique_mana_eater_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "50"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "50"
+      }
+    }
+  }
 }

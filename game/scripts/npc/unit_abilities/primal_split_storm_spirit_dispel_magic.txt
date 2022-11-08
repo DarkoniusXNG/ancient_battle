@@ -1,70 +1,70 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Primal Split Storm Spirit: Dispel Magic (Q) - Damages summoned units and applies basic dispel
-	// Author: Darkonius
-	// Notes: OK; 24.8.2019;
-	// TO_DO:
-	//====================================================================================================
-	"primal_split_storm_spirit_dispel_magic"
-	{
-	    "BaseClass"                     "ability_datadriven"
-		"AbilityTextureName"            "custom/primal_split_storm_spirit_dispel_magic"
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
-	    "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-	    "MaxLevel"                      "1"
-	
-	    "AbilityCastRange"              "500"
-	    "AOERadius"                     "%radius"
-	
-	    "AbilityCooldown"               "4.0"
-	    "AbilityCastPoint"              "0.4"
-	    "AbilityManaCost"               "75"
-		"AbilityProcsMagicStick"		"1"
-		
-	    "AbilitySpecial"
-	    {
-	        "01" // original: 200; dota: 1000;
-	        {
-	            "var_type"                  	"FIELD_INTEGER"
-	            "damage_to_summons"         	"1000"
-				"CalculateSpellDamageTooltip"	"0"
-	        }
-	        "02" // origina: 200; dota: 600;
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "radius"                    "600"
-	        }
-	    }
-	
-	    "OnSpellStart"
-	    {
-	        "FireEffect"
-	        {
-	            "EffectName"        "particles/units/heroes/hero_brewmaster/brewmaster_dispel_magic.vpcf"
-	            "EffectAttachType"  "world_origin"
-	            "TargetPoint"       "POINT"
-	            "ControlPoints"
-	            {
-	                "01"    "%radius 0 0"
-	            }
-	        }
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Brewmaster_Storm.DispelMagic"
-	            "Target"        "CASTER"
-	        }
-	
-	        "RunScript"
-	        {
-	            "ScriptFile"    "heroes/brewmaster/primal_split_storm_spirit_dispel_magic.lua"
-	            "Function"      "DispelMagic"
-	            "Target"        "POINT"
-	        }
-	    }
-	}
+  //====================================================================================================
+  // Primal Split Storm Spirit: Dispel Magic (Q) - Damages summoned units and applies basic dispel
+  // Author: Darkonius
+  // Notes: OK; 24.8.2019;
+  // TO_DO:
+  //====================================================================================================
+  "primal_split_storm_spirit_dispel_magic"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/primal_split_storm_spirit_dispel_magic"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "MaxLevel"                                            "1"
+    
+    "AbilityCastRange"                                    "500"
+    "AOERadius"                                           "%radius"
+    
+    "AbilityCooldown"                                     "4.0"
+    "AbilityCastPoint"                                    "0.4"
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01" // original: 200; dota: 1000;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_to_summons"                               "1000"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "02" // origina: 200; dota: 600;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "600"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_brewmaster/brewmaster_dispel_magic.vpcf"
+        "EffectAttachType"                                "world_origin"
+        "TargetPoint"                                     "POINT"
+        "ControlPoints"
+        {
+          "01"                                            "%radius 0 0"
+        }
+      }
+      
+      "FireSound"
+      {
+        "EffectName"                                      "Brewmaster_Storm.DispelMagic"
+        "Target"                                          "CASTER"
+      }
+      
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/brewmaster/primal_split_storm_spirit_dispel_magic.lua"
+        "Function"                                        "DispelMagic"
+        "Target"                                          "POINT"
+      }
+    }
+  }
 }

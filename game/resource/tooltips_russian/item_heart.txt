@@ -1,0 +1,14 @@
+//========================================================================
+// Heart of Tarrasque
+//========================================================================
+
+"DOTA_Tooltip_Ability_item_custom_heart"                     "Heart of Tarrasque"
+"DOTA_Tooltip_Ability_item_recipe_custom_heart"              "Heart of Tarrasque Recipe"
+"DOTA_Tooltip_Ability_item_custom_heart_Description"         "<h1>Active: Havoc</h1> Grants %buff_bonus_strength% Strength and %buff_bonus_base_damage% base damage to yourself for %buff_duration% seconds. Upon activation, knocks back enemies in %radius% range around you, dealing %nuke_base_dmg% + %nuke_str_dmg%x your str as magical damage."
+"DOTA_Tooltip_Ability_item_custom_heart_Lore"                "Preserved heart of an extinct monster, it bolsters the bearer's fortitude"
+"DOTA_Tooltip_Ability_item_custom_heart_bonus_strength"      "+$str"
+"DOTA_Tooltip_Ability_item_custom_heart_bonus_health"        "+$health"
+"DOTA_Tooltip_Ability_item_custom_heart_health_regen_pct"    "%+Max Health Regen"
+
+"DOTA_Tooltip_modifier_item_custom_heart_active"                   "Heart's Full Potential"
+"DOTA_Tooltip_modifier_item_custom_heart_active_Description"       "Bonus strength and bonus base damage."

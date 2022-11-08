@@ -1,179 +1,179 @@
 "DOTAAbilities"
 {
-	//====================================================================================================
-	// Lich: Frost Blast (Q) - Datadriven Lich Frost Nova, Reduced slow values
-	// Author: Jastuchko + Darkonius
-	// Linkens: Blocks;
-	// Notes: OK; 2021;
-	// TO_DO: Rework to lua; status resistance fix
-	//====================================================================================================
-	"lich_custom_frost_nova"
-	{
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"custom/lich_custom_frost_nova"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.4"
-		
-		"AoERadius"						"%radius"
-		
-		"AbilityCooldown"				"7.0"
-		
-		"AbilityManaCost"				"110 130 150 170"
-		"AbilityProcsMagicStick"		"1"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"200"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"slow_movement_speed"		"-15 -20 -25 -30"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"slow_attack_speed"			"-15 -20 -25 -30"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"slow_duration"				"2"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"primary_target_damage"		"50 100 150 200"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"aoe_damage"				"75 100 125 150"
-			}
-		}
+  //====================================================================================================
+  // Lich: Frost Blast (Q) - Datadriven Lich Frost Nova, Reduced slow values
+  // Author: Jastuchko + Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2021;
+  // TO_DO: Rework to lua; status resistance fix
+  //====================================================================================================
+  "lich_custom_frost_nova"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/lich_custom_frost_nova"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.4"
+    
+    "AoERadius"                                           "%radius"
+    
+    "AbilityCooldown"                                     "7.0"
+    
+    "AbilityManaCost"                                     "110 130 150 170"
+    "AbilityProcsMagicStick"                              "1"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "200"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_movement_speed"                             "-15 -20 -25 -30"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_attack_speed"                               "-15 -20 -25 -30"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "slow_duration"                                   "2"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "primary_target_damage"                           "50 100 150 200"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aoe_damage"                                      "75 100 125 150"
+      }
+    }
 
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"		"heroes/lich/frost_nova.lua"
-				"Function"			"LinkensCheck"
-			}
-		}
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/lich/frost_nova.lua"
+        "Function"                                        "LinkensCheck"
+      }
+    }
 
-		"Modifiers"
-		{
-			"modifier_custom_lich_frost_nova_damage" // doesn't need tooltip
-			{
-				"IsHidden"		"1"
-				"IsDebuff"		"1"
-				"IsPurgable"	"0"
+    "Modifiers"
+    {
+      "modifier_custom_lich_frost_nova_damage" // doesn't need tooltip
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "0"
 
-				"OnCreated"
-				{
-					"FireEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}
-					
-					"FireSound"
-					{	
-						"EffectName"		"Ability.FrostNova"
-						"Target"			"TARGET"
-					}
+        "OnCreated"
+        {
+          "FireEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+            "EffectAttachType"                            "follow_origin"
+            "Target"                                      "TARGET"
+          }
+          
+          "FireSound"
+          {  
+            "EffectName"                                  "Ability.FrostNova"
+            "Target"                                      "TARGET"
+          }
 
-					"Damage"
-					{
-						"Type"				"DAMAGE_TYPE_MAGICAL"
-						"Target"			"TARGET"
-						"Damage"			"%primary_target_damage"
-					}
+          "Damage"
+          {
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Target"                                      "TARGET"
+            "Damage"                                      "%primary_target_damage"
+          }
 
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  				"TARGET"
-							"Radius" 				"%radius"
-							"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-						}
+          "ActOnTargets"
+          {
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+            }
 
-						"Action"
-						{
-							"ApplyModifier"
-							{
-								"ModifierName"    	"modifier_custom_lich_frost_nova_slow_debuff"
-								"Target"			"TARGET"
-								"Duration"			"%slow_duration"
-							}
+            "Action"
+            {
+              "ApplyModifier"
+              {
+                "ModifierName"                            "modifier_custom_lich_frost_nova_slow_debuff"
+                "Target"                                  "TARGET"
+                "Duration"                                "%slow_duration"
+              }
 
-							"Damage"
-							{
-								"Type"		"DAMAGE_TYPE_MAGICAL"
-								"Target"	"TARGET"
-								"Damage"	"%aoe_damage"
-							}
-						}
-					}
-				}
-			}
-			
-			"modifier_custom_lich_frost_nova_slow_debuff" // needs tooltip
-			{
-				"IsHidden"		"0"
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				
-				"StatusEffectName"		"particles/status_fx/status_effect_frost_lich.vpcf"
-				"StatusEffectPriority"	"10"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
-				}
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Frost Blast bounces talent - Frost Blast will be applied to the nearest target that is not affected by Frost Blast.
-	//=================================================================================================================
-	"special_bonus_unique_lich_custom_5"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+              "Damage"
+              {
+                "Type"                                    "DAMAGE_TYPE_MAGICAL"
+                "Target"                                  "TARGET"
+                "Damage"                                  "%aoe_damage"
+              }
+            }
+          }
+        }
+      }
+      
+      "modifier_custom_lich_frost_nova_slow_debuff" // needs tooltip
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "IsPurgable"                                      "1"
+        
+        "StatusEffectName"                                "particles/status_fx/status_effect_frost_lich.vpcf"
+        "StatusEffectPriority"                            "10"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%slow_movement_speed"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%slow_attack_speed"
+        }
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Frost Blast bounces talent - Frost Blast will be applied to the nearest target that is not affected by Frost Blast.
+  //=================================================================================================================
+  "special_bonus_unique_lich_custom_5"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01" // number of bounces
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "2"
-			}
-			"02" // bounce range
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value2"                                  "500"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01" // number of bounces
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "2"
+      }
+      "02" // bounce range
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value2"                                          "500"
+      }
+    }
+  }
 }

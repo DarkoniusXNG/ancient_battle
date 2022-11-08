@@ -1,110 +1,110 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Archmage: Arcane Magic (E) - New Spell, aura that gives mana regen, mana cost reduction, magic resistance and spell amp, has active part that gives mana regen amp and cdr
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO:
-	//=================================================================================================================
-	"archmage_arcane_magic"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_lua"
-		"ScriptFile"                    "heroes/archmage/arcane_magic.lua"
-		"AbilityTextureName"			"custom/archmage_arcane_magic"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+  //=================================================================================================================
+  // Archmage: Arcane Magic (E) - New Spell, aura that gives mana regen, mana cost reduction, magic resistance and spell amp, has active part that gives mana regen amp and cdr
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "archmage_arcane_magic"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/archmage/arcane_magic.lua"
+    "AbilityTextureName"                                  "custom/archmage_arcane_magic"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		"AbilityCastPoint"              "0.3"             // like KOTL Chakra Magic
-		"AbilityCastRange"              "1200"
-		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
+    "AbilityCastPoint"                                    "0.3"             // like KOTL Chakra Magic
+    "AbilityCastRange"                                    "1200"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"               "20 18 16 14"     // like KOTL Chakra Magic
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "20 18 16 14"     // like KOTL Chakra Magic
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"               "0"               // KOTL Chakra Magic: 0
-		"AbilityProcsMagicStick"		"1"
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "0"               // KOTL Chakra Magic: 0
+    "AbilityProcsMagicStick"                              "1"
 
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
-			"particle"		"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
-			"particle"		"particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
-			"particle"		"particles/items_fx/aura_shivas.vpcf"
-		}
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
+      "particle"                                          "particles/frostivus_herofx/maiden_holdout_arcane_buff.vpcf"
+      "particle"                                          "particles/items_fx/aura_shivas.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // Chakra Magic Total mana restored: 100/180/260/340;
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"buff_mana_regen_amp"                             "150"
-			}
-			"02" // Arcane Rune: 30%
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"buff_cd_reduction"                               "12"
-				"LinkedSpecialBonus"                              "special_bonus_unique_archmage_1"
-			}
-			"03"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"buff_duration"                                   "14"
-			}
-			"04" // Crystal Maiden (Global) Arcane Aura: 0.5/1/1.5/2
-			{
-				"var_type"                                        "FIELD_FLOAT"
-				"aura_mana_regen"                                 "1.5 2.0 2.5 3.0"
-			}
-			"05" // Arcane Rune: 30%
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"aura_mana_cost_reduction_pct"                    "2 3 4 5"
-			}
-			"06"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"aura_magic_resistance"                           "6 7 8 9"
-			}
-			"07"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"aura_spell_amp"                                  "5 6 7 8"
-			}
-			"08"
-			{
-				"var_type"                                        "FIELD_INTEGER"
-				"aura_radius"                                     "1200"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Arcane Magic bonus cdr talent
-	//=================================================================================================================
-	"special_bonus_unique_archmage_1"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "18"
-			}
-		}
-	}
+    "AbilitySpecial"
+    {
+      "01" // Chakra Magic Total mana restored: 100/180/260/340;
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "buff_mana_regen_amp"                             "150"
+      }
+      "02" // Arcane Rune: 30%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "buff_cd_reduction"                               "12"
+        "LinkedSpecialBonus"                              "special_bonus_unique_archmage_1"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "buff_duration"                                   "14"
+      }
+      "04" // Crystal Maiden (Global) Arcane Aura: 0.5/1/1.5/2
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "aura_mana_regen"                                 "1.5 2.0 2.5 3.0"
+      }
+      "05" // Arcane Rune: 30%
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_mana_cost_reduction_pct"                    "2 3 4 5"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_magic_resistance"                           "6 7 8 9"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_spell_amp"                                  "5 6 7 8"
+      }
+      "08"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "aura_radius"                                     "1200"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Arcane Magic bonus cdr talent
+  //=================================================================================================================
+  "special_bonus_unique_archmage_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "18"
+      }
+    }
+  }
 }

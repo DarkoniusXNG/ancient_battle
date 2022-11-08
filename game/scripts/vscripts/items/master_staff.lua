@@ -17,13 +17,14 @@ function Mute_Disable_Start(event)
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_item_master_staff_muted", {["duration"] = duration})
 			CustomItemDisable(caster, target)
 		else
-			local damage_table = {}
-			damage_table.attacker = caster
-			damage_table.victim = target
-			damage_table.damage_type = DAMAGE_TYPE_PURE
-			damage_table.ability = ability	
-			damage_table.damage = 99999
-			ApplyDamage(damage_table)
+			-- local damage_table = {}
+			-- damage_table.attacker = caster
+			-- damage_table.victim = target
+			-- damage_table.damage_type = DAMAGE_TYPE_PURE
+			-- damage_table.ability = ability	
+			-- damage_table.damage = 99999
+			-- ApplyDamage(damage_table)
+			target:Kill(ability, caster)
 		end
 	end
 end

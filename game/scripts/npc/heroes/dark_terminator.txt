@@ -1,103 +1,103 @@
 "DOTAHeroes"
 {
-	//================================================================================================================
-	// HERO: Dark Terminator; 2021;
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_custom_dark_terminator"
-	{
-		"override_hero"                                   "npc_dota_hero_sniper"
-		"Team"                                            "Good"
-		"BotImplemented"                                  "0"
-		"ModelScale"                                      "1.0" // Sniper (0.84)
-		"LoadoutScale"                                    "1.0"
-		"HeroSelectSoundEffect"                           "Hero_Sniper.Pick"
+  //================================================================================================================
+  // HERO: Dark Terminator; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_custom_dark_terminator"
+  {
+    "override_hero"                                       "npc_dota_hero_sniper"
+    "Team"                                                "Good"
+    "BotImplemented"                                      "0"
+    "ModelScale"                                          "1.0" // Sniper (0.84)
+    "LoadoutScale"                                        "1.0"
+    "HeroSelectSoundEffect"                               "Hero_Sniper.Pick"
 
-		"Role"                                            "Carry,Nuker,Escape,Durable"
-		"Rolelevels"                                      "3,1,1,1"
-		"Complexity"                                      "1"
+    "Role"                                                "Carry,Nuker,Escape,Durable"
+    "Rolelevels"                                          "3,1,1,1"
+    "Complexity"                                          "1"
 
-		// Abilities
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityLayout"                                   "5"
-		"AbilityTalentStart"                              "10"
-		"Ability1"                                        "dark_terminator_cloak"                  // Q (4 levels)
-		"Ability2"                                        "dark_terminator_blink"                  // W (4 levels)
-		"Ability3"                                        "dark_terminator_terminator_skills"      // E, passive (4 levels)
-		"Ability4"                                        "generic_hidden"
-		"Ability5"                                        "dark_terminator_confuse"                // F, Secondary Ultimate (1 level)
-		"Ability6"                                        "dark_terminator_terminate"              // R, Primary Ultimate (3 levels)				
-		"Ability7"                                        "generic_hidden"					
-		"Ability8"                                        "generic_hidden"
-		"Ability9"                                        "generic_hidden"
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "5"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "dark_terminator_cloak"                  // Q (4 levels)
+    "Ability2"                                            "dark_terminator_blink"                  // W (4 levels)
+    "Ability3"                                            "dark_terminator_terminator_skills"      // E, passive (4 levels)
+    "Ability4"                                            "generic_hidden"
+    "Ability5"                                            "dark_terminator_confuse"                // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "dark_terminator_terminate"              // R, Primary Ultimate (3 levels)        
+    "Ability7"                                            "generic_hidden"          
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                                       "special_bonus_movement_speed_20"
-		"Ability11"                                       "special_bonus_attack_damage_15"         // same as Sniper
+    "Ability10"                                           "special_bonus_movement_speed_20"
+    "Ability11"                                           "special_bonus_attack_damage_15"         // same as Sniper
 
-		"Ability12"                                       "special_bonus_attack_range_125"
-		"Ability13"                                       "special_bonus_unique_dark_terminator_confuse_illusion_damage"
+    "Ability12"                                           "special_bonus_attack_range_125"
+    "Ability13"                                           "special_bonus_unique_dark_terminator_confuse_illusion_damage"
 
-		"Ability14"                                       "special_bonus_unique_dark_terminator_confuse_extra_illusion"
-		"Ability15"                                       "special_bonus_unique_dark_terminator_terminate"
+    "Ability14"                                           "special_bonus_unique_dark_terminator_confuse_extra_illusion"
+    "Ability15"                                           "special_bonus_unique_dark_terminator_terminate"
 
-		"Ability16"                                       "special_bonus_unique_dark_terminator_proc_chance"
-		"Ability17"                                       "special_bonus_reincarnation_250"
+    "Ability16"                                           "special_bonus_unique_dark_terminator_proc_chance"
+    "Ability17"                                           "special_bonus_reincarnation_250"
 
-		// Protection
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"                                   "0"                                      // Default (0); Sniper (-1); original (0.48); concept (1.4);
-		"MagicalResistance"                               "25"                                     // Default
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "0"                                      // Default (0); Sniper (-1); original (0.48); concept (1.4);
+    "MagicalResistance"                                   "25"                                     // Default
 
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"                              "DOTA_UNIT_CAP_RANGED_ATTACK"            // like original
-		"BaseAttackSpeed"                                 "90"                                     // Sniper (100); original (100); concept (50);
-		"AttackDamageMin"                                 "42"                                     // Sniper (13); original (42); concept (9);
-		"AttackDamageMax"                                 "52"                                     // Sniper (19); original (52); concept (15);
-		"AttackRate"                                      "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
-		"AttackAnimationPoint"                            "0.17"                                   // like Sniper
-		"AttackRange"                                     "400"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
-		"AttackAcquisitionRange"                          "800"                                    // Default
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"            // like original
+    "AttackDamageMin"                                     "42"                                     // Sniper (13); original (42); concept (9);
+    "AttackDamageMax"                                     "52"                                     // Sniper (19); original (52); concept (15);
+    "AttackRate"                                          "1.7"                                    // Sniper (1.7); Space Marine (0.9); original (?); concept (0.5);
+    "BaseAttackSpeed"                                     "90"                                     // Sniper (100); original (100); concept (50);
+    "AttackAnimationPoint"                                "0.17"                                   // like Sniper
+    "AttackRange"                                         "550"                                    // Sniper (550); Space Marine (400); original (?); concept (750);
+    "AttackAcquisitionRange"                              "800"                                    // Default
 
-		"ProjectileModel"                                 "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
-		"ProjectileSpeed"                                 "1900"                                   // Sniper (3000); Space Marine (1900); original (?); concept (3000);
+    "ProjectileModel"                                     "particles/units/heroes/hero_sniper/sniper_base_attack.vpcf"
+    "ProjectileSpeed"                                     "1900"                                   // Sniper (3000); Space Marine (1900); original (?); concept (3000);
 
-		// Movement
-		//-------------------------------------------------------------------------------------------------------------
-		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"              // Default
-		"MovementSpeed"                                   "270"                                    // Sniper (285); Space Marine (270); original (?); concept (350);
-		"MovementTurnRate"                                "0.6"                                    // Sniper (0.7); Space Marine (0.6); original (?); concept (?);
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"              // Default
+    "MovementSpeed"                                       "270"                                    // Sniper (285); Space Marine (270); original (?); concept (350);
+    "MovementTurnRate"                                    "0.6"                                    // Sniper (0.7); Space Marine (0.6); original (?); concept (?);
 
-		// Vision
-		//-------------------------------------------------------------------------------------------------------------
-		"VisionDaytimeRange"                              "1800"                                   // Default
-		"VisionNighttimeRange"                            "1800"                                   // Sniper (1400); concept (1800);
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                                   // Default
+    "VisionNighttimeRange"                                "1800"                                   // Sniper (1400); concept (1800);
 
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"                                "DOTA_ATTRIBUTE_STRENGTH"                // like original
-		"AttributeBaseStrength"                           "20"                                     // original (20); concept (10);
-		"AttributeStrengthGain"                           "3.0"                                    // original (3.0); concept (4.0);
-		"AttributeBaseAgility"                            "22"                                     // original (22); concept (10);
-		"AttributeAgilityGain"                            "0.5"                                    // original (?); concept (4.0);
-		"AttributeBaseIntelligence"                       "15"                                     // Sniper (15); original (15); concept (10);
-		"AttributeIntelligenceGain"                       "2.6"                                    // Sniper (2.6); original (?); concept (4.0);
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"                // like original
+    "AttributeBaseStrength"                               "20"                                     // original (20); concept (10);
+    "AttributeStrengthGain"                               "3.0"                                    // original (3.0); concept (4.0);
+    "AttributeBaseAgility"                                "22"                                     // original (22); concept (10);
+    "AttributeAgilityGain"                                "0.5"                                    // original (?); concept (4.0);
+    "AttributeBaseIntelligence"                           "15"                                     // Sniper (15); original (15); concept (10);
+    "AttributeIntelligenceGain"                           "2.6"                                    // Sniper (2.6); original (?); concept (4.0);
 
-		// Status
-		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealthRegen"                               "0.0"                                    // Default (0.25); Sniper (0.25); original (?);
-		"StatusHealth"                                    "180"                                    // Default (150); Sniper (200); original (180);
-		"StatusMana"                                      "45"                                     // Default (0); Sniper (75); original (45);
-		"StatusManaRegen"                                 "0.01"                                   // Default (0.01); Sniper (0); original (?);
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.0"                                    // Default (0.25); Sniper (0.25); original (?);
+    "StatusHealth"                                        "180"                                    // Default (150); Sniper (200); original (180);
+    "StatusMana"                                          "45"                                     // Default (0); Sniper (75); original (45);
+    "StatusManaRegen"                                     "0.01"                                   // Default (0.01); Sniper (0); original (?);
 
-		// Combat
-		//-------------------------------------------------------------------------------------------------------------
-		"CombatClassAttack"                               "DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend"                               "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationShipClass"                           "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+    // Combat
+    //-------------------------------------------------------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
 
-		// Bounds
-		//-------------------------------------------------------------------------------------------------------------
-		"BoundsHullName"                                  "DOTA_HULL_SIZE_HERO"
-	}
+    // Bounds
+    //-------------------------------------------------------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
+  }
 }

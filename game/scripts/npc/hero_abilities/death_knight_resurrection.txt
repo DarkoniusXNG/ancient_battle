@@ -1,82 +1,82 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
-	// Author: Darkonius
-	// Notes: OK; 2022;
-	// TO_DO: Add Aghanim Scepter upgrade - Resurrect heroes (not those that are reincarnating) and gives units 100 armor
-	//=================================================================================================================
-	"death_knight_resurrection"
-	{
-		"BaseClass"             		"ability_lua"
-		"ScriptFile"					"heroes/death_knight/resurrection.lua"
-		"AbilityTextureName"			"custom/death_knight_resurrection"
-		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
+  //=================================================================================================================
+  // Death Knight: Resurrection - New Spell, Revives Creeps around the map; Animate Dead
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO: add some particle and sound for scepter on heroes
+  //=================================================================================================================
+  "death_knight_resurrection"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/death_knight/resurrection.lua"
+    "AbilityTextureName"                                  "custom/death_knight_resurrection"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
 
-		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-		// "HasScepterUpgrade"				"0"
-		
-		"AbilityCastPoint"				"0.453"
+    "HasScepterUpgrade"                                   "1"
+    
+    "AbilityCastPoint"                                    "0.453"
 
-		"AbilityCooldown" 				"80" // original (180);
-		"AbilityManacost" 				"125" // original (125);
-		"AbilityProcsMagicStick"		"1"
-		
-		"MaxLevel"						"1"
-		"RequiredLevel"					"6"
+    "AbilityCooldown"                                     "100" // original (180);
+    "AbilityManacost"                                     "125" // original (125);
+    "AbilityProcsMagicStick"                              "1"
+    
+    "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "6"
 
-		"precache"
-		{
-			"particle"		"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
-			"particle"		"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
-		}
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+      "particle"                                          "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+    }
 
-		"AbilitySpecial"
-		{
-			"01" // original (40);
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"60"
-			}
-			"02" // original (900);
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"0"
-			}
-			"03" // original (6);
-			{
-				"var_type"				"FIELD_INTEGER"
-				"resurrections_limit"	"1000"
-			}
-		}
-	}
-	
-	//=================================================================================================================
-	// Resurrection talent - decreases cooldown
-	//=================================================================================================================
-	"special_bonus_unique_death_knight_6"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"                                       "special_bonus_undefined"
-		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilitySpecial"
+    {
+      "01" // original (40);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "60"
+      }
+      "02" // original (900);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "0"
+      }
+      "03" // original (6);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "resurrections_limit"                             "1000"
+      }
+    }
+  }
+  
+  //=================================================================================================================
+  // Resurrection talent - decreases cooldown
+  //=================================================================================================================
+  "special_bonus_unique_death_knight_6"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"value"                                   "20"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "20"
+      }
+    }
+  }
 }

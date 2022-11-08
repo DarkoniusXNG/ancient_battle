@@ -1,0 +1,83 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Stoneskin Armor
+  //=================================================================================================================
+  "item_recipe_stoneskin"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "100"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_stoneskin"
+
+    "ItemRequirements"
+    {
+      "01"                                                "item_platemail;item_helm_of_iron_will;item_chainmail;item_ring_of_protection"
+    }
+  }
+
+  //=================================================================================================================
+  // Stoneskin Armor: Platemail (1400) + Helm of Iron Will (975) + Chain Mail (550) + Ring of Protection (175) + Recipe (100) = 3200
+  //=================================================================================================================
+  "item_stoneskin"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/stoneskin.lua"
+    "AbilityTextureName"                                  "custom/stoneskin"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastRange"                                    "1200"
+    "AbilityCooldown"                                     "16"
+    "AbilityManaCost"                                     "75"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "3200"
+    "ItemShopTags"                                        "armor;regen_health;hard_to_tag"
+    "ItemQuality"                                         "epic"
+    "ItemAliases"                                         "stoneskin;stoneskin armor"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+      "particle"                                          "particles/status_fx/status_effect_earth_spirit_petrify.vpcf"
+    }
+
+    "AbilityValues"
+    {
+      "bonus_armor"                                       "22" // sum of components
+      "hp_regen_amp"                                      "22" // like SnY
+      "heal_amp"                                          "22"
+      "lifesteal_amp"                                     "22" // like SnY
+      "spell_lifesteal_amp"                               "22"
+      "aura_radius"                                       "1200"
+      "stone_armor"                                       "100"
+      "stone_magic_resist"                                "0"
+      "stone_status_resist"                               "30"
+      "stone_deflect_chance"                              "30"
+      "stone_deflect_radius"                              "400"
+      "stone_move_speed"                                  "100"
+      "duration"                                          "6.0"
+    }
+  }
+}

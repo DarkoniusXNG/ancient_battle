@@ -4,8 +4,6 @@ LinkLuaModifier("modifier_electrician_energy_absorption", "heroes/electrician/el
 LinkLuaModifier("modifier_electrician_energy_absorption_debuff", "heroes/electrician/electrician_energy_absorption.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_electrician_bonus_mana_count", "heroes/electrician/electrician_energy_absorption.lua", LUA_MODIFIER_MOTION_NONE)
 
---------------------------------------------------------------------------------
-
 function electrician_energy_absorption:GetCooldown(level)
   local caster = self:GetCaster()
   local base_cooldown = self.BaseClass.GetCooldown(self, level)
@@ -20,22 +18,22 @@ function electrician_energy_absorption:GetCooldown(level)
 end
 
 function electrician_energy_absorption:OnSpellStart()
-	local caster = self:GetCaster()
-	local casterOrigin = caster:GetAbsOrigin()
-	local radius = self:GetSpecialValueFor("radius")
+  local caster = self:GetCaster()
+  local casterOrigin = caster:GetAbsOrigin()
+  local radius = self:GetSpecialValueFor("radius")
 
-	-- grab all enemes around the caster
-	local units = FindUnitsInRadius(
-		caster:GetTeamNumber(),
-		casterOrigin,
-		nil,
-		radius,
-		self:GetAbilityTargetTeam(),
-		self:GetAbilityTargetType(),
-		DOTA_UNIT_TARGET_FLAG_NONE,
-		FIND_ANY_ORDER,
-		false
-	)
+  -- grab all enemes around the caster
+  local units = FindUnitsInRadius(
+    caster:GetTeamNumber(),
+    casterOrigin,
+    nil,
+    radius,
+    self:GetAbilityTargetTeam(),
+    self:GetAbilityTargetType(),
+    DOTA_UNIT_TARGET_FLAG_NONE,
+    FIND_ANY_ORDER,
+    false
+  )
 
   -- Generic aoe particle
   local part = ParticleManager:CreateParticle( "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf", PATTACH_ABSORIGIN, caster )
@@ -87,7 +85,7 @@ function electrician_energy_absorption:OnSpellStart()
           mana_absorbed = mana_absorbed + mana_to_remove
         end
 
-        if target:IsRealHero() or target:IsCustomBoss() or target:IsRoshan() then
+        if target:IsRealHero() or target:IsCustomBoss() then
           speed_absorbed = speed_absorbed + speed_absorb_heroes
         else
           speed_absorbed = speed_absorbed + speed_absorb_creeps
@@ -211,12 +209,10 @@ function modifier_electrician_energy_absorption:OnDestroy()
 end
 
 function modifier_electrician_energy_absorption:DeclareFunctions()
-  local func = {
+  return {
     MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
   }
-
-  return func
 end
 
 function modifier_electrician_energy_absorption:GetModifierMoveSpeedBonus_Constant()
@@ -249,7 +245,7 @@ function modifier_electrician_energy_absorption_debuff:OnCreated(event)
   ParticleManager:SetParticleControlEnt(self.partShell, 1, parent, PATTACH_ABSORIGIN_FOLLOW, nil, parent:GetAbsOrigin(), true)
 
   local ability = self:GetAbility()
-  local speed_absorb_creeps = 5
+  local speed_absorb_creeps = 10
   local speed_absorb_heroes = 10
   if ability and not ability:IsNull() then
     speed_absorb_creeps = ability:GetSpecialValueFor("speed_absorb_non_heroes")
@@ -257,7 +253,7 @@ function modifier_electrician_energy_absorption_debuff:OnCreated(event)
   end
 
   local stack_count = self:GetStackCount()
-  if parent:IsRealHero() or parent:IsCustomBoss() or parent:IsRoshan() then
+  if parent:IsRealHero() or parent:IsCustomBoss() then
     self.speed = -speed_absorb_heroes * stack_count
   else
     self.speed = -speed_absorb_creeps * stack_count
@@ -283,12 +279,10 @@ function modifier_electrician_energy_absorption_debuff:OnDestroy()
 end
 
 function modifier_electrician_energy_absorption_debuff:DeclareFunctions()
-  local func = {
+  return {
     MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
   }
-
-  return func
 end
 
 function modifier_electrician_energy_absorption_debuff:GetModifierMoveSpeedBonus_Constant()
@@ -316,11 +310,10 @@ function modifier_electrician_bonus_mana_count:IsPurgable()
 end
 
 function modifier_electrician_bonus_mana_count:DeclareFunctions()
-  local funcs = {
+  return {
     MODIFIER_PROPERTY_EXTRA_MANA_BONUS,
-    MODIFIER_EVENT_ON_SPENT_MANA
+    MODIFIER_EVENT_ON_SPENT_MANA,
   }
-  return funcs
 end
 
 function modifier_electrician_bonus_mana_count:GetModifierExtraManaBonus()
