@@ -113,7 +113,7 @@ if IsServer() then
     local caster = self:GetCaster()
     self.sheep_pfx = ParticleManager:CreateParticle("particles/items_fx/item_sheepstick.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
     ParticleManager:SetParticleControl(self.sheep_pfx, 0, parent:GetAbsOrigin())
-	
+
     -- Decide which model
     local random_number = RandomInt(1, 3)
     if random_number == 1 then

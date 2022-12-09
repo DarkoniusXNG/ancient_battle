@@ -11,7 +11,7 @@ function item_orb_of_reflection:OnSpellStart()
 	local caster = self:GetCaster()
 
 	caster:EmitSound("DOTA_Item.BladeMail.Activate")
-	
+
 	-- Basic Dispel (Removes normal debuffs)
 	local RemovePositiveBuffs = false
 	local RemoveDebuffs = true
@@ -27,6 +27,10 @@ function item_orb_of_reflection:OnSpellStart()
 	caster:AddNewModifier(caster, self, "modifier_item_orb_of_reflection_active_reflect", {duration = buff_duration})
 	-- Built-in modifier (Lotus Orb Echo Shell)
 	caster:AddNewModifier(caster, self, "modifier_item_lotus_orb_active", {duration = buff_duration})
+end
+
+function item_orb_of_reflection:ProcsMagicStick()
+  return false
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -99,29 +103,15 @@ function modifier_item_orb_of_reflection_passives:IsFirstItemInInventory()
   local parent = self:GetParent()
   local ability = self:GetAbility()
 
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
   if not IsServer() then
-    return true
+    return
   end
 
-  local same_items = {}
-  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-    local item = parent:GetItemInSlot(item_slot)
-    if item then
-      if item:GetAbilityName() == ability:GetAbilityName() then
-        table.insert(same_items, item)
-      end
-    end
-  end
-
-  if #same_items <= 1 then
-    return true
-  end
-
-  if same_items[1] == ability then
-    return true
-  end
-
-  return false
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
 
 if IsServer() then
@@ -236,11 +226,10 @@ function modifier_item_orb_of_reflection_active_reflect:OnCreated()
 			parent:RemoveModifierByName("modifier_item_blade_mail_reflect")
 		end
 	end
-	
 end
 
 function modifier_item_orb_of_reflection_active_reflect:OnDestroy()
-	if IsServer() then	
+	if IsServer() then
 		self:GetParent():EmitSound("DOTA_Item.BladeMail.Deactivate")
 	end
 end

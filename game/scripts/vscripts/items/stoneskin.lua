@@ -32,11 +32,11 @@ function item_stoneskin:OnProjectileHit(target, location)
   if self.deflect_attacker then
     attacker = EntIndexToHScript(self.deflect_attacker)
   end
-  
+
   if not attacker or attacker:IsNull() then
     return
   end
-  
+
   local damage = self.deflect_damage or 0
 
   -- Initialize damage table
@@ -53,6 +53,10 @@ function item_stoneskin:OnProjectileHit(target, location)
   ApplyDamage(damage_table)
 
   return true
+end
+
+function item_stoneskin:ProcsMagicStick()
+  return false
 end
 
 ------------------------------------------------------------------------
@@ -268,7 +272,7 @@ function modifier_item_stoneskin_active:GetModifierAvoidDamage(event)
       }
       -- Create a tracking projectile
       ProjectileManager:CreateTrackingProjectile(info)
-	  
+
       if ability then
         ability.deflect_attacker = attacker:GetEntityIndex()
         ability.deflect_damage = math.max(event.original_damage, event.damage)

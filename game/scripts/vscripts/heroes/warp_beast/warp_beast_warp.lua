@@ -32,7 +32,7 @@ function warp_beast_warp:CanWarp(maxCastRange, castPosition, ability)
 		distancePerMana = distancePerMana + talent:GetSpecialValueFor("value")
 	end
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
-	
+
 	local manaCost = ability:GetManaCost(-1)
 	local currentWarpMana = caster:GetMana()
 	local warpManaCost = (distance - maxCastRange) / distancePerMana
@@ -68,7 +68,7 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	local forwardVec = (castPosition - warpPosition):Normalized()
 
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
-	
+
 	local currentWarpMana = caster:GetMana()
 	local warpManaCost = (distance - maxCastRange) / distancePerMana
 
@@ -149,17 +149,17 @@ end
 
 if IsServer() then
 	local cast_orders = {
-    	[DOTA_UNIT_ORDER_CAST_POSITION] = true,
-    	[DOTA_UNIT_ORDER_CAST_TARGET] = true,
+		[DOTA_UNIT_ORDER_CAST_POSITION] = true,
+		[DOTA_UNIT_ORDER_CAST_TARGET] = true,
 	}
-	
+
 	function modifier_warp:OnAbilityStart(event)
 		local caster = self:GetCaster()
 		if event.unit == caster and caster:IsRealHero() then
 			caster:RemoveModifierByNameAndCaster("modifier_warp_effect", caster)
 		end
 	end
-	
+
 	function modifier_warp:OnOrder(event)
 		local caster = self:GetCaster()
 		local warpAbility = self:GetAbility()
@@ -193,7 +193,7 @@ if IsServer() then
 				local maxCastRange = ability:GetCastRange(castPosition, caster) + caster:GetCastRangeBonus()
 				--print("Max cast range is: "..maxCastRange)
 				local warpRange = maxCastRange
-				if warpRange > 600 then 
+				if warpRange > 600 then
 					warpRange = 600
 				end
 				local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
@@ -251,7 +251,7 @@ if IsServer() then
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
 			return
 		end
-		
+
 		if target:IsIllusion() then
 			return
 		end
@@ -268,8 +268,6 @@ if IsServer() then
 			end
 
 			--local targetMana = target:GetMana()
-			
-
 			--if targetMana < drainAmount then
 				--drainAmount = targetMana
 			--end
@@ -298,7 +296,7 @@ if IsServer() then
 			target:EmitSound("Hero_Warp_Beast.ManaEater")
 
 			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_warp_beast/warp_beast_mana_eater.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-			ParticleManager:SetParticleControlEnt(particle, 1, caster, PATTACH_POINT_FOLLOW, "attach_eye_l", Vector(0,0,0), true)
+			ParticleManager:SetParticleControlEnt(particle, 1, parent, PATTACH_POINT_FOLLOW, "attach_eye_l", Vector(0,0,0), true)
 		end
 	end
 
@@ -341,7 +339,7 @@ if IsServer() then
 		if dead:GetMaxMana() < 1 then
 			return
 		end
-		
+
 		local dead_mana = dead:GetMaxMana()
 		local ability = self:GetAbility()
 
@@ -351,10 +349,10 @@ if IsServer() then
 		local missingMana = parent:GetMaxMana() - parent:GetMana()
 		if missingMana < drainAmount then
 			local modifier = parent:FindModifierByName("modifier_mana_eater_bonus_mana_count")
-			if modifier then 
+			if modifier then
 				modifier:SetDuration(duration, true)
 				modifier:SetStackCount(math.min(modifier:GetStackCount() + drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))
-			else 
+			else
 				modifier = parent:AddNewModifier(parent, ability, "modifier_mana_eater_bonus_mana_count", {duration = duration})
 				if modifier then
 					modifier:SetStackCount(math.min(drainAmount - missingMana, ability:GetSpecialValueFor("bonus_mana_cap")))

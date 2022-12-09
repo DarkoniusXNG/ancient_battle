@@ -5,7 +5,7 @@ function Cripple(keys)
 	local ability = keys.ability
 	local target_location = target:GetAbsOrigin()
 	local blink_disable_damage = 50
-	
+
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
 	if not target:TriggerSpellAbsorb(ability) then
 		--print("Target doesn't have Spell Block.")

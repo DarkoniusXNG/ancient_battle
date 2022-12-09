@@ -104,43 +104,46 @@ function modifier_item_custom_heart_passive:GetAttributes()
 end
 
 function modifier_item_custom_heart_passive:OnCreated()
+  self:OnRefresh()
+  if IsServer() then
+    self:StartIntervalThink(0.1)
+  end
+end
+
+function modifier_item_custom_heart_passive:OnRefresh()
   local ability = self:GetAbility()
   if ability and not ability:IsNull() then
     self.str = ability:GetSpecialValueFor("bonus_strength")
     self.hp = ability:GetSpecialValueFor("bonus_health")
     self.regen = ability:GetSpecialValueFor("health_regen_pct")
   end
+
+  if IsServer() then
+    self:OnIntervalThink()
+  end
 end
 
-modifier_item_custom_heart_passive.OnRefresh = modifier_item_custom_heart_passive.OnCreated
+function modifier_item_custom_heart_passive:OnIntervalThink()
+  if self:IsFirstItemInInventory() then
+    self:SetStackCount(2)
+  else
+    self:SetStackCount(1)
+  end
+end
 
 function modifier_item_custom_heart_passive:IsFirstItemInInventory()
   local parent = self:GetParent()
   local ability = self:GetAbility()
-  
+
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
   if not IsServer() then
-    return true
+    return
   end
 
-  local same_items = {}
-  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-    local item = parent:GetItemInSlot(item_slot)
-    if item then
-      if item:GetAbilityName() == ability:GetAbilityName() then
-        table.insert(same_items, item)
-      end
-    end
-  end
-
-  if #same_items <= 1 then
-    return true
-  end
-
-  if same_items[1] == ability then
-    return true
-  end
-
-  return false
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
 
 function modifier_item_custom_heart_passive:DeclareFunctions()
@@ -160,9 +163,10 @@ function modifier_item_custom_heart_passive:GetModifierHealthBonus()
 end
 
 function modifier_item_custom_heart_passive:GetModifierHealthRegenPercentage()
-  if self:IsFirstItemInInventory() then
-    return self.regen or self:GetAbility():GetSpecialValueFor("health_regen_pct")
+  if self:GetStackCount() ~= 2 then
+    return 0
   end
+  return self.regen or self:GetAbility():GetSpecialValueFor("health_regen_pct")
 end
 
 ---------------------------------------------------------------------------------------------------

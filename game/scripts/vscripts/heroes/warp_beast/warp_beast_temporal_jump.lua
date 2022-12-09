@@ -36,7 +36,7 @@ function warp_beast_temporal_jump:OnSpellStart()
 
 	-- Disable recasting this ability while active
 	self:SetActivated(false)
-	
+
 	-- Disable casting Latch ability while active
 	local latchAbility = caster:FindAbilityByName("warp_beast_latch")
 	latchAbility:SetActivated(false)
@@ -142,7 +142,7 @@ function warp_beast_temporal_jump:CreateAttackWave(origin)
 
 	EmitSoundOnLocationWithCaster(origin, "Hero_FacelessVoid.TimeDilation.Cast.ti7", caster)
 
-	-- Create wave particle 
+	-- Create wave particle
 	-- CP1: Radius
 	-- CP2: Wave speed
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_warp_beast/warp_beast_temporal_jump_land_wave.vpcf", PATTACH_CUSTOMORIGIN, caster)
@@ -174,13 +174,12 @@ end
 modifier_temporal_jump = class({})
 
 function modifier_temporal_jump:CheckState()
-	local states = {
+	return {
 		[MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true
 	}
-	return states
 end
 
 function modifier_temporal_jump:GetEffectName()
@@ -238,24 +237,24 @@ if IsServer() then
 		local duration = self:GetRemainingTime()
 		local interval = self.interval
 
-		if duration < interval and self:GetStackCount() < maxCharges then 
+		if duration < interval and self:GetStackCount() < maxCharges then
 			Timers:CreateTimer(duration, function()
 
 				local ability = self:GetAbility()
 				local newCharges = self:GetStackCount() + 1
 				self:SetStackCount(newCharges)
-				if newCharges < maxCharges then 
+				if newCharges < maxCharges then
 					ability:UseResources(false, false, true)
 					local newDuration = ability:GetCooldownTimeRemaining()
 					ability:EndCooldown()
 					self:SetDuration(newDuration, true)
 				end
 
-				return nil
+				return
 			end)
 		end
 	end
-	
+
 	function modifier_temporal_jump_charges:OnAttackLanded(event)
 		local parent = self:GetParent()
 		local ability = self:GetAbility()

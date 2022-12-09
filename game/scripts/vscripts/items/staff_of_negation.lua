@@ -42,7 +42,7 @@ function Negate(keys)
 			end
 		end
 	end
-	
+
 	-- Apply the basic dispel to allies around point
 	local allies = FindUnitsInRadius(caster_team, point, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, target_flags, 0, false)
 	for k, ally in pairs(allies) do
@@ -56,7 +56,7 @@ function Negate(keys)
 			ally:Purge( RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 		end
 	end
-	
+
 	-- Sound
 	EmitSoundOnLocationWithCaster( point, "DOTA_Item.RodOfAtos.Target", caster ) -- DOTA_Item.RodOfAtos.Activate
 end

@@ -26,7 +26,7 @@ if CDOTA_BaseNPC then
 
     return false
   end
-  
+
   function CDOTA_BaseNPC:GetValueChangedByStatusResistance(value)
     if self and value then
       local reduction = self:GetStatusResistance()
@@ -267,7 +267,7 @@ if CDOTA_BaseNPC then
     end
     return false
   end
-  
+
   function CDOTA_BaseNPC:IsLaneCreepCustom()
     local unit_name = self:GetUnitName()
     local lane_creep_names = {
@@ -288,7 +288,7 @@ if CDOTA_BaseNPC then
       "npc_dota_goodguys_siege_upgraded_mega",
       "npc_dota_badguys_siege",
       "npc_dota_badguys_siege_upgraded",
-      "npc_dota_badguys_siege_upgraded_mega",	  
+      "npc_dota_badguys_siege_upgraded_mega",
 	}
 
     for _, v in pairs(lane_creep_names) do
@@ -318,7 +318,7 @@ if C_DOTA_BaseNPC then
   function C_DOTA_BaseNPC:IsStrongIllusionCustom()
     return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
   end
-  
+
   function C_DOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
       return true
@@ -326,7 +326,7 @@ if C_DOTA_BaseNPC then
 
     return false
   end
-  
+
   function C_DOTA_BaseNPC:IsLeashedCustom()
     local leashes = {
       "modifier_slark_pounce_leash",
@@ -367,7 +367,7 @@ if C_DOTA_BaseNPC then
       "npc_dota_goodguys_siege_upgraded_mega",
       "npc_dota_badguys_siege",
       "npc_dota_badguys_siege_upgraded",
-      "npc_dota_badguys_siege_upgraded_mega",	  
+      "npc_dota_badguys_siege_upgraded_mega",
 	}
 
     for _, v in pairs(lane_creep_names) do

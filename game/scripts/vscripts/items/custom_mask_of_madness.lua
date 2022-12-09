@@ -2,9 +2,9 @@
 function BerserkStart(event)
 	local caster = event.caster
 	local ability = event.ability
-	
+
 	local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1)
-	
+
 	if caster:IsRangedAttacker() then
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_custom_berserk_ranged", {["duration"] = duration})
 	else
@@ -43,7 +43,7 @@ function LifestealOnAttackLanded(keys)
 	end
 
 	if attacker:IsRealHero() and attacker:IsAlive() then
-		local lifesteal_amount	
+		local lifesteal_amount
 		if attacker:IsRangedAttacker() then
 			lifesteal_amount = damage_on_attack*lifesteal_ranged*0.01
 		else

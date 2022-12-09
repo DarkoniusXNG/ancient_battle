@@ -10,6 +10,7 @@ globals = { -- these globals can be set and accessed.
 "CDOTA_BaseNPC",
 "CDOTA_Item_Lua",
 "CDOTA_PlayerResource",
+"C_DOTA_BaseNPC",
 "Convars",
 "CustomGameEventManager",
 "CustomNetTables",
@@ -857,11 +858,11 @@ ignore = {
   -- "111", -- setting non-standard global variable
   -- "112", -- mutating non-standard global variable
   "131", -- unused global variable
-  "211", -- unused variable
+  --"211", -- unused variable
   "212", -- unused argument
-  "213", -- unused loop variable
-  "231", -- never accessed
-  "311", -- Value assigned to a local variable is unused.
+  --"213", -- unused loop variable
+  --"231", -- never accessed
+  --"311", -- Value assigned to a local variable is unused.
   "631", -- line is too long (200)
 }
 

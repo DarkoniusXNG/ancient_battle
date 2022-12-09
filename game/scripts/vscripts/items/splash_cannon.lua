@@ -162,7 +162,7 @@ function item_splash_cannon:OnProjectileHit(target, location)
       ApplyDamage(damage_table)
     end
   end
-  
+
   -- Destroy trees
   GridNav:DestroyTreesAroundPoint(origin, radius, false)
 
@@ -197,15 +197,9 @@ function modifier_item_splash_cannon_passive:GetAttributes()
 end
 
 function modifier_item_splash_cannon_passive:OnCreated()
-  local ability = self:GetAbility()
-  if ability and not ability:IsNull() then
-    self.bonus_health = ability:GetSpecialValueFor("bonus_health")
-    self.bonus_health_regen = ability:GetSpecialValueFor("bonus_health_regen")
-    self.bonus_strength = ability:GetSpecialValueFor("bonus_strength")
-    self.bonus_agility = ability:GetSpecialValueFor("bonus_agility")
-    self.bonus_intellect = ability:GetSpecialValueFor("bonus_intellect")
-    self.bonus_damage = ability:GetSpecialValueFor("bonus_damage")
-    self.attack_range = ability:GetSpecialValueFor("bonus_attack_range")
+  self:OnRefresh()
+  if IsServer() then
+    self:StartIntervalThink(0.1)
   end
 end
 
@@ -220,35 +214,33 @@ function modifier_item_splash_cannon_passive:OnRefresh()
     self.bonus_damage = ability:GetSpecialValueFor("bonus_damage")
     self.attack_range = ability:GetSpecialValueFor("bonus_attack_range")
   end
+
+  if IsServer() then
+    self:OnIntervalThink()
+  end
+end
+
+function modifier_item_splash_cannon_passive:OnIntervalThink()
+  if self:IsFirstItemInInventory() then
+    self:SetStackCount(2)
+  else
+    self:SetStackCount(1)
+  end
 end
 
 function modifier_item_splash_cannon_passive:IsFirstItemInInventory()
   local parent = self:GetParent()
   local ability = self:GetAbility()
 
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
   if not IsServer() then
-    return true
+    return
   end
 
-  local same_items = {}
-  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-    local item = parent:GetItemInSlot(item_slot)
-    if item then
-      if item:GetAbilityName() == ability:GetAbilityName() then
-        table.insert(same_items, item)
-      end
-    end
-  end
-
-  if #same_items <= 1 then
-    return true
-  end
-
-  if same_items[1] == ability then
-    return true
-  end
-
-  return false
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
 
 function modifier_item_splash_cannon_passive:DeclareFunctions()
@@ -290,7 +282,7 @@ end
 
 function modifier_item_splash_cannon_passive:GetModifierAttackRangeBonus()
   local parent = self:GetParent()
-  if not parent:IsRangedAttacker() or not self:IsFirstItemInInventory() then
+  if not parent:IsRangedAttacker() or self:GetStackCount() ~= 2 then
     return 0
   end
 
