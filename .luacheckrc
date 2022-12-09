@@ -75,6 +75,7 @@ read_globals = { -- these globals can only be accessed.
 "PauseGame",
 "PrecacheResource",
 "PrecacheUnitByNameSync",
+"PrecacheItemByNameSync",
 "RandomFloat",
 "RandomInt",
 "RandomVector",
@@ -860,7 +861,7 @@ ignore = {
   "131", -- unused global variable
   --"211", -- unused variable
   "212", -- unused argument
-  --"213", -- unused loop variable
+  "213", -- unused loop variable
   --"231", -- never accessed
   --"311", -- Value assigned to a local variable is unused.
   "631", -- line is too long (200)
@@ -871,6 +872,6 @@ enable = {
 }
 
 exclude_files = {
-  
+  "game/scripts/vscripts/archived abilities",
 }
 files["**/vscripts/units/**/*.lua"].globals = { "thisEntity" }

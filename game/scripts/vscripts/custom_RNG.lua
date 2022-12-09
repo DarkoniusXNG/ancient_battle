@@ -49,7 +49,7 @@ function CDOTA_Ability_Lua:XNGRandom(percentage)
 
 	if RollPercentage(new_percentage) then
 		-- Decreasing the chance for next check
-		self.XNG_counter = self.XNG_counter - increment	
+		self.XNG_counter = self.XNG_counter - increment
 
 		-- Increasing success counter
 		self.XNG_success_counter = self.XNG_success_counter + 1
@@ -75,14 +75,14 @@ end
 -- Pseudo Random:
 -- Its not the same pseudo-random as in DotA
 -- starting chance is actually lower than the percentage. Example: If percentage is 25%, starting chance is 6.25%
--- Chance is increased every time this function returns false. 
+-- Chance is increased every time this function returns false.
 -- Chance increment is equal to starting chance. If percentage is 25%, chance increment is 6.25%
 -- If the chance is increased to 100% or above, chance and counter are reset.
 function CDOTA_Ability_Lua:PseudoRandom(percentage)
 	if self.PR_counter == nil then
 		self.PR_counter = 0
 	end
-	
+
 	local actual_percentage = percentage*percentage/100
 
 	local new_percentage = math.floor(actual_percentage + self.PR_counter)
