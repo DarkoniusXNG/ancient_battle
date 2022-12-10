@@ -105,7 +105,7 @@ function CBaseEntity:IsFountain()
 	if self:GetName() == "ent_dota_fountain_bad" or self:GetName() == "ent_dota_fountain_good" then
 		return true
 	end
-	
+
 	return false
 end
 
@@ -131,32 +131,32 @@ function HideAndCopyHero(target, caster)
 		target:Interrupt()
 		target:InterruptChannel()
 		target:AddNoDraw() -- needed for hiding the original hero
-		
+
 		-- Moving the target (original hero) to the corner of the map
-		local corner = Vector(0,0,0)
+		local corner
 		if GetMapName() == "two_vs_two" then
 			corner = Vector(2300,-2300,-322)
 		else
 			corner = Vector(7500,-7200,-322)
 		end
 		target:SetAbsOrigin(corner)
-		
+
 		local hidden_modifiers = {
 			"modifier_firelord_arcana",
 			"modifier_not_removed_with_super_strong_dispel_or_custom_passive_break"
 		}
-		
+
 		-- Remove all buffs and debuffs from the target
 		SuperStrongDispel(target, true, true)
-		
+
 		-- Remove passive modifiers from the target with Custom Passive Break
 		CustomPassiveBreak(target, 100)
-		
+
 		-- Cycle through remaining hidden modifiers and bugging visual effects and remove them
 		for i = 1, #hidden_modifiers do
-			target:RemoveModifierByName(hidden_modifiers[i])	
+			target:RemoveModifierByName(hidden_modifiers[i])
 		end
-		
+
 		return CopyHero(target, caster)
 	else
 		print("target or caster are nil values.")
@@ -178,7 +178,7 @@ function CopyHero(target, caster)
 		local target_HP = target:GetHealth()
 		local target_MP = target:GetMana()
 		local target_level = target:GetLevel()
-		
+
 		local ability_table = {
 			"dark_ranger_charm", 			-- obvious reasons, weird interactions
 			"paladin_eternal_devotion", 	-- disabling just in case, playerID issues
@@ -195,14 +195,14 @@ function CopyHero(target, caster)
 			"item_gem",
 			"item_aegis",
 		}
-		
+
 		-- Creating copy of the target hero
 		local copy = CreateUnitByName(target_name, target_origin, true, caster, nil, caster_team) -- handle hUnitOwner MUST be nil, else it will crash the game.
 		copy:SetPlayerID(playerID)
 		copy:SetControllableByPlayer(playerID, true)
 		copy:SetOwner(caster:GetOwner())
 		FindClearSpaceForUnit(copy, target_origin, false)
-		
+
 		-- Levelling up the Copy of the hero
 		for i = 1, target_level-1 do
 			copy:HeroLevelUp(false) -- false because we don't want to see level up effects
@@ -238,13 +238,13 @@ function CopyHero(target, caster)
 		if u2 then
 			copy:RemoveItem(u2)
 		end
-		
+
 		-- Enabling and disabling abilities on a copy
 		copy:SetAbilityPoints(0)
 		local disable_ability = {}
 		for abilitySlot = 0, target_ability_count-1 do
 			local ability = target:GetAbilityByIndex(abilitySlot)
-			if ability then 
+			if ability then
 				local abilityLevel = ability:GetLevel()
 				local abilityName = ability:GetAbilityName()
 				local copyAbility = copy:FindAbilityByName(abilityName)
@@ -293,12 +293,7 @@ function HideTheCopyPermanently(copy)
 		-- Effects and auras that are visual while hidden - Special cases
 		local hidden_modifiers = {
 			"modifier_firelord_arcana",												-- Fire Lord Arcana
-			--"modifier_drow_ranger_trueshot",										-- Precision Aura (built-in)
-			--"modifier_drow_ranger_trueshot_aura",									-- Precision Aura (built-in)
-			--"modifier_drow_ranger_trueshot_global",								-- Precision Aura (built-in)
-			"modifier_black_king_bar_immune",										-- Black King Bar (built-in)
 			"modifier_item_ring_of_basilius_aura",									-- Ring of Basilius Aura
-			--"modifier_item_ring_of_aquila_aura",									-- Ring of Aquila Aura
 			"modifier_item_mekansm_aura",											-- Mekansm Aura
 			"modifier_item_ancient_janggo",											-- Drums of Endurance Aura
 			"modifier_item_vladmir",												-- Vladmir's Aura
@@ -311,7 +306,6 @@ function HideTheCopyPermanently(copy)
 			"modifier_item_radiance",												-- Radiance Aura
 			"modifier_item_crimson_guard_extra",									-- Crimson Guard Active
 			"modifier_item_shivas_guard",											-- Shiva's Guard Aura
-			"modifier_slippers_of_halcyon_caster"									-- Slippers of Halcyon Active
 		}
 		if copy:IsAlive() then
 			copy:Stop()
@@ -332,10 +326,10 @@ function HideTheCopyPermanently(copy)
 		CustomPassiveBreak(copy, 100)
 		-- Cycle through hidden modifiers and remove them (Death, SuperStrongDispel and CustomPassiveBreak remove most modifiers but we need to make sure for remaining modifiers)
 		for i = 1, #hidden_modifiers do
-			copy:RemoveModifierByName(hidden_modifiers[i])	
+			copy:RemoveModifierByName(hidden_modifiers[i])
 		end
 		-- Moving the copy to the corner of the map underground (Hiding him for sure)
-		local corner = Vector(0,0,0)
+		local corner
 		if GetMapName() == "two_vs_two" then
 			corner = Vector(2300,-2300,-322)
 		else
@@ -360,7 +354,7 @@ function UnhideOriginalOnLocation(original, location)
 			print("Original is revealed at the location where it was hidden")
 		end
 		FindClearSpaceForUnit(original, original:GetAbsOrigin(), false)
-		
+
 		-- List of auras and abilities with visual effect
 		local hidden_abilities = {
 			"firelord_arcana_model",
@@ -427,9 +421,9 @@ function CustomPassiveBreak(unit, duration)
 		for i = 1, #passive_modifiers do
 			unit:RemoveModifierByName(passive_modifiers[i])
 		end
-		
+
 		unit.custom_already_breaked = true
-		
+
 		if duration ~= 100 then
 			Timers:CreateTimer(duration, function()
 				for i = 1, #abilities_with_passives do
@@ -466,7 +460,7 @@ function CustomItemDisable(caster, unit)
 				local unit_owner = unit:GetOwner()
 				local caster_owner = caster:GetOwner()
 
-				-- Store original purchaser only for the first time when CustomItemDisable is called 
+				-- Store original purchaser only for the first time when CustomItemDisable is called
 				if item.original_purchaser == nil then
 					item.original_purchaser = item_owner
 				end
@@ -557,7 +551,7 @@ function CustomItemEnable(caster, unit)
 	end
 end
 
---[[ This function applies strong dispel and removes almost all debuffs; 
+--[[ This function applies strong dispel and removes almost all debuffs;
 	Can remove most buffs that are not removable with basic dispel;
 	Can remove most debuffs that are not removable with strong dispel;
 	Used in many abilities, HideAndCopyHero, HideTheCopyPermanently, ...
@@ -567,82 +561,102 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 		local BuffsCreatedThisFrameOnly = false
 		local RemoveExceptions = false
 		local RemoveStuns = false
-		
+
 		local function RemoveTableOfModifiersFromUnit(unit, t)
 			for i = 1, #t do
 				unit:RemoveModifierByName(t[i])
 			end
 		end
-		
+
 		if bCustomRemoveAllDebuffs == true then
-			
+
 			RemoveStuns = true -- this ensures removing modifiers debuffs with "IsStunDebuff" "1"
 
 			-- Abilities
-			local ability_debuffs = {
-				"modifier_entrapment",					-- pierces BKB, doesn't get removed with BKB
-				"modifier_volcano_stun",				-- pierces BKB
-				"modifier_time_stop",					-- pierces BKB
-				"modifier_time_stop_scepter",           -- pierces BKB
-				"modifier_custom_enfeeble_debuff",		-- pierces BKB, doesn't get removed with BKB
-				"modifier_purge_enemy_hero",			-- pierces BKB, doesn't get removed with BKB
-				"modifier_purge_enemy_creep",			-- pierces BKB, doesn't get removed with BKB
-				"modifier_bane_nightmare_invulnerable", -- invulnerable type
-				"modifier_axe_berserkers_call",			-- pierces BKB, doesn't get removed with BKB
+			local ability_debuffs = { -- for most stuff: pierces BKB, doesn't get removed with BKB
+				"modifier_axe_berserkers_call",
+				"modifier_bane_nightmare_invulnerable",						-- invulnerable type
+				-- custom:
+				"modifier_custom_enfeeble_debuff",
+				"modifier_entrapment",										-- Astral Trekker Net
+				"modifier_purge_enemy_creep",
+				"modifier_purge_enemy_hero",
+				"modifier_time_stop",
+				"modifier_time_stop_scepter",
+				"modifier_volcano_stun",
 			}
 
 			-- Items
 			local item_debuffs = {
-				"modifier_item_skadi_slow",               -- pierces BKB, doesn't get removed with BKB
 				"modifier_heavens_halberd_debuff",        -- doesn't pierce BKB, doesn't get removed with BKB
-				"modifier_silver_edge_debuff",            -- doesn't pierce BKB, doesn't get removed with BKB
 				"modifier_item_nullifier_mute",           -- pierces BKB, doesn't get removed with BKB
+				"modifier_item_skadi_slow",               -- pierces BKB, doesn't get removed with BKB
+				"modifier_silver_edge_debuff",            -- doesn't pierce BKB, doesn't get removed with BKB
+				-- custom:
 				"modifier_pull_staff_active_buff",        -- doesn't pierce BKB, doesn't get removed with BKB
 			}
-			
+
 			RemoveTableOfModifiersFromUnit(target, ability_debuffs)
 			RemoveTableOfModifiersFromUnit(target, item_debuffs)
-			
+
 			-- Exceptions:
-			-- Exception 1: modifier_charmed_hero       			(Dark Ranger Charm - not advisable)
-			-- Exception 2: modifier_incinerate_stack   			(Fire Lord Incinerate - not advisable)
-			-- Exception 3: modifier_custom_rupture                 (Blood Mage Rupture - it would be lame if dispellable
+			-- modifier_charmed_hero       			(Dark Ranger Charm - not advisable)
+			-- modifier_incinerate_stack   			(Fire Lord Incinerate - not advisable)
+			-- modifier_custom_rupture              (Blood Mage Rupture - it would be lame if dispellable)
+			-- modifier_bloodseeker_rupture 		- || -
+			-- modifier_doom_bringer_doom			- || -
 		end
-		
+
 		if bCustomRemoveAllBuffs == true then
 			-- List of undispellable buffs that are safe to remove without making errors, crashes etc.
-			local undispellable_with_normal_dispel_buffs = {
-				"modifier_time_slow_aura_applier",
-				"modifier_custom_chemical_rage_buff",
+			local ability_buffs = {
 				"modifier_alchemist_chemical_rage",
-				"modifier_custom_blade_storm",
-				"modifier_custom_rage_buff",
-				"modifier_roulette_caster_buff",
-				"modifier_mass_haste_buff",
-				"modifier_giant_growth_active",
-				"modifier_drunken_fist_knockback",
-				"modifier_drunken_fist_bonus",
-				--"modifier_mana_flare_armor_buff",
-				--"modifier_mana_flare_aura_applier",
+				"modifier_axe_berserkers_call_armor",
+				-- custom:
 				"modifier_absorb_bonus_mana_scepter",
+				"modifier_custom_blade_storm",
+				"modifier_custom_chemical_rage_buff",
+				"modifier_custom_death_pact",
+				"modifier_custom_marksmanship_buff",
+				"modifier_custom_rage_buff",
+				"modifier_drunken_fist_bonus",
+				"modifier_drunken_fist_knockback",
+				"modifier_giant_growth_active",
+				"modifier_mass_haste_buff",
 				"modifier_paladin_divine_shield",
 				"modifier_paladin_divine_shield_upgraded",
-				"modifier_black_king_bar_immune",
-				"item_modifier_forgotten_king_bar_damage_shield",
-				"modifier_slippers_of_halcyon_caster",
-				"modifier_infused_robe_damage_barrier",
-				"modifier_item_orb_of_reflection_active_reflect",
-				"modifier_custom_marksmanship_buff",
-				"modifier_custom_death_pact",
-				"modifier_item_custom_butterfly_active",
-				"modifier_item_custom_heart_active",
-				"modifier_pull_staff_active_buff",
-				"modifier_item_stoneskin_active",
+				"modifier_roulette_caster_buff",
+				"modifier_time_slow_aura_applier",
 			}
 			
-			RemoveTableOfModifiersFromUnit(target, undispellable_with_normal_dispel_buffs)
+			local item_buffs = {
+				"modifier_black_king_bar_immune",					-- Black King Bar (built-in)
+				"modifier_item_blade_mail_reflect",
+				"modifier_item_book_of_shadows_buff",
+				"modifier_item_hood_of_defiance_barrier",
+				"modifier_item_invisibility_edge_windwalk",
+				"modifier_item_lotus_orb_active",
+				"modifier_item_pipe_barrier",
+				"modifier_item_satanic_unholy",
+				"modifier_item_shadow_amulet_fade",
+				"modifier_item_silver_edge_windwalk",
+				"modifier_item_sphere_target",                    	-- Linken's Sphere transferred buff
+				"modifier_rune_invis",
+				-- custom:
+				"item_modifier_forgotten_king_bar_damage_shield",
+				"modifier_infused_robe_damage_barrier",
+				"modifier_item_custom_butterfly_active",
+				"modifier_item_custom_heart_active",
+				"modifier_item_orb_of_reflection_active_reflect",
+				"modifier_item_stoneskin_active",
+				"modifier_pull_staff_active_buff",
+				"modifier_slippers_of_halcyon_caster",				-- Slippers of Halcyon Active
+			}
+
+			RemoveTableOfModifiersFromUnit(target, ability_buffs)
+			RemoveTableOfModifiersFromUnit(target, item_buffs)
 		end
-		
+
 		target:Purge(bCustomRemoveAllBuffs, bCustomRemoveAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 	else
 		print("Target for Super Strong Dispel is nil.")
@@ -650,28 +664,38 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 end
 
 -- Finding units in a trapezoid shape area
-function FindUnitsinTrapezoid(team_number, direction, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
+function FindUnitsinTrapezoid(team_number, vDirection, start_position, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
+	if cache == nil then
+		cache = false
+	end
+	if not order then
+		order = FIND_ANY_ORDER
+	end
+	if not target_flags then
+		print("Invalid number of arguments for FindUnitsinTrapezoid!")
+		return
+	end
 	local circle = FindUnitsInRadius(team_number, start_position, cache_unit, distance+end_radius, target_team, target_type, target_flags, order, cache)
-	local direction = direction
+	local direction = vDirection
 	direction.z = 0.0
 	direction = direction:Normalized()
 	local perpendicular_direction = Vector(direction.y, -direction.x, 0.0)
 	local end_position = start_position + direction*distance
-	
+
 	-- Trapezoid vertexes
 	local vertex1 = start_position - perpendicular_direction*start_radius
 	local vertex2 = start_position + perpendicular_direction*start_radius
 	local vertex3 = end_position - perpendicular_direction*end_radius
 	local vertex4 = end_position + perpendicular_direction*end_radius
-	
+
 	-- Trapezoid sides (vectors)
 	local vector1 = vertex2 - vertex1	-- vector12
 	local vector2 = vertex4 - vertex2	-- vector24
 	local vector3 = vertex3 - vertex4	-- vector43
 	local vector4 = vertex1 - vertex3	-- vector31
-	
+
 	local unit_table = {}
-	
+
 	for _, unit in pairs(circle) do
 		if unit then
 			local unit_location = unit:GetAbsOrigin()
@@ -693,17 +717,26 @@ end
 
 -- Custom Cleave function
 -- Required arguments: main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance;
--- If start_radius is 0, it will behave like the old cleave (pre 7.00);
+-- If start_radius is 0, it will be cone-shaped;
 function CustomCleaveAttack(attacker, target, ability, main_damage, damage_percent, cleave_origin, start_radius, end_radius, distance, particle_cleave)
-	if attacker == nil then
-		print("Attacker/Cleaver is nil!")
-		return nil
+	if not distance then
+		distance = 0
+	end
+	if not end_radius then
+		print("Invalid number of arguments for CustomCleaveAttack!")
+		return
+	end
+	if not attacker or attacker:IsNull() then
+		print("Attacker/Cleaver is nil for CustomCleaveAttack!")
+		return
+	end
+	if attacker.GetTeamNumber == nil or attacker.GetForwardVector == nil then
+		print("Attacker/Cleaver is an invalid entity for CustomCleaveAttack!")
+		return
 	end
 	local team_number = attacker:GetTeamNumber()
 	local direction = attacker:GetForwardVector()
-	local cache_unit = nil
-	local order = FIND_ANY_ORDER
-	local cache = false
+	local order = FIND_ANY_ORDER -- search order for FindUnitsInRadius
 
 	local damage_table = {}
 	damage_table.attacker = attacker
@@ -713,6 +746,10 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 	local target_flags
 
 	if ability then
+		if ability.GetAbilityTargetTeam == nil then
+			print("Ability is invalid for CustomCleaveAttack!")
+			return
+		end
 		target_team = ability:GetAbilityTargetTeam()
 		target_type = ability:GetAbilityTargetType()
 		target_flags = ability:GetAbilityTargetFlags()
@@ -724,51 +761,47 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 		target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
 		damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
 	end
-	
-	if target == nil then
-		print("Attacked target is nil!")
-		return nil
+
+	if not target or target:IsNull() then
+		print("Attacked target is nil for CustomCleaveAttack!")
+		return
 	end
-	
-	if target:IsNull() then
-		return nil
-    end
-	
+
 	-- Check for existence of GetUnitName method to determine if target is a unit or an item
 	-- items don't have that method -> nil; if the target is an item, don't continue
 	if target.GetUnitName == nil then
-		--print("Cleave doesn't work when attacking items!")
+		--print("Cleave doesn't work when attacking items or runes!")
 		return
 	end
-	
-	if target:GetTeamNumber() == team_number and target_type == DOTA_UNIT_TARGET_TEAM_ENEMY then
+
+	if target:GetTeamNumber() == team_number and target_team == DOTA_UNIT_TARGET_TEAM_ENEMY then
 		--print("Cleave doesn't work when attacking allies!")
 		return
 	end
-	
+
 	if target:IsTower() or target:IsBarracks() or target:IsBuilding() then
 		--print("Cleave doesn't work when attacking buildings!")
 		return
 	end
-	
+
 	if target:IsOther() then
 		--print("Cleave doesn't work when attacking ward-type units!")
 		return
 	end
-	
-	local affected_units = FindUnitsinTrapezoid(team_number, direction, cleave_origin, cache_unit, start_radius, end_radius, distance, target_team, target_type, target_flags, order, cache)
-	
-	-- Calculating damage and setting damage flags
+
+	local affected_units = FindUnitsinTrapezoid(team_number, direction, cleave_origin, nil, start_radius, end_radius, distance, target_team, target_type, target_flags, order, false)
+
+	-- Calculating damage and setting damage flags (this Cleave ignores armor!)
 	damage_table.damage = main_damage*damage_percent/100
 	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
-	
+
 	for _, unit in pairs(affected_units) do
 		if unit ~= target and unit ~= attacker then
 			damage_table.victim = unit
 			ApplyDamage(damage_table)
 		end
 	end
-	
+
 	-- Particles
 	if particle_cleave then
 		if particle_cleave == "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf" then
@@ -789,7 +822,7 @@ function CustomCleaveAttack(attacker, target, ability, main_damage, damage_perce
 			ParticleManager:SetParticleControl(cleave_pfx, 4, cleave_origin)
 			ParticleManager:SetParticleControl(cleave_pfx, 5, cleave_origin)
 			ParticleManager:SetParticleControlForward(cleave_pfx, 0, direction)
-			for i, unit in pairs(affected_units) do
+			for _, unit in pairs(affected_units) do
 				if unit ~= attacker and unit ~= target then
 					for i = 6, 17 do
 						ParticleManager:SetParticleControlEnt(cleave_pfx, i, unit, PATTACH_POINT, "attach_hitloc", unit:GetAbsOrigin(), true)
@@ -806,22 +839,21 @@ function HasOtherUniqueAttackModifiers(unit)
 
 	local list_of_passive_orbs ={
 		"modifier_item_mask_of_death",
-		"modifier_item_satanic"
 	}
-	
+
 	local list_of_autocast_orbs ={
 		"modifier_dark_arrow",
 		"modifier_incinerate_orb",
-		"modifier_glaives_of_silence_orb"
+		"modifier_glaives_of_silence_orb",
 	}
-	
+
 	if unit then
 		for i = 1, #list_of_passive_orbs do
 			if unit:HasModifier(list_of_passive_orbs[i]) then
 				return true
 			end
 		end
-		
+
 		for j = 1, #list_of_autocast_orbs do
 			local current_modifier_name = list_of_autocast_orbs[j]
 			if unit:HasModifier(current_modifier_name) then
@@ -836,7 +868,7 @@ function HasOtherUniqueAttackModifiers(unit)
 				end
 			end
 		end
-		
+
 		return false
 	end
 end

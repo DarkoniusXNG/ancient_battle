@@ -11,31 +11,28 @@ function modifier_custom_building_invulnerable:IsPurgable()
 end
 
 function modifier_custom_building_invulnerable:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 	}
-
-	return funcs
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamageMagical(params)
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamageMagical()
 	return 1
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePhysical(params)
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePhysical()
 	return 1
 end
 
-function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePure(params)
+function modifier_custom_building_invulnerable:GetAbsoluteNoDamagePure()
 	return 1
 end
 
-function modifier_custom_building_invulnerable:CheckState() 
-  local state = {
-    [MODIFIER_STATE_INVULNERABLE] = true,
-    [MODIFIER_STATE_NO_HEALTH_BAR] = true
-  }
-  return state
+function modifier_custom_building_invulnerable:CheckState()
+	return {
+		[MODIFIER_STATE_INVULNERABLE] = true,
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+	}
 end

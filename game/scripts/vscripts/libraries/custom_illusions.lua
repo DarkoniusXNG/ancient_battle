@@ -8,27 +8,36 @@
 -- Known issues (for both methods): Morphling interaction, power treads always strength, terrorblade metamorphosis missing attack projectile
 -- missing talent trees (visually only)
 function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damage_dealt, damage_taken, controllable, method)
-	if not caster or not ability or not duration then
-		print("caster, ability and duration need to be defined for CreateIllusion!")
+	if method ~= 1 and method ~= 2 then
+		method = 1
+	end
+	if not controllable then
+		controllable = true
+	end
+	local illusion_damage_taken = damage_taken or 0
+	local illusion_damage_dealt = damage_dealt or 0
+	local origin = position or self:GetAbsOrigin() + RandomVector(150)
+	if not duration then
+		-- CreateIllusion without 'duration' defined will make illusions with infinite duration
+		duration = -1
+	end
+	if not ability then
+		print("CreateIllusion without 'ability' defined can create weird issues!")
+	end
+	if not caster then
+		-- CreateIllusion without 'caster' defined will mark the target as the caster
+		caster = self
+	end
+	if caster.GetUnitName == nil then
+		print("caster entity for CreateIllusion is invalid!")
 		return
 	end
-	
+
 	local playerID = caster:GetPlayerID()
 	local unit_name = self:GetUnitName()
 	local unit_HP = self:GetHealth()
 	local unit_MP = self:GetMana()
 	local owner = caster:GetOwner() or caster
-	local origin = position or self:GetAbsOrigin() + RandomVector(150)
-	local illusion_damage_dealt = damage_dealt or 0
-	local illusion_damage_taken = damage_taken or 0
-
-	if not controllable then
-		controllable = true
-	end
-
-	if method ~= 1 and method ~= 2 then
-		method = 1
-	end
 
 	-- Modifiers that we want to apply but don't have AllowIllusionDuplicate or their GetRemainingTime is 0
 	local wanted_modifiers = {
@@ -43,7 +52,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 		"modifier_terrorblade_metamorphosis_transform_aura_applier",
 		"modifier_meepo_divided_we_stand",
 	}
-	
+
 	-- Abilities that cause bugs
 	local ability_ignore_list = {
 		"meepo_divided_we_stand",
@@ -85,7 +94,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 			illusion:SetAbilityPoints(0)
 			for ability_slot = 0, unit_ability_count-1 do
 				local current_ability = self:GetAbilityByIndex(ability_slot)
-				if current_ability then 
+				if current_ability then
 					local current_ability_level = current_ability:GetLevel()
 					local current_ability_name = current_ability:GetAbilityName()
 					local illusion_ability = illusion:FindAbilityByName(current_ability_name)
@@ -104,7 +113,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 					end
 				end
 			end
-			
+
 			-- Remove any item that is given to our custom illusion for no reason
 			for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
 				local item = illusion:GetItemInSlot(i)
@@ -176,11 +185,11 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 			end
 			illusion:SetOwner(owner)
 			FindClearSpaceForUnit(illusion, origin, false)
-			
+
 			local unit_ability_count = self:GetAbilityCount()
 			for ability_slot = 0, unit_ability_count-1 do
 				local current_ability = self:GetAbilityByIndex(ability_slot)
-				if current_ability then 
+				if current_ability then
 					local current_ability_level = current_ability:GetLevel()
 					local current_ability_name = current_ability:GetAbilityName()
 					local illusion_ability = illusion:FindAbilityByName(current_ability_name)
@@ -241,7 +250,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 		local unit_ability_count = self:GetAbilityCount()
 		for ability_slot = 0, unit_ability_count-1 do
 			local current_ability = self:GetAbilityByIndex(ability_slot)
-			if current_ability then 
+			if current_ability then
 				local current_ability_level = current_ability:GetLevel()
 				local current_ability_name = current_ability:GetAbilityName()
 				local illusion_ability = illusion:FindAbilityByName(current_ability_name)
@@ -249,7 +258,7 @@ function CDOTA_BaseNPC:CreateIllusion(caster, ability, duration, position, damag
 					illusion_ability:SetLevel(current_ability_level)
 				else
 					illusion_ability = illusion:AddAbility(current_ability_name)
-					illusion_ability:SetLevel(current_ability_level) 
+					illusion_ability:SetLevel(current_ability_level)
 				end
 			end
 		end

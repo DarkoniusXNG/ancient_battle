@@ -2,7 +2,7 @@ SELECTION_VERSION = "1.02"
 
 --[[
     Lua-controlled Selection Library by Noya
-    
+
     Installation:
     - "require" this file inside your code in order to add the new API functions to the PlayerResource global
     - Additionally, ensure your game scripts custom_net_tables.txt has a "selection" entry
@@ -19,10 +19,10 @@ SELECTION_VERSION = "1.02"
 
     * Add units to the current selection of the player
         PlayerResource:AddToSelection(playerID, unit_args)
-    
+
     * Remove units by index from the player selection group
         PlayerResource:RemoveFromSelection(playerID, unit_args)
-    
+
     * Returns the list of units by entity index that are selected by the player
         PlayerResource:GetSelectedEntities(playerID)
 
@@ -31,17 +31,17 @@ SELECTION_VERSION = "1.02"
 
     * Get the index of the first selected unit of the player
         PlayerResource:GetMainSelectedEntity(playerID)
-    
+
     * Check if a unit is selected or not by a player, returns bool
         PlayerResource:IsUnitSelected(playerID, unit_args)
 
     * Force a refresh of the current selection on all players, useful after abilities are removed
         PlayerResource:RefreshSelection()
-    
+
     * Redirects the selection of the main hero to another entity of choice
         PlayerResource:SetDefaultSelectionEntity(playerID, unit)
         PlayerResource:GetDefaultSelectionEntity(playerID)
-    
+
     * Redirects the selection of any entity to another entity of choice
         hero:SetSelectionOverride(unit)
 
@@ -55,7 +55,6 @@ SELECTION_VERSION = "1.02"
     Notes:
     - Enemy units that you don't control can't be added to the selection group of a player
     - This library requires "libraries/timers.lua" to be present in your vscripts directory.
-
 --]]
 
 function CDOTA_PlayerResource:NewSelection(playerID, unit_args)
@@ -64,7 +63,7 @@ function CDOTA_PlayerResource:NewSelection(playerID, unit_args)
         local entities = Selection:GetEntIndexListFromTable(unit_args)
         CustomGameEventManager:Send_ServerToPlayer(player, "selection_new", {entities = entities})
     end
-end 
+end
 
 function CDOTA_PlayerResource:AddToSelection(playerID, unit_args)
     local player = self:GetPlayer(playerID)
@@ -94,7 +93,7 @@ function CDOTA_PlayerResource:GetSelectedEntities(playerID)
 end
 
 function CDOTA_PlayerResource:GetMainSelectedEntity(playerID)
-    local selectedEntities = self:GetSelectedEntities(playerID) 
+    local selectedEntities = self:GetSelectedEntities(playerID)
     return selectedEntities and selectedEntities["0"]
 end
 
@@ -102,7 +101,7 @@ function CDOTA_PlayerResource:IsUnitSelected(playerID, unit)
     if not unit then return false end
     local entIndex = type(unit)=="number" and unit or IsValidEntity(unit) and unit:GetEntityIndex()
     if not entIndex then return false end
-    
+
     local selectedEntities = self:GetSelectedEntities(playerID)
     for _,v in pairs(selectedEntities) do
         if v==entIndex then
@@ -120,7 +119,6 @@ end
 
 function CDOTA_PlayerResource:SetDefaultSelectionEntity(playerID, unit)
     if not unit then unit = -1 end
-    local entIndex = type(unit)=="number" and unit or unit:GetEntityIndex()
     local hero = self:GetSelectedHeroEntity(playerID)
     if hero then
         Selection.overrides[playerID] = unit
@@ -153,8 +151,6 @@ end
 ------------------------------------------------------------------------
 -- Internal
 ------------------------------------------------------------------------
-
-require('libraries/timers')
 
 if not Selection then
     Selection = class({})

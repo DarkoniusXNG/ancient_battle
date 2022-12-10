@@ -44,26 +44,26 @@ if CDOTA_BaseNPC then
   function CDOTA_BaseNPC:AbsolutePurge()
     local undispellable_item_buffs = {
       "modifier_black_king_bar_immune",
+      "modifier_item_blade_mail_reflect",
+      "modifier_item_book_of_shadows_buff",
       "modifier_item_hood_of_defiance_barrier",
+      "modifier_item_invisibility_edge_windwalk",
+      "modifier_item_lotus_orb_active",
       "modifier_item_pipe_barrier",
       "modifier_item_satanic_unholy",
       "modifier_item_shadow_amulet_fade",
-      "modifier_item_invisibility_edge_windwalk",
       "modifier_item_silver_edge_windwalk",
-      "modifier_rune_invis",
-      "modifier_item_blade_mail_reflect",
-      "modifier_item_lotus_orb_active",
       "modifier_item_sphere_target",                    -- Linken's Sphere transferred buff
-      "modifier_item_book_of_shadows_buff",
+      "modifier_rune_invis",
       -- custom:
       "item_modifier_forgotten_king_bar_damage_shield",
-      "modifier_slippers_of_halcyon_caster",
       "modifier_infused_robe_damage_barrier",
-      "modifier_item_orb_of_reflection_active_reflect",
       "modifier_item_custom_butterfly_active",
       "modifier_item_custom_heart_active",
-      "modifier_pull_staff_active_buff",
+      "modifier_item_orb_of_reflection_active_reflect",
       "modifier_item_stoneskin_active",
+      "modifier_pull_staff_active_buff",
+      "modifier_slippers_of_halcyon_caster",
     }
 
     local undispellable_item_debuffs = {
@@ -76,64 +76,68 @@ if CDOTA_BaseNPC then
     }
 
     local undispellable_ability_debuffs = {
-      "modifier_ice_blast",
       "modifier_axe_berserkers_call",
+      "modifier_bane_nightmare_invulnerable",						-- invulnerable type
       "modifier_bloodseeker_rupture",
-      "modifier_bristleback_quill_spray",       -- Quill Spray stacks
-      "modifier_dazzle_bad_juju_armor",         -- Bad Juju stacks
+      "modifier_bristleback_quill_spray",							-- Quill Spray stacks
+      "modifier_dazzle_bad_juju_armor",								-- Bad Juju stacks
       "modifier_doom_bringer_doom",
-      "modifier_earthspirit_petrify",           -- Earth Spirit Enchant Remnant debuff
+      "modifier_earthspirit_petrify",								-- Earth Spirit Enchant Remnant debuff
+      "modifier_forged_spirit_melting_strike_debuff",				-- Forged Spirit Melting Strike stacks
       "modifier_grimstroke_soul_chain",
-      "modifier_huskar_burning_spear_debuff",   -- Burning Spear stacks
-      "modifier_invoker_deafening_blast_disarm",
-      "modifier_forged_spirit_melting_strike_debuff",
-      "modifier_razor_static_link_debuff",
-      "modifier_razor_eye_of_the_storm_armor",  -- Eye of the Storm stacks
-      "modifier_sand_king_caustic_finale_orb",  -- Caustic Finale initial debuff
-      "modifier_shadow_demon_shadow_poison",
-      "modifier_shadow_demon_purge_slow",
-      "modifier_slardar_amplify_damage",        -- Corrosive Haze becomes undispellable with the talent
-      "modifier_slark_pounce_leash",
-      "modifier_tusk_walrus_punch_slow",
-      "modifier_tusk_walrus_kick_slow",
-      "modifier_ursa_fury_swipes_damage_increase",
-      "modifier_venomancer_poison_nova",
-      "modifier_viper_viper_strike_slow",
+      "modifier_huskar_burning_spear_debuff",						-- Burning Spear stacks
+      "modifier_ice_blast",
+      "modifier_invoker_deafening_blast_disarm",					-- BKB removes it
       "modifier_maledict",
-      "modifier_winter_wyvern_winters_curse_aura",
-      "modifier_winter_wyvern_winters_curse",
+      "modifier_obsidian_destroyer_astral_imprisonment_prison",		-- doesn't pierce BKB
+      "modifier_razor_eye_of_the_storm_armor",						-- Eye of the Storm stacks
+      "modifier_razor_static_link_debuff",
+      "modifier_sand_king_caustic_finale_orb",						-- Caustic Finale initial debuff
+      "modifier_shadow_demon_disruption",							-- doesn't pierce BKB
+      "modifier_shadow_demon_purge_slow",
+      "modifier_shadow_demon_shadow_poison",
+      "modifier_silencer_curse_of_the_silent",						-- Arcane Curse becomes undispellable with the talent
+      "modifier_slardar_amplify_damage",							-- Corrosive Haze becomes undispellable with the talent
+      "modifier_slark_pounce_leash",								-- BKB removes it
+      "modifier_tusk_walrus_kick_slow",
+      "modifier_tusk_walrus_punch_slow",
+      "modifier_ursa_fury_swipes_damage_increase",
+      "modifier_venomancer_poison_nova",							-- doesn't damage through BKB
+      "modifier_viper_viper_strike_slow",
       "modifier_windrunner_windrun_slow",
+      "modifier_winter_wyvern_winters_curse",
+      "modifier_winter_wyvern_winters_curse_aura",					-- doesn't pierce BKB
       -- custom:
-      "modifier_entrapment",                    -- pierces BKB, doesn't get removed with BKB
-      "modifier_volcano_stun",                  -- pierces BKB
-      "modifier_time_stop",                     -- pierces BKB
-      "modifier_time_stop_scepter",             -- pierces BKB
-      "modifier_custom_enfeeble_debuff",        -- pierces BKB, doesn't get removed with BKB
-      "modifier_purge_enemy_hero",              -- pierces BKB, doesn't get removed with BKB
-      "modifier_purge_enemy_creep",             -- pierces BKB, doesn't get removed with BKB
-      "modifier_bane_nightmare_invulnerable",   -- invulnerable type
+      "modifier_incinerate_stack",
+      "modifier_custom_enfeeble_debuff",
+      "modifier_custom_rupture",
+      "modifier_entrapment",
+      "modifier_purge_enemy_creep",
+      "modifier_purge_enemy_hero",
+      "modifier_time_stop",
+      "modifier_time_stop_scepter",
+      "modifier_volcano_stun",
     }
 
     local undispellable_ability_buffs = {
+      "modifier_alchemist_chemical_rage",
       "modifier_axe_berserkers_call_armor",
       "modifier_bounty_hunter_wind_walk",
       "modifier_broodmother_insatiable_hunger",
       "modifier_centaur_stampede",
       "modifier_clinkz_wind_walk",
-      "modifier_rattletrap_battery_assault",
       "modifier_dark_willow_shadow_realm_buff",
       "modifier_dazzle_shallow_grave",
       "modifier_doom_bringer_devour",
-      "modifier_doom_bringer_scorched_earth_effect_aura",
       "modifier_doom_bringer_scorched_earth_effect",
+      "modifier_doom_bringer_scorched_earth_effect_aura",
       "modifier_enchantress_natures_attendants",
       "modifier_gyrocopter_flak_cannon",
-      "modifier_wisp_overcharge",
       "modifier_invoker_ghost_walk_self",
       "modifier_juggernaut_blade_fury",
       "modifier_kunkka_ghost_ship_damage_absorb",
       "modifier_kunkka_ghost_ship_damage_delay",
-      "modifier_leshrac_diabolic_edict",        -- Removes only one instance
+      "modifier_leshrac_diabolic_edict",							-- Removes only one instance
       "modifier_life_stealer_rage",
       "modifier_lone_druid_true_form_battle_cry",
       "modifier_luna_eclipse",
@@ -141,74 +145,38 @@ if CDOTA_BaseNPC then
       "modifier_mirana_moonlight_shadow",
       "modifier_nyx_assassin_spiked_carapace",
       "modifier_nyx_assassin_vendetta",
+      "modifier_oracle_false_promise_timer",
       "modifier_pangolier_shield_crash_buff",
       "modifier_phantom_assassin_blur_active",
+      "modifier_phoenix_supernova_hiding",
+      "modifier_rattletrap_battery_assault",
+      "modifier_razor_eye_of_the_storm",							-- Removes only one instance
       "modifier_razor_static_link_buff",
-      "modifier_razor_eye_of_the_storm",        -- Removes only one instance
+      "modifier_skeleton_king_reincarnation_scepter_active",		-- Wraith King Wraith Form
       "modifier_slark_shadow_dance",
       "modifier_templar_assassin_refraction_absorb",
       "modifier_templar_assassin_refraction_damage",
       "modifier_ursa_enrage",
       "modifier_weaver_shukuchi",
-      "modifier_winter_wyvern_cold_embrace",
       "modifier_windrunner_windrun",
       "modifier_windrunner_windrun_invis",
+      "modifier_winter_wyvern_cold_embrace",
+      "modifier_wisp_overcharge",
       -- custom:
-      "modifier_time_slow_aura_applier",
-      "modifier_custom_chemical_rage_buff",
-      "modifier_alchemist_chemical_rage",
-      "modifier_custom_blade_storm",
-      "modifier_custom_rage_buff",
-      "modifier_roulette_caster_buff",
-      "modifier_mass_haste_buff",
-      "modifier_giant_growth_active",
-      "modifier_drunken_fist_knockback",
-      "modifier_drunken_fist_bonus",
-      --"modifier_mana_flare_armor_buff",
-      --"modifier_mana_flare_aura_applier",
       "modifier_absorb_bonus_mana_scepter",
+      "modifier_custom_blade_storm",
+      "modifier_custom_chemical_rage_buff",
+      "modifier_custom_death_pact",
+      "modifier_custom_marksmanship_buff",
+      "modifier_custom_rage_buff",
+      "modifier_drunken_fist_bonus",
+      "modifier_drunken_fist_knockback",
+      "modifier_giant_growth_active",
+      "modifier_mass_haste_buff",
       "modifier_paladin_divine_shield",
       "modifier_paladin_divine_shield_upgraded",
-      "modifier_custom_marksmanship_buff",
-      "modifier_custom_death_pact",
-    }
-    -- These are mostly transformation buffs, add them to the list above if they don't crash or break the ability and if fair
-    local problematic_modifiers = {
-      "modifier_abaddon_borrowed_time",         -- transformation modifier and an ultimate
-      "modifier_abaddon_borrowed_time_damage_redirect",
-      --"modifier_batrider_firefly",            -- Removes only one instance, bugs out the caster
-      --"modifier_brewmaster_primal_split_duration", -- Coding nightmare
-      --"modifier_bristleback_warpath",         -- Removing this breaks the ability
-      "modifier_death_prophet_exorcism",        -- transformation modifier and an ultimate
-      --"modifier_dragon_knight_dragon_form",   -- transformation modifier and an ultimate,
-      --"modifier_lina_fiery_soul",             -- Removing this breaks the ability
-      "modifier_lycan_shapeshift",              -- transformation modifier and an ultimate
-      "modifier_lycan_shapeshift_speed",        -- transformation modifier and an ultimate
-      "modifier_lone_druid_true_form",          -- transformation modifier and an ultimate
-      --"modifier_medusa_mana_shield",
-      --"modifier_monkey_king_quadruple_tap_counter", -- Jingu Mastery stacks
-      --"modifier_morphling_replicate_timer",   -- Coding nightmare
-      --"modifier_morphling_replicate_manager", -- Coding nightmare
-      "modifier_night_stalker_darkness",        -- Nightstalker Dark Ascension (transformation modifier and an ultimate)
-      --"modifier_nyx_assassin_burrow",         -- Bugs out the caster
-      --"modifier_obsidian_destroyer_astral_imprisonment_prison",
-      --"modifier_oracle_false_promise_timer",  -- Removing this can kill a hero
-      "modifier_pangolier_gyroshell",           -- transformation modifier and an ultimate
-      --"modifier_phoenix_fire_spirit_count",   -- Phoenix Fire Spirits buff on the caster
-      "modifier_sand_king_epicenter",           -- transformation modifier and an ultimate
-      --"modifier_shadow_demon_disruption",
-      "modifier_sven_gods_strength",            -- transformation modifier and an ultimate
-      "modifier_sven_gods_strength_child",      -- transformation modifier and an ultimate
-      --"modifier_spectre_spectral_dagger_path",
-      --"modifier_spectre_spectral_dagger",
-      --"modifier_spectre_spectral_dagger_in_path",
-      "modifier_terrorblade_metamorphosis",     -- transformation modifier
-      "modifier_terrorblade_metamorphosis_transform_aura_applier",  -- transformation modifier
-      "modifier_troll_warlord_battle_trance",   -- transformation modifier and an ultimate
-      "modifier_undying_flesh_golem_plague_aura", -- transformation modifier and an ultimate
-      "modifier_undying_flesh_golem",           -- transformation modifier and an ultimate
-      --"modifier_windrunner_focusfire",
-      "modifier_winter_wyvern_arctic_burn_flight", -- transformation modifier
+      "modifier_roulette_caster_buff",
+      "modifier_time_slow_aura_applier",
     }
 
     local function RemoveTableOfModifiersFromUnit(unit, t)

@@ -26,7 +26,7 @@ function modifier_custom_super_illusion:OnCreated(event)
   end
 end
 
-function modifier_custom_super_illusion:DeclareFunctions() 
+function modifier_custom_super_illusion:DeclareFunctions()
   return {
     --MODIFIER_PROPERTY_TEMPEST_DOUBLE,
     --MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE,
@@ -151,7 +151,7 @@ function modifier_custom_super_illusion_hide:OnIntervalThink()
 
   self.counter = self.counter + 1
 
-  if self.counter > 50 then
+  if self.counter > 60 then
     self:StartIntervalThink(-1)
     self:Destroy()
   end

@@ -33,7 +33,7 @@ function CDOTA_PlayerResource:OnPlayerConnect(event)
 			print("player_connect_full event doesn't contain PlayerID, player_id or index key! Thanks Valve")
 		end
 	end
-	
+
 	if userID then
 		self.UserIDToPlayerID[userID] = playerID
 	end
@@ -74,7 +74,7 @@ end
 function CDOTA_PlayerResource:GetBarebonesAssignedHero(playerID)
   local player = self:GetPlayer(playerID)
   if self:IsRealPlayer(playerID) then
-    if player then 
+    if player then
       local hero = player:GetAssignedHero()
       if hero then
         return hero
@@ -113,11 +113,11 @@ end
 
 -- DotA Connection states:
 -- DOTA_CONNECTION_STATE_UNKNOWN	0
--- DOTA_CONNECTION_STATE_NOT_YET_CONNECTED	1	
--- DOTA_CONNECTION_STATE_CONNECTED	2	
--- DOTA_CONNECTION_STATE_DISCONNECTED	3	
--- DOTA_CONNECTION_STATE_ABANDONED	4	
--- DOTA_CONNECTION_STATE_LOADING	5	
+-- DOTA_CONNECTION_STATE_NOT_YET_CONNECTED	1
+-- DOTA_CONNECTION_STATE_CONNECTED	2
+-- DOTA_CONNECTION_STATE_DISCONNECTED	3
+-- DOTA_CONNECTION_STATE_ABANDONED	4
+-- DOTA_CONNECTION_STATE_LOADING	5
 -- DOTA_CONNECTION_STATE_FAILED	6
 
 -- Is a player with this playerID connected?
@@ -172,7 +172,6 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 	local player_team = self:GetTeam(playerID)
 	local current_gold = self:GetGold(playerID)
 	local current_allies = {}
-	local ally_amount = 0
 	local gold_per_interval = GOLD_PER_TICK
 
 	-- Distribute initial gold
@@ -183,7 +182,7 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 	end
 
 	-- If there is at least one ally to redirect gold to, do it
-	ally_amount = #current_allies
+	local ally_amount = #current_allies
 	if ally_amount >= 1 and current_gold >= ally_amount then
 		local gold_to_share = current_gold - (current_gold % ally_amount)
 		local gold_per_ally = gold_to_share / ally_amount
@@ -199,6 +198,7 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 	current_allies = {}
 
 	-- Start the redistribution cycle
+	local resource = self
 	Timers:CreateTimer(3, function()
 
 		-- Update gold according to passive gold gain
@@ -206,7 +206,7 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 
 		-- Update active ally amount
 		for id = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-			if self:IsRealPlayer(id) and (not self.PlayerData[id].distribute_gold_to_allies) and self:GetTeam(id) == player_team then
+			if resource:IsRealPlayer(id) and (not resource.PlayerData[id].distribute_gold_to_allies) and resource:GetTeam(id) == player_team then
 				current_allies[#current_allies + 1] = id
 			end
 		end
@@ -217,7 +217,7 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 			local gold_to_share = current_gold - (current_gold % ally_amount)
 			local gold_per_ally = gold_to_share / ally_amount
 			for _,ally_id in pairs(current_allies) do
-				self:ModifyGold(ally_id, gold_per_ally, false, DOTA_ModifyGold_AbandonedRedistribute)
+				resource:ModifyGold(ally_id, gold_per_ally, false, DOTA_ModifyGold_AbandonedRedistribute)
 			end
 			print("distributed "..gold_to_share.." gold ("..gold_per_ally.." per ally)")
 		end
@@ -228,7 +228,7 @@ function CDOTA_PlayerResource:StartAbandonGoldRedistribution(playerID)
 		ally_amount = 0
 
 		-- Keep going, if applicable
-		if self.PlayerData[playerID].distribute_gold_to_allies then
+		if resource.PlayerData[playerID].distribute_gold_to_allies then
 			return 3
 		end
 	end)

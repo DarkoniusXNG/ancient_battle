@@ -13,7 +13,7 @@ function modifier_custom_courier:RemoveOnDeath()
 end
 
 function modifier_custom_courier:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
@@ -23,7 +23,6 @@ function modifier_custom_courier:DeclareFunctions()
 		MODIFIER_PROPERTY_VISUAL_Z_DELTA,
 		--MODIFIER_EVENT_ON_TAKEDAMAGE
 	}
-	return funcs
 end
 
 function modifier_custom_courier:GetAbsoluteNoDamageMagical()
@@ -43,14 +42,13 @@ function modifier_custom_courier:GetModifierExtraHealthBonus()
 end
 
 function modifier_custom_courier:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_FLYING] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_BLIND] = true,
 		[MODIFIER_STATE_INVULNERABLE] = true,
 		--[MODIFIER_STATE_NO_HEALTH_BAR] = true
 	}
-	return state
 end
 --[[
 function modifier_custom_courier:OnTakeDamage(event)

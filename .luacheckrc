@@ -98,6 +98,7 @@ read_globals = { -- these globals can only be accessed.
 "PrintTable",
 "HideWearables",
 "ShowWearables",
+"SwapWearable",
 -- Ability types
 "ABILITY_TYPE_BASIC",
 "ABILITY_TYPE_ULTIMATE",

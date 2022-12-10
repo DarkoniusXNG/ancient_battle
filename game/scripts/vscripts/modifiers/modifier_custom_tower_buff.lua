@@ -15,7 +15,7 @@ function modifier_custom_tower_buff:IsPurgable()
 end
 
 function modifier_custom_tower_buff:GetAttributes()
-	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
+	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE
 end
 
 function modifier_custom_tower_buff:OnCreated()
@@ -29,12 +29,10 @@ function modifier_custom_tower_buff:OnCreated()
 end
 
 function modifier_custom_tower_buff:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS,
 		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
 	}
-
-	return funcs
 end
 
 function modifier_custom_tower_buff:GetModifierExtraHealthBonus()

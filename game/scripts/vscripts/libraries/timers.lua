@@ -76,7 +76,7 @@ end
 function Timers:start()
   Timers = self
   self.timers = {}
-  
+
   --local ent = Entities:CreateByClassname("info_target") -- Entities:FindByClassname(nil, 'CWorld')
   local ent = SpawnEntityFromTableSynchronous("info_target", {targetname="timers_lua_thinker"})
   ent:SetThink("Think", self, "timers", TIMERS_THINK)
@@ -88,10 +88,10 @@ function Timers:Think()
   --end
 
   -- Track game time, since the dt passed in to think is actually wall-clock time not simulation time.
-  local now = GameRules:GetGameTime()
+  local pre_loop_now = GameRules:GetGameTime()
 
   -- Process timers
-  for k,v in pairs(Timers.timers) do
+  for k, v in pairs(Timers.timers) do
     local bUseGameTime = true
     if v.useGameTime ~= nil and v.useGameTime == false then
       bUseGameTime = false
@@ -101,7 +101,7 @@ function Timers:Think()
       bOldStyle = true
     end
 
-    local now = GameRules:GetGameTime()
+    local now = pre_loop_now
     if not bUseGameTime then
       now = Time()
     end
@@ -116,7 +116,7 @@ function Timers:Think()
 
       Timers.runningTimer = k
       Timers.removeSelf = false
-      
+
       -- Run the callback
       local status, nextCall
       if v.context then
@@ -166,9 +166,9 @@ function Timers:HandleEventError(name, event, err)
   event = tostring(event or 'unknown')
   err = tostring(err or 'unknown')
 
-  -- Tell everyone there was an error
-  --Say(nil, name .. ' threw an error on event '..event, false)
-  --Say(nil, err, false)
+  if IsInToolsMode() then
+    GameRules:SendCustomMessage(name.. " threw an error: "..err.." on event "..event, 0, 0)
+  end
 
   -- Prevent loop arounds
   if not self.errorHandled then
@@ -210,7 +210,7 @@ function Timers:CreateTimer(name, args, context)
 
   args.context = context
 
-  Timers.timers[name] = args 
+  Timers.timers[name] = args
 
   return name
 end

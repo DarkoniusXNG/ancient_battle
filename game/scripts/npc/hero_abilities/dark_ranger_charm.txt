@@ -54,7 +54,7 @@
       "03" // this is not displayed in tooltip of the spell (this duration depends on the duration of the longest delayed damage spell)
       {
         "var_type"                                        "FIELD_INTEGER"
-        "charm_clone_duration"                            "50"
+        "charm_clone_duration"                            "60"
       }
       "04"
       {
