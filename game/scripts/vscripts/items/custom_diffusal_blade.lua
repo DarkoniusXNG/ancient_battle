@@ -3,8 +3,8 @@ function Diffusal_Purge_Start(event)
 	local target = event.target
 	local caster = event.caster
 	local ability = event.ability
-	local damageType = ability:GetAbilityDamageType()
 	local duration = ability:GetLevelSpecialValueFor("purge_slow_duration", ability:GetLevel() - 1)
+	--local damageType = ability:GetAbilityDamageType()
 	--local summon_damage = ability:GetLevelSpecialValueFor("purge_summoned_damage", ability:GetLevel() - 1)
 	--local damage_table = {}
 	--damage_table.attacker = caster

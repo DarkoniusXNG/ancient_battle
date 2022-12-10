@@ -102,7 +102,7 @@ function modifier_item_enrage_crystal:GetModifierStatusResistanceStacking()
   if not parent:HasModifier("modifier_item_sange") and not parent:HasModifier("modifier_item_sange_and_yasha") and not parent:HasModifier("modifier_item_kaya_and_sange") and not parent:HasModifier("modifier_item_heavens_halberd") then
     return self.bonus_status_resist or self:GetAbility():GetSpecialValueFor("bonus_status_resist")
   end
-  return 0 
+  return 0
 end
 
 function modifier_item_enrage_crystal:GetModifierHPRegenAmplify_Percentage()
@@ -113,7 +113,7 @@ function modifier_item_enrage_crystal:GetModifierHPRegenAmplify_Percentage()
   if not parent:HasModifier("modifier_item_sange") and not parent:HasModifier("modifier_item_sange_and_yasha") and not parent:HasModifier("modifier_item_kaya_and_sange") and not parent:HasModifier("modifier_item_heavens_halberd") then
     return self.hp_regen_amp or self:GetAbility():GetSpecialValueFor("hp_regen_amp")
   end
-  return 0 
+  return 0
 end
 
 function modifier_item_enrage_crystal:GetModifierLifestealRegenAmplify_Percentage()
@@ -124,7 +124,7 @@ function modifier_item_enrage_crystal:GetModifierLifestealRegenAmplify_Percentag
   if not parent:HasModifier("modifier_item_sange") and not parent:HasModifier("modifier_item_sange_and_yasha") and not parent:HasModifier("modifier_item_kaya_and_sange") and not parent:HasModifier("modifier_item_heavens_halberd") then
     return self.lifesteal_amp or self:GetAbility():GetSpecialValueFor("lifesteal_amp")
   end
-  return 0 
+  return 0
 end
 
 if IsServer() then

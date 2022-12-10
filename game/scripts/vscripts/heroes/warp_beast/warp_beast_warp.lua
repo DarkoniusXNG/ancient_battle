@@ -51,8 +51,6 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	end
 	local warpDuration = self:GetSpecialValueFor("warp_duration")
 
-	local manaCost = ability:GetManaCost(-1)
-
 	local latchModifier = caster:FindModifierByName("modifier_latch")
 	if latchModifier then
 		if latchModifier.target then latchModifier.target:RemoveModifierByNameAndCaster("modifier_latch_target", caster) end
@@ -68,8 +66,6 @@ function warp_beast_warp:Warp(maxCastRange, castPosition, ability, order)
 	local forwardVec = (castPosition - warpPosition):Normalized()
 
 	local distance = (castPosition - caster:GetAbsOrigin()):Length2D()
-
-	local currentWarpMana = caster:GetMana()
 	local warpManaCost = (distance - maxCastRange) / distancePerMana
 
 	caster:StartGesture(ACT_DOTA_SPAWN)
@@ -469,7 +465,6 @@ end
 if IsServer() then
 	function modifier_mana_eater_bonus_mana_count:OnSpentMana(keys)
 		if keys.unit == self:GetParent() then
-			local caster = self:GetParent()
 			local manaCost = keys.cost
 			local restoreAmount = manaCost
 

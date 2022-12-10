@@ -170,7 +170,6 @@ end
 if IsServer() then
 	function modifier_mana_eater_bonus_mana_count:OnSpentMana(keys)
 		if keys.unit == self:GetParent() then
-			local caster = self:GetParent()
 			local manaCost = keys.cost
 			local restoreAmount = manaCost
 

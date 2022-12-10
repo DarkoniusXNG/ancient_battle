@@ -10,11 +10,15 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/sohei/sohei_guard.lua"
     "AbilityTextureName"                                  "custom/ronin_guard"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+
+    "HasShardUpgrade"                                     "1"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.0"
+    "AbilityCastAnimation"                                "ACT_DOTA_OVERRIDE_ABILITY_2"
+    "AnimationPlaybackRate"                               "1"
 
     // Time
     //-------------------------------------------------------------------------------------------------------------
@@ -30,6 +34,7 @@
     {
       "particle"                                          "particles/hero/sohei/guard.vpcf"
       "particle"                                          "particles/hero/sohei/knockback.vpcf"
+      "particle"                                          "particles/hero/sohei/immunity_sphere_yellow.vpcf"
       "particle"                                          "particles/hero/sohei/reflect_sakura_leaves.vpcf"
       "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
     }
@@ -40,13 +45,15 @@
     {
       "guard_duration"                                    "2.0"
       "hp_cost"                                           "25"
+      "knockback_max_distance"                            "400"
+      "knockback_duration"                                "0.2"
     }
   }
-  
+
   //=================================================================================================================
-  // Guard talent: Applies Ki Strike knockback (if Ki Strike is learned) to enemies around the target
+  // Guard talent: bonus 100% status resistance
   //=================================================================================================================
-  "special_bonus_sohei_guard_knockback"
+  "special_bonus_unique_sohei_6"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -61,12 +68,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "400"     // Knockback max distance
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "0.2"     // Knockback max duration
+        "value"                                           "100"
       }
     }
   }

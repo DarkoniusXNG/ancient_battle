@@ -628,7 +628,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 				"modifier_roulette_caster_buff",
 				"modifier_time_slow_aura_applier",
 			}
-			
+
 			local item_buffs = {
 				"modifier_black_king_bar_immune",					-- Black King Bar (built-in)
 				"modifier_item_blade_mail_reflect",

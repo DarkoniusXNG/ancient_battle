@@ -17,9 +17,6 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-    "HasScepterUpgrade"                                   "0"
-    "HasShardUpgrade"                                     "1"
-
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.0"
@@ -40,8 +37,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "precache"
     {
-      "particle"                                          "particles/econ/items/juggernaut/bladekeeper_omnislash/_dc_juggernaut_omni_slash_trail.vpcf"
-      //"particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+      "particle"                                          "particles/hero/sohei/sohei_trail.vpcf"
       "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
     }
 
@@ -67,39 +63,8 @@
         "value"                                           "20 30 40 50"
         "LinkedSpecialBonus"                              "special_bonus_sohei_dash_slow"
       }
+      "attack_speed_slow"                                 "20 30 40 50"
       "slow_duration"                                     "2.0"
-      // "shard_damage_to_heal_ratio"
-      // {
-        // "value"                                           "1"
-        // "RequiresShard"                                   "1"
-        // "CalculateSpellDamageTooltip"                     "0"
-        // "DamageTypeTooltip"                               "DAMAGE_TYPE_NONE"
-      // }
-      // "shard_hp_as_heal"
-      // {
-        // "value"                                           "5"
-        // "RequiresShard"                                   "1"
-      // }
-      "shard_push_pull_length"
-      {
-        "value"                                           "600"
-        "RequiresShard"                                   "1"
-      }
-      "shard_push_pull_speed"
-      {
-        "value"                                           "1200"
-        "RequiresShard"                                   "1"
-      }
-      // "shard_bonus_dash_range"
-      // {
-        // "value"                                           "200"
-        // "RequiresShard"                                   "1"
-      // }
-      "shard_unit_cast_range"
-      {
-        "value"                                           "600"
-        "RequiresShard"                                   "1"
-      }
     }
   }
 
