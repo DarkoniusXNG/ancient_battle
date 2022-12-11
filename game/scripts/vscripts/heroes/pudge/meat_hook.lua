@@ -29,30 +29,30 @@ function pudge_custom_meat_hook:OnSpellStart()
 	self.bChainAttached = false
 	-- Interrupt previous instance ? in case of refresher or wtf mode?
 	if self.hVictim then
-		self.hVictim:InterruptMotionControllers( true )
+		self.hVictim:InterruptMotionControllers(true)
 	end
 
 	local caster = self:GetCaster()
 
-	self.hook_damage = self:GetSpecialValueFor( "damage" )
-	self.hook_speed = self:GetSpecialValueFor( "hook_speed" )
+	self.hook_damage = self:GetSpecialValueFor("damage")
+	self.hook_speed = self:GetSpecialValueFor("hook_speed")
 	local hook_width = self:GetSpecialValueFor("hook_width")
 	local hook_distance = self:GetSpecialValueFor("hook_distance") + caster:GetCastRangeBonus()
 	local hook_followthrough_constant = self:GetSpecialValueFor("hook_followthrough_constant")
-	
+
 	-- Talent that increases damage
 	local talent_1 = caster:FindAbilityByName("special_bonus_unique_pudge_custom_2")
 	if talent_1 and talent_1:GetLevel() > 0 then
 		self.hook_damage = self.hook_damage + talent_1:GetSpecialValueFor("value")
 	end
-	
+
 	-- Talent that increases speed
 	local talent_2 = caster:FindAbilityByName("special_bonus_unique_pudge_custom_4")
 	if talent_2 and talent_2:GetLevel() > 0 then
 		self.hook_speed = self.hook_speed + talent_2:GetSpecialValueFor("value")
 	end
-	
-	local hHook = caster:GetTogglableWearable( DOTA_LOADOUT_TYPE_WEAPON )
+
+	local hHook = caster:GetTogglableWearable(DOTA_LOADOUT_TYPE_WEAPON)
 	if hHook then
 		hHook:AddEffects(EF_NODRAW)
 	end
@@ -63,7 +63,7 @@ function pudge_custom_meat_hook:OnSpellStart()
 	local vDirection = self:GetCursorPosition() - self.vStartPosition
 	vDirection.z = 0.0
 
-	local vDirection = ( vDirection:Normalized() ) * hook_distance
+	vDirection = ( vDirection:Normalized() ) * hook_distance
 	self.vTargetPosition = self.vStartPosition + vDirection
 
 	-- self stun duration based on max distance hook and hook speed
@@ -99,13 +99,13 @@ function pudge_custom_meat_hook:OnSpellStart()
 		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
 	}
 
-	ProjectileManager:CreateLinearProjectile( info )
+	ProjectileManager:CreateLinearProjectile(info)
 
 	self.bRetracting = false
 	self.hVictim = nil
 end
 
-function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
+function pudge_custom_meat_hook:OnProjectileHit(hTarget, vLocation)
 	local caster = self:GetCaster()
 	if hTarget == caster then
 		return false
@@ -125,15 +125,15 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 			if hTarget:IsCurrentlyHorizontalMotionControlled() then
 				hTarget:InterruptMotionControllers(false)
 			end
-			
+
 			hTarget:AddNewModifier( caster, self, "modifier_pudge_custom_meat_hook", {} )
-			
+
 			if hTarget:GetTeamNumber() ~= caster:GetTeamNumber() then
 				local damage = {
 						victim = hTarget,
 						attacker = caster,
 						damage = self.hook_damage,
-						damage_type = DAMAGE_TYPE_PURE,		
+						damage_type = DAMAGE_TYPE_PURE,
 						ability = self
 					}
 
@@ -142,7 +142,7 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 				if not hTarget:IsMagicImmune() then
 					hTarget:Interrupt()
 				end
-		
+
 				local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf", PATTACH_CUSTOMORIGIN, hTarget )
 				ParticleManager:SetParticleControlEnt( nFXIndex, 0, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetOrigin(), true )
 				ParticleManager:ReleaseParticleIndex( nFXIndex )
@@ -210,7 +210,7 @@ function pudge_custom_meat_hook:OnProjectileHit( hTarget, vLocation )
 			self.hVictim:InterruptMotionControllers( true )
 			--self.hVictim:RemoveModifierByName("modifier_pudge_custom_meat_hook")
 
-			local vVictimPosCheck = self.hVictim:GetOrigin() - vFinalHookPos 
+			local vVictimPosCheck = self.hVictim:GetOrigin() - vFinalHookPos
 			local flPad = caster:GetPaddedCollisionRadius() + self.hVictim:GetPaddedCollisionRadius()
 			if vVictimPosCheck:Length2D() > flPad then
 				FindClearSpaceForUnit( self.hVictim, self.vStartPosition, false )
@@ -258,7 +258,7 @@ end
 
 function modifier_pudge_custom_meat_hook:OnCreated(event)
 	if IsServer() then
-		if self:ApplyHorizontalMotionController() == false then 
+		if self:ApplyHorizontalMotionController() == false then
 			self:Destroy()
 		end
 	end
@@ -301,7 +301,7 @@ if IsServer() then
 				ability.bChainAttached = true
 				ParticleManager:SetParticleControlEnt( ability.nChainParticleFXIndex, 0, caster, PATTACH_CUSTOMORIGIN, "attach_hitloc", caster:GetOrigin(), true )
 				ParticleManager:SetParticleControl( ability.nChainParticleFXIndex, 0, ability.vStartPosition + ability.vHookOffset )
-			end                   
+			end
 		end
 	end
 

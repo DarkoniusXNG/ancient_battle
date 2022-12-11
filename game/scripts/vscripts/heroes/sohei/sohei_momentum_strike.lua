@@ -252,7 +252,7 @@ if IsServer() then
     -- Collision Impact Sound
     unit:EmitSound("Sohei.Momentum.Collision")
   end
-  
+
   function modifier_sohei_momentum_strike_knockback:OnHorizontalMotionInterrupted()
     self:Destroy()
   end

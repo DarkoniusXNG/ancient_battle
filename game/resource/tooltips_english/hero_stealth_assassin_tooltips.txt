@@ -23,12 +23,11 @@
 		"DOTA_Tooltip_ability_stealth_assassin_permanent_invisibility_movement_speed"     "BONUS MOVE SPEED:"
 
 		"DOTA_Tooltip_ability_stealth_assassin_death_ward"                                "Death Ward"
-		"DOTA_Tooltip_ability_stealth_assassin_death_ward_Description"                    "Summons a deadly ward to attack enemies within it's attack range. Lasts a maximum of %duration_tooltip% seconds.<br><br><font color='#70EA72'>Death Ward benefits from bonus attack speed and bonus damage auras.</font>"
+		"DOTA_Tooltip_ability_stealth_assassin_death_ward_Description"                    "Summons a deadly ward to attack enemies within it's attack range. Lasts a maximum of %duration_tooltip% seconds.<br><br><font color='#70EA72'>Death Ward can be destroyed and it doesn't require channeling.</font>"
 		"DOTA_Tooltip_ability_stealth_assassin_death_ward_Lore"                           "Ward that haunts the dreams of those who live to recount it."
-		"DOTA_Tooltip_ability_stealth_assassin_death_ward_damage"                         "DAMAGE:"
-		"DOTA_Tooltip_ability_stealth_assassin_death_ward_attack_range_tooltip"           "DEATH WARD ATTACK RANGE:"
-		"DOTA_Tooltip_ability_stealth_assassin_death_ward_bounces_scepter"                "SCEPTER BOUNCES:"
-		"DOTA_Tooltip_ability_stealth_assassin_death_ward_bounce_radius"                  "BOUNCE RADIUS:"
+		"DOTA_Tooltip_ability_stealth_assassin_death_ward_damage"                         "WARD DAMAGE:"
+		"DOTA_Tooltip_ability_stealth_assassin_death_ward_attack_range_tooltip"           "WARD ATTACK RANGE:"
+		"DOTA_Tooltip_ability_stealth_assassin_death_ward_scepter_bounce_radius"          "SCEPTER BOUNCE RADIUS:"
 		"DOTA_Tooltip_ability_stealth_assassin_death_ward_duration_tooltip"               "DURATION:"
 		"DOTA_Tooltip_ability_stealth_assassin_death_ward_creep_hits_to_kill"             "CREEP HITS TO DESTROY:"
 		"DOTA_Tooltip_ability_stealth_assassin_death_ward_melee_hero_hits_to_kill"        "MELEE HERO HITS TO DESTROY:"
@@ -49,3 +48,7 @@
 		
 		"DOTA_Tooltip_modifier_ambushed_slow_debuff"                                      "Wounded"
 		"DOTA_Tooltip_modifier_ambushed_slow_debuff_Description"                          "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+		
+		// Death Ward talents
+		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_1"                    "+{s:value} Death Ward Damage"
+		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_2"                    "+{s:value} Death Ward Attack Range"

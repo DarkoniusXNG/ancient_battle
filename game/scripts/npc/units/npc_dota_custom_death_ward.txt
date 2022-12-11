@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Stealth Assassin's Death Ward
-  // Notes: 26.10.2019;
+  // Notes: 2022;
   //=================================================================================
   "npc_dota_custom_death_ward"
   {
@@ -11,7 +11,7 @@
     "ModelScale"                                          "1.0"
     "SoundSet"                                            "Hero_WitchDoctor_Ward"
 
-    "Level"                                               "1"
+    "Level"                                               "3"
 
     "UnitLabel"                                           "death_ward"
 
@@ -23,8 +23,6 @@
     // Abilities
     //----------------------------------------------------------------
     "Ability1"                                            "custom_unit_spell_immunity"
-    //"Ability2"          ""                      // Ability 2.
-    //"Ability3"          ""                      // Ability 3.
 
     // Protection
     //----------------------------------------------------------------
@@ -34,10 +32,10 @@
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "70"
-    "AttackDamageMax"                                     "70"
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "1"
 
-    "AttackRate"                                          "0.3"
+    "AttackRate"                                          "0.25"
     "AttackAnimationPoint"                                "0.0"
     "AttackAcquisitionRange"                              "700"
     "AttackRange"                                         "700"

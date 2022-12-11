@@ -14,113 +14,117 @@ function modifier_custom_curse_of_the_silent:IsDebuff()
 	return true
 end
 
-function modifier_custom_curse_of_the_silent:DestroyOnExpire()
-	return true
+function modifier_custom_curse_of_the_silent:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE 
 end
 
 function modifier_custom_curse_of_the_silent:OnCreated()
+	if not IsServer() then
+		return
+	end
 	local parent = self:GetParent()
-	self.ability = self:GetAbility()
+	local ability = self:GetAbility()
 	parent.spell_not_cast = true
+	self.ability = ability
 
-	local think_interval = self.ability:GetSpecialValueFor("tick_interval")
+	local think_interval = ability:GetSpecialValueFor("tick_interval")
+
 	self:StartIntervalThink(think_interval)
-
-	if IsServer() then
-		local mana_loss_per_second = self.ability:GetSpecialValueFor("mana_loss_per_second")
-		local mana_loss_per_interval = mana_loss_per_second*think_interval
-
-		-- Reduce mana if the unit (parent) has mana
-		if parent:GetMana() > 0 then
-			parent:ReduceMana(mana_loss_per_interval)
-		end
-	end
-end
-
-function modifier_custom_curse_of_the_silent:OnRefresh()
-	local parent = self:GetParent()
-	self.ability = self:GetAbility()
-
-	if parent.spell_not_cast == nil then
-		parent.spell_not_cast = true
-	end
+	self:OnIntervalThink()
 end
 
 function modifier_custom_curse_of_the_silent:OnIntervalThink()
-	if IsServer() then
-		local parent = self:GetParent()
-		local mana_loss_per_second = self.ability:GetSpecialValueFor("mana_loss_per_second")
-		local think_interval = self.ability:GetSpecialValueFor("tick_interval")
-		local mana_loss_per_interval = mana_loss_per_second*think_interval
+	if not IsServer() then
+		return
+	end
+	local parent = self:GetParent()
+	local ability = self:GetAbility()
+	if not ability or ability:IsNull() then
+		ability = self.ability
+	end
+	local mana_loss_per_second = ability:GetSpecialValueFor("mana_loss_per_second")
+	local think_interval = ability:GetSpecialValueFor("tick_interval")
+	local mana_loss_per_interval = mana_loss_per_second*think_interval
 
-		-- Reduce mana if the unit (parent) has mana
-		if parent:GetMana() > 0 then
-			parent:ReduceMana(mana_loss_per_interval)
-		end
+	-- Reduce mana if the unit (parent) has mana
+	if parent:GetMana() > 0 then
+		parent:ReduceMana(mana_loss_per_interval)
 	end
 end
 
 function modifier_custom_curse_of_the_silent:OnDestroy()
-	if IsServer() then
-		local parent = self:GetParent()
+	if not IsServer() then
+		return
+	end
+	local parent = self:GetParent()
+	if not parent or parent:IsNull() then
+		return
+	end
+	local ability = self:GetAbility()
+	if not ability or ability:IsNull() then
+		ability = self.ability
+	end
 
-		-- Check if unit (parent) didn't cast a spell
-		if parent.spell_not_cast then
-			local ability = self:GetAbility() or self.ability
-			local caster = self:GetCaster() or ability:GetCaster()
-			local damage_type = ability:GetAbilityDamageType()
-			local damage = ability:GetSpecialValueFor("damage_if_no_spell_casted")
+	-- Check if unit (parent) didn't cast a spell
+	if parent.spell_not_cast then
+		local caster = self:GetCaster() or ability:GetCaster()
+		local damage_type = ability:GetAbilityDamageType()
+		local damage = ability:GetSpecialValueFor("damage_if_no_spell_casted")
 
-			-- Particle on parent
-			local particle = ParticleManager:CreateParticle("particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
-			ParticleManager:ReleaseParticleIndex(particle)
+		-- Particle on parent
+		local particle = ParticleManager:CreateParticle("particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
+		ParticleManager:ReleaseParticleIndex(particle)
 
-			-- Sound on parent
-			parent:EmitSound("Hero_Mirana.Starstorm.Impact")
+		-- Sound on parent
+		parent:EmitSound("Hero_Mirana.Starstorm.Impact")
 
-			-- Damage
-			local damage_table = {}
-			damage_table.victim = parent
-			damage_table.attacker = caster
-			damage_table.damage = damage
-			damage_table.ability = ability
-			damage_table.damage_type = damage_type
+		-- Damage
+		local damage_table = {}
+		damage_table.victim = parent
+		damage_table.attacker = caster
+		damage_table.damage = damage
+		damage_table.ability = ability
+		damage_table.damage_type = damage_type
 
-			ApplyDamage(damage_table)
-		end
+		ApplyDamage(damage_table)
 	end
 end
 
 function modifier_custom_curse_of_the_silent:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_SPENT_MANA,
 	}
-
-	return funcs
 end
 
-function modifier_custom_curse_of_the_silent:OnSpentMana(event)
-	local parent = self:GetParent()
-	if IsServer() and event.unit == parent then
+if IsServer() then
+	function modifier_custom_curse_of_the_silent:OnSpentMana(event)
+		local parent = self:GetParent()
 		local cast_ability = event.ability
-		local cast_ability_behavior
-		local forbidden_ability_behavior = bit.bor(DOTA_ABILITY_BEHAVIOR_UNIT_TARGET, DOTA_ABILITY_BEHAVIOR_AUTOCAST, DOTA_ABILITY_BEHAVIOR_ATTACK)
 
-		-- If there isn't a cast ability, or if its mana cost was zero, do nothing
-		if not cast_ability or cast_ability:GetManaCost(cast_ability:GetLevel() - 1) == 0 then
-			return nil
-		else
-			cast_ability_behavior = cast_ability:GetBehavior()
+		-- Check if unit that spent mana has this modifier
+		if event.unit ~= parent then
+			return
 		end
 
-		-- If casted_ability is autocasted and an attack ability then do nothing
-		if cast_ability_behavior == forbidden_ability_behavior then
-			return nil
+		local cast_ability_behavior
+		-- If there isn't a cast ability, or if its mana cost was zero, do nothing
+		if not cast_ability or cast_ability:GetManaCost(cast_ability:GetLevel() - 1) == 0 then
+			return
+		else
+			cast_ability_behavior = cast_ability:GetBehavior()
+			if type(cast_ability_behavior) == 'userdata' then
+				cast_ability_behavior = tonumber(tostring(cast_ability_behavior))
+			end
+		end
+
+		-- If cast ability is an attack ability (orb effect) then do nothing
+		if HasBit(cast_ability_behavior, DOTA_ABILITY_BEHAVIOR_ATTACK) then
+			return
 		end
 
 		-- If casted_ability is an item then do nothing
 		if cast_ability:IsItem() then
-			return nil
+			return
 		end
 
 		-- Stop interval think

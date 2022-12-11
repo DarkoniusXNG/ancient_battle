@@ -55,23 +55,23 @@ function sohei_guard:OnSpellStart()
 			local target_loc = target:GetAbsOrigin()
 			local direction = target_loc - caster_loc
 			local distance = radius - direction:Length2D() + caster:GetPaddedCollisionRadius()
-			local duration = self:GetSpecialValueFor("knockback_duration")
-			local momentum_strike = caster:FindAbilityByName("sohei_momentum_strike")
+			local knockback_duration = self:GetSpecialValueFor("knockback_duration")
+			local ki_strike = caster:FindAbilityByName("sohei_momentum_strike")
 
-			if caster:HasShardCustom() and momentum_strike and momentum_strike:GetLevel() > 0 then
+			if caster:HasShardCustom() and ki_strike and ki_strike:GetLevel() > 0 then
 				direction.z = 0
 				direction = direction:Normalized()
 				target:AddNewModifier(caster, self, "modifier_sohei_momentum_strike_knockback", {
-					duration = duration,
+					duration = knockback_duration,
 					distance = radius,
-					speed = radius / duration,
+					speed = radius / knockback_duration,
 					direction_x = direction.x,
 					direction_y = direction.y,
 				})
-				target:AddNewModifier(caster, self, "modifier_sohei_momentum_strike_slow", {duration = momentum_strike:GetSpecialValueFor("slow_duration")})
+				target:AddNewModifier(caster, self, "modifier_sohei_momentum_strike_slow", {duration = ki_strike:GetSpecialValueFor("slow_duration")})
 			else
 				target:AddNewModifier(caster, self, "modifier_sohei_guard_knockback", {
-					duration = duration,
+					duration = knockback_duration,
 					distance = distance,
 					tree_radius = target:GetPaddedCollisionRadius(),
 				})
@@ -138,7 +138,7 @@ end
 function modifier_sohei_guard_reflect:OnCreated()
   if IsServer() then
     local parent = self:GetParent()
-    
+
     --if self.nPreviewFX == nil then
       --self.nPreviewFX = ParticleManager:CreateParticle("particles/hero/sohei/reflection_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
       --self.nPreviewFX = ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_spellshield_reflect.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, parent)
@@ -423,7 +423,6 @@ if IsServer() then
 		self.distance = event.distance
 		self.tree_radius = event.tree_radius
 		self.speed = event.distance / event.duration
-		
 
 		if self:ApplyHorizontalMotionController() == false then
 			self:Destroy()
@@ -455,7 +454,7 @@ if IsServer() then
 		tickOrigin = Vector(tickOrigin.x, tickOrigin.y, GetGroundHeight(tickOrigin, parent))
 
 		self.distance = self.distance - tickTraveled
-		
+
 		-- Unstucking (ResolveNPCPositions) is happening OnDestroy;
 		parent:SetAbsOrigin(tickOrigin)
 

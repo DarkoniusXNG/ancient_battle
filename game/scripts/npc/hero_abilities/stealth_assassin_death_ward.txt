@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Stealth Assassin: Death Ward (R) - Non-channeling Witch Doctor Death Ward; auras work on the ward;
+  // Stealth Assassin: Death Ward (R) - Non-channeling Witch Doctor Death Ward;
   // Author: Darkonius
-  // Notes: OK; 10.3.2020; Has Aghanim Scepter upgrade; Scepter bounces cannot crit!
+  // Notes: OK; 2022; Has Aghanim Scepter upgrade; 
   // TO_DO:
   //=================================================================================================================
   "stealth_assassin_death_ward"
@@ -48,52 +48,73 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "damage"
+      {
+        "value"                                           "90 150 210"
+        "LinkedSpecialBonus"                              "special_bonus_unique_stealth_assassin_1"
+        "CalculateSpellDamageTooltip"                     "0"
+      }
+      "attack_range_tooltip"
+      {
+        "value"                                           "700"
+        "LinkedSpecialBonus"                              "special_bonus_unique_stealth_assassin_2"
+      }
+      "scepter_bounce_radius"
+      {
+        "value"                                           "650"
+        "RequiresScepter"                                 "1"
+      }
+      "duration_tooltip"                                  "8"
+      "melee_hero_hits_to_kill"                           "3"
+      "ranged_hero_hits_to_kill"                          "4"
+      "creep_hits_to_kill"                                "16"
+    }
+  }
+
+  //=================================================================================================================
+  // Death Ward talent: Increases damage
+  //=================================================================================================================
+  "special_bonus_unique_stealth_assassin_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "70 125 180"
-        "LinkedSpecialBonus"                              "special_bonus_unique_witch_doctor_5"
-        "CalculateSpellDamageTooltip"                     "0"
+        "value"                                           "120"
       }
-      "02"
+    }
+  }
+
+  //=================================================================================================================
+  // Death Ward talent: Increases attack range
+  //=================================================================================================================
+  "special_bonus_unique_stealth_assassin_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "attack_range_tooltip"                            "700"
-        "LinkedSpecialBonus"                              "special_bonus_unique_witch_doctor_1"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bounces_scepter"                                 "2 3 4"
-        "RequiresScepter"                                 "1"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bounce_radius"                                   "650"
-        "RequiresScepter"                                 "1"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration_tooltip"                                "8"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "melee_hero_hits_to_kill"                         "4"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ranged_hero_hits_to_kill"                        "5"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "creep_hits_to_kill"                              "16"
+        "value"                                           "100"
       }
     }
   }

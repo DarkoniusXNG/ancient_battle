@@ -40,10 +40,10 @@ function silencer_custom_curse_of_the_silent:OnSpellStart()
 	local target_team = self:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
 	local target_type = self:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 	local target_flags = self:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE
-	
+
 	local caster_team = caster:GetTeamNumber()
 
-	local enemies = FindUnitsInRadius(caster_team, position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)	
+	local enemies = FindUnitsInRadius(caster_team, position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 	for _, enemy in pairs(enemies) do
 		if enemy then
 			enemy:AddNewModifier(caster, self, "modifier_custom_curse_of_the_silent", {duration = duration})
