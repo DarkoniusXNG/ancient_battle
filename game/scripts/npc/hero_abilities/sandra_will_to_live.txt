@@ -1,0 +1,79 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sandra Olivia: Will to Live
+	//=================================================================================================================
+	"sandra_will_to_live"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/sandra/sandra_will_to_live"
+		"AbilityTextureName"			"custom/sandra_will_to_live"
+
+		"HasScepterUpgrade"				"1"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf"
+			"particle"	"particles/items2_fx/soul_ring_blood.vpcf"
+			"particle"	"particles/items_fx/backdoor_protection_tube.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_delay"			"60 50 40 30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"threshold_base"		"9 13 17 21"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"threshold_stack"		"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"threshold_stack_creep"		"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stack_duration"		"4 5 6 7"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Will to Live talent: -10% damage per tick
+	//=================================================================================================================
+	"special_bonus_unique_will_to_live_tick"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"				        "-10"
+			}
+		}
+	}
+}

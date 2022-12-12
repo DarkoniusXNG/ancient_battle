@@ -113,7 +113,7 @@ if IsServer() then
 		if attacker ~= parent then
 			return
 		end
-		
+
 		-- Check if the attacker is an illusion
 		if attacker:IsIllusion() then
 			return

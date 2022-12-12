@@ -8,7 +8,7 @@ function SoulBurnStart(event)
 	local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
 	local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
 
-	-- Checking if target is an enemy 
+	-- Checking if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
 		-- Checking if target has spell block
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then

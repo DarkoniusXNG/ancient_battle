@@ -1,0 +1,46 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Dark Terminator: Pew Pew - Attacks every enemy once within attack range with critical damage
+  // Author: Darkonius
+  // Notes: OK; 2022; 
+  // TO_DO:
+  //=================================================================================================================
+  "dark_terminator_crit"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dark_terminator/crit.lua"
+    "AbilityTextureName"                                  "custom/dark_terminator_crit"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+
+    "AbilityCastPoint"                                    "0.0"
+
+    "AbilityCooldown"                                     "30 28 26 24"
+
+    "AbilityManaCost"                                     "75"
+    "AbilityProcsMagicStick"                              "1"
+
+	"precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+      "particle"                                          "particles/units/heroes/hero_gyrocopter/gyro_base_attack.vpcf"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_interval"                                 "0.25"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "crit_multiplier"                                 "2 3 4 5"
+      }
+    }
+  }
+}

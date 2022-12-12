@@ -1,0 +1,38 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Bake-Danuki: Frolic Aura
+	//=================================================================================================================
+	"bakedanuki_frolic_aura"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/bakedanuki/bakedanuki_frolic_aura"
+		"AbilityTextureName"			"custom/bakedanuki_frolic_aura"
+
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"evasion_self"			"15.0 22.5 30.0 37.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"evasion_ally"			"6.0 9.0 12.0 15.0"
+			}
+		}
+	}
+}

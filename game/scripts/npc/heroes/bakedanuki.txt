@@ -1,0 +1,21 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Bakedanuki
+	// TO_DO: ALL
+	//=================================================================================================================
+	"npc_dota_hero_bakedanuki"
+	{
+		"override_hero"                                   "npc_dota_hero_dark_willow"
+
+		"Ability1"                                        "bakedanuki_tricksters_insight"
+		"Ability2"                                        "bakedanuki_tomfoolery_blink"
+		"Ability3"                                        "bakedanuki_tomfoolery_summon"
+		"Ability4"                                        "bakedanuki_tomfoolery_end"
+		"Ability5"                                        "bakedanuki_frolic_aura"
+		"Ability6"                                        "bakedanuki_futatsuiwas_curse"
+		"Ability7"                                        "generic_hidden"          
+		"Ability8"                                        "generic_hidden"
+		"Ability9"                                        "generic_hidden"
+	}
+}

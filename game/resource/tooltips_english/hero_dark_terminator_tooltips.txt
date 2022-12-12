@@ -13,7 +13,7 @@
 		"DOTA_Tooltip_modifier_dark_terminator_cloak"                                    "Cloaked"
 		"DOTA_Tooltip_modifier_dark_terminator_cloak_Description"                        "Invisible, increased movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% and not on enemy minimap."
 
-		"DOTA_Tooltip_ability_dark_terminator_blink"                                     "Global Blink"
+		"DOTA_Tooltip_ability_dark_terminator_blink"                                     "Teleport"
 		"DOTA_Tooltip_ability_dark_terminator_blink_Description"                         "Teleports Dark Terminator to the target point that can be anywhere on the map."
 		"DOTA_Tooltip_ability_dark_terminator_blink_Lore"                                "Confirmed that Long distance teleport is equal to Global teleport."
 		"DOTA_Tooltip_ability_dark_terminator_blink_cast_point"                          "CAST TIME:"
@@ -28,10 +28,9 @@
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_evasion_chance"          "%EVASION:"
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_damage_proc_chance"      "%CHANCE:"
 
-		"DOTA_Tooltip_ability_dark_terminator_take_aim"                                  "Take Aim"
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_Description"                      "Grants bonus attack range."
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_Lore"                             ""
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_bonus_attack_range"               "BONUS ATTACK RANGE:"
+		"DOTA_Tooltip_ability_dark_terminator_crit"                                      "Pew Pew"
+		"DOTA_Tooltip_ability_dark_terminator_crit_Description"                          "Attacks all enemies within attack range with critical damage. Delay between attacks is %attack_interval% seconds."
+		"DOTA_Tooltip_ability_dark_terminator_crit_crit_multiplier"                      "CRIT DAMAGE MULTIPLIER:"
 
 		"DOTA_Tooltip_ability_dark_terminator_confuse"                                   "Confuse"
 		"DOTA_Tooltip_ability_dark_terminator_confuse_Description"                       "Confuses the enemy by creating strong illusions of Dark Terminator."

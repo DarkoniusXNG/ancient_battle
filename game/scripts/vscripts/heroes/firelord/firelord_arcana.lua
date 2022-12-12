@@ -33,11 +33,11 @@ function modifier_firelord_arcana_animation_translate:IsHidden()
   return true
 end
 
-function modifier_firelord_arcana_animation_translate:IsDebuff() 
+function modifier_firelord_arcana_animation_translate:IsDebuff()
   return false
 end
 
-function modifier_firelord_arcana_animation_translate:IsPurgable() 
+function modifier_firelord_arcana_animation_translate:IsPurgable()
   return false
 end
 
@@ -49,13 +49,13 @@ function modifier_firelord_arcana_animation_translate:GetAttributes()
   return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE
 end
 
-function modifier_firelord_arcana_animation_translate:DeclareFunctions() 
+function modifier_firelord_arcana_animation_translate:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
   }
 end
 
-function modifier_firelord_arcana_animation_translate:GetActivityTranslationModifiers(...)
+function modifier_firelord_arcana_animation_translate:GetActivityTranslationModifiers()
   return "arcana"
 end
 

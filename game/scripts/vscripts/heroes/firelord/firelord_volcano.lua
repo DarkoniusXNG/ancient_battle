@@ -28,7 +28,7 @@ function VolcanoKnockback(event)
 			unit:RemoveModifierByName("modifier_knockback")
 			unit:AddNewModifier(caster, nil, "modifier_knockback", knockbackModifierTable)
 		end
-	end			
+	end
 end
 
 -- Apply damage and stun enemies OnIntervalThink

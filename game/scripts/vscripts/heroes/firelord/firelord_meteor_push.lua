@@ -52,7 +52,7 @@ function firelord_meteor_push:OnSpellStart()
 	-- Create Sound
 	EmitSoundOnLocationWithCaster(point, "Hero_Invoker.ChaosMeteor.Cast", caster)
 	--caster:EmitSound("Hero_Invoker.ChaosMeteor.Loop")
-	
+
 	-- Knockback table used when meteor lands
 	local knockback_table =
 	{
@@ -96,12 +96,11 @@ function firelord_meteor_push:OnSpellStart()
 			end
 		end
 
-		local meteor_duration = travel_distance/travel_speed
+		--local meteor_duration = travel_distance/travel_speed
 		local start_radius = meteor_radius
 		local end_radius = meteor_radius
 
-		local projectile_info =  
-		{
+		local projectile_info = {
 			Source = caster,
 			Ability = self,
 			EffectName = "particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf",
@@ -130,7 +129,6 @@ function firelord_meteor_push:OnSpellStart()
 
 		-- Create a meteor ball that will apply burn debuff on enemies hit
 		ProjectileManager:CreateLinearProjectile(projectile_info)
-
     end)
 end
 
@@ -139,12 +137,10 @@ function firelord_meteor_push:OnProjectileThink(location)
 
 	-- Destroy trees around the projectile
 	GridNav:DestroyTreesAroundPoint(location, tree_radius, false)
-
 end
 
 function firelord_meteor_push:OnProjectileHit(target, location)
 	local caster = self:GetCaster()
-
 	local debuff_duration = self:GetSpecialValueFor("burn_duration")
 
 	if target then
@@ -180,7 +176,7 @@ function modifier_firelord_meteor_burn_debuff:IsStunDebuff()
 end
 
 function modifier_firelord_meteor_burn_debuff:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE 
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 function modifier_firelord_meteor_burn_debuff:IsPurgable()

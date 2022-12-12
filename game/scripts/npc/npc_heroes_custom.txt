@@ -2,6 +2,7 @@
 #base "heroes/archmage.txt"
 #base "heroes/astral_trekker.txt"
 #base "heroes/axe.txt"
+#base "heroes/bakedanuki.txt"
 #base "heroes/bane.txt"
 #base "heroes/blademaster.txt"
 #base "heroes/blood_mage.txt"
@@ -18,7 +19,9 @@
 #base "heroes/perun.txt"
 #base "heroes/pudge.txt"
 #base "heroes/queenofpain.txt"
+#base "heroes/sandra.txt"
 #base "heroes/silencer.txt"
+#base "heroes/sona.txt"
 #base "heroes/stealth_assassin.txt"
 #base "heroes/void_demon.txt"
 

@@ -18,7 +18,6 @@ function SetUnitsMoveForward(event)
 	local caster = event.caster
 	local target = event.target
     local fv = caster:GetForwardVector()
-    local origin = caster:GetAbsOrigin()
 
 	target:SetForwardVector(fv)
 

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Dark Terminator: Terminate - global Sniper Assassinate
+  // Dark Terminator: Terminate - like Sniper Assassinate
   // Author: Darkonius
   // Notes: OK; 2022; Crosshair particle is visible for enemies too;
   // Linkens: Blocks;
@@ -88,7 +88,7 @@
       "01"
       {
         "var_type"                                        "FIELD_FLOAT"
-        "value"                                           "1.6"
+        "value"                                           "1.5"
       }
     }
   }

@@ -1,0 +1,102 @@
+
+		// ******************** Sandra ********************		
+		//-------------------------------------------------------------------------------------------------------------
+		// Sandra : Undeniable Torture
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_sandra_undeniable_torture"			"Undeniable Torture"
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_Description"			"CHANNELED - During channeling, Sandra will share all damage she receives with the affected enemies upon cast.\nPassively allows her allies to attack her directly and gains lifesteal on each attack. Damage from allies is not lethal, but the shared damage will be lethal."
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_Lore"			"She is from that clan; torturing her brings joy to her owners and gives jealousy to the enemies."
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_Note0"			"This ability makes Sandra can't be denied by her allies."
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_Note1"			"The debuff is applied on cast; leaving or entering the area has no effect."
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_Note2"			"The source of shared damage is its original source if it is from an ally."
+
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_lifesteal"	"%ALLY LIFESTEAL:"
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_lifeshare"	"%SHARED DAMAGE:"
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_radius"		"RADIUS:"
+		"DOTA_Tooltip_ability_sandra_undeniable_torture_max_channel"	"MAX DURATION:"
+
+		"DOTA_Tooltip_modifier_sandra_undeniable_torture_debuff"		"Undeniable Torture"
+		"DOTA_Tooltip_modifier_sandra_undeniable_torture_debuff_Description"			"Any time the caster takes damage, this unit also receives the same damage."
+		
+		"DOTA_Tooltip_ability_special_bonus_unique_undeniable_torture_lifeshare"            "+{s:value}% Undeniable Torture Shared Damage"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Sandra : Ironical Healing
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_sandra_ironical_healing"			"Ironical Healing"
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_Description"			"Sandra damages herself to gain bonus health regeneration over a duration. The healing total equals the damage dealt."
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_Lore"			"Such irony that Sandra must hurt herself in order to heal herself."
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_Note0"			"Can be cast while channeling."
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_Note1"			"Self-damage is not lethal."
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_Note2"			"Each cast fully stack with each other. The healing can be amplified."
+
+		"DOTA_Tooltip_ability_sandra_ironical_healing_base_damage"		"BASE DAMAGE:"
+		"DOTA_Tooltip_ability_sandra_ironical_healing_damage_pct"		"%MAX HEALTH AS DAMAGE:"
+		"DOTA_Tooltip_ability_sandra_ironical_healing_duration"		"DURATION:"
+
+		"DOTA_Tooltip_modifier_sandra_ironical_healing"                  "Ironical Heal"
+		"DOTA_Tooltip_modifier_sandra_ironical_healing_Description"		"Gains bonus health regeneration"
+		
+		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:value} Ironical Healing Duration"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Sandra : Will to Live
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_sandra_will_to_live"			"Will to Live"
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_Description"			"Every instance of damage received from enemies temporarily increases Sandra's kill threshold. Sandra cannot be killed unless the damage is larger than the kill threshold.\nThe damage also got delayed and turned into damage-over-time, dealing 60/50/40/30% of delayed damage every second."
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_Lore"			"In spite of all the hatred, Zenica embraces her to stay alive and have a life; and that's enough for her to obey her savior."
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_Note0"			"The first damage tick happens 1 second after the original damage, then each tick will be dealt on 1 second interval until all damage has been dealt."
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_Note1"			"Only separate and delay damage greater than base threshold."
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_Note2"			"The threshold compares each separated damage, not the original damage."
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_damage_delay"				"%DAMAGE DEALT PER TICK:"
+		"DOTA_Tooltip_ability_sandra_will_to_live_threshold_base"			"BASE THRESHOLD:"
+		"DOTA_Tooltip_ability_sandra_will_to_live_threshold_stack"			"THRESHOLD STACK INCREASE:"
+		"DOTA_Tooltip_ability_sandra_will_to_live_threshold_stack_creep"	"THRESHOLD STACK INCREASE (CREEP):"
+		"DOTA_Tooltip_ability_sandra_will_to_live_stack_duration"		"THRESHOLD STACK DURATION:"
+
+		"DOTA_Tooltip_ability_sandra_will_to_live_scepter_description"			"Does not get disabled with Break."
+
+		"DOTA_Tooltip_modifier_sandra_will_to_live"		             "Damage threshold"
+		"DOTA_Tooltip_modifier_sandra_will_to_live_Description"		"All damage received is separated over time. Each damage ticks cannot be lethal if it is less than this threshold value."
+		
+		"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"      "-{s:value}% Will to Live Damage Dealt per Tick"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Sandra : Sacrifice
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_sandra_sacrifice"			"Sacrifice"
+
+		"DOTA_Tooltip_ability_sandra_sacrifice_Description"		"Sandra succumbs and chains herself to one allied hero as her master. Any damage to her master is redirected to her instead. Enemy abilities or items targetting her master will be redirected to her upon cast.\nSandra gains increased movement speed while chained, but she can't break the chain. If she is too far away, Sandra will be dragged back to her master."
+
+		"DOTA_Tooltip_ability_sandra_sacrifice_Lore"			"No matter how Zenica tries to save her, Sandra will always be a slave."
+
+		"DOTA_Tooltip_ability_sandra_sacrifice_Note0"			"Any targeted spell is not blocked; its target immediately change from her master to Sandra during the cast."
+
+		"DOTA_Tooltip_ability_sandra_sacrifice_Note1"			"Her master is still affected by area/non-targetted spells, but any damage will be redirected."
+
+		"DOTA_Tooltip_ability_sandra_sacrifice_leash_radius"			"CHAIN RADIUS:"
+		"DOTA_Tooltip_ability_sandra_sacrifice_leash_duration"			"CHAIN DURATION:"
+		"DOTA_Tooltip_ability_sandra_sacrifice_ms_bonus"				"MOVEMENT SPEED BONUS:"
+
+		"DOTA_Tooltip_modifier_sandra_sacrifice"		        "Sacrifice: Slave"
+		"DOTA_Tooltip_modifier_sandra_sacrifice_Description"	"Any damage taken and unit-targeted spells from Master will be redirected to this hero.\nGrants bonus %MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT% movement speed, but can't be too far from Master."
+
+		"DOTA_Tooltip_modifier_sandra_sacrifice_master"		           "Sacrifice: Master"
+		"DOTA_Tooltip_modifier_sandra_sacrifice_master_Description"		"Any damage taken and unit-targeted spells from this hero will be redirected to Slave."
+		

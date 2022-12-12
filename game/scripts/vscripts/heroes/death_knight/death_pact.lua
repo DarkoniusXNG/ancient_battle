@@ -8,7 +8,7 @@ function death_knight_death_pact:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
   local duration = self:GetSpecialValueFor("duration")
-  
+
   -- Talent that increases duration
   local talent_1 = caster:FindAbilityByName("special_bonus_unique_death_knight_2")
   if talent_1 and talent_1:GetLevel() > 0 then

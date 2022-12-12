@@ -116,7 +116,7 @@ if IsServer() then
 			-- Give mana to the parent in relation to damage taken
 			parent:GiveMana(mana_amount)
 
-			-- Particle (there is a check if it's enough to reduce the spam)
+			-- Indicator (there is a check if it's enough to reduce the spam)
 			if mana_amount >= 50 then
 				SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, parent, mana_amount, nil)
 			end
@@ -131,8 +131,8 @@ if IsServer() then
 
 				-- Give mana to the parent in relation to damage dealt
 				parent:GiveMana(mana_amount)
-				
-				-- Particle
+
+				-- Indicator
 				SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, parent, mana_amount, nil)
 			end
 		end

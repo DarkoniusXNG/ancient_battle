@@ -1,0 +1,21 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Sona
+	// TO_DO: ALL
+	//=================================================================================================================
+	"npc_dota_hero_sona"
+	{
+		"override_hero"                                   "npc_dota_hero_naga_siren"
+
+		"Ability1"                                        "sona_hymn_of_valor"
+		"Ability2"                                        "sona_song_of_celerity"
+		"Ability3"                                        "sona_aria_of_perseverance"
+		"Ability4"                                        "generic_hidden"
+		"Ability5"                                        "generic_hidden"
+		"Ability6"                                        "sona_crescendo"
+		"Ability7"                                        "generic_hidden"          
+		"Ability8"                                        "generic_hidden"
+		"Ability9"                                        "generic_hidden"
+	}
+}

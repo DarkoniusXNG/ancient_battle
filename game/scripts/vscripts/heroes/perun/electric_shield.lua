@@ -96,7 +96,7 @@ if IsServer() then
 	function modifier_perun_electric_shield:OnRefresh()
 		local ability = self:GetAbility()
 		local caster = self:GetCaster()
-		
+
 		if not caster or caster:IsNull() or not ability or ability:IsNull() then
 			return
 		end

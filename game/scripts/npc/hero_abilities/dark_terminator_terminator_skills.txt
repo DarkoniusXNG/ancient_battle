@@ -15,9 +15,6 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-
-    //"MaxLevel"                                        "4"
-    //"RequiredLevel"                                   "6"
     
     "AbilityCooldown"                                     "1"
 
@@ -62,7 +59,6 @@
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "86280"
     "BaseClass"                                           "special_bonus_undefined"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -74,7 +70,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "15"
+        "value"                                           "25"
       }
     }
   }

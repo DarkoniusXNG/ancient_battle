@@ -56,7 +56,7 @@ if IsServer() then
 		if not attacker or attacker:IsNull() then
 			return
 		end
-		
+
 		-- Check if attacker has this modifier
 		if parent ~= event.attacker then
 			return
@@ -82,14 +82,14 @@ if IsServer() then
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
 			return
 		end
-		
+
 		if not ability:IsCooldownReady() then
 			return
 		end
 
 		local chance = ability:GetSpecialValueFor("damage_proc_chance")
 		local cooldown = ability:GetSpecialValueFor("damage_proc_cooldown")
-		
+
 		-- Talent that increases proc chance:
 		local talent = parent:FindAbilityByName("special_bonus_unique_dark_terminator_proc_chance")
 		if talent and talent:GetLevel() > 0 then
@@ -105,7 +105,7 @@ if IsServer() then
 			end)
 
 			target:EmitSound("Hero_Tinker.Heat-Seeking_Missile.Impact")
-			
+
 			ability:StartCooldown(cooldown)
 
 			local damage_table = {}
@@ -116,9 +116,12 @@ if IsServer() then
 			damage_table.victim = target
 
 			-- Calculate bonus damage
-			local damage_percent = ability:GetSpecialValueFor("damage_percent")/100
+			local damage_percent = ability:GetSpecialValueFor("damage_percent") / 100
+			local real_damage = damage_percent * event.original_damage
+			damage_table.damage = real_damage
 
-			damage_table.damage = damage_percent * event.original_damage
+			-- Damage amount message
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_CRITICAL, target, real_damage, nil)
 
 			ApplyDamage(damage_table)
 		end
