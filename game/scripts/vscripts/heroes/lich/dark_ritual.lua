@@ -3,13 +3,10 @@ lich_custom_dark_ritual = class({})
 function lich_custom_dark_ritual:CastFilterResultTarget(target)
   local caster = self:GetCaster()
   local caster_team = caster:GetTeamNumber()
-  local has_talent = false
 
   -- Talent that allows targetting ancients and enemy units
   local talent = caster:FindAbilityByName("special_bonus_unique_lich_custom_2")
-  if talent and talent:GetLevel() > 0 then
-    has_talent = true
-  end
+  local has_talent = talent and talent:GetLevel() > 0
 
   if target:IsCreep() and not target:IsConsideredHero() and not target:IsCourier() and (not target:IsAncient() or has_talent) and (target:GetTeamNumber() == caster_team or has_talent) and not target:IsMagicImmune() and not target:IsRoshan() then
 	return UF_SUCCESS
@@ -61,9 +58,11 @@ function DarkRitual(event)
 
   local target_health = target:GetHealth()
   local hp_percent = ability:GetLevelSpecialValueFor("health_conversion", ability:GetLevel() - 1)
-	
+
   local mana_gain = target_health*hp_percent*0.01
 
   caster:GiveMana(mana_gain)
   target:ForceKill(true)
+
+  SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, caster, mana_gain, nil)
 end

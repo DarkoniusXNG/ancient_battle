@@ -15,7 +15,7 @@ function modifier_custom_curse_of_the_silent:IsDebuff()
 end
 
 function modifier_custom_curse_of_the_silent:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE 
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 function modifier_custom_curse_of_the_silent:OnCreated()

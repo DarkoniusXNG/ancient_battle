@@ -62,7 +62,7 @@
 
     // Status (most important thing for units)
     //----------------------------------------------------------------
-    "StatusHealth"                                        "160"
+    "StatusHealth"                                        "720"
     "StatusHealthRegen"                                   "0.0"
     "StatusMana"                                          "0"
     "StatusManaRegen"                                     "0"

@@ -215,14 +215,6 @@ if CDOTA_BaseNPC then
       end
     end
 
-    local stampede_slow = self:FindModifierByName("modifier_centaur_stampede_slow")
-    if stampede_slow then
-      local caster = stampede_slow:GetCaster()
-      if caster and caster:HasScepter() then
-        return true
-      end
-    end
-
     local power_cogs = self:FindModifierByName("modifier_rattletrap_cog_marker")
     if power_cogs then
       local caster = power_cogs:GetCaster()

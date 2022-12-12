@@ -32,7 +32,7 @@ function modifier_custom_last_word_aura_effect:DeclareFunctions()
 	}
 end
 
-if IsServer() then	
+if IsServer() then
 	function modifier_custom_last_word_aura_effect:OnSpentMana(event)
 		local parent = self:GetParent()
 		local caster = self:GetCaster()

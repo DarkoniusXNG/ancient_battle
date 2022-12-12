@@ -136,6 +136,8 @@ function stealth_assassin_death_ward:OnProjectileHit_ExtraData(target, location,
 			break
 		end
 	end
+
+	return true
 end
 
 function stealth_assassin_death_ward:ProcsMagicStick()
@@ -148,12 +150,12 @@ if modifier_custom_death_ward == nil then
 	modifier_custom_death_ward = class({})
 end
 
-function modifier_custom_death_ward:IsDebuff()
-	return false
-end
-
 function modifier_custom_death_ward:IsHidden()
 	return true
+end
+
+function modifier_custom_death_ward:IsDebuff()
+	return false
 end
 
 function modifier_custom_death_ward:IsPurgable()
@@ -302,14 +304,10 @@ if IsServer() then
 
 		-- Handle attacks to destroy the Death Ward
 		if target == parent then
-			local total_hp = parent:GetMaxHealth() -- it should be divideable with 16, 4 and 8
-			local creep_attacks_to_destroy = 16
-			local melee_hero_attacks_to_destroy = 4
-			local ranged_hero_attacks_to_destroy = 8
-
-			creep_attacks_to_destroy = ability:GetSpecialValueFor("creep_hits_to_kill")
-			melee_hero_attacks_to_destroy = ability:GetSpecialValueFor("melee_hero_hits_to_kill")
-			ranged_hero_attacks_to_destroy = ability:GetSpecialValueFor("ranged_hero_hits_to_kill")
+			local total_hp = parent:GetMaxHealth()
+			local creep_attacks_to_destroy = ability:GetSpecialValueFor("creep_hits_to_kill")
+			local melee_hero_attacks_to_destroy = ability:GetSpecialValueFor("melee_hero_hits_to_kill")
+			local ranged_hero_attacks_to_destroy = ability:GetSpecialValueFor("ranged_hero_hits_to_kill")
 
 			local damage = total_hp/creep_attacks_to_destroy
 			if attacker:IsRealHero() then

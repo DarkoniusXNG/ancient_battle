@@ -65,7 +65,7 @@ if IsServer() then
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsInvulnerable() or target:IsMagicImmune() then
 			return
 		end
-		
+
 		target:AddNewModifier(parent, ability, "modifier_custom_lifestealer_poison_sting_debuff", {duration = ability:GetSpecialValueFor("duration")})
 	end
 end
@@ -91,6 +91,17 @@ function modifier_custom_lifestealer_poison_sting_debuff:GetEffectName()
 end
 
 function modifier_custom_lifestealer_poison_sting_debuff:OnCreated()
+	self:OnRefresh()
+
+	if IsServer() then
+		self.interval = 0.25
+
+		self:OnIntervalThink()
+		self:StartIntervalThink(self.interval)
+	end
+end
+
+function modifier_custom_lifestealer_poison_sting_debuff:OnRefresh()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 	if ability and not ability:IsNull() then
@@ -104,28 +115,21 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnCreated()
 			self.slow = movement_slow
 		end
 	end
-	
-	if IsServer() then
-		self.interval = 0.25
-	
-		self:OnIntervalThink()
-		self:StartIntervalThink(self.interval)
-	end
-end
-
-function modifier_custom_lifestealer_poison_sting_debuff:OnRefresh()
-	self:OnCreated()
 end
 
 function modifier_custom_lifestealer_poison_sting_debuff:OnIntervalThink()
+	if not IsServer() then
+		return
+	end
+
 	local parent = self:GetParent()
 	local caster = self:GetCaster()
-	
+
 	-- Don't apply damage if source doesn't exist or an illusion
 	if caster:IsNull() or caster:IsIllusion() then
 		return
 	end
-	
+
 	local damage_per_interval = self.dps * self.interval
 
 	ApplyDamage({
@@ -136,7 +140,7 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnIntervalThink()
 		attacker = caster,
 		ability = self:GetAbility()
 	})
-	
+
 	SendOverheadEventMessage(caster, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, parent, damage_per_interval, nil)
 end
 

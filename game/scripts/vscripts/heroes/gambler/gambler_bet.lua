@@ -1,6 +1,5 @@
 ﻿-- Called when Bet is cast on enemies
 function gambler_bet_on_spell_start(keys)
-	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
 
@@ -62,14 +61,13 @@ function gambler_bet_on_target_death(keys)
 	local max_gold_when_ally_kills = ability:GetLevelSpecialValueFor("max_gold", ability_level)
 	local gold_for_killer = ability:GetLevelSpecialValueFor("bonus_gold", ability_level)
 	local gold_cost = ability:GetGoldCost(ability_level)
-	local gold_for_caster = gold_cost
 
 	if not target:IsAlive() and target:IsRealHero() and not attacker:IsNull() and (attacker:IsRealHero() or attacker:IsControllableByAnyPlayer()) then
 		local attacker_owner = attacker:GetPlayerOwnerID()
 		local caster_owner = caster:GetPlayerOwnerID()
 
 		-- Calculating the winning gold for the caster
-		gold_for_caster = math.ceil(target.quota*gold_cost)
+		local gold_for_caster = math.ceil(target.quota*gold_cost)
 
 		-- Checking if the caster (or caster's unit or illusion) got the kill, if he did, he is cheating and he is getting less gold
 		if attacker_owner ~= caster_owner then

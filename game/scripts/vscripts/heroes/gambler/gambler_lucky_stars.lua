@@ -23,8 +23,7 @@ function LuckyStars(keys)
 	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), bonus_gold, false, DOTA_ModifyGold_Unspecified)
 
 	-- Coin particles
-	local particleName = "particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf"		
-	local particle_coins = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, caster)
+	local particle_coins = ParticleManager:CreateParticle("particles/units/heroes/hero_alchemist/alchemist_lasthit_coins.vpcf", PATTACH_ABSORIGIN, caster)
 	ParticleManager:SetParticleControl(particle_coins, 0, caster_location)
 	ParticleManager:SetParticleControl(particle_coins, 1, caster_location)
 	ParticleManager:ReleaseParticleIndex(particle_coins)
@@ -34,8 +33,7 @@ function LuckyStars(keys)
 	local color = Vector(255, 200, 33) -- Gold color
 	local lifetime = 2
 	local digits = string.len(bonus_gold) + 1
-	local particleName = "particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf"
-	local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, target)
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_alchemist/alchemist_lasthit_msg_gold.vpcf", PATTACH_ABSORIGIN, target)
 	ParticleManager:SetParticleControl(particle, 1, Vector(symbol, bonus_gold, symbol))
     ParticleManager:SetParticleControl(particle, 2, Vector(lifetime, digits, 0))
     ParticleManager:SetParticleControl(particle, 3, color)

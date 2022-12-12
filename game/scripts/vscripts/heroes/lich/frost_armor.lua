@@ -3,7 +3,7 @@ function FrostArmorAutocast(event)
 	local caster = event.caster
 	local target = event.unit -- victim of the attack
 	local ability = event.ability
-	
+
 	local modifier = "modifier_custom_lich_frost_armor_buff"
 
 	if ability:GetAutoCastState() then
@@ -14,8 +14,8 @@ function FrostArmorAutocast(event)
 					caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
 				end
 			end
-		end	
-	end	
+		end
+	end
 end
 
 -- Called OnCreated modifier_custom_lich_frost_armor_buff

@@ -61,6 +61,7 @@ function sohei_guard:OnSpellStart()
 			if caster:HasShardCustom() and ki_strike and ki_strike:GetLevel() > 0 then
 				direction.z = 0
 				direction = direction:Normalized()
+				-- Apply Ki Strike knockback
 				target:AddNewModifier(caster, self, "modifier_sohei_momentum_strike_knockback", {
 					duration = knockback_duration,
 					distance = radius,
@@ -68,7 +69,14 @@ function sohei_guard:OnSpellStart()
 					direction_x = direction.x,
 					direction_y = direction.y,
 				})
+				-- Apply Ki Strike slow
 				target:AddNewModifier(caster, self, "modifier_sohei_momentum_strike_slow", {duration = ki_strike:GetSpecialValueFor("slow_duration")})
+				-- Ki Strike hit particle
+				local momentum_pfx = ParticleManager:CreateParticle("particles/hero/sohei/momentum.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+				ParticleManager:SetParticleControl(momentum_pfx, 0, target_loc)
+				ParticleManager:ReleaseParticleIndex(momentum_pfx)
+				-- Ki Strike instant attack with True Strike
+				caster:PerformAttack(target, true, true, true, false, false, false, true)
 			else
 				target:AddNewModifier(caster, self, "modifier_sohei_guard_knockback", {
 					duration = knockback_duration,

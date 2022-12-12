@@ -191,7 +191,7 @@ if IsServer() then
 
 			local mod_heroes = parent:FindModifierByName("modifier_pudge_custom_flesh_heap_heroes")
 			local mod_creeps = parent:FindModifierByName("modifier_pudge_custom_flesh_heap_creeps")
-			
+
 			mod_heroes:SetStackCount(self.hero_kills)
 			mod_creeps:SetStackCount(self.creep_kills)
 		end

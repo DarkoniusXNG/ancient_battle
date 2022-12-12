@@ -10,17 +10,13 @@ function perun_electric_trap:GetAOERadius()
 end
 
 function perun_electric_trap:OnSpellStart()
-	if not IsServer() then
-		return
-	end
-
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
 
 	if not point or not caster then
 		return
 	end
-	
+
 	-- Sound
 	caster:EmitSound("Hero_Techies.StasisTrap.Plant")
 
@@ -100,12 +96,12 @@ function modifier_perun_electric_trap:OnIntervalThink()
 
 			Timers:CreateTimer(delay, function()
 				if parent:IsNull() then
-					return nil
+					return
 				end
 				if parent:IsAlive() and (not parent:IsOutOfGame()) and (not parent:IsUnselectable()) then
 					local parent_team = parent:GetTeamNumber()
 					local parent_origin = parent:GetAbsOrigin()
-					local parent_death_xp = parent:GetDeathXP()
+					--local parent_death_xp = parent:GetDeathXP()
 					local all = FindUnitsInRadius(parent_team, parent_origin, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 					local enemies_again = {}
 					for _, enemy in pairs(all) do
@@ -119,7 +115,7 @@ function modifier_perun_electric_trap:OnIntervalThink()
 
 					if #enemies_again > 0 then
 
-						-- Hide parent 
+						-- Hide parent
 						parent:AddNoDraw()
 
 						-- Stasis Trap particles
