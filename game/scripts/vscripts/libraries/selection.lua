@@ -7,8 +7,8 @@ SELECTION_VERSION = "1.02"
     - "require" this file inside your code in order to add the new API functions to the PlayerResource global
     - Additionally, ensure your game scripts custom_net_tables.txt has a "selection" entry
     - Finally, ensure that you have the following files correctly added and included in your panorama content folder
-        selection.xml, and include line on custom_ui_manifest.xml, on layout/custom_game/ folder
-        selection folder containing selection.js and selection_filter.js, on /scripts/ folder
+        selection.xml, and include line on custom_ui_manifest.xml, in layout/custom_game/ folder
+        selection folder containing selection.js in /scripts/ folder
 
     Usage:
     - Functions with unit_args can recieve an Entity Index, a NPC Handle, or a table of each type.

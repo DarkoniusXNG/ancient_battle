@@ -1,22 +1,25 @@
-'use strict';
+/* global $, GameUI, Players, GameEvents, CustomNetTables */
 
 let skip = false;
 
 // Recieves a list of entities to replace the current selection
-function Selection_New (msg) {
+function SelectionNew (msg) {
   const entities = msg.entities;
-  // $.Msg("Selection_New ", entities)
+  // $.Msg("SelectionNew ", entities)
   for (const i in entities) {
-    if (i == 1) { GameUI.SelectUnit(entities[i], false); } // New
-    else { GameUI.SelectUnit(entities[i], true); } // Add
+    if (i === 1) {
+      GameUI.SelectUnit(entities[i], false);
+    } else {
+      GameUI.SelectUnit(entities[i], true);
+    }
   }
   $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Recieves a list of entities to add to the current selection
-function Selection_Add (msg) {
+function SelectionAdd (msg) {
   const entities = msg.entities;
-  // $.Msg("Selection_Add ", entities)
+  // $.Msg("SelectionAdd ", entities)
   for (const i in entities) {
     GameUI.SelectUnit(entities[i], true);
   }
@@ -24,29 +27,34 @@ function Selection_Add (msg) {
 }
 
 // Removes a list of entities from the current selection
-function Selection_Remove (msg) {
-  const remove_entities = msg.entities;
-  // $.Msg("Selection_Remove ", remove_entities)
-  const selected_entities = GetSelectedEntities();
-  for (var i in remove_entities) {
-    const index = selected_entities.indexOf(remove_entities[i]);
-    if (index > -1) { selected_entities.splice(index, 1); }
+function SelectionRemove (msg) {
+  const removeEntities = msg.entities;
+  // $.Msg("SelectionRemove ", removeEntities)
+  const selectedEntities = GetSelectedEntities();
+  for (const i in removeEntities) {
+    const index = selectedEntities.indexOf(removeEntities[i]);
+    if (index > -1) {
+      selectedEntities.splice(index, 1);
+    }
   }
 
-  if (selected_entities.length == 0) {
-    Selection_Reset();
+  if (selectedEntities.length === 0) {
+    SelectionReset();
     return;
   }
 
-  for (var i in selected_entities) {
-    if (i == 0) { GameUI.SelectUnit(selected_entities[i], false); } // New
-    else { GameUI.SelectUnit(selected_entities[i], true); } // Add
+  for (const j in selectedEntities) {
+    if (j === 0) {
+      GameUI.SelectUnit(selectedEntities[j], false);
+    } else {
+      GameUI.SelectUnit(selectedEntities[j], true);
+    }
   }
   $.Schedule(0.03, SendSelectedEntities);
 }
 
 // Fall back to the default selection
-function Selection_Reset (msg) {
+function SelectionReset (msg) {
   const playerID = Players.GetLocalPlayer();
   const heroIndex = Players.GetPlayerHeroEntityIndex(playerID);
   GameUI.SelectUnit(heroIndex, false);
@@ -56,7 +64,7 @@ function Selection_Reset (msg) {
 // Filter & Sending
 function OnUpdateSelectedUnit () {
   // $.Msg( "OnUpdateSelectedUnit ", Players.GetLocalPlayerPortraitUnit() );
-  if (skip == true) {
+  if (skip === true) {
     skip = false;
     return;
   }
@@ -87,12 +95,21 @@ function OnUpdateQueryUnit () {
   // $.Msg( "OnUpdateQueryUnit ", Players.GetQueryUnit(Players.GetLocalPlayer()));
 }
 
+function SelectionFilter (entityList) {
+  for (let i = 0; i < entityList.length; i++) {
+    const overrideEntityIndex = GetSelectionOverride(entityList[i]);
+    if (overrideEntityIndex !== -1) {
+      GameUI.SelectUnit(overrideEntityIndex, false);
+    }
+  }
+}
+
 (function () {
   // Custom event listeners
-  GameEvents.Subscribe('selection_new', Selection_New);
-  GameEvents.Subscribe('selection_add', Selection_Add);
-  GameEvents.Subscribe('selection_remove', Selection_Remove);
-  GameEvents.Subscribe('selection_reset', Selection_Reset);
+  GameEvents.Subscribe('selection_new', SelectionNew);
+  GameEvents.Subscribe('selection_add', SelectionAdd);
+  GameEvents.Subscribe('selection_remove', SelectionRemove);
+  GameEvents.Subscribe('selection_reset', SelectionReset);
 
   // Built-In Dota client events
   GameEvents.Subscribe('dota_player_update_selected_unit', OnUpdateSelectedUnit);
