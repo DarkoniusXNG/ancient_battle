@@ -877,5 +877,7 @@ enable = {
 
 exclude_files = {
   "game/scripts/vscripts/archived abilities",
+  "game/scripts/vscripts/events.lua",
+  "game/scripts/vscripts/filters.lua",
 }
 files["**/vscripts/units/**/*.lua"].globals = { "thisEntity" }
