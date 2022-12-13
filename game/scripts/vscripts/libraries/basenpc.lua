@@ -18,7 +18,7 @@ if CDOTA_BaseNPC then
   function CDOTA_BaseNPC:IsStrongIllusionCustom()
     return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
   end
-  
+
   function CDOTA_BaseNPC:IsCloneCustom()
     return self.original or self:IsClone()
   end

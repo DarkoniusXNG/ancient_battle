@@ -35,7 +35,7 @@ end
 
 -- An NPC has spawned somewhere in game.  This includes heroes.
 function ancient_battle_gamemode:OnNPCSpawned(keys)
-	local npc 
+	local npc
 	if keys.entindex then
 		npc = EntIndexToHScript(keys.entindex)
 	else
@@ -85,17 +85,17 @@ function ancient_battle_gamemode:OnHeroInGame(hero)
 			else
 				-- This is happening for players when their first hero spawns for the first time
 				--print("[Ancient Battle] Hero "..hero:GetUnitName().." spawned in the game for the first time for the player with ID "..playerID)
-				
+
 				-- Make heroes briefly visible on spawn (to prevent bad fog interactions)
 				hero:MakeVisibleToTeam(DOTA_TEAM_GOODGUYS, 0.5)
 				hero:MakeVisibleToTeam(DOTA_TEAM_BADGUYS, 0.5)
-				
+
 				-- Add permanent modifiers to the hero
 				if PlayerResource:IsValidPlayerID(playerID) then
 					hero:AddNewModifier(hero, nil, "modifier_custom_passive_gold", {})
 					hero:AddNewModifier(hero, nil, "modifier_custom_passive_xp", {})
 				end
-				
+
 				-- This ensures that this will not happen again if some other hero spawns for the first time during the game
 				PlayerResource.PlayerData[playerID].already_set_hero = true
 				--print("[Ancient Battle] Hero "..hero:GetUnitName().." set for the player with ID "..playerID)
@@ -116,7 +116,7 @@ function ancient_battle_gamemode:OnPlayerReconnect(keys)
 	if new_state > DOTA_GAMERULES_STATE_HERO_SELECTION then
 		Timers:CreateTimer(1.0, function()
 			local playerID = keys.PlayerID or keys.player_id
-			
+
 			if not playerID or not PlayerResource:IsValidPlayerID(playerID) then
 				print("OnPlayerReconnect - Reconnected player ID isn't valid!")
 			end
@@ -179,7 +179,7 @@ end
 function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 	local level = keys.level
 	local playerID = keys.player_id or keys.PlayerID
-	local hero 
+	local hero
 	if keys.hero_entindex then
 		hero = EntIndexToHScript(keys.hero_entindex)
 	else
@@ -187,10 +187,10 @@ function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 	end
 
 	if hero then
-		if hero.original then
-			-- When hero.original isn't nil, hero is a clone and he gets a level, remove skill points
+		if hero:IsCloneCustom() then
+			-- Remove skill points for clones
 			hero:SetAbilityPoints(0)
-			return nil
+			return
 		end
 
 		-- Update hero gold bounty when a hero gains a level
@@ -241,10 +241,6 @@ function ancient_battle_gamemode:OnPlayerPickHero(keys)
 	local hero_entity
 	if keys.heroindex then
 		hero_entity = EntIndexToHScript(keys.heroindex)
-	end
-	local player
-	if keys.player then
-		player = EntIndexToHScript(keys.player)
 	end
 
 	Timers:CreateTimer(0.5, function()
@@ -301,7 +297,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
     end
 
 	-- Killed Unit is a hero (not an illusion and not a copy) and he is not reincarnating
-	if killed_unit:IsRealHero() and not killed_unit:IsReincarnating() and (killed_unit.original == nil) then
+	if killed_unit:IsRealHero() and not killed_unit:IsReincarnating() and not killed_unit:IsCloneCustom() then
 		-- Hero gold bounty update for the killer
 		if USE_CUSTOM_HERO_GOLD_BOUNTY then
 			if killer_unit:IsRealHero() then
@@ -327,7 +323,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 			local killed_unit_level = killed_unit:GetLevel()
 
 			-- Respawn time without buyback penalty
-			local respawn_time = 1
+			local respawn_time
 			if USE_CUSTOM_RESPAWN_TIMES then
 				-- Get respawn time from the table that we defined
 				respawn_time = CUSTOM_RESPAWN_TIME[killed_unit_level]
@@ -371,7 +367,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
 		if CUSTOM_BUYBACK_COOLDOWN_ENABLED then
 			PlayerResource:SetCustomBuybackCooldown(killed_unit:GetPlayerID(), BUYBACK_COOLDOWN_TIME)
 		end
-		
+
 		-- Buyback Fixed Gold Cost
 		if CUSTOM_BUYBACK_COST_ENABLED then
 			PlayerResource:SetCustomBuybackCost(killed_unit:GetPlayerID(), BUYBACK_FIXED_GOLD_COST)
@@ -510,7 +506,7 @@ function ancient_battle_gamemode:OnTowerKill(keys)
 
 end
 
--- This function is called whenever a player changes their custom team selection during Game Setup 
+-- This function is called whenever a player changes their custom team selection during Game Setup
 function ancient_battle_gamemode:OnPlayerSelectedCustomTeam(keys)
 
 end

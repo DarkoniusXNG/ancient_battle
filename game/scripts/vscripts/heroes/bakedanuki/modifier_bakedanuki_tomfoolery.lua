@@ -53,7 +53,6 @@ end
 
 if IsServer() then
 	function modifier_bakedanuki_tomfoolery:OnAbilityFullyCast( params )
-	
 		-- filter
 		local pass = false
 		if params.unit==self:GetCaster() then

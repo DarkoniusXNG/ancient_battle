@@ -63,7 +63,7 @@ function modifier_archmage_shard_teleport_buff:CheckState()
   local state = {
     [MODIFIER_STATE_MAGIC_IMMUNE] = true,
   }
-  
+
   if parent:IsIllusion() or not parent:HasShardCustom() then
     return {}
   end

@@ -21,6 +21,7 @@ RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended bui
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
 
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
+BUYBACK_FIXED_GOLD_COST = 1000
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false -- Should we use a custom buyback time?
 BUYBACK_ENABLED = true                 	-- Should we allow people to buyback when they die?
 BUYBACK_COOLDOWN_TIME = 360.0
