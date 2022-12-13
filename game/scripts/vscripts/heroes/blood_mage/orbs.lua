@@ -13,8 +13,7 @@ end
 
 function RemoveOrbs(keys)
 	local hero = keys.caster
-	local origin = hero:GetAbsOrigin()
-	
+
 	for i = 1, 3 do
 		if hero.orbs and hero.orbs[i] then
 			ParticleManager:DestroyParticle(hero.orbs[i], false)

@@ -11,7 +11,7 @@ function modifier_sona_song_of_celerity:IsDebuff()
 end
 
 function modifier_sona_song_of_celerity:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE 
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 function modifier_sona_song_of_celerity:IsPurgable()

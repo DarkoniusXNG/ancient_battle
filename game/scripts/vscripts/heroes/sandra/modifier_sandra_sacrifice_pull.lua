@@ -1,10 +1,7 @@
 modifier_sandra_sacrifice_pull = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_sacrifice_pull:IsHidden()
 	return false
 end
@@ -54,11 +49,6 @@ function modifier_sandra_sacrifice_pull:SetPriority()
 	return DOTA_MOTION_CONTROLLER_PRIORITY_HIGH
 end
 
---------------------------------------------------------------------------------
--- Aura
-
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_sacrifice_pull:OnCreated( kv )
 	if IsServer() then
 		-- get reference
@@ -77,37 +67,26 @@ function modifier_sandra_sacrifice_pull:OnDestroy( kv )
 	if IsServer() then
 		self.modifier.dragged = false
 
-		-- IMPORTANT: this is a must, or else the game will crash!
-		self:GetParent():InterruptMotionControllers( true )
+		self:GetParent():RemoveHorizontalMotionController(self)
 	end
 end
 
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_sandra_sacrifice_pull:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 	}
-
-	return funcs
 end
 
 function modifier_sandra_sacrifice_pull:GetOverrideAnimation()
 	return ACT_DOTA_FLAIL
 end
 
---------------------------------------------------------------------------------
--- Status Effects
 function modifier_sandra_sacrifice_pull:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 	}
-
-	return state
 end
 
---------------------------------------------------------------------------------
--- Interval Effects
 function modifier_sandra_sacrifice_pull:UpdateHorizontalMotion( me, dt )
 	if IsServer() then
 		-- get pull direction
@@ -118,7 +97,7 @@ function modifier_sandra_sacrifice_pull:UpdateHorizontalMotion( me, dt )
 		-- pull acceleration and speed
 		local accel = 0.1*(distance - self.minimum_radius)/10 + 0.9
 		local speed = self.master:GetIdealSpeed()
-		
+
 		-- set next pos
 		local nextPos = self:GetParent():GetOrigin() + direction*speed*accel*dt
 		self:GetParent():SetOrigin( nextPos )
@@ -140,8 +119,6 @@ function modifier_sandra_sacrifice_pull:OnHorizontalMotionInterrupted()
 	end
 end
 
---------------------------------------------------------------------------------
--- Graphics & Animations
 function modifier_sandra_sacrifice_pull:GetEffectName()
 	return "particles/generic_gameplay/generic_stunned.vpcf"
 end

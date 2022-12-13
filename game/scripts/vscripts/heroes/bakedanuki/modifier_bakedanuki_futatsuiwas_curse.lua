@@ -1,7 +1,5 @@
 modifier_bakedanuki_futatsuiwas_curse = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_bakedanuki_futatsuiwas_curse:IsHidden()
 	return false
 end
@@ -14,9 +12,7 @@ function modifier_bakedanuki_futatsuiwas_curse:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
-function modifier_bakedanuki_futatsuiwas_curse:OnCreated( kv )
+function modifier_bakedanuki_futatsuiwas_curse:OnCreated()
 	-- references
 	self.base_speed = self:GetAbility():GetSpecialValueFor( "hex_base_speed" )
 	self.model = "models/props_gameplay/frog.vmdl"
@@ -26,14 +22,14 @@ function modifier_bakedanuki_futatsuiwas_curse:OnCreated( kv )
 		self:PlayEffects( true )
 
 		local parent = self:GetParent()
-		-- instantly destroy illusions
+		-- instantly destroy illusions (but not strong illusions)
 		if parent:IsIllusion() and not parent:IsStrongIllusionCustom() then
 			parent:Kill( self:GetAbility(), self:GetCaster() )
 		end
 	end
 end
 
-function modifier_bakedanuki_futatsuiwas_curse:OnRefresh( kv )
+function modifier_bakedanuki_futatsuiwas_curse:OnRefresh()
 	-- references
 	self.base_speed = self:GetAbility():GetSpecialValueFor( "hex_base_speed" )
 	if IsServer() then
@@ -49,8 +45,6 @@ function modifier_bakedanuki_futatsuiwas_curse:OnRemoved()
 	end
 end
 
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_bakedanuki_futatsuiwas_curse:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE,
@@ -61,12 +55,11 @@ end
 function modifier_bakedanuki_futatsuiwas_curse:GetModifierMoveSpeedOverride()
 	return self.base_speed
 end
+
 function modifier_bakedanuki_futatsuiwas_curse:GetModifierModelChange()
 	return self.model
 end
 
---------------------------------------------------------------------------------
--- Status Effects
 function modifier_bakedanuki_futatsuiwas_curse:CheckState()
 	return {
 		[MODIFIER_STATE_HEXED] = true,
@@ -76,9 +69,8 @@ function modifier_bakedanuki_futatsuiwas_curse:CheckState()
 	}
 end
 
---------------------------------------------------------------------------------
--- Graphics & Animations
 function modifier_bakedanuki_futatsuiwas_curse:PlayEffects( bStart )
+	local parent = self:GetParent()
 	local sound_cast = "Hero_DarkWillow.Ley.Stun"
 	local particle_cast = "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
 
@@ -86,8 +78,8 @@ function modifier_bakedanuki_futatsuiwas_curse:PlayEffects( bStart )
 		sound_cast = "Hero_DarkWillow.WillOWisp.Damage"
 	end
 
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN, self:GetParent() )
+	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN, parent )
 	ParticleManager:ReleaseParticleIndex( effect_cast )
 
-	EmitSoundOn( sound_cast, self:GetParent() )
+	parent:EmitSound(sound_cast)
 end

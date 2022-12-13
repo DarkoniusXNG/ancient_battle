@@ -1,7 +1,5 @@
 modifier_bakedanuki_tomfoolery_hidden = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_bakedanuki_tomfoolery_hidden:IsHidden()
 	return true
 end
@@ -10,29 +8,21 @@ function modifier_bakedanuki_tomfoolery_hidden:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
-function modifier_bakedanuki_tomfoolery_hidden:OnCreated( kv )
+function modifier_bakedanuki_tomfoolery_hidden:OnCreated()
 	if IsServer() then
 		self:GetParent():AddNoDraw()
 	end
 end
 
-function modifier_bakedanuki_tomfoolery_hidden:OnRefresh( kv )
-	
-end
-
-function modifier_bakedanuki_tomfoolery_hidden:OnDestroy( kv )
+function modifier_bakedanuki_tomfoolery_hidden:OnDestroy()
 	if IsServer() then
 		self:GetParent():StartGestureWithPlaybackRate( ACT_DOTA_CAST_ABILITY_2, 2.0 )
 		self:GetParent():RemoveNoDraw()
 	end
 end
 
---------------------------------------------------------------------------------
--- Status Effects
 function modifier_bakedanuki_tomfoolery_hidden:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_OUT_OF_GAME] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_INVULNERABLE] = true,
@@ -43,6 +33,4 @@ function modifier_bakedanuki_tomfoolery_hidden:CheckState()
 		[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 	}
-
-	return state
 end

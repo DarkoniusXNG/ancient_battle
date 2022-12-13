@@ -1,10 +1,10 @@
 bakedanuki_tomfoolery_blink = class({})
 bakedanuki_tomfoolery_summon = class({})
 bakedanuki_tomfoolery_end = class({})
+
 LinkLuaModifier( "modifier_bakedanuki_tomfoolery", "heroes/bakedanuki/modifier_bakedanuki_tomfoolery", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_bakedanuki_tomfoolery_hidden", "heroes/bakedanuki/modifier_bakedanuki_tomfoolery_hidden", LUA_MODIFIER_MOTION_NONE )
 
---------------------------------------------------------------------------------
 -- Shared data between 3 abilities
 if tomfoolery==nil then
 	tomfoolery = {}
@@ -27,7 +27,7 @@ local init = function( ability )
 		ability_other = caster:FindAbilityByName( "bakedanuki_tomfoolery_summon" )
 	end
 	ability_other.tomfoolery = copy
-	
+
 	-- initialize end ability
 	local ability_end = caster:FindAbilityByName( "bakedanuki_tomfoolery_end" )
 	ability_end:SetLevel( 1 )
@@ -39,7 +39,7 @@ local init = function( ability )
 	ability.tomfoolery.endAblility = ability_end
 end
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 -- Blink Ability
 function bakedanuki_tomfoolery_blink:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, true )
@@ -47,6 +47,7 @@ function bakedanuki_tomfoolery_blink:OnSpellStart()
 	-- shared cooldown
 	self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
 end
+
 function bakedanuki_tomfoolery_blink:StopTrick()
 	self.tomfoolery:StopTrick( self )
 end
@@ -63,7 +64,7 @@ function bakedanuki_tomfoolery_blink:GetCastAnimation()
 	return ACT_DOTA_CAST_ABILITY_2
 end
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 -- Summon Ability
 function bakedanuki_tomfoolery_summon:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, false )
@@ -88,14 +89,14 @@ function bakedanuki_tomfoolery_summon:GetCastAnimation()
 	return ACT_DOTA_CAST_ABILITY_2
 end
 
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 -- End Ability
 function bakedanuki_tomfoolery_end:OnSpellStart()
 	self.tomfoolery:StopTrick( self )
 end
 
---------------------------------------------------------------------------------
--- Ability Start
+---------------------------------------------------------------------------------------------------
+
 function tomfoolery:OnSpellStart( this, bBlink )
 	-- destroy previous cast
 	if self.onTrick then
@@ -181,8 +182,6 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	self:PlayEffects( this, loc1, loc2 )
 end
 
---------------------------------------------------------------------------------
--- Helper: End spell
 function tomfoolery:StopTrick( this )
 	if not self.onTrick then
 		return
@@ -202,8 +201,6 @@ function tomfoolery:StopTrick( this )
 	self:StopEffects( this )
 end
 
---------------------------------------------------------------------------------
--- Helper: Effects
 function tomfoolery:PlayEffects( this, loc1, loc2 )
 	local sound_cast = "Hero_DarkWillow.Ley.Cast"
 	local particle_cast = "particles/units/heroes/hero_dark_willow/dark_willow_leyconduit_marker.vpcf"
@@ -220,12 +217,13 @@ function tomfoolery:PlayEffects( this, loc1, loc2 )
 	EmitSoundOnLocationWithCaster( loc2, sound_cast, this:GetCaster() )
 end
 
-function tomfoolery:StopEffects( this )
+function tomfoolery:StopEffects(this)
+	local caster = this:GetCaster()
 	local sound_cast = "General.Illusion.Destroy"
 	local particle_cast = "particles/generic_gameplay/illusion_killed.vpcf"
 
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN, this:GetCaster() )
+	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN, caster )
 	ParticleManager:ReleaseParticleIndex( effect_cast )
 
-	EmitSoundOn( sound_cast, this:GetCaster() )
+	caster:EmitSound(sound_cast)
 end

@@ -1,10 +1,7 @@
 modifier_sandra_will_to_live_threshold = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_will_to_live_threshold:IsHidden()
 	return true
 end
@@ -50,8 +45,6 @@ function modifier_sandra_will_to_live_threshold:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_will_to_live_threshold:OnCreated( kv )
 	if IsServer() then
 		-- references

@@ -17,7 +17,7 @@ function DrunkenHazeStart(event)
 		local target_team = ability:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
 		local target_type = ability:GetAbilityTargetType() or bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
 		local target_flags = ability:GetAbilityTargetFlags() or DOTA_UNIT_TARGET_FLAG_NONE
-		
+
 		-- Talent that applies another modifier:
 		local has_talent = false
 		local talent = caster:FindAbilityByName("special_bonus_unique_brewmaster_drunken_haze_fizzle")

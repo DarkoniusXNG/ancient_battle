@@ -11,18 +11,18 @@ end
 function blood_mage_flame_strike:OnSpellStart()
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
-  
+
 	if not point or not caster then
-		return nil
+		return
 	end
 
 	local caster_team = caster:GetTeamNumber()
-	
+
 	local particle_name1 = "particles/blood_mage/invoker_sun_strike_team_immortal1.vpcf"
     local particle1 = ParticleManager:CreateParticleForTeam(particle_name1, PATTACH_CUSTOMORIGIN, caster, caster_team)
 	ParticleManager:SetParticleControl(particle1, 0, point)
 	ParticleManager:ReleaseParticleIndex(particle1)
-	
+
 	local particle_name2 = "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
     local particle2 = ParticleManager:CreateParticleForTeam(particle_name2, PATTACH_CUSTOMORIGIN, caster, caster_team)
     ParticleManager:SetParticleControl(particle2, 0, point)
@@ -33,7 +33,7 @@ function blood_mage_flame_strike:OnSpellStart()
     ParticleManager:SetParticleControl(particle3, 0, point)
     ParticleManager:SetParticleControl(particle3, 2, Vector(11,0,0))
 	ParticleManager:ReleaseParticleIndex(particle3)
-	
+
 	-- Sound on caster
 	caster:EmitSound("Hero_Invoker.SunStrike.Charge")
 

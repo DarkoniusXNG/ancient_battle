@@ -17,7 +17,7 @@ end
 function modifier_custom_blade_storm:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
-		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
 	}
 end
 
@@ -53,7 +53,7 @@ function modifier_custom_blade_storm:OnCreated()
 		--ParticleManager:SetParticleControlEnt(particle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
 		ParticleManager:SetParticleControl(particle, 5, Vector(radius, 0, 0))
 		self.blade_storm_particle = particle
-	
+
 		-- Sound
 		parent:EmitSound("Hero_Juggernaut.BladeFuryStart")
 
@@ -115,7 +115,7 @@ function modifier_custom_blade_storm:OnIntervalThink()
 		damage_table.damage = damage_per_tick
 		ApplyDamage(damage_table)
 	end
-	
+
 	-- Damage enemy buildings in a radius
 	local buildings = FindUnitsInRadius(parent_team, parent_position, nil, radius, target_team, DOTA_UNIT_TARGET_BUILDING, target_flags, FIND_ANY_ORDER, false)
 	for _, enemy_building in pairs(buildings) do
@@ -133,10 +133,10 @@ function modifier_custom_blade_storm:OnDestroy()
 	if IsServer() then
 		-- Stop the looping sound
 		parent:StopSound("Hero_Juggernaut.BladeFuryStart")
-		
+
 		-- New Sound
 		parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
-		
+
 		-- Destroy particle
 		if self.blade_storm_particle then
 			ParticleManager:DestroyParticle(self.blade_storm_particle, true)

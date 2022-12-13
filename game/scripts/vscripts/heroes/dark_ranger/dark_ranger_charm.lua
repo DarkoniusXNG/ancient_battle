@@ -4,18 +4,18 @@ function CharmStart(event)
 	local target = event.target
 	local caster = event.caster
 	local ability = event.ability
-	
+
 	local pID = caster:GetPlayerOwnerID()
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local hero_duration = ability:GetLevelSpecialValueFor("charm_hero_duration", ability_level)
 	local creep_duration = ability:GetLevelSpecialValueFor("charm_creep_duration", ability_level)
 	local hero_duration_scepter = ability:GetLevelSpecialValueFor("charm_hero_duration_scepter", ability_level)
-	
+
 	if caster:HasScepter() then
 		hero_duration = hero_duration_scepter
 	end
-	
+
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
 	if not target:TriggerSpellAbsorb(ability) then
 		if target:IsHero() and not target:IsMagicImmune() then
@@ -27,6 +27,11 @@ function CharmStart(event)
 					ability:EndCooldown()
 					-- Display the error message
 					SendErrorMessage(pID, "Can't Target already Charmed Heroes!")
+				elseif target:IsCloneCustom() then
+					ability:RefundManaCost()
+					ability:EndCooldown()
+					-- Display the error message
+					SendErrorMessage(pID, "Can't Target Super Illusions or Clones!")
 				else
 					ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_hero", {["duration"] = hero_duration})
 				end
@@ -41,7 +46,7 @@ function CharmStart(event)
 					ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
 				else
 					-- Target is an Ancient creep
-					if caster:HasScepter() and not IsRoshan(target) and not target:IsCourier() then 
+					if caster:HasScepter() and not IsRoshan(target) and not target:IsCourier() then
 						ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
 						-- this 'if block' is making sure that Charm works on any creep (even Ancients, but not Roshan) if the caster has Aghanim Scepter.
 					else
@@ -49,7 +54,7 @@ function CharmStart(event)
 						ability:RefundManaCost()
 						ability:EndCooldown()
 						-- Display error messages
-						if IsRoshan(target) then 
+						if IsRoshan(target) then
 							SendErrorMessage(pID, "Can't Target Roshan!")
 						elseif target:IsCourier() then
 							SendErrorMessage(pID, "Can't Target Couriers!")
@@ -74,12 +79,12 @@ function CharmCreep(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	
+
 	local caster_team = caster:GetTeamNumber()
 	local caster_owner = caster:GetPlayerOwnerID() -- Owning player
-	
+
 	local creep_duration = ability:GetLevelSpecialValueFor("charm_creep_duration", ability:GetLevel() - 1)
-	
+
 	target:Interrupt()
 	if target:IsIllusion() then
 		target:SetTeam(caster_team)
@@ -107,7 +112,7 @@ function CharmHero(keys)
 		local target = keys.target
 		local charm_ability = keys.ability
 		local ability_level = charm_ability:GetLevel() - 1
-		
+
 		-- Setting the duration of the copy (checking if the caster has Aghanim Scepter)
 		local duration
 		if caster:HasScepter() then
@@ -115,7 +120,7 @@ function CharmHero(keys)
 		else
 			duration = charm_ability:GetLevelSpecialValueFor("charm_hero_duration", ability_level)
 		end
-		
+
 		-- HideAndCopyHero is a function that creates a copy of a hero and hides the original hero (inside util.lua)
 		local copy = HideAndCopyHero (target, caster)
 		-- Applying a Modifier to the copy
@@ -135,11 +140,11 @@ function CharmHeroEnd(keys)
 		local charm_ability = keys.ability
 		local duration = charm_ability:GetLevelSpecialValueFor("charm_clone_duration", charm_ability:GetLevel() - 1)
 		local copy_location = target:GetAbsOrigin()
-		
+
 		if target then
 			-- Function HideTheCopyPermanently hides the copy of the hero and all modifiers from him
 			HideTheCopyPermanently(target)
-			
+
 			if target:IsAlive() then
 				-- Apply a modifier that will keep the copy alive/invulnerable and hidden for the duration
 				charm_ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_removing", {["duration"] = duration})

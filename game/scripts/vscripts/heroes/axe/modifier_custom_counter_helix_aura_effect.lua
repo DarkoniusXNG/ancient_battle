@@ -74,7 +74,7 @@ if IsServer() then
 				-- KV variables
 				local radius = ability:GetSpecialValueFor("radius")
 				local damage = ability:GetSpecialValueFor("damage")
-				
+
 				-- Talent that increases damage:
 				local talent = target:FindAbilityByName("special_bonus_unique_axe_counter_helix_damage")
 				if talent and talent:GetLevel() > 0 then

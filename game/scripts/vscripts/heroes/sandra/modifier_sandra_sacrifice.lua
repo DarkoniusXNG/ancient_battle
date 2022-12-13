@@ -1,10 +1,7 @@
 modifier_sandra_sacrifice = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_sacrifice:IsHidden()
 	return false
 end
@@ -50,8 +45,6 @@ function modifier_sandra_sacrifice:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_sacrifice:OnCreated( kv )
 	if IsServer() then
 		-- references
@@ -86,9 +79,6 @@ function modifier_sandra_sacrifice:OnCreated( kv )
 	end
 end
 
-function modifier_sandra_sacrifice:OnRefresh( kv )
-end
-
 function modifier_sandra_sacrifice:OnDestroy( kv )
 	if IsServer() then
 		if not self.master:IsNull() then
@@ -97,15 +87,11 @@ function modifier_sandra_sacrifice:OnDestroy( kv )
 	end
 end
 
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_sandra_sacrifice:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MOVESPEED_LIMIT,
 	}
-
-	return funcs
 end
 
 function modifier_sandra_sacrifice:GetModifierMoveSpeedBonus_Constant()
@@ -119,8 +105,6 @@ function modifier_sandra_sacrifice:GetModifierMoveSpeed_Limit()
 	end
 end
 
---------------------------------------------------------------------------------
--- Interval Effects
 function modifier_sandra_sacrifice:OnIntervalThink()
 	if IsServer() then
 		-- if dragged, just pass
@@ -168,8 +152,6 @@ function modifier_sandra_sacrifice:OnIntervalThink()
 	end
 end
 
---------------------------------------------------------------------------------
--- Graphics & Animations
 function modifier_sandra_sacrifice:PlayEffects()
 	-- Get Resources
 	local particle_cast = "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
@@ -177,7 +159,7 @@ function modifier_sandra_sacrifice:PlayEffects()
 	-- Create Particle
 	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_POINT_FOLLOW, self:GetParent() )
 
-	local attach = ""
+	local attach
 	if self.master:GetParent():ScriptLookupAttachment( "attach_attack2" )~=0 then
 		attach = "attach_attack2"
 	elseif self.master:GetParent():ScriptLookupAttachment( "attach_attack1" )~=0 then

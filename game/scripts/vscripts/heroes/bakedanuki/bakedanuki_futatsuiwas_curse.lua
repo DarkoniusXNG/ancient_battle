@@ -1,15 +1,12 @@
 bakedanuki_futatsuiwas_curse = class({})
+
 LinkLuaModifier( "modifier_bakedanuki_futatsuiwas_curse", "heroes/bakedanuki/modifier_bakedanuki_futatsuiwas_curse", LUA_MODIFIER_MOTION_NONE )
 
---------------------------------------------------------------------------------
--- Ability Phase Start
 function bakedanuki_futatsuiwas_curse:OnAbilityPhaseStart()
 	self:PlayEffects1()
 	return true -- if success
 end
 
---------------------------------------------------------------------------------
--- Ability Start
 function bakedanuki_futatsuiwas_curse:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
@@ -20,7 +17,7 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 	local range = self:GetSpecialValueFor( "search_range" )
 	local point = caster:GetOrigin() + caster:GetForwardVector() * range
 
-	-- find enemies in front of caster
+	-- find enemies in the area in front of the caster (like Shadowraze)
 	local enemies = FindUnitsInRadius(
 		caster:GetTeamNumber(),	-- int, your team number
 		point,	-- point, center point
@@ -28,8 +25,8 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 		radius,	-- float, radius. or use FIND_UNITS_EVERYWHERE
 		DOTA_UNIT_TARGET_TEAM_ENEMY,	-- int, team filter
 		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,	-- int, type filter
-		0,	-- int, flag filter
-		FIND_FARTHEST,	-- int, order filter
+		DOTA_UNIT_TARGET_FLAG_NONE,	-- int, flag filter
+		FIND_ANY_ORDER,	-- int, order filter
 		false	-- bool, can grow cache
 	)
 
@@ -40,8 +37,8 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 
 	-- filter target unit: hero, creep-hero, illusion, summon, creep
 	local filter = {}
-	local target = nil
-	for _,enemy in pairs(enemies) do
+	local target
+	for _, enemy in pairs(enemies) do
 		if enemy:IsRealHero() then
 			filter[1] = enemy
 		elseif enemy:IsConsideredHero() then
@@ -52,47 +49,21 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 			filter[4] = enemy
 		end
 	end
-	for i=1,4 do
+	for i = 1, 4 do
 		if filter[i] then
 			target = filter[i]
 			break
 		end
 	end
 
-	-- Add modifier
-	target:AddNewModifier(
-		caster, -- player source
-		self, -- ability source
-		"modifier_bakedanuki_futatsuiwas_curse", -- modifier name
-		{ duration = hexDuration } -- kv
-	)
+	if target then
+		-- Add modifier
+		target:AddNewModifier(caster, self, "modifier_bakedanuki_futatsuiwas_curse", {duration = hexDuration})
+	end
 
 	self:PlayEffects2()
 end
 
---------------------------------------------------------------------------------
--- Ability Considerations
-function bakedanuki_futatsuiwas_curse:AbilityConsiderations()
-	-- Scepter
-	local bScepter = caster:HasScepter()
-
-	-- Linken & Lotus
-	local bBlocked = target:TriggerSpellAbsorb( self )
-
-	-- Break
-	local bBroken = caster:PassivesDisabled()
-
-	-- Advanced Status
-	local bInvulnerable = target:IsInvulnerable()
-	local bInvisible = target:IsInvisible()
-	local bHexed = target:IsHexed()
-	local bMagicImmune = target:IsMagicImmune()
-
-	-- Illusion Copy
-	local bIllusion = target:IsIllusion()
-end
-
---------------------------------------------------------------------------------
 function bakedanuki_futatsuiwas_curse:PlayEffects1()
 	-- Get Resources
 	local particle_cast = "particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_marker.vpcf"
@@ -122,7 +93,7 @@ function bakedanuki_futatsuiwas_curse:PlayEffects2()
 	local radius = self:GetSpecialValueFor( "search_radius" )
 	local range = self:GetSpecialValueFor( "search_range" )
 	local point = caster:GetOrigin() + caster:GetForwardVector() * range
-	
+
 	-- Create Particle
 	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, nil )
 	ParticleManager:SetParticleControl( effect_cast, 0, point )

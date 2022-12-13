@@ -17,7 +17,7 @@ function blademaster_shadow_walk:OnSpellStart()
 
 	-- Sound
 	caster:EmitSound(sound_cast)
-	
+
 	-- Apply buff
 	caster:AddNewModifier(caster, self, "modifier_custom_wind_walk_buff", {duration = duration})
 	--modifier_invisible
@@ -107,13 +107,13 @@ if IsServer() then
 			self:Destroy()
 			return
 		end
-		
+
 		-- Don't damage buildings and wards, remove invis
 		if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
 			self:Destroy()
 			return
 		end
-		
+
 		if not ability or ability:IsNull() then
 			self:Destroy()
 			return

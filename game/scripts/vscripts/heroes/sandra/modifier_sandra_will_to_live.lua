@@ -1,10 +1,7 @@
 modifier_sandra_will_to_live = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_will_to_live:IsHidden()
 	return false
 end
@@ -50,15 +45,13 @@ function modifier_sandra_will_to_live:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_will_to_live:OnCreated( kv )
 	-- references
-	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" ) -- special value
-	self.threshold_base = self:GetAbility():GetSpecialValueFor( "threshold_base" ) -- special value
-	self.threshold_stack = self:GetAbility():GetSpecialValueFor( "threshold_stack" ) -- special value
-	self.threshold_stack_creep = self:GetAbility():GetSpecialValueFor( "threshold_stack_creep" ) -- special value
-	self.stack_duration = self:GetAbility():GetSpecialValueFor( "stack_duration" ) -- special value
+	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
+	self.threshold_base = self:GetAbility():GetSpecialValueFor( "threshold_base" )
+	self.threshold_stack = self:GetAbility():GetSpecialValueFor( "threshold_stack" )
+	self.threshold_stack_creep = self:GetAbility():GetSpecialValueFor( "threshold_stack_creep" )
+	self.stack_duration = self:GetAbility():GetSpecialValueFor( "stack_duration" )
 
 	self.bonus_stack = 0
 
@@ -69,30 +62,22 @@ end
 
 function modifier_sandra_will_to_live:OnRefresh( kv )
 	-- references
-	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" ) -- special value
-	self.threshold_base = self:GetAbility():GetSpecialValueFor( "threshold_base" ) -- special value
-	self.threshold_stack = self:GetAbility():GetSpecialValueFor( "threshold_stack" ) -- special value
-	self.threshold_stack_creep = self:GetAbility():GetSpecialValueFor( "threshold_stack_creep" ) -- special value
-	self.stack_duration = self:GetAbility():GetSpecialValueFor( "stack_duration" ) -- special value
+	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
+	self.threshold_base = self:GetAbility():GetSpecialValueFor( "threshold_base" )
+	self.threshold_stack = self:GetAbility():GetSpecialValueFor( "threshold_stack" )
+	self.threshold_stack_creep = self:GetAbility():GetSpecialValueFor( "threshold_stack_creep" )
+	self.stack_duration = self:GetAbility():GetSpecialValueFor( "stack_duration" )
 
 	if IsServer() then
 		self:SetStackCount( self.threshold_base + self.bonus_stack )
 	end
 end
 
-function modifier_sandra_will_to_live:OnDestroy( kv )
-
-end
-
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_sandra_will_to_live:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_PROPERTY_MIN_HEALTH,
 	}
-
-	return funcs
 end
 
 function modifier_sandra_will_to_live:GetMinHealth()
@@ -100,6 +85,7 @@ function modifier_sandra_will_to_live:GetMinHealth()
 		self.currentHealth = self:GetParent():GetHealth()
 	end
 end
+
 function modifier_sandra_will_to_live:OnTakeDamage( params )
 	if IsServer() then
 		if params.unit~=self:GetParent() or params.inflictor==self:GetAbility() then
@@ -122,7 +108,7 @@ function modifier_sandra_will_to_live:OnTakeDamage( params )
 				self:GetParent(), -- player source
 				self:GetAbility(), -- ability source
 				"modifier_sandra_will_to_live_delay", -- modifier name
-				{ 
+				{
 					damage = params.damage,
 					source = attacker,
 					flags = params.damage_flags,
@@ -145,8 +131,6 @@ function modifier_sandra_will_to_live:OnTakeDamage( params )
 	end
 end
 
---------------------------------------------------------------------------------
--- Helper
 function modifier_sandra_will_to_live:AddStack( value )
 	-- increment stack
 	self.bonus_stack = self.bonus_stack + value
@@ -158,7 +142,7 @@ function modifier_sandra_will_to_live:AddStack( value )
 		self:GetParent(), -- player source
 		self:GetAbility(), -- ability source
 		"modifier_sandra_will_to_live_threshold", -- modifier name
-		{ 
+		{
 			duration = self.stack_duration,
 			modifier = modifier,
 			stack = value,
@@ -172,8 +156,6 @@ function modifier_sandra_will_to_live:RemoveStack( value )
 	self:SetStackCount( self.threshold_base + self.bonus_stack )
 end
 
---------------------------------------------------------------------------------
--- Play Effects
 function modifier_sandra_will_to_live:PlayEffects( attacker )
 	-- references
 	local particle_cast = "particles/items_fx/backdoor_protection_tube.vpcf"

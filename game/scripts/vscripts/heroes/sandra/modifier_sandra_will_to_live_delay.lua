@@ -1,10 +1,7 @@
 modifier_sandra_will_to_live_delay = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_will_to_live_delay:IsHidden()
 	return true
 end
@@ -50,8 +45,6 @@ function modifier_sandra_will_to_live_delay:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_will_to_live_delay:OnCreated( kv )
 	-- references
 	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
@@ -65,10 +58,10 @@ function modifier_sandra_will_to_live_delay:OnCreated( kv )
 
 		-- flags
 		self.flags = kv.flags
-		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK ) 
-		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS ) 
-		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION ) 
-		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL ) 
+		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK )
+		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS )
+		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION )
+		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL )
 		self.flags = self:FlagAdd( self.flags, DOTA_DAMAGE_FLAG_REFLECTION )
 
 		-- damage
@@ -83,16 +76,6 @@ function modifier_sandra_will_to_live_delay:OnCreated( kv )
 	end
 end
 
-function modifier_sandra_will_to_live_delay:OnRefresh( kv )
-	
-end
-
-function modifier_sandra_will_to_live_delay:OnDestroy( kv )
-
-end
-
---------------------------------------------------------------------------------
--- Interval Effects
 function modifier_sandra_will_to_live_delay:OnIntervalThink()
 	-- damage
 	local damage = math.min( self.damage_tick, self.damage_left )
@@ -152,30 +135,21 @@ function modifier_sandra_will_to_live_delay:FlagAdd(a,b)--Bitwise and
 	end
 end
 
-function modifier_sandra_will_to_live_delay:FlagMin(a,b)--Bitwise and
-	if self:FlagExist(a,b) then
-		return a-b
-	else
-		return a
-	end
-end
-
---------------------------------------------------------------------------------
--- Play Effects
 function modifier_sandra_will_to_live_delay:PlayEffects( bSurvive )
-	local particle_cast = ""
+	local particle_cast
 	local sound_cast = "DOTA_Item.Maim"
+	local parent = self:GetParent()
 
-	local effect_cast = nil
+	local effect_cast
 	if bSurvive then
 		particle_cast = "particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf"
-		effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_CENTER_FOLLOW, self:GetParent() )
+		effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_CENTER_FOLLOW, parent )
 	else
 		particle_cast = "particles/items2_fx/soul_ring_blood.vpcf"
-		effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
+		effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, parent )
 	end
 
-	ParticleManager:ReleaseParticleIndex( effect_cast )
+	ParticleManager:ReleaseParticleIndex(effect_cast)
 
-	self:GetParent():EmitSound(sound_cast)
+	parent:EmitSound(sound_cast)
 end

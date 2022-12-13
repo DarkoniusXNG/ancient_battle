@@ -11,7 +11,7 @@ function ManaTransferStart(event)
 		LinkLuaModifier("modifier_mana_transfer_leash_debuff", "heroes/blood_mage/mana_transfer.lua", LUA_MODIFIER_MOTION_NONE)
 		has_talent = true
 	end
-	
+
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_mana_transfer_enemy", {})
@@ -26,7 +26,7 @@ function ManaTransferStart(event)
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_mana_transfer_ally", {})
 		caster:EmitSound("Hero_Lion.ManaDrain")
 	end
-	
+
 	local target_mana = target:GetMaxMana()
 	-- Don't go on cooldown if targeted unit doesn't have mana
 	if target_mana == 0 then
@@ -37,18 +37,17 @@ function ManaTransferStart(event)
 end
 
 --[[
-	Called when modifier_mana_transfer_enemy is created. Function creates the Mana Drain Particle rope. 
+	Called when modifier_mana_transfer_enemy is created. Function creates the Mana Drain Particle rope.
 	It is indexed on the caster handle to have access to it later.
 ]]
 function ManaDrainParticle(event)
 	local caster = event.caster
 	local target = event.target
-	local ability = event.ability
 
 	local particleName = "particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
 	caster.ManaDrainParticle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, caster)
 	-- PATTACH_ABSORIGIN_FOLLOW
-	
+
 	if target:GetTeamNumber() == caster:GetTeamNumber() then
 		ParticleManager:SetParticleControlEnt(caster.ManaDrainParticle, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
 		ParticleManager:SetParticleControlEnt(caster.ManaDrainParticle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
@@ -64,11 +63,11 @@ function ManaDrainManaTransfer(event)
 	local target = event.target
 	local ability = event.ability
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local mana_drain = ability:GetLevelSpecialValueFor("mana_per_second", ability_level)
 	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
 	local MP_drain = mana_drain*tick_rate
-	
+
 	-- If its an illusion then kill it
 	if target:IsIllusion() then
 		target:Kill(ability, caster)
@@ -95,19 +94,19 @@ function ManaDrainManaTransfer(event)
 			caster:Interrupt()
 			return
 		end
-		
-		-- Make sure that the caster always faces the target if he is channeling 
+
+		-- Make sure that the caster always faces the target if he is channeling
 		if caster:IsChanneling() then
 			caster:SetForwardVector(direction)
 		end
 	end
-	
+
 	local target_mana = target:GetMana()
     local caster_mana = caster:GetMana()
     local caster_max_mana = caster:GetMaxMana()
-	
+
 	if caster:IsChanneling() then
-		local mana_transfer = MP_drain
+		local mana_transfer
 		if target_mana >= MP_drain then
 			mana_transfer = MP_drain
 		else
@@ -120,7 +119,7 @@ function ManaDrainManaTransfer(event)
 		if caster_mana + mana_transfer > caster_max_mana then
 			ability:ApplyDataDrivenModifier(caster, caster, "modifier_transfer_mana_extra", {})
 		end
-		
+
 		caster:GiveMana(mana_transfer)
 	end
 end
@@ -134,21 +133,21 @@ function ManaTransferEnd(event)
 		ParticleManager:DestroyParticle(caster.ManaDrainParticle, false)
 		ParticleManager:ReleaseParticleIndex(caster.ManaDrainParticle)
 	end
-	
+
 	--caster:Interrupt()
 	caster:StopSound("Hero_Lion.ManaDrain")
-	
+
 	if target then
 		local mana_drain_debuff = target:FindModifierByNameAndCaster("modifier_mana_transfer_enemy", caster)
 		if mana_drain_debuff then
 			mana_drain_debuff:Destroy()
 		end
-		
+
 		local leash_debuff = target:FindModifierByNameAndCaster("modifier_mana_transfer_leash_debuff", caster)
 		if leash_debuff then
 			leash_debuff:Destroy()
 		end
-		
+
 		local mana_transfer_buff = target:FindModifierByNameAndCaster("modifier_mana_transfer_ally", caster)
 		if mana_transfer_buff then
 			mana_transfer_buff:Destroy()
@@ -161,11 +160,11 @@ function ManaTransferAlly(event)
 	local target = event.target
 	local ability = event.ability
 	local ability_level = ability:GetLevel() - 1
-	
-	local mana_transfer = ability:GetLevelSpecialValueFor("mana_per_second", ability_level)
+
+	local mana_donation = ability:GetLevelSpecialValueFor("mana_per_second", ability_level)
 	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
-	local MP_transfer = mana_transfer*tick_rate
-	
+	local MP_transfer = mana_donation*tick_rate
+
 	-- Location variables
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin()
@@ -181,23 +180,23 @@ function ManaTransferAlly(event)
 		caster:Interrupt()
 		return
 	end
-	
-	-- Make sure that the caster always faces the target if he is channeling 
+
+	-- Make sure that the caster always faces the target if he is channeling
 	if caster:IsChanneling() then
 		caster:SetForwardVector(direction)
 	end
-	
+
 	local target_mana = target:GetMana()
     local caster_mana = caster:GetMana()
-	
+
 	if caster:IsChanneling() then
-		local mana_transfer = MP_transfer
+		local mana_transfer
 		if caster_mana >= MP_transfer then
 			mana_transfer = MP_transfer
 		else
 			mana_transfer = caster_mana
 		end
-		
+
 		caster:ReduceMana(mana_transfer)
 
 		-- Mana given can go over the max mana

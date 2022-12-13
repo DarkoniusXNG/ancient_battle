@@ -1,8 +1,7 @@
 sandra_ironical_healing = class({})
+
 LinkLuaModifier( "modifier_sandra_ironical_healing", "heroes/sandra/modifier_sandra_ironical_healing", LUA_MODIFIER_MOTION_NONE )
 
---------------------------------------------------------------------------------
--- Ability Start
 function sandra_ironical_healing:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
@@ -18,7 +17,7 @@ function sandra_ironical_healing:OnSpellStart()
 	local total_damage = base_damage + (damage_pct/100)*caster:GetMaxHealth()
 
 	-- self damage
-	damageTable = {
+	local damageTable = {
 		victim = caster,
 		attacker = caster,
 		damage = total_damage,
@@ -29,15 +28,7 @@ function sandra_ironical_healing:OnSpellStart()
 	ApplyDamage(damageTable)
 
 	-- health regen
-	local modifier = caster:AddNewModifier(
-		caster, -- player source
-		self, -- ability source
-		"modifier_sandra_ironical_healing", -- modifier name
-		{
-			duration = duration,
-			damage = total_damage
-		} -- kv
-	)
+	caster:AddNewModifier(caster, self, "modifier_sandra_ironical_healing", {duration = duration, damage = total_damage})
 
 	-- Effects
 	self:PlayEffects()

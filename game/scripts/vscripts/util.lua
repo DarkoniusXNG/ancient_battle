@@ -166,7 +166,7 @@ end
 
 --[[ This function creates a copy of the target for the caster, returns the hScript copy;
 	Copy/Clone of the target hero is not invulnerable! You need a modifier for that too;
-	Used in HideAndCopyHero
+	Used in HideAndCopyHero and for custom super illusions (illusions that can use spells and items)
 ]]
 function CopyHero(target, caster)
 	if target and caster then
@@ -605,6 +605,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 			-- modifier_custom_rupture              (Blood Mage Rupture - it would be lame if dispellable)
 			-- modifier_bloodseeker_rupture 		- || -
 			-- modifier_doom_bringer_doom			- || -
+			-- modifier_mana_transfer_leash_debuff  (Mana Transfer/Drain leash)
 		end
 
 		if bCustomRemoveAllBuffs == true then

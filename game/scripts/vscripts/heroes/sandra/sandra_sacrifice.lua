@@ -1,13 +1,11 @@
 sandra_sacrifice = class({})
-LinkLuaModifier( "modifier_sandra_sacrifice", "custom_abilities/sandra_sacrifice/modifier_sandra_sacrifice", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_sandra_sacrifice_master", "custom_abilities/sandra_sacrifice/modifier_sandra_sacrifice_master", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_sandra_sacrifice_pull", "custom_abilities/sandra_sacrifice/modifier_sandra_sacrifice_pull", LUA_MODIFIER_MOTION_HORIZONTAL )
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+LinkLuaModifier( "modifier_sandra_sacrifice", "heroes/sandra/modifier_sandra_sacrifice", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_sandra_sacrifice_master", "heroes/sandra/modifier_sandra_sacrifice_master", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_sandra_sacrifice_pull", "heroes/sandra/modifier_sandra_sacrifice_pull", LUA_MODIFIER_MOTION_HORIZONTAL )
+
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -68,8 +66,6 @@ function sandra_sacrifice:GetCustomCastErrorTarget( hTarget )
 	return ""
 end
 
---------------------------------------------------------------------------------
--- Ability Start
 function sandra_sacrifice:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
@@ -95,32 +91,4 @@ function sandra_sacrifice:OnSpellStart()
 			master = master,
 		} -- kv
 	)
-end
-
---------------------------------------------------------------------------------
--- Helper: Flag operations
-function sandra_sacrifice:FlagExist(a,b)--Bitwise Exist
-	local p,c,d=1,0,b
-	while a>0 and b>0 do
-		local ra,rb=a%2,b%2
-		if ra+rb>1 then c=c+p end
-		a,b,p=(a-ra)/2,(b-rb)/2,p*2
-	end
-	return c==d
-end
-
-function sandra_sacrifice:FlagAdd(a,b)--Bitwise and
-	if FlagExist(a,b) then
-		return a
-	else
-		return a+b
-	end
-end
-
-function sandra_sacrifice:FlagMin(a,b)--Bitwise and
-	if FlagExist(a,b) then
-		return a-b
-	else
-		return a
-	end
 end

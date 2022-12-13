@@ -60,10 +60,10 @@ function dark_terminator_terminate:OnSpellStart()
         self.storedTarget = {}
     end
 
-	-- For lotus Orb casting and if list of targets is empty
+	-- For lotus Orb (and other reflecting stuff that skip cast time) and if list of targets is empty
 	local target = self:GetCursorTarget()
 	if #self.storedTarget < 1 then
-		if target and not target:IsNull()
+		if target and not target:IsNull() then
 			table.insert(self.storedTarget, target)
 		else
 			return

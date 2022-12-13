@@ -1,7 +1,5 @@
 modifier_bakedanuki_tomfoolery = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_bakedanuki_tomfoolery:IsHidden()
 	return true
 end
@@ -13,12 +11,9 @@ end
 function modifier_bakedanuki_tomfoolery:DestroyOnExpire()
 	return false
 end
---------------------------------------------------------------------------------
--- Initializations
+
 function modifier_bakedanuki_tomfoolery:OnCreated( kv )
-	-- references
-	self.illusion_incoming = self:GetAbility():GetSpecialValueFor( "illusion_incoming" )
-	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor( "illusion_outgoing" )
+	self:OnRefresh(kv)
 
 	-- Start interval
 	if IsServer() then
@@ -27,25 +22,17 @@ function modifier_bakedanuki_tomfoolery:OnCreated( kv )
 end
 
 function modifier_bakedanuki_tomfoolery:OnRefresh( kv )
-	
+	self.illusion_incoming = self:GetAbility():GetSpecialValueFor( "illusion_incoming" )
+	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor( "illusion_outgoing" )
 end
 
-function modifier_bakedanuki_tomfoolery:OnDestroy()
-
-end
-
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_bakedanuki_tomfoolery:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION,
 		-- MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION,
-
 		-- MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
-
 		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST,
-		
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_DEATH,
@@ -64,8 +51,9 @@ function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage()
 	return self.illusion_incoming-100
 end
 
-function modifier_bakedanuki_tomfoolery:OnAbilityFullyCast( params )
-	if IsServer() then
+if IsServer() then
+	function modifier_bakedanuki_tomfoolery:OnAbilityFullyCast( params )
+	
 		-- filter
 		local pass = false
 		if params.unit==self:GetCaster() then
@@ -79,12 +67,11 @@ function modifier_bakedanuki_tomfoolery:OnAbilityFullyCast( params )
 			self:GetAbility():StopTrick()
 		end
 	end
-end
 
-function modifier_bakedanuki_tomfoolery:GetMinHealth()
-	return 1
-end
-if IsServer() then
+	function modifier_bakedanuki_tomfoolery:GetMinHealth()
+		return 1
+	end
+
 	function modifier_bakedanuki_tomfoolery:OnTakeDamage( params )
 		-- filter
 		local pass = false
@@ -115,8 +102,6 @@ if IsServer() then
 	end
 end
 
---------------------------------------------------------------------------------
--- Interval Effects
 function modifier_bakedanuki_tomfoolery:OnIntervalThink()
 	self:GetAbility():StopTrick()
 end

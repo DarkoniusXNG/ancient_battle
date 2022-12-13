@@ -18,6 +18,10 @@ if CDOTA_BaseNPC then
   function CDOTA_BaseNPC:IsStrongIllusionCustom()
     return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
   end
+  
+  function CDOTA_BaseNPC:IsCloneCustom()
+    return self.original or self:IsClone()
+  end
 
   function CDOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
@@ -108,10 +112,11 @@ if CDOTA_BaseNPC then
       "modifier_winter_wyvern_winters_curse",
       "modifier_winter_wyvern_winters_curse_aura",					-- doesn't pierce BKB
       -- custom:
-      "modifier_incinerate_stack",
+      "modifier_mana_transfer_leash_debuff",
       "modifier_custom_enfeeble_debuff",
       "modifier_custom_rupture",
       "modifier_entrapment",
+      "modifier_incinerate_stack",
       "modifier_purge_enemy_creep",
       "modifier_purge_enemy_hero",
       "modifier_time_stop",
@@ -278,6 +283,10 @@ if C_DOTA_BaseNPC then
   function C_DOTA_BaseNPC:IsStrongIllusionCustom()
     return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
   end
+
+  --function C_DOTA_BaseNPC:IsCloneCustom()
+    --return self.original or self:IsClone()
+  --end
 
   function C_DOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then

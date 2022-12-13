@@ -23,7 +23,7 @@ if IsServer() then
   function modifier_archmage_shard_teleport_buff:OnCreated()
     self:StartIntervalThink(0.1)
   end
-  
+
   function modifier_archmage_shard_teleport_buff:OnIntervalThink()
     local parent = self:GetParent()
     if parent:IsIllusion() then
@@ -67,11 +67,11 @@ function modifier_archmage_shard_teleport_buff:CheckState()
   if parent:IsIllusion() or not parent:HasShardCustom() then
     return {}
   end
-  
+
   if parent:IsChanneling() then
     return state
   end
-  
+
   return {}
 end
 
@@ -93,6 +93,16 @@ end
 
 function modifier_archmage_shard_teleport_visual_bkb:RemoveOnDeath()
   return true
+end
+
+function modifier_archmage_shard_teleport_visual_bkb:OnCreated()
+  -- Basic dispel
+  local RemovePositiveBuffs = false
+  local RemoveDebuffs = true
+  local BuffsCreatedThisFrameOnly = false
+  local RemoveStuns = false
+  local RemoveExceptions = false
+  self:GetParent():Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 end
 
 function modifier_archmage_shard_teleport_visual_bkb:GetEffectName()

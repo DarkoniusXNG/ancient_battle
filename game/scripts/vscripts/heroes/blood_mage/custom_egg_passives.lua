@@ -51,16 +51,20 @@ end
 --end
 
 function modifier_custom_phoenix_egg_passives:DeclareFunctions()
-	local funcs ={
+	return {
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_DISABLE_HEALING,
-		MODIFIER_EVENT_ON_ATTACK_LANDED
+		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-	return funcs
 end
 
 function modifier_custom_phoenix_egg_passives:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_custom_phoenix_egg_passives:GetAbsoluteNoDamageMagical()
 	return 1
 end
 
@@ -81,11 +85,11 @@ if IsServer() then
 		if not attacker or attacker:IsNull() then
 			return
 		end
-		
+
 		if not target or target:IsNull() then
 			return
 		end
-		
+
 		if target ~= parent then
 			return
 		end
@@ -96,7 +100,7 @@ if IsServer() then
 		end
 
 		-- Handle attacks to destroy the egg
-		local total_hp = parent:GetMaxHealth() -- it should be divideable with 16, 4 and 8
+		local total_hp = parent:GetMaxHealth()
 		local creep_attacks_to_destroy = 16
 		local melee_hero_attacks_to_destroy = 4
 		local ranged_hero_attacks_to_destroy = 4
@@ -126,8 +130,7 @@ if IsServer() then
 end
 
 function modifier_custom_phoenix_egg_passives:CheckState()
-	local state = {
+	return {
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 	}
-	return state
 end

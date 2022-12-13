@@ -1,7 +1,5 @@
 modifier_sandra_undeniable_torture_debuff = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_undeniable_torture_debuff:IsHidden()
 	return false
 end
@@ -14,8 +12,6 @@ function modifier_sandra_undeniable_torture_debuff:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_undeniable_torture_debuff:OnCreated()
 	self:OnRefresh()
 
@@ -24,25 +20,18 @@ end
 
 function modifier_sandra_undeniable_torture_debuff:OnRefresh()
 	self.lifeshare = self:GetAbility():GetSpecialValueFor( "lifeshare" )
-	
+
 	-- Talent that increases this (special_bonus_unique_undeniable_torture_lifeshare) - TODO
 end
 
-function modifier_sandra_undeniable_torture_debuff:OnDestroy()
-
-end
-
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_sandra_undeniable_torture_debuff:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 	}
-
-	return funcs
 end
-function modifier_sandra_undeniable_torture_debuff:OnTakeDamage( params )
-	if IsServer() then
+
+if IsServer() then
+	function modifier_sandra_undeniable_torture_debuff:OnTakeDamage( params )
 		if params.unit~=self:GetCaster()  then
 			return
 		end
@@ -52,7 +41,7 @@ function modifier_sandra_undeniable_torture_debuff:OnTakeDamage( params )
 		end
 
 		if self:FlagExist( params.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION ) then
-			if (not params.inflictor) or params.inflictor:GetAbilityName()~=self.lifeshare_exception then 
+			if (not params.inflictor) or params.inflictor:GetAbilityName()~=self.lifeshare_exception then
 				return
 			end
 		end
@@ -91,8 +80,6 @@ function modifier_sandra_undeniable_torture_debuff:FlagExist(a,b)--Bitwise Exist
 	return c==d
 end
 
---------------------------------------------------------------------------------
--- Graphics & Animations
 function modifier_sandra_undeniable_torture_debuff:GetEffectName()
 	return "particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
 end

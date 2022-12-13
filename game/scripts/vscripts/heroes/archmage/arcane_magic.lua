@@ -3,7 +3,6 @@ archmage_arcane_magic = class({})
 LinkLuaModifier("modifier_archmage_aura_applier", "heroes/archmage/arcane_magic.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_archmage_aura_effect", "heroes/archmage/arcane_magic.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_archmage_arcane_magic_buff", "heroes/archmage/arcane_magic.lua", LUA_MODIFIER_MOTION_NONE)
-
 LinkLuaModifier("modifier_archmage_shard_teleport_buff", "heroes/archmage/modifier_archmage_shard_teleport_buff.lua", LUA_MODIFIER_MOTION_NONE)
 
 function archmage_arcane_magic:Spawn()
@@ -21,7 +20,7 @@ function archmage_arcane_magic:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
   local duration = self:GetSpecialValueFor("buff_duration")
-  
+
   -- Cast sound
   target:EmitSound("Hero_KeeperOfTheLight.ChakraMagic.Target")
 
@@ -209,7 +208,7 @@ function modifier_archmage_arcane_magic_buff:OnCreated()
   if talent and talent:GetLevel() > 0 then
     cd_reduction = cd_reduction + talent:GetSpecialValueFor("value")
   end
-  
+
   self.cd_reduction = cd_reduction
   self.mana_regen_amp = mana_regen_amp
 end

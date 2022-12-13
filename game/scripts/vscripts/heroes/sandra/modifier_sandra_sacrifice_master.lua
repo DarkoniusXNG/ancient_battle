@@ -1,10 +1,7 @@
 modifier_sandra_sacrifice_master = class({})
 
-local tempTable
-if not tempTable then
-	tempTable = {}
-	tempTable.table = {}
-end
+local tempTable = {}
+tempTable.table = {}
 
 function tempTable:GetATEmptyKey()
 	local i = 1
@@ -36,8 +33,6 @@ function tempTable:Print()
 	end
 end
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sandra_sacrifice_master:IsHidden()
 	return false
 end
@@ -50,17 +45,11 @@ function modifier_sandra_sacrifice_master:IsPurgable()
 	return false
 end
 
---------------------------------------------------------------------------------
--- Initializations
 function modifier_sandra_sacrifice_master:OnCreated( kv )
 	if IsServer() then
 		self.slave = tempTable:RetATValue( kv.modifier )
 		self:PlayEffects()
 	end
-end
-
-function modifier_sandra_sacrifice_master:OnRefresh( kv )
-	
 end
 
 function modifier_sandra_sacrifice_master:OnDestroy( kv )
@@ -71,26 +60,20 @@ function modifier_sandra_sacrifice_master:OnDestroy( kv )
 	end
 end
 
---------------------------------------------------------------------------------
--- Modifier Effects
 function modifier_sandra_sacrifice_master:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_ABILITY_EXECUTED,
 	}
-
-	return funcs
 end
 
-function modifier_sandra_sacrifice_master:GetMinHealth()
-	if IsServer() then
+if IsServer() then
+	function modifier_sandra_sacrifice_master:GetMinHealth()
 		self.currentHealth = self:GetParent():GetHealth()
 	end
-end
 
-function modifier_sandra_sacrifice_master:OnTakeDamage( params )
-	if IsServer() then
+	function modifier_sandra_sacrifice_master:OnTakeDamage( params )
 		if params.unit~=self:GetParent() then
 			return
 		end
@@ -99,10 +82,10 @@ function modifier_sandra_sacrifice_master:OnTakeDamage( params )
 		self:GetParent():SetHealth( self.currentHealth )
 
 		local flags = params.damage_flags
-		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK ) 
-		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS ) 
-		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION ) 
-		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL ) 
+		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK )
+		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS )
+		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION )
+		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL )
 		flags = self:FlagAdd( flags, DOTA_DAMAGE_FLAG_REFLECTION )
 
 		-- damage slave
@@ -119,10 +102,8 @@ function modifier_sandra_sacrifice_master:OnTakeDamage( params )
 		-- effects
 		self:PlayEffects1()
 	end
-end
 
-function modifier_sandra_sacrifice_master:OnAbilityExecuted( params )
-	if IsServer() then
+	function modifier_sandra_sacrifice_master:OnAbilityExecuted( params )
 		if (not params.target) or params.target~=self:GetParent() or params.unit:GetTeamNumber()==self:GetParent():GetTeamNumber() then
 			return
 		end
@@ -136,8 +117,6 @@ function modifier_sandra_sacrifice_master:OnAbilityExecuted( params )
 	end
 end
 
---------------------------------------------------------------------------------
--- Helper: Flag operations
 function modifier_sandra_sacrifice_master:FlagExist(a,b)--Bitwise Exist
 	local p,c,d=1,0,b
 	while a>0 and b>0 do
@@ -153,14 +132,6 @@ function modifier_sandra_sacrifice_master:FlagAdd(a,b)--Bitwise and
 		return a
 	else
 		return a+b
-	end
-end
-
-function modifier_sandra_sacrifice_master:FlagMin(a,b)--Bitwise and
-	if self:FlagExist(a,b) then
-		return a-b
-	else
-		return a
 	end
 end
 
@@ -220,19 +191,19 @@ function modifier_sandra_sacrifice_master:PlayEffects1()
 end
 
 function modifier_sandra_sacrifice_master:PlayEffects2()
-	-- Get Resources
+	local parent = self:GetParent()
 	local particle_cast = "particles/items4_fx/combo_breaker_spell_burst.vpcf"
 	local sound_cast = "Item.LotusOrb.Target"
 
 	-- Get data
 	local effect_constant = 100
-	local direction = (self.slave:GetParent():GetOrigin()-self:GetParent():GetOrigin()):Normalized() * effect_constant
+	local direction = (self.slave:GetParent():GetOrigin()-parent:GetOrigin()):Normalized() * effect_constant
 
 	-- Create Particle
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, self:GetParent() )
-	ParticleManager:SetParticleControl( effect_cast, 0, self:GetParent():GetOrigin() + Vector( 0, 0, 90 ) - direction*1 )
-	ParticleManager:SetParticleControl( effect_cast, 1, self:GetParent():GetOrigin() + Vector( 0, 0, 90 ) + direction*0 )
+	local effect_cast = ParticleManager:CreateParticle(particle_cast, PATTACH_WORLDORIGIN, parent)
+	ParticleManager:SetParticleControl( effect_cast, 0, parent:GetOrigin() + Vector( 0, 0, 90 ) - direction*1 )
+	ParticleManager:SetParticleControl( effect_cast, 1, parent:GetOrigin() + Vector( 0, 0, 90 ) + direction*0 )
 	ParticleManager:ReleaseParticleIndex( effect_cast )
 
-	EmitSoundOn( sound_cast, self:GetParent() )
+	parent:EmitSound(sound_cast)
 end
