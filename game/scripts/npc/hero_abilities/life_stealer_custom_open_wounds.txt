@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Lifestealer: Open Wounds (W) - New Spell, like Open Wounds without slow + more damage while moving or doing stuff.
+  // Lifestealer: Open Wounds (W) - New Spell, like Open Wounds without slow + more damage while moving or doing stuff. - unused
   // Author: Darkonius
   // Linkens: Blocks
   // Notes: OK; 18.2.2017; OnUnitMoved; OnAbilityExecuted;

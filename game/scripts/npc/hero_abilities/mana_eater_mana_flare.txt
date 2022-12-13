@@ -47,7 +47,7 @@
         "var_type"                                        "FIELD_INTEGER"
         "bonus_armor"                                     "20"
       }
-      "05" // Nether Ward (50 + 1/1.25/1.5/1.75); original (4 for units 1 for heroes);
+      "05" // Nether Ward (50 + 1/1.2/1.4/1.6); original (4 for units 1 for heroes);
       {
         "var_type"                                        "FIELD_FLOAT"
         "damage_per_used_mana"                            "1.25 1.5 1.75 2.0"

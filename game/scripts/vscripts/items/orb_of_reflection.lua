@@ -133,8 +133,8 @@ if IsServer() then
 			return
 		end
 
-		-- If there is a stronger reflection modifier, don't continue
-		if parent:HasModifier("modifier_item_orb_of_reflection_active_reflect") or parent:HasModifier("modifier_item_blade_mail_reflect") then
+		-- If parent has Blade Mail passive/item, Blade Mail buff or Orb of Reflection active buff, don't continue to prevent stacking
+		if parent:HasModifier("modifier_item_orb_of_reflection_active_reflect") or parent:HasModifier("modifier_item_blade_mail") or parent:HasModifier("modifier_item_blade_mail_reflect") then
 			return
 		end
 

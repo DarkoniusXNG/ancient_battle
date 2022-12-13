@@ -51,7 +51,7 @@
     // Attack
     //-------------------------------------------------------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"      // like KOTL
-    "AttackDamageMin"                                     "36"                  // unique for Archmage; starting dmg: 50
+    "AttackDamageMin"                                     "38"                  // unique for Archmage; starting dmg: 52
     "AttackDamageMax"                                     "50"                  // unique for Archmage; starting dmg: 64
     "AttackRate"                                          "1.7"                  // Default
     "AttackAnimationPoint"                                "0.3"                  // like KOTL
@@ -62,7 +62,7 @@
     // Movement
     //-------------------------------------------------------------------------------------------------------------
     "MovementSpeed"                                       "320"                  // KOTL (330); Furion (295); original (320); Sniper (285); Crystal Maiden (280);
-    "MovementTurnRate"                                    "0.6"                  // like KOTL
+    "MovementTurnRate"                                    "0.6"                  // KOTL (0.7)
     
     // Vision
     //-------------------------------------------------------------------------------------------------------------

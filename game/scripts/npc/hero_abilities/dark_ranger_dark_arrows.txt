@@ -6,7 +6,7 @@
   // Linkens: Doesn't Block (INTENTIONAL)
   // Notes: OK; 18.9.2019; Bonus damage can damage buildings;
   // Notes: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
-  // TO_DO: Rework into ability_lua; special_bonus_unique_dark_ranger_1
+  // TO_DO: Rework into ability_lua; special_bonus_unique_dark_ranger_1, status resistance fix
   //================================================================================================================= 
   "dark_ranger_dark_arrows"
   {

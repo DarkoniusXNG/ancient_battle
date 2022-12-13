@@ -44,7 +44,6 @@
     
     // special_bonus_attack_speed_30 - not needed because of Anabolic Frenzy active
     // special_bonus_movement_speed_25 - not needed because of Anabolic Frenzy passive
-    // special_bonus_spell_amplify_5
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------

@@ -30,7 +30,7 @@
 
     "AbilitySpecial"
     {
-      "01" // Underlord Firestorm (400); Archmage original (200); Shrapnel (450); Ice Vortex (275);
+      "01" // Underlord Firestorm (400); Archmage original (200); Shrapnel (400); Ice Vortex (275);
       {
         "var_type"                                        "FIELD_INTEGER"
         "radius"                                          "450"

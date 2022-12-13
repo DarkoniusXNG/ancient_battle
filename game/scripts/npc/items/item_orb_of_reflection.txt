@@ -36,7 +36,7 @@
     "ScriptFile"                                          "items/orb_of_reflection.lua"
     "AbilityTextureName"                                  "custom/orb_of_reflection"
 
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "AbilityCastPoint"                                    "0.0"
     "AbilityCooldown"                                     "25.0" // Blade Mail (25); Lotus Orb (15);
     "AbilitySharedCooldown"                               "reflection_items"
