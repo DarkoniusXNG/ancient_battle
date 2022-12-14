@@ -3,7 +3,7 @@
   //=================================================================================================================
   // HERO: Mana Eater; 2022;
   // Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
-  // TO_DO: special_bonus_unique_mana_eater_1; mana_eater_mana_flare
+  // TO_DO: special_bonus_unique_mana_eater_1;
   //=================================================================================================================
   "npc_dota_hero_mana_eater"
   {
@@ -22,7 +22,7 @@
     "AbilityTalentStart"                                  "10"
     "Ability1"                                            "mana_eater_mystic_bolt"        // Q (4 levels)
     "Ability2"                                            "mana_eater_anti_magic_field"      // W (4 levels)
-    "Ability3"                                            "generic_hidden"            // mana_eater_mana_flare E (4 levels)
+    "Ability3"                                            "mana_eater_mana_flare"            // E (4 levels)
     "Ability4"                                            "mana_eater_mana_shell"          // innate ability
     "Ability5"                                            "mana_eater_emp"            // F, Secondary Ultimate (4 levels)
     "Ability6"                                            "mana_eater_absorb_mana"        // R, Primary Ultimate (3 levels)

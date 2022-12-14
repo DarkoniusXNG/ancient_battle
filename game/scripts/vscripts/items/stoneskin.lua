@@ -82,11 +82,16 @@ end
 function modifier_item_stoneskin_passives:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+    MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
   }
 end
 
 function modifier_item_stoneskin_passives:GetModifierPhysicalArmorBonus()
   return self:GetAbility():GetSpecialValueFor("bonus_armor")
+end
+
+function modifier_item_stoneskin_passives:GetModifierConstantHealthRegen()
+  return self:GetAbility():GetSpecialValueFor("bonus_health_regen")
 end
 
 function modifier_item_stoneskin_passives:IsAura()

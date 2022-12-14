@@ -66,6 +66,7 @@
     "AbilityValues"
     {
       "bonus_armor"                                       "22" // sum of components
+      "bonus_health_regen"                                "5"  // Helm of Iron Will
       "hp_regen_amp"                                      "22" // like SnY
       "heal_amp"                                          "22"
       "lifesteal_amp"                                     "22" // like SnY
