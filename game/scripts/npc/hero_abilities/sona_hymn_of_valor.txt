@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Sona: Hymn of Valor
+	// Sona: Hymn of Valor - Damages enemies in a radius like Scream of Pain, limited number of projectiles
 	//=================================================================================================================
 	"sona_hymn_of_valor"
 	{

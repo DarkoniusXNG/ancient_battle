@@ -160,11 +160,12 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	local padding = 108
 
 	local illusion
-	local illusions = CreateIllusions(caster, caster, illusion_table, 1, padding, true, true)
+	local illusions = CreateIllusions(caster, caster, illusion_table, 1, padding, false, true)
 	for _, illu in pairs(illusions) do
 		if illu then
 			--illu:AddNewModifier(caster, self, "modifier_custom_strong_illusion", {})
 			illu:AddNewModifier(caster, self, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
+			FindClearSpaceForUnit(illu, loc2, true)
 			illusion = illu
 		end
 	end

@@ -1,7 +1,5 @@
 modifier_sona_crescendo_perseverance = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_sona_crescendo_perseverance:IsHidden()
 	return false
 end
@@ -23,9 +21,7 @@ function modifier_sona_crescendo_perseverance:OnCreated()
 	self.magic_bonus = self:GetAbility():GetSpecialValueFor( "perseverance_magic" )
 end
 
-function modifier_sona_crescendo_perseverance:OnRefresh()
-	self:OnCreated()
-end
+modifier_sona_crescendo_perseverance.OnRefresh = modifier_sona_crescendo_perseverance.OnCreated
 
 function modifier_sona_crescendo_perseverance:DeclareFunctions()
 	return {
@@ -37,6 +33,7 @@ end
 function modifier_sona_crescendo_perseverance:GetModifierPhysicalArmorBonus()
 	return self.armor_bonus
 end
+
 function modifier_sona_crescendo_perseverance:GetModifierMagicalResistanceBonus()
 	return self.magic_bonus
 end

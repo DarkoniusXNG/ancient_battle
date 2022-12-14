@@ -1,8 +1,7 @@
 sona_song_of_celerity = class({})
+
 LinkLuaModifier( "modifier_sona_song_of_celerity", "heroes/sona/modifier_sona_song_of_celerity", LUA_MODIFIER_MOTION_NONE )
 
---------------------------------------------------------------------------------
--- Ability Start
 function sona_song_of_celerity:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
@@ -32,5 +31,4 @@ function sona_song_of_celerity:OnSpellStart()
 			{ duration = duration } -- kv
 		)
 	end
-
 end

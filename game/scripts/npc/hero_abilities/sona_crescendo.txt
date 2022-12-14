@@ -1,7 +1,10 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Sona: Crescendo
+	// Sona: Crescendo - creates an aura and attack modifier that is based on the last cast spell
+	// Q aura - increases damage output; Q attack mod - increases? how much dmg attacked enemy takes
+	// W aura - sets the absolute min ms to that of the caster, shared ms?; W attack mod - slows enemies
+	// E aura - bonus armor and magic resist aura; E attack mod - unknown
 	//=================================================================================================================
 	"sona_crescendo"
 	{
@@ -60,7 +63,7 @@
 			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"celerity_slow"			"-10 -15 -20"
+				"celerity_slow"			"-20 -25 -30"
 			}
 			"09"
 			{

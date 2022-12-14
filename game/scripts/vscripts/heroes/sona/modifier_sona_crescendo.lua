@@ -54,10 +54,6 @@ function modifier_sona_crescendo:OnRefresh( kv )
 	self.perseverance_duration = self:GetAbility():GetSpecialValueFor( "perseverance_duration" )
 end
 
-function modifier_sona_crescendo:OnDestroy( kv )
-
-end
-
 function modifier_sona_crescendo:DeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST,

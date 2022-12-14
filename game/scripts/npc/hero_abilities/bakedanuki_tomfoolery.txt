@@ -43,7 +43,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"30"
+				"illusion_outgoing"		"50"
 			}
 			"04"
 			{
@@ -85,7 +85,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"30"
+				"illusion_outgoing"		"50"
 			}
 			"02"
 			{
@@ -106,7 +106,7 @@
 	}
 
 	//=================================================================================================================
-	// Bake-Danuki: Tomfoolery (Summon)
+	// Bake-Danuki: Tomfoolery (End)
 	//=================================================================================================================
 	"bakedanuki_tomfoolery_end"
 	{
@@ -137,7 +137,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"30"
+				"illusion_outgoing"		"50"
 			}
 			"02"
 			{

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Sona: Aria of Perseverance
+	// Sona: Aria of Perseverance - Heals the caster and the lowest allied hero on the map
 	//=================================================================================================================
 	"sona_aria_of_perseverance"
 	{

@@ -1,7 +1,5 @@
 sona_aria_of_perseverance = class({})
 
---------------------------------------------------------------------------------
--- Ability Start
 function sona_aria_of_perseverance:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
