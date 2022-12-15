@@ -23,15 +23,13 @@ function PhilosopherStoneDamage(event)
 	-- Calculate damage
 	local actual_damage = base_damage + bonus_dmg_multiplier*higher_attribute
 
-	-- Set the damage type (depends on damage reductions of the unit)
-	local damage_type = DAMAGE_TYPE_MAGICAL
-
 	-- Getting the physical and magical reduction of the target
 	local armor = target:GetPhysicalArmorValue(false)
 	local armor_reduction = (armor*0.06/(1+0.06*(math.abs(armor))))
 	local magic_reduction = target:GetMagicalArmorValue()
 
-	-- Define the damage type accordingly
+	-- Set the damage type accordingly (Adaptive damage type)
+	local damage_type
 	if armor_reduction > magic_reduction then
 		damage_type = DAMAGE_TYPE_MAGICAL
 	else

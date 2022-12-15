@@ -43,7 +43,7 @@
       "02" // old Curse of the Silent (350)
       {
         "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "425"
+        "radius"                                          "350 375 400 425"
       }
       "03" // same as old Curse of the Silent
       {

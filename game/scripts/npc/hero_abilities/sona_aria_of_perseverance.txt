@@ -1,0 +1,43 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sona: Aria of Perseverance - Heals the caster and the lowest allied hero on the map
+	//=================================================================================================================
+	"sona_aria_of_perseverance"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/sona/sona_aria_of_perseverance"
+		"AbilityTextureName"			"custom/sona_aria_of_perseverance"
+
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.3"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"14 13 12 11"
+		"AbilityManaCost"				"90 105 120 135"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"90 180 270 360"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"targets"				"1"
+			}
+		}
+	}
+}

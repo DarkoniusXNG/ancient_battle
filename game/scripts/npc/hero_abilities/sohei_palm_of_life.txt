@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Sohei: Palm of Life - Heals allies, damages enemies. Applies Super Strong Dispel.
+  // Sohei: Palm of Life - Heals allies, damages enemies based on strength. Applies Super Strong Dispel.
   //=================================================================================================================
   "sohei_palm_of_life"
   {
@@ -11,11 +11,10 @@
     "ScriptFile"                                          "heroes/sohei/sohei_palm_of_life.lua"
     "AbilityTextureName"                                  "custom/ronin_palm_of_life"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
-    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
@@ -42,25 +41,14 @@
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-      "particle"                                          "particles/hero/sohei/guard.vpcf"
       "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
-      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
     }
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "base_heal"                                         "250"
-      "bonus_magic_resistance"                            "50"
-      "duration"                                          "5"
-      "post_heal"                                         "75"
-      "damage_taken_as_heal"
-      {
-        "value"                                           "25"
-        "CalculateSpellDamageTooltip"                     "0"
-        "DamageTypeTooltip"                               "DAMAGE_TYPE_NONE"
-      }
+      "base_heal"                                         "400"
       "base_damage"                                       "75"
       "str_diff_multiplier"                               "15"
       "scepter_max_hp_as_heal"

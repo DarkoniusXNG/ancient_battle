@@ -27,7 +27,7 @@ function PrimalSplit(event)
 	caster.Storm = CreateUnitByName(unit_name_storm, storm_position, true, caster, caster, caster_team)
 	caster.Fire = CreateUnitByName(unit_name_fire, fire_position, true, caster, caster, caster_team)
 
-	-- Select spirits, deselect caster (main hero)
+	-- Select spirits, deselect caster (main hero) - parts of selection library
 	PlayerResource:AddToSelection(playerID, caster.Earth)
 	PlayerResource:AddToSelection(playerID, caster.Storm)
 	PlayerResource:AddToSelection(playerID, caster.Fire)
@@ -72,22 +72,20 @@ function SpiritDied(event)
 	local playerID = caster:GetPlayerID()
 
 	unit:AddNoDraw()
+
+	-- Part of selection library
 	PlayerResource:RemoveFromSelection(playerID, unit)
 
-	local function IsAliveCustom(unit)
-		if not unit then
-			return false
-		end
-		
-		if unit:IsNull() then
+	local function IsAliveCustom(test)
+		if not test or test:IsNull() then
 			return false
 		end
 
-		if not IsValidEntity(unit) then
+		if not IsValidEntity(test) then
 			return false
 		end
 
-		if not unit:IsAlive() then
+		if not test:IsAlive() then
 			return false
 		end
 
@@ -104,9 +102,7 @@ function SpiritDied(event)
 	else
 		-- Check if they died because the spell ended, or they were killed by an attacker
 		-- If the attacker is the same as the unit, it means the summon duration is over.
-		if attacker == unit then
-			-- Primal Split Ended Succesfully
-		elseif attacker then
+		if attacker and attacker ~= unit then
 			-- Kill the caster with credit to the attacker.
 			caster:Kill(nil, attacker)
 			caster.ActiveSplit = nil
@@ -132,6 +128,7 @@ function PrimalSplitEnd(event)
 	if caster.ActiveSplit then
 		local position = caster.ActiveSplit:GetAbsOrigin()
 		FindClearSpaceForUnit(caster, position, true)
+		-- Part of selection library
 		PlayerResource:ResetSelection(playerID)
 	end
 end

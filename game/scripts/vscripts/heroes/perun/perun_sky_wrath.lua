@@ -30,18 +30,18 @@ function perun_sky_wrath:OnSpellStart()
 	if talent and talent:GetLevel() > 0 then
 		damage = damage + talent:GetSpecialValueFor("value")
 	end
-	
+
 	-- Main Particles
 	local bolt_particle = ParticleManager:CreateParticle("particles/custom/perun_sky_wrath_new.vpcf", PATTACH_WORLDORIGIN, caster)
 	ParticleManager:SetParticleControl(bolt_particle, 0, point)
 	ParticleManager:SetParticleControl(bolt_particle, 1, Vector(point.x, point.y, 2000))
 	ParticleManager:ReleaseParticleIndex(bolt_particle)
-	
+
 	local aoe_particle = ParticleManager:CreateParticle("particles/custom/perun_sky_wrath_aoe.vpcf", PATTACH_WORLDORIGIN, caster)
 	ParticleManager:SetParticleControl(aoe_particle, 0, point)
 	ParticleManager:SetParticleControl(aoe_particle, 1, Vector(damage_radius, 0, 0))
 	ParticleManager:ReleaseParticleIndex(aoe_particle)
-	
+
 	-- Vision
 	AddFOWViewer(team, point, sight_radius, sight_duration, false)
 
@@ -118,13 +118,13 @@ function perun_sky_wrath:OnSpellStart()
 		FIND_ANY_ORDER,
 		false
 	)
-	
+
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = self:GetAbilityDamageType()
 	damage_table.ability = self
 	damage_table.damage = damage
-	
+
 	-- Apply damage to each enemy
 	for _, enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() and not enemy:IsMagicImmune() and not enemy:IsInvulnerable() then

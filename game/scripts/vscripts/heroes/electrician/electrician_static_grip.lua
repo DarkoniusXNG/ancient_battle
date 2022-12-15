@@ -189,7 +189,7 @@ function modifier_electrician_static_grip:OnRefresh(event)
     -- play sound
     parent:EmitSound("Hero_StormSpirit.ElectricVortex")
   end
-  
+
   self.damagePerInterval = damage_per_second * damageInterval
   self.damageType = damage_type
 end
@@ -263,15 +263,13 @@ end
 
 if IsServer() then
   function modifier_electrician_static_grip_movement:OnCreated(event)
-    local parent = self:GetParent()
     local ability = self:GetAbility()
-    self.target = EntIndexToHScript( event.target )
+    self.target = EntIndexToHScript(event.target)
     self.speed = ability:GetSpecialValueFor("pull_speed")
     self.pullBuffer = ability:GetSpecialValueFor("pull_buffer")
 
     if self:ApplyHorizontalMotionController() == false then
       self:Destroy()
-      return
     end
   end
 

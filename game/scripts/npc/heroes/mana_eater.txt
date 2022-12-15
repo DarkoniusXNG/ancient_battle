@@ -3,7 +3,7 @@
   //=================================================================================================================
   // HERO: Mana Eater; 2022;
   // Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
-  // TO_DO: special_bonus_unique_mana_eater_1; mana_eater_mana_flare
+  // TO_DO: special_bonus_unique_mana_eater_1;
   //=================================================================================================================
   "npc_dota_hero_mana_eater"
   {
@@ -22,7 +22,7 @@
     "AbilityTalentStart"                                  "10"
     "Ability1"                                            "mana_eater_mystic_bolt"        // Q (4 levels)
     "Ability2"                                            "mana_eater_anti_magic_field"      // W (4 levels)
-    "Ability3"                                            "generic_hidden"            // mana_eater_mana_flare E (4 levels)
+    "Ability3"                                            "mana_eater_mana_flare"            // E (4 levels)
     "Ability4"                                            "mana_eater_mana_shell"          // innate ability
     "Ability5"                                            "mana_eater_emp"            // F, Secondary Ultimate (4 levels)
     "Ability6"                                            "mana_eater_absorb_mana"        // R, Primary Ultimate (3 levels)
@@ -34,7 +34,7 @@
     "Ability11"                                           "special_bonus_hp_200"                  // lvl 10 talent; unique
 
     "Ability12"                                           "special_bonus_attack_damage_40"        // lvl 15 talent; unique
-    "Ability13"                                           "special_bonus_spell_amplify_12"        // lvl 15 talent; Puck (12%)
+    "Ability13"                                           "special_bonus_spell_amplify_12"        // lvl 15 talent; unique
 
     "Ability14"                                           "special_bonus_armor_10"                // lvl 20 talent; unique
     "Ability15"                                           "special_bonus_attack_speed_50"     // lvl 20 talent> special_bonus_unique_mana_eater_1 - Anti-Magic Field provides attack speed talent

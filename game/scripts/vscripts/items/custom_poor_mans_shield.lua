@@ -48,15 +48,15 @@ if IsServer() then
 		if parent ~= target then
 			return
 		end
-		
+
 		if event.damage < 0 then
 			return
 		end
-		
+
 		if event.damage_type ~= DAMAGE_TYPE_PHYSICAL then
 			return
 		end
-		
+
 		if HasBit(event.damage_flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK) then
 			return
 		end

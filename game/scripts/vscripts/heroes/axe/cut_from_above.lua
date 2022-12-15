@@ -36,7 +36,7 @@ function axe_custom_cut_from_above:OnSpellStart()
   if caster:IsCurrentlyHorizontalMotionControlled() then
     caster:InterruptMotionControllers(false)
   end
-  
+
   -- Apply motion controller
   caster:AddNewModifier(caster, self, "modifier_axe_leap_from_above", {
     duration = duration + 0.01,

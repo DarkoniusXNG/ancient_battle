@@ -1,0 +1,52 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sandra Olivia: Will to Live
+	//=================================================================================================================
+	"sandra_will_to_live"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/sandra/sandra_will_to_live"
+		"AbilityTextureName"			"custom/sandra_will_to_live"
+
+		"HasScepterUpgrade"				"1"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf"
+			"particle"	"particles/items2_fx/soul_ring_blood.vpcf"
+			"particle"	"particles/items_fx/backdoor_protection_tube.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"damage_delay"
+			{
+				"value"                                   "60 50 40 30"
+				"special_bonus_unique_will_to_live_tick"  "-10"
+			}
+			"threshold_base"                              "5 10 15 20"
+			"threshold_stack"                             "2"
+			"threshold_stack_creep"                       "1"
+			"stack_duration"                              "6"
+		}
+	}
+	
+	//=================================================================================================================
+	// Will to Live talent: Decreases damage per tick
+	//=================================================================================================================
+	"special_bonus_unique_will_to_live_tick"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_base"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+}

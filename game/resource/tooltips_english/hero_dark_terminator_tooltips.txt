@@ -1,7 +1,5 @@
 
 		// ******************** DARK TERMINATOR ********************
-		"npc_dota_hero_sniper"                                                  "Dark Terminator"
-
 		"DOTA_Tooltip_ability_dark_terminator_cloak"                                     "Cloak"
 		"DOTA_Tooltip_ability_dark_terminator_cloak_Description"                         "Dark Terminator becomes invisible and moves faster until he attacks or uses an ability. While invisible he is not showing on the minimap, he doesn't have a health bar and he has low aggro priority."
 		"DOTA_Tooltip_ability_dark_terminator_cloak_Lore"								 "Cloaking engaged."
@@ -13,12 +11,12 @@
 		"DOTA_Tooltip_modifier_dark_terminator_cloak"                                    "Cloaked"
 		"DOTA_Tooltip_modifier_dark_terminator_cloak_Description"                        "Invisible, increased movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% and not on enemy minimap."
 
-		"DOTA_Tooltip_ability_dark_terminator_blink"                                     "Global Blink"
+		"DOTA_Tooltip_ability_dark_terminator_blink"                                     "Teleport"
 		"DOTA_Tooltip_ability_dark_terminator_blink_Description"                         "Teleports Dark Terminator to the target point that can be anywhere on the map."
 		"DOTA_Tooltip_ability_dark_terminator_blink_Lore"                                "Confirmed that Long distance teleport is equal to Global teleport."
 		"DOTA_Tooltip_ability_dark_terminator_blink_cast_point"                          "CAST TIME:"
 
-		"DOTA_Tooltip_ability_dark_terminator_terminator_skills"                         "Terminator"
+		"DOTA_Tooltip_ability_dark_terminator_terminator_skills"                         "Chaos Brawler"
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Description"             "Provides bonus evasion and a chance to deal bonus damage on each attack. Bonus damage is equal to %damage_percent%%% of Dark Terminator's current attack damage and ignores armor."
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Lore"                    "Drunken Brawler and Chaos Damage combined."
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_Note0"                   "Bonus damage doesn't ignore Damage Block."
@@ -28,10 +26,10 @@
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_evasion_chance"          "%EVASION:"
 		"DOTA_Tooltip_ability_dark_terminator_terminator_skills_damage_proc_chance"      "%CHANCE:"
 
-		"DOTA_Tooltip_ability_dark_terminator_take_aim"                                  "Take Aim"
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_Description"                      "Grants bonus attack range."
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_Lore"                             ""
-		"DOTA_Tooltip_ability_dark_terminator_take_aim_bonus_attack_range"               "BONUS ATTACK RANGE:"
+		"DOTA_Tooltip_ability_dark_terminator_crit"                                      "Deadeye"
+		"DOTA_Tooltip_ability_dark_terminator_crit_Description"                          "All enemies that are within Terminator's attack range at the moment of cast are attacked once with critical damage. Delay between attacks is %attack_interval% seconds. Doesn't work while disarmed."
+		"DOTA_Tooltip_ability_dark_terminator_crit_Lore"                                 "Terminators like shooting everything in their line of sight."
+		"DOTA_Tooltip_ability_dark_terminator_crit_crit_multiplier"                      "CRIT DAMAGE MULTIPLIER:"
 
 		"DOTA_Tooltip_ability_dark_terminator_confuse"                                   "Confuse"
 		"DOTA_Tooltip_ability_dark_terminator_confuse_Description"                       "Confuses the enemy by creating strong illusions of Dark Terminator."
@@ -55,7 +53,7 @@
 		"DOTA_Tooltip_modifier_dark_terminator_terminate_target"                         "Terminate"
 		"DOTA_Tooltip_modifier_dark_terminator_terminate_target_Description"             "Dark Terminator is aiming your head!"
 
-		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_proc_chance"             "+{s:value}% Terminator Damage Chance"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_proc_chance"             "+{s:value}% Chaos Brawler Chance"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_confuse_illusion_damage" "+{s:value}% Confuse Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_confuse_extra_illusion"  "+{s:value} Confuse Illusion"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_terminator_terminate"               "-{s:value}s Terminate Cast Time"

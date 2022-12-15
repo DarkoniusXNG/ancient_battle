@@ -130,10 +130,7 @@ if IsServer() then
 		end
 
 		-- Check for Wrath of God talent
-		local wrath_of_god = false
-		if talent_2 and talent_2:GetLevel() > 0 then
-			wrath_of_god = true
-		end
+		local wrath_of_god = talent_2 and talent_2:GetLevel() > 0
 
 		local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BUILDING)
 		local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
@@ -155,7 +152,7 @@ if IsServer() then
 			killer_dmg = parent:GetAverageTrueAttackDamage(parent)
 		end
 		local angel_dmg = killer_dmg * multiplier
-		
+
 		-- Calculate Angel duration
 		local min_duration = ability:GetLevelSpecialValueFor("angel_min_duration", ability_level)
 		local respawn_time = math.min(CUSTOM_RESPAWN_TIME[parent:GetLevel()], MAX_RESPAWN_TIME)
@@ -171,7 +168,7 @@ if IsServer() then
 		main_angel:SetBaseDamageMax(angel_dmg)
 
 		main_angel:AddNewModifier(parent, ability, "modifier_kill", {duration = angel_duration})
-		
+
 		-- Apply angel buff
 		main_angel:AddNewModifier(parent, ability, "modifier_custom_guardian_angel_summon", {duration = angel_duration})
 
@@ -348,7 +345,7 @@ function modifier_custom_guardian_angel_summon:OnCreated(event)
 	if IsServer() then
 		-- Sound
 		parent:EmitSound(sound_name)
-		
+
 		-- Particle
 		self.particle1 = ParticleManager:CreateParticle(part_name_1, PATTACH_CENTER_FOLLOW, parent)
 		ParticleManager:SetParticleControlEnt(self.particle1, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), false)

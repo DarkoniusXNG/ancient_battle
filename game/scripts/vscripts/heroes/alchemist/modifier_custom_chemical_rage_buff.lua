@@ -132,7 +132,7 @@ function modifier_custom_chemical_rage_buff:ScepterBuff(caster)
 			caster:SetBaseStrength(strength_new)
 			caster:CalculateStatBonus(true)  -- This is needed to update Caster's bonuses from stats
 		end
-	end	
+	end
 end
 
 -- Reverts everything back if needed
@@ -149,7 +149,7 @@ function modifier_custom_chemical_rage_buff:ScepterBuffEnd(caster)
 		local level_difference = level - level_old -- caster can level up during the duration of the modifier
 		local strength_new = strength_old + level_difference*strength_gain
 		local intelligence_new = caster:GetBaseStrength() - strength_new + 1
-		
+
 		caster:SetBaseIntellect(intelligence_new)
 		caster:SetBaseStrength(strength_new)
 		caster:CalculateStatBonus(true)

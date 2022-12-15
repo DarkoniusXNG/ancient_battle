@@ -84,7 +84,7 @@ function alchemist_custom_transmute:OnSpellStart()
     stun_hero_duration = target:GetValueChangedByStatusResistance(stun_hero_duration)
     -- Apply spell effect
     target:AddNewModifier(caster, self, "modifier_custom_transmuted_hero", {duration = stun_hero_duration})
-	
+
 	if caster:HasShardCustom() then
       ApplyDamage({
         victim = target,

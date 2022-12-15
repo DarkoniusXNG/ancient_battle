@@ -42,15 +42,13 @@ function modifier_custom_unit_custom_splash_attack:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT
 end
 
+function modifier_custom_unit_custom_splash_attack:DeclareFunctions()
+	return {
+		MODIFIER_EVENT_ON_ATTACK_LANDED,
+	}
+end
+
 if IsServer() then
-	function modifier_custom_unit_custom_splash_attack:DeclareFunctions()
-		local funcs = {
-			MODIFIER_EVENT_ON_ATTACK_LANDED,
-		}
-
-		return funcs
-	end
-
 	function modifier_custom_unit_custom_splash_attack:OnAttackLanded(event)
 		local parent = self:GetParent()
 
@@ -66,11 +64,7 @@ if IsServer() then
 		local target = event.target
 
 		-- To prevent crashes:
-		if not target then
-			return 
-		end
-
-		if target:IsNull() then
+		if not target or target:IsNull() then
 			return
 		end
 

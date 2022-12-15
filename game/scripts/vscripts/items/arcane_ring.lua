@@ -17,7 +17,7 @@ function item_custom_arcane_ring:OnSpellStart()
   local particle = ParticleManager:CreateParticle("particles/items_fx/arcane_boots.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
   --ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_ABSORIGIN_FOLLOW, nil, caster:GetOrigin(), false)
   ParticleManager:ReleaseParticleIndex(particle)
-  
+
   -- Sound
   caster:EmitSound("DOTA_Item.ArcaneRing.Cast")
 

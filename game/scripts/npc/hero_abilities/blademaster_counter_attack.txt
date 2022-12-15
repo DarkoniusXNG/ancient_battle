@@ -42,7 +42,7 @@
       "hp_leech_percent"      
       {
         "value"                                           "15"
-        "special_bonus_unique_legion_commander_7"         "+50"
+        "special_bonus_unique_legion_commander_7"         "+25"
       }
     }
   }

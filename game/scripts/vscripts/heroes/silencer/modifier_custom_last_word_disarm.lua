@@ -14,16 +14,10 @@ function modifier_custom_last_word_disarm:IsDebuff()
 	return true
 end
 
-function modifier_custom_last_word_disarm:OnCreated()
-
-end
-
 function modifier_custom_last_word_disarm:CheckState()
-	local state = {
-	[MODIFIER_STATE_DISARMED] = true,
+	return {
+		[MODIFIER_STATE_DISARMED] = true,
 	}
-
-	return state
 end
 
 function modifier_custom_last_word_disarm:GetEffectName()

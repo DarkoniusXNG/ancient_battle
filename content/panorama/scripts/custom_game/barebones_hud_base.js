@@ -1,3 +1,5 @@
+/* global $, GameEvents, */
+
 function TopNotification (msg) {
   AddNotification(msg, $('#TopNotifications'));
 }
@@ -18,9 +20,11 @@ function RemoveNotification (msg, panel) {
   const count = msg.count;
   if (count > 0 && panel.GetChildCount() > 0) {
     let start = panel.GetChildCount() - count;
-    if (start < 0) { start = 0; }
+    if (start < 0) {
+      start = 0;
+    }
 
-    for (i = start; i < panel.GetChildCount(); i++) {
+    for (let i = start; i < panel.GetChildCount(); i++) {
       const lastPanel = panel.GetChild(i);
       // lastPanel.SetAttributeInt("deleted", 1);
       lastPanel.deleted = true;

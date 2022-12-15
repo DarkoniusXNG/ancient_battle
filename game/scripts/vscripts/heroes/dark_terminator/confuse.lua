@@ -30,7 +30,7 @@ function dark_terminator_confuse:OnSpellStart()
 		ParticleManager:ReleaseParticleIndex(particle)
 	end)
 
-	illusion_table = {}
+	local illusion_table = {}
 	illusion_table.outgoing_damage = outgoing_damage
 	illusion_table.incoming_damage = incoming_damage
 	illusion_table.bounty_base = 100

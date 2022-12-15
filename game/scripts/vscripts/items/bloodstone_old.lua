@@ -32,6 +32,20 @@ function modifier_item_custom_bloodstone_passive:GetAttributes()
   return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
+function modifier_item_custom_bloodstone_passive:OnCreated()
+  if IsServer() then
+    self:StartIntervalThink(0.1)
+  end
+end
+
+function modifier_item_custom_bloodstone_passive:OnIntervalThink()
+  if self:IsFirstItemInInventory() then
+    self:SetStackCount(2)
+  else
+    self:SetStackCount(1)
+  end
+end
+
 function modifier_item_custom_bloodstone_passive:DeclareFunctions()
   return {
     MODIFIER_EVENT_ON_DEATH,
@@ -55,18 +69,18 @@ end
 
 function modifier_item_custom_bloodstone_passive:GetModifierConstantHealthRegen()
   local ability = self:GetAbility()
-  if self:IsFirstItemInInventory() then
-    return ability:GetSpecialValueFor("bonus_health_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("health_regen_per_charge"))
+  if self:GetStackCount() ~= 2 then
+    return ability:GetSpecialValueFor("bonus_health_regen")
   end
-  return ability:GetSpecialValueFor("bonus_health_regen")
+  return ability:GetSpecialValueFor("bonus_health_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("health_regen_per_charge"))
 end
 
 function modifier_item_custom_bloodstone_passive:GetModifierConstantManaRegen()
   local ability = self:GetAbility()
-  if self:IsFirstItemInInventory() then
-    return ability:GetSpecialValueFor("bonus_mana_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("mana_regen_per_charge"))
+  if self:GetStackCount() ~= 2 then
+    return ability:GetSpecialValueFor("bonus_mana_regen")
   end
-  return ability:GetSpecialValueFor("bonus_mana_regen")
+  return ability:GetSpecialValueFor("bonus_mana_regen") + (ability:GetCurrentCharges() * ability:GetSpecialValueFor("mana_regen_per_charge"))
 end
 
 function modifier_item_custom_bloodstone_passive:GetModifierBonusStats_Strength()
@@ -78,49 +92,25 @@ function modifier_item_custom_bloodstone_passive:GetModifierPhysicalArmorBonus()
 end
 
 function modifier_item_custom_bloodstone_passive:GetModifierMPRegenAmplify_Percentage()
-  local parent = self:GetParent()
-  --if not parent:HasModifier("modifier_item_kaya") and not parent:HasModifier("modifier_item_yasha_and_kaya") and not parent:HasModifier("modifier_item_kaya_and_sange") and self:IsFirstItemInInventory() then
-  if self:IsFirstItemInInventory() then
-    return self:GetAbility():GetSpecialValueFor("mana_regen_amp")
+  if self:GetStackCount() ~= 2 then
+    return 0
   end
-  return 0
+  return self:GetAbility():GetSpecialValueFor("mana_regen_amp")
 end
 
 function modifier_item_custom_bloodstone_passive:IsFirstItemInInventory()
   local parent = self:GetParent()
   local ability = self:GetAbility()
 
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
   if not IsServer() then
-    return true
-  end
-  
-  --local function IsItemBloodstone(item)
-    --return item and string.sub(item:GetAbilityName(), 0, 15) == "item_bloodstone"
-  --end
-
-  --local items = map(partial(caster.GetItemInSlot, caster), range(0, 5))
-  --local firstBloodstone = nth(1, filter(IsItemBloodstone, items))
-  --local isSelfFirstBloodstone = firstBloodstone == stone
-
-  local same_items = {}
-  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-    local item = parent:GetItemInSlot(item_slot)
-    if item then
-      if item:GetAbilityName() == ability:GetAbilityName() then
-        table.insert(same_items, item)
-      end
-    end
+    return
   end
 
-  if #same_items <= 1 then
-    return true
-  end
-
-  if same_items[1] == ability then
-    return true
-  end
-
-  return false
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
 
 --------------------------------------------------------------------------

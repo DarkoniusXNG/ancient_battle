@@ -17,7 +17,7 @@ function dark_terminator_cloak:OnSpellStart()
 
 	-- Sound
 	caster:EmitSound(sound_cast)
-	
+
 	-- Apply buff
 	caster:AddNewModifier(caster, self, "modifier_dark_terminator_cloak", {duration = duration})
 end

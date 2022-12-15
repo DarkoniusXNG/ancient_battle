@@ -24,7 +24,7 @@
     "Ability10"                                           "special_bonus_armor_4"               // dota Pudge (4)
     "Ability11"                                           "special_bonus_unique_pudge_custom_1" // Rot slow talent
 
-    "Ability12"                                           "special_bonus_spell_lifesteal_10"    // like dota Pudge
+    "Ability12"                                           "special_bonus_spell_lifesteal_10"    // dota Pudge (8)
     "Ability13"                                           "special_bonus_unique_pudge_custom_2" // Meat Hook damage talent
 
     "Ability14"                                           "special_bonus_unique_pudge_6"        // Dismember duration talent
@@ -61,7 +61,7 @@
 
     // Status
     //-------------------------------------------------------------------------------------------------------------
-    "StatusHealthRegen"                                   "0.25"                                // dota (2); original (0.25)
+    "StatusHealthRegen"                                   "0.25"                                // dota (1.75); original (0.25)
     "StatusHealth"                                        "150"                                 // dota (200); original (150);
     "StatusMana"                                          "0"                                   // dota (75); original (0);
     "StatusManaRegen"                                     "0.0"                                 // dota (0); original (0.01);

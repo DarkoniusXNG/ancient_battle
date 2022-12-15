@@ -239,7 +239,7 @@ if IsServer() then
     local caster = self:GetCaster()
     local ability = self:GetAbility()
     local parentOrigin = parent:GetAbsOrigin()
-	
+
     local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
     local target_type = bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC)
     if ability and not ability:IsNull() then
@@ -258,7 +258,7 @@ if IsServer() then
       FIND_ANY_ORDER,
       false
     )
-	
+
     if not caster or caster:IsNull() then
       self:StartIntervalThink(-1)
       self:Destroy()
@@ -266,22 +266,24 @@ if IsServer() then
     end
 
     for _, target in pairs(units) do
-      ApplyDamage({
-        victim = target,
-        attacker = caster,
-        damage = self.damagePerInterval,
-        damage_type = self.damageType,
-        damage_flags = DOTA_DAMAGE_FLAG_NONE,
-        ability = ability,
-      })
+      if target then
+	    ApplyDamage({
+          victim = target,
+          attacker = caster,
+          damage = self.damagePerInterval,
+          damage_type = self.damageType,
+          damage_flags = DOTA_DAMAGE_FLAG_NONE,
+          ability = ability,
+        })
 
-      -- Particle
-      local part = ParticleManager:CreateParticle("particles/items_fx/chain_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
-      ParticleManager:SetParticleControlEnt(part, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-      ParticleManager:SetParticleControlEnt(part, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parentOrigin, true)
-      ParticleManager:ReleaseParticleIndex(part)
+        -- Particle
+        local part = ParticleManager:CreateParticle("particles/items_fx/chain_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
+        ParticleManager:SetParticleControlEnt(part, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+        ParticleManager:SetParticleControlEnt(part, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parentOrigin, true)
+        ParticleManager:ReleaseParticleIndex(part)
 
-      target:EmitSound("Hero_razor.lightning")
+        target:EmitSound("Hero_razor.lightning")
+      end
     end
   end
 end

@@ -67,7 +67,7 @@
     
     // Movement
     //-------------------------------------------------------------------------------------------------------------
-    "MovementSpeed"                                       "295"                  // Drow Ranger (295); original (320);
+    "MovementSpeed"                                       "300"                  // Drow Ranger (300); original (320);
     "MovementTurnRate"                                    "0.7"                  // Drow Ranger (0.7); original (0.6);
     
     // Vision

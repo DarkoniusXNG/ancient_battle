@@ -24,11 +24,9 @@ function modifier_custom_last_word_silence_active:OnCreated()
 end
 
 function modifier_custom_last_word_silence_active:CheckState()
-	local state = {
-	[MODIFIER_STATE_SILENCED] = true,
+	return {
+		[MODIFIER_STATE_SILENCED] = true,
 	}
-
-	return state
 end
 
 function modifier_custom_last_word_silence_active:GetEffectName()

@@ -47,13 +47,12 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "movement_slow"                                     "-20 -25 -30 -35"
-      "slow_duration"                                     "4.0"
       "strike_radius"                                     "150"
-      "strike_range"                                      "1000" // original (600/700/800/900); Boundless Strike (1100);
+      "strike_range"                                      "1100" // original (600/700/800/900); Boundless Strike (1100);
       "knockback_distance"                                "400"
       "knockback_speed"                                   "1200"
-      "collision_radius"                                  "125" // if needed create variables: trees_radius, buildings_radius, blockers_radius, heroes_radius
+      "movement_slow"                                     "-25 -30 -35 -40"
+      "slow_duration"                                     "4.0"
       "stun_duration"
       {
         "value"                                           "1.0 1.2 1.4 1.6"
@@ -80,7 +79,7 @@
       "01"
       {
         "var_type"                                        "FIELD_FLOAT"
-        "value"                                           "1.0"
+        "value"                                           "0.5"
       }
     }
   }

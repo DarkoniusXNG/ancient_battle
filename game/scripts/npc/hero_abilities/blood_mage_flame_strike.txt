@@ -19,7 +19,7 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
     
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_SUN_STRIKE"
-    "AbilityCastRange"                                    "800"                       // Nether Blast (400); original (800);
+    "AbilityCastRange"                                    "800"                       // Nether Blast (600); original (800);
     "AbilityCastPoint"                                    "0"
     "AoERadius"                                           "%radius"
     

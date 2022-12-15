@@ -39,20 +39,22 @@
 		"DOTA_Tooltip_modifier_anti_magic_field_buff_Description"                         "Immune to magic damage."
 
 		"DOTA_Tooltip_ability_mana_eater_mana_flare"                                      "Mana Flare"
-		"DOTA_Tooltip_ability_mana_eater_mana_flare_Description"                          "CHANNELED - Mana Eater fires mana flares at enemy heroes who dare to cast spells. Mana Flare deals damage equal to the damage multiplier times the mana spent by the enemy. Mana Eater also gains bonus armor while channeling."
+		"DOTA_Tooltip_ability_mana_eater_mana_flare_Description"                          "Mana Eater fires mana flares at enemy heroes who dare to spend mana. Mana Flare deals splash damage equal to the damage multiplier times the mana spent by the enemy. Mana Eater also becomes rooted and gains bonus armor while Mana Flare is active. Can be activated again to cancel Mana Flare but it will go on cooldown."
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_Lore"                                 "Like all Faerie Dragons, Mana Eater is a nightmare for spell-casters."
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_Note0"                                "Mana Flare deals damage after the actual spell is cast."
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_Note1"                                "Mana Flare works normally on heroes and units inside Anti-Magic field."
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_duration"                             "MAX DURATION:"
-		"DOTA_Tooltip_ability_mana_eater_mana_flare_radius"                               "RADIUS:"
+		"DOTA_Tooltip_ability_mana_eater_mana_flare_aura_radius"                          "EFFECT RADIUS:"
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_bonus_armor"                          "BONUS ARMOR:"
 		"DOTA_Tooltip_ability_mana_eater_mana_flare_damage_per_used_mana"                 "DAMAGE PER USED MANA:"
+		"DOTA_Tooltip_ability_mana_eater_mana_flare_splash_radius"                        "SPLASH RADIUS:"
+		"DOTA_Tooltip_ability_mana_eater_mana_flare_cooldown"                             "COOLDOWN:"
 		
-		"DOTA_Tooltip_modifier_mana_flare_armor_buff"                                     "Mana Flare Source"
-		"DOTA_Tooltip_modifier_mana_flare_armor_buff_Description"                         "Increased armor by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% and damaging units that spend mana."
+		"DOTA_Tooltip_modifier_mana_eater_mana_flare_buff_aura"                           "Mana Flare Source"
+		"DOTA_Tooltip_modifier_mana_eater_mana_flare_buff_aura_Description"               "Rooted, increased armor by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% and damaging units that spend mana."
 
-		"DOTA_Tooltip_modifier_mana_flare_debuff"                                         "Mana Flare"
-		"DOTA_Tooltip_modifier_mana_flare_debuff_Description"                             "Takes damage when spending mana."
+		"DOTA_Tooltip_modifier_mana_eater_mana_flare_aura_effect"                         "Mana Flare"
+		"DOTA_Tooltip_modifier_mana_eater_mana_flare_aura_effect_Description"             "This unit and this unit's allies will take damage when this unit spends mana."
 
 		"DOTA_Tooltip_ability_mana_eater_absorb_mana"                                     "Absorb Mana"
 		"DOTA_Tooltip_ability_mana_eater_absorb_mana_Description"                         "Transfers a percentage of current mana from the target enemy to the Mana Eater. Kills illusions instantly."

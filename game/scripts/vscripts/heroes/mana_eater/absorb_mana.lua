@@ -3,10 +3,10 @@ function AbsorbMana(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	
+
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
 	if not target:TriggerSpellAbsorb(ability) then
-		if target:IsIllusion() then
+		if target:IsIllusion() and not target:IsStrongIllusionCustom() then
 			target:Kill(ability, caster) -- This gives the kill credit to the caster
 		else
 			local target_mana = target:GetMana()

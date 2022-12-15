@@ -1,0 +1,75 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sona: Crescendo - creates an aura and attack modifier that is based on the last cast spell
+	// Q aura - increases damage output; Q attack mod - increases? how much dmg attacked enemy takes
+	// W aura - sets the absolute min ms to that of the caster, shared ms?; W attack mod - slows enemies
+	// E aura - bonus armor and magic resist aura; E attack mod - unknown
+	//=================================================================================================================
+	"sona_crescendo"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/sona/sona_crescendo"
+		"AbilityTextureName"			"custom/sona_crescendo"
+
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"valor_aura"			"5 10 15"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"valor_attack"			"5 10 15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"valor_duration"		"2"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"perseverance_armor"	"5 10 15"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"perseverance_magic"	"15 20 25"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"perseverance_duration"	"1 2 3"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"celerity_slow"			"-20 -25 -30"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"celerity_duration"		"2 3 4"
+			}
+		}
+	}
+}

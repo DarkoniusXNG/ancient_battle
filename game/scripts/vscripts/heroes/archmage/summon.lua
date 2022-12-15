@@ -4,7 +4,7 @@ function GetSummonPoints(event)
 	local distance = event.distance
 	local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
-	
+
 	local front_position = origin + fv*distance
 
     local result = {}
@@ -18,6 +18,6 @@ function SetUnitsMoveForward(event)
 	local caster = event.caster
 	local target = event.target
     local fv = caster:GetForwardVector()
-    
+
 	target:SetForwardVector(fv)
 end

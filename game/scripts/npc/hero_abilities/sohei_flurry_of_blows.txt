@@ -37,7 +37,6 @@
     "precache"
     {
       "particle"                                          "particles/hero/sohei/flurry_of_blows_ground.vpcf"
-      "particle"                                          "particles/status_fx/status_effect_omnislash.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
     }
 
@@ -63,7 +62,7 @@
       "attack_interval"                                   "0.6" // original (0.4); Eclipse beam interval (0.6);
       "bonus_damage" // original (0);
       {
-        "value"                                           "20 25 30"
+        "value"                                           "40 50 60"
         "CalculateSpellDamageTooltip"                     "0"
         "DamageTypeTooltip"                               "DAMAGE_TYPE_MAGICAL"
       }

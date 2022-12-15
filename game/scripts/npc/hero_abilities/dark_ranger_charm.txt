@@ -6,7 +6,7 @@
   // Linkens: Blocks;
   // Notes: 2022; Has Aghanim Scepter upgrade; Ancients can be charmed only with equipped Aghanim Scepter;
   // Notes: If Removed units or units that became illusions deal DOT damage, crashes the game;
-  // TO_DO: Rework into ability_lua
+  // TO_DO: Rework into ability_lua, copy ability and item cooldowns from the original hero to the clone
   //=================================================================================================================
   "dark_ranger_charm"
   {
@@ -54,7 +54,7 @@
       "03" // this is not displayed in tooltip of the spell (this duration depends on the duration of the longest delayed damage spell)
       {
         "var_type"                                        "FIELD_INTEGER"
-        "charm_clone_duration"                            "50"
+        "charm_clone_duration"                            "60"
       }
       "04"
       {

@@ -146,29 +146,15 @@ function modifier_item_devastator_passive:IsFirstItemInInventory()
   local parent = self:GetParent()
   local ability = self:GetAbility()
 
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
   if not IsServer() then
-    return true
+    return
   end
 
-  local same_items = {}
-  for item_slot = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_6 do
-    local item = parent:GetItemInSlot(item_slot)
-    if item then
-      if item:GetAbilityName() == ability:GetAbilityName() then
-        table.insert(same_items, item)
-      end
-    end
-  end
-
-  if #same_items <= 1 then
-    return true
-  end
-
-  if same_items[1] == ability then
-    return true
-  end
-
-  return false
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
 
 if IsServer() then
@@ -176,7 +162,7 @@ if IsServer() then
     local parent = self:GetParent()
     local ability = self:GetAbility()
     local target = event.target
-	
+
     -- Prevent the code below from executing multiple times for no reason
     if not self:IsFirstItemInInventory() then
       return
@@ -249,7 +235,7 @@ function modifier_item_devastator_corruption_armor:OnCreated()
   if IsServer() then
     self:StartIntervalThink(0.1)
   end
-  
+
   self.armor_reduction = self:GetAbility():GetSpecialValueFor("corruption_armor")
 end
 

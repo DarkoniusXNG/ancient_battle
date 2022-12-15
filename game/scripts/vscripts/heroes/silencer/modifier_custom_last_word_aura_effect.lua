@@ -27,42 +27,46 @@ function modifier_custom_last_word_aura_effect:OnDestroy()
 end
 
 function modifier_custom_last_word_aura_effect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_SPENT_MANA,
 	}
-
-	return funcs
 end
 
-function modifier_custom_last_word_aura_effect:OnSpentMana(event)
-	local parent = self:GetParent()
-	local caster = self:GetCaster()
-	local ability = self:GetAbility()
+if IsServer() then
+	function modifier_custom_last_word_aura_effect:OnSpentMana(event)
+		local parent = self:GetParent()
+		local caster = self:GetCaster()
+		local ability = self:GetAbility()
 
-	if caster:PassivesDisabled() then
-		return nil
-	end
+		if caster:PassivesDisabled() then
+			return
+		end
 
-	if IsServer() and event.unit == parent then
+		-- Check if unit that spent mana has this modifier
+		if event.unit ~= parent then
+			return
+		end
+
 		local cast_ability = event.ability
-		local forbidden_ability_behavior = bit.bor(DOTA_ABILITY_BEHAVIOR_UNIT_TARGET, DOTA_ABILITY_BEHAVIOR_AUTOCAST, DOTA_ABILITY_BEHAVIOR_ATTACK)
-
 		local cast_ability_behavior
 		-- If there isn't a cast ability, or if its mana cost was zero, then do nothing
 		if not cast_ability or cast_ability:GetManaCost(cast_ability:GetLevel() - 1) == 0 then
-			return nil
+			return
 		else
 			cast_ability_behavior = cast_ability:GetBehavior()
+			if type(cast_ability_behavior) == 'userdata' then
+				cast_ability_behavior = tonumber(tostring(cast_ability_behavior))
+			end
 		end
 
-		-- If cast ability is autocasted and an attack ability then do nothing
-		if cast_ability_behavior == forbidden_ability_behavior then
-			return nil
+		-- If cast ability is an attack ability (orb effect) then do nothing
+		if HasBit(cast_ability_behavior, DOTA_ABILITY_BEHAVIOR_ATTACK) then
+			return
 		end
 
 		-- If casted_ability is an item then do nothing
 		if cast_ability:IsItem() then
-			return nil
+			return
 		end
 
 		local duration = ability:GetSpecialValueFor("silence_duration_passive")

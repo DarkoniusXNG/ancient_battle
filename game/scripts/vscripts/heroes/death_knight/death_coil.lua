@@ -2,10 +2,10 @@
 function DeathCoilStart(event)
 	local caster = event.caster
 	local ability = event.ability
-	
+
 	local damage_type = DAMAGE_TYPE_PURE
 	local damage_to_self = ability:GetLevelSpecialValueFor("self_damage", ability:GetLevel() - 1)
-	
+
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.victim = caster
@@ -21,7 +21,7 @@ function DeathCoilProjectileHit(event)
 	local caster = event.caster
 	local ability = event.ability
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local damage_type = ability:GetAbilityDamageType()
 	local damage_to_enemies = ability:GetLevelSpecialValueFor("target_damage", ability_level)
 	local heal_amount = ability:GetLevelSpecialValueFor("heal_amount", ability_level)
@@ -34,7 +34,7 @@ function DeathCoilProjectileHit(event)
 
 	-- Hit Sound
 	target:EmitSound("Hero_Abaddon.DeathCoil.Target")
-	
+
 	-- Target is an enemy or ally?
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then

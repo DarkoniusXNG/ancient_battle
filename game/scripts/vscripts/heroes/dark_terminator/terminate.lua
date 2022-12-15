@@ -28,16 +28,17 @@ function dark_terminator_terminate:OnAbilityPhaseStart()
   local speed = self:GetSpecialValueFor("projectile_speed")
   local travel_time = distance / speed
 
-  -- Store the target(s) in self.storedTarget, apply a modifier that reveals them
+  -- Apply a modifier that reveals the target
+  target:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + travel_time})
+
+   -- Store the target(s) in self.storedTarget
   self.storedTarget = {}
   self.storedTarget[1] = target
-  self.storedTarget[1]:AddNewModifier(caster, self, "modifier_dark_terminator_terminate_target", {duration = self:GetCastPoint() + travel_time})
 
   return true
 end
 
 function dark_terminator_terminate:OnAbilityPhaseInterrupted()
-    local caster = self:GetCaster()
 	-- Remove the crosshairs from the target(s)
 	if self.storedTarget then
 		for _, v in pairs(self.storedTarget) do
@@ -46,35 +47,47 @@ function dark_terminator_terminate:OnAbilityPhaseInterrupted()
 			end
 		end
 	end
-    --self.storedTarget = nil
 end
 
-function dark_terminator_terminate:OnSpellStart(keys)
+function dark_terminator_terminate:OnSpellStart()
     local caster = self:GetCaster()
 
 	-- Sound
 	caster:EmitSound("Ability.Assassinate")
 
-    if not self.storedTarget then -- Should never happen, but to prevent errors we return here
-        return
+    -- When there is no cast point
+	if not self.storedTarget then
+        self.storedTarget = {}
     end
+
+	-- For lotus Orb (and other reflecting stuff that skip cast time) and if list of targets is empty
+	local target = self:GetCursorTarget()
+	if #self.storedTarget < 1 then
+		if target and not target:IsNull() then
+			table.insert(self.storedTarget, target)
+		else
+			return
+		end
+	end
 
     -- Because we stored the targets in a table, it is easy to fire a projectile at all of them
     for _, v in pairs(self.storedTarget) do
-        local projTable = {
-            EffectName = "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf",
-            Ability = self,
-            Target = v,
-            Source = caster,
-            bDodgeable = true,
-            bProvidesVision = true,
-            vSpawnOrigin = caster:GetAbsOrigin(),
-            iMoveSpeed = self:GetSpecialValueFor("projectile_speed"),
-            iVisionRadius = 250,
-            iVisionTeamNumber = caster:GetTeamNumber(),
-            iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
-        }
-        ProjectileManager:CreateTrackingProjectile(projTable)
+        if v then
+			local info = {
+				EffectName = "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf",
+				Ability = self,
+				Target = v,
+				Source = caster,
+				bDodgeable = true,
+				bProvidesVision = true,
+				vSpawnOrigin = caster:GetAbsOrigin(),
+				iMoveSpeed = self:GetSpecialValueFor("projectile_speed"),
+				iVisionRadius = 250,
+				iVisionTeamNumber = caster:GetTeamNumber(),
+				iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1
+			}
+			ProjectileManager:CreateTrackingProjectile(info)
+		end
     end
 end
 
@@ -84,7 +97,7 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 	if not target or target:IsNull() then
 		return
 	end
-	
+
 	-- Remove the crosshair+vision
     target:RemoveModifierByName("modifier_dark_terminator_terminate_target")
 
@@ -126,7 +139,7 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 		damage = damage,
 		damage_type = self:GetAbilityDamageType(),
 	}
-	
+
 	if not target:IsMagicImmune() and not target:IsInvulnerable() then
 		ApplyDamage(damageTable)
 	end
@@ -166,7 +179,7 @@ function modifier_dark_terminator_terminate_target:CheckState()
 end
 
 function modifier_dark_terminator_terminate_target:DeclareFunctions()
-	return { 
+	return {
 		MODIFIER_PROPERTY_PROVIDES_FOW_POSITION,
 	}
 end
@@ -213,7 +226,7 @@ function modifier_dark_terminator_terminate_stun:DeclareFunctions()
 	}
 end
 
-function modifier_dark_terminator_terminate_stun:GetOverrideAnimation(params)
+function modifier_dark_terminator_terminate_stun:GetOverrideAnimation()
 	return ACT_DOTA_DISABLED
 end
 

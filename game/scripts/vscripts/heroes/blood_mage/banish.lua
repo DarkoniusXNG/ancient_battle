@@ -7,7 +7,7 @@ function BanishStart(event)
 	local ability_level = ability:GetLevel() - 1
 	local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
 	local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
-	
+
 	-- Talent that increases duration:
 	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_1")
 	if talent and talent:GetLevel() > 0 then
@@ -68,15 +68,7 @@ function modifier_banished_heal_amp:OnCreated()
   end
 end
 
-function modifier_banished_heal_amp:OnRefresh()
-  local ability = self:GetAbility()
-  if ability and not ability:IsNull() then
-    self.hp_regen_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.heal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.spell_lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-  end
-end
+modifier_banished_heal_amp.OnRefresh = modifier_banished_heal_amp.OnCreated
 
 function modifier_banished_heal_amp:DeclareFunctions()
 	return {

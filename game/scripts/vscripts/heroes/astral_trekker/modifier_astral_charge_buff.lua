@@ -30,7 +30,7 @@ function modifier_astral_charge_buff:OnCreated()
 		local ability = self:GetAbility()
 		local parent = self:GetParent()
 		local position = parent:GetAbsOrigin()
-	
+
 		local particle_name = "particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning.vpcf"
 		self.particle_index = ParticleManager:CreateParticle(particle_name, PATTACH_CUSTOMORIGIN, parent)
 		ParticleManager:SetParticleControlEnt(self.particle_index, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", position, true)
@@ -66,7 +66,7 @@ function modifier_astral_charge_buff:OnDestroy()
 	parent.astral_charge_is_running = false
 
 	if IsServer() then
-		if parent then
+		if parent and not parent:IsNull() then
 			parent:StopSound(loop_sound_name)
 			parent:SetDayTimeVisionRange(1800)
 			parent:SetNightTimeVisionRange(800)

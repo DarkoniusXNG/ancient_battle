@@ -4,7 +4,7 @@ function GetSummonPoints(event)
 	local distance = event.distance
     local fv = caster:GetForwardVector()
     local origin = caster:GetAbsOrigin()
-    
+
 	local front_position = origin + fv*distance
 
     local result = {}
@@ -18,8 +18,7 @@ function SetUnitsMoveForward(event)
 	local caster = event.caster
 	local target = event.target
     local fv = caster:GetForwardVector()
-    local origin = caster:GetAbsOrigin()
-	
+
 	target:SetForwardVector(fv)
 
 	-- Keep the unit as caster's handle
@@ -37,7 +36,7 @@ function KillPhoenix(event)
     if phoenix and not phoenix:IsNull() then
 		phoenix:RemoveAbility("custom_phoenix_turn_into_egg")
 		phoenix:RemoveModifierByName("modifier_custom_phoenix_reborn")
-		phoenix:ForceKill(false) 
+		phoenix:ForceKill(false)
 	end
 	if phoenix_egg and not phoenix_egg:IsNull() then
 		phoenix_egg:RemoveAbility("custom_egg_turn_into_phoenix")
@@ -77,7 +76,6 @@ end
 function PhoenixEggDeathCheck(event)
     local unit = event.unit -- the egg
     local attacker = event.attacker
-    local ability = event.ability
     local hero = unit:GetOwner()
     local player = hero:GetPlayerOwner()
     local playerID = hero:GetPlayerID()

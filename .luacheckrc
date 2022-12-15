@@ -13,6 +13,7 @@ globals = { -- these globals can be set and accessed.
 "Convars",
 "CustomGameEventManager",
 "CustomNetTables",
+"C_DOTA_BaseNPC",
 "Entities",
 "GameRules",
 "GridNav",
@@ -72,6 +73,7 @@ read_globals = { -- these globals can only be accessed.
 "LoadKeyValues",
 "MinimapEvent",
 "PauseGame",
+"PrecacheItemByNameSync",
 "PrecacheResource",
 "PrecacheUnitByNameSync",
 "RandomFloat",
@@ -87,6 +89,7 @@ read_globals = { -- these globals can only be accessed.
 "SetTeamCustomHealthbarColor",
 "SpawnEntityFromTableSynchronous",
 "StartSoundEvent",
+"StopSoundOn",
 "Time",
 "UnitFilter",
 "UTIL_Remove",
@@ -96,6 +99,7 @@ read_globals = { -- these globals can only be accessed.
 "PrintTable",
 "HideWearables",
 "ShowWearables",
+"SwapWearable",
 -- Ability types
 "ABILITY_TYPE_BASIC",
 "ABILITY_TYPE_ULTIMATE",
@@ -382,32 +386,33 @@ read_globals = { -- these globals can only be accessed.
 "ITEM_PARTIALLY_SHAREABLE",
 "ITEM_NOT_SHAREABLE",
 -- Activities/Animations
-"ACT_DOTA_IDLE",
-"ACT_DOTA_IDLE_RARE",
-"ACT_DOTA_RUN",
 "ACT_DOTA_ATTACK",
 "ACT_DOTA_ATTACK2",
 "ACT_DOTA_ATTACK_EVENT",
-"ACT_DOTA_DIE",
-"ACT_DOTA_FLINCH",
-"ACT_DOTA_FLAIL",
-"ACT_DOTA_DISABLED",
 "ACT_DOTA_CAST_ABILITY_1",
 "ACT_DOTA_CAST_ABILITY_2",
 "ACT_DOTA_CAST_ABILITY_3",
 "ACT_DOTA_CAST_ABILITY_4",
 "ACT_DOTA_CAST_ABILITY_5",
 "ACT_DOTA_CAST_ABILITY_6",
-"ACT_DOTA_OVERRIDE_ABILITY_1",
-"ACT_DOTA_OVERRIDE_ABILITY_2",
-"ACT_DOTA_OVERRIDE_ABILITY_3",
-"ACT_DOTA_OVERRIDE_ABILITY_4",
+"ACT_DOTA_CAST_ABILITY_ROT",
 "ACT_DOTA_CHANNEL_ABILITY_1",
 "ACT_DOTA_CHANNEL_ABILITY_2",
 "ACT_DOTA_CHANNEL_ABILITY_3",
 "ACT_DOTA_CHANNEL_ABILITY_4",
 "ACT_DOTA_CHANNEL_ABILITY_5",
 "ACT_DOTA_CHANNEL_ABILITY_6",
+"ACT_DOTA_DIE",
+"ACT_DOTA_DISABLED",
+"ACT_DOTA_FLAIL",
+"ACT_DOTA_FLINCH",
+"ACT_DOTA_IDLE",
+"ACT_DOTA_IDLE_RARE",
+"ACT_DOTA_OVERRIDE_ABILITY_1",
+"ACT_DOTA_OVERRIDE_ABILITY_2",
+"ACT_DOTA_OVERRIDE_ABILITY_3",
+"ACT_DOTA_OVERRIDE_ABILITY_4",
+"ACT_DOTA_RUN",
 "ACT_DOTA_SPAWN",
 -- Linkluamodifier type
 "LUA_MODIFIER_MOTION_NONE",
@@ -473,6 +478,7 @@ read_globals = { -- these globals can only be accessed.
 "OVERHEAD_ALERT_BLOCK",
 "OVERHEAD_ALERT_BONUS_POISON_DAMAGE",
 "OVERHEAD_ALERT_BONUS_SPELL_DAMAGE",
+"OVERHEAD_ALERT_CRITICAL",
 "OVERHEAD_ALERT_GOLD",
 "OVERHEAD_ALERT_HEAL",
 "OVERHEAD_ALERT_MAGICAL_BLOCK",
@@ -857,11 +863,11 @@ ignore = {
   -- "111", -- setting non-standard global variable
   -- "112", -- mutating non-standard global variable
   "131", -- unused global variable
-  "211", -- unused variable
+  --"211", -- unused variable
   "212", -- unused argument
   "213", -- unused loop variable
-  "231", -- never accessed
-  "311", -- Value assigned to a local variable is unused.
+  --"231", -- never accessed
+  --"311", -- Value assigned to a local variable is unused.
   "631", -- line is too long (200)
 }
 
@@ -870,6 +876,8 @@ enable = {
 }
 
 exclude_files = {
-  
+  "game/scripts/vscripts/archived abilities",
+  "game/scripts/vscripts/events.lua",
+  "game/scripts/vscripts/filters.lua",
 }
 files["**/vscripts/units/**/*.lua"].globals = { "thisEntity" }

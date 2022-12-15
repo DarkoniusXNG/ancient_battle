@@ -1,0 +1,55 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Sandra Olivia: Ironical Healing
+	//=================================================================================================================
+	"sandra_ironical_healing"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/sandra/sandra_ironical_healing"
+		"AbilityTextureName"			"custom/sandra_ironical_healing"
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+			"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"3.7 3.1 2.5 1.9"
+		"AbilityManaCost"				"34"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"base_damage"                                 "75 150 225 300"
+			"damage_pct"                                  "1"
+			"duration"
+			{
+				"value"                                          "17"
+				"special_bonus_unique_ironical_healing_duration" "-10"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Ironical Healing talent: Decreases duration
+	//=================================================================================================================
+	"special_bonus_unique_ironical_healing_duration"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_base"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	}
+}

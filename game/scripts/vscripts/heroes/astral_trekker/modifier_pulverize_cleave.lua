@@ -41,7 +41,7 @@ function modifier_pulverize_cleave:DeclareFunctions()
 	}
 end
 
-if IsServer() then	
+if IsServer() then
 	function modifier_pulverize_cleave:OnAttackLanded(event)
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
@@ -52,7 +52,7 @@ if IsServer() then
 			end
 
 			local target = event.target
-			
+
 			-- To prevent crashes:
 			if not target or target:IsNull() then
 				return
@@ -71,7 +71,7 @@ if IsServer() then
 			if not ability or ability:IsNull() then
 				return
 			end
-			
+
 			if not ability:XNGRandom(self.cleave_chance) then
 				return
 			end

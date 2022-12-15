@@ -3,12 +3,12 @@
 	local ability = keys.ability
 	local unit = keys.unit
 	local damage_taken = keys.DamageTaken
-	
+
 	local ability_level = ability:GetLevel() - 1
-	
+
 	local pain_steal_heroes = ability:GetLevelSpecialValueFor("pain_steal", ability_level)
 	local pain_steal_creeps = ability:GetLevelSpecialValueFor("pain_steal_creeps", ability_level)
-	
+
 	if caster and unit then
 		if caster:IsRealHero() then
 			local heal_amount

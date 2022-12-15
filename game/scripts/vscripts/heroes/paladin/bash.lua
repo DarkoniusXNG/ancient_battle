@@ -17,7 +17,7 @@ function guardian_angel_bash:ShouldUseResources()
 end
 
 -------------------------------------------------------------------------------
-if modifier_custom_guardian_angel_bash == nil then 
+if modifier_custom_guardian_angel_bash == nil then
 	modifier_custom_guardian_angel_bash = class({})
 end
 

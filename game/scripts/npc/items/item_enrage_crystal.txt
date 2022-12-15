@@ -63,6 +63,7 @@
       "bonus_status_resist"                               "18"
       "hp_regen_amp"                                      "20"
       "lifesteal_amp"                                     "20"
+      "dmg_reduction_while_stunned"                       "20"
     }
 
     "precache"

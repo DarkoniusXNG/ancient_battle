@@ -1,7 +1,7 @@
 LinkLuaModifier("modifier_breath_fire_haze_burn", "heroes/brewmaster/breath_of_fire.lua", LUA_MODIFIER_MOTION_NONE)
 
 if brewmaster_custom_breath_of_fire == nil then
-  brewmaster_custom_breath_of_fire = class({})
+	brewmaster_custom_breath_of_fire = class({})
 end
 
 function brewmaster_custom_breath_of_fire:OnSpellStart()
@@ -48,7 +48,8 @@ function brewmaster_custom_breath_of_fire:OnSpellStart()
 		--bIgnoreSource = true,
 		--fMaxSpeed = projectile_speed,
 	}
-	local projectileID = ProjectileManager:CreateLinearProjectile(info)
+
+	ProjectileManager:CreateLinearProjectile(info)
 
 	-- Sound
 	caster:EmitSound("Hero_DragonKnight.BreathFire")
@@ -122,15 +123,20 @@ function modifier_breath_fire_haze_burn:OnCreated()
 
 		-- Start burning
 		self:StartIntervalThink(think_interval)
+		self:OnIntervalThink()
 	end
 end
 
 function modifier_breath_fire_haze_burn:OnIntervalThink()
+	if not IsServer() then
+		return
+	end
+
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
 	local parent = self:GetParent()
 
-	if not caster or not IsServer() then
+	if not caster or caster:IsNull() then
 		return
 	end
 
@@ -148,7 +154,7 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 		damage_type = ability:GetAbilityDamageType()
 		damage_table.ability = ability
 	end
-	
+
 	-- Talent that increases damage per second
 	local talent = caster:FindAbilityByName("special_bonus_unique_brewmaster_drunken_haze_burn")
 	if talent and talent:GetLevel() > 0 then

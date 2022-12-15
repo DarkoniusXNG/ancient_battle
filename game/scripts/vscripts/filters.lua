@@ -9,17 +9,15 @@ function ancient_battle_gamemode:OrderFilter(filter_table)
 		local ability_index = filter_table.entindex_ability
 		local ability = EntIndexToHScript(ability_index)
 		local caster = EntIndexToHScript(units["0"])
-		
+
 		if caster:HasModifier("modifier_anti_magic_field_debuff") and (not ability:IsItem()) then
-			ability:UseResources(true,false,true)
-			local playerID = caster:GetPlayerOwnerID()
+			ability:UseResources(true, false, true)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
 
 		if caster:HasModifier("modifier_drunken_haze_fizzle") and (not ability:IsItem()) then
 			ability:UseResources(true,false,true)
-			local playerID = caster:GetPlayerOwnerID()
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
@@ -50,15 +48,6 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		damaging_ability = EntIndexToHScript(inflictor)
 	end
 
-	-- Dont reflect the reflected damage
-	local dont_reflect_flag = nil
-	if damaging_ability then
-		local damaging_ability_name = damaging_ability:GetName()
-		if damaging_ability_name == "item_blade_mail" or damaging_ability_name =="item_orb_of_reflection" then
-			dont_reflect_flag = true
-		end
-	end
-
 	-- Lack of entities handling (illusions error fix)
 	if attacker:IsNull() or victim:IsNull() then
 		return false
@@ -70,16 +59,16 @@ function ancient_battle_gamemode:DamageFilter(keys)
 
 	-- Axe Blood Mist Power: Converting physical and magical damage of SPELLS to pure damage
 	if damaging_ability and attacker:HasModifier("modifier_blood_mist_power_buff") then
-		
+
 		local ability = attacker:FindAbilityByName("axe_custom_blood_mist_power")
 		if ability and ability ~= damaging_ability then
-			
+
 			-- Doesn't convert damage from items
 			if (not damaging_ability:IsItem()) then
-				
+
 				-- Nullifying the damage of the spell (It will be reapplied later)
 				keys.damage = 0
-				
+
 				-- Calculating original damage
 				local original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
 
@@ -89,7 +78,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 				damage_table.damage_type = DAMAGE_TYPE_PURE
 				damage_table.ability = ability
 				damage_table.damage = math.floor(original_damage)
-		
+
 				ApplyDamage(damage_table)
 
 				return false
@@ -97,145 +86,9 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		end
 	end
 
-	-- Orb of Reflection: Damage prevention and Reflecting all damage before reductions as Pure damage to the attacker
-	-- if victim:HasModifier("modifier_item_orb_of_reflection_active_reflect") then
-
-		-- -- Nullifying the damage to victim
-		-- keys.damage = 0
-		
-		-- -- Reflect or not
-		-- if not dont_reflect_flag then	
-			-- local ability
-			-- for i = DOTA_ITEM_SLOT_1, DOTA_ITEM_SLOT_9 do
-				-- local this_item = victim:GetItemInSlot(i)
-				-- if this_item then
-					-- if this_item:GetName() == "item_orb_of_reflection" then
-						-- ability = this_item
-					-- end
-				-- end
-			-- end
-			
-			-- -- Initializing the value of original damage
-			-- local original_damage = damage_after_reductions
-			
-			-- if damaging_ability then
-				-- -- Damage came from an ability (spell or item)
-				-- original_damage = CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type)
-			-- else
-				-- -- Damage came from a physical attack
-				-- original_damage = math.max(attacker:GetAverageTrueAttackDamage(victim), CalculateDamageBeforeReductions(victim, damage_after_reductions, damage_type))
-			-- end
-
-			-- if ability and ability ~= damaging_ability and attacker ~= victim and (not attacker:IsTower()) and (not attacker:IsFountain()) then
-				-- -- Reflect damage to the attacker
-				-- local damage_table = {}
-				-- damage_table.victim = attacker
-				-- damage_table.attacker = victim
-				-- damage_table.damage_type = DAMAGE_TYPE_PURE
-				-- damage_table.ability = ability
-				-- damage_table.damage = original_damage
-				-- damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
-		
-				-- ApplyDamage(damage_table)
-				
-				-- return false
-			-- end
-		-- end
-	-- end
-
 	if attacker:IsNull() or victim:IsNull() then
 		return false
 	end
-
-	-- Blood Mirror: Damage redirection
-	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_ally_redirect") then
-		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_ally_redirect")
-		
-		-- local reduction
-		-- local new_victim
-		-- if modifier then
-			-- reduction = modifier.damage_redirect_percent
-			-- new_victim = modifier.redirect_target
-		-- else
-			-- print("modifier_custom_blood_mirror_buff_ally_redirect not found on victim.")
-			-- reduction = 0
-			-- new_victim = nil
-		-- end
-		
-		-- if reduction == nil then
-			-- reduction = 0
-		-- end
-		-- -- Reducing damage on victim
-		-- keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
-
-		-- -- Calculating how much of the damage is redirected
-		-- local damage_to_redirect = damage_after_reductions*reduction/100
-		
-		-- local damage_table = {}
-		-- damage_table.attacker = attacker
-		-- damage_table.damage_type = damage_type
-		-- damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
-		
-		-- if damaging_ability then
-			-- damage_table.ability = damaging_ability
-		-- end
-		
-		-- if new_victim then
-			-- -- Checking if the redirect_target has a debuff (just in case)
-			-- if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_caster") and damage_to_redirect > 0 then
-				-- damage_table.victim = new_victim
-				-- damage_table.damage = damage_to_redirect
-				-- ApplyDamage(damage_table)
-			-- end
-		-- else
-			-- print("redirect_target for Blood Mirror is nil")
-		-- end
-	-- end
-
-	-- if victim:HasModifier("modifier_custom_blood_mirror_buff_caster_redirect") then
-		-- local modifier = victim:FindModifierByName("modifier_custom_blood_mirror_buff_caster_redirect")
-
-		-- local reduction
-		-- local new_victim
-		-- if modifier then
-			-- reduction = modifier.damage_redirect_percent
-			-- new_victim = modifier.redirect_target
-		-- else
-			-- print("modifier_custom_blood_mirror_buff_caster_redirect not found on victim.")
-			-- reduction = 0
-			-- new_victim = nil
-		-- end
-		
-		-- if reduction == nil then
-			-- reduction = 0
-		-- end
-		-- -- Reducing damage on victim
-		-- keys.damage = math.floor(damage_after_reductions*(1-(reduction/100)))
-
-		-- -- Calculating how much of the damage is redirected
-		-- local damage_to_redirect = damage_after_reductions*reduction/100
-
-		-- -- Creating a damage table
-		-- local damage_table = {}
-		-- damage_table.attacker = victim
-		-- damage_table.damage_type = damage_type
-		-- damage_table.damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
-
-		-- if damaging_ability then
-			-- damage_table.ability = damaging_ability
-		-- end
-
-		-- if new_victim and not new_victim:IsNull() then
-			-- -- Checking if the redirect_target has a debuff because it can be dispelled
-			-- if new_victim:HasModifier("modifier_custom_blood_mirror_debuff_enemy") and damage_to_redirect > 0 then
-				-- damage_table.victim = new_victim
-				-- damage_table.damage = damage_to_redirect
-				-- ApplyDamage(damage_table)
-			-- end
-		-- else
-			-- print("redirect_target for Blood Mirror is nil")
-		-- end
-	-- end
 
 	-- Disabling custom passive modifiers with Silver Edge: We first detect all attacks made with heroes that have silver edge in inventory on real heroes without spell immunity.
 	if (not damaging_ability) and attacker:HasModifier("modifier_item_silver_edge") and attacker:IsRealHero() and victim:IsRealHero() and (not victim:IsMagicImmune()) then
@@ -276,7 +129,7 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		local xp_multiplier = LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER
 		local new_xp_bounty = old_xp_bounty * xp_multiplier
 		local new_gold_bounty = old_gold_bounty * gold_multiplier
-		
+
 		if victim:IsNeutralUnitType() or victim:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
 			gold_multiplier = NEUTRAL_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER
 			xp_multiplier = NEUTRAL_CREEP_KILL_XP_BOUNTY_MULTIPLIER
@@ -294,10 +147,6 @@ function ancient_battle_gamemode:DamageFilter(keys)
 		end
 	end
 
-	if keys.damage <= 0 then
-		return false
-	end
-
 	return true
 end
 
@@ -309,8 +158,6 @@ function ancient_battle_gamemode:ModifierFilter(keys)
 	local modifier_caster
 	if keys.entindex_caster_const then
 		modifier_caster = EntIndexToHScript(keys.entindex_caster_const)
-	else
-		modifier_caster = nil
 	end
 
 	return true
@@ -362,9 +209,9 @@ function ancient_battle_gamemode:HealingFilter(keys)
 	if keys.entindex_inflictor_const then
 		healing_ability_index = keys.entindex_inflictor_const
 	end
-	
+
 	local healing_target = EntIndexToHScript(healing_target_index)
-	
+
 	-- Find the source of the heal - the healer
 	local healer
 	if healer_index then
@@ -372,7 +219,7 @@ function ancient_battle_gamemode:HealingFilter(keys)
 	else
 		healer = healing_target -- hp regen
 	end
-	
+
 	-- Find healing ability
 	-- Abilities that give bonus hp regen don't count as healing abilities!!!
 	local healing_ability
@@ -450,7 +297,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		return 0
 	end
 	if unit == nil then
-		return nil
+		return
 	end
 	local original_damage = damage_after_reductions
 	-- Is the damage_type physical or magical?
@@ -477,6 +324,6 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Magical damage equation: damage_after_reductions = original_damage * damage_magic_resist_reduction
 		original_damage = damage_after_reductions/damage_magic_resist_reduction
 	end
-	
+
 	return original_damage
 end

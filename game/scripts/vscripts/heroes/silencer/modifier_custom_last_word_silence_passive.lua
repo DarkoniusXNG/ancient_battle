@@ -14,16 +14,10 @@ function modifier_custom_last_word_silence_passive:IsDebuff()
 	return true
 end
 
-function modifier_custom_last_word_silence_passive:OnCreated()
-
-end
-
 function modifier_custom_last_word_silence_passive:CheckState()
-	local state = {
-	[MODIFIER_STATE_SILENCED] = true,
+	return {
+		[MODIFIER_STATE_SILENCED] = true,
 	}
-
-	return state
 end
 
 function modifier_custom_last_word_silence_passive:GetEffectName()

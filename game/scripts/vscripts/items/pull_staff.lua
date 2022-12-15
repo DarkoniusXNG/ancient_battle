@@ -98,7 +98,7 @@ function item_pull_staff:OnSpellStart()
 
   -- Calculate direction and distance
   local direction
-  local distance = 0
+  local distance
   if target ~= caster then
     direction = casterposition - targetposition
     distance = direction:Length2D() - caster:GetPaddedCollisionRadius() - target:GetPaddedCollisionRadius()
@@ -165,8 +165,6 @@ end
 
 if IsServer() then
   function modifier_pull_staff_active_buff:OnCreated(event)
-    local parent = self:GetParent()
-
     -- Data sent with AddNewModifier (not available on the client)
     self.direction = Vector(event.direction_x, event.direction_y, 0)
     self.distance = event.distance + 1

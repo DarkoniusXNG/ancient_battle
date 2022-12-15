@@ -25,7 +25,7 @@ LinkLuaModifier("modifier_astral_charge_hit", "heroes/astral_trekker/astral_char
 
 function astral_trekker_astral_charge:OnAbilityPhaseStart()
 	local caster = self:GetCaster()
-	
+
 	if IsServer() then
 		if caster:GetHealth() < 100 then
 			-- Display the error message
@@ -33,19 +33,19 @@ function astral_trekker_astral_charge:OnAbilityPhaseStart()
 			return false
 		end
 	end
-	
+
 	return true
 end
 
 function astral_trekker_astral_charge:OnSpellStart()
 	local caster = self:GetCaster()
-	
+
 	if caster.astral_charge_is_running == nil then
 		caster.astral_charge_is_running = false
 	end
 
 	-- If health of the caster is below 100 then refund mana cost
-	if caster:GetHealth() > 100 and caster.astral_charge_is_running == false then
+	if caster:GetHealth() >= 100 and caster.astral_charge_is_running == false then
 		-- Sound on caster
 		caster:EmitSound("Hero_StormSpirit.BallLightning")
 		-- Add the buff to the caster
@@ -81,41 +81,41 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	local hp_cost_base = self:GetSpecialValueFor("hp_cost_base")
 	local damage = self:GetSpecialValueFor("damage")
 	local radius = self:GetSpecialValueFor("damage_radius")
-	
+
 	-- Variables based on modifiers and precaches
 	local loop_sound_name = "Hero_StormSpirit.BallLightning.Loop"
 	local modifier_name = "modifier_astral_charge_buff"
-	
+
 	-- Talent that gives damage during travel:
 	local talent = caster:FindAbilityByName("special_bonus_unique_astral_trekker_1")
 	local damage_per_distance_traveled_percent = 0
 	if talent and talent:GetLevel() > 0 then
 		damage_per_distance_traveled_percent = damage_per_distance_traveled_percent + talent:GetSpecialValueFor("value")
 	end
-	
+
 	-- Necessary pre-calculated variables
 	local current_position = caster_position
 	local intervals_per_second = speed/destroy_radius -- This will calculate how many times in one second, unit should move based on destroy tree radius
 	local forwardVec = Vector(target.x - caster_position.x, target.y - caster_position.y, 0):Normalized()
 	local hp_per_distance = (hp_percent/100)*caster:GetMaxHealth()
-	
+
 	-- Adjust vision (decrease vision of the caster)
 	caster:SetDayTimeVisionRange(vision_radius)
 	caster:SetNightTimeVisionRange(vision_radius)
-	
+
 	-- Start
 	local distance = 0.0
-	if caster:GetHealth() > hp_per_distance and caster:GetHealth() > 100 then
+	if caster:GetHealth() > hp_per_distance and caster:GetHealth() >= 100 then
 		-- Spend initial health cost; Health can't get lower than 100 hp with Astral Charge
 		if ((caster:GetHealth() - hp_per_distance) > 100) then
 			caster:SetHealth(caster:GetHealth() - hp_per_distance)
 		else
 			caster:SetHealth(100)
 		end
-		
+
 		-- Sound on caster (loop sound)
 		caster:EmitSound(loop_sound_name)
-		
+
 		-- Traverse
 		Timers:CreateTimer(function()
 			-- Removing health
@@ -135,11 +135,11 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 					if modifier then
 						modifier:SetDuration(0.1, false)
 					end
-					return nil
+					return
 				end
 				distance = distance - distance_per_hp
 			end
-			
+
 			-- Update location
 			current_position = current_position + forwardVec * ( speed / intervals_per_second )
 			-- caster:SetAbsOrigin( current_position ) -- This doesn't work because unit will not stick to the ground but rather travel in linear
@@ -172,20 +172,20 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				for _, enemy in pairs(enemies) do
 					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
 				end
-				return nil
+				return
 			else
 				return 1 / intervals_per_second
 			end
 		end)
 	else
 		self:RefundManaCost()
-		-- Exit condition if caster doesn't have enough health 
+		-- Exit condition if caster doesn't have enough health
 		-- This will happen only if the caster has less than 666 max hp, coincidence?
 		local modifier = caster:FindModifierByName(modifier_name)
 		if modifier then
 			modifier:SetDuration(0.1, false)
 		end
-		
+
 		-- Display the error message
 		SendErrorMessage(caster:GetPlayerOwnerID(), "Not enough health to cast this spell.")
 	end

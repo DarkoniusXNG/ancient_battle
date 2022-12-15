@@ -3,30 +3,30 @@ function Diffusal_Purge_Start(event)
 	local target = event.target
 	local caster = event.caster
 	local ability = event.ability
-	local damageType = ability:GetAbilityDamageType()
 	local duration = ability:GetLevelSpecialValueFor("purge_slow_duration", ability:GetLevel() - 1)
+	--local damageType = ability:GetAbilityDamageType()
 	--local summon_damage = ability:GetLevelSpecialValueFor("purge_summoned_damage", ability:GetLevel() - 1)
 	--local damage_table = {}
 	--damage_table.attacker = caster
 	--damage_table.victim = target
 	--damage_table.damage_type = damageType
 	--damage_table.ability = ability
-	
+
 	-- Play cast sound
 	caster:EmitSound("DOTA_Item.DiffusalBlade.Activate")
-	
+
 	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
 	if not target:TriggerSpellAbsorb(ability) and target:GetTeamNumber() ~= caster:GetTeamNumber()  then
 		-- Play hit sound
 		target:EmitSound("DOTA_Item.DiffusalBlade.Target")
-		
+
 		-- Always apply dispel
 		DispelEnemy(target)
-		
+
 		if target:IsHero() then
 			if target:IsRealHero() or target:IsStrongIllusionCustom() then
 				--print("Target is a Real Hero or a Strong Illusion.")
-				
+
 				-- Apply slow only to non spell-immune heroes
 				if not target:IsMagicImmune() then
 					ability:ApplyDataDrivenModifier(caster, target, "item_modifier_custom_purged_enemy_hero", {["duration"] = duration})
@@ -49,6 +49,7 @@ function Diffusal_Purge_Start(event)
 		end
 	end
 end
+
 -- Called when item_modifier_custom_purged_ally is created
 function DispelAlly(event)
 	-- Variables
@@ -61,6 +62,7 @@ function DispelAlly(event)
 	local RemoveExceptions = false
 	target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 end
+
 -- Called inside function Diffusal_Purge_Start
 function DispelEnemy(unit)
 	if unit then

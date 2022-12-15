@@ -38,7 +38,7 @@ function modifier_death_knight_death_pit_effect:OnCreated()
 				heal_reduction = heal_reduction + talent:GetSpecialValueFor("value")
 			end
 		end
-		
+
 		-- Slow should be affected by status resistance
 		self.move_speed_slow = parent:GetValueChangedByStatusResistance(move_speed_slow)
 
@@ -118,8 +118,8 @@ if IsServer() then
 			return
 		end
 
-		-- Check if attacker is something weird
-		if attacker.GetUnitName == nil then
+		-- Check if damaged entity is an item, rune or something weird
+		if damaged_unit.GetUnitName == nil then
 			return
 		end
 
@@ -128,12 +128,17 @@ if IsServer() then
 			return
 		end
 
+		-- Don't affect buildings, wards and invulnerable units. - this is not needed, left it here in case of some random changes in the future
+		if damaged_unit:IsTower() or damaged_unit:IsBarracks() or damaged_unit:IsBuilding() or damaged_unit:IsOther() or damaged_unit:IsInvulnerable() then
+			return
+		end
+
 		-- Check if attacker is dead
 		if not attacker:IsAlive() then
 			return
 		end
 
-		-- Check if damage is 0 or negative 
+		-- Check if damage is 0 or negative
 		if damage <= 0 then
 			return
 		end
@@ -144,24 +149,26 @@ if IsServer() then
 		end
 
 		local lifesteal_percent = self.bonus_lifesteal
-		local heal_amount = lifesteal_percent * damage / 100
+		local lifesteal_amount = lifesteal_percent * damage / 100
 
-		if heal_amount > 0 then
-			attacker:Heal(heal_amount, self:GetAbility())
+		if lifesteal_amount > 0 then
+			local ability = self:GetAbility()
 
-			-- Heal Amount message
-			SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, attacker, heal_amount, nil)
+			-- Lifesteal amount message
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, attacker, lifesteal_amount, nil)
 
-			-- Particle
 			if inflictor then
 				-- Spell Lifesteal
+				attacker:HealWithParams(lifesteal_amount, ability, false, true, attacker, true)
+
 				local particle1 = ParticleManager:CreateParticle("particles/items3_fx/octarine_core_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, attacker)
 				ParticleManager:SetParticleControl(particle1, 0, attacker:GetAbsOrigin())
 				ParticleManager:ReleaseParticleIndex(particle1)
 			else
 				-- Normal Lifesteal
+				attacker:HealWithParams(lifesteal_amount, ability, true, true, attacker, false)
+
 				local particle2 = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, attacker)
-				--ParticleManager:SetParticleControl(particle2, 0, attacker:GetAbsOrigin())
 				ParticleManager:ReleaseParticleIndex(particle2)
 			end
 		end

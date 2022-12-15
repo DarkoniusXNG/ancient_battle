@@ -7,7 +7,7 @@ function HealingSpraySound(keys)
 	target:EmitSound("Hero_Alchemist.AcidSpray")
 
 	-- Stops the sound after the duration; a bit early to ensure the thinker still exists
-	Timers:CreateTimer(duration-0.1, function() 
-		target:StopSound("Hero_Alchemist.AcidSpray") 
+	Timers:CreateTimer(duration-0.1, function()
+		target:StopSound("Hero_Alchemist.AcidSpray")
 	end)
 end

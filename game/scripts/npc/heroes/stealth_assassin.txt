@@ -35,10 +35,10 @@
     "Ability13"                                           "special_bonus_unique_riki_3"        // lvl 15 talent: Smoke Screen cooldown talent
 
     "Ability14"                                           "special_bonus_20_crit_15"          // lvl 20 talent: unique 
-    "Ability15"                                           "special_bonus_unique_witch_doctor_1"       // lvl 20 talent: Death Ward attack range talent;
+    "Ability15"                                           "special_bonus_unique_stealth_assassin_2"       // lvl 20 talent: Death Ward attack range talent;
 
     "Ability16"                                           "special_bonus_agility_40"          // lvl 25 talent: unique
-    "Ability17"                                           "special_bonus_unique_witch_doctor_5"    // lvl 25 talent: Death Ward damage talent
+    "Ability17"                                           "special_bonus_unique_stealth_assassin_1"    // lvl 25 talent: Death Ward damage talent
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------

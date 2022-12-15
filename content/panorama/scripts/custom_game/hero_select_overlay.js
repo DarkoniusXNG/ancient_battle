@@ -1,4 +1,4 @@
-'use strict';
+/* global $, Game, DOTA_GameState, */
 
 function UpdateTimer () {
   const gameTime = Game.GetGameTime();
@@ -16,8 +16,8 @@ function UpdateTimer () {
 
   const bIsInBanPhase = Game.IsInBanPhase();
 
-  banPhaseInstructions.SetHasClass('Visible', bIsInBanPhase == true);
-  pickPhaseInstructions.SetHasClass('Visible', bIsInBanPhase == false);
+  banPhaseInstructions.SetHasClass('Visible', bIsInBanPhase === true);
+  pickPhaseInstructions.SetHasClass('Visible', bIsInBanPhase === false);
 
   $.Schedule(0.1, UpdateTimer);
 }

@@ -1,7 +1,7 @@
 
 		// ******************** BLADEMASTER ********************
 		"DOTA_Tooltip_ability_blademaster_blade_storm"                                    "Blade Storm"
-		"DOTA_Tooltip_ability_blademaster_blade_storm_Description"                        "Causes a bladestorm of destructive force around Blademaster, granting him spell immunity and dealing damage to nearby enemy units and buildings. <br><br><font color='#70EA72'>Blade Storm does %damage_to_buildings%%% damage to buildings. Blademaster is silenced during Blade Storm and can attack normally with no restrictions.</font>\n\nDISPEL TYPE: Basic Dispel"
+		"DOTA_Tooltip_ability_blademaster_blade_storm_Description"                        "Causes a bladestorm of destructive force around Blademaster, granting him spell immunity and dealing damage to nearby enemy units and buildings. <br><br><font color='#70EA72'>Blade Storm does %damage_to_buildings%%% damage to buildings. Blademaster is silenced and immune to magic damage during Blade Storm and he can attack normally with no restrictions.</font>\n\nDISPEL TYPE: Basic Dispel"
 		"DOTA_Tooltip_ability_blademaster_blade_storm_Lore"								  "A simple katana move every blademaster knows. Feared by warriors and sorcerers alike."
 		"DOTA_Tooltip_ability_blademaster_blade_storm_damage_per_second"                  "DAMAGE PER SECOND:"
 		"DOTA_Tooltip_ability_blademaster_blade_storm_radius"                             "RADIUS:"

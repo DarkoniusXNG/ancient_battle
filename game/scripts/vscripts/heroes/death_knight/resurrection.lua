@@ -26,7 +26,7 @@ function death_knight_resurrection:OnSpellStart()
 
 	-- Sound
 	caster:EmitSound("Hero_Abaddon.AphoticShield.Cast")
-	
+
 	-- Particle
 	--"EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
 	--"EffectAttachType"  "follow_origin"
@@ -81,12 +81,12 @@ function death_knight_resurrection:OnSpellStart()
 					resurected:AddNewModifier(caster, nil, "modifier_phased", {duration = 0.03}) -- unit will insta unstuck after this built-in modifier expires.
 					self:FireParticleOnceForUnit(resurected)
 				end
-				
+
 				number_of_resurrections = number_of_resurrections + 1
 			end
 		end
 	end
-	
+
 	-- Aghs scepter allows resurrecting allied heroes
 	if caster:HasScepter() then
 		local allied_heroes = FindUnitsInRadius(
@@ -100,7 +100,7 @@ function death_knight_resurrection:OnSpellStart()
 			FIND_ANY_ORDER,
 			false
 		)
-		
+
 		for _, hero in pairs(allied_heroes) do
 			if hero and not hero:IsNull() then
 				if hero:IsRealHero() and not hero:IsAlive() and not hero:IsReincarnating() and not hero.original then

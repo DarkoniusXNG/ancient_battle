@@ -16,6 +16,7 @@ function pudge_custom_rot:OnToggle()
 		if rot_mod then
 			rot_mod:Destroy()
 		end
+		caster:FadeGesture(ACT_DOTA_CAST_ABILITY_ROT)
 	end
 end
 
@@ -72,7 +73,7 @@ end
 function modifier_pudge_custom_rot_aura_applier:OnCreated()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
-	
+
 	self.radius = 250
 	self.interval = 0.2
 	if ability and not ability:IsNull() then
@@ -83,7 +84,7 @@ function modifier_pudge_custom_rot_aura_applier:OnCreated()
 	if IsServer() then
 		-- Sound
 		parent:EmitSound("Hero_Pudge.Rot")
-		
+
 		-- Particle
 		local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_rot.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
 		ParticleManager:SetParticleControl(nFXIndex, 1, Vector(self:GetAuraRadius(), 1, self:GetAuraRadius()))
@@ -105,17 +106,17 @@ function modifier_pudge_custom_rot_aura_applier:OnIntervalThink()
 	if not IsServer() then
 		return
 	end
-	
+
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
-	
+
 	if not parent or parent:IsNull() or not parent:IsAlive() then
 		return
 	end
-	
+
 	local radius = 250
 	local damage_per_second = 30
-	
+
 	if ability and not ability:IsNull() then
 		damage_per_second = ability:GetSpecialValueFor("damage_per_second")
 		radius = ability:GetSpecialValueFor("radius")
@@ -130,7 +131,7 @@ function modifier_pudge_custom_rot_aura_applier:OnIntervalThink()
 	local target_teams = DOTA_UNIT_TARGET_TEAM_ENEMY or self:GetAuraSearchTeam()
 	local target_types = bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC) or self:GetAuraSearchType()
 	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
-	
+
 	-- Init damage table
 	local damage_table = {}
 	damage_table.attacker = parent
@@ -139,14 +140,14 @@ function modifier_pudge_custom_rot_aura_applier:OnIntervalThink()
 	damage_table.ability = ability
 
 	-- Damage enemies
-	local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_CLOSEST, false)
+	local enemies = FindUnitsInRadius(parent:GetTeamNumber(), parent:GetAbsOrigin(), nil, radius, target_teams, target_types, target_flags, FIND_ANY_ORDER, false)
 	for _, enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() then
 			damage_table.victim = enemy
 			ApplyDamage(damage_table)
 		end
 	end
-	
+
 	-- Damage the parent (caster)
 	damage_table.victim = parent
 	ApplyDamage(damage_table)
@@ -186,7 +187,7 @@ function modifier_pudge_custom_rot_aura_effect:OnCreated()
 		if talent and talent:GetLevel() > 0 then
 			slow = slow - math.abs(talent:GetSpecialValueFor("value"))
 		end
-		
+
 		-- Status Resistance fix
 		self.slow = parent:GetValueChangedByStatusResistance(slow)
 

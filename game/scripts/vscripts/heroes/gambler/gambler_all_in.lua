@@ -34,7 +34,7 @@ function AllInSuccess(event)
 		local gold_damage = math.ceil((current_gold + items_worth)*gold_damage_ratio*0.01)
 
 		-- Cap the damage if it is over the damage cap
-		if gold_damage > damage_cap then  
+		if gold_damage > damage_cap then
 			gold_damage = damage_cap
 		end
 
@@ -74,8 +74,8 @@ end
 
 -- Failed All In, damage is applied to caster, damage is credited to the target
 function AllInFailure(event)
- 	local caster = event.caster
- 	local target = event.target
+	local caster = event.caster
+	local target = event.target
 	local ability = event.ability
 
 	local gold_damage_type = ability:GetAbilityDamageType()
@@ -106,7 +106,7 @@ function AllInFailure(event)
 	local gold_damage = math.ceil((current_gold + items_worth)*gold_damage_ratio*0.01)
 
 	-- Cap the damage if it is over the damage cap.
-	if gold_damage > damage_cap then  
+	if gold_damage > damage_cap then
 		gold_damage = damage_cap
 	end
 

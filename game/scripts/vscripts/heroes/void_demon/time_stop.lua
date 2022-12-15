@@ -36,7 +36,7 @@ end
 -- Called OnCreated and OnIntervalThink (every second)
 function CooldownFreeze(keys)
 	local target = keys.target
-	
+
 	-- Adds 1 second to the current cooldown to every spell off cooldown
 	for i = 0, target:GetAbilityCount()-1 do
 		local target_ability = target:GetAbilityByIndex(i)

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Dark Terminator: Blink - global blink
+  // Dark Terminator: Teleport - global "blink"
   // Author: Darkonius
   // Notes: OK; 2022;
   // TO_DO:

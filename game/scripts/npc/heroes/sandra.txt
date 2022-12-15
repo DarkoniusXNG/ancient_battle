@@ -1,0 +1,68 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Sandra Olivia
+	// TO_DO: ALL
+	//=================================================================================================================
+	"npc_dota_hero_sandra"
+	{
+		"override_hero"                                   "npc_dota_hero_phantom_assassin"
+		
+		// General Override
+		//-------------------------------------------------------------------------------------------------------------
+		"Portrait"		"portrait_sandra"
+		"Role"			"Support,Carry,Durable,Nuker,Initiator"
+		"Rolelevels"	"2,1,3,1,1"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"26"
+		"AttributeStrengthGain"		"2.990000"
+		"AttributeBaseAgility"		"24"
+		"AttributeAgilityGain"		"1.660000"
+		"AttributeBaseIntelligence"		"13"
+		"AttributeIntelligenceGain"		"1.330000"
+
+		// Base Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"			"2.82"
+		"MagicalResistance"		"29"
+		"MovementSpeed"			"283"
+		"VisionDaytimeRange"		"1673"
+		"VisionNighttimeRange"		"942"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"		"60"
+		"AttackDamageMax"		"70"
+		"AttackRate"		"1.860000"
+		"AttackRange"		"100"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityTalentStart"                              "10"
+		"Ability1"                                        "sandra_undeniable_torture"
+		"Ability2"                                        "sandra_ironical_healing"
+		"Ability3"                                        "sandra_will_to_live"
+		"Ability4"                                        "generic_hidden"
+		"Ability5"                                        "generic_hidden"
+		"Ability6"                                        "sandra_sacrifice" // R, Primary Ultimate (3 levels)
+		"Ability7"                                        "generic_hidden"          
+		"Ability8"                                        "generic_hidden"
+		"Ability9"                                        "generic_hidden"
+
+		"Ability10"                                       "special_bonus_attack_damage_60"
+		"Ability11"                                       "special_bonus_mp_regen_2"
+
+		"Ability12"                                       "special_bonus_cast_range_350"
+		"Ability13"                                       "special_bonus_attack_speed_100"
+
+		"Ability14"                                       "special_bonus_spell_block_15"
+		"Ability15"                                       "special_bonus_unique_ironical_healing_duration"
+
+		"Ability16"                                       "special_bonus_unique_will_to_live_tick"
+		"Ability17"                                       "special_bonus_unique_undeniable_torture_lifeshare"
+	}
+}

@@ -64,7 +64,7 @@
 
     // Status
     //----------------------------------------------------------------
-    "StatusHealth"                                        "160"                 // dota Phoenix (100); original (200);
+    "StatusHealth"                                        "720"                 // dota Phoenix (100); original (200);
     "StatusHealthRegen"                                   "0.0"                 // handled by custom_egg_passives
     "StatusMana"                                          "0"
     "StatusManaRegen"                                     "0.0"

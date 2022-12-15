@@ -24,7 +24,7 @@ function modifier_holy_strike_passive:OnCreated()
 	-- Add weapon glow effect when the modifier is created
 	if IsServer() then
 		parent:AddNewModifier(parent, ability, "modifier_holy_strike_passive_weapon_effect", {})
-		self:StartIntervalThink(0.1)
+		self:StartIntervalThink(0)
 	end
 end
 
@@ -35,9 +35,10 @@ function modifier_holy_strike_passive:OnRefresh()
 	if IsServer() then
 		if ability:IsCooldownReady() and not parent:IsSilenced() and not parent:IsHexed() then
 			if ability:GetAutoCastState() == true then
+				-- Autocast is ON
 				parent:AddNewModifier(parent, ability, "modifier_holy_strike_passive_weapon_effect", {})
 			else
-				-- Autocast is off
+				-- Autocast is OFF
 				parent:RemoveModifierByName("modifier_holy_strike_passive_weapon_effect")
 				-- manual cast? doesn't work but don't remove
 				if self.manual_cast then
@@ -51,19 +52,15 @@ function modifier_holy_strike_passive:OnRefresh()
 end
 
 function modifier_holy_strike_passive:OnIntervalThink()
-	if IsServer() then
-		self:ForceRefresh()
-	end
+	self:OnRefresh()
 end
 
 function modifier_holy_strike_passive:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
 		MODIFIER_EVENT_ON_ATTACK,
-		MODIFIER_EVENT_ON_ATTACK_LANDED
+		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-
-	return funcs
 end
 
 function modifier_holy_strike_passive:GetModifierAttackRangeBonus()
@@ -106,7 +103,6 @@ if IsServer() then
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 		local attacker = event.attacker
-		local target = event.target
 
 		-- Don't continue if the attacker doesn't exist
 		if not attacker or attacker:IsNull() then
@@ -115,6 +111,11 @@ if IsServer() then
 
 		-- Check if attacker has this modifier
 		if attacker ~= parent then
+			return
+		end
+
+		-- Check if the attacker is an illusion
+		if attacker:IsIllusion() then
 			return
 		end
 
@@ -130,7 +131,7 @@ if IsServer() then
 		if event then
 			local attacker = event.attacker or self:GetParent()
 			local target = event.target
-			local ability = self:GetAbility()	
+			local ability = self:GetAbility()
 			local attack_damage = event.original_damage
 
 			-- Don't continue if attacked entity doesn't exist
@@ -146,11 +147,6 @@ if IsServer() then
 
 			-- If the attack target is a building or a ward then stop (return)
 			if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
-				return
-			end
-
-			-- If the attacker is an illusion then stop (return)
-			if attacker:IsIllusion() then
 				return
 			end
 

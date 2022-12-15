@@ -107,7 +107,7 @@ function modifier_custom_ranger_aura_effect:OnCreated()
 		if talent1 and talent1:GetLevel() > 0 then
 			percent = percent + talent1:GetSpecialValueFor("value")
 		end
-		
+
 		-- Talent that provides attack range
 		local talent2 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_3")
 		if talent2 and talent2:GetLevel() > 0 then
@@ -117,7 +117,7 @@ function modifier_custom_ranger_aura_effect:OnCreated()
 
 	self.attack_range = attack_range
 	self.bonus_damage = math.ceil(agility * percent / 100)
-	
+
 	self:StartIntervalThink(1)
 end
 
@@ -147,7 +147,7 @@ function modifier_custom_ranger_aura_effect:OnRefresh()
 		if talent1 and talent1:GetLevel() > 0 then
 			percent = percent + talent1:GetSpecialValueFor("value")
 		end
-		
+
 		-- Talent that provides attack range
 		local talent2 = self.caster:FindAbilityByName("special_bonus_unique_dark_ranger_3")
 		if talent2 and talent2:GetLevel() > 0 then
