@@ -28,10 +28,10 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_intelligence_25"      // lvl 10 talent: slightly better than dota QoP
-    "Ability11"                                           "special_bonus_strength_10"        // lvl 10 talent: slightly worse than dota QoP
+    "Ability10"                                           "special_bonus_intelligence_25"      // lvl 10 talent:
+    "Ability11"                                           "special_bonus_strength_10"        // lvl 10 talent:
 
-    "Ability12"                                           "special_bonus_attack_speed_30"      // lvl 15 talent: same as dota QoP
+    "Ability12"                                           "special_bonus_attack_speed_30"      // lvl 15 talent:
     "Ability13"                                           "special_bonus_cooldown_reduction_12"  // lvl 15 talent: unique
 
     "Ability14"                                           "special_bonus_unique_queen_of_pain_2"  // lvl 20 talent: Scream of Pain damage talent

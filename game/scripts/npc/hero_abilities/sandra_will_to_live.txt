@@ -24,56 +24,29 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage_delay"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_delay"			"60 50 40 30"
+				"value"                                   "60 50 40 30"
+				"special_bonus_unique_will_to_live_tick"  "-10"
 			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"threshold_base"		"9 13 17 21"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"threshold_stack"		"5"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"threshold_stack_creep"		"1"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"stack_duration"		"4 5 6 7"
-			}
+			"threshold_base"                              "5 10 15 20"
+			"threshold_stack"                             "2"
+			"threshold_stack_creep"                       "1"
+			"stack_duration"                              "6"
 		}
 	}
 	
 	//=================================================================================================================
-	// Will to Live talent: -10% damage per tick
+	// Will to Live talent: Decreases damage per tick
 	//=================================================================================================================
 	"special_bonus_unique_will_to_live_tick"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"special_bonus_undefined"
+		"BaseClass"						"special_bonus_base"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"value"				        "-10"
-			}
-		}
 	}
 }

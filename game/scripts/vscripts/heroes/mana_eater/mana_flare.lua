@@ -1,6 +1,4 @@
-﻿if mana_eater_mana_flare == nil then
-	mana_eater_mana_flare = class({})
-end
+﻿mana_eater_mana_flare = class({})
 
 LinkLuaModifier("modifier_mana_eater_mana_flare_buff_aura", "heroes/mana_eater/mana_flare.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_mana_eater_mana_flare_aura_effect", "heroes/mana_eater/mana_flare.lua", LUA_MODIFIER_MOTION_NONE)
@@ -18,7 +16,7 @@ function mana_eater_mana_flare:OnSpellStart()
 		-- Remove the buff
 		caster:RemoveModifierByName("modifier_mana_eater_mana_flare_buff_aura")
 		-- Sound stop
-		caster:StopSound("Hero_Juggernaut.HealingWard.Loop")
+		--caster:StopSound("Hero_Juggernaut.HealingWard.Loop")
 		-- Go on cooldown
 		--local cooldown = self:GetSpecialValueFor("cooldown") * caster:GetCooldownReduction()
 		--self:StartCooldown(cooldown)
@@ -108,7 +106,7 @@ end
 modifier_mana_eater_mana_flare_buff_aura = class({})
 
 function modifier_mana_eater_mana_flare_buff_aura:IsHidden()
-  return true
+  return false -- needs tooltip
 end
 
 function modifier_mana_eater_mana_flare_buff_aura:IsDebuff()
@@ -123,16 +121,18 @@ function modifier_mana_eater_mana_flare_buff_aura:OnCreated()
 	self.armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
 end
 
-function modifier_mana_eater_mana_flare_buff_aura:OnDestroy()
-	local caster = self:GetCaster()
-	if caster and not caster:IsNull() then
-		-- Sound stop
-		caster:StopSound("Hero_Juggernaut.HealingWard.Loop")
-		local ability = self:GetAbility()
-		if ability and not ability:IsNull() then
-			-- Start cooldown
-			local cooldown = ability:GetSpecialValueFor("cooldown") * caster:GetCooldownReduction()
-			ability:StartCooldown(cooldown)
+if IsServer() then
+	function modifier_mana_eater_mana_flare_buff_aura:OnDestroy()
+		local caster = self:GetCaster()
+		if caster and not caster:IsNull() then
+			-- Sound stop
+			caster:StopSound("Hero_Juggernaut.HealingWard.Loop")
+			local ability = self:GetAbility()
+			if ability and not ability:IsNull() then
+				-- Start cooldown
+				local cooldown = ability:GetSpecialValueFor("cooldown") * caster:GetCooldownReduction()
+				ability:StartCooldown(cooldown)
+			end
 		end
 	end
 end
@@ -158,7 +158,7 @@ function modifier_mana_eater_mana_flare_buff_aura:GetEffectName()
 end
 
 function modifier_mana_eater_mana_flare_buff_aura:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW 
+	return PATTACH_ABSORIGIN_FOLLOW
 end
 
 function modifier_mana_eater_mana_flare_buff_aura:IsAura()
@@ -197,10 +197,6 @@ function modifier_mana_eater_mana_flare_aura_effect:IsPurgable()
   return false
 end
 
-function modifier_mana_eater_mana_flare_aura_effect:OnCreated()
-	
-end
-
 function modifier_mana_eater_mana_flare_aura_effect:DeclareFunctions()
   return {
     MODIFIER_EVENT_ON_SPENT_MANA,
@@ -212,6 +208,8 @@ if IsServer() then
 		local parent = self:GetParent()
 		local caster = self:GetCaster()
 		local ability = self:GetAbility()
+		
+		PrintTable(event)
 
 		-- Check if unit that spent mana has this modifier
 		if event.unit ~= parent then
@@ -224,9 +222,9 @@ if IsServer() then
 		if not cast_ability then
 			return
 		end
-		
+
 		local mana_cost = cast_ability:GetManaCost(cast_ability:GetLevel() - 1)
-		
+
 		-- Check if its mana cost is zero, we don't know actual mana spent, lets presume it's the same
 		if mana_cost <= 0 then
 			return

@@ -23,7 +23,7 @@
 
     "AbilityCastPoint"                                    "0.0"                 // was 0.75
     "AbilityCooldown"                                     "0.5"
-    "AbilityManaCost"                                     "50"                  // Nether Ward (80); original (50);
+    "AbilityManaCost"                                     "0"                  // Nether Ward (80); original (50);
     "AbilityProcsMagicStick"                              "1"
 
     "AbilitySpecial"

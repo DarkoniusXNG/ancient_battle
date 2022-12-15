@@ -29,6 +29,9 @@ function dark_terminator_crit:OnSpellStart()
 		return
 	end
 
+	-- Add a crit buff
+	local buff = caster:AddNewModifier(caster, self, "modifier_dark_terminator_crit_attack", {})
+
 	local count = 0
 	Timers:CreateTimer(function()
 		if not caster or caster:IsNull() then
@@ -37,22 +40,26 @@ function dark_terminator_crit:OnSpellStart()
 		if not caster:IsAlive() then
 			return
 		end
+		local timer_interval = FrameTime() -- if the enemy is not attackable then use the shortest attack interval possible
 		local enemy = enemies[count]
 		if enemy and not enemy:IsNull() then
 			if enemy:IsAlive() and not enemy:IsAttackImmune() and caster:CanEntityBeSeenByMyTeam(enemy) and not caster:IsDisarmed() then
-				-- Add a crit before the instant attack
-				local buff = caster:AddNewModifier(caster, self, "modifier_dark_terminator_crit_attack", {})
+				-- Turn the caster towards the enemy
+				local direction = (enemy:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized()
+				caster:SetForwardVector(direction)
 				-- Instant attack
-				caster:PerformAttack(enemy, true, true, true, false, false, false, false)
-				-- Remove the crit when the instant attack is over
-				buff:Destroy()
+				caster:PerformAttack(enemy, true, true, true, false, true, false, false)
+				-- Increase timer interval
+				timer_interval = attack_interval
 			end
 		end
 		count = count + 1
 		if count > max_count then
+			-- Remove the crit buff
+			buff:Destroy()
 			return
 		end
-		return attack_interval
+		return timer_interval
 	end)
 end
 
@@ -85,6 +92,8 @@ function modifier_dark_terminator_crit_attack:DeclareFunctions()
 		MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE,
 		MODIFIER_PROPERTY_PROJECTILE_NAME,
 		MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_DISABLE_TURNING,
 	}
 end
 
@@ -124,4 +133,22 @@ end
 
 function modifier_dark_terminator_crit_attack:GetAttackSound()
 	return "Hero_Gyrocopter.FlackCannon"
+end
+
+-- To prevent auto-attacks while the caster has the buff
+function modifier_dark_terminator_crit_attack:GetModifierAttackSpeedBonus_Constant()
+	return -1400
+end
+
+-- To prevent turning/twitching/twerking caused by player input while the caster has the buff
+function modifier_dark_terminator_crit_attack:GetModifierDisableTurning()
+	return 1
+end
+
+function modifier_dark_terminator_crit_attack:GetEffectName()
+	return "particles/units/heroes/hero_gyrocopter/gyro_flak_cannon_overhead.vpcf"
+end
+
+function modifier_dark_terminator_crit_attack:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
 end

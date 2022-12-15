@@ -1,4 +1,4 @@
-LinkLuaModifier("modifier_sohei_momentum_passive", "abilities/sohei/sohei_momentum.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_sohei_momentum_passive", "heroes/sohei/sohei_momentum.lua", LUA_MODIFIER_MOTION_NONE)
 
 sohei_momentum = class({})
 

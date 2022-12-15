@@ -1,7 +1,7 @@
 
 		// ******************** QUEEN OF PAIN ********************
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike"                           "Shadow Gale"
-		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_Description"               "Hurls poisoned daggers in a line which deals large initial damage, and then deals damage over time to any unit it touches. Poisoned units have their movement speed slowed for %AbilityDuration% seconds. An instance of damage is dealt every %damage_interval% seconds."
+		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_Description"               "Hurls poisoned daggers in a line which deals large initial damage, and then deals damage over time to any unit it touches. Poisoned units have their movement speed slowed for %duration% seconds. An instance of damage is dealt every %damage_interval% seconds. Queen of Pain relishes in the pain inflicted, healing every time enemies take damage from Shadow Gale. Creeps heal for half the damage."
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_Lore"                      "Akasha's envenomed dagger allows her to delight in the drawn out suffering of her victims."
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_Note0"                     "The affected unit slowly regains its original movement speed every second during the duration."
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_Note1"                     "Units afflicted by Shadow Gale can be denied by their allies when their HP drops below 25% of their maximum health."
@@ -11,8 +11,8 @@
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_projectile_speed"          "PROJECTILE SPEED:"
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_distance"                  "PROJECTILE DISTANCE:"
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_radius"                    "PROJECTILE WIDTH:"
-		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_duration_tooltip"          "DURATION:"
 		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_duration"                  "DURATION:"
+		"DOTA_Tooltip_ability_queenofpain_custom_shadow_strike_scepter_description"       "Increases initial damage. When Shadow Strike ends or is re-applied to an enemy hero, the target emits a Scream of Pain, hitting any nearby enemies."
 
 		"DOTA_Tooltip_ability_queenofpain_custom_scream_of_terror"                        "Scream Of Terror"
 		"DOTA_Tooltip_ability_queenofpain_custom_scream_of_terror_Description"            "Lets loose a terrifying scream that reduces enemy base attack damage and armor."

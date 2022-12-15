@@ -188,7 +188,10 @@ if IsServer() then
 
 		caster:SetForceAttackTarget(nil)
 
-		self:GetAbility():SetActivated(true)
+		local ability = self:GetAbility()
+		if ability and not ability:IsNull() then
+			ability:SetActivated(true)
+		end
 		caster:SetParent(nil, "attach_origin")
 		caster:SetAngles(0, caster:GetAngles().y, 0)
 		FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)

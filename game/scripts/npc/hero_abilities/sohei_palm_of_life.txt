@@ -11,11 +11,10 @@
     "ScriptFile"                                          "heroes/sohei/sohei_palm_of_life.lua"
     "AbilityTextureName"                                  "custom/ronin_palm_of_life"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO" // this is for UI tooltip
-    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
@@ -43,7 +42,6 @@
     {
       "particle"                                          "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
       "soundfile"                                         "soundevents/units/game_sounds_sohei.vsndevts"
-      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
     }
 
     // Special

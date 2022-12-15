@@ -23,6 +23,7 @@
 		"npc_dota_hero_riki"                                                    "Stealth Assassin"
 		"npc_dota_hero_rubick"                                                  "Gambler"
 		"npc_dota_hero_silencer"                                                "Silencer"
+		"npc_dota_hero_sniper"                                                  "Dark Terminator"
 		"npc_dota_hero_spirit_breaker"                                          "Astral Trekker"
 		
 		"npc_dota_hero_custom_axe"                                              "Axe"

@@ -34,9 +34,9 @@
   "npc_dota_hero_lina"                                    "0"
   "npc_dota_hero_mirana"                                  "0"
   "npc_dota_hero_monkey_king"                             "0"
-  "npc_dota_hero_naga_siren"                              "1" // Sona
+  "npc_dota_hero_naga_siren"                              "0" // Sona
   "npc_dota_hero_ogre_magi"                               "0"
-  "npc_dota_hero_phantom_assassin"                        "1" // Sandra Olivia
+  "npc_dota_hero_phantom_assassin"                        "1" // Sandra
   "npc_dota_hero_razor"                                   "0"
   "npc_dota_hero_skeleton_king"                           "0"
   "npc_dota_hero_spectre"                                 "0"

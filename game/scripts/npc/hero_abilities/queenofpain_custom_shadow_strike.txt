@@ -20,6 +20,8 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     "AbilitySound"                                        "Hero_QueenOfPain.ShadowStrike"
 
+	"HasScepterUpgrade"                                   "1"
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "800"                       // Venomous Gale (800);
@@ -27,7 +29,6 @@
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
     "AbilityCooldown"                                     "16 14 12 10"               // Shadow Strike (16/12/8/4);
-    "AbilityDuration"                                     "15"                        // Shadow Strike (15);
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
@@ -70,7 +71,7 @@
       "ApplyModifier"
       {
         "Target"                                          "TARGET"
-        "Duration"                                        "%AbilityDuration"
+        "Duration"                                        "%duration"
         "ModifierName"                                    "modifier_queenofpain_shadow_strike"      
       }
 
@@ -84,49 +85,6 @@
 
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    // "AbilitySpecial"
-    // {
-      // "01" // Shadow Strike (30/60/90/120); Venomous Gale (25/50/75/100);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "strike_damage"      "50 75 100 125"
-      // }
-      // "02" // Shadow Strike (20/40/60/80); Venomous Gale (15/45/75/105);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "duration_damage"    "40 60 80 100"
-      // }
-      // "03" // Shadow Strike (20/35/50/65%);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "movement_slow"      "-20 -30 -40 -50"
-      // }
-      // "04" // Shadow Strike (900); Venomous Gale (1200);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "projectile_speed"    "1100"
-      // }  
-      // "05" // Shadow Strike (15); Venomous Gale (15);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "duration_tooltip"    "15"
-      // }
-      // "06" // Shadow Strike (3); Venomous Gale (3);
-      // {
-        // "var_type"        "FIELD_FLOAT"
-        // "damage_interval"    "3.0"
-      // }
-      // "07" // Venomous Gale (850);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "distance"        "850"
-      // }
-      // "08" // Venomous Gale (125);
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "radius"        "150"
-      // }
-    // }
     "AbilityValues"
     {
       "strike_damage" // Shadow Strike (30/60/90/120); Venomous Gale (25/50/75/100);
@@ -134,7 +92,7 @@
         "value"                                           "50 75 100 125"
         "special_bonus_scepter"                           "+80"
       }
-      "duration_damage"                                   "40 60 80 100" // Shadow Strike (20/40/60/80); Venomous Gale (15/45/75/105);
+      "duration_damage"                                   "30 50 70 90" // Shadow Strike (20/40/60/80); Venomous Gale (15/45/75/105);
       "movement_slow"                                     "-20 -30 -40 -50" // Shadow Strike (20/35/50/65%);
       "projectile_speed"                                  "1100" // Shadow Strike (900); Venomous Gale (1200);
       "damage_interval" // Shadow Strike (3); Venomous Gale (3);
@@ -149,7 +107,7 @@
         "special_bonus_scepter"                           "+1"
       }
       "duration"                                          "15" // Shadow Strike (15); Venomous Gale (15);
-      "distance"                                          "850" // Venomous Gale (850);
+      "distance"                                          "800" // Venomous Gale (800 + 125);
       "radius"                                            "150" // Venomous Gale (125);
     }
   }

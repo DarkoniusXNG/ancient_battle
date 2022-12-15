@@ -14,7 +14,7 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
 			"particle"	"particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
 			"particle"	"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_explode.vpcf"
-			"particle"	"particles/units/heroes/hero_sandra/sandra_undeniable_torture.vpcf"
+			//"particle"	"particles/units/heroes/hero_sandra/sandra_undeniable_torture.vpcf"
 		}
 		
 		// Ability General
@@ -30,56 +30,33 @@
 
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"6.1"
+		"AbilityCooldown"				"8"
 		"AbilityManaCost"				"97"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"lifesteal"				"100"
+			"lifeshare"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lifesteal"				"102"
+				"value"                                             "85 90 95 100"
+				"special_bonus_unique_undeniable_torture_lifeshare" "+50"
 			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"lifeshare"				"68 91 114 137"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"max_channel"			"6"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"313 361 409 457"
-			}
+			"max_channel"			"6"
+			"radius"				"350 375 400 425"
 		}
 	}
 
 	//=================================================================================================================
-	// Undeniable Torture talent: +53% shared damage
+	// Undeniable Torture talent: bonus shared damage
 	//=================================================================================================================
 	"special_bonus_unique_undeniable_torture_lifeshare"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"special_bonus_undefined"
+		"BaseClass"						"special_bonus_base"
 		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"value"					    "53"
-			}
-		}
 	}
 }
