@@ -18,11 +18,11 @@ function sohei_flurry_of_blows:OnSpellStart()
   end
 
   -- Talent that increases max number of attacks and max duration
-  local talent2 = caster:FindAbilityByName("special_bonus_unique_sohei_8")
-  if talent2 and talent2:GetLevel() > 0 then
-    max_attacks = max_attacks + talent2:GetSpecialValueFor("value")
-    max_duration = max_duration + talent2:GetSpecialValueFor("value2")
-  end
+  -- local talent2 = caster:FindAbilityByName("special_bonus_unique_sohei_8")
+  -- if talent2 and talent2:GetLevel() > 0 then
+    -- max_attacks = max_attacks + talent2:GetSpecialValueFor("value")
+    -- max_duration = max_duration + talent2:GetSpecialValueFor("value2")
+  -- end
 
   -- Emit sound
   caster:EmitSound("Hero_EmberSpirit.FireRemnant.Cast")

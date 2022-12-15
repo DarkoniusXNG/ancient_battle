@@ -208,8 +208,6 @@ if IsServer() then
 		local parent = self:GetParent()
 		local caster = self:GetCaster()
 		local ability = self:GetAbility()
-		
-		PrintTable(event)
 
 		-- Check if unit that spent mana has this modifier
 		if event.unit ~= parent then

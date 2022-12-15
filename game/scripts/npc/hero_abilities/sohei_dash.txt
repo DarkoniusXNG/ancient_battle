@@ -31,7 +31,7 @@
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "40 45 50 55"
+    "AbilityManaCost"                                     "40 45 50 55" // Mirana Leap (40)
 
     // Precache
     //-------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@
       "dash_width"                                        "175"
       "dash_range" // max Dash range
       {
-        "value"                                           "600"
+        "value"                                           "575"
         "LinkedSpecialBonus"                              "special_bonus_sohei_dash_cast_range"
       }
       "damage"
@@ -132,7 +132,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "200"
+        "value"                                           "125"
       }
     }
   }

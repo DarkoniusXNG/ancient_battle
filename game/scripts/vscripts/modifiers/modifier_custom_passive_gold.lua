@@ -21,7 +21,7 @@ function modifier_custom_passive_gold:OnCreated()
 		self:Destroy()
 		return
 	end
-	local gpm = 100
+	local gpm = 105
 	if gpm ~= 0 then
 		self.goldTickTime = 60/gpm
 		self.goldPerTick = 1
@@ -40,6 +40,7 @@ function modifier_custom_passive_gold:OnIntervalThink()
 	local parent = self:GetParent()
 	local game_state = GameRules:State_Get()
 	if game_state >= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-		parent:ModifyGold(self.goldPerTick, false, DOTA_ModifyGold_GameTick)
+		--parent:ModifyGold(self.goldPerTick, false, DOTA_ModifyGold_GameTick)
+		PlayerResource:ModifyGold(parent:GetPlayerID(), self.goldPerTick, false, DOTA_ModifyGold_Unspecified)
 	end
 end

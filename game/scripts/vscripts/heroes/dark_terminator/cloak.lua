@@ -110,6 +110,6 @@ function modifier_dark_terminator_cloak:CheckState()
 	return state
 end
 
-function modifier_dark_terminator_cloak:GetPriority()
-  return MODIFIER_PRIORITY_ULTRA
-end
+--function modifier_dark_terminator_cloak:GetPriority()
+  --return MODIFIER_PRIORITY_ULTRA
+--end

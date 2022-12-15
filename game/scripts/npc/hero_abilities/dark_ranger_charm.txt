@@ -12,6 +12,7 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/dark_ranger_charm"
+
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
     

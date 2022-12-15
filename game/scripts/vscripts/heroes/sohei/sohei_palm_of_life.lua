@@ -51,13 +51,13 @@ function sohei_palm_of_life:OnSpellStart()
 			local RemoveStuns = false
 			local RemoveExceptions = false
 			target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
-			
+
 			-- Sound
 			target:EmitSound("Sohei.PalmOfLife.Damage")
 
 			local base_damage = self:GetSpecialValueFor("base_damage")
 			local caster_str = caster:GetStrength()
-			local victim_str 
+			local victim_str
 			if target.GetStrength then
 				victim_str = target:GetStrength()
 			else

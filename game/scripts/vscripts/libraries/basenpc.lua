@@ -112,11 +112,12 @@ if CDOTA_BaseNPC then
       "modifier_winter_wyvern_winters_curse",
       "modifier_winter_wyvern_winters_curse_aura",					-- doesn't pierce BKB
       -- custom:
-      "modifier_mana_transfer_leash_debuff",
+      "modifier_bakedanuki_futatsuiwas_curse",
       "modifier_custom_enfeeble_debuff",
       "modifier_custom_rupture",
       "modifier_entrapment",
       "modifier_incinerate_stack",
+      "modifier_mana_transfer_leash_debuff",
       "modifier_purge_enemy_creep",
       "modifier_purge_enemy_hero",
       "modifier_time_stop",
@@ -177,10 +178,13 @@ if CDOTA_BaseNPC then
       "modifier_drunken_fist_bonus",
       "modifier_drunken_fist_knockback",
       "modifier_giant_growth_active",
+      "modifier_mana_eater_mana_flare_buff_aura",
       "modifier_mass_haste_buff",
       "modifier_paladin_divine_shield",
       "modifier_paladin_divine_shield_upgraded",
       "modifier_roulette_caster_buff",
+      "modifier_sohei_flurry_self",
+      "modifier_sohei_guard_reflect",
       "modifier_time_slow_aura_applier",
     }
 

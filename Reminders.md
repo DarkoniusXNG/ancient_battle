@@ -10,4 +10,5 @@ DestroyParticle(particleID) if particle is not being destroyed by itself.
 8) DeclareFunctions() and CheckState() don't need: 'local funcs = {...}' or 'local state = {...}', just do 'return {...}' 
 if there are no special conditions.
 9) Don't do 'return nil', doing 'return' is enough.
+10) OnSpentMana event doesn't work with in WTF mode.
 

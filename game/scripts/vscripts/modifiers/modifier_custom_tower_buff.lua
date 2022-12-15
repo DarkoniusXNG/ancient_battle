@@ -36,7 +36,7 @@ function modifier_custom_tower_buff:DeclareFunctions()
 end
 
 function modifier_custom_tower_buff:GetModifierExtraHealthBonus()
-	return 3*(self.parentMaxHealth)
+	return 3.5*(self.parentMaxHealth)
 end
 
 function modifier_custom_tower_buff:GetModifierBaseAttack_BonusDamage()

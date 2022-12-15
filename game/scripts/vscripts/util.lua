@@ -68,7 +68,7 @@ end
 function HideWearables(hero)
 	hero.hiddenWearables = {} -- Keep every wearable handle in a table to show them later
 	local model = hero:FirstMoveChild()
-	while model ~= nil do
+	while model do
 		if model:GetClassname() == "dota_item_wearable" then
 			model:AddEffects(EF_NODRAW) -- Set model hidden
 			table.insert(hero.hiddenWearables, model)
@@ -80,7 +80,7 @@ end
 -- This function unhides/shows wearables that were hidden with HideWearables() function.
 -- Author: Noya
 function ShowWearables(hero)
-	for i,v in pairs(hero.hiddenWearables) do
+	for _, v in pairs(hero.hiddenWearables) do
 		v:RemoveEffects(EF_NODRAW)
 	end
 end
@@ -89,7 +89,7 @@ end
 -- Author: Noya
 function SwapWearable(unit, target_model, new_model)
     local wearable = unit:FirstMoveChild()
-    while wearable ~= nil do
+    while wearable do
         if wearable:GetClassname() == "dota_item_wearable" then
             if wearable:GetModelName() == target_model then
                 wearable:SetModel(new_model)
@@ -127,12 +127,15 @@ end
 ]]
 function HideAndCopyHero(target, caster)
 	if target and caster then
-		-- Hiding
+		-- Hiding on the spot
 		target:Interrupt()
 		target:InterruptChannel()
 		target:AddNoDraw() -- needed for hiding the original hero
 
-		-- Moving the target (original hero) to the corner of the map
+		-- Create a copy at the original's location
+		local copy = CopyHero(target, caster)
+
+		-- Hide the original in the corner of the map
 		local corner
 		if GetMapName() == "two_vs_two" then
 			corner = Vector(2300,-2300,-322)
@@ -143,7 +146,7 @@ function HideAndCopyHero(target, caster)
 
 		local hidden_modifiers = {
 			"modifier_firelord_arcana",
-			"modifier_not_removed_with_super_strong_dispel_or_custom_passive_break"
+			"modifier_not_removed_with_super_strong_dispel_or_custom_passive_break",
 		}
 
 		-- Remove all buffs and debuffs from the target
@@ -157,7 +160,7 @@ function HideAndCopyHero(target, caster)
 			target:RemoveModifierByName(hidden_modifiers[i])
 		end
 
-		return CopyHero(target, caster)
+		return copy
 	else
 		print("target or caster are nil values.")
 		return
@@ -320,8 +323,8 @@ function HideTheCopyPermanently(copy)
 		end
 		copy:AddNoDraw() 	-- Hiding the hero
 		HideWearables(copy)	-- Hiding hats/wearables if some are still visible
-		-- Remove most buffs and most debuffs with Super Strong Dispel
-		SuperStrongDispel(copy, true, true)
+		-- Remove 99% of modifiers
+		copy:AbsolutePurge()
 		-- Remove passive modifiers with Custom Break
 		CustomPassiveBreak(copy, 100)
 		-- Cycle through hidden modifiers and remove them (Death, SuperStrongDispel and CustomPassiveBreak remove most modifiers but we need to make sure for remaining modifiers)
@@ -348,12 +351,13 @@ end
 function UnhideOriginalOnLocation(original, location)
 	if original then
 		original:RemoveNoDraw()	-- Unhiding the hero
-		if location~= nil then
+		if location then
 			original:SetAbsOrigin(location) -- Moving the original to location instantly
 		else
 			print("Original is revealed at the location where it was hidden")
+			location = original:GetAbsOrigin()
 		end
-		FindClearSpaceForUnit(original, original:GetAbsOrigin(), false)
+		FindClearSpaceForUnit(original, location, false)
 
 		-- List of auras and abilities with visual effect
 		local hidden_abilities = {
@@ -552,11 +556,10 @@ function CustomItemEnable(caster, unit)
 end
 
 --[[ This function applies strong dispel and removes almost all debuffs;
-	Can remove most buffs that are not removable with basic dispel;
 	Can remove most debuffs that are not removable with strong dispel;
 	Used in many abilities, HideAndCopyHero, HideTheCopyPermanently, ...
 ]]
-function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuffs)
+function SuperStrongDispel(target, bRemoveAlmostAllDebuffs, bRemoveDispellableBuffs)
 	if target then
 		local BuffsCreatedThisFrameOnly = false
 		local RemoveExceptions = false
@@ -568,7 +571,7 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 			end
 		end
 
-		if bCustomRemoveAllDebuffs == true then
+		if bRemoveAlmostAllDebuffs == true then
 
 			RemoveStuns = true -- this ensures removing modifiers debuffs with "IsStunDebuff" "1"
 
@@ -600,65 +603,16 @@ function SuperStrongDispel(target, bCustomRemoveAllDebuffs, bCustomRemoveAllBuff
 			RemoveTableOfModifiersFromUnit(target, item_debuffs)
 
 			-- Exceptions:
-			-- modifier_charmed_hero       			(Dark Ranger Charm - not advisable)
-			-- modifier_incinerate_stack   			(Fire Lord Incinerate - not advisable)
-			-- modifier_custom_rupture              (Blood Mage Rupture - it would be lame if dispellable)
-			-- modifier_bloodseeker_rupture 		- || -
-			-- modifier_doom_bringer_doom			- || -
-			-- modifier_mana_transfer_leash_debuff  (Mana Transfer/Drain leash)
+			-- modifier_charmed_hero                           (Dark Ranger Charm - not advisable)
+			-- modifier_incinerate_stack                       (Fire Lord Incinerate - not advisable)
+			-- modifier_custom_rupture                         (Blood Mage Rupture - it would be lame if dispellable)
+			-- modifier_bloodseeker_rupture                    -- it would be lame
+			-- modifier_doom_bringer_doom                      -- it would be lame
+			-- modifier_mana_transfer_leash_debuff             (Mana Transfer/Drain leash)
+			-- modifier_bakedanuki_futatsuiwas_curse           -- it would be lame
 		end
 
-		if bCustomRemoveAllBuffs == true then
-			-- List of undispellable buffs that are safe to remove without making errors, crashes etc.
-			local ability_buffs = {
-				"modifier_alchemist_chemical_rage",
-				"modifier_axe_berserkers_call_armor",
-				-- custom:
-				"modifier_absorb_bonus_mana_scepter",
-				"modifier_custom_blade_storm",
-				"modifier_custom_chemical_rage_buff",
-				"modifier_custom_death_pact",
-				"modifier_custom_marksmanship_buff",
-				"modifier_custom_rage_buff",
-				"modifier_drunken_fist_bonus",
-				"modifier_drunken_fist_knockback",
-				"modifier_giant_growth_active",
-				"modifier_mass_haste_buff",
-				"modifier_paladin_divine_shield",
-				"modifier_paladin_divine_shield_upgraded",
-				"modifier_roulette_caster_buff",
-				"modifier_time_slow_aura_applier",
-			}
-
-			local item_buffs = {
-				"modifier_black_king_bar_immune",					-- Black King Bar (built-in)
-				"modifier_item_blade_mail_reflect",
-				"modifier_item_book_of_shadows_buff",
-				"modifier_item_hood_of_defiance_barrier",
-				"modifier_item_invisibility_edge_windwalk",
-				"modifier_item_lotus_orb_active",
-				"modifier_item_pipe_barrier",
-				"modifier_item_satanic_unholy",
-				"modifier_item_shadow_amulet_fade",
-				"modifier_item_silver_edge_windwalk",
-				"modifier_item_sphere_target",                    	-- Linken's Sphere transferred buff
-				"modifier_rune_invis",
-				-- custom:
-				"item_modifier_forgotten_king_bar_damage_shield",
-				"modifier_infused_robe_damage_barrier",
-				"modifier_item_custom_butterfly_active",
-				"modifier_item_custom_heart_active",
-				"modifier_item_orb_of_reflection_active_reflect",
-				"modifier_item_stoneskin_active",
-				"modifier_pull_staff_active_buff",
-				"modifier_slippers_of_halcyon_caster",				-- Slippers of Halcyon Active
-			}
-
-			RemoveTableOfModifiersFromUnit(target, ability_buffs)
-			RemoveTableOfModifiersFromUnit(target, item_buffs)
-		end
-
-		target:Purge(bCustomRemoveAllBuffs, bCustomRemoveAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+		target:Purge(bRemoveDispellableBuffs, bRemoveAlmostAllDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 	else
 		print("Target for Super Strong Dispel is nil.")
 	end
