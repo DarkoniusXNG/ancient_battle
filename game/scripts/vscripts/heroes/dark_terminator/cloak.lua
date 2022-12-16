@@ -99,12 +99,12 @@ function modifier_dark_terminator_cloak:CheckState()
 	local state = {
 		--[MODIFIER_STATE_NO_UNIT_COLLISION] = true, -- it's not part of the ability on purpose
 		[MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES] = true,
-		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,
 	}
 
 	if self:GetElapsedTime() >= self.fade_time then
 		state[MODIFIER_STATE_INVISIBLE] = true
+		state[MODIFIER_STATE_NO_HEALTH_BAR] = true
 	end
 
 	return state

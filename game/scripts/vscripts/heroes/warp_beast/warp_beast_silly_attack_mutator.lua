@@ -1,11 +1,12 @@
 LinkLuaModifier("modifier_silly_attack_mutator", "scripts/vscripts/heroes/warp_beast/warp_beast_silly_attack_mutator.lua", LUA_MODIFIER_MOTION_NONE)
 
-
 warp_beast_silly_attack_mutator = class({})
 
 function warp_beast_silly_attack_mutator:GetIntrinsicModifierName()
 	return "modifier_silly_attack_mutator"
 end
+
+---------------------------------------------------------------------------------------------------
 
 modifier_silly_attack_mutator = class({})
 
@@ -13,13 +14,20 @@ function modifier_silly_attack_mutator:IsHidden()
 	return true
 end
 
+function modifier_silly_attack_mutator:IsPurgable()
+	return false
+end
+
+function modifier_silly_attack_mutator:RemoveOnDeath()
+	return false
+end
+
 function modifier_silly_attack_mutator:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MODEL_SCALE,
 		MODIFIER_EVENT_ON_ATTACK_START,
-		MODIFIER_EVENT_ON_ATTACK_FINISHED
+		MODIFIER_EVENT_ON_ATTACK_FINISHED,
 	}
-	return funcs
 end
 
 -- Warp Beast grows bigger with levels (lvl 25 = 50% bigger)

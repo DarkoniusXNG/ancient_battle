@@ -5,19 +5,23 @@ warp_beast_latch = class({})
 
 function warp_beast_latch:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
-	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
 	if target == caster then
 		return UF_FAIL_CUSTOM
+	elseif target:IsHeroDominatedCustom() then
+		return UF_FAIL_CUSTOM
 	end
 
-	return default_result
+	return self.BaseClass.CastFilterResultTarget(self, target)
 end
 
 function warp_beast_latch:GetCustomCastErrorTarget(target)
 	local caster = self:GetCaster()
 	if target == caster then
 		return "#dota_hud_error_cant_cast_on_self"
+	end
+	if target:IsHeroDominatedCustom() then
+		return "Can't Target Dominated Heroes!"
 	end
 end
 
@@ -30,6 +34,15 @@ function warp_beast_latch:OnSpellStart()
 	end
 
 	if target:GetTeam() ~= caster:GetTeam() and target:TriggerSpellAbsorb(self) then
+		return
+	end
+
+	-- Can't target clones
+	if target:IsCloneCustom() then
+		self:RefundManaCost()
+		self:EndCooldown()
+		-- Display the error message
+		SendErrorMessage(caster:GetPlayerOwnerID(), "Can't Target Clones or Super illusions!")
 		return
 	end
 
@@ -49,34 +62,30 @@ function warp_beast_latch:OnSpellStart()
 	if talent and talent:GetLevel() > 0 then
 		bonusAttackSpeed = bonusAttackSpeed + talent:GetSpecialValueFor("value")
 	end
-	local modifier = caster:AddNewModifier(caster, self, "modifier_latch", {Duration = duration, attackSpeed = bonusAttackSpeed})
-	target:AddNewModifier(caster, self, "modifier_latch_target", {Duration = duration})
+	local modifier = caster:AddNewModifier(caster, self, "modifier_latch", {duration = duration, attackSpeed = bonusAttackSpeed})
+	target:AddNewModifier(caster, self, "modifier_latch_target", {duration = duration})
 	modifier.target = target
 
 	local latchPosition = target:GetAbsOrigin() + (target:GetForwardVector() * distance) + Vector(0, RandomFloat(-2, 2), 0)
 	local latchDirection = (target:GetAbsOrigin() - latchPosition):Normalized()
 
-	caster:Hold()
 	caster:EmitSound("Hero_Warp_Beast.Latch")
 
 	local targetHeight = self:GetLatchHeight(target)
 
-	caster:SetAbsOrigin(latchPosition + Vector(0,0,targetHeight))
+	caster:SetAbsOrigin(latchPosition + Vector(0, 0, targetHeight))
 	caster:SetForwardVector(latchDirection)
-	-- caster:SetAbsOrigin(target:GetAbsOrigin() + Vector(0, 0, 150) + caster:GetForwardVector() * -75)
 	caster:SetParent(target, "attach_origin")
 
 	if target:GetTeam() ~= caster:GetTeam() then
-		caster:SetAngles(45, caster:GetAngles().y, caster:GetAngles().z)
-		caster:SetAttacking(target)
 		local order = {
 			UnitIndex = caster:entindex(),
 			OrderType = DOTA_UNIT_ORDER_ATTACK_TARGET,
-			TargetIndex = target:entindex()
+			TargetIndex = target:entindex(),
 		}
 		ExecuteOrderFromTable(order)
 		caster:SetForceAttackTarget(target)
-		-- Timers:CreateTimer(0.1, function() ExecuteOrderFromTable(order) return nil end )
+		--caster:MoveToTargetToAttack(target)
 	end
 end
 
@@ -102,35 +111,45 @@ function modifier_latch:IsPurgable()
 	return false
 end
 
+function modifier_latch:RemoveOnDeath()
+	return true
+end
+
 function modifier_latch:CheckState()
 	return {
 		-- [MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
+		[MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED] = true, -- to prevent force staff, knockbacks etc. causing Warp Beast to be glitched
 	}
 end
 
 function modifier_latch:OnCreated(keys)
-	self.attackspeed_bonus = keys.attackSpeed
-	if IsServer() then
-		self:StartIntervalThink(0.1)
-	end
+	if not IsServer() then return end
+
+	self.attackspeed_bonus = keys.attackSpeed -- data sent with AddNewModifier is not available on the client
+	self:StartIntervalThink(0.1)
 end
 
 function modifier_latch:OnIntervalThink()
 	if not IsServer() then return end
 
-	if self.target then
+	if self.target and not self.target:IsNull() then
 		local caster = self:GetCaster()
 		local target = self.target
 
-		if not caster:CanEntityBeSeenByMyTeam(target) then
+		-- Check target
+		if not caster:CanEntityBeSeenByMyTeam(target) or target:IsMagicImmune() then
 			target:RemoveModifierByNameAndCaster("modifier_latch_target", caster)
+			return
 		end
 
+		-- Check caster
 		if caster:IsStunned() or caster:IsHexed() or caster:IsOutOfGame() then
 			target:RemoveModifierByNameAndCaster("modifier_latch_target", caster)
 		end
+	else
+		self:Destroy()
 	end
 end
 
@@ -142,7 +161,7 @@ function modifier_latch:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		-- MODIFIER_EVENT_ON_ATTACK_LANDED,
-		MODIFIER_EVENT_ON_ORDER
+		MODIFIER_EVENT_ON_ORDER,
 	}
 end
 
@@ -193,7 +212,6 @@ if IsServer() then
 			ability:SetActivated(true)
 		end
 		caster:SetParent(nil, "attach_origin")
-		caster:SetAngles(0, caster:GetAngles().y, 0)
 		FindClearSpaceForUnit(caster, caster:GetAbsOrigin(), true)
 	end
 end
@@ -211,6 +229,10 @@ modifier_latch_target = class({})
 
 function modifier_latch_target:IsPurgable()
 	return false
+end
+
+function modifier_latch_target:RemoveOnDeath()
+	return true
 end
 
 -- function modifier_latch_target:DeclareFunctions()

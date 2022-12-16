@@ -21,12 +21,12 @@ function CharmStart(event)
 		if target:IsHero() and not target:IsMagicImmune() then
 			if target:IsRealHero() then
 				-- Target is a Real Hero that doesn't have spell immunity.
-				if target:HasModifier("modifier_charmed_hero") then
+				if target:IsHeroDominatedCustom() then
 					-- Target hero is already Charmed.
 					ability:RefundManaCost()
 					ability:EndCooldown()
 					-- Display the error message
-					SendErrorMessage(pID, "Can't Target already Charmed Heroes!")
+					SendErrorMessage(pID, "Can't Target Dominated Heroes!")
 				elseif target:IsCloneCustom() then
 					ability:RefundManaCost()
 					ability:EndCooldown()

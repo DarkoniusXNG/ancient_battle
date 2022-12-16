@@ -97,5 +97,5 @@
 		
 		// Flurry of Blows talents
 		"DOTA_Tooltip_Ability_special_bonus_sohei_fob_radius"                           "+{s:value} Flurry of Blows AoE"
-		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8"                             "+{s:value} Flurry of Blows Attacks"
+		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8"                             "+{s:max_attacks} Flurry of Blows Attacks"
 		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8_Description"                 "Increases Flurry of Blows duration by 3.6s as well."

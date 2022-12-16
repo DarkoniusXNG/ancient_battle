@@ -23,6 +23,10 @@ if CDOTA_BaseNPC then
     return self.original or self:IsClone()
   end
 
+  function CDOTA_BaseNPC:IsHeroDominatedCustom()
+    return self:HasModifier("modifier_charmed_hero")
+  end
+
   function CDOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
       return true
@@ -291,6 +295,10 @@ if C_DOTA_BaseNPC then
   --function C_DOTA_BaseNPC:IsCloneCustom()
     --return self.original or self:IsClone()
   --end
+
+  function C_DOTA_BaseNPC:IsHeroDominatedCustom()
+    return self:HasModifier("modifier_charmed_hero")
+  end
 
   function C_DOTA_BaseNPC:IsRoshan()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
