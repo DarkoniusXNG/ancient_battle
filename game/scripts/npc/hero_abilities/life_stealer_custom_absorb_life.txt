@@ -27,7 +27,7 @@
     
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "75"
+    "AbilityManaCost"                                     "50"
     "AbilityProcsMagicStick"                              "1"
     
     "precache"

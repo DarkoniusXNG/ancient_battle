@@ -38,28 +38,70 @@ function modifier_item_sonic_passives:GetAttributes()
 end
 
 function modifier_item_sonic_passives:OnCreated()
+  self:OnRefresh()
+  if IsServer() then
+    self:StartIntervalThink(0.1)
+  end
+end
+
+function modifier_item_sonic_passives:OnRefresh()
   local ability = self:GetAbility()
-  if not ability or ability:IsNull() then
+  if ability and not ability:IsNull() then
+    self.movement_speed = ability:GetSpecialValueFor("bonus_movement_speed")
+    self.attack_speed = ability:GetSpecialValueFor("bonus_attack_speed")
+    self.agi = ability:GetSpecialValueFor("bonus_agility")
+  end
+
+  if IsServer() then
+    self:OnIntervalThink()
+  end
+end
+
+function modifier_item_sonic_passives:OnIntervalThink()
+  if self:IsFirstItemInInventory() then
+    self:SetStackCount(2)
+  else
+    self:SetStackCount(1)
+  end
+end
+
+function modifier_item_sonic_passives:IsFirstItemInInventory()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+
+  if parent:IsNull() or ability:IsNull() then
+    return false
+  end
+
+  if not IsServer() then
     return
   end
 
-  self.movement_speed = ability:GetSpecialValueFor("bonus_movement_speed")
-  self.attack_speed = ability:GetSpecialValueFor("bonus_attack_speed")
-  self.agi = ability:GetSpecialValueFor("bonus_agility")
+  return parent:FindAllModifiersByName(self:GetName())[1] == self
 end
-
-modifier_item_sonic_passives.OnRefresh = modifier_item_sonic_passives.OnCreated
 
 function modifier_item_sonic_passives:DeclareFunctions()
   return {
-    MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE,
+    --MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE,
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
     MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
     MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
   }
 end
 
-function modifier_item_sonic_passives:GetModifierMoveSpeedBonus_Special_Boots()
-  return self.movement_speed
+--function modifier_item_sonic_passives:GetModifierMoveSpeedBonus_Special_Boots()
+  --return self.movement_speed
+--end
+
+function modifier_item_sonic_passives:GetModifierMoveSpeedBonus_Percentage()
+  if self:GetStackCount() ~= 2 then
+    return 0
+  end
+  local parent = self:GetParent()
+  if not parent:HasModifier("modifier_item_yasha") and not parent:HasModifier("modifier_item_sange_and_yasha") and not parent:HasModifier("modifier_item_yasha_and_kaya") and not parent:HasModifier("modifier_item_manta") then
+    return self.movement_speed
+  end
+  return 0
 end
 
 function modifier_item_sonic_passives:GetModifierAttackSpeedBonus_Constant()

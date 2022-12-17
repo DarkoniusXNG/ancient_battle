@@ -25,6 +25,16 @@ function modifier_custom_tower_buff:OnCreated()
 		self.parentMaxHealth = parent:GetBaseMaxHealth()
 		self.parentMinDamage = parent:GetBaseDamageMin()
 		self.parentMaxDamage = parent:GetBaseDamageMax()
+		if GetMapName() == "main" or GetMapName() == "3vs3" then
+			self.bonus_hp = self.parentMaxHealth
+			self.damage = 0
+		elseif GetMapName() == "two_vs_two" then
+			self.bonus_hp = 4*(self.parentMaxHealth)
+			self.damage = (self.parentMinDamage + self.parentMaxDamage) / 2
+		else
+			self.bonus_hp = self.parentMaxHealth
+			self.damage = 0
+		end
 	end
 end
 
@@ -36,12 +46,11 @@ function modifier_custom_tower_buff:DeclareFunctions()
 end
 
 function modifier_custom_tower_buff:GetModifierExtraHealthBonus()
-	return 3.5*(self.parentMaxHealth)
+	return self.bonus_hp
 end
 
 function modifier_custom_tower_buff:GetModifierBaseAttack_BonusDamage()
-	-- Check that min and max damage values have been fetched to prevent errors
-	if self.parentMinDamage and self.parentMaxDamage then
-		return (self.parentMinDamage + self.parentMaxDamage) / 2
+	if self.damage then
+		return self.damage
 	end
 end

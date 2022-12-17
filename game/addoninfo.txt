@@ -2,9 +2,9 @@
 {
 	maps = 
 	[
+		"main",
 		"two_vs_two",
 		"five_vs_five",
-		"3vs3",
 	]
 	IsPlayable = 1
 	PenaltiesEnabled = 0
@@ -13,6 +13,10 @@
 	EnablePickRules = 1
 	map_options = 
 	[
+		{
+			MaxPlayers = 8
+			map = "main"
+		},
 		{
 			MaxPlayers = 6
 			map = "3vs3"
@@ -32,7 +36,7 @@
 	]
 	HideInTools = false
 	IsTemplate = false
-	DefaultMap = "two_vs_two"
+	DefaultMap = "main"
 	Default_Keys = [  ]
 	DisableIK = false
 	EventGame = false
