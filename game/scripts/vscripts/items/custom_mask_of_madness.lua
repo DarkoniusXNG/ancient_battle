@@ -19,6 +19,11 @@ function LifestealOnAttackLanded(keys)
 	local attacker = keys.attacker
 	local damage_on_attack = keys.DamageOnAttack
 
+	-- Check if attacker exists
+	if not attacker or attacker:IsNull() then
+		return
+	end
+
 	-- To prevent crashes:
 	if not target or target:IsNull() then
 		return
@@ -30,19 +35,25 @@ function LifestealOnAttackLanded(keys)
 		return
     end
 
-	-- Don't affect buildings and wards (target.GetInvulnCount == nil for non-buildings)
-	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() then
+	-- Don't lifesteal from buildings, wards and invulnerable units.
+	if target:IsTower() or target:IsBarracks() or target:IsBuilding() or target:IsOther() or target:IsInvulnerable() then
+		return
+	end
+
+	-- Check if attacker is dead
+	if not attacker:IsAlive() then
+		return
+	end
+
+	-- Check if damage is 0 or negative
+	if damage_on_attack <= 0 then
 		return
 	end
 
 	local lifesteal_melee = ability:GetLevelSpecialValueFor("lifesteal_percent_melee", ability:GetLevel() - 1)
 	local lifesteal_ranged = ability:GetLevelSpecialValueFor("lifesteal_percent_ranged", ability:GetLevel() - 1)
 
-	if not attacker or attacker:IsNull() then
-		return
-	end
-
-	if attacker:IsRealHero() and attacker:IsAlive() then
+	if attacker:IsRealHero() then
 		local lifesteal_amount
 		if attacker:IsRangedAttacker() then
 			lifesteal_amount = damage_on_attack*lifesteal_ranged*0.01
@@ -51,7 +62,8 @@ function LifestealOnAttackLanded(keys)
 		end
 
 		if lifesteal_amount > 0 then
-			attacker:Heal(lifesteal_amount, attacker)
+			--attacker:Heal(lifesteal_amount, attacker)
+			attacker:HealWithParams(lifesteal_amount, ability, true, true, attacker, false)
 		end
 	end
 

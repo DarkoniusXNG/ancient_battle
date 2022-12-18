@@ -49,7 +49,7 @@ function bane_custom_brain_sap:OnSpellStart()
 	local target = self:GetCursorTarget()
 
 	if not caster or not target then
-		return nil
+		return
 	end
 
 	-- Sound on caster
@@ -75,7 +75,7 @@ function bane_custom_brain_sap:OnSpellStart()
 		end
 
 		-- Apply intelligence loss/gain modifiers before the damage
-		if target:IsRealHero() and not target:IsClone() and not target:IsTempestDouble() and not target.original then
+		if target:IsRealHero() and not target:IsCloneCustom() and not target:IsTempestDouble() then
 			local int_steal_duration = self:GetSpecialValueFor("int_steal_duration")
 
 			target:AddNewModifier(caster, self, "modifier_custom_brain_sap_int_loss_counter", {duration = int_steal_duration})

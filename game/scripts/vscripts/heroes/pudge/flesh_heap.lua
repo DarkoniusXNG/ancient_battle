@@ -172,7 +172,7 @@ if IsServer() then
 		local isDeadInRange = parentToDeadVector:Length2D() <= flesh_heap_range
 
 		if isDeadInRange or killer == parent then
-			if dead:IsRealHero() and not dead:IsClone() and not dead:IsTempestDouble() and not dead.original then
+			if dead:IsRealHero() and not dead:IsCloneCustom() and not dead:IsTempestDouble() then
 				self.hero_kills = self.hero_kills + 1
 
 				local nFXIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_fleshheap_count.vpcf", PATTACH_OVERHEAD_FOLLOW, parent)
@@ -224,13 +224,11 @@ function modifier_pudge_custom_flesh_heap_heroes:RemoveOnDeath()
 end
 
 function modifier_pudge_custom_flesh_heap_heroes:OnCreated()
-	--local parent = self:GetParent()
-	if not IsServer() then
-		return
-	end
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() then
-		self:StartIntervalThink(0)
+		if IsServer() then
+			self:StartIntervalThink(0)
+		end
 	elseif ability:GetLevel() > 0 then
 		self.str_per_hero_kill = ability:GetSpecialValueFor("str_per_hero_kill")
 	end
@@ -295,13 +293,11 @@ function modifier_pudge_custom_flesh_heap_creeps:RemoveOnDeath()
 end
 
 function modifier_pudge_custom_flesh_heap_creeps:OnCreated()
-	--local parent = self:GetParent()
-	if not IsServer() then
-		return
-	end
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() then
-		self:StartIntervalThink(0)
+		if IsServer() then
+			self:StartIntervalThink(0)
+		end
 	elseif ability:GetLevel() > 0 then
 		self.str_per_creep_kill = ability:GetSpecialValueFor("str_per_creep_kill")
 	end
