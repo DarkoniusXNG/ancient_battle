@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Silencer Summon Infernal Golems: INFERNAL GOLEM
-  // Notes: OK; 27.12.2016;
+  // Notes: OK; 2022;
   //=================================================================================
   "npc_dota_infernal_golem"
   {                    
@@ -30,12 +30,12 @@
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"                                     "75"                  // like Warlock Golem level 1
-    "AttackDamageMax"                                     "75"                  // like Warlock Golem level 1  
-    "AttackRate"                                          "1.2"                  // 4.11.2016;
+    "AttackDamageMin"                                     "100"                  // like Warlock Golem level 1
+    "AttackDamageMax"                                     "100"                  // like Warlock Golem level 1  
+    "AttackRate"                                          "1.0"                  // 2022;
     "AttackAnimationPoint"                                "0.26"                  // like Warlock golem
     "AttackAcquisitionRange"                              "500"                  // like Warlock Golem
-    "AttackRange"                                         "200"                  // 4.11.2016;
+    "AttackRange"                                         "225"                  // 2022;
     "ProjectileModel"                                     ""                    // like Warlock Golem
     "ProjectileSpeed"                                     "0"                    // like Warlock Golem       
 
@@ -46,8 +46,8 @@
     // Bounty
     //----------------------------------------------------------------
     "BountyXP"                                            "98"                  // like Warlock Golem
-    "BountyGoldMin"                                       "150"                  // 4.11.2016;
-    "BountyGoldMax"                                       "150"                  // 4.11.2016;
+    "BountyGoldMin"                                       "100"                  // 2022;
+    "BountyGoldMax"                                       "100"                  // 2022;
 
     // Movement
     //----------------------------------------------------------------
@@ -56,7 +56,7 @@
 
     // Status
     //----------------------------------------------------------------
-    "StatusHealth"                                        "1250"                  // 4.11.2016;
+    "StatusHealth"                                        "1400"                  // 2022;
     "StatusHealthRegen"                                   "50"                  // 4.11.2016;
     "StatusMana"                                          "0"                    // He has no spells with mana cost.
     "StatusManaRegen"                                     "0"                    // He has no spells with mana cost.     

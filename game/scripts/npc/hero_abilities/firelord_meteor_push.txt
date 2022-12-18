@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Fire Lord: Meteor Push (E) - New Spell, Knocks back caster and enemies on impact, deals damage on impact and on hit
   // Author: Darkonius
-  // Notes: OK; 14.9.2019;
+  // Notes: OK; 2022;
   // TO_DO:
   // ================================================================================================================
   "firelord_meteor_push"

@@ -39,7 +39,7 @@
 		"DOTA_Tooltip_ability_silencer_custom_last_word_aura_radius"                      "AURA RADIUS:"
 		"DOTA_Tooltip_ability_silencer_custom_last_word_silence_duration_passive"         "AURA SILENCE DURATION:"
 		
-		"DOTA_Tooltip_modifier_last_word_aura_effect"                                     "Last Word Aura"
+		"DOTA_Tooltip_modifier_last_word_aura_effect"                                     "Silence Aura"
 		"DOTA_Tooltip_modifier_last_word_aura_effect_Description"                         "Will be silenced if you cast a spell."
 
 		"DOTA_Tooltip_modifier_last_word_active"                                          "Last Word"
@@ -67,8 +67,7 @@
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems"                              "Summon Infernal Golems"
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems_Description"                  "Summon Infernal Golems from the depths, stunning enemies in an area. Infernal Golems live for %infernal_duration% seconds, take reduced damage from spells and have Permanent Immolation."
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems_Lore"                         "Nortrom's knowledge knows no bounds."
-		"DOTA_Tooltip_ability_silencer_custom_summon_golems_Note0"                        "Stun goes through Spell immunity."
-		"DOTA_Tooltip_ability_silencer_custom_summon_golems_Note1"                        "Destroys trees."
+		"DOTA_Tooltip_ability_silencer_custom_summon_golems_Note0"                        "Destroys trees."
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems_radius"                       "SUMMON BLAST RADIUS:"
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems_infernal_count"               "NUMBER OF GOLEMS:"
 		"DOTA_Tooltip_ability_silencer_custom_summon_golems_infernal_duration"            "GOLEM DURATION:"
@@ -84,7 +83,7 @@
 		"DOTA_Tooltip_modifier_infernal_golem_stun_Description"                           "Stunned. Infernal Golem has been summoned on top of you."
 
 		"DOTA_Tooltip_ability_infernal_golem_permanent_immolation"                        "Permanent Immolation"
-		"DOTA_Tooltip_ability_infernal_golem_permanent_immolation_Description"            ""
+		"DOTA_Tooltip_ability_infernal_golem_permanent_immolation_Description"            "Burns nearby enemy units."
 		"DOTA_Tooltip_ability_infernal_golem_permanent_immolation_aura_radius"            "AURA RADIUS:"
 		"DOTA_Tooltip_ability_infernal_golem_permanent_immolation_aura_damage"            "AURA DAMAGE:"
 		
@@ -92,5 +91,6 @@
 		"DOTA_Tooltip_ability_silencer_custom_global_silence_Description"                 "Silencer stops all sound, preventing enemy heroes and units on the map from casting spells."
 		"DOTA_Tooltip_ability_silencer_custom_global_silence_Lore"                        "With a shock to the ground, all magic and sound pauses, and Nortrom fulfills his prophecy."
 		"DOTA_Tooltip_ability_silencer_custom_global_silence_Note0"                       "This skill works on invisible and Spell Immune units, but gaining spell immunity will remove its effect."
-		"DOTA_Tooltip_ability_silencer_custom_global_silence_tooltip_duration"            "DURATION:"
+		//"DOTA_Tooltip_ability_silencer_custom_global_silence_tooltip_duration"            "DURATION:"
+		"DOTA_Tooltip_ability_silencer_custom_global_silence_abilityduration"             "DURATION:"
 		

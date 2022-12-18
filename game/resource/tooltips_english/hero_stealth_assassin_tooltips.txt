@@ -9,9 +9,9 @@
 		"DOTA_Tooltip_ability_stealth_assassin_blink_strike_radius"                       "RADIUS:"
 
 		"DOTA_Tooltip_ability_stealth_assassin_desolate"                                  "Desolate"
-		"DOTA_Tooltip_ability_stealth_assassin_desolate_Description"                      "Ryu deals bonus physical damage whenever he attacks an enemy that does not have any allied units within a %radius% radius around them. Bonus damage is based on his current agility."
+		"DOTA_Tooltip_ability_stealth_assassin_desolate_Description"                      "Ryu deals bonus physical damage whenever he attacks an enemy that does not have any allies within %radius% range. Bonus damage is based on Ryu's current agility."
 		"DOTA_Tooltip_ability_stealth_assassin_desolate_Lore"                             "Often times, warriors find themselves alone with the Stealth Assassin."
-		"DOTA_Tooltip_ability_stealth_assassin_desolate_Note1"                            "Stealth Assassin's illusions also have Desolate."
+		"DOTA_Tooltip_ability_stealth_assassin_desolate_Note0"                            "Stealth Assassin's illusions also have Desolate."
 		"DOTA_Tooltip_ability_stealth_assassin_desolate_damage_multiplier"                "AGI DAMAGE MULTIPLIER:"
 		"DOTA_Tooltip_ability_stealth_assassin_desolate_radius"                           "RADIUS:"
 

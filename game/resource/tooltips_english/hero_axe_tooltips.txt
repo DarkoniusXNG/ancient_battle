@@ -1,9 +1,9 @@
 
 		// ******************** AXE ********************
 		"DOTA_Tooltip_ability_axe_custom_battle_rage"                           "Battle Rage"
-		"DOTA_Tooltip_ability_axe_custom_battle_rage_Description"               "Sends target allied hero into a Battle Rage. When affected by Battle Rage, hero has increased movement speed and all damage dealt by that hero steals life.<br><br><font color='#70EA72'>Battle Rage grants normal lifesteal and spell lifesteal.</font>"
+		"DOTA_Tooltip_ability_axe_custom_battle_rage_Description"               "Sends the target ally into a Battle Rage, granting increased movement speed and universal lifesteal.<br><br><font color='#70EA72'>Battle Rage grants normal lifesteal and spell lifesteal.</font>"
 		"DOTA_Tooltip_ability_axe_custom_battle_rage_Lore"						"Mogul Khan's rage propels him through terrifying acts of brutality and destruction."
-		"DOTA_Tooltip_ability_axe_custom_battle_rage_Note0"               		"Stacks independently with Octarine Core spell lifesteal."
+		"DOTA_Tooltip_ability_axe_custom_battle_rage_Note0"               		"Stacks independently with other sources of spell lifesteal."
 		"DOTA_Tooltip_ability_axe_custom_battle_rage_duration"                  "DURATION:"
 		"DOTA_Tooltip_ability_axe_custom_battle_rage_heal_multiplier"           "%LIFESTEAL:"
 		"DOTA_Tooltip_ability_axe_custom_battle_rage_bonus_move_speed"          "%BONUS MOVE SPEED:"
@@ -39,7 +39,6 @@
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above"                                "Cut From Above"
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above_Description"                    "Axe leaps forward into combat. Upon landing, Axe delivers a strike to all enemies in a small area around his destination. If an enemy is below the kill threshold, the enemy dies and Axe grants himself and nearby allies a temporary speed bonus."
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above_Lore"                           "Mogul Khan is the embodiment of battle and fury, launching into a gruesome fatality against those who dare engage the Axe in combat."
-		"DOTA_Tooltip_ability_axe_custom_cut_from_above_Note0"                          "The killing blow goes through spell immunity."
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above_radius"                         "RADIUS:"
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above_damage_kill_threshold"          "DAMAGE/KILL THRESHOLD:"
 		"DOTA_Tooltip_ability_axe_custom_cut_from_above_bonus_move_speed_on_kill"       "%MOVE SPEED BONUS:"
@@ -54,3 +53,6 @@
 		"DOTA_Tooltip_modifier_axe_custom_cut_from_above_buff_Description"              "Axe releases a war cry, giving all nearby allies %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% bonus movement and %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% bonus attack speed."
 
 		"DOTA_Tooltip_ability_special_bonus_unique_axe_counter_helix_damage"    "+{s:value} Counter Helix Damage"
+		
+		// vanilla stuff
+		"DOTA_Tooltip_ability_axe_berserkers_call_scepter_description"                  "Reduces Berserker's Call cooldown."

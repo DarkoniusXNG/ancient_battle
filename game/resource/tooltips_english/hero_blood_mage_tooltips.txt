@@ -31,7 +31,7 @@
 		"DOTA_Tooltip_modifier_banished_enemy_Description"						"Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, taking %dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE%%% more magic damage and cannot attack or be attacked."
 		
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer"							"Mana Transfer"
-		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Description"				"CHANNELED - Transfers mana between the Blood Mage and a target. Drains mana from an enemy, or gives mana to an ally. This ability can push the Blood Mage's mana over its maximum value, though excess mana drains off rapidly if not used."
+		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Description"				"CHANNELED - Transfers mana between the Blood Mage and a target. Drains mana from an enemy, or gives mana to an ally. This ability can push the Blood Mage's or allied mana over its maximum value, though excess mana drains off rapidly if not used."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Lore"					"Lesser magi are nothing more than a source of magical restoration for the Blood Mage."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note0"					"Destroys enemy illusions."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note1"					"The link doesn't break when the target gets out of vision."
@@ -41,7 +41,7 @@
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_extra_mana_duration"     "EXTRA MANA DURATION:"
 		
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror"							"Blood Mirror"
-		"DOTA_Tooltip_ability_blood_mage_blood_mirror_Description"				"If the target is an enemy, Blood Mirror reflects %redirected_damage%%% of the damage dealt to Blood Mage back to the target. If the target is an ally, Blood Mirror reflects %redirected_damage%%% of the damage dealt to an ally back to Blood Mage."
+		"DOTA_Tooltip_ability_blood_mage_blood_mirror_Description"				"If the target is an enemy, %redirected_damage%%% of all the damage Blood Mage receives is redirected to the target.\nIf the target is an ally, %redirected_damage%%% of all the damage that ally receives is redirected to Blood Mage."
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror_Lore"						"Basic redirection of damage that inspired Death Knights at level 100."
 		
 		"DOTA_Tooltip_modifier_custom_blood_mirror_debuff_enemy"                    "Blood Mirror"
@@ -68,7 +68,7 @@
 		"DOTA_Tooltip_ability_custom_phoenix_turn_into_egg_egg_duration"		"EGG DURATION:"
 		
 		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire"						"Phoenix Fire"
-		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire_Description"			"Phoenix blasts enemies when they get in range of him and then they take damage over time. Phoenix damages itself as well."
+		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire_Description"			"Phoenix blasts enemies when they get in range and then they take damage over time. Phoenix damages itself as well."
 		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire_Lore"                 "The ever-collapsing core of Phoenix often emits short-lived bursts of conscious light."
 		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire_initial_damage"		"INITIAL DAMAGE:"
 		"DOTA_Tooltip_ability_custom_phoenix_phoenix_fire_damage_per_second"    "DAMAGE PER SECOND:"

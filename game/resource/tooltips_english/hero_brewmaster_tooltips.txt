@@ -48,6 +48,7 @@
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist"                             "Drunken Fist"
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_Description"                 "Brewmaster gains bonus base damage, bonus movement speed and cleave. Brewmaster also knockbacks all enemies in front of him while attacking."
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_Lore"						  "Drunken Mastery."
+		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_Note0"                       "Drunken Fist cleave damage ignores armor values!"
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_duration"                    "DURATION:"
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_knockback_distance"          "KNOCKBACK DISTANCE:"
 		"DOTA_Tooltip_ability_brewmaster_custom_drunken_fist_knockback_duration"          "KNOCKBACK DURATION:"

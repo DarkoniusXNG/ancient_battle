@@ -23,7 +23,7 @@
 		"DOTA_Tooltip_modifier_sandra_undeniable_torture_debuff"		"Undeniable Torture"
 		"DOTA_Tooltip_modifier_sandra_undeniable_torture_debuff_Description"			"Any time the caster takes damage, this unit also receives the same damage."
 		
-		"DOTA_Tooltip_ability_special_bonus_unique_undeniable_torture_lifeshare"            "+{s:lifeshare}% Undeniable Torture Shared Damage"
+		//"DOTA_Tooltip_ability_special_bonus_unique_undeniable_torture_lifeshare"            "+{s:lifeshare}% Undeniable Torture Shared Damage"
 
 		//-------------------------------------------------------------------------------------------------------------
 		// Sandra : Ironical Healing
@@ -47,7 +47,7 @@
 		"DOTA_Tooltip_modifier_sandra_ironical_healing"                  "Ironical Heal"
 		"DOTA_Tooltip_modifier_sandra_ironical_healing_Description"		"Gains bonus health regeneration"
 		
-		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:duration} Ironical Healing Duration"
+		//"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:duration} Ironical Healing Duration"
 
 		//-------------------------------------------------------------------------------------------------------------
 		// Sandra : Will to Live
@@ -69,13 +69,14 @@
 		"DOTA_Tooltip_ability_sandra_will_to_live_threshold_stack"			"THRESHOLD STACK INCREASE:"
 		"DOTA_Tooltip_ability_sandra_will_to_live_threshold_stack_creep"	"THRESHOLD STACK INCREASE (CREEP):"
 		"DOTA_Tooltip_ability_sandra_will_to_live_stack_duration"		"THRESHOLD STACK DURATION:"
+		"DOTA_Tooltip_ability_sandra_will_to_live_duration"				"BUFF DURATION:"
 
-		"DOTA_Tooltip_ability_sandra_will_to_live_scepter_description"			"Does not get disabled with Break."
+		//"DOTA_Tooltip_ability_sandra_will_to_live_scepter_description"			"Does not get disabled with Break."
 
 		"DOTA_Tooltip_modifier_sandra_will_to_live"		             "Damage threshold"
 		"DOTA_Tooltip_modifier_sandra_will_to_live_Description"		"All damage received is separated over time. Each damage ticks cannot be lethal if it is less than this threshold value."
 		
-		"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"      "-{s:damage_delay}% Will to Live Damage Dealt per Tick"
+		//"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"      "-{s:damage_delay}% Will to Live Damage Dealt per Tick"
 
 		//-------------------------------------------------------------------------------------------------------------
 		// Sandra : Sacrifice

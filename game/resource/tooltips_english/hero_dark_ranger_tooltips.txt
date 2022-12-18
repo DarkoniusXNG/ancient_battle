@@ -19,7 +19,7 @@
 		"DOTA_Tooltip_ability_dark_ranger_life_drain_Lore"								  "Draining life spell that originates from the grandmaster of Oblivion."
 		"DOTA_Tooltip_ability_dark_ranger_life_drain_Note0"								  "Destroys illusions."
 		"DOTA_Tooltip_ability_dark_ranger_life_drain_Note1"                               "Life Drain is stopped if target becomes spell immune, invulnerable or if it goes out of range."
-		"DOTA_Tooltip_ability_dark_ranger_life_drain_health_drain"                        "HEALTH DRAIN PER SECOND::"
+		"DOTA_Tooltip_ability_dark_ranger_life_drain_health_drain"                        "HEALTH DRAIN PER SECOND:"
 		"DOTA_Tooltip_ability_dark_ranger_life_drain_duration"                            "MAX DURATION:"
 		//"DOTA_Tooltip_ability_dark_ranger_life_drain_cast_range_tooltip"                "CAST RANGE:"
 		"DOTA_Tooltip_ability_dark_ranger_life_drain_break_distance"                      "BREAK DISTANCE:"
@@ -44,23 +44,23 @@
 
 		"DOTA_Tooltip_modifier_charmed_general"                                           "Charmed"
 		"DOTA_Tooltip_modifier_charmed_general_Description"                               "This unit is under control of Dark Ranger."
-		
+
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship"                            "Marksmanship"
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_Description"                "Passively provides bonus agility, accuracy and attack range. It also give a chance to instantly kills creeps."
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_Lore"                       "Dark Ranger's experiences in battle improve her accuracy and effectiveness in combat."
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_bonus_agi"                  "BONUS AGILITY:"
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_bonus_accuracy"             "%BONUS ACCURACY:"
 		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_bonus_attack_range"         "BONUS ATTACK RANGE:"
-		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_chance_to_instant_kill"     "%CHANCE TO INSTANT KILL:"
-		
+		"DOTA_Tooltip_ability_dark_ranger_custom_marksmanship_chance_to_instant_kill"     "%CHANCE FOR INSTANT KILL:"
+
 		"DOTA_Tooltip_ability_dark_ranger_ranger_aura"                                    "Ranger Aura"
 		"DOTA_Tooltip_ability_dark_ranger_ranger_aura_Description"                        "Adds bonus damage to the physical attack of allied ranged creeps and heroes. Bonus damage is based on a percentage of Dark Ranger's agility."
-		"DOTA_Tooltip_ability_dark_ranger_ranger_aura_agility_to_ranged_damage"           "%RANGED DAMAGE BONUS:"
+		"DOTA_Tooltip_ability_dark_ranger_ranger_aura_agility_to_ranged_damage"           "%AGI TO RANGED DAMAGE:"
 		"DOTA_Tooltip_ability_dark_ranger_ranger_aura_radius"                             "RADIUS:"
-		
+
 		"DOTA_Tooltip_modifier_custom_ranger_aura_effect"                                 "Ranger Aura"
 		"DOTA_Tooltip_modifier_custom_ranger_aura_effect_Description"                     "Attack damage increased by %dMODIFIER_PROPERTY_TOOLTIP%."
-		
+
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_1"                         "+{s:value} Dark Arrows Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_2"                         "+{s:value}% Ranger Aura Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_3"                         "+{s:value} Ranger Aura Attack Range"

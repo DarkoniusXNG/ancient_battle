@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Axe: Battle Rage (E) - New Spell, Applies a Buff that gives Lifesteal (normal + spell lifesteal) and bonus ms
   // Author: Darkonius
-  // Notes: OK; 20.11.2019; Stacks with Octarine Core;
+  // Notes: OK; 2022;
   // TO_DO:
   //=================================================================================================================
   "axe_custom_battle_rage"

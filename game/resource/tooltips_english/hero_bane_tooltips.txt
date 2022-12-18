@@ -11,7 +11,7 @@
 		"DOTA_Tooltip_modifier_custom_enfeeble_debuff_Description"              "Reduced attacked damage by %dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%% and spell damage by %dMODIFIER_PROPERTY_TOOLTIP%%%."
 
 		"DOTA_Tooltip_ability_bane_custom_terror_blink"                         "Terror Blink"
-		"DOTA_Tooltip_ability_bane_custom_terror_blink_Description"             "Bane becomes disarmed and teleports to the target destination. After %duration% seconds, if Bane is not dispelled, rooted or invulnerable, he will be teleported back where he was %duration% seconds ago."
+		"DOTA_Tooltip_ability_bane_custom_terror_blink_Description"             "Bane disarms himself and teleports to the target destination. After %duration% seconds, if Bane is not dispelled, rooted or invulnerable, he will be teleported back where he was %duration% seconds ago."
 		"DOTA_Tooltip_ability_bane_custom_terror_blink_Lore"					"Do you know the true meaning of fear?"
 		"DOTA_Tooltip_ability_bane_custom_terror_blink_duration"                "DURATION:"
 		
@@ -19,7 +19,7 @@
 		"DOTA_Tooltip_modifier_custom_terror_buff_Description"					"Disarmed and X-Mark-ed."
 
 		"DOTA_Tooltip_ability_bane_custom_atropos_end"                          "Atropos End"
-		"DOTA_Tooltip_ability_bane_custom_atropos_end_Description"              "Bane removes debuffs and stuns from itself. Can be used while stunned but not while silenced or hexed.\n\nDISPEL TYPE: Super Strong Dispel"
+		"DOTA_Tooltip_ability_bane_custom_atropos_end_Description"              "Bane removes debuffs and stuns from himself. Can be used while stunned but not while silenced or hexed.\n\nDISPEL TYPE: Super Strong Dispel"
 		"DOTA_Tooltip_ability_bane_custom_atropos_end_Lore"						"Atropos knows every evil, and he can end them but chooses not to."
 
 		"DOTA_Tooltip_ability_bane_custom_brain_sap"							"Brain Sap"

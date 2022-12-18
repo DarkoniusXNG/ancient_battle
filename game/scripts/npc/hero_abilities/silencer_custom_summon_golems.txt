@@ -23,7 +23,7 @@
     "AbilityCastRange"                                    "1200"
     "AbilityCastPoint"                                    "0.5"
     
-    "AbilityCooldown"                                     "160.0"
+    "AbilityCooldown"                                     "160"
 
     "AbilityManaCost"                                     "200 300 400"
     "AbilityProcsMagicStick"                              "1"
@@ -60,12 +60,12 @@
       "06" // only in tooltip
       {
         "var_type"                                        "FIELD_INTEGER"
-        "golem_hp_tooltip"                                "1250"
+        "golem_hp_tooltip"                                "1400"
       }
       "07" // only in tooltip
       {
         "var_type"                                        "FIELD_INTEGER"
-        "golem_dmg_tooltip"                               "75"
+        "golem_dmg_tooltip"                               "100"
         "CalculateSpellDamageTooltip"                     "0"
       }
       "08" // only in tooltip

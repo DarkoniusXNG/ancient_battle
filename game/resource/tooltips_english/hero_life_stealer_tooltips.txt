@@ -8,7 +8,7 @@
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_radius"                     "RADIUS:"
 		
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting"                           "Poison Sting"
-		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Description"               "N'aix attacks sting, adding a poison-based damage and slowing movement speed. <br><br><font color='#70EA72'>Poison Sting damage can interrupt healing from items and can trigger the cooldown of Blink Dagger. Poison Sting debuff can be applied with N'aix illusions but without damage.</font>"
+		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Description"               "N'aix attacks sting, adding a poison-based damage, slowing movement speed and reducing heals and regen. <br><br><font color='#70EA72'>Poison Sting damage can interrupt healing from items and can trigger the cooldown of Blink Dagger. Poison Sting debuff can be applied with N'aix illusions but without damage. Poison Sting reduces all healing, hp regen, lifesteal and spell lifesteal.</font>"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Lore"					  "The paralytic sting of the creature which caused his transformation now belongs to the Lifestealer."
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Note0"                     "Poison Sting damage can be lethal."
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_duration"                  "DURATION:"

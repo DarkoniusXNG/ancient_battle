@@ -7,6 +7,7 @@
 	{
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/sandra/sandra_will_to_live"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 		"AbilityTextureName"			"custom/sandra_will_to_live"
 
 		"HasScepterUpgrade"				"1"
@@ -16,11 +17,22 @@
 			"particle"	"particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf"
 			"particle"	"particles/items2_fx/soul_ring_blood.vpcf"
 			"particle"	"particles/items_fx/backdoor_protection_tube.vpcf"
+			"particle"  "particles/units/heroes/hero_dazzle/dazzle_shallow_grave.vpcf"
 		}
 		
-		// Ability General
+		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastPoint"                                    "0.0"
+		"AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"                               "1"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"                                     "30 28 26 24"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"                                     "45 50 55 60"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -35,6 +47,7 @@
 			"threshold_stack"                             "2"
 			"threshold_stack_creep"                       "1"
 			"stack_duration"                              "6"
+			"duration"                                    "6"
 		}
 	}
 	

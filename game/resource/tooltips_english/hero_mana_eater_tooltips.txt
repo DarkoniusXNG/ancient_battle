@@ -26,7 +26,7 @@
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field"                                "Anti-Magic Field"
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Description"                    "Generates a circular distortion field of pure energy that grants immunity to magic damage to all units, heroes and buildings within. Enemies inside the field also can't use items and their spells have no effect, wasting the mana and going on cooldown if used."
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Lore"                           "This Faerie Dragon hates magic more than Anti-Mage."
-		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Note0"                          "Enemies inside Anti-Magic field are muted and spell-cast disabled. Spell-cast Disable doesn't allow spells to work if used."
+		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Note0"                          "Enemies inside Anti-Magic field are muted and their spells fizzle."
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Note1"                          "This ability destroys trees."
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_Note2"                          "Both allies and enemies have magic immunity while inside the field. This ability doesn't give evasion!"
 		"DOTA_Tooltip_ability_mana_eater_anti_magic_field_radius"                         "RADIUS:"

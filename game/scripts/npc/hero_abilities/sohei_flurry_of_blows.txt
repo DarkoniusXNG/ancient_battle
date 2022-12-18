@@ -62,7 +62,7 @@
       "attack_interval"                                   "0.6" // original (0.4); Eclipse beam interval (0.6);
       "bonus_damage" // original (0); Eclipse Lucent Beam damage (80/160/240/320);
       {
-        "value"                                           "40 50 60"
+        "value"                                           "100"
         "CalculateSpellDamageTooltip"                     "0"
         "DamageTypeTooltip"                               "DAMAGE_TYPE_MAGICAL"
       }

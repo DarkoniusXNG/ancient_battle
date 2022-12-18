@@ -66,6 +66,7 @@ function firelord_meteor_push:OnSpellStart()
 		center_z = point.z
 	}
 
+	local ability = self
 	Timers:CreateTimer(delay, function()
 		-- Emit Impact Sound
 		EmitSoundOnLocationWithCaster(point, "Hero_Invoker.ChaosMeteor.Impact", caster)
@@ -76,10 +77,10 @@ function firelord_meteor_push:OnSpellStart()
 		for _, enemy in pairs(enemies) do
 			if enemy then
 				-- Impact damage
-				ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = impact_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+				ApplyDamage({victim = enemy, attacker = caster, ability = ability, damage = impact_damage, damage_type = DAMAGE_TYPE_MAGICAL})
 
 				-- Apply burn debuff
-				enemy:AddNewModifier(caster, self, "modifier_firelord_meteor_burn_debuff", {duration = debuff_duration})
+				enemy:AddNewModifier(caster, ability, "modifier_firelord_meteor_burn_debuff", {duration = debuff_duration})
 
 				-- Apply knockback debuff caused by impact
 				enemy:RemoveModifierByName("modifier_knockback")
@@ -88,12 +89,9 @@ function firelord_meteor_push:OnSpellStart()
 		end
 
 		-- Apply knockback effect to the caster as well if he is near the meteor on impact
-		local allies = FindUnitsInRadius(caster_team, point, nil, impact_radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-		for _, ally in pairs(allies) do
-			if ally == caster then
-				caster:RemoveModifierByName("modifier_knockback")
-				caster:AddNewModifier(caster, nil, "modifier_knockback", knockback_table)
-			end
+		if (caster:GetAbsOrigin() - point):Length2D() <= impact_radius then
+			caster:RemoveModifierByName("modifier_knockback")
+			caster:AddNewModifier(caster, nil, "modifier_knockback", knockback_table)
 		end
 
 		--local meteor_duration = travel_distance/travel_speed
@@ -102,7 +100,7 @@ function firelord_meteor_push:OnSpellStart()
 
 		local projectile_info = {
 			Source = caster,
-			Ability = self,
+			Ability = ability,
 			EffectName = "particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf",
 			vSpawnOrigin = point,
 			fDistance = travel_distance,
@@ -111,8 +109,8 @@ function firelord_meteor_push:OnSpellStart()
 			bHasFrontalCone = false,
 			bReplaceExisting = false,
 			iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
-			iUnitTargetType = self:GetAbilityTargetType(),
-			iUnitTargetFlags = self:GetAbilityTargetFlags(),
+			iUnitTargetType = ability:GetAbilityTargetType(),
+			iUnitTargetFlags = ability:GetAbilityTargetFlags(),
 			--fExpireTime = GameRules:GetGameTime() + meteor_duration,
 			bDeleteOnHit = false,
 			vVelocity = velocity,
@@ -175,41 +173,59 @@ function modifier_firelord_meteor_burn_debuff:IsStunDebuff()
 	return false
 end
 
-function modifier_firelord_meteor_burn_debuff:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE
-end
-
 function modifier_firelord_meteor_burn_debuff:IsPurgable()
 	return true
+end
+
+function modifier_firelord_meteor_burn_debuff:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
 end
 
 function modifier_firelord_meteor_burn_debuff:OnCreated()
 	if IsServer() then
 		local ability = self:GetAbility()
-		local damage_per_second = ability:GetSpecialValueFor("damage_per_second")
-		local damage_interval = ability:GetSpecialValueFor("damage_interval")
+		local damage_interval = 0.5
+		if ability and not ability:IsNull() then
+			damage_interval = ability:GetSpecialValueFor("damage_interval")
+		end
 
-		self.damage_table = {
-			victim = self:GetParent(),
-			attacker = self:GetCaster(),
-			damage = damage_per_second*damage_interval,
-			damage_type = DAMAGE_TYPE_MAGICAL,
-			ability = ability,
-		}
-
-		ApplyDamage(self.damage_table)
-
-		-- Start interval
+		self:OnIntervalThink()
 		self:StartIntervalThink(damage_interval)
 	end
 end
 
 function modifier_firelord_meteor_burn_debuff:OnIntervalThink()
+	if not IsServer() then return end
+
+	local damage_per_second = 26
+	local damage_interval = 0.5
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+		damage_interval = ability:GetSpecialValueFor("damage_interval")
+	end
+
+	local parent = self:GetParent()
+	local caster = self:GetCaster()
+	if not parent or parent:IsNull() or not caster or caster:IsNull() then
+		self:StartIntervalThink(-1)
+		self:Destroy()
+		return
+	end
+
+	local damage_table = {
+		victim = parent,
+		attacker = caster,
+		damage = damage_per_second*damage_interval,
+		damage_type = DAMAGE_TYPE_MAGICAL,
+		ability = ability,
+	}
+
 	-- Damage
-	ApplyDamage(self.damage_table)
+	ApplyDamage(damage_table)
 
 	-- Sound
-	self:GetParent():EmitSound("Hero_Invoker.ChaosMeteor.Damage")
+	parent:EmitSound("Hero_Invoker.ChaosMeteor.Damage")
 end
 
 function modifier_firelord_meteor_burn_debuff:GetEffectName()

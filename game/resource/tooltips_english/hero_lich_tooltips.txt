@@ -63,7 +63,7 @@
 		"DOTA_Tooltip_modifier_lich_custom_ice_storm_damage_Description"                  "Taking damage over time."
 
 		"DOTA_Tooltip_ability_lich_custom_freezing_touch"                                 "Freezing Touch"
-		"DOTA_Tooltip_ability_lich_custom_freezing_touch_Description"                     "Every time Lich damages enemies he slows them. This ability works with attacks, all spells and items."
+		"DOTA_Tooltip_ability_lich_custom_freezing_touch_Description"                     "Every time Lich damages enemies he slows them. Freezing Touch can be applied with any damage (from attacks, spells or items)."
 		"DOTA_Tooltip_ability_lich_custom_freezing_touch_Note0"                           "Slow stacks independently with other slows."
 		"DOTA_Tooltip_ability_lich_custom_freezing_touch_Lore"                            "Freezes everything he touches."
 		"DOTA_Tooltip_ability_lich_custom_freezing_touch_duration"                        "DURATION:"

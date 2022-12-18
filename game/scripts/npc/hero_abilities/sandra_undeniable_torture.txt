@@ -31,7 +31,7 @@
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"8"
-		"AbilityManaCost"				"97"
+		"AbilityManaCost"				"50"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -40,8 +40,8 @@
 			"lifesteal"				"100"
 			"lifeshare"
 			{
-				"value"                                             "85 90 95 100"
-				"special_bonus_unique_undeniable_torture_lifeshare" "+50"
+				"value"                                             "75 90 105 120"
+				"special_bonus_unique_undeniable_torture_lifeshare" "+30"
 			}
 			"max_channel"			"6"
 			"radius"				"350 375 400 425"

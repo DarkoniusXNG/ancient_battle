@@ -1,7 +1,7 @@
 
 		// ******************** FIRE LORD ********************
 		"DOTA_Tooltip_ability_firelord_soul_burn"                                         "Soul Burn"
-		"DOTA_Tooltip_ability_firelord_soul_burn_Description"                             "Wreaths a unit or hero in magical flames which cause damage over time. If cast on a enemy it also prevents casting of spells, and reduces attack damage. If cast on an ally or self it amplifies attack damage but doesn't silence and cooldown is reduced."
+		"DOTA_Tooltip_ability_firelord_soul_burn_Description"                             "Wreaths a unit or hero in magical flames which cause damage over time. If cast on a enemy it also prevents casting of spells, and reduces attack damage.\nIf cast on an ally or self it amplifies attack damage but doesn't silence and cooldown is reduced."
 		"DOTA_Tooltip_ability_firelord_soul_burn_Lore"                                    "Orchid Malevolence was inspired by this spell."
 		"DOTA_Tooltip_ability_firelord_soul_burn_Note0"                                   "Can be cast on spell immune allies (doesn't damage them) and treats Roshan as a creep."
 		"DOTA_Tooltip_ability_firelord_soul_burn_Note1"                                   "You can deny yourself or allies with this spell."
@@ -59,7 +59,7 @@
 		"DOTA_Tooltip_modifier_firelord_presence_aura_effect_Description"                 "Taking magic damage over time and damage taken increased by %dMODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE%%%."
 
 		"DOTA_Tooltip_ability_firelord_volcano"                                           "Volcano"
-		"DOTA_Tooltip_ability_firelord_volcano_Description"                               "Causes the ground to erupt into a massive Volcano. Volcano melts the target area causing damage and slow to enemies. Volcano will hurl a wave of molten rocks at nearby enemy units every %wave_interval% seconds: causing damage, slowing and stunning them."
+		"DOTA_Tooltip_ability_firelord_volcano_Description"                               "Causes the ground to erupt into a massive Volcano. Volcano melts the target area causing damage and slow to enemies. Volcano will hurl a wave of molten rocks at nearby enemy units every %wave_interval% seconds. Molten rocks will slow, stun and do damage."
 		"DOTA_Tooltip_ability_firelord_volcano_Lore"                                      "Fire Lord's accumulated rage bursts from a volcano."
 		//"DOTA_Tooltip_ability_firelord_volcano_Note0"                                     "Stun and damage goes through Spell immunity. But slow doesn't."
 		"DOTA_Tooltip_ability_firelord_volcano_Note1"                                     "Slow can be dispelled with Basic Dispel."

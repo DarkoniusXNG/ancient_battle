@@ -65,8 +65,8 @@
 		"DOTA_Tooltip_ability_archmage_conjure_image_scepter_description"                 "Illusions made out enemies are super strong illusions (can use spells, benefit from raw damage increases, but their gold bounty is increased)"
 
 		"DOTA_Tooltip_ability_archmage_mass_teleport"                                     "Mass Teleport"
-		"DOTA_Tooltip_ability_archmage_mass_teleport_Description"                         "CHANNELED - Teleports the Archmage and nearby allies to a friendly unit or building. Doesn't teleport units and heroes that are channeling."
-		"DOTA_Tooltip_ability_archmage_mass_teleport_Lore"                                "Archmage can teleport anywhere where are allies."
+		"DOTA_Tooltip_ability_archmage_mass_teleport_Description"                         "CHANNELED - Teleports the Archmage and nearby allies to a friendly unit or building. Doesn't teleport allied units and heroes that are channeling."
+		"DOTA_Tooltip_ability_archmage_mass_teleport_Lore"                                "Archmage can teleport anywhere to help allies in need."
 		"DOTA_Tooltip_ability_archmage_mass_teleport_Note0"                               "Mass Teleporting disjoints projectiles."
 		"DOTA_Tooltip_ability_archmage_mass_teleport_Note1"                               "Doesn't teleport lane creeps."
 		"DOTA_Tooltip_ability_archmage_mass_teleport_radius"                              "RADIUS:"

@@ -22,7 +22,7 @@
 		"DOTA_Tooltip_modifier_custom_death_pact_Description"                             "Damage and health increased."
 		
 		"DOTA_Tooltip_ability_death_knight_death_pit"                                     "Death Pit"
-		"DOTA_Tooltip_ability_death_knight_death_pit_Description"                         "Creates a a pit of death that slows movement speed and reduces healing done in its range. Death pit is also allowing all allies to regain health for a percentage of the damage they deal to the unit inside the pit. All damage dealt will steal life, including damage from spells."
+		"DOTA_Tooltip_ability_death_knight_death_pit_Description"                         "Creates a a pit of death that slows movement speed and reduces healing done in its range. Death pit is also allowing all allies to lifesteal from units inside the pit. <br><br><font color='#70EA72'>Death Pit grants normal lifesteal and spell lifesteal.</font>"
 		"DOTA_Tooltip_ability_death_knight_death_pit_Lore"								  "Frozen, caustic winds of death are at the whim of Death Knight, chilling and blighting the field of battle."
 		"DOTA_Tooltip_ability_death_knight_death_pit_radius"                              "RADIUS:"
 		"DOTA_Tooltip_ability_death_knight_death_pit_move_speed_slow"                     "%MOVE SPEED SLOW:"
@@ -31,7 +31,7 @@
 		"DOTA_Tooltip_ability_death_knight_death_pit_pit_duration"                        "PIT DURATION:"
 		
 		"DOTA_Tooltip_modifier_death_knight_death_pit_effect"							  "Death Pit"
-		"DOTA_Tooltip_modifier_death_knight_death_pit_effect_Description"				  "Slowed, reduced healing and granting lifesteal to enemies when damaged."
+		"DOTA_Tooltip_modifier_death_knight_death_pit_effect_Description"				  "Slowed, reduced healing and enemies can lifesteal from this unit."
 
 		"DOTA_Tooltip_ability_death_knight_chilling_touch"                                "Chilling Touch"
 		"DOTA_Tooltip_ability_death_knight_chilling_touch_Description"                    "A frigid gust enchants allied heroes and Death Knight, granting bonus magical damage for a short time."
@@ -70,5 +70,5 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_3"                        "+{s:value}/{s:value2}% Death Pact Health/Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_1"                        "+{s:value} Death Coil Heal"
 		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_2"                        "+{s:value}s Death Pact Duration"
-		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_5"                        ""
+		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_5"                        "Chilling Touch talent"
 		"DOTA_Tooltip_ability_special_bonus_unique_death_knight_6"                        "-{s:value}s Resurrection Cooldown"

@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Astral Trekker: Pulverize (E) - New Spell; Passive; Chance to cleave;
   // Author: Darkonius
-  // Notes: OK; 20.11.2019; If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
-  // TO_DO: 
+  // Notes: OK; 2022; Uses XNG Random chance; Cleave ignores armor;
+  // TO_DO: If too weak: Increase chance from 15/20/25/30% to 15/25/35/45%.
   //=================================================================================================================
   "astral_trekker_pulverize"
   {

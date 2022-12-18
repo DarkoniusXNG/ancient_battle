@@ -4,7 +4,7 @@
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_Description"                      "Interrupts the target and roots them in place."
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_Lore"							  "The only way to escape the onslaught of the Astral Trekker is to never oppose him in the first place."
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_Note0"							  "Reveals invisible units while trapped."
-		"DOTA_Tooltip_ability_astral_trekker_entrapment_Note1"							  "Entrapment can be dispelled only with Super Strong Dispels (for example: Lightning Shaman Purge, Bane Atropos End)"
+		"DOTA_Tooltip_ability_astral_trekker_entrapment_Note1"							  "Entrapment can be dispelled only with Super Strong Dispels."
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_duration"                         "DURATION:"
 		
 		"DOTA_Tooltip_modifier_entrapment"                                                "Entrapment"
@@ -30,8 +30,7 @@
 
 		"DOTA_Tooltip_ability_astral_trekker_pulverize"                                   "Pulverize"
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_Description"                       "Astral Trekker has a chance to cleave all nearby enemy units when attacking."
-		"DOTA_Tooltip_ability_astral_trekker_pulverize_Note0"                             "Cleave damage is reduced by armor type but not by armor value."
-		"DOTA_Tooltip_ability_astral_trekker_pulverize_Note1"                             "Cleave damage goes through Spell Immunity."
+		"DOTA_Tooltip_ability_astral_trekker_pulverize_Note0"                             "Pulverize damage ignores armor values!"
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_Lore"                              "Wanderer can hit hard multiple units."
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_cleave_chance"                     "%CLEAVE CHANCE:"
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_cleave_damage"					  "%CLEAVE DAMAGE:"
