@@ -251,12 +251,11 @@ end
 function modifier_sandra_will_to_live_delay:OnIntervalThink()
 	local parent = self:GetParent()
 	local damage = math.min( self.damage_tick, self.damage_left )
+	local not_die = false
 
 	-- Check if parent exists
 	if parent and not parent:IsNull() then
-
 		-- check threshold
-		local not_die = false
 		local flags = self.flags
 		if not self.modifier:IsNull() then
 			if damage <= self.modifier:GetStackCount() then
