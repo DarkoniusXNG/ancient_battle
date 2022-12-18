@@ -66,8 +66,8 @@ function ancient_battle_gamemode:OnAllPlayersLoaded()
 						local towers_fury_swipes = building:FindAbilityByName("ursa_fury_swipes")
 						towers_fury_swipes:SetLevel(4)
 					end
-				elseif GetMapName() == "two_vs_two" then
-					-- Buff Towers in 2v2
+				elseif GetMapName() == "main" or GetMapName() == "two_vs_two" or GetMapName() == "3vs3" then
+					-- Buff Towers in other maps
 					building:AddNewModifier(building, nil, "modifier_custom_tower_buff", {})
 				end
 			elseif string.find(building_name, "fort") then -- Check if its an ancient (throne/tree)

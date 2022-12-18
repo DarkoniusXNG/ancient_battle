@@ -19,7 +19,7 @@
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastPoint"                                    "0.5" // original (1); Eclipse (0.5);
+    "AbilityCastPoint"                                    "0.5" // original (1); Eclipse (0.5); Omnislash (0.3);
     "AbilityCastRange"                                    "675" // original (400); Eclipse radius (675);
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
     "AnimationPlaybackRate"                               "3"
@@ -30,7 +30,7 @@
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "100 150 200"
+    "AbilityManaCost"                                     "100 150 200" // Eclipse (150/200/250); Omnislash (200/275/350);
 
     // Precache
     //-------------------------------------------------------------------------------------------------------------
@@ -54,15 +54,15 @@
         "value"                                           "6 9 12"
         "special_bonus_unique_sohei_8"                    "+6"
       }
-      "max_duration" // min is: max_attacks * attack_interval
+      "max_duration" // min is: (max_attacks + 1) * attack_interval
       {
-        "value"                                           "3.6 5.4 7.2"
+        "value"                                           "4.2 6.0 7.8"
         "special_bonus_unique_sohei_8"                    "+3.6"
       }
       "attack_interval"                                   "0.6" // original (0.4); Eclipse beam interval (0.6);
-      "bonus_damage" // original (0);
+      "bonus_damage" // original (0); Eclipse Lucent Beam damage (80/160/240/320);
       {
-        "value"                                           "40 50 60"
+        "value"                                           "100"
         "CalculateSpellDamageTooltip"                     "0"
         "DamageTypeTooltip"                               "DAMAGE_TYPE_MAGICAL"
       }
@@ -99,24 +99,13 @@
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"                                           "special_bonus_undefined"
+    "BaseClass"                                           "special_bonus_base"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    // Special
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+	
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "6"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "value2"                                          "3.6"
-      }
+      "tooltip_max_attacks"                               "6"
     }
   }
 }

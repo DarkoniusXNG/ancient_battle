@@ -4,8 +4,15 @@ LinkLuaModifier( "modifier_sandra_will_to_live", "heroes/sandra/sandra_will_to_l
 LinkLuaModifier( "modifier_sandra_will_to_live_delay", "heroes/sandra/sandra_will_to_live", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_sandra_will_to_live_threshold", "heroes/sandra/sandra_will_to_live", LUA_MODIFIER_MOTION_NONE )
 
-function sandra_will_to_live:GetIntrinsicModifierName()
-	return "modifier_sandra_will_to_live"
+--function sandra_will_to_live:GetIntrinsicModifierName()
+	--return "modifier_sandra_will_to_live"
+--end
+
+function sandra_will_to_live:OnSpellStart()
+	local caster = self:GetCaster()
+	local duration = self:GetSpecialValueFor("duration")
+
+	caster:AddNewModifier(caster, self, "modifier_sandra_will_to_live", {duration = duration})
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -98,41 +105,51 @@ function modifier_sandra_will_to_live:GetMinHealth()
 	end
 end
 
-function modifier_sandra_will_to_live:OnTakeDamage( params )
-	if IsServer() then
-		if params.unit~=self:GetParent() or params.inflictor==self:GetAbility() then
+if IsServer() then
+	function modifier_sandra_will_to_live:OnTakeDamage( params )
+		local parent = self:GetParent()
+		local ability = self:GetAbility()
+		local damaged_unit = params.unit
+		local attacker = params.attacker
+
+		-- Check if damaged_unit exists
+		if not damaged_unit or damaged_unit:IsNull() then
 			return
 		end
 
-		-- cancel if break
-		if self:GetParent():PassivesDisabled() and (not self:GetParent():HasScepter()) then
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
 			return
 		end
+
+		if damaged_unit ~= parent or params.inflictor == ability then
+			return
+		end
+
+		-- Needed if passive
+		--if parent:PassivesDisabled() and not parent:HasScepter() then
+			--return
+		--end
 
 		-- cover up damage
-		self:GetParent():SetHealth( self.currentHealth )
+		parent:SetHealth( self.currentHealth )
 
 		-- add delay damage if bigger than base threshold
 		if params.damage > self.threshold_base then
-			local attacker = tempTable:AddATValue( params.attacker )
+			local attacker_index = tempTable:AddATValue( attacker )
 			local modifier = tempTable:AddATValue( self )
-			self:GetParent():AddNewModifier(
-				self:GetParent(), -- player source
-				self:GetAbility(), -- ability source
-				"modifier_sandra_will_to_live_delay", -- modifier name
-				{
-					damage = params.damage,
-					source = attacker,
-					flags = params.damage_flags,
-					modifier = modifier,
-				} -- kv
-			)
+			parent:AddNewModifier(parent, ability, "modifier_sandra_will_to_live_delay", {
+				damage = params.damage,
+				source = attacker_index,
+				flags = params.damage_flags,
+				modifier = modifier,
+			})
 		end
 
 		-- add threshold stack
-		if params.attacker:GetTeamNumber()~=self:GetParent():GetTeamNumber() then
+		if attacker:GetTeamNumber() ~= parent:GetTeamNumber() then
 			local stack = self.threshold_stack
-			if params.attacker:IsCreep() then
+			if attacker:IsCreep() then
 				stack = self.threshold_stack_creep
 			end
 			self:AddStack( stack )
@@ -183,6 +200,14 @@ function modifier_sandra_will_to_live:PlayEffects( attacker )
 	ParticleManager:ReleaseParticleIndex( effect_cast )
 end
 
+function modifier_sandra_will_to_live:GetEffectName()
+	return "particles/units/heroes/hero_dazzle/dazzle_shallow_grave.vpcf"
+end
+
+function modifier_sandra_will_to_live:GetEffectNameAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
 ---------------------------------------------------------------------------------------------------
 
 modifier_sandra_will_to_live_delay = class({})
@@ -204,8 +229,6 @@ function modifier_sandra_will_to_live_delay:OnCreated( kv )
 	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
 	self.interval = 1
 
-	-- Talent that decreases delay (special_bonus_unique_will_to_live_tick) - TODO
-
 	if IsServer() then
 		-- attacker
 		self.attacker = tempTable:RetATValue( kv.source )
@@ -226,30 +249,38 @@ function modifier_sandra_will_to_live_delay:OnCreated( kv )
 end
 
 function modifier_sandra_will_to_live_delay:OnIntervalThink()
-	-- damage
+	local parent = self:GetParent()
 	local damage = math.min( self.damage_tick, self.damage_left )
-
-	-- check threshold
 	local not_die = false
-	local flags = self.flags
-	if damage<=self.modifier:GetStackCount() then
-		flags = bit.bor(flags, DOTA_DAMAGE_FLAG_NON_LETHAL)
 
-		if damage>=self:GetParent():GetHealth() then
-			not_die = true
+	-- Check if parent exists
+	if parent and not parent:IsNull() then
+		-- check threshold
+		local flags = self.flags
+		if not self.modifier:IsNull() then
+			if damage <= self.modifier:GetStackCount() then
+				flags = bit.bor(flags, DOTA_DAMAGE_FLAG_NON_LETHAL)
+
+				if damage >= parent:GetHealth() then
+					not_die = true
+				end
+			end
+		end
+
+		-- Check if attacker exists
+		if self.attacker and not self.attacker:IsNull() then
+			-- damage
+			local damageTable = {
+				victim = parent,
+				attacker = self.attacker,
+				damage = damage,
+				damage_type = DAMAGE_TYPE_PURE,
+				ability = self:GetAbility(),
+				damage_flags = flags,
+			}
+			ApplyDamage(damageTable)
 		end
 	end
-
-	-- damage
-	local damageTable = {
-		victim = self:GetParent(),
-		attacker = self.attacker,
-		damage = damage,
-		damage_type = DAMAGE_TYPE_PURE,
-		ability = self:GetAbility(), --Optional.
-		damage_flags = flags,
-	}
-	ApplyDamage(damageTable)
 
 	-- effects
 	self:PlayEffects( false )
@@ -259,7 +290,7 @@ function modifier_sandra_will_to_live_delay:OnIntervalThink()
 
 	-- diminish
 	self.damage_left = self.damage_left - self.damage_tick
-	if self.damage_left<=0 then
+	if self.damage_left <= 0 then
 		self:Destroy()
 	end
 end
@@ -268,6 +299,11 @@ function modifier_sandra_will_to_live_delay:PlayEffects( bSurvive )
 	local particle_cast
 	local sound_cast = "DOTA_Item.Maim"
 	local parent = self:GetParent()
+
+	-- Check if parent exists
+	if not parent or parent:IsNull() then
+		return
+	end
 
 	local effect_cast
 	if bSurvive then
@@ -301,7 +337,6 @@ end
 
 function modifier_sandra_will_to_live_threshold:OnCreated( kv )
 	if IsServer() then
-		-- references
 		self.modifier = tempTable:RetATValue( kv.modifier )
 		self.stack = kv.stack
 	end
@@ -309,8 +344,9 @@ end
 
 function modifier_sandra_will_to_live_threshold:OnDestroy( kv )
 	if IsServer() then
-		-- references
-		self.modifier:RemoveStack( self.stack )
+		if not self.modifier:IsNull() then
+			self.modifier:RemoveStack( self.stack )
+		end
 	end
 end
 

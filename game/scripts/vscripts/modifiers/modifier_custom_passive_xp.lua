@@ -21,7 +21,7 @@ function modifier_custom_passive_xp:OnCreated()
 		self:Destroy()
 		return
 	end
-	local xpm = 10
+	local xpm = 20
 	if xpm ~= 0 then
 		self.xpTickTime = 60/xpm
 		self.xpPerTick = 1

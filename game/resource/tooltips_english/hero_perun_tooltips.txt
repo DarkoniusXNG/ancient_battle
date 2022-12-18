@@ -1,7 +1,7 @@
 
 		// ******************** PERUN LIGHTNING SHAMAN ********************
 		"DOTA_Tooltip_ability_perun_ball_of_lightning"                          "Ball Of Lightning"
-		"DOTA_Tooltip_ability_perun_ball_of_lightning_Description"              "Sends a lightning ball in a straight line. It explodes on enemies dealing AoE damage plus percentage of Perun's intelligence."
+		"DOTA_Tooltip_ability_perun_ball_of_lightning_Description"              "Sends a lightning ball in a straight line. It explodes on first enemy hit dealing AoE damage based on of Perun's intelligence."
 		"DOTA_Tooltip_ability_perun_ball_of_lightning_Lore"                     "The Storm is coming in."
 		//"DOTA_Tooltip_ability_perun_ball_of_lightning_ball_speed"               "BALL SPEED:"
 		//"DOTA_Tooltip_ability_perun_ball_of_lightning_ball_width"               "BALL WIDTH:"
@@ -65,11 +65,9 @@
 		"DOTA_Tooltip_ability_perun_ion_blast_mana_burn"                        "MANA BURN:"
 
 		"DOTA_Tooltip_ability_perun_purge"                                      "Purge"
-		"DOTA_Tooltip_ability_perun_purge_Description"                          "Remove debuffs from allies or buffs from enemies. Purge also damages enemies for %base_damage% and slows them by 100%%. Summoned units and illusions take bonus damage."
+		"DOTA_Tooltip_ability_perun_purge_Description"                          "Remove debuffs from allies or buffs from enemies. Purge also damages enemies for %base_damage% and slows them by 100%%. Summoned units and illusions take bonus damage.\n\nDISPEL TYPE: Super Strong Dispel"
 		"DOTA_Tooltip_ability_perun_purge_Lore"                                 "Perun knows every trick in the book. The most powerful purge in all of the worlds."
 		"DOTA_Tooltip_ability_perun_purge_Note0"							    "Applies Super Strong Dispel to allies and Basic Dispel to enemies."
-		"DOTA_Tooltip_ability_perun_purge_Note1"							    "Slow goes through spell immunity but damage doesn't."
-		"DOTA_Tooltip_ability_perun_purge_Note2"							    "Some summoned units cannot be purged (for example Charmed units)."
 		"DOTA_Tooltip_ability_perun_purge_slow_creep_duration"                  "DURATION (CREEPS):"
 		"DOTA_Tooltip_ability_perun_purge_slow_hero_duration"                   "DURATION (HEROES):"
 		"DOTA_Tooltip_ability_perun_purge_summon_damage"                        "SUMMONS BONUS DAMAGE:"

@@ -15,33 +15,33 @@
     "Role"                                                "Carry,Durable,Jungler,Disabler"    // Roles
     "Rolelevels"                                          "3,2,3,2"
     "Complexity"                                          "2"
-    
+
     // Abilities
     //-------------------------------------------------------------------------------------------------------------
     "AbilityLayout"                                       "6"                      // It works now (7.00)
     "AbilityTalentStart"                                  "10"
-    "Ability1"                                            "life_stealer_feast"            // Q, DOTA_VERSION (4 levels)
-    "Ability2"                                            "life_stealer_custom_anabolic_frenzy"       // W (4 levels)
-    "Ability3"                                            "life_stealer_custom_absorb_life"      // E (1 level)
-    "Ability4"                                            "life_stealer_custom_poison_sting"      // T, passive (4 levels)
-    "Ability5"                                            "life_stealer_custom_rage"                  // F, Secondary Ultimate (4 levels)
-    "Ability6"                                            "life_stealer_infest"              // R, Primary Ultimate (3 levels)
+    "Ability1"                                            "life_stealer_custom_rage"               // Q (4 levels)
+    "Ability2"                                            "life_stealer_custom_anabolic_frenzy"    // W, passive + active (4 levels)
+    "Ability3"                                            "life_stealer_custom_absorb_life"        // E (1 level)
+    "Ability4"                                            "life_stealer_custom_poison_sting"       // T, passive (4 levels)
+    "Ability5"                                            "life_stealer_feast"                     // F, passive (4 levels)
+    "Ability6"                                            "life_stealer_infest"                    // R, Primary Ultimate (3 levels)
     "Ability7"                                            "life_stealer_consume"
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_unique_lifestealer_infest_damage"      // lvl 10 talent; Infest bonus damage talent
+    "Ability10"                                           "special_bonus_unique_lifestealer_infest_damage"          // lvl 10 talent; Infest bonus damage talent
     "Ability11"                                           "special_bonus_unique_lifestealer_infest_target_bonus"    // lvl 10 talent; Infested unit bonus ms talent
 
     "Ability12"                                           "special_bonus_hp_325"                      // lvl 15 talent; dota Lifestealer (325)
-    "Ability13"                                           "special_bonus_attack_damage_25"      // lvl 15 talent; dota Lifestealer (25)
+    "Ability13"                                           "special_bonus_attack_damage_25"            // lvl 15 talent; dota Lifestealer (25)
 
-    "Ability14"                                           "special_bonus_evasion_16"          // lvl 20 talent; dota Lifestealer (16%)
-    "Ability15"                                           "special_bonus_unique_lifestealer_3"    // lvl 20 talent; Feast lifesteal talent 
+    "Ability14"                                           "special_bonus_evasion_16"                  // lvl 20 talent; unique
+    "Ability15"                                           "special_bonus_unique_lifestealer_3"        // lvl 20 talent; Feast lifesteal talent 
 
-    "Ability16"                                           "special_bonus_magic_resistance_25"      // lvl 25 talent: special_bonus_unique_lifestealer_custom_1 - Absorb Life applies attacks talent
-    "Ability17"                                           "special_bonus_spell_lifesteal_70"      // lvl 25 talent; unique
-    
+    "Ability16"                                           "special_bonus_magic_resistance_25"         // lvl 25 talent: special_bonus_unique_lifestealer_custom_1 - Absorb Life applies attacks talent
+    "Ability17"                                           "special_bonus_spell_lifesteal_70"          // lvl 25 talent; unique
+
     // special_bonus_attack_speed_30 - not needed because of Anabolic Frenzy active
     // special_bonus_movement_speed_25 - not needed because of Anabolic Frenzy passive
 
@@ -55,18 +55,18 @@
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"                                     "22"                  // dota Lifestealer (22)
     "AttackDamageMax"                                     "28"                  // dota Lifestealer (28)
-    "AttackRate"                                          "1.7"                  // dota Lifestealer (1.7); old Lifestealer (1.7);
-    "BaseAttackSpeed"                                     "100"                                   // dota Lifestealer (120);
-    "AttackAnimationPoint"                                "0.39"                  // like dota Lifestealer
-    "AttackAcquisitionRange"                              "600"                  // like dota Lifestealer
-    "AttackRange"                                         "128"                  // like old Lifestealer
+    "AttackRate"                                          "1.7"                 // dota Lifestealer (1.7); old Lifestealer (1.7);
+    "BaseAttackSpeed"                                     "100"                 // dota Lifestealer (120);
+    "AttackAnimationPoint"                                "0.39"                // like dota Lifestealer
+    "AttackAcquisitionRange"                              "600"                 // like dota Lifestealer
+    "AttackRange"                                         "128"                 // like old Lifestealer
 
     // Movement
     //-------------------------------------------------------------------------------------------------------------
     "MovementSpeed"                                       "295"                  // dota Lifestealer (320); old Lifestealer (295);
     "MovementTurnRate"                                    "1.0"                  // dota Lifestealer (0.9)
-    "HasAggressiveStance"                                 "1"                                // like dota Lifestealer
-    
+    "HasAggressiveStance"                                 "1"                    // like dota Lifestealer
+
     // Vision
     //-------------------------------------------------------------------------------------------------------------
     "VisionDaytimeRange"                                  "1800"                  // Default
@@ -81,7 +81,7 @@
     "AttributeAgilityGain"                                "2.6"                  // dota Lifestealer (2.6); old Lifestealer (4.05);
     "AttributeBaseIntelligence"                           "15"                  // dota Lifestealer (15); old Lifestealer (15); - don't change!
     "AttributeIntelligenceGain"                           "1.5"                  // dota Lifestealer (1.8); old Lifestealer (1.5); - don't change!
-    
+
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.0"                  // dota Lifestealer (0.25)

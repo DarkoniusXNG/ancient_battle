@@ -55,7 +55,7 @@
 		"DOTA_Tooltip_ability_gambler_lucky_stars_bonus_gold"                             "GOLD GAINED ON CRIT:"
 
 		"DOTA_Tooltip_ability_gambler_chip_stack"                                         "Chip Stack"
-		"DOTA_Tooltip_ability_gambler_chip_stack_Description"                             "Deals damage to the enemy hero for the percent of his networth (current gold + item's worth)."
+		"DOTA_Tooltip_ability_gambler_chip_stack_Description"                             "Deals damage to the enemy hero for the percent of their networth (current gold + item's worth)."
 		"DOTA_Tooltip_ability_gambler_chip_stack_Lore"                                    "Gambler always checks how much gold his enemies have."
 		"DOTA_Tooltip_ability_gambler_chip_stack_gold_to_damage_ratio"                    "%NETWORTH TO DAMAGE:"
 

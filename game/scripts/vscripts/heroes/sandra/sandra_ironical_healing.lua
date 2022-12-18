@@ -3,15 +3,12 @@ sandra_ironical_healing = class({})
 LinkLuaModifier( "modifier_sandra_ironical_healing", "heroes/sandra/modifier_sandra_ironical_healing", LUA_MODIFIER_MOTION_NONE )
 
 function sandra_ironical_healing:OnSpellStart()
-	-- unit identifier
 	local caster = self:GetCaster()
 
 	-- load data
 	local base_damage = self:GetSpecialValueFor("base_damage")
 	local damage_pct = self:GetSpecialValueFor("damage_pct")
 	local duration = self:GetSpecialValueFor("duration")
-
-	-- Talent that decreases duration (special_bonus_unique_ironical_healing_duration) TODO
 
 	-- calculate damage
 	local total_damage = base_damage + (damage_pct/100)*caster:GetMaxHealth()

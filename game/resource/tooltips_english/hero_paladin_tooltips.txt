@@ -27,7 +27,6 @@
 		"DOTA_Tooltip_ability_guardian_angel_bash"                                      "Angel's Bash"
 		"DOTA_Tooltip_ability_guardian_angel_bash_Description"                          "Angel has a chance to stun on attack. The duration is doubled against creeps."
 		"DOTA_Tooltip_ability_guardian_angel_bash_Lore"									"Angel swings can stun anyone."
-		"DOTA_Tooltip_ability_guardian_angel_bash_Note0"								"Stun works on Spell Immune units."
 		"DOTA_Tooltip_ability_guardian_angel_bash_chance"                               "%CHANCE:"
 		//"DOTA_Tooltip_ability_guardian_angel_bash_bonus_damage"                         "BONUS DAMAGE:"
 		"DOTA_Tooltip_ability_guardian_angel_bash_duration"                             "DURATION:"
@@ -42,7 +41,7 @@
 		"DOTA_Tooltip_ability_paladin_holy_strike_percent_damage_as_pure"				"%ATTACK DAMAGE AS PURE:"
 
 		"DOTA_Tooltip_ability_paladin_eternal_devotion"                                 "Eternal Devotion"
-		"DOTA_Tooltip_ability_paladin_eternal_devotion_Description"                     "Aura that gives additional armor to nearby friendly units. Also when Paladin dies, his Guardian Angel descends from the heavens to attack his enemies and protect his allies. Allies become immune to physical damage and have increased HP regeneration for a short time after Paladin's death. Guardian Angel has Holy Purification and Bash. Guardian Angel's damage is based on the killer's attack damage if the killer is a hero or a creep, otherwise it is based on Paladin's attack damage."
+		"DOTA_Tooltip_ability_paladin_eternal_devotion_Description"                     "Aura that gives additional armor to nearby friendly units. Also when Paladin dies, his Guardian Angel descends from the heavens to attack his enemies and protect his allies. Allies become immune to physical damage and have increased HP regeneration for a short time after Paladin's death.\nGuardian Angel has Holy Purification and Bash. Guardian Angel's damage is based on the killer's attack damage if the killer is a hero or a creep, otherwise it is based on Paladin's attack damage."
 		"DOTA_Tooltip_ability_paladin_eternal_devotion_Lore"							"Paladin serves in death as well."
 		"DOTA_Tooltip_ability_paladin_eternal_devotion_Note0"							"Guardian Angel is a unit that has spell immunity and physical immunity. But he is not immune to pure damage and his health is very low."
 		"DOTA_Tooltip_ability_paladin_eternal_devotion_Note1"							"Guardian Angel buff is only applied to allied heroes and creeps that were near Paladin at the moment of his death."
@@ -73,12 +72,12 @@
 		"DOTA_Tooltip_modifier_retribution_buff_Description"                            "Allied hero died near you. Increased attack damage and increased armor."
 
 		"DOTA_Tooltip_ability_paladin_divine_shield"                                    "Divine Shield"
-		"DOTA_Tooltip_ability_paladin_divine_shield_Description"                        "Creates a divine barrier around the target unit. Grants 100%% resistance to ALL damage. Divine Shield (without Aghanim Scepter) doesn't block stuns and other debuffs, just damage.\n\nDISPEL TYPE: Strong Dispel.\n\nUpgradable with Aghanim's Scepter."
+		"DOTA_Tooltip_ability_paladin_divine_shield_Description"                        "Creates a divine barrier around the target unit. Grants 100%% resistance to ALL damage. Divine Shield (without Aghanim Scepter) doesn't block stuns and other debuffs, just damage.\n\nDISPEL TYPE: Strong Dispel."
 		"DOTA_Tooltip_ability_paladin_divine_shield_shield_duration"                    "DURATION:"
 		"DOTA_Tooltip_ability_paladin_divine_shield_Lore"								"Paladin's signature ability."
 		"DOTA_Tooltip_ability_paladin_divine_shield_Note0"								"Axe can still kill a unit under Divine Shield with Cut from Above if it is under certain HP threshold."
 		"DOTA_Tooltip_ability_paladin_divine_shield_Note1"								"Strong Dispel removes most debuffs and stuns. Super Strong Dispel removes almost ALL debuffs."
-		"DOTA_Tooltip_ability_paladin_divine_shield_scepter_description"				"Divine Shield also applies Spell immunity. DISPEL TYPE: Super Strong Dispel."
+		"DOTA_Tooltip_ability_paladin_divine_shield_scepter_description"				"Divine Shield also applies Spell immunity and Super Strong Dispel."
 
 		"DOTA_Tooltip_modifier_paladin_divine_shield"                                   "Divine Shield"
 		"DOTA_Tooltip_modifier_paladin_divine_shield_Description"                       "Immune to all damage."

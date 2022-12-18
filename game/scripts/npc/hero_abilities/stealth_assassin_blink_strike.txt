@@ -42,10 +42,10 @@
         "var_type"                                        "FIELD_INTEGER"
         "blink_range"                                     "850 950 1050 1150"
       }
-      "02" // don't change
+      "02"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "75 125 175 225"
+        "damage"                                          "75 145 215 285"
       }
       "03"
       {

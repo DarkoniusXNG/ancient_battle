@@ -4,7 +4,7 @@
   // Paladin: Divine Retribution (F) - New Spell, passive, For every allied hero death in vicinity, Paladin gains damage and armor.
   // Author: Darkonius
   // Notes: OK; 2022;
-  // TO_DO:
+  // TO_DO: talent that allows it work for allied creeps
   //=================================================================================================================
   "paladin_divine_retribution"
   {

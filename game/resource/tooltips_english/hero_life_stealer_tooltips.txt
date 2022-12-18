@@ -1,17 +1,16 @@
 
 		// ******************** LIFESTEALER ********************
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life"                            "Absorb Life"
-		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_Description"                "Deals %base_damage% + damage based on enemy current health. Heals Lifestealer for the damage done."
+		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_Description"                "Deals %base_damage% + damage based on enemy current health to all enemies in the area. Heals Lifestealer for the damage done."
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_Lore"						  "Stealing life in every way possible."
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_base_damage"                "BASE DAMAGE:"
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_hp_percent_damage"          "%HP PERCENT DAMAGE:"
 		"DOTA_Tooltip_ability_life_stealer_custom_absorb_life_radius"                     "RADIUS:"
 		
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting"                           "Poison Sting"
-		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Description"               "N'aix attacks sting, adding a poison-based damage and slowing movement speed."
+		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Description"               "N'aix attacks sting, adding a poison-based damage, slowing movement speed and reducing heals and regen. <br><br><font color='#70EA72'>Poison Sting damage can interrupt healing from items and can trigger the cooldown of Blink Dagger. Poison Sting debuff can be applied with N'aix illusions but without damage. Poison Sting reduces all healing, hp regen, lifesteal and spell lifesteal.</font>"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Lore"					  "The paralytic sting of the creature which caused his transformation now belongs to the Lifestealer."
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Note0"                     "Poison Sting damage can be lethal."
-		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_Note1"                     "Damage from Poison Sting does not interrupt healing from items, nor does it activate the cooldown on Blink Dagger."
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_duration"                  "DURATION:"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_damage"                    "DAMAGE PER SECOND:"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_move_speed_slow"           "%MOVE SPEED SLOW:"
@@ -34,7 +33,7 @@
 		"DOTA_Tooltip_modifier_anabolic_frenzy_active"                                    "Anabolic Frenzy"
 		"DOTA_Tooltip_modifier_anabolic_frenzy_active_Description"                        "Increased movement speed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% and increased attack speed by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
 		
-		"DOTA_Tooltip_modifier_anabolic_frenzy_slow"                                      "Anabolic Frenzy Cripple"
+		"DOTA_Tooltip_modifier_anabolic_frenzy_slow"                                      "Anabolic Cripple"
 		"DOTA_Tooltip_modifier_anabolic_frenzy_slow_Description"                          "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
 
 		"DOTA_Tooltip_ability_life_stealer_custom_rage"                                   "Rage"

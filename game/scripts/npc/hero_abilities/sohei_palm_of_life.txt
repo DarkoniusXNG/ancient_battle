@@ -23,10 +23,10 @@
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "250"
     "AbilityCastPoint"                                    "0.3"
     "AbilityCastAnimation"                                "ACT_DOTA_OVERRIDE_ABILITY_2"
     "AnimationPlaybackRate"                               "2"
-    "AbilityCastRange"                                    "250"
 
     // Time
     //-------------------------------------------------------------------------------------------------------------

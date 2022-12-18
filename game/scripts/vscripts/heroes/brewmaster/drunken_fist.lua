@@ -7,11 +7,7 @@ function DrunkenFistCleave(event)
 	local ability_level = ability:GetLevel() - 1
 
 	-- To prevent crashes:
-	if not target then
-		return
-	end
-
-	if target:IsNull() then
+	if not target or target:IsNull() then
 		return
 	end
 

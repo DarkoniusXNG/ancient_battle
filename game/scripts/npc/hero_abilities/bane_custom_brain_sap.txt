@@ -47,7 +47,7 @@
       "int_steal_duration"                                "60"
       "shard_cooldown"
       {
-        "value"                                           "5"
+        "value"                                           "6"
         "RequiresShard"                                   "1"
       }
       "shard_cast_point"

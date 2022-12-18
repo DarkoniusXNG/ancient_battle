@@ -15,7 +15,7 @@
 		"DOTA_Tooltip_Ability_sohei_dash_slow_duration"                                  "SLOW DURATION:"
 
 		"dota_tooltip_ability_sohei_guard"                                              "Guard"
-		"dota_tooltip_ability_sohei_guard_description"                                  "Knocks back enemies around you, removes most negative effects and reflects all spell and attack projectiles that would hit you for the next %guard_duration% seconds. Can be used while stunned but consumes %hp_cost%%% of Sohei's max health.\n\nDISPEL TYPE: Strong Dispel"
+		"dota_tooltip_ability_sohei_guard_description"                                  "Sohei knocks back enemies around him, while removing most negative effects and reflecting all spell and attack projectiles that would hit him for the next %guard_duration% seconds. Can be used while stunned but consumes %hp_cost%%% of Sohei's max health.\n\nDISPEL TYPE: Strong Dispel"
 		"dota_tooltip_ability_sohei_guard_note0"                                        "Sohei can kill himself with this ability."
 		"dota_tooltip_ability_sohei_guard_note1"                                        "Using this during Flurry of Blows will cancel Flurry of Blows."
 		"dota_tooltip_ability_sohei_guard_guard_duration"                               "GUARD DURATION:"
@@ -43,7 +43,7 @@
 		"DOTA_Tooltip_Ability_sohei_momentum_strike_stun_duration"                       "COLLISION STUN DURATION:"
 
 		"DOTA_Tooltip_Ability_sohei_flurry_of_blows"                                     "Flurry of Blows"
-		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_description"                         "Sohei becomes invulnerable and starts randomly attacking in a selected area with bonus magic damage. Flurry of Blows ends after %max_duration% seconds or after %max_attacks% attacks. Sohei can use most abilities and items while Flurry of Blows is active."
+		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_description"                         "Sohei becomes invulnerable and starts randomly attacking in the selected area with bonus magic damage. Flurry of Blows ends after %max_duration% seconds or after %max_attacks% attacks. Sohei can use most abilities and items while Flurry of Blows is active."
 		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_Lore"                                "Offensive Ki feature created through meditation."
 		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_Note0"                               "Flurry of Blows attacks apply attack modifiers and have True Strike."
 		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_Note1"                               "Sohei is rooted while Flurry of Blows is active."
@@ -97,5 +97,5 @@
 		
 		// Flurry of Blows talents
 		"DOTA_Tooltip_Ability_special_bonus_sohei_fob_radius"                           "+{s:value} Flurry of Blows AoE"
-		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8"                             "+{s:value} Flurry of Blows Attacks"
+		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8"                             "+{s:tooltip_max_attacks} Flurry of Blows Attacks"
 		"DOTA_Tooltip_Ability_special_bonus_unique_sohei_8_Description"                 "Increases Flurry of Blows duration by 3.6s as well."

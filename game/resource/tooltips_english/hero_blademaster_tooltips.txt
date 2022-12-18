@@ -46,9 +46,11 @@
 		"DOTA_Tooltip_ability_blademaster_counter_attack_trigger_chance"                  "%COUNTER-ATTACK CHANCE:"
 		"DOTA_Tooltip_ability_blademaster_counter_attack_hp_leech_percent"                "%LIFESTEAL:"
 		
-		"DOTA_Tooltip_modifier_legion_commander_moment_of_courage_lifesteal"			  "Counter Attack"
-		
-		"DOTA_Tooltip_ability_juggernaut_omni_slash_Description"						  "Blademaster leaps towards the target enemy units, and then slashes the target and other nearby enemy units at an increased attack rate. Blademaster is invulnerable for the duration."
-		
 		"DOTA_Tooltip_ability_special_bonus_unique_blademaster_1"                         "+{s:value} Blade Storm Radius"
 		"DOTA_Tooltip_ability_special_bonus_unique_blademaster_2"                         "+{s:value} Blade Storm DPS"
+		
+		// vanilla stuff
+		"DOTA_Tooltip_modifier_legion_commander_moment_of_courage_lifesteal"			  "Counter Attack"
+		"DOTA_Tooltip_ability_juggernaut_omni_slash_Description"						  "Blademaster leaps towards the target enemy units, and then slashes the target and other nearby enemy units at an increased attack rate. Blademaster is invulnerable for the duration.\n\nDISPEL TYPE: Basic Dispel"
+		"DOTA_Tooltip_ability_special_bonus_unique_legion_commander_3"                    "+{s:value}% Counter Attack Proc Chance"
+		"DOTA_Tooltip_ability_special_bonus_unique_legion_commander_7"                    "+{s:bonus_hp_leech_percent}% Counter Attack Lifesteal"

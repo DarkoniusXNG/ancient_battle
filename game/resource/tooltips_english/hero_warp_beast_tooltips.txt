@@ -17,17 +17,17 @@
 		"DOTA_Tooltip_Ability_warp_beast_latch_attackspeed_bonus"              "ATTACK SPEED BONUS:"
 		"DOTA_Tooltip_Ability_warp_beast_latch_duration"                       "DURATION:"
 
-		"DOTA_Tooltip_modifier_latch"                       "Latched"
-		"DOTA_Tooltip_modifier_latch_Description"           "You are latched on a target. You will unlatch if you become stunned or if the target removes the effect."
-		"DOTA_Tooltip_modifier_latch_target"                   "Latched"
-		"DOTA_Tooltip_modifier_latch_target_Description"       "Warp Beast is latched onto you!"
+		"DOTA_Tooltip_modifier_latch"                                          "Latched"
+		"DOTA_Tooltip_modifier_latch_Description"                              "If latched unit is an enemy you will unlatch if you become stunned or if the target removes the effect. If latched unit is an ally you will unlatch when you perform some action."
+		"DOTA_Tooltip_modifier_latch_target"                                   "Latched"
+		"DOTA_Tooltip_modifier_latch_target_Description"                       "Warp Beast is latched onto you!"
 
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater"                                "Mana Vessel"
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater_Description"                    "Warp Beast steals mana when attacking. If Warp Beast kills a unit, he will also gain mana equal to %kill_drain_percentage%% of the unit's max mana. Any excess mana gained will be stored as bonus mana which lasts for %bonus_duration% seconds or until spent, up to a limit.\nGains evasion based on current mana percentage."
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater_Note0"                          "If the unit has no mana or is an illusion, this passive won't trigger."
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater_drain_amount"                   "MANA GAIN AMOUNT:"
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater_bonus_mana_cap"                 "EXCESS MANA LIMIT:"
-		"DOTA_Tooltip_Ability_warp_beast_mana_eater_evasion_per_mana_percentage"    "%MAX EVASION:"
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater"                                "Mana Vessel"
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater_Description"                    "Warp Beast steals mana when attacking. If Warp Beast kills a unit, he will also gain mana equal to %kill_drain_percentage%% of the unit's max mana. Any excess mana gained will be stored as bonus mana which lasts for %bonus_duration% seconds or until spent, up to a limit.\nGains evasion based on current mana percentage."
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater_Note0"                          "If the unit has no mana or is an illusion, this passive won't trigger."
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater_drain_amount"                   "MANA GAIN AMOUNT:"
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater_bonus_mana_cap"                 "EXCESS MANA LIMIT:"
+		//"DOTA_Tooltip_Ability_warp_beast_mana_eater_evasion_per_mana_percentage"    "%MAX EVASION:"
 
 		"DOTA_Tooltip_modifier_mana_eater_bonus_mana_count"					"Excess Mana"
 		"DOTA_Tooltip_modifier_mana_eater_bonus_mana_count_Description"		"Bonus Mana gained with Warp."
@@ -51,4 +51,6 @@
 		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_warp_silence"				"{s:value}s Silence on Warp"
 		"DOTA_Tooltip_Ability_special_bonus_unique_warp_beast_warp_silence_Description"	"Silences enemies in a 550 radius from the Warp point."
 
-		"DOTA_Tooltip_ability_void_spirit_resonant_pulse_Description"			"Warp Beast wraps himself in a protective shield that absorbs physical damage and emits a single damaging pulse around him. The shield gains increased damage absorption for each enemy hero the pulse hits."
+		// vanilla stuff
+		"DOTA_Tooltip_ability_void_spirit_resonant_pulse_Description"           "Warp Beast wraps himself in a protective shield that absorbs physical damage and emits a single damaging pulse around him. The shield gains increased damage absorption for each enemy hero the pulse hits."
+		"DOTA_Tooltip_ability_void_spirit_resonant_pulse_Lore"                  "Warp Beast never hesitates to shroud himself in the essence of his true self when forced to interact with the mortal plane."
