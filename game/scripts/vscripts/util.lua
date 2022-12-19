@@ -185,10 +185,11 @@ function CopyHero(target, caster)
 		local ability_table = {
 			"dark_ranger_charm", 			-- obvious reasons, weird interactions
 			"paladin_eternal_devotion", 	-- disabling just in case, playerID issues
-			"perun_electric_trap", 			-- crashes
+			--"perun_electric_trap", 			-- crashes
 			"archmage_mass_teleport", 		-- preventing abuse
 			"dark_terminator_blink",        -- preventing abuse
 			"special_bonus_reincarnation_250",
+			"techies_custom_suicide",
 		}
 		local item_table = {
 			"item_tpscroll", 				-- preventing abuse

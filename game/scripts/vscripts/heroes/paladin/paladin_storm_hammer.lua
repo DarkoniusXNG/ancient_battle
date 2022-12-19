@@ -160,7 +160,7 @@ function modifier_paladin_storm_hammer:DeclareFunctions()
 	}
 end
 
-function modifier_paladin_storm_hammer:GetOverrideAnimation(params)
+function modifier_paladin_storm_hammer:GetOverrideAnimation()
 	return ACT_DOTA_DISABLED
 end
 
