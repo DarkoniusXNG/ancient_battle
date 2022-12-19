@@ -172,15 +172,19 @@
 #base "hero_abilities/bakedanuki_tomfoolery.txt"
 #base "hero_abilities/bakedanuki_tricksters_insight.txt"
 
-#base "hero_abilities/sandra_ironical_healing.txt"
-#base "hero_abilities/sandra_sacrifice.txt"
-#base "hero_abilities/sandra_undeniable_torture.txt"
-#base "hero_abilities/sandra_will_to_live.txt"
+#base "hero_abilities/oracle_ironical_healing.txt"
+#base "hero_abilities/oracle_sacrifice.txt"
+#base "hero_abilities/oracle_undeniable_torture.txt"
+#base "hero_abilities/oracle_will_to_live.txt"
 
 #base "hero_abilities/sona_aria_of_perseverance.txt"
 #base "hero_abilities/sona_crescendo.txt"
 #base "hero_abilities/sona_hymn_of_valor.txt"
 #base "hero_abilities/sona_song_of_celerity.txt"
+
+#base "hero_abilities/techies_custom_land_mines.txt"
+#base "hero_abilities/techies_custom_stasis_trap.txt"
+#base "hero_abilities/techies_custom_suicide.txt"
 
 #base "unit_abilities/combie_death_lust.txt"
 #base "unit_abilities/corpse_lord_summon_undead.txt"

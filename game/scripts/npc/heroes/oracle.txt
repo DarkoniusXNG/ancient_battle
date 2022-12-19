@@ -1,12 +1,12 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Sandra Olivia
+	// HERO: Oracle
 	// TO_DO: ALL
 	//=================================================================================================================
-	"npc_dota_hero_sandra"
+	"npc_dota_hero_custom_oracle"
 	{
-		"override_hero"                                   "npc_dota_hero_phantom_assassin"
+		"override_hero"                                   "npc_dota_hero_oracle"
 		
 		// General Override
 		//-------------------------------------------------------------------------------------------------------------
@@ -43,12 +43,12 @@
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityTalentStart"                              "10"
-		"Ability1"                                        "sandra_undeniable_torture"
-		"Ability2"                                        "sandra_ironical_healing"
-		"Ability3"                                        "sandra_will_to_live"
+		"Ability1"                                        "oracle_undeniable_torture"
+		"Ability2"                                        "oracle_ironical_healing"
+		"Ability3"                                        "oracle_will_to_live"
 		"Ability4"                                        "generic_hidden"
 		"Ability5"                                        "generic_hidden"
-		"Ability6"                                        "sandra_sacrifice" // R, Primary Ultimate (3 levels)
+		"Ability6"                                        "oracle_sacrifice" // R, Primary Ultimate (3 levels)
 		"Ability7"                                        "generic_hidden"          
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"

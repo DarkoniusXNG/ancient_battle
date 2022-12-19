@@ -1,0 +1,59 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Techies: Stasis Trap (W) - like old Techies Stasis Trap but visible all the time, rebalanced values
+  // Author: Darkonius
+  // Notes: OK; 2022; Visible trap that stuns in a radius;
+  // TO_DO: test
+  //=================================================================================================================
+  "techies_custom_stasis_trap"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/techies/stasis_trap.lua"
+    "AbilityTextureName"                                  "custom/techies_custom_stasis_trap"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "500" // old: 100
+    "AbilityCastPoint"                                    "0.0" // old: ?
+    "AoERadius"                                           "%radius"
+
+    // Time    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "20 16 13 10" // old: 20/16/13/10
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "75 100 125 150" // old: 80/110/140/160
+    "AbilityProcsMagicStick"                              "1"
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap.vpcf"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_spring.vpcf"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+      "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+      "particle"                                          "particles/status_fx/status_effect_techies_stasis.vpcf"
+      "model"                                             "models/heroes/techies/fx_techiesfx_stasis.vmdl"  
+    }
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {    
+      "duration"                                          "180" // old: 360
+      "radius"                                            "450" // old: 450
+      "activation_delay"                                  "0.5" // old: ?
+      "think_interval"                                    "0.1"
+      "detonation_delay"                                  "1.5" // old: 1.5
+      "stun_duration"                                     "1.25 1.5 1.75 2.0" // old: 2/3/4/5
+    }
+  }
+}

@@ -74,10 +74,10 @@ function modifier_techies_custom_land_mine:OnCreated()
 
 	local activation_delay = ability:GetSpecialValueFor("activation_delay") -- also the fade time
 	-- Check for activation delay talent
-	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_techies_custom_3")
-	if talent and talent:GetLevel() > 0 then
-		activation_delay = activation_delay - math.abs(talent:GetSpecialValueFor("value"))
-	end
+	--local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_techies_custom_3")
+	--if talent and talent:GetLevel() > 0 then
+		--activation_delay = activation_delay - math.abs(talent:GetSpecialValueFor("value"))
+	--end
 	local think_interval = ability:GetSpecialValueFor("think_interval")
 	self:StartIntervalThink(activation_delay - think_interval)
 end
