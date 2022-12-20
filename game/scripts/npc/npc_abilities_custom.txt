@@ -185,6 +185,7 @@
 #base "hero_abilities/techies_custom_land_mines.txt"
 #base "hero_abilities/techies_custom_stasis_trap.txt"
 #base "hero_abilities/techies_custom_suicide.txt"
+#base "hero_abilities/techies_custom_special_talents.txt"
 
 #base "unit_abilities/combie_death_lust.txt"
 #base "unit_abilities/corpse_lord_summon_undead.txt"

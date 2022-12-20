@@ -31,6 +31,22 @@ function techies_custom_suicide:GetCastRange(location, target)
   return self.BaseClass.GetCastRange(self, location, target)
 end
 
+function techies_custom_suicide:CastFilterResultLocation(location)
+	local defaultFilterResult = self.BaseClass.CastFilterResultLocation(self, location)
+	local caster = self:GetCaster()
+	if caster:IsAttackImmune() then
+		return UF_FAIL_CUSTOM
+	end
+	return defaultFilterResult
+end
+
+function techies_custom_suicide:GetCustomCastErrorLocation(location)
+	local caster = self:GetCaster()
+	if caster:IsAttackImmune() then
+		return "Ability Not Castable While Ethereal"
+	end
+end
+
 function techies_custom_suicide:OnSpellStart()
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
@@ -41,15 +57,20 @@ function techies_custom_suicide:OnSpellStart()
 
 	-- Check if caster has a shard
 	if caster:HasShardCustom() then
-		-- Cast sound
-		caster:EmitSound("Hero_Techies.BlastOff.Cast")
-		-- Add the blast off modifier
-		local modifier_table = {point_x = point.x, point_y = point.y, point_z = point.z}
-		caster:AddNewModifier(caster, ability, "modifier_techies_custom_blast_off", modifier_table)
+		local radius = self:GetSpecialValueFor("small_radius")
+		-- Should we Blast Off?
+		if (caster:GetAbsOrigin() - point):Length2D() > radius then
+			-- Cast sound
+			caster:EmitSound("Hero_Techies.BlastOff.Cast")
+			-- Add the blast off modifier
+			local modifier_table = {point_x = point.x, point_y = point.y, point_z = point.z}
+			caster:AddNewModifier(caster, self, "modifier_techies_custom_blast_off", modifier_table)
+		else
+			self:PrimaryEffect(point)
+		end
 	else
 		self:PrimaryEffect(point)
-		-- Create the vision and kill the caster
-		self:CreateVisibilityNode(point, vision_radius, vision_duration)
+		
 		caster:Kill(self, caster)
 	end
 end
@@ -87,7 +108,7 @@ function techies_custom_suicide:PrimaryEffect(point)
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = DAMAGE_TYPE_PHYSICAL -- Composite dmg doesn't exist anymore, so we reduce the physical dmg with magic resistance
-	damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
+	damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_BYPASSES_BLOCK, DOTA_DAMAGE_FLAG_REFLECTION)
 	damage_table.ability = self
 
 	local enemies_big_radius = FindUnitsInRadius(team, point, nil, big_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
@@ -111,12 +132,12 @@ function techies_custom_suicide:PrimaryEffect(point)
 	for _, enemy in pairs(enemies_big_radius) do
 		if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() then
 			-- Apply silence if talent is learned
-			if has_talent then
+			if has_talent and not enemy:IsBuilding() and not enemy:IsMagicImmune() then
 				enemy:AddNewModifier(caster, self, "modifier_techies_custom_suicide_silence", {duration = silence_duration})
 			end
 
 			-- Apply stun if caster has shard
-			if has_shard then
+			if has_shard and not enemy:IsBuilding() and not enemy:IsMagicImmune() then
 				local actual_duration = enemy:GetValueChangedByStatusResistance(stun_duration)
 				enemy:AddNewModifier(caster, self, "modifier_techies_custom_suicide_stun", {duration = actual_duration})
 			end
@@ -143,21 +164,29 @@ function techies_custom_suicide:PrimaryEffect(point)
 	end
 
 	-- Explode particles
-	local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_suicide_base.vpcf", PATTACH_CUSTOMORIGIN, caster) -- PATTACH_ABSORIGIN
+	local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_blast_off.vpcf", PATTACH_WORLDORIGIN, caster)
 	ParticleManager:SetParticleControl(pfx, 0, point)
-	ParticleManager:SetParticleControl(pfx, 2, Vector(big_radius, big_radius, big_radius))
 	ParticleManager:ReleaseParticleIndex(pfx)
-	--local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_blast_off.vpcf", PATTACH_WORLDORIGIN, caster)
+	--local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_suicide_base.vpcf", PATTACH_WORLDORIGIN, caster) -- PATTACH_ABSORIGIN
 	--ParticleManager:SetParticleControl(pfx, 0, point)
+	--ParticleManager:SetParticleControl(pfx, 2, Vector(big_radius, big_radius, big_radius))
 	--ParticleManager:ReleaseParticleIndex(pfx)
 
 	-- Destroy trees
 	GridNav:DestroyTreesAroundPoint(point, big_radius, false)
 
-	-- Timers:CreateTimer(5.0, function()
-		-- ParticleManager:DestroyParticle(pfx, true)
-		-- ParticleManager:ReleaseParticleIndex(pfx)
-	-- end)
+	-- Vision
+	self:CreateVisibilityNode(point, vision_radius, vision_duration)
+
+	if has_shard and caster:IsAlive() then
+		-- self damage instead of suicide
+		damage_table.victim = caster
+		local magic_resist = caster:GetMagicalArmorValue()
+		local self_dmg = big_radius_dmg * (1 - magic_resist)
+		damage_table.damage = self_dmg
+		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_BYPASSES_BLOCK, DOTA_DAMAGE_FLAG_REFLECTION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
+		ApplyDamage(damage_table)
+	end
 end
 
 function techies_custom_suicide:ProcsMagicStick()
@@ -286,27 +315,20 @@ if IsServer() then
 
     -- Data sent with AddNewModifier (not available on the client)
 	local point = Vector(event.point_x, event.point_y, event.point_z)
-	self.jump_duration = 1
-	self.jump_max_height = 300
+	self.jump_duration = 0.75
+	self.jump_max_height = 290
     self.direction = (point - parent_loc):Normalized()
     self.distance = (point - parent_loc):Length2D()
     self.speed = self.distance / self.jump_duration
 	self.time_elapsed = 0
 	self.current_height = 0
 
-    ProjectileManager:ProjectileDodge(parent)
+    --ProjectileManager:ProjectileDodge(parent)
 
     if not self:ApplyHorizontalMotionController() or not self:ApplyVerticalMotionController() then
       self:Destroy()
       return
     end
-
-    -- Trail particle
-    --local particleName = "particles/units/heroes/hero_techies/techies_blast_off_trail.vpcf"
-    --local trail_pfx = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, parent)
-    --ParticleManager:SetParticleControl(trail_pfx, 0, start_pos)
-    --ParticleManager:SetParticleControl(trail_pfx, 1, end_pos)
-    --ParticleManager:ReleaseParticleIndex(trail_pfx)
   end
 
   function modifier_techies_custom_blast_off:OnDestroy()
@@ -328,7 +350,7 @@ if IsServer() then
     ResolveNPCPositions(parent_origin, 128)
 
     -- Change facing of the parent
-    parent:FaceTowards(parent_origin + 128*self.direction)
+    parent:FaceTowards(parent_origin + 200*self.direction)
 
     if ability and not ability:IsNull() then
       ability:PrimaryEffect(parent_origin)
@@ -350,7 +372,7 @@ if IsServer() then
 	end
   end
   
-  function modifier_boss_shielder_jump:UpdateVerticalMotion(parent, deltaTime)
+  function modifier_techies_custom_blast_off:UpdateVerticalMotion(parent, deltaTime)
 	if not parent or parent:IsNull() or not parent:IsAlive() then
       return
     end

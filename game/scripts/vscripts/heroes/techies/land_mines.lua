@@ -34,8 +34,8 @@ function techies_custom_land_mines:OnSpellStart()
 	-- Check for moving mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
-		mine:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
-		mine:SetBaseMoveSpeed(talent:GetSpecialValueFor("value"))
+		--mine:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND) -- not needed
+		--mine:SetBaseMoveSpeed(talent:GetSpecialValueFor("value")) -- doesn't work
 	end
 end
 
@@ -133,16 +133,12 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			self.visible = true
 		end
 
-		local sound_needed = false
 		local number_of_valid_enemies = 0
 		for _, enemy in pairs(enemies_small_radius) do
 			-- Add here which enemy units should be ignored
 			if enemy and not enemy:IsNull() then
 				if not enemy:IsCustomWardTypeUnit() and not enemy:HasFlyMovementCapability() then
 					number_of_valid_enemies = number_of_valid_enemies + 1
-				end
-				if not enemy:CanEntityBeSeenByMyTeam(parent) then
-					sound_needed = true
 				end
 			end
 		end
@@ -151,10 +147,8 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			-- Stop Interval think
 			self:StartIntervalThink(-1)
 
-			-- Sound alert only if enemies cant see it
-			if sound_needed then
-				parent:EmitSound("Hero_Techies.StickyBomb.Priming") -- "Hero_Techies.LandMine.Priming" ; "Hero_Techies.RemoteMine.Priming"
-			end
+			-- Sound alert when triggered
+			parent:EmitSound("Hero_Techies.StickyBomb.Priming") -- "Hero_Techies.LandMine.Priming" ; "Hero_Techies.RemoteMine.Priming"
 
 			local delay = ability:GetSpecialValueFor("detonation_delay")
 			local think_interval = ability:GetSpecialValueFor("think_interval")
@@ -176,7 +170,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			local has_talent = talent2 and talent2:GetLevel() > 0
 			local slow_duration = 0
 			if has_talent then
-				slow_duration = talent2:GetSpecialValueFor("value")
+				slow_duration = talent2:GetSpecialValueFor("duration")
 			end
 
 			-- Damage table
@@ -200,7 +194,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 						if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() and not enemy:HasFlyMovementCapability() then
 							-- Apply mine slow if talent is learned
 							if has_talent then
-								enemy:AddNewModifier(parent, ability, "modifier_techies_custom_mine_slow", {duration = slow_duration})
+								enemy:AddNewModifier(parent, talent2, "modifier_techies_custom_mine_slow", {duration = slow_duration})
 							end
 
 							-- Victim
@@ -228,9 +222,9 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 					parent:AddNoDraw()
 
 					-- Explode particles
-					local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", PATTACH_CUSTOMORIGIN, parent)
+					local pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", PATTACH_WORLDORIGIN, parent)
 					ParticleManager:SetParticleControl(pfx, 0, parent_origin)
-					ParticleManager:SetParticleControl(pfx, 2, Vector(big_radius, big_radius, big_radius))
+					ParticleManager:SetParticleControl(pfx, 1, Vector(big_radius, big_radius, big_radius))
 
 					-- Destroy trees
 					GridNav:DestroyTreesAroundPoint(parent_origin, big_radius, false)

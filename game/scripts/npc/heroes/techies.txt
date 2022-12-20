@@ -30,7 +30,7 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    //"Ability10"                                           "special_bonus_unique_techies_custom_1" // lvl 10 talent: Mines slow when they explode
+    "Ability10"                                           "special_bonus_unique_techies_custom_1" // lvl 10 talent: Mines slow when they explode
     "Ability11"                                           "special_bonus_mp_regen_3"              // lvl 10 talent:
 
     "Ability12"                                           "special_bonus_cast_range_200"          // lvl 15 talent:
@@ -40,7 +40,7 @@
     "Ability15"                                           "special_bonus_unique_techies_custom_4" // lvl 20 talent: Suicide cooldown
 
     "Ability16"                                           "special_bonus_attack_damage_250"       // lvl 25 talent:
-    //"Ability17"                                           "special_bonus_unique_techies_custom_5" // lvl 25 talent: Moving mines
+    "Ability17"                                           "special_bonus_unique_techies_custom_5" // lvl 25 talent: Moving mines
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------

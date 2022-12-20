@@ -31,8 +31,8 @@ function techies_custom_stasis_trap:OnSpellStart()
 	-- Check for moving mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
-		trap:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
-		trap:SetBaseMoveSpeed(talent:GetSpecialValueFor("value"))
+		--trap:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND) -- not needed
+		--trap:SetBaseMoveSpeed(talent:GetSpecialValueFor("value")) -- doesn't work
 	end
 end
 

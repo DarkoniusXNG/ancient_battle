@@ -4,7 +4,7 @@
   // Techies: Stasis Trap (W) - like old Techies Stasis Trap but visible all the time, rebalanced values
   // Author: Darkonius
   // Notes: OK; 2022; Visible trap that stuns in a radius;
-  // TO_DO: test
+  // TO_DO:
   //=================================================================================================================
   "techies_custom_stasis_trap"
   {
@@ -20,7 +20,7 @@
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "500" // old: 100
-    "AbilityCastPoint"                                    "0.0" // old: ?
+    "AbilityCastPoint"                                    "0.0" // old: 1
     "AoERadius"                                           "%radius"
 
     // Time    
@@ -50,7 +50,7 @@
     {    
       "duration"                                          "180" // old: 360
       "radius"                                            "450" // old: 450
-      "activation_delay"                                  "0.5" // old: ?
+      "activation_delay"                                  "0.5" // old: 1.5
       "think_interval"                                    "0.1"
       "detonation_delay"                                  "1.5" // old: 1.5
       "stun_duration"                                     "1.25 1.5 1.75 2.0" // old: 2/3/4/5
