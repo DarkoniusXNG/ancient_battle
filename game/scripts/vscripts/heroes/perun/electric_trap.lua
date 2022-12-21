@@ -52,13 +52,13 @@ end
 
 function modifier_perun_electric_trap:OnCreated()
 	if not IsServer() then return end
-	
+
 	self:StartIntervalThink(0.1)
 end
 
 function modifier_perun_electric_trap:OnIntervalThink()
 	if not IsServer() then return end
-	
+
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() or not caster or caster:IsNull() then
@@ -101,7 +101,7 @@ function modifier_perun_electric_trap:OnIntervalThink()
 
 		local delay = ability:GetSpecialValueFor("delay")
 		local damage = ability:GetSpecialValueFor("damage")
-		
+
 		-- Damage table
 		local damage_table = {}
 		damage_table.attacker = caster
