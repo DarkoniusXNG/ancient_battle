@@ -1,7 +1,7 @@
 
 		// ******************** Techies ********************		
 		"DOTA_Tooltip_ability_techies_custom_land_mines"                        "Land Mines"
-		"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant a mine that is visible to enemies only if they are within %big_radius% AoE of the mine. Mine will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\n\Composite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage is Techies. Mines don't affect flying units, they lose invisibility when enemies are within %big_radius% radius of them.</font>"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant a mine that is visible to enemies only if they are within %big_radius% AoE of the mine. Mine will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage is Techies. Mines don't affect flying units, they lose invisibility when enemies are within %big_radius% radius of them.</font>"
 		"DOTA_Tooltip_ability_techies_custom_land_mines_Lore"                   "The bane of Toterin!"
 		"DOTA_Tooltip_ability_techies_custom_land_mines_Note0"                  "Grants 30 gold and 20 experience if destroyed by an enemy hero."
 		"DOTA_Tooltip_ability_techies_custom_land_mines_duration"               "MINE DURATION:"
@@ -24,7 +24,7 @@
 		"DOTA_Tooltip_ability_techies_custom_stasis_trap_detonation_delay"      "TRIGGER DELAY:"
 		
 		"DOTA_Tooltip_ability_techies_custom_suicide"                           "Suicide Squad, Attack!"
-		"DOTA_Tooltip_ability_techies_custom_suicide_Description"				"Techies detonate all explosive charges which deal massive area of effect damage to enemies and kills Techies. Deals %building_damage_pct%%% damage to buildings. Provides vision after suiciding.\n\nDamage Type: COMPOSITE\n\Composite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>No respawn time reduction.</font>"
+		"DOTA_Tooltip_ability_techies_custom_suicide_Description"				"Techies detonate all explosive charges which deal massive area of effect damage to enemies and kills Techies. Deals %building_damage_pct%%% damage to buildings. Provides vision after suiciding.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>No respawn time reduction.</font>"
 		"DOTA_Tooltip_ability_techies_custom_suicide_Lore"                      "Suicide is never a good option (except for Techies)."
 		"DOTA_Tooltip_ability_techies_custom_suicide_small_radius"              "FULL DAMAGE RADIUS:"
 		"DOTA_Tooltip_ability_techies_custom_suicide_big_radius"                "HALF DAMAGE RADIUS:"

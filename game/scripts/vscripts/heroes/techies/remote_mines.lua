@@ -25,7 +25,6 @@ end
 
 function techies_custom_remote_mines:OnAbilityPhaseStart()
 	local caster = self:GetCaster()
-	local target_point = self:GetCursorPosition()
 
 	-- Play toss sound
 	caster:EmitSound("Hero_Techies.RemoteMine.Toss")

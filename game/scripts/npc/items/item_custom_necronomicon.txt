@@ -1,0 +1,234 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Recipe: Custom Necronomicon
+  //=================================================================================================================
+  "item_recipe_custom_necronomicon_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1200"
+    "ItemShopTags"                                        ""
+
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_necronomicon_1"
+    "ItemRequirements"
+    {
+      "01"                                                "item_staff_of_wizardry;item_belt_of_strength"
+    }
+  }
+
+  "item_recipe_custom_necronomicon_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"ItemBaseLevel"					"2"
+
+		"ShouldBeSuggested"				"0"
+		"ItemPurchasable"				"0"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_necronomicon_2"
+		"ItemRequirements"
+		{
+			"01"						"item_custom_necronomicon_1;item_recipe_custom_necronomicon_1"
+		}
+	}
+
+  "item_recipe_necronomicon_3"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_datadriven"
+    "AbilityTextureName"                                  "custom/custom_recipe"
+    "Model"                                               "models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"ItemBaseLevel"					"3"
+
+		"ShouldBeSuggested"				"0"
+		"ItemPurchasable"				"0"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_necronomicon_3"
+		"ItemRequirements"
+		{
+			"01"						"item_custom_necronomicon_2;item_recipe_custom_necronomicon_1"
+		}
+	}
+
+  //=================================================================================================================
+  // Custom Necronomicon
+  //=================================================================================================================
+  "item_custom_necronomicon_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/necronomicon.lua"
+    "AbilityTextureName"                                  "item_necronomicon"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "90"
+    "AbilitySharedCooldown"                               "necronomicon"
+    "AbilityManaCost"                                     "150"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "2650"
+    "ItemShopTags"                                        "int;str;hard_to_tag;see_invis"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "necro; necro book"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "MaxUpgradeLevel"                                     "3"
+    "ItemBaseLevel"                                       "1"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_intellect"                                   "10 20 30"
+      "bonus_strength"                                    "6 12 18"
+      "summon_duration"                                   "60"
+      "warrior_health_tooltip"                            "800 1200 1600"
+      "warrior_damage_tooltip"                            "25 45 65"
+      "warrior_mana_feedback"                             "30 40 50"
+      "warrior_mana_break_tooltip"                        "30 40 50"
+      "explosion"                                         "600 700 800"
+      "warrior_truesight"                                 "400 800 1200"
+      "archer_health_tooltip"                             "800 1200 1600"
+      "archer_damage_tooltip"                             "37 57 75"
+      "archer_mana_burn"                                  "125 175 225"
+      "archer_aura_radius_tooltip"                        "1200"
+      "archer_move_speed"                                 "5 7 9"
+    }
+
+    "precache"
+    {
+      
+    }
+  }
+
+  "item_custom_necronomicon_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/necronomicon.lua"
+    "AbilityTextureName"                                  "item_necronomicon_2"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "90"
+    "AbilitySharedCooldown"                               "necronomicon"
+    "AbilityManaCost"                                     "150"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "2650"
+    "ItemShopTags"                                        "int;str;hard_to_tag;see_invis"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "necro 2; necro book 2"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "MaxUpgradeLevel"                                     "3"
+    "ItemBaseLevel"                                       "2"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_intellect"                                   "10 20 30"
+      "bonus_strength"                                    "6 12 18"
+      "summon_duration"                                   "60"
+      "warrior_health_tooltip"                            "800 1200 1600"
+      "warrior_damage_tooltip"                            "25 45 65"
+      "warrior_mana_feedback"                             "30 40 50"
+      "warrior_mana_break_tooltip"                        "30 40 50"
+      "explosion"                                         "600 700 800"
+      "warrior_truesight"                                 "400 800 1200"
+      "archer_health_tooltip"                             "800 1200 1600"
+      "archer_damage_tooltip"                             "37 57 75"
+      "archer_mana_burn"                                  "125 175 225"
+      "archer_aura_radius_tooltip"                        "1200"
+      "archer_move_speed"                                 "5 7 9"
+    }
+  }
+
+  "item_custom_necronomicon_3"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/necronomicon.lua"
+    "AbilityTextureName"                                  "item_necronomicon_3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "90"
+    "AbilitySharedCooldown"                               "necronomicon"
+    "AbilityManaCost"                                     "150"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "2650"
+    "ItemShopTags"                                        "int;str;hard_to_tag;see_invis"
+    "ItemQuality"                                         "rare"
+    "ItemAliases"                                         "necro 3; necro book 3"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+    "MaxUpgradeLevel"                                     "3"
+    "ItemBaseLevel"                                       "3"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_intellect"                                   "10 20 30"
+      "bonus_strength"                                    "6 12 18"
+      "summon_duration"                                   "60"
+      "warrior_health_tooltip"                            "800 1200 1600"
+      "warrior_damage_tooltip"                            "25 45 65"
+      "warrior_mana_feedback"                             "30 40 50"
+      "warrior_mana_break_tooltip"                        "30 40 50"
+      "explosion"                                         "600 700 800"
+      "warrior_truesight"                                 "400 800 1200"
+      "archer_health_tooltip"                             "800 1200 1600"
+      "archer_damage_tooltip"                             "37 57 75"
+      "archer_mana_burn"                                  "125 175 225"
+      "archer_aura_radius_tooltip"                        "1200"
+      "archer_move_speed"                                 "5 7 9"
+    }
+  }
+}
