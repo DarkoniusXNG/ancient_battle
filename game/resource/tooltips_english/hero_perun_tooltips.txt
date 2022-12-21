@@ -33,10 +33,10 @@
 		"DOTA_Tooltip_modifier_custom_sky_disabled_Description"                 "Stunned."
 
 		"DOTA_Tooltip_ability_perun_electric_trap"                              "Electric Trap"
-		"DOTA_Tooltip_ability_perun_electric_trap_Description"                  "Plant a trap that stuns nearby enemy units when triggered."
+		"DOTA_Tooltip_ability_perun_electric_trap_Description"                  "Plant a trap that damages nearby enemy units when triggered."
 		"DOTA_Tooltip_ability_perun_electric_trap_Lore"							"Zap!"
 		"DOTA_Tooltip_ability_perun_electric_trap_radius"                       "RADIUS:"
-		"DOTA_Tooltip_ability_perun_electric_trap_stun_duration"                "STUN DURATION:"
+		"DOTA_Tooltip_ability_perun_electric_trap_damage"                       "DAMAGE:"
 		"DOTA_Tooltip_ability_perun_electric_trap_duration"                     "TRAP DURATION:"
 		"DOTA_Tooltip_ability_perun_electric_trap_delay"                        "TRIGGER DELAY:"
 		

@@ -1,0 +1,105 @@
+"DOTAHeroes"
+{
+  // ================================================================================================================
+  // HERO: Techies; 2022
+  // TO_DO: explosive shot
+  // =================================================================================================================
+  "npc_dota_hero_custom_techies"
+  {
+    "override_hero"                                       "npc_dota_hero_techies"
+    "Team"                                                "Good"
+    "ModelScale"                                          "0.6"
+    "LoadoutScale"                                        "0.6"
+    "HeroSelectSoundEffect"                               "Hero_Techies.Pick"
+    "BotImplemented"                                      "0"
+    "Role"                                                "Nuker, Initiator, Disabler, Pusher"
+    "Rolelevels"                                          "3, 1, 3, 3"
+    "Complexity"                                          "2"
+
+    // Abilities
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "AbilityTalentStart"                                  "10"
+    "Ability1"                                            "techies_custom_land_mines"             // Q (4 levels)
+    "Ability2"                                            "techies_custom_stasis_trap"            // W (4 levels)
+    "Ability3"                                            "techies_custom_suicide"                // E (4 levels)
+    "Ability4"                                            "techies_custom_focused_detonate"       // T, sub ability (1 level)
+    "Ability5"                                            "generic_hidden"                        // F, passive (4 levels)
+    "Ability6"                                            "techies_custom_remote_mines"           // R, Primary Ultimate (3 levels)        
+    "Ability7"                                            "generic_hidden"          
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
+
+    "Ability10"                                           "special_bonus_unique_techies_custom_1" // lvl 10 talent: Mines slow when they explode
+    "Ability11"                                           "special_bonus_mp_regen_3"              // lvl 10 talent:
+
+    "Ability12"                                           "special_bonus_cast_range_200"          // lvl 15 talent:
+    "Ability13"                                           "special_bonus_unique_techies_custom_2" // lvl 15 talent: Suicide silences
+
+    "Ability14"                                           "special_bonus_unique_techies_custom_3" // lvl 20 talent: Land Mines reduced activation delay
+    "Ability15"                                           "special_bonus_unique_techies_custom_4" // lvl 20 talent: Suicide cooldown
+
+    "Ability16"                                           "special_bonus_attack_damage_250"       // lvl 25 talent:
+    "Ability17"                                           "special_bonus_unique_techies_custom_5" // lvl 25 talent: Moving mines
+
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "5"                                     // dota (3); old (?);
+    "MagicalResistance"                                   "25"                                    // Default
+
+    // Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "BaseAttackSpeed"                                     "100"                                   // Default
+    "AttackDamageMin"                                     "9"                                     // dota (21); old (9);
+    "AttackDamageMax"                                     "11"                                    // dota (23); old (11);
+    "AttackRate"                                          "1.7"                                   // Default
+    "AttackAnimationPoint"                                "0.5"                                   // like dota Techies
+    "AttackRange"                                         "700"                                   // dota (700); old (?);
+    "AttackAcquisitionRange"                              "800"                                   // Default
+
+    "ProjectileModel"                                     "particles/units/heroes/hero_techies/techies_base_attack.vpcf"
+    "ProjectileSpeed"                                     "900"                                   // Default
+
+    // Movement
+    //-------------------------------------------------------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "290"                                   // dota (300); old (?);
+    "MovementTurnRate"                                    "0.6"                                   // Default
+
+    // Vision
+    //-------------------------------------------------------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"                                  // Default
+    "VisionNighttimeRange"                                "800"                                   // Default
+
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributeBaseStrength"                               "19"                                    // dota (19); old (?);
+    "AttributeStrengthGain"                               "2.5"                                   // dota (2.5); old (?);
+    "AttributeBaseAgility"                                "14"                                    // dota (14); old (?);
+    "AttributeAgilityGain"                                "1.3"                                   // dota (1.3); old (?);
+    "AttributeBaseIntelligence"                           "37"                                    // dota (25); old (?);
+    "AttributeIntelligenceGain"                           "3.0"                                   // dota (3.0); old (?);
+
+    // Status
+    //-------------------------------------------------------------------------------------------------------------
+    "StatusHealthRegen"                                   "0.25"                                  // Default
+    "StatusHealth"                                        "200"                                   // Default
+    "StatusMana"                                          "75"                                    // Default
+    "StatusManaRegen"                                     "1.0"                                   // dota (1); old (0.9);
+
+    // Combat
+    //-------------------------------------------------------------------------------------------------------------
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"        // Default
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"        // Default
+    "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"    // Default
+
+    // Bounds
+    //-------------------------------------------------------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"                   // Default
+
+    // Inventory
+    "HasInventory"                                        "1"                                     // Default
+  }
+}

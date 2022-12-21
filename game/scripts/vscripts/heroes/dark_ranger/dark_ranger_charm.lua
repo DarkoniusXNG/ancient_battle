@@ -81,14 +81,14 @@ function CharmCreep(keys)
 	local ability = keys.ability
 
 	local caster_team = caster:GetTeamNumber()
-	local caster_owner = caster:GetPlayerOwnerID() -- Owning player
+	local caster_owner = caster:GetPlayerOwnerID() -- Owning player id
 
 	local creep_duration = ability:GetLevelSpecialValueFor("charm_creep_duration", ability:GetLevel() - 1)
 
 	target:Interrupt()
 	if target:IsIllusion() then
 		target:SetTeam(caster_team)
-		target:SetOwner(caster)
+		target:SetOwner(caster:GetOwner())
 		target:SetControllableByPlayer(caster_owner, true)
 		--target:RemoveModifierByName("modifier_kill")
 		target:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
@@ -97,10 +97,11 @@ function CharmCreep(keys)
 		local target_location = target:GetAbsOrigin()
 		target:ForceKill(true)
 		local charmed_creep = CreateUnitByName(target_name, target_location, true, caster, caster, caster_team)
-		FindClearSpaceForUnit(charmed_creep, target_location, false)
+		charmed_creep:SetOwner(caster:GetOwner())
 		charmed_creep:SetControllableByPlayer(caster_owner, true)
 		--charmed_creep:RemoveModifierByName("modifier_kill")
 		charmed_creep:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
+		FindClearSpaceForUnit(charmed_creep, target_location, false)
 		ability:ApplyDataDrivenModifier(caster, charmed_creep, "modifier_charmed_general", nil)
 	end
 end

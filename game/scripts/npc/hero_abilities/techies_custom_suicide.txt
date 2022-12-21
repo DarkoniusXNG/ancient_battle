@@ -1,0 +1,102 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Techies: Suicide Squad Attack (E) - like old techies suicide squad attack but without respawn time reduction
+  // Author: Darkonius
+  // Notes: OK; 2022; Damage Type: Composite; Has shard upgrade - turns it into Blast Off with stun; no unit targetting!
+  // TO_DO:
+  //=================================================================================================================
+  "techies_custom_suicide"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/techies/suicide.lua"
+    "AbilityTextureName"                                  "custom/techies_custom_suicide"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+
+    "HasShardUpgrade"                                     "1"
+
+    "AbilityCastRange"                                    "100" // old (100);
+    "AbilityCastPoint"                                    "0.0" // old (0);
+
+    "AbilityCooldown"                                     "120" // old (160/140/120/100)
+
+    "AbilityManaCost"                                     "100 125 150 175" // old (100/125/150/175)
+    "AbilityProcsMagicStick"                              "1"
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"    
+      "particle"                                          "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+    }
+
+    "AbilityValues"
+    {
+      "small_radius"                                      "200" // old (200)
+      "big_radius"                                        "500" // old (500)
+      "small_radius_damage"                               "650 850 1150 1550" // full damage
+      "big_radius_damage"                                 "325 425 575 775" // partial damage
+      "building_dmg_reduction"                            "40" // latest (40%); mid (70%); first version (100%)
+      "vision_radius"                                     "400" // old (400)
+      "vision_duration"                                   "2.0" // old (2)
+      "shard_stun_duration"
+      {
+        "value"                                           "1.5" // Blast Off (1.75)
+        "RequiresShard"                                   "1"
+      }
+      "shard_cast_range"
+      {
+        "value"                                           "1300" // Blast Off with Shard (1300)
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
+
+  //=================================================================================================================
+  // Suicide talent: Adds silence
+  //=================================================================================================================
+  "special_bonus_unique_techies_custom_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "7" // like Blast Off last level
+      }
+    }
+  }
+
+  //=================================================================================================================
+  // Suicide talent: Reduces cooldown
+  //=================================================================================================================
+  "special_bonus_unique_techies_custom_4"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "90"
+      }
+    }
+  }
+}

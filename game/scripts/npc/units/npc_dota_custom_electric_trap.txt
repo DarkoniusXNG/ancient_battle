@@ -1,0 +1,81 @@
+"DOTAUnits"
+{
+  //=================================================================================
+  // Lightning Shaman Electric Trap
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_custom_electric_trap"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+    "ModelScale"                                          "2.0"
+    "Level"                                               "1"
+    "UnitLabel"                                           "perun_electric_trap"
+
+    "IsSummoned"                                          "0"
+    "CanBeDominated"                                      "0"
+    "IsAncient"                                           "1"
+    //"ConsideredHero"                                      "1"
+    "AutoAttacksByDefault"                                "0"
+
+    "SelectionGroup"                                      "Perun_ElectricTraps"
+
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "custom_unit_spell_immunity"
+
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "0"
+
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "0"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.0"
+    "AttackAcquisitionRange"                              "0"
+    "AttackRange"                                         "0"
+
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "10"
+    "BountyGoldMin"                                       "10"
+    "BountyGoldMax"                                       "20"
+
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"
+    "HealthBarOffset"                                     "140"
+
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_NONE"
+    "MovementSpeed"                                       "0"
+    "MovementTurnRate"                                    "0.0"
+
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_NEUTRALS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "100"
+    "VisionNighttimeRange"                                "100"
+
+    "HasInventory"                                        "0"
+    "WakesNeutrals"                                       "0"
+  }
+}

@@ -1,0 +1,35 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Remote Mine: Pinpoint Detonate - explodes the caster
+  // Author: Darkonius
+  // Notes: OK; 2022;
+  // TO_DO:
+  //=================================================================================================================
+  "remote_mine_custom_self_detonate"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/techies/remote_mines.lua"
+    "AbilityTextureName"                                  "custom/remote_mine_custom_self_detonate"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+
+    "MaxLevel"                                            "1"
+
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCastRange"                                    "425" // same as Remote Mine explosion radius
+
+    "AbilityCooldown"                                     "0"
+
+    "AbilityManaCost"                                     "0"
+    "AbilityProcsMagicStick"                              "0"
+
+    "AbilitySpecial"
+    {
+      
+    }
+  }
+}

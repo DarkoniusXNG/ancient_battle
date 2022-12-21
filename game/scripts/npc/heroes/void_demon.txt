@@ -3,7 +3,7 @@
   //=================================================================================================================
   // HERO: Void Demon; 29.10.2019;
   // Notes: OK; Mass Haste provides max movement speed and bonus attack speed;
-  // TO_DO:
+  // TO_DO: replace special_bonus_movement_speed_50
   //=================================================================================================================
   "npc_dota_hero_void_demon"
   {

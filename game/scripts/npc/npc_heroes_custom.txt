@@ -19,10 +19,10 @@
 #base "heroes/perun.txt"
 #base "heroes/pudge.txt"
 #base "heroes/queenofpain.txt"
-#base "heroes/sandra.txt"
 #base "heroes/silencer.txt"
 #base "heroes/sona.txt"
 #base "heroes/stealth_assassin.txt"
+#base "heroes/techies.txt"
 #base "heroes/void_demon.txt"
 
 #base "heroes/warp_beast.txt"

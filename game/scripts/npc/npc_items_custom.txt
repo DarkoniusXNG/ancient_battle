@@ -11,6 +11,7 @@
 #base "items/item_custom_heart.txt"
 #base "items/item_custom_magus_cloak.txt"
 #base "items/item_custom_mask_of_madness.txt"
+#base "items/item_custom_necronomicon.txt"
 #base "items/item_custom_poor_mans_shield.txt"
 #base "items/item_custom_ring_of_aquila.txt"
 #base "items/item_custom_rod_of_atos.txt"
