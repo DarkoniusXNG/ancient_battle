@@ -19,7 +19,8 @@ function techies_custom_land_mines:OnSpellStart()
 	caster:EmitSound("Hero_Techies.RemoteMine.Plant") -- "Hero_Techies.StickyBomb.Plant"
 
 	local name = "npc_dota_techies_land_mine"
-	-- Check for moving mines talent
+
+	-- Check for BIO mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
 		name = "npc_dota_techies_custom_land_mine_moving"
@@ -119,8 +120,8 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 		if parent:IsOutOfGame() or parent:IsUnselectable() or parent:IsInvulnerable() then
 			return
 		end
-		
-		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
 			self.allow_ms = true
 		else
 			self.allow_ms = false

@@ -19,7 +19,8 @@ function techies_custom_stasis_trap:OnSpellStart()
 	caster:EmitSound("Hero_Techies.StasisTrap.Plant")
 
 	local name = "npc_dota_techies_stasis_trap"
-	-- Check for moving mines talent
+
+	-- Check for BIO mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
 		name = "npc_dota_techies_custom_stasis_trap_moving"
@@ -103,7 +104,7 @@ function modifier_techies_custom_stasis_trap:OnIntervalThink()
 			return
 		end
 
-		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
 			self.allow_ms = true
 		else
 			self.allow_ms = false

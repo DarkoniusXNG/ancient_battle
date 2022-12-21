@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Techies: Stasis Trap (W) - like old Techies Stasis Trap but visible all the time, rebalanced values
   // Author: Darkonius
-  // Notes: OK; 2022; Visible trap that stuns in a radius;
-  // TO_DO:
+  // Notes: OK; 2022; They trigger on invisible units;
+  // TO_DO: Vision after explosion
   //=================================================================================================================
   "techies_custom_stasis_trap"
   {

@@ -34,7 +34,7 @@
   }
 
   //=================================================================================================================
-  // For all mines talent: Gives them movement speed
+  // For all mines talent: Bio mines - basically make them units that are spell immune and immune to magic and pure damage
   //=================================================================================================================
   "special_bonus_unique_techies_custom_5"
   {
@@ -51,7 +51,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "100"
+        "radius"                                          "1000"
       }
     }
   }

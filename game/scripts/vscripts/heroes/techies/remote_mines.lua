@@ -23,6 +23,23 @@ function techies_custom_remote_mines:GetCastRange(location, target)
 	return self.BaseClass.GetCastRange(self, location, target)
 end
 
+function techies_custom_remote_mines:OnAbilityPhaseStart()
+	local caster = self:GetCaster()
+	local target_point = self:GetCursorPosition()
+
+	-- Play toss sound
+	caster:EmitSound("Hero_Techies.RemoteMine.Toss")
+
+	-- Add particle effect
+	local pfx = ParticleManager:CreateParticle("particles/hero/techies/techies_remote_mine_plant.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_remote", caster:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControl(pfx, 1, target_point)
+	ParticleManager:SetParticleControl(pfx, 4, target_point)
+	ParticleManager:ReleaseParticleIndex(pfx)
+
+	return true
+end
+
 function techies_custom_remote_mines:OnSpellStart()
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
@@ -35,7 +52,7 @@ function techies_custom_remote_mines:OnSpellStart()
 	caster:EmitSound("Hero_Techies.StickyBomb.Plant") -- "Hero_Techies.RemoteMine.Plant"
 
 	local name = "npc_dota_techies_custom_remote_mine"
-	-- Check for moving mines talent
+	-- Check for BIO mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
 		name = "npc_dota_techies_custom_remote_mine_moving"
@@ -89,7 +106,9 @@ function modifier_techies_custom_remote_mine:OnCreated()
 		return
 	end
 
-	-- Check for moving mines talent
+	self.scale = ability:GetSpecialValueFor("model_scale")
+
+	-- Check for BIO mines talent
 	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
 		self.think = true
@@ -110,7 +129,7 @@ function modifier_techies_custom_remote_mine:OnIntervalThink()
 	else
 		local caster = self:GetCaster()
 		local parent = self:GetParent()
-		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
 			self.allow_ms = true
 		else
 			self.allow_ms = false
@@ -127,6 +146,7 @@ function modifier_techies_custom_remote_mine:DeclareFunctions()
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
 		MODIFIER_PROPERTY_DISABLE_HEALING,
+		MODIFIER_PROPERTY_MODEL_SCALE,
 	}
 end
 
@@ -140,6 +160,10 @@ end
 
 function modifier_techies_custom_remote_mine:GetDisableHealing()
 	return 1
+end
+
+function modifier_techies_custom_remote_mine:GetModifierModelScale()
+	return self.scale
 end
 
 function modifier_techies_custom_remote_mine:CheckState()
@@ -158,8 +182,8 @@ end
 
 function Detonate(parent, ability, caster)
 	if not caster or caster:IsNull() or not ability or ability:IsNull() then
-		print("Remote Mine Detonate: Caster is "..tostring(caster))
-		print("Remote Mine Detonate: Ability is "..tostring(ability))
+		print("Remote Mine Detonate failed: Caster is "..tostring(caster))
+		print("Remote Mine Detonate failed: Ability is "..tostring(ability))
 		-- Remove the mine
 		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
@@ -228,7 +252,7 @@ function Detonate(parent, ability, caster)
 
 			local enemies = FindUnitsInRadius(parent_team, parent_origin, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 			for _, enemy in pairs(enemies) do
-				if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() and not enemy:HasFlyMovementCapability() then
+				if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() then
 					-- Apply mine slow if talent is learned
 					if has_talent then
 						enemy:AddNewModifier(parent, talent, "modifier_techies_custom_mine_slow", {duration = slow_duration})
@@ -305,6 +329,10 @@ function techies_custom_focused_detonate:IsStealable()
 	return false
 end
 
+function techies_custom_focused_detonate:ProcsMagicStick()
+	return false
+end
+
 ---------------------------------------------------------------------------------------------------
 
 remote_mine_custom_self_detonate = class({})
@@ -337,3 +365,6 @@ function remote_mine_custom_self_detonate:IsStealable()
 	return false
 end
 
+function remote_mine_custom_self_detonate:ProcsMagicStick()
+	return false
+end

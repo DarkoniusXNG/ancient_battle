@@ -29,6 +29,12 @@ if CDOTA_BaseNPC then
 
   function CDOTA_BaseNPC:IsCustomWardTypeUnit()
     local names = {
+      "npc_dota_techies_custom_land_mine_moving",
+      "npc_dota_techies_custom_remote_mine",
+      "npc_dota_techies_custom_remote_mine_moving",
+      "npc_dota_techies_custom_stasis_trap_moving",
+      "npc_dota_techies_land_mine",
+      "npc_dota_techies_stasis_trap",
       "npc_dota_custom_death_ward",
       "npc_dota_custom_dummy_unit",
       "npc_dota_custom_phoenix_egg",
@@ -317,6 +323,12 @@ if C_DOTA_BaseNPC then
 
   function C_DOTA_BaseNPC:IsCustomWardTypeUnit()
     local names = {
+      "npc_dota_techies_custom_land_mine_moving",
+      "npc_dota_techies_custom_remote_mine",
+      "npc_dota_techies_custom_remote_mine_moving",
+      "npc_dota_techies_custom_stasis_trap_moving",
+      "npc_dota_techies_land_mine",
+      "npc_dota_techies_stasis_trap",
       "npc_dota_custom_death_ward",
       "npc_dota_custom_dummy_unit",
       "npc_dota_custom_phoenix_egg",

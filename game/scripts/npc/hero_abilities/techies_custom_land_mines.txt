@@ -4,7 +4,7 @@
   // Techies: Land Mines (Q) - like old land mines, but mines have no limit and have a duration, and they are visible when in big radius range
   // Author: Darkonius
   // Notes: OK; 2022; Damage Type: Composite; They make a sound when they are triggered; Blademail returns the damage to Techies;
-  // Notes: Mine damage auto-updates;
+  // Notes: Mine damage auto-updates; Doesn't trigger on flying units;
   // TO_DO: 
   //=================================================================================================================
   "techies_custom_land_mines"
@@ -61,7 +61,7 @@
 	
     "AbilityValues"
     {
-      "tooltip_value"                                     "1.0"
+      "tooltip_value"                                     "1"
     }
   }
 }

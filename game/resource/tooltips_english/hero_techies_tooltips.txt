@@ -1,0 +1,88 @@
+
+		// ******************** Techies ********************		
+		"DOTA_Tooltip_ability_techies_custom_land_mines"                        "Land Mines"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant a mine that is visible to enemies only if they are within %big_radius% AoE of the mine. Mine will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\n\Composite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage is Techies. Mines don't affect flying units, they lose invisibility when enemies are within %big_radius% radius of them.</font>"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_Lore"                   "The bane of Toterin!"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_Note0"                  "Grants 30 gold and 20 experience if destroyed by an enemy hero."
+		"DOTA_Tooltip_ability_techies_custom_land_mines_duration"               "MINE DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_activation_delay"       "ACTIVATION DELAY:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_detonation_delay"       "TRIGGER DELAY:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_small_radius"           "FULL DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_big_radius"             "HALF DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_small_radius_damage"    "FULL DAMAGE:"
+		//"DOTA_Tooltip_ability_techies_custom_land_mines_big_radius_damage"      "PARTIAL DAMAGE:"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_building_dmg_reduction" "%DAMAGE TO BUILDINGS:"
+
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap"                       "Stasis Trap"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_Description"           "Plant a trap that stuns nearby enemy units when triggered.<br><br><font color='#70EA72'>No cast point. Increased cast range. Reduced stun duration. Traps are always visible, they don't affect flying units but they do affect invisible units.</font>"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_Lore"					"The scourge of Trapper Town!"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_Note0"                 "Grants 15 gold and 10 experience if destroyed by an enemy hero."
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_radius"                "RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_stun_duration"         "STUN DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_duration"              "TRAP DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_activation_delay"      "ACTIVATION DELAY:"
+		"DOTA_Tooltip_ability_techies_custom_stasis_trap_detonation_delay"      "TRIGGER DELAY:"
+		
+		"DOTA_Tooltip_ability_techies_custom_suicide"                           "Suicide Squad, Attack!"
+		"DOTA_Tooltip_ability_techies_custom_suicide_Description"				"Techies detonate all explosive charges which deal massive area of effect damage to enemies and kills Techies. Deals %building_damage_pct%%% damage to buildings. Provides vision after suiciding.\n\nDamage Type: COMPOSITE\n\Composite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>No respawn time reduction.</font>"
+		"DOTA_Tooltip_ability_techies_custom_suicide_Lore"                      "Suicide is never a good option (except for Techies)."
+		"DOTA_Tooltip_ability_techies_custom_suicide_small_radius"              "FULL DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_big_radius"                "HALF DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_small_radius_damage"       "FULL DAMAGE:"
+		//"DOTA_Tooltip_ability_techies_custom_suicide_big_radius_damage"         "PARTIAL DAMAGE:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_building_dmg_reduction"    "%DAMAGE TO BUILDINGS:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_vision_radius"             "VISION RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_vision_duration"           "VISION DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_shard_description"         "Suicide Squad, Attack! becomes Blast Off: increased cast range, deals self damage instead of suiciding and stuns affected enemies."
+		"DOTA_Tooltip_ability_techies_custom_suicide_shard_stun_duration"       "SHARD STUN DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_suicide_shard_cast_range"          "SHARD CAST RANGE:"
+		
+		"DOTA_Tooltip_ability_techies_custom_remote_mines"                      "Remote Mines"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_Description"			"Plant an invisible explosive that will only detonate after a brief delay when triggered. Does not damage buildings. Provides vision after exploding. <br><br><font color='#70EA72'>Source of damage is Techies. Destroys trees.</font>"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_Note0"                "Grants 30 gold and 20 experience if destroyed by an enemy hero."
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_Lore"                 "The downfall of Dredger's Bight!"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_radius"				"EXPLOSION RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_damage"				"DAMAGE:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_activation_delay"     "FADE TIME:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_detonation_delay"     "DETONATION DELAY:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_duration"             "MINE DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_abilitycastrange"     "CAST RANGE:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_vision_radius"        "VISION RADIUS:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_vision_duration"      "VISION DURATION:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_scepter_description"	"Reduces cast time and increases damage and cast range."
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_scepter_cast_range"	"SCEPTER CAST RANGE:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_scepter_damage"		"SCEPTER DAMAGE:"
+		"DOTA_Tooltip_ability_techies_custom_remote_mines_scepter_cast_point"   "SCEPTER CAST TIME:"
+
+		"DOTA_Tooltip_ability_techies_custom_focused_detonate"                  "Focused Detonate"
+		"DOTA_Tooltip_ability_techies_custom_focused_detonate_Description"      "Detonate all remote mines in the target area."
+		"DOTA_Tooltip_ability_techies_custom_focused_detonate_Lore"             "Why light one fuse when you can light them all?"
+		"DOTA_Tooltip_ability_techies_custom_focused_detonate_radius"           "RADIUS:"
+		
+		// Land Mines talent
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_3"            "-{s:tooltip_value}s Land Mines Activation Delay"
+		
+		// Suicide talents
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2"            "Suicide Squad, Attack! Silences"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2_Description"  "Silences damaged enemies for 7 seconds after explosion."
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_4"            "-{s:value}s Suicide Squad, Attack! Cooldown"
+		
+		// All mines talent
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1"            "Mine Explosion Slows"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1_Description"  "Slows move speed by 45% and attack speed by 45 for 3 seconds after explosion."
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5"            "Bio Mines"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5_Description"  "Mines can move when within 1000 radius of Techies. They benefit from some auras and buffs but they also can die from cleave damage and physical damage spells."
+		
+		// Mines
+		"npc_dota_techies_land_mine"                                            "Land Mine"
+		"npc_dota_techies_custom_land_mine_moving"                              "Land Mine"
+		"npc_dota_techies_stasis_trap"                                          "Stasis Trap"
+		"npc_dota_techies_custom_stasis_trap_moving"                            "Stasis Trap"
+		"npc_dota_techies_custom_remote_mine"                                   "Remote Mine"
+		"npc_dota_techies_custom_remote_mine_moving"                            "Remote Mine"
+		
+		// Remote Mine ability
+		"DOTA_Tooltip_ability_remote_mine_custom_self_detonate"                 "Pinpoint Detonate"
+		"DOTA_Tooltip_ability_remote_mine_custom_self_detonate_Description"     "Detonate selected remote mine."
+		"DOTA_Tooltip_ability_remote_mine_custom_self_detonate_Lore"            "Kablooey!"
+		

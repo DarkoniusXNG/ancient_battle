@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Remote Mine: Detonate - explodes the caster
+  // Remote Mine: Pinpoint Detonate - explodes the caster
   // Author: Darkonius
   // Notes: OK; 2022;
-  // TO_DO: test
+  // TO_DO:
   //=================================================================================================================
   "remote_mine_custom_self_detonate"
   {
@@ -20,6 +20,7 @@
     "MaxLevel"                                            "1"
 
     "AbilityCastPoint"                                    "0.0"
+    "AbilityCastRange"                                    "425" // same as Remote Mine explosion radius
 
     "AbilityCooldown"                                     "0"
 

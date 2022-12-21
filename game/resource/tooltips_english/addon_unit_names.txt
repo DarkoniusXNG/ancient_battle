@@ -39,5 +39,4 @@
 		"npc_dota_custom_phoenix_egg"											"Phoenix Egg"
 		"npc_dota_custom_phoenix_summon"										"Phoenix"
 		"npc_dota_custom_death_ward"                                            "Death Ward"
-		"npc_dota_techies_stasis_trap"                                          "Electric Trap"
 		"npc_dota_custom_electric_trap"                                         "Electric Trap"

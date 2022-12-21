@@ -4,7 +4,7 @@
   // Techies: Remote Mines (R) - like old Remote mines but no limit and they block camps
   // Author: Darkonius
   // Notes: OK; 2022; Blademail returns the damage to Techies; Mine damage auto-updates; Destroys trees;
-  // TO_DO: test
+  // TO_DO: 
   //=================================================================================================================
   "techies_custom_remote_mines"
   {
@@ -20,11 +20,11 @@
 
     "HasScepterUpgrade"                                   "1"
 
-    "AbilityCastRange"                                    "500" // old (?)
-    "AbilityCastPoint"                                    "1.0" // old (?)
+    "AbilityCastRange"                                    "500" // old (first: 100; mid: 500)
+    "AbilityCastPoint"                                    "1.0" // old (2)
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_6"
 
-    "AbilityCooldown"                                     "10" // old (?)
+    "AbilityCooldown"                                     "10" // old (10)
 
     "AbilityManaCost"                                     "120 180 240"
     "AbilityProcsMagicStick"                              "1"
@@ -36,13 +36,14 @@
 
     "AbilityValues"
     {
-      "duration"                                          "300" // old (600)
-      "radius"                                            "425"
-      "activation_delay"                                  "2.0" // old (?)
-      "detonation_delay"                                  "0.25" // old (0)
+      "duration"                                          "300" // old (first: 600; mid: 180/360/480)
+      "radius"                                            "425" // old (400)
+      "activation_delay"                                  "2.0" // old (0 + fade time of 2 seconds)
+      "detonation_delay"                                  "0.25" // old (first: 0.25; mid: 0; latest: 0.25)
       "damage"                                            "300 450 600"
       "vision_radius"                                     "500"
-      "vision_duration"                                   "2.0"
+      "vision_duration"                                   "3.0"
+      "model_scale"                                       "0 20 40"
       "scepter_damage"
       {
         "value"                                           "450 600 750"
@@ -50,7 +51,7 @@
       }
       "scepter_cast_range"
       {
-        "value"                                           "800"
+        "value"                                           "900"
         "RequiresScepter"                                 "1"
       }
       "scepter_cast_point"
@@ -65,20 +66,22 @@
   // Techies: Focused Detonate (F) - For detonating remote mines
   // Author: Darkonius
   // Notes: OK; 2022; It levels up with Remote Mines
-  // TO_DO: test
+  // TO_DO: auto-level and DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE
   //=================================================================================================================
   "techies_custom_focused_detonate"
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/techies/remote_mines.lua"
     "AbilityTextureName"                                  "custom/techies_custom_focused_detonate"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
     "AbilityCastRange"                                    "0"
 
     "MaxLevel"                                            "1"
 
     "AbilityCooldown"                                     "1.0"
+    "AbilityManaCost"                                     "0"
+    "AbilityProcsMagicStick"                              "0"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
