@@ -123,6 +123,18 @@ function modifier_techies_custom_remote_mine:OnIntervalThink()
 	else
 		local caster = self:GetCaster()
 		local parent = self:GetParent()
+		if not caster or caster:IsNull() then
+			if parent and not parent:IsNull() then
+				-- Remove the mine
+				parent:ForceKill(false)
+			end
+			self:Destroy()
+			self:StartIntervalThink(-1)
+			return
+		end
+		if not parent or parent:IsNull() then
+			return
+		end
 		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
 			self.allow_ms = true
 		else

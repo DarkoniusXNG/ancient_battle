@@ -36,12 +36,8 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
+		"ItemCost"						"1200"	
 		"ItemShopTags"					""
-		"ItemBaseLevel"					"2"
-
-		"ShouldBeSuggested"				"0"
-		"ItemPurchasable"				"0"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -49,11 +45,11 @@
 		"ItemResult"					"item_custom_necronomicon_2"
 		"ItemRequirements"
 		{
-			"01"						"item_custom_necronomicon_1;item_recipe_custom_necronomicon_1"
+			"01"						"item_custom_necronomicon_1"
 		}
 	}
 
-  "item_recipe_necronomicon_3"
+  "item_recipe_custom_necronomicon_3"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -63,12 +59,8 @@
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
+		"ItemCost"						"1200"	
 		"ItemShopTags"					""
-		"ItemBaseLevel"					"3"
-
-		"ShouldBeSuggested"				"0"
-		"ItemPurchasable"				"0"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -76,7 +68,7 @@
 		"ItemResult"					"item_custom_necronomicon_3"
 		"ItemRequirements"
 		{
-			"01"						"item_custom_necronomicon_2;item_recipe_custom_necronomicon_1"
+			"01"						"item_custom_necronomicon_2"
 		}
 	}
 
