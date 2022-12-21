@@ -185,7 +185,6 @@ function Detonate(parent, ability, caster)
 		print("Remote Mine Detonate failed: Caster is "..tostring(caster))
 		print("Remote Mine Detonate failed: Ability is "..tostring(ability))
 		-- Remove the mine
-		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
 			parent:ForceKill(false)
 		end
@@ -239,7 +238,7 @@ function Detonate(parent, ability, caster)
 	damage_table.attacker = caster
 	damage_table.damage = dmg
 	damage_table.damage_type = ability:GetAbilityDamageType()
-	--damage_table.damage_flags = 
+	--damage_table.damage_flags =
 	damage_table.ability = ability
 
 	Timers:CreateTimer(delay, function()
@@ -296,7 +295,7 @@ end
 techies_custom_focused_detonate = class({})
 
 function techies_custom_focused_detonate:GetAOERadius()
-	return self:GetSpecialValueFor("radius") 
+	return self:GetSpecialValueFor("radius")
 end
 
 function techies_custom_focused_detonate:OnSpellStart()

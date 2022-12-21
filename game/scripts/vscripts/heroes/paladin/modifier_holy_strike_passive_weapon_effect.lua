@@ -23,7 +23,7 @@ end
 		-- if self.weapon_pfx == nil then
 			-- local parent = self:GetParent()
 			-- local parent_loc = parent:GetAbsOrigin()
-			-- self.weapon_pfx = 
+			-- self.weapon_pfx =
 		-- end
 	-- end
 -- end

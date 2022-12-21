@@ -70,14 +70,14 @@ function techies_custom_suicide:OnSpellStart()
 		end
 	else
 		self:PrimaryEffect(point)
-		
+		-- Kill the caster
 		caster:Kill(self, caster)
 	end
 end
 
 function techies_custom_suicide:PrimaryEffect(point)
 	local caster = self:GetCaster()
-	
+
 	local function TableContains(t, element)
 		if t == nil then return false end
 		for _, v in pairs(t) do
@@ -116,7 +116,7 @@ function techies_custom_suicide:PrimaryEffect(point)
 
 	-- Sound
 	caster:EmitSound("Hero_Techies.Suicide")
-	
+
 	-- Check for silence talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_2")
 	local has_talent = talent and talent:GetLevel() > 0
@@ -371,7 +371,7 @@ if IsServer() then
 		self:Destroy()
 	end
   end
-  
+
   function modifier_techies_custom_blast_off:UpdateVerticalMotion(parent, deltaTime)
 	if not parent or parent:IsNull() or not parent:IsAlive() then
       return
@@ -391,7 +391,7 @@ if IsServer() then
   function modifier_techies_custom_blast_off:OnHorizontalMotionInterrupted()
     self:Destroy()
   end
-  
+
   function modifier_techies_custom_blast_off:OnVerticalMotionInterrupted()
     self:Destroy()
   end

@@ -160,7 +160,6 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			parent:EmitSound("Hero_Techies.StickyBomb.Priming") -- "Hero_Techies.LandMine.Priming" ; "Hero_Techies.RemoteMine.Priming"
 
 			local delay = ability:GetSpecialValueFor("detonation_delay")
-			local think_interval = ability:GetSpecialValueFor("think_interval")
 			local small_radius_dmg = ability:GetSpecialValueFor("small_radius_damage")
 			local big_radius_dmg = ability:GetSpecialValueFor("big_radius_damage")
 			local building_dmg_reduction = ability:GetSpecialValueFor("building_dmg_reduction")
@@ -188,9 +187,9 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 					local parent_team = parent:GetTeamNumber() -- we check this again if mine changed teams somehow
 					local parent_origin = parent:GetAbsOrigin() -- we check this again if mine changed position
 					--local parent_death_xp = parent:GetDeathXP()
-					local enemies_big_radius = FindUnitsInRadius(parent_team, parent_origin, nil, big_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
-					local enemies_small_radius = FindUnitsInRadius(parent_team, parent_origin, nil, small_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
-					for _, enemy in pairs(enemies_big_radius) do
+					local enemies_full_radius = FindUnitsInRadius(parent_team, parent_origin, nil, big_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+					local enemies_partial_radius = FindUnitsInRadius(parent_team, parent_origin, nil, small_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
+					for _, enemy in pairs(enemies_full_radius) do
 						if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() and not enemy:HasFlyMovementCapability() then
 							-- Apply mine slow if talent is learned (pierces spell immunity)
 							if has_talent then
@@ -203,7 +202,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 							-- Calculate damage
 							local mine_dmg = big_radius_dmg
 							-- Increase the damage if enemy is closer to the center
-							if TableContains(enemies_small_radius, enemy) then
+							if TableContains(enemies_partial_radius, enemy) then
 								mine_dmg = small_radius_dmg
 							end
 							local enemy_magic_resist = enemy:GetMagicalArmorValue()

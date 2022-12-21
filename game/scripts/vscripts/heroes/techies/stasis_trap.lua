@@ -79,7 +79,7 @@ end
 
 function modifier_techies_custom_stasis_trap:OnIntervalThink()
 	if not IsServer() then return end
-	
+
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() or not caster or caster:IsNull() then
