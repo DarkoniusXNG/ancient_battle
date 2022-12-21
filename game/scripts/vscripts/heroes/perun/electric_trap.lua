@@ -126,8 +126,8 @@ function modifier_perun_electric_trap:OnIntervalThink()
 
 				if #enemies_again > 0 then
 
-					-- Hide parent
-					parent:AddNoDraw()
+					-- Hide parent - looks better when it's not hidden
+					--parent:AddNoDraw()
 
 					-- Stasis Trap particles
 					local particle_explode = "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
@@ -144,6 +144,11 @@ function modifier_perun_electric_trap:OnIntervalThink()
 						if not enemy:IsNull() then
 							-- Victim
 							damage_table.victim = enemy
+
+							local part = ParticleManager:CreateParticle("particles/items_fx/chain_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
+							ParticleManager:SetParticleControlEnt(part, 0, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), true)
+							ParticleManager:SetParticleControlEnt(part, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent_origin, true)
+							ParticleManager:ReleaseParticleIndex(part)
 
 							-- Explode (damage)
 							ApplyDamage(damage_table)

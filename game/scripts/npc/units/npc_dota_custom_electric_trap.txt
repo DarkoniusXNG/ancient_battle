@@ -7,8 +7,8 @@
   "npc_dota_custom_electric_trap"
   {
     "BaseClass"                                           "npc_dota_creature"
-    "Model"                                               "models/heroes/lanaya/lanaya_trap_crystal_invis.vmdl"
-    "ModelScale"                                          "1.0"
+    "Model"                                               "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+    "ModelScale"                                          "2.0"
     "Level"                                               "1"
     "UnitLabel"                                           "perun_electric_trap"
 

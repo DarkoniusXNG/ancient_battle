@@ -42,7 +42,7 @@
       "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
       "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
       "particle"                                          "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
-      "model"                                             "models/heroes/lanaya/lanaya_trap_crystal_invis.vmdl"  
+      "model"                                             "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"  
     }
     
     // Special

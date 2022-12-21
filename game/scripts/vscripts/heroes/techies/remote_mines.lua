@@ -31,11 +31,6 @@ function techies_custom_remote_mines:OnAbilityPhaseStart()
 	caster:EmitSound("Hero_Techies.RemoteMine.Toss")
 
 	-- Add particle effect
-	local pfx = ParticleManager:CreateParticle("particles/hero/techies/techies_remote_mine_plant.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster)
-	ParticleManager:SetParticleControlEnt(pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_remote", caster:GetAbsOrigin(), true)
-	ParticleManager:SetParticleControl(pfx, 1, target_point)
-	ParticleManager:SetParticleControl(pfx, 4, target_point)
-	ParticleManager:ReleaseParticleIndex(pfx)
 
 	return true
 end

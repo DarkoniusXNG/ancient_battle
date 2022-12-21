@@ -4,7 +4,7 @@
   // Techies: Remote Mines (R) - like old Remote mines but no limit and they block camps
   // Author: Darkonius
   // Notes: OK; 2022; Blademail returns the damage to Techies; Mine damage auto-updates; Destroys trees;
-  // TO_DO: 
+  // TO_DO: cast particle
   //=================================================================================================================
   "techies_custom_remote_mines"
   {
@@ -78,6 +78,7 @@
     "AbilityCastRange"                                    "0"
 
     "MaxLevel"                                            "1"
+    "RequiredLevel"                                       "7" // temporary
 
     "AbilityCooldown"                                     "1.0"
     "AbilityManaCost"                                     "0"
