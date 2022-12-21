@@ -25,6 +25,7 @@
 #base "units/npc_dota_custom_phoenix_summon.txt"
 #base "units/npc_dota_custom_phoenix_egg.txt"
 #base "units/npc_dota_custom_death_ward.txt"
+#base "units/npc_dota_custom_electric_trap.txt"
 #base "units/techies_mines.txt"
 
 "DOTAUnits"
