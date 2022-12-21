@@ -18,22 +18,25 @@ function techies_custom_stasis_trap:OnSpellStart()
 	-- Sound
 	caster:EmitSound("Hero_Techies.StasisTrap.Plant")
 
-	local trap_duration = self:GetSpecialValueFor("duration")
-	local trap = CreateUnitByName("npc_dota_techies_stasis_trap", point, true, caster, caster, caster:GetTeamNumber())
-	trap:SetOwner(caster:GetOwner())
-	trap:SetControllableByPlayer(caster:GetPlayerID(), true)
-	trap:SetDeathXP(20)
-	trap:SetMaximumGoldBounty(30)
-	trap:SetMinimumGoldBounty(30)
-	trap:AddNewModifier(caster, self, "modifier_techies_custom_stasis_trap", {})
-	trap:AddNewModifier(caster, self, "modifier_kill", {duration = trap_duration})
-
+	local name = "npc_dota_techies_stasis_trap"
 	-- Check for moving mines talent
 	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
 	if talent and talent:GetLevel() > 0 then
-		--trap:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND) -- not needed
-		--trap:SetBaseMoveSpeed(talent:GetSpecialValueFor("value")) -- doesn't work
+		name = "npc_dota_techies_custom_stasis_trap_moving"
 	end
+
+	local trap_duration = self:GetSpecialValueFor("duration")
+	local trap = CreateUnitByName(name, point, true, caster, caster, caster:GetTeamNumber())
+	trap:SetOwner(caster:GetOwner())
+	trap:SetControllableByPlayer(caster:GetPlayerID(), true)
+	trap:SetDeathXP(10)
+	trap:SetMaximumGoldBounty(15)
+	trap:SetMinimumGoldBounty(15)
+	trap:SetBaseMaxHealth(100)
+	trap:SetMaxHealth(100)
+	trap:SetHealth(100)
+	trap:AddNewModifier(caster, self, "modifier_techies_custom_stasis_trap", {})
+	trap:AddNewModifier(caster, self, "modifier_kill", {duration = trap_duration})
 end
 
 function techies_custom_stasis_trap:ProcsMagicStick()

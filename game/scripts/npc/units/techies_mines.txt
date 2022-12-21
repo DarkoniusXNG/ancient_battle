@@ -1,0 +1,324 @@
+"DOTAUnits"
+{
+  //=================================================================================
+  // Techies Land Mine (for moving mines talent)
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_techies_custom_land_mine_moving"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/techies/fx_techiesfx_mine.vmdl"
+    "ModelScale"                                          "1.0"
+    "Level"                                               "1"
+    "UnitLabel"                                           "techies_custom_land_mine"
+    "wearable"                                            "8644"
+
+    "IsSummoned"                                          "0"
+    "CanBeDominated"                                      "0"
+    "IsAncient"                                           "1"
+    //"ConsideredHero"                                      "1"
+    "AutoAttacksByDefault"                                "0"
+
+    "SelectionGroup"                                      "Techies_LandMines"
+
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "custom_unit_spell_immunity"
+
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "0"
+
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK" // so you can rightclick on enemies
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "0"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.0"
+    "AttackAcquisitionRange"                              "0"
+    "AttackRange"                                         "0"
+
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "20"
+    "BountyGoldMin"                                       "30"
+    "BountyGoldMax"                                       "30"
+
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"
+    "HealthBarOffset"                                     "140"
+
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "100"
+    "MovementTurnRate"                                    "1.0"
+
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_NEUTRALS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "64"
+    "VisionNighttimeRange"                                "64"
+
+    "HasInventory"                                        "0"
+    "WakesNeutrals"                                       "0"
+  }
+
+  //=================================================================================
+  // Techies Stasis Trap (for moving mines talent)
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_techies_custom_stasis_trap_moving"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/techies/fx_techiesfx_stasis.vmdl"
+    "ModelScale"                                          "1.0"
+    "Level"                                               "1"
+    "UnitLabel"                                           "techies_custom_stasis_trap"
+    "wearable"                                            "8643"
+
+    "IsSummoned"                                          "0"
+    "CanBeDominated"                                      "0"
+    "IsAncient"                                           "1"
+    //"ConsideredHero"                                      "1"
+    "AutoAttacksByDefault"                                "0"
+
+    "SelectionGroup"                                      "Techies_StasisTraps"
+
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "custom_unit_spell_immunity"
+
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "0"
+
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK" // so you can rightclick on enemies
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "0"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.0"
+    "AttackAcquisitionRange"                              "0"
+    "AttackRange"                                         "0"
+
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "10"
+    "BountyGoldMin"                                       "15"
+    "BountyGoldMax"                                       "15"
+
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_SMALL"
+    "HealthBarOffset"                                     "140"
+
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "100"
+    "MovementTurnRate"                                    "1.0"
+
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_NEUTRALS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "64"
+    "VisionNighttimeRange"                                "64"
+
+    "HasInventory"                                        "0"
+    "WakesNeutrals"                                       "0"
+  }
+
+  //=================================================================================
+  // Techies Remote Mine (for custom Remote Mines ability)
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_techies_custom_remote_mine"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/techies/fx_techies_remote_cart.vmdl" // models/heroes/techies/fx_techies_remotebomb.vmdl
+    "ModelScale"                                          "1.0"
+    "Level"                                               "1"
+    "UnitLabel"                                           "techies_custom_remote_mine"
+    "wearable"                                            "8645"
+
+    "IsSummoned"                                          "0"
+    "CanBeDominated"                                      "0"
+    "IsAncient"                                           "1"
+    //"ConsideredHero"                                      "1"
+    "AutoAttacksByDefault"                                "0"
+
+    "SelectionGroup"                                      "Techies_RemoteMines"
+
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "remote_mine_custom_self_detonate"
+    "Ability2"                                            "custom_unit_spell_immunity"
+
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "0"
+
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "0"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.0"
+    "AttackAcquisitionRange"                              "0"
+    "AttackRange"                                         "0"
+
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "20"
+    "BountyGoldMin"                                       "30"
+    "BountyGoldMax"                                       "30"
+
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
+    "HealthBarOffset"                                     "140"
+
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_NONE"
+    "MovementSpeed"                                       "0"
+    "MovementTurnRate"                                    "0.0"
+
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "200"
+    "StatusHealthRegen"                                   "0"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_NEUTRALS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "700"
+    "VisionNighttimeRange"                                "700"
+
+    "HasInventory"                                        "0"
+    "WakesNeutrals"                                       "0"
+  }
+  
+  //=================================================================================
+  // Techies Remote Mine (for moving mines talent)
+  // Notes: OK; 2022;
+  //=================================================================================
+  "npc_dota_techies_custom_remote_mine_moving"
+  {
+    "BaseClass"                                           "npc_dota_creature"
+    "Model"                                               "models/heroes/techies/fx_techies_remote_cart.vmdl"
+    "ModelScale"                                          "1.0"
+    "Level"                                               "1"
+    "UnitLabel"                                           "techies_custom_remote_mine"
+    "wearable"                                            "8645"
+
+    "IsSummoned"                                          "0"
+    "CanBeDominated"                                      "0"
+    "IsAncient"                                           "1"
+    //"ConsideredHero"                                      "1"
+    "AutoAttacksByDefault"                                "0"
+
+    "SelectionGroup"                                      "Techies_RemoteMines"
+
+    // Abilities
+    //----------------------------------------------------------------
+    "Ability1"                                            "remote_mine_custom_self_detonate"
+    "Ability2"                                            "custom_unit_spell_immunity"
+
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "0"
+
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK" // so you can rightclick on enemies
+    "AttackDamageMin"                                     "0"
+    "AttackDamageMax"                                     "0"
+    "AttackRate"                                          "1.0"
+    "AttackAnimationPoint"                                "0.0"
+    "AttackAcquisitionRange"                              "0"
+    "AttackRange"                                         "0"
+
+    // Bounty
+    //----------------------------------------------------------------
+    "BountyXP"                                            "20"
+    "BountyGoldMin"                                       "30"
+    "BountyGoldMax"                                       "30"
+
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
+    "HealthBarOffset"                                     "140"
+
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "100"
+    "MovementTurnRate"                                    "1.0"
+
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "200"
+    "StatusHealthRegen"                                   "0"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+
+    // Combat
+    //----------------------------------------------------------------
+    "TeamName"                                            "DOTA_TEAM_NEUTRALS"
+    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
+    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
+    "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "700"
+    "VisionNighttimeRange"                                "700"
+
+    "HasInventory"                                        "0"
+    "WakesNeutrals"                                       "0"
+  }
+}

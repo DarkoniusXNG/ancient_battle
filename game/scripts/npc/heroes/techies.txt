@@ -2,7 +2,7 @@
 {
   // ================================================================================================================
   // HERO: Techies; 2022
-  // TO_DO: test, remote mines, explosive shot
+  // TO_DO: explosive shot
   // =================================================================================================================
   "npc_dota_hero_custom_techies"
   {
@@ -23,9 +23,9 @@
     "Ability1"                                            "techies_custom_land_mines"             // Q (4 levels)
     "Ability2"                                            "techies_custom_stasis_trap"            // W (4 levels)
     "Ability3"                                            "techies_custom_suicide"                // E (4 levels)
-    "Ability4"                                            "generic_hidden"                        // T (4 levels)
-    "Ability5"                                            "generic_hidden"                        // F, Secondary Ultimate (1 level)
-    "Ability6"                                            "techies_remote_mines"                  // R, Primary Ultimate (3 levels)        
+    "Ability4"                                            "generic_hidden"                        // T, passive (4 levels)
+    "Ability5"                                            "techies_custom_focused_detonate"       // F, sub ability (1 level)
+    "Ability6"                                            "techies_custom_remote_mines"           // R, Primary Ultimate (3 levels)        
     "Ability7"                                            "generic_hidden"          
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"

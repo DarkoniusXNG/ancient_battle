@@ -18,8 +18,15 @@ function techies_custom_land_mines:OnSpellStart()
 	-- Sound
 	caster:EmitSound("Hero_Techies.RemoteMine.Plant") -- "Hero_Techies.StickyBomb.Plant"
 
+	local name = "npc_dota_techies_land_mine"
+	-- Check for moving mines talent
+	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
+	if talent and talent:GetLevel() > 0 then
+		name = "npc_dota_techies_custom_land_mine_moving"
+	end
+
 	local mine_duration = self:GetSpecialValueFor("duration")
-	local mine = CreateUnitByName("npc_dota_techies_land_mine", point, true, caster, caster, caster:GetTeamNumber())
+	local mine = CreateUnitByName(name, point, true, caster, caster, caster:GetTeamNumber())
 	mine:SetOwner(caster:GetOwner())
 	mine:SetControllableByPlayer(caster:GetPlayerID(), true)
 	mine:SetDeathXP(20)
@@ -30,13 +37,6 @@ function techies_custom_land_mines:OnSpellStart()
 	mine:SetHealth(100)
 	mine:AddNewModifier(caster, self, "modifier_techies_custom_land_mine", {})
 	mine:AddNewModifier(caster, self, "modifier_kill", {duration = mine_duration})
-
-	-- Check for moving mines talent
-	local talent = caster:FindAbilityByName("special_bonus_unique_techies_custom_5")
-	if talent and talent:GetLevel() > 0 then
-		--mine:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND) -- not needed
-		--mine:SetBaseMoveSpeed(talent:GetSpecialValueFor("value")) -- doesn't work
-	end
 end
 
 function techies_custom_land_mines:ProcsMagicStick()
@@ -192,7 +192,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 					local enemies_small_radius = FindUnitsInRadius(parent_team, parent_origin, nil, small_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 					for _, enemy in pairs(enemies_big_radius) do
 						if enemy and not enemy:IsNull() and not enemy:IsCustomWardTypeUnit() and not enemy:HasFlyMovementCapability() then
-							-- Apply mine slow if talent is learned
+							-- Apply mine slow if talent is learned (pierces spell immunity)
 							if has_talent then
 								enemy:AddNewModifier(parent, talent2, "modifier_techies_custom_mine_slow", {duration = slow_duration})
 							end

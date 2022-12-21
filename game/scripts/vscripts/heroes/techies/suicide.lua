@@ -314,14 +314,14 @@ if IsServer() then
 	local parent_loc = parent:GetAbsOrigin()
 
     -- Data sent with AddNewModifier (not available on the client)
-	local point = Vector(event.point_x, event.point_y, event.point_z)
-	self.jump_duration = 0.75
-	self.jump_max_height = 290
+    local point = Vector(event.point_x, event.point_y, event.point_z)
+    self.jump_duration = 0.75
+    self.jump_max_height = 290
     self.direction = (point - parent_loc):Normalized()
     self.distance = (point - parent_loc):Length2D()
     self.speed = self.distance / self.jump_duration
-	self.time_elapsed = 0
-	self.current_height = 0
+    self.time_elapsed = 0
+    self.current_height = 0
 
     --ProjectileManager:ProjectileDodge(parent)
 
