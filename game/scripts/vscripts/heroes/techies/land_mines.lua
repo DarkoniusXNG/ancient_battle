@@ -95,8 +95,9 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 		return false
 	end
 
+	local caster = self:GetCaster()
 	local ability = self:GetAbility()
-	if not ability or ability:IsNull() then
+	if not ability or ability:IsNull() or not caster or caster:IsNull() then
 		-- Remove the mine
 		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
@@ -106,6 +107,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 		self:StartIntervalThink(-1)
 		return
 	end
+
 	if self.activated then
 		local small_radius = ability:GetSpecialValueFor("small_radius") -- also the trigger radius
 		local big_radius = ability:GetSpecialValueFor("big_radius")
@@ -116,6 +118,12 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 
 		if parent:IsOutOfGame() or parent:IsUnselectable() or parent:IsInvulnerable() then
 			return
+		end
+		
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+			self.allow_ms = true
+		else
+			self.allow_ms = false
 		end
 
 		-- Targetting constants
@@ -155,15 +163,6 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			local small_radius_dmg = ability:GetSpecialValueFor("small_radius_damage")
 			local big_radius_dmg = ability:GetSpecialValueFor("big_radius_damage")
 			local building_dmg_reduction = ability:GetSpecialValueFor("building_dmg_reduction")
-
-			local caster = self:GetCaster()
-			if not caster or caster:IsNull() then
-				-- Remove the mine
-				if parent and not parent:IsNull() then
-					parent:ForceKill(false)
-				end
-				return
-			end
 
 			-- Check for mine slow talent
 			local talent2 = caster:FindAbilityByName("special_bonus_unique_techies_custom_1")
@@ -286,5 +285,6 @@ function modifier_techies_custom_land_mine:CheckState()
 		[MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_INVISIBLE] = not self.visible,
+		[MODIFIER_STATE_ROOTED] = not self.allow_ms,
 	}
 end

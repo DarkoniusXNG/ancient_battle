@@ -54,7 +54,7 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "100"
+    "MovementSpeed"                                       "150"
     "MovementTurnRate"                                    "1.0"
 
     // Status
@@ -134,7 +134,7 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "100"
+    "MovementSpeed"                                       "150"
     "MovementTurnRate"                                    "1.0"
 
     // Status
@@ -167,7 +167,7 @@
   "npc_dota_techies_custom_remote_mine"
   {
     "BaseClass"                                           "npc_dota_creature"
-    "Model"                                               "models/heroes/techies/fx_techies_remote_cart.vmdl" // models/heroes/techies/fx_techies_remotebomb.vmdl
+    "Model"                                               "models/heroes/techies/fx_techies_remotebomb.vmdl"
     "ModelScale"                                          "1.0"
     "Level"                                               "1"
     "UnitLabel"                                           "techies_custom_remote_mine"
@@ -248,7 +248,7 @@
   "npc_dota_techies_custom_remote_mine_moving"
   {
     "BaseClass"                                           "npc_dota_creature"
-    "Model"                                               "models/heroes/techies/fx_techies_remote_cart.vmdl"
+    "Model"                                               "models/heroes/techies/fx_techies_remotebomb.vmdl"
     "ModelScale"                                          "1.0"
     "Level"                                               "1"
     "UnitLabel"                                           "techies_custom_remote_mine"
@@ -296,7 +296,7 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "100"
+    "MovementSpeed"                                       "150"
     "MovementTurnRate"                                    "1.0"
 
     // Status

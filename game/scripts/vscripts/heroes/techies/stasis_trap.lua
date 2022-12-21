@@ -79,8 +79,9 @@ end
 function modifier_techies_custom_stasis_trap:OnIntervalThink()
 	if not IsServer() then return end
 	
+	local caster = self:GetCaster()
 	local ability = self:GetAbility()
-	if not ability or ability:IsNull() then
+	if not ability or ability:IsNull() or not caster or caster:IsNull() then
 		-- Remove the mine
 		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
@@ -90,6 +91,7 @@ function modifier_techies_custom_stasis_trap:OnIntervalThink()
 		self:StartIntervalThink(-1)
 		return
 	end
+
 	if self.activated then
 		local radius = ability:GetSpecialValueFor("radius")
 
@@ -99,6 +101,12 @@ function modifier_techies_custom_stasis_trap:OnIntervalThink()
 
 		if parent:IsOutOfGame() or parent:IsUnselectable() or parent:IsInvulnerable() then
 			return
+		end
+
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+			self.allow_ms = true
+		else
+			self.allow_ms = false
 		end
 
 		-- Targetting constants
@@ -214,6 +222,7 @@ function modifier_techies_custom_stasis_trap:CheckState()
 		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
 		[MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_ROOTED] = not self.allow_ms,
 	}
 end
 

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Techies: Remote Mines (R) - like old Remote mines but no limit
+  // Techies: Remote Mines (R) - like old Remote mines but no limit and they block camps
   // Author: Darkonius
   // Notes: OK; 2022; Blademail returns the damage to Techies; Mine damage auto-updates; Destroys trees;
   // TO_DO: test

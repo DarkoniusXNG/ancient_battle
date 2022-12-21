@@ -89,6 +89,12 @@ function modifier_techies_custom_remote_mine:OnCreated()
 		return
 	end
 
+	-- Check for moving mines talent
+	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_techies_custom_5")
+	if talent and talent:GetLevel() > 0 then
+		self.think = true
+	end
+
 	self.visible = true
 
 	local activation_delay = ability:GetSpecialValueFor("activation_delay") -- serves as fade time
@@ -99,7 +105,21 @@ function modifier_techies_custom_remote_mine:OnIntervalThink()
 	if not IsServer() then return end
 
 	self.visible = false
-	self:StartIntervalThink(-1)
+	if not self.think then
+		self:StartIntervalThink(-1)
+	else
+		local caster = self:GetCaster()
+		local parent = self:GetParent()
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 800 then
+			self.allow_ms = true
+		else
+			self.allow_ms = false
+		end
+		if not self.started_think then
+			self:StartIntervalThink(0.1)
+			self.started_think = true
+		end
+	end
 end
 
 function modifier_techies_custom_remote_mine:DeclareFunctions()
@@ -130,6 +150,7 @@ function modifier_techies_custom_remote_mine:CheckState()
 		[MODIFIER_STATE_INVISIBLE] = not self.visible,
 		[MODIFIER_STATE_STUNNED] = false, -- so the mine can use its ability even while stunned
 		[MODIFIER_STATE_SILENCED] = false, -- so the mine can use its ability even while silenced
+		[MODIFIER_STATE_ROOTED] = not self.allow_ms,
 	}
 end
 
@@ -137,6 +158,8 @@ end
 
 function Detonate(parent, ability, caster)
 	if not caster or caster:IsNull() or not ability or ability:IsNull() then
+		print("Remote Mine Detonate: Caster is "..tostring(caster))
+		print("Remote Mine Detonate: Ability is "..tostring(ability))
 		-- Remove the mine
 		local parent = self:GetParent()
 		if parent and not parent:IsNull() then
@@ -264,7 +287,7 @@ function techies_custom_focused_detonate:OnSpellStart()
 	local ability = caster:FindAbilityByName("techies_custom_remote_mines")
 
 	-- Find allies in the radius around target point
-	local radius = self:GetVanillaAbilitySpecial("radius")
+	local radius = self:GetSpecialValueFor("radius")
 	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_OTHER)
 	local allies = FindUnitsInRadius(caster:GetTeamNumber(), point, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, target_type, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 
@@ -291,22 +314,9 @@ function remote_mine_custom_self_detonate:OnSpellStart()
 
 	-- Find the hero that created this mine
 	local hero
-	local player = mine:GetPlayerOwner()
-	local playerID = mine:GetPlayerOwnerID()
-	if not player then
-		player = PlayerResource:GetPlayer(playerID)
-		if not player then
-			-- now we really desperate
-			hero = PlayerResource:GetBarebonesAssignedHero(playerID)
-		else
-			hero = player:GetAssignedHero()
-		end
-	else
+	local player = mine:GetOwner() --mine:GetPlayerOwner() is nil; mine:GetPlayerOwnerID() is -1
+	if player then
 		hero = player:GetAssignedHero()
-	end
-	if not hero then
-		-- last resort
-		hero = PlayerResource:GetSelectedHeroEntity(playerID)
 	end
 
 	-- Check if hero doesnt exist or it's about to be deleted
