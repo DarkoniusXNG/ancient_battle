@@ -38,9 +38,9 @@
 		"DOTA_Tooltip_ability_pudge_custom_flesh_heap_range"                                "RANGE:"
 		
 		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_heroes"                         "Flesh Heap (Heroes)"
-		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_heroes_Description"             "Bonus %dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS% Strength gained from enemy hero deaths."
+		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_heroes_Description"             "Bonus %fMODIFIER_PROPERTY_STATS_STRENGTH_BONUS% Strength gained from enemy hero deaths."
 		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_creeps"                         "Flesh Heap (Creeps)"
-		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_creeps_Description"             "Bonus %dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS% Strength gained from enemy creep deaths."
+		"DOTA_Tooltip_modifier_pudge_custom_flesh_heap_creeps_Description"             "Bonus %fMODIFIER_PROPERTY_STATS_STRENGTH_BONUS% Strength gained from enemy creep deaths."
 		
 		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_1"                      "+{s:value}% Rot Slow"
 		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_2"                      "+{s:value} Meat Hook Damage"
