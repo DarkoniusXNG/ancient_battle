@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Bake-Danuki: Trickster's Insight
+	// Bake-Danuki: Trickster's Insight (Q) - Applies break and caster can crit on the target and blocks spells from the target while debuff exists
 	//=================================================================================================================
 	"bakedanuki_tricksters_insight"
 	{
@@ -25,7 +25,7 @@
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"14 12 10 8"
-		"AbilityManaCost"				"80"
+		"AbilityManaCost"				"75 80 85 90"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -34,7 +34,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"crit_chance"			"50"
+				"crit_chance"			"35" // original (25)
 			}
 			"02"
 			{

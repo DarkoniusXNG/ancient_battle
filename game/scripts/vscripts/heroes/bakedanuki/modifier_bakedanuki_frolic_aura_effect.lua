@@ -27,7 +27,7 @@ function modifier_bakedanuki_frolic_aura_effect:DeclareFunctions()
 end
 
 function modifier_bakedanuki_frolic_aura_effect:GetModifierEvasion_Constant()
-	if self:GetParent()==self:GetCaster() then
+	if self:GetParent() == self:GetCaster() then
 		return self.evasion_self
 	else
 		return self.evasion_ally

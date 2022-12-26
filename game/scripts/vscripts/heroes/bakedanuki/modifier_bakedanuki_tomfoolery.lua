@@ -22,31 +22,40 @@ function modifier_bakedanuki_tomfoolery:OnCreated( kv )
 end
 
 function modifier_bakedanuki_tomfoolery:OnRefresh( kv )
-	self.illusion_incoming = self:GetAbility():GetSpecialValueFor( "illusion_incoming" )
-	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor( "illusion_outgoing" )
+	self.illusion_incoming = self:GetAbility():GetSpecialValueFor("illusion_incoming")
+	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor("illusion_outgoing")
 end
 
 function modifier_bakedanuki_tomfoolery:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION,
-		-- MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION,
-		-- MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
+	return {
+		-- MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION,    -- GetModifierDamageOutgoing_Percentage_Illusion
+		-- MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,             -- GetModifierDamageOutgoing_Percentage
+		MODIFIER_PROPERTY_BONUSDAMAGEOUTGOING_PERCENTAGE,           -- GetModifierBonusDamageOutgoing_Percentage
+		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,            -- GetModifierBaseDamageOutgoing_Percentage
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
 		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST,
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_DEATH,
 	}
-
-	return funcs
 end
 
-function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage_Illusion()
--- function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage()
-	return self.illusion_outgoing-100
+--function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage_Illusion()
+	--return self.illusion_outgoing-100
+--end
+
+--function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage()
+	--return self.illusion_outgoing-100
+--end
+
+function modifier_bakedanuki_tomfoolery:GetModifierBonusDamageOutgoing_Percentage()
+	return -100
 end
 
--- function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage_Illusion()
+function modifier_bakedanuki_tomfoolery:GetModifierBaseDamageOutgoing_Percentage()
+	return self.illusion_outgoing
+end
+
 function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage()
 	return self.illusion_incoming-100
 end

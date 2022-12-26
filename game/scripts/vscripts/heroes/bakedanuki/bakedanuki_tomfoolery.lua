@@ -45,7 +45,7 @@ function bakedanuki_tomfoolery_blink:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, true )
 
 	-- shared cooldown
-	self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
+	--self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
 end
 
 function bakedanuki_tomfoolery_blink:StopTrick()
@@ -70,7 +70,7 @@ function bakedanuki_tomfoolery_summon:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, false )
 
 	-- shared cooldown
-	self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
+	--self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
 end
 
 function bakedanuki_tomfoolery_summon:StopTrick()
@@ -111,7 +111,7 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	-- load data
 	local max_range = this:GetSpecialValueFor("illusion_range")
 	local illusion_outgoing = this:GetSpecialValueFor("illusion_outgoing")
-	local illusion_incoming = this:GetSpecialValueFor("illusion_incoming")
+	local illusion_incoming = this:GetSpecialValueFor("illusion_incoming") - 100
 	local illusion_duration = this:GetSpecialValueFor("illusion_duration")
 	local hidden_time = 0.1
 
@@ -157,23 +157,19 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	illusion_table.outgoing_damage_roshan = illusion_outgoing
 	illusion_table.duration = illusion_duration
 
-	local padding = 108
-
-	local illusion
-	local illusions = CreateIllusions(caster, caster, illusion_table, 1, padding, false, true)
+	local illusions = CreateIllusions(caster, caster, illusion_table, 1, 108, false, true)
 	for _, illu in pairs(illusions) do
 		if illu then
 			--illu:AddNewModifier(caster, self, "modifier_custom_strong_illusion", {})
 			illu:AddNewModifier(caster, self, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
 			FindClearSpaceForUnit(illu, loc2, true)
-			illusion = illu
+			self.illusion = illu
 		end
 	end
 
 	-- Set shared data
 	self.onTrick = true
 	self.modifier = modifier
-	self.illusion = illusion
 	self.currentHealth = caster:GetHealth()
 
 	-- Set end active

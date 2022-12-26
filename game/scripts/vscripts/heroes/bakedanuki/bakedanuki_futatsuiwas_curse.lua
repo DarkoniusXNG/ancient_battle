@@ -12,7 +12,7 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 	local caster = self:GetCaster()
 
 	-- load data
-	local hexDuration = self:GetSpecialValueFor( "hex_duration" )
+	local duration = self:GetSpecialValueFor( "hex_duration" )
 	local radius = self:GetSpecialValueFor( "search_radius" )
 	local range = self:GetSpecialValueFor( "search_range" )
 	local point = caster:GetOrigin() + caster:GetForwardVector() * range
@@ -57,8 +57,10 @@ function bakedanuki_futatsuiwas_curse:OnSpellStart()
 	end
 
 	if target then
+		-- Get real duration
+		local real_duration = target:GetValueChangedByStatusResistance(duration)
 		-- Add modifier
-		target:AddNewModifier(caster, self, "modifier_bakedanuki_futatsuiwas_curse", {duration = hexDuration})
+		target:AddNewModifier(caster, self, "modifier_bakedanuki_futatsuiwas_curse", {duration = real_duration})
 	end
 
 	self:PlayEffects2()

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Bake-Danuki: Futatsuiwa's Curse
+	// Bake-Danuki: Futatsuiwa's Curse (R) - Hexes the first hero in front of the caster, if no heroes, hexes a unit
 	//=================================================================================================================
 	"bakedanuki_futatsuiwas_curse"
 	{
@@ -19,7 +19,7 @@
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.6"
+		"AbilityCastPoint"				"1.0"
 		"AbilityCastRange"				"150"
 
 		// Ability Resource
