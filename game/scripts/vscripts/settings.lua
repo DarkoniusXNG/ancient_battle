@@ -6,7 +6,8 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 CUSTOM_GAME_SETUP_TIME = 20.0           -- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0              -- How long should we let people select their hero? Should be at least 5 seconds.
 HERO_SELECTION_PENALTY_TIME = 30.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
-BANNING_PHASE_TIME = 20.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
+BANNING_PHASE_TIME = 0.0                -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
+NUMBER_OF_BANS_PER_TEAM = 0
 STRATEGY_TIME = 15.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
 SHOWCASE_TIME = 0.0                     -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
@@ -186,6 +187,8 @@ if GetMapName() == "two_vs_two" then
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 35.0
 	POST_GAME_TIME = 45.0
+	BANNING_PHASE_TIME = 20.0
+	NUMBER_OF_BANS_PER_TEAM = 4
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
@@ -217,6 +220,8 @@ if GetMapName() == "holdout" then
 	SHOWCASE_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
+	BANNING_PHASE_TIME = 0.0
+	NUMBER_OF_BANS_PER_TEAM = 0
 	NORMAL_START_GOLD = 800
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false
@@ -246,6 +251,8 @@ if GetMapName() == "main" then
 	STRATEGY_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
+	BANNING_PHASE_TIME = 10.0
+	NUMBER_OF_BANS_PER_TEAM = 1
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 45			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false

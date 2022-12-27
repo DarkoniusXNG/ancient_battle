@@ -247,7 +247,7 @@ function ancient_battle_gamemode:CaptureGameMode()
 	else
 		mode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
 		mode:SetDraftingHeroPickSelectTimeOverride(HERO_SELECTION_TIME)
-		GameRules:SetCustomGameBansPerTeam(5)
+		GameRules:SetCustomGameBansPerTeam(NUMBER_OF_BANS_PER_TEAM)
 	end
 	mode:SetFixedRespawnTime(FIXED_RESPAWN_TIME)
 	mode:SetFountainConstantManaRegen(FOUNTAIN_CONSTANT_MANA_REGEN)
