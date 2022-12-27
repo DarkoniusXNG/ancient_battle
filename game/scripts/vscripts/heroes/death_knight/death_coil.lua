@@ -35,8 +35,9 @@ function DeathCoilProjectileHit(event)
 	-- Hit Sound
 	target:EmitSound("Hero_Abaddon.DeathCoil.Target")
 
-	-- Target is an enemy or ally?
+	-- Check if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		-- Check for spell block and spell immunity (latter because of lotus)
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			local damage_table = {}
 			damage_table.attacker = caster

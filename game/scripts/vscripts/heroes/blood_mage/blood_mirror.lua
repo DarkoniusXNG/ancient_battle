@@ -28,44 +28,43 @@ function blood_mage_blood_mirror:GetCustomCastErrorTarget(target)
 end
 
 function blood_mage_blood_mirror:OnSpellStart()
-	if IsServer() then
-		local caster = self:GetCaster()
-		local target = self:GetCursorTarget()
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
 
-		if caster == nil or target == nil then
-			return nil
+	if not target or not caster then
+		return
+	end
+
+	-- Sound on caster
+	caster:EmitSound("Hero_OgreMagi.Bloodlust.Cast")
+
+	local blood_mirror_duration = self:GetSpecialValueFor("duration")
+
+	if target:GetTeamNumber() == caster:GetTeamNumber() then
+		-- Sound on target
+		target:EmitSound("Hero_OgreMagi.Bloodlust.Target.FP")
+
+		-- Apply buff
+		target:AddNewModifier(caster, self, "modifier_custom_blood_mirror_buff_ally_redirect", {duration = blood_mirror_duration})
+
+		-- Apply debuff to the caster
+		caster:AddNewModifier(caster, self, "modifier_custom_blood_mirror_debuff_caster", {duration = blood_mirror_duration})
+	else
+		-- Check for spell block and spell immunity (latter because of lotus)
+		if target:TriggerSpellAbsorb(self) or target:IsMagicImmune() then
+			return
 		end
 
-		-- Sound on caster
-		caster:EmitSound("Hero_OgreMagi.Bloodlust.Cast")
+		-- Sound on target
+		target:EmitSound("Hero_OgreMagi.Bloodlust.Target.FP")
 
-		local blood_mirror_duration = self:GetSpecialValueFor("duration")
+		caster.redirect_target = target -- only on the server-side
 
-		if target:GetTeamNumber() == caster:GetTeamNumber() then
-			-- Sound on target
-			target:EmitSound("Hero_OgreMagi.Bloodlust.Target.FP")
+		-- Apply debuff
+		target:AddNewModifier(caster, self, "modifier_custom_blood_mirror_debuff_enemy", {duration = blood_mirror_duration})
 
-			-- Apply buff
-			target:AddNewModifier(caster, self, "modifier_custom_blood_mirror_buff_ally_redirect", {duration = blood_mirror_duration})
-
-			-- Apply debuff to the caster
-			caster:AddNewModifier(caster, self, "modifier_custom_blood_mirror_debuff_caster", {duration = blood_mirror_duration})
-		else
-			-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-			if not target:TriggerSpellAbsorb(self) then
-
-				-- Sound on target
-				target:EmitSound("Hero_OgreMagi.Bloodlust.Target.FP")
-
-				caster.redirect_target = target -- only on the server-side
-
-				-- Apply debuff
-				target:AddNewModifier(caster, self, "modifier_custom_blood_mirror_debuff_enemy", {duration = blood_mirror_duration})
-
-				-- Apply buff to the caster
-				caster:AddNewModifier(caster, self, "modifier_custom_blood_mirror_buff_caster_redirect", {duration = blood_mirror_duration})
-			end
-		end
+		-- Apply buff to the caster
+		caster:AddNewModifier(caster, self, "modifier_custom_blood_mirror_buff_caster_redirect", {duration = blood_mirror_duration})
 	end
 end
 

@@ -25,22 +25,29 @@ function silencer_custom_last_word:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
 
+	if not target or not caster then
+		return
+	end
+
+	-- This check must be before spell block check
 	if caster:GetUnitName() ~= "npc_dota_hero_silencer" then
 		caster:RemoveModifierByName("modifier_custom_last_word_aura_applier")
 	end
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if target and (not target:TriggerSpellAbsorb(self)) then
-		-- Sound on the target
-		target:EmitSound("Hero_Silencer.LastWord.Cast")
-
-		-- Applying the timer debuff
-		local duration = self:GetSpecialValueFor("debuff_duration")
-		target:AddNewModifier(caster, self, "modifier_custom_last_word_active", {duration = duration})
+	-- Check for spell block and spell immunity (latter because of lotus)
+	if target:TriggerSpellAbsorb(self) or target:IsMagicImmune() then
+		return
 	end
+
+	-- Sound on the target
+	target:EmitSound("Hero_Silencer.LastWord.Cast")
+
+	-- Applying the timer debuff
+	local duration = self:GetSpecialValueFor("debuff_duration")
+	target:AddNewModifier(caster, self, "modifier_custom_last_word_active", {duration = duration})
 end
 
-function silencer_custom_last_word:OnStolen(hSourceAbility)
+function silencer_custom_last_word:OnUnStolen()
 	local caster = self:GetCaster()
 
 	if IsServer() then

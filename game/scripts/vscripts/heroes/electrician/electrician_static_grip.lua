@@ -36,7 +36,11 @@ function electrician_static_grip:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
 
-  -- Don't do anything if target has Linken's effect or it's spell-immune
+  if not target or not caster then
+    return
+  end
+
+  -- Check for spell block and spell immunity (latter because of lotus)
   if target:TriggerSpellAbsorb(self) or target:IsMagicImmune() then
     return
   end

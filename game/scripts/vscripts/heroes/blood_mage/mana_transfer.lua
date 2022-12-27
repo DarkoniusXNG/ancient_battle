@@ -12,7 +12,9 @@ function ManaTransferStart(event)
 		has_talent = true
 	end
 
+	-- Checking if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		-- Check for spell block and spell immunity (latter because of lotus)
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_mana_transfer_enemy", {})
 			caster:EmitSound("Hero_Lion.ManaDrain")

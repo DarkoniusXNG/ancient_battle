@@ -103,7 +103,7 @@ function paladin_holy_purification:OnSpellStart()
 			end
 		end
 	else
-		-- Spell block check
+		-- Spell block check; pierces spell immunity partially
 		if not target:TriggerSpellAbsorb(self) then
 			-- Sound on target (enemy)
 			target:EmitSound("Hero_Omniknight.Purification")

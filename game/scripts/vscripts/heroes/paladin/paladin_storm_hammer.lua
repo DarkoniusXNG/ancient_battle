@@ -51,7 +51,8 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 		return
 	end
 
-	if (not target:IsInvulnerable()) and (not target:TriggerSpellAbsorb(self)) then
+	-- Check for spell block
+	if not target:TriggerSpellAbsorb(self) then
 
 		-- Sound on target
 		target:EmitSound("Hero_Sven.StormBoltImpact")
@@ -68,6 +69,14 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 		if talent_1 and talent_1:GetLevel() > 0 then
 			bolt_stun_duration = bolt_stun_duration + talent_1:GetSpecialValueFor("value")
 		end
+		
+		-- Talent that dispels enemies
+		local has_dispel = false
+		local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_4")
+		if talent_2 and talent_2:GetLevel() > 0 then
+			has_dispel = true
+			self:DispelEnemy(target) -- here because if target is invulnerable it won't be dispelled later
+		end
 
 		-- Targetting constants
 		local target_team = self:GetAbilityTargetTeam() or DOTA_UNIT_TARGET_TEAM_ENEMY
@@ -76,28 +85,24 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 
 		local enemies = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), target, bolt_aoe, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 		for _, enemy in pairs(enemies) do
-			if enemy then
-				if not enemy:IsMagicImmune() and not enemy:IsInvulnerable() then
-					-- Calculate stun duration with status resistance in mind
-					local stun_duration = enemy:GetValueChangedByStatusResistance(bolt_stun_duration)
+			if enemy and not enemy:IsMagicImmune() then
+				-- Calculate stun duration with status resistance in mind
+				local stun_duration = enemy:GetValueChangedByStatusResistance(bolt_stun_duration)
+				enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = stun_duration})
 
-					enemy:AddNewModifier(caster, self, "modifier_paladin_storm_hammer", {duration = stun_duration})
-
-					-- Talent that dispels enemies
-					local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_4")
-					if talent_2 and talent_2:GetLevel() > 0 then
-						self:DispelEnemy(enemy)
-					end
-
-					local damage_table = {}
-					damage_table.victim = enemy
-					damage_table.attacker = caster
-					damage_table.damage = bolt_damage
-					damage_table.damage_type = self:GetAbilityDamageType()
-					damage_table.ability = self
-
-					ApplyDamage(damage_table)
+				-- Dispel enemies if not the target and if caster has the talent
+				if has_dispel and enemy ~= target then
+					self:DispelEnemy(enemy)
 				end
+
+				local damage_table = {}
+				damage_table.victim = enemy
+				damage_table.attacker = caster
+				damage_table.damage = bolt_damage
+				damage_table.damage_type = self:GetAbilityDamageType()
+				damage_table.ability = self
+
+				ApplyDamage(damage_table)
 			end
 		end
 	end
@@ -110,6 +115,8 @@ function paladin_storm_hammer:ProcsMagicStick()
 end
 
 function paladin_storm_hammer:DispelEnemy(target)
+	target:RemoveModifierByName("modifier_brewmaster_storm_cyclone")
+	
 	-- Basic Dispel (Buffs)
 	local RemovePositiveBuffs = true
 	local RemoveDebuffs = false
@@ -120,7 +127,7 @@ function paladin_storm_hammer:DispelEnemy(target)
 
 	-- Kill the target if its summoned, dominated or an illusion
 	if target:IsSummoned() or target:IsDominated() or (target:IsIllusion() and not target:IsStrongIllusionCustom()) then
-		target:Kill(nil, self:GetCaster())
+		target:Kill(self, self:GetCaster())
 	end
 end
 

@@ -4,7 +4,7 @@ function AbsorbMana(keys)
 	local target = keys.target
 	local ability = keys.ability
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
+	-- Check for spell block; pierces spell immunity
 	if not target:TriggerSpellAbsorb(ability) then
 		if target:IsIllusion() and not target:IsStrongIllusionCustom() then
 			target:Kill(ability, caster) -- This gives the kill credit to the caster

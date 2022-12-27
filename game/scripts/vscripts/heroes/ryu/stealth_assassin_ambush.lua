@@ -4,10 +4,12 @@ function AmbushStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_ambushed", {})
+	-- Check for spell block and spell immunity (latter because of lotus)
+	if target:TriggerSpellAbsorb(ability) or target:IsMagicImmune() then
+		return
 	end
+
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_ambushed", {})
 end
 
 -- Called OnCreated in modifier_ambushed

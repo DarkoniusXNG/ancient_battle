@@ -6,7 +6,7 @@ LinkLuaModifier( "modifier_bakedanuki_tomfoolery", "heroes/bakedanuki/modifier_b
 LinkLuaModifier( "modifier_bakedanuki_tomfoolery_hidden", "heroes/bakedanuki/modifier_bakedanuki_tomfoolery_hidden", LUA_MODIFIER_MOTION_NONE )
 
 -- Shared data between 3 abilities
-if tomfoolery==nil then
+if tomfoolery == nil then
 	tomfoolery = {}
 	tomfoolery.onTrick = false
 end
@@ -44,8 +44,17 @@ end
 function bakedanuki_tomfoolery_blink:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, true )
 
-	-- shared cooldown
-	--self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
+	local name = self:GetSharedCooldownName()
+	if not name or name == "" then
+		return
+	end
+	local other_ability = self:GetCaster():FindAbilityByName(name)
+	if not other_ability or other_ability:IsNull() then
+		return
+	end
+	if other_ability:GetLevel() > 0 then
+		other_ability:UseResources(false, false, true)
+	end
 end
 
 function bakedanuki_tomfoolery_blink:StopTrick()
@@ -69,8 +78,17 @@ end
 function bakedanuki_tomfoolery_summon:OnSpellStart()
 	self.tomfoolery:OnSpellStart( self, false )
 
-	-- shared cooldown
-	--self:GetCaster():FindAbilityByName( self:GetSharedCooldownName() ):UseResources( false, false, true )
+	local name = self:GetSharedCooldownName()
+	if not name or name == "" then
+		return
+	end
+	local other_ability = self:GetCaster():FindAbilityByName(name)
+	if not other_ability or other_ability:IsNull() then
+		return
+	end
+	if other_ability:GetLevel() > 0 then
+		other_ability:UseResources(false, false, true)
+	end
 end
 
 function bakedanuki_tomfoolery_summon:StopTrick()
@@ -115,15 +133,14 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	local illusion_duration = this:GetSpecialValueFor("illusion_duration")
 	local hidden_time = 0.1
 
-	-- dodge projectile, dispel, and hidden for 0.1 sec
+	-- Basic Dispel
 	caster:Purge( false, true, false, false, false )
+
+	-- Disjoint projectiles
 	ProjectileManager:ProjectileDodge( caster )
-	caster:AddNewModifier(
-		caster,
-		self,
-		"modifier_bakedanuki_tomfoolery_hidden",
-		{ duration = hidden_time }
-	)
+	
+	-- Hide for 0.1 sec
+	caster:AddNewModifier(caster, this, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
 
 	-- determine positions
 	local direction = (point - origin)
@@ -138,14 +155,11 @@ function tomfoolery:OnSpellStart( this, bBlink )
 		loc2 = temp
 	end
 
-	-- set real hero position, add fooling modifier
-	FindClearSpaceForUnit( caster, loc1, true )
-	local modifier = caster:AddNewModifier(
-		caster,
-		this,
-		"modifier_bakedanuki_tomfoolery",
-		{ duration = illusion_duration }
-	)
+	-- Set real hero (caster) position
+	FindClearSpaceForUnit(caster, loc1, true)
+
+	-- Add a modifier to the caster
+	local modifier = caster:AddNewModifier(caster, this, "modifier_bakedanuki_tomfoolery", {duration = illusion_duration})
 
 	-- Create illusion at position
 	local illusion_table = {}
@@ -160,8 +174,8 @@ function tomfoolery:OnSpellStart( this, bBlink )
 	local illusions = CreateIllusions(caster, caster, illusion_table, 1, 108, false, true)
 	for _, illu in pairs(illusions) do
 		if illu then
-			--illu:AddNewModifier(caster, self, "modifier_custom_strong_illusion", {})
-			illu:AddNewModifier(caster, self, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
+			--illu:AddNewModifier(caster, this, "modifier_custom_strong_illusion", {})
+			illu:AddNewModifier(caster, this, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
 			FindClearSpaceForUnit(illu, loc2, true)
 			self.illusion = illu
 		end
@@ -185,7 +199,9 @@ function tomfoolery:StopTrick( this )
 	end
 
 	self.onTrick = false
-	self.modifier:Destroy()
+	if self.modifier then
+		self.modifier:Destroy()
+	end
 	if self.illusion and not self.illusion:IsNull() and self.illusion:IsAlive() then
 		self.illusion:ForceKill( false )
 	end
@@ -199,19 +215,20 @@ function tomfoolery:StopTrick( this )
 end
 
 function tomfoolery:PlayEffects( this, loc1, loc2 )
+	local caster = this:GetCaster()
 	local sound_cast = "Hero_DarkWillow.Ley.Cast"
 	local particle_cast = "particles/units/heroes/hero_dark_willow/dark_willow_leyconduit_marker.vpcf"
 
-	local effect_cast1 = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, nil )
+	local effect_cast1 = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, caster )
 	ParticleManager:SetParticleControl( effect_cast1, 0, loc1 )
 	ParticleManager:ReleaseParticleIndex( effect_cast1 )
 
-	local effect_cast2 = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, nil )
+	local effect_cast2 = ParticleManager:CreateParticle( particle_cast, PATTACH_WORLDORIGIN, caster )
 	ParticleManager:SetParticleControl( effect_cast2, 0, loc2 )
 	ParticleManager:ReleaseParticleIndex( effect_cast2 )
 
-	EmitSoundOnLocationWithCaster( loc1, sound_cast, this:GetCaster() )
-	EmitSoundOnLocationWithCaster( loc2, sound_cast, this:GetCaster() )
+	EmitSoundOnLocationWithCaster( loc1, sound_cast, caster )
+	EmitSoundOnLocationWithCaster( loc2, sound_cast, caster )
 end
 
 function tomfoolery:StopEffects(this)

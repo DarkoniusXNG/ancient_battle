@@ -5,7 +5,7 @@ function ConjureImage(event)
 	local ability = event.ability
 
 	local caster_team = caster:GetTeamNumber()
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
+	-- Checking if target has spell block or if it's an ally; pierces spell immunity
 	if (not target:TriggerSpellAbsorb(ability)) or (target:GetTeamNumber() == caster_team) then
 		-- Target is a friend or an enemy that doesn't have Spell Block
 		local ability_level = ability:GetLevel() - 1
