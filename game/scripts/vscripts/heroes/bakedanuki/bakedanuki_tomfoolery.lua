@@ -138,7 +138,7 @@ function tomfoolery:OnSpellStart( this, bBlink )
 
 	-- Disjoint projectiles
 	ProjectileManager:ProjectileDodge( caster )
-	
+
 	-- Hide for 0.1 sec
 	caster:AddNewModifier(caster, this, "modifier_bakedanuki_tomfoolery_hidden", {duration = hidden_time})
 

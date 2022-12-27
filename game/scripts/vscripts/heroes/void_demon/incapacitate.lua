@@ -3,7 +3,7 @@ function IncapacitateStart(event)
 	local target = event.target
 	local caster = event.caster
 	local ability = event.ability
-	
+
 	-- Check for spell block and spell immunity (latter because of lotus)
 	if target:TriggerSpellAbsorb(ability) or target:IsMagicImmune() then
 		return

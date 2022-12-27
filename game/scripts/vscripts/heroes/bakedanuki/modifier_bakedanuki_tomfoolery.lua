@@ -47,7 +47,7 @@ end
 --end
 
 --function modifier_bakedanuki_tomfoolery:GetModifierPreAttack_BonusDamage()
-	---- Calculate bonus raw (green) damage and substract it 
+	---- Calculate bonus raw (green) damage and substract it
 --end
 
 function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage()
@@ -59,7 +59,7 @@ if IsServer() then
 		-- only on Server so the client shows unchanged damage, why? so the enemy can't tell which Bakedanuki is real
 		return self.illusion_outgoing
 	end
-	
+
 	function modifier_bakedanuki_tomfoolery:GetMinHealth()
 		return 1
 	end

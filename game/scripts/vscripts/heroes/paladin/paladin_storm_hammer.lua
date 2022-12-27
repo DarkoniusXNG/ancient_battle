@@ -69,7 +69,7 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 		if talent_1 and talent_1:GetLevel() > 0 then
 			bolt_stun_duration = bolt_stun_duration + talent_1:GetSpecialValueFor("value")
 		end
-		
+
 		-- Talent that dispels enemies
 		local has_dispel = false
 		local talent_2 = caster:FindAbilityByName("special_bonus_unique_paladin_4")
@@ -116,7 +116,7 @@ end
 
 function paladin_storm_hammer:DispelEnemy(target)
 	target:RemoveModifierByName("modifier_brewmaster_storm_cyclone")
-	
+
 	-- Basic Dispel (Buffs)
 	local RemovePositiveBuffs = true
 	local RemoveDebuffs = false

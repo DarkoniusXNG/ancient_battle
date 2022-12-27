@@ -67,7 +67,7 @@ function alchemist_custom_transmute:OnSpellStart()
   if target:TriggerSpellAbsorb(self) then
     return
   end
-  
+
   -- Sound
   target:EmitSound("DOTA_Item.Hand_Of_Midas")
 
