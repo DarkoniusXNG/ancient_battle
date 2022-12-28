@@ -54,7 +54,7 @@
 		"DOTA_Tooltip_Ability_sohei_flurry_of_blows_flurry_radius"                       "RADIUS:"
 
 		"dota_tooltip_ability_sohei_palm_of_life"                                        "Palm of Life"
-		"dota_tooltip_ability_sohei_palm_of_life_description"                            "If target is an ally it heals them and applies Super Strong Dispel.\n If target is an enemy it applies a basic dispel and damages them based on strength difference."
+		"dota_tooltip_ability_sohei_palm_of_life_description"                            "If target is an ally it heals them and removes almost all debuffs.\n If target is an enemy it applies a basic dispel and damages them based on strength difference.\n\nDISPEL TYPE: Super Strong Dispel"
 		"dota_tooltip_ability_sohei_palm_of_life_lore"                                   "Healing is more prevalent than damaging for monks like Takuan."
 		"dota_tooltip_ability_sohei_palm_of_life_base_heal"                              "HEAL:"
 		"dota_tooltip_ability_sohei_palm_of_life_base_damage"                            "BASE DAMAGE:"

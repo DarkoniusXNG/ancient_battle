@@ -40,9 +40,6 @@
 		"DOTA_Tooltip_ability_perun_electric_trap_duration"                     "TRAP DURATION:"
 		"DOTA_Tooltip_ability_perun_electric_trap_delay"                        "TRIGGER DELAY:"
 		
-		"DOTA_Tooltip_modifier_custom_electric_trap_stun"                       "Electrified"
-		"DOTA_Tooltip_modifier_custom_electric_trap_stun_Description"           "Stunned and frozen with Electric Trap."
-		
 		"DOTA_Tooltip_ability_perun_electric_shield"                            "Electric Shield"
 		"DOTA_Tooltip_ability_perun_electric_shield_Description"                "Surrounds the target unit with a electric shield that damages enemy units in an area around it."
 		"DOTA_Tooltip_ability_perun_electric_shield_Lore"						"Perun protects you!"

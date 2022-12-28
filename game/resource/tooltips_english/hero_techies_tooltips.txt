@@ -23,6 +23,9 @@
 		"DOTA_Tooltip_ability_techies_custom_stasis_trap_activation_delay"      "ACTIVATION DELAY:"
 		"DOTA_Tooltip_ability_techies_custom_stasis_trap_detonation_delay"      "TRIGGER DELAY:"
 		
+		"DOTA_Tooltip_modifier_techies_custom_stasis_trap_stun"                 "Stasis"
+		"DOTA_Tooltip_modifier_techies_custom_stasis_trap_stun_Description"     "Stunned and frozen with Stasis Trap."
+		
 		"DOTA_Tooltip_ability_techies_custom_suicide"                           "Suicide Squad, Attack!"
 		"DOTA_Tooltip_ability_techies_custom_suicide_Description"				"Techies detonate all explosive charges which deal massive area of effect damage to enemies and kills Techies. Deals %building_damage_pct%%% damage to buildings. Provides vision after suiciding.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>No respawn time reduction.</font>"
 		"DOTA_Tooltip_ability_techies_custom_suicide_Lore"                      "Suicide is never a good option (except for Techies)."
@@ -36,6 +39,11 @@
 		"DOTA_Tooltip_ability_techies_custom_suicide_shard_description"         "Suicide Squad, Attack! becomes Blast Off: increased cast range, deals self damage instead of suiciding and stuns affected enemies."
 		"DOTA_Tooltip_ability_techies_custom_suicide_shard_stun_duration"       "SHARD STUN DURATION:"
 		"DOTA_Tooltip_ability_techies_custom_suicide_shard_cast_range"          "SHARD CAST RANGE:"
+		
+		"DOTA_Tooltip_modifier_techies_custom_suicide_stun"                     "Techies Blast"
+		"DOTA_Tooltip_modifier_techies_custom_suicide_stun_Description"         "Stunned."
+		"DOTA_Tooltip_modifier_techies_custom_suicide_silence"                  "Techies Confuse"
+		"DOTA_Tooltip_modifier_techies_custom_suicide_silence_Description"      "Silenced."
 		
 		"DOTA_Tooltip_ability_techies_custom_remote_mines"                      "Remote Mines"
 		"DOTA_Tooltip_ability_techies_custom_remote_mines_Description"			"Plant an invisible explosive that will only detonate after a brief delay when triggered. Does not damage buildings. Provides vision after exploding. <br><br><font color='#70EA72'>Source of damage is Techies. Destroys trees.</font>"
@@ -72,6 +80,9 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1_Description"  "Slows move speed by 45% and attack speed by 45 for 3 seconds after explosion."
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5"            "Bio Mines"
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5_Description"  "Mines can move when within 1000 radius of Techies. They benefit from some auras and buffs but they also can die from cleave damage and physical damage spells."
+		
+		"DOTA_Tooltip_modifier_techies_custom_mine_slow"                        "Mine Explosion"
+		"DOTA_Tooltip_modifier_techies_custom_mine_slow_Description"            "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
 		
 		// Mines
 		"npc_dota_techies_land_mine"                                            "Land Mine"

@@ -64,7 +64,7 @@
 		"DOTA_Tooltip_modifier_drunken_fist_bonus_Description"                            "Increased attack damage, increased movement speed, 100%% cleave and knockback on attack."
 
 		"DOTA_Tooltip_ability_brewmaster_custom_primal_split"                             "Primal Split"
-		"DOTA_Tooltip_ability_brewmaster_custom_primal_split_Description"                 "Splits Brewmaster into 3 spirits, 3 specialized warriors, adept at survival. If any of them survive until the end of their summoned timer, the Brewmaster is reborn."
+		"DOTA_Tooltip_ability_brewmaster_custom_primal_split_Description"                 "Splits Brewmaster into 3 spirits, 3 specialized warriors, adept at survival. If any of them survive until the end of their summoned timer, the Brewmaster is reborn.<br><br><font color='#70EA72'>Earth Spirit has Taunt, Hurl Boulder, Demolish and Spell Immunity. Fire Spirit has Permanent Immolation and Fire Walking.</font>"
 		"DOTA_Tooltip_ability_brewmaster_custom_primal_split_Lore"                        "It isn't clear whether Brewmaster is consciously aware of his potent bond with nature, as it often occurs in the midst of a drunken stupor."
 		"DOTA_Tooltip_ability_brewmaster_custom_primal_split_Note0"                       "The Earth Spirit will carry all auras that the Brewmaster has, as well as True Sight."
 		"DOTA_Tooltip_ability_brewmaster_custom_primal_split_spirit_duration"             "SPIRIT DURATION:"

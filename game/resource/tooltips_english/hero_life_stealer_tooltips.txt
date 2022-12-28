@@ -15,6 +15,9 @@
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_damage"                    "DAMAGE PER SECOND:"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_move_speed_slow"           "%MOVE SPEED SLOW:"
 		"DOTA_Tooltip_ability_life_stealer_custom_poison_sting_heal_reduction"            "%HEAL REDUCTION:"
+		
+		"DOTA_Tooltip_modifier_custom_lifestealer_poison_sting_debuff"                    "Poison Sting"
+		"DOTA_Tooltip_modifier_custom_lifestealer_poison_sting_debuff_Description"        "Taking damage, movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, healing reduced by %dMODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE%%%."
 
 		"DOTA_Tooltip_ability_life_stealer_custom_anabolic_frenzy"                        				"Anabolic Frenzy"
 		"DOTA_Tooltip_ability_life_stealer_custom_anabolic_frenzy_Description"            				"Lifestealer goes into frenzy and cripples an enemy unit, slowing his movement speed and attack speed for the duration. Frenzied N'aix gains more attack and movement speed for the duration. \n\nPassive: Anabolic - grants bonus attack speed and bonus movement speed."
@@ -37,7 +40,7 @@
 		"DOTA_Tooltip_modifier_anabolic_frenzy_slow_Description"                          "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
 
 		"DOTA_Tooltip_ability_life_stealer_custom_rage"                                   "Rage"
-		"DOTA_Tooltip_ability_life_stealer_custom_rage_Description"                       "Shrugging off magic spells as if they were insects, N'aix closes in on his prey, poison oozing from his jaws and a maddened rage in his eyes. N'aix goes into a maddened rage, becoming Spell Immune and gaining increased attack damage."
+		"DOTA_Tooltip_ability_life_stealer_custom_rage_Description"                       "Shrugging off magic spells as if they were insects, N'aix closes in on his prey, poison oozing from his jaws and a maddened rage in his eyes. N'aix goes into a maddened rage, becoming Spell Immune and gaining increased attack damage.<br><br><font color='#70EA72'>Lifestealer is immune to magic damage during Rage and he gains bonus damage instead of bonus movement speed.</font>\n\nDISPEL TYPE: Basic Dispel"
 		"DOTA_Tooltip_ability_life_stealer_custom_rage_Lore"                              "The madness and brutality of N'aix makes him a vicious and unrelenting foe in combat."
 		"DOTA_Tooltip_ability_life_stealer_custom_rage_damage_bonus"                      "DAMAGE BONUS:"
 		"DOTA_Tooltip_ability_life_stealer_custom_rage_duration"                          "DURATION:"
