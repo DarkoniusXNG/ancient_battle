@@ -27,6 +27,7 @@
 #base "units/npc_dota_custom_death_ward.txt"
 #base "units/npc_dota_custom_electric_trap.txt"
 #base "units/techies_mines.txt"
+#base "units/lane_creeps.txt"
 
 "DOTAUnits"
 {
