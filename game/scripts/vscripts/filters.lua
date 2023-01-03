@@ -125,8 +125,8 @@ function ancient_battle_gamemode:DamageFilter(keys)
 	if not victim:IsHero() and keys.damage >= victim:GetHealth() and not victim.changed_bounty then
 		local old_xp_bounty = victim:GetDeathXP()
 		local old_gold_bounty = victim:GetGoldBounty()
-		local gold_multiplier = LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER
-		local xp_multiplier = LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER
+		local gold_multiplier = 1
+		local xp_multiplier = 1
 		local new_xp_bounty = old_xp_bounty * xp_multiplier
 		local new_gold_bounty = old_gold_bounty * gold_multiplier
 
@@ -139,11 +139,15 @@ function ancient_battle_gamemode:DamageFilter(keys)
 			victim:SetMinimumGoldBounty(math.floor(new_gold_bounty))
 			victim:SetMaximumGoldBounty(math.ceil(new_gold_bounty))
 			victim.changed_bounty = true
-		elseif victim:IsLaneCreepCustom() then
-			victim:SetDeathXP(math.ceil(new_xp_bounty))
-			victim:SetMinimumGoldBounty(math.floor(new_gold_bounty))
-			victim:SetMaximumGoldBounty(math.ceil(new_gold_bounty))
-			victim.changed_bounty = true
+		-- elseif victim:IsLaneCreepCustom() then
+			-- gold_multiplier = LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER
+			-- xp_multiplier = LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER
+			-- new_xp_bounty = old_xp_bounty * xp_multiplier
+			-- new_gold_bounty = old_gold_bounty * gold_multiplier
+			-- victim:SetDeathXP(math.ceil(new_xp_bounty))
+			-- victim:SetMinimumGoldBounty(math.floor(new_gold_bounty))
+			-- victim:SetMaximumGoldBounty(math.ceil(new_gold_bounty))
+			-- victim.changed_bounty = true
 		end
 	end
 

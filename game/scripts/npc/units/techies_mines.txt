@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Techies Land Mine (for moving mines talent)
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_techies_custom_land_mine_moving"
   {
@@ -78,11 +78,12 @@
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
 
   //=================================================================================
   // Techies Stasis Trap (for moving mines talent)
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_techies_custom_stasis_trap_moving"
   {
@@ -158,11 +159,12 @@
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
 
   //=================================================================================
   // Techies Remote Mine (for custom Remote Mines ability)
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_techies_custom_remote_mine"
   {
@@ -239,11 +241,12 @@
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
   
   //=================================================================================
   // Techies Remote Mine (for moving mines talent)
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_techies_custom_remote_mine_moving"
   {
@@ -320,5 +323,6 @@
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
 }

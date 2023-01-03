@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Summoned Phoenix's Egg
-  // Notes: OK; 25.2.2020;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_custom_phoenix_egg"
   {
@@ -81,6 +81,8 @@
     "VisionDaytimeRange"                                  "600"              // original (600);
     "VisionNighttimeRange"                                "600"              // original (600);
 
+    "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
 }

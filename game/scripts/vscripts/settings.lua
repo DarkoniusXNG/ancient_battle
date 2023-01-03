@@ -37,8 +37,8 @@ HERO_KILL_GOLD_BASE = 125               -- Hero gold bounty base value
 HERO_KILL_GOLD_PER_LEVEL = 8            -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
 
-LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
-LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.17
+--LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
+--LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.17
 NEUTRAL_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
 NEUTRAL_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.35
 
@@ -188,7 +188,7 @@ if GetMapName() == "two_vs_two" then
 	PRE_GAME_TIME = 35.0
 	POST_GAME_TIME = 45.0
 	BANNING_PHASE_TIME = 20.0
-	NUMBER_OF_BANS_PER_TEAM = 4
+	NUMBER_OF_BANS_PER_TEAM = 2
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false

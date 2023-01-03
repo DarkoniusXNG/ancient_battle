@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Lightning Shaman Electric Trap
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_custom_electric_trap"
   {
@@ -77,5 +77,6 @@
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
+    "ImmuneToOmnislash"                                   "1"
   }
 }
