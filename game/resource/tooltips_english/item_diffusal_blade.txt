@@ -9,8 +9,8 @@
 		"DOTA_Tooltip_ability_item_custom_diffusal_blade_bonus_agi"                     "+$agi"
 		"DOTA_Tooltip_ability_item_custom_diffusal_blade_bonus_int"                     "+$int"
 		
-		"DOTA_Tooltip_item_modifier_custom_purged_enemy_hero"                           "Purged"
-		"DOTA_Tooltip_item_modifier_custom_purged_enemy_hero_Description"               "Dispelled and movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+		"DOTA_Tooltip_modifier_item_custom_purged_enemy_hero"                           "Purged"
+		"DOTA_Tooltip_modifier_item_custom_purged_enemy_hero_Description"               "Dispelled and movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
 
-		"DOTA_Tooltip_item_modifier_custom_purged_enemy_creep"                          "Purged"
-		"DOTA_Tooltip_item_modifier_custom_purged_enemy_creep_Description"              "Rooted."
+		"DOTA_Tooltip_modifier_item_custom_purged_enemy_creep"                          "Purged"
+		"DOTA_Tooltip_modifier_item_custom_purged_enemy_creep_Description"              "Rooted."

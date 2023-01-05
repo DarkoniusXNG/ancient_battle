@@ -8,6 +8,7 @@
 #base "items/item_custom_bloodstone.txt"
 #base "items/item_custom_butterfly.txt"
 #base "items/item_custom_diffusal_blade.txt"
+#base "items/item_custom_hand_of_midas.txt"
 #base "items/item_custom_heart.txt"
 #base "items/item_custom_magus_cloak.txt"
 #base "items/item_custom_mask_of_madness.txt"

@@ -1,0 +1,26 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Paladin's Guardian Angel: Angel's Immunity (E) - physical immunity and bonus magic resistance
+  // Author: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO:
+  //=================================================================================================================
+  "guardian_angel_immunity"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/paladin/guardian_angel_immunity.lua"
+    "AbilityTextureName"                                  "custom/paladin_eternal_devotion"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+
+    "MaxLevel"                                            "1"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "magic_resist"                                      "80"
+    }
+  }
+}

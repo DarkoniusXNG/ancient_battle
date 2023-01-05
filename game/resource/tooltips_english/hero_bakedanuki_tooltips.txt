@@ -67,11 +67,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end"                        "End Tomfoolery"
 
-		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Description"            "Manually kills Tomfoolery illusion and reverts Mireska back to normal."
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Description"            "Manually kills Tomfoolery illusion and reverts Mireska back to normal.\n\nDISPEL TYPE: Basic Dispel"
 
 		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Lore"                   "There is no trick until it is revealed."
 		
 		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Note0"                  "Useful when you want to deal full damage with Mireska."
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_shard_description"      "Using End Tomfoolery teleports Mireska to illusion's location."
 
 		//-------------------------------------------------------------------------------------------------------------
 		// Bakedanuki: Frolic Aura

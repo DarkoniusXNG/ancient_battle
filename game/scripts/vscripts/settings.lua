@@ -254,7 +254,7 @@ if GetMapName() == "main" then
 	BANNING_PHASE_TIME = 10.0
 	NUMBER_OF_BANS_PER_TEAM = 1
 	END_GAME_ON_KILLS = true
-	KILLS_TO_END_GAME_FOR_TEAM = 45			-- How many kills for a team should signify an end of game?
+	KILLS_TO_END_GAME_FOR_TEAM = 100			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?

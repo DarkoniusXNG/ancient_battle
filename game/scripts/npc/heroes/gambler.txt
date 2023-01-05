@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Gambler; 2021;
+  // HERO: Gambler; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_custom_gambler"
@@ -30,14 +30,14 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_attack_damage_60"      // lvl 10 talent: unique
+    "Ability10"                                           "special_bonus_attack_damage_30"      // lvl 10 talent: unique
     "Ability11"                                           "special_bonus_hp_200"            // lvl 10 talent: unique
 
     "Ability12"                                           "special_bonus_armor_5"                // lvl 15 talent: unique
     "Ability13"                                           "special_bonus_unique_chaos_knight_8"       // lvl 15 talent: Roll The Dice cooldown talent
 
     "Ability14"                                           "special_bonus_unique_chaos_knight_3"    // lvl 20 talent: Roll the Dice duration talent
-    "Ability15"                                           "special_bonus_attack_speed_110"      // lvl 20 talent; unique
+    "Ability15"                                           "special_bonus_attack_speed_80"      // lvl 20 talent; unique
 
     "Ability16"                                           "special_bonus_gold_income_420"        // lvl 25 talent; unique
     "Ability17"                                           "special_bonus_cooldown_reduction_15"    // lvl 25 talent: unique

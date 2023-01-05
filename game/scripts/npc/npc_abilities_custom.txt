@@ -195,6 +195,7 @@
 #base "unit_abilities/fire_roshan_fire_breath.txt"
 #base "unit_abilities/guardian_angel_bash.txt"
 #base "unit_abilities/guardian_angel_holy_purification.txt"
+#base "unit_abilities/guardian_angel_immunity.txt"
 #base "unit_abilities/infernal_golem_permanent_immolation.txt"
 #base "unit_abilities/kondor_poop_toss.txt"
 #base "unit_abilities/kondor_slam.txt"

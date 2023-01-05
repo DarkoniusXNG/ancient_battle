@@ -517,9 +517,32 @@ function modifier_pull_staff_echo_strike_slow:IsHidden() -- needs tooltip
   return false
 end
 
+function modifier_pull_staff_echo_strike_slow:IsDebuff()
+  return true
+end
+
 function modifier_pull_staff_echo_strike_slow:IsPurgable()
   return true
 end
+
+function modifier_pull_staff_echo_strike_slow:OnCreated()
+	local parent = self:GetParent()
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		local movement_slow = -100
+		local attack_slow = -100
+		if IsServer() then
+			-- Slow is reduced with Status Resistance
+			self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+			self.attack_slow = parent:GetValueChangedByStatusResistance(attack_slow)
+		else
+			self.slow = movement_slow
+			self.attack_slow = attack_slow
+		end
+	end
+end
+
+modifier_pull_staff_echo_strike_slow.OnRefresh = modifier_pull_staff_echo_strike_slow.OnCreated
 
 function modifier_pull_staff_echo_strike_slow:DeclareFunctions()
   return {
@@ -529,11 +552,11 @@ function modifier_pull_staff_echo_strike_slow:DeclareFunctions()
 end
 
 function modifier_pull_staff_echo_strike_slow:GetModifierMoveSpeedBonus_Percentage()
-  return -100
+  return self.slow
 end
 
 function modifier_pull_staff_echo_strike_slow:GetModifierAttackSpeedBonus_Constant()
-  return -100
+  return self.attack_slow
 end
 
 function modifier_pull_staff_echo_strike_slow:GetTexture()

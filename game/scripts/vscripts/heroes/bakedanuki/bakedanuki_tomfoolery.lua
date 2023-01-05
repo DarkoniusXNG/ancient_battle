@@ -202,13 +202,19 @@ function tomfoolery:StopTrick( this )
 	if self.modifier then
 		self.modifier:Destroy()
 	end
+	local pos
 	if self.illusion and not self.illusion:IsNull() and self.illusion:IsAlive() then
+		pos = self.illusion:GetAbsOrigin()
 		self.illusion:ForceKill( false )
 	end
 	self.endAblility:SetActivated( false )
 
-	this:GetCaster():SetHealth( self.currentHealth )
-	this:GetCaster():Purge( false, true, false, true, true )
+	local caster = this:GetCaster()
+	caster:SetHealth( self.currentHealth )
+	caster:Purge( false, true, false, true, true )
+	if caster:HasShardCustom() and pos and this:GetAbilityName() == "bakedanuki_tomfoolery_end" then
+		FindClearSpaceForUnit(caster, pos, true)
+	end
 
 	-- Play effects
 	self:StopEffects( this )
