@@ -13,8 +13,8 @@
     "LoadoutScale"                                        "1.0"
     "HeroSelectSoundEffect"                               "Hero_Sniper.Pick"
 
-    "Role"                                                "Carry,Nuker,Escape,Durable"
-    "Rolelevels"                                          "3,1,1,1"
+    "Role"                                                "Carry,Nuker,Escape,Initiator,Durable,Pusher"
+    "Rolelevels"                                          "3,1,2,1,1,1"
     "Complexity"                                          "1"
 
     // Abilities

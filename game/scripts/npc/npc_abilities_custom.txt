@@ -185,6 +185,7 @@
 #base "hero_abilities/techies_custom_land_mines.txt"
 #base "hero_abilities/techies_custom_stasis_trap.txt"
 #base "hero_abilities/techies_custom_suicide.txt"
+#base "hero_abilities/techies_custom_explosive_shot.txt"
 #base "hero_abilities/techies_custom_remote_mines.txt"
 #base "hero_abilities/techies_custom_special_talents.txt"
 

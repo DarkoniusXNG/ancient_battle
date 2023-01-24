@@ -66,14 +66,14 @@
   // Techies: Focused Detonate (F) - For detonating remote mines
   // Author: Darkonius
   // Notes: OK; 2022; It levels up with Remote Mines
-  // TO_DO: auto-level and DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE
+  // TO_DO:
   //=================================================================================================================
   "techies_custom_focused_detonate"
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/techies/remote_mines.lua"
     "AbilityTextureName"                                  "custom/techies_custom_focused_detonate"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_UNRESTRICTED | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 
     "AbilityCastRange"                                    "0"
 

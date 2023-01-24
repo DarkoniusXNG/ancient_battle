@@ -12,8 +12,8 @@
     "override_hero"                                       "npc_dota_hero_life_stealer"
     "Team"                                                "Bad"
     "BotImplemented"                                      "0"
-    "Role"                                                "Carry,Durable,Jungler,Disabler"    // Roles
-    "Rolelevels"                                          "3,2,3,2"
+    "Role"                                                "Carry,Durable,Escape,Disabler"    // Roles
+    "Rolelevels"                                          "3,2,1,1"
     "Complexity"                                          "2"
 
     // Abilities

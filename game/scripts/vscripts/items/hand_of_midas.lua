@@ -60,7 +60,7 @@ function item_custom_hand_of_midas:OnSpellStart()
   end
 
   -- Giving only bonus gold as reliable gold to the player that used Hand of Midas
-  Gold:ModifyGold(playerID, bonusGold, true, DOTA_ModifyGold_CreepKill)
+  PlayerResource:ModifyGold(playerID, bonusGold, true, DOTA_ModifyGold_CreepKill)
 
   --target:SetDeathXP(0)
   --target:SetMinimumGoldBounty(0)

@@ -387,7 +387,7 @@ if IsServer() then
 
     -- iterate through all targets
     for _, unit in pairs(units) do
-      if unit and not unit:IsNull() and unit ~= target then
+      if unit and not unit:IsNull() and not unit:IsCustomWardTypeUnit() and unit ~= target then
         damage_table.victim = unit
         ApplyDamage(damage_table)
       end

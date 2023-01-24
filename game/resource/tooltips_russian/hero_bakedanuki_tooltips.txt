@@ -1,0 +1,117 @@
+
+		// ******************** BAKEDANUKI ********************		
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Trickster's Insight
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight"                    "Trickster's Insight"
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_Description"        "Mireska studies her opponent, allowing her to see right through their schemes. Breaks passives, and makes them more vulnerable to Mireska's attacks, resulting in critical hits. She also gains spell-block against all targeted spells of the debuffed unit."
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_Lore"			"She knows what you're up to."
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_Note0"			"The critical only benefits Mireska and her illusions."
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_Note1"			"Debuffed enemy can still target spells on any units other than Mireska."
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_Note2"			"Any other enemy units without the debuff can still target Mireska."
+
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_crit_duration"      "DURATION:"
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_crit_chance"        "%CRITICAL CHANCE:"
+		"DOTA_Tooltip_ability_bakedanuki_tricksters_insight_crit_mult"          "%CRITICAL DAMAGE:"
+
+		"DOTA_Tooltip_modifier_bakedanuki_tricksters_insight"                   "Trickster's Insight"
+		"DOTA_Tooltip_modifier_bakedanuki_tricksters_insight_Description"       "Disabled passives, prone to critical strikes from Mireska and unable to cast targeted spells onto Mireska."
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Tomfoolery (Blink)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink"                      "Tomfoolery (Blink)"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_Description"          "Short distance teleportation that leaves behind an illusion of Mireska. Mireska will also act like an illusion, taking more damage and doing less damage. If either the illusion or Mireska takes lethal damage, Tomfoolery ends, killing the illusion and reverting her back to normal.\n\nDISPEL TYPE: Basic Dispel"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_Lore"                 "Confusing them is not even part of the plan."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_Note0"                "Shares levels and cooldown with Tomfoolery (Summon)."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_Note1"                "Mireska cannot die during Tomfoolery."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_Note2"                "When Tomfoolery ends, the illusion dies and Mireska reverts to normal. Her HP is the same as before the cast."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_illusion_range"		"MAX BLINK DISTANCE:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_illusion_duration"	"DURATION:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_illusion_outgoing"	"%DAMAGE DEALT:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_blink_illusion_incoming"	"%DAMAGE TAKEN:"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Tomfoolery (Summon)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon"                     "Tomfoolery (Summon)"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_Description"         "Summons an illusion at location. Mireska will also act like an illusion, taking more damage and doing less damage. If either the illusion or Mireska takes lethal damage, Tomfoolery ends, killing the illusion and reverting her back to normal.\n\nDISPEL TYPE: Basic Dispel"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_Lore"                "Did Mireska blink or is it an illusion?"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_Note0"               "Shares levels and cooldown with Tomfoolery (Blink)."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_Note1"               "Mireska cannot die during Tomfoolery."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_Note2"               "When Tomfoolery ends, the illusion dies and Mireska reverts to normal. Her HP is the same as before the cast."
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_illusion_range"		"MAX SUMMON DISTANCE:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_illusion_duration"	"DURATION:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_illusion_outgoing"	"%DAMAGE DEALT:"
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_summon_illusion_incoming"	"%DAMAGE TAKEN:"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Tomfoolery (End)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end"                        "End Tomfoolery"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Description"            "Manually kills Tomfoolery illusion and reverts Mireska back to normal.\n\nDISPEL TYPE: Basic Dispel"
+
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Lore"                   "There is no trick until it is revealed."
+		
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_Note0"                  "Useful when you want to deal full damage with Mireska."
+		"DOTA_Tooltip_ability_bakedanuki_tomfoolery_end_shard_description"      "Using End Tomfoolery teleports Mireska to illusion's location."
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Frolic Aura
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura"                           "Frolic Aura"
+
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_Description"               "Aura that gives additional evasion to nearby friendly units. Mireska benefits more from it."
+
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_Lore"                      "Just watch her how it's done!"
+
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_Note0"                     "Mireska's illusions bestow the aura and fully benefit from it."
+
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_radius"                    "AURA RADIUS:"
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_evasion_self"              "%EVASION (SELF):"
+		"DOTA_Tooltip_ability_bakedanuki_frolic_aura_evasion_ally"              "%EVASION (ALLIES):"
+
+		"DOTA_Tooltip_modifier_bakedanuki_frolic_aura_effect"                   "Frolic Aura"
+		"DOTA_Tooltip_modifier_bakedanuki_frolic_aura_effect_Description"       "Grants %dMODIFIER_PROPERTY_EVASION_CONSTANT%%% evasion."
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Bakedanuki: Futatsuiwa's Curse
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse"                     "Futatsuiwa's Curse"
+
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_Description"         "Hexes 1 enemy unit in a small area in front of her. Prioritizes heroes."
+
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_Lore"                "A master of transformations. Mireska is most fearsome not when she transform, but when YOU transform."
+
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_Note0"               "Instantly destroys (non-strong) illusions."
+
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_Note1"               "Priority order: heroes, creep-heroes, illusions, summoned units, creeps"
+		
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_Note2"               "Visual effect during casting is visible to enemies."
+
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_search_range"        "SEARCH RANGE:"
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_search_radius"       "SEARCH RADIUS:"
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_hex_base_speed"      "HEXED SPEED:"
+		"DOTA_Tooltip_ability_bakedanuki_futatsuiwas_curse_hex_duration"        "DURATION:"
+
+		"DOTA_Tooltip_modifier_bakedanuki_futatsuiwas_curse"                    "Hexed"
+		"DOTA_Tooltip_modifier_bakedanuki_futatsuiwas_curse_Description"        "This unit cannot attack, cast spells or use items. Has base movement speed of %dMODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE%."
+		

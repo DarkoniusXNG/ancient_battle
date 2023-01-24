@@ -13,8 +13,8 @@
     "Team"                                                "Bad"
     "ModelScale"                                          "1"                    // Unique for Dark Ranger
     "BotImplemented"                                      "0"
-    "Role"                                                "Carry,Disabler,Pusher,Jungler"      // Roles
-    "Rolelevels"                                          "3,2,3,1"
+    "Role"                                                "Carry,Disabler,Pusher"      // Roles
+    "Rolelevels"                                          "3,2,3"
     "Complexity"                                          "3"
     
     // Abilities

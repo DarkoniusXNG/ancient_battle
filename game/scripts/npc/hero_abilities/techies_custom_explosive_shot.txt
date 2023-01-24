@@ -1,0 +1,27 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Techies: Explosive Shot (F) - New Spell, Passive Spell; Splash attack
+  // Author: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO: Unique particle
+  //=================================================================================================================
+  "techies_custom_explosive_shot"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/techies/explosive_shot.lua"
+    "AbilityTextureName"                                  "custom/techies_custom_explosive_shot"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+    
+    "AbilityValues"
+    {
+      "bonus_damage"                                      "8 16 24 32"
+      "full_damage_radius"                                "90 130 170 210"
+      "half_damage_radius"                                "180 220 260 300"
+      "quarter_damage_radius"                             "320 360 400 440"
+    }
+  }
+}

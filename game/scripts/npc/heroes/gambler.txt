@@ -13,7 +13,7 @@
     "HeroSelectSoundEffect"                               "Hero_Rubick.Pick"
     "BotImplemented"                                      "0"
     "Role"                                                "Carry,Nuker,Support,Initiator,Disabler"  // Roles
-    "Rolelevels"                                          "1,3,2,1,3"
+    "Rolelevels"                                          "1,3,2,3,2"
     "Complexity"                                          "3"
 
     // Abilities
