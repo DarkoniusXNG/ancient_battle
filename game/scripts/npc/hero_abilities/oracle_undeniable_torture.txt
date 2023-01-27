@@ -1,50 +1,53 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Sandra Olivia: Undeniable Torture
+	// Oracle: Undeniable Torture - like Warlock Fatal Bonds but enemies are linked to the caster while he is channeling, when caster takes damage, then enemies take damage
 	//=================================================================================================================
-	"sandra_undeniable_torture"
+	"oracle_undeniable_torture"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/sandra/sandra_undeniable_torture"
-		"AbilityTextureName"			"custom/sandra_undeniable_torture"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/oracle/oracle_undeniable_torture"
+		"AbilityTextureName"                              "custom/oracle_undeniable_torture"
 
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
 			"particle"	"particles/units/heroes/hero_warlock/warlock_fatal_bonds_icon.vpcf"
+			"particle"  "particles/units/heroes/hero_warlock/warlock_fatal_bonds_hit.vpcf"
 			"particle"	"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodritual_explode.vpcf"
-			//"particle"	"particles/units/heroes/hero_sandra/sandra_undeniable_torture.vpcf"
 		}
 		
 		// Ability General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"666"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"                                "850"
+		"AbilityCastPoint"                                "0.3"
+		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_1"
 
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8"
-		"AbilityManaCost"				"50"
+		"AbilityCooldown"                                 "14 12 10 8"
+		"AbilityManaCost"                                 "100"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
-			"lifesteal"				"100"
+			"lifesteal"                                   "100" // normal lifesteal and spell lifesteal for allies that damage the caster
 			"lifeshare"
 			{
-				"value"                                             "75 90 105 120"
-				"special_bonus_unique_undeniable_torture_lifeshare" "+30"
+				"value"                                             "85 90 95 100"
+				"special_bonus_unique_undeniable_torture_lifeshare" "+25"
 			}
-			"max_channel"			"6"
-			"radius"				"350 375 400 425"
+			"max_channel"                                 "6"
+			"radius"                                      "350 375 400 425"
 		}
 	}
 
@@ -55,8 +58,13 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"special_bonus_base"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"                                       "special_bonus_base"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilityValues"
+		{
+			"tooltip_value"                               "25"
+		}
 	}
 }

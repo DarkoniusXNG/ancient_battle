@@ -1,65 +1,49 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Sandra Olivia: Sacrifice
+	// Oracle: Intertwine Fate - chains Oracle to the ally and any damage and unit-target spell is redirected to Oracle
 	//=================================================================================================================
-	"sandra_sacrifice"
+	"oracle_sacrifice"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/sandra/sandra_sacrifice"
-		"AbilityTextureName"			"custom/sandra_sacrifice"
+		"BaseClass"                                       "ability_lua"
+		"ScriptFile"                                      "heroes/oracle/oracle_sacrifice"
+		"AbilityTextureName"                              "custom/oracle_sacrifice"
 
 		"precache"
 		{
 			"particle"	"particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
 			"particle"	"particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_rope.vpcf"
-			"particle"	"particles/units/heroes/hero_sandra/sandra_sacrifice_sphere.vpcf"
 			"particle"	"particles/items4_fx/combo_breaker_spell_burst.vpcf"
 		}
 		
 		// Ability General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"                               "SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 
 		// Ability Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"736"
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastRange"                                "700 850 1000"
+		"AbilityCastPoint"                                "0.3"
+		"AbilityCastAnimation"                            "ACT_DOTA_CAST_ABILITY_6"
 
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"98 82 66"
-		"AbilityManaCost"				"137"
+		"AbilityCooldown"                                 "80 70 60"
+		"AbilityManaCost"                                 "100 150 200"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"leash_radius"			"736 872 1008"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"leash_buffer"			"200"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"leash_duration"		"42"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ms_bonus"				"41 94 147"
-			}
+			"leash_radius"                                "700 850 1000"
+			"leash_buffer"                                "200"
+			"leash_duration"                              "42"
+			"ms_bonus"                                    "50 70 90"
 		}
 	}
 }

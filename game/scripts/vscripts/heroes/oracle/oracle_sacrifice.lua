@@ -1,8 +1,8 @@
-sandra_sacrifice = class({})
+oracle_sacrifice = class({})
 
-LinkLuaModifier( "modifier_sandra_sacrifice", "heroes/sandra/sandra_sacrifice", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_sandra_sacrifice_master", "heroes/sandra/sandra_sacrifice", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_sandra_sacrifice_pull", "heroes/sandra/sandra_sacrifice", LUA_MODIFIER_MOTION_HORIZONTAL )
+LinkLuaModifier( "modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_HORIZONTAL )
 
 local tempTable = {}
 tempTable.table = {}
@@ -37,7 +37,7 @@ function tempTable:Print()
 	end
 end
 
-function sandra_sacrifice:CastFilterResultTarget( hTarget )
+function oracle_sacrifice:CastFilterResultTarget( hTarget )
 	if self:GetCaster() == hTarget then
 		return UF_FAIL_CUSTOM
 	end
@@ -56,7 +56,7 @@ function sandra_sacrifice:CastFilterResultTarget( hTarget )
 	return UF_SUCCESS
 end
 
-function sandra_sacrifice:GetCustomCastErrorTarget( hTarget )
+function oracle_sacrifice:GetCustomCastErrorTarget( hTarget )
 	if self:GetCaster() == hTarget then
 		return "#dota_hud_error_cant_cast_on_self"
 	end
@@ -64,7 +64,7 @@ function sandra_sacrifice:GetCustomCastErrorTarget( hTarget )
 	return ""
 end
 
-function sandra_sacrifice:OnSpellStart()
+function oracle_sacrifice:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
@@ -73,7 +73,7 @@ function sandra_sacrifice:OnSpellStart()
 	local duration = self:GetSpecialValueFor("leash_duration")
 
 	-- destroy previous cast
-	local modifier = caster:FindModifierByNameAndCaster( "modifier_sandra_sacrifice", caster )
+	local modifier = caster:FindModifierByNameAndCaster( "modifier_oracle_sacrifice", caster )
 	if modifier then
 		modifier:Destroy()
 	end
@@ -83,7 +83,7 @@ function sandra_sacrifice:OnSpellStart()
 	caster:AddNewModifier(
 		caster, -- player source
 		self, -- ability source
-		"modifier_sandra_sacrifice", -- modifier name
+		"modifier_oracle_sacrifice", -- modifier name
 		{
 			duration = duration,
 			master = master,
@@ -93,21 +93,21 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-modifier_sandra_sacrifice = class({})
+modifier_oracle_sacrifice = class({})
 
-function modifier_sandra_sacrifice:IsHidden()
+function modifier_oracle_sacrifice:IsHidden()
 	return false
 end
 
-function modifier_sandra_sacrifice:IsDebuff()
+function modifier_oracle_sacrifice:IsDebuff()
 	return false
 end
 
-function modifier_sandra_sacrifice:IsPurgable()
+function modifier_oracle_sacrifice:IsPurgable()
 	return false
 end
 
-function modifier_sandra_sacrifice:OnCreated( kv )
+function modifier_oracle_sacrifice:OnCreated( kv )
 	if IsServer() then
 		-- references
 		local master = tempTable:RetATValue( kv.master )
@@ -126,7 +126,7 @@ function modifier_sandra_sacrifice:OnCreated( kv )
 		self.master = master:AddNewModifier(
 			self:GetParent(), -- player source
 			self:GetAbility(), -- ability source
-			"modifier_sandra_sacrifice_master", -- modifier name
+			"modifier_oracle_sacrifice_master", -- modifier name
 			{
 				duration = kv.duration,
 				modifier = modifier,
@@ -141,7 +141,7 @@ function modifier_sandra_sacrifice:OnCreated( kv )
 	end
 end
 
-function modifier_sandra_sacrifice:OnDestroy( kv )
+function modifier_oracle_sacrifice:OnDestroy( kv )
 	if IsServer() then
 		if not self.master:IsNull() then
 			self.master:Destroy()
@@ -149,25 +149,25 @@ function modifier_sandra_sacrifice:OnDestroy( kv )
 	end
 end
 
-function modifier_sandra_sacrifice:DeclareFunctions()
+function modifier_oracle_sacrifice:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MOVESPEED_LIMIT,
 	}
 end
 
-function modifier_sandra_sacrifice:GetModifierMoveSpeedBonus_Constant()
+function modifier_oracle_sacrifice:GetModifierMoveSpeedBonus_Constant()
 	return self.ms_bonus
 end
 
-function modifier_sandra_sacrifice:GetModifierMoveSpeed_Limit()
+function modifier_oracle_sacrifice:GetModifierMoveSpeed_Limit()
 	if IsServer() then
 		-- zero is no limit
 		return self.limit
 	end
 end
 
-function modifier_sandra_sacrifice:OnIntervalThink()
+function modifier_oracle_sacrifice:OnIntervalThink()
 	if IsServer() then
 		-- if dragged, just pass
 		if not self.dragged then
@@ -205,7 +205,7 @@ function modifier_sandra_sacrifice:OnIntervalThink()
 				self:GetParent():AddNewModifier(
 					self:GetParent(), -- player source
 					self:GetAbility(), -- ability source
-					"modifier_sandra_sacrifice_pull", -- modifier name
+					"modifier_oracle_sacrifice_pull", -- modifier name
 					{ modifier = modifier } -- kv
 				)
 				self.dragged = true
@@ -214,7 +214,7 @@ function modifier_sandra_sacrifice:OnIntervalThink()
 	end
 end
 
-function modifier_sandra_sacrifice:PlayEffects()
+function modifier_oracle_sacrifice:PlayEffects()
 	-- Get Resources
 	local particle_cast = "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
 
@@ -261,28 +261,28 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-modifier_sandra_sacrifice_master = class({})
+modifier_oracle_sacrifice_master = class({})
 
-function modifier_sandra_sacrifice_master:IsHidden()
+function modifier_oracle_sacrifice_master:IsHidden()
 	return false
 end
 
-function modifier_sandra_sacrifice_master:IsDebuff()
+function modifier_oracle_sacrifice_master:IsDebuff()
 	return false
 end
 
-function modifier_sandra_sacrifice_master:IsPurgable()
+function modifier_oracle_sacrifice_master:IsPurgable()
 	return false
 end
 
-function modifier_sandra_sacrifice_master:OnCreated( kv )
+function modifier_oracle_sacrifice_master:OnCreated( kv )
 	if IsServer() then
 		self.slave = tempTable:RetATValue( kv.modifier )
-		self:PlayEffects()
+		--self:PlayEffects()
 	end
 end
 
-function modifier_sandra_sacrifice_master:OnDestroy( kv )
+function modifier_oracle_sacrifice_master:OnDestroy( kv )
 	if IsServer() then
 		if not self.slave:IsNull() then
 			self.slave:Destroy()
@@ -290,7 +290,7 @@ function modifier_sandra_sacrifice_master:OnDestroy( kv )
 	end
 end
 
-function modifier_sandra_sacrifice_master:DeclareFunctions()
+function modifier_oracle_sacrifice_master:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
@@ -299,11 +299,11 @@ function modifier_sandra_sacrifice_master:DeclareFunctions()
 end
 
 if IsServer() then
-	function modifier_sandra_sacrifice_master:GetMinHealth()
+	function modifier_oracle_sacrifice_master:GetMinHealth()
 		self.currentHealth = self:GetParent():GetHealth()
 	end
 
-	function modifier_sandra_sacrifice_master:OnTakeDamage( params )
+	function modifier_oracle_sacrifice_master:OnTakeDamage( params )
 		if params.unit~=self:GetParent() then
 			return
 		end
@@ -328,7 +328,7 @@ if IsServer() then
 		self:PlayEffects1()
 	end
 
-	function modifier_sandra_sacrifice_master:OnAbilityExecuted( params )
+	function modifier_oracle_sacrifice_master:OnAbilityExecuted( params )
 		if (not params.target) or params.target~=self:GetParent() or params.unit:GetTeamNumber()==self:GetParent():GetTeamNumber() then
 			return
 		end
@@ -342,8 +342,8 @@ if IsServer() then
 	end
 end
 
-function modifier_sandra_sacrifice_master:PlayEffects()
-	local particle_cast = "particles/units/heroes/hero_sandra/sandra_sacrifice_sphere.vpcf"
+function modifier_oracle_sacrifice_master:PlayEffects()
+	local particle_cast = 
 
 	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
 	ParticleManager:SetParticleControlEnt(
@@ -366,7 +366,7 @@ function modifier_sandra_sacrifice_master:PlayEffects()
 	)
 end
 
-function modifier_sandra_sacrifice_master:PlayEffects1()
+function modifier_oracle_sacrifice_master:PlayEffects1()
 	-- Get Resources
 	local particle_cast = "particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_rope.vpcf"
 	local sound_cast = "DOTA_Item.BladeMail.Damage"
@@ -397,7 +397,7 @@ function modifier_sandra_sacrifice_master:PlayEffects1()
 	EmitSoundOnClient( sound_cast, self.slave:GetParent():GetPlayerOwner() )
 end
 
-function modifier_sandra_sacrifice_master:PlayEffects2()
+function modifier_oracle_sacrifice_master:PlayEffects2()
 	local parent = self:GetParent()
 	local particle_cast = "particles/items4_fx/combo_breaker_spell_burst.vpcf"
 	local sound_cast = "Item.LotusOrb.Target"
@@ -417,25 +417,25 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-modifier_sandra_sacrifice_pull = class({})
+modifier_oracle_sacrifice_pull = class({})
 
-function modifier_sandra_sacrifice_pull:IsHidden()
+function modifier_oracle_sacrifice_pull:IsHidden()
 	return false
 end
 
-function modifier_sandra_sacrifice_pull:IsDebuff()
+function modifier_oracle_sacrifice_pull:IsDebuff()
 	return true
 end
 
-function modifier_sandra_sacrifice_pull:IsPurgable()
+function modifier_oracle_sacrifice_pull:IsPurgable()
 	return false
 end
 
-function modifier_sandra_sacrifice_pull:SetPriority()
+function modifier_oracle_sacrifice_pull:SetPriority()
 	return DOTA_MOTION_CONTROLLER_PRIORITY_HIGH
 end
 
-function modifier_sandra_sacrifice_pull:OnCreated( kv )
+function modifier_oracle_sacrifice_pull:OnCreated( kv )
 	if IsServer() then
 		-- get reference
 		self.modifier = tempTable:RetATValue( kv.modifier )
@@ -449,7 +449,7 @@ function modifier_sandra_sacrifice_pull:OnCreated( kv )
 	end
 end
 
-function modifier_sandra_sacrifice_pull:OnDestroy( kv )
+function modifier_oracle_sacrifice_pull:OnDestroy( kv )
 	if IsServer() then
 		self.modifier.dragged = false
 
@@ -457,23 +457,23 @@ function modifier_sandra_sacrifice_pull:OnDestroy( kv )
 	end
 end
 
-function modifier_sandra_sacrifice_pull:DeclareFunctions()
+function modifier_oracle_sacrifice_pull:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 	}
 end
 
-function modifier_sandra_sacrifice_pull:GetOverrideAnimation()
+function modifier_oracle_sacrifice_pull:GetOverrideAnimation()
 	return ACT_DOTA_FLAIL
 end
 
-function modifier_sandra_sacrifice_pull:CheckState()
+function modifier_oracle_sacrifice_pull:CheckState()
 	return {
 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 	}
 end
 
-function modifier_sandra_sacrifice_pull:UpdateHorizontalMotion( me, dt )
+function modifier_oracle_sacrifice_pull:UpdateHorizontalMotion( me, dt )
 	if IsServer() then
 		-- get pull direction
 		local masterVec = self.master:GetOrigin() - self:GetParent():GetOrigin()
@@ -499,16 +499,16 @@ function modifier_sandra_sacrifice_pull:UpdateHorizontalMotion( me, dt )
 	end
 end
 
-function modifier_sandra_sacrifice_pull:OnHorizontalMotionInterrupted()
+function modifier_oracle_sacrifice_pull:OnHorizontalMotionInterrupted()
 	if IsServer() then
 		self:Destroy()
 	end
 end
 
-function modifier_sandra_sacrifice_pull:GetEffectName()
+function modifier_oracle_sacrifice_pull:GetEffectName()
 	return "particles/generic_gameplay/generic_stunned.vpcf"
 end
 
-function modifier_sandra_sacrifice_pull:GetEffectAttachType()
+function modifier_oracle_sacrifice_pull:GetEffectAttachType()
 	return PATTACH_OVERHEAD_FOLLOW
 end

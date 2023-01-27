@@ -7,45 +7,17 @@
 	"npc_dota_hero_custom_oracle"
 	{
 		"override_hero"                                   "npc_dota_hero_oracle"
-		
-		// General Override
-		//-------------------------------------------------------------------------------------------------------------
-		"Portrait"		"portrait_sandra"
-		"Role"			"Support,Carry,Durable,Nuker,Initiator"
-		"Rolelevels"	"2,1,3,1,1"
-
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"26"
-		"AttributeStrengthGain"		"2.990000"
-		"AttributeBaseAgility"		"24"
-		"AttributeAgilityGain"		"1.660000"
-		"AttributeBaseIntelligence"		"13"
-		"AttributeIntelligenceGain"		"1.330000"
-
-		// Base Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"			"2.82"
-		"MagicalResistance"		"29"
-		"MovementSpeed"			"283"
-		"VisionDaytimeRange"		"1673"
-		"VisionNighttimeRange"		"942"
-
-		// Attack
-		//-------------------------------------------------------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"		"60"
-		"AttackDamageMax"		"70"
-		"AttackRate"		"1.860000"
-		"AttackRange"		"100"
+		"BotImplemented"                                  "0"
+		"Role"                                            "Support,Carry,Durable,Nuker,Initiator"
+		"Rolelevels"                                      "2,1,3,3,1"
+		"Complexity"                                      "3"
 
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityTalentStart"                              "10"
 		"Ability1"                                        "oracle_undeniable_torture"
-		"Ability2"                                        "oracle_ironical_healing"
-		"Ability3"                                        "oracle_will_to_live"
+		"Ability2"                                        "oracle_will_to_live"
+		"Ability3"                                        "oracle_ironical_healing"
 		"Ability4"                                        "generic_hidden"
 		"Ability5"                                        "generic_hidden"
 		"Ability6"                                        "oracle_sacrifice" // R, Primary Ultimate (3 levels)
@@ -53,16 +25,63 @@
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
-		"Ability10"                                       "special_bonus_attack_damage_60"
+		"Ability10"                                       "special_bonus_attack_damage_30"
 		"Ability11"                                       "special_bonus_mp_regen_2"
 
-		"Ability12"                                       "special_bonus_cast_range_350"
-		"Ability13"                                       "special_bonus_attack_speed_100"
+		"Ability12"                                       "special_bonus_cast_range_150"
+		"Ability13"                                       "special_bonus_attack_speed_80"
 
 		"Ability14"                                       "special_bonus_spell_block_15"
 		"Ability15"                                       "special_bonus_unique_ironical_healing_duration"
 
 		"Ability16"                                       "special_bonus_unique_will_to_live_tick"
 		"Ability17"                                       "special_bonus_unique_undeniable_torture_lifeshare"
+
+		// Protection
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"                                   "1"
+		"MagicalResistance"                               "25"
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"                              "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"BaseAttackSpeed"                                 "100"                                   // Default: 100
+		"AttackDamageMin"                                 "13"
+		"AttackDamageMax"                                 "19"
+		"AttackRate"                                      "1.5"
+		"AttackAnimationPoint"                            "0.3"
+		"AttackRange"                                     "600"
+		"AttackAcquisitionRange"                          "800"
+
+		"ProjectileModel"                                 "particles/units/heroes/hero_oracle/oracle_base_attack.vpcf"
+		"ProjectileSpeed"                                 "900"
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementCapabilities"                            "DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"                                   "295"
+		"MovementTurnRate"                                "0.7"
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"                              "1800"
+		"VisionNighttimeRange"                            "800"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"                                "DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"                           "26"
+		"AttributeStrengthGain"                           "2.4"
+		"AttributeBaseAgility"                            "24"
+		"AttributeAgilityGain"                            "1.7"
+		"AttributeBaseIntelligence"                       "26"
+		"AttributeIntelligenceGain"                       "3.8"
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"                               "0.25"
+		"StatusHealth"                                    "200"
+		"StatusMana"                                      "75"
+		"StatusManaRegen"                                 "0.5"
 	}
 }
