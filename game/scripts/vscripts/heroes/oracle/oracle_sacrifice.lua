@@ -343,7 +343,7 @@ if IsServer() then
 end
 
 function modifier_oracle_sacrifice_master:PlayEffects()
-	local particle_cast = 
+	local particle_cast = ""
 
 	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
 	ParticleManager:SetParticleControlEnt(

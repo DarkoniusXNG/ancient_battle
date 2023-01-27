@@ -66,7 +66,7 @@ if IsServer() then
 		if damage <= 0 then
 			return 0
 		end
-		
+
 		-- Ignore damage that has the 'hp-removal' flag
 		if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) > 0 then
 			return 0
@@ -163,7 +163,7 @@ if IsServer() then
 			self:Destroy()
 			return
 		end
-		
+
 		-- Particles
 		local particle_1 = ParticleManager:CreateParticle("particles/items2_fx/soul_ring_blood.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
 		ParticleManager:ReleaseParticleIndex(particle_1)

@@ -25,7 +25,7 @@ function oracle_undeniable_torture:OnSpellStart()
 	local enemies = FindUnitsInRadius(team, point, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 
 	self.modifiers = {}
-	
+
 	local max_duration = self:GetSpecialValueFor("max_channel")
 	for _, enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() then
@@ -108,12 +108,12 @@ if IsServer() then
 		local inflictor = event.inflictor
 		local damage = event.original_damage
 		local damage_flags = event.damage_flags
-		
+
 		-- Check if damage is 0 or negative
 		if damage <= 0 then
 			return 0
 		end
-		
+
 		-- Don't continue if the damage has 'no spell lifesteal' flag
 		if bit.band(damage_flags, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL) > 0 then
 			return 0
@@ -211,7 +211,7 @@ if IsServer() then
 		if not damaged_unit or damaged_unit:IsNull() then
 			return
 		end
-		
+
 		-- Check if damage entity is the caster
 		if damaged_unit ~= caster then
 			return
