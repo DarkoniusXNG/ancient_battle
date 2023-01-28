@@ -4,11 +4,12 @@ end
 
 LinkLuaModifier("modifier_techies_explosive_shot_passive", "heroes/techies/explosive_shot.lua", LUA_MODIFIER_MOTION_NONE)
 
-function techies_custom_explosive_shot:Spawn()
-  if IsServer() and self:GetLevel() < 1 then
-    self:SetLevel(1)
-  end
-end
+-- Techies as a hero is hardcoded and it auto-levels the ability in minefield sign slot so this is not needed
+-- function techies_custom_explosive_shot:Spawn()
+  -- if IsServer() and self:GetLevel() < 1 then
+    -- self:SetLevel(1)
+  -- end
+-- end
 
 function techies_custom_explosive_shot:GetIntrinsicModifierName()
 	return "modifier_techies_explosive_shot_passive"

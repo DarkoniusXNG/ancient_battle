@@ -8,7 +8,7 @@
 		"BaseClass"						                  "ability_lua"
 		"ScriptFile"					                  "heroes/oracle/oracle_will_to_live"
 		"AbilityTextureName"			                  "custom/oracle_will_to_live"
-		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ALLIES_YES"
@@ -16,6 +16,7 @@
 
 		"precache"
 		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
 			"particle"	"particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf"
 			"particle"	"particles/items2_fx/soul_ring_blood.vpcf"
 			"particle"	"particles/items_fx/backdoor_protection_tube.vpcf"
@@ -34,7 +35,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"                                 "120 130 140 150"
+		"AbilityManaCost"                                 "100"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -45,7 +46,7 @@
 				"value"                                   "60 50 40 30"
 				"special_bonus_unique_will_to_live_tick"  "-10"
 			}
-			"duration"                                    "4"
+			"duration"                                    "3.5 4.0 4.5 5.0"
 		}
 	}
 	

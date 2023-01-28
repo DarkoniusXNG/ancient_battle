@@ -2,7 +2,7 @@
 {
 	//=================================================================================================================
 	// HERO: Oracle
-	// TO_DO: ALL
+	// TO_DO:
 	//=================================================================================================================
 	"npc_dota_hero_custom_oracle"
 	{
@@ -15,27 +15,27 @@
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityTalentStart"                              "10"
-		"Ability1"                                        "oracle_undeniable_torture"
-		"Ability2"                                        "oracle_will_to_live"
-		"Ability3"                                        "oracle_ironical_healing"
-		"Ability4"                                        "generic_hidden"
-		"Ability5"                                        "generic_hidden"
-		"Ability6"                                        "oracle_sacrifice" // R, Primary Ultimate (3 levels)
+		"Ability1"                                        "oracle_fortunes_end"         // Q (4 levels), DOTA_VERSION
+		"Ability2"                                        "oracle_will_to_live"         // W (4 levels),
+		"Ability3"                                        "oracle_ironical_healing"     // E (4 levels),
+		"Ability4"                                        "oracle_rain_of_destiny"      // T (1 level), scepter ability
+		"Ability5"                                        "oracle_undeniable_torture"   // T (4 levels),
+		"Ability6"                                        "oracle_sacrifice"            // R, Primary Ultimate (3 levels)
 		"Ability7"                                        "generic_hidden"          
 		"Ability8"                                        "generic_hidden"
 		"Ability9"                                        "generic_hidden"
 
 		"Ability10"                                       "special_bonus_attack_damage_30"
-		"Ability11"                                       "special_bonus_mp_regen_2"
+		"Ability11"                                       "special_bonus_unique_oracle_2"
 
-		"Ability12"                                       "special_bonus_cast_range_150"
-		"Ability13"                                       "special_bonus_attack_speed_80"
+		"Ability12"                                       "special_bonus_unique_oracle_fortunes_end_damage"
+		"Ability13"                                       "special_bonus_attack_speed_60"
 
-		"Ability14"                                       "special_bonus_spell_block_15"
+		"Ability14"                                       "special_bonus_unique_undeniable_torture_lifeshare"
 		"Ability15"                                       "special_bonus_unique_ironical_healing_duration"
 
 		"Ability16"                                       "special_bonus_unique_will_to_live_tick"
-		"Ability17"                                       "special_bonus_unique_undeniable_torture_lifeshare"
+		"Ability17"                                       "special_bonus_unique_oracle_7"
 
 		// Protection
 		//-------------------------------------------------------------------------------------------------------------

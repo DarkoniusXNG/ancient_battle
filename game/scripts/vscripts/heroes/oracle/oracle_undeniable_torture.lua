@@ -1,7 +1,7 @@
 oracle_undeniable_torture = class({})
 
-LinkLuaModifier( "modifier_oracle_undeniable_torture", "heroes/oracle/oracle_undeniable_torture", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_undeniable_torture_debuff", "heroes/oracle/oracle_undeniable_torture", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_undeniable_torture", "heroes/oracle/oracle_undeniable_torture.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_undeniable_torture_debuff", "heroes/oracle/oracle_undeniable_torture.lua", LUA_MODIFIER_MOTION_NONE )
 
 ---------------------------------------------------------------------------------------------------
 
@@ -180,9 +180,7 @@ function modifier_oracle_undeniable_torture_debuff:IsPurgable()
 end
 
 function modifier_oracle_undeniable_torture_debuff:OnCreated()
-	self:OnRefresh()
-
-	--self.lifeshare_exception = "sandra_sacrifice"
+	self.lifeshare = self:GetAbility():GetSpecialValueFor( "lifeshare" )
 end
 
 function modifier_oracle_undeniable_torture_debuff:OnRefresh()
@@ -201,6 +199,7 @@ if IsServer() then
 		local caster = self:GetCaster()
 		local attacker = event.attacker
 		local damaged_unit = event.unit
+		local inflictor = event.inflictor
 
 		-- Check if attacker exists
 		if not attacker or attacker:IsNull() then
@@ -219,10 +218,14 @@ if IsServer() then
 
 		-- Ignore damage that has the no-reflect flag
 		if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION) > 0 then
-			-- if not event.inflictor or event.inflictor:GetAbilityName() ~= self.lifeshare_exception then
-				-- return
-			-- end
-			return
+			if not inflictor then
+				return
+			else
+				local name = inflictor:GetAbilityName() 
+				if name ~= "oracle_sacrifice" and name ~= "oracle_will_to_live" then
+					return
+				end
+			end
 		end
 
 		-- Set source of shared/reflected damage (caster is default)
@@ -247,8 +250,8 @@ if IsServer() then
 			attacker = source,
 			damage = damage,
 			damage_type = event.damage_type,
-			ability = self:GetAbility(), --event.inflictor,
-			damage_flags = bit.bor(event.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION),
+			ability = self:GetAbility(), --inflictor,
+			damage_flags = bit.bor(DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_REFLECTION)--bit.bor(event.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION),
 		}
 
 		ApplyDamage(damage_table)

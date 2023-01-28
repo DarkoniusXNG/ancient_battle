@@ -71,3 +71,6 @@
 		"DOTA_Tooltip_modifier_oracle_sacrifice_master"                        "Intertwined Fate (with Oracle)"
 		"DOTA_Tooltip_modifier_oracle_sacrifice_master_Description"            "Any damage dealt and unit-targeted spells to this hero will be redirected to Oracle."
 		
+		"DOTA_Tooltip_modifier_oracle_sacrifice_pull"                          "Intertwined Fate"
+		"DOTA_Tooltip_modifier_oracle_sacrifice_pull_Description"              "Pulled towards the ally."
+		

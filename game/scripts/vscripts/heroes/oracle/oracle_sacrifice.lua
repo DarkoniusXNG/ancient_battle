@@ -1,41 +1,8 @@
 oracle_sacrifice = class({})
 
-LinkLuaModifier( "modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice", LUA_MODIFIER_MOTION_HORIZONTAL )
-
-local tempTable = {}
-tempTable.table = {}
-
-function tempTable:GetATEmptyKey()
-	local i = 1
-	while self.table[i]~=nil do
-		i = i+1
-	end
-	return i
-end
-
-function tempTable:AddATValue( value )
-	local i = self:GetATEmptyKey()
-	self.table[i] = value
-	return i
-end
-
-function tempTable:RetATValue( key )
-	local ret = self.table[key]
-	self.table[key] = nil
-	return ret
-end
-
-function tempTable:GetATValue( key )
-	return self.table[key]
-end
-
-function tempTable:Print()
-	for k,v in pairs(self.table) do
-		print(k,v)
-	end
-end
+LinkLuaModifier( "modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
 
 function oracle_sacrifice:CastFilterResultTarget( hTarget )
 	if self:GetCaster() == hTarget then
@@ -79,16 +46,7 @@ function oracle_sacrifice:OnSpellStart()
 	end
 
 	-- add slave modifier
-	local master = tempTable:AddATValue( target )
-	caster:AddNewModifier(
-		caster, -- player source
-		self, -- ability source
-		"modifier_oracle_sacrifice", -- modifier name
-		{
-			duration = duration,
-			master = master,
-		} -- kv
-	)
+	caster:AddNewModifier(caster, self, "modifier_oracle_sacrifice", {duration = duration, master = target:GetEntityIndex()})
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -108,12 +66,18 @@ function modifier_oracle_sacrifice:IsPurgable()
 end
 
 function modifier_oracle_sacrifice:OnCreated( kv )
+	local ability = self:GetAbility()
+	if not ability or ability:IsNull() then
+		return
+	end
+
+	self.ms_bonus = ability:GetSpecialValueFor("ms_bonus")
+
 	if IsServer() then
 		-- references
-		local master = tempTable:RetATValue( kv.master )
-		self.leash_radius = self:GetAbility():GetSpecialValueFor("leash_radius")
-		self.buffer_length = self:GetAbility():GetSpecialValueFor("leash_buffer")
-		self.ms_bonus = self:GetAbility():GetSpecialValueFor("ms_bonus")
+		local master = EntIndexToHScript(kv.master)
+		self.leash_radius = ability:GetSpecialValueFor("leash_radius")
+		self.buffer_length = ability:GetSpecialValueFor("leash_buffer")
 
 		-- load data
 		local interval = 0.1
@@ -122,16 +86,10 @@ function modifier_oracle_sacrifice:OnCreated( kv )
 		self.buffer_radius = self.leash_radius - self.buffer_length
 
 		-- create master's modifier
-		local modifier = tempTable:AddATValue( self )
-		self.master = master:AddNewModifier(
-			self:GetParent(), -- player source
-			self:GetAbility(), -- ability source
-			"modifier_oracle_sacrifice_master", -- modifier name
-			{
-				duration = kv.duration,
-				modifier = modifier,
-			} -- kv
-		)
+		local master_modifier = master:AddNewModifier(self:GetParent(), ability, "modifier_oracle_sacrifice_master", {duration = kv.duration})
+		master_modifier.slave = self
+
+		self.master = master_modifier
 
 		-- Start interval
 		self:StartIntervalThink( interval )
@@ -201,13 +159,10 @@ function modifier_oracle_sacrifice:OnIntervalThink()
 				end
 			else
 				-- outside, dragged
-				local modifier = tempTable:AddATValue( self )
-				self:GetParent():AddNewModifier(
-					self:GetParent(), -- player source
-					self:GetAbility(), -- ability source
-					"modifier_oracle_sacrifice_pull", -- modifier name
-					{ modifier = modifier } -- kv
-				)
+				local pull_modifier = self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_oracle_sacrifice_pull",{})
+				pull_modifier.modifier = self
+				pull_modifier.master = self.master:GetParent()
+				pull_modifier.minimum_radius = self.buffer_radius
 				self.dragged = true
 			end
 		end
@@ -277,7 +232,6 @@ end
 
 function modifier_oracle_sacrifice_master:OnCreated( kv )
 	if IsServer() then
-		self.slave = tempTable:RetATValue( kv.modifier )
 		--self:PlayEffects()
 	end
 end
@@ -437,10 +391,6 @@ end
 
 function modifier_oracle_sacrifice_pull:OnCreated( kv )
 	if IsServer() then
-		-- get reference
-		self.modifier = tempTable:RetATValue( kv.modifier )
-		self.master = self.modifier.master:GetParent()
-		self.minimum_radius = self.modifier.buffer_radius
 
 		-- try apply
 		if self:ApplyHorizontalMotionController() == false then

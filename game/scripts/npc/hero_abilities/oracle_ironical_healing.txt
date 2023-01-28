@@ -23,7 +23,7 @@
 
 		// Ability Resource
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"                                 "3.5 3.0 2.5 2.0"
+		"AbilityCooldown"                                 "2.5"
 		"AbilityManaCost"                                 "75"
 
 		// Special
@@ -34,7 +34,7 @@
 			"damage_pct"                                  "1"
 			"duration"
 			{
-				"value"                                          "17"
+				"value"                                          "15"
 				"special_bonus_unique_ironical_healing_duration" "-10"
 			}
 		}

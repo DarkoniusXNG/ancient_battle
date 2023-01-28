@@ -1,6 +1,6 @@
 oracle_ironical_healing = class({})
 
-LinkLuaModifier( "modifier_oracle_ironical_healing", "heroes/oracle/modifier_oracle_ironical_healing", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_ironical_healing", "heroes/oracle/oracle_ironical_healing.lua", LUA_MODIFIER_MOTION_NONE )
 
 function oracle_ironical_healing:OnSpellStart()
 	local caster = self:GetCaster()

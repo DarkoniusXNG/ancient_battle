@@ -21,7 +21,8 @@
 		// Ability General
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"                           "DOTA_UNIT_TARGET_TEAM_ENEMY" // mostly for the UI tooltip
+		"AbilityUnitTargetType"                           "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" // mostly for the UI tooltip
 		"SpellDispellableType"                            "SPELL_DISPELLABLE_NO"
 		"SpellImmunityType"                               "SPELL_IMMUNITY_ENEMIES_YES"
 
@@ -43,7 +44,7 @@
 			"lifesteal"                                   "100" // normal lifesteal and spell lifesteal for allies that damage the caster
 			"lifeshare"
 			{
-				"value"                                             "85 90 95 100"
+				"value"                                             "25 30 35 40"
 				"special_bonus_unique_undeniable_torture_lifeshare" "+25"
 			}
 			"max_channel"                                 "6"

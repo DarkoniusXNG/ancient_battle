@@ -1,14 +1,18 @@
 oracle_will_to_live = class({})
 
-LinkLuaModifier( "modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
 
 function oracle_will_to_live:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
 	local duration = self:GetSpecialValueFor("duration")
 
+	-- Buff
 	target:AddNewModifier(caster, self, "modifier_oracle_will_to_live", {duration = duration})
+
+	-- Sound
+	target:EmitSound("Hero_Dazzle.Shallow_Grave")
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -68,20 +72,26 @@ if IsServer() then
 		end
 
 		-- Ignore damage that has the 'hp-removal' flag
-		if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) > 0 then
+		if bit.band(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) > 0 then
 			return 0
+		end
+
+		if inflictor and ability then
+			if inflictor == ability or inflictor:GetAbilityName() == ability:GetAbilityName() then
+				return 0
+			end
 		end
 
 		local kvs = {}
 		kvs.damage = damage
 		kvs.source = attacker:GetEntityIndex()
-		if inflictor then
-			kvs.inflictor = inflictor:GetEntityIndex()
-		elseif ability then
+		if ability then
 			kvs.inflictor = ability:GetEntityIndex()
+		else
+			return 0
 		end
 		kvs.type = damage_type
-		kvs.flags = bit.bor(damage_flags, DOTA_DAMAGE_FLAG_HPLOSS)
+		kvs.flags = damage_flags -- OnTakeDamage event ignores hp removal flag
 		kvs.delay = self.delay
 		local max_dmg_instance = damage * self.delay / 100
 		local max_duration = damage / max_dmg_instance + 1
