@@ -230,12 +230,6 @@ function modifier_oracle_sacrifice_master:IsPurgable()
 	return false
 end
 
-function modifier_oracle_sacrifice_master:OnCreated( kv )
-	if IsServer() then
-		--self:PlayEffects()
-	end
-end
-
 function modifier_oracle_sacrifice_master:OnDestroy( kv )
 	if IsServer() then
 		if not self.slave:IsNull() then

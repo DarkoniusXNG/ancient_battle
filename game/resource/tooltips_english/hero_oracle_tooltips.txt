@@ -4,7 +4,7 @@
 		// Oracle : Undeniable Torture (Q)
 		//-------------------------------------------------------------------------------------------------------------
 		"DOTA_Tooltip_ability_oracle_undeniable_torture"                       "Undeniable Torture"
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Description"           "CHANNELED - During channeling, Oracle will share all damage he receives with the affected enemies upon cast.\nPassively allows his allies to attack him and lifesteal from him. Damage from allies is not lethal, but the shared damage will be lethal."
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Description"           "CHANNELED - During channeling, Oracle will share all damage he receives with the affected enemies upon cast.\nPassively allows his allies to attack him and lifesteal from him. Damage from allies is not lethal, but the shared damage is lethal."
 		"DOTA_Tooltip_ability_oracle_undeniable_torture_Lore"                  "Sharing the pain with enemies"
 		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note0"                 "This ability makes Oracle undeniable by his allies."
 		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note1"                 "The debuff is applied on cast; leaving or entering the area has no effect."
@@ -23,11 +23,11 @@
 		// Oracle : Ironical Healing (E)
 		//-------------------------------------------------------------------------------------------------------------
 		"DOTA_Tooltip_ability_oracle_ironical_healing"                         "Ironical Healing"
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Description"             "Oracle damages the target to gain bonus health regeneration over a duration. Total heal is equal to the original damage before reductions."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Description"             "Damages target ally or enemy and grants them bonus health regeneration that is equal to the quotient of dealt damage (before reductions) and duration."
 		"DOTA_Tooltip_ability_oracle_ironical_healing_Lore"                    "Like a hall of mirrors might amplify the light of a single candle, the shattered walls of the universe can transform the light of prophecy into a burning torch."
 		"DOTA_Tooltip_ability_oracle_ironical_healing_Note0"                   "Can be cast while channeling."
 		"DOTA_Tooltip_ability_oracle_ironical_healing_Note1"                   "Damage to allies is not lethal."
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Note2"                   "Each cast fully stack with each other. The healing can be amplified."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Note2"                   "Each cast fully stack with each other."
 		"DOTA_Tooltip_ability_oracle_ironical_healing_base_damage"             "BASE DAMAGE:"
 		"DOTA_Tooltip_ability_oracle_ironical_healing_damage_pct"              "%MAX HEALTH AS DAMAGE:"
 		"DOTA_Tooltip_ability_oracle_ironical_healing_duration"                "REGEN DURATION:"
@@ -36,6 +36,7 @@
 		"DOTA_Tooltip_modifier_oracle_ironical_healing_Description"            "Bonus health regeneration."
 
 		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:tooltip_value} Ironical Healing Duration"
+		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_cd"        "-{s:value} Ironical Healing Cooldown"
 
 		//-------------------------------------------------------------------------------------------------------------
 		// Oracle : Will to Live (W)
@@ -49,7 +50,7 @@
 		"DOTA_Tooltip_ability_oracle_will_to_live_abilitycastrange"            "CAST RANGE:"
 
 		"DOTA_Tooltip_modifier_oracle_will_to_live"                            "Will to Live"
-		"DOTA_Tooltip_modifier_oracle_will_to_live_Description"                "All damage received is delayed and turned into damage over time. "
+		"DOTA_Tooltip_modifier_oracle_will_to_live_Description"                "All damage received is delayed and turned into damage over time."
 
 		"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"          "-{s:tooltip_value}% Will to Live Damage DPS"
 
@@ -57,7 +58,7 @@
 		// Oracle : Sacrifice (R)
 		//-------------------------------------------------------------------------------------------------------------
 		"DOTA_Tooltip_ability_oracle_sacrifice"                                "Intertwine Fate"
-		"DOTA_Tooltip_ability_oracle_sacrifice_Description"                    "Oracle chains himself to the allied hero to protect it from harm. Any damage to the affected ally is redirected to Oracle. Some enemy abilities or items targeting affected ally will be redirected to Oracle.\nOracle gains increased movement speed while chained, but he can't break the chain. If he strays too far from the affected ally, Oracle will be dragged back to it."
+		"DOTA_Tooltip_ability_oracle_sacrifice_Description"                    "Oracle chains himself to the allied hero to protect it from harm. Any damage to the affected ally is redirected to Oracle. Some enemy abilities or items targeting affected ally will be redirected to Oracle.\nOracle gains bonus flat movement speed while chained, but he can't break the chain. If he strays too far from the affected ally, Oracle will be dragged back to it."
 		"DOTA_Tooltip_ability_oracle_sacrifice_Lore"                           "Changing fates is Oracle's ultimate purpose."
 		"DOTA_Tooltip_ability_oracle_sacrifice_Note0"                          "Targeted spells are not blocked; their target is changed to Oracle during the cast."
 		"DOTA_Tooltip_ability_oracle_sacrifice_Note1"                          "Affected ally is still affected by area/non-targeted spells, but any damage will be redirected."
@@ -72,5 +73,5 @@
 		"DOTA_Tooltip_modifier_oracle_sacrifice_master_Description"            "Any damage dealt and unit-targeted spells to this hero will be redirected to Oracle."
 		
 		"DOTA_Tooltip_modifier_oracle_sacrifice_pull"                          "Intertwined Fate"
-		"DOTA_Tooltip_modifier_oracle_sacrifice_pull_Description"              "Pulled towards the ally."
+		"DOTA_Tooltip_modifier_oracle_sacrifice_pull_Description"              "Dragged back towards the chained ally."
 		

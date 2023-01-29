@@ -221,7 +221,7 @@ if IsServer() then
 			if not inflictor then
 				return
 			else
-				local name = inflictor:GetAbilityName() 
+				local name = inflictor:GetAbilityName()
 				if name ~= "oracle_sacrifice" and name ~= "oracle_will_to_live" then
 					return
 				end
@@ -251,7 +251,7 @@ if IsServer() then
 			damage = damage,
 			damage_type = event.damage_type,
 			ability = self:GetAbility(), --inflictor,
-			damage_flags = bit.bor(DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_REFLECTION)--bit.bor(event.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION),
+			damage_flags = bit.bor(DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_REFLECTION) --bit.bor(event.damage_flags, DOTA_DAMAGE_FLAG_REFLECTION),
 		}
 
 		ApplyDamage(damage_table)

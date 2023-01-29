@@ -29,7 +29,7 @@
 		"Ability11"                                       "special_bonus_unique_oracle_2"
 
 		"Ability12"                                       "special_bonus_unique_oracle_fortunes_end_damage"
-		"Ability13"                                       "special_bonus_attack_speed_60"
+		"Ability13"                                       "special_bonus_unique_ironical_healing_cd"
 
 		"Ability14"                                       "special_bonus_unique_undeniable_torture_lifeshare"
 		"Ability15"                                       "special_bonus_unique_ironical_healing_duration"

@@ -31,7 +31,7 @@
 		"AbilityValues"
 		{
 			"base_damage"                                 "75 150 225 300"
-			"damage_pct"                                  "1"
+			"damage_pct"                                  "2"
 			"duration"
 			{
 				"value"                                          "15"
@@ -54,6 +54,29 @@
 		"AbilityValues"
 		{
 			"tooltip_value"                               "10"
+		}
+	}
+	
+	//=================================================================================================================
+	// Ironical Healing talent: Decreases cooldown
+	//=================================================================================================================
+	"special_bonus_unique_ironical_healing_cd"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                                       "special_bonus_undefined"
+		"AbilityType"                                     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"value"                                   "1.5"
+			}
 		}
 	}
 }

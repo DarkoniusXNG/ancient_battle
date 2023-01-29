@@ -2,6 +2,19 @@ oracle_ironical_healing = class({})
 
 LinkLuaModifier( "modifier_oracle_ironical_healing", "heroes/oracle/oracle_ironical_healing.lua", LUA_MODIFIER_MOTION_NONE )
 
+function oracle_ironical_healing:GetCooldown(level)
+  local caster = self:GetCaster()
+  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+  -- Talent that decreases cooldown
+  local talent = caster:FindAbilityByName("special_bonus_unique_ironical_healing_cd")
+  if talent and talent:GetLevel() > 0 then
+    return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+  end
+
+  return base_cooldown
+end
+
 function oracle_ironical_healing:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
