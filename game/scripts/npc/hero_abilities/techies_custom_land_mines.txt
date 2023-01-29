@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Notes: OK; 2022; Damage Type: Composite; They make a sound when they are triggered; Blademail returns the damage to Techies;
   // Notes: Mine damage auto-updates; Doesn't trigger on flying units;
-  // TO_DO: 
+  // TO_DO: If needed make them explode when destroyed.
   //=================================================================================================================
   "techies_custom_land_mines"
   {

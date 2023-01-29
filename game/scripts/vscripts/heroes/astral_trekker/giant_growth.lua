@@ -3,6 +3,15 @@ function GrowStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
+	-- Basic dispel
+	local RemovePositiveBuffs = false
+	local RemoveDebuffs = true
+	local BuffsCreatedThisFrameOnly = false
+	local RemoveStuns = false
+	local RemoveExceptions = false
+	caster:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+
+	-- Growing
 	local model_size = ability:GetLevelSpecialValueFor("growth_size", ability:GetLevel() - 1)
 	local original_model_scale = caster:GetModelScale()
 	caster.original_model_scale = original_model_scale

@@ -4,7 +4,7 @@
   // Fire Lord: Soul Burn (Q) - New Spell, Damages targeted unit, reduces/amplifies attack damage and silences enemies.
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 2022; Dynamic cooldown, lower when cast on allies or self
+  // Notes: OK; 2023; Dynamic cooldown, lower when cast on allies or self
   // TO_DO:
   //================================================================================================================= 
   "firelord_soul_burn"
@@ -15,7 +15,7 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
     "HasShardUpgrade"                                     "1"
