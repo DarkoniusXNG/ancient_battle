@@ -60,7 +60,7 @@ function oracle_ironical_healing:OnSpellStart()
 
 	ApplyDamage(damage_table)
 
-	-- Apply halth regen buff
+	-- Apply health regen buff
 	if target and target:IsAlive() then
 		target:AddNewModifier(caster, self, "modifier_oracle_ironical_healing", {duration = duration, damage = total_damage})
 	end

@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Dark Terminator: Terminator Skills - new custom ability, bonus evasion and chance to deal bonus damage that ignores armor
+  // Dark Terminator: Chaos Brawler - new custom ability, bonus evasion and chance to deal bonus damage that ignores armor
   // Author: Darkonius
-  // Notes: OK; 2022; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
+  // Notes: OK; 2023; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
   // TO_DO: 
   //=================================================================================================================
   "dark_terminator_terminator_skills"
@@ -16,7 +16,7 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
     
-    "AbilityCooldown"                                     "1"
+    "AbilityCooldown"                                     "0.2"
 
     "precache"
     {
@@ -45,8 +45,8 @@
       }
       "04"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_proc_cooldown"                            "1"
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_proc_cooldown"                            "0.2"
         "CalculateSpellDamageTooltip"                     "0"
       }
     }

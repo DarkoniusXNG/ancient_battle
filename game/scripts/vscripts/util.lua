@@ -585,6 +585,7 @@ function SuperStrongDispel(target, bRemoveAlmostAllDebuffs, bRemoveDispellableBu
 				"modifier_entrapment",										-- Astral Trekker Net
 				"modifier_purge_enemy_creep",
 				"modifier_purge_enemy_hero",
+				"modifier_stealth_assassin_ambush_mini_stun",
 				"modifier_time_stop",
 				"modifier_time_stop_scepter",
 				"modifier_volcano_stun",

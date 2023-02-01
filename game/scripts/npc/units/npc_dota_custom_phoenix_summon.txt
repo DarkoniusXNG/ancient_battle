@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Blood Mage Summon Phoenix unit
-  // Notes: OK; 25.2.2020;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_custom_phoenix_summon"
   {
@@ -31,14 +31,14 @@
 
     // Armor
     //----------------------------------------------------------------
-    "ArmorPhysical"                                       "1"                 // Physical protection.
+    "ArmorPhysical"                                       "8"                 // Physical protection.
     "MagicalResistance"                                   "0"                 // Handled by custom_unit_spell_immunity;
 
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "61"                 // original (61);
-    "AttackDamageMax"                                     "75"                 // original (75);
+    "AttackDamageMin"                                     "70"                 // original (61);
+    "AttackDamageMax"                                     "80"                 // original (75);
     "AttackRate"                                          "1.4"                 // original (1.4);
     "AttackAnimationPoint"                                "0.43"              // dota Phoenix (0.35);
     "AttackAcquisitionRange"                              "600"
@@ -49,7 +49,7 @@
     // Bounty
     //----------------------------------------------------------------
     "BountyXP"                                            "50"
-    "BountyGoldMin"                                       "30"
+    "BountyGoldMin"                                       "50"
     "BountyGoldMax"                                       "50"
 
     // Bounds

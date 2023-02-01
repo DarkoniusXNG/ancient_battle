@@ -1,0 +1,78 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Stealth Assassin: Smoke Screen (Q) - old Smoke Screen that slows
+  // Author: Darkonius
+  // Notes: OK; 2023; Has Aghanim Shard upgrade; 
+  // TO_DO: test
+  //=================================================================================================================
+  "stealth_assassin_smoke_screen"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/ryu/smoke_screen.lua"
+    "AbilityTextureName"                                  "custom/stealth_assassin_smoke_screen"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+
+    "HasShardUpgrade"                                     "1"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "550"
+    "AbilityCastPoint"                                    "0.2"
+
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "17 16 15 14"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"                                     "65 70 75 80"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "radius"
+      {
+        "value"                                           "375"
+        "special_bonus_unique_stealth_assassin_7"         "+60"
+      }
+      "duration"                                          "6"
+      "miss_rate"                                         "30 45 60 75"
+      "move_speed_slow"                                   "15 20 25 30"
+      "shard_turn_rate_slow"
+      {
+        "value"                                           "50"
+        "RequiresShard"                                   "1"
+      }
+      "shard_mini_stun_duration"
+      {
+        "value"                                           "0.1"
+        "RequiresShard"                                   "1"
+      }
+    }
+  }
+
+  //=================================================================================================================
+  // Smoke Screen talent: Increases radius
+  //=================================================================================================================
+  "special_bonus_unique_stealth_assassin_7"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "60"
+    }
+  }
+}
