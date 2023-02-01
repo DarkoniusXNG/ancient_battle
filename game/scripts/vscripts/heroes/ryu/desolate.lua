@@ -117,7 +117,7 @@ if IsServer() then
 		damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_BYPASSES_BLOCK, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 
 		-- Backstab check
-		------------------------------------------------------------------------------------------ 
+		------------------------------------------------------------------------------------------
 		local backstab_proc = false
 
 		-- The y value of the angles vector contains the angle we actually want: where units are directionally facing in the world.
@@ -184,7 +184,7 @@ if IsServer() then
 			--end)
 
 			-- Sound
-			caster:EmitSound("Hero_Riki.Backstab")
+			parent:EmitSound("Hero_Riki.Backstab")
 
 			-- Calculate backstab damage
 			backstab_dmg = math.ceil(agility*backstab_multiplier)
@@ -193,6 +193,7 @@ if IsServer() then
 			-- Particle
 
 			-- Sound
+			--parent:EmitSound("")
 
 			-- Calculate desolate damage
 			desolate_dmg = math.ceil(agility*desolate_multiplier)

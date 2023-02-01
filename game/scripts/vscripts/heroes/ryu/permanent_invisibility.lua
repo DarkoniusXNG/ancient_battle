@@ -124,7 +124,7 @@ function modifier_stealth_assassin_permanent_invisibility_buff:GetModifierInvisi
 end
 
 if IsServer() then
-	function modifier_stealth_assassin_permanent_invisibility_buff:OnTakeDamage()
+	function modifier_stealth_assassin_permanent_invisibility_buff:OnTakeDamage(event)
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 		local attacker = event.attacker
@@ -135,7 +135,7 @@ if IsServer() then
 		if not attacker or attacker:IsNull() then
 			return
 		end
-		
+
 		-- Check if attacker has this modifier
 		if attacker ~= parent then
 			return
@@ -160,7 +160,7 @@ if IsServer() then
 			return
 		end
 
-		-- Disable the buff if parent dealt damage somehow
+		-- Disable the buff (refresh its stack count) if parent dealt damage
 		self:OnRefresh()
 	end
 end

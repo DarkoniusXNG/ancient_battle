@@ -48,7 +48,7 @@ function stealth_assassin_smoke_screen:OnSpellStart()
 	-- Shard mini-stun and destroying trees
 	if caster:HasShardCustom() then
 		-- Destroy trees
-		GridNav:DestroyTreesAroundPoint(center, radius, true)
+		GridNav:DestroyTreesAroundPoint(point, radius, true)
 
 		local mini_stun_duration = self:GetSpecialValueFor("shard_mini_stun_duration")
 		local enemies = FindUnitsInRadius(
@@ -183,7 +183,7 @@ function modifier_stealth_assassin_smoke_screen_debuff:OnCreated()
 			turn_rate_slow = ability:GetSpecialValueFor("shard_turn_rate_slow")
 			self.disarm_buildings = true
 		end
-		
+
 		if IsServer() then
 			-- Slows should be affected by status resistance
 			self.move_speed_slow = parent:GetValueChangedByStatusResistance(move_speed_slow)

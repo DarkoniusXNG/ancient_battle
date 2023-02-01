@@ -103,7 +103,7 @@ if IsServer() then
 		if not target:IsHero() then
 			duration = ability:GetSpecialValueFor("duration_creep") or self.duration_creep
 		end
-		
+
 		-- Status Resistance fix
 		local actual_duration = target:GetValueChangedByStatusResistance(duration)
 
