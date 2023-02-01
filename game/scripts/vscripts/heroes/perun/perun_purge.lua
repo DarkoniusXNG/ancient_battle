@@ -4,7 +4,7 @@ function PurgeStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
-	-- Checking if target has spell block, and if its an enemy
+	-- Checking if target has spell block, and if its an enemy; pierces spell immunity
 	if not target:TriggerSpellAbsorb(ability) and target:GetTeamNumber() ~= caster:GetTeamNumber()  then
 		local ability_level = ability:GetLevel() - 1
 

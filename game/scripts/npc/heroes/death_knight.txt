@@ -10,8 +10,8 @@
     "override_hero"                                       "npc_dota_hero_abaddon"
     "Team"                                                "Bad"
     "BotImplemented"                                      "0"
-    "Role"                                                "Carry,Durable,Disabler"        // Roles
-    "Rolelevels"                                          "3,3,1"
+    "Role"                                                "Carry,Nuker,Support,Disabler,Pusher"        // Roles
+    "Rolelevels"                                          "3,1,3,1,1"
     "Complexity"                                          "1"
     
     // Abilities

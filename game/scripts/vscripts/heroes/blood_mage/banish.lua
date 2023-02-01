@@ -15,8 +15,9 @@ function BanishStart(event)
 		creep_duration = creep_duration + talent:GetSpecialValueFor("value")
 	end
 
-	-- Checking if target has spell block, and if its an enemy
+	-- Checking if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		-- Check for spell block and spell immunity (latter because of lotus)
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			if target:IsRealHero() then
 				ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = hero_duration})

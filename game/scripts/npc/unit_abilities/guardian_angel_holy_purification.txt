@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Paladin's Guardian Angel: Holy Purification (Q) - similar to Omniknight Purification 
   // Author: Darkonius
-  // Notes: OK; 31.10.2018; Cast Point is 0.1; Can heal spell/magic immune and invulnerable allies;
+  // Notes: OK; 2023; Cast Point is 0.1; Can heal spell/magic immune and invulnerable allies;
   // Notes: When cast on an enemy, enemy is damaged and caster's allies around the enemy are healed.
   // TO_DO:
   //=================================================================================================================
@@ -19,7 +19,7 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
 
     "MaxLevel"                                            "1"
 

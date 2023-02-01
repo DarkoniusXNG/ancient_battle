@@ -1,7 +1,5 @@
 modifier_bakedanuki_frolic_aura = class({})
 
---------------------------------------------------------------------------------
--- Classifications
 function modifier_bakedanuki_frolic_aura:IsHidden()
 	return true
 end
@@ -9,8 +7,7 @@ end
 function modifier_bakedanuki_frolic_aura:IsPurgable()
 	return false
 end
---------------------------------------------------------------------------------
--- Aura
+
 function modifier_bakedanuki_frolic_aura:IsAura()
 	return (not self:GetParent():PassivesDisabled())
 end
@@ -20,7 +17,7 @@ function modifier_bakedanuki_frolic_aura:GetModifierAura()
 end
 
 function modifier_bakedanuki_frolic_aura:GetAuraRadius()
-	return self:GetAbility():GetSpecialValueFor( "radius" )
+	return self:GetAbility():GetSpecialValueFor("radius")
 end
 
 function modifier_bakedanuki_frolic_aura:GetAuraSearchTeam()

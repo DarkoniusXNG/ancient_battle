@@ -4,7 +4,7 @@
   // Death Knight: Death Coil (Q) - Similar to Abaddon Death/Myst Coil
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 2022; Can't cast on himself;
+  // Notes: OK; 2023; Can't cast on himself;
   // TO_DO: 
   //=================================================================================================================
   "death_knight_death_coil"
@@ -17,7 +17,7 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------

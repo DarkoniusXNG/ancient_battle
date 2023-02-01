@@ -59,6 +59,9 @@
 
 		"DOTA_Tooltip_modifier_custom_devotion_aura_effect"                             "Eternal Devotion Aura"
 		"DOTA_Tooltip_modifier_custom_devotion_aura_effect_Description"                 "Increased armor by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
+		
+		"DOTA_Tooltip_ability_guardian_angel_immunity"                                  "Angel's Immunity"
+		"DOTA_Tooltip_ability_guardian_angel_immunity_Description"                      "Immune to physical damage."
 
 		"DOTA_Tooltip_ability_paladin_divine_retribution"                               "Divine Retribution"
 		"DOTA_Tooltip_ability_paladin_divine_retribution_Description"                   "Paladin gains bonus damage and armor for a short time whenever an allied hero dies near him. Buff can be dispelled."

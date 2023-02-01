@@ -58,18 +58,18 @@ function alchemist_custom_transmute:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()
 
-  -- Don't continue if target and caster entities exist
+  -- Don't continue if target and caster entities don't exist
   if not target or not caster then
+    return
+  end
+
+  -- Don't continue if target has spell block; pierces spell immunity
+  if target:TriggerSpellAbsorb(self) then
     return
   end
 
   -- Sound
   target:EmitSound("DOTA_Item.Hand_Of_Midas")
-
-  -- Don't continue if target has spell block
-  if target:TriggerSpellAbsorb(self) then
-    return
-  end
 
   local stun_hero_duration = self:GetSpecialValueFor("stun_duration")
   local gold_bounty_multiplier = self:GetSpecialValueFor("gold_bounty_multiplier")

@@ -33,8 +33,11 @@ function warp_beast_latch:OnSpellStart()
 		return
 	end
 
-	if target:GetTeam() ~= caster:GetTeam() and target:TriggerSpellAbsorb(self) then
-		return
+	if target:GetTeam() ~= caster:GetTeam() then
+		-- Check for spell block and spell immunity (latter because of lotus)
+		if target:TriggerSpellAbsorb(self) or target:IsMagicImmune() then
+			return
+		end
 	end
 
 	-- Can't target clones
@@ -46,6 +49,7 @@ function warp_beast_latch:OnSpellStart()
 		return
 	end
 
+	-- Prevent latching on latchers (those that are already latching)
 	if target:HasModifier("modifier_item_lotus_orb_active") or target:HasModifier("modifier_latch") then -- or target:HasModifier("modifier_latch_target") then
 		return
 	end

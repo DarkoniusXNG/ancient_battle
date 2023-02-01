@@ -10,7 +10,7 @@ function SoulBurnStart(event)
 
 	-- Checking if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
-		-- Checking if target has spell block
+		-- Check for spell block and spell immunity (latter because of lotus)
 		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 			if caster:HasShardCustom() then
 				target:Purge(true, false, false, false, false)

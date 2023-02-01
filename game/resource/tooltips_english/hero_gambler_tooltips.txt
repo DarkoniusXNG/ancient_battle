@@ -30,7 +30,7 @@
 		"DOTA_Tooltip_modifier_gambler_bet_debuff_Description"                            "Gambler placed a bet that you will die soon."
 
 		"DOTA_Tooltip_ability_gambler_russian_roulette"                                   "Russian Roulette"
-		"DOTA_Tooltip_ability_gambler_russian_roulette_Description"                       "Gambler challenges his enemies and allies to test their luck. When activated, Gambler disarm himself and enemy units around him become mini-stunned, rooted and disarmed for the duration. After a delay, his gun damages random units in a radius around him. Damage is dependent on unit's level (damage = base + damage per level x level). Gambler can deny himself or his allies with this spell."
+		"DOTA_Tooltip_ability_gambler_russian_roulette_Description"                       "Gambler challenges his enemies and allies to test their luck. When activated, Gambler disarms himself but enemy units around him become mini-stunned, rooted and disarmed for the duration. After a delay, his gun damages random units in a radius around him. Damage is dependent on unit's level (damage = base + damage per level x level). Gambler can deny himself or his allies with this spell."
 		"DOTA_Tooltip_ability_gambler_russian_roulette_Lore"				              "True gamblers always like to gamble with life."
 		"DOTA_Tooltip_ability_gambler_russian_roulette_Note0"							  "Gambler cannot dispel the disarm from himself while loading the gun."
 		"DOTA_Tooltip_ability_gambler_russian_roulette_radius"                            "RADIUS:"

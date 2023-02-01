@@ -1,7 +1,10 @@
 ﻿"DOTAAbilities"
 {
   //=================================================================================================================
-  // Anti Mage: Fury - bonus move speed, attack speed and percent attack damage for the duration
+  // Anti Mage: Fury (Q) - bonus move speed, attack speed and percent attack damage for the duration
+  // Author: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO: ALL
   //=================================================================================================================
   "anti_mage_custom_fury"
   {
@@ -15,9 +18,12 @@
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "24 22 20 18"
     "AbilityCastPoint"                                    "0.0"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
+
+    // Time
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "24 22 20 18"
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
@@ -32,6 +38,29 @@
       "bonus_attack_speed"                                "90 120 150 180"
       "bonus_move_speed"                                  "20 30 40 50"
       "bonus_damage_pct"                                  "10"
+    }
+  }
+
+  //=================================================================================================================
+  // Fury talent: Provides mana steal on attack
+  //=================================================================================================================
+  "special_bonus_unique_anti_mage_custom_fury_mana_steal"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "60" // mana steal amount
+      }
     }
   }
 }

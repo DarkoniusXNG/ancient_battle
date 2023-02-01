@@ -15,7 +15,6 @@ end
 modifier_bakedanuki_tricksters_insight_passive.modifier_name = "modifier_bakedanuki_tricksters_insight"
 
 function modifier_bakedanuki_tricksters_insight_passive:OnCreated()
-	-- references
 	self.crit_chance = self:GetAbility():GetSpecialValueFor( "crit_chance" )
 	self.crit_mult = self:GetAbility():GetSpecialValueFor( "crit_mult" )
 end
@@ -30,15 +29,27 @@ function modifier_bakedanuki_tricksters_insight_passive:DeclareFunctions()
 end
 
 function modifier_bakedanuki_tricksters_insight_passive:GetModifierPreAttack_CriticalStrike( params )
-	local modifier = params.target:FindModifierByNameAndCaster( self.modifier_name, self:GetParent() )
+	local parent = self:GetParent()
+	local playerID = parent:GetPlayerOwnerID()
 
-	if modifier then
-		if RandomInt( 1, 100 )<=self.crit_chance then
+	local allow_crit = false
+	local modifiers = params.target:FindAllModifiersByName(self.modifier_name)
+	for _, mod in pairs(modifiers) do
+		if mod then
+			local mod_caster = mod:GetCaster()
+			if mod_caster:GetPlayerOwnerID() == playerID then
+				allow_crit = true
+			end
+		end
+	end
+	if allow_crit then
+		if RandomInt(1, 100) <= self.crit_chance then
 			return self.crit_mult
 		end
 	end
 end
 
+-- Using parent as the caster, so the spell block doesnt work for illusions
 function modifier_bakedanuki_tricksters_insight_passive:GetAbsorbSpell( params )
 	local modifier = params.ability:GetCaster():FindModifierByNameAndCaster( self.modifier_name, self:GetParent() )
 	if modifier then

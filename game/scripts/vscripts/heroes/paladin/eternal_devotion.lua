@@ -5,7 +5,6 @@ end
 LinkLuaModifier("modifier_paladin_eternal_devotion_passive", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_devotion_aura_effect", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE) -- needs tooltip
 LinkLuaModifier("modifier_custom_guardian_angel_buff", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE) -- needs tooltip
-LinkLuaModifier("modifier_custom_guardian_angel_summon", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE)
 
 function paladin_eternal_devotion:IsStealable()
 	return false
@@ -169,9 +168,6 @@ if IsServer() then
 
 		main_angel:AddNewModifier(parent, ability, "modifier_kill", {duration = angel_duration})
 
-		-- Apply angel buff
-		main_angel:AddNewModifier(parent, ability, "modifier_custom_guardian_angel_summon", {duration = angel_duration})
-
 		-- Wrath of God - Summoning uncontrollable angels to attack enemies
 		if wrath_of_god then
 			target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
@@ -191,9 +187,6 @@ if IsServer() then
 					angel:SetBaseDamageMax(angel_dmg)
 
 					angel:AddNewModifier(parent, ability, "modifier_kill", {duration = buff_duration})
-
-					-- Apply angel buff
-					angel:AddNewModifier(parent, ability, "modifier_custom_guardian_angel_summon", {duration = buff_duration})
 
 					-- Order the angel to attack the enemy
 					angel:SetForceAttackTarget(enemy)
@@ -316,78 +309,4 @@ end
 
 function modifier_custom_guardian_angel_buff:StatusEffectPriority()
 	return 10
-end
-
----------------------------------------------------------------------------------------------------
-
-if modifier_custom_guardian_angel_summon == nil then
-	modifier_custom_guardian_angel_summon = class({})
-end
-
-function modifier_custom_guardian_angel_summon:IsHidden()
-	return true
-end
-
-function modifier_custom_guardian_angel_summon:IsDebuff()
-	return false
-end
-
-function modifier_custom_guardian_angel_summon:IsPurgable()
-	return false
-end
-
-function modifier_custom_guardian_angel_summon:OnCreated(event)
-	local parent = self:GetParent()
-	local part_name_1 = "particles/frostivus_herofx/holdout_guardian_angel_wings.vpcf"
-	local part_name_2 = "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
-	local sound_name = "Hero_Omniknight.GuardianAngel"
-
-	if IsServer() then
-		-- Sound
-		parent:EmitSound(sound_name)
-
-		-- Particle
-		self.particle1 = ParticleManager:CreateParticle(part_name_1, PATTACH_CENTER_FOLLOW, parent)
-		ParticleManager:SetParticleControlEnt(self.particle1, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), false)
-		self.particle2 = ParticleManager:CreateParticle(part_name_2, PATTACH_OVERHEAD_FOLLOW, parent)
-	end
-end
-
-function modifier_custom_guardian_angel_summon:OnDestroy()
-	if IsServer() then
-		if self.particle1 then
-			ParticleManager:DestroyParticle(self.particle1, false)
-			ParticleManager:ReleaseParticleIndex(self.particle1)
-		end
-		if self.particle2 then
-			ParticleManager:DestroyParticle(self.particle2, false)
-			ParticleManager:ReleaseParticleIndex(self.particle2)
-		end
-	end
-end
-
-function modifier_custom_guardian_angel_summon:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
-	}
-end
-
-function modifier_custom_guardian_angel_summon:GetAbsoluteNoDamagePhysical()
-	return 1
-end
-
-function modifier_custom_guardian_angel_summon:GetEffectName()
-	return "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
-end
-
-function modifier_custom_guardian_angel_summon:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW
-end
-
-function modifier_custom_guardian_angel_summon:GetStatusEffectName()
-	return "particles/status_fx/status_effect_ghost.vpcf"
-end
-
-function modifier_custom_guardian_angel_summon:StatusEffectPriority()
-	return MODIFIER_PRIORITY_SUPER_ULTRA
 end

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
 	//=================================================================================================================
-	// Bake-Danuki: Frolic Aura
+	// Bake-Danuki: Frolic Aura (F) - evasion aura
 	//=================================================================================================================
 	"bakedanuki_frolic_aura"
 	{
@@ -20,18 +20,18 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"			"1200"
+				"var_type"                                "FIELD_INTEGER"
+				"radius"                                  "1200"
 			}
 			"02"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"evasion_self"			"15.0 22.5 30.0 37.5"
+				"var_type"                                "FIELD_FLOAT"
+				"evasion_self"                            "15.0 22.5 30.0 37.5"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"evasion_ally"			"6.0 9.0 12.0 15.0"
+				"var_type"                                "FIELD_INTEGER"
+				"evasion_ally"                            "6 9 12 15"
 			}
 		}
 	}

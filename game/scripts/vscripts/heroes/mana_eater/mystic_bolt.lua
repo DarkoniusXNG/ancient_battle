@@ -45,8 +45,8 @@ function MysticBoltHit(event)
 		mana_at_that_time = 0
 	end
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
+	-- Check for spell block and spell immunity (latter because of lotus)
+	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 		local ability_level = ability:GetLevel() - 1
 		local base_damage = ability:GetLevelSpecialValueFor("base_damage", ability_level)
 		local damage_per_mana = ability:GetLevelSpecialValueFor("damage_per_mana", ability_level)

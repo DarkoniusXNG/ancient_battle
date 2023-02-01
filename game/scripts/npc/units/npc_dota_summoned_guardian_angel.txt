@@ -2,7 +2,7 @@
 {
   //=================================================================================  
   // Paladin Eternal Devotion: Guardian Angel
-  // Notes: OK; 11.10.2019;
+  // Notes: OK; 2023;
   //=================================================================================
   "npc_dota_summoned_guardian_angel"
   {
@@ -13,26 +13,29 @@
     "ModelScale"                                          "1.20"
     "SoundSet"                                            "Creep_Good_Melee_Mega"        // 4.11.2016;
     "Level"                                               "3"                  // 12.4.2016;
+
     "IsSummoned"                                          "1"
-    "CanBeDominated"                                      "1"                  // 5.2.2016; Angel is spell immune;
+    "IsAncient"                                           "1"
+    "ConsideredHero"                                      "1"
+    "CanBeDominated"                                      "1"
 
     // Abilities
     //-----------------------------------------------------------------------------
     "Ability1"                                            "guardian_angel_holy_purification"
     "Ability2"                                            "guardian_angel_bash"
-    "Ability3"                                            "custom_unit_spell_immunity"
+    "Ability3"                                            "guardian_angel_immunity"
 
     // Protection
     //-----------------------------------------------------------------------------
     "ArmorPhysical"                                       "1"                  // Physical protection.
-    "MagicalResistance"                                   "0"                  // 5.2.2016; Angel is spell immune;
+    "MagicalResistance"                                   "0"
 
     // Attack
     //-----------------------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"                                     "0"                  // Damage range min.
     "AttackDamageMax"                                     "0"                  // Damage range max.
-    "AttackRate"                                          "1.0"                // Speed of attack.
+    "AttackRate"                                          "1.2"                // Speed of attack.
     "AttackAnimationPoint"                                "0.4"                // Normalized time in animation cycle to attack.
     "AttackAcquisitionRange"                              "700"                // Range within a target can be acquired.
     "AttackRange"                                         "128"                // Range within a target can be attacked.
@@ -55,7 +58,7 @@
 
     // Status
     //-----------------------------------------------------------------------------
-    "StatusHealth"                                        "250"                // Base health.
+    "StatusHealth"                                        "500"                // Base health.
     "StatusHealthRegen"                                   "0.5"                // Health regeneration rate.
     "StatusMana"                                          "200"                // Base mana.
     "StatusManaRegen"                                     "1.0"                // Mana regeneration rate.     
@@ -70,5 +73,7 @@
     "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
     "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
     "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"  // 29.4.2016;
+
+    "ImmuneToInfest"                                      "1"
   }
 }

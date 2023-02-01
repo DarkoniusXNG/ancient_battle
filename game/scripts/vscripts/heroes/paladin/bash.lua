@@ -54,11 +54,9 @@ function modifier_custom_guardian_angel_bash:OnRefresh(kv)
 end
 
 function modifier_custom_guardian_angel_bash:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 	}
-
-	return funcs
 end
 
 if IsServer() then
@@ -106,8 +104,11 @@ if IsServer() then
 			duration = ability:GetSpecialValueFor("duration_creep") or self.duration_creep
 		end
 
+		-- Status Resistance fix
+		local actual_duration = target:GetValueChangedByStatusResistance(duration)
+
 		-- Apply built-in stun modifier
-		target:AddNewModifier(parent, ability, "modifier_bashed", {duration = duration})
+		target:AddNewModifier(parent, ability, "modifier_bashed", {duration = actual_duration})
 
 		-- Sound of Bash stun
 		target:EmitSound("Hero_Slardar.Bash")

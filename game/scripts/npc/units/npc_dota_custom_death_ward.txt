@@ -2,7 +2,7 @@
 {
   //=================================================================================
   // Stealth Assassin's Death Ward
-  // Notes: 2022;
+  // Notes: 2023;
   //=================================================================================
   "npc_dota_custom_death_ward"
   {
@@ -80,5 +80,7 @@
     "VisionNighttimeRange"                                "800"
 
     "HasInventory"                                        "0"
+    "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 }

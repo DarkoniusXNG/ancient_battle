@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Astral Trekker: Giant Growth (F) - New Spell; Ultimate; Passive part: Similar to Tiny Grow; Active part: gives bonus armor and bonus magic resistance;
   // Author: Darkonius
-  // Notes: OK; 2021;
+  // Notes: OK; 2023; Applies a basic dispel
   // TO_DO: special_bonus_unique_astral_trekker_2
   //=================================================================================================================
   "astral_trekker_giant_growth"

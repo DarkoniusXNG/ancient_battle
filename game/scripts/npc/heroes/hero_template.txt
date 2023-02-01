@@ -14,7 +14,7 @@
     "LoadoutScale"                                        "1.0"             // UNIQUE_PER_HERO
     "HeroSelectSoundEffect"                               "Hero_Oracle.Pick"         // UNIQUE_PER_HERO - Some sound that hero have
     "BotImplemented"                                      "0"                        // 1 if the hero is the same in dota
-    "Role"                                                "Carry,Nuker,Support,Escape,Initiator,Durable,Disabler,Jungler,Pusher"
+    "Role"                                                "Carry,Nuker,Support,Escape,Initiator,Durable,Disabler,Pusher"
     "Rolelevels"                                          "1,3,2"                    // 3 - best; 2 - medium; 1 - partial;
     "Complexity"                                          "1"
 

@@ -27,182 +27,53 @@
 
   //=================================================================================================================
   // 1259 - Staff of Negation - Custom Rod of Atos (2750) + Oblivion Staff (1500) + Custom Diffusal Blade (3300) = 7550
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   // TO_DO:
   //=================================================================================================================
   "item_staff_of_negation"
   {
-    "BaseClass"                                           "item_datadriven"
+    "BaseClass"                                           "item_lua"
+    "ScriptFile"                                          "items/staff_of_negation.lua"
     "AbilityTextureName"                                  "custom/staff_of_negation"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+
+    "AbilityCastRange"                                    "1100"
+    "AbilityCastPoint"                                    "0.0"
+    "AoERadius"                                           "%radius"
+    "AbilityCooldown"                                     "16"
+    "AbilitySharedCooldown"                               "atos"
+    "AbilityManaCost"                                     "250"
 
     "ItemCost"                                            "7550"
     "ItemShopTags"                                        "int;agi;str;regen_health;unique;hard_to_tag"
     "ItemQuality"                                         "artifact"
     "ItemAliases"                                         "staff of negation"
-    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
     "ItemSellable"                                        "1"
     "ItemDroppable"                                       "1"
     "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
-
-    "AbilityCooldown"                                     "16"
-    "AbilitySharedCooldown"                               "atos"
-    "AbilityCastRange"                                    "1100"
-    "AbilityCastPoint"                                    "0.0"
-    "AoERadius"                                           "%radius"
-    "AbilityManaCost"                                     "250"
-
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {      
-      "01" // Custom Rod of Atos (20) + Oblivion Staff (10) + Custom Diffusal Blade (10)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "40"
-      }
-      "02" // Custom Rod of Atos (10) + Custom Diffusal Blade (20)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "30"
-      }
-      "03" // like Custom Rod of Atos
-      {      
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "10"
-      }
-      "04" // like Oblivion Staff
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_dmg"                                       "15"
-      }
-      "05" // like Oblivion Staff
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_attack_speed"                              "10"
-      }
-      "06" // like Oblivion Staff
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bonus_mana_regen"                                "1.25"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_burn"                                       "50"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_burn_illusion_melee"                        "16"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_burn_illusion_ranged"                       "8"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_slow"                                 "-100"
-      }
-      "11"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-150"
-      }
-      "12"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "4.0"
-      }
-      "13"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "325"
-      }
-    }
+      "bonus_int"                                         "40" // Custom Rod of Atos (20) + Oblivion Staff (10) + Custom Diffusal Blade (10)
+      "bonus_agi"                                         "30" // Custom Rod of Atos (10) + Custom Diffusal Blade (20)
+      "bonus_str"                                         "10" // like Custom Rod of Atos
+      "bonus_dmg"                                         "15" // like Oblivion Staff
+      "bonus_attack_speed"                                "10" // like Oblivion Staff
+      "bonus_mana_regen"                                  "1.25" // like Oblivion Staff
+      "mana_burn"                                         "50"
+      "mana_burn_illusion_melee"                          "16"
+      "mana_burn_illusion_ranged"                         "8"
+      "damage_per_burned_mana"                            "1"
 
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"                                      "items/staff_of_negation.lua"
-        "Function"                                        "Negate"
-        "Target"                                          "POINT"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_item_staff_of_negation_passives" // doesn't need tooltip
-      {
-        "Passive"                                         "1"  
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" //This makes duplicate items stack their properties
-
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
-          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
-          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
-          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_dmg"
-          "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"         "%bonus_mana_regen"
-        }
-      }
-
-      "item_modifier_negate_slow"  // needs tooltip
-      {
-        "IsHidden"                                        "0"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "1"
-
-        "TextureName"                                     "custom/staff_of_negation"
-
-        "Duration"                                        "%duration"
-
-        "EffectName"                                      "particles/items2_fx/rod_of_atos.vpcf"
-        "EffectAttachType"                                "follow_origin"
-
-        "States"  
-        {
-          "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
-        }
-
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
-          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
-          "MODIFIER_PROPERTY_DISABLE_HEALING"             "1"
-          "MODIFIER_PROPERTY_PROVIDES_FOW_POSITION"       "1"
-        }
-      }
-
-      "modifier_item_staff_of_negation_mana_break" // doesn't need tooltip
-      {
-        "Passive"                                         "1"
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-
-        "OnAttackLanded"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "items/staff_of_negation.lua"
-            "Function"                                    "Staff_Mana_Break"
-          }
-        }
-      }
+      "move_speed_slow"                                   "-100"
+      "attack_speed_slow"                                 "-150"
+      "duration"                                          "4.0"
+      "radius"                                            "325"
     }
   }
 }

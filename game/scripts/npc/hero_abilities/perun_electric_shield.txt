@@ -1,9 +1,9 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Lightning Shaman: Electric Shield (T) - like Dark Seer Ion Shell but gives FOW vision
+  // Lightning Shaman: Electric Shield (T) - like Dark Seer Ion Shell but gives FOW vision and can be cast on buildings
   // Author: Darkonius
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   // Linkens: Doesn't block (INTENTIONAL);
   // TO_DO:
   //=================================================================================================================
@@ -16,10 +16,10 @@
     "AbilityTextureName"                                  "custom/perun_electric_shield"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
-    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    //"AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
     "HasShardUpgrade"                                     "1"

@@ -12,7 +12,7 @@
     "BotImplemented"                                      "0"
     "HeroSelectSoundEffect"                               "Hero_Lich.Pick"            // Hero Pick sound
     "Role"                                                "Support,Nuker,Pusher,Disabler"      // Roles
-    "Rolelevels"                                          "3,2,3,2"
+    "Rolelevels"                                          "3,2,3,3"
     "Complexity"                                          "1"
     
     // Abilities

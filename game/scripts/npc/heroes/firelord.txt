@@ -11,8 +11,8 @@
     "override_hero"                                       "npc_dota_hero_nevermore"
     "Model"                                               "models/heroes/shadow_fiend/shadow_fiend_arcana.vmdl"
     "Team"                                                "Bad"
-    "Role"                                                "Carry,Nuker,Disabler,Pusher"
-    "Rolelevels"                                          "3,2,2,1"
+    "Role"                                                "Carry,Nuker,Support,Initiator,Disabler,Pusher"
+    "Rolelevels"                                          "3,2,1,1,2,3"
     "Complexity"                                          "2"
     
     // Abilities

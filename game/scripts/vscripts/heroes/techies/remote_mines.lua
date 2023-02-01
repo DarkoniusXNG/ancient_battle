@@ -70,6 +70,15 @@ function techies_custom_remote_mines:ProcsMagicStick()
 	return true
 end
 
+function techies_custom_remote_mines:OnUpgrade()
+	local focused_detonate_ability = self:GetCaster():FindAbilityByName("techies_custom_focused_detonate")
+
+	-- Check to not enter a level up loop
+	if focused_detonate_ability and focused_detonate_ability:GetLevel() ~= 1 then
+		focused_detonate_ability:SetLevel(1)
+	end
+end
+
 -- Mine modifier ----------------------------------------------------------------------------------
 
 if modifier_techies_custom_remote_mine == nil then

@@ -1,7 +1,11 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Anti Mage: Mana Burn - like Nyx Mana Burn but has a base value and mana burn damage ratio
+  // Anti Mage: Mana Burn (T) - like Nyx Mana Burn but has a base value and mana burn damage ratio
+  // Author: Darkonius
+  // Linkens: Blocks;
+  // Notes: OK; 2023;
+  // TO_DO: ALL
   //=================================================================================================================
   "anti_mage_custom_mana_burn"
   {
@@ -11,13 +15,10 @@
     "ScriptFile"                                          "heroes/anti_mage/mana_burn.lua"
     "AbilityTextureName"                                  "custom/anti_mage_custom_mana_burn"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-
-    // Unit Targeting
-    //-------------------------------------------------------------------------------------------------------------
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -49,6 +50,63 @@
         "value"                                           "0"
         "special_bonus_anti_mage_custom_2"                "+300"
       }
+    }
+  }
+
+  //=================================================================================================================
+  // Mana Burn talent: slows if target's mana is less than base_mana_burn
+  //=================================================================================================================
+  "special_bonus_unique_anti_mage_custom_mana_burn_slow"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "40" // slow amount (percentage)
+      }
+    }
+  }
+
+  //=================================================================================================================
+  // Mana Burn talent: Increases int multiplier
+  //=================================================================================================================
+  "special_bonus_anti_mage_custom_1"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "0.5"
+    }
+  }
+
+  //=================================================================================================================
+  // Mana Burn talent: Mana Burn becomes an AoE ability
+  //=================================================================================================================
+  "special_bonus_anti_mage_custom_2"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "300"
     }
   }
 }

@@ -3,10 +3,10 @@
 		"DOTA_Tooltip_ability_item_recipe_staff_of_negation_Description"        ""
 		
 		"DOTA_Tooltip_ability_item_staff_of_negation"                           "Staff Of Negation"
-		"DOTA_Tooltip_ability_item_staff_of_negation_Description"               "<h1>Active: Negate</h1> Leashes, slows movement and attack speed, disables healing and purges all enemies in a radius. Deals 50 pure damage to all enemies in a radius. Destroys most enemy summoned units, dominated units and illusions.\n<h1>Passive: Mana Break</h1> Each attack burns %mana_burn% mana from the target, and deals the same amount in physical damage. <br><br>Burns %mana_burn_illusion_melee% mana per attack from melee illusions and %mana_burn_illusion_ranged% mana per attack from ranged illusions.<br><br>Dispel Type: <span class=\"GameplayValues GameplayVariable\">Basic Dispel</span>"
+		"DOTA_Tooltip_ability_item_staff_of_negation_Description"               "<h1>Active: Negate</h1> Leashes, slows movement and attack speed, disables healing and purges all enemies in a radius. Destroys most enemy summoned units, dominated units and illusions.\n<h1>Passive: Mana Break</h1> Each attack burns %mana_burn% mana from the target, and deals the same amount in physical damage. <br><br>Burns %mana_burn_illusion_melee% mana per attack from melee illusions and %mana_burn_illusion_ranged% mana per attack from ranged illusions.<br><br>Dispel Type: <span class=\"GameplayValues GameplayVariable\">Basic Dispel</span>"
 		"DOTA_Tooltip_ability_item_staff_of_negation_Note0"                     "Applies Basic Dispel to enemies (removes buffs) and allies (removes debuffs)."
 		"DOTA_Tooltip_ability_item_staff_of_negation_Note1"                     "Shares cooldown with Rod of Atos."
-		"DOTA_Tooltip_ability_item_staff_of_negation_Note2"						"Has no effect on spell immune enemies."
+		"DOTA_Tooltip_ability_item_staff_of_negation_Note2"						"Spell immune enemies are only dispelled."
 		"DOTA_Tooltip_ability_item_staff_of_negation_Lore"                      "Staff that dispels all magic in an area."
 		"DOTA_Tooltip_ability_item_staff_of_negation_bonus_str"                 "+$str"
 		"DOTA_Tooltip_ability_item_staff_of_negation_bonus_agi"                 "+$agi"
@@ -20,5 +20,5 @@
 		"DOTA_Tooltip_ability_item_staff_of_negation_duration"                  "NEGATE DURATION:"
 		"DOTA_Tooltip_ability_item_staff_of_negation_radius"                    "NEGATE RADIUS:"
 		
-		"DOTA_Tooltip_item_modifier_negate_slow"                                "Negated"
-		"DOTA_Tooltip_item_modifier_negate_slow_Description"                    "Leashed, disabled healing, revealed in Fog of War, movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
+		"DOTA_Tooltip_modifier_item_staff_of_negation_debuff"                   "Negated"
+		"DOTA_Tooltip_modifier_item_staff_of_negation_debuff_Description"       "Leashed, disabled healing, revealed in Fog of War, movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."

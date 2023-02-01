@@ -43,41 +43,44 @@ function sohei_palm_of_life:OnSpellStart()
 
 		SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, target, total_heal, nil)
 	else
-		if not target:TriggerSpellAbsorb(self) then
-			-- Basic Dispel (Buffs)
-			local RemovePositiveBuffs = true
-			local RemoveDebuffs = false
-			local BuffsCreatedThisFrameOnly = false
-			local RemoveStuns = false
-			local RemoveExceptions = false
-			target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
-
-			-- Sound
-			target:EmitSound("Sohei.PalmOfLife.Damage")
-
-			local base_damage = self:GetSpecialValueFor("base_damage")
-			local caster_str = caster:GetStrength()
-			local victim_str
-			if target.GetStrength then
-				victim_str = target:GetStrength()
-			else
-				victim_str = 0
-			end
-			local diff_multiplier = self:GetSpecialValueFor("str_diff_multiplier")
-			if caster:HasScepter() then
-				diff_multiplier = self:GetSpecialValueFor("scepter_str_diff_multiplier")
-			end
-
-			local str_diff_damage = math.max((caster_str - victim_str) * diff_multiplier, 0)
-
-			local damage_table = {}
-			damage_table.attacker = caster
-			damage_table.damage_type = self:GetAbilityDamageType()
-			damage_table.ability = self
-			damage_table.damage = base_damage + str_diff_damage
-			damage_table.victim = target
-
-			ApplyDamage(damage_table)
+		-- Check for spell block and spell immunity (latter because of lotus)
+		if target:TriggerSpellAbsorb(self) or target:IsMagicImmune() then
+			return
 		end
+
+		-- Basic Dispel (Buffs)
+		local RemovePositiveBuffs = true
+		local RemoveDebuffs = false
+		local BuffsCreatedThisFrameOnly = false
+		local RemoveStuns = false
+		local RemoveExceptions = false
+		target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+
+		-- Sound
+		target:EmitSound("Sohei.PalmOfLife.Damage")
+
+		local base_damage = self:GetSpecialValueFor("base_damage")
+		local caster_str = caster:GetStrength()
+		local victim_str
+		if target.GetStrength then
+			victim_str = target:GetStrength()
+		else
+			victim_str = 0
+		end
+		local diff_multiplier = self:GetSpecialValueFor("str_diff_multiplier")
+		if caster:HasScepter() then
+			diff_multiplier = self:GetSpecialValueFor("scepter_str_diff_multiplier")
+		end
+
+		local str_diff_damage = math.max((caster_str - victim_str) * diff_multiplier, 0)
+
+		local damage_table = {}
+		damage_table.attacker = caster
+		damage_table.damage_type = self:GetAbilityDamageType()
+		damage_table.ability = self
+		damage_table.damage = base_damage + str_diff_damage
+		damage_table.victim = target
+
+		ApplyDamage(damage_table)
 	end
 end

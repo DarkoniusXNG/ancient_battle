@@ -4,6 +4,10 @@ function modifier_bakedanuki_tomfoolery:IsHidden()
 	return true
 end
 
+function modifier_bakedanuki_tomfoolery:IsDebuff()
+	return true
+end
+
 function modifier_bakedanuki_tomfoolery:IsPurgable()
 	return false
 end
@@ -22,49 +26,38 @@ function modifier_bakedanuki_tomfoolery:OnCreated( kv )
 end
 
 function modifier_bakedanuki_tomfoolery:OnRefresh( kv )
-	self.illusion_incoming = self:GetAbility():GetSpecialValueFor( "illusion_incoming" )
-	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor( "illusion_outgoing" )
+	self.illusion_incoming = self:GetAbility():GetSpecialValueFor("illusion_incoming")
+	self.illusion_outgoing = self:GetAbility():GetSpecialValueFor("illusion_outgoing")
 end
 
 function modifier_bakedanuki_tomfoolery:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE_ILLUSION,
-		-- MODIFIER_PROPERTY_INCOMING_DAMAGE_ILLUSION,
-		-- MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,
+	return {
+		MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE,                -- GetModifierDamageOutgoing_Percentage
+		-- MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,         -- GetModifierBaseDamageOutgoing_Percentage
+		-- MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,                -- GetModifierPreAttack_BonusDamage
 		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
-		MODIFIER_EVENT_ON_ABILITY_FULLY_CAST,
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_DEATH,
 	}
-
-	return funcs
 end
 
-function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage_Illusion()
--- function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage()
-	return self.illusion_outgoing-100
-end
+--function modifier_bakedanuki_tomfoolery:GetModifierBaseDamageOutgoing_Percentage()
+	--return self.illusion_outgoing
+--end
 
--- function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage_Illusion()
+--function modifier_bakedanuki_tomfoolery:GetModifierPreAttack_BonusDamage()
+	---- Calculate bonus raw (green) damage and substract it
+--end
+
 function modifier_bakedanuki_tomfoolery:GetModifierIncomingDamage_Percentage()
 	return self.illusion_incoming-100
 end
 
 if IsServer() then
-	function modifier_bakedanuki_tomfoolery:OnAbilityFullyCast( params )
-		-- filter
-		local pass = false
-		if params.unit==self:GetCaster() then
-			if params.ability~=self:GetAbility().tomfoolery.ability1 and params.ability~=self:GetAbility().tomfoolery.ability2 then
-				pass = true
-			end
-		end
-
-		-- logic
-		if pass then
-			self:GetAbility():StopTrick()
-		end
+	function modifier_bakedanuki_tomfoolery:GetModifierDamageOutgoing_Percentage()
+		-- only on Server so the client shows unchanged damage, why? so the enemy can't tell which Bakedanuki is real
+		return self.illusion_outgoing
 	end
 
 	function modifier_bakedanuki_tomfoolery:GetMinHealth()
@@ -96,7 +89,7 @@ if IsServer() then
 
 		-- logic
 		if pass then
-			self:GetAbility():StopTrick()
+			ability:StopTrick()
 		end
 	end
 end

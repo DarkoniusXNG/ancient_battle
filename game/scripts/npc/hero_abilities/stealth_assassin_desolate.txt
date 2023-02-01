@@ -1,58 +1,40 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Stealth Assassin: Desolate (E) - New Spell, similar to Spectre Desolate
+  // Stealth Assassin: Desolate Backstab (E) - New Spell, mix of Spectre Desolate and old Riki Backstab
   // Author: Darkonius
-  // Notes: OK; 4.3.2020; Damage is dealt in a seperate instance; Damage ignores Damage Block; It cant be lifestealed off of, and its not considered by crit or cleave.
+  // Notes: OK; 2023; Damage is dealt in a seperate instance; Damage ignores Damage Block; It cant be lifestealed off of, and its not considered by crit or cleave.
   // TO_DO:
   //=================================================================================================================
   "stealth_assassin_desolate"
   {
     // General
     // -------------------------------------------------------------------------------------------------------------
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/ryu/desolate.lua"
     "AbilityTextureName"                                  "custom/stealth_assassin_desolate"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"  
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     
     // Special
     // -------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
+      "backstab_agi_multiplier"
       {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_multiplier"                               "0.7 0.9 1.1 1.3"
+        "value"                                           "0.25 0.5 0.75 1.0" // first dota version (0.2/0.4/0.6/0.8)
         "CalculateSpellDamageTooltip"                     "0"
       }
-      "02" // old Spectre Desolate (325); Arc Warden Flux search radius (225);
+      "backstab_max_angle"                                "105"
+      "desolate_agi_multiplier"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "325"
+        "value"                                           "0.5 0.75 1.0 1.25" // optimal without backstab (0.7/0.9/1.1/1.3)
+        "CalculateSpellDamageTooltip"                     "0"
       }
-    }
-    
-    "Modifiers"
-    {
-      "modifier_stealth_assassin_desolate" // doesn't need tooltip
-      {
-        "Passive"                                         "1"
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "AllowIllusionDuplicate"                          "1"
-        
-        "OnAttackLanded"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/ryu/desolate.lua"
-            "Function"                                    "DesolateCheck"
-          }
-        }
-      }
+      "desolate_radius"                                   "325" // old Spectre Desolate (325); Arc Warden Flux search radius (225);
     }
   }
 }

@@ -2,7 +2,7 @@
 {
   //====================================================================================
   // Unit for firelord_volcano ability (Volcano base model)
-  // Notes: OK; 26.10.2019;
+  // Notes: OK; 2023;
   //====================================================================================
   "npc_dota_firelord_volcano"
   {
@@ -19,5 +19,8 @@
     "IsAncient"                                           "1"
 
     //"Ability1"                                        "dummy_unit"
+    "HasInventory"                                        "0"
+    "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 }

@@ -1,7 +1,10 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Anti Mage: Rift - blink + reduces spell damage of enemies + bonus status resistance to allies and self
+  // Anti Mage: Rift (W) - blink + reduces spell damage of enemies + bonus status resistance to allies and self
+  // Author: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO: ALL
   //=================================================================================================================
   "anti_mage_custom_rift"
   {
@@ -10,16 +13,23 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/anti_mage/rift.lua"
     "AbilityTextureName"                                  "custom/anti_mage_custom_rift"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.4"
     "AbilityCastRange"                                    "0"
 
-    // Cost
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "15 12 9 6"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "60"
     "AbilityProcsMagicStick"                              "1"
 
@@ -31,7 +41,31 @@
       "max_blink_range"                                   "925 1000 1075 1150"
       "buff_status_resist"                                "10 15 20 25"
       "debuff_spell_dmg_reduction"                        "10 15 20 25"
+      "radius"                                            "250"
       "duration"                                          "6"
+    }
+  }
+
+  //=================================================================================================================
+  // Rift talent: Rift Silence
+  //=================================================================================================================
+  "special_bonus_unique_anti_mage_custom_rift_silence"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value"                                           "1.75" // silence duration
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Lightning Shaman: Perun's Wrath (W) - New Spell, AoE Nuke, Stun, Blind and True Sight Reveal
   // Author: Darkonius
-  // Notes: OK; 2022; Stun radius is smaller than the damage/blind radius;
+  // Notes: OK; 2023; Stun radius is smaller than the damage/blind radius;
   // TO_DO:
   //=================================================================================================================
   "perun_sky_wrath"
@@ -116,7 +116,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "130"
+        "value"                                           "100"
       }
     }
   }

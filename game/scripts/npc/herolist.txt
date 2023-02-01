@@ -37,7 +37,7 @@
   "npc_dota_hero_monkey_king"                             "0"
   "npc_dota_hero_naga_siren"                              "0" // Sona
   "npc_dota_hero_ogre_magi"                               "0"
-  "npc_dota_hero_oracle"                                  "0"
+  "npc_dota_hero_oracle"                                  "1"
   "npc_dota_hero_phantom_assassin"                        "0" // Warden
   "npc_dota_hero_razor"                                   "0" // Thunder Knight
   "npc_dota_hero_skeleton_king"                           "0"

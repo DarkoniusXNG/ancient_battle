@@ -104,7 +104,7 @@
 		//"item"    "item_oblivion_staff"
 		//"item"    "item_pers"
 		//"item"    "item_helm_of_the_dominator" // this can be moved
-		//"item"    "item_hand_of_midas"
+		"item"    "item_custom_hand_of_midas"
 		//"item"    "item_travel_boots"
 		//"item"    "item_moon_shard"
 		//"item"    "item_shinigami_eyes"	// Shinigami Eyes (upgrade for 2 Gems and Cursed Necklace; True Sight, Ultravision, - 1000 HP, doesn't drop on death)
@@ -227,7 +227,7 @@
 		//"item"    "item_satanic"
 		//"item"    "item_skadi"
 		//"item"    "item_mjollnir"
-		//"item"	  "item_hurricane_pike"
+		//"item"	"item_hurricane_pike"
 		"item"	  "item_staff_of_negation"
 	}
 

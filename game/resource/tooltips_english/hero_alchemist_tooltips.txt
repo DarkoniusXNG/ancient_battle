@@ -25,7 +25,7 @@
 		"DOTA_Tooltip_modifier_custom_acid_bomb_debuff_Description"             "Reduced armor and taking physical damage over time."
 		
 		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage"                             "Chemical Rage"
-		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage_Description"                 "Alchemist causes his Ogre to enter a chemically induced rage, reducing base attack time, increasing movement speed and health regeneration.<br><br><font color='#70EA72'>Chemical Rage buff also provides mana regen and removes movement speed limit.</font>"
+		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage_Description"                 "Alchemist causes his Ogre to enter a chemically induced rage, reducing base attack time, increasing movement speed and health regeneration.<br><br><font color='#70EA72'>Chemical Rage buff also provides mana regen and removes movement speed limit.</font>\n\nDISPEL TYPE: Basic Dispel"
 		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage_Lore"						  "The brew Razzil gave to the Ogre during their prison bust has become a useful potion in the midst of combat."
 		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage_Note0"						  "Bonuses don't work on illusions."
 		"DOTA_Tooltip_ability_alchemist_custom_chemical_rage_duration"                    "DURATION:"
@@ -70,4 +70,5 @@
 		
 		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_1"              "-{s:value} Chemical Rage Base Attack Time"
 		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_2"              "Chemical Rage Super Strong Dispel"
+		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_2_Description"  "Chemical Rage can be used while stunned but not while silenced or hexed."
 		

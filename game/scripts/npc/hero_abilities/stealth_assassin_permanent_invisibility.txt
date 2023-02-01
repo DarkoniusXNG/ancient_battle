@@ -1,21 +1,19 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Stealth Assassin: Permanent Invisibility (T) - Modified Riki Permanent Invisibility
-  // Author: Valve
-  // Notes: OK; 19.12.2019;
-  // TO_DO: Rework in lua to be toggleable and to be disabled with silence
+  // Stealth Assassin: Stealth (T) - old Riki Permanent Invisibility
+  // Author: Darkonius
+  // Notes: OK; 2023; Toggle-able, disabled with silence; caster reveals itself when doing damage
+  // TO_DO:
   //=================================================================================================================
   "stealth_assassin_permanent_invisibility"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"                                           "riki_permanent_invisibility"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/ryu/permanent_invisibility.lua"
     "AbilityTextureName"                                  "custom/stealth_assassin_permanent_invisibility"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"      // not needed but the console is complaining
-    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"  // not needed but the console is complaining
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
     "RequiredLevel"                                       "3"
@@ -23,18 +21,53 @@
     
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
+      "fade_delay"                                        "5 4 3 2"
+      "movement_speed" // while invis, percentage bonus
       {
-        "var_type"                                        "FIELD_FLOAT"
-        "fade_delay"                                      "6 5 4 3"
+        "value"                                           "7"
+        "special_bonus_unique_stealth_assassin_3"         "+20"
       }
-      "02"
+      "hp_regen" // while invis
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_speed"                                  "20 30 40 50"
+        "value"                                           "1.5 2.0 2.5 3.0"
+        "special_bonus_unique_stealth_assassin_4"         "+3.0"
       }
+    }
+  }
+
+  //=================================================================================================================
+  // Stealth talent: Increases move speed
+  //=================================================================================================================
+  "special_bonus_unique_stealth_assassin_3"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "20"
+    }
+  }
+
+  //=================================================================================================================
+  // Stealth talent: Increases hp regen
+  //=================================================================================================================
+  "special_bonus_unique_stealth_assassin_4"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "3"
     }
   }
 }

@@ -4,7 +4,7 @@ function LifeDrainStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
+	-- Check for spell block and spell immunity (latter because of lotus)
 	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_life_drain", {})
 		caster:EmitSound("Hero_Pugna.LifeDrain.Target")

@@ -6,7 +6,8 @@ ALLOW_SAME_HERO_SELECTION = false       -- Should we let people select the same 
 CUSTOM_GAME_SETUP_TIME = 20.0           -- How long should custom game setup last?
 HERO_SELECTION_TIME = 60.0              -- How long should we let people select their hero? Should be at least 5 seconds.
 HERO_SELECTION_PENALTY_TIME = 30.0      -- How long should the penalty time for not picking a hero last? During this time player loses gold.
-BANNING_PHASE_TIME = 20.0               -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
+BANNING_PHASE_TIME = 0.0                -- How long should the banning phase last? This will work only if "EnablePickRules" is "1" in 'addoninfo.txt'
+NUMBER_OF_BANS_PER_TEAM = 0
 STRATEGY_TIME = 15.0                    -- How long should strategy time last? !!! You can buy items during strategy time and gold will not be spent!
 SHOWCASE_TIME = 0.0                     -- How long should show case time be?
 PRE_GAME_TIME = 90.0                    -- How long after loading heroes into the map should the horn blow and the game start?
@@ -36,8 +37,8 @@ HERO_KILL_GOLD_BASE = 125               -- Hero gold bounty base value
 HERO_KILL_GOLD_PER_LEVEL = 8            -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2xHERO_KILL_GOLD_PER_STREAK gold ...)
 
-LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
-LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.17
+--LANE_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
+--LANE_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.17
 NEUTRAL_CREEP_KILL_GOLD_BOUNTY_MULTIPLIER = 2 --1.5
 NEUTRAL_CREEP_KILL_XP_BOUNTY_MULTIPLIER = 1.75 --1.35
 
@@ -183,9 +184,11 @@ DEFAULT_DOTA_COURIER = true
 if GetMapName() == "two_vs_two" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
-	STRATEGY_TIME = 0.0
+	STRATEGY_TIME = 5.0
 	PRE_GAME_TIME = 35.0
 	POST_GAME_TIME = 45.0
+	BANNING_PHASE_TIME = 20.0
+	NUMBER_OF_BANS_PER_TEAM = 2
 	END_GAME_ON_KILLS = true
 	KILLS_TO_END_GAME_FOR_TEAM = 20			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
@@ -213,10 +216,12 @@ end
 
 if GetMapName() == "holdout" then
 	UNIVERSAL_SHOP_MODE = true
-	STRATEGY_TIME = 0.0
+	STRATEGY_TIME = 5.0
 	SHOWCASE_TIME = 0.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
+	BANNING_PHASE_TIME = 0.0
+	NUMBER_OF_BANS_PER_TEAM = 0
 	NORMAL_START_GOLD = 800
 	ENABLE_TOWER_BACKDOOR_PROTECTION = false
 	LOSE_GOLD_ON_DEATH = false
@@ -243,11 +248,13 @@ end
 if GetMapName() == "main" then
 	UNIVERSAL_SHOP_MODE = true
 	ALLOW_SAME_HERO_SELECTION = true
-	STRATEGY_TIME = 0.0
+	STRATEGY_TIME = 5.0
 	PRE_GAME_TIME = 60.0
 	POST_GAME_TIME = 30.0
+	BANNING_PHASE_TIME = 10.0
+	NUMBER_OF_BANS_PER_TEAM = 1
 	END_GAME_ON_KILLS = true
-	KILLS_TO_END_GAME_FOR_TEAM = 45			-- How many kills for a team should signify an end of game?
+	KILLS_TO_END_GAME_FOR_TEAM = 100			-- How many kills for a team should signify an end of game?
 	LOSE_GOLD_ON_DEATH = false
 	USE_AUTOMATIC_PLAYERS_PER_TEAM = false 	-- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = true	-- Should we use a custom buyback time?

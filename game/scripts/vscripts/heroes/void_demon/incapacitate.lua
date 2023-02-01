@@ -4,15 +4,20 @@ function IncapacitateStart(event)
 	local caster = event.caster
 	local ability = event.ability
 
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
-		local disarm_duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1)
+	-- Check for spell block and spell immunity (latter because of lotus)
+	if target:TriggerSpellAbsorb(ability) or target:IsMagicImmune() then
+		return
+	end
 
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_incapacitate_disarm", {["duration"] = disarm_duration})
+	local debuff_duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1)
 
-		local talent = caster:FindAbilityByName("special_bonus_unique_night_stalker")
-		if talent and talent:GetLevel() > 0 then
-			ability:ApplyDataDrivenModifier(caster, target, "modifier_incapacitate_silence", {["duration"] = disarm_duration})
-		end
+	-- Apply the disarm
+	local disarm_duration = target:GetValueChangedByStatusResistance(debuff_duration)
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_incapacitate_disarm", {["duration"] = disarm_duration})
+
+	-- Apply the silence if caster has the talent
+	local talent = caster:FindAbilityByName("special_bonus_unique_night_stalker")
+	if talent and talent:GetLevel() > 0 then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_incapacitate_silence", {["duration"] = debuff_duration})
 	end
 end

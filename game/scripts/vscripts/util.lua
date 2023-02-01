@@ -185,7 +185,7 @@ function CopyHero(target, caster)
 		local ability_table = {
 			"dark_ranger_charm", 			-- obvious reasons, weird interactions
 			"paladin_eternal_devotion", 	-- disabling just in case, playerID issues
-			--"perun_electric_trap", 			-- crashes
+			--"perun_electric_trap", 		-- crashes
 			"archmage_mass_teleport", 		-- preventing abuse
 			"dark_terminator_blink",        -- preventing abuse
 			"special_bonus_reincarnation_250",
@@ -585,6 +585,7 @@ function SuperStrongDispel(target, bRemoveAlmostAllDebuffs, bRemoveDispellableBu
 				"modifier_entrapment",										-- Astral Trekker Net
 				"modifier_purge_enemy_creep",
 				"modifier_purge_enemy_hero",
+				"modifier_stealth_assassin_ambush_mini_stun",
 				"modifier_time_stop",
 				"modifier_time_stop_scepter",
 				"modifier_volcano_stun",

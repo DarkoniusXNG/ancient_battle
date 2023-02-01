@@ -1,7 +1,10 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Anti Mage: Spell Shield - passive magic resistance; active applies a buff with spell block (linken's effect) + shield that blocks spell damage; Buff goes away after blocking a spell or after blocking damage.
+  // Anti Mage: Spell Shield (E) - passive magic resistance; active applies a buff with spell block (linken's effect) + shield that blocks spell damage; 
+  // Author: Darkonius
+  // Notes: OK; 2023; Buff goes away after blocking a spell or after blocking damage.
+  // TO_DO: ALL
   //=================================================================================================================
   "anti_mage_custom_spell_shield"
   {
@@ -13,6 +16,7 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
     // Casting
@@ -27,7 +31,7 @@
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "45 50 55 60"
+    "AbilityManaCost"                                     "60 65 70 75"
     "AbilityProcsMagicStick"                              "1"
 
     // Special
@@ -39,8 +43,69 @@
         "value"                                           "15 25 35 45"
         "special_bonus_anti_mage_custom_3"                "+20"
       }
-      "buff_spell_damage_block"                           "110 140 170 200"
+      "buff_spell_damage_block"
+      {
+        "value"                                           "110 140 170 200"
+        "special_bonus_anti_mage_custom_4"                "+100"
+      }
       "buff_duration"                                     "12"
+    }
+  }
+
+  //=================================================================================================================
+  // Spell Shield talent: active buff also reflects a spell
+  //=================================================================================================================
+  "special_bonus_unique_anti_mage_custom_spell_shield_reflect"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "1"
+      }
+    }
+  }
+
+  //=================================================================================================================
+  // Spell Shield talent: Increases bonus magic resistance
+  //=================================================================================================================
+  "special_bonus_anti_mage_custom_3"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "20"
+    }
+  }
+
+  //=================================================================================================================
+  // Spell Shield talent: Increases spell damage block amount
+  //=================================================================================================================
+  "special_bonus_anti_mage_custom_4"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "100"
     }
   }
 }

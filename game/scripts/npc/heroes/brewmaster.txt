@@ -10,7 +10,7 @@
     "Team"                                                "Good"
     "BotImplemented"                                      "0"
     "Role"                                                "Carry,Initiator,Durable,Disabler,Nuker"  // roles
-    "Rolelevels"                                          "2,3,2,2,2"
+    "Rolelevels"                                          "2,3,2,2,3"
     "Complexity"                                          "3"
 
     // Abilities

@@ -46,7 +46,7 @@
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_as_threshold"                  "ATTACK SPEED THRESHOLD:"
 
 		"DOTA_Tooltip_ability_astral_trekker_giant_growth"                                "Giant Growth"
-		"DOTA_Tooltip_ability_astral_trekker_giant_growth_Description"                    "Astral Trekker is slowly gaining an astral giant mass that increases his power at the cost of his attack speed. Passively increases attack damage, Astral Stomp's damage and health. When activated gives bonus armor and bonus magic resistance for the duration."
+		"DOTA_Tooltip_ability_astral_trekker_giant_growth_Description"                    "Astral Trekker is slowly gaining an astral giant mass that increases his power at the cost of his attack speed. Passively increases attack damage, Astral Stomp's damage and health. When activated gives bonus armor and bonus magic resistance for the duration.\n\nDISPEL TYPE: Basic Dispel"
 		"DOTA_Tooltip_ability_astral_trekker_giant_growth_Lore"							  "A giant from the Astral plane of existence."
 		"DOTA_Tooltip_ability_astral_trekker_giant_growth_passive_bonus_damage"           "PASSIVE BONUS DAMAGE:"
 		"DOTA_Tooltip_ability_astral_trekker_giant_growth_passive_bonus_attack_speed"     "PASSIVE ATTACK SPEED LOSS:"

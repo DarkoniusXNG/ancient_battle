@@ -159,6 +159,7 @@
 #base "hero_abilities/stealth_assassin_death_ward.txt"
 #base "hero_abilities/stealth_assassin_desolate.txt"
 #base "hero_abilities/stealth_assassin_permanent_invisibility.txt"
+#base "hero_abilities/stealth_assassin_smoke_screen.txt"
 
 #base "hero_abilities/void_demon_backtrack.txt"
 #base "hero_abilities/void_demon_incapacitate.txt"
@@ -185,6 +186,7 @@
 #base "hero_abilities/techies_custom_land_mines.txt"
 #base "hero_abilities/techies_custom_stasis_trap.txt"
 #base "hero_abilities/techies_custom_suicide.txt"
+#base "hero_abilities/techies_custom_explosive_shot.txt"
 #base "hero_abilities/techies_custom_remote_mines.txt"
 #base "hero_abilities/techies_custom_special_talents.txt"
 
@@ -195,6 +197,7 @@
 #base "unit_abilities/fire_roshan_fire_breath.txt"
 #base "unit_abilities/guardian_angel_bash.txt"
 #base "unit_abilities/guardian_angel_holy_purification.txt"
+#base "unit_abilities/guardian_angel_immunity.txt"
 #base "unit_abilities/infernal_golem_permanent_immolation.txt"
 #base "unit_abilities/kondor_poop_toss.txt"
 #base "unit_abilities/kondor_slam.txt"

@@ -110,7 +110,7 @@ function dark_terminator_terminate:OnProjectileHit(target, vLocation)
 	--local sound_target = "Hero_Sniper.AssassinateProjectile"
 	--target:EmitSound(sound_target)
 
-	-- If target has Spell Block, don't continue
+	-- Check for Spell Block; pierces spell immunity partially
 	if target:TriggerSpellAbsorb(self) then
 		return true
 	end

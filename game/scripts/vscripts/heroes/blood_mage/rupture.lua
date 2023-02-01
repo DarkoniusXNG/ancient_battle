@@ -5,7 +5,8 @@ function RuptureStart(event)
 	local ability = event.ability
 
 	caster:EmitSound("Hero_Bloodseeker.Rupture.Cast")
-	-- Checking if target has spell block
+
+	-- Check for spell block; pierces spell immunity
 	if not target:TriggerSpellAbsorb(ability) then
 		local ability_level = ability:GetLevel() - 1
 

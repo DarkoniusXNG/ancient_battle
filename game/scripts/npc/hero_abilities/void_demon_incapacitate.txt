@@ -4,7 +4,7 @@
   // Void Demon: Incapacitate (W) - New Spell, Disarms the target, Silences only with talent learned
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 26.8.2019;
+  // Notes: OK; 2022; Disarm is affected by status resistance, silence is not.
   // TO_DO:
   //=================================================================================================================
   "void_demon_incapacitate"

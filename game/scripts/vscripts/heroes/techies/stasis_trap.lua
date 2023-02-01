@@ -233,7 +233,7 @@ if modifier_techies_custom_stasis_trap_stun == nil then
 	modifier_techies_custom_stasis_trap_stun = class({})
 end
 
-function modifier_techies_custom_stasis_trap_stun:IsHidden()
+function modifier_techies_custom_stasis_trap_stun:IsHidden() -- needs tooltip
 	return false
 end
 
