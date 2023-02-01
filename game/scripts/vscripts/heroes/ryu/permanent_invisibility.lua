@@ -126,6 +126,7 @@ function modifier_stealth_assassin_permanent_invisibility_buff:GetModifierInvisi
 	if not self:IsCustomDisabled() then
 		return 1
 	end
+	return 0
 end
 
 if IsServer() then
