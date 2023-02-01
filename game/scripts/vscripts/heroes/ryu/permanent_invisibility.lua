@@ -124,7 +124,7 @@ end
 
 function modifier_stealth_assassin_permanent_invisibility_buff:GetModifierInvisibilityLevel()
 	if not self:IsCustomDisabled() then
-		return 0.8
+		return 1
 	end
 end
 

@@ -81,5 +81,6 @@
 
     "HasInventory"                                        "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 }

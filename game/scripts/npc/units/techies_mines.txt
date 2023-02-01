@@ -79,6 +79,7 @@
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 
   //=================================================================================
@@ -160,6 +161,7 @@
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 
   //=================================================================================
@@ -242,6 +244,7 @@
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
   
   //=================================================================================
@@ -324,5 +327,6 @@
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 }

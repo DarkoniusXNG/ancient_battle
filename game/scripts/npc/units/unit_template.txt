@@ -105,6 +105,7 @@
     //"HasInventory"          "1"              // 0 is default for units
     //"WakesNeutrals"               "1"              // 1 is default; Unit will or will not aggro units on the Neutral team within their acquisition range.
     //"ImmuneToOmnislash"                                   "1" // needed for wards and invulnerable units
+    //"ImmuneToInfest"                                      "1" // needed for wards and invulnerable units
     //"UntargetableByExorcismSpirits"                       "1" // needed for wards and invulnerable units
     
     // "Creature"

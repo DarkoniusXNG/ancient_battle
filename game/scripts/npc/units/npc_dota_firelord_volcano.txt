@@ -21,5 +21,6 @@
     //"Ability1"                                        "dummy_unit"
     "HasInventory"                                        "0"
     "ImmuneToOmnislash"                                   "1"
+    "ImmuneToInfest"                                      "1"
   }
 }
