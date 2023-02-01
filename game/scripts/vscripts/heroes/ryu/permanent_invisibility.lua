@@ -21,7 +21,7 @@ function stealth_assassin_permanent_invisibility:OnToggle()
 		caster:RemoveModifierByNameAndCaster("modifier_stealth_assassin_permanent_invisibility_disable", caster)
 		local passive = caster:FindModifierByNameAndCaster("modifier_stealth_assassin_permanent_invisibility_buff", caster)
 		if passive then
-			passive:OnRefresh()
+			passive:Reset()
 		end
 	end
 end
@@ -55,15 +55,18 @@ function modifier_stealth_assassin_permanent_invisibility_buff:AllowIllusionDupl
 end
 
 function modifier_stealth_assassin_permanent_invisibility_buff:OnCreated()
+	self:OnRefresh()
+	self:Reset()
+end
+
+function modifier_stealth_assassin_permanent_invisibility_buff:OnRefresh()
 	local ability = self:GetAbility()
 	self.fade_time = ability:GetSpecialValueFor("fade_delay")
 	self.move_speed = ability:GetSpecialValueFor("movement_speed")
 	self.hp_regen = ability:GetSpecialValueFor("hp_regen")
-
-	self:OnRefresh()
 end
 
-function modifier_stealth_assassin_permanent_invisibility_buff:OnRefresh()
+function modifier_stealth_assassin_permanent_invisibility_buff:Reset()
 	if IsServer() then
 		local particle = ParticleManager:CreateParticle("particles/generic_hero_status/status_invisibility_start.vpcf", PATTACH_ABSORIGIN, self:GetParent())
 		ParticleManager:ReleaseParticleIndex(particle)
@@ -120,7 +123,9 @@ function modifier_stealth_assassin_permanent_invisibility_buff:GetModifierConsta
 end
 
 function modifier_stealth_assassin_permanent_invisibility_buff:GetModifierInvisibilityLevel()
-	return math.min(1, self:GetStackCount() / self.fade_time) -- using stack count only works for fade times that are above 1
+	if not self:IsCustomDisabled() then
+		return 0.8
+	end
 end
 
 if IsServer() then
@@ -161,7 +166,7 @@ if IsServer() then
 		end
 
 		-- Disable the buff (refresh its stack count) if parent dealt damage
-		self:OnRefresh()
+		self:Reset()
 	end
 end
 

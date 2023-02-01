@@ -175,13 +175,7 @@ if IsServer() then
 			-- Particle
 			local particle_name = "particles/units/heroes/hero_riki/riki_backstab.vpcf"
 			local particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
-			ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target_location, true)
 			ParticleManager:ReleaseParticleIndex(particle)
-
-			--Timers:CreateTimer(1.0, function()
-				--ParticleManager:DestroyParticle(particle, false)
-				--ParticleManager:ReleaseParticleIndex(particle)
-			--end)
 
 			-- Sound
 			parent:EmitSound("Hero_Riki.Backstab")
@@ -191,9 +185,12 @@ if IsServer() then
 		end
 		if desolate_proc then
 			-- Particle
+			local particle_name = "particles/units/heroes/hero_riki/riki_blink_strike_slow.vpcf"
+			local particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+			ParticleManager:ReleaseParticleIndex(particle)
 
 			-- Sound
-			--parent:EmitSound("")
+			parent:EmitSound("Hero_Riki.Blink_Strike")
 
 			-- Calculate desolate damage
 			desolate_dmg = math.ceil(agility*desolate_multiplier)

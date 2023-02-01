@@ -4,7 +4,7 @@
   // Stealth Assassin: Desolate Backstab (E) - New Spell, mix of Spectre Desolate and old Riki Backstab
   // Author: Darkonius
   // Notes: OK; 2023; Damage is dealt in a seperate instance; Damage ignores Damage Block; It cant be lifestealed off of, and its not considered by crit or cleave.
-  // TO_DO: test; desolate particle and sound
+  // TO_DO:
   //=================================================================================================================
   "stealth_assassin_desolate"
   {
@@ -25,7 +25,7 @@
     {
       "backstab_agi_multiplier"
       {
-        "value"                                           "0.5 0.75 1.0 1.25" // first dota version (0.2/0.4/0.6/0.8)
+        "value"                                           "0.25 0.5 0.75 1.0" // first dota version (0.2/0.4/0.6/0.8)
         "CalculateSpellDamageTooltip"                     "0"
       }
       "backstab_max_angle"                                "105"

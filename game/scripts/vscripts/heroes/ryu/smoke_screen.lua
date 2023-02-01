@@ -114,6 +114,10 @@ function modifier_stealth_assassin_smoke_screen_thinker:GetAuraSearchFlags()
   return DOTA_UNIT_TARGET_FLAG_NONE
 end
 
+function modifier_stealth_assassin_smoke_screen_thinker:GetAuraDuration()
+  return 0.01
+end
+
 function modifier_stealth_assassin_smoke_screen_thinker:OnCreated(kv)
 	if not IsServer() then
 		return
@@ -126,7 +130,7 @@ function modifier_stealth_assassin_smoke_screen_thinker:OnCreated(kv)
 		radius = ability:GetSpecialValueFor("radius")
 	end
 
-	local center = Vector(tonumber(kv.center_x), tonumber(kv.center_y), 0)
+	local center = GetGroundPosition(Vector(tonumber(kv.center_x), tonumber(kv.center_y), 0), parent)
 
 	-- Particle
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_riki/riki_smokebomb.vpcf", PATTACH_WORLDORIGIN, parent)
@@ -163,7 +167,7 @@ function modifier_stealth_assassin_smoke_screen_debuff:IsDebuff()
 end
 
 function modifier_stealth_assassin_smoke_screen_debuff:IsPurgable()
-  return false
+  return true
 end
 
 function modifier_stealth_assassin_smoke_screen_debuff:OnCreated()
@@ -176,11 +180,13 @@ function modifier_stealth_assassin_smoke_screen_debuff:OnCreated()
 		self.blind_pct = ability:GetSpecialValueFor("miss_rate")
 		local move_speed_slow = ability:GetSpecialValueFor("move_speed_slow")
 		local turn_rate_slow = 0
+		self.vision_reduction = 0
 		self.disarm_buildings = false
 
 		local caster = ability:GetCaster() -- modifier:GetCaster() in this case will probably return a thinker and not a real caster of the spell
 		if not caster:IsNull() and caster:HasShardCustom() then
 			turn_rate_slow = ability:GetSpecialValueFor("shard_turn_rate_slow")
+			self.vision_reduction = ability:GetSpecialValueFor("shard_vision_reduction")
 			self.disarm_buildings = true
 		end
 
@@ -219,7 +225,7 @@ function modifier_stealth_assassin_smoke_screen_debuff:GetModifierMoveSpeedBonus
 end
 
 function modifier_stealth_assassin_smoke_screen_debuff:GetBonusVisionPercentage()
-	return -90
+	return 0 - math.abs(self.vision_reduction)
 end
 
 function modifier_stealth_assassin_smoke_screen_debuff:CheckState()

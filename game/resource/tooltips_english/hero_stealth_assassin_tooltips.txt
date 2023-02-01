@@ -7,9 +7,10 @@
 		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_miss_rate"                    "%MISS RATE:"
 		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_duration"                     "DURATION:"
 		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_move_speed_slow"              "%MOVE SPEED SLOW:"
-		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_shard_description"            "Applies mini-stun to enemies and reduces their turn rate. Destroys trees and disarms towers."
+		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_shard_description"            "Applies mini-stun to enemies and reduces their turn rate and vision. Destroys trees and disarms towers."
 		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_shard_turn_rate_slow"         "%SHARD TURN RATE SLOW:"
 		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_shard_mini_stun_duration"     "SHARD MINI-STUN DURATION:"
+		"DOTA_Tooltip_ability_stealth_assassin_smoke_screen_shard_vision_reduction"       "%SHARD VISION REDUCTION:"
 		
 		"DOTA_Tooltip_modifier_stealth_assassin_smoke_screen_debuff"                      "Smoke Screen"
 		"DOTA_Tooltip_modifier_stealth_assassin_smoke_screen_debuff_Description"          "Silenced. Missing %dMODIFIER_PROPERTY_MISS_PERCENTAGE%%% of attacks. Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."

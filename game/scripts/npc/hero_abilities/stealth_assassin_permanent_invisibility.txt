@@ -4,7 +4,7 @@
   // Stealth Assassin: Stealth (T) - old Riki Permanent Invisibility
   // Author: Darkonius
   // Notes: OK; 2023; Toggle-able, disabled with silence; caster reveals itself when doing damage
-  // TO_DO: test
+  // TO_DO:
   //=================================================================================================================
   "stealth_assassin_permanent_invisibility"
   {

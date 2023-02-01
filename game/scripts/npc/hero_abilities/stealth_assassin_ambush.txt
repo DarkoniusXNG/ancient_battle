@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Linkens: Blocks;
   // Notes: OK; 2023; Stun is not dispellable;
-  // TO_DO: test; Add animation or particle to the spell;
+  // TO_DO: Add particle to the spell;
   //=================================================================================================================
   "stealth_assassin_ambush"
   {
