@@ -48,7 +48,7 @@
       "damage_kill_threshold"                             "250 350 450"
       "scepter_damage_kill_threshold"
       {
-        "value"                                           "350 500 650"
+        "value"                                           "400 550 700"
         "RequiresScepter"                                 "1"
       }
       "scepter_bonus_cast_range"

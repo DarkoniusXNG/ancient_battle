@@ -25,6 +25,7 @@ function blood_mage_blood_mirror:GetCustomCastErrorTarget(target)
 	if target == caster then
 		return "#dota_hud_error_cant_cast_on_self"
 	end
+	return ""
 end
 
 function blood_mage_blood_mirror:OnSpellStart()

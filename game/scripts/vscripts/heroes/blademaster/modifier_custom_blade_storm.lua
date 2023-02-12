@@ -18,6 +18,8 @@ function modifier_custom_blade_storm:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_OVERRIDE_ANIMATION,
 		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
 	}
 end
 
@@ -40,14 +42,20 @@ function modifier_custom_blade_storm:OnCreated()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
 
-	local radius = ability:GetSpecialValueFor("radius")
-	local think_interval = ability:GetSpecialValueFor("think_interval")
-	self.damage_per_second = ability:GetSpecialValueFor("damage_per_second")
-	self.think_interval = think_interval
-	self.radius = radius
-	self.damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
+	-- Check for shard on both server and client
+	if caster:HasShardCustom() then
+		self.attack_speed = ability:GetSpecialValueFor("shard_attack_speed")
+		self.move_speed = ability:GetSpecialValueFor("shard_move_speed")
+	end
 
 	if IsServer() then
+		local radius = ability:GetSpecialValueFor("radius")
+		local think_interval = ability:GetSpecialValueFor("think_interval")
+		self.damage_per_second = ability:GetSpecialValueFor("damage_per_second")
+		self.think_interval = think_interval
+		self.radius = radius
+		self.damage_to_buildings_percent = ability:GetSpecialValueFor("damage_to_buildings")
+
 		-- Particle
 		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
 		--ParticleManager:SetParticleControlEnt(particle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
@@ -62,7 +70,19 @@ function modifier_custom_blade_storm:OnCreated()
 	end
 end
 
+function modifier_custom_blade_storm:GetModifierAttackSpeedBonus_Constant()
+	return self.attack_speed or 0
+end
+
+function modifier_custom_blade_storm:GetModifierMoveSpeedBonus_Constant()
+	return self.move_speed or 0
+end
+
 function modifier_custom_blade_storm:OnIntervalThink()
+	if not IsServer() then
+		return
+	end
+
 	local parent = self:GetParent()
 
 	local damage_per_second = self.damage_per_second
@@ -129,18 +149,21 @@ function modifier_custom_blade_storm:OnIntervalThink()
 end
 
 function modifier_custom_blade_storm:OnDestroy()
+	if not IsServer() then
+		return
+	end
+
 	local parent = self:GetParent()
-	if IsServer() then
-		-- Stop the looping sound
-		parent:StopSound("Hero_Juggernaut.BladeFuryStart")
 
-		-- New Sound
-		parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
+	-- Stop the looping sound
+	parent:StopSound("Hero_Juggernaut.BladeFuryStart")
 
-		-- Destroy particle
-		if self.blade_storm_particle then
-			ParticleManager:DestroyParticle(self.blade_storm_particle, true)
-			ParticleManager:ReleaseParticleIndex(self.blade_storm_particle)
-		end
+	-- New Sound
+	parent:EmitSound("Hero_Juggernaut.BladeFuryStop")
+
+	-- Destroy particle
+	if self.blade_storm_particle then
+		ParticleManager:DestroyParticle(self.blade_storm_particle, true)
+		ParticleManager:ReleaseParticleIndex(self.blade_storm_particle)
 	end
 end

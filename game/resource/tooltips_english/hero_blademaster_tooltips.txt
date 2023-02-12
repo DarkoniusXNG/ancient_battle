@@ -6,7 +6,11 @@
 		"DOTA_Tooltip_ability_blademaster_blade_storm_damage_per_second"                  "DAMAGE PER SECOND:"
 		"DOTA_Tooltip_ability_blademaster_blade_storm_radius"                             "RADIUS:"
 		"DOTA_Tooltip_ability_blademaster_blade_storm_duration"                           "DURATION:"
-		
+		"DOTA_Tooltip_ability_blademaster_blade_storm_shard_description"                  "Increases duration and grants bonus movement speed and attack speed during Blade Storm."
+		"DOTA_Tooltip_ability_blademaster_blade_storm_shard_move_speed"                   "SHARD MOVE SPEED:"
+		"DOTA_Tooltip_ability_blademaster_blade_storm_shard_attack_speed"                 "SHARD ATTACK SPEED:"
+		"DOTA_Tooltip_ability_blademaster_blade_storm_shard_duration"                     "SHARD DURATION:"
+
 		"DOTA_Tooltip_modifier_custom_blade_storm"                                        "Blade Storm"
 		"DOTA_Tooltip_modifier_custom_blade_storm_Description"                            "Spell Immune, Silenced and dealing magic damage over time."
 

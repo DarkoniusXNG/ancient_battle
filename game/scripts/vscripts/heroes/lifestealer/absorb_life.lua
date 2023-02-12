@@ -42,7 +42,7 @@ function AbsorbLife(keys)
 	end
 
 	-- Heal the caster
-	caster:Heal(total_heal, caster)
+	caster:Heal(total_heal, ability)
 	SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, total_heal, nil)
 
 	-- Sound

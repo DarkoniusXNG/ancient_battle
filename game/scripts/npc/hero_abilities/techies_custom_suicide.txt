@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Techies: Suicide Squad Attack (E) - like old techies suicide squad attack but without respawn time reduction
   // Author: Darkonius
-  // Notes: OK; 2022; Damage Type: Composite; Has shard upgrade - turns it into Blast Off with stun; no unit targetting!
+  // Notes: OK; 2023; Damage Type: Composite; Has shard upgrade - turns it into Blast Off with stun; no unit targetting!
   // TO_DO:
   //=================================================================================================================
   "techies_custom_suicide"
@@ -36,8 +36,8 @@
     {
       "small_radius"                                      "200" // old (200)
       "big_radius"                                        "500" // old (500)
-      "small_radius_damage"                               "650 850 1150 1550" // full damage
-      "big_radius_damage"                                 "325 425 575 775" // partial damage
+      "small_radius_damage"                               "700 900 1200 1600" // full damage
+      "big_radius_damage"                                 "350 450 600 800" // partial damage
       "building_dmg_reduction"                            "40" // latest (40%); mid (70%); first version (100%)
       "vision_radius"                                     "400" // old (400)
       "vision_duration"                                   "2.0" // old (2)

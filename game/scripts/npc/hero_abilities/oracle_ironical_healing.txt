@@ -34,8 +34,8 @@
 			"damage_pct"                                  "2"
 			"duration"
 			{
-				"value"                                          "15"
-				"special_bonus_unique_ironical_healing_duration" "-10"
+				"value"                                          "10"
+				"special_bonus_unique_ironical_healing_duration" "-5"
 			}
 		}
 	}
@@ -53,7 +53,7 @@
 		
 		"AbilityValues"
 		{
-			"tooltip_value"                               "10"
+			"tooltip_value"                               "5"
 		}
 	}
 	

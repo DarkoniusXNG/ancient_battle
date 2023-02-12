@@ -11,12 +11,11 @@ function item_pull_staff:GetIntrinsicModifierName()
 end
 
 function item_pull_staff:CastFilterResultTarget(target)
-  --local caster = self:GetCaster()
-  local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
+  local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-  --if target == caster then
-    --return UF_FAIL_CUSTOM
-  --end
+  if target:IsCustomWardTypeUnit() then
+    return UF_FAIL_CUSTOM
+  end
 
   local forbidden_modifiers = {
     "modifier_enigma_black_hole_pull",
@@ -31,7 +30,7 @@ function item_pull_staff:CastFilterResultTarget(target)
     end
   end
 
-  return defaultFilterResult
+  return default_result
 end
 
 function item_pull_staff:GetCustomCastErrorTarget(target)
@@ -39,6 +38,9 @@ function item_pull_staff:GetCustomCastErrorTarget(target)
   --if target == caster then
     --return "#dota_hud_error_cant_cast_on_self"
   --end
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
   if target:HasModifier("modifier_enigma_black_hole_pull") then
     return "#custom_hud_error_pull_staff_black_hole"
   end
@@ -54,6 +56,7 @@ function item_pull_staff:GetCustomCastErrorTarget(target)
   if target:HasModifier("modifier_disruptor_kinetic_field") then
     return "#custom_hud_error_pull_staff_kinetic_field"
   end
+  return ""
 end
 
 function item_pull_staff:OnSpellStart()

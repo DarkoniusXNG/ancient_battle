@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Blademaster; 2022;
+  // HERO: Blademaster; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_blademaster"
@@ -55,9 +55,9 @@
     //-------------------------------------------------------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"                                     "24"                  // Juggernaut (16); Naga Siren (23);
-    "AttackDamageMax"                                     "34"                  // Juggernaut (20); Naga Siren (25);
+    "AttackDamageMax"                                     "28"                  // Juggernaut (20); Naga Siren (25);
     "AttackRate"                                          "1.7"                  // Naga Siren (1.7); Juggernaut (1.4); original (1.77);
-    "BaseAttackSpeed"                                     "125"                  // Naga Siren (110); Juggernaut (110); original (100);
+    "BaseAttackSpeed"                                     "100"                  // Naga Siren (110); Juggernaut (110); original (100);
     "AttackAnimationPoint"                                "0.33"                  // like Juggernaut
     "AttackAcquisitionRange"                              "600"                  // like Juggernaut
     "AttackRange"                                         "150"                  // like Juggernaut
@@ -77,7 +77,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
     "AttributeBaseStrength"                               "20"                  // Juggernaut (20); Naga Siren (21); original (18);
-    "AttributeStrengthGain"                               "2.2"                  // Juggernaut (2.2); Naga Siren (2.8); original (2.0);
+    "AttributeStrengthGain"                               "2.2"                  // Juggernaut (2.2); Naga Siren (2.6); original (2.0);
     "AttributeBaseAgility"                                "26"                  // Juggernaut (34); Naga Siren (21); original (22);
     "AttributeAgilityGain"                                "2.8"                  // Juggernaut (2.8); Naga Siren (3.3); original (1.75);
     "AttributeBaseIntelligence"                           "16"                  // Juggernaut (14); Naga Siren (21); original (16);

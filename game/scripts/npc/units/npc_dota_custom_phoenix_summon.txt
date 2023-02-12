@@ -41,8 +41,8 @@
     "AttackDamageMax"                                     "80"                 // original (75);
     "AttackRate"                                          "1.4"                 // original (1.4);
     "AttackAnimationPoint"                                "0.43"              // dota Phoenix (0.35);
-    "AttackAcquisitionRange"                              "600"
-    "AttackRange"                                         "600"               // original (600); dota Phoenix (500);
+    "AttackAcquisitionRange"                              "700"
+    "AttackRange"                                         "500"               // original (600); dota Phoenix (500);
     "ProjectileModel"                                     "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
     "ProjectileSpeed"                                     "1500"               // original (1800); dota Phoenix (1100);
 
@@ -79,8 +79,8 @@
 
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "1600"              // original (1600);
-    "VisionNighttimeRange"                                "800"              // original (900);
+    "VisionDaytimeRange"                                  "700"              // original (1600);
+    "VisionNighttimeRange"                                "700"              // original (900);
 
     "Creature"
     {

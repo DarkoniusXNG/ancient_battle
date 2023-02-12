@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Blademaster: Shadow Walk (E) - like old Bounty Hunter's Shadow Walk + Clinkz Skeleton Walk
   // Author: Darkonius
-  // Notes: OK; 2022; Dispellable with Basic Dispel;
+  // Notes: OK; 2023; Dispellable with Basic Dispel;
   // Notes:
   // TO_DO:
   //=================================================================================================================
@@ -18,7 +18,7 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     
     "AbilityCastPoint"                                    "0"
-    "AbilityCooldown"                                     "20 19 18 17"
+    "AbilityCooldown"                                     "26 24 22 20" // original (2 seconds)
     
     "AbilityManaCost"                                     "75"
     "AbilityProcsMagicStick"                              "1"

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Blood Mage: Banish - like Pugna Decrepify
   // Author: Darkonius
-  // Notes: OK; 2022; Original cooldown was 0;
+  // Notes: OK; 2023; Original cooldown was 0;
   // Linkens: Blocks;
   // TO_DO:
   //=================================================================================================================
@@ -11,7 +11,7 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/blood_mage_banish"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"

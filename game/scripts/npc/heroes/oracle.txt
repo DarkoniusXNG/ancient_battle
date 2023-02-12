@@ -19,7 +19,7 @@
 		"Ability2"                                        "oracle_will_to_live"         // W (4 levels),
 		"Ability3"                                        "oracle_ironical_healing"     // E (4 levels),
 		"Ability4"                                        "oracle_rain_of_destiny"      // T (1 level), scepter ability
-		"Ability5"                                        "oracle_undeniable_torture"   // T (4 levels),
+		"Ability5"                                        "oracle_undeniable_torture"   // F (4 levels),
 		"Ability6"                                        "oracle_sacrifice"            // R, Primary Ultimate (3 levels)
 		"Ability7"                                        "generic_hidden"          
 		"Ability8"                                        "generic_hidden"

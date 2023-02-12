@@ -91,7 +91,7 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_1"                           "+{s:value} Holy Purification AoE"
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_2"                           "Global Eternal Devotion"
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_2_Description"			    "Global aura and when Paladin dies all allies on the map gain Guardian Angel's protection."
-		"DOTA_Tooltip_ability_special_bonus_unique_paladin_3"                           "-{s:value} Holy Purification Cooldown"
+		"DOTA_Tooltip_ability_special_bonus_unique_paladin_3"                           "-{s:value}s Holy Purification Cooldown"
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_4"                           "Paladin's Hammer Purges"
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_4_Description"               "Dispels enemies and kills illusions and summons."
 		"DOTA_Tooltip_ability_special_bonus_unique_paladin_5"                           "Wrath of God"

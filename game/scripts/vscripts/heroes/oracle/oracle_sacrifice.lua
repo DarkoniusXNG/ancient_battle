@@ -4,30 +4,24 @@ LinkLuaModifier( "modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice.lu
 LinkLuaModifier( "modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
 
-function oracle_sacrifice:CastFilterResultTarget( hTarget )
-	if self:GetCaster() == hTarget then
+function oracle_sacrifice:CastFilterResultTarget(target)
+	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target == caster or target:IsHeroDominatedCustom() then
 		return UF_FAIL_CUSTOM
 	end
 
-	local nResult = UnitFilter(
-		hTarget,
-		DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-		DOTA_UNIT_TARGET_HERO,
-		0,
-		self:GetCaster():GetTeamNumber()
-	)
-	if nResult ~= UF_SUCCESS then
-		return nResult
-	end
-
-	return UF_SUCCESS
+	return default_result
 end
 
-function oracle_sacrifice:GetCustomCastErrorTarget( hTarget )
-	if self:GetCaster() == hTarget then
+function oracle_sacrifice:GetCustomCastErrorTarget(target)
+	if self:GetCaster() == target then
 		return "#dota_hud_error_cant_cast_on_self"
 	end
-
+	if target:IsHeroDominatedCustom() then
+		return "Can't Target Dominated Heroes!"
+	end
 	return ""
 end
 
@@ -35,6 +29,14 @@ function oracle_sacrifice:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
+	
+	-- Strong dispel
+	local RemovePositiveBuffs = false
+	local RemoveDebuffs = true
+	local BuffsCreatedThisFrameOnly = false
+	local RemoveStuns = true
+	local RemoveExceptions = true
+	caster:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 
 	-- load data
 	local duration = self:GetSpecialValueFor("leash_duration")
@@ -75,6 +77,7 @@ function modifier_oracle_sacrifice:OnCreated( kv )
 
 	if IsServer() then
 		-- references
+		local slave = self:GetParent()
 		local master = EntIndexToHScript(kv.master)
 		self.leash_radius = ability:GetSpecialValueFor("leash_radius")
 		self.buffer_length = ability:GetSpecialValueFor("leash_buffer")
@@ -86,7 +89,7 @@ function modifier_oracle_sacrifice:OnCreated( kv )
 		self.buffer_radius = self.leash_radius - self.buffer_length
 
 		-- create master's modifier
-		local master_modifier = master:AddNewModifier(self:GetParent(), ability, "modifier_oracle_sacrifice_master", {duration = kv.duration})
+		local master_modifier = master:AddNewModifier(slave, ability, "modifier_oracle_sacrifice_master", {duration = kv.duration})
 		master_modifier.slave = self
 
 		self.master = master_modifier
@@ -94,8 +97,25 @@ function modifier_oracle_sacrifice:OnCreated( kv )
 		-- Start interval
 		self:StartIntervalThink( interval )
 
-		-- effects
-		self:PlayEffects()
+		-- Get Resources
+		local particle_cast = "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
+
+		-- Create Particle
+		local effect_cast = ParticleManager:CreateParticle(particle_cast, PATTACH_POINT_FOLLOW, slave)
+
+		local attach
+		if master:ScriptLookupAttachment("attach_attack2") ~= 0 then
+			attach = "attach_attack2"
+		elseif master:ScriptLookupAttachment("attach_attack1") ~= 0 then
+			attach = "attach_attack1"
+		else
+			attach = "attach_hitloc"
+		end
+		ParticleManager:SetParticleControlEnt(effect_cast, 0, master, PATTACH_POINT_FOLLOW, attach, master:GetOrigin(), true)
+		ParticleManager:SetParticleControlEnt(effect_cast, 1, slave, PATTACH_POINT_FOLLOW, "attach_hitloc", slave:GetOrigin(), true)
+
+		-- buff particle
+		self:AddParticle(effect_cast, false, false, -1, false, false)
 	end
 end
 
@@ -169,51 +189,6 @@ function modifier_oracle_sacrifice:OnIntervalThink()
 	end
 end
 
-function modifier_oracle_sacrifice:PlayEffects()
-	-- Get Resources
-	local particle_cast = "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
-
-	-- Create Particle
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_POINT_FOLLOW, self:GetParent() )
-
-	local attach
-	if self.master:GetParent():ScriptLookupAttachment( "attach_attack2" )~=0 then
-		attach = "attach_attack2"
-	elseif self.master:GetParent():ScriptLookupAttachment( "attach_attack1" )~=0 then
-		attach = "attach_attack1"
-	else
-		attach = "attach_hitloc"
-	end
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		0,
-		self.master:GetParent(),
-		PATTACH_POINT_FOLLOW,
-		attach,
-		self.master:GetParent():GetOrigin(), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		1,
-		self:GetParent(),
-		PATTACH_POINT_FOLLOW,
-		"attach_hitloc",
-		self:GetParent():GetOrigin(), -- unknown
-		true -- unknown, true
-	)
-
-	-- buff particle
-	self:AddParticle(
-		effect_cast,
-		false,
-		false,
-		-1,
-		false,
-		false
-	)
-end
-
 ---------------------------------------------------------------------------------------------------
 
 modifier_oracle_sacrifice_master = class({})
@@ -243,6 +218,7 @@ function modifier_oracle_sacrifice_master:DeclareFunctions()
 		MODIFIER_PROPERTY_MIN_HEALTH,
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_ABILITY_EXECUTED,
+		MODIFIER_EVENT_ON_HEALTH_GAINED,
 	}
 end
 
@@ -251,116 +227,163 @@ if IsServer() then
 		self.currentHealth = self:GetParent():GetHealth()
 	end
 
-	function modifier_oracle_sacrifice_master:OnTakeDamage( params )
-		if params.unit~=self:GetParent() then
+	function modifier_oracle_sacrifice_master:OnTakeDamage(event)
+		local parent = self:GetParent()
+		local attacker = event.attacker
+		local damaged_unit = event.unit
+		
+		-- Check if attacker exists
+		if not attacker or attacker:IsNull() then
 			return
 		end
 
-		-- cover up damage
-		self:GetParent():SetHealth( self.currentHealth )
+		-- Check if damaged entity exists
+		if not damaged_unit or damaged_unit:IsNull() then
+			return
+		end
 
-		local flags = bit.bor(params.damage_flags, DOTA_DAMAGE_FLAG_BYPASSES_BLOCK, DOTA_DAMAGE_FLAG_NO_DAMAGE_MULTIPLIERS, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_REFLECTION)
+		-- Check if damaged_unit has this modifier
+		if damaged_unit ~= parent then
+			return
+		end
 
-		-- damage slave
+		-- Negate damage - I don't like this but whatever
+		parent:SetHealth( self.currentHealth )
+
+		local flags = bit.bor(event.damage_flags, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL, DOTA_DAMAGE_FLAG_REFLECTION)
+		local slave = self.slave:GetParent() or self:GetCaster()
+
+		-- Check if slave exists
+		if not slave or slave:IsNull() then
+			return
+		end
+
+		-- Damage the slave
 		local damageTable = {
-			victim = self.slave:GetParent(),
-			attacker = params.attacker,
-			damage = params.damage,
-			damage_type = DAMAGE_TYPE_PURE,
-			ability = self:GetAbility(),
+			victim = slave,
+			attacker = attacker,
+			damage = event.damage,
+			damage_type = event.damage_type,
+			ability = self:GetAbility(), -- event.inflictor
 			damage_flags = flags,
 		}
 		ApplyDamage(damageTable)
 
-		-- effects
-		self:PlayEffects1()
+		local particle_cast = "particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_rope.vpcf"
+		local sound_cast = "DOTA_Item.BladeMail.Damage"
+
+		-- Particle
+		local effect_cast = ParticleManager:CreateParticle(particle_cast, PATTACH_ABSORIGIN_FOLLOW, parent)
+		local attach
+		if parent:ScriptLookupAttachment("attach_attack2") ~= 0 then
+			attach = "attach_attack2"
+		elseif parent:ScriptLookupAttachment("attach_attack1") ~= 0 then
+			attach = "attach_attack1"
+		else
+			attach = "attach_hitloc"
+		end
+		ParticleManager:SetParticleControlEnt(effect_cast, 2, parent, PATTACH_POINT_FOLLOW, attach, parent:GetOrigin(), true)
+		ParticleManager:SetParticleControlEnt(effect_cast, 3, slave, PATTACH_POINT_FOLLOW, "attach_hitloc", slave:GetOrigin(), true)
+		ParticleManager:ReleaseParticleIndex(effect_cast)
+
+		-- Sound
+		EmitSoundOnClient(sound_cast, slave:GetPlayerOwner())
 	end
 
-	function modifier_oracle_sacrifice_master:OnAbilityExecuted( params )
-		if (not params.target) or params.target~=self:GetParent() or params.unit:GetTeamNumber()==self:GetParent():GetTeamNumber() then
+	function modifier_oracle_sacrifice_master:OnAbilityExecuted(event)
+		local parent = self:GetParent()
+		local casting_unit = event.unit
+		local target = event.target
+
+		-- Check if caster of the executed ability exists
+		if not casting_unit or casting_unit:IsNull() then
 			return
 		end
 
-		-- redirect
-		params.unit:SetCursorCastTarget( self.slave:GetParent() )
+		-- Check if target of the executed ability exists
+		if not target or target:IsNull() then
+			return
+		end
 
-		-- effects
-		self:PlayEffects1()
-		self:PlayEffects2()
+		-- Check if target has this modifier
+		if target ~= parent then 
+			return
+		end
+
+		-- Check if caster of the executed ability is an ally of the target
+		if casting_unit:GetTeamNumber() == parent:GetTeamNumber() then
+			return
+		end
+
+		local slave = self.slave:GetParent() or self:GetCaster()
+
+		-- Check if slave exists
+		if not slave or slave:IsNull() then
+			return
+		end
+
+		-- Redirect to the slave (this method doesn't work for every unit target ability and item)
+		casting_unit:SetCursorCastTarget(slave)
+
+		local particle1 = "particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_rope.vpcf"
+		local particle2 = "particles/items4_fx/combo_breaker_spell_burst.vpcf"
+		local sound_cast = "Item.LotusOrb.Target"
+
+		-- First particle
+		local effect1 = ParticleManager:CreateParticle(particle1, PATTACH_ABSORIGIN_FOLLOW, parent)
+		local attach
+		if parent:ScriptLookupAttachment("attach_attack2") ~= 0 then
+			attach = "attach_attack2"
+		elseif parent:ScriptLookupAttachment("attach_attack1") ~= 0 then
+			attach = "attach_attack1"
+		else
+			attach = "attach_hitloc"
+		end
+		ParticleManager:SetParticleControlEnt(effect1, 2, parent, PATTACH_POINT_FOLLOW, attach, parent:GetOrigin(), true)
+		ParticleManager:SetParticleControlEnt(effect1, 3, slave, PATTACH_POINT_FOLLOW, "attach_hitloc", slave:GetOrigin(), true)
+		ParticleManager:ReleaseParticleIndex(effect1)
+
+		local direction = (slave:GetOrigin() - parent:GetOrigin()):Normalized() * 100
+
+		-- Second particle
+		local effect2 = ParticleManager:CreateParticle(particle2, PATTACH_WORLDORIGIN, parent)
+		ParticleManager:SetParticleControl(effect2, 0, parent:GetOrigin() + Vector( 0, 0, 90 ) - direction*1)
+		ParticleManager:SetParticleControl(effect2, 1, parent:GetOrigin() + Vector( 0, 0, 90 ) + direction*0)
+		ParticleManager:ReleaseParticleIndex(effect2)
+
+		-- Sound
+		parent:EmitSound(sound_cast)
 	end
-end
 
-function modifier_oracle_sacrifice_master:PlayEffects()
-	local particle_cast = ""
+	function modifier_oracle_sacrifice_master:OnHealthGained(event)
+		local unit = event.unit
+		local gained_hp = event.gain or 0
 
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		0,
-		self:GetParent(),
-		PATTACH_POINT_FOLLOW,
-		"attach_hitloc",
-		self:GetParent():GetOrigin(), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:SetParticleControl( effect_cast, 2, Vector(0,255,0) )
-	self:AddParticle(
-		effect_cast,
-		false,
-		false,
-		-1,
-		false,
-		false
-	)
-end
+		-- Check if unit exists
+		if not unit or unit:IsNull() then
+			return
+		end
 
-function modifier_oracle_sacrifice_master:PlayEffects1()
-	-- Get Resources
-	local particle_cast = "particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_rope.vpcf"
-	local sound_cast = "DOTA_Item.BladeMail.Damage"
+		-- Check if unit has this modifier
+		if unit ~= self:GetParent() then
+			return
+		end
 
-	-- Create Particle
-	local effect_cast = ParticleManager:CreateParticle( particle_cast, PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		2,
-		self:GetParent(),
-		PATTACH_POINT_FOLLOW,
-		"attach_attack2",
-		self:GetParent():GetOrigin(), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:SetParticleControlEnt(
-		effect_cast,
-		3,
-		self.slave:GetParent(),
-		PATTACH_POINT_FOLLOW,
-		"attach_hitloc",
-		self.slave:GetParent():GetOrigin(), -- unknown
-		true -- unknown, true
-	)
-	ParticleManager:ReleaseParticleIndex( effect_cast )
+		-- Check if gained hp is > 0
+		if gained_hp <= 0 then
+			return
+		end
 
-	-- sound
-	EmitSoundOnClient( sound_cast, self.slave:GetParent():GetPlayerOwner() )
-end
+		local slave = self.slave:GetParent() or self:GetCaster()
 
-function modifier_oracle_sacrifice_master:PlayEffects2()
-	local parent = self:GetParent()
-	local particle_cast = "particles/items4_fx/combo_breaker_spell_burst.vpcf"
-	local sound_cast = "Item.LotusOrb.Target"
+		-- Check if slave exists
+		if not slave or slave:IsNull() then
+			return
+		end
 
-	-- Get data
-	local effect_constant = 100
-	local direction = (self.slave:GetParent():GetOrigin()-parent:GetOrigin()):Normalized() * effect_constant
-
-	-- Create Particle
-	local effect_cast = ParticleManager:CreateParticle(particle_cast, PATTACH_WORLDORIGIN, parent)
-	ParticleManager:SetParticleControl( effect_cast, 0, parent:GetOrigin() + Vector( 0, 0, 90 ) - direction*1 )
-	ParticleManager:SetParticleControl( effect_cast, 1, parent:GetOrigin() + Vector( 0, 0, 90 ) + direction*0 )
-	ParticleManager:ReleaseParticleIndex( effect_cast )
-
-	parent:EmitSound(sound_cast)
+		-- Share the heal with the slave
+		slave:Heal(gained_hp, self:GetAbility())
+	end
 end
 
 ---------------------------------------------------------------------------------------------------

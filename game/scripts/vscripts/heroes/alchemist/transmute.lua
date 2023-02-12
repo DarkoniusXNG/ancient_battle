@@ -3,21 +3,25 @@ alchemist_custom_transmute = class({})
 LinkLuaModifier("modifier_custom_transmuted_hero", "heroes/alchemist/transmute.lua", LUA_MODIFIER_MOTION_NONE)
 
 function alchemist_custom_transmute:CastFilterResultTarget(target)
-  local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
+  local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-  if target:IsRoshan() then
+  if target:IsRoshan() or target:IsCustomWardTypeUnit() then
     return UF_FAIL_CUSTOM
   elseif target:IsCourier() then
     return UF_FAIL_COURIER
   end
 
-  return defaultFilterResult
+  return default_result
 end
 
 function alchemist_custom_transmute:GetCustomCastErrorTarget(target)
   if target:IsRoshan() then
     return "#dota_hud_error_cant_cast_on_roshan"
   end
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
+  return ""
 end
 
 function alchemist_custom_transmute:GetCooldown(level)

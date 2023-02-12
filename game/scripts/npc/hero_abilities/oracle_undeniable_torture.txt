@@ -44,7 +44,7 @@
 			"lifesteal"                                   "100" // normal lifesteal and spell lifesteal for allies that damage the caster
 			"lifeshare"
 			{
-				"value"                                             "25 35 45 55"
+				"value"                                             "45 55 65 75"
 				"special_bonus_unique_undeniable_torture_lifeshare" "+25"
 			}
 			"max_channel"                                 "6"

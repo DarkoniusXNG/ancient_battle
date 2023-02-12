@@ -2,7 +2,7 @@
 {
   //================================================================================================================
   // Hero: Blood Mage
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //=================================================================================================================
   "npc_dota_hero_blood_mage"
   {
@@ -33,7 +33,7 @@
     "Ability12"                                           "special_bonus_cast_range_125"
     "Ability13"                                           "special_bonus_unique_blood_mage_1"     // Banish duration talent
 
-    "Ability14"                                           "special_bonus_hp_regen_40"
+    "Ability14"                                           "special_bonus_unique_blood_mage_4"     // Flame Strike cooldown talent
     "Ability15"                                           "special_bonus_unique_blood_mage_3"     // Mana Transfer Leashes
 
     "Ability16"                                           "special_bonus_attack_speed_120"
@@ -68,7 +68,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"                                       "330"              // original (300); Invoker (275); Pugna (330);
-    "MovementTurnRate"                                    "0.5"              // like Invoker
+    "MovementTurnRate"                                    "0.5"              // Invoker (0.6); original (0.5)
 
     // Vision
     //-------------------------------------------------------------------------------------------------------------
@@ -80,16 +80,16 @@
     "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
     "AttributeBaseStrength"                               "19"              // Invoker (18); original (18); Pugna (19);
     "AttributeStrengthGain"                               "2.0"              // Invoker (2.4); original (2.0); Pugna (2.0);
-    "AttributeBaseAgility"                                "16"              // Invoker (14); original (14); Pugna (24);
+    "AttributeBaseAgility"                                "21"              // Invoker (14); original (14); Pugna (24);
     "AttributeAgilityGain"                                "1.3"              // Invoker (1.9); original (1.0); Pugna (1.3);
     "AttributeBaseIntelligence"                           "24"              // Invoker (15); original (19); Pugna (24);
     "AttributeIntelligenceGain"                           "5.2"              // Invoker (4.6); original (3.0); Pugna (5.2);
 
     // Status
     //-------------------------------------------------------------------------------------------------------------
-    "StatusHealthRegen"                                   "1.5"              // Invoker (0.25); original (1.15);
-    "StatusHealth"                                        "200"              // original (100); Invoker (200);
-    "StatusMana"                                          "0"                // original (0); Invoker (75);
+    "StatusHealthRegen"                                   "1.5"              // Invoker (0.25); original (1.15); Pugna (0.25);
+    "StatusHealth"                                        "200"              // original (100); Invoker (200); Pugna (200);
+    "StatusMana"                                          "0"                // original (0); Invoker (75); Pugna (75);
     "StatusManaRegen"                                     "0.5"              // Invoker (0.0); original (0.96); Pugna (0.5);
   }
 }

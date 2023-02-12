@@ -1,20 +1,23 @@
 sohei_palm_of_life = class({})
 
-function sohei_palm_of_life:CastFilterResultTarget( target )
+function sohei_palm_of_life:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-	if caster == target then
+	if caster == target or target:IsCustomWardTypeUnit() then
 		return UF_FAIL_CUSTOM
 	end
 
-	return self.BaseClass.CastFilterResultTarget(self, target)
+	return default_result
 end
 
-function sohei_palm_of_life:GetCustomCastErrorTarget( target )
+function sohei_palm_of_life:GetCustomCastErrorTarget(target)
 	if self:GetCaster() == target then
 		return "#dota_hud_error_cant_cast_on_self"
 	end
-
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
 	return ""
 end
 

@@ -43,9 +43,10 @@
 		{
 			"damage_delay"
 			{
-				"value"                                   "60 50 40 30"
+				"value"                                   "50 40 30 20"
 				"special_bonus_unique_will_to_live_tick"  "-10"
 			}
+			"heal_amp_pct"                                "50"
 			"duration"                                    "3.5 4.0 4.5 5.0"
 		}
 	}

@@ -4,16 +4,18 @@ function lich_custom_dark_ritual:CastFilterResultTarget(target)
   local caster = self:GetCaster()
   local caster_team = caster:GetTeamNumber()
 
+  if target:IsCustomWardTypeUnit() or target:IsRoshan() then
+    return UF_FAIL_CUSTOM
+  elseif target:IsCourier() then
+    return UF_FAIL_COURIER
+  end
+
   -- Talent that allows targetting ancients and enemy units
   local talent = caster:FindAbilityByName("special_bonus_unique_lich_custom_2")
   local has_talent = talent and talent:GetLevel() > 0
 
-  if target:IsCreep() and not target:IsConsideredHero() and not target:IsCourier() and (not target:IsAncient() or has_talent) and (target:GetTeamNumber() == caster_team or has_talent) and not target:IsMagicImmune() and not target:IsRoshan() then
+  if target:IsCreep() and not target:IsConsideredHero() and (not target:IsAncient() or has_talent) and (target:GetTeamNumber() == caster_team or has_talent) and not target:IsMagicImmune() then
 	return UF_SUCCESS
-  end
-
-  if target:IsRoshan() then
-    return UF_FAIL_CUSTOM
   end
 
   return UnitFilter(target, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, bit.bor(DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO), caster_team)
@@ -23,6 +25,10 @@ function lich_custom_dark_ritual:GetCustomCastErrorTarget(target)
   if target:IsRoshan() then
     return "#dota_hud_error_cant_cast_on_roshan"
   end
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
+  return ""
 end
 
 function lich_custom_dark_ritual:OnSpellStart()

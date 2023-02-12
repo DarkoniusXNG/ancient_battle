@@ -90,13 +90,20 @@ function LifeDrainHealthTransfer(event)
 	end
 
 	if caster:IsChanneling() then
+		local damage_table = {}
+		damage_table.attacker = caster
+		damage_table.ability = ability
+		damage_table.victim = target
+		damage_table.damage = HP_drain
 		if has_talent then
-			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_PURE})
-			caster:Heal(HP_gain, caster)
+			damage_table.damage_type = DAMAGE_TYPE_PURE
+			ApplyDamage(damage_table)
+			caster:Heal(HP_gain, ability)
 		elseif caster:GetHealthDeficit() > 0 then
 			-- Health Transfer from the Enemy to the caster
-			ApplyDamage({victim = target, attacker = caster, damage = HP_drain, damage_type = DAMAGE_TYPE_MAGICAL})
-			caster:Heal(HP_gain, caster)
+			damage_table.damage_type = DAMAGE_TYPE_MAGICAL
+			ApplyDamage(damage_table)
+			caster:Heal(HP_gain, ability)
 		end
 	end
 end

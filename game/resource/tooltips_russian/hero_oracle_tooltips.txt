@@ -1,103 +1,77 @@
 
 		// ******************** Oracle ********************		
 		//-------------------------------------------------------------------------------------------------------------
-		// Oracle : Undeniable Torture
+		// Oracle : Undeniable Torture (Q)
 		//-------------------------------------------------------------------------------------------------------------
-		"DOTA_Tooltip_ability_oracle_undeniable_torture"			"Undeniable Torture"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture"                       "Undeniable Torture"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Description"           "CHANNELED - During channeling, Oracle will share all damage he receives with the affected enemies upon cast.\nPassively allows his allies to attack him and lifesteal from him. Damage from allies is not lethal, but the shared damage is lethal."
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Lore"                  "Sharing the pain with enemies"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note0"                 "This ability makes Oracle undeniable by his allies."
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note1"                 "The debuff is applied on cast; leaving or entering the area has no effect."
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note2"                 "The source of shared damage is its original source if it is from an ally."
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_lifesteal"             "%ALLY LIFESTEAL:"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_lifeshare"             "%SHARED DAMAGE:"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_radius"                "RADIUS:"
+		"DOTA_Tooltip_ability_oracle_undeniable_torture_max_channel"           "MAX DURATION:"
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Description"			"CHANNELED - During channeling, Oracle will share all damage she receives with the affected enemies upon cast.\nPassively allows her allies to attack her directly and gains lifesteal on each attack. Damage from allies is not lethal, but the shared damage will be lethal."
+		"DOTA_Tooltip_modifier_oracle_undeniable_torture_debuff"               "Undeniable Torture"
+		"DOTA_Tooltip_modifier_oracle_undeniable_torture_debuff_Description"   "Every time Oracle takes damage, this unit will also receive a percent of that damage."
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Lore"			"She is from that clan; torturing her brings joy to her owners and gives jealousy to the enemies."
+		"DOTA_Tooltip_ability_special_bonus_unique_undeniable_torture_lifeshare"  "+{s:tooltip_value}% Undeniable Torture Shared Damage"
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note0"			"This ability makes Oracle can't be denied by her allies."
+		//-------------------------------------------------------------------------------------------------------------
+		// Oracle : Ironical Healing (E)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_oracle_ironical_healing"                         "Ironical Healing"
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Description"             "Damages target ally or enemy and grants them bonus health regeneration that is equal to the quotient of dealt damage (before reductions) and duration."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Lore"                    "Like a hall of mirrors might amplify the light of a single candle, the shattered walls of the universe can transform the light of prophecy into a burning torch."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Note0"                   "Can be cast while channeling."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Note1"                   "Damage to allies is not lethal."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_Note2"                   "Each cast fully stack with each other."
+		"DOTA_Tooltip_ability_oracle_ironical_healing_base_damage"             "BASE DAMAGE:"
+		"DOTA_Tooltip_ability_oracle_ironical_healing_damage_pct"              "%MAX HEALTH AS DAMAGE:"
+		"DOTA_Tooltip_ability_oracle_ironical_healing_duration"                "REGEN DURATION:"
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note1"			"The debuff is applied on cast; leaving or entering the area has no effect."
+		"DOTA_Tooltip_modifier_oracle_ironical_healing"                        "Ironical Heal"
+		"DOTA_Tooltip_modifier_oracle_ironical_healing_Description"            "Bonus health regeneration."
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_Note2"			"The source of shared damage is its original source if it is from an ally."
+		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:tooltip_value} Ironical Healing Duration"
+		"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_cd"        "-{s:value} Ironical Healing Cooldown"
 
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_lifesteal"	"%ALLY LIFESTEAL:"
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_lifeshare"	"%SHARED DAMAGE:"
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_radius"		"RADIUS:"
-		"DOTA_Tooltip_ability_oracle_undeniable_torture_max_channel"	"MAX DURATION:"
+		//-------------------------------------------------------------------------------------------------------------
+		// Oracle : Will to Live (W)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_oracle_will_to_live"                             "Will to Live"
+		"DOTA_Tooltip_ability_oracle_will_to_live_Description"                 "Temporarily increases target ally's will to live. Every instance of damage that target ally receives is delayed by 1 second and turned into damage-over-time: Damage per second is equal to %damage_delay%%% of the original damage instance."
+		"DOTA_Tooltip_ability_oracle_will_to_live_Lore"                        "In spite of all the hatred, Oracle encourages his allies to stay alive and have a life."
+		"DOTA_Tooltip_ability_oracle_will_to_live_Note0"                       "The first damage tick happens 1 second after the original damage, then each tick will be dealt on 1 second interval until all damage has been dealt."
+		"DOTA_Tooltip_ability_oracle_will_to_live_damage_delay"                "%DAMAGE DEALT PER SECOND:"
+		"DOTA_Tooltip_ability_oracle_will_to_live_duration"				       "BUFF DURATION:"
+		"DOTA_Tooltip_ability_oracle_will_to_live_abilitycastrange"            "CAST RANGE:"
 
-		"DOTA_Tooltip_modifier_oracle_undeniable_torture_debuff"		"Undeniable Torture"
-		"DOTA_Tooltip_modifier_oracle_undeniable_torture_debuff_Description"			"Any time the caster takes damage, this unit also receives the same damage."
+		"DOTA_Tooltip_modifier_oracle_will_to_live"                            "Will to Live"
+		"DOTA_Tooltip_modifier_oracle_will_to_live_Description"                "All damage received is delayed and turned into damage over time."
+
+		"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"          "-{s:tooltip_value}% Will to Live Damage DPS"
+
+		//-------------------------------------------------------------------------------------------------------------
+		// Oracle : Sacrifice (R)
+		//-------------------------------------------------------------------------------------------------------------
+		"DOTA_Tooltip_ability_oracle_sacrifice"                                "Intertwine Fate"
+		"DOTA_Tooltip_ability_oracle_sacrifice_Description"                    "Oracle chains himself to the allied hero to protect it from harm. Any damage to the affected ally is redirected to Oracle. Some enemy abilities or items targeting affected ally will be redirected to Oracle.\nOracle gains bonus flat movement speed while chained, but he can't break the chain. If he strays too far from the affected ally, Oracle will be dragged back to it."
+		"DOTA_Tooltip_ability_oracle_sacrifice_Lore"                           "Changing fates is Oracle's ultimate purpose."
+		"DOTA_Tooltip_ability_oracle_sacrifice_Note0"                          "Targeted spells are not blocked; their target is changed to Oracle during the cast."
+		"DOTA_Tooltip_ability_oracle_sacrifice_Note1"                          "Affected ally is still affected by area/non-targeted spells, but any damage will be redirected."
+		"DOTA_Tooltip_ability_oracle_sacrifice_leash_radius"                   "CHAIN RADIUS:"
+		"DOTA_Tooltip_ability_oracle_sacrifice_leash_duration"                 "CHAIN DURATION:"
+		"DOTA_Tooltip_ability_oracle_sacrifice_ms_bonus"                       "BONUS MOVEMENT SPEED:"
+
+		"DOTA_Tooltip_modifier_oracle_sacrifice"                               "Intertwined Fate"
+		"DOTA_Tooltip_modifier_oracle_sacrifice_Description"                   "Any damage dealt and unit-targeted spells to the chained ally will be redirected to this hero.\nGrants bonus %MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT% movement speed, but can't be too far from the chained ally."
+
+		"DOTA_Tooltip_modifier_oracle_sacrifice_master"                        "Intertwined Fate (with Oracle)"
+		"DOTA_Tooltip_modifier_oracle_sacrifice_master_Description"            "Any damage dealt and unit-targeted spells to this hero will be redirected to Oracle."
 		
-		//"DOTA_Tooltip_ability_special_bonus_unique_undeniable_torture_lifeshare"            "+{s:lifeshare}% Undeniable Torture Shared Damage"
-
-		//-------------------------------------------------------------------------------------------------------------
-		// Oracle : Ironical Healing
-		//-------------------------------------------------------------------------------------------------------------
-		"DOTA_Tooltip_ability_oracle_ironical_healing"			"Ironical Healing"
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Description"			"Oracle damages herself to gain bonus health regeneration over a duration. The healing total equals the damage dealt."
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Lore"			"Such irony that Oracle must hurt herself in order to heal herself."
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Note0"			"Can be cast while channeling."
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Note1"			"Self-damage is not lethal."
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_Note2"			"Each cast fully stack with each other. The healing can be amplified."
-
-		"DOTA_Tooltip_ability_oracle_ironical_healing_base_damage"		"BASE DAMAGE:"
-		"DOTA_Tooltip_ability_oracle_ironical_healing_damage_pct"		"%MAX HEALTH AS DAMAGE:"
-		"DOTA_Tooltip_ability_oracle_ironical_healing_duration"		"DURATION:"
-
-		"DOTA_Tooltip_modifier_oracle_ironical_healing"                  "Ironical Heal"
-		"DOTA_Tooltip_modifier_oracle_ironical_healing_Description"		"Gains bonus health regeneration"
-		
-		//"DOTA_Tooltip_ability_special_bonus_unique_ironical_healing_duration"  "-{s:duration} Ironical Healing Duration"
-
-		//-------------------------------------------------------------------------------------------------------------
-		// Oracle : Will to Live
-		//-------------------------------------------------------------------------------------------------------------
-		"DOTA_Tooltip_ability_oracle_will_to_live"			"Will to Live"
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_Description"			"Every instance of damage received from enemies temporarily increases Oracle's kill threshold. Oracle cannot be killed unless the damage is larger than the kill threshold.\nThe damage also got delayed and turned into damage-over-time, dealing 60/50/40/30% of delayed damage every second."
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_Lore"			"In spite of all the hatred, Zenica embraces her to stay alive and have a life; and that's enough for her to obey her savior."
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_Note0"			"The first damage tick happens 1 second after the original damage, then each tick will be dealt on 1 second interval until all damage has been dealt."
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_Note1"			"Only separate and delay damage greater than base threshold."
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_Note2"			"The threshold compares each separated damage, not the original damage."
-
-		"DOTA_Tooltip_ability_oracle_will_to_live_damage_delay"				"%DAMAGE DEALT PER TICK:"
-		"DOTA_Tooltip_ability_oracle_will_to_live_threshold_base"			"BASE THRESHOLD:"
-		"DOTA_Tooltip_ability_oracle_will_to_live_threshold_stack"			"THRESHOLD STACK INCREASE:"
-		"DOTA_Tooltip_ability_oracle_will_to_live_threshold_stack_creep"	"THRESHOLD STACK INCREASE (CREEP):"
-		"DOTA_Tooltip_ability_oracle_will_to_live_stack_duration"		"THRESHOLD STACK DURATION:"
-		"DOTA_Tooltip_ability_oracle_will_to_live_duration"				"BUFF DURATION:"
-
-		//"DOTA_Tooltip_ability_oracle_will_to_live_scepter_description"			"Does not get disabled with Break."
-
-		"DOTA_Tooltip_modifier_oracle_will_to_live"		             "Damage threshold"
-		"DOTA_Tooltip_modifier_oracle_will_to_live_Description"		"All damage received is separated over time. Each damage ticks cannot be lethal if it is less than this threshold value."
-		
-		//"DOTA_Tooltip_ability_special_bonus_unique_will_to_live_tick"      "-{s:damage_delay}% Will to Live Damage Dealt per Tick"
-
-		//-------------------------------------------------------------------------------------------------------------
-		// Oracle : Sacrifice
-		//-------------------------------------------------------------------------------------------------------------
-		"DOTA_Tooltip_ability_oracle_sacrifice"			"Sacrifice"
-
-		"DOTA_Tooltip_ability_oracle_sacrifice_Description"		"Oracle succumbs and chains herself to one allied hero as her master. Any damage to her master is redirected to her instead. Enemy abilities or items targetting her master will be redirected to her upon cast.\nSandra gains increased movement speed while chained, but she can't break the chain. If she is too far away, Oracle will be dragged back to her master."
-
-		"DOTA_Tooltip_ability_oracle_sacrifice_Lore"			"No matter how Zenica tries to save her, Oracle will always be a slave."
-
-		"DOTA_Tooltip_ability_oracle_sacrifice_Note0"			"Any targeted spell is not blocked; its target immediately change from her master to Oracle during the cast."
-
-		"DOTA_Tooltip_ability_oracle_sacrifice_Note1"			"Her master is still affected by area/non-targetted spells, but any damage will be redirected."
-
-		"DOTA_Tooltip_ability_oracle_sacrifice_leash_radius"			"CHAIN RADIUS:"
-		"DOTA_Tooltip_ability_oracle_sacrifice_leash_duration"			"CHAIN DURATION:"
-		"DOTA_Tooltip_ability_oracle_sacrifice_ms_bonus"				"MOVEMENT SPEED BONUS:"
-
-		"DOTA_Tooltip_modifier_oracle_sacrifice"		        "Sacrifice: Slave"
-		"DOTA_Tooltip_modifier_oracle_sacrifice_Description"	"Any damage taken and unit-targeted spells from Master will be redirected to this hero.\nGrants bonus %MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT% movement speed, but can't be too far from Master."
-
-		"DOTA_Tooltip_modifier_oracle_sacrifice_master"		           "Sacrifice: Master"
-		"DOTA_Tooltip_modifier_oracle_sacrifice_master_Description"		"Any damage taken and unit-targeted spells from this hero will be redirected to Slave."
+		"DOTA_Tooltip_modifier_oracle_sacrifice_pull"                          "Intertwined Fate"
+		"DOTA_Tooltip_modifier_oracle_sacrifice_pull_Description"              "Dragged back towards the chained ally."
 		

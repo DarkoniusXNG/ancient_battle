@@ -31,7 +31,7 @@
 		"DOTA_Tooltip_modifier_banished_enemy_Description"						"Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, taking %dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE%%% more magic damage and cannot attack or be attacked."
 		
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer"							"Mana Transfer"
-		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Description"				"CHANNELED - Transfers mana between the Blood Mage and a target. Drains mana from an enemy, or gives mana to an ally. This ability can push the Blood Mage's or allied mana over its maximum value, though excess mana drains off rapidly if not used."
+		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Description"				"CHANNELED - Transfers mana between the Blood Mage and the target. Drains mana from an enemy, or gives mana to an ally. This ability can push the Blood Mage's or allied mana over its maximum value, though excess mana drains off rapidly if not used."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Lore"					"Lesser magi are nothing more than a source of magical restoration for the Blood Mage."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note0"					"Destroys enemy illusions."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note1"					"The link doesn't break when the target gets out of vision."
@@ -39,6 +39,7 @@
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_mana_per_second"			"MANA PER SECOND:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_break_distance"			"BREAK DISTANCE:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_extra_mana_duration"     "EXTRA MANA DURATION:"
+		"DOTA_Tooltip_ability_blood_mage_mana_transfer_shard_description"       "Mana Transfer deals damage to enemies and heals allies. Damage/Heal is equal to transfered mana. Blood Mage becomes spell immune during Mana Transfer."
 		
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror"							"Blood Mirror"
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror_Description"				"If the target is an enemy, %redirected_damage%%% of all the damage Blood Mage receives is redirected to the target.\nIf the target is an ally, %redirected_damage%%% of all the damage that ally receives is redirected to Blood Mage."
@@ -88,3 +89,4 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_blood_mage_1"                "+{s:value}s Banish Duration"
 		"DOTA_Tooltip_ability_special_bonus_unique_blood_mage_2"                "+{s:value} Flame Strike Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_blood_mage_3"                "Mana Transfer Leashes Enemies"
+		"DOTA_Tooltip_ability_special_bonus_unique_blood_mage_4"                "-{s:value}s Flame Strike Cooldown"

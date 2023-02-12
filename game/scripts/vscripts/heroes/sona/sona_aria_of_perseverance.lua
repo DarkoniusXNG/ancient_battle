@@ -35,6 +35,6 @@ function sona_aria_of_perseverance:OnSpellStart()
 	end
 
 	-- heal both
-	caster:Heal(heal,caster)
-	lowest_ally:Heal(heal,caster)
+	caster:Heal(heal, self)
+	lowest_ally:Heal(heal, self)
 end

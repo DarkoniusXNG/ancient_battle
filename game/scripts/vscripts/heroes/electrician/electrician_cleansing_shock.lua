@@ -7,6 +7,10 @@ LinkLuaModifier("modifier_electrician_cleansing_shock_enemy", "heroes/electricia
 function electrician_cleansing_shock:CastFilterResultTarget(target)
   local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
+  if target:IsCustomWardTypeUnit() then
+    return UF_FAIL_CUSTOM
+  end
+
   if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
     local caster = self:GetCaster()
     -- Talent that allows to target Spell Immune units
@@ -17,6 +21,13 @@ function electrician_cleansing_shock:CastFilterResultTarget(target)
   end
 
   return default_result
+end
+
++function electrician_cleansing_shock:GetCustomCastErrorTarget(target)
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
+  return ""
 end
 
 function electrician_cleansing_shock:GetManaCost(level)

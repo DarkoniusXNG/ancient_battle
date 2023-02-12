@@ -39,7 +39,7 @@
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_cleave_end_radius"			  	  "CLEAVE END RADIUS:"
 		
 		"DOTA_Tooltip_ability_astral_trekker_time_constant"                               "Time Constant"
-		"DOTA_Tooltip_ability_astral_trekker_time_constant_Description"                   "Astral Trekker is immune to certain time-altering spells (Time Stop for example). Also, if his movement speed or attack speed is reduced below the threshold, Time Constant will remove almost all debuffs and stuns from Astral Trekker.\n\nDISPEL TYPE: Super Strong Dispel"
+		"DOTA_Tooltip_ability_astral_trekker_time_constant_Description"                   "Astral Trekker is immune to certain time-altering spells (Time Stop for example). Also, if his movement speed or attack speed is reduced below the threshold, Time Constant will remove most debuffs and stuns from Astral Trekker when off cooldown.\n\nDISPEL TYPE: Super Strong Dispel"
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_Note0"						  "Time Constant applies Super Strong Dispel to Astral Trekker."
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_Lore"						  "Wanderer is a non linear being, not affected by passing of time."
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_ms_threshold"                  "MOVE SPEED THRESHOLD:"

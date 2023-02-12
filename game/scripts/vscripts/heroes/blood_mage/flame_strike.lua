@@ -8,6 +8,19 @@ function blood_mage_flame_strike:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
 
+function blood_mage_flame_strike:GetCooldown(level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
+
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_4")
+	if talent and talent:GetLevel() > 0 then
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
+
+	return base_cooldown
+end
+
 function blood_mage_flame_strike:OnSpellStart()
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
@@ -180,4 +193,14 @@ function modifier_flame_strike_thinker:OnIntervalThink()
 
 	-- Destroy trees
 	GridNav:DestroyTreesAroundPoint(point, radius, false)
+end
+
+function modifier_flame_strike_thinker:OnDestroy()
+	if not IsServer() then
+		return
+	end
+	local parent = self:GetParent()
+	if parent and not parent:IsNull() then
+		parent:ForceKill(false)
+	end
 end
