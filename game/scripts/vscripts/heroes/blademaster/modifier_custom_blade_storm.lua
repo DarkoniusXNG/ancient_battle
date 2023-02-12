@@ -43,7 +43,7 @@ function modifier_custom_blade_storm:OnCreated()
 	local ability = self:GetAbility()
 
 	-- Check for shard on both server and client
-	if caster:HasShardCustom() then
+	if parent:HasShardCustom() then
 		self.attack_speed = ability:GetSpecialValueFor("shard_attack_speed")
 		self.move_speed = ability:GetSpecialValueFor("shard_move_speed")
 	end

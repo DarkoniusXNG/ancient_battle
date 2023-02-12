@@ -36,11 +36,11 @@ end
 function blood_mage_mana_transfer:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
-	
+
 	if not caster or not target then
 		return
 	end
-	
+
 	if not self.modifiers then
 		self.modifiers = {}
 	else
@@ -58,7 +58,7 @@ function blood_mage_mana_transfer:OnSpellStart()
 	-- Talent that applies leash
 	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_3")
 	local has_talent = talent and talent:GetLevel() > 0
-	
+
 	-- Check for shard
 	if caster:HasShardCustom() then
 		local shard_bkb = caster:AddNewModifier(caster, self, "modifier_mana_transfer_shard_bkb", {duration = duration})

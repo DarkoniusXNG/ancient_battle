@@ -23,7 +23,7 @@ function electrician_cleansing_shock:CastFilterResultTarget(target)
   return default_result
 end
 
-+function electrician_cleansing_shock:GetCustomCastErrorTarget(target)
+function electrician_cleansing_shock:GetCustomCastErrorTarget(target)
   if target:IsCustomWardTypeUnit() then
     return "#dota_hud_error_cant_cast_on_other"
   end

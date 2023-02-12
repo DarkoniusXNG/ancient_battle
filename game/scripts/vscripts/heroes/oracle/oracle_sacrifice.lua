@@ -29,7 +29,7 @@ function oracle_sacrifice:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
-	
+
 	-- Strong dispel
 	local RemovePositiveBuffs = false
 	local RemoveDebuffs = true
@@ -231,7 +231,7 @@ if IsServer() then
 		local parent = self:GetParent()
 		local attacker = event.attacker
 		local damaged_unit = event.unit
-		
+
 		-- Check if attacker exists
 		if not attacker or attacker:IsNull() then
 			return
@@ -306,7 +306,7 @@ if IsServer() then
 		end
 
 		-- Check if target has this modifier
-		if target ~= parent then 
+		if target ~= parent then
 			return
 		end
 
