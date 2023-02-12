@@ -8,7 +8,7 @@ function oracle_sacrifice:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-	if target == caster or target:IsHeroDominatedCustom() then
+	if target == caster or target:IsHeroDominatedCustom() or target:HasModifier("modifier_oracle_sacrifice") then
 		return UF_FAIL_CUSTOM
 	end
 
@@ -22,6 +22,9 @@ function oracle_sacrifice:GetCustomCastErrorTarget(target)
 	if target:IsHeroDominatedCustom() then
 		return "Can't Target Dominated Heroes!"
 	end
+	if target:HasModifier("modifier_oracle_sacrifice") then
+		return "Paradox! Can't intertwine the Intertwiner!"
+	end
 	return ""
 end
 
@@ -29,6 +32,15 @@ function oracle_sacrifice:OnSpellStart()
 	-- unit identifier
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
+
+	-- Can't target clones
+	if target:IsCloneCustom() then
+		self:RefundManaCost()
+		self:EndCooldown()
+		-- Display the error message
+		SendErrorMessage(caster:GetPlayerOwnerID(), "Can't Target Clones or Super illusions!")
+		return
+	end
 
 	-- Strong dispel
 	local RemovePositiveBuffs = false
