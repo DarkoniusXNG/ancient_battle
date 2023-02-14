@@ -48,7 +48,7 @@ function oracle_sacrifice:OnSpellStart()
 	local BuffsCreatedThisFrameOnly = false
 	local RemoveStuns = true
 	local RemoveExceptions = true
-	caster:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
+	target:Purge(RemovePositiveBuffs, RemoveDebuffs, BuffsCreatedThisFrameOnly, RemoveStuns, RemoveExceptions)
 
 	-- load data
 	local duration = self:GetSpecialValueFor("leash_duration")
@@ -61,6 +61,9 @@ function oracle_sacrifice:OnSpellStart()
 
 	-- add slave modifier
 	caster:AddNewModifier(caster, self, "modifier_oracle_sacrifice", {duration = duration, master = target:GetEntityIndex()})
+
+	-- Sound
+	caster:EmitSound("Hero_Oracle.FalsePromise.Cast")
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -396,6 +399,10 @@ if IsServer() then
 		-- Share the heal with the slave
 		slave:Heal(gained_hp, self:GetAbility())
 	end
+end
+
+function modifier_oracle_sacrifice_master:GetEffectName()
+	return "particles/units/heroes/hero_oracle/oracle_false_promise.vpcf"
 end
 
 ---------------------------------------------------------------------------------------------------

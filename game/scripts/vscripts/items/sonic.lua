@@ -152,7 +152,7 @@ end
 
 function modifier_item_sonic_active:CheckState()
   return {
-    [MODIFIER_STATE_FLYING] = true,
+    [MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
     [MODIFIER_STATE_NO_UNIT_COLLISION] = true,
     [MODIFIER_STATE_UNSLOWABLE] = true,
     [MODIFIER_STATE_ROOTED] = false,

@@ -152,6 +152,7 @@ function modifier_mana_transfer_enemy:OnCreated()
 
 	-- Start transfering
 	local interval = ability:GetSpecialValueFor("think_interval")
+	self:OnIntervalThink()
 	self:StartIntervalThink(interval)
 end
 
@@ -175,7 +176,7 @@ function modifier_mana_transfer_enemy:OnIntervalThink()
 	local mana_per_interval = mana_per_second * interval
 
 	-- If its an illusion then kill it
-	if target:IsIllusion() then
+	if target:IsIllusion() and not target:IsStrongIllusionCustom() then
 		target:Kill(ability, caster)
 		self:StartIntervalThink(-1)
 		self:Destroy()
@@ -313,6 +314,7 @@ function modifier_mana_transfer_ally:OnCreated()
 
 	-- Start transfering
 	local interval = ability:GetSpecialValueFor("think_interval")
+	self:OnIntervalThink()
 	self:StartIntervalThink(interval)
 end
 
@@ -384,7 +386,11 @@ function modifier_mana_transfer_ally:OnIntervalThink()
 					modifier:SetStackCount(mana_transfer)
 				end
 			end
-			target:CalculateStatBonus(true)
+			if target:IsRealHero() then
+				target:CalculateStatBonus(true)
+			else
+				target:CalculateGenericBonuses()
+			end
 		end
 
 		target:GiveMana(mana_transfer)

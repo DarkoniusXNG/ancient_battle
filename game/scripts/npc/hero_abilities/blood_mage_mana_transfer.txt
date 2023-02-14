@@ -43,7 +43,7 @@
       "mana_per_second"                                   "20 40 60 120"
       "break_distance"                                    "1100"
       "think_interval"                                    "0.1"
-      "extra_mana_duration"                               "16"
+      "extra_mana_duration"                               "6"
     }
   }
   

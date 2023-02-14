@@ -4,7 +4,7 @@
   // Blood Mage: Blood Mirror - Redirects a percentage of the Damage dealt to Blood Mage to the target
   // or redirects a percentage of the damage dealt to an ally to the Blood Mage.
   // Author: Darkonius
-  // Notes: OK; 25.2.2020;
+  // Notes: OK; 2023;
   // Linkens: Blocks;
   // TO_DO:
   //=================================================================================================================
@@ -13,7 +13,7 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/blood_mage/blood_mirror.lua"
     "AbilityTextureName"                                  "custom/blood_mage_blood_mirror"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
