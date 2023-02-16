@@ -3,14 +3,6 @@ bakedanuki_tricksters_insight = class({})
 LinkLuaModifier( "modifier_bakedanuki_tricksters_insight", "heroes/bakedanuki/modifier_bakedanuki_tricksters_insight", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_bakedanuki_tricksters_insight_passive", "heroes/bakedanuki/modifier_bakedanuki_tricksters_insight_passive", LUA_MODIFIER_MOTION_NONE )
 
-function bakedanuki_tricksters_insight:IsStealable()
-	return true
-end
-
-function bakedanuki_tricksters_insight:IsHiddenWhenStolen()
-	return false
-end
-
 function bakedanuki_tricksters_insight:GetIntrinsicModifierName()
 	return "modifier_bakedanuki_tricksters_insight_passive"
 end

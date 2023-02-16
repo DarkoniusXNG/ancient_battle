@@ -20,7 +20,10 @@
 		"DOTA_Tooltip_ability_alchemist_custom_acid_bomb_armor_reduction"       "ARMOR REDUCTION:"
 		"DOTA_Tooltip_ability_alchemist_custom_acid_bomb_damage_per_second"     "DAMAGE PER SECOND:"
 		"DOTA_Tooltip_ability_alchemist_custom_acid_bomb_radius"                "RADIUS:"
-		
+
+		"DOTA_Tooltip_modifier_custom_acid_bomb_stun"                           "Acid Bomb"
+		"DOTA_Tooltip_modifier_custom_acid_bomb_stun_Description"               "Stunned"
+
 		"DOTA_Tooltip_modifier_custom_acid_bomb_debuff"                         "Acid"
 		"DOTA_Tooltip_modifier_custom_acid_bomb_debuff_Description"             "Reduced armor and taking physical damage over time."
 		
@@ -71,4 +74,5 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_1"              "-{s:value} Chemical Rage Base Attack Time"
 		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_2"              "Chemical Rage Super Strong Dispel"
 		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_2_Description"  "Chemical Rage can be used while stunned but not while silenced or hexed."
+		"DOTA_Tooltip_ability_special_bonus_unique_alchemist_custom_3"              "+{s:tooltip_value} Acid Bomb Radius"
 		

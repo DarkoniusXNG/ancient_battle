@@ -78,24 +78,18 @@ function modifier_custom_lifestealer_poison_sting_debuff:IsHidden() -- needs too
 	return false
 end
 
-function modifier_custom_lifestealer_poison_sting_debuff:IsPurgable()
-	return true
-end
-
 function modifier_custom_lifestealer_poison_sting_debuff:IsDebuff()
 	return true
 end
 
-function modifier_custom_lifestealer_poison_sting_debuff:GetEffectName()
-	return "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
+function modifier_custom_lifestealer_poison_sting_debuff:IsPurgable()
+	return true
 end
 
 function modifier_custom_lifestealer_poison_sting_debuff:OnCreated()
 	self:OnRefresh()
 
 	if IsServer() then
-		self.interval = 0.25
-
 		self:OnIntervalThink()
 		self:StartIntervalThink(self.interval)
 	end
@@ -104,8 +98,14 @@ end
 function modifier_custom_lifestealer_poison_sting_debuff:OnRefresh()
 	local parent = self:GetParent()
 	local ability = self:GetAbility()
+
+	local movement_slow = 10
+	self.dps = 15
+	self.interval = 0.25
+	self.heal_reduction = 10
+
 	if ability and not ability:IsNull() then
-		local movement_slow = ability:GetSpecialValueFor("move_speed_slow")
+		movement_slow = ability:GetSpecialValueFor("move_speed_slow")
 		self.dps = ability:GetSpecialValueFor("damage")
 		self.heal_reduction	= ability:GetSpecialValueFor("heal_reduction")
 		if IsServer() then
@@ -125,8 +125,10 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnIntervalThink()
 	local parent = self:GetParent()
 	local caster = self:GetCaster()
 
-	-- Don't apply damage if source doesn't exist or an illusion
-	if caster:IsNull() or caster:IsIllusion() then
+	-- Don't apply damage if source or target don't exist or if source is an illusion
+	if not parent or parent:IsNull() or not parent:IsAlive() or not caster or caster:IsNull() or caster:IsIllusion() then
+		self:StartIntervalThink(-1)
+		self:Destroy()
 		return
 	end
 
@@ -141,7 +143,7 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnIntervalThink()
 		ability = self:GetAbility()
 	})
 
-	SendOverheadEventMessage(caster, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, parent, damage_per_interval, nil)
+	SendOverheadEventMessage(nil, OVERHEAD_ALERT_BONUS_POISON_DAMAGE, parent, damage_per_interval, nil)
 end
 
 function modifier_custom_lifestealer_poison_sting_debuff:DeclareFunctions()
@@ -188,4 +190,8 @@ function modifier_custom_lifestealer_poison_sting_debuff:GetModifierSpellLifeste
   end
 
   return 0
+end
+
+function modifier_custom_lifestealer_poison_sting_debuff:GetEffectName()
+	return "particles/units/heroes/hero_venomancer/venomancer_poison_debuff.vpcf"
 end

@@ -126,7 +126,7 @@ if IsServer() then
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 
-		if not caster or caster:IsNull() or not parent or parent:IsNull() then
+		if not parent or parent:IsNull() or not parent:IsAlive() or not caster or caster:IsNull() then
 			self:StartIntervalThink(-1)
 			self:Destroy()
 			return
@@ -135,29 +135,40 @@ if IsServer() then
 		self:OnRefresh()
 
 		local radius = self.radius
-		local enemies = FindUnitsInRadius(caster:GetTeamNumber(), parent:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		local enemies = FindUnitsInRadius(
+			caster:GetTeamNumber(),
+			parent:GetAbsOrigin(),
+			nil,
+			radius,
+			DOTA_UNIT_TARGET_TEAM_ENEMY,
+			bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC),
+			DOTA_UNIT_TARGET_FLAG_NONE,
+			FIND_ANY_ORDER,
+			false
+		)
+
+		local damage_per_second = self.damage_per_second
+		local damage_interval = self.interval
+		local damage_type = DAMAGE_TYPE_MAGICAL
+		if ability then
+			damage_type = ability:GetAbilityDamageType()
+		end
+
+		local damage_table = {}
+		damage_table.damage = damage_per_second*damage_interval
+		damage_table.damage_type = damage_type
+		damage_table.attacker = caster
+		damage_table.ability = ability
+
 		for _, enemy in pairs (enemies) do
-			if enemy and enemy ~= parent then
+			if enemy and not enemy:IsNull() and enemy ~= parent and not enemy:IsCustomWardTypeUnit() then
 				-- Damage particle
 				local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_dark_seer/dark_seer_ion_shell_damage.vpcf", PATTACH_POINT, parent)
 				ParticleManager:SetParticleControlEnt(particle, 0, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
 				ParticleManager:SetParticleControlEnt(particle, 1, enemy, PATTACH_POINT_FOLLOW, "attach_hitloc", enemy:GetAbsOrigin(), true)
 				ParticleManager:ReleaseParticleIndex(particle)
 
-				local damage_per_second = self.damage_per_second
-				local damage_interval = self.interval
-				local damage_type = DAMAGE_TYPE_MAGICAL
-				if ability then
-					damage_type = ability:GetAbilityDamageType()
-				end
-
-				local damage_table = {}
 				damage_table.victim = enemy
-				damage_table.damage = damage_per_second*damage_interval
-				damage_table.damage_type = damage_type
-				damage_table.attacker = caster
-				damage_table.ability = ability
-
 				ApplyDamage(damage_table)
 			end
 		end

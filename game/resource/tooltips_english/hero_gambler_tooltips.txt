@@ -69,5 +69,5 @@
 		"DOTA_Tooltip_ability_gambler_all_in_damage_cap_scepter"                          "SCEPTER DAMAGE CAP:"
 		"DOTA_Tooltip_ability_gambler_all_in_scepter_description"				          "Increases damage cap."
 		
-		"DOTA_Tooltip_ability_special_bonus_unique_chaos_knight_3"                        "+{s:value} Min/Max Dice Stun Duration"
+		"DOTA_Tooltip_ability_special_bonus_unique_chaos_knight_3"                        "+{s:value}s Min/Max Dice Stun Duration"
 		"DOTA_Tooltip_ability_special_bonus_unique_chaos_knight_8"                        "-{s:value}s Roll the Dice Cooldown"

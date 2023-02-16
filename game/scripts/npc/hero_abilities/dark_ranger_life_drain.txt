@@ -4,9 +4,9 @@
   // Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and have no effect when full hp (no dmg and no mana gain)
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 2022; Life Drain works only if the caster doesn't have max health;
+  // Notes: OK; 2023; Life Drain works only if the caster doesn't have max health;
   // Notes: The link will not break if the target goes out of vision;
-  // TO_DO: shard: Life Drain applies Dark Arrow debuff
+  // TO_DO: aghs shard: Life Drain applies Dark Arrow debuff; add to talent: piercing spell immunity
   //=================================================================================================================
   "dark_ranger_life_drain"
   {
@@ -20,22 +20,24 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
+
+    //"HasShardUpgrade"                                     "1"
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "550" // it should be equal to Dark Ranger's starting attack range
     "AbilityCastPoint"                                    "0.2"
-    "AbilityChannelTime"                                  "7.0"
-    
+    "AbilityChannelTime"                                  "5.0" // original (8)
+
     // Time    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "7.0"
+    "AbilityCooldown"                                     "7.0" // original (8)
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "75 100 125 150"
+    "AbilityManaCost"                                     "75 100 125 150" // original (50)
     "AbilityProcsMagicStick"                              "1"
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
@@ -54,12 +56,12 @@
       "03" // needs to be same as AbilityChannelTime
       {
         "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "7"
+        "duration"                                        "5"
       }
-      "04" // don't change!
+      "04"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "break_distance"                                  "850"
+        "break_distance"                                  "850" // original (800)
       }
     }
 
@@ -86,7 +88,7 @@
         "Function"                                        "LifeDrainEnd"
       }
     }
-    
+
     "OnChannelInterrupted"
     {
       "RunScript"
@@ -95,7 +97,7 @@
         "Function"                                        "LifeDrainEnd"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_dark_ranger_life_drain"  // doesn't need tooltip
@@ -103,9 +105,9 @@
         "IsHidden"                                        "1"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "Duration"                                        "%duration"
-        
+
         "OnCreated"
         {
           "RunScript"

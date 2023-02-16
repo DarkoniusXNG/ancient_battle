@@ -33,7 +33,6 @@
     "AbilityValues"
     {
       "duration"                                          "350" // 20 mines on the map roughly is the optimal number
-      "small_radius"                                      "200" // full damage radius and trigger radius
       "activation_delay"
       {
         "value"                                           "1.5" // old (1.75); during TI (0.5)
@@ -41,9 +40,13 @@
       }
       "think_interval"                                    "0.1"
       "detonation_delay"                                  "0.3"
+
       "small_radius_damage"                               "350 450 550 650" // full damage
-      "big_radius_damage"                                 "175 225 275 325" // partial damage
-      "big_radius"                                        "400" // old (500);
+      "big_radius_damage"                                 "175 225 275 325" // partial damage - not in tooltip
+
+      "small_radius"                                      "200" // full damage radius and trigger radius
+      "big_radius"                                        "400" // old (500); aka half damage radius
+
       "building_dmg_reduction"                            "100" // old (100%); Proximity Mines (30%)
     }
   }

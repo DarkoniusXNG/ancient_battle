@@ -46,10 +46,6 @@ function archmage_arcane_magic:ProcsMagicStick()
   return true
 end
 
-function archmage_arcane_magic:IsStealable()
-  return true
-end
-
 function archmage_arcane_magic:OnUnStolen()
   local caster = self:GetCaster()
   local passive_modifier = caster:FindModifierByName("modifier_archmage_aura_applier")

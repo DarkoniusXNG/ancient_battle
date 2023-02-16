@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //================================================================================================================
-  // HERO: Alchemist; 2022;
+  // HERO: Alchemist; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_custom_alchemist"
@@ -27,7 +27,7 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_attack_speed_15"			// lvl 10 talent: unique
+    "Ability10"                                           "special_bonus_unique_alchemist_custom_3" // lvl 10 talent: Acid Bomb bonus radius
     "Ability11"                                           "special_bonus_corruption_3"				// lvl 10 talent: unique 
 
     "Ability12"                                           "special_bonus_unique_alchemist_7"		// lvl 15 talent; Greevil's Greed damage per stack

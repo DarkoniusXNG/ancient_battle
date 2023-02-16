@@ -34,13 +34,16 @@
 
     "AbilityValues"
     {
-      "small_radius"                                      "200" // old (200)
-      "big_radius"                                        "500" // old (500)
       "small_radius_damage"                               "700 900 1200 1600" // full damage
-      "big_radius_damage"                                 "350 450 600 800" // partial damage
+      "big_radius_damage"                                 "350 450 600 800" // partial damage - not in tooltip
+
+      "small_radius"                                      "200" // full damage radius; old (200)
+      "big_radius"                                        "500" // half damage radius; old (500)
+
       "building_dmg_reduction"                            "40" // latest (40%); mid (70%); first version (100%)
       "vision_radius"                                     "400" // old (400)
       "vision_duration"                                   "2.0" // old (2)
+
       "shard_stun_duration"
       {
         "value"                                           "1.5" // Blast Off (1.75)

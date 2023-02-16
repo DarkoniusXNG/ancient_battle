@@ -36,6 +36,7 @@ function item_custom_arcane_ring:OnSpellStart()
   for _, ally in pairs(allies) do
     ally:GiveMana(mana)
     ally:AddNewModifier(caster, self, "modifier_item_custom_arcane_ring_buff", {duration = buff_duration})
+	--SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, ally, mana, nil)
   end
 end
 

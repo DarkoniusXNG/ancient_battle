@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Lifestealer: Absorb Life (F) - New Spell, Deals damage and absorbs percentage of current hp of affected enemies in a radius 
   // Author: Darkonius
-  // Notes: OK; 2022;
-  // TO_DO: special_bonus_unique_lifestealer_custom_1
+  // Notes: OK; 2023;
+  // TO_DO: special_bonus_unique_lifestealer_custom_1, aghs shard: applies open wounds
   //=================================================================================================================
   "life_stealer_custom_absorb_life"
   {
@@ -14,22 +14,25 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"  
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
+
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "3"
-    
+
+    //"HasShardUpgrade"                                     "1"
+
     "AbilityCastRange"                                    "400"
     "AbilityCastPoint"                                    "0.45"
     "AoERadius"                                           "%radius"
-    
+
     // Time    
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "16"
-    
+
     // Cost
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "50"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_undying/undying_decay.vpcf"
@@ -58,7 +61,7 @@
         "radius"                                          "375"
       }      
     }
-    
+
     "OnSpellStart"
     {
       "RunScript"

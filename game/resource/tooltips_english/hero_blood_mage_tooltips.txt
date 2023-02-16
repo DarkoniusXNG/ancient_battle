@@ -39,7 +39,7 @@
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_mana_per_second"			"MANA PER SECOND:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_break_distance"			"BREAK DISTANCE:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_extra_mana_duration"     "EXTRA MANA DURATION:"
-		"DOTA_Tooltip_ability_blood_mage_mana_transfer_shard_description"       "Mana Transfer deals damage to enemies and heals allies. Damage/Heal is equal to transfered mana. Blood Mage becomes spell immune during Mana Transfer."
+		"DOTA_Tooltip_ability_blood_mage_mana_transfer_shard_description"       "Blood Mage becomes spell immune during channel and Mana Transfer damages enemies and heals allies. Damage is equal to 2 x mana drained. Damage type is Magical. Heal is equal to transfered mana."
 		
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror"							"Blood Mirror"
 		"DOTA_Tooltip_ability_blood_mage_blood_mirror_Description"				"If the target is an enemy, %redirected_damage%%% of all the damage Blood Mage receives is redirected to the target.\nIf the target is an ally, %redirected_damage%%% of all the damage that ally receives is redirected to Blood Mage."
@@ -56,9 +56,10 @@
 		"DOTA_Tooltip_ability_blood_mage_summon_phoenix_Lore"                   "PKAWW!"
 		
 		"DOTA_Tooltip_ability_blood_mage_rupture"								"Rupture"
-		"DOTA_Tooltip_ability_blood_mage_rupture_Description"					"Causes an enemy unit's skin to rupture. If the unit moves, it takes damage based on the distance moved. The damage is dealt through spell immunity."
+		"DOTA_Tooltip_ability_blood_mage_rupture_Description"					"Causes an enemy unit's skin to rupture dealing initial damage based on its current health. If the unit moves, it takes damage based on the distance moved. The damage is dealt through spell immunity."
 		"DOTA_Tooltip_ability_blood_mage_rupture_Lore"							"Injuries become fatalities near Blood Mages."
 		"DOTA_Tooltip_ability_blood_mage_rupture_duration"						"DURATION:"
+		"DOTA_Tooltip_ability_blood_mage_rupture_initial_damage_pct"            "%INITIAL CURRENT HP DAMAGE:"
 		"DOTA_Tooltip_ability_blood_mage_rupture_movement_damage_pct"			"%MOVE DAMAGE:"
 		
 		"DOTA_Tooltip_modifier_custom_rupture"									"Ruptured"

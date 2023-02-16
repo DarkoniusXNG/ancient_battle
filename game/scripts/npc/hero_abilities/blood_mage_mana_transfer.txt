@@ -37,6 +37,8 @@
       "particle"                                          "particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
     }
 
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
       "duration"                                          "6" // Lion (5); original (unknown);

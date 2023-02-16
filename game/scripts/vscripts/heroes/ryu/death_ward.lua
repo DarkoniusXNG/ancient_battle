@@ -4,23 +4,16 @@ end
 
 LinkLuaModifier("modifier_custom_death_ward", "heroes/ryu/death_ward.lua", LUA_MODIFIER_MOTION_NONE)
 
-function stealth_assassin_death_ward:IsStealable()
-	return true
-end
-
-function stealth_assassin_death_ward:IsHiddenWhenStolen()
-	return false
-end
-
 function stealth_assassin_death_ward:OnSpellStart()
-	local unit_name = "npc_dota_custom_death_ward"
+	local caster = self:GetCaster()
+	
 	local point = self:GetCursorPosition()
 
 	if not point then
 		return
 	end
 
-	local caster = self:GetCaster()
+	local unit_name = "npc_dota_custom_death_ward"
 
 	-- Create Death Ward unit
 	local death_ward = CreateUnitByName(unit_name, point, true, caster, caster, caster:GetTeamNumber())

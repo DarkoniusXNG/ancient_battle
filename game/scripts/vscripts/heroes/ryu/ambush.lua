@@ -5,12 +5,21 @@ end
 LinkLuaModifier("modifier_stealth_assassin_ambush_debuff", "heroes/ryu/ambush.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_stealth_assassin_ambush_mini_stun", "heroes/ryu/ambush.lua", LUA_MODIFIER_MOTION_NONE)
 
-function stealth_assassin_ambush:IsStealable()
-	return true
+function stealth_assassin_ambush:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
 end
 
-function stealth_assassin_ambush:IsHiddenWhenStolen()
-	return false
+function stealth_assassin_ambush:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
 end
 
 function stealth_assassin_ambush:OnSpellStart()

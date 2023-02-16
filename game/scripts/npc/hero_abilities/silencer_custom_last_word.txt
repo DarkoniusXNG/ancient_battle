@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Linkens: Blocks;
   // Notes: OK; 26.8.2019;
-  // TO_DO: 
+  // TO_DO: Add INT steal
   //=================================================================================================================
   "silencer_custom_last_word"
   {

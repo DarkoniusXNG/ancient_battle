@@ -10,7 +10,7 @@
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_attack_speed_slow"                  "ATTACK SPEED SLOW:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_hero_slow_duration"                 "HERO SLOW DURATION:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_creep_slow_duration"                "CREEP SLOW DURATION:"
-		
+
 		"DOTA_Tooltip_modifier_dark_arrow_slow"                                           "Dark Arrow Slow"
 		"DOTA_Tooltip_modifier_dark_arrow_slow_Description"                               "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
 
@@ -32,7 +32,7 @@
 		//"DOTA_Tooltip_ability_dark_ranger_charm_charm_clone_duration"                     "CHARM CLONE DURATION:"
 		"DOTA_Tooltip_ability_dark_ranger_charm_charm_hero_duration_scepter"              "SCEPTER HERO DURATION:"
 		"DOTA_Tooltip_ability_dark_ranger_charm_scepter_description"                      "Increases hero duration and allows charming Ancient creeps."
-		
+
 		"DOTA_Tooltip_modifier_charmed_creep"                                             "Charmed"
 		"DOTA_Tooltip_modifier_charmed_creep_Description"                                 "This unit is under control of Dark Ranger."
 

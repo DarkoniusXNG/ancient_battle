@@ -3,15 +3,16 @@
   //=================================================================================================================
   // Alchemist: Acid Bomb (W) - New Spell, Tracking Projectile, stuns, reduces armor and deals damage over time
   // Author: Darkonius
-  // Notes: OK; 2022;
+  // Notes: OK; 2023; Multiple instances stack
   // Linkens: Blocks;
-  // TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix -> not really important. Radius increase talent
+  // TO_DO: Lotus Orb tracking projectile SourceAttachment minor fix
   //=================================================================================================================
   "alchemist_custom_acid_bomb"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/alchemist/acid_bomb.lua"
     "AbilityTextureName"                                  "custom/alchemist_custom_acid_bomb"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -22,17 +23,17 @@
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastRange"                                    "700"                  // like Paralyzing Cask and original Acid Bomb
-    "AbilityCastPoint"                                    "0.3"                                   // Unstable Concoction (0.2); Paralyzing Cask (0.35);
+    "AbilityCastRange"                                    "700" // like Paralyzing Cask and original Acid Bomb
+    "AbilityCastPoint"                                    "0.3" // Unstable Concoction (0.2); Paralyzing Cask (0.35);
     "AbilityCastAnimation"                                "ACT_DOTA_ALCHEMIST_CONCOCTION_THROW"
 
     // Time    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "20 18 16 14"                  // like Paralyzing Cask
+    "AbilityCooldown"                                     "20 18 16 14" // like Paralyzing Cask
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "100 110 120 130"              // unique
+    "AbilityManaCost"                                     "100 110 120 130" // unique
     "AbilityProcsMagicStick"                              "1"
     "AOERadius"                                           "%radius"
 
@@ -47,160 +48,37 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01" // like Paralyzing Cask (on heroes)
+      "stun_duration"                                     "1" // like Paralyzing Cask (on heroes)
+      "debuff_duration"                                   "12" // like Maledict; Acid Spray (16);
+      "armor_reduction"                                   "-4 -5 -6 -7" // like Acid Spray
+      "damage_per_second"                                 "20 30 40 50"
+      "radius" 
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "stun_duration"                                   "1"
+        "value"                                           "250" // Unstable Concoction (250 + 125); original Acid Bomb (200); Maledict (180 + 75)
+        "special_bonus_unique_alchemist_custom_3"         "+125"
       }
-      "02" // like Maledict; Acid Spray (16);
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "debuff_duration"                                 "12"
-      }
-      "03" // like Acid Spray
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "armor_reduction"                                 "-4 -5 -6 -7"
-      }
-      "04" // unique
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second"                               "20 30 40 50"
-      }
-      "05" // Unstable Concoction (250 + 125); original Acid Bomb (200); Maledict (180 + 75)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "250"
-      }
-    }
+      "bomb_vision"                                       "400"
+      "bomb_speed"                                        "900"
+      "damage_interval"                                   "1"
+    }         
+  }
 
-    "OnSpellStart"
-    {
-      "TrackingProjectile"
-      {
-        "Target"                                          "TARGET"
-        "EffectName"                                      "particles/units/heroes/hero_alchemist/alchemist_unstable_concoction_projectile.vpcf"
-        "Dodgeable"                                       "1"
-        "ProvidesVision"                                  "1"
-        "VisionRadius"                                    "400"
-        "MoveSpeed"                                       "900"
-        "SourceAttachment"                                "DOTA_PROJECTILE_ATTACHMENT_ATTACK_3"
-      }
+  //=================================================================================================================
+  // Acid Bomb talent: bonus radius
+  //=================================================================================================================
+  "special_bonus_unique_alchemist_custom_3"
+  {
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"                                           "special_bonus_base"
+	"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+	"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-      "FireSound"
-      {
-        "EffectName"                                      "Hero_Alchemist.UnstableConcoction.Throw"
-        "Target"                                          "CASTER"
-      }       
-    }
-
-    "OnProjectileHitUnit"
-    {
-      "DeleteOnHit"                                       "1"
-
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/alchemist/acid_bomb.lua"
-        "Function"                                        "AcidBombStart"
-      }                     
-    }
-
-    "Modifiers"
-    {
-      "modifier_custom_acid_bomb_stun" // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsDebuff"                                        "1"
-        "IsStunDebuff"                                    "1"
-        "IsPurgable"                                      "1"
-
-        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
-        "EffectAttachType"                                "follow_overhead"
-
-        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
-        
-        "States"
-        {
-          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
-        }
-
-        "OnCreated"
-        {
-          "FireEffect"
-          {
-            "EffectName"                                  "particles/units/heroes/hero_witchdoctor/witchdoctor_cask_explosion_flash.vpcf"
-            "EffectAttachType"                            "follow_origin"
-            "Target"                                      "TARGET"
-            "ControlPointEntities"
-            {
-              "TARGET"                                    "attach_hitloc"
-              "TARGET"                                    "attach_hitloc"
-              "TARGET"                                    "attach_hitloc"
-              "TARGET"                                    "attach_hitloc"
-            }
-          }
-
-          "FireEffect"
-          {
-            "EffectName"                                  "particles/units/heroes/hero_witchdoctor/witchdoctor_maledict_aoe.vpcf"
-            "EffectAttachType"                            "follow_origin"
-            "EffectRadius"                                "%radius"
-            "Target"                                      "TARGET"
-          }
-
-          "FireSound"
-          {
-            "EffectName"                                  "Hero_Alchemist.UnstableConcoction.Stun"
-            "Target"                                      "TARGET"
-          }
-        }
-      }
-
-      "modifier_custom_acid_bomb_debuff" // needs tooltip
-      {
-        "IsHidden"                                        "0"
-        "IsDebuff"                                        "1"
-        "IsStunDebuff"                                    "1"
-        "IsPurgable"                                      "1"
-
-        "StatusEffectName"                                "particles/status_fx/status_effect_maledict.vpcf"
-        "StatusEffectPriority"                            "10"
-
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reduction"
-        }       
-
-        "ThinkInterval"                                   "1.0"
-        "OnIntervalThink"
-        {
-          "Damage"
-          {
-            "Target"
-            {
-              "Center"                                    "TARGET"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-            }
-            "Type"                                        "DAMAGE_TYPE_PHYSICAL"
-            "Damage"                                      "%damage_per_second"
-          }
-
-          "FireEffect"
-          {
-            "EffectName"                                  "particles/msg_fx/msg_poison.vpcf"
-            "EffectAttachType"                            "follow_overhead"
-            "Target"                                      "TARGET"
-            "ControlPoints"
-            {
-              "01"                                        "9 %damage_per_second 6"
-              "02"                                        "1 3 0"
-              "03"                                        "170 0 250"
-            }                   
-          }                                   
-        }           
-      }
-    }           
+	"AbilityValues"
+	{
+		"tooltip_value"                                   "125"
+	}
   }
 }

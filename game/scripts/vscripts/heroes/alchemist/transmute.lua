@@ -131,10 +131,6 @@ function alchemist_custom_transmute:ProcsMagicStick()
   return true
 end
 
-function alchemist_custom_transmute:IsStealable()
-  return true
-end
-
 ---------------------------------------------------------------------------------------------------
 
 modifier_custom_transmuted_hero = class({})

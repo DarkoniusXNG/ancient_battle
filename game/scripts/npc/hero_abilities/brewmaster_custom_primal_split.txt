@@ -3,8 +3,8 @@
   //====================================================================================================
   // Brewmaster: Primal Split (R) - Ultimate, Datadriven Brewmaster's Primal Split with slight modifications
   // Author: Darkonius
-  // Notes: OK; 24.8.2019; Selecting and deselecting works (selection library).
-  // TO_DO: Ability UI is bugged after Primal Split end -> fix if you can;
+  // Notes: OK; 2023; Selecting and deselecting works (selection library).
+  // TO_DO: Ability UI is bugged after Primal Split end -> fix if you can; aghs shard: Void Spirit split
   //====================================================================================================
   "brewmaster_custom_primal_split"
   {
@@ -15,6 +15,8 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
     "MaxLevel"                                            "1"
+
+    //"HasShardUpgrade"                                     "1"
 
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
     "AbilityCastPoint"                                    "0.65"

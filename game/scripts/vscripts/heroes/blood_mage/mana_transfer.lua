@@ -244,13 +244,10 @@ function modifier_mana_transfer_enemy:OnIntervalThink()
 		if caster:HasShardCustom() then
 			local damage_table = {}
 			damage_table.attacker = caster
-			damage_table.damage_type = DAMAGE_TYPE_PURE
+			damage_table.damage_type = DAMAGE_TYPE_MAGICAL
 			damage_table.ability = ability
 			damage_table.victim = target
-			damage_table.damage = mana_transfer
-			if target:HasModifier("modifier_banished_enemy") then
-				damage_table.damage_type = DAMAGE_TYPE_MAGICAL
-			end
+			damage_table.damage = 2*mana_transfer
 
 			ApplyDamage(damage_table)
 		end

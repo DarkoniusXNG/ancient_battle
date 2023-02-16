@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Dark Terminator: Cloak - invisibility + ms bonus; Still has collision; Also some blur effects;
   // Author: Darkonius
-  // Notes: OK; 2022; Not on minimap for enemies; no health bar; low attack priority;
-  // TO_DO:
+  // Notes: OK; 2023; Not on minimap for enemies; no health bar; low attack priority;
+  // TO_DO: aghs shard: bonus pure dmg and break when attacking from invisibility
   //=================================================================================================================
   "dark_terminator_cloak"
   {
@@ -13,6 +13,8 @@
     "AbilityTextureName"                                  "custom/dark_terminator_cloak"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
+
+    //"HasShardUpgrade"                                     "1"
 
     "AbilityCastPoint"                                    "0.0"
 
