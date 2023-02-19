@@ -85,12 +85,13 @@ function modifier_red_mist_curse_debuff:OnRefresh()
 		movement_slow = ability:GetSpecialValueFor("move_speed_slow")
 		self.dps = ability:GetSpecialValueFor("damage_per_second")
 		self.interval = ability:GetSpecialValueFor("damage_interval")
-		if IsServer() then
-			-- Slow is reduced with Status Resistance
-			self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
-		else
-			self.slow = movement_slow
-		end
+	end
+
+	if IsServer() then
+		-- Slow is reduced with Status Resistance
+		self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+	else
+		self.slow = movement_slow
 	end
 end
 
@@ -135,7 +136,7 @@ function modifier_red_mist_curse_debuff:GetModifierProvidesFOWVision()
 	return 1
 end
 
-+function modifier_red_mist_curse_debuff:GetStatusEffectName()
+function modifier_red_mist_curse_debuff:GetStatusEffectName()
 	return "particles/status_fx/status_effect_battle_hunger.vpcf"  
 end
 

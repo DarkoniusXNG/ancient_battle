@@ -34,53 +34,55 @@
     "Ability12"                                           "special_bonus_hp_300"                     // lvl 15 talent: unique
     "Ability13"                                           "special_bonus_unique_stealth_assassin_3"  // lvl 15 talent: PermInvis move speed talent
 
-    "Ability14"                                           "special_bonus_20_crit_15"                 // lvl 20 talent: unique 
+    "Ability14"                                           "special_bonus_unique_stealth_assassin_5"  // lvl 20 talent: Backstab multiplier talent 
     "Ability15"                                           "special_bonus_unique_stealth_assassin_2"  // lvl 20 talent: Death Ward attack range talent;
 
-    "Ability16"                                           "special_bonus_agility_40"                 // lvl 25 talent: unique
+    "Ability16"                                           "special_bonus_20_crit_15"                 // lvl 25 talent: unique
     "Ability17"                                           "special_bonus_unique_stealth_assassin_1"  // lvl 25 talent: Death Ward damage talent
+	
+	// old lvl 25 - special_bonus_agility_40
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                    // Riki (3);
+    "ArmorPhysical"                                       "0"                   // Riki (3); original (0);
     "MagicalResistance"                                   "25"                  // Default
 
     // Attack
     //-------------------------------------------------------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
-    "AttackDamageMin"                                     "25"                  // Riki (41); original (2);
-    "AttackDamageMax"                                     "29"                  // Riki (45); original (12);
-    "AttackRate"                                          "1.7"                  // like Riki
-    "BaseAttackSpeed"                                     "100"                  // Riki (100);
-    "AttackAnimationPoint"                                "0.3"                  // like Riki
-    "AttackAcquisitionRange"                              "600"                  // like Riki
-    "AttackRange"                                         "128"                  // Riki (150); original (100 or 128);
+    "AttackDamageMin"                                     "37"                  // Riki (41); original (2);
+    "AttackDamageMax"                                     "41"                  // Riki (45); original (12);
+    "AttackRate"                                          "1.7"                 // like Riki
+    "BaseAttackSpeed"                                     "100"                 // Riki (100);
+    "AttackAnimationPoint"                                "0.3"                 // like Riki
+    "AttackAcquisitionRange"                              "600"                 // like Riki
+    "AttackRange"                                         "128"                 // Riki (150); original (100 or 128);
 
     // Movement
     //-------------------------------------------------------------------------------------------------------------
-    "MovementSpeed"                                       "295"                  // Riki (315); Anti-Mage (310);
-    "MovementTurnRate"                                    "0.6"                  // like Riki
+    "MovementSpeed"                                       "295"                 // Riki (315); Anti-Mage (310);
+    "MovementTurnRate"                                    "0.6"                 // like Riki
 
     // Vision
     //-------------------------------------------------------------------------------------------------------------
-    "VisionDaytimeRange"                                  "1800"                  // Default
-    "VisionNighttimeRange"                                "800"                  // Default
+    "VisionDaytimeRange"                                  "1800"                // Default
+    "VisionNighttimeRange"                                "800"                 // Default
 
     // Attributes
     //-------------------------------------------------------------------------------------------------------------
     "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
-    "AttributeBaseStrength"                               "18"                  // Riki (18); original (18); - don't change!
-    "AttributeStrengthGain"                               "2.0"                  // Riki (2.6); original (2.0); - don't decrease!
-    "AttributeBaseAgility"                                "30"                  // Riki (18); original (22);
-    "AttributeAgilityGain"                                "2.9"                  // Riki (1.4); original (2.9); Anti-Mage (3.2) - don't increase!
-    "AttributeBaseIntelligence"                           "14"                  // Riki (14); original (16); Anti-Mage (12);
-    "AttributeIntelligenceGain"                           "1.3"                  // Riki (1.3); original (2.0); Anti-Mage (1.8); - don't decrease!
+    "AttributeBaseStrength"                               "18"                  // Riki (18); 6.00 (17); ?-5.58 (18);
+    "AttributeStrengthGain"                               "2.0"                 // Riki (2.6); 6.00 (2.0); ?-5.58 (1.8);
+    "AttributeBaseAgility"                                "22"                  // Riki (18); 6.00 (22); 6.25 (24); 6.68 (34);
+    "AttributeAgilityGain"                                "2.9"                 // Riki (1.4); 6.00 (2.9);
+    "AttributeBaseIntelligence"                           "14"                  // Riki (14); 6.00 (14);
+    "AttributeIntelligenceGain"                           "1.3"                 // Riki (1.3); 6.00 (1.3);
 
     // Status
     //-------------------------------------------------------------------------------------------------------------
-    "StatusHealthRegen"                                   "1.5"                  // Riki (2.5); original (1.5);
-    "StatusHealth"                                        "200"                  // Riki (200); original (230);
+    "StatusHealthRegen"                                   "0.25"                // Riki (2.5); original (0.25);
+    "StatusHealth"                                        "150"                 // Riki (200); original (230);
     "StatusMana"                                          "75"                  // like Riki
-    "StatusManaRegen"                                     "0.0"                  // like Riki
+    "StatusManaRegen"                                     "0.0"                 // like Riki
   }
 }

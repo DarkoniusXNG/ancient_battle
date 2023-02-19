@@ -4,6 +4,13 @@ end
 
 LinkLuaModifier("modifier_earth_golem_hurl_boulder_stun", "heroes/archmage/earth_golem_hurl_boulder.lua", LUA_MODIFIER_MOTION_NONE)
 
+function earth_golem_hurl_boulder:Spawn()
+	-- Constants
+	self.projectile_particle = "particles/neutral_fx/mud_golem_hurl_boulder.vpcf"
+	self.caster_sound = "n_mud_golem.Boulder.Cast"
+	self.target_sound = "n_mud_golem.Boulder.Target"
+end
+
 function earth_golem_hurl_boulder:CastFilterResultTarget(target)
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
@@ -34,7 +41,7 @@ function earth_golem_hurl_boulder:OnSpellStart()
 	local speed = self:GetSpecialValueFor("speed")
 
 	local info = {
-		EffectName = "particles/neutral_fx/mud_golem_hurl_boulder.vpcf",
+		EffectName = self.projectile_particle,
 		Ability = self,
 		iMoveSpeed = speed,
 		Source = caster,
@@ -49,7 +56,7 @@ function earth_golem_hurl_boulder:OnSpellStart()
 	ProjectileManager:CreateTrackingProjectile(info)
 
 	-- Sound on caster
-	caster:EmitSound("n_mud_golem.Boulder.Cast")
+	caster:EmitSound(self.caster_sound)
 end
 
 function earth_golem_hurl_boulder:OnProjectileHit(target, location)
@@ -63,7 +70,7 @@ function earth_golem_hurl_boulder:OnProjectileHit(target, location)
 		local caster = self:GetCaster()
 
 		-- Sound on target
-		target:EmitSound("n_mud_golem.Boulder.Target")
+		target:EmitSound(self.target_sound)
 
 		-- KVs
 		local damage = self:GetSpecialValueFor("damage")
@@ -95,12 +102,25 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
+if primal_split_earth_spirit_hurl_boulder == nil then
+	primal_split_earth_spirit_hurl_boulder = earth_golem_hurl_boulder
+end
+
+function primal_split_earth_spirit_hurl_boulder:Spawn()
+	-- Constants
+	self.projectile_particle = "particles/units/heroes/hero_brewmaster/brewmaster_hurl_boulder.vpcf"
+	self.caster_sound = "Brewmaster_Earth.Boulder.Cast"
+	self.target_sound = "Brewmaster_Earth.Boulder.Target"
+end
+
+---------------------------------------------------------------------------------------------------
+
 if modifier_earth_golem_hurl_boulder_stun == nil then
 	modifier_earth_golem_hurl_boulder_stun = class({})
 end
 
 function modifier_earth_golem_hurl_boulder_stun:IsHidden()
-	return true
+	return false
 end
 
 function modifier_earth_golem_hurl_boulder_stun:IsDebuff()

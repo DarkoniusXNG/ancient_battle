@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Earth Golem: Hurl Boulder (Q) - Datadriven Mud Golem's Hurl Boulder
+  // Earth Golem: Hurl Boulder (Q) - like Mud Golem's Hurl Boulder
   // Author: Darkonius
   // Linkens: Blocks;
   // Notes: OK; 2023;

@@ -1,127 +1,253 @@
-﻿-- Called OnSpellStart
-function LifeDrainStart(event)
-	local target = event.target
-	local caster = event.caster
-	local ability = event.ability
+﻿dark_ranger_life_drain = class({})
 
-	-- Check for spell block and spell immunity (latter because of lotus)
-	if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_life_drain", {})
-		caster:EmitSound("Hero_Pugna.LifeDrain.Target")
+LinkLuaModifier("modifier_dark_ranger_life_drain", "heroes/dark_ranger/dark_ranger_life_drain.lua", LUA_MODIFIER_MOTION_NONE)
+
+function dark_ranger_life_drain:CastFilterResultTarget(target)
+	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
+		-- Talent that allows piercing spell immunity
+		local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
+		if talent and talent:GetLevel() > 0 then
+			return UF_SUCCESS
+		end
+
+		return UF_FAIL_MAGIC_IMMUNE_ENEMY
+	end
+
+	return default_result
+end
+
+function dark_ranger_life_drain:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
+function dark_ranger_life_drain:OnSpellStart()
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
+
+	if not caster or not target then
+		return
+	end
+
+	if not self.modifiers then
+		self.modifiers = {}
 	else
+		-- Remove previous instances
+		for _, mod in pairs(self.modifiers) do
+			if mod and not mod:IsNull() then
+				mod:Destroy()
+			end
+		end
+		self.modifiers = {}
+	end
+
+	-- Check for spell block
+	if target:TriggerSpellAbsorb(self) then
 		caster:Interrupt()
+		return
 	end
-end
 
---[[
-	Called when modifier_dark_ranger_life_drain is created. Function creates the Life Drain Particle rope.
-	It is indexed on the caster handle to have access to it later.
-]]
-function LifeDrainParticle(event)
-	local caster = event.caster
-	local target = event.target
-
-	local particleName = "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
-	caster.LifeDrainParticle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
-	ParticleManager:SetParticleControlEnt(caster.LifeDrainParticle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-
-	-- Set the particle control color as green
-	ParticleManager:SetParticleControl(caster.LifeDrainParticle, 10, Vector(0,0,0))
-	ParticleManager:SetParticleControl(caster.LifeDrainParticle, 11, Vector(0,0,0))
-end
-
--- Called OnIntervalThink inside modifier_dark_ranger_life_drain
-function LifeDrainHealthTransfer(event)
-	local caster = event.caster
-	local target = event.target
-	local ability = event.ability
-	local ability_level = ability:GetLevel() - 1
-
-	local health_drain = ability:GetLevelSpecialValueFor("health_drain", ability_level)
-	local tick_rate = ability:GetLevelSpecialValueFor("tick_rate", ability_level)
-	local HP_drain = health_drain*tick_rate
-
-	-- Talent that changes damage type and allows full hp draining
-	local has_talent = false
+	-- Talent that allows piercing spell immunity
 	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
-	if talent and talent:GetLevel() > 0 then
-		has_talent = true
+	local has_talent = talent and talent:GetLevel() > 0
+
+	-- Check for spell immunity (because of lotus); pierces spell immunity with talent
+	if target:IsMagicImmune() and not has_talent then
+		caster:Interrupt()
+		return
 	end
+
+	-- Sound on caster
+	caster:EmitSound("Hero_Pugna.LifeDrain.Cast")
+
+	local duration = self:GetChannelTime()
+
+	-- Enemy debuff
+	local debuff = target:AddNewModifier(caster, self, "modifier_dark_ranger_life_drain", {duration = duration})
+	table.insert(self.modifiers, debuff)
+
+	-- Check for shard
+	if caster:HasShardCustom() then
+		-- Apply Dark Arrow debuff - TODO
+	end
+end
+
+-- Called when modifiers are destroyed (unit dies or modifier is removed; modifier can be removed in many cases)
+function dark_ranger_life_drain:OnChannelFinish(bInterrupted)
+	if self.modifiers then
+		-- Remove all modifiers
+		for _, mod in pairs(self.modifiers) do
+			if mod and not mod:IsNull() then
+				mod:Destroy()
+			end
+		end
+	end
+end
+
+function dark_ranger_life_drain:ProcsMagicStick()
+	return true
+end
+
+---------------------------------------------------------------------------------------------------
+
+modifier_dark_ranger_life_drain = class({})
+
+function modifier_dark_ranger_life_drain:IsHidden() -- needs tooltip
+	return false
+end
+
+function modifier_dark_ranger_life_drain:IsDebuff()
+	return true
+end
+
+function modifier_dark_ranger_life_drain:IsPurgable() -- dispellable
+	return true
+end
+
+function modifier_dark_ranger_life_drain:RemoveOnDeath()
+	return true
+end
+
+function modifier_dark_ranger_life_drain:OnCreated()
+	if not IsServer() then
+		return
+	end
+
+	local parent = self:GetParent()
+	local caster = self:GetCaster()
+	local ability = self:GetAbility()
+
+    -- Particle
+	local particleName = "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+	self.particle = ParticleManager:CreateParticle(particleName, PATTACH_POINT_FOLLOW, caster) --PATTACH_ABSORIGIN_FOLLOW or PATTACH_ABSORIGIN
+	ParticleManager:SetParticleControlEnt(self.particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(self.particle, 1, parent, PATTACH_POINT_FOLLOW, "attach_hitloc", parent:GetAbsOrigin(), true)
+	--ParticleManager:SetParticleControlEnt(self.particle, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+	--ParticleManager:SetParticleControl(self.particle, 10, Vector(0,0,0))
+	--ParticleManager:SetParticleControl(self.particle, 11, Vector(0,0,0))
+
+	-- Sound
+	parent:EmitSound("Hero_Pugna.LifeDrain.Target")
+
+	-- Start transfering
+	local interval = ability:GetSpecialValueFor("think_interval")
+	self:OnIntervalThink()
+	self:StartIntervalThink(interval)
+end
+
+function modifier_dark_ranger_life_drain:OnIntervalThink()
+	if not IsServer() then
+		return
+	end
+
+	local target = self:GetParent()
+	local caster = self:GetCaster()
+	local ability = self:GetAbility()
+
+	if not target or target:IsNull() or not target:IsAlive() or not caster or caster:IsNull() or not caster:IsAlive() or not ability or ability:IsNull() then
+		self:StartIntervalThink(-1)
+		self:Destroy()
+		return
+	end
+
+	local dmg_per_second = ability:GetSpecialValueFor("health_drain")
+	local interval = ability:GetSpecialValueFor("think_interval")
+
+	-- Check for shard
+	if caster:HasShardCustom() then
+		dmg_per_second = ability:GetSpecialValueFor("shard_health_drain")
+	end
+
+	local dmg_per_interval = dmg_per_second * interval
 
 	-- How much caster heals himself
-	local HP_gain = HP_drain
+	local heal_per_interval = dmg_per_interval
+
+	-- Talent that changes damage type and allows piercing spell immunity
+	local talent = caster:FindAbilityByName("special_bonus_unique_dark_ranger_5")
+	local has_talent = talent and talent:GetLevel() > 0
 
 	-- If its an illusion then kill it
-	if target:IsIllusion() then
+	if target:IsIllusion() and not target:IsStrongIllusionCustom() then
 		target:Kill(ability, caster)
-		ability:OnChannelFinish(false)
-		caster:Interrupt()
-		if caster.LifeDrainParticle then
-			ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
-			ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
-		end
+		self:StartIntervalThink(-1)
+		self:Destroy()
 		return
-	else
-		-- Location variables
-		local caster_location = caster:GetAbsOrigin()
-		local target_location = target:GetAbsOrigin()
+	end
 
-		-- Distance variables
-		local distance = (target_location - caster_location):Length2D()
-		local break_distance = ability:GetLevelSpecialValueFor("break_distance", ability_level) + caster:GetCastRangeBonus()
-		local direction = (target_location - caster_location):Normalized()
+	-- Location variables
+	local caster_location = caster:GetAbsOrigin()
+	local target_location = target:GetAbsOrigin()
 
-		-- If the leash is broken or target is spell immune or invulnerable then stop the channel
-		if distance >= break_distance or target:IsMagicImmune() or target:IsInvulnerable() then
-			ability:OnChannelFinish(false)
-			caster:Interrupt()
-			if caster.LifeDrainParticle then
-				ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
-				ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
-			end
-			target:RemoveModifierByName("modifier_dark_ranger_life_drain")
-			return
-		end
+	-- Distance variables
+	local distance = (target_location - caster_location):Length2D()
+	local break_distance = ability:GetSpecialValueFor("break_distance") + caster:GetCastRangeBonus()
+	local direction = (target_location - caster_location):Normalized()
 
-		-- Make sure that the caster always faces the target if he is channeling
-		if caster:IsChanneling() then
-			caster:SetForwardVector(direction)
-		end
+	-- If one of these happens then stop the channel:
+	-- 1) target goes out of range
+	-- 2) target becomes spell immune (no talent)
+	-- 3) target becomes invulnerable
+	if distance >= break_distance or (target:IsMagicImmune() and not has_talent) or target:IsInvulnerable() then
+		self:StartIntervalThink(-1)
+		self:Destroy()
+		return
 	end
 
 	if caster:IsChanneling() then
+		-- Make sure that the caster always faces the target if he is channeling
+		caster:SetForwardVector(direction)
+
 		local damage_table = {}
 		damage_table.attacker = caster
-		damage_table.ability = ability
 		damage_table.victim = target
-		damage_table.damage = HP_drain
+		damage_table.ability = ability
+		damage_table.damage = dmg_per_interval
+		damage_table.damage_type = DAMAGE_TYPE_MAGICAL
 		if has_talent then
 			damage_table.damage_type = DAMAGE_TYPE_PURE
-			ApplyDamage(damage_table)
-			caster:Heal(HP_gain, ability)
-		elseif caster:GetHealthDeficit() > 0 then
-			-- Health Transfer from the Enemy to the caster
-			damage_table.damage_type = DAMAGE_TYPE_MAGICAL
-			ApplyDamage(damage_table)
-			caster:Heal(HP_gain, ability)
 		end
+
+		--if caster:GetHealthDeficit() > 0 then
+		-- Damage
+		ApplyDamage(damage_table)
+
+		-- Heal
+		caster:Heal(heal_per_interval, ability)
+		--end
 	end
 end
 
--- Called when modifier_dark_ranger_life_drain is destroyed (unit dies or modifier is removed; modifier can be removed in many cases)
--- OnChannelFinish and OnChannelInterrupted
-function LifeDrainEnd(event)
-	local caster = event.caster
-	local target = event.target
-	if caster.LifeDrainParticle then
-		ParticleManager:DestroyParticle(caster.LifeDrainParticle, false)
-		ParticleManager:ReleaseParticleIndex(caster.LifeDrainParticle)
+function modifier_dark_ranger_life_drain:OnDestroy()
+	if not IsServer() then
+		return
 	end
 
-	caster:Interrupt()
-	caster:StopSound("Hero_Pugna.LifeDrain.Target")
+	if self.particle then
+		ParticleManager:DestroyParticle(self.particle, false)
+		ParticleManager:ReleaseParticleIndex(self.particle)
+	end
 
-	if target and not target:IsNull() then
-		target:RemoveModifierByName("modifier_dark_ranger_life_drain")
+	local parent = self:GetParent()
+	if parent and not parent:IsNull() then
+		parent:StopSound("Hero_Pugna.LifeDrain.Target")
+	end
+
+	local caster = self:GetCaster()
+	local ability = self:GetAbility()
+
+	if caster and not caster:IsNull() and caster:IsAlive() then
+		caster:Interrupt()
+	elseif ability and not ability:IsNull() then
+		ability:OnChannelFinish(true)
 	end
 end

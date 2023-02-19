@@ -68,7 +68,7 @@ function DarkRitual(event)
   local mana_gain = target_health*hp_percent*0.01
 
   caster:GiveMana(mana_gain)
-  target:ForceKill(true)
+  target:ForceKill(false)
 
   SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, caster, mana_gain, nil)
 end

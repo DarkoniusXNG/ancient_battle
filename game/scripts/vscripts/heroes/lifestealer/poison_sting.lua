@@ -108,12 +108,13 @@ function modifier_custom_lifestealer_poison_sting_debuff:OnRefresh()
 		movement_slow = ability:GetSpecialValueFor("move_speed_slow")
 		self.dps = ability:GetSpecialValueFor("damage")
 		self.heal_reduction	= ability:GetSpecialValueFor("heal_reduction")
-		if IsServer() then
-			-- Slow is reduced with Status Resistance
-			self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
-		else
-			self.slow = movement_slow
-		end
+	end
+
+	if IsServer() then
+		-- Slow is reduced with Status Resistance
+		self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+	else
+		self.slow = movement_slow
 	end
 end
 

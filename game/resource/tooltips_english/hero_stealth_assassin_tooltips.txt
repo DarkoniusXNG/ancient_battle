@@ -77,4 +77,5 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_2"                    "+{s:value} Death Ward Attack Range"
 		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_3"                    "+{s:tooltip_value}% Stealth Move Speed"
 		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_4"                    "+{s:tooltip_value} Stealth HP Regen"
+		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_5"                    "+{s:tooltip_value} Backstab Multiplier"
 		"DOTA_Tooltip_ability_special_bonus_unique_stealth_assassin_7"                    "+{s:tooltip_value} Smoke Screen Radius"

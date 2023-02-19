@@ -35,7 +35,7 @@
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Lore"					"Lesser magi are nothing more than a source of magical restoration for the Blood Mage."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note0"					"Destroys enemy illusions."
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_Note1"					"The link doesn't break when the target gets out of vision."
-		"DOTA_Tooltip_ability_blood_mage_mana_transfer_duration"				"CHANNEL TIME:"
+		"DOTA_Tooltip_ability_blood_mage_mana_transfer_duration"				"MAX CHANNEL TIME:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_mana_per_second"			"MANA PER SECOND:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_break_distance"			"BREAK DISTANCE:"
 		"DOTA_Tooltip_ability_blood_mage_mana_transfer_extra_mana_duration"     "EXTRA MANA DURATION:"

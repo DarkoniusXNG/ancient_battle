@@ -22,7 +22,7 @@
 
     "AbilityCastRange"                                    "850" // original (600);
     "AbilityCastPoint"                                    "0.1"
-    "AbilityChannelTime"                                  "6.0"
+    "AbilityChannelTime"                                  "6" // Lion (5); original (unknown);
     "CastFilterRejectCaster"                              "1"
     "AbilityCastAnimation"                                "ACT_DOTA_TELEPORT"
 
@@ -41,7 +41,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "duration"                                          "6" // Lion (5); original (unknown);
+      "duration"                                          "6" // only used in tooltip
       "mana_per_second"                                   "20 40 60 120"
       "break_distance"                                    "1100"
       "think_interval"                                    "0.1"

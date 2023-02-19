@@ -111,10 +111,6 @@ function blood_mage_mana_transfer:ProcsMagicStick()
 	return true
 end
 
-function blood_mage_mana_transfer:IsStealable()
-	return true
-end
-
 ---------------------------------------------------------------------------------------------------
 
 modifier_mana_transfer_enemy = class({})
@@ -203,16 +199,14 @@ function modifier_mana_transfer_enemy:OnIntervalThink()
 		return
 	end
 
-	-- Make sure that the caster always faces the target if he is channeling
 	if caster:IsChanneling() then
+		-- Make sure that the caster always faces the target if he is channeling
 		caster:SetForwardVector(direction)
-	end
+	
+		-- Mana variables
+		local target_mana = target:GetMana()
+		local caster_mana = caster:GetMana()
 
-	-- Mana variables
-	local target_mana = target:GetMana()
-    local caster_mana = caster:GetMana()
-
-	if caster:IsChanneling() then
 		local mana_transfer
 		if target_mana >= mana_per_interval then
 			mana_transfer = mana_per_interval
@@ -352,15 +346,13 @@ function modifier_mana_transfer_ally:OnIntervalThink()
 		return
 	end
 
-	-- Make sure that the caster always faces the target if he is channeling
 	if caster:IsChanneling() then
+		-- Make sure that the caster always faces the target if he is channeling
 		caster:SetForwardVector(direction)
-	end
 
-	local target_mana = target:GetMana()
-    local caster_mana = caster:GetMana()
+		local target_mana = target:GetMana()
+		local caster_mana = caster:GetMana()
 
-	if caster:IsChanneling() then
 		local mana_transfer
 		if caster_mana >= mana_per_interval then
 			mana_transfer = mana_per_interval

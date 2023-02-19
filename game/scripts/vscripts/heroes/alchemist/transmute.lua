@@ -75,9 +75,11 @@ function alchemist_custom_transmute:OnSpellStart()
   -- Sound
   target:EmitSound("DOTA_Item.Hand_Of_Midas")
 
+  -- KVs
   local stun_hero_duration = self:GetSpecialValueFor("stun_duration")
   local gold_bounty_multiplier = self:GetSpecialValueFor("gold_bounty_multiplier")
 
+  -- Shard duration
   if caster:HasShardCustom() then
     stun_hero_duration = self:GetSpecialValueFor("shard_stun_duration")
   end

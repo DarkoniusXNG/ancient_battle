@@ -1,7 +1,24 @@
 oracle_will_to_live = class({})
 
-LinkLuaModifier( "modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE)
+
+function oracle_will_to_live:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function oracle_will_to_live:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
 
 function oracle_will_to_live:OnSpellStart()
 	local caster = self:GetCaster()

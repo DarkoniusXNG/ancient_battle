@@ -201,7 +201,7 @@ function modifier_custom_acid_bomb_debuff:OnCreated()
 	if not IsServer() then
 		return
 	end
-	
+
 	-- Start thinking
 	self:OnIntervalThink()
 	self:StartIntervalThink(self.interval)

@@ -214,7 +214,7 @@ function BuyCreep(keys)
 		local target_name = target:GetUnitName()
 		local bought_creep = CreateUnitByName(target_name, target:GetAbsOrigin(), true, caster, caster, caster_team)
 		FindClearSpaceForUnit(bought_creep, target:GetAbsOrigin(), false)
-		target:ForceKill(true)
+		target:ForceKill(false)
 		bought_creep:SetControllableByPlayer(caster_owner, true)
 		ability:ApplyDataDrivenModifier(caster, bought_creep, "modifier_bought_general", nil)
 		-- Track the unit
@@ -229,11 +229,11 @@ function BuyCreep(keys)
 		
 	-- If the maximum amount of units is reached then kill the oldest unit in tables
 	if ability.unit_count > max_units then
-		ability.bought_table[1]:ForceKill(true) 
+		ability.bought_table[1]:ForceKill(false) 
 	end
 
 	if ability.ancient_count > max_ancients then
-		ability.ancient_table[1]:ForceKill(true) 
+		ability.ancient_table[1]:ForceKill(false) 
 	end
 end
 
@@ -299,7 +299,7 @@ function BribeRemoveClone (keys)
 	local target = keys.target
 	if target then
 		target:MakeIllusion() -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
-		--target:ForceKill(true) -- it plays a death animation
+		--target:ForceKill(false) -- it plays a death animation
 		target:RemoveSelf()
 	end
 end
@@ -310,7 +310,7 @@ function RemoveFromTable (keys)
 	local ability = keys.ability
 
 	if target and target:IsAlive() then
-		target:ForceKill(true)
+		target:ForceKill(false)
 	end
 	-- Find the unit and remove it from the table
 	for i = 1, #ability.bought_table do

@@ -6,10 +6,9 @@ LinkLuaModifier("modifier_custom_death_ward", "heroes/ryu/death_ward.lua", LUA_M
 
 function stealth_assassin_death_ward:OnSpellStart()
 	local caster = self:GetCaster()
-	
 	local point = self:GetCursorPosition()
 
-	if not point then
+	if not caster or not point then
 		return
 	end
 

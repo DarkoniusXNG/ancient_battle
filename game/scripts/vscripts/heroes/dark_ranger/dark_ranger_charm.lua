@@ -1,177 +1,510 @@
-﻿-- Called OnSpellStart
--- Latest update: Added a situation for Charming already Charmed heroes
-function CharmStart(event)
-	local target = event.target
-	local caster = event.caster
-	local ability = event.ability
-
-	local pID = caster:GetPlayerOwnerID()
-	local ability_level = ability:GetLevel() - 1
-
-	local hero_duration = ability:GetLevelSpecialValueFor("charm_hero_duration", ability_level)
-	local creep_duration = ability:GetLevelSpecialValueFor("charm_creep_duration", ability_level)
-	local hero_duration_scepter = ability:GetLevelSpecialValueFor("charm_hero_duration_scepter", ability_level)
-
-	if caster:HasScepter() then
-		hero_duration = hero_duration_scepter
-	end
-
-	-- Checking if target has spell block, if target has spell block, there is no need to execute the spell
-	if not target:TriggerSpellAbsorb(ability) then
-		if target:IsHero() and not target:IsMagicImmune() then
-			if target:IsRealHero() then
-				-- Target is a Real Hero that doesn't have spell immunity.
-				if target:IsHeroDominatedCustom() then
-					-- Target hero is already Charmed.
-					ability:RefundManaCost()
-					ability:EndCooldown()
-					-- Display the error message
-					SendErrorMessage(pID, "Can't Target Dominated Heroes!")
-				elseif target:IsCloneCustom() then
-					ability:RefundManaCost()
-					ability:EndCooldown()
-					-- Display the error message
-					SendErrorMessage(pID, "Can't Target Super Illusions or Clones!")
-				else
-					ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_hero", {["duration"] = hero_duration})
-				end
-			else
-				-- Target is an illusion of a hero. Creep duration.
-				ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
-			end
-		else
-			if not target:IsHero() then
-				-- Target is a creep.
-				if not target:IsAncient() then
-					ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
-				else
-					-- Target is an Ancient creep
-					if caster:HasScepter() and not IsRoshan(target) and not target:IsCourier() then
-						ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_creep", {["duration"] = creep_duration})
-						-- this 'if block' is making sure that Charm works on any creep (even Ancients, but not Roshan) if the caster has Aghanim Scepter.
-					else
-						-- Target is Roshan or an Ancient creep but Caster doesn't have Aghanim Scepter.
-						ability:RefundManaCost()
-						ability:EndCooldown()
-						-- Display error messages
-						if IsRoshan(target) then
-							SendErrorMessage(pID, "Can't Target Roshan!")
-						elseif target:IsCourier() then
-							SendErrorMessage(pID, "Can't Target Couriers!")
-						else
-							SendErrorMessage(pID, "Can't Target Ancients without Aghanim Scepter!")
-						end
-					end
-				end
-			else
-				-- Target is a Hero with spell immunity.
-				ability:RefundManaCost()
-				ability:EndCooldown()
-				-- Display the error message
-				SendErrorMessage(pID, "Can't Target Heroes Immune To Spells!")
-			end
-		end
-	end
+﻿if dark_ranger_charm == nil then
+	dark_ranger_charm = class({})
 end
 
--- Called when modifier_charmed_creep is created
-function CharmCreep(keys)
-	local caster = keys.caster
-	local target = keys.target
-	local ability = keys.ability
+LinkLuaModifier("modifier_charmed_hero", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_charmed_general", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_charmed_cloned_hero", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_charmed_removing", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
+
+function dark_ranger_charm:CastFilterResultTarget(target)
+	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsRoshan() or target:IsCustomWardTypeUnit() or target:IsHeroDominatedCustom() then
+		return UF_FAIL_CUSTOM
+	elseif target:IsCourier() then
+		return UF_FAIL_COURIER
+	elseif (target:IsAncient() and not caster:HasScepter()) then
+		return UF_FAIL_ANCIENT
+	elseif (target:IsMagicImmune() and not caster:HasScepter()) then
+		return UF_FAIL_MAGIC_IMMUNE_ENEMY 
+	end
+
+	return default_result
+end
+
+function dark_ranger_charm:GetCustomCastErrorTarget(target)
+	if target:IsRoshan() then
+		return "#dota_hud_error_cant_cast_on_roshan"
+	end
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	if target:IsHeroDominatedCustom() then
+		return "Can't Target Dominated Heroes!"
+	end
+	return ""
+end
+
+function dark_ranger_charm:GetCooldown(level)
+	--local base_cooldown = self.BaseClass.GetCooldown(self, level)
+	local caster = self:GetCaster()
+	local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
+	local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
+
+	if IsServer() then
+		local target = self:GetCursorTarget()
+		if target and (target:IsHero() or target:IsConsideredHero()) then
+			return cooldown_heroes
+		elseif target then
+			return cooldown_creeps
+		end
+	end
+
+	return cooldown_heroes
+end
+
+function dark_ranger_charm:OnSpellStart()
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
+
+	-- Don't continue if target and caster entities don't exist
+	if not target or not caster then
+		return
+	end
+
+	-- Can't target clones
+	if target:IsCloneCustom() then
+		self:RefundManaCost()
+		self:EndCooldown()
+		-- Display the error message
+		SendErrorMessage(caster:GetPlayerOwnerID(), "Can't Target Clones or Super illusions!")
+		return
+	end
+
+	-- Check for spell block
+	if target:TriggerSpellAbsorb(self) then
+		return
+	end
+
+	-- Check for spell immunity (because of lotus); pierces spell immunity with scepter
+	if target:IsMagicImmune() and not caster:HasScepter() then
+		return
+	end
+	
+	-- Sound on caster
+	caster:EmitSound("Hero_Chen.HolyPersuasionCast")
 
 	local caster_team = caster:GetTeamNumber()
 	local caster_owner = caster:GetPlayerOwnerID() -- Owning player id
 
-	local creep_duration = ability:GetLevelSpecialValueFor("charm_creep_duration", ability:GetLevel() - 1)
+	-- KVs
+	local hero_duration = self:GetSpecialValueFor("charm_hero_duration")
+	local creep_duration = self:GetSpecialValueFor("charm_creep_duration")
 
+	-- Scepter duration
+	if caster:HasScepter() then
+		hero_duration = self:GetSpecialValueFor("charm_hero_duration_scepter")
+	end
+	
+	-- Interrupt the target
 	target:Interrupt()
-	if target:IsIllusion() then
-		target:SetTeam(caster_team)
-		target:SetOwner(caster:GetOwner())
-		target:SetControllableByPlayer(caster_owner, true)
-		--target:RemoveModifierByName("modifier_kill")
-		target:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
+
+	if target:IsRealHero() then
+		target:AddNewModifier(caster, self, "modifier_charmed_hero", {duration = hero_duration})
 	else
-		local target_name = target:GetUnitName()
-		local target_location = target:GetAbsOrigin()
-		target:ForceKill(true)
-		local charmed_creep = CreateUnitByName(target_name, target_location, true, caster, caster, caster_team)
-		charmed_creep:SetOwner(caster:GetOwner())
-		charmed_creep:SetControllableByPlayer(caster_owner, true)
-		--charmed_creep:RemoveModifierByName("modifier_kill")
-		charmed_creep:AddNewModifier(caster, ability, "modifier_kill", {duration = creep_duration})
-		FindClearSpaceForUnit(charmed_creep, target_location, false)
-		ability:ApplyDataDrivenModifier(caster, charmed_creep, "modifier_charmed_general", nil)
-	end
-end
-
--- Called when modifier_charmed_hero is created
-function CharmHero(keys)
-	if IsServer() then
-		local caster = keys.caster
-		local target = keys.target
-		local charm_ability = keys.ability
-		local ability_level = charm_ability:GetLevel() - 1
-
-		-- Setting the duration of the copy (checking if the caster has Aghanim Scepter)
-		local duration
-		if caster:HasScepter() then
-			duration = charm_ability:GetLevelSpecialValueFor("charm_hero_duration_scepter", ability_level)
+		-- modifier_charmed_creep
+		if target:IsIllusion() then
+			-- Change illusion ownership
+			target:SetTeam(caster_team)
+			target:SetOwner(caster:GetOwner())
+			target:SetControllableByPlayer(caster_owner, true)
+			--target:RemoveModifierByName("modifier_kill")
+			target:AddNewModifier(caster, self, "modifier_charmed_general", {})
+			target:AddNewModifier(caster, self, "modifier_kill", {duration = creep_duration}) -- this doesn't change the illusion duration unfortunately
 		else
-			duration = charm_ability:GetLevelSpecialValueFor("charm_hero_duration", ability_level)
-		end
+			local target_name = target:GetUnitName()
+			local target_location = target:GetAbsOrigin()
 
-		-- HideAndCopyHero is a function that creates a copy of a hero and hides the original hero (inside util.lua)
-		local copy = HideAndCopyHero (target, caster)
-		-- Applying a Modifier to the copy
-		charm_ability:ApplyDataDrivenModifier(caster, copy, "modifier_charmed_cloned_hero", {["duration"] = duration})
-		-- Vision (so the enemy can see what they are doing)
-		copy:AddNewModifier(target, nil, "modifier_provide_vision", {duration = duration})
-		-- Selecting the copy (Adding to selection)
-		PlayerResource:AddToSelection(caster:GetPlayerID(), copy)
-	end
-end
+			-- Kill the creep
+			target:ForceKill(false)
 
--- Called when modifier_charmed_cloned_hero is destroyed (when copy's duration ends or when copy dies)
-function CharmHeroEnd(keys)
-	if IsServer() then
-		local caster = keys.caster
-		local target = keys.target -- target is a copy of the original hero
-		local charm_ability = keys.ability
-		local duration = charm_ability:GetLevelSpecialValueFor("charm_clone_duration", charm_ability:GetLevel() - 1)
-		local copy_location = target:GetAbsOrigin()
-
-		if target then
-			-- Function HideTheCopyPermanently hides the copy of the hero and all modifiers from him
-			HideTheCopyPermanently(target)
-
-			if target:IsAlive() then
-				-- Apply a modifier that will keep the copy alive/invulnerable and hidden for the duration
-				charm_ability:ApplyDataDrivenModifier(caster, target, "modifier_charmed_removing", {["duration"] = duration})
-			else
-				print("Respawning didn't work! Report to custom game creator!")
-			end
-			if target and target.original then
-				local original = target.original
-				original:RemoveModifierByNameAndCaster("modifier_charmed_hero", caster)
-				-- Function for revealing the original hero at certain location (inside util.lua)
-				UnhideOriginalOnLocation(original, copy_location)
-				-- Deselect the copy/target
-				PlayerResource:RemoveFromSelection(caster:GetPlayerID(), target)
-			end
+			-- Create a new creep under caster's control
+			local charmed_creep = CreateUnitByName(target_name, target_location, true, caster, caster, caster_team)
+			FindClearSpaceForUnit(charmed_creep, target_location, false)
+			charmed_creep:SetOwner(caster:GetOwner())
+			charmed_creep:SetControllableByPlayer(caster_owner, true)
+			charmed_creep:AddNewModifier(caster, self, "modifier_charmed_general", {duration = creep_duration})
+			charmed_creep:AddNewModifier(caster, self, "modifier_kill", {duration = creep_duration})
 		end
 	end
 end
 
--- Called when modifier_charmed_removing is destroyed (duration ends)
-function CharmRemoveClone(keys)
-	if IsServer() then
-		local target = keys.target
-		if target then
-			target:MakeIllusion() -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
-			--target:ForceKill(true) -- it plays a death animation so don't use this
-			target:RemoveSelf()
+function dark_ranger_charm:ProcsMagicStick()
+	return true
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_charmed_hero == nil then
+	modifier_charmed_hero = class({})
+end
+
+function modifier_charmed_hero:IsHidden() -- needs tooltip (visible only on the target hero)
+	return false
+end
+
+function modifier_charmed_hero:IsDebuff()
+	return true
+end
+
+function modifier_charmed_hero:IsPurgable()
+	return false
+end
+
+function modifier_charmed_hero:OnCreated()
+	if not IsServer() then
+		return
+	end
+
+	local caster = self:GetCaster()
+	local parent = self:GetParent()
+	local ability = self:GetAbility()
+
+	local duration = self:GetDuration()
+
+	-- HideAndCopyHero is a function that creates a copy of a hero and hides the original hero (inside util.lua)
+	local copy = HideAndCopyHero(parent, caster)
+
+	-- Apply the charmed debuff that makes the copy invulnerable and leashed
+	local mod = copy:AddNewModifier(caster, ability, "modifier_charmed_cloned_hero", {duration = duration})
+	mod.original = copy.original
+
+	-- Add Vision so the parent can see his copy (so the parent can see "what they are doing")
+	copy:AddNewModifier(parent, nil, "modifier_provide_vision", {duration = duration})
+
+	-- Selecting the copy (Adding to selection) - not ideal
+	PlayerResource:AddToSelection(caster:GetPlayerID(), copy)
+
+	-- Sound on the "target hero"
+	copy:EmitSound("Hero_Chen.HolyPersuasionEnemy")
+end
+
+function modifier_charmed_hero:DeclareFunctions() -- properties of the hidden hero
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+	}
+end
+
+function modifier_charmed_hero:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_charmed_hero:GetAbsoluteNoDamageMagical()
+	return 1
+end
+
+function modifier_charmed_hero:GetAbsoluteNoDamagePure()
+	return 1
+end
+
+function modifier_charmed_hero:CheckState() -- states of the hidden hero
+	return {
+		[MODIFIER_STATE_STUNNED] = true,
+		[MODIFIER_STATE_OUT_OF_GAME] = true,
+		[MODIFIER_STATE_INVULNERABLE] = true,
+		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+		[MODIFIER_STATE_UNSELECTABLE] = true,
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
+		[MODIFIER_STATE_PASSIVES_DISABLED] = true,
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_BLIND] = true,
+	}
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_charmed_cloned_hero == nil then
+	modifier_charmed_cloned_hero = class({})
+end
+
+function modifier_charmed_cloned_hero:IsHidden() -- needs tooltip (visible to everyone on the copy)
+	return false
+end
+
+function modifier_charmed_cloned_hero:IsDebuff()
+	return true
+end
+
+function modifier_charmed_cloned_hero:IsPurgable()
+	return false
+end
+
+function modifier_charmed_cloned_hero:OnCreated()
+	if not IsServer() then
+		return
+	end
+	
+	self.slow = 10
+
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		self.slow = ability:GetSpecialValueFor("move_speed_slow")
+	end
+end
+
+-- when copy's duration ends or when copy dies
+function modifier_charmed_cloned_hero:OnDestroy()
+	if not IsServer() then
+		return
+	end
+
+	local caster = self:GetCaster()
+	local parent = self:GetParent() -- copy of the original hero
+	local copy_location = parent:GetAbsOrigin() -- store the location before we hide and move the copy
+
+	-- Function HideTheCopyPermanently hides the copy of the hero and all modifiers from him (inside util.lua)
+	HideTheCopyPermanently(parent)
+
+	-- Apply a modifier that will keep the copy alive/invulnerable and hidden while debuffs exist
+	parent:AddNewModifier(parent, nil, "modifier_charmed_removing", {})
+
+	-- Deselect the copy
+	PlayerResource:RemoveFromSelection(parent:GetPlayerOwnerID(), parent)
+
+	local original = self.original or parent.original
+	if original then
+		-- Remove the modifier that hides the original if not removed already
+		original:RemoveModifierByNameAndCaster("modifier_charmed_hero", caster)
+
+		-- Function for revealing the original hero at certain location (inside util.lua)
+		UnhideOriginalOnLocation(original, copy_location)
+	end
+end
+
+function modifier_charmed_cloned_hero:DeclareFunctions() -- properties of the copy
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_MIN_HEALTH,
+		MODIFIER_EVENT_ON_TAKEDAMAGE,
+		MODIFIER_EVENT_ON_DEATH,
+	}
+end
+
+function modifier_charmed_cloned_hero:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_charmed_cloned_hero:GetAbsoluteNoDamageMagical()
+	return 1
+end
+
+function modifier_charmed_cloned_hero:GetAbsoluteNoDamagePure()
+	return 1
+end
+
+function modifier_charmed_cloned_hero:GetModifierMoveSpeedBonus_Percentage()
+	return 0 - math.abs(self.slow)
+end
+
+if IsServer() then
+	function modifier_charmed_cloned_hero:GetMinHealth()
+		return 1
+	end
+
+	-- This is important when copy is killed somehow
+	function modifier_charmed_cloned_hero:OnTakeDamage(event)
+		local parent = self:GetParent()
+		if event.unit ~= parent then
+			return
+		end
+
+		if event.damage >= parent:GetHealth() then
+			self:Destroy()
 		end
 	end
+
+	-- This is important when copy dies through some other means
+	function modifier_charmed_cloned_hero:OnDeath(event)
+		local parent = self:GetParent()
+
+		if event.unit ~= parent then
+			return
+		end
+
+		self:Destroy()
+	end
+end
+
+function modifier_charmed_cloned_hero:CheckState() -- states of the copy
+	return {
+		--[MODIFIER_STATE_INVULNERABLE] = true,
+		--[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		--[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+		[MODIFIER_STATE_TETHERED] = true,
+	}
+end
+
+function modifier_charmed_cloned_hero:GetEffectName()
+	return "particles/units/heroes/hero_chen/chen_test_of_faith.vpcf"
+end
+
+function modifier_charmed_cloned_hero:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_charmed_general == nil then
+	modifier_charmed_general = class({})
+end
+
+function modifier_charmed_general:IsHidden() -- needs tooltip (visible to everyone on the creep)
+	return false
+end
+
+function modifier_charmed_general:IsDebuff()
+	return false
+end
+
+function modifier_charmed_general:IsPurgable()
+	return false
+end
+
+function modifier_charmed_general:OnCreated()
+	if not IsServer() then
+		return
+	end
+	
+	local parent = self:GetParent()
+	
+	-- Sound on creep or illusion
+	parent:EmitSound("Hero_Chen.HolyPersuasionEnemy")
+end
+
+function modifier_charmed_general:CheckState() -- states of the dominated creep
+	return {
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = self:GetElapsedTime() <= 0.1,
+		[MODIFIER_STATE_DOMINATED] = true,
+	}
+end
+
+function modifier_charmed_general:GetEffectName()
+	return "particles/units/heroes/hero_chen/chen_test_of_faith.vpcf"
+end
+
+function modifier_charmed_general:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_charmed_removing == nil then
+	modifier_charmed_removing = class({})
+end
+
+function modifier_charmed_removing:IsHidden()
+	return true
+end
+
+function modifier_charmed_removing:IsDebuff()
+	return false
+end
+
+function modifier_charmed_removing:IsPurgable()
+	return false
+end
+
+function modifier_charmed_removing:OnCreated()
+	if not IsServer() then
+		return
+	end
+	self.counter = 0
+	self:StartIntervalThink(1)
+end
+
+function modifier_charmed_removing:OnIntervalThink()
+	if not IsServer() then
+		return
+	end
+
+	local parent = self:GetParent()
+	if not parent or parent:IsNull() then
+		return
+	end
+
+	--local num_of_active_modifiers = 0
+	--for index = 0, parent:GetAbilityCount() - 1 do
+		--local ability = parent:GetAbilityByIndex(index)
+		--if ability and not ability:IsNull() and ability:GetLevel() > 0 then
+			-- NumModifiersUsingAbility doesn't work for every ability for some reason, thanks Valve
+			--if ability.NumModifiersUsingAbility and ability:NumModifiersUsingAbility() then
+				--num_of_active_modifiers = num_of_active_modifiers + ability:NumModifiersUsingAbility()
+			--end
+		--end
+	--end
+
+	self.counter = self.counter + 1
+
+	if self.counter > 60 then
+		self:StartIntervalThink(-1)
+		self:Destroy()
+	end
+end
+
+function modifier_charmed_removing:OnDestroy()
+	if not IsServer() then
+		return
+	end
+
+	local parent = self:GetParent()
+	if not parent or parent:IsNull() then
+		return
+	end
+
+	--parent:ForceKill(false) -- it plays a death animation so don't use this
+	parent:MakeIllusion() -- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
+	parent:RemoveSelf()
+end
+
+function modifier_charmed_removing:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+	}
+end
+
+function modifier_charmed_removing:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_charmed_removing:GetAbsoluteNoDamageMagical()
+	return 1
+end
+
+function modifier_charmed_removing:GetAbsoluteNoDamagePure()
+	return 1
+end
+
+function modifier_charmed_removing:GetPriority()
+	return MODIFIER_PRIORITY_SUPER_ULTRA + 10000
+end
+
+function modifier_charmed_removing:CheckState()
+	return {
+		[MODIFIER_STATE_STUNNED] = true,
+		[MODIFIER_STATE_OUT_OF_GAME] = true,
+		[MODIFIER_STATE_INVULNERABLE] = true,
+		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
+		[MODIFIER_STATE_UNSELECTABLE] = true,
+		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+		[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
+		[MODIFIER_STATE_PASSIVES_DISABLED] = true,
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_BLIND] = true,
+		[MODIFIER_STATE_CANNOT_BE_MOTION_CONTROLLED] = true,
+	}
 end

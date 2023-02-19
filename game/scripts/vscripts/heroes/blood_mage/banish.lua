@@ -29,7 +29,7 @@ function blood_mage_banish:OnSpellStart()
 	if not target or not caster then
 		return
 	end
-	
+
 	--KVs
 	local hero_duration = self:GetSpecialValueFor("hero_duration")
 	local creep_duration = self:GetSpecialValueFor("creep_duration")
@@ -174,16 +174,22 @@ function modifier_banished_enemy:RemoveOnDeath()
 end
 
 function modifier_banished_enemy:OnCreated()
+	local parent = self:GetParent()
 	local ability = self:GetAbility()
+
+	local movement_slow = 25
+	self.magic_resist = 25
+
 	if ability and not ability:IsNull() then
 		self.magic_resist = ability:GetSpecialValueFor("bonus_spell_damage")
-		local movement_slow = ability:GetSpecialValueFor("move_speed_slow")
-		if IsServer() then
-			-- Slow is reduced with Status Resistance
-			self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
-		else
-			self.slow = movement_slow
-		end
+		movement_slow = ability:GetSpecialValueFor("move_speed_slow")
+	end
+
+	if IsServer() then
+		-- Slow is reduced with Status Resistance
+		self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+	else
+		self.slow = movement_slow
 	end
 end
 

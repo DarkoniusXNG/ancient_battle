@@ -72,7 +72,7 @@ function modifier_custom_rupture:OnCreated()
 	local parent = self:GetParent()
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
-	
+
 	local interval = 0.25
 	local current_hp_pct = 15
 	self.damage_per_movement = 30

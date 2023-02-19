@@ -1,8 +1,8 @@
 oracle_sacrifice = class({})
 
-LinkLuaModifier( "modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_HORIZONTAL )
+LinkLuaModifier("modifier_oracle_sacrifice", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_sacrifice_master", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_sacrifice_pull", "heroes/oracle/oracle_sacrifice.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
 
 function oracle_sacrifice:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
