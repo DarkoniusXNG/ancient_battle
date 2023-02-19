@@ -81,7 +81,7 @@
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.5"                  // Puck (0.5)
-    "StatusHealth"                                        "200"                  // like Puck
+    "StatusHealth"                                        "150"                  // Puck (200)
     "StatusMana"                                          "0"                    // Unique for Mana Eater
     "StatusManaRegen"                                     "0.0"                  // Negative mana regeneration is dynamic and handled in lua
   }

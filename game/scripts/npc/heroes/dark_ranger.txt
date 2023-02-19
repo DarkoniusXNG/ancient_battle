@@ -87,7 +87,7 @@
 
     // Status
     //-------------------------------------------------------------------------------------------------------------
-    "StatusHealth"                                        "200"                  // like Drow Ranger
+    "StatusHealth"                                        "150"                  // Drow Ranger (200);
     "StatusHealthRegen"                                   "0.25"                  // like Drow Ranger
     "StatusMana"                                          "75"                  // like Drow Ranger
     "StatusManaRegen"                                     "0.0"                  // like Drow Ranger

@@ -18,7 +18,7 @@ function dark_ranger_charm:CastFilterResultTarget(target)
 	elseif (target:IsAncient() and not caster:HasScepter()) then
 		return UF_FAIL_ANCIENT
 	elseif (target:IsMagicImmune() and not caster:HasScepter()) then
-		return UF_FAIL_MAGIC_IMMUNE_ENEMY 
+		return UF_FAIL_MAGIC_IMMUNE_ENEMY
 	end
 
 	return default_result
@@ -38,8 +38,6 @@ function dark_ranger_charm:GetCustomCastErrorTarget(target)
 end
 
 function dark_ranger_charm:GetCooldown(level)
-	--local base_cooldown = self.BaseClass.GetCooldown(self, level)
-	local caster = self:GetCaster()
 	local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
 	local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
 
@@ -82,7 +80,7 @@ function dark_ranger_charm:OnSpellStart()
 	if target:IsMagicImmune() and not caster:HasScepter() then
 		return
 	end
-	
+
 	-- Sound on caster
 	caster:EmitSound("Hero_Chen.HolyPersuasionCast")
 
@@ -97,14 +95,13 @@ function dark_ranger_charm:OnSpellStart()
 	if caster:HasScepter() then
 		hero_duration = self:GetSpecialValueFor("charm_hero_duration_scepter")
 	end
-	
+
 	-- Interrupt the target
 	target:Interrupt()
 
 	if target:IsRealHero() then
 		target:AddNewModifier(caster, self, "modifier_charmed_hero", {duration = hero_duration})
 	else
-		-- modifier_charmed_creep
 		if target:IsIllusion() then
 			-- Change illusion ownership
 			target:SetTeam(caster_team)
@@ -240,7 +237,7 @@ function modifier_charmed_cloned_hero:OnCreated()
 	if not IsServer() then
 		return
 	end
-	
+
 	self.slow = 10
 
 	local ability = self:GetAbility()
@@ -375,9 +372,9 @@ function modifier_charmed_general:OnCreated()
 	if not IsServer() then
 		return
 	end
-	
+
 	local parent = self:GetParent()
-	
+
 	-- Sound on creep or illusion
 	parent:EmitSound("Hero_Chen.HolyPersuasionEnemy")
 end

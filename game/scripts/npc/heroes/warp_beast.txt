@@ -88,7 +88,7 @@
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.75"                // Phantom Assassin (0.75); Faceless Void (1.0);
-    "StatusHealth"                                        "200"                 // Default
+    "StatusHealth"                                        "150"                 // unique
     "StatusMana"                                          "75"                  // Default
     "StatusManaRegen"                                     "0.5"                 // unique
 

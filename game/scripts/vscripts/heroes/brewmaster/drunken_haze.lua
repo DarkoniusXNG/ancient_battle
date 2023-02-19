@@ -175,7 +175,7 @@ function modifier_custom_drunken_haze_debuff:GetModifierMiss_Percentage()
 end
 
 function modifier_custom_drunken_haze_debuff:GetStatusEffectName()
-	return "particles/status_fx/status_effect_brewmaster_cinder_brew.vpcf"  
+	return "particles/status_fx/status_effect_brewmaster_cinder_brew.vpcf"
 end
 
 function modifier_custom_drunken_haze_debuff:StatusEffectPriority()

@@ -25,7 +25,6 @@ function alchemist_custom_transmute:GetCustomCastErrorTarget(target)
 end
 
 function alchemist_custom_transmute:GetCooldown(level)
-  --local base_cooldown = self.BaseClass.GetCooldown(self, level)
   local caster = self:GetCaster()
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")

@@ -202,7 +202,7 @@ function modifier_mana_transfer_enemy:OnIntervalThink()
 	if caster:IsChanneling() then
 		-- Make sure that the caster always faces the target if he is channeling
 		caster:SetForwardVector(direction)
-	
+
 		-- Mana variables
 		local target_mana = target:GetMana()
 		local caster_mana = caster:GetMana()

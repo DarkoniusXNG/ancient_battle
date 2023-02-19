@@ -76,9 +76,9 @@ function dark_ranger_life_drain:OnSpellStart()
 	table.insert(self.modifiers, debuff)
 
 	-- Check for shard
-	if caster:HasShardCustom() then
+	--if caster:HasShardCustom() then
 		-- Apply Dark Arrow debuff - TODO
-	end
+	--end
 end
 
 -- Called when modifiers are destroyed (unit dies or modifier is removed; modifier can be removed in many cases)

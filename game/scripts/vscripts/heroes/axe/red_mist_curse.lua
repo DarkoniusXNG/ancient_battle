@@ -137,7 +137,7 @@ function modifier_red_mist_curse_debuff:GetModifierProvidesFOWVision()
 end
 
 function modifier_red_mist_curse_debuff:GetStatusEffectName()
-	return "particles/status_fx/status_effect_battle_hunger.vpcf"  
+	return "particles/status_fx/status_effect_battle_hunger.vpcf"
 end
 
 function modifier_red_mist_curse_debuff:StatusEffectPriority()

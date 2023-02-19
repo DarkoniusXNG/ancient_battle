@@ -86,7 +86,7 @@
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.5"                  // like Juggernaut
-    "StatusHealth"                                        "200"                  // like Juggernaut
+    "StatusHealth"                                        "150"                  // Juggernaut (200);
     "StatusMana"                                          "75"                  // like Juggernaut
     "StatusManaRegen"                                     "0.25"                  // unique
   }

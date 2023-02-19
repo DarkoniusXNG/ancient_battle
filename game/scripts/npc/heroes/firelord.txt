@@ -75,7 +75,7 @@
     
     // Status
     //----------------------------------------------------------------
-    "StatusHealth"                                        "200"                  // like SF
+    "StatusHealth"                                        "150"                  // SF (200);
     "StatusHealthRegen"                                   "0.25"                  // like SF
     "StatusMana"                                          "75"                  // like SF
     "StatusManaRegen"                                     "0.3"                  // like SF

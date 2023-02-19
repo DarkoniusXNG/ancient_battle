@@ -72,7 +72,7 @@ function brewmaster_custom_breath_of_fire:OnProjectileHit(target, location)
 	if target:HasModifier("modifier_custom_drunken_haze_debuff") then
 		target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = duration})
 	end
-	
+
 	local damage_table = {}
 	damage_table.victim = target
 	damage_table.attacker = caster
