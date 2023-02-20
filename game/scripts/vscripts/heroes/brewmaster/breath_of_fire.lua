@@ -66,11 +66,16 @@ function brewmaster_custom_breath_of_fire:OnProjectileHit(target, location)
 
 	-- KVs
 	local initial_damage = self:GetSpecialValueFor("initial_damage")
-	local duration = self:GetSpecialValueFor("burn_duration")
+	local hero_duration = self:GetSpecialValueFor("burn_duration_heroes")
+	local creep_duration = self:GetSpecialValueFor("burn_duration_creeps")
 
 	-- Apply burn modifier only if the target has drunken haze debuff
 	if target:HasModifier("modifier_custom_drunken_haze_debuff") then
-		target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = duration})
+		if target:IsRealHero() then
+			target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = hero_duration})
+		else
+			target:AddNewModifier(caster, self, "modifier_breath_fire_haze_burn", {duration = creep_duration})
+		end
 	end
 
 	local damage_table = {}
@@ -104,13 +109,9 @@ function modifier_breath_fire_haze_burn:IsPurgable()
 	return true
 end
 
-function modifier_breath_fire_haze_burn:GetEffectName()
-	return "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
-end
-
-function modifier_breath_fire_haze_burn:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW -- follow_origin
-end
+--function modifier_breath_fire_haze_burn:GetAttributes()
+	--return MODIFIER_ATTRIBUTE_MULTIPLE
+--end
 
 function modifier_breath_fire_haze_burn:OnCreated()
 	self:OnRefresh()
@@ -171,4 +172,12 @@ function modifier_breath_fire_haze_burn:OnIntervalThink()
 
 	-- Apply Burn Damage
 	ApplyDamage(damage_table)
+end
+
+function modifier_breath_fire_haze_burn:GetEffectName()
+	return "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
+end
+
+function modifier_breath_fire_haze_burn:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW -- follow_origin
 end
