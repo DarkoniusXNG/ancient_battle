@@ -23,8 +23,10 @@
     
     // Casting
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastRange"                                    "750" // like Battle Hunger
+    "AbilityCastRange"                                    "750" // Battle Hunger (700/775/850/925)
     "AbilityCastPoint"                                    "0.3" // like Battle Hunger
+    "AbilityCastAnimation"                                "ACT_DOTA_OVERRIDE_ABILITY_2"
+    "AbilityCastGestureSlot"                              "DEFAULT"
 
     // Time    
     //-------------------------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 axe_custom_red_mist_curse = class({})
 
-LinkLuaModifier("modifier_red_mist_curse_debuff", "heroes/alchemist/acid_bomb.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_red_mist_curse_debuff", "heroes/axe/red_mist_curse.lua", LUA_MODIFIER_MOTION_NONE)
 
 function axe_custom_red_mist_curse:CastFilterResultTarget(target)
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)

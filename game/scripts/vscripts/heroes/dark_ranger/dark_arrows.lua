@@ -252,9 +252,9 @@ if IsServer() then
 			damage_table.victim = target
 			damage_table.damage_flags = bit.bor(DOTA_DAMAGE_FLAG_BYPASSES_BLOCK, DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL)
 			damage_table.damage = damage
-			
+
 			ApplyDamage(damage_table)
-			
+
 			self.procRecords[event.record] = nil
 		end
 	end

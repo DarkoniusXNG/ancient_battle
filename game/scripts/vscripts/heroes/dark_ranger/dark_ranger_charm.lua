@@ -234,10 +234,6 @@ function modifier_charmed_cloned_hero:IsPurgable()
 end
 
 function modifier_charmed_cloned_hero:OnCreated()
-	if not IsServer() then
-		return
-	end
-
 	self.slow = 10
 
 	local ability = self:GetAbility()
