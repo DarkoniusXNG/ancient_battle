@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Death Knight: Death Pact (W) - bonus dmg and hp based on consumed creep current hp
   // Author: Darkonius
-  // Notes: OK; 2022;
+  // Notes: OK; 2023; Buff is not removed on death;
   // TO_DO:
   //=================================================================================================================
   "death_knight_death_pact"
@@ -15,7 +15,7 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_CREEP"
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
     "MaxLevel"                                            "4"

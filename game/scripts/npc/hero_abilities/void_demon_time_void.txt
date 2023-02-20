@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Notes: OK; 26.8.2019;
   // Linkens: Blocks;
-  // TO_DO: aghs shard: aoe time void
+  // TO_DO: Rewrite in lua; aghs shard: aoe time void
   //=================================================================================================================
   "void_demon_time_void"
   {

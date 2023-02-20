@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Linkens: Blocks
   // Notes: OK; 2022;
-  // TO_DO: Fix Weird interaction with Lotus orb -> Not Critical error;
+  // TO_DO: Rewrite in lua; Fix Weird interaction with Lotus orb -> Not Critical error;
   //=================================================================================================================
   "life_stealer_custom_anabolic_frenzy"
   {

@@ -30,7 +30,7 @@ function blood_mage_banish:OnSpellStart()
 		return
 	end
 
-	--KVs
+	-- KVs
 	local hero_duration = self:GetSpecialValueFor("hero_duration")
 	local creep_duration = self:GetSpecialValueFor("creep_duration")
 

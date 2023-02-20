@@ -6,7 +6,7 @@
   // Linkens: Doesn't Block (because its global)
   // How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
   // Notes: OK; 2023;
-  // TO_DO: aghs shard: allows betting on ally deaths
+  // TO_DO: Rewrite in lua; aghs shard: allows betting on ally deaths
   //=================================================================================================================
   "gambler_bet"
   {

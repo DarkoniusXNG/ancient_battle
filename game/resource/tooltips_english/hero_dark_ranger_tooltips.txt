@@ -1,15 +1,16 @@
 
 		// ******************** DARK RANGER ********************
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows"                                    "Dark Arrows"
-		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_Description"                        "Adds a freezing effect to Ranger's attacks, slowing enemy movement and attack speed. Also adds extra damage to attacks. Units killed with Dark Arrow will turn into Dark Minions. Dark Minions are ranged creatures that obey Dark Ranger."
+		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_Description"                        "Adds a freezing effect to Dark Ranger's attacks, slowing enemy movement and attack speed and dealing bonus damage. Units killed under Dark Arrows debuff will turn into Dark Minions. Dark Minions are ranged creatures that obey Dark Ranger."
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_Lore"                               "Black Arrows with a slowing curse and not requiring corpses."
-		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_minion_duration"                    "DARK MINION DURATION:"
-		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_dark_minion_health"                 "DARK MINION HEALTH:"
-		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_dark_minion_damage"                 "DARK MINION AVG DAMAGE:"
+		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_dark_arrow_damage"                  "DARK ARROW DAMAGE:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_movement_speed_slow"                "%MOVE SPEED SLOW:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_attack_speed_slow"                  "ATTACK SPEED SLOW:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_hero_slow_duration"                 "HERO SLOW DURATION:"
 		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_creep_slow_duration"                "CREEP SLOW DURATION:"
+		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_minion_duration"                    "DARK MINION DURATION:"
+		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_dark_minion_health"                 "DARK MINION HEALTH:"
+		"DOTA_Tooltip_ability_dark_ranger_dark_arrows_dark_minion_damage"                 "DARK MINION AVG DAMAGE:"
 
 		"DOTA_Tooltip_modifier_dark_arrow_slow"                                           "Dark Arrow Slow"
 		"DOTA_Tooltip_modifier_dark_arrow_slow_Description"                               "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."
@@ -61,8 +62,8 @@
 		"DOTA_Tooltip_modifier_custom_ranger_aura_effect"                                 "Ranger Aura"
 		"DOTA_Tooltip_modifier_custom_ranger_aura_effect_Description"                     "Attack damage increased by %dMODIFIER_PROPERTY_TOOLTIP%."
 
-		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_1"                         "+{s:value} Dark Arrows Damage"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_1"                         "+{s:tooltip_value} Dark Arrows Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_2"                         "+{s:value}% Ranger Aura Damage"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_3"                         "+{s:value} Ranger Aura Attack Range"
 		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_4"                         "Marksmanship Split Shot"
-		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_5"                         "Life Drain Pure and pierces Spell Immunity"
+		"DOTA_Tooltip_ability_special_bonus_unique_dark_ranger_5"                         "Life Drain Pure and Pierces Spell Immunity"

@@ -3,6 +3,23 @@ LinkLuaModifier("modifier_dark_terminator_terminate_stun", "heroes/dark_terminat
 
 dark_terminator_terminate = class({})
 
+function dark_terminator_terminate:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function dark_terminator_terminate:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
 function dark_terminator_terminate:GetCastPoint()
 	local delay = self.BaseClass.GetCastPoint(self)
 	local talent = self:GetCaster():FindAbilityByName("special_bonus_unique_dark_terminator_terminate")

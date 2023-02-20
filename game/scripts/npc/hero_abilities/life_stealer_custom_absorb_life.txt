@@ -4,7 +4,7 @@
   // Lifestealer: Absorb Life (F) - New Spell, Deals damage and absorbs percentage of current hp of affected enemies in a radius 
   // Author: Darkonius
   // Notes: OK; 2023;
-  // TO_DO: special_bonus_unique_lifestealer_custom_1, aghs shard: applies open wounds
+  // TO_DO: Rewrite in lua; special_bonus_unique_lifestealer_custom_1, aghs shard: applies open wounds
   //=================================================================================================================
   "life_stealer_custom_absorb_life"
   {

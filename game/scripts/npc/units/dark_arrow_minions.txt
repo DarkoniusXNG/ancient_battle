@@ -2,7 +2,7 @@
 {
   //====================================================================================
   // Dark Arrow: Lesser Dark Minion
-  // Notes: OK; 18.9.2019;
+  // Notes: OK; 2023;
   //====================================================================================
   "npc_dota_dark_arrow_minion_1"
   {                    
@@ -21,16 +21,16 @@
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"                  // Physical protection.
-    "MagicalResistance"                                   "0"                  // 5.2.2016;
+    "MagicalResistance"                                   "33"                  // 2023;
     
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "15"                // 18.9.2019;
-    "AttackDamageMax"                                     "20"                // 18.9.2019;
-    "AttackRate"                                          "1.7"                // Speed of attack.
-    "AttackAnimationPoint"                                "0.38"                // Normalized time in animation cycle to attack.
-    "AttackAcquisitionRange"                              "500"                // Range within a target can be acquired.
+    "AttackDamageMin"                                     "25"                // 2023;
+    "AttackDamageMax"                                     "25"                // 2023;
+    "AttackRate"                                          "1.6"                // 2023;
+    "AttackAnimationPoint"                                "0.3"                // 2023;
+    "AttackAcquisitionRange"                              "800"                // 2023;
     "AttackRange"                                         "500"                // Range within a target can be attacked.
     "ProjectileModel"                                     "particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"    // Particle system model for projectile.
     "ProjectileSpeed"                                     "1200"                // Speed of projectile.       
@@ -50,6 +50,7 @@
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
     "MovementSpeed"                                       "270"                // Speed.
+    "MovementTurnRate"                                    "0.5"
     
     // Status
     //----------------------------------------------------------------
@@ -60,8 +61,8 @@
     
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "500"                // Range of vision during day light.
-    "VisionNighttimeRange"                                "500"                // Range of vision at night time.
+    "VisionDaytimeRange"                                  "800"                // 2023;
+    "VisionNighttimeRange"                                "600"                // 2023;
     
     // Combat
     //----------------------------------------------------------------
@@ -72,7 +73,7 @@
   
   //====================================================================================
   // Dark Arrow: Medium/Mediocre Dark Minion
-  // Notes: OK; 18.9.2019;
+  // Notes: OK; 2023;
   //====================================================================================
   "npc_dota_dark_arrow_minion_2"
   {                    
@@ -91,16 +92,16 @@
     // Protection
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"                  // Physical protection.
-    "MagicalResistance"                                   "0"                  // 5.2.2016;
+    "MagicalResistance"                                   "33"                  // 2023;
     
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "20"                // 18.9.2019;
+    "AttackDamageMin"                                     "30"                // 2023;
     "AttackDamageMax"                                     "30"                // 18.9.2019;
-    "AttackRate"                                          "1.7"                // Speed of attack.
-    "AttackAnimationPoint"                                "0.38"                // Normalized time in animation cycle to attack.
-    "AttackAcquisitionRange"                              "500"                // Range within a target can be acquired.
+    "AttackRate"                                          "1.6"                // 2023;
+    "AttackAnimationPoint"                                "0.3"                // 2023;
+    "AttackAcquisitionRange"                              "800"                // 2023;
     "AttackRange"                                         "500"                // Range within a target can be attacked.
     "ProjectileModel"                                     "particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"                          
     "ProjectileSpeed"                                     "1200"                // Speed of projectile.       
@@ -119,7 +120,8 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "280"                // Speed.
+    "MovementSpeed"                                       "290"                // 2023;
+    "MovementTurnRate"                                    "0.5"
     
     // Status
     //----------------------------------------------------------------
@@ -130,8 +132,8 @@
     
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "500"                // Range of vision during day light.
-    "VisionNighttimeRange"                                "500"                // Range of vision at night time.
+    "VisionDaytimeRange"                                  "800"                // 2023;
+    "VisionNighttimeRange"                                "600"                // 2023;
     
     // Combat
     //----------------------------------------------------------------
@@ -142,7 +144,7 @@
   
   //====================================================================================
   // Dark Arrow: Great Dark Minion
-  // Notes: OK; 18.9.2019;
+  // Notes: OK; 2023;
   //====================================================================================
   "npc_dota_dark_arrow_minion_3"
   {                    
@@ -161,16 +163,16 @@
     // Protection
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"                  // Physical protection.
-    "MagicalResistance"                                   "0"                  // 5.2.2016;
+    "MagicalResistance"                                   "33"                  // 2023;
     
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "30"                // 18.9.2019;
-    "AttackDamageMax"                                     "40"                // 18.9.2019;
-    "AttackRate"                                          "1.7"                // Speed of attack.
-    "AttackAnimationPoint"                                "0.38"                // Normalized time in animation cycle to attack.
-    "AttackAcquisitionRange"                              "500"                // Range within a target can be acquired.
+    "AttackDamageMin"                                     "35"                // 2023;
+    "AttackDamageMax"                                     "35"                // 2023;
+    "AttackRate"                                          "1.6"                // 2023;
+    "AttackAnimationPoint"                                "0.3"                // 2023;
+    "AttackAcquisitionRange"                              "800"                // 2023;
     "AttackRange"                                         "500"                // Range within a target can be attacked.
     "ProjectileModel"                                     "particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"                    
     "ProjectileSpeed"                                     "1200"                // Speed of projectile.       
@@ -189,7 +191,8 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "290"                // Speed.
+    "MovementSpeed"                                       "310"                // 2023;
+    "MovementTurnRate"                                    "0.5"
     
     // Status
     //----------------------------------------------------------------
@@ -200,8 +203,8 @@
     
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "500"                // Range of vision during day light.
-    "VisionNighttimeRange"                                "500"                // Range of vision at night time.
+    "VisionDaytimeRange"                                  "800"                // 2023;
+    "VisionNighttimeRange"                                "600"                // 2023;
     
     // Combat
     //----------------------------------------------------------------
@@ -212,7 +215,7 @@
   
   //====================================================================================
   // Dark Arrow: Super Dark Minion
-  // Notes: OK; 18.9.2019;
+  // Notes: OK; 2023;
   //====================================================================================
   "npc_dota_dark_arrow_minion_4"
   {                    
@@ -231,16 +234,16 @@
     // Protection
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"                  // Physical protection.
-    "MagicalResistance"                                   "0"                  // 5.2.2016;
+    "MagicalResistance"                                   "33"                  // 2023;
     
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
-    "AttackDamageMin"                                     "40"                // 18.9.2019;
-    "AttackDamageMax"                                     "50"                // 18.9.2019;
-    "AttackRate"                                          "1.7"                // Speed of attack.
-    "AttackAnimationPoint"                                "0.38"                // Normalized time in animation cycle to attack.
-    "AttackAcquisitionRange"                              "500"                // Range within a target can be acquired.
+    "AttackDamageMin"                                     "40"                // 2023;
+    "AttackDamageMax"                                     "40"                // 2023;
+    "AttackRate"                                          "1.6"                // 2023;
+    "AttackAnimationPoint"                                "0.3"                // 2023;
+    "AttackAcquisitionRange"                              "800"                // 2023;
     "AttackRange"                                         "500"                // Range within a target can be attacked.
     "ProjectileModel"                                     "particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"                  
     "ProjectileSpeed"                                     "1200"                // Speed of projectile.       
@@ -259,7 +262,8 @@
     // Movement
     //----------------------------------------------------------------
     "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
-    "MovementSpeed"                                       "300"                // Speed.
+    "MovementSpeed"                                       "330"                // 2023;
+    "MovementTurnRate"                                    "0.5"
     
     // Status
     //----------------------------------------------------------------
@@ -270,8 +274,8 @@
     
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "500"                // Range of vision during day light.
-    "VisionNighttimeRange"                                "500"                // Range of vision at night time.
+    "VisionDaytimeRange"                                  "800"                // 2023;
+    "VisionNighttimeRange"                                "600"                // 2023;
     
     // Combat
     //----------------------------------------------------------------

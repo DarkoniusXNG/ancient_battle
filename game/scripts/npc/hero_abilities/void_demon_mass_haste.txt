@@ -4,7 +4,7 @@
   // Void Demon: Mass Haste (F) - New Spell; Ultimate; Gives max movement speed, phased movement and bonus attack speed for the duration to all allied heroes on the map.
   // Author: Darkonius
   // Notes: OK; 4.3.2020; While using FireSound sounds they are not global!; Buff is not dispellable;
-  // TO_DO: EmitGlobalSound; add Unslowable state; and add aghs upgrade that gives free pathing, ignores ms limit and decreases cooldown
+  // TO_DO: Rewrite in lua; EmitGlobalSound; add Unslowable state; and add aghs upgrade that gives free pathing, ignores ms limit and decreases cooldown
   //=================================================================================================================
   "void_demon_mass_haste"
   {

@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
   // Author: Darkonius
-  // Notes: OK; 2022;
-  // TO_DO:
+  // Notes: OK; 2023; Number of waves is volcano_duration/wave_interval + 1
+  // TO_DO: Rewrite in lua: Pudge can hook the volcano, status resistance fix for slows
   //=================================================================================================================
   "firelord_volcano"
   {
@@ -14,15 +14,17 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-    "AbilityCastRange"                                    "1000" // like Gyrocopter Call Down
-    "AbilityCastPoint"                                    "1.67" // like Shadow Fiend Requiem
+    "AbilityCastRange"                                    "1000" // Gyro Call Down (1000); original (800);
+    "AbilityCastPoint"                                    "1.67" // SF Requiem (1.67); Call Down delay (2);
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_6"
-    "AbilityCooldown"                                     "120 110 100" // like Shadow Fiend Requiem or KOTL Will-O-Wisp
-    "AbilityManaCost"                                     "150 175 200"
+
+    "AbilityCooldown"                                     "90 75 60" // SF Requiem (120/110/100); KOTL Will-O-Wisp (60); original (180);
+
+    "AbilityManaCost"                                     "150 175 200" // SF Requiem (150/175/200); KOTL Will-O-Wisp (250); original (200);
     "AbilityProcsMagicStick"                              "1"
 
     "HasScepterUpgrade"                                   "1"
@@ -41,43 +43,15 @@
       "model"                                             "models/particle/soil_rupture.vmdl"
     }
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01" // like KOTL Will-O-Wisp
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "725"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_slow"                                   "-40 -50 -60"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "slow_duration"                                   "3.0"
-      }
-      "04" // KOTL Will-O-Wisp interval is 3.15
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "wave_interval"                                   "3.0"
-      }    
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "wave_damage"                                     "140 200 260"
-      }
-      "06" // like KOTL Will-O-Wisp hypnotized duration
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "stun_duration"                                   "1.3"
-      }
-      "07" // number of waves is volcano_duration/wave_interval + 1: 4/5/6
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "volcano_duration"                                "10 13 16"
-      }
+      "radius"                                            "725" // KOTL Will-O-Wisp (725); original (500);
+      "movement_slow"                                     "-40 -50 -60"
+      "slow_duration"                                     "3.0"
+      "wave_interval"                                     "3.0" // KOTL Will-O-Wisp interval (3.15); original (3);
+      "wave_damage"                                       "170 235 300" // like Gyro Call Down max dmg x 0.85
+      "stun_duration"                                     "1.3" // KOTL Will-O-Wisp hypnotized duration (1.3); original (1);
+      "volcano_duration"                                  "15" // original (15); 
     }
 
     "OnAbilityPhaseStart"
@@ -183,7 +157,7 @@
               "Types"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
             }
-            "Type"                                        "DAMAGE_TYPE_PHYSICAL"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
             "Damage"                                      "%wave_damage"
           }
 

@@ -45,7 +45,7 @@ function VolcanoWave(event)
 	local damage_table = {}
 	damage_table.attacker = caster
 	damage_table.damage_type = ability:GetAbilityDamageType()
-	damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
+	--damage_table.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK
 	damage_table.ability = ability
 	damage_table.damage = wave_damage
 

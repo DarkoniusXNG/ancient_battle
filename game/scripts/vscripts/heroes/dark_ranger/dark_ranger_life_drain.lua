@@ -75,10 +75,14 @@ function dark_ranger_life_drain:OnSpellStart()
 	local debuff = target:AddNewModifier(caster, self, "modifier_dark_ranger_life_drain", {duration = duration})
 	table.insert(self.modifiers, debuff)
 
-	-- Check for shard
-	--if caster:HasShardCustom() then
-		-- Apply Dark Arrow debuff - TODO
-	--end
+	-- Check for shard: Life Drain applies Dark Arrows debuff
+	if caster:HasShardCustom() then
+		local dark_arrows = caster:FindAbilityByName("dark_ranger_dark_arrows")
+		if dark_arrows and dark_arrows:GetLevel() > 0 then
+			local dark_arrows_debuff = target:AddNewModifier(caster, dark_arrows, "modifier_dark_arrow_slow", {duration = duration})
+			table.insert(self.modifiers, dark_arrows_debuff)
+		end
+	end
 end
 
 -- Called when modifiers are destroyed (unit dies or modifier is removed; modifier can be removed in many cases)

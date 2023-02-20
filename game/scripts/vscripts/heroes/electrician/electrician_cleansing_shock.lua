@@ -303,9 +303,11 @@ end
 function modifier_electrician_cleansing_shock_enemy:OnCreated()
   local parent = self:GetParent()
   local ability = self:GetAbility()
+
   local interval = 0.5
   local move_slow = 40
   local attack_slow = 40
+
   if ability and not ability:IsNull() then
     interval = ability:GetSpecialValueFor("speed_update_interval")
     move_slow = ability:GetSpecialValueFor("move_slow")
