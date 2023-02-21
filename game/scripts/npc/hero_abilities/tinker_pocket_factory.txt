@@ -1,0 +1,169 @@
+"DOTAAbilities"
+{
+
+// Tinker Pocket Factory
+// Author: Noya
+// Description: Creates a factory which automatically constructs Clockwerk Goblins. Clockwerk Goblins explode upon death, causing damage to nearby enemy units.
+
+"tinker_pocket_factory"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "tinker_pocket_factory"
+    "MaxLevel"                      "3"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
+
+    "AbilityCastRange"              "500"
+    "AbilityCastPoint"              "0.3"
+    "AbilityCooldown"               "35.0"
+
+    "AbilityManaCost"               "125"
+
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_tinker/tinker_base_attack.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+
+        //Factory
+        "model"    "models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
+
+        //Goblins
+        "model"     "models/heroes/rattletrap/rattletrap.vmdl"
+        "model"     "models/items/rattletrap/forge_warrior_claw/forge_warrior_claw.vmdl"
+        "model"     "models/items/rattletrap/forge_warrior_helm/forge_warrior_helm.vmdl"
+        "model"     "models/items/rattletrap/forge_warrior_steam_exoskeleton/forge_warrior_steam_exoskeleton.vmdl"
+        "model"     "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl"
+        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+        
+        //Goblin Ability
+        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "factory_duration"  "45"
+        }
+    }
+
+    "OnSpellStart"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Tinker.Rearm"
+            "Target"        "CASTER"
+        }
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/tinker/pocket_factory.lua"
+            "Function"      "BuildPocketFactory"
+            "Target"        "POINT"
+        }
+    }
+}
+
+//Goblins have a limited duration and have suicide ability
+"tinker_pocket_factory_train_goblin"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "tinker_pocket_factory"
+    "MaxLevel"                      "1"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityCooldown"               "8.0"
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "goblin_duration"   "10"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "spawn_ratio"       "5.0"
+        }
+        "03"
+        {
+            "var_type"                   "FIELD_FLOAT"
+            "reduction_per_eng_level"   "1.0"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_spawn_goblin"
+        {
+            "Passive"           "1"
+            "IsHidden"          "1"
+    
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/tinker/pocket_factory.lua"
+                    "Function"      "StartGoblinSpawn"
+                }
+            }
+        }
+    }
+}
+
+//Explosion deals 30/60/80 damage.
+"tinker_clockwerk_goblin_kaboom"
+{
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "tinker_clockwerk_goblin_kaboom"
+    "MaxLevel"                  "3"
+
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+
+    "AbilityCastRange"          "100"
+    "AbilityCastPoint"          "0.0"
+
+    "TargetsAllowed"            "ground"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "full_dmg"          "30 60 80"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "full_dmg_radius"   "100"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "outer_dmg"         "12 22 30"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "outer_dmg_radius"  "250"
+        }
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "units/neutral/sapper.lua"
+            "Function"      "Kaboom"
+        }
+    }
+}
+
+}

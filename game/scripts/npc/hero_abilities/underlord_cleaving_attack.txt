@@ -1,0 +1,59 @@
+"DOTAAbilities"
+{
+
+// Pit Lord Cleaving Attack
+// Author: Noya
+// Description: The Pit Lord strikes with such force that he damages multiple enemies with his attack.
+
+"underlord_cleaving_attack"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "underlord_cleaving_attack"
+    "MaxLevel"                      "3"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "TargetsAllowed"                "ground"
+
+    "AbilityCastRange"              "200"
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "cleave_damage"         "30 55 80"
+        }
+        
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "cleave_radius"         "200.0"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_cleaving_attack"
+        {
+            "Passive"   "1"
+            "IsHidden"  "1"
+
+            "OnAttackLanded"
+            {
+                "CleaveAttack"
+                {
+                    "CleavePercent"     "%cleave_damage"
+                    "CleaveRadius"      "%cleave_radius"
+                    "CleaveEffect"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+                }
+            }
+        }
+    }
+}
+
+}

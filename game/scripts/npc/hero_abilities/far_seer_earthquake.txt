@@ -1,0 +1,84 @@
+"DOTAAbilities"
+{
+
+// Far Seer Earthquake
+// Author: Noya
+// Description: Makes the ground tremble and break, causing 50 damage per second to buildings and slowing units by 75% within area of effect. Lasts 25 seconds.
+
+"far_seer_earthquake"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "far_seer_earthquake"
+    "MaxLevel"                      "1"
+    "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"          "ACT_DOTA_STATIC_STORM"
+    "AnimationPlaybackRate"         "0.8"
+    
+    "TargetsAllowed"                "ground"
+
+    "AbilityCastRange"              "1000"
+    "AbilityCastPoint"              "0.5"
+    "AbilityCooldown"               "90.0"
+
+    "AbilityManaCost"               "150"
+    "AbilityChannelTime"            "25.0"
+
+    "AOERadius"                     "%radius"
+
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
+        "particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "duration"                  "25"
+        }
+        "02"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "building_damage_per_sec"   "50"
+        }
+        "03"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "radius"                    "250"
+        }
+        "04"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "movement_speed_slow_pct"   "-75"
+        }
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/far_seer/earthquake.lua"
+            "Function"      "EarthquakeStart"
+            "Target"        "POINT"
+        }
+    }
+
+    "OnChannelFinish"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/far_seer/earthquake.lua"
+            "Function"      "EarthquakeEnd"
+        }
+    }
+}
+
+}

@@ -1,0 +1,161 @@
+"DOTAAbilities"
+{
+
+// Tinker Robo Goblin
+// Author: Noya
+// Description: Transforms the Tinker into a Robo-Goblin, a powerful armored form that has the following traits:
+//-Bonus Strength and armor.
+//-Use of the Demolish ability, which grants bonus damage against buildings.
+//-The Tinker becomes mechanical, rendering him immune to stun, most offensive spells, and several beneficial spells.
+
+"tinker_robo_goblin"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "tinker_robo_goblin"
+    "MaxLevel"                      "1"
+    "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityCastAnimation"          "ACT_DOTA_TINKER_REARM3"
+
+    "AbilityCastPoint"              "1.0"
+    "AbilityCooldown"               "0.0"
+
+    "AbilityManaCost"               "25"
+
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+        "model"     "models/courier/mechjaw/mechjaw.vmdl"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {   
+            "var_type"              "FIELD_INTEGER"
+            "extra_str"             "5"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "extra_armor"           "1"
+        }
+        "03"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "extra_dmg_to_buildings"    "3.5"
+        }
+    }
+
+    "OnUpgrade"
+    {
+        "LevelUpAbility"
+        {
+            "Target"        "CASTER"
+            "AbilityName"   "tinker_normal_form"
+        }
+    }
+
+    "OnAbilityPhaseStart"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Tinker.RearmStart"
+            "Target"        "CASTER"
+        }
+
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_robot_transform"
+            "Target"        "CASTER"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_robot_transform"
+        {
+            "Duration"      "1.0"
+
+            "States"
+            {
+                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+            }
+
+            "OnCreated"
+            {
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_invulnerable"
+                    "Target"        "CASTER"
+                    "Duration"      "0.03"
+                }
+            }
+
+            "OnDestroy"
+            {           
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_robot_form"
+                    "Target"        "CASTER"
+                }
+            }
+        }
+    }
+}
+
+// Transform back
+"tinker_normal_form"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "tinker_normal_form"
+    "MaxLevel"                      "1"
+    "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityCastAnimation"          "ACT_DOTA_SPAWN"
+
+    "AbilityCastPoint"              "0.0"
+    "AbilityCooldown"               "1.0"
+
+    "AbilityManaCost"               "25"
+
+    "OnAbilityPhaseStart"
+    {
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_tinker_transform"
+            "Target"        "CASTER"
+        }
+
+        "FireSound"
+        {
+            "EffectName"    "Hero_Tinker.Rearm"
+            "Target"        "CASTER"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_tinker_transform"
+        {
+            "Duration"      "1.0"
+            "States"
+            {
+                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+            }
+
+            "OnDestroy"
+            {
+                "RemoveModifier"
+                {
+                    "ModifierName"  "modifier_robot_form"
+                    "Target"        "TARGET"
+                }
+            }
+        }
+    }
+}
+
+}
