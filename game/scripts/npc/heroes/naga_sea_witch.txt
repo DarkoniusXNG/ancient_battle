@@ -13,10 +13,10 @@
 	
 	// Abilities
 	//----------------------------------------------------------------
-	"Ability1" 					"naga_sea_witch_forked_lightning"
-	"Ability2" 					"naga_sea_witch_frost_arrows"
-	"Ability3" 					"naga_sea_witch_mana_shield"
-	"Ability4" 					"naga_sea_witch_tornado"
+	"Ability1" 					"naga_sea_witch_forked_lightning" // improve
+	"Ability2" 					"naga_sea_witch_frost_arrows" // improve, allow attacking ethereal
+	"Ability3" 					"naga_sea_witch_mana_shield" // fix
+	"Ability4" 					"naga_sea_witch_tornado" // summon, make non-channel, make enemies flail and vulnerable
 	"Ability5"					""
 	"Ability6"					""	    
 	
@@ -30,7 +30,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"8.0"
-	"AttackRate"				"1.9"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.73"
 	"AttackAcquisitionRange"	"600"
 	"AttackRange"				"600"

@@ -35,13 +35,13 @@ function modifier_big_bad_voodoo:OnCreated()
     local target = self:GetParent()
     local particle = ParticleManager:CreateParticle("particles/custom/witchdoctor_voodoo_restoration_aura.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
     self:AddParticle(particle, false, false, 1, false, false)
- 
-    local particle = ParticleManager:CreateParticle("particles/custom/warlock_shadow_word_buff_copy.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-    self:AddParticle(particle, false, false, 1, false, false)
 
-    local particle = ParticleManager:CreateParticle("particles/custom/witchdoctor_voodoo_restoration.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-    ParticleManager:SetParticleControl(particle,1,Vector(self:GetAbility():GetSpecialValueFor("radius"), 0, 0))
-    self:AddParticle(particle, false, false, 1, false, false)
+    local particle2 = ParticleManager:CreateParticle("particles/custom/warlock_shadow_word_buff_copy.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+    self:AddParticle(particle2, false, false, 1, false, false)
+
+    local particle3 = ParticleManager:CreateParticle("particles/custom/witchdoctor_voodoo_restoration.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+    ParticleManager:SetParticleControl(particle3, 1, Vector(self:GetAbility():GetSpecialValueFor("radius"), 0, 0))
+    self:AddParticle(particle3, false, false, 1, false, false)
 end
 
 function modifier_big_bad_voodoo:IsAura() return true end
@@ -63,13 +63,13 @@ end
 function modifier_big_bad_voodoo:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_big_bad_voodoo:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
 
 function modifier_big_bad_voodoo:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target == self:GetCaster() or target:IsWard()
+    return target == self:GetCaster()
 end
 
 function modifier_big_bad_voodoo:GetAuraSearchType()
@@ -89,7 +89,7 @@ function modifier_big_bad_voodoo_invulnerability:CheckState()
 end
 
 function modifier_big_bad_voodoo_invulnerability:GetEffectName()
-    return "particles/custom/warlock_shadow_word_buff_c.vpcf"    
+    return "particles/custom/warlock_shadow_word_buff_c.vpcf"
 end
 
 function modifier_big_bad_voodoo_invulnerability:GetEffectAttachType()

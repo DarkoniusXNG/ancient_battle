@@ -14,11 +14,9 @@ function modifier_demon_form:OnCreated()
         self:AddParticle(particle, false, false, 1, false, false)
         local particleFeet = ParticleManager:CreateParticle("particles/custom/nightelf/demon_hunter/feet_effects.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
         self:AddParticle(particleFeet, false, false, 1, false, false)
-        target.old_attack_projectile = GetRangedProjectileName(target) -- In case the hero has an orb
-        SetRangedProjectileName(target, "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf")
+        target.old_attack_projectile = target:GetRangedProjectileName()
+        target:SetRangedProjectileName("particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf")
         target:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
-        target:SetAttackType("chaos")
-        target:SetAttacksEnabled("ground,air")
     end
 end
 

@@ -9,14 +9,6 @@ end
 
 --------------------------------------------------------------------------------
 
-neutral_trueshot_aura = class({})
-
-function neutral_trueshot_aura:GetIntrinsicModifierName()
-    return "modifier_trueshot_aura"
-end
-
---------------------------------------------------------------------------------
-
 modifier_trueshot_aura = class({})
 
 function modifier_trueshot_aura:IsAura()
@@ -46,7 +38,7 @@ end
 function modifier_trueshot_aura:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_trueshot_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
@@ -55,9 +47,9 @@ function modifier_trueshot_aura:GetAuraSearchFlags()
     return DOTA_UNIT_TARGET_FLAG_RANGED_ONLY
 end
 
-function modifier_trueshot_aura:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target:IsWard()
-end
+--function modifier_trueshot_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_trueshot_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC

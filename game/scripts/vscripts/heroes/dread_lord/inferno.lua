@@ -2,7 +2,7 @@
 function SpawnInferno(event)
     local caster = event.caster
     local ability = event.ability
-    
+
     caster:EmitSound("Hero_Warlock.RainOfChaos_buildup")
 
     --Create a particle effect consisting of the meteor falling from the sky and landing at the target point.
@@ -13,7 +13,7 @@ function SpawnInferno(event)
     local point_difference_normalized = (target_point_temp - caster_point_temp):Normalized()
     local travel_speed = 300
     local delay = 1
-    local velocity_per_second = point_difference_normalized * 300
+    local velocity_per_second = point_difference_normalized * travel_speed
     local meteor_fly_original_point = (target_point - (velocity_per_second * 1)) + Vector (0, 0, 1500) --Start the meteor in the air in a place where it'll be moving the same speed when flying and when rolling.
     local chaos_meteor_fly_particle_effect = ParticleManager:CreateParticle("particles/custom/inferno_meteor.vpcf", PATTACH_ABSORIGIN, caster)
     ParticleManager:SetParticleControl(chaos_meteor_fly_particle_effect, 0, meteor_fly_original_point)
@@ -38,14 +38,9 @@ function SpawnInferno(event)
 
         local targets = FindUnitsInRadius(caster:GetTeamNumber(), target_point, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
         for _,target in pairs(targets) do
-            if not IsCustomBuilding(target) and not target:IsMechanical() and not target:IsWard() then
-                local stun_duration = target:IsHero() and stun_hero_duration or stun_creep_duration
-                ability:ApplyDataDrivenModifier(caster,target,"modifier_inferno_stun",{duration = stun_duration})
-                ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
-            end
-        end
-        if ability:IsItem() then
-            UTIL_Remove(ability)
+			local stun_duration = target:IsHero() and stun_hero_duration or stun_creep_duration
+			ability:ApplyDataDrivenModifier(caster,target,"modifier_inferno_stun",{duration = stun_duration})
+			ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
         end
     end)
 end

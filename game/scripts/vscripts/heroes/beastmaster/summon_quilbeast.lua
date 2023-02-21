@@ -4,13 +4,13 @@ local quilbeastNames = {
     [3] = "neutral_beastmaster_raging_quilbeast",
 }
 function SpawnQuilbeast(event)
-    local caster = event.caster
-    local ability = event.ability
-    local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
-    local position = caster:GetAbsOrigin() + caster:GetForwardVector() * 200
+    -- local caster = event.caster
+    -- local ability = event.ability
+    -- local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
+    -- local position = caster:GetAbsOrigin() + caster:GetForwardVector() * 200
 
-    local bear = caster:CreateSummon(quilbeastNames[ability:GetLevel()], position, duration)
-    ability:ApplyDataDrivenModifier(caster, bear, "modifier_beastmaster_boar", {})
+    -- local bear = caster:CreateSummon(quilbeastNames[ability:GetLevel()], position, duration)
+    -- ability:ApplyDataDrivenModifier(caster, bear, "modifier_beastmaster_boar", {})
 end
 
 --------------------------------------------------------------------------------

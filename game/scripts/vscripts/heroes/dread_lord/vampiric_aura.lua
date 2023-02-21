@@ -38,7 +38,7 @@ end
 function modifier_vampiric_aura:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_vampiric_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
@@ -47,9 +47,9 @@ function modifier_vampiric_aura:GetAuraSearchFlags()
     return DOTA_UNIT_TARGET_FLAG_MELEE_ONLY
 end
 
-function modifier_vampiric_aura:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target:IsWard()
-end
+--function modifier_vampiric_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_vampiric_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
@@ -68,16 +68,14 @@ function modifier_vampiric_aura_buff:DeclareFunctions()
 end
 
 function modifier_vampiric_aura_buff:OnAttackLanded(event)
-    local attacker = event.attacker
-    if attacker == self:GetParent() then
-        local target = event.target
-        if not IsCustomBuilding(target) and not target:IsMechanical() and not target:IsWard() then
-            local lifesteal = self:GetAbility():GetSpecialValueFor("lifesteal") * event.damage * 0.01
-            attacker:Heal(lifesteal,self)
-            local particle = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, self:GetParent())
-            ParticleManager:SetParticleControlEnt(particle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
-        end
-    end
+	local attacker = event.attacker
+	if attacker == self:GetParent() then
+		local target = event.target
+		local lifesteal = self:GetAbility():GetSpecialValueFor("lifesteal") * event.damage * 0.01
+		attacker:Heal(lifesteal,self)
+		local particle = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControlEnt(particle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
+	end
 end
 
 function modifier_vampiric_aura:IsPurgable()

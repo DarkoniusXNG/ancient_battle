@@ -14,16 +14,16 @@
 	// Abilities
 	//----------------------------------------------------------------
 	"Ability1" 					"demon_hunter_mana_burn"
-	"Ability2" 					"demon_hunter_immolation"
+	"Ability2" 					"demon_hunter_immolation" // fix particles
 	"Ability3" 					"demon_hunter_evasion"
-	"Ability4" 					"demon_hunter_demon_form"
-	"Ability5"					""
-	"Ability6"					""	    
+	//"Ability4" 					"demon_hunter_demon_form" // fix
+	//"Ability5"					""
+	//"Ability6"					""	    
 	
 	// Armor
 	//----------------------------------------------------------------
 	"ArmorPhysical"				"0"
-	"MagicalResistance"			"30.000001"
+	"MagicalResistance"			"30"
 	
 	// Attack
 	//----------------------------------------------------------------

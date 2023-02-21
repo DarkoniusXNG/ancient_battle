@@ -12,7 +12,7 @@ function CarrionBeetleSpawn( event )
     end
 
     -- Find a corpse nearby
-    local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
+    --local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
     if corpse then
         -- If the caster has already hit the limit of beetles, kill the oldest, then continue
         if #caster.beetles >= beetle_limit then
@@ -40,7 +40,7 @@ function RemoveDeadBeetle( event )
     local unit = event.unit
     local targets = caster.beetles
 
-    for k,beetle in pairs(targets) do       
+    for k,beetle in pairs(targets) do
         if beetle and IsValidEntity(beetle) and beetle == unit then
             table.remove(caster.beetles,k)
         end

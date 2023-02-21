@@ -4,12 +4,12 @@ function EarthquakeStart( event )
     local caster = event.caster
     local point = event.target_points[1]
 
-    caster.earthquake_dummy = CreateUnitByName("dummy_unit", point, false, caster, caster, caster:GetTeam())
+    caster.earthquake_dummy = CreateUnitByName("npc_dota_custom_dummy_unit", point, false, caster, caster, caster:GetTeam())
     caster.earthquake_dummy:AddNewModifier(caster, ability, "modifier_earthquake_aura", {})
 
     caster:EmitSound("Hero_Leshrac.Split_Earth")
     Timers:CreateTimer(0.5, function()
-        if IsValidAlive(caster) and ability:IsChanneling() then
+        if caster and not caster:IsNull() and caster:IsAlive() and ability:IsChanneling() then
             caster:StartGesture(ACT_DOTA_KINETIC_FIELD)
             return 1
         end
@@ -39,8 +39,8 @@ end
 
 function modifier_earthquake_aura:OnIntervalThink()
     if self:GetAbility():IsChanneling() then
-        self:PlayParticleEffect() 
-        self:GetParent():EmitSound("Hero_Leshrac.Split_Earth")   
+        self:PlayParticleEffect()
+        self:GetParent():EmitSound("Hero_Leshrac.Split_Earth")
     end
 end
 
@@ -61,14 +61,14 @@ end
 function modifier_earthquake_aura:GetModifierAura()
     return "modifier_earthquake"
 end
-   
+
 function modifier_earthquake_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 
-function modifier_earthquake_aura:GetAuraEntityReject(target)
-    return target:IsWard() or target:IsFlyingUnit()
-end
+--function modifier_earthquake_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_earthquake_aura:GetAuraSearchFlags()
     return DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
@@ -96,19 +96,12 @@ end
 
 function modifier_earthquake:OnCreated()
     if IsServer() then
-        self:DamageBuilding()
         self:StartIntervalThink(1)
     end
 end
 
 function modifier_earthquake:OnIntervalThink()
-    self:DoDamage()
-end
 
-function modifier_earthquake:DamageBuilding()
-    if IsCustomBuilding(self:GetParent()) then
-        DamageBuilding(self:GetParent(), self:GetAbility():GetSpecialValueFor("building_damage_per_sec"), self:GetAbility(), self:GetCaster())
-    end
 end
 
 function modifier_earthquake:IsPurgable() return false end

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Princess of the Moon: Shadow Meld () - New Spell, Night Passive (Hero only)
   // Author: Jastuchko
-  // TO_DO: Ako ovo budeš čačkao, oči ću da ti iskopam. :D
+  // TO_DO:
   //=================================================================================================================
   "potm_shadow_meld"
   {

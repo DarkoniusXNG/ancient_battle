@@ -10,7 +10,7 @@ function keeper_tranquility:OnSpellStart()
     caster:EmitSound("leshrac_lesh_respawn_09")
     Timers:CreateTimer(1, function()
         if self:IsChanneling() then
-            StartAnimation(caster, {duration=2, activity=ACT_DOTA_CAST_ABILITY_2, rate=0.8, translate="torment"})
+            --StartAnimation(caster, {duration=2, activity=ACT_DOTA_CAST_ABILITY_2, rate=0.8, translate="torment"})
             return 2
         end
     end)
@@ -19,7 +19,7 @@ end
 function keeper_tranquility:OnChannelFinish(bInterrupted)
     local caster = self:GetCaster()
     caster:RemoveModifierByName("modifier_tranquility_aura")
-    EndAnimation(caster)
+    --EndAnimation(caster)
 end
 
 function keeper_tranquility:GetCastAnimation()
@@ -59,14 +59,14 @@ end
 function modifier_tranquility_aura:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_tranquility_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
 
-function modifier_tranquility_aura:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target:IsWard()
-end
+--function modifier_tranquility_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_tranquility_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC

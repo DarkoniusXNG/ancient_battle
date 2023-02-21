@@ -13,7 +13,7 @@ function modifier_robot_form:OnCreated()
 
         caster:EmitSound("tinker_tink_spawn_03")
         caster:SetModelScale(2)
-        function caster:IsMechanical() return true end -- Set mechanical flag
+		-- TODO: Make him 'mechanical'
 
         -- Swap sub_ability
         caster:SwapAbilities("tinker_robo_goblin", "tinker_normal_form", false, true)
@@ -32,7 +32,7 @@ function modifier_robot_form:OnDestroy()
         local caster = self:GetParent()
 
         caster:SetModelScale(1)
-        function caster:IsMechanical() return false end -- Remove mechanical flag
+        -- TODO: Remove mechanical flag
 
         -- Swap the sub_ability back to normal
         caster:SwapAbilities("tinker_robo_goblin", "tinker_normal_form", true, false)
@@ -47,12 +47,10 @@ function modifier_robot_form:OnAttackLanded(event)
     local attacker = event.attacker
     if attacker == self:GetParent() then
         local target = event.target
-        if IsCustomBuilding(target) then
-            local ability = self:GetAbility()
-            local extra_dmg_to_buildings = ability:GetSpecialValueFor("extra_dmg_to_buildings")
-            local damage = event.damage * (extra_dmg_to_buildings - 1)
-            ApplyDamage({ victim = target, attacker = attacker, damage = damage, ability = ability, damage_type = DAMAGE_TYPE_PHYSICAL })
-        end
+		local ability = self:GetAbility()
+		local extra_dmg_to_buildings = ability:GetSpecialValueFor("extra_dmg_to_buildings")
+		local damage = event.damage * (extra_dmg_to_buildings - 1)
+		ApplyDamage({ victim = target, attacker = attacker, damage = damage, ability = ability, damage_type = DAMAGE_TYPE_PHYSICAL })
     end
 end
 

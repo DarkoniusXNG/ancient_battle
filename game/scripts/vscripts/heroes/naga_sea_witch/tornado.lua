@@ -6,8 +6,8 @@ function TornadoThink(event)
     local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST,false)
     local modifierName = "modifier_tornado_flying_debuff"
     local valid_targets = {}
-    for k,v in pairs(targets) do
-        if not IsCustomBuilding(v) and not v:IsWard() and not v:HasFlyMovementCapability() and not v:HasModifier(modifierName) then
+    for k, v in pairs(targets) do
+        if not v:HasFlyMovementCapability() and not v:HasModifier(modifierName) then
             table.insert(valid_targets, v)
         end
     end
@@ -80,7 +80,7 @@ function TornadoHeight( event )
     if not target:IsHero() then
         duration = duration_unit
     end
-    
+
     -- Height per time calculation
     local time_to_reach_max_height = duration / 10
     local height_per_frame = cyclone_height * 0.03
@@ -94,11 +94,11 @@ function TornadoHeight( event )
     -- Loop every frame for the duration
     Timers:CreateTimer(function()
         local time_in_air = GameRules:GetGameTime() - tornado_start
-        
+
         -- First send the target at max height very fast
         if position.z < cyclone_height and time_in_air <= time_to_reach_max_height then
             --print("+",height_per_frame,position.z)
-            
+
             position.z = position.z + height_per_frame
             target:SetAbsOrigin(position)
             return 0.03
@@ -114,7 +114,7 @@ function TornadoHeight( event )
         -- Do Up and down cycles
         elseif time_in_air <= duration then
             -- Up
-            if position.z < cyclone_max_height and going_up then 
+            if position.z < cyclone_max_height and going_up then
                 --print("going up")
                 position.z = position.z + height_per_frame/3
                 target:SetAbsOrigin(position)

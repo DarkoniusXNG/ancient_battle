@@ -9,8 +9,8 @@ function BuildPocketFactory( event )
     local factory_duration =  ability:GetLevelSpecialValueFor( "factory_duration" , ability:GetLevel() - 1  )
     local ability_level = ability:GetLevel()
     local building_name = "neutral_pocket_factory_building"..ability_level
-    local construction_size = BuildingHelper:GetConstructionSize(building_name)
-    local pathing_size = BuildingHelper:GetBlockPathingSize(building_name)
+    --local construction_size = 
+    --local pathing_size = 
 
     -- Launch orb
     local speed = 900
@@ -25,9 +25,9 @@ function BuildPocketFactory( event )
         ParticleManager:DestroyParticle(orb, false)
 
         -- Create the building, set to time out after a duration
-        caster.pocket_factory = BuildingHelper:PlaceBuilding(caster:GetPlayerOwner(), building_name, point, construction_size, pathing_size, 0)
+        --caster.pocket_factory = BuildingHelper:PlaceBuilding(caster:GetPlayerOwner(), building_name, point, construction_size, pathing_size, 0)
         caster.pocket_factory:AddNewModifier(caster, nil, "modifier_kill", {duration = factory_duration})
-        caster.pocket_factory:SetNoCorpse()
+        --caster.pocket_factory:SetNoCorpse()
 
         -- Add the ability and set its level
         caster.pocket_factory:AddAbility("tinker_pocket_factory_train_goblin")
@@ -75,7 +75,7 @@ function StartGoblinSpawn( event )
             goblin:AddNewModifier(caster, ability, "modifier_summoned", {})
 
             -- Move to rally point
-            MoveToRallyPoint({caster=caster, target=goblin})
+            --MoveToRallyPoint({caster=caster, target=goblin})
 
             -- Add the ability and set its level to the main ability level
             goblin:AddAbility(goblin_ability_name)

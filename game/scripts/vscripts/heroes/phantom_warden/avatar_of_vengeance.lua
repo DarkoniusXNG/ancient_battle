@@ -18,7 +18,7 @@ function SpiritOfVengeanceAutocast( event )
     local caster = event.caster
     if ability:GetAutoCastState() then
         local playerID = caster:GetPlayerOwnerID()
-        local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
+        --local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
         local spirit_limit = ability:GetSpecialValueFor( "spirit_limit" )
         if corpse and caster.spirit_count and caster.spirit_count < spirit_limit then
             caster:CastAbilityNoTarget(ability, playerID)
@@ -50,17 +50,16 @@ function SpiritOfVengeanceSpawn( event )
     local playerID = caster:GetPlayerOwnerID()
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     local ability = event.ability
-    local level = ability:GetLevel()
     local spirit_limit = ability:GetSpecialValueFor( "spirit_limit" )
     local duration = ability:GetSpecialValueFor( "spirit_limit" )
 
     -- Find a corpse nearby
-    local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
+    --local corpse = Corpses:FindClosestInRadius(playerID, caster:GetAbsOrigin(), ability:GetCastRange())
     if corpse then
         -- If the caster has already hit the limit of spirits, kill the oldest, then continue
         if caster.spirit_count >= spirit_limit then
             for k,v in pairs(caster.spirits) do
-                if IsValidEntity(v) and v:IsAlive() then 
+                if IsValidEntity(v) and v:IsAlive() then
                     v:ForceKill(false)
                     return
                 end
@@ -71,13 +70,13 @@ function SpiritOfVengeanceSpawn( event )
         local spirit = CreateUnitByName("nightelf_spirit_of_vengeance", corpse:GetAbsOrigin(), true, hero, hero, hero:GetTeamNumber())
         spirit:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
         spirit.avatar = caster
-        
+
         spirit:SetControllableByPlayer(playerID, true)
-        spirit:SetNoCorpse()
+        --spirit:SetNoCorpse()
         table.insert(caster.spirits, spirit)
         caster.spirit_count = caster.spirit_count + 1
 
         corpse:EmitSound("Hero_Spectre.DaggerCast")
-        corpse:RemoveCorpse()
+        --corpse:RemoveCorpse()
     end
 end

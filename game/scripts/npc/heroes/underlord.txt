@@ -14,12 +14,12 @@
 	
 	// Abilities
 	//----------------------------------------------------------------	
-	"Ability1" 					"underlord_rain_of_fire"
-	"Ability2" 					"underlord_howl_of_terror"
+	"Ability1" 					"underlord_rain_of_fire" // fix particles
+	"Ability2" 					"underlord_howl_of_terror" // fix particles
 	"Ability3" 					"underlord_cleaving_attack"
-	"Ability4" 					"underlord_doom"
-	"Ability5"					""
-	"Ability6"					""	    
+	//"Ability4" 					"underlord_doom" // summon, make it work on heroes too
+	//"Ability5"					""
+	//"Ability6"					""	    
 	
 	// Armor
 	//----------------------------------------------------------------
@@ -31,7 +31,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"12.0"
 	"AttackDamageMax"			"22.0"
-	"AttackRate"				"2.05"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.8"
 	"AttackAcquisitionRange"	"500"
 	"AttackRange"				"128"

@@ -12,12 +12,13 @@ function HealingWave( event )
     local radius = ability:GetSpecialValueFor("bounce_range")
     local time_between_bounces = 0.3
 
-    local start_position = caster:GetAbsOrigin()
+    local start_position
     local attach_attack1 = caster:ScriptLookupAttachment("attach_attack1")
     if attach_attack1 ~= 0 then
         start_position = caster:GetAttachmentOrigin(attach_attack1)
     else
-        start_position.z = start_position.z + target:GetBoundingMaxs().z
+        start_position = caster:GetAbsOrigin()
+		start_position.z = start_position.z + target:GetBoundingMaxs().z
     end
     local current_position = CreateHealingWave(caster, caster:GetAbsOrigin(), target, healing, ability)
     bounces = bounces - 1 --The first hit counts as a bounce
@@ -26,11 +27,17 @@ function HealingWave( event )
     local targetsStruck = {}
     targetsStruck[target:GetEntityIndex()] = true
 
+	-- Targetting constants
+	local target_team = DOTA_UNIT_TARGET_TEAM_FRIENDLY
+	local target_type = bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO)
+	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
+
     -- do bounces from target to new targets
     Timers:CreateTimer(time_between_bounces, function()
-    
+
         -- unit selection and counting
-        local allies = FindOrganicAlliesInRadius(caster, radius, current_position)
+		
+		local allies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 
         if #allies > 0 then
 
@@ -63,26 +70,27 @@ function HealingWave( event )
 end
 
 function CreateHealingWave(caster, start_position, target, healing, ability)
-    local target_position = target:GetAbsOrigin()
+    local target_position
     local attach_hitloc = target:ScriptLookupAttachment("attach_hitloc")
     if attach_hitloc ~= 0 then
         target_position = target:GetAttachmentOrigin(attach_hitloc)
     else
-        target_position.z = target_position.z + target:GetBoundingMaxs().z
+        target_position = target:GetAbsOrigin()
+		target_position.z = target_position.z + target:GetBoundingMaxs().z
     end
 
     local particle = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
     ParticleManager:SetParticleControl(particle, 0, start_position)
     ParticleManager:SetParticleControl(particle, 1, target_position)
 
-    local particle = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave_copy.vpcf", PATTACH_CUSTOMORIGIN, nil)
-    ParticleManager:SetParticleControl(particle, 0, start_position)
-    ParticleManager:SetParticleControl(particle, 1, target_position)
+    local particle2 = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave_copy.vpcf", PATTACH_CUSTOMORIGIN, nil)
+    ParticleManager:SetParticleControl(particle2, 0, start_position)
+    ParticleManager:SetParticleControl(particle2, 1, target_position)
 
     target:Heal(healing, target)
     local heal = math.floor(math.min(healing, target:GetHealthDeficit())+0.5)
     if heal > 0 then
-        PopupHealing(target,heal)
+        SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, target, heal, nil)
     end
     return target_position
 end

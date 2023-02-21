@@ -15,8 +15,8 @@
 	//----------------------------------------------------------------
 	"Ability1"					"crypt_lord_impale"
 	"Ability2"					"crypt_lord_spiked_carapace"
-	"Ability3"					"crypt_lord_carrion_beetles"
-	"Ability4"					"crypt_lord_locust_swarm"
+	//"Ability3"					"crypt_lord_carrion_beetles" // summon
+	//"Ability4"					"crypt_lord_locust_swarm" // summon + AI
 	"Ability5"					""
 	"Ability6"					""   
 	
@@ -30,7 +30,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"8.0"
-	"AttackRate"				"1.9"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.46"
 	"AttackAcquisitionRange"	"500"
 	"AttackRange"				"128"

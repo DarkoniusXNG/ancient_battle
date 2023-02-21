@@ -1,7 +1,7 @@
 tauren_chieftain_endurance_aura = class({})
 
-LinkLuaModifier("modifier_endurance_aura", "heroes/tauren_chieftain/endurance_aura", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_endurance_aura_buff", "heroes/tauren_chieftain/endurance_aura", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_endurance_aura", "heroes/elder_minotaur/endurance_aura", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_endurance_aura_buff", "heroes/elder_minotaur/endurance_aura", LUA_MODIFIER_MOTION_NONE)
 
 function tauren_chieftain_endurance_aura:GetIntrinsicModifierName()
     return "modifier_endurance_aura"
@@ -38,14 +38,14 @@ end
 function modifier_endurance_aura:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_endurance_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
 
-function modifier_endurance_aura:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target:IsWard()
-end
+--function modifier_endurance_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_endurance_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC

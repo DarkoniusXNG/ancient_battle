@@ -4,20 +4,20 @@ local hawkNames = {
     [3] = "neutral_beastmaster_spirit_hawk",
 }
 function SpawnHawk(event)
-    local caster = event.caster
-    local ability = event.ability
-    local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
-    local fv = caster:GetForwardVector()
-    local position = caster:GetAbsOrigin() + fv * 200
-    local playerID = caster:GetPlayerOwnerID()
-    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    -- local caster = event.caster
+    -- local ability = event.ability
+    -- local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
+    -- local fv = caster:GetForwardVector()
+    -- local position = caster:GetAbsOrigin() + fv * 200
+    -- local playerID = caster:GetPlayerOwnerID()
+    -- local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    local hawk = caster:CreateSummon(hawkNames[ability:GetLevel()], position, duration)
-    ability:ApplyDataDrivenModifier(caster, hawk, "modifier_beastmaster_bird", {})
+    -- --local hawk = caster:CreateSummon(hawkNames[ability:GetLevel()], position, duration)
+    -- ability:ApplyDataDrivenModifier(caster, hawk, "modifier_beastmaster_bird", {})
 
-    -- Initialize the attack and move trackers
-    hawk.hawkMoved = GameRules:GetGameTime()
-    hawk.hawkAttacked = GameRules:GetGameTime()
+    -- -- Initialize the attack and move trackers
+    -- hawk.hawkMoved = GameRules:GetGameTime()
+    -- hawk.hawkAttacked = GameRules:GetGameTime()
 end
 
 --------------------------------------------------------------------------------

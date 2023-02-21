@@ -14,10 +14,10 @@
 	
 	// Abilities
 	//----------------------------------------------------------------
-	"Ability1" 					"shadow_hunter_healing_wave"
-	"Ability2" 					"shadow_hunter_hex"
-	"Ability3" 					"shadow_hunter_serpent_ward"
-	"Ability4" 					"shadow_hunter_big_bad_voodoo"
+	"Ability1" 					"shadow_hunter_healing_wave" // fix particles
+	//"Ability2" 					"shadow_hunter_hex" // rework if needed otherwise use vanilla
+	//"Ability3" 					"shadow_hunter_serpent_ward" // make it work
+	"Ability4" 					"shadow_hunter_big_bad_voodoo" // fix particles
 	"Ability5"					""
 	"Ability6"					""   
 	
@@ -31,7 +31,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"8.0"
-	"AttackRate"				"2.28"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.3"
 	"AttackAcquisitionRange"	"600"
 	"AttackRange"				"600"

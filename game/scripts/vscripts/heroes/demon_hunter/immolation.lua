@@ -16,12 +16,6 @@ end
 function demon_hunter_immolation:OnToggleOn()
     local caster = self:GetCaster()
 
-    -- Override cloak of flames
-    local cloak_of_flames = caster:FindItemByName("item_cloak_of_flames")
-    if cloak_of_flames then
-        caster:RemoveModifierByName("modifier_immolation_aura")
-    end
-
     caster:AddNewModifier(caster,self,"modifier_immolation_aura",{})
     caster:EmitSound("Hero_EmberSpirit.FlameGuard.Cast")
 
@@ -37,13 +31,6 @@ function demon_hunter_immolation:OnToggleOff()
     Timers:RemoveTimer(self.think)
     local caster = self:GetCaster()
     caster:RemoveModifierByName("modifier_immolation_aura")
-
-    -- Reapply cloak of flames
-    local cloak_of_flames = caster:FindItemByName("item_cloak_of_flames")
-    if cloak_of_flames then
-        caster:TakeItem(cloak_of_flames)
-        caster:AddItem(cloak_of_flames)
-    end
 end
 
 function demon_hunter_immolation:OnIntervalThink()
@@ -59,16 +46,6 @@ function demon_hunter_immolation:OnIntervalThink()
         end
     end
 end
-
---------------------------------------------------------------------------------
-
-neutral_immolation = class({})
-
-neutral_immolation.OnToggle = demon_hunter_immolation.OnToggle
-neutral_immolation.OnToggleOn = demon_hunter_immolation.OnToggleOn
-neutral_immolation.OnToggleOff = demon_hunter_immolation.OnToggleOff
-neutral_immolation.OnIntervalThink = demon_hunter_immolation.OnIntervalThink
-
 --------------------------------------------------------------------------------
 
 modifier_immolation_aura = class({})
@@ -117,14 +94,14 @@ end
 function modifier_immolation_aura:GetModifierAura()
     return "modifier_immolation_aura_debuff"
 end
-   
+
 function modifier_immolation_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_ENEMY
 end
 
-function modifier_immolation_aura:GetAuraEntityReject(target)
-    return self:GetParent():IsInvisible() or IsCustomBuilding(target) or target:HasFlyMovementCapability() or target:IsMechanical()
-end
+--function modifier_immolation_aura:GetAuraEntityReject(target)
+    --return self:GetParent():IsInvisible() or target:HasFlyMovementCapability()
+--end
 
 function modifier_immolation_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC

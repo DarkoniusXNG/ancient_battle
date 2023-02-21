@@ -4,16 +4,16 @@ local bearNames = {
     [3] = "neutral_beastmaster_spirit_bear",
 }
 function SpawnBear(event)
-    local caster = event.caster
-    local ability = event.ability
-    local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
-    local fv = caster:GetForwardVector()
-    local position = caster:GetAbsOrigin() + fv * 200
-    local playerID = caster:GetPlayerOwnerID()
-    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    --local caster = event.caster
+    --local ability = event.ability
+    --local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
+    --local fv = caster:GetForwardVector()
+    --local position = caster:GetAbsOrigin() + fv * 200
+    --local playerID = caster:GetPlayerOwnerID()
+    --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    local bear = caster:CreateSummon(bearNames[ability:GetLevel()], position, duration)
-    ability:ApplyDataDrivenModifier(caster, bear, "modifier_beastmaster_bear", {})
+    --local bear = caster:CreateSummon(bearNames[ability:GetLevel()], position, duration)
+    --ability:ApplyDataDrivenModifier(caster, bear, "modifier_beastmaster_bear", {})
 end
 
 --------------------------------------------------------------------------------

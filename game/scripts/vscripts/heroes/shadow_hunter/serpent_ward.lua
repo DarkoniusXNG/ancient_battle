@@ -5,5 +5,5 @@ function SpawnSerpentWard(event)
     local position = event.target_points[1]
     local wardName = "orc_serpent_ward_"..ability:GetLevel()
 
-    caster:CreateSummon(wardName, position, duration)
+    --caster:CreateSummon(wardName, position, duration)
 end

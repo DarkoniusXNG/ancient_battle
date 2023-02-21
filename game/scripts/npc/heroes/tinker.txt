@@ -14,12 +14,12 @@
 	// Abilities
 	//----------------------------------------------------------------
 	"AbilityLayout"				"6"
-	"Ability1" 					"tinker_pocket_factory"
-	"Ability2" 					"tinker_cluster_rockets"
-	"Ability3" 					"tinker_engineering_upgrade"
-	"Ability4" 					"tinker_robo_goblin"
+	//"Ability1" 					"tinker_pocket_factory" // summons
+	"Ability2" 					"tinker_cluster_rockets" // improve
+	"Ability3" 					"tinker_engineering_upgrade" // idk if it works
+	//"Ability4" 					"tinker_robo_goblin" // fix
 	"Ability5"					""
-	"Ability6"					"tinker_normal_form"    
+	//"Ability6"					"tinker_normal_form" // fix
 
 	// Armor
 	//----------------------------------------------------------------
@@ -28,13 +28,13 @@
 	
 	// Attack
 	//----------------------------------------------------------------
-	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"8.0"
-	"AttackRate"				"2"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.35"
 	"AttackAcquisitionRange"	"500"
-	"AttackRange"				"128"
+	"AttackRange"				"500"
 	"ProjectileSpeed"			"900"
 	
 	// Attributes

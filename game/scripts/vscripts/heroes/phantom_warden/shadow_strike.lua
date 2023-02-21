@@ -14,6 +14,5 @@ function ShadowStrikeSlowDecay(event)
     local ability = event.ability
     local damage_every_3sec = ability:GetLevelSpecialValueFor("damage_every_3sec",ability:GetLevel()-1)
 
-    PopupDamageOverTime(target, damage_every_3sec)
     target:SetModifierStackCount("modifier_shadow_strike_slow_stack",caster,target:GetModifierStackCount("modifier_shadow_strike_slow_stack",caster)-2)
 end

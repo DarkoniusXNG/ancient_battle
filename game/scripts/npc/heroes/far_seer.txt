@@ -14,10 +14,10 @@
 	
 	// Abilities
 	//----------------------------------------------------------------
-	"Ability1" 					"far_seer_far_sight"
+	//"Ability1" 					"far_seer_far_sight" // fix this mess
 	"Ability2" 					"far_seer_chain_lightning"
-	"Ability3" 					"far_seer_feral_spirit"
-	"Ability4" 					"far_seer_earthquake"
+	//"Ability3" 					"far_seer_feral_spirit" // summon
+	//"Ability4" 					"far_seer_earthquake" // fix this mess
 	//"Ability5"					""
 	//"Ability6"					""	    
 	
@@ -31,7 +31,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"8.0"
-	"AttackRate"				"2.28"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.3"
 	"AttackAcquisitionRange"	"600"
 	"AttackRange"				"600"

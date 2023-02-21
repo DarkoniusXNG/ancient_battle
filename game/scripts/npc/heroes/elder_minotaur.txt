@@ -17,9 +17,9 @@
 	"AbilityLayout"				"6"
 
 	"Ability1" 					"elder_minotaur_shockwave"
-	"Ability2" 					"elder_minotaur_war_stomp"
-	"Ability3" 					"elder_minotaur_endurance_aura"
-	"Ability4" 					"elder_minotaur_reincarnation"
+	"Ability2" 					"elder_minotaur_war_stomp" // fix the animation
+	"Ability3" 					"elder_minotaur_endurance_aura" // improve the code
+	//"Ability4" 					"elder_minotaur_reincarnation" // fix this mess
 	//"Ability5"					""
 	//"Ability6" 					""   
 	
@@ -33,7 +33,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"12.0"
-	"AttackRate"				"2.05"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.36"
 	"AttackAcquisitionRange"	"500"
 	"AttackRange"				"128"

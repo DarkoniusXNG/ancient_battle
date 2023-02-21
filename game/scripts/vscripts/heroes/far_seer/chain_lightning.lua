@@ -26,7 +26,6 @@ function ChainLightning( event )
         local second_eye = caster:GetAttachmentOrigin(caster:ScriptLookupAttachment("attach_eye_l"))
         start_position = first_eye + (second_eye-first_eye)/2 --Between the eyes
         start_position.z = start_position.z + 50
-    
     elseif attach_attack1 ~= 0 then
         start_position = caster:GetAttachmentOrigin(attach_attack1)
     else
@@ -40,7 +39,7 @@ function ChainLightning( event )
     local targetsStruck = {}
     targetsStruck[target:GetEntityIndex()] = true
 
-    Timers:CreateTimer(time_between_bounces, function()  
+    Timers:CreateTimer(time_between_bounces, function()
         local units = FindUnitsInRadius(teamNumber, current_position, target, bounce_range, targetTeam, targetTypes, flags, findType, true)
 
         if #units > 0 then
@@ -72,7 +71,7 @@ function ChainLightning( event )
     end)
 end
 
--- Creates a chain lightning on a start position towards a target. Also does sound, damage and popup
+-- Creates a chain lightning on a start position towards a target.
 function CreateChainLightning( caster, start_position, target, damage, ability )
     local target_position = target:GetAbsOrigin()
     local attach_hitloc = target:ScriptLookupAttachment("attach_hitloc")
@@ -86,9 +85,8 @@ function CreateChainLightning( caster, start_position, target, damage, ability )
     ParticleManager:SetParticleControl(particle,0, start_position)
     ParticleManager:SetParticleControl(particle,1, target_position)
 
-    EmitSoundOn("Hero_Zuus.ArcLightning.Target", target)    
+    target:EmitSound("Hero_Zuus.ArcLightning.Target")
     ApplyDamage({ victim = target, attacker = caster, damage = damage, ability = ability, damage_type = DAMAGE_TYPE_MAGICAL })
-    PopupDamage(target, math.floor(damage))
 
     return target_position
 end

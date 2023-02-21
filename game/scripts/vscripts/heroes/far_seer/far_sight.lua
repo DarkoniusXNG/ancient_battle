@@ -13,7 +13,11 @@ function FarSight( event )
 
     AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
 
-    local visiondummy = CreateUnitByName("dummy_unit", target, false, caster, caster, caster:GetTeamNumber())
-    visiondummy:AddNewModifier(caster, ability, "modifier_true_sight_aura", {}) 
-    Timers:CreateTimer(duration, function() UTIL_Remove(visiondummy) return end)
+    local visiondummy = CreateUnitByName("npc_dota_custom_dummy_unit", target, false, caster, caster, caster:GetTeamNumber())
+    visiondummy:AddNewModifier(caster, ability, "modifier_true_sight_aura", {})
+	visiondummy:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
+	--Timers:CreateTimer(duration, function()
+		--visiondummy:ForceKill(false)
+		--return
+	--end)
 end

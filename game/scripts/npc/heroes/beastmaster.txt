@@ -14,24 +14,24 @@
 	// Abilities
 	//----------------------------------------------------------------
 	"AbilityLayout"				"6"
-	"Ability1" 					"beastmaster_summon_bear"
-	"Ability2" 					"beastmaster_summon_quilbeast"
-	"Ability3" 					"beastmaster_summon_hawk"
-	"Ability4" 					"beastmaster_stampede"
+	//"Ability1" 					"beastmaster_summon_bear" // summon
+	//"Ability2" 					"beastmaster_summon_quilbeast" // summon
+	//"Ability3" 					"beastmaster_summon_hawk" // summon
+	"Ability4" 					"beastmaster_stampede" // fix particles
 	//"Ability5"					""
 	//"Ability6" 					""	    
 	
 	// Armor
 	//----------------------------------------------------------------
 	"ArmorPhysical"				"0"
-	"MagicalResistance"			"30.000001"
+	"MagicalResistance"			"30"
 	
 	// Attack
 	//----------------------------------------------------------------
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"12.0"
-	"AttackRate"				"2.2"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.3"
 	"AttackAcquisitionRange"	"500"
 	"AttackRange"				"128"

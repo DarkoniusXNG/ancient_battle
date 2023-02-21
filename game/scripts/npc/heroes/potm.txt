@@ -14,12 +14,12 @@
 	// Abilities
 	//----------------------------------------------------------------
 	"AbilityLayout"				"6"
-	"Ability1" 					"potm_scout"
-	//"Ability2" 					""
-	"Ability3" 					"potm_searing_arrows"
-	"Ability4" 					"potm_shadow_meld"
-	"Ability5"					"potm_trueshot_aura"
-	"Ability6"					"potm_starfall"	    
+	//"Ability1" 					"potm_scout" // create a unit
+	//"Ability2" 					"" // rewrite arrow
+	"Ability3" 					"potm_searing_arrows" // make not pierce spell immunity
+	"Ability4" 					"potm_shadow_meld" // remove invis when moving, add proper fade time
+	"Ability5"					"potm_trueshot_aura" // improve code exclude custom ward units
+	"Ability6"					"potm_starfall" // make non-channel like Eclipse
 	
 	// Armor
 	//----------------------------------------------------------------
@@ -31,7 +31,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"2.0"
 	"AttackDamageMax"			"12.0"
-	"AttackRate"				"2.46"
+	"AttackRate"				"1.7"
 	//"AttackAnimationPoint"		"0.3"
 	"AttackAcquisitionRange"	"650"
 	"AttackRange"				"600"

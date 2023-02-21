@@ -46,14 +46,14 @@ end
 function modifier_thorns_aura:GetEffectAttachType()
     return PATTACH_ABSORIGIN_FOLLOW
 end
-   
+
 function modifier_thorns_aura:GetAuraSearchTeam()
     return DOTA_UNIT_TARGET_TEAM_FRIENDLY
 end
 
-function modifier_thorns_aura:GetAuraEntityReject(target)
-    return IsCustomBuilding(target) or target:IsWard() 
-end
+--function modifier_thorns_aura:GetAuraEntityReject(target)
+    --return
+--end
 
 function modifier_thorns_aura:GetAuraSearchType()
     return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
@@ -75,18 +75,16 @@ function modifier_thorns_aura_buff:OnAttacked(event)
     local target = event.target --the damaged unit
     if target == self:GetParent() then
         local attacker = event.attacker
-        -- Apply the damage only to ranged attacker
-        if not IsCustomBuilding(attacker) and not attacker:IsRangedAttacker() and self:GetParent():IsOpposingTeam(attacker:GetTeamNumber()) then
-            local ability = self:GetAbility()
-            local return_damage = ability:GetSpecialValueFor("melee_damage_return") * event.damage * 0.01
-            local abilityDamageType = ability:GetAbilityDamageType()
+		-- Apply the damage only to ranged attacker
+		local ability = self:GetAbility()
+		local return_damage = ability:GetSpecialValueFor("melee_damage_return") * event.damage * 0.01
+		local abilityDamageType = ability:GetAbilityDamageType()
 
-            ApplyDamage({ victim = attacker, attacker = target, damage = return_damage, ability = ability, damage_type = abilityDamageType })
+		ApplyDamage({ victim = attacker, attacker = target, damage = return_damage, ability = ability, damage_type = abilityDamageType })
 
-            local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_centaur/centaur_return.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, self:GetParent())
-            ParticleManager:SetParticleControlEnt(particle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
-            ParticleManager:SetParticleControlEnt(particle, 1, attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", attacker:GetAbsOrigin(), true)
-        end
+		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_centaur/centaur_return.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControlEnt(particle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
+		ParticleManager:SetParticleControlEnt(particle, 1, attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", attacker:GetAbsOrigin(), true)
     end
 end
 

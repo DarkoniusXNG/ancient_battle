@@ -29,7 +29,7 @@
 #base "heroes/beastmaster.txt"
 #base "heroes/crypt_lord.txt"
 #base "heroes/demon_hunter.txt"
-#base "heroes/dread_lord.txt"
+#base "heroes/dread_lady.txt"
 #base "heroes/elder_minotaur.txt"
 #base "heroes/far_seer.txt"
 #base "heroes/keeper_of_the_grove.txt"
