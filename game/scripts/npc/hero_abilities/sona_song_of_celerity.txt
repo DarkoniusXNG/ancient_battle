@@ -1,54 +1,54 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Sona: Song of Celerity - Gives bonus ms and as to allies around the caster
-	//=================================================================================================================
-	"sona_song_of_celerity"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/sona/sona_song_of_celerity"
-		"AbilityTextureName"			"custom/sona_song_of_celerity"
+  //=================================================================================================================
+  // Sona: Song of Celerity - Gives bonus ms and as to allies around the caster
+  //=================================================================================================================
+  "sona_song_of_celerity"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/sona/sona_song_of_celerity"
+    "AbilityTextureName"                                  "custom/sona_song_of_celerity"
 
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+    // Ability General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
+    "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES"
 
-		// Ability Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
-		"AbilityCastPoint"				"0.3"
+    // Ability Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0.3"
 
-		// Ability Resource
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"20 18 16 14"
-		"AbilityManaCost"				"100 85 70 55"
+    // Ability Resource
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "20 18 16 14"
+    "AbilityManaCost"                                     "100 85 70 55"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"8.0"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"600"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"as_bonus"				"30 40 50 60"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ms_bonus"				"5 10 15 20"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "duration"                                        "8.0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "600"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "as_bonus"                                        "30 40 50 60"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "ms_bonus"                                        "5 10 15 20"
+      }
+    }
+  }
 }

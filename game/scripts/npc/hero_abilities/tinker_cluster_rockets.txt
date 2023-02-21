@@ -7,165 +7,165 @@
 
 "tinker_cluster_rockets"
 {
-    "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "tinker_cluster_rockets"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "tinker_cluster_rockets"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
-    "TargetsAllowed"                "ground"
+    "TargetsAllowed"                                      "ground"
 
-    "AbilityCastRange"              "800"
-    "AbilityCastPoint"              "0.3"
-    "AbilityCooldown"               "6.0"
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "6.0"
 
-    "AbilityManaCost"               "70"
-    "AbilityDamage"                 "35 65 100"
+    "AbilityManaCost"                                     "70"
+    "AbilityDamage"                                       "35 65 100"
 
-    "AOERadius"                     "%radius"
-    "AbilityChannelTime"            "0.5 1.0 1.5"
+    "AOERadius"                                           "%radius"
+    "AbilityChannelTime"                                  "0.5 1.0 1.5"
 
     "precache"
     {
-        "particle"  "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_rocket_barrage.vpcf"
-        "particle"  "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
-        "particle"  "particles/units/heroes/hero_tinker/tinker_missle_explosion.vpcf"
-        "particle"  "particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
+      "particle"                                          "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_rocket_barrage.vpcf"
+      "particle"                                          "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+      "particle"                                          "particles/units/heroes/hero_tinker/tinker_missle_explosion.vpcf"
+      "particle"                                          "particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
     }
     
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "radius"                "230 260 290"
-        }
-        "02"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "stun_duration"         "1"
-        }
-        "03"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "projectile_speed"      "900"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "230 260 290"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "stun_duration"                                   "1"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "projectile_speed"                                "900"
+      }
     }
 
     "OnSpellStart"
     {
-        "FireSound"
-        {
-            "Target"        "CASTER"
-            "EffectName"    "Hero_Tinker.Heat-Seeking_Missile"
-        }
+      "FireSound"
+      {
+        "Target"                                          "CASTER"
+        "EffectName"                                      "Hero_Tinker.Heat-Seeking_Missile"
+      }
 
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_cluster_rockets"
-            "Target"        "CASTER"
-        }
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_cluster_rockets"
+        "Target"                                          "CASTER"
+      }
 
-        "RunScript"
-        {
-            "ScriptFile"    "heroes/tinker/cluster_rockets.lua"
-            "Function"      "StartClusterRockets"
-            "Target"        "POINT"
-        }
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/tinker/cluster_rockets.lua"
+        "Function"                                        "StartClusterRockets"
+        "Target"                                          "POINT"
+      }
     }
 
     "OnChannelFinish"
     {
-        "RemoveModifier"
-        {
-            "ModifierName"  "modifier_cluster_rockets"
-            "Target"        "CASTER"
-        }
+      "RemoveModifier"
+      {
+        "ModifierName"                                    "modifier_cluster_rockets"
+        "Target"                                          "CASTER"
+      }
     }
 
     "OnProjectileHitUnit"
     {
-        "FireSound"
+      "FireSound"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "Hero_Gyrocopter.Rocket_Barrage.Impact"
+      }
+      
+      "FireEffect"
+      {
+        "Target"                                          "TARGET"
+        "EffectName"                                      "particles/units/heroes/hero_tinker/tinker_missle_explosion.vpcf"
+        "EffectAttachType"                                "start_at_customorigin"
+        "ControlPointEntities"
         {
-            "Target"            "TARGET"
-            "EffectName"        "Hero_Gyrocopter.Rocket_Barrage.Impact"
+          "TARGET"                                        "attach_origin"
         }
-    
-        "FireEffect"
-        {
-            "Target"            "TARGET"
-            "EffectName"        "particles/units/heroes/hero_tinker/tinker_missle_explosion.vpcf"
-            "EffectAttachType"  "start_at_customorigin"
-            "ControlPointEntities"
-            {
-                "TARGET"        "attach_origin"
-            }
-        }
+      }
 
-        "RunScript"
-        {
-            "ScriptFile"    "heroes/tinker/cluster_rockets.lua"
-            "Function"      "ClusterRocketHit"
-        }
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/tinker/cluster_rockets.lua"
+        "Function"                                        "ClusterRocketHit"
+      }
     }
 
     "Modifiers"
     {
-        "modifier_cluster_rockets"
+      "modifier_cluster_rockets"
+      {
+        "IsHidden"                                        "1"
+        "OnCreated"
         {
-            "IsHidden"          "1"
-            "OnCreated"
+          "AttachEffect"
+          {
+            "EffectName"                                  "particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
+            "EffectAttachType"                            "attach_origin"
+            "Target"                                      "CASTER"
+            "ControlPointEntities"
             {
-                "AttachEffect"
-                {
-                    "EffectName"        "particles/units/heroes/hero_tinker/tinker_rearm.vpcf"
-                    "EffectAttachType"  "attach_origin"
-                    "Target"            "CASTER"
-                    "ControlPointEntities"
-                    {
-                        "CASTER"    "attach_origin"
-                        "CASTER"    "attach_attack1"
-                    }
-                }
+              "CASTER"                                    "attach_origin"
+              "CASTER"                                    "attach_attack1"
             }
-    
-            "ThinkInterval"  "0.1"
-            "OnIntervalThink"
-            {
-                "FireSound"
-                {
-                    "EffectName"    "Hero_Gyrocopter.Rocket_Barrage.Launch"
-                    "Target"        "CASTER"
-                }
-
-                "RunScript"
-                {
-                    "ScriptFile"    "heroes/tinker/cluster_rockets.lua"
-                    "Function"      "FireClusterRocket"
-                }
-            }
+          }
         }
-
-
-        "modifier_cluster_rocket_stun"
+        
+        "ThinkInterval"                                   "0.1"
+        "OnIntervalThink"
         {
-            "IsHidden"          "1"
-            "IsDebuff"          "1"
-            "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
-            "EffectAttachType"  "follow_overhead"
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Gyrocopter.Rocket_Barrage.Launch"
+            "Target"                                      "CASTER"
+          }
 
-            "OverrideAnimation"     "ACT_DOTA_DISABLED"
-
-            "States"
-            {
-                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
-            }
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/tinker/cluster_rockets.lua"
+            "Function"                                    "FireClusterRocket"
+          }
         }
+      }
+
+
+      "modifier_cluster_rocket_stun"
+      {
+        "IsHidden"                                        "1"
+        "IsDebuff"                                        "1"
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
+
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
     }
 }
 

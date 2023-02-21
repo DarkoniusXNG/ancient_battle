@@ -26,38 +26,36 @@
   "npc_dota_hero_spirit_breaker"                          "1" // Astral Trekker
   "npc_dota_hero_techies"                                 "1"
 
+  "npc_dota_hero_abyssal_underlord"                       "0"
   "npc_dota_hero_antimage"                                "0"
+  "npc_dota_hero_beastmaster"                             "0"
   "npc_dota_hero_crystal_maiden"                          "0"
+  "npc_dota_hero_death_prophet"                           "0" // Dread Lady
+  "npc_dota_hero_disruptor"                               "0" // Far Seer
   "npc_dota_hero_dragon_knight"                           "0"
   "npc_dota_hero_earthshaker"                             "0"
+  "npc_dota_hero_elder_titan"                             "0" // Elder Minotaur
   "npc_dota_hero_faceless_void"                           "0"
+  "npc_dota_hero_furion"                                  "0" // Keeper of the Grove
   "npc_dota_hero_legion_commander"                        "0"
-  "npc_dota_hero_lina"                                    "0"
+  "npc_dota_hero_lina"                                    "0" // Phoenix Lady
+  "npc_dota_hero_medusa"                                  "0" // Naga Sea Witch
   "npc_dota_hero_mirana"                                  "0" // Princess of the Moon
   "npc_dota_hero_monkey_king"                             "0"
-  "npc_dota_hero_naga_siren"                              "0" // Sona
+  "npc_dota_hero_nyx_assassin"                            "0" // Crypt Lord
   "npc_dota_hero_ogre_magi"                               "0"
   "npc_dota_hero_oracle"                                  "1"
   "npc_dota_hero_phantom_assassin"                        "0" // Phantom Warden
   "npc_dota_hero_razor"                                   "0" // Thunder Knight
-  "npc_dota_hero_skeleton_king"                           "0"
+  "npc_dota_hero_shadow_shaman"                           "0" // Shadow Hunter
+  "npc_dota_hero_skeleton_king"                           "0" // Skeleton King
   "npc_dota_hero_spectre"                                 "0"
   "npc_dota_hero_terrorblade"                             "0" // Demon Hunter
+  "npc_dota_hero_tinker"                                  "0"
+  "npc_dota_hero_tiny"                                    "0" // Mountain Giant
   "npc_dota_hero_windrunner"                              "0"
   "npc_dota_hero_wisp"                                    "0"
   "npc_dota_hero_zuus"                                    "0"
-
-  "npc_dota_hero_beastmaster"                             "0"
-  "npc_dota_hero_nyx_assassin"                            "0" // Crypt Lord
-  "npc_dota_hero_death_prophet"                           "0" // Dread Lady
-  "npc_dota_hero_elder_titan"                             "0" // Elder Minotaur
-  "npc_dota_hero_disruptor"                               "0" // Far Seer
-  "npc_dota_hero_furion"                                  "0" // Keeper of the Grove
-  "npc_dota_hero_tiny"                                    "0" // Mountain Giant
-  "npc_dota_hero_medusa"                                  "0" // Naga Sea Witch
-  "npc_dota_hero_shadow_shaman"                           "0" // Shadow Hunter
-  "npc_dota_hero_tinker"                                  "0"
-  "npc_dota_hero_abyssal_underlord"                       "0"
 
   "npc_dota_hero_electrician"                             "1"
   "npc_dota_hero_sohei"                                   "1"

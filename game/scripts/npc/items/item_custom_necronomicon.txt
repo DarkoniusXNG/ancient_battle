@@ -34,20 +34,20 @@
     "AbilityTextureName"                                  "custom/custom_recipe"
     "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"1200"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_necronomicon_2"
-		"ItemRequirements"
-		{
-			"01"						"item_custom_necronomicon_1"
-		}
-	}
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1200"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_necronomicon_2"
+    "ItemRequirements"
+    {
+      "01"                                                "item_custom_necronomicon_1"
+    }
+  }
 
   "item_recipe_custom_necronomicon_3"
   {
@@ -57,20 +57,20 @@
     "AbilityTextureName"                                  "custom/custom_recipe"
     "Model"                                               "models/props_gameplay/recipe.vmdl"
 
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"1200"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_custom_necronomicon_3"
-		"ItemRequirements"
-		{
-			"01"						"item_custom_necronomicon_2"
-		}
-	}
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemCost"                                            "1200"  
+    "ItemShopTags"                                        ""
+    
+    // Recipe
+    //-------------------------------------------------------------------------------------------------------------
+    "ItemRecipe"                                          "1"
+    "ItemResult"                                          "item_custom_necronomicon_3"
+    "ItemRequirements"
+    {
+      "01"                                                "item_custom_necronomicon_2"
+    }
+  }
 
   //=================================================================================================================
   // Custom Necronomicon

@@ -7,66 +7,66 @@
 //=================================================================================
 "npc_dota_hero_phantom_warden"
 {
-	// General
-	//----------------------------------------------------------------
-	"override_hero"				"npc_dota_hero_phantom_assassin"
-	
-	// Abilities
-	//----------------------------------------------------------------
-	"AbilityLayout"				"6"
-	"Ability1" 					"phantom_warden_fan_of_knives" // fix particles
-	"Ability2" 					"phantom_warden_blink" // fix particles
-	"Ability3" 					"phantom_warden_shadow_strike" // Poison Dagger, make it similar to QoP Shadow Strike, using PA dagger
-	//"Ability4" 					""
-	//"Ability5"					""
-	//"Ability6"					"phantom_warden_avatar_of_vengeance" // summons    
-	
-	// Armor
-	//----------------------------------------------------------------
-	"ArmorPhysical"				"0"
-	"MagicalResistance"			"30"
-	
-	// Attack
-	//----------------------------------------------------------------
-	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin"			"2.0"
-	"AttackDamageMax"			"22.0"
-	"AttackRate"				"1.7"
-	//"AttackAnimationPoint"		"0.3"
-	"AttackAcquisitionRange"	"650"
-	"AttackRange"				"100"
-	
-	// Attributes
-	//----------------------------------------------------------------
-	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-	"AttributeBaseStrength"		"18"
-	"AttributeStrengthGain"		"2.4"
-	"AttributeBaseIntelligence"	"15"
-	"AttributeIntelligenceGain"	"2"
-	"AttributeBaseAgility"		"20"
-	"AttributeAgilityGain"		"1.6"
+    // General
+    //----------------------------------------------------------------
+    "override_hero"                                       "npc_dota_hero_phantom_assassin"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    "Ability1"                                            "phantom_warden_fan_of_knives" // fix particles
+    "Ability2"                                            "phantom_warden_blink" // fix particles
+    "Ability3"                                            "phantom_warden_shadow_strike" // Poison Dagger, make it similar to QoP Shadow Strike, using PA dagger
+    //"Ability4"           ""
+    //"Ability5"          ""
+    //"Ability6"          "phantom_warden_avatar_of_vengeance" // summons    
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "30"
+    
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "2.0"
+    "AttackDamageMax"                                     "22.0"
+    "AttackRate"                                          "1.7"
+    //"AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"                              "650"
+    "AttackRange"                                         "100"
+    
+    // Attributes
+    //----------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributeBaseStrength"                               "18"
+    "AttributeStrengthGain"                               "2.4"
+    "AttributeBaseIntelligence"                           "15"
+    "AttributeIntelligenceGain"                           "2"
+    "AttributeBaseAgility"                                "20"
+    "AttributeAgilityGain"                                "1.6"
 
-	// Bounds
-	//----------------------------------------------------------------
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
 
-	// Movement
-	//----------------------------------------------------------------
-	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-	"MovementSpeed"				"320"
-	"MovementTurnRate"			"0.4"
-	
-	// Status
-	//----------------------------------------------------------------
-	"StatusHealth"				"100"
-	"StatusHealthRegen"			"0.5"
-	"StatusMana"				"0"
-	"StatusManaRegen"			"0"
-	
-	// Vision
-	//----------------------------------------------------------------
-	"VisionDaytimeRange"		"1800"
-	"VisionNighttimeRange"		"800"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "320"
+    "MovementTurnRate"                                    "0.4"
+    
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0.5"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "800"
 }
 
 }

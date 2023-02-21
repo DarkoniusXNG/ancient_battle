@@ -7,42 +7,42 @@
 
 "demon_hunter_immolation"
 {
-    "BaseClass"                     "ability_lua"
-    "ScriptFile"                    "heroes/demon_hunter/immolation.lua"
-    "AbilityTextureName"            "demon_hunter_immolation"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/demon_hunter/immolation.lua"
+    "AbilityTextureName"                                  "demon_hunter_immolation"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
 
-    "TargetsAllowed"                "ground,organic"
+    "TargetsAllowed"                                      "ground,organic"
 
-    "AbilityCastRange"              "160"
-    "AbilityManaCost"               "35"
+    "AbilityCastRange"                                    "160"
+    "AbilityManaCost"                                     "35"
 
     "precache"
     {
-        "particle"  "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+      "particle"                                          "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
     }
     
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "damage_per_second"     "10 15 20"
-        }
-        "02"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "mana_cost_per_second"  "5"
-        }
-        "03"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "radius"                "160"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "10 15 20"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "mana_cost_per_second"                            "5"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "160"
+      }
     }
 }
 

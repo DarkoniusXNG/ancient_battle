@@ -10,47 +10,47 @@
 
 "elder_minotaur_reincarnation"
 {
-    "BaseClass"                     "ability_datadriven"
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"            "elder_minotaur_reincarnation"
-    "MaxLevel"                      "1"
-    "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"                                  "elder_minotaur_reincarnation"
+    "MaxLevel"                                            "1"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
 
-    "AbilityCooldown"               "240"
-    "AbilityManaCost"               "0"
+    "AbilityCooldown"                                     "240"
+    "AbilityManaCost"                                     "0"
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_FLOAT"
-            "reincarnate_time"      "7.0"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "reincarnate_time"                                "7.0"
+      }
     }
 
     "precache"
     {
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
-        "particle"  "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
-        "particle"  "particles/units/heroes/hero_skeletonking/skeleton_king_death.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+      "particle"                                          "particles/units/heroes/hero_skeletonking/skeleton_king_death.vpcf"
     }
 
     "Modifiers"
     {
-        "modifier_reincarnation"
-        {
-            "Passive"   "1"
-            "IsHidden"  "1"
+      "modifier_reincarnation"
+      {
+        "Passive"                                         "1"
+        "IsHidden"                                        "1"
 
-            "OnTakeDamage"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"        "heroes/elder_minotaur/reincarnation.lua"
-                    "Function"          "Reincarnation"
-                }
-            }
+        "OnTakeDamage"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/elder_minotaur/reincarnation.lua"
+            "Function"                                    "Reincarnation"
+          }
         }
+      }
     }
 }
 

@@ -70,15 +70,15 @@
   //=================================================================================================================
   "special_bonus_unique_alchemist_custom_3"
   {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"                                           "special_bonus_base"
-	"AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
-	"AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-	"AbilityValues"
-	{
-		"tooltip_value"                                   "125"
-	}
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "125"
+    }
   }
 }

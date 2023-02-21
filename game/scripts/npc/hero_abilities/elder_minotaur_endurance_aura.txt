@@ -7,33 +7,33 @@
 
 "elder_minotaur_endurance_aura"
 {
-    "BaseClass"                     "ability_lua"
-    "ScriptFile"                    "heroes/elder_minotaur/endurance_aura.lua"
-    "AbilityTextureName"            "elder_minotaur_endurance_aura"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/elder_minotaur/endurance_aura.lua"
+    "AbilityTextureName"                                  "elder_minotaur_endurance_aura"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 
-    "AbilityCastRange"              "900"
+    "AbilityCastRange"                                    "900"
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "move_speed_bonus"      "10 20 30"
-        }
-        "02"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "attack_speed_bonus"    "5 10 15"
-        }
-        "03"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "radius"                "900"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "move_speed_bonus"                                "10 20 30"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_bonus"                              "5 10 15"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "900"
+      }
     }
 }
 

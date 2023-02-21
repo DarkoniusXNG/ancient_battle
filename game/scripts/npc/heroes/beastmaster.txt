@@ -7,66 +7,66 @@
 //=================================================================================
 "npc_dota_hero_beastmaster"
 {
-	// General
-	//----------------------------------------------------------------
-	"override_hero"				"npc_dota_hero_beastmaster"
-	
-	// Abilities
-	//----------------------------------------------------------------
-	"AbilityLayout"				"6"
-	//"Ability1" 					"beastmaster_summon_bear" // summon
-	//"Ability2" 					"beastmaster_summon_quilbeast" // summon
-	//"Ability3" 					"beastmaster_summon_hawk" // summon
-	"Ability4" 					"beastmaster_stampede" // fix particles
-	//"Ability5"					""
-	//"Ability6" 					""	    
-	
-	// Armor
-	//----------------------------------------------------------------
-	"ArmorPhysical"				"0"
-	"MagicalResistance"			"30"
-	
-	// Attack
-	//----------------------------------------------------------------
-	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin"			"2.0"
-	"AttackDamageMax"			"12.0"
-	"AttackRate"				"1.7"
-	//"AttackAnimationPoint"		"0.3"
-	"AttackAcquisitionRange"	"500"
-	"AttackRange"				"128"
-	
-	// Attributes
-	//----------------------------------------------------------------
-	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-	"AttributeBaseStrength"		"22"
-	"AttributeStrengthGain"		"2.9"
-	"AttributeBaseIntelligence"	"15"
-	"AttributeIntelligenceGain"	"1.8"
-	"AttributeBaseAgility"		"14"
-	"AttributeAgilityGain"		"1.3"
+    // General
+    //----------------------------------------------------------------
+    "override_hero"                                       "npc_dota_hero_beastmaster"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    //"Ability1"           "beastmaster_summon_bear" // summon
+    //"Ability2"           "beastmaster_summon_quilbeast" // summon
+    //"Ability3"           "beastmaster_summon_hawk" // summon
+    "Ability4"                                            "beastmaster_stampede" // fix particles
+    //"Ability5"          ""
+    //"Ability6"           ""      
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "30"
+    
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
+    "AttackDamageMin"                                     "2.0"
+    "AttackDamageMax"                                     "12.0"
+    "AttackRate"                                          "1.7"
+    //"AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"                              "500"
+    "AttackRange"                                         "128"
+    
+    // Attributes
+    //----------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"                               "22"
+    "AttributeStrengthGain"                               "2.9"
+    "AttributeBaseIntelligence"                           "15"
+    "AttributeIntelligenceGain"                           "1.8"
+    "AttributeBaseAgility"                                "14"
+    "AttributeAgilityGain"                                "1.3"
 
-	// Bounds
-	//----------------------------------------------------------------
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
-	
-	// Movement
-	//----------------------------------------------------------------
-	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-	"MovementSpeed"				"320"
-	"MovementTurnRate"			"0.4"
-	
-	// Status
-	//----------------------------------------------------------------
-	"StatusHealth"				"100"
-	"StatusHealthRegen"			"0.25"
-	"StatusMana"				"0"
-	"StatusManaRegen"			"0"
-	
-	// Vision
-	//----------------------------------------------------------------
-	"VisionDaytimeRange"		"1800"
-	"VisionNighttimeRange"		"800"
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
+    
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "320"
+    "MovementTurnRate"                                    "0.4"
+    
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0.25"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "800"
 }
 
 }

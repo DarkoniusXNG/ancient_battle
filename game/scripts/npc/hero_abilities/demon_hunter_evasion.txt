@@ -7,32 +7,32 @@
 
 "demon_hunter_evasion"
 {
-    "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "demon_hunter_evasion"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "demon_hunter_evasion"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "evasion"       "10 20 30"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "evasion"                                         "10 20 30"
+      }
     }
 
     "Modifiers"
     {
-        "modifier_evasion"
+      "modifier_evasion"
+      {
+        "IsHidden"                                        "1"
+        "Passive"                                         "1"
+        "Properties"
         {
-            "IsHidden"  "1"
-            "Passive"   "1"
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_EVASION_CONSTANT"    "%evasion"
-            }
+          "MODIFIER_PROPERTY_EVASION_CONSTANT"            "%evasion"
         }
+      }
     }
 }
 

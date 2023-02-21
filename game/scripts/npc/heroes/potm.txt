@@ -7,68 +7,68 @@
 //=================================================================================
 "npc_dota_hero_potm"
 {
-	// General
-	//----------------------------------------------------------------
-	"override_hero"				"npc_dota_hero_mirana"
-	
-	// Abilities
-	//----------------------------------------------------------------
-	"AbilityLayout"				"6"
-	//"Ability1" 					"potm_scout" // create a unit
-	//"Ability2" 					"" // rewrite arrow
-	"Ability3" 					"potm_searing_arrows" // make not pierce spell immunity
-	"Ability4" 					"potm_shadow_meld" // remove invis when moving, add proper fade time
-	"Ability5"					"potm_trueshot_aura" // improve code exclude custom ward units
-	"Ability6"					"potm_starfall" // make non-channel like Eclipse
-	
-	// Armor
-	//----------------------------------------------------------------
-	"ArmorPhysical"				"0"
-	"MagicalResistance"			"30"
-	
-	// Attack
-	//----------------------------------------------------------------
-	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin"			"2.0"
-	"AttackDamageMax"			"12.0"
-	"AttackRate"				"1.7"
-	//"AttackAnimationPoint"		"0.3"
-	"AttackAcquisitionRange"	"650"
-	"AttackRange"				"600"
-	//"ProjectileModel"			""	 //Add projectile
-	"ProjectileSpeed"			"900"
-	
-	// Attributes
-	//----------------------------------------------------------------
-	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-	"AttributeBaseStrength"		"18"
-	"AttributeStrengthGain"		"1.9"
-	"AttributeBaseIntelligence"	"15"
-	"AttributeIntelligenceGain"	"2.6"
-	"AttributeBaseAgility"		"19"
-	"AttributeAgilityGain"		"1.5"
+    // General
+    //----------------------------------------------------------------
+    "override_hero"                                       "npc_dota_hero_mirana"
+    
+    // Abilities
+    //----------------------------------------------------------------
+    "AbilityLayout"                                       "6"
+    //"Ability1"           "potm_scout" // summon
+    //"Ability2"           "" // rewrite arrow
+    "Ability3"                                            "potm_searing_arrows" // make not pierce spell immunity
+    "Ability4"                                            "potm_shadow_meld" // remove invis when moving, add proper fade time
+    "Ability5"                                            "potm_trueshot_aura" // improve code exclude custom ward units
+    "Ability6"                                            "potm_starfall" // make non-channel like Eclipse
+    
+    // Armor
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "30"
+    
+    // Attack
+    //----------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "2.0"
+    "AttackDamageMax"                                     "12.0"
+    "AttackRate"                                          "1.7"
+    //"AttackAnimationPoint"    "0.3"
+    "AttackAcquisitionRange"                              "650"
+    "AttackRange"                                         "600"
+    //"ProjectileModel"      ""   //Add projectile
+    "ProjectileSpeed"                                     "900"
+    
+    // Attributes
+    //----------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributeBaseStrength"                               "18"
+    "AttributeStrengthGain"                               "1.9"
+    "AttributeBaseIntelligence"                           "15"
+    "AttributeIntelligenceGain"                           "2.6"
+    "AttributeBaseAgility"                                "19"
+    "AttributeAgilityGain"                                "1.5"
 
-	// Bounds
-	//----------------------------------------------------------------
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+    // Bounds
+    //----------------------------------------------------------------
+    "BoundsHullName"                                      "DOTA_HULL_SIZE_HERO"
 
-	// Movement
-	//----------------------------------------------------------------
-	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-	"MovementSpeed"				"320"
-	"MovementTurnRate"			"0.4"
-	
-	// Status
-	//----------------------------------------------------------------
-	"StatusHealth"				"100"
-	"StatusHealthRegen"			"0.5"
-	"StatusMana"				"0"
-	"StatusManaRegen"			"0"
-	
-	// Vision
-	//----------------------------------------------------------------
-	"VisionDaytimeRange"		"1800"
-	"VisionNighttimeRange"		"800"
+    // Movement
+    //----------------------------------------------------------------
+    "MovementCapabilities"                                "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"                                       "320"
+    "MovementTurnRate"                                    "0.4"
+    
+    // Status
+    //----------------------------------------------------------------
+    "StatusHealth"                                        "100"
+    "StatusHealthRegen"                                   "0.5"
+    "StatusMana"                                          "0"
+    "StatusManaRegen"                                     "0"
+    
+    // Vision
+    //----------------------------------------------------------------
+    "VisionDaytimeRange"                                  "1800"
+    "VisionNighttimeRange"                                "800"
 }
 
 }

@@ -7,46 +7,46 @@
 
 "keeper_tranquility"
 {
-    "BaseClass"                     "ability_lua"
-    "ScriptFile"                    "heroes/keeper/tranquility.lua"
-    "AbilityTextureName"            "keeper_tranquility"
-    "MaxLevel"                      "1"
-    "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/keeper/tranquility.lua"
+    "AbilityTextureName"                                  "keeper_tranquility"
+    "MaxLevel"                                            "1"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-    "AbilityCastRange"              "700"
-    "AbilityCastPoint"              "0.3"
-    "AbilityCooldown"               "60"
-    "AbilityChannelTime"            "30"
+    "AbilityCastRange"                                    "700"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "60"
+    "AbilityChannelTime"                                  "30"
 
-    "AbilityManaCost"               "125"
+    "AbilityManaCost"                                     "125"
 
     "precache"
     {
-        "particle"              "particles/units/heroes/hero_luna/luna_eclipse.vpcf"
-        "particle"              "particles/neutral_fx/troll_heal.vpcf"
+      "particle"                                          "particles/units/heroes/hero_luna/luna_eclipse.vpcf"
+      "particle"                                          "particles/neutral_fx/troll_heal.vpcf"
     }
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "duration"          "30"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "heal_per_second"   "20"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "radius"            "900"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "30"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "heal_per_second"                                 "20"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "900"
+      }
     }
 }
 

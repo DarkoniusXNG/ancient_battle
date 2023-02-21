@@ -69,15 +69,15 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "bonus_agi"                                       "20"
-      "bonus_int"                                       "10"
-      "mana_burn"                                       "40"
-      "mana_burn_illusion_melee"                        "16"
-      "mana_burn_illusion_ranged"                       "8"
-      "damage_per_burned_mana"                          "1"
+      "bonus_agi"                                         "20"
+      "bonus_int"                                         "10"
+      "mana_burn"                                         "40"
+      "mana_burn_illusion_melee"                          "16"
+      "mana_burn_illusion_ranged"                         "8"
+      "damage_per_burned_mana"                            "1"
 
-      "move_speed_slow"                                 "-100"
-      "purge_slow_duration"                             "3.0"
+      "move_speed_slow"                                   "-100"
+      "purge_slow_duration"                               "3.0"
     }
   }
 }

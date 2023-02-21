@@ -1,38 +1,38 @@
 "DOTAHeroes"
 {
-	//=================================================================================================================
-	// HERO: Bakedanuki
-	// TO_DO:
-	//=================================================================================================================
-	"npc_dota_hero_bakedanuki"
-	{
-		"override_hero"                                   "npc_dota_hero_dark_willow"
-		
-		"BotImplemented"                                      "0"
-		"Role"                                                "Carry,Support,Escape,Initiator,Disabler"  // Roles
-		"Rolelevels"                                          "3,1,3,2,3"
-		"Complexity"                                          "2"
+  //=================================================================================================================
+  // HERO: Bakedanuki
+  // TO_DO:
+  //=================================================================================================================
+  "npc_dota_hero_bakedanuki"
+  {
+    "override_hero"                                       "npc_dota_hero_dark_willow"
+    
+    "BotImplemented"                                      "0"
+    "Role"                                                "Carry,Support,Escape,Initiator,Disabler"  // Roles
+    "Rolelevels"                                          "3,1,3,2,3"
+    "Complexity"                                          "2"
 
-		"Ability1"                                        "bakedanuki_tricksters_insight"
-		"Ability2"                                        "bakedanuki_tomfoolery_blink"
-		"Ability3"                                        "bakedanuki_tomfoolery_summon"
-		"Ability4"                                        "bakedanuki_tomfoolery_end"
-		"Ability5"                                        "bakedanuki_frolic_aura"
-		"Ability6"                                        "bakedanuki_futatsuiwas_curse"
-		"Ability7"                                        "generic_hidden"          
-		"Ability8"                                        "generic_hidden"
-		"Ability9"                                        "generic_hidden"
+    "Ability1"                                            "bakedanuki_tricksters_insight"
+    "Ability2"                                            "bakedanuki_tomfoolery_blink"
+    "Ability3"                                            "bakedanuki_tomfoolery_summon"
+    "Ability4"                                            "bakedanuki_tomfoolery_end"
+    "Ability5"                                            "bakedanuki_frolic_aura"
+    "Ability6"                                            "bakedanuki_futatsuiwas_curse"
+    "Ability7"                                            "generic_hidden"          
+    "Ability8"                                            "generic_hidden"
+    "Ability9"                                            "generic_hidden"
 
-		"Ability10"                                           "special_bonus_intelligence_25"      // lvl 10 talent:
-		"Ability11"                                           "special_bonus_strength_10"        // lvl 10 talent:
+    "Ability10"                                           "special_bonus_intelligence_25"      // lvl 10 talent:
+    "Ability11"                                           "special_bonus_strength_10"        // lvl 10 talent:
 
-		"Ability12"                                           "special_bonus_attack_speed_30"      // lvl 15 talent:
-		"Ability13"                                           "special_bonus_cooldown_reduction_12"  // lvl 15 talent:
-		
-		"Ability14"                                           "special_bonus_attack_range_200"    // lvl 25 talent;
-		"Ability15"                                           "special_bonus_magic_resistance_20"    // lvl 20 talent;
+    "Ability12"                                           "special_bonus_attack_speed_30"      // lvl 15 talent:
+    "Ability13"                                           "special_bonus_cooldown_reduction_12"  // lvl 15 talent:
+    
+    "Ability14"                                           "special_bonus_attack_range_200"    // lvl 25 talent;
+    "Ability15"                                           "special_bonus_magic_resistance_20"    // lvl 20 talent;
 
-		"Ability16"                                           "special_bonus_cast_speed_30"    // lvl 25 talent; 
-		"Ability17"                                           "special_bonus_attack_base_damage_100"    // lvl 25 talent;
-	}
+    "Ability16"                                           "special_bonus_cast_speed_30"    // lvl 25 talent; 
+    "Ability17"                                           "special_bonus_attack_base_damage_100"    // lvl 25 talent;
+  }
 }

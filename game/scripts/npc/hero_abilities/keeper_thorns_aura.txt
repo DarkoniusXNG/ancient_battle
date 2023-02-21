@@ -7,30 +7,30 @@
 
 "keeper_thorns_aura"
 {
-    "BaseClass"                     "ability_lua"
-    "ScriptFile"                    "heroes/keeper/thorns_aura.lua"
-    "AbilityTextureName"            "keeper_thorns_aura"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/keeper/thorns_aura.lua"
+    "AbilityTextureName"                                  "keeper_thorns_aura"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
 
-    "AbilityCastRange"              "900"
+    "AbilityCastRange"                                    "900"
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "melee_damage_return"   "10 20 30"
-        }
-        "02"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "radius"                "900"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "melee_damage_return"                             "10 20 30"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "900"
+      }
     }
 }
 

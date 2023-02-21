@@ -7,93 +7,93 @@
 
 "shadow_hunter_hex"
 {
-    "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "shadow_hunter_hex"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "shadow_hunter_hex"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
-    "TargetsAllowed"                "organic"
+    "TargetsAllowed"                                      "organic"
 
-    "AbilityCastRange"              "800"
-    "AbilityCastPoint"              "0.0"
-    "AbilityCooldown"               "7.0"
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.0"
+    "AbilityCooldown"                                     "7.0"
 
-    "AbilityManaCost"               "80"
+    "AbilityManaCost"                                     "80"
 
     "precache"
     {
-        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
-        "particle"          "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-        "model"             "models/props_gameplay/frog.vmdl"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
+      "model"                                             "models/props_gameplay/frog.vmdl"
     }
     
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "hero_duration"             "4 5 6"
-        }
-        "02"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "creep_duration"            "15 30 45"
-        }
-        "03"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "movespeed"                 "100"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "hero_duration"                                   "4 5 6"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "creep_duration"                                  "15 30 45"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movespeed"                                       "100"
+      }
     }
 
     "OnSpellStart"
     {
-        "FireSound"
-        {
-            "EffectName"    "Hero_Lion.Voodoo"
-            "Target"        "TARGET"
-        }
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Lion.Voodoo"
+        "Target"                                          "TARGET"
+      }
 
-        "FireSound"
-        {
-            "EffectName"    "Hero_Lion.Hex.Target"
-            "Target"        "TARGET"
-        }
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Lion.Hex.Target"
+        "Target"                                          "TARGET"
+      }
 
-        "FireEffect"
-        {
-            "EffectName"        "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-            "EffectAttachType"  "follow_origin"
-            "Target"            "TARGET"
-        }
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "Target"                                          "TARGET"
+      }
 
-        "ApplyModifier"
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_hex_frog" //Lua modifier
+        "Target"
         {
-            "ModifierName"  "modifier_hex_frog" //Lua modifier
-            "Target"
-            {
-                "Center"    "TARGET"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_HERO"
-            }
-            "Duration"      "%hero_duration"
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO"
         }
-        
-        "ApplyModifier"
+        "Duration"                                        "%hero_duration"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_hex_frog" //Lua modifier
+        "Target"
         {
-            "ModifierName"  "modifier_hex_frog" //Lua modifier
-            "Target"
-            {
-                "Center"    "TARGET"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_BASIC"
-            }
-            "Duration"      "%creep_duration"
-        }   
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%creep_duration"
+      }   
     }
 }
 

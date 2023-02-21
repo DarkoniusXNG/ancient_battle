@@ -8,8 +8,8 @@
   {
     "Model"                                               "models/heroes/pudge/pudge.vmdl"
     "BotImplemented"                                      "0"
-	"Role"                                                "Carry,Disabler,Initiator,Durable,Nuker"
-	"Rolelevels"                                          "1,2,2,2,1"
+    "Role"                                                "Carry,Disabler,Initiator,Durable,Nuker"
+    "Rolelevels"                                          "1,2,2,2,1"
     
     "AbilityLayout"                                       "5"
     "AbilityTalentStart"                                  "10"

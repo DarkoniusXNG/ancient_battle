@@ -39,8 +39,8 @@
 
     "Ability16"                                           "special_bonus_20_crit_15"                 // lvl 25 talent: unique
     "Ability17"                                           "special_bonus_unique_stealth_assassin_1"  // lvl 25 talent: Death Ward damage talent
-	
-	// old lvl 25 - special_bonus_agility_40
+    
+    // old lvl 25 - special_bonus_agility_40
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------

@@ -7,68 +7,68 @@
 
 "phantom_warden_blink"
 {
-    "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "phantom_warden_blink"
-    "MaxLevel"                      "3"
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "phantom_warden_blink"
+    "MaxLevel"                                            "3"
 
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
-    "AbilityCastPoint"              "0.3"
-    "AbilityCooldown"               "10.0 10.0 1.0"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "10.0 10.0 1.0"
 
-    "AbilityManaCost"               "50 10 10"
+    "AbilityManaCost"                                     "50 10 10"
 
     "precache"
     {
-        "soundfile"     "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
-        "particle"      "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_start.vpcf"
-        "particle"      "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_start.vpcf"
+      "particle"                                          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
     }
     
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"              "FIELD_INTEGER"
-            "blink_range"           "1000"
-        }
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "blink_range"                                     "1000"
+      }
     }
 
     "OnSpellStart"
     {
-        "RunScript"
-        {
-            "ScriptFile"        "heroes/phantom_warden/blink.lua"
-            "Function"          "Blink"
-            "Target"            "POINT"
-        }
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/phantom_warden/blink.lua"
+        "Function"                                        "Blink"
+        "Target"                                          "POINT"
+      }
 
-        "FireSound"
-        {
-            "EffectName"        "Hero_Antimage.Blink_out"
-            "Target"            "CASTER"
-        }
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Antimage.Blink_out"
+        "Target"                                          "CASTER"
+      }
 
-        "AttachEffect"
-        {
-            "EffectName"        "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_start.vpcf"
-            "Target"            "CASTER"
-            "EffectAttachType"  "attach_hitloc"
-        }
+      "AttachEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_start.vpcf"
+        "Target"                                          "CASTER"
+        "EffectAttachType"                                "attach_hitloc"
+      }
 
-        "FireSound"
-        {
-            "EffectName"        "Hero_Antimage.Blink_in"
-            "Target"            "CASTER"
-        }
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Antimage.Blink_in"
+        "Target"                                          "CASTER"
+      }
 
-        "AttachEffect"
-        {
-            "EffectName"        "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
-            "Target"            "CASTER"
-            "EffectAttachType"  "follow_origin"
-        }
+      "AttachEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+        "Target"                                          "CASTER"
+        "EffectAttachType"                                "follow_origin"
+      }
     }
 }
 
