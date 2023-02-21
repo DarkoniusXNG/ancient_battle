@@ -47,7 +47,7 @@ function HawkInvisCheck( event )
 
     local current_time = GameRules:GetGameTime()
     if (current_time - caster.hawkAttacked) > motionless_time and (current_time - caster.hawkMoved) > motionless_time then
-        caster:AddNewModifier(caster, ability, "modifier_invisible", {}) 
+        caster:AddNewModifier(caster, ability, "modifier_invisible", {})
     end
 end
 

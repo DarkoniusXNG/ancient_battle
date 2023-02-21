@@ -8,9 +8,9 @@ function BuildPocketFactory( event )
     local point = event.target_points[1]
     local factory_duration =  ability:GetLevelSpecialValueFor( "factory_duration" , ability:GetLevel() - 1  )
     local ability_level = ability:GetLevel()
-    local building_name = "neutral_pocket_factory_building"..ability_level
-    --local construction_size = 
-    --local pathing_size = 
+    --local building_name = "neutral_pocket_factory_building"..ability_level
+    --local construction_size =
+    --local pathing_size =
 
     -- Launch orb
     local speed = 900
@@ -72,7 +72,6 @@ function StartGoblinSpawn( event )
             local goblin = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
             goblin:SetControllableByPlayer(player, true)
             goblin:AddNewModifier(caster, nil, "modifier_kill", {duration = goblin_duration})
-            goblin:AddNewModifier(caster, ability, "modifier_summoned", {})
 
             -- Move to rally point
             --MoveToRallyPoint({caster=caster, target=goblin})

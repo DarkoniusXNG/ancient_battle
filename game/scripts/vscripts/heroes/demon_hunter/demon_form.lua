@@ -1,10 +1,12 @@
 modifier_demon_form = class({})
 
 function modifier_demon_form:DeclareFunctions()
-    return { MODIFIER_PROPERTY_MODEL_CHANGE, 
-             MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
-             MODIFIER_PROPERTY_HEALTH_BONUS,
-             MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT, }
+	return {
+		MODIFIER_PROPERTY_MODEL_CHANGE,
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
+		MODIFIER_PROPERTY_HEALTH_BONUS,
+		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+	}
 end
 
 function modifier_demon_form:OnCreated()
@@ -23,12 +25,8 @@ end
 function modifier_demon_form:OnDestroy()
     if IsServer() then
         local target = self:GetParent()
-        SetRangedProjectileName(target, target.old_attack_projectile)
+        target:SetRangedProjectileName(target.old_attack_projectile)
         target:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
-        target:SetAttackType("hero")
-        if not target.hasOrb then
-            target:SetAttacksEnabled("ground")
-        end
         target.old_attack_projectile = nil
     end
 end

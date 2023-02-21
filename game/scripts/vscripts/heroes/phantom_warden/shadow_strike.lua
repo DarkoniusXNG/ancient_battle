@@ -12,7 +12,6 @@ function ShadowStrikeSlowDecay(event)
     local caster = event.caster
     local target = event.target
     local ability = event.ability
-    local damage_every_3sec = ability:GetLevelSpecialValueFor("damage_every_3sec",ability:GetLevel()-1)
 
     target:SetModifierStackCount("modifier_shadow_strike_slow_stack",caster,target:GetModifierStackCount("modifier_shadow_strike_slow_stack",caster)-2)
 end

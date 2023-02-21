@@ -1,72 +1,37 @@
-local wolfNames = {
-    [1] = "orc_spirit_wolf",
-    [2] = "orc_dire_wolf",
-    [3] = "orc_shadow_wolf",
-}
+
 function SpawnWolves(event)
     local caster = event.caster
-    local ability = event.ability
-    local duration = ability:GetLevelSpecialValueFor("wolf_duration", ability:GetLevel()-1)
-    local position = caster:GetAbsOrigin() + caster:GetForwardVector() * 150
+	local ability = event.ability
 
-    -- Reset table
-    local wolves = caster.wolves or {}
-    for _,unit in pairs(wolves) do
-        if unit and IsValidEntity(unit) then
-            unit:ForceKill(false)
-        end
-    end
-    caster.wolves = {}
+	local ability_lvl = ability:GetLevel()
+	local fv = caster:GetForwardVector()
+	local position = caster:GetAbsOrigin() + fv * 200
 
-    -- Gets 2 points facing a distance away from the caster origin and separated from each other at 30 degrees left and right
+	local duration = ability:GetLevelSpecialValueFor("wolf_duration", ability_lvl - 1)
+	local count = 2 --ability:GetLevelSpecialValueFor("wolf_count", ability_lvl - 1)
+
+	local wolfNames = {
+		[1] = "npc_dota_lycan_wolf1",
+		[2] = "npc_dota_lycan_wolf2",
+		[3] = "npc_dota_lycan_wolf3",
+		[4] = "npc_dota_lycan_wolf4",
+	}
+
+	-- Gets 2 points facing a distance away from the caster origin and separated from each other at 30 degrees left and right
     local positions = {}
     positions[1] = RotatePosition(caster:GetAbsOrigin(), QAngle(0, 30, 0), position)
     positions[2] = RotatePosition(caster:GetAbsOrigin(), QAngle(0, -30, 0), position)
 
-    -- Summon 2 wolves
-    for i=1,2 do
-        --caster.wolves[i] = caster:CreateSummon(wolfNames[ability:GetLevel()], positions[i], duration)
-        ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_summon_wolves_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.wolves[i])
-    end
-end
+	-- Summon 2 wolves
+    for i = 1, count do
+		local wolf = CreateUnitByName(wolfNames[ability_lvl], positions[i], true, caster, caster, caster:GetTeamNumber())
+		FindClearSpaceForUnit(wolf, positions[i], false)
+		wolf:SetOwner(caster:GetOwner())
+		wolf:SetControllableByPlayer(caster:GetPlayerID(), true)
+		wolf:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
+		wolf:SetForwardVector(fv)
 
-function SummonByName(event)
-    local caster = event.caster
-    local ability = event.ability
-    local duration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel()-1)
-    local unitName = event.UnitName
-    local position = caster:GetAbsOrigin() + caster:GetForwardVector() * 150
-
-    -- Reset table
-    local summoned = caster.summoned or {}
-    for _,unit in pairs(summoned) do
-        if unit and IsValidEntity(unit) then
-            unit:ForceKill(false)
-        end
-    end
-    caster.summoned = {}
-    caster.allies = caster.allies or {}
-
-    -- Gets 2 points facing a distance away from the caster origin and separated from each other at 30 degrees left and right
-    local positions = {}
-    positions[1] = RotatePosition(caster:GetAbsOrigin(), QAngle(0, 30, 0), position)
-    positions[2] = RotatePosition(caster:GetAbsOrigin(), QAngle(0, -30, 0), position)
-
-    -- Summon 2
-    for i=1,2 do
-        --caster.summoned[i] = caster:CreateSummon(unitName, positions[i], duration)
-        ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_summon_wolves_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.summoned[i])
-    end
-
-    for i=1,2 do
-        caster.summoned[i].allies = {}
-        for k,v in pairs(caster.allies) do
-            if v and not v:IsNull() and v:IsAlive() then
-                if v.allies then
-                    table.insert(v.allies, caster.summoned[i])
-                end
-                table.insert(caster.summoned[i].allies, v)
-            end
-        end
-    end
+		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_summon_wolves_spawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, wolf)
+		ParticleManager:ReleaseParticleIndex(particle)
+	end
 end

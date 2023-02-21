@@ -39,7 +39,7 @@ function FrenzyAutocast( event )
     -- Get if the ability is on autocast mode and cast the ability if it doesn't have the modifier
     if ability:GetAutoCastState() and not caster:HasModifier(modifier) then
         caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
-    end 
+    end
 end
 
 --Adds modifier_model_scale

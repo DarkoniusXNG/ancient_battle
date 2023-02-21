@@ -89,7 +89,7 @@ if IsServer() then
 	local unit_name = "npc_dota_broodmother_spiderling"
 
 	-- Remove a beetle from the table when a beetle (belonging to parent) dies
-	if UnitVarToPlayerID(dead) == UnitVarToPlayerID(parent) and (dead:GetUnitName() == unit_name then
+	if UnitVarToPlayerID(dead) == UnitVarToPlayerID(parent) and dead:GetUnitName() == unit_name then
 		if parent.beetles then
 			local beetles = parent.beetles
 			for k, beetle in pairs(beetles) do

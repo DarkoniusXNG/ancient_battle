@@ -36,7 +36,7 @@ end
     -- end: moving back to the caster to be destroyed
 function LocustSwarmPhysics( event )
     local caster = event.caster
-    local unit = event.target
+    local locust = event.target
     local ability = event.ability
     local radius = ability:GetLevelSpecialValueFor( "radius", ability:GetLevel() - 1 )
     --local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 )
@@ -52,27 +52,27 @@ function LocustSwarmPhysics( event )
     local particleNameHeal = "particles/units/heroes/hero_nyx_assassin/nyx_assassin_vendetta_start_sparks_b.vpcf"
 
     -- Make the locust a physics unit
-    Physics:Unit(unit)
+    Physics:Unit(locust)
 
     -- General properties
-    unit:PreventDI(true)
-    unit:SetAutoUnstuck(false)
-    unit:SetNavCollisionType(PHYSICS_NAV_NOTHING)
-    unit:FollowNavMesh(false)
-    unit:SetPhysicsVelocityMax(locusts_speed)
-    unit:SetPhysicsVelocity(locusts_speed * RandomVector(1))
-    unit:SetPhysicsFriction(0)
-    unit:Hibernate(false)
-    unit:SetGroundBehavior(PHYSICS_GROUND_LOCK)
+    locust:PreventDI(true)
+    locust:SetAutoUnstuck(false)
+    locust:SetNavCollisionType(PHYSICS_NAV_NOTHING)
+    locust:FollowNavMesh(false)
+    locust:SetPhysicsVelocityMax(locusts_speed)
+    locust:SetPhysicsVelocity(locusts_speed * RandomVector(1))
+    locust:SetPhysicsFriction(0)
+    locust:Hibernate(false)
+    locust:SetGroundBehavior(PHYSICS_GROUND_LOCK)
 
     -- Initial default state
-    unit.state = "acquiring"
+    locust.state = "acquiring"
 
     -- This is to skip frames
     local frameCount = 0
 
     -- Store the damage done
-    unit.damage_done = 0
+    locust.damage_done = 0
 
     -- Color Debugging for points and paths. Turn it false later!
     --local Debug = false
@@ -87,7 +87,7 @@ function LocustSwarmPhysics( event )
     local point = caster:GetAbsOrigin() + RandomVector(RandomInt(radius/2, radius))
 
     -- This is set to repeat on each frame
-    unit:OnPhysicsFrame(function(unit)
+    locust:OnPhysicsFrame(function(unit)
 
         -- Current positions
         local source = caster:GetAbsOrigin()
@@ -103,7 +103,7 @@ function LocustSwarmPhysics( event )
 
         -- Movement and Collision detection are state independent
 
-        -- MOVEMENT 
+        -- MOVEMENT
         -- Get the direction
         local diff = point - unit:GetAbsOrigin()
         diff.z = 0
@@ -120,7 +120,7 @@ function LocustSwarmPhysics( event )
         elseif angle_difference > 0 then
             local newVel = RotatePosition(Vector(0,0,0), QAngle(0,10,0), unit:GetPhysicsVelocity())
             unit:SetPhysicsVelocity(newVel)
-        else        
+        else
             local newVel = RotatePosition(Vector(0,0,0), QAngle(0,-10,0), unit:GetPhysicsVelocity())
             unit:SetPhysicsVelocity(newVel)
         end
@@ -131,9 +131,9 @@ function LocustSwarmPhysics( event )
 
         -- MAX DISTANCE CHECK
         local distance_to_caster = (source - current_position):Length()
-        if distance > max_distance then 
+        if distance > max_distance then
             unit:SetAbsOrigin(source)
-            unit.state = "acquiring" 
+            unit.state = "acquiring"
         end
 
         -- STATE DEPENDENT LOGIC
@@ -167,11 +167,11 @@ function LocustSwarmPhysics( event )
 
                 -- If the enemy this time is different than the last unit.current_target, select it
                 -- Also check how many units are locked on this target, if its already max_locusts_on_target, ignore it
-                if not enemy.locusts_locked then 
-                    enemy.locusts_locked = 0 
+                if not enemy.locusts_locked then
+                    enemy.locusts_locked = 0
                 end
 
-                if not target_enemy and not enemy:IsDummy() and not IsCustomBuilding(enemy) and not enemy:IsWard() and enemy ~= unit.current_target and enemy.locusts_locked < max_locusts_on_target then
+                if not target_enemy and not enemy:IsCustomWardTypeUnit() and enemy ~= unit.current_target and enemy.locusts_locked < max_locusts_on_target then
                     target_enemy = enemy
                     enemy.locusts_locked = enemy.locusts_locked + 1
                 end
@@ -192,7 +192,7 @@ function LocustSwarmPhysics( event )
                 LocustDebugDraw(point, idleColor, 100, 25, true, draw_duration)
             end
 
-        -- If the state was to follow a target enemy, it means the unit can perform an attack.      
+        -- If the state was to follow a target enemy, it means the unit can perform an attack.
         elseif unit.state == "target_acquired" then
 
             -- Update the point of the target's current position
@@ -206,17 +206,17 @@ function LocustSwarmPhysics( event )
                     LocustDebugPrint("Gave up on the target, acquiring a new target.")
 
                     -- Decrease the locusts_locked counter
-                    unit.current_target.locusts_locked = unit.current_target.locusts_locked - 1             
+                    unit.current_target.locusts_locked = unit.current_target.locusts_locked - 1
                 end
             end
 
-            -- Do physical damage here, and increase heal counter. 
+            -- Damage and heal
             -- Also set to come back to the caster if the locust_heal_threshold has been dealt
             if collision then
 
                 -- If the target was an enemy and not a point, the unit collided with it
                 if unit.current_target ~= nil then
-                    
+
                     -- Damage, units will still try to collide with attack immune targets but the damage wont be applied
                     if not unit.current_target:IsAttackImmune() then
                         local damagePostReduction = ApplyDamage({victim = unit.current_target, attacker = unit, damage_type = abilityDamageType, damage = locust_damage, ability = ability})
@@ -262,7 +262,7 @@ function LocustSwarmPhysics( event )
             point = source
             LocustDebugDraw(point, returnColor, 100, 25, true, draw_duration)
 
-            if collision then 
+            if collision then
                 unit.state = "acquiring"
 
                 caster:Heal(locust_heal_threshold, ability)
@@ -274,7 +274,7 @@ function LocustSwarmPhysics( event )
 
                 -- Reset the damage done
                 unit.damage_done = 0
-            end 
+            end
 
         -- if set the state to end, the point is also the caster position, but the units will be removed on collision
         elseif unit.state == "end" then
@@ -282,7 +282,7 @@ function LocustSwarmPhysics( event )
             LocustDebugDraw(point, endColor, 100, 25, true, 2)
 
             -- Last collision ends the unit
-            if collision then 
+            if collision then
                 unit:SetPhysicsVelocity(Vector(0,0,0))
                 unit:OnPhysicsFrame(nil)
                 unit:RemoveSelf()
@@ -315,7 +315,7 @@ function LocustSwarmEnd( event )
     local caster = event.caster
     local targets = caster.swarm
     -- LocustDebugPrint("End")
-    for _,unit in pairs(targets) do     
+    for _, unit in pairs(targets) do
         if unit and IsValidEntity(unit) then
             unit.state = "end"
         end
@@ -329,7 +329,7 @@ function LocustSwarmDeath( event )
     local particleName = "particles/units/heroes/hero_weaver/weaver_base_attack_explosion.vpcf"
 
     -- LocustDebugPrint("Death")
-    for _, unit in pairs(targets) do     
+    for _, unit in pairs(targets) do
         if unit and IsValidEntity(unit) then
             unit:SetPhysicsVelocity(Vector(0,0,0))
             unit:OnPhysicsFrame(nil)
@@ -338,6 +338,7 @@ function LocustSwarmDeath( event )
             local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, unit)
             ParticleManager:SetParticleControl(particle, 0, unit:GetAbsOrigin())
             ParticleManager:SetParticleControlEnt(particle, 3, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+			ParticleManager:ReleaseParticleIndex(particle)
 
             -- Kill
             unit:ForceKill(false)
@@ -347,11 +348,21 @@ end
 
 local Debug = false
 function LocustDebugPrint(...)
-    if Debug then print('[LocustSwarm] ' .. ...) end
+    if Debug then
+		print('[LocustSwarm] ' .. ...)
+	end
 end
 
 function LocustDebugDraw(center,vRgb,a,rad,ztest,duration)
-    if Debug then DebugDrawCircle(center,vRgb,a,rad,ztest,duration) end
+    if Debug then
+		--DebugDrawCircle(center, vRgb, a, rad, ztest, duration)
+	end
+end
+
+---------------------------------------------------------------------------------------------------
+
+function VectorDistanceSq(v1, v2) 
+    return (v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y) + (v1.z - v2.z) * (v1.z - v2.z)
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -512,15 +523,15 @@ function Physics:Think()
                 color = collider.draw.color or color
               end
 
-              DebugDrawCircle(unit:GetAbsOrigin(), color, alpha, collider.radius, true, .01)
+              --DebugDrawCircle(unit:GetAbsOrigin(), color, alpha, collider.radius, true, .01)
             end
 
-            local ents = nil
+            local ents
             if collider.filter then
               if type(collider.filter) == "table" then
                 ents = collider.filter
               else
-                local status = nil
+                local status
                 status, ents = pcall(collider.filter, collider)
                 if not status then
                   print('[PHYSICS] Collision Filter Failure!: ' .. ents)
@@ -532,31 +543,27 @@ function Physics:Think()
 
             for k,v in pairs(ents) do
               if IsValidEntity(v) and IsValidEntity(unit) and v ~= unit and rad2 >= VectorDistanceSq(unit:GetAbsOrigin(), v:GetAbsOrigin()) then
-                local status, test = pcall(collider.test, collider, unit, v)
+                local status2, test = pcall(collider.test, collider, unit, v)
 
-                if not status then
+                if not status2 then
                   print('[PHYSICS] Collision Test Failure!: ' .. test)
                 elseif test then
                   if collider.preaction then
-                    local status, action = pcall(collider.preaction, collider, unit, v)
-                    if not status then
+                    local status3, action = pcall(collider.preaction, collider, unit, v)
+                    if not status3 then
                       print('[PHYSICS] Collision preaction Failure!: ' .. action)
                     end
                   end
-                  local status, action = pcall(collider.action, collider, unit, v)
-                  if not status then
+                  local status4, action = pcall(collider.action, collider, unit, v)
+                  if not status4 then
                     print('[PHYSICS] Collision action Failure!: ' .. action)
                   end
                   if collider.postaction then
-                    local status, action = pcall(collider.postaction, collider, unit, v)
-                    if not status then
+                    local status5, action = pcall(collider.postaction, collider, unit, v)
+                    if not status5 then
                       print('[PHYSICS] Collision postaction Failure!: ' .. action)
                     end
                   end
-
-
-                  --unit.nNextCollide = now + collider.recollideTime
-                  --v.nNextCollide = now + v.collider.recollideTime
                 end
               end
             end
@@ -585,12 +592,12 @@ function Physics:Think()
             DebugDrawBoxDirection(box.drawMins, Vector(0,0,0), box.drawMaxs - box.drawMins, RotatePosition(Vector(0,0,0), QAngle(0,box.drawAngle,0), Vector(1,0,0)), color, alpha, .01)
           end
 
-          local ents = nil
+          local ents
           if collider.filter then
             if type(collider.filter) == "table" then
               ents = collider.filter
             else
-              local status = nil
+              local status
               status, ents = pcall(collider.filter, collider)
               if not status then
                 print('[PHYSICS] Collision Filter Failure!: ' .. ents)
@@ -844,9 +851,6 @@ function Physics:GenerateAngleGrid()
   print(#anggrid[2])
   print(#anggrid[3])
 
-  if MAP_DATA  then
-    MAP_DATA.anggrid = anggrid
-  end
   Physics:AngleGrid(anggrid)
 end
 
@@ -854,17 +858,17 @@ function Physics:AngleGrid( anggrid, angoffsets )
   self.anggrid = anggrid
   print('[PHYSICS] Angle Grid Set')
   local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
-  local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
+  --local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
   local boundX1 = GridNav:WorldToGridPosX(worldMin.x)
-  local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
+  --local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
   local boundY1 = GridNav:WorldToGridPosX(worldMin.y)
-  local boundY2 = GridNav:WorldToGridPosX(worldMax.y)
+  --local boundY2 = GridNav:WorldToGridPosX(worldMax.y)
   local offsetX = boundX1 * -1 + 1
   local offsetY = boundY1 * -1 + 1
   self.offsetX = offsetX
   self.offsetY = offsetY
 
-  if angoffsets ~= nil then
+  if angoffsets then
     self.offsetX = math.abs(angoffsets.x) + 1
     self.offsetY = math.abs(angoffsets.y) + 1
   end
@@ -876,14 +880,14 @@ function Physics:CalcSlope(pos, unit, dir)
   local f = GetGroundPosition(pos + dir, unit)
   local b = GetGroundPosition(pos - dir, unit)
 
-  return (f - b):Normalized() 
+  return (f - b):Normalized()
 end
 
 function Physics:CalcNormal(pos, unit, scale)
   scale = scale or 1
   local nscale = -1 * scale
-  local diag = 0.70710678118 * scale
-  local ndiag = -1 * diag
+  --local diag = 0.70710678118 * scale
+  --local ndiag = -1 * diag
 
   local zl =  GetGroundPosition(pos + Vector(nscale,0,0), unit).z
   local zr =  GetGroundPosition(pos + Vector(scale,0,0), unit).z
@@ -1176,7 +1180,7 @@ function Physics:Unit(unit)
 
   function unit:RemoveCollider(name)
     if name == nil then
-      local i,v = next(unit.oColliders,  nil)
+      local i, v = next(unit.oColliders,  nil)
       if i == nil then
         return
       end
@@ -1305,7 +1309,6 @@ function Physics:Unit(unit)
     return unit.fFlatFriction
   end
 
-
   unit.lastGoodGround = Vector(0,0,0)
   unit.PhysicsTimerName = DoUniqueString('phys')
   Physics:CreateTimer(unit.PhysicsTimerName, {
@@ -1325,20 +1328,20 @@ function Physics:Unit(unit)
 
       unit.PhysicsLastTime = curTime
       unit.PhysicsLastPosition = position
-      
+
       if unit.bPreventDI and not unit:HasModifier("modifier_rooted") then
         unit:AddNewModifier(unit, nil, "modifier_rooted", {})
       end
-      
+
       if unit.bSlide and unit.nSkipSlide <= 0 then
         slideVelocity = ((position - prevPosition) - lastVelocity + unit.vSlideVelocity) * unit.fSlideMultiplier
       else
         --print(unit.nSkipSlide)
         unit.vSlideVelocity = Vector(0,0,0)
       end
-      
+
       unit.nSkipSlide = unit.nSkipSlide - 1
-      
+
       -- Adjust velocity
       local newVelocity = unit.vVelocity + unit.vAcceleration + (-1 * unit.fFriction * unit.vVelocity) + slideVelocity
       local newVelLength
@@ -1354,19 +1357,15 @@ function Physics:Unit(unit)
       newVelLength = newVelocity:Length()
       local staticSumLength = staticSum:Length()
 
-
       local vel = unit.vVelocity + staticSum
       local staticSumz = staticSum.z
       local newVelz = newVelocity.z
       local dontSet = false
       local dontSetGround = false
-      --print('vel: ' .. tostring(unit.vVelocity:Length()) .. ' -- svel: ' .. tostring(slideVelocity:Length()) .. " -- nvel: " .. tostring(newVelocity:Length()))
-      
+
       -- Calculate new position
       local newPos = position + vel
-      
-      
-      
+
       local blockedPos = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position)
       if not blockedPos then
         unit.vLastGoodPosition = position
@@ -1375,7 +1374,6 @@ function Physics:Unit(unit)
         unit.nStuckFrames = unit.nStuckFrames + 1
       end
 
-      
       if vel ~= Vector(0,0,0) or slideVelocity ~= Vector(0,0,0) or unit.nNavCollision == PHYSICS_NAV_GROUND then
         if unit.nNavCollision == PHYSICS_NAV_GROUND then
           local newGround = GetGroundPosition(newPos, unit)
@@ -1401,12 +1399,6 @@ function Physics:Unit(unit)
               --avgnormal = avgnormal + normal
             end
 
-            --DebugDrawLine_vCol(position, position + Physics:CalcSlope(position, unit, vel) * 100, Vector(0,0,200), true, 1.1)
-
-            --avgnormal = avgnormal / math.ceil(velLen)+1
-            --avgnormal = Vector(avgnormal.x, avgnormal.y, minnormal.z):Normalized()
-            --DebugDrawLine_vCol(position, position + minnormal * 200, Vector(255,0,0), true, 1.1)
-
             if minnormal.z < unit.fNavGroundAngle then
               --steep
               local xynorm = Vector(minnormal.x, minnormal.y, 0)
@@ -1415,11 +1407,6 @@ function Physics:Unit(unit)
                 minnormal = xynorm / xynormlen                
                 --avgnormal = Vector(avgnormal.x, avgnormal.y, 0):Normalized()
               end
-              --print('-------------')
-              --print(minnormal)
-
-              --DebugDrawLine_vCol(position, position + Physics:CalcSlope(position, unit, minnormal) * 200, Vector(0,200,200), true, 1)
-              --DebugDrawLine_vCol(position, position + avgnormal * 200, Vector(0,100,0), true, 1.1)
 
               local velz = vel.z
               --newVelocity.z = 0
@@ -1428,14 +1415,8 @@ function Physics:Unit(unit)
               local dot = vel:Dot(-1 * minnormal) *1.01
               if dot >= 0 then
                 vel = vel + dot * minnormal
-                --DebugDrawLine_vCol(position, position + vel, Vector(0,255,0), true, 1.1)
-
                 newVelocity = newVelocity + newVelocity:Dot(-1 * minnormal)*1.01 * minnormal
-                --DebugDrawLine_vCol(position, position + newVelocity, Vector(0,255,122), true, 1.1)
                 staticSum = staticSum + staticSum:Dot(-1 * minnormal)*1.01 * minnormal
-                --DebugDrawLine_vCol(position, position + staticSum, Vector(255,0,122), true, 1.1)
-
-                --DebugDrawLine_vCol(position, position + vel * 10, Vector(0,255,0), true, 1.1)
               end
               
               newPos = position + vel
@@ -1460,21 +1441,15 @@ function Physics:Unit(unit)
                     newPos.z = unit.lastGoodGround.z
                     newVelocity.z = math.max(0, newVelocity.z)
                   end
-
-                  --newVelocity.z = 0
                 else
                   newVelocity.z = math.max(0, newVelocity.z)
                 end
               end
-              --DebugDrawCircle(newPos, Vector(150,0,255), 1, 15, true, 1.1)
-              
+
               unit:SetAbsOrigin(newPos)
               dontSet = true
               dontSetGround = true
               ground = ng
-              --unit:SetAbsOrigin(position)
-            --elseif (ground - position):Normalized().z > unit.fNavGroundAngle then
-              --unit.lastGoodGround = ground
             end
           else
             unit.lastGoodGround = ground
@@ -1555,10 +1530,6 @@ function Physics:Unit(unit)
                   end
                 end
 
-                --DebugDrawLine_vCol(vec, vec + off * 100, Vector(0,200,0), true, 1)
-                --DebugDrawLine_vCol(vec, vec + normal * 100, Vector(200,200,200), true, 1)
-
-                --newVelocity.z = newVelz
                 local dot = vel:Dot(-1 * normal)
                 if dot >= 0 then
                   vel = vel + dot * 1.0 * normal
@@ -1582,7 +1553,6 @@ function Physics:Unit(unit)
           end
         elseif unit.bFollowNavMesh then
           local diff = vel:Normalized()
-          --FindClearSpaceForUnit(unit, newPos, true)
 
           local bound = 1
           if unit.fBoundOverride then
@@ -1607,8 +1577,6 @@ function Physics:Unit(unit)
             navConnect = not GridNav:IsTraversable(connect) or GridNav:IsBlocked(connect)
             index = index + 1
           end
-          --or not GridNav:IsTraversable(newPos + unit.vVelocity * .5) -- diff * unit.nNavGridLookahead
-            --or  or GridNav:IsBlocked(newPos + unit.vVelocity * .5)
           if unit.nNavCollision == PHYSICS_NAV_HALT and navConnect then
             newVelocity = Vector(0,0,0)
             staticSum = Vector(0,0,0)
@@ -1630,15 +1598,10 @@ function Physics:Unit(unit)
               local angX = navX + offX
               local angY = navY + offY
 
-              --print(offX .. ' -- ' .. angX .. ' == ' .. angY .. ' -- ' .. offY)
-              
               local angle = anggrid[angX][angY]
               if angle ~= -1 then
                 angle = angle
                 normal = -1 * RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
-                --print(angle)
-                --print(normal)
-                --print('----------')
               end
             end
             
@@ -1648,15 +1611,6 @@ function Physics:Unit(unit)
               --print("face: " .. tostring(face)) 
               dir.z = 0
               dir = dir:Normalized()
-              -- Nav bounce checks
-              --local angx = (math.acos(dir.x)/ math.pi * 180)
-              --local angy = (math.acos(dir.y)/ math.pi * 180)
-              --print(tostring(dir:Length()) .. " -- " .. tostring(dir))
-              --print(dir:Dot(Vector(1,0,0)))
-              --print(dir:Dot(Vector(-1,0,0)))
-              --print(dir:Dot(Vector(0,1,0)))
-              --print(dir:Dot(Vector(0,-1,0)))
-              --print('---------------')
               if dir:Dot(Vector(1,0,0)) > .707 then
                 normal = Vector(1,0,0)
                 local navPos2 = navPos + Vector(-64,0,0)
@@ -1742,8 +1696,6 @@ function Physics:Unit(unit)
                   end
                 end
               end
-              --FindClearSpaceForUnit(unit, newPos, true)
-              --print(tostring(unit:GetAbsOrigin()) .. " -- " .. tostring(navPos))
             end
 
             if unit.PhysicsOnPreSlide then
@@ -1794,21 +1746,9 @@ function Physics:Unit(unit)
             end
             
             if normal == nil then
-              --local face = navPos - position
-              --print("face: " .. tostring(face))
-              --local dir = navPos - position
               local dir = navPos - position
               dir.z = 0
               dir = dir:Normalized()
-              -- Nav bounce checks
-              --local angx = (math.acos(dir.x)/ math.pi * 180)
-              --local angy = (math.acos(dir.y)/ math.pi * 180)
-              --print(tostring(dir:Length()) .. " -- " .. tostring(dir))
-              --print(dir:Dot(Vector(1,0,0)))
-              --print(dir:Dot(Vector(-1,0,0)))
-              --print(dir:Dot(Vector(0,1,0)))
-              --print(dir:Dot(Vector(0,-1,0)))
-              --print('---------------')
               if dir:Dot(Vector(1,0,0)) > .707 then
                 normal = Vector(1,0,0)
                 local navPos2 = navPos + Vector(-64,0,0)
@@ -1894,8 +1834,6 @@ function Physics:Unit(unit)
                   end
                 end
               end
-              --FindClearSpaceForUnit(unit, newPos, true)
-              --print(tostring(unit:GetAbsOrigin()) .. " -- " .. tostring(navPos))
             end
 
             if unit.PhysicsOnPreBounce then
@@ -2282,681 +2220,681 @@ end
 
 if not Physics.timers then Physics:start() end
 
-Physics:CreateColliderProfile("blocker", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = 0,
-    skipFrames = 0,
-    moveSelf = false,
-    buffer = 0,
-    findClearSpace = false,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam()
-    end,
-    action = function(self, unit, v)
-      if self.moveSelf then
-        Physics:BlockInSphere(v, unit, self.radius + self.buffer, self.findClearSpace)
-      else
-        Physics:BlockInSphere(unit, v, self.radius + self.buffer, self.findClearSpace)
-      end
-    end
-  })
+-- Physics:CreateColliderProfile("blocker", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- moveSelf = false,
+    -- buffer = 0,
+    -- findClearSpace = false,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam()
+    -- end,
+    -- action = function(self, unit, v)
+      -- if self.moveSelf then
+        -- Physics:BlockInSphere(v, unit, self.radius + self.buffer, self.findClearSpace)
+      -- else
+        -- Physics:BlockInSphere(unit, v, self.radius + self.buffer, self.findClearSpace)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("delete", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = 0,
-    skipFrames = 0,
-    deleteSelf = true,
-    removeCollider = true,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam()
-    end,
-    action = function(self, unit, v)
-      if self.deleteSelf then
-        UTIL_Remove(unit)
-      else
-        UTIL_Remove(v)
-      end
+-- Physics:CreateColliderProfile("delete", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- deleteSelf = true,
+    -- removeCollider = true,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam()
+    -- end,
+    -- action = function(self, unit, v)
+      -- if self.deleteSelf then
+        -- UTIL_Remove(unit)
+      -- else
+        -- UTIL_Remove(v)
+      -- end
 
-      if self.removeCollider then
-        Physics:RemoveCollider(self)
-      end
-    end
-  })
+      -- if self.removeCollider then
+        -- Physics:RemoveCollider(self)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("gravity", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = 0,
-    skipFrames = 0,
-    minRadius = 0,
-    fullRadius = 0,
-    linear = false,
-    force = 1000,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
-    end,
-    action = function(self, unit, v)
-      local pos = unit:GetAbsOrigin()
-      local vPos = v:GetAbsOrigin()
-      local dir = pos - vPos
-      local len = dir:Length()
-      if len > self.minRadius then
-        local radDiff = self.radius - self.fullRadius
-        local dist = math.max(0, len - self.fullRadius)
-        local factor = (radDiff - dist) / radDiff
+-- Physics:CreateColliderProfile("gravity", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- minRadius = 0,
+    -- fullRadius = 0,
+    -- linear = false,
+    -- force = 1000,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
+    -- end,
+    -- action = function(self, unit, v)
+      -- local pos = unit:GetAbsOrigin()
+      -- local vPos = v:GetAbsOrigin()
+      -- local dir = pos - vPos
+      -- local len = dir:Length()
+      -- if len > self.minRadius then
+        -- local radDiff = self.radius - self.fullRadius
+        -- local dist = math.max(0, len - self.fullRadius)
+        -- local factor = (radDiff - dist) / radDiff
 
-        local force = self.force
-        if self.linear then
-          force = force * factor / 30
-        else
-          local factor2 = factor * factor
-          force = force * factor2 / 30
-        end
+        -- local force = self.force
+        -- if self.linear then
+          -- force = force * factor / 30
+        -- else
+          -- local factor2 = factor * factor
+          -- force = force * factor2 / 30
+        -- end
 
-        force = force * (self.skipFrames + 1)
+        -- force = force * (self.skipFrames + 1)
 
-        v:AddPhysicsVelocity(dir:Normalized() * force)
-      end
-    end
-  })
+        -- v:AddPhysicsVelocity(dir:Normalized() * force)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("repel", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = 0,
-    skipFrames = 0,
-    minRadius = 0,
-    fullRadius = 0,
-    linear = false,
-    force = 1000,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
-    end,
-    action = function(self, unit, v)
-      local pos = unit:GetAbsOrigin()
-      local vPos = v:GetAbsOrigin()
-      local dir = pos - vPos
-      local len = dir:Length()
-      if len > self.minRadius then
-        local radDiff = self.radius - self.fullRadius
-        local dist = math.max(0, len - self.fullRadius)
-        local factor = (radDiff - dist) / radDiff
+-- Physics:CreateColliderProfile("repel", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- minRadius = 0,
+    -- fullRadius = 0,
+    -- linear = false,
+    -- force = 1000,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
+    -- end,
+    -- action = function(self, unit, v)
+      -- local pos = unit:GetAbsOrigin()
+      -- local vPos = v:GetAbsOrigin()
+      -- local dir = pos - vPos
+      -- local len = dir:Length()
+      -- if len > self.minRadius then
+        -- local radDiff = self.radius - self.fullRadius
+        -- local dist = math.max(0, len - self.fullRadius)
+        -- local factor = (radDiff - dist) / radDiff
 
-        local force = self.force
-        if self.linear then
-          force = force * factor / 30
-        else
-          local factor2 = factor * factor
-          force = force * factor2 / 30
-        end
+        -- local force = self.force
+        -- if self.linear then
+          -- force = force * factor / 30
+        -- else
+          -- local factor2 = factor * factor
+          -- force = force * factor2 / 30
+        -- end
 
-        force = force * (self.skipFrames + 1)
+        -- force = force * (self.skipFrames + 1)
 
-        v:AddPhysicsVelocity(-1 * dir:Normalized() * force)
-      end
-    end
-  })
+        -- v:AddPhysicsVelocity(-1 * dir:Normalized() * force)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("reflect", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = 0,
-    skipFrames = 0,
-    multiplier = 1,
-    block = true,
-    blockRadius = 100,
-    moveSelf = false,
-    findClearSpace = false,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
-    end,
-    action = function(self, unit, v)
-      local pos = unit:GetAbsOrigin()
-      local vPos = v:GetAbsOrigin()
-      local normal = vPos - pos
-      normal = normal:Normalized()
+-- Physics:CreateColliderProfile("reflect", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- multiplier = 1,
+    -- block = true,
+    -- blockRadius = 100,
+    -- moveSelf = false,
+    -- findClearSpace = false,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
+    -- end,
+    -- action = function(self, unit, v)
+      -- local pos = unit:GetAbsOrigin()
+      -- local vPos = v:GetAbsOrigin()
+      -- local normal = vPos - pos
+      -- normal = normal:Normalized()
 
-      local newVelocity = v.vVelocity
-      if newVelocity:Dot(normal) >= 0 then
-        return
-      end
+      -- local newVelocity = v.vVelocity
+      -- if newVelocity:Dot(normal) >= 0 then
+        -- return
+      -- end
 
-      v:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)
+      -- v:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)
 
-      if self.block then
-        if self.moveSelf then
-          Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
-        else
-          Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
-        end
-      end
-    end
-  })
+      -- if self.block then
+        -- if self.moveSelf then
+          -- Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
+        -- else
+          -- Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
+        -- end
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("momentum", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = .1,
-    skipFrames = 0,
-    block = true,
-    blockRadius = 50,
-    moveSelf = false,
-    findClearSpace = false,
-    elasticity = 1,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
-    end,
-    action = function(self, unit, v)
-      if self.hitTime == nil or GameRules:GetGameTime() >= self.hitTime then
-        local pos = unit:GetAbsOrigin()
-        local vPos = v:GetAbsOrigin()
-        local dir = vPos - pos
-        local mass = unit:GetMass()
-        local vMass = v:GetMass()
-        --dir.z = 0
-        dir = dir:Normalized()
+-- Physics:CreateColliderProfile("momentum", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = .1,
+    -- skipFrames = 0,
+    -- block = true,
+    -- blockRadius = 50,
+    -- moveSelf = false,
+    -- findClearSpace = false,
+    -- elasticity = 1,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
+    -- end,
+    -- action = function(self, unit, v)
+      -- if self.hitTime == nil or GameRules:GetGameTime() >= self.hitTime then
+        -- local pos = unit:GetAbsOrigin()
+        -- local vPos = v:GetAbsOrigin()
+        -- local dir = vPos - pos
+        -- local mass = unit:GetMass()
+        -- local vMass = v:GetMass()
+        -- --dir.z = 0
+        -- dir = dir:Normalized()
         
-        local neg = -1 * dir
+        -- local neg = -1 * dir
         
-        local dot = dir:Dot(unit:GetTotalVelocity())
-        local dot2 = dir:Dot(v:GetTotalVelocity())
+        -- local dot = dir:Dot(unit:GetTotalVelocity())
+        -- local dot2 = dir:Dot(v:GetTotalVelocity())
 
-        local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
-        local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
+        -- local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
+        -- local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
         
-        --if dot < 1 and dot2 < 1 then
-          --return
-        --end
+        -- --if dot < 1 and dot2 < 1 then
+          -- --return
+        -- --end
 
-        unit:AddPhysicsVelocity((v1 - dot) * dir)
-        v:AddPhysicsVelocity((v2 - dot2) * dir)
+        -- unit:AddPhysicsVelocity((v1 - dot) * dir)
+        -- v:AddPhysicsVelocity((v2 - dot2) * dir)
 
-        if self.block then
-          if self.moveSelf then
-            Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
-          else
-            Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
-          end
-        end
+        -- if self.block then
+          -- if self.moveSelf then
+            -- Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
+          -- else
+            -- Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
+          -- end
+        -- end
 
-        self.hitTime = GameRules:GetGameTime() + self.recollideTime
-      end
-    end
-  })
+        -- self.hitTime = GameRules:GetGameTime() + self.recollideTime
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("momentumFull", 
-  {
-    type = COLLIDER_SPHERE,
-    radius = 100,
-    recollideTime = .1,
-    skipFrames = 0,
-    block = true,
-    blockRadius = 50,
-    moveSelf = false,
-    findClearSpace = false,
-    elasticity = 1,
-    test = function(self, collider, collided)
-      return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
-    end,
-    action = function(self, unit, v)
-      if self.hitTime == nil or GameRules:GetGameTime() >= self.hitTime then
-        local pos = unit:GetAbsOrigin()
-        local vPos = v:GetAbsOrigin()
-        local dir = vPos - pos
-        local mass = unit:GetMass()
-        local vMass = v:GetMass()
-        --dir.z = 0
-        dir = dir:Normalized()
+-- Physics:CreateColliderProfile("momentumFull", 
+  -- {
+    -- type = COLLIDER_SPHERE,
+    -- radius = 100,
+    -- recollideTime = .1,
+    -- skipFrames = 0,
+    -- block = true,
+    -- blockRadius = 50,
+    -- moveSelf = false,
+    -- findClearSpace = false,
+    -- elasticity = 1,
+    -- test = function(self, collider, collided)
+      -- return collided.IsRealHero and collided:IsRealHero() and collider:GetTeam() ~= collided:GetTeam() and IsPhysicsUnit(collided)
+    -- end,
+    -- action = function(self, unit, v)
+      -- if self.hitTime == nil or GameRules:GetGameTime() >= self.hitTime then
+        -- local pos = unit:GetAbsOrigin()
+        -- local vPos = v:GetAbsOrigin()
+        -- local dir = vPos - pos
+        -- local mass = unit:GetMass()
+        -- local vMass = v:GetMass()
+        -- --dir.z = 0
+        -- dir = dir:Normalized()
         
-        local neg = -1 * dir
+        -- local neg = -1 * dir
         
-        local dot = unit:GetTotalVelocity():Length()
-        local dot2 = -1 * v:GetTotalVelocity():Length()
+        -- local dot = unit:GetTotalVelocity():Length()
+        -- local dot2 = -1 * v:GetTotalVelocity():Length()
 
-        local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
-        local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
+        -- local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
+        -- local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
         
-        --if dot < 1 and dot2 < 1 then
-          --return
-        --end
+        -- --if dot < 1 and dot2 < 1 then
+          -- --return
+        -- --end
 
-        unit:AddPhysicsVelocity((v1 - dot) * dir)
-        v:AddPhysicsVelocity((v2 - dot2) * dir)
+        -- unit:AddPhysicsVelocity((v1 - dot) * dir)
+        -- v:AddPhysicsVelocity((v2 - dot2) * dir)
 
-        if self.block then
-          if self.moveSelf then
-            Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
-          else
-            Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
-          end
-        end
+        -- if self.block then
+          -- if self.moveSelf then
+            -- Physics:BlockInSphere(v, unit, self.blockRadius, self.findClearSpace)
+          -- else
+            -- Physics:BlockInSphere(unit, v, self.blockRadius, self.findClearSpace)
+          -- end
+        -- end
 
-        self.hitTime = GameRules:GetGameTime() + self.recollideTime
-      end
-    end
-  })
+        -- self.hitTime = GameRules:GetGameTime() + self.recollideTime
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("boxblocker", 
-  {
-    type = COLLIDER_BOX,
-    box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
-    slide = true,
-    recollideTime = 0,
-    skipFrames = 0,
-    buffer = 0,
-    findClearSpace = false,
-    test = function(self, unit)
-      return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
-    end,
-    action = function(self, box, unit)
-      --PrintTable(box)
-      local pos = unit:GetAbsOrigin()
-      pos.z = 0
+-- Physics:CreateColliderProfile("boxblocker", 
+  -- {
+    -- type = COLLIDER_BOX,
+    -- box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
+    -- slide = true,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- buffer = 0,
+    -- findClearSpace = false,
+    -- test = function(self, unit)
+      -- return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
+    -- end,
+    -- action = function(self, box, unit)
+      -- --PrintTable(box)
+      -- local pos = unit:GetAbsOrigin()
+      -- pos.z = 0
 
-      --face collide determination
-      local diff =  (pos - box.middle):Normalized()
-      local up = diff:Dot(box.upNormal)
-      local right = diff:Dot(box.rightNormal)
-      local normal = box.upNormal
-      local toside = 0
-      local leg1 = box.c
-      local leg2 = box.d
-      if up >= 0 then
-        if right >= 0 then
-          -- check top,right
-          local u = Physics:DistanceToLine(pos, box.c, box.d)
-          local r = Physics:DistanceToLine(pos, box.c, box.b)
-          if u < r then
-            normal = box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = u
-          else
-            normal = box.rightNormal
-            leg1 = box.c
-            leg2 = box.b
-            toside = r
-          end
-        else
-          -- check top,left
-          local u = Physics:DistanceToLine(pos, box.c, box.d)
-          local l = Physics:DistanceToLine(pos, box.a, box.d)
-          if u < l then
-            normal = box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = u
-          else
-            normal = -1 * box.rightNormal
-            leg1 = box.a
-            leg2 = box.d
-            toside = l
-          end
-        end
-      else
-        if right >= 0 then
-          -- check bot,right
-          local b = Physics:DistanceToLine(pos, box.a, box.b)
-          local r = Physics:DistanceToLine(pos, box.c, box.b)
-          if b < r then
-            normal = -1 * box.upNormal
-            leg1 = box.a
-            leg2 = box.b
-            toside = b
-          else
-            normal = box.rightNormal
-            leg1 = box.c
-            leg2 = box.b
-            toside = r
-          end
-        else
-          -- check bot,left
-          local b = Physics:DistanceToLine(pos, box.a, box.b)
-          local l = Physics:DistanceToLine(pos, box.a, box.d)
-          if b < l then
-            normal = -1 * box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = b
-          else
-            normal = -1 * box.rightNormal
-            leg1 = box.a
-            leg2 = box.d
-            toside = l
-          end
-        end
-      end
+      -- --face collide determination
+      -- local diff =  (pos - box.middle):Normalized()
+      -- local up = diff:Dot(box.upNormal)
+      -- local right = diff:Dot(box.rightNormal)
+      -- local normal = box.upNormal
+      -- local toside = 0
+      -- local leg1 = box.c
+      -- local leg2 = box.d
+      -- if up >= 0 then
+        -- if right >= 0 then
+          -- -- check top,right
+          -- local u = Physics:DistanceToLine(pos, box.c, box.d)
+          -- local r = Physics:DistanceToLine(pos, box.c, box.b)
+          -- if u < r then
+            -- normal = box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = u
+          -- else
+            -- normal = box.rightNormal
+            -- leg1 = box.c
+            -- leg2 = box.b
+            -- toside = r
+          -- end
+        -- else
+          -- -- check top,left
+          -- local u = Physics:DistanceToLine(pos, box.c, box.d)
+          -- local l = Physics:DistanceToLine(pos, box.a, box.d)
+          -- if u < l then
+            -- normal = box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = u
+          -- else
+            -- normal = -1 * box.rightNormal
+            -- leg1 = box.a
+            -- leg2 = box.d
+            -- toside = l
+          -- end
+        -- end
+      -- else
+        -- if right >= 0 then
+          -- -- check bot,right
+          -- local b = Physics:DistanceToLine(pos, box.a, box.b)
+          -- local r = Physics:DistanceToLine(pos, box.c, box.b)
+          -- if b < r then
+            -- normal = -1 * box.upNormal
+            -- leg1 = box.a
+            -- leg2 = box.b
+            -- toside = b
+          -- else
+            -- normal = box.rightNormal
+            -- leg1 = box.c
+            -- leg2 = box.b
+            -- toside = r
+          -- end
+        -- else
+          -- -- check bot,left
+          -- local b = Physics:DistanceToLine(pos, box.a, box.b)
+          -- local l = Physics:DistanceToLine(pos, box.a, box.d)
+          -- if b < l then
+            -- normal = -1 * box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = b
+          -- else
+            -- normal = -1 * box.rightNormal
+            -- leg1 = box.a
+            -- leg2 = box.d
+            -- toside = l
+          -- end
+        -- end
+      -- end
 
-      normal = normal:Normalized()
+      -- normal = normal:Normalized()
 
-      Physics:BlockInBox(unit, toside, normal, self.buffer, self.findClearSpace)
+      -- Physics:BlockInBox(unit, toside, normal, self.buffer, self.findClearSpace)
 
-      if self.slide and IsPhysicsUnit(unit) then
-        unit:AddPhysicsVelocity(math.max(0,unit:GetPhysicsVelocity():Dot(normal * -1)) * normal)
-      end
-    end
-  })
+      -- if self.slide and IsPhysicsUnit(unit) then
+        -- unit:AddPhysicsVelocity(math.max(0,unit:GetPhysicsVelocity():Dot(normal * -1)) * normal)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("boxreflect", 
-  {
-    type = COLLIDER_BOX,
-    box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
-    recollideTime = 0,
-    skipFrames = 0,
-    buffer = 0,
-    block = true,
-    findClearSpace = false,
-    multiplier = 1,
-    test = function(self, unit)
-      return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
-    end,
-    action = function(self, box, unit)
-      local pos = unit:GetAbsOrigin()
-      pos.z = 0
+-- Physics:CreateColliderProfile("boxreflect", 
+  -- {
+    -- type = COLLIDER_BOX,
+    -- box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- buffer = 0,
+    -- block = true,
+    -- findClearSpace = false,
+    -- multiplier = 1,
+    -- test = function(self, unit)
+      -- return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
+    -- end,
+    -- action = function(self, box, unit)
+      -- local pos = unit:GetAbsOrigin()
+      -- pos.z = 0
 
-      --face collide determination
-      local diff =  (pos - box.middle):Normalized()
-      local up = diff:Dot(box.upNormal)
-      local right = diff:Dot(box.rightNormal)
-      local normal = box.upNormal
-      local toside = 0
-      local leg1 = box.c
-      local leg2 = box.d
-      if up >= 0 then
-        if right >= 0 then
-          -- check top,right
-          local u = Physics:DistanceToLine(pos, box.c, box.d)
-          local r = Physics:DistanceToLine(pos, box.c, box.b)
-          if u < r then
-            normal = box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = u
-          else
-            normal = box.rightNormal
-            leg1 = box.c
-            leg2 = box.b
-            toside = r
-          end
-        else
-          -- check top,left
-          local u = Physics:DistanceToLine(pos, box.c, box.d)
-          local l = Physics:DistanceToLine(pos, box.a, box.d)
-          if u < l then
-            normal = box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = u
-          else
-            normal = -1 * box.rightNormal
-            leg1 = box.a
-            leg2 = box.d
-            toside = l
-          end
-        end
-      else
-        if right >= 0 then
-          -- check bot,right
-          local b = Physics:DistanceToLine(pos, box.a, box.b)
-          local r = Physics:DistanceToLine(pos, box.c, box.b)
-          if b < r then
-            normal = -1 * box.upNormal
-            leg1 = box.a
-            leg2 = box.b
-            toside = b
-          else
-            normal = box.rightNormal
-            leg1 = box.c
-            leg2 = box.b
-            toside = r
-          end
-        else
-          -- check bot,left
-          local b = Physics:DistanceToLine(pos, box.a, box.b)
-          local l = Physics:DistanceToLine(pos, box.a, box.d)
-          if b < l then
-            normal = -1 * box.upNormal
-            leg1 = box.c
-            leg2 = box.d
-            toside = b
-          else
-            normal = -1 * box.rightNormal
-            leg1 = box.a
-            leg2 = box.d
-            toside = l
-          end
-        end
-      end
+      -- --face collide determination
+      -- local diff =  (pos - box.middle):Normalized()
+      -- local up = diff:Dot(box.upNormal)
+      -- local right = diff:Dot(box.rightNormal)
+      -- local normal = box.upNormal
+      -- local toside = 0
+      -- local leg1 = box.c
+      -- local leg2 = box.d
+      -- if up >= 0 then
+        -- if right >= 0 then
+          -- -- check top,right
+          -- local u = Physics:DistanceToLine(pos, box.c, box.d)
+          -- local r = Physics:DistanceToLine(pos, box.c, box.b)
+          -- if u < r then
+            -- normal = box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = u
+          -- else
+            -- normal = box.rightNormal
+            -- leg1 = box.c
+            -- leg2 = box.b
+            -- toside = r
+          -- end
+        -- else
+          -- -- check top,left
+          -- local u = Physics:DistanceToLine(pos, box.c, box.d)
+          -- local l = Physics:DistanceToLine(pos, box.a, box.d)
+          -- if u < l then
+            -- normal = box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = u
+          -- else
+            -- normal = -1 * box.rightNormal
+            -- leg1 = box.a
+            -- leg2 = box.d
+            -- toside = l
+          -- end
+        -- end
+      -- else
+        -- if right >= 0 then
+          -- -- check bot,right
+          -- local b = Physics:DistanceToLine(pos, box.a, box.b)
+          -- local r = Physics:DistanceToLine(pos, box.c, box.b)
+          -- if b < r then
+            -- normal = -1 * box.upNormal
+            -- leg1 = box.a
+            -- leg2 = box.b
+            -- toside = b
+          -- else
+            -- normal = box.rightNormal
+            -- leg1 = box.c
+            -- leg2 = box.b
+            -- toside = r
+          -- end
+        -- else
+          -- -- check bot,left
+          -- local b = Physics:DistanceToLine(pos, box.a, box.b)
+          -- local l = Physics:DistanceToLine(pos, box.a, box.d)
+          -- if b < l then
+            -- normal = -1 * box.upNormal
+            -- leg1 = box.c
+            -- leg2 = box.d
+            -- toside = b
+          -- else
+            -- normal = -1 * box.rightNormal
+            -- leg1 = box.a
+            -- leg2 = box.d
+            -- toside = l
+          -- end
+        -- end
+      -- end
 
-      normal = normal:Normalized()
+      -- normal = normal:Normalized()
 
-      if self.block then
-        Physics:BlockInBox(unit, toside, normal, self.buffer, self.findClearSpace)
-      end
+      -- if self.block then
+        -- Physics:BlockInBox(unit, toside, normal, self.buffer, self.findClearSpace)
+      -- end
 
-      local newVelocity = unit.vVelocity
-      if newVelocity:Dot(normal) >= 0 then
-        return
-      end
+      -- local newVelocity = unit.vVelocity
+      -- if newVelocity:Dot(normal) >= 0 then
+        -- return
+      -- end
 
-      unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)
-    end
-  })
+      -- unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("aaboxblocker", 
-  {
-    type = COLLIDER_AABOX,
-    box = {Vector(0,0,0), Vector(200,100,500)},
-    slide = true,
-    recollideTime = 0,
-    skipFrames = 0,
-    buffer = 0,
-    findClearSpace = false,
-    test = function(self, unit)
-      return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
-    end,
-    action = function(self, box, unit)
-      --PrintTable(box)
-      local pos = unit:GetAbsOrigin()
-      pos.z = 0
+-- Physics:CreateColliderProfile("aaboxblocker", 
+  -- {
+    -- type = COLLIDER_AABOX,
+    -- box = {Vector(0,0,0), Vector(200,100,500)},
+    -- slide = true,
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- buffer = 0,
+    -- findClearSpace = false,
+    -- test = function(self, unit)
+      -- return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
+    -- end,
+    -- action = function(self, box, unit)
+      -- --PrintTable(box)
+      -- local pos = unit:GetAbsOrigin()
+      -- pos.z = 0
 
-      local x = pos.x
-      local y = pos.y
-      local middle = box.middle
-      local xblock = true
-      local value = 0
-      local normal = Vector(1,0,0)
+      -- local x = pos.x
+      -- local y = pos.y
+      -- local middle = box.middle
+      -- local xblock = true
+      -- local value = 0
+      -- local normal = Vector(1,0,0)
 
-      if x > middle.x then
-        if y > middle.y then
-          -- up,right
-          local relx = (pos.x - middle.x) / box.xScale
-          local rely = (pos.y - middle.y) / box.yScale
+      -- if x > middle.x then
+        -- if y > middle.y then
+          -- -- up,right
+          -- local relx = (pos.x - middle.x) / box.xScale
+          -- local rely = (pos.y - middle.y) / box.yScale
 
-          if relx > rely then
-            --right
-            normal = Vector(1,0,0)
-            value = box.xMax
-            xblock = true
-          else
-            --up
-            normal = Vector(0,1,0)
-            value = box.yMax
-            xblock = false
-          end
-        elseif y <= middle.y then
-          -- down,right
-          local relx = (pos.x - middle.x) / box.xScale
-          local rely = (middle.y - pos.y) / box.yScale
+          -- if relx > rely then
+            -- --right
+            -- normal = Vector(1,0,0)
+            -- value = box.xMax
+            -- xblock = true
+          -- else
+            -- --up
+            -- normal = Vector(0,1,0)
+            -- value = box.yMax
+            -- xblock = false
+          -- end
+        -- elseif y <= middle.y then
+          -- -- down,right
+          -- local relx = (pos.x - middle.x) / box.xScale
+          -- local rely = (middle.y - pos.y) / box.yScale
 
-          if relx > rely then
-            --right
-            normal = Vector(1,0,0)
-            value = box.xMax
-            xblock = true
-          else
-            --down
-            normal = Vector(0,-1,0)
-            value = box.yMin
-            xblock = false
-          end
-        end
-      elseif x <= middle.x then
-        if y > middle.y then
-          -- up,left
-          local relx = (middle.x - pos.x) / box.xScale
-          local rely = (pos.y - middle.y) / box.yScale
+          -- if relx > rely then
+            -- --right
+            -- normal = Vector(1,0,0)
+            -- value = box.xMax
+            -- xblock = true
+          -- else
+            -- --down
+            -- normal = Vector(0,-1,0)
+            -- value = box.yMin
+            -- xblock = false
+          -- end
+        -- end
+      -- elseif x <= middle.x then
+        -- if y > middle.y then
+          -- -- up,left
+          -- local relx = (middle.x - pos.x) / box.xScale
+          -- local rely = (pos.y - middle.y) / box.yScale
 
-          if relx > rely then
-            --left
-            normal = Vector(-1,0,0)
-            value = box.xMin
-            xblock = true
-          else
-            --up
-            normal = Vector(0,1,0)
-            value = box.yMax
-            xblock = false
-          end
-        elseif y <= middle.y then
-          -- down,left
-          local relx = (middle.x - pos.x) / box.xScale
-          local rely = (middle.y - pos.y) / box.yScale
+          -- if relx > rely then
+            -- --left
+            -- normal = Vector(-1,0,0)
+            -- value = box.xMin
+            -- xblock = true
+          -- else
+            -- --up
+            -- normal = Vector(0,1,0)
+            -- value = box.yMax
+            -- xblock = false
+          -- end
+        -- elseif y <= middle.y then
+          -- -- down,left
+          -- local relx = (middle.x - pos.x) / box.xScale
+          -- local rely = (middle.y - pos.y) / box.yScale
 
-          if relx > rely then
-            --left
-            normal = Vector(-1,0,0)
-            value = box.xMin
-            xblock = true
-          else
-            --down
-            normal = Vector(0,-1,0)
-            value = box.yMin
-            xblock = false
-          end
-        end
-      end
+          -- if relx > rely then
+            -- --left
+            -- normal = Vector(-1,0,0)
+            -- value = box.xMin
+            -- xblock = true
+          -- else
+            -- --down
+            -- normal = Vector(0,-1,0)
+            -- value = box.yMin
+            -- xblock = false
+          -- end
+        -- end
+      -- end
 
-      Physics:BlockInAABox(unit, xblock, value, buffer, findClearSpace)
+      -- Physics:BlockInAABox(unit, xblock, value, buffer, findClearSpace)
 
-      if self.slide and IsPhysicsUnit(unit) then
-        unit:AddPhysicsVelocity(math.max(0,unit:GetPhysicsVelocity():Dot(normal * -1)) * normal)
-      end
-    end
-  })
+      -- if self.slide and IsPhysicsUnit(unit) then
+        -- unit:AddPhysicsVelocity(math.max(0,unit:GetPhysicsVelocity():Dot(normal * -1)) * normal)
+      -- end
+    -- end
+  -- })
 
-Physics:CreateColliderProfile("aaboxreflect", 
-  {
-    type = COLLIDER_AABOX,
-    box = {Vector(0,0,0), Vector(200,100,500)},
-    recollideTime = 0,
-    skipFrames = 0,
-    buffer = 0,
-    block = true,
-    findClearSpace = false,
-    multiplier = 1,
-    test = function(self, unit)
-      return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
-    end,
-    action = function(self, box, unit)
-      --PrintTable(box)
-      local pos = unit:GetAbsOrigin()
-      pos.z = 0
+-- Physics:CreateColliderProfile("aaboxreflect", 
+  -- {
+    -- type = COLLIDER_AABOX,
+    -- box = {Vector(0,0,0), Vector(200,100,500)},
+    -- recollideTime = 0,
+    -- skipFrames = 0,
+    -- buffer = 0,
+    -- block = true,
+    -- findClearSpace = false,
+    -- multiplier = 1,
+    -- test = function(self, unit)
+      -- return unit.IsRealHero and unit:IsRealHero() and unit:GetTeam() ~= unit:GetTeam() and IsPhysicsUnit(unit)
+    -- end,
+    -- action = function(self, box, unit)
+      -- --PrintTable(box)
+      -- local pos = unit:GetAbsOrigin()
+      -- pos.z = 0
 
-      local x = pos.x
-      local y = pos.y
-      local middle = box.middle
-      local xblock = true
-      local value = 0
-      local normal = Vector(1,0,0)
+      -- local x = pos.x
+      -- local y = pos.y
+      -- local middle = box.middle
+      -- local xblock = true
+      -- local value = 0
+      -- local normal = Vector(1,0,0)
 
-      if x > middle.x then
-        if y > middle.y then
-          -- up,right
-          local relx = (pos.x - middle.x) / box.xScale
-          local rely = (pos.y - middle.y) / box.yScale
+      -- if x > middle.x then
+        -- if y > middle.y then
+          -- -- up,right
+          -- local relx = (pos.x - middle.x) / box.xScale
+          -- local rely = (pos.y - middle.y) / box.yScale
 
-          if relx > rely then
-            --right
-            normal = Vector(1,0,0)
-            value = box.xMax
-            xblock = true
-          else
-            --up
-            normal = Vector(0,1,0)
-            value = box.yMax
-            xblock = false
-          end
-        elseif y <= middle.y then
-          -- down,right
-          local relx = (pos.x - middle.x) / box.xScale
-          local rely = (middle.y - pos.y) / box.yScale
+          -- if relx > rely then
+            -- --right
+            -- normal = Vector(1,0,0)
+            -- value = box.xMax
+            -- xblock = true
+          -- else
+            -- --up
+            -- normal = Vector(0,1,0)
+            -- value = box.yMax
+            -- xblock = false
+          -- end
+        -- elseif y <= middle.y then
+          -- -- down,right
+          -- local relx = (pos.x - middle.x) / box.xScale
+          -- local rely = (middle.y - pos.y) / box.yScale
 
-          if relx > rely then
-            --right
-            normal = Vector(1,0,0)
-            value = box.xMax
-            xblock = true
-          else
-            --down
-            normal = Vector(0,-1,0)
-            value = box.yMin
-            xblock = false
-          end
-        end
-      elseif x <= middle.x then
-        if y > middle.y then
-          -- up,left
-          local relx = (middle.x - pos.x) / box.xScale
-          local rely = (pos.y - middle.y) / box.yScale
+          -- if relx > rely then
+            -- --right
+            -- normal = Vector(1,0,0)
+            -- value = box.xMax
+            -- xblock = true
+          -- else
+            -- --down
+            -- normal = Vector(0,-1,0)
+            -- value = box.yMin
+            -- xblock = false
+          -- end
+        -- end
+      -- elseif x <= middle.x then
+        -- if y > middle.y then
+          -- -- up,left
+          -- local relx = (middle.x - pos.x) / box.xScale
+          -- local rely = (pos.y - middle.y) / box.yScale
 
-          if relx > rely then
-            --left
-            normal = Vector(-1,0,0)
-            value = box.xMin
-            xblock = true
-          else
-            --up
-            normal = Vector(0,1,0)
-            value = box.yMax
-            xblock = false
-          end
-        elseif y <= middle.y then
-          -- down,left
-          local relx = (middle.x - pos.x) / box.xScale
-          local rely = (middle.y - pos.y) / box.yScale
+          -- if relx > rely then
+            -- --left
+            -- normal = Vector(-1,0,0)
+            -- value = box.xMin
+            -- xblock = true
+          -- else
+            -- --up
+            -- normal = Vector(0,1,0)
+            -- value = box.yMax
+            -- xblock = false
+          -- end
+        -- elseif y <= middle.y then
+          -- -- down,left
+          -- local relx = (middle.x - pos.x) / box.xScale
+          -- local rely = (middle.y - pos.y) / box.yScale
 
-          if relx > rely then
-            --left
-            normal = Vector(-1,0,0)
-            value = box.xMin
-            xblock = true
-          else
-            --down
-            normal = Vector(0,-1,0)
-            value = box.yMin
-            xblock = false
-          end
-        end
-      end
+          -- if relx > rely then
+            -- --left
+            -- normal = Vector(-1,0,0)
+            -- value = box.xMin
+            -- xblock = true
+          -- else
+            -- --down
+            -- normal = Vector(0,-1,0)
+            -- value = box.yMin
+            -- xblock = false
+          -- end
+        -- end
+      -- end
 
-      if self.block then
-        Physics:BlockInAABox(unit, xblock, value, buffer, findClearSpace)
-      end
+      -- if self.block then
+        -- Physics:BlockInAABox(unit, xblock, value, buffer, findClearSpace)
+      -- end
 
-      local newVelocity = unit.vVelocity
-      if newVelocity:Dot(normal) >= 0 then
-        return
-      end
+      -- local newVelocity = unit.vVelocity
+      -- if newVelocity:Dot(normal) >= 0 then
+        -- return
+      -- end
 
-      unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)      
-    end
-  })
+      -- unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)      
+    -- end
+  -- })

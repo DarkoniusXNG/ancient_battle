@@ -20,7 +20,7 @@ function HealingWave( event )
         start_position = caster:GetAbsOrigin()
 		start_position.z = start_position.z + target:GetBoundingMaxs().z
     end
-    local current_position = CreateHealingWave(caster, caster:GetAbsOrigin(), target, healing, ability)
+    local current_position = CreateHealingWave(caster, start_position, target, healing, ability)
     bounces = bounces - 1 --The first hit counts as a bounce
 
     -- Every target struck by the chain is added to an entity index list
@@ -36,7 +36,6 @@ function HealingWave( event )
     Timers:CreateTimer(time_between_bounces, function()
 
         -- unit selection and counting
-		
 		local allies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 
         if #allies > 0 then
