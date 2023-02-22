@@ -34,8 +34,16 @@
 
     "AbilityValues"
     {
-      "small_radius_damage"                               "700 900 1200 1600" // full damage
-      "big_radius_damage"                                 "350 450 600 800" // partial damage - not in tooltip
+      "small_radius_damage"
+      {
+        "value"                                           "700 900 1200 1600" // full damage
+        "special_bonus_unique_techies_custom_6"           "+500"
+      }
+      "big_radius_damage"
+      {
+        "value"                                           "350 450 600 800" // partial damage - not in tooltip
+        "special_bonus_unique_techies_custom_6"           "+250"
+      }
 
       "small_radius"                                      "200" // full damage radius; old (200)
       "big_radius"                                        "500" // half damage radius; old (500)
@@ -100,6 +108,23 @@
         "var_type"                                        "FIELD_INTEGER"
         "value"                                           "75"
       }
+    }
+  }
+
+  //=================================================================================================================
+  // Suicide talent: Increases damage
+  //=================================================================================================================
+  "special_bonus_unique_techies_custom_6"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "500"
     }
   }
 }

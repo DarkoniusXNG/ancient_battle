@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Queen of Pain; 2022;
+  // HERO: Queen of Pain; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_custom_queenofpain"  
@@ -49,7 +49,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                      // like QoP
+    "ArmorPhysical"                                       "-3"                      // QoP (0)
     "MagicalResistance"                                   "25"                  // Default
 
     // Attack
@@ -79,10 +79,10 @@
     "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
     "AttributeBaseStrength"                               "18"                // QoP (18);
     "AttributeStrengthGain"                               "2.3"                // QoP (2.4);
-    "AttributeBaseIntelligence"                           "25"                // QoP (25);
-    "AttributeIntelligenceGain"                           "3.3"                // QoP (3.4);
     "AttributeBaseAgility"                                "22"                // QoP (22);
     "AttributeAgilityGain"                                "2.4"                // QoP (2.5);
+    "AttributeBaseIntelligence"                           "25"                // QoP (25);
+    "AttributeIntelligenceGain"                           "3.3"                // QoP (3.4);
 
     // Status
     //-------------------------------------------------------------------------------------------------------------

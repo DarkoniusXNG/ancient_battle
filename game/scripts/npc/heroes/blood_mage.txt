@@ -50,7 +50,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "2"                // Invoker (0); original (2);
+    "ArmorPhysical"                                       "-2"                // Invoker (0); original (2);
     "MagicalResistance"                                   "25"              // Default
 
     // Attack

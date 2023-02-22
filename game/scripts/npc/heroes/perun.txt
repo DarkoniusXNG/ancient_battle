@@ -43,7 +43,7 @@
     
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "2"                  // Dark Seer (2); Skywrath Mage (-2); Zeus (2);
+    "ArmorPhysical"                                       "-2"                  // Dark Seer (2); Skywrath Mage (-2); Zeus (2);
     "MagicalResistance"                                   "25"                 // Default
     
     // Attack

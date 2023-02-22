@@ -20,7 +20,7 @@
     "AbilityCastRange"                                    "150" // old (100)
     "AbilityCastPoint"                                    "0.0" // old (0)
 
-    "AbilityCooldown"                                     "25 20 15 10"
+    "AbilityCooldown"                                     "19 16 13 10"
 
     "AbilityManaCost"                                     "60 75 85 100"
     "AbilityProcsMagicStick"                              "1"

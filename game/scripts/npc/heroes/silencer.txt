@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Silencer; 2022;
+  // HERO: Silencer; 2023;
   // TO_DO: 
   //=================================================================================================================
   "npc_dota_hero_custom_silencer"
@@ -24,7 +24,7 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_armor_6"          // lvl 10 talent;
+    "Ability10"                                           "special_bonus_armor_4"          // lvl 10 talent;
     "Ability11"                                           "special_bonus_intelligence_10"      // lvl 10 talent; 
 
     "Ability12"                                           "special_bonus_hp_250"          // lvl 15 talent;
@@ -36,7 +36,7 @@
     "Ability16"                                           "special_bonus_attack_range_200"    // lvl 25 talent; unique
     "Ability17"                                           "special_bonus_unique_silencer_7"    // lvl 25 talent; Global Silence cd talent
 
-    "ArmorPhysical"                                       "-1"                // dota Silencer (-1)
+    "ArmorPhysical"                                       "-2"                // dota Silencer (-1)
     "MagicalResistance"                                   "25"                // Default
 
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"

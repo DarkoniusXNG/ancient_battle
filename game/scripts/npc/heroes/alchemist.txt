@@ -43,7 +43,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                // Default; original (0); dota (-1);
+    "ArmorPhysical"                                       "-1"                // Default; original (0); dota (-1);
     "MagicalResistance"                                   "25"              // Default
 
     // Attack

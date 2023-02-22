@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Archmage; 2022;
+  // HERO: Archmage; 2023;
   // Notes: OK; Arcane Magic provides bonus mana regen;
   // TO_DO: 
   //=================================================================================================================
@@ -32,7 +32,7 @@
     "Ability10"                                           "special_bonus_attack_damage_30"            // lvl 10 talent; Nature's Prophet (+20)
     "Ability11"                                           "special_bonus_movement_speed_25"           // lvl 10 talent; KOTL (+20)
 
-    "Ability12"                                           "special_bonus_armor_8"                     // lvl 15 talent; unique
+    "Ability12"                                           "special_bonus_unique_beastmaster_6"        // lvl 15 talent; unique
     "Ability13"                                           "special_bonus_magic_resistance_25"         // lvl 15 talent; unique
 
     "Ability14"                                           "special_bonus_status_resistance_10"        // lvl 20 talent; unique
@@ -45,7 +45,7 @@
     
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "-1"                  // KOTL (0); Crystal Maiden (-1);
+    "ArmorPhysical"                                       "-2"                  // KOTL (0); Crystal Maiden (-1);
     "MagicalResistance"                                   "25"                  // Default
     
     // Attack

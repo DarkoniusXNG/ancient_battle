@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Lich; 2022;
+  // HERO: Lich; 2023;
   // Notes: OK; Dark Ritual provides additional mana;
   // TO_DO: special_bonus_unique_lich_custom_1 - special_bonus_unique_lich_custom_7
   //=================================================================================================================
@@ -43,7 +43,7 @@
     
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "-1"                  // like dota Lich
+    "ArmorPhysical"                                       "-1"                  // dota Lich (-1); original (0);
     "MagicalResistance"                                   "25"                  // Default
 
     // Attack
