@@ -68,7 +68,7 @@ if IsServer() then
       HideTheCopyPermanently(parent)
       -- Apply a modifier that will keep the copy alive/invulnerable and hidden while debuffs exist or for the duration
       parent:AddNewModifier(parent, nil, "modifier_custom_super_illusion_hide", {})
-      -- Deselect the copy/target
+      -- Deselect the copy
       PlayerResource:RemoveFromSelection(parent:GetPlayerOwnerID(), parent)
 
       local attacker = event.attacker
@@ -92,7 +92,7 @@ if IsServer() then
     HideTheCopyPermanently(parent)
     -- Apply a modifier that will keep the copy alive/invulnerable and hidden while debuffs exist or for the duration
     parent:AddNewModifier(parent, nil, "modifier_custom_super_illusion_hide", {})
-    -- Deselect the copy/target
+    -- Deselect the copy
     PlayerResource:RemoveFromSelection(parent:GetPlayerID(), parent)
 
     self:Destroy()

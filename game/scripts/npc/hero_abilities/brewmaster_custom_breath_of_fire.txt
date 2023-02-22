@@ -2,9 +2,9 @@
 {
   //====================================================================================================
   // Brewmaster: Breath of Fire (Q) - New Spell, similar to Dragon Knight's Fire Breath but with DOT if target has Drunken Haze debuff
-  // Authors: Jastuchko + Darkonius
-  // Notes: OK; 2022;
-  // TO_DO:
+  // Authors: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO: Breath of Fire buildings dmg talent
   //====================================================================================================
   "brewmaster_custom_breath_of_fire"
   {
@@ -18,13 +18,13 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-    "AbilityCastRange"                                    "750"                // Dragon Knight: 600
-    "AbilityCastPoint"                                    "0.3"                // Dragon Knight: 0.2
+    "AbilityCastRange"                                    "750" // Dragon Knight (600); original (375);
+    "AbilityCastPoint"                                    "0.3" // Dragon Knight (0.2);
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
-    "AbilityCooldown"                                     "10.0"                // original: 10 seconds; Dragon Knight: 14/13/12/11 seconds
+    "AbilityCooldown"                                     "10.0" // original (10); Dragon Knight (14/13/12/11);
 
-    "AbilityManaCost"                                     "100 110 120 130"          // original: 70; Dragon Knight: 100/110/120/130
+    "AbilityManaCost"                                     "100 110 120 130" // original (70); Dragon Knight: 100/110/120/130
     "AbilityProcsMagicStick"                              "1"
 
     "precache"
@@ -34,47 +34,19 @@
       "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn_creep.vpcf"
     }
 
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01" // original: 65/125/170; Dragon Knight: 90/170/240/300
+      "initial_damage"                                    "90 170 240 300" // original (65/125/170); Dragon Knight (90/170/240/300);
+      "speed"                                             "1100" // Dragon Knight (1050);
+      "start_radius"                                      "150" // same as melee attack range; original (150);
+      "end_radius"                                        "250" // Dragon Knight (250); original (150);
+      "distance"                                          "750" // Dragon Knight (750); original (675);
+      "burn_duration_heroes"                              "5" // original (5); Cinder Brew (5+3);
+      "burn_duration_creeps"                              "7" // original (5); Cinder Brew (5+3);
+      "burn_damage_interval"                              "0.25" // original (1);
+      "burn_damage_per_second" // original (7/14/21); Cinder Brew total dmg (80/160/240/320);
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "initial_damage"                                  "90 170 240 300"
-      }
-      "02" // Dragon Knight: 1050
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "speed"                                           "1100"
-      }
-      "03" // same as melee attack range
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "start_radius"                                    "150"
-      }
-      "04" // Dragon Knight: 250
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "end_radius"                                      "250"
-      }
-      "05" // Dragon Knight: 750;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "distance"                                        "750"
-      }
-      "06" // original: 5 seconds; Cinder Brew: 5 seconds;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "burn_duration"                                   "5"
-      }
-      "07" // original: 1 second
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "burn_damage_interval"                            "0.2"
-      }
-      "06" // original: 7/14/21 dps; balanced: 10/15/25/35 dps; Cinder Brew: 20/30/40/50;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "burn_damage_per_second"                          "20 30 40 50"
+        "value"                                           "15 30 45 60"
         "LinkedSpecialBonus"                              "special_bonus_unique_brewmaster_drunken_haze_burn"
       }
     }
@@ -98,7 +70,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "10"
+        "value"                                           "15"
       }
     }
   }

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Stealth Assassin: Smoke Screen (Q) - old Smoke Screen that slows
   // Author: Darkonius
-  // Notes: OK; 2023; Has Aghanim Shard upgrade; 
+  // Notes: OK; 2023; Aghs Shard disarms towers and destroys trees.
   // TO_DO:
   //=================================================================================================================
   "stealth_assassin_smoke_screen"
@@ -28,11 +28,11 @@
 
     // Time
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "17 16 15 14"
+    "AbilityCooldown"                                     "20 17 14 11"
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "65 70 75 80"
+    "AbilityManaCost"                                     "75 80 85 90" // patch 6.02
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
@@ -40,23 +40,23 @@
     {
       "radius"
       {
-        "value"                                           "375"
+        "value"                                           "300 325 350 375"
         "special_bonus_unique_stealth_assassin_7"         "+60"
       }
       "duration"                                          "6"
       "miss_rate"                                         "30 45 60 75"
-      "move_speed_slow"                                   "15 20 25 30"
-      "shard_turn_rate_slow"
+      "move_speed_slow"                                   "15 20 25 30" // patch 6.03
+      "shard_turn_rate_slow" // Smoke Screen was slowing turn rate in patches: 6.84 - 6.86
       {
         "value"                                           "50"
         "RequiresShard"                                   "1"
       }
-      "shard_mini_stun_duration"
+      "shard_mini_stun_duration" // Smoke Screen was mini-stunning in patches ??-6.45 and 6.51-6.58
       {
         "value"                                           "0.1"
         "RequiresShard"                                   "1"
       }
-      "shard_vision_reduction"
+      "shard_vision_reduction" // Smoke Screen was reducing vision in patches: 7.07 - 7.23
       {
         "value"                                           "90"
         "RequiresShard"                                   "1"

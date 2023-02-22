@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Paladin: Holy Strike (E) - custom, bonus attack range, bonus pure damage, toggle
   // Author: Darkonius
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   // TO_DO: Visual effect isnt visual when autocast is off; aghs shard
   //=================================================================================================================
   "paladin_holy_strike"
@@ -17,6 +17,8 @@
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
+
+    //"HasShardUpgrade"                                     "1"
     
     "AbilityCooldown"                                     "14 12 10 8"
     "AbilityCastRange"                                    "200 250 300 350"  // = attack range + bonus, important for manual casting

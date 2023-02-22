@@ -121,7 +121,7 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 			return
 		end
 
-		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1200 then
 			self.allow_ms = true
 		else
 			self.allow_ms = false
@@ -136,10 +136,10 @@ function modifier_techies_custom_land_mine:OnIntervalThink()
 		local enemies_small_radius = FindUnitsInRadius(team, point, nil, small_radius, target_team, target_type, target_flags, FIND_ANY_ORDER, false)
 
 		if #enemies_big_radius < 1 then
-			self.visible = false
+			--self.visible = false
 			return -- no need to continue
-		else
-			self.visible = true
+		--else
+			--self.visible = true
 		end
 
 		local number_of_valid_enemies = 0

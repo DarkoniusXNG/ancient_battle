@@ -2,7 +2,7 @@
 {
   //================================================================================================================
   // Warp Beast
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   //================================================================================================================
   "npc_dota_hero_warp_beast"
   {
@@ -50,7 +50,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "1" // Phantom Assassin (1); Faceless Void (1);
+    "ArmorPhysical"                                       "0" // Phantom Assassin (1); Faceless Void (1);
     "MagicalResistance"                                   "25"
 
     // Attack
@@ -88,7 +88,7 @@
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.75"                // Phantom Assassin (0.75); Faceless Void (1.0);
-    "StatusHealth"                                        "200"                 // Default
+    "StatusHealth"                                        "150"                 // unique
     "StatusMana"                                          "75"                  // Default
     "StatusManaRegen"                                     "0.5"                 // unique
 

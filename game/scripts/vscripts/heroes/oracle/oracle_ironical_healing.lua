@@ -1,18 +1,35 @@
 oracle_ironical_healing = class({})
 
-LinkLuaModifier( "modifier_oracle_ironical_healing", "heroes/oracle/oracle_ironical_healing.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_oracle_ironical_healing", "heroes/oracle/oracle_ironical_healing.lua", LUA_MODIFIER_MOTION_NONE)
+
+function oracle_ironical_healing:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function oracle_ironical_healing:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
 
 function oracle_ironical_healing:GetCooldown(level)
-  local caster = self:GetCaster()
-  local base_cooldown = self.BaseClass.GetCooldown(self, level)
+	local caster = self:GetCaster()
+	local base_cooldown = self.BaseClass.GetCooldown(self, level)
 
-  -- Talent that decreases cooldown
-  local talent = caster:FindAbilityByName("special_bonus_unique_ironical_healing_cd")
-  if talent and talent:GetLevel() > 0 then
-    return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
-  end
+	-- Talent that decreases cooldown
+	local talent = caster:FindAbilityByName("special_bonus_unique_ironical_healing_cd")
+	if talent and talent:GetLevel() > 0 then
+		return base_cooldown - math.abs(talent:GetSpecialValueFor("value"))
+	end
 
-  return base_cooldown
+	return base_cooldown
 end
 
 function oracle_ironical_healing:OnSpellStart()

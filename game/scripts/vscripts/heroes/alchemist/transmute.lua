@@ -3,25 +3,28 @@ alchemist_custom_transmute = class({})
 LinkLuaModifier("modifier_custom_transmuted_hero", "heroes/alchemist/transmute.lua", LUA_MODIFIER_MOTION_NONE)
 
 function alchemist_custom_transmute:CastFilterResultTarget(target)
-  local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
+  local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-  if target:IsRoshan() then
+  if target:IsRoshan() or target:IsCustomWardTypeUnit() then
     return UF_FAIL_CUSTOM
   elseif target:IsCourier() then
     return UF_FAIL_COURIER
   end
 
-  return defaultFilterResult
+  return default_result
 end
 
 function alchemist_custom_transmute:GetCustomCastErrorTarget(target)
   if target:IsRoshan() then
     return "#dota_hud_error_cant_cast_on_roshan"
   end
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
+  return ""
 end
 
 function alchemist_custom_transmute:GetCooldown(level)
-  --local base_cooldown = self.BaseClass.GetCooldown(self, level)
   local caster = self:GetCaster()
   local cooldown_heroes = self:GetSpecialValueFor("cooldown_heroes")
   local cooldown_creeps = self:GetSpecialValueFor("cooldown_creeps")
@@ -71,9 +74,11 @@ function alchemist_custom_transmute:OnSpellStart()
   -- Sound
   target:EmitSound("DOTA_Item.Hand_Of_Midas")
 
+  -- KVs
   local stun_hero_duration = self:GetSpecialValueFor("stun_duration")
   local gold_bounty_multiplier = self:GetSpecialValueFor("gold_bounty_multiplier")
 
+  -- Shard duration
   if caster:HasShardCustom() then
     stun_hero_duration = self:GetSpecialValueFor("shard_stun_duration")
   end
@@ -124,10 +129,6 @@ function alchemist_custom_transmute:OnSpellStart()
 end
 
 function alchemist_custom_transmute:ProcsMagicStick()
-  return true
-end
-
-function alchemist_custom_transmute:IsStealable()
   return true
 end
 

@@ -7,19 +7,19 @@ function item_custom_hand_of_midas:GetIntrinsicModifierName()
 end
 
 function item_custom_hand_of_midas:CastFilterResultTarget(target)
-  local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
-   -- Don't allow targeting Necronomicon units or Undying zombies
-  if defaultFilterResult == UF_SUCCESS then
-    if string.sub(target:GetUnitName(), 1, 21) == "npc_dota_necronomicon" or target:IsCustomWardTypeUnit() then
+  local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+  if string.sub(target:GetUnitName(), 1, 21) == "npc_dota_necronomicon" or target:IsCustomWardTypeUnit() then
+    return UF_FAIL_CUSTOM
+  elseif target:IsCourier() then
+    return UF_FAIL_COURIER
+  elseif IsServer() then
+    if target:IsZombie() then
       return UF_FAIL_CUSTOM
-    elseif IsServer() then
-      if target:IsZombie() then
-        return UF_FAIL_CUSTOM
-      end
     end
   end
 
-  return defaultFilterResult
+  return default_result
 end
 
 function item_custom_hand_of_midas:GetCustomCastErrorTarget(target)

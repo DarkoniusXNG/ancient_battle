@@ -1,15 +1,16 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Blood Mage: Rupture - Datadriven, like Bloodseeker's rupture without Aghanim Scepter
+  // Blood Mage: Rupture - like Bloodseeker's rupture without Aghanim Scepter
   // Author: Darkonius
-  // Notes: OK; 25.2.2020;
+  // Notes: OK; 2023;
   // Linkens: Blocks;
   // TO_DO:
   //=================================================================================================================
   "blood_mage_rupture"
   {
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blood_mage/rupture.lua"
     "AbilityTextureName"                                  "bloodseeker_rupture"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -27,97 +28,38 @@
 
     // Time    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "70"
+    "AbilityCooldown"                                     "70" // Bloodseeker (70);
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "200 225 250"    
-    
+    "AbilityManaCost"                                     "150 175 200" // Bloodseeker (100/150/200);
+
     // Cast Range
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastRange"                                    "800"
-    
+    "AbilityCastRange"                                    "1000" // Bloodseeker (800, 1225 with talent);
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
+      "duration"                                          "12"
+      "initial_damage_pct"                                "15"
+      "movement_damage_pct"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "12"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_damage_pct"                             "30 45 60"
+        "value"                                           "30 45 60"
         "CalculateSpellDamageTooltip"                     "1"
       }
-      "03"
+      "distance_cap_amount"                               "1500"
+      "damage_cap_interval"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "distance_cap_amount"                             "1500"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_cap_interval"                             "0.25"
+        "value"                                           "0.25"
         "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/blood_mage/rupture.lua"
-        "Function"                                        "RuptureStart"
-      }
-    }
-    
-    "Modifiers"
-    {
-      "modifier_custom_rupture" // needs tooltip
-      {
-        "IsHidden"                                        "0"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "0"
-        
-        "EffectName"                                      "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
-        "EffectAttachType"                                "attach_origin"
-        
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/rupture.lua"
-            "Function"                                    "DistanceCheck"
-          }
-        }
-        
-        "ThinkInterval"                                   "%damage_cap_interval"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/rupture.lua"
-            "Function"                                    "DistanceCheck"
-          }
-        }
-        
-        "OnDestroy"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/rupture.lua"
-            "Function"                                    "RuptureEnd"
-          }
-        }
       }
     }
   }

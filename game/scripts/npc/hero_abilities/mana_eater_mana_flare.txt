@@ -46,7 +46,7 @@
       "04" // original (12);
       {
         "var_type"                                        "FIELD_INTEGER"
-        "bonus_armor"                                     "20"
+        "bonus_armor"                                     "12"
       }
       "05" // Nether Ward (50 + 1/1.2/1.4/1.6); original (4 for units 1 for heroes);
       {

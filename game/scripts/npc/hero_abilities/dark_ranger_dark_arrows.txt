@@ -1,16 +1,16 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Dark Ranger: Dark Arrows (Q) - New Spell, Frost Arrows + adds extra damage to attacks. Units killed while under the effect of Dark Arrow will turn into Dark Minions.
+  // Dark Ranger: Dark Arrows (Q) - New Spell, Frost Arrows + Units killed while under the effect of Dark Arrow will turn into Dark Minions.
   // Author: Darkonius;
-  // Linkens: Doesn't Block (INTENTIONAL)
-  // Notes: OK; 18.9.2019; Bonus damage can damage buildings;
+  // Notes: OK; 2023;
   // Notes: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
-  // TO_DO: Rework into ability_lua; special_bonus_unique_dark_ranger_1, status resistance fix
+  // TO_DO:
   //================================================================================================================= 
   "dark_ranger_dark_arrows"
   {
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dark_ranger/dark_arrows.lua"
     "AbilityTextureName"                                  "custom/dark_ranger_dark_arrows"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -18,334 +18,39 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
-    "AbilityCastRange"                                    "550" // it should be equal to Dark Ranger's starting attack range
-    "AbilityManaCost"                                     "20"
-    "AbilityDamage"                                       "5 10 15 20"
+
+    "AbilityCastRange"                                    "500" // same as attack range, handled in lua
+
     "AbilityCooldown"                                     "0.0"
-    
+
+    "AbilityManaCost"                                     "20"
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
       "particle"                                          "particles/units/heroes/hero_venomancer/venomancer_plague_ward_projectile.vpcf"
     }
-    
-    "AbilitySpecial"
+
+    "AbilityValues"
     {
-      "01"
+      "dark_arrow_damage"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "minion_duration"                                 "40"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_health"                              "250 300 350 400"    
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_damage"                              "20 25 35 45"
+        "value"                                           "5 10 15 20"
+        "special_bonus_unique_dark_ranger_1"              "+15"
         "CalculateSpellDamageTooltip"                     "0"
       }
-      "04"
+      "movement_speed_slow"                               "-10 -25 -40 -55"
+      "attack_speed_slow"                                 "-10 -20 -30 -40"
+      "hero_slow_duration"                                "1.5"
+      "creep_slow_duration"                               "3"
+
+      "minion_duration"                                   "30"
+      "dark_minion_health"                                "250 300 350 400"    
+      "dark_minion_damage"
       {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_1_count"                             "1 0 0 0"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_2_count"                             "0 1 0 0"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_3_count"                             "0 0 1 0"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_minion_4_count"                             "0 0 0 1"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_speed_slow"                             "-15 -30 -45 -60"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-10 -20 -30 -40"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_slow_duration"                              "1.5"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "creep_slow_duration"                             "3"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "dark_arrow_damage"                               "5 10 15 20"
-        "LinkedSpecialBonus"                              "special_bonus_unique_dark_ranger_1"
-      }
-    }
-    
-    "Modifiers"
-    { 
-      "modifier_dark_arrow"    // doesn't need tooltip
-      {
-        "Passive"                                         "1"    // needed for applying when learned
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "Orb"
-        {
-          "Priority"                                      "DOTA_ORB_PRIORITY_ABILITY"
-          "ProjectileName"                                "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
-          "CastAttack"                                    "1"
-        }
-        
-        "OnOrbFire"
-        {
-          "SpendMana"
-          {
-            "Mana"                                        "%AbilityManaCost"
-          }
-          
-          "FireSound"
-          {
-            "EffectName"                                  "Hero_DrowRanger.FrostArrows"
-            "Target"                                      "CASTER"
-          }
-        }
-        
-        "OnOrbImpact"
-        {
-          "ApplyModifier"
-          {
-            "ModifierName"                                "modifier_dark_arrow_spawn"
-            "Target"                                      "TARGET"
-          }
-          
-          "ApplyModifier"
-          {
-            "ModifierName"                                "modifier_dark_arrow_slow"
-            "Target"
-            {
-              "Center"                                    "TARGET"
-              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Types"                                     "DOTA_UNIT_TARGET_BASIC"
-            }
-            "Duration"                                    "%creep_slow_duration"
-          }
-          
-          "ApplyModifier"
-          {
-            "ModifierName"                                "modifier_dark_arrow_slow"
-            "Target"
-            {
-              "Center"                                    "TARGET"
-              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Types"                                     "DOTA_UNIT_TARGET_HERO"
-            }
-            "Duration"                                    "%hero_slow_duration"
-          }
-          
-          "FireSound"
-          {
-            "EffectName"                                  "Hero_Medusa.MysticSnake.Target"
-            "Target"                                      "CASTER"
-          }
-          
-          "Damage"
-          {
-            "Type"                                        "DAMAGE_TYPE_PHYSICAL"
-            "Damage"                                      "%AbilityDamage"
-            "Target"
-            {
-              "Center"                                    "TARGET"
-              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-            }
-          }
-        }
-      }
-      
-      "modifier_dark_arrow_spawn" // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "0"
-        
-        "Duration"                                        "0.3"
-        
-        "OnDeath"
-        {
-          "SpawnUnit"
-          {
-            "UnitName"                                    "npc_dota_dark_arrow_minion_1"
-            "UnitCount"                                   "%dark_minion_1_count"
-            "SpawnRadius"                                 "1"
-            "Duration"                                    "%minion_duration"
-            
-            "Target"
-            {
-              "Center"                                    "UNIT"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
-            }
-            
-            "GrantsGold"                                  "1"
-            "GrantsXP"                                    "1"
-            
-            "OnSpawn"
-            {
-              "FireSound"
-              {
-                "EffectName"                              "Hero_Medusa.MysticSnake.Return"
-                "Target"                                  "CASTER"
-              }
-              
-              "ApplyModifier"
-              {
-                "ModifierName"                            "modifier_dark_arrow_phased"
-                "Target"                                  "TARGET"
-              }
-            }
-          }
-          
-          "SpawnUnit"
-          {
-            "UnitName"                                    "npc_dota_dark_arrow_minion_2"
-            "UnitCount"                                   "%dark_minion_2_count"
-            "SpawnRadius"                                 "1"
-            "Duration"                                    "%minion_duration"
-            
-            "Target"
-            {
-              "Center"                                    "UNIT"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
-            }
-            
-            "GrantsGold"                                  "1"
-            "GrantsXP"                                    "1"
-            
-            "OnSpawn"
-            {
-              "FireSound"
-              {
-                "EffectName"                              "Hero_Medusa.MysticSnake.Target"
-                "Target"                                  "CASTER"
-              }
-              
-              "ApplyModifier"
-              {
-                "ModifierName"                            "modifier_dark_arrow_phased"
-                "Target"                                  "TARGET"
-              }
-            }
-          }
-          
-          "SpawnUnit"
-          {
-            "UnitName"                                    "npc_dota_dark_arrow_minion_3"
-            "UnitCount"                                   "%dark_minion_3_count"
-            "SpawnRadius"                                 "1"
-            "Duration"                                    "%minion_duration"
-            
-            "Target"
-            {
-              "Center"                                    "UNIT"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
-            }
-            
-            "GrantsGold"                                  "1"
-            "GrantsXP"                                    "1"
-            
-            "OnSpawn"
-            {
-              "FireSound"
-              {
-                "EffectName"                              "Hero_Medusa.MysticSnake.Target"
-                "Target"                                  "CASTER"
-              }
-              
-              "ApplyModifier"
-              {
-                "ModifierName"                            "modifier_dark_arrow_phased"
-                "Target"                                  "TARGET"
-              }
-            }
-          }
-          
-          "SpawnUnit"
-          {
-            "UnitName"                                    "npc_dota_dark_arrow_minion_4"
-            "UnitCount"                                   "%dark_minion_4_count"
-            "SpawnRadius"                                 "1"
-            "Duration"                                    "%minion_duration"
-            
-            "Target"
-            {
-              "Center"                                    "UNIT"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
-            }  
-            
-            "GrantsGold"                                  "1"
-            "GrantsXP"                                    "1"
-            
-            "OnSpawn"
-            {
-              "FireSound"
-              {
-                "EffectName"                              "Hero_Medusa.MysticSnake.Target"
-                "Target"                                  "CASTER"
-              }
-              
-              "ApplyModifier"
-              {
-                "ModifierName"                            "modifier_dark_arrow_phased"
-                "Target"                                  "TARGET"
-              }
-            }
-          }
-        }
-      }
-      
-      "modifier_dark_arrow_slow"  // needs tooltip
-      {
-        "IsHidden"                                        "0"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "1"
-        
-        "EffectName"                                      "particles/generic_gameplay/generic_slowed_cold.vpcf"
-        
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%movement_speed_slow"
-          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
-        }
-      }
-      
-      "modifier_dark_arrow_phased"  // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsPurgable"                                      "0"
-        
-        "Duration"                                        "1.0"
-        
-        "States"
-        {
-          "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
-        }
+        "value"                                           "25 30 35 40"
+        "CalculateSpellDamageTooltip"                     "0"
       }
     }
   }
@@ -357,19 +62,15 @@
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"                                           "special_bonus_undefined"
+    "BaseClass"                                           "special_bonus_base"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "15"
-      }
+      "tooltip_value"                                     "15"
     }
   }
 }

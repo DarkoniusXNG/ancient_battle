@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Linkens: Blocks;
   // Notes: OK; 2023; Dynamic cooldown, lower when cast on allies or self
-  // TO_DO:
+  // TO_DO: Rewrite in lua;
   //================================================================================================================= 
   "firelord_soul_burn"
   {

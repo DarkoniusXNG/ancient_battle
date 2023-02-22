@@ -19,9 +19,9 @@
     "AbilityValues"
     {
       "bonus_damage"                                      "8 16 24 32"
-      "full_damage_radius"                                "90 130 170 210"
-      "half_damage_radius"                                "180 220 260 300"
-      "quarter_damage_radius"                             "320 360 400 440"
+      "full_damage_radius"                                "150 200 250 300" // original (90/130/170/210)
+      "half_damage_radius"                                "200 250 300 350" // original (180/220/260/300)
+      "quarter_damage_radius"                             "250 300 350 400" // original (320/360/400/440)
     }
   }
 }

@@ -1,0 +1,53 @@
+"DOTAAbilities"
+{
+
+// Far Seer Far Sight
+// Author: Noya
+// Description: Reveals the area of the map that is cast upon. Also reveals invisible units.
+
+"far_seer_far_sight"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "far_seer_far_sight"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "0.0"
+
+    "AbilityManaCost"                                     "75 60 50"
+
+    "precache"
+    {
+      "particle"                                          "particles/items_fx/dust_of_appearance.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "600 1800 4000"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "8"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/far_seer/far_sight.lua"
+        "Function"                                        "FarSight"
+        "Target"                                          "POINT"
+      }
+    }
+}
+
+}

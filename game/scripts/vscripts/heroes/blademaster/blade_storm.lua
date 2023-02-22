@@ -5,20 +5,17 @@ end
 LinkLuaModifier("modifier_custom_blade_storm", "heroes/blademaster/modifier_custom_blade_storm.lua", LUA_MODIFIER_MOTION_NONE)
 
 function blademaster_blade_storm:OnSpellStart()
-	if IsServer() then
-		local caster = self:GetCaster()
+	local caster = self:GetCaster()
 
-		if caster == nil then
-			return nil
-		end
+	-- Basic Dispel
+	caster:Purge(false, true, false, false, false)
 
-		-- Basic Dispel
-		caster:Purge(false, true, false, false, false)
-
-		-- Apply the buff
-		local blade_storm_duration = self:GetSpecialValueFor("duration")
-		caster:AddNewModifier(caster, self, "modifier_custom_blade_storm", {duration = blade_storm_duration})
+	-- Apply the buff
+	local blade_storm_duration = self:GetSpecialValueFor("duration")
+	if caster:HasShardCustom() then
+		blade_storm_duration = self:GetSpecialValueFor("shard_duration")
 	end
+	caster:AddNewModifier(caster, self, "modifier_custom_blade_storm", {duration = blade_storm_duration})
 end
 
 function blademaster_blade_storm:ProcsMagicStick()

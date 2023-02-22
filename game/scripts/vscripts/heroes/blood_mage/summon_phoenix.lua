@@ -48,26 +48,29 @@ end
 
 -- Called OnDeath - Removes the phoenix and spawns the egg with a timer
 function PhoenixIntoEgg(event)
-    local caster = event.caster -- the phoenix
-    local ability = event.ability
-    local hero = caster:GetOwner()
-    local phoenix_egg_duration = ability:GetLevelSpecialValueFor("egg_duration", ability:GetLevel() - 1)
+	local caster = event.caster -- the phoenix
+	local ability = event.ability
+	local hero = caster:GetOwner()
+	local phoenix_egg_duration = ability:GetLevelSpecialValueFor("egg_duration", ability:GetLevel() - 1)
 
-    -- Set the position, a bit floating over the ground
-    local origin = caster:GetAbsOrigin()
-    local position = Vector(origin.x, origin.y, origin.z+50)
+	-- Set the position, a bit floating over the ground
+	local origin = caster:GetAbsOrigin()
+	local position = Vector(origin.x, origin.y, origin.z+50)
 
-    local phoenix_egg = CreateUnitByName("npc_dota_custom_phoenix_egg", origin, true, hero, hero, hero:GetTeamNumber())
-    phoenix_egg:SetAbsOrigin(position)
+	-- Hero can be removed 1 min Charm ends or Super Illusion expires
+	if hero and not hero:IsNull() then
+		local phoenix_egg = CreateUnitByName("npc_dota_custom_phoenix_egg", origin, true, hero, hero, hero:GetTeamNumber())
+		phoenix_egg:SetAbsOrigin(position)
 
-    -- Keep reference to the egg
-    hero.phoenix_egg = phoenix_egg
+		-- Keep reference to the egg
+		hero.phoenix_egg = phoenix_egg
 
-    -- Apply modifiers for the summon properties
-    phoenix_egg:AddNewModifier(hero, ability, "modifier_kill", {duration = phoenix_egg_duration})
+		-- Apply modifiers for the summon properties
+		phoenix_egg:AddNewModifier(hero, ability, "modifier_kill", {duration = phoenix_egg_duration})
+	end
 
-    -- Remove/Hide the phoenix
-    --caster:RemoveSelf()
+	-- Remove/Hide the phoenix
+	--caster:RemoveSelf()
 	--caster:ForceKill(true)
 	caster:AddNoDraw()
 end

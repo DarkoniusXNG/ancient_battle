@@ -9,16 +9,25 @@ LinkLuaModifier("modifier_custom_last_word_silence_active", "heroes/silencer/mod
 LinkLuaModifier("modifier_custom_last_word_disarm", "heroes/silencer/modifier_custom_last_word_disarm.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_last_word_active", "heroes/silencer/modifier_custom_last_word_active.lua", LUA_MODIFIER_MOTION_NONE)
 
-function silencer_custom_last_word:IsStealable()
-	return true
-end
-
-function silencer_custom_last_word:IsHiddenWhenStolen()
-	return false
-end
-
 function silencer_custom_last_word:GetIntrinsicModifierName()
 	return "modifier_custom_last_word_aura_applier"
+end
+
+function silencer_custom_last_word:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function silencer_custom_last_word:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
 end
 
 function silencer_custom_last_word:OnSpellStart()

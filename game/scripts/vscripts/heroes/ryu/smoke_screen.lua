@@ -6,18 +6,9 @@ LinkLuaModifier("modifier_stealth_assassin_smoke_screen_thinker", "heroes/ryu/sm
 LinkLuaModifier("modifier_stealth_assassin_smoke_screen_debuff", "heroes/ryu/smoke_screen.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_stealth_assassin_smoke_screen_mini_stun", "heroes/ryu/smoke_screen.lua", LUA_MODIFIER_MOTION_NONE)
 
-function stealth_assassin_smoke_screen:IsStealable()
-	return true
-end
-
-function stealth_assassin_smoke_screen:IsHiddenWhenStolen()
-	return false
-end
-
 function stealth_assassin_smoke_screen:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
-
 
 function stealth_assassin_smoke_screen:OnSpellStart()
 	local caster = self:GetCaster()

@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Notes: OK; 1.11.2018; Blink Dagger doesn't go on cooldown during Divine Shield; Has Aghanim Scepter upgrade;
   // Notes: If you need to nerf duration nerf it by 1 second; If ability needs a buff, reduce mana cost;
-  // TO_DO: 
+  // TO_DO: Rewrite in lua;
   //=================================================================================================================
   "paladin_divine_shield"
   {

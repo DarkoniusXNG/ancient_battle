@@ -54,9 +54,9 @@
 
     "AbilityValues"
     {
-      "bonus_movement_speed"                              "10"
+      "bonus_movement_speed"                              "8"
       "bonus_attack_speed"                                "50"
-      "bonus_agility"                                     "18"
+      "bonus_agility"                                     "16"
       "active_speed_bonus"                                "30"
       "duration"                                          "6.0"
     }

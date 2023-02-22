@@ -1,0 +1,551 @@
+"DOTAAbilities"
+{
+
+// Pit Lord Doom
+// Author: Noya
+// Description: Marks a target unit for the manifestation of a Demon. The afflicted unit will take 40 damage per second until it dies. Upon its death, a great Demon will spawn from its corpse. Doom cannot be dispelled or canceled.
+
+"underlord_doom"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "underlord_doom"
+    "MaxLevel"                                            "1"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+
+    "TargetsAllowed"                                      "organic"
+    "MaxCreepLevel"                                       "5"
+
+    "AbilityCastRange"                                    "650"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "120.0"
+
+    "AbilityManaCost"                                     "150"
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"
+      "particle"                                          "particles/units/heroes/hero_doom_bringer/doom_bringer_lvl_death.vpcf"
+      "particle"                                          "particles/econ/items/doom/doom_f2p_death_effect/doom_bringer_f2p_death.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+      "model"                                             "models/heroes/doom/doom.vmdl"
+
+      // Doom Guard
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"     
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+
+      "particle"                                          "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+      "particle"                                          "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+      "particle"                                          "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_per_second"                               "40"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "doom_guard_duration"                             "180"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_doom"
+        "Target"                                          "TARGET"
+      }
+
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_DoomBringer.Doom"
+        "Target"                                          "TARGET"
+      } 
+    }
+    
+    "Modifiers"
+    {
+      "modifier_doom"
+      {
+        "IsDebuff"                                        "1"
+        
+        "EffectName"                                      "particles/units/heroes/hero_doom_bringer/doom_bringer_doom.vpcf"
+        "EffectAttachType"                                "follow_origin"
+
+        "ThinkInterval"                                   "1.0"
+        "OnIntervalThink"
+        {
+          "Damage"
+          {
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%damage_per_second"
+          }
+        }
+
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/underlord/doom.lua"
+            "Function"                                    "DoomStart"
+          }
+        }
+        
+        "OnDeath"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/underlord/doom.lua"
+            "Function"                                    "DoomEnd"
+          }
+        }
+      }
+    }   
+}
+
+
+// Sub Abilities
+
+"doom_guard_war_stomp"
+{
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "MaxLevel"                                            "1"
+    "AbilityTextureName"                                  "doom_guard_war_stomp"
+
+    "TargetsAllowed"                                      "ground"
+
+    "AbilityCastPoint"                                    "0.5"
+    "AbilityCooldown"                                     "6.0"
+    "AbilityManaCost"                                     "90"
+
+    // Indicator
+    "AbilityCastRange"                                    "%radius"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "250"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_duration_hero"                              "2.0"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "stun_duration_creep"                             "3.0"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "stomp_damage"                                    "25"
+      }
+    }
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+      "particle"                                          "particles/generic_gameplay/generic_stunned.vpcf"
+    }
+
+    "OnSpellStart"
+    {
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "EffectRadius"                                    "%radius"
+        "Target"                                          "CASTER"
+        "ControlPoints"
+        {
+          "01"                                            "%radius 0 %radius"
+        }
+      }
+
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Centaur.HoofStomp"
+        "Target"                                          "CASTER"
+      }
+
+      "Damage"
+      {
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        }
+        "Type"                                            "DAMAGE_TYPE_MAGICAL"
+        "Damage"                                          "%stomp_damage"
+      }
+
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_war_stomp"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO"
+        }
+        "Duration"                                        "%stun_duration_hero"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_war_stomp"
+        "Target"
+        {
+          "Center"                                        "CASTER"
+          "Radius"                                        "%radius"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%stun_duration_creep"
+      }   
+    }
+
+    "Modifiers"
+    {
+      "modifier_war_stomp"
+      {
+        "IsDebuff"                                        "1"
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"         
+        }
+        "OverrideAnimation"                               "ACT_DOTA_DISABLED"
+        "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+      }
+    }
+}
+
+"doom_guard_cripple"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "undead_cripple"
+    "MaxLevel"                                            "1"
+    
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
+
+    "TargetsAllowed"                                      "organic"
+    
+    "AbilityCastRange"                                    "600"
+    "AbilityCastPoint"                                    "0"
+    "AbilityCooldown"                                     "10"
+    "AbilityManaCost"                                     "175"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "creep_duration"                                  "60"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "hero_duration"                                   "10"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "attack_speed_reduction"                          "-50"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "movement_speed_reduction"                        "-75"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_reduction"                                "-50"
+      }
+    }
+    
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_skeletonking/skeletonking_hellfireblast_debuff.vpcf"
+      "soundfile"                                         "sounds/items/rod_of_atos.vsnd"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "DOTA_Item.RodOfAtos.Activate"
+        "Target"                                          "TARGET"
+      }   
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_cripple"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_HERO"
+        }
+        "Duration"                                        "%hero_duration"
+      }
+      
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_cripple"
+        "Target"
+        {
+          "Center"                                        "TARGET"
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"                                         "DOTA_UNIT_TARGET_BASIC"
+        }
+        "Duration"                                        "%creep_duration"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_cripple"
+      {
+        "IsPurgable"                                      "1"
+        "IsDebuff"                                        "1"
+        
+        "EffectName"                                      "particles/units/heroes/hero_skeletonking/skeletonking_hellfireblast_debuff.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"  "%damage_reduction"
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%movement_speed_reduction"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT_SECONDARY"  "%attack_speed_reduction"       
+        }
+      }   
+    }
+}
+
+"doom_guard_rain_of_fire"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "underlord_rain_of_fire"
+    "MaxLevel"                                            "1"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"                                "ACT_DOTA_VICTORY"
+
+    "AbilityCastRange"                                    "800"
+    "AbilityCastPoint"                                    "0.6"       
+    "AbilityCooldown"                                     "8"
+    "AbilityManaCost"                                     "85"
+
+    "AOERadius"                                           "%radius"
+    "AbilityChannelTime"                                  "6.0"
+
+    "BuildingReduction"                                   "0.5"
+    
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "200"
+      }       
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "wave_count"                                      "6"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "wave_damage"                                     "25"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_wave_damage"                                 "125"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "burn_damage"                                     "5"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "burn_interval"                                   "1.0"
+      }
+      "07"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "burn_duration"                                   "3.0"
+      }
+    }
+
+    "OnAbilityPhaseStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_AbyssalUnderlord.Firestorm.Start"
+        "Target"                                          "CASTER"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/underlord/rain_of_fire.lua"
+        "Function"                                        "RainOfFireStart"
+        "Target"                                          "POINT"
+      }
+
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_rain_of_fire_channelling"
+        "Target"                                          "CASTER"
+      }
+    }
+
+    "OnChannelFinish"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/underlord/rain_of_fire.lua"
+        "Function"                                        "RainOfFireEnd"
+      } 
+
+      "RemoveModifier"
+      {
+        "ModifierName"                                    "modifier_rain_of_fire_channelling"
+        "Target"                                          "CASTER"
+      }   
+    }
+    
+    "Modifiers"
+    {
+      "modifier_rain_of_fire_channelling"
+      {
+        "IsHidden"                                        "1"
+        "OverrideAnimation"                               "ACT_DOTA_VICTORY"
+      }
+
+      "modifier_rain_of_fire_thinker"
+      {
+        "OnCreated"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/underlord/rain_of_fire.lua"
+            "Function"                                    "RainOfFireWave"
+          }
+          
+          "ApplyModifier"
+          {
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_BOTH"
+              "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+            }
+            "ModifierName"                                "modifier_rain_of_fire_burn"
+          }
+        }
+        "ThinkInterval"                                   "1.0"
+        "OnIntervalThink"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/underlord/rain_of_fire.lua"
+            "Function"                                    "RainOfFireWave"
+          }
+          
+          "ApplyModifier"
+          {
+            "Target"
+            {
+              "Center"                                    "TARGET"
+              "Radius"                                    "%radius"
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_BOTH"
+              "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+            }
+            "ModifierName"                                "modifier_rain_of_fire_burn"
+          }
+
+          "FireSound"
+          {
+            "EffectName"                                  "Hero_Jakiro.LiquidFire"
+            "Target"                                      "TARGET"
+          }
+        }
+      }
+
+      "modifier_rain_of_fire_burn"
+      {
+        "IsHidden"                                        "0"
+        "IsDebuff"                                        "1"
+        "Duration"                                        "%burn_duration"
+        "OnCreated"
+        {
+          "AttachEffect"
+          {
+            "Target"                                      "TARGET"
+            "EffectName"                                  "particles/custom/neutral/firestorm_wave_burn.vpcf"
+            "EffectAttachType"                            "follow_origin"
+          }
+        }                                                                                                                                                                           
+
+        "ThinkInterval"                                   "%burn_interval"
+        "OnIntervalThink"
+        {
+          "Damage"
+          {
+            "Target"                                      "TARGET"
+            "Type"                                        "DAMAGE_TYPE_MAGICAL"
+            "Damage"                                      "%burn_damage"
+          }               
+        }   
+      }
+    }  
+}
+
+}

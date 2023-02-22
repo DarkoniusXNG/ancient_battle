@@ -44,5 +44,5 @@
 		
 		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_1"                      "+{s:value}% Rot Slow"
 		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_2"                      "+{s:value} Meat Hook Damage"
-		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_3"                      "-{s:value} Meat Hook Cooldown"
+		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_3"                      "-{s:value}s Meat Hook Cooldown"
 		"DOTA_Tooltip_ability_special_bonus_unique_pudge_custom_4"                      "+{s:value} Meat Hook Speed"

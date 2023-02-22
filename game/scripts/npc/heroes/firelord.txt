@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Fire Lord; 2022;
+  // HERO: Fire Lord; 2023;
   // TO_DO: special_bonus_unique_fire_lord_1; special_bonus_unique_fire_lord_2; special_bonus_unique_fire_lord_3;
   //=================================================================================================================
   "npc_dota_hero_fire_lord"
@@ -43,7 +43,7 @@
     
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                    // SF (1);
+    "ArmorPhysical"                                       "0"                    // SF (1); original (1);
     "MagicalResistance"                                   "25"                  // Default
     
     // Attack
@@ -75,7 +75,7 @@
     
     // Status
     //----------------------------------------------------------------
-    "StatusHealth"                                        "200"                  // like SF
+    "StatusHealth"                                        "150"                  // SF (200);
     "StatusHealthRegen"                                   "0.25"                  // like SF
     "StatusMana"                                          "75"                  // like SF
     "StatusManaRegen"                                     "0.3"                  // like SF

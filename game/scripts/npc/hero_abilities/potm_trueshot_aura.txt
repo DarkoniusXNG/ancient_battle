@@ -1,0 +1,35 @@
+"DOTAAbilities"
+{
+
+// Priestess of the Moon Trueshot Aura
+// Author: Noya
+// Description: An aura that gives friendly units around the Priestess bonus damage to their ranged attacks.
+
+"potm_trueshot_aura"
+{
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/potm/trueshot_aura.lua"
+    "AbilityTextureName"                                  "potm_trueshot_aura"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+    "AbilityCastRange"                                    "900"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "damage_bonus_percent"                            "10 20 30"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "900"
+      }
+    }
+}
+
+}

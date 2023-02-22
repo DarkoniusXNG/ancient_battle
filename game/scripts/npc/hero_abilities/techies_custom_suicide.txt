@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Techies: Suicide Squad Attack (E) - like old techies suicide squad attack but without respawn time reduction
   // Author: Darkonius
-  // Notes: OK; 2022; Damage Type: Composite; Has shard upgrade - turns it into Blast Off with stun; no unit targetting!
+  // Notes: OK; 2023; Damage Type: Composite; Has shard upgrade - turns it into Blast Off with stun; no unit targetting!
   // TO_DO:
   //=================================================================================================================
   "techies_custom_suicide"
@@ -21,7 +21,7 @@
     "AbilityCastRange"                                    "100" // old (100);
     "AbilityCastPoint"                                    "0.0" // old (0);
 
-    "AbilityCooldown"                                     "120" // old (160/140/120/100)
+    "AbilityCooldown"                                     "100" // old (160/140/120/100)
 
     "AbilityManaCost"                                     "100 125 150 175" // old (100/125/150/175)
     "AbilityProcsMagicStick"                              "1"
@@ -34,13 +34,24 @@
 
     "AbilityValues"
     {
-      "small_radius"                                      "200" // old (200)
-      "big_radius"                                        "500" // old (500)
-      "small_radius_damage"                               "650 850 1150 1550" // full damage
-      "big_radius_damage"                                 "325 425 575 775" // partial damage
+      "small_radius_damage"
+      {
+        "value"                                           "700 900 1200 1600" // full damage
+        "special_bonus_unique_techies_custom_6"           "+500"
+      }
+      "big_radius_damage"
+      {
+        "value"                                           "350 450 600 800" // partial damage - not in tooltip
+        "special_bonus_unique_techies_custom_6"           "+250"
+      }
+
+      "small_radius"                                      "200" // full damage radius; old (200)
+      "big_radius"                                        "500" // half damage radius; old (500)
+
       "building_dmg_reduction"                            "40" // latest (40%); mid (70%); first version (100%)
       "vision_radius"                                     "400" // old (400)
       "vision_duration"                                   "2.0" // old (2)
+
       "shard_stun_duration"
       {
         "value"                                           "1.5" // Blast Off (1.75)
@@ -95,8 +106,25 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "90"
+        "value"                                           "75"
       }
+    }
+  }
+
+  //=================================================================================================================
+  // Suicide talent: Increases damage
+  //=================================================================================================================
+  "special_bonus_unique_techies_custom_6"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"                                           "special_bonus_base"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    
+    "AbilityValues"
+    {
+      "tooltip_value"                                     "500"
     }
   }
 }

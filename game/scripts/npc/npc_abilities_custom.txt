@@ -121,7 +121,10 @@
 #base "hero_abilities/paladin_storm_hammer.txt"
 #base "hero_abilities/paladin_holy_strike.txt"
 
-#base "hero_abilities/mountain_king_thunder_clap.txt"
+#base "hero_abilities/mountain_giant_thunder_clap.txt"
+#base "hero_abilities/mountain_giant_storm_bolt.txt"
+#base "hero_abilities/mountain_giant_bash.txt"
+#base "hero_abilities/mountain_giant_avatar.txt"
 
 #base "hero_abilities/perun_ball_of_lightning.txt"
 #base "hero_abilities/perun_electric_shield.txt"
@@ -131,6 +134,10 @@
 #base "hero_abilities/perun_sky_wrath.txt"
 
 #base "hero_abilities/potm_shadow_meld.txt"
+#base "hero_abilities/potm_scout.txt"
+#base "hero_abilities/potm_searing_arrows.txt"
+#base "hero_abilities/potm_trueshot_aura.txt"
+#base "hero_abilities/potm_starfall.txt"
 
 #base "hero_abilities/pudge_custom_meat_hook.txt"
 #base "hero_abilities/pudge_custom_rot.txt"
@@ -189,6 +196,66 @@
 #base "hero_abilities/techies_custom_explosive_shot.txt"
 #base "hero_abilities/techies_custom_remote_mines.txt"
 #base "hero_abilities/techies_custom_special_talents.txt"
+
+#base "hero_abilities/beastmaster_summon_bear.txt"
+#base "hero_abilities/beastmaster_summon_quilbeast.txt"
+#base "hero_abilities/beastmaster_summon_hawk.txt"
+#base "hero_abilities/beastmaster_stampede.txt"
+
+#base "hero_abilities/crypt_lord_impale.txt"
+#base "hero_abilities/crypt_lord_spiked_carapace.txt"
+#base "hero_abilities/crypt_lord_carrion_beetles.txt"
+#base "hero_abilities/crypt_lord_locust_swarm.txt"
+
+#base "hero_abilities/demon_hunter_mana_burn.txt"
+#base "hero_abilities/demon_hunter_immolation.txt"
+#base "hero_abilities/demon_hunter_evasion.txt"
+#base "hero_abilities/demon_hunter_demon_form.txt"
+
+#base "hero_abilities/dread_lord_carrion_swarm.txt"
+#base "hero_abilities/dread_lord_sleep.txt"
+#base "hero_abilities/dread_lord_vampiric_aura.txt"
+#base "hero_abilities/dread_lord_inferno.txt"
+
+#base "hero_abilities/elder_minotaur_shockwave.txt"
+#base "hero_abilities/elder_minotaur_war_stomp.txt"
+#base "hero_abilities/elder_minotaur_endurance_aura.txt"
+#base "hero_abilities/elder_minotaur_reincarnation.txt"
+
+#base "hero_abilities/far_seer_far_sight.txt"
+#base "hero_abilities/far_seer_chain_lightning.txt"
+#base "hero_abilities/far_seer_feral_spirit.txt"
+#base "hero_abilities/far_seer_earthquake.txt"
+
+#base "hero_abilities/keeper_entangling_roots.txt"
+#base "hero_abilities/keeper_force_of_nature.txt"
+#base "hero_abilities/keeper_thorns_aura.txt"
+#base "hero_abilities/keeper_tranquility.txt"
+
+#base "hero_abilities/naga_sea_witch_forked_lightning.txt"
+#base "hero_abilities/naga_sea_witch_frost_arrows.txt"
+#base "hero_abilities/naga_sea_witch_mana_shield.txt"
+#base "hero_abilities/naga_sea_witch_tornado.txt"
+
+#base "hero_abilities/phantom_warden_fan_of_knives.txt"
+#base "hero_abilities/phantom_warden_blink.txt"
+#base "hero_abilities/phantom_warden_shadow_strike.txt"
+#base "hero_abilities/phantom_warden_avatar_of_vengeance.txt"
+
+#base "hero_abilities/shadow_hunter_healing_wave.txt"
+#base "hero_abilities/shadow_hunter_hex.txt"
+#base "hero_abilities/shadow_hunter_serpent_ward.txt"
+#base "hero_abilities/shadow_hunter_big_bad_voodoo.txt"
+
+#base "hero_abilities/tinker_pocket_factory.txt"
+#base "hero_abilities/tinker_cluster_rockets.txt"
+#base "hero_abilities/tinker_engineering_upgrade.txt"
+#base "hero_abilities/tinker_robo_goblin.txt"
+
+#base "hero_abilities/underlord_rain_of_fire.txt"
+#base "hero_abilities/underlord_howl_of_terror.txt"
+#base "hero_abilities/underlord_cleaving_attack.txt"
+#base "hero_abilities/underlord_doom.txt"
 
 #base "unit_abilities/combie_death_lust.txt"
 #base "unit_abilities/corpse_lord_summon_undead.txt"

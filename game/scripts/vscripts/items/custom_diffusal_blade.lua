@@ -9,19 +9,20 @@ function item_custom_diffusal_blade:GetIntrinsicModifierName()
 end
 
 function item_custom_diffusal_blade:CastFilterResultTarget(target)
-  local defaultFilterResult = self.BaseClass.CastFilterResultTarget(self, target)
+  local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-  if defaultFilterResult == UF_SUCCESS then
-    if target:IsCustomWardTypeUnit() then
-      return UF_FAIL_CUSTOM
-    end
+  if target:IsCustomWardTypeUnit() then
+    return UF_FAIL_CUSTOM
   end
 
-  return defaultFilterResult
+  return default_result
 end
 
 function item_custom_diffusal_blade:GetCustomCastErrorTarget(target)
-  return "#dota_hud_error_cant_cast_on_other"
+  if target:IsCustomWardTypeUnit() then
+    return "#dota_hud_error_cant_cast_on_other"
+  end
+  return ""
 end
 
 function item_custom_diffusal_blade:OnSpellStart()
@@ -273,6 +274,8 @@ function modifier_item_custom_purged_enemy_hero:OnCreated()
 			self.slow = movement_slow
 		end
 	end
+
+	self.duration = self:GetDuration()
 end
 
 modifier_item_custom_purged_enemy_hero.OnRefresh = modifier_item_custom_purged_enemy_hero.OnCreated
@@ -284,7 +287,7 @@ function modifier_item_custom_purged_enemy_hero:DeclareFunctions()
 end
 
 function modifier_item_custom_purged_enemy_hero:GetModifierMoveSpeedBonus_Percentage()
-	return self.slow
+	return 0 - math.abs(self.slow * (self:GetRemainingTime() / self.duration)) -- decaying slow
 end
 
 function modifier_item_custom_purged_enemy_hero:GetTexture()

@@ -1,7 +1,24 @@
 oracle_will_to_live = class({})
 
-LinkLuaModifier( "modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier( "modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_oracle_will_to_live", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_oracle_will_to_live_delay", "heroes/oracle/oracle_will_to_live.lua", LUA_MODIFIER_MOTION_NONE)
+
+function oracle_will_to_live:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function oracle_will_to_live:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
 
 function oracle_will_to_live:OnSpellStart()
 	local caster = self:GetCaster()
@@ -31,17 +48,26 @@ function modifier_oracle_will_to_live:IsPurgable()
 	return false
 end
 
-function modifier_oracle_will_to_live:OnCreated( kv )
-	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
+function modifier_oracle_will_to_live:OnCreated()
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		self.delay = self:GetAbility():GetSpecialValueFor("damage_delay")
+		self.hp_regen_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.heal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.spell_lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+	end
 end
 
-function modifier_oracle_will_to_live:OnRefresh( kv )
-	self.delay = self:GetAbility():GetSpecialValueFor( "damage_delay" )
-end
+modifier_oracle_will_to_live.OnRefresh = modifier_oracle_will_to_live.OnCreated
 
 function modifier_oracle_will_to_live:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_AVOID_DAMAGE,
+		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
+		MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
 	}
 end
 
@@ -115,6 +141,22 @@ if IsServer() then
 	end
 end
 
+function modifier_oracle_will_to_live:GetModifierHPRegenAmplify_Percentage()
+  return self.hp_regen_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+end
+
+function modifier_oracle_will_to_live:GetModifierHealAmplify_PercentageTarget()
+  return self.heal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+end
+
+function modifier_oracle_will_to_live:GetModifierLifestealRegenAmplify_Percentage()
+  return self.lifesteal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+end
+
+function modifier_oracle_will_to_live:GetModifierSpellLifestealRegenAmplify_Percentage()
+  return self.spell_lifesteal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+end
+
 function modifier_oracle_will_to_live:GetEffectName()
 	return "particles/units/heroes/hero_dazzle/dazzle_shallow_grave.vpcf"
 end
@@ -177,6 +219,7 @@ if IsServer() then
 		-- Particles
 		local particle_1 = ParticleManager:CreateParticle("particles/items2_fx/soul_ring_blood.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
 		ParticleManager:ReleaseParticleIndex(particle_1)
+		-- Check if damage is non-lethal
 		if damage <= parent:GetHealth() or bit.band(self.flags, DOTA_DAMAGE_FLAG_NON_LETHAL) > 0 then
 			local particle_2 = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shallow_grave_glyph_flare.vpcf", PATTACH_CENTER_FOLLOW, parent)
 			ParticleManager:ReleaseParticleIndex(particle_2)
@@ -185,7 +228,7 @@ if IsServer() then
 		-- Sound
 		parent:EmitSound("DOTA_Item.Maim")
 
-		-- Apply damage
+		-- Apply damage (the damage info is the same as original damage info except damage value and inflictor/ability)
 		local damage_table = {
 			victim = parent,
 			attacker = self.attacker,

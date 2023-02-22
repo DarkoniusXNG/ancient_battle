@@ -1,7 +1,9 @@
 
 		// ******************** Techies ********************		
 		"DOTA_Tooltip_ability_techies_custom_land_mines"                        "Land Mines"
-		"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant a mine that is visible to enemies only if they are within %big_radius% AoE of the mine. Mine will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage are Techies. Mines don't affect flying units, they lose invisibility when enemies are within %big_radius% radius of them.</font>"
+		"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant an invisible mine that will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage are Techies. Mines don't affect flying units.</font>"
+		//"DOTA_Tooltip_ability_techies_custom_land_mines_Description"            "Plant a mine that is visible to enemies only if they are within %big_radius% AoE of the mine. Mine will detonate if an enemy is standing within %small_radius% AoE for %detonation_delay% seconds dealing damage. The explosion deals full damage to enemies within %small_radius% radius and half damage to enemies that are within %big_radius% radius but not within %small_radius% radius. Deals %building_damage_pct%%% damage to buildings.\n\nDamage Type: COMPOSITE\nComposite damage is reduced by armor and magic resistance, and blocked only with Physical immunity.<br><br><font color='#70EA72'>Source of damage are Techies. Mines don't affect flying units, they lose invisibility when enemies are within %big_radius% radius of them.</font>"
+		
 		"DOTA_Tooltip_ability_techies_custom_land_mines_Lore"                   "The bane of Toterin!"
 		"DOTA_Tooltip_ability_techies_custom_land_mines_Note0"                  "Grants 30 gold and 20 experience if destroyed by an enemy hero."
 		"DOTA_Tooltip_ability_techies_custom_land_mines_duration"               "MINE DURATION:"
@@ -79,15 +81,16 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_3"            "-{s:tooltip_value}s Land Mines Activation Delay"
 		
 		// Suicide talents
-		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2"            "Suicide Squad, Attack! Silences"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2"            "Suicide Silences"
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2_Description"  "Silences damaged enemies for 7 seconds after explosion."
-		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_4"            "-{s:value}s Suicide Squad, Attack! Cooldown"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_4"            "-{s:value}s Suicide Cooldown"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_6"            "+{s:tooltip_value} Suicide Damage"
 		
 		// All mines talent
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1"            "Mine Explosion Slows"
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1_Description"  "Slows move speed by 45% and attack speed by 45 for 3 seconds after explosion."
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5"            "Bio Mines"
-		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5_Description"  "Mines can move when within 1000 radius of Techies. They benefit from some auras and buffs but they also can die from cleave damage and physical damage spells."
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_5_Description"  "Mines can move when within 1200 radius of Techies. They benefit from some auras and buffs but they also can die from cleave damage and physical damage spells."
 		
 		"DOTA_Tooltip_modifier_techies_custom_mine_slow"                        "Mine Explosion"
 		"DOTA_Tooltip_modifier_techies_custom_mine_slow_Description"            "Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%, attack speed reduced by %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT%."

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Techies: Land Mines (Q) - like old land mines, but mines have no limit and have a duration, and they are visible when in big radius range
   // Author: Darkonius
-  // Notes: OK; 2022; Damage Type: Composite; They make a sound when they are triggered; Blademail returns the damage to Techies;
+  // Notes: OK; 2023; Damage Type: Composite; They make a sound when they are triggered; Blademail returns the damage to Techies;
   // Notes: Mine damage auto-updates; Doesn't trigger on flying units;
   // TO_DO: If needed make them explode when destroyed.
   //=================================================================================================================
@@ -20,7 +20,7 @@
     "AbilityCastRange"                                    "150" // old (100)
     "AbilityCastPoint"                                    "0.0" // old (0)
 
-    "AbilityCooldown"                                     "25 20 15 10"
+    "AbilityCooldown"                                     "19 16 13 10"
 
     "AbilityManaCost"                                     "60 75 85 100"
     "AbilityProcsMagicStick"                              "1"
@@ -32,8 +32,7 @@
 
     "AbilityValues"
     {
-      "duration"                                          "200" // 20 x lowest AbilityCooldown
-      "small_radius"                                      "200" // full damage radius and trigger radius
+      "duration"                                          "350" // 20 mines on the map roughly is the optimal number
       "activation_delay"
       {
         "value"                                           "1.5" // old (1.75); during TI (0.5)
@@ -41,9 +40,13 @@
       }
       "think_interval"                                    "0.1"
       "detonation_delay"                                  "0.3"
-      "small_radius_damage"                               "300 400 500 600" // full damage
-      "big_radius_damage"                                 "150 200 250 300" // partial damage
-      "big_radius"                                        "400" // old (500);
+
+      "small_radius_damage"                               "350 450 550 650" // full damage
+      "big_radius_damage"                                 "175 225 275 325" // partial damage - not in tooltip
+
+      "small_radius"                                      "200" // full damage radius and trigger radius
+      "big_radius"                                        "400" // old (500); aka half damage radius
+
       "building_dmg_reduction"                            "100" // old (100%); Proximity Mines (30%)
     }
   }
@@ -58,7 +61,7 @@
     "BaseClass"                                           "special_bonus_base"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
+    
     "AbilityValues"
     {
       "tooltip_value"                                     "1"

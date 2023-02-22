@@ -4,7 +4,7 @@
   // Fire Lord: Incinerate (T) - New Spell, Sand King Caustic Finale + Ursa Fury Swipes, autocast, orb
   // Author: Darkonius
   // Notes: OK; 2022;
-  // TO_DO: If too weak -> rework it so the physical damage goes through spell immunity.
+  // TO_DO: Rewrite in lua; If too weak -> rework it so the physical damage goes through spell immunity.
   //=================================================================================================================
   "firelord_incinerate"
   {

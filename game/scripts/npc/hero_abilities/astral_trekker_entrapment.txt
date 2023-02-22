@@ -3,13 +3,14 @@
   //=================================================================================================================
   // Astral Trekker: Entrapment (Q) - like Naga Siren Ensnare without illusion casting part
   // Author: Darkonius
-  // Notes: OK; 18.8.2019; Just applies root and reveal; Doesn't disarm; Interrupts;
+  // Notes: OK; 2023; Just applies root and reveal; Doesn't disarm; Interrupts;
   // Linkens: Blocks;
   // TO_DO:
   //=================================================================================================================
   "astral_trekker_entrapment"
   {
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/astral_trekker/entrapment.lua"
     "AbilityTextureName"                                  "naga_siren_ensnare"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -17,22 +18,24 @@
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
+
+    "HasShardUpgrade"                                     "1"
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastAnimation"                                "ACT_DOTA_ATTACK"
     "AbilityCastPoint"                                    "0.65"
     "AbilityCastRange"                                    "650"  
-    
+
     // Time    
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "14.0"
-    
+
     // Mana Cost + Magic Stick/Wand
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "70 80 90 100"
     "AbilityProcsMagicStick"                              "1"
-    
+
     // Precache
     //-------------------------------------------------------------------------------------------------------------
     "precache"
@@ -41,84 +44,24 @@
       "particle"                                          "particles/units/heroes/hero_siren/siren_net.vpcf"
       "particle"                                          "particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      { 
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "2 3 4 5"
-      }
-    }
+      "duration"                                          "2.75 3.5 4.25 5"
+      "net_vision"                                        "250"
+      "net_speed"                                         "1100"
 
-    "OnSpellStart"
-    {
-      "TrackingProjectile"
+      "shard_heal_reduction"
       {
-        "Target"
-        {
-          "Center"                                        "TARGET"
-          "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        }
-        "EffectName"                                      "particles/units/heroes/hero_siren/siren_net_projectile.vpcf"
-        "Dodgeable"                                       "1"
-        "ProvidesVision"                                  "1"
-        "VisionRadius"                                    "250"
-        "MoveSpeed"                                       "1100"
-        "SourceAttachment"                                "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+        "value"                                           "40"
+        "RequiresShard"                                   "1"
       }
-
-      "FireSound"
+      "shard_net_speed"
       {
-        "EffectName"                                      "Hero_NagaSiren.Ensnare.Cast"
-        "Target"                                          "CASTER"
-      }
-    }
-    
-    "OnProjectileHitUnit"
-    {
-      "DeleteOnHit"                                       "1"
-
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/astral_trekker/entrapment.lua"
-        "Function"                                        "EntrapmentStart"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_entrapment"  // needs tooltip
-      {
-        "IsHidden"                                        "0"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "0"
-        
-        "EffectName"                                      "particles/units/heroes/hero_siren/siren_net.vpcf"
-        "EffectAttachType"                                "follow_origin"
-        
-        "Priority"                                        "MODIFIER_PRIORITY_ULTRA"
-        
-        "States"  
-        {
-          "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
-        }
-        
-        "OnCreated"
-        {
-          "FireSound"
-          {
-            "EffectName"                                  "Hero_NagaSiren.Ensnare.Target"
-            "Target"
-            {
-              "Center"                                    "TARGET"
-              "Flags"                                     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-            }
-          }
-        }
+        "value"                                           "2200"
+        "RequiresShard"                                   "1"
       }
     }
   }

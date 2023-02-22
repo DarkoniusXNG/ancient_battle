@@ -8,14 +8,6 @@ function silencer_custom_curse_of_the_silent:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
 
-function silencer_custom_curse_of_the_silent:IsStealable()
-	return true
-end
-
-function silencer_custom_curse_of_the_silent:IsHiddenWhenStolen()
-	return false
-end
-
 function silencer_custom_curse_of_the_silent:OnSpellStart()
 	local caster = self:GetCaster()
 	local position = self:GetCursorPosition()

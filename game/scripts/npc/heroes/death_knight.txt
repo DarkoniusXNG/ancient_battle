@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //================================================================================================================
-  // HERO: Death Knight; 2022;
+  // HERO: Death Knight; 2023;
   // Notes: OK; Death Pact provides dmg and hp, Unholy Aura provides bonus hp regen and bonus ms;
   // TO_DO: special_bonus_unique_death_knight_5
   //=================================================================================================================
@@ -42,7 +42,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                      // Abaddon (-1); original (1);
+    "ArmorPhysical"                                       "-1"                      // Abaddon (-1); original (1);
     "MagicalResistance"                                   "25"                  // Default
     
     // Attack

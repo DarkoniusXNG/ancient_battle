@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Bane; 2022;
+  // HERO: Bane; 2023;
   // TO_DO: 
   //=================================================================================================================
   "npc_dota_hero_custom_bane"
@@ -29,7 +29,7 @@
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_armor_5"          // lvl 10 talent: unique
+    "Ability10"                                           "special_bonus_magic_resistance_15"          // lvl 10 talent: unique
     "Ability11"                                           "special_bonus_unique_bane_10"      // lvl 10 talent: Nightmare heals talent
 
     "Ability12"                                           "special_bonus_hp_250"          // lvl 15 talent: unique
@@ -45,7 +45,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "1"                    // like dota Bane
+    "ArmorPhysical"                                       "-3"                    // dota Bane (1)
     "MagicalResistance"                                   "25"                  // Default
 
     // Attack

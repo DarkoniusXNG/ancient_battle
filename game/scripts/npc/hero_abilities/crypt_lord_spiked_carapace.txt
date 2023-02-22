@@ -1,0 +1,65 @@
+"DOTAAbilities"
+{
+
+// Crypt Lord Spiked Carapace
+// Author: Noya
+// Description: The Crypt Lord forms barbed layers of chitinous armor that increases its defense and returns damage to enemy melee attackers.
+
+"crypt_lord_spiked_carapace"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "crypt_lord_spiked_carapace"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_centaur/centaur_return.vpcf"
+      "particle"                                          "particles/custom/creature_spiked_carapace.vpcf"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "melee_damage_return"                             "15 25 35"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "armor_bonus"                                     "3 5 7"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_spiked_carapace"
+      {
+        "Passive"                                         "1"
+        "EffectName"                                      "particles/custom/creature_spiked_carapace.vpcf"
+        "EffectAttachType"                                "follow_origin"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_bonus"
+        }
+
+        "OnAttacked"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/crypt_lord/spiked_carapace.lua"
+            "Function"                                    "SpikedCarapace"
+            "Damage"                                      "%attack_damage"
+          }
+        }
+      }
+    }
+}
+
+}

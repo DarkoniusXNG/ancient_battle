@@ -31,7 +31,7 @@
     "Ability9"                                            "generic_hidden"
 
     "Ability10"                                           "special_bonus_unique_techies_custom_1" // lvl 10 talent: Mines slow when they explode
-    "Ability11"                                           "special_bonus_mp_regen_3"              // lvl 10 talent:
+    "Ability11"                                           "special_bonus_unique_techies_custom_6" // lvl 10 talent:
 
     "Ability12"                                           "special_bonus_cast_range_200"          // lvl 15 talent:
     "Ability13"                                           "special_bonus_unique_techies_custom_2" // lvl 15 talent: Suicide silences

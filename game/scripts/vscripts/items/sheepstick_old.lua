@@ -16,7 +16,7 @@ function item_sheepstick_old:OnSpellStart()
 
   -- Kill the target instantly if it is an illusion
   if target:IsIllusion() and not target:IsStrongIllusionCustom() then
-    --target:ForceKill(true)
+    --target:ForceKill(false)
     target:Kill(self, caster)
     return
   end

@@ -1,12 +1,12 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // Mountain King: Thunder Clap (E) - Custom Datadriven Brewmaster Thunder Clap
+  // Mountain Giant: Thunder Clap (E) - Custom Datadriven Brewmaster Thunder Clap
   // Author: Darkonius
   // Notes: OK; 16.9.2018;
   // TO_DO:
   //=================================================================================================================
-  "mountain_king_thunder_clap"
+  "mountain_giant_thunder_clap"
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/mountain_king_thunder_clap"

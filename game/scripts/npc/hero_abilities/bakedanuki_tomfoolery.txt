@@ -1,158 +1,160 @@
 "DOTAAbilities"
 {
-	//=================================================================================================================
-	// Bake-Danuki: Tomfoolery Blink (W)
-	//=================================================================================================================
-	"bakedanuki_tomfoolery_blink"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/bakedanuki/bakedanuki_tomfoolery"
-		"AbilityTextureName"			"custom/bakedanuki_tomfoolery_blink"
+  //=================================================================================================================
+  // Bake-Danuki: Tomfoolery Blink (W)
+  //=================================================================================================================
+  "bakedanuki_tomfoolery_blink"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/bakedanuki/bakedanuki_tomfoolery"
+    "AbilityTextureName"                                  "custom/bakedanuki_tomfoolery_blink"
 
-		"LinkedAbility"					"bakedanuki_tomfoolery_summon"
-		"AbilitySharedCooldown"			"bakedanuki_tomfoolery_summon"
+    "LinkedAbility"                                       "bakedanuki_tomfoolery_summon"
+    "AbilitySharedCooldown"                               "bakedanuki_tomfoolery_summon"
 
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+    // Ability General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		// Ability Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3"
+    // Ability Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.3"
 
-		// Ability Resource
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"17 14 11 8"
-		"AbilityManaCost"				"75"
+    // Ability Resource
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "17 14 11 8"
+    "AbilityManaCost"                                     "75"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_range"		"600 675 750 825"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_duration"		"8"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"-50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_incoming"		"400"
-			}
-		}
-	}
-	//=================================================================================================================
-	// Bake-Danuki: Tomfoolery Summon (E)
-	//=================================================================================================================
-	"bakedanuki_tomfoolery_summon"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/bakedanuki/bakedanuki_tomfoolery"
-		"AbilityTextureName"			"custom/bakedanuki_tomfoolery_summon"
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_range"                                  "600 675 750 825"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_duration"                               "8"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_outgoing"                               "-50"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_incoming"                               "400"
+      }
+    }
+  }
+  //=================================================================================================================
+  // Bake-Danuki: Tomfoolery Summon (E)
+  //=================================================================================================================
+  "bakedanuki_tomfoolery_summon"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/bakedanuki/bakedanuki_tomfoolery"
+    "AbilityTextureName"                                  "custom/bakedanuki_tomfoolery_summon"
 
-		"LinkedAbility"					"bakedanuki_tomfoolery_blink"
-		"AbilitySharedCooldown"			"bakedanuki_tomfoolery_blink"
+    "LinkedAbility"                                       "bakedanuki_tomfoolery_blink"
+    "AbilitySharedCooldown"                               "bakedanuki_tomfoolery_blink"
 
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+    // Ability General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+    "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
-		// Ability Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3"
+    // Ability Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.3"
 
-		// Ability Resource
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"17 14 11 8"
-		"AbilityManaCost"				"75"
+    // Ability Resource
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "17 14 11 8"
+    "AbilityManaCost"                                     "75"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"-50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_incoming"		"400"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_duration"		"8"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_range"		"600 675 750 825"
-			}
-		}
-	}
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_outgoing"                               "-50"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_incoming"                               "400"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_duration"                               "8"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_range"                                  "600 675 750 825"
+      }
+    }
+  }
 
-	//=================================================================================================================
-	// Bake-Danuki: Tomfoolery End (T)
-	//=================================================================================================================
-	"bakedanuki_tomfoolery_end"
-	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/bakedanuki/bakedanuki_tomfoolery"
-		"AbilityTextureName"			"custom/bakedanuki_tomfoolery_end"
+  //=================================================================================================================
+  // Bake-Danuki: Tomfoolery End (T)
+  //=================================================================================================================
+  "bakedanuki_tomfoolery_end"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/bakedanuki/bakedanuki_tomfoolery"
+    "AbilityTextureName"                                  "custom/bakedanuki_tomfoolery_end"
 
-		"MaxLevel"						"1"
+    "MaxLevel"                                            "1"
 
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "HasShardUpgrade"                                     "1"
 
-		// Ability Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.0"
+    // Ability General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
-		// Ability Resource
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"1"
-		"AbilityManaCost"				"0"
+    // Ability Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"                                    "0.0"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_outgoing"		"-50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_incoming"		"400"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_duration"		"8"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"illusion_range"		"600 675 750 825"
-			}
-		}
-	}
+    // Ability Resource
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"                                     "1"
+    "AbilityManaCost"                                     "0"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_outgoing"                               "-50"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_incoming"                               "400"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_duration"                               "8"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "illusion_range"                                  "600 675 750 825"
+      }
+    }
+  }
 }

@@ -82,11 +82,13 @@
 
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder"                     "Hurl Boulder"
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_Description"         "Hurls a boulder at the enemy, damaging and stunning them."
-		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_Note0"               ""
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_Lore"                "Earth manipulation at its finest."
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_damage"              "DAMAGE:"
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_duration"            "STUN DURATION:"
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_hurl_boulder_speed"               "BOULDER SPEED:"
+		
+		"DOTA_Tooltip_modifier_earth_golem_hurl_boulder_stun"                             "Hurl Boulder" // Archmage's Earth Golem and Brewmaster Earth Spirit use the same modifier!
+		"DOTA_Tooltip_modifier_earth_golem_hurl_boulder_stun_Description"                 "Stunned."
 
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_spell_immunity"                   "Spell Immunity"
 		"DOTA_Tooltip_ability_primal_split_earth_spirit_spell_immunity_Description"       "Immune to magic damage and most spells."

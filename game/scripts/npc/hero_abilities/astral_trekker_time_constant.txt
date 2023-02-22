@@ -3,16 +3,20 @@
   //=================================================================================================================
   // Astral Trekker: Time Constant (T) - New Spell; Passive; Immunity to time altering spells and some slows; Super Strong Dispel;
   // Author: Darkonius
-  // Notes: OK; 14.10.2018;
+  // Notes: OK; 2023;
   // TO_DO:
   //=================================================================================================================
   "astral_trekker_time_constant"
   {
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/astral_trekker/time_constant.lua"
     "AbilityTextureName"                                  "custom/astral_trekker_time_constant"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "3"
+
+    "AbilityCooldown"                                     "5"
     
     "precache"
     {
@@ -20,42 +24,10 @@
       "particle"                                          "particles/units/heroes/hero_tidehunter/tidehunter_krakenshell_purge.vpcf"
     }
     
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ms_threshold"                                    "180"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "as_threshold"                                    "30"
-      }
-    }
-    
-    "Modifiers"
-    {
-      "modifier_time_constant" // doesn't need tooltip
-      {
-        "Passive"                                         "1"
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "AllowIllusionDuplicate"                          "1"
-        
-        "ThinkInterval"                                   "0.3"
-
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/astral_trekker/time_constant.lua"
-            "Function"                                    "PurgeTimeDebuffs"
-          }
-        }
-      }
+      "ms_threshold"                                      "170" // Lion Hex speed (120); Shadow Shaman Hex (100); Scythe of Vyse (140);
+      "as_threshold"                                      "30"
     }
   }
 }

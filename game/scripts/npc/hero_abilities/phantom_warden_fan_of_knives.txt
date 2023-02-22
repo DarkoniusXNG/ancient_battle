@@ -1,0 +1,68 @@
+"DOTAAbilities"
+{
+
+// Warden Fan of Knives
+// Author: Noya
+// Description: The Warden flings a flurry of knives at multiple enemy targets around her.
+
+"phantom_warden_fan_of_knives"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "phantom_warden_fan_of_knives"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"                                "ACT_DOTA_SPAWN"
+
+    "AbilityCastRange"                                    "400 500 600"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "9.0"
+
+    "AbilityManaCost"                                     "100"
+    "AbilityDamage"                                       "75 125 190"
+
+    "precache"
+    {
+      "particle"                                          "particles/custom/warden_fan_of_knives.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "400 500 600"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_damage"                                      "300 625 950"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "AttachEffect"
+      {
+        "EffectName"                                      "particles/custom/warden_fan_of_knives.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "Target"                                          "CASTER"
+      }
+      "FireSound"
+      {   
+        "EffectName"                                      "Hero_PhantomAssassin.Dagger.Target"
+        "Target"                                          "CASTER"
+      }
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/phantom_warden/fan_of_knives.lua"
+        "Function"                                        "DoDamage"
+      }
+    }
+}
+
+}

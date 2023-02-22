@@ -78,8 +78,8 @@
 
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"                                  "600"              // original (600);
-    "VisionNighttimeRange"                                "600"              // original (600);
+    "VisionDaytimeRange"                                  "350"              // original (600);
+    "VisionNighttimeRange"                                "350"              // original (600);
 
     "HasInventory"                                        "0"
     "WakesNeutrals"                                       "0"

@@ -224,20 +224,19 @@ function modifier_pudge_custom_flesh_heap_heroes:RemoveOnDeath()
 end
 
 function modifier_pudge_custom_flesh_heap_heroes:OnCreated()
-	local ability = self:GetAbility()
-	if not ability or ability:IsNull() then
-		if IsServer() then
-			self:StartIntervalThink(0)
-		end
-	elseif ability:GetLevel() > 0 then
-		self.str_per_hero_kill = ability:GetSpecialValueFor("str_per_hero_kill")
+	if IsServer() then
+		self:StartIntervalThink(0)
 	end
 end
 
 function modifier_pudge_custom_flesh_heap_heroes:OnIntervalThink()
-	local parent = self:GetParent()
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() then
+		local parent = self:GetParent()
+		if not parent or parent:IsNull() then
+			self:StartIntervalThink(-1)
+			return
+		end
 		ability = parent:FindAbilityByName("pudge_custom_flesh_heap")
 		if ability and ability:GetLevel() > 0 then
 			self.str_per_hero_kill = ability:GetSpecialValueFor("str_per_hero_kill")
@@ -258,6 +257,13 @@ end
 function modifier_pudge_custom_flesh_heap_heroes:GetModifierBonusStats_Strength()
 	if self.str_per_hero_kill then
 		return self:GetStackCount() * self.str_per_hero_kill
+	end
+
+	if IsClient() then
+		local ability = self:GetAbility()
+		if ability and ability:GetLevel() > 0 then
+			return self:GetStackCount() * ability:GetSpecialValueFor("str_per_hero_kill")
+		end
 	end
 
 	return 0
@@ -293,20 +299,19 @@ function modifier_pudge_custom_flesh_heap_creeps:RemoveOnDeath()
 end
 
 function modifier_pudge_custom_flesh_heap_creeps:OnCreated()
-	local ability = self:GetAbility()
-	if not ability or ability:IsNull() then
-		if IsServer() then
-			self:StartIntervalThink(0)
-		end
-	elseif ability:GetLevel() > 0 then
-		self.str_per_creep_kill = ability:GetSpecialValueFor("str_per_creep_kill")
+	if IsServer() then
+		self:StartIntervalThink(0)
 	end
 end
 
 function modifier_pudge_custom_flesh_heap_creeps:OnIntervalThink()
-	local parent = self:GetParent()
 	local ability = self:GetAbility()
 	if not ability or ability:IsNull() then
+		local parent = self:GetParent()
+		if not parent or parent:IsNull() then
+			self:StartIntervalThink(-1)
+			return
+		end
 		ability = parent:FindAbilityByName("pudge_custom_flesh_heap")
 		if ability and ability:GetLevel() > 0 then
 			self.str_per_creep_kill = ability:GetSpecialValueFor("str_per_creep_kill")
@@ -327,6 +332,13 @@ end
 function modifier_pudge_custom_flesh_heap_creeps:GetModifierBonusStats_Strength()
 	if self.str_per_creep_kill then
 		return self:GetStackCount() * self.str_per_creep_kill
+	end
+
+	if IsClient() then
+		local ability = self:GetAbility()
+		if ability and ability:GetLevel() > 0 then
+			return self:GetStackCount() * ability:GetSpecialValueFor("str_per_creep_kill")
+		end
 	end
 
 	return 0

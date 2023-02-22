@@ -8,6 +8,23 @@ function paladin_storm_hammer:GetAOERadius()
 	return self:GetSpecialValueFor("bolt_aoe")
 end
 
+function paladin_storm_hammer:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function paladin_storm_hammer:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
 function paladin_storm_hammer:GetCooldown(level)
 	local caster = self:GetCaster()
 	local base_cooldown = self.BaseClass.GetCooldown(self, level)
@@ -53,16 +70,15 @@ function paladin_storm_hammer:OnProjectileHit(target, location)
 
 	-- Check for spell block
 	if not target:TriggerSpellAbsorb(self) then
+		local caster = self:GetCaster()
 
 		-- Sound on target
 		target:EmitSound("Hero_Sven.StormBoltImpact")
 
-		-- Kv variables
+		-- KVs
 		local bolt_aoe = self:GetSpecialValueFor("bolt_aoe")
 		local bolt_damage = self:GetSpecialValueFor("bolt_damage")
 		local bolt_stun_duration = self:GetSpecialValueFor("bolt_stun_duration")
-
-		local caster = self:GetCaster()
 
 		-- Talent that increases stun duration
 		local talent_1 = caster:FindAbilityByName("special_bonus_unique_paladin_7")

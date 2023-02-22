@@ -175,6 +175,8 @@ if IsServer() then
     for _, unit in pairs(units) do
       if unit and not unit:IsNull() then
         if unit:GetHealth() <= damage * (1 + (caster:GetSpellAmplification(false) * 0.01)) then
+          unit:RemoveModifierByName("modifier_oracle_will_to_live")
+          unit:RemoveModifierByName("modifier_oracle_sacrifice_master")
           -- Kill the unit
           unit:Kill(ability, caster)
           killed_something = true

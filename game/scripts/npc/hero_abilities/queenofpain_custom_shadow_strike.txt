@@ -20,7 +20,7 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     "AbilitySound"                                        "Hero_QueenOfPain.ShadowStrike"
 
-	"HasScepterUpgrade"                                   "1"
+    "HasScepterUpgrade"                                   "1"
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------

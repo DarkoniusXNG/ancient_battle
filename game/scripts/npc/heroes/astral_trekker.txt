@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Astral Trekker; 2022;
+  // HERO: Astral Trekker; 2023;
   // TO_DO: special_bonus_unique_astral_trekker_2 - Giant Growth bonus magic resistance talent
   //=================================================================================================================
   "npc_dota_hero_astral_trekker"
@@ -35,14 +35,14 @@
     "Ability13"                                           "special_bonus_hp_regen_12"          // lvl 15 talent; unique
 
     "Ability14"                                           "special_bonus_hp_650"                      // lvl 20 talent; unique
-    "Ability15"                                           "special_bonus_attack_speed_100"      // lvl 20 talent; unique
+    "Ability15"                                           "special_bonus_attack_speed_80"      // lvl 20 talent; unique
 
     "Ability16"                                           "special_bonus_unique_astral_trekker_1"     // lvl 25 talent; Astral Charge damage per distance traveled talent
     "Ability17"                                           "special_bonus_20_bash_2"          // lvl 25 talent; special_bonus_unique_astral_trekker_2
 
     // Armor
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "1"                    // Tiny (0); Spirit Breaker (2);
+    "ArmorPhysical"                                       "0"                  // Tiny (0); Spirit Breaker (2);
     "MagicalResistance"                                   "25"                  // Default
 
     // Attack

@@ -1,0 +1,74 @@
+"DOTAAbilities"
+{
+
+// Naga Sea Witch Mana Shield
+// Author: Noya
+// Description: Creates a shield that absorbs damage by using the Sea Witch's mana. Blocks 100% of incoming damage before any mitigation.
+
+"naga_sea_witch_mana_shield"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "naga_sea_witch_mana_shield"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+    "AbilityManaCost"                                     "25"
+    "AbilityCooldown"                                     "10"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "damage_per_mana"                                 "1 1.5 2"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "absorption_percent"                              "100"
+      }
+    }
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+      "particle"                                          "particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+    }
+
+    "OnToggleOn"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/naga_sea_witch/mana_shield.lua"
+        "Function"                                        "ManaShieldToggle"
+      }
+    }
+
+    "OnToggleOff"
+    {
+      "RemoveModifier"
+      {
+        "ModifierName"                                    "modifier_mana_shield"
+        "Target"                                          "CASTER"
+      }
+
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Medusa.ManaShield.Off"
+        "Target"                                          "CASTER"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_mana_shield"
+      {   
+        "EffectName"                                      "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+        "EffectAttachType"                                "follow_origin"             
+      }
+    }   
+}
+
+}

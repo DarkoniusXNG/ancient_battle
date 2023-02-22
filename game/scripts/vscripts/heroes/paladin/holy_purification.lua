@@ -15,6 +15,23 @@ function paladin_holy_purification:GetAOERadius()
 	return base_radius
 end
 
+function paladin_holy_purification:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function paladin_holy_purification:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
 function paladin_holy_purification:GetCooldown(level)
 	local caster = self:GetCaster()
 	local base_cooldown = self.BaseClass.GetCooldown(self, level)

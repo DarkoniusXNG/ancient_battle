@@ -1,15 +1,15 @@
 "DOTAHeroes"
 {
   //================================================================================================================
-  // HERO: Pudge; 2022;
+  // HERO: Pudge; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_pudge"
   {
     "Model"                                               "models/heroes/pudge/pudge.vmdl"
     "BotImplemented"                                      "0"
-	"Role"                                                "Carry,Disabler,Initiator,Durable,Nuker"
-	"Rolelevels"                                          "1,2,2,2,1"
+    "Role"                                                "Carry,Disabler,Initiator,Durable,Nuker"
+    "Rolelevels"                                          "1,2,2,2,1"
     
     "AbilityLayout"                                       "5"
     "AbilityTalentStart"                                  "10"
@@ -37,8 +37,8 @@
     
     // special_bonus_cleave_60
 
-    "ArmorPhysical"                                       "0"                                   // dota (0); original (0);
-    "MagicalResistance"                                   "0"                                   // dota (25); original (25%);
+    "ArmorPhysical"                                       "-2"                                   // dota (0); original (0);
+    "MagicalResistance"                                   "25"                                   // dota (25); original (25%);
     
     "AttackCapabilities"                                  "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"                                     "42"                                  // dota (45); original (32);

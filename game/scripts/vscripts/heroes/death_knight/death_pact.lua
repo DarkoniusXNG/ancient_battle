@@ -4,6 +4,23 @@ end
 
 LinkLuaModifier("modifier_custom_death_pact", "heroes/death_knight/death_pact.lua", LUA_MODIFIER_MOTION_NONE)
 
+function death_knight_death_pact:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function death_knight_death_pact:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
 function death_knight_death_pact:OnSpellStart()
   local caster = self:GetCaster()
   local target = self:GetCursorTarget()

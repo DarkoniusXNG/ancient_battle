@@ -107,6 +107,10 @@ function modifier_item_devastator_passive:IsHidden()
   return true
 end
 
+function modifier_item_devastator_passive:IsDebuff()
+  return false
+end
+
 function modifier_item_devastator_passive:IsPurgable()
   return false
 end
@@ -227,6 +231,10 @@ function modifier_item_devastator_corruption_armor:IsHidden() -- needs tooltip
   return false
 end
 
+function modifier_item_devastator_corruption_armor:IsDebuff()
+  return true
+end
+
 function modifier_item_devastator_corruption_armor:IsPurgable()
   return true
 end
@@ -269,6 +277,10 @@ function modifier_item_devastator_reduce_armor:IsHidden() -- needs tooltip
   return false
 end
 
+function modifier_item_devastator_reduce_armor:IsDebuff()
+  return true
+end
+
 function modifier_item_devastator_reduce_armor:IsPurgable()
   return true
 end
@@ -305,6 +317,10 @@ modifier_item_devastator_slow_movespeed = class({})
 
 function modifier_item_devastator_slow_movespeed:IsHidden() -- needs tooltip
   return false
+end
+
+function modifier_item_devastator_slow_movespeed:IsDebuff()
+  return true
 end
 
 function modifier_item_devastator_slow_movespeed:IsPurgable()

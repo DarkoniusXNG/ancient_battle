@@ -152,7 +152,7 @@ function electrician_energy_absorption:OnSpellStart()
     caster:GiveMana(mana_absorbed)
 
     -- Overhead message
-    SendOverheadEventMessage(caster:GetPlayerOwner(), OVERHEAD_ALERT_MANA_ADD, caster, mana_absorbed, nil)
+    SendOverheadEventMessage(nil, OVERHEAD_ALERT_MANA_ADD, caster, mana_absorbed, nil)
 
     -- give the speed modifier
     local speed_modifier = caster:FindModifierByName("modifier_electrician_energy_absorption")

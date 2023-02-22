@@ -18,7 +18,7 @@
 				heal_amount = damage_taken*pain_steal_creeps*0.01
 			end
 			if heal_amount > 0 then
-				caster:Heal(heal_amount, caster)
+				caster:Heal(heal_amount, ability)
 				SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, heal_amount, nil)
 			end
 		end

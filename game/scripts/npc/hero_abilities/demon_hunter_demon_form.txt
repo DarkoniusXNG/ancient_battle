@@ -1,0 +1,110 @@
+"DOTAAbilities"
+{
+
+// Demon Hunter Demon Form
+// Author: Noya
+// Description: Transforms the Demon Hunter into a powerful demon with a ranged attack (60 range) and 500 bonus hit points.
+
+"demon_hunter_demon_form"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "demon_hunter_demon_form"
+    "MaxLevel"                                            "1"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE" 
+
+    "AbilityCooldown"                                     "180"
+    "AbilityManaCost"                                     "150"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "duration"                                        "60"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_health"                                    "500"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_health_regen"                              "3"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_range"                                     "422"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "range_tooltip"                                   "600"
+      }
+      "06"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "transformation_time"                             "0.8"
+      }
+    }
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+      "particle"                                          "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+      "particle"                                          "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+      "particle"                                          "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+      "particle"                                          "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+      "model"                                             "models/heroes/terrorblade/demon.vmdl"
+    }
+
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Terrorblade.Metamorphosis"
+        "Target"                                          "CASTER"
+      }
+      "FireEffect"
+      {
+        "EffectName"                                      "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+        "EffectAttachType"                                "follow_origin"
+        "Target"                                          "CASTER"
+      }
+      "ApplyModifier"
+      {
+        "ModifierName"                                    "modifier_demon_form_transform"
+        "Target"                                          "CASTER"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_demon_form_transform"
+      {
+        "IsHidden"                                        "1"
+        "Duration"                                        "%transformation_time"
+
+        "OverrideAnimation"                               "ACT_DOTA_CAST_ABILITY_2"
+
+        "States"
+        {
+          "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
+        }
+
+        "OnDestroy"
+        {
+          "ApplyModifier"
+          {
+            "ModifierName"                                "modifier_demon_form"
+            "Target"                                      "CASTER"
+            "Duration"                                    "%duration"
+          }
+        }
+      }
+    }
+}
+
+}

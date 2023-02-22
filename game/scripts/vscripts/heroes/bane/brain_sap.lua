@@ -11,6 +11,10 @@ function bane_custom_brain_sap:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
 	if default_result == UF_FAIL_MAGIC_IMMUNE_ENEMY then
 		if caster:HasShardCustom() then
 			return UF_SUCCESS
@@ -20,6 +24,13 @@ function bane_custom_brain_sap:CastFilterResultTarget(target)
 	end
 
 	return default_result
+end
+
+function bane_custom_brain_sap:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
 end
 
 function bane_custom_brain_sap:GetCastPoint()

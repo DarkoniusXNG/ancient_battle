@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //================================================================================================================
-  // HERO: Alchemist; 2022;
+  // HERO: Alchemist; 2023;
   // TO_DO:
   //=================================================================================================================
   "npc_dota_hero_custom_alchemist"
@@ -17,24 +17,24 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityLayout"                                       "6"
     "AbilityTalentStart"                                  "10"
-    "Ability1"                                            "alchemist_custom_healing_spray"			// Q (4 levels)
-    "Ability2"                                            "alchemist_custom_acid_bomb"				// W (4 levels)
-    "Ability3"                                            "alchemist_custom_philosophers_stone"		// E (4 levels)
-    "Ability4"                                            "alchemist_goblins_greed"					// E, DOTA_VERSION (4 levels)
-    "Ability5"                                            "alchemist_custom_transmute"				// F, Secondary Ultimate (1 level)
-    "Ability6"                                            "alchemist_custom_chemical_rage"			// R, Primary Ultimate (3 levels)
+    "Ability1"                                            "alchemist_custom_healing_spray"      // Q (4 levels)
+    "Ability2"                                            "alchemist_custom_acid_bomb"        // W (4 levels)
+    "Ability3"                                            "alchemist_custom_philosophers_stone"    // E (4 levels)
+    "Ability4"                                            "alchemist_goblins_greed"          // E, DOTA_VERSION (4 levels)
+    "Ability5"                                            "alchemist_custom_transmute"        // F, Secondary Ultimate (1 level)
+    "Ability6"                                            "alchemist_custom_chemical_rage"      // R, Primary Ultimate (3 levels)
     "Ability7"                                            "generic_hidden"
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
 
-    "Ability10"                                           "special_bonus_attack_speed_15"			// lvl 10 talent: unique
-    "Ability11"                                           "special_bonus_corruption_3"				// lvl 10 talent: unique 
+    "Ability10"                                           "special_bonus_unique_alchemist_custom_3" // lvl 10 talent: Acid Bomb bonus radius
+    "Ability11"                                           "special_bonus_corruption_3"        // lvl 10 talent: unique 
 
-    "Ability12"                                           "special_bonus_unique_alchemist_7"		// lvl 15 talent; Greevil's Greed damage per stack
-    "Ability13"                                           "special_bonus_hp_350"					// lvl 15 talent; unique
+    "Ability12"                                           "special_bonus_unique_alchemist_7"    // lvl 15 talent; Greevil's Greed damage per stack
+    "Ability13"                                           "special_bonus_hp_350"          // lvl 15 talent; unique
 
-    "Ability14"                                           "special_bonus_cleave_25"					// lvl 20 talent: unique
-    "Ability15"                                           "special_bonus_spell_amplify_15"			// lvl 20 talent: unique
+    "Ability14"                                           "special_bonus_cleave_25"          // lvl 20 talent: unique
+    "Ability15"                                           "special_bonus_spell_amplify_15"      // lvl 20 talent: unique
 
     "Ability16"                                           "special_bonus_unique_alchemist_custom_2"  // lvl 25 talent; Chemical Rage Super Strong Dispel
     "Ability17"                                           "special_bonus_unique_alchemist_custom_1"  // lvl 25 talent; Chemical Rage Base Attack Time
@@ -43,7 +43,7 @@
 
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "0"                // Default; original (0); dota (-1);
+    "ArmorPhysical"                                       "-1"                // Default; original (0); dota (-1);
     "MagicalResistance"                                   "25"              // Default
 
     // Attack

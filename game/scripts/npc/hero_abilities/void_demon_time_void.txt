@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Notes: OK; 26.8.2019;
   // Linkens: Blocks;
-  // TO_DO:
+  // TO_DO: Rewrite in lua; aghs shard: aoe time void
   //=================================================================================================================
   "void_demon_time_void"
   {
@@ -17,16 +17,18 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
+
+    //"HasShardUpgrade"                                     "1"
+
     "AbilityCastRange"                                    "525"
     "AbilityCastPoint"                                    "0.3"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
-    
+
     "AbilityCooldown"                                     "11 10 9 8"
-    
+
     "AbilityManaCost"                                     "80 90 100 110"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "AbilitySpecial"
     {
       "01"
@@ -55,7 +57,7 @@
         "mini_stun_duration"                              "0.1"
       }
     }
-    
+
     "OnSpellStart"
     {
       "FireSound"
@@ -70,7 +72,7 @@
         "Function"                                        "TimeVoidStart"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_time_void_slow_debuff"  // needs tooltip
@@ -88,14 +90,14 @@
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
         }
       }
-      
+
       "modifier_time_void_mini_stun"  // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsDebuff"                                        "1"
         "IsStunDebuff"                                    "1"
         "IsPurgable"                                      "1"
-        
+
         "OverrideAnimation"                               "ACT_DOTA_DISABLED"
 
         "EffectName"                                      "particles/generic_gameplay/generic_stunned.vpcf"

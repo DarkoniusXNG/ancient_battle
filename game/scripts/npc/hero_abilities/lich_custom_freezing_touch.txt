@@ -3,8 +3,8 @@
   //====================================================================================================
   // Lich: Freezing Touch (F) - New Spell, Passive, Ultimate, OnDealDamage applies the slow (ms and as slow)
   // Author: Jastuchko + Darkonius
-  // Notes: OK; 2021; Slow works on towers; Passive works on illusions.
-  // TO_DO: Rework to lua; status resistance fix; shard
+  // Notes: OK; 2023; Slow works on towers; Passive works on illusions.
+  // TO_DO: Rework to lua; status resistance fix; aghs shard: static field dmg
   //====================================================================================================
   "lich_custom_freezing_touch"
   {
@@ -20,6 +20,8 @@
 
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "12"
+
+    //"HasShardUpgrade"                                     "1"
 
     "AbilitySpecial"
     {
@@ -50,7 +52,7 @@
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
 
         "OnDealDamage"
@@ -68,16 +70,16 @@
           }
         }
       }
-      
+
       "modifier_lich_custom_freezing_touch_debuff" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "StatusEffectName"                                "particles/status_fx/status_effect_frost_lich.vpcf"
         "StatusEffectPriority"                            "12"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
@@ -86,7 +88,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Freezing Touch bonus slow talent
   //=================================================================================================================
@@ -114,7 +116,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Freezing Touch heal reduction talent
   //=================================================================================================================

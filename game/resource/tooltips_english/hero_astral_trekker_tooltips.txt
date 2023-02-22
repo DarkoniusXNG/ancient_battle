@@ -6,9 +6,11 @@
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_Note0"							  "Reveals invisible units while trapped."
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_Note1"							  "Entrapment can be dispelled only with Super Strong Dispels."
 		"DOTA_Tooltip_ability_astral_trekker_entrapment_duration"                         "DURATION:"
+		"DOTA_Tooltip_ability_astral_trekker_entrapment_shard_description"                "Entrapment applies break (disables passives) and reduces all healing (regen, lifesteal, spell lifesteal and heals). Doubles net speed."
+		"DOTA_Tooltip_ability_astral_trekker_entrapment_shard_heal_reduction"             "%SHARD HEALING REDUCTION:"
 		
 		"DOTA_Tooltip_modifier_entrapment"                                                "Entrapment"
-		"DOTA_Tooltip_modifier_entrapment_Description"                                    "Rooted and revealed."
+		"DOTA_Tooltip_modifier_entrapment_Description"                                    "Rooted and revealed. Disabled passives and reduced healing with Shard."
 
 		"DOTA_Tooltip_ability_astral_trekker_astral_stomp"                                "Astral Stomp"
 		"DOTA_Tooltip_ability_astral_trekker_astral_stomp_Description"                    "Slams the ground, stunning and damaging nearby enemy units. Deals bonus damage only if Giant Growth is learned.\n\nDamage Type: ASTRAL\n\nAstral damage is reduced by magic resistance, and blocked with any kind of immunity (Physical, Magic or Spell immunity)."
@@ -39,7 +41,7 @@
 		"DOTA_Tooltip_ability_astral_trekker_pulverize_cleave_end_radius"			  	  "CLEAVE END RADIUS:"
 		
 		"DOTA_Tooltip_ability_astral_trekker_time_constant"                               "Time Constant"
-		"DOTA_Tooltip_ability_astral_trekker_time_constant_Description"                   "Astral Trekker is immune to certain time-altering spells (Time Stop for example). Also, if his movement speed or attack speed is reduced below the threshold, Time Constant will remove almost all debuffs and stuns from Astral Trekker.\n\nDISPEL TYPE: Super Strong Dispel"
+		"DOTA_Tooltip_ability_astral_trekker_time_constant_Description"                   "Astral Trekker is immune to certain time-altering spells (Time Stop for example). Also, if his movement speed or attack speed is reduced below the threshold, Time Constant will remove most debuffs and stuns from Astral Trekker when off cooldown.\n\nDISPEL TYPE: Super Strong Dispel"
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_Note0"						  "Time Constant applies Super Strong Dispel to Astral Trekker."
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_Lore"						  "Wanderer is a non linear being, not affected by passing of time."
 		"DOTA_Tooltip_ability_astral_trekker_time_constant_ms_threshold"                  "MOVE SPEED THRESHOLD:"

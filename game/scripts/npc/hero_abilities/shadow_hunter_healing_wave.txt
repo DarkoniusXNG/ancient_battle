@@ -1,0 +1,74 @@
+"DOTAAbilities"
+{
+
+// Shadow Hunter Healing Wave
+// Author: Noya
+// Description: Calls forth a wave of energy that heals a target and bounces to nearby friendlies. Each bounce heals less damage.
+
+"shadow_hunter_healing_wave"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "shadow_hunter_healing_wave"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
+
+    "TargetsAllowed"                                      "organic"
+    "RequiresHealthDeficit"                               "target"
+
+    "AbilityCastRange"                                    "700"
+    "AbilityCastPoint"                                    "0.4"
+    "AbilityCooldown"                                     "8.0"
+
+    "AbilityManaCost"                                     "90"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "healing"                                         "160 215 300"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_bounces"                                     "2 3 4"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bounce_range"                                    "500"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "wave_decay_percent"                              "20"
+      }
+    }
+
+    "precache"
+    {
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+      "particle"                                          "particles/custom/dazzle_shadow_wave.vpcf"
+      "particle"                                          "particles/custom/dazzle_shadow_wave_copy.vpcf"
+    }
+    
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Dazzle.Shadow_Wave"
+        "Target"                                          "TARGET"
+      }
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/shadow_hunter/healing_wave.lua"
+        "Function"                                        "HealingWave"
+      }
+    }
+}
+
+}

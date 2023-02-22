@@ -1,12 +1,38 @@
--- Called OnSpellStart
-function BanishStart(event)
-	local target = event.target
-	local caster = event.caster
-	local ability = event.ability
+if blood_mage_banish == nil then
+	blood_mage_banish = class({})
+end
 
-	local ability_level = ability:GetLevel() - 1
-	local hero_duration = ability:GetLevelSpecialValueFor("hero_duration", ability_level)
-	local creep_duration = ability:GetLevelSpecialValueFor("creep_duration", ability_level)
+LinkLuaModifier("modifier_banished_enemy", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_banished_ally", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
+
+-- function blood_mage_banish:CastFilterResultTarget(target)
+	-- local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	-- if target:IsCustomWardTypeUnit() then
+		-- return UF_FAIL_CUSTOM
+	-- end
+
+	-- return default_result
+-- end
+
+-- function blood_mage_banish:GetCustomCastErrorTarget(target)
+	-- if target:IsCustomWardTypeUnit() then
+		-- return "#dota_hud_error_cant_cast_on_other"
+	-- end
+	-- return ""
+-- end
+
+function blood_mage_banish:OnSpellStart()
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
+
+	if not target or not caster then
+		return
+	end
+
+	-- KVs
+	local hero_duration = self:GetSpecialValueFor("hero_duration")
+	local creep_duration = self:GetSpecialValueFor("creep_duration")
 
 	-- Talent that increases duration:
 	local talent = caster:FindAbilityByName("special_bonus_unique_blood_mage_1")
@@ -18,80 +44,188 @@ function BanishStart(event)
 	-- Checking if target is an enemy
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
 		-- Check for spell block and spell immunity (latter because of lotus)
-		if not target:TriggerSpellAbsorb(ability) and not target:IsMagicImmune() then
+		if not target:TriggerSpellAbsorb(self) and not target:IsMagicImmune() then
+			-- Sound
+			target:EmitSound("Hero_Pugna.Decrepify")
+
 			if target:IsRealHero() then
-				ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = hero_duration})
+				target:AddNewModifier(caster, self, "modifier_banished_enemy", {duration = hero_duration})
 			else
-				ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_enemy", {["duration"] = creep_duration})
+				target:AddNewModifier(caster, self, "modifier_banished_enemy", {duration = creep_duration})
 			end
 		end
 	else
-		LinkLuaModifier("modifier_banished_heal_amp", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
+		-- Sound
+		target:EmitSound("Hero_Pugna.Decrepify")
+
 		if target:IsRealHero() then
-			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_ally", {["duration"] = hero_duration})
-			target:AddNewModifier(caster, ability, "modifier_banished_heal_amp", {duration = hero_duration})
+			target:AddNewModifier(caster, self, "modifier_banished_ally", {duration = hero_duration})
 		else
-			ability:ApplyDataDrivenModifier(caster, target, "modifier_banished_ally", {["duration"] = creep_duration})
-			target:AddNewModifier(caster, ability, "modifier_banished_heal_amp", {duration = creep_duration})
+			target:AddNewModifier(caster, self, "modifier_banished_ally", {duration = creep_duration})
 		end
 	end
 end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_banished_heal_amp == nil then
-	modifier_banished_heal_amp = class({})
+if modifier_banished_ally == nil then
+	modifier_banished_ally = class({})
 end
 
-function modifier_banished_heal_amp:IsHidden()
-	return true
-end
-
-function modifier_banished_heal_amp:IsDebuff()
+function modifier_banished_ally:IsHidden() -- needs tooltip
 	return false
 end
 
-function modifier_banished_heal_amp:IsPurgable()
+function modifier_banished_ally:IsDebuff()
+	return false
+end
+
+function modifier_banished_ally:IsPurgable()
 	return true
 end
 
-function modifier_banished_heal_amp:RemoveOnDeath()
+function modifier_banished_ally:RemoveOnDeath()
 	return true
 end
 
-function modifier_banished_heal_amp:OnCreated()
-  local ability = self:GetAbility()
-  if ability and not ability:IsNull() then
-    self.hp_regen_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.heal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-    self.spell_lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
-  end
+function modifier_banished_ally:OnCreated()
+	local ability = self:GetAbility()
+	if ability and not ability:IsNull() then
+		self.magic_resist = ability:GetSpecialValueFor("bonus_spell_damage_allies")
+		self.hp_regen_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.heal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+		self.spell_lifesteal_amp = ability:GetSpecialValueFor("heal_amp_pct")
+	end
 end
 
-modifier_banished_heal_amp.OnRefresh = modifier_banished_heal_amp.OnCreated
+modifier_banished_ally.OnRefresh = modifier_banished_ally.OnCreated
 
-function modifier_banished_heal_amp:DeclareFunctions()
+function modifier_banished_ally:DeclareFunctions()
 	return {
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE,
 		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
 		MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 	}
 end
 
-function modifier_banished_heal_amp:GetModifierHPRegenAmplify_Percentage()
-  return self.hp_regen_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+function modifier_banished_ally:GetModifierMagicalResistanceDecrepifyUnique()
+	return self.magic_resist
 end
 
-function modifier_banished_heal_amp:GetModifierHealAmplify_PercentageTarget()
-  return self.heal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+function modifier_banished_ally:GetAbsoluteNoDamagePhysical()
+	return 1
 end
 
-function modifier_banished_heal_amp:GetModifierLifestealRegenAmplify_Percentage()
-  return self.lifesteal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+function modifier_banished_ally:GetModifierHPRegenAmplify_Percentage()
+	return self.hp_regen_amp
 end
 
-function modifier_banished_heal_amp:GetModifierSpellLifestealRegenAmplify_Percentage()
-  return self.spell_lifesteal_amp or self:GetAbility():GetSpecialValueFor("heal_amp_pct")
+function modifier_banished_ally:GetModifierHealAmplify_PercentageTarget()
+	return self.heal_amp
+end
+
+function modifier_banished_ally:GetModifierLifestealRegenAmplify_Percentage()
+	return self.lifesteal_amp
+end
+
+function modifier_banished_ally:GetModifierSpellLifestealRegenAmplify_Percentage()
+	return self.spell_lifesteal_amp
+end
+
+function modifier_banished_ally:CheckState()
+	return {
+		[MODIFIER_STATE_DISARMED] = true,
+		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+	}
+end
+
+function modifier_banished_ally:GetEffectName()
+	return "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+end
+
+function modifier_banished_ally:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
+---------------------------------------------------------------------------------------------------
+
+if modifier_banished_enemy == nil then
+	modifier_banished_enemy = class({})
+end
+
+function modifier_banished_enemy:IsHidden() -- needs tooltip
+	return false
+end
+
+function modifier_banished_enemy:IsDebuff()
+	return true
+end
+
+function modifier_banished_enemy:IsPurgable()
+	return true
+end
+
+function modifier_banished_enemy:RemoveOnDeath()
+	return true
+end
+
+function modifier_banished_enemy:OnCreated()
+	local parent = self:GetParent()
+	local ability = self:GetAbility()
+
+	local movement_slow = 25
+	self.magic_resist = 25
+
+	if ability and not ability:IsNull() then
+		self.magic_resist = ability:GetSpecialValueFor("bonus_spell_damage")
+		movement_slow = ability:GetSpecialValueFor("move_speed_slow")
+	end
+
+	if IsServer() then
+		-- Slow is reduced with Status Resistance
+		self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+	else
+		self.slow = movement_slow
+	end
+end
+
+modifier_banished_enemy.OnRefresh = modifier_banished_enemy.OnCreated
+
+function modifier_banished_enemy:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE,
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+	}
+end
+
+function modifier_banished_enemy:GetModifierMagicalResistanceDecrepifyUnique()
+	return 0 - math.abs(self.magic_resist)
+end
+
+function modifier_banished_enemy:GetModifierMoveSpeedBonus_Percentage()
+	return 0 - math.abs(self.slow)
+end
+
+function modifier_banished_enemy:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_banished_enemy:CheckState()
+	return {
+		[MODIFIER_STATE_DISARMED] = true,
+		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+	}
+end
+
+function modifier_banished_enemy:GetEffectName()
+	return "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+end
+
+function modifier_banished_enemy:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
 end

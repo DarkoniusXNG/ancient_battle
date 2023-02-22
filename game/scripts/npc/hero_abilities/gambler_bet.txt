@@ -5,8 +5,8 @@
   // Author: Darkonius
   // Linkens: Doesn't Block (because its global)
   // How to counter bet: invisibility, dispel (bkb, manta, euls, purge), running, hiding, teleporting, wards
-  // Notes: OK; 2022;
-  // TO_DO:
+  // Notes: OK; 2023;
+  // TO_DO: Rewrite in lua; aghs shard: allows betting on ally deaths
   //=================================================================================================================
   "gambler_bet"
   {
@@ -20,10 +20,12 @@
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
+
+    //"HasShardUpgrade"                                     "1"
+
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
     "AbilityCastPoint"                                    "0.3"
-    
+
     "AbilityCooldown"                                     "30"            // Ante Up (60)
     "AbilityManaCost"                                     "50"          // Ante Up (100)
     "AbilityProcsMagicStick"                              "1"
@@ -103,7 +105,7 @@
         }
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_bet_heal"
@@ -115,7 +117,7 @@
         }
         "Duration"                                        "0.3"
       }
-      
+
       "FireEffect"
       {
         "EffectName"                                      "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
@@ -126,9 +128,8 @@
           "CASTER"                                        "attach_attack1"
           "TARGET"                                        "attach_hitloc"
         }
-
       }
-      
+
       "FireSound"
       {
         "EffectName"                                      "Hero_BountyHunter.Target"
@@ -139,7 +140,7 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_gambler_bet_debuff" // needs tooltip
@@ -147,10 +148,10 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/econ/items/bounty_hunter/bounty_hunter_hunters_hoard/bounty_hunter_hoard_shield.vpcf"
         "EffectAttachType"                                "follow_overhead"
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -159,7 +160,7 @@
             "Function"                                    "gambler_bet_on_spell_start"
           }
         }
-        
+
         "OnTakeDamage"
         {
           "RunScript"
@@ -169,13 +170,13 @@
           }
         }
       }
-      
+
       "modifier_bet_heal" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "Heal"

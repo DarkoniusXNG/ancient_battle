@@ -1,7 +1,7 @@
 "DOTAHeroes"
 {
   //=================================================================================================================
-  // HERO: Mana Eater; 2022;
+  // HERO: Mana Eater; 2023;
   // Notes: OK; Negative mana regeneration; Doesn't benefit from bonus intelligence or bonus mana regen;
   // TO_DO: special_bonus_unique_mana_eater_1;
   //=================================================================================================================
@@ -36,7 +36,7 @@
     "Ability12"                                           "special_bonus_attack_damage_40"        // lvl 15 talent; unique
     "Ability13"                                           "special_bonus_spell_amplify_12"        // lvl 15 talent; unique
 
-    "Ability14"                                           "special_bonus_armor_10"                // lvl 20 talent; unique
+    "Ability14"                                           "special_bonus_armor_8"                // lvl 20 talent; unique
     "Ability15"                                           "special_bonus_attack_speed_50"     // lvl 20 talent> special_bonus_unique_mana_eater_1 - Anti-Magic Field provides attack speed talent
 
     "Ability16"                                           "special_bonus_cast_range_400"          // lvl 25 talent; unique
@@ -44,7 +44,7 @@
     
     // Protection
     //-------------------------------------------------------------------------------------------------------------
-    "ArmorPhysical"                                       "-3"                // Puck (-3)
+    "ArmorPhysical"                                       "-4"                // Puck (-3)
     "MagicalResistance"                                   "25"                // Default
     
     // Attack
@@ -81,7 +81,7 @@
     // Status
     //-------------------------------------------------------------------------------------------------------------
     "StatusHealthRegen"                                   "0.5"                  // Puck (0.5)
-    "StatusHealth"                                        "200"                  // like Puck
+    "StatusHealth"                                        "150"                  // Puck (200)
     "StatusMana"                                          "0"                    // Unique for Mana Eater
     "StatusManaRegen"                                     "0.0"                  // Negative mana regeneration is dynamic and handled in lua
   }

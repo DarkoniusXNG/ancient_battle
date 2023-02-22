@@ -4,7 +4,7 @@
   // Archmage: Mass Teleport (R) - New Spell, Ultimate, Teleports the caster and neaby allies to target allied unit or building
   // Author: Darkonius
   // Notes: OK; 2022;
-  // TO_DO:
+  // TO_DO: Rewrite in lua: Nearest unit
   // ================================================================================================================
   "archmage_mass_teleport"
   {

@@ -4,6 +4,23 @@ LinkLuaModifier("modifier_electrician_static_grip", "heroes/electrician/electric
 LinkLuaModifier("modifier_electrician_static_grip_movement", "heroes/electrician/electrician_static_grip.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
 LinkLuaModifier("modifier_electrician_static_grip_debuff_tracker", "heroes/electrician/electrician_static_grip.lua", LUA_MODIFIER_MOTION_NONE)
 
+function electrician_static_grip:CastFilterResultTarget(target)
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
+
+	if target:IsCustomWardTypeUnit() then
+		return UF_FAIL_CUSTOM
+	end
+
+	return default_result
+end
+
+function electrician_static_grip:GetCustomCastErrorTarget(target)
+	if target:IsCustomWardTypeUnit() then
+		return "#dota_hud_error_cant_cast_on_other"
+	end
+	return ""
+end
+
 function electrician_static_grip:GetChannelTime()
   local caster = self:GetCaster()
 

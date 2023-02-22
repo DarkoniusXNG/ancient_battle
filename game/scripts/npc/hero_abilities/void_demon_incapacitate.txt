@@ -5,7 +5,7 @@
   // Author: Darkonius
   // Linkens: Blocks;
   // Notes: OK; 2022; Disarm is affected by status resistance, silence is not.
-  // TO_DO:
+  // TO_DO: Rewrite in lua;
   //=================================================================================================================
   "void_demon_incapacitate"
   {

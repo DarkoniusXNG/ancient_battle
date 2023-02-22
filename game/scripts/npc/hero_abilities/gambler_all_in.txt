@@ -5,7 +5,7 @@
   // Author: Darkonius; 
   // Linkens: Blocks only if it would hit;
   // Notes: 2022; Chance for Success is True Random; Has Aghanim Scepter upgrade;
-  // TO_DO:
+  // TO_DO: Rewrite in lua;
   //=================================================================================================================
   "gambler_all_in"
   {

@@ -1,7 +1,7 @@
 "DOTAAbilities"
 {
   //====================================================================================================
-  // Lich: Sacrifice (E) - Lich Dark Ritual(Sacrifice), nobody gets XP, decreased cooldown, increased cast range
+  // Lich: Sacrifice (E) - Lich Dark Ritual(Sacrifice), nobody gets XP, increased cast range
   // Author: Jastuchko + Darkonius
   // Notes: OK; 2022;
   // TO_DO:

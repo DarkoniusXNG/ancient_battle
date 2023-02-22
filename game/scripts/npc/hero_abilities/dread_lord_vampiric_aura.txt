@@ -1,0 +1,35 @@
+"DOTAAbilities"
+{
+
+// Dread Lord Vampiric Aura
+// Author: Noya
+// Description: Nearby friendly melee units gain hit points when they hit a unit.
+
+"dread_lord_vampiric_aura"
+{
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/dread_lord/vampiric_aura.lua"
+    "AbilityTextureName"                                  "dread_lord_vampiric_aura"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+    "AbilityCastRange"                                    "900"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "lifesteal"                                       "15 30 45"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "radius"                                          "900"
+      }
+    }
+}
+
+}

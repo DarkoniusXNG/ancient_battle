@@ -5,14 +5,13 @@ warp_beast_latch = class({})
 
 function warp_beast_latch:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
+	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-	if target == caster then
-		return UF_FAIL_CUSTOM
-	elseif target:IsHeroDominatedCustom() then
+	if target == caster or target:IsHeroDominatedCustom() then
 		return UF_FAIL_CUSTOM
 	end
 
-	return self.BaseClass.CastFilterResultTarget(self, target)
+	return default_result
 end
 
 function warp_beast_latch:GetCustomCastErrorTarget(target)
@@ -23,6 +22,7 @@ function warp_beast_latch:GetCustomCastErrorTarget(target)
 	if target:IsHeroDominatedCustom() then
 		return "Can't Target Dominated Heroes!"
 	end
+	return ""
 end
 
 function warp_beast_latch:OnSpellStart()

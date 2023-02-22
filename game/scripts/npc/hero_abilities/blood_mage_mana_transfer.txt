@@ -2,185 +2,50 @@
 {
   //=================================================================================================================
   // Blood Mage: Mana Transfer - Mana Drain from enemies, Mana giving to allies
-  // Author: 
-  // Notes: OK; 2022; Kills illusions; The link doesn't break when the target gets out of vision;
+  // Author: Darkonius
+  // Notes: OK; 2023; Kills illusions; The link doesn't break when the target gets out of vision (goes in fog for example);
   // Linkens: Blocks;
   // TO_DO:
   //=================================================================================================================
   "blood_mage_mana_transfer"
   {
-    "BaseClass"                                           "ability_datadriven"
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/blood_mage/mana_transfer.lua"
     "AbilityTextureName"                                  "custom/blood_mage_mana_transfer"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
-    "AbilityCastRange"                                    "950"
+
+    "HasShardUpgrade"                                     "1"
+
+    "AbilityCastRange"                                    "850" // original (600);
     "AbilityCastPoint"                                    "0.1"
-    "AbilityChannelTime"                                  "6.0"
+    "AbilityChannelTime"                                  "6" // Lion (5); original (unknown);
     "CastFilterRejectCaster"                              "1"
     "AbilityCastAnimation"                                "ACT_DOTA_TELEPORT"
-    
-    "AbilityCooldown"                                     "16.0 12.0 8.0 4.0"
-    
+
+    "AbilityCooldown"                                     "15 12 9 6" // original (6);
+
     "AbilityManaCost"                                     "0"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
       "particle"                                          "particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
     }
-    
-    "AbilitySpecial"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "6"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_per_second"                                 "20 40 60 120"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "break_distance"                                  "1300"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tick_rate"                                       "0.1"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "extra_mana_duration"                             "16"
-      }
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/blood_mage/mana_transfer.lua"
-        "Function"                                        "ManaTransferStart"
-      }         
-    }
-
-    "OnChannelFinish"
-    {
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/blood_mage/mana_transfer.lua"
-        "Function"                                        "ManaTransferEnd"
-      }
-    }
-    
-    "OnChannelInterrupted"
-    {
-      "RunScript"
-      {
-        "ScriptFile"                                      "heroes/blood_mage/mana_transfer.lua"
-        "Function"                                        "ManaTransferEnd"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_mana_transfer_enemy" // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsDebuff"                                        "1"
-        "IsPurgable"                                      "0"
-        
-        "Duration"                                        "%duration"
-        
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaDrainParticle"
-          }
-        }
-
-        "OnDestroy"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaTransferEnd"
-          }
-        }
-
-        "ThinkInterval"                                   "%tick_rate"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaDrainManaTransfer"
-          }
-        }
-      }
-      
-      "modifier_mana_transfer_ally" // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "Duration"                                        "%duration"
-        
-        "OnCreated"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaDrainParticle"
-          }
-        }
-        
-        "OnDestroy"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaTransferEnd"
-          }
-        }
-
-        "ThinkInterval"                                   "%tick_rate"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/blood_mage/mana_transfer.lua"
-            "Function"                                    "ManaTransferAlly"
-          }
-        }
-      }
-
-      "modifier_transfer_mana_extra" // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-        
-        "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE"
-        
-        "Duration"                                        "%extra_mana_duration"
-
-        "Properties"
-        {
-          "MODIFIER_PROPERTY_MANA_BONUS"                  "%mana_per_second" 
-        }
-      }
+      "duration"                                          "6" // only used in tooltip
+      "mana_per_second"                                   "20 40 60 120"
+      "break_distance"                                    "1100"
+      "think_interval"                                    "0.1"
+      "extra_mana_duration"                               "6"
     }
   }
   

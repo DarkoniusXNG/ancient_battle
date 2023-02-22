@@ -1,0 +1,90 @@
+"DOTAAbilities"
+{
+
+// Dread Lord Carrion Swarm
+// Author: Noya
+// Description: Sends a horde of bats to damage enemies.
+
+"dread_lord_carrion_swarm"
+{
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "dread_lord_carrion_swarm"
+    "MaxLevel"                                            "3"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
+    "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
+
+    "AbilityCastRange"                                    "700"
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "10.0"
+
+    "AbilityManaCost"                                     "110"
+    "AbilityDamage"                                       "75 125 200"
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_death_prophet/death_prophet_carrion_swarm.vpcf"    //Can't attach the bats
+      "particle"                                          "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "max_damage"                                      "300 600 1000"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/dread_lord/carrion_swarm.lua"
+        "Function"                                        "CarrionSwarmStart"
+      }
+
+      "LinearProjectile"
+      {
+        "Target"                                          "POINT"
+        "EffectName"                                      "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
+        "MoveSpeed"                                       "1100"
+        "StartRadius"                                     "150"
+        "EndRadius"                                       "300"
+        "StartPosition"                                   "attach_attack1"
+        "FixedDistance"                                   "700"
+        "TargetTeams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "TargetTypes"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "HasFrontalCone"                                  "1"
+        "ProvidesVision"                                  "0"
+      }
+
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_DeathProphet.CarrionSwarm"
+        "Target"                                          "CASTER"
+      }
+    }
+
+    "OnProjectileHitUnit"
+    {
+      "DeleteOnHit"                                       "0"
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_DeathProphet.CarrionSwarm.Damage"
+        "Target"                                          "TARGET"
+      }
+
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/dread_lord/carrion_swarm.lua"
+        "Function"                                        "CarrionSwarmDamage"
+      }
+    }
+}
+
+}

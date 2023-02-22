@@ -144,7 +144,7 @@ function modifier_techies_custom_remote_mine:OnIntervalThink()
 		if not parent or parent:IsNull() then
 			return
 		end
-		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1000 then
+		if (caster:GetAbsOrigin() - parent:GetAbsOrigin()):Length2D() <= 1200 then
 			self.allow_ms = true
 		else
 			self.allow_ms = false
