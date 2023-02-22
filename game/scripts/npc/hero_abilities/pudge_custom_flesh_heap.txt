@@ -19,7 +19,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "magic_resistance"                                "24 26 28 30"
+        "magic_resistance"                                "10 15 20 25"
       }
       "02"
       {

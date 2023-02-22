@@ -79,9 +79,9 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_3"            "-{s:tooltip_value}s Land Mines Activation Delay"
 		
 		// Suicide talents
-		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2"            "Suicide Squad, Attack! Silences"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2"            "Suicide Silences"
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_2_Description"  "Silences damaged enemies for 7 seconds after explosion."
-		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_4"            "-{s:value}s Suicide Squad, Attack! Cooldown"
+		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_4"            "-{s:value}s Suicide Cooldown"
 		
 		// All mines talent
 		"DOTA_Tooltip_ability_special_bonus_unique_techies_custom_1"            "Mine Explosion Slows"

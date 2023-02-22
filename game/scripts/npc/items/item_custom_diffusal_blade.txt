@@ -77,7 +77,7 @@
       "damage_per_burned_mana"                            "1"
 
       "move_speed_slow"                                   "-100"
-      "purge_slow_duration"                               "3.0"
+      "purge_slow_duration"                               "4.0"
     }
   }
 }

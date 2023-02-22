@@ -21,7 +21,7 @@
     "AbilityCastRange"                                    "100" // old (100);
     "AbilityCastPoint"                                    "0.0" // old (0);
 
-    "AbilityCooldown"                                     "120" // old (160/140/120/100)
+    "AbilityCooldown"                                     "100" // old (160/140/120/100)
 
     "AbilityManaCost"                                     "100 125 150 175" // old (100/125/150/175)
     "AbilityProcsMagicStick"                              "1"
@@ -98,7 +98,7 @@
       "01"
       {
         "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "90"
+        "value"                                           "75"
       }
     }
   }

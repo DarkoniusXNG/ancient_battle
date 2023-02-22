@@ -274,6 +274,8 @@ function modifier_item_custom_purged_enemy_hero:OnCreated()
 			self.slow = movement_slow
 		end
 	end
+
+	self.duration = self:GetDuration()
 end
 
 modifier_item_custom_purged_enemy_hero.OnRefresh = modifier_item_custom_purged_enemy_hero.OnCreated
@@ -285,7 +287,7 @@ function modifier_item_custom_purged_enemy_hero:DeclareFunctions()
 end
 
 function modifier_item_custom_purged_enemy_hero:GetModifierMoveSpeedBonus_Percentage()
-	return self.slow
+	return 0 - math.abs(self.slow * (self:GetRemainingTime() / self.duration)) -- decaying slow
 end
 
 function modifier_item_custom_purged_enemy_hero:GetTexture()
