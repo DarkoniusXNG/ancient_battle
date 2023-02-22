@@ -911,11 +911,11 @@ function Physics:Unit(unit)
       return
     end
   end
-  function unit:StopPhysicsSimulation () -- luacheck: ignore unit
+  function unit:StopPhysicsSimulation () -- luacheck: ignore
     Physics.timers[unit.PhysicsTimerName] = nil
     unit.bStarted = false
   end
-  function unit:StartPhysicsSimulation () -- luacheck: ignore unit
+  function unit:StartPhysicsSimulation () -- luacheck: ignore
     Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
     unit.PhysicsTimer.endTime = GameRules:GetGameTime()
     unit.PhysicsLastPosition = unit:GetAbsOrigin()
@@ -925,7 +925,7 @@ function Physics:Unit(unit)
     unit.bStarted = true
   end
 
-  function unit:SetPhysicsVelocity (velocity) -- luacheck: ignore unit
+  function unit:SetPhysicsVelocity (velocity) -- luacheck: ignore
     unit.vVelocity = velocity / 30
     if unit.nVelocityMax > 0 and unit.vVelocity:Length() > unit.nVelocityMax then
       unit.vVelocity = unit.vVelocity:Normalized() * unit.nVelocityMax
@@ -941,12 +941,12 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:AddPhysicsVelocity (velocity) -- luacheck: ignore unit
+  function unit:AddPhysicsVelocity (velocity) -- luacheck: ignore
     unit.vVelocity = unit.vVelocity + velocity / 30
     if unit.nVelocityMax > 0 and unit.vVelocity:Length() > unit.nVelocityMax then
       unit.vVelocity = unit.vVelocity:Normalized() * unit.nVelocityMax
     end
-    
+
     if unit.bStarted and unit.bHibernating then
       Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
       unit.PhysicsTimer.endTime = GameRules:GetGameTime()
@@ -958,16 +958,16 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:SetPhysicsVelocityMax (velocityMax) -- luacheck: ignore unit
+  function unit:SetPhysicsVelocityMax (velocityMax) -- luacheck: ignore
     unit.nVelocityMax = velocityMax / 30
   end
-  function unit:GetPhysicsVelocityMax () -- luacheck: ignore unit
+  function unit:GetPhysicsVelocityMax () -- luacheck: ignore
     return unit.vVelocity * 30
   end
 
-  function unit:SetPhysicsAcceleration (acceleration) -- luacheck: ignore unit
+  function unit:SetPhysicsAcceleration (acceleration) -- luacheck: ignore
     unit.vAcceleration = acceleration / 900
-    
+
     if unit.bStarted and unit.bHibernating then
       Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
       unit.PhysicsTimer.endTime = GameRules:GetGameTime()
@@ -978,9 +978,9 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:AddPhysicsAcceleration (acceleration) -- luacheck: ignore unit
+  function unit:AddPhysicsAcceleration (acceleration) -- luacheck: ignore
     unit.vAcceleration = unit.vAcceleration + acceleration / 900
-    
+
     if unit.bStarted and unit.bHibernating then
       Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
       unit.PhysicsTimer.endTime = GameRules:GetGameTime()
@@ -992,45 +992,45 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:SetPhysicsFriction (percFriction, flatFriction) -- luacheck: ignore unit
+  function unit:SetPhysicsFriction (percFriction, flatFriction) -- luacheck: ignore
     unit.fFriction = percFriction
     unit.fFlatFriction = (flatFriction or (unit.fFlatFriction*30))/30
   end
 
-  function unit:GetPhysicsVelocity () -- luacheck: ignore unit
+  function unit:GetPhysicsVelocity () -- luacheck: ignore
     return unit.vVelocity  * 30
   end
-  function unit:GetPhysicsAcceleration () -- luacheck: ignore unit
+  function unit:GetPhysicsAcceleration () -- luacheck: ignore
     return unit.vAcceleration * 900
   end
-  function unit:GetPhysicsFriction () -- luacheck: ignore unit
+  function unit:GetPhysicsFriction () -- luacheck: ignore
     return unit.fFriction, unit.fFlatFriction*30
   end
 
-  function unit:FollowNavMesh (follow) -- luacheck: ignore unit
+  function unit:FollowNavMesh (follow) -- luacheck: ignore
     unit.bFollowNavMesh = follow
   end
-  function unit:IsFollowNavMesh () -- luacheck: ignore unit
+  function unit:IsFollowNavMesh () -- luacheck: ignore
     return unit.bFollowNavMesh
   end
 
-  function unit:SetGroundBehavior (ground) -- luacheck: ignore unit
+  function unit:SetGroundBehavior (ground) -- luacheck: ignore
     unit.nLockToGround = ground
   end
-  function unit:GetGroundBehavior () -- luacheck: ignore unit
+  function unit:GetGroundBehavior () -- luacheck: ignore
     return unit.nLockToGround
   end
 
-  function unit:SetSlideMultiplier (slideMultiplier) -- luacheck: ignore unit
+  function unit:SetSlideMultiplier (slideMultiplier) -- luacheck: ignore
     unit.fSlideMultiplier = slideMultiplier
   end
-  function unit:GetSlideMultiplier () -- luacheck: ignore unit
+  function unit:GetSlideMultiplier () -- luacheck: ignore
     return unit.fSlideMultiplier
   end
 
-  function unit:Slide (slide) -- luacheck: ignore unit
+  function unit:Slide (slide) -- luacheck: ignore
     unit.bSlide = slide
-    
+
     if unit.bStarted and unit.bHibernating then
       Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
       unit.PhysicsTimer.endTime = GameRules:GetGameTime()
@@ -1041,130 +1041,130 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:IsSlide () -- luacheck: ignore unit
+  function unit:IsSlide () -- luacheck: ignore
     return unit.bSlide
   end
 
-  function unit:PreventDI (prevent) -- luacheck: ignore unit
+  function unit:PreventDI (prevent) -- luacheck: ignore
     unit.bPreventDI = prevent
     if not prevent and unit:HasModifier("modifier_rooted") then
       unit:RemoveModifierByName("modifier_rooted")
     end
   end
-  function unit:IsPreventDI () -- luacheck: ignore unit
+  function unit:IsPreventDI () -- luacheck: ignore
     return unit.bPreventDI
   end
 
-  function unit:SetNavCollisionType (collisionType) -- luacheck: ignore unit
+  function unit:SetNavCollisionType (collisionType) -- luacheck: ignore
     unit.nNavCollision = collisionType
   end
-  function unit:GetNavCollisionType () -- luacheck: ignore unit
+  function unit:GetNavCollisionType () -- luacheck: ignore
     return unit.nNavCollision
   end
 
-  function unit:OnPhysicsFrame(fun) -- luacheck: ignore unit
+  function unit:OnPhysicsFrame(fun) -- luacheck: ignore
     unit.PhysicsFrameCallback = fun
   end
 
-  function unit:SetVelocityClamp (clamp) -- luacheck: ignore unit
+  function unit:SetVelocityClamp (clamp) -- luacheck: ignore
     unit.fVelocityClamp = clamp / 30
   end
 
-  function unit:GetVelocityClamp () -- luacheck: ignore unit
+  function unit:GetVelocityClamp () -- luacheck: ignore
     return unit.fVelocityClamp * 30
   end
 
-  function unit:Hibernate (hibernate) -- luacheck: ignore unit
+  function unit:Hibernate (hibernate) -- luacheck: ignore
     unit.bHibernate = hibernate
   end
 
-  function unit:IsHibernate () -- luacheck: ignore unit
+  function unit:IsHibernate () -- luacheck: ignore
     return unit.bHibernate
   end
 
-  function unit:DoHibernate () -- luacheck: ignore unit
+  function unit:DoHibernate () -- luacheck: ignore
     Physics.timers[unit.PhysicsTimerName] = nil
     unit.bHibernating = true
   end
 
-  function unit:OnHibernate(fun) -- luacheck: ignore unit
+  function unit:OnHibernate(fun) -- luacheck: ignore
     unit.PhysicsHibernateCallback = fun
   end
 
-  function unit:OnPreBounce(fun) -- luacheck: ignore unit
+  function unit:OnPreBounce(fun) -- luacheck: ignore
     unit.PhysicsOnPreBounce = fun
   end
 
-  function unit:OnBounce(fun) -- luacheck: ignore unit
+  function unit:OnBounce(fun) -- luacheck: ignore
     unit.PhysicsOnBounce = fun
   end
 
-  function unit:OnPreSlide(fun) -- luacheck: ignore unit
+  function unit:OnPreSlide(fun) -- luacheck: ignore
     unit.PhysicsOnPreSlide = fun
   end
 
-  function unit:OnSlide(fun) -- luacheck: ignore unit
+  function unit:OnSlide(fun) -- luacheck: ignore
     unit.PhysicsOnSlide = fun
   end
 
-  function unit:AdaptiveNavGridLookahead (adaptive) -- luacheck: ignore unit
+  function unit:AdaptiveNavGridLookahead (adaptive) -- luacheck: ignore
     unit.bAdaptiveNavGridLookahead = adaptive
   end
-  
-  function unit:IsAdaptiveNavGridLookahead () -- luacheck: ignore unit
+
+  function unit:IsAdaptiveNavGridLookahead () -- luacheck: ignore
     return unit.bAdaptiveNavGridLookahead
   end
-  
-  function unit:SetNavGridLookahead (lookahead) -- luacheck: ignore unit
+
+  function unit:SetNavGridLookahead (lookahead) -- luacheck: ignore
     unit.nNavGridLookahead = lookahead
   end
 
-  function unit:GetNavGridLookahead () -- luacheck: ignore unit
+  function unit:GetNavGridLookahead () -- luacheck: ignore
     return unit.nNavGridLookahead
   end
 
-  function unit:SkipSlide (frames) -- luacheck: ignore unit
+  function unit:SkipSlide (frames) -- luacheck: ignore
     unit.nSkipSlide = frames or 1
   end
 
-  function unit:SetRebounceFrames ( rebounce ) -- luacheck: ignore unit
+  function unit:SetRebounceFrames ( rebounce ) -- luacheck: ignore
     unit.nMaxRebounce = rebounce
     unit.nRebounceFrames = 0
   end
 
-  function unit:GetRebounceFrames () -- luacheck: ignore unit
+  function unit:GetRebounceFrames () -- luacheck: ignore
     unit.nRebounceFrames = 0
     return unit.nMaxRebounce
   end
 
-  function unit:GetLastGoodPosition () -- luacheck: ignore unit
+  function unit:GetLastGoodPosition () -- luacheck: ignore
     return unit.vLastGoodPosition
   end
 
-  function unit:SetStuckTimeout (timeout) -- luacheck: ignore unit
+  function unit:SetStuckTimeout (timeout) -- luacheck: ignore
     unit.nStuckTimeout = timeout
     unit.nStuckFrames = 0
   end
-  function unit:GetStuckTimeout () -- luacheck: ignore unit
+  function unit:GetStuckTimeout () -- luacheck: ignore
     unit.nStuckFrames = 0
     return unit.nStuckTimeout
   end
 
-  function unit:SetAutoUnstuck (unstuck) -- luacheck: ignore unit
+  function unit:SetAutoUnstuck (unstuck) -- luacheck: ignore
     unit.bAutoUnstuck = unstuck
   end
-  function unit:GetAutoUnstuck () -- luacheck: ignore unit
+  function unit:GetAutoUnstuck () -- luacheck: ignore
     return unit.bAutoUnstuck
   end
 
-  function unit:SetBounceMultiplier (bounce) -- luacheck: ignore unit
+  function unit:SetBounceMultiplier (bounce) -- luacheck: ignore
     unit.fBounceMultiplier = bounce
   end
-  function unit:GetBounceMultiplier () -- luacheck: ignore unit
+  function unit:GetBounceMultiplier () -- luacheck: ignore
     return unit.fBounceMultiplier
   end
 
-  function unit:GetTotalVelocity() -- luacheck: ignore unit
+  function unit:GetTotalVelocity() -- luacheck: ignore
     if unit.bStarted and not unit.bHibernating then
       return unit.vTotalVelocity
     else
@@ -1172,13 +1172,13 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:GetColliders() -- luacheck: ignore unit
+  function unit:GetColliders() -- luacheck: ignore
     return unit.oColliders
   end
 
-  function unit:RemoveCollider(name) -- luacheck: ignore unit
+  function unit:RemoveCollider(name) -- luacheck: ignore
     if name == nil then
-      local i, v = next(unit.oColliders,  nil)
+      local i, v = next(unit.oColliders,  nil) -- luacheck: ignore v
       if i == nil then
         return
       end
@@ -1189,14 +1189,14 @@ function Physics:Unit(unit)
     Physics:RemoveCollider(name)
   end
 
-  function unit:AddCollider(name, collider) -- luacheck: ignore unit
+  function unit:AddCollider(name, collider) -- luacheck: ignore
     local coll = Physics:AddCollider(name, collider)
     coll.unit = unit
     unit.oColliders[coll.name] = coll
     return coll
   end
 
-  function unit:AddColliderFromProfile(name, profile, collider) -- luacheck: ignore unit
+  function unit:AddColliderFromProfile(name, profile, collider) -- luacheck: ignore
     if profile == nil then
       profile = name
       name = DoUniqueString("collider")
@@ -1211,48 +1211,48 @@ function Physics:Unit(unit)
     return coll
   end
 
-  function unit:GetMass() -- luacheck: ignore unit
+  function unit:GetMass() -- luacheck: ignore
     return unit.fMass
   end
 
-  function unit:SetMass(mass) -- luacheck: ignore unit
+  function unit:SetMass(mass) -- luacheck: ignore
     unit.fMass = mass
   end
 
-  function unit:GetNavGroundAngle() -- luacheck: ignore unit
-    return math.acos(unit.fNavGroundAngle) * 180 / math.pi 
+  function unit:GetNavGroundAngle() -- luacheck: ignore
+    return math.acos(unit.fNavGroundAngle) * 180 / math.pi
   end
 
-  function unit:SetNavGroundAngle(angle) -- luacheck: ignore unit
+  function unit:SetNavGroundAngle(angle) -- luacheck: ignore
     unit.fNavGroundAngle = math.cos(angle * math.pi / 180)
   end
 
-  function unit:CutTrees(cut) -- luacheck: ignore unit
+  function unit:CutTrees(cut) -- luacheck: ignore
     unit.bCutTrees = cut
   end
 
-  function unit:IsCutTrees() -- luacheck: ignore unit
+  function unit:IsCutTrees() -- luacheck: ignore
     return unit.bCutTrees
   end
 
-  function unit:IsInSimulation() -- luacheck: ignore unit
+  function unit:IsInSimulation() -- luacheck: ignore
     return unit.bStarted
   end
 
-  function unit:SetBoundOverride(bound) -- luacheck: ignore unit
+  function unit:SetBoundOverride(bound) -- luacheck: ignore
     unit.fBoundOverride = bound
   end
 
-  function unit:GetBoundOverride() -- luacheck: ignore unit
+  function unit:GetBoundOverride() -- luacheck: ignore
     return unit.fBoundOverride
   end
 
-  function unit:ClearStaticVelocity() -- luacheck: ignore unit
+  function unit:ClearStaticVelocity() -- luacheck: ignore
     unit.staticForces = {}
     unit.staticSum = Vector(0,0,0)
   end
 
-  function unit:SetStaticVelocity(name, velocity) -- luacheck: ignore unit
+  function unit:SetStaticVelocity(name, velocity) -- luacheck: ignore
     if unit.staticForces[name] ~= nil then
       unit.staticSum = unit.staticSum - unit.staticForces[name]
     end
@@ -1270,7 +1270,7 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:GetStaticVelocity(name) -- luacheck: ignore unit
+  function unit:GetStaticVelocity(name) -- luacheck: ignore
     if name == nil then
       return unit.staticSum
     else
@@ -1278,7 +1278,7 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:AddStaticVelocity(name, velocity) -- luacheck: ignore unit
+  function unit:AddStaticVelocity(name, velocity) -- luacheck: ignore
     if unit.staticForces[name] == nil then
       unit.staticForces[name] = velocity / 30
       unit.staticSum = unit.staticSum + unit.staticForces[name]
@@ -1299,11 +1299,11 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:SetPhysicsFlatFriction(flatFriction) -- luacheck: ignore unit
+  function unit:SetPhysicsFlatFriction(flatFriction) -- luacheck: ignore
     unit.fFlatFriction = flatFriction / 30
   end
 
-  function unit:GetPhysicsFlatFriction() -- luacheck: ignore unit
+  function unit:GetPhysicsFlatFriction() -- luacheck: ignore
     return unit.fFlatFriction
   end
 
@@ -1559,7 +1559,7 @@ function Physics:Unit(unit)
           elseif unit.GetBoundingMaxs then
             bound = math.max(unit:GetBoundingMaxs().x, unit:GetBoundingMaxs().y)
           end
-          
+
           local connect = position-- + diff * bound
           local navConnect = not GridNav:IsTraversable(connect) or GridNav:IsBlocked(connect)
           local lookaheadNum = unit.nNavGridLookahead
@@ -1591,7 +1591,7 @@ function Physics:Unit(unit)
             local offX = self.offsetX
             local offY = self.offsetY
             if anggrid then
-              local angSize = #anggrid
+              --local angSize = #anggrid
               local angX = navX + offX
               local angY = navY + offY
 
@@ -2439,7 +2439,7 @@ if not Physics.timers then Physics:start() end
         -- local vMass = v:GetMass()
         -- --dir.z = 0
         -- dir = dir:Normalized()
-        
+
         -- local neg = -1 * dir
 
         -- local dot = unit:GetTotalVelocity():Length()
