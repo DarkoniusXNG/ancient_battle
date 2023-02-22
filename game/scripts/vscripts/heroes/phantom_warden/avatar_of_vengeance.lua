@@ -18,7 +18,7 @@
     -- local caster = event.caster
     -- if ability:GetAutoCastState() then
         -- local playerID = caster:GetPlayerOwnerID()
-        
+
         -- local spirit_limit = ability:GetSpecialValueFor( "spirit_limit" )
         -- if caster.spirit_count and caster.spirit_count < spirit_limit then
             -- caster:CastAbilityNoTarget(ability, playerID)

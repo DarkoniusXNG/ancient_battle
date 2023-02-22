@@ -355,13 +355,13 @@ end
 
 function LocustDebugDraw(center,vRgb,a,rad,ztest,duration)
     if Debug then
-		--DebugDrawCircle(center, vRgb, a, rad, ztest, duration)
+		DebugDrawCircle(center, vRgb, a, rad, ztest, duration)
 	end
 end
 
 ---------------------------------------------------------------------------------------------------
 
-function VectorDistanceSq(v1, v2) 
+function VectorDistanceSq(v1, v2)
     return (v1.x - v2.x) * (v1.x - v2.x) + (v1.y - v2.y) * (v1.y - v2.y) + (v1.z - v2.z) * (v1.z - v2.z)
 end
 
@@ -523,7 +523,7 @@ function Physics:Think()
                 color = collider.draw.color or color
               end
 
-              --DebugDrawCircle(unit:GetAbsOrigin(), color, alpha, collider.radius, true, .01)
+              DebugDrawCircle(unit:GetAbsOrigin(), color, alpha, collider.radius, true, .01)
             end
 
             local ents
@@ -559,9 +559,9 @@ function Physics:Think()
                     print('[PHYSICS] Collision action Failure!: ' .. action)
                   end
                   if collider.postaction then
-                    local status5, action = pcall(collider.postaction, collider, unit, v)
+                    local status5, action5 = pcall(collider.postaction, collider, unit, v)
                     if not status5 then
-                      print('[PHYSICS] Collision postaction Failure!: ' .. action)
+                      print('[PHYSICS] Collision postaction Failure!: ' .. action5)
                     end
                   end
                 end
@@ -624,19 +624,19 @@ function Physics:Think()
                       print('[PHYSICS] Collision Test Failure!: ' .. test)
                     elseif test then
                       if collider.preaction then
-                        local status, action = pcall(collider.preaction, collider, box, v)
-                        if not status then
+                        local status2, action = pcall(collider.preaction, collider, box, v)
+                        if not status2 then
                           print('[PHYSICS] Collision preaction Failure!: ' .. action)
                         end
                       end
-                      local status, action = pcall(collider.action, collider, box, v)
-                      if not status then
+                      local status3, action = pcall(collider.action, collider, box, v)
+                      if not status3 then
                         print('[PHYSICS] Collision action Failure!: ' .. action)
                       end
                       if collider.postaction then
-                        local status, action = pcall(collider.postaction, collider, box, v)
-                        if not status then
-                          print('[PHYSICS] Collision postaction Failure!: ' .. action)
+                        local status4, action4 = pcall(collider.postaction, collider, box, v)
+                        if not status4 then
+                          print('[PHYSICS] Collision postaction Failure!: ' .. action4)
                         end
                       end
                     end
@@ -663,12 +663,12 @@ function Physics:Think()
             DebugDrawBox(Vector(0,0,0), Vector(box.xMin, box.yMin, box.zMin), Vector(box.xMax, box.yMax, box.zMax), color.x, color.y, color.z, alpha, .01)
           end
 
-          local ents = nil
+          local ents
           if collider.filter then
             if type(collider.filter) == "table" then
               ents = collider.filter
             else
-              local status = nil
+              local status
               status, ents = pcall(collider.filter, collider)
               if not status then
                 print('[PHYSICS] Collision Filter Failure!: ' .. ents)
@@ -681,10 +681,8 @@ function Physics:Think()
           for k,v in pairs(ents) do
             if IsValidEntity(v) then
               local pos = v:GetAbsOrigin()
-              if (pos.x >= box.xMin and pos.x <= box.xMax and
-                  pos.y >= box.yMin and pos.y <= box.yMax and
-                  pos.z >= box.zMin and pos.z <= box.zMax) then
-                
+              if (pos.x >= box.xMin and pos.x <= box.xMax and pos.y >= box.yMin and pos.y <= box.yMax and pos.z >= box.zMin and pos.z <= box.zMax) then
+
                 --inside
                 local status, test = pcall(collider.test, collider, v)
 
@@ -692,19 +690,19 @@ function Physics:Think()
                   print('[PHYSICS] Collision Test Failure!: ' .. test)
                 elseif test then
                   if collider.preaction then
-                    local status, action = pcall(collider.preaction, collider, box, v)
-                    if not status then
+                    local status2, action = pcall(collider.preaction, collider, box, v)
+                    if not status2 then
                       print('[PHYSICS] Collision preaction Failure!: ' .. action)
                     end
                   end
-                  local status, action = pcall(collider.action, collider, box, v)
-                  if not status then
+                  local status3, action = pcall(collider.action, collider, box, v)
+                  if not status3 then
                     print('[PHYSICS] Collision action Failure!: ' .. action)
                   end
                   if collider.postaction then
-                    local status, action = pcall(collider.postaction, collider, box, v)
-                    if not status then
-                      print('[PHYSICS] Collision postaction Failure!: ' .. action)
+                    local status4, action4 = pcall(collider.postaction, collider, box, v)
+                    if not status4 then
+                      print('[PHYSICS] Collision postaction Failure!: ' .. action4)
                     end
                   end
                 end
@@ -825,7 +823,7 @@ function Physics:GenerateAngleGrid()
         elseif count == 0 then
           anggrid[i+offsetX][j+offsetY] = -1
         else
-          local sum = sum:Normalized()
+          sum = sum:Normalized()
           local angle = math.floor((math.acos(Vector(1,0,0):Dot(sum:Normalized()))/ math.pi * 180))
           if sum.y < 0 then
             angle = -1 * angle
@@ -913,11 +911,11 @@ function Physics:Unit(unit)
       return
     end
   end
-  function unit:StopPhysicsSimulation ()
+  function unit:StopPhysicsSimulation () -- luacheck: ignore unit
     Physics.timers[unit.PhysicsTimerName] = nil
     unit.bStarted = false
   end
-  function unit:StartPhysicsSimulation ()
+  function unit:StartPhysicsSimulation () -- luacheck: ignore unit
     Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
     unit.PhysicsTimer.endTime = GameRules:GetGameTime()
     unit.PhysicsLastPosition = unit:GetAbsOrigin()
@@ -926,13 +924,13 @@ function Physics:Unit(unit)
     unit.vSlideVelocity = Vector(0,0,0)
     unit.bStarted = true
   end
-  
-  function unit:SetPhysicsVelocity (velocity)
+
+  function unit:SetPhysicsVelocity (velocity) -- luacheck: ignore unit
     unit.vVelocity = velocity / 30
     if unit.nVelocityMax > 0 and unit.vVelocity:Length() > unit.nVelocityMax then
       unit.vVelocity = unit.vVelocity:Normalized() * unit.nVelocityMax
     end
-    
+
     if unit.bStarted and unit.bHibernating then
       Physics.timers[unit.PhysicsTimerName] = unit.PhysicsTimer
       unit.PhysicsTimer.endTime = GameRules:GetGameTime()
@@ -943,7 +941,7 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:AddPhysicsVelocity (velocity)
+  function unit:AddPhysicsVelocity (velocity) -- luacheck: ignore unit
     unit.vVelocity = unit.vVelocity + velocity / 30
     if unit.nVelocityMax > 0 and unit.vVelocity:Length() > unit.nVelocityMax then
       unit.vVelocity = unit.vVelocity:Normalized() * unit.nVelocityMax
@@ -959,15 +957,15 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  
-  function unit:SetPhysicsVelocityMax (velocityMax)
+
+  function unit:SetPhysicsVelocityMax (velocityMax) -- luacheck: ignore unit
     unit.nVelocityMax = velocityMax / 30
   end
-  function unit:GetPhysicsVelocityMax ()
+  function unit:GetPhysicsVelocityMax () -- luacheck: ignore unit
     return unit.vVelocity * 30
   end
-  
-  function unit:SetPhysicsAcceleration (acceleration)
+
+  function unit:SetPhysicsAcceleration (acceleration) -- luacheck: ignore unit
     unit.vAcceleration = acceleration / 900
     
     if unit.bStarted and unit.bHibernating then
@@ -980,7 +978,7 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:AddPhysicsAcceleration (acceleration)
+  function unit:AddPhysicsAcceleration (acceleration) -- luacheck: ignore unit
     unit.vAcceleration = unit.vAcceleration + acceleration / 900
     
     if unit.bStarted and unit.bHibernating then
@@ -993,44 +991,44 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  
-  function unit:SetPhysicsFriction (percFriction, flatFriction)
+
+  function unit:SetPhysicsFriction (percFriction, flatFriction) -- luacheck: ignore unit
     unit.fFriction = percFriction
     unit.fFlatFriction = (flatFriction or (unit.fFlatFriction*30))/30
   end
-  
-  function unit:GetPhysicsVelocity ()
+
+  function unit:GetPhysicsVelocity () -- luacheck: ignore unit
     return unit.vVelocity  * 30
   end
-  function unit:GetPhysicsAcceleration ()
+  function unit:GetPhysicsAcceleration () -- luacheck: ignore unit
     return unit.vAcceleration * 900
   end
-  function unit:GetPhysicsFriction ()
+  function unit:GetPhysicsFriction () -- luacheck: ignore unit
     return unit.fFriction, unit.fFlatFriction*30
   end
-  
-  function unit:FollowNavMesh (follow)
+
+  function unit:FollowNavMesh (follow) -- luacheck: ignore unit
     unit.bFollowNavMesh = follow
   end
-  function unit:IsFollowNavMesh ()
+  function unit:IsFollowNavMesh () -- luacheck: ignore unit
     return unit.bFollowNavMesh
   end
-  
-  function unit:SetGroundBehavior (ground)
+
+  function unit:SetGroundBehavior (ground) -- luacheck: ignore unit
     unit.nLockToGround = ground
   end
-  function unit:GetGroundBehavior ()
+  function unit:GetGroundBehavior () -- luacheck: ignore unit
     return unit.nLockToGround
   end
-  
-  function unit:SetSlideMultiplier (slideMultiplier)
+
+  function unit:SetSlideMultiplier (slideMultiplier) -- luacheck: ignore unit
     unit.fSlideMultiplier = slideMultiplier
   end
-  function unit:GetSlideMultiplier ()
+  function unit:GetSlideMultiplier () -- luacheck: ignore unit
     return unit.fSlideMultiplier
   end
-  
-  function unit:Slide (slide)
+
+  function unit:Slide (slide) -- luacheck: ignore unit
     unit.bSlide = slide
     
     if unit.bStarted and unit.bHibernating then
@@ -1043,130 +1041,130 @@ function Physics:Unit(unit)
       unit.bHibernating = false
     end
   end
-  function unit:IsSlide ()
+  function unit:IsSlide () -- luacheck: ignore unit
     return unit.bSlide
   end
-  
-  function unit:PreventDI (prevent)
+
+  function unit:PreventDI (prevent) -- luacheck: ignore unit
     unit.bPreventDI = prevent
     if not prevent and unit:HasModifier("modifier_rooted") then
       unit:RemoveModifierByName("modifier_rooted")
     end
   end
-  function unit:IsPreventDI ()
+  function unit:IsPreventDI () -- luacheck: ignore unit
     return unit.bPreventDI
   end
-  
-  function unit:SetNavCollisionType (collisionType)
+
+  function unit:SetNavCollisionType (collisionType) -- luacheck: ignore unit
     unit.nNavCollision = collisionType
   end
-  function unit:GetNavCollisionType ()
+  function unit:GetNavCollisionType () -- luacheck: ignore unit
     return unit.nNavCollision
   end
-  
-  function unit:OnPhysicsFrame(fun)
+
+  function unit:OnPhysicsFrame(fun) -- luacheck: ignore unit
     unit.PhysicsFrameCallback = fun
   end
-  
-  function unit:SetVelocityClamp (clamp)
+
+  function unit:SetVelocityClamp (clamp) -- luacheck: ignore unit
     unit.fVelocityClamp = clamp / 30
   end
-  
-  function unit:GetVelocityClamp ()
+
+  function unit:GetVelocityClamp () -- luacheck: ignore unit
     return unit.fVelocityClamp * 30
   end
-  
-  function unit:Hibernate (hibernate)
+
+  function unit:Hibernate (hibernate) -- luacheck: ignore unit
     unit.bHibernate = hibernate
   end
-  
-  function unit:IsHibernate ()
+
+  function unit:IsHibernate () -- luacheck: ignore unit
     return unit.bHibernate
   end
-  
-  function unit:DoHibernate ()
+
+  function unit:DoHibernate () -- luacheck: ignore unit
     Physics.timers[unit.PhysicsTimerName] = nil
     unit.bHibernating = true
   end
-  
-  function unit:OnHibernate(fun)
+
+  function unit:OnHibernate(fun) -- luacheck: ignore unit
     unit.PhysicsHibernateCallback = fun
   end
 
-  function unit:OnPreBounce(fun)
+  function unit:OnPreBounce(fun) -- luacheck: ignore unit
     unit.PhysicsOnPreBounce = fun
   end
 
-  function unit:OnBounce(fun)
+  function unit:OnBounce(fun) -- luacheck: ignore unit
     unit.PhysicsOnBounce = fun
   end
 
-  function unit:OnPreSlide(fun)
+  function unit:OnPreSlide(fun) -- luacheck: ignore unit
     unit.PhysicsOnPreSlide = fun
   end
 
-  function unit:OnSlide(fun)
+  function unit:OnSlide(fun) -- luacheck: ignore unit
     unit.PhysicsOnSlide = fun
   end
 
-  function unit:AdaptiveNavGridLookahead (adaptive)
+  function unit:AdaptiveNavGridLookahead (adaptive) -- luacheck: ignore unit
     unit.bAdaptiveNavGridLookahead = adaptive
   end
   
-  function unit:IsAdaptiveNavGridLookahead ()
+  function unit:IsAdaptiveNavGridLookahead () -- luacheck: ignore unit
     return unit.bAdaptiveNavGridLookahead
   end
   
-  function unit:SetNavGridLookahead (lookahead)
+  function unit:SetNavGridLookahead (lookahead) -- luacheck: ignore unit
     unit.nNavGridLookahead = lookahead
   end
-  
-  function unit:GetNavGridLookahead ()
+
+  function unit:GetNavGridLookahead () -- luacheck: ignore unit
     return unit.nNavGridLookahead
   end
-  
-  function unit:SkipSlide (frames)
+
+  function unit:SkipSlide (frames) -- luacheck: ignore unit
     unit.nSkipSlide = frames or 1
   end
-  
-  function unit:SetRebounceFrames ( rebounce )
+
+  function unit:SetRebounceFrames ( rebounce ) -- luacheck: ignore unit
     unit.nMaxRebounce = rebounce
     unit.nRebounceFrames = 0
   end
-  
-  function unit:GetRebounceFrames ()
+
+  function unit:GetRebounceFrames () -- luacheck: ignore unit
     unit.nRebounceFrames = 0
     return unit.nMaxRebounce
   end
-  
-  function unit:GetLastGoodPosition ()
+
+  function unit:GetLastGoodPosition () -- luacheck: ignore unit
     return unit.vLastGoodPosition
   end
-  
-  function unit:SetStuckTimeout (timeout)
+
+  function unit:SetStuckTimeout (timeout) -- luacheck: ignore unit
     unit.nStuckTimeout = timeout
     unit.nStuckFrames = 0
   end
-  function unit:GetStuckTimeout ()
+  function unit:GetStuckTimeout () -- luacheck: ignore unit
     unit.nStuckFrames = 0
     return unit.nStuckTimeout
   end
-  
-  function unit:SetAutoUnstuck (unstuck)
+
+  function unit:SetAutoUnstuck (unstuck) -- luacheck: ignore unit
     unit.bAutoUnstuck = unstuck
   end
-  function unit:GetAutoUnstuck ()
+  function unit:GetAutoUnstuck () -- luacheck: ignore unit
     return unit.bAutoUnstuck
   end
 
-  function unit:SetBounceMultiplier (bounce)
+  function unit:SetBounceMultiplier (bounce) -- luacheck: ignore unit
     unit.fBounceMultiplier = bounce
   end
-  function unit:GetBounceMultiplier ()
+  function unit:GetBounceMultiplier () -- luacheck: ignore unit
     return unit.fBounceMultiplier
   end
 
-  function unit:GetTotalVelocity()
+  function unit:GetTotalVelocity() -- luacheck: ignore unit
     if unit.bStarted and not unit.bHibernating then
       return unit.vTotalVelocity
     else
@@ -1174,11 +1172,11 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:GetColliders()
+  function unit:GetColliders() -- luacheck: ignore unit
     return unit.oColliders
   end
 
-  function unit:RemoveCollider(name)
+  function unit:RemoveCollider(name) -- luacheck: ignore unit
     if name == nil then
       local i, v = next(unit.oColliders,  nil)
       if i == nil then
@@ -1191,14 +1189,14 @@ function Physics:Unit(unit)
     Physics:RemoveCollider(name)
   end
 
-  function unit:AddCollider(name, collider)
+  function unit:AddCollider(name, collider) -- luacheck: ignore unit
     local coll = Physics:AddCollider(name, collider)
     coll.unit = unit
     unit.oColliders[coll.name] = coll
     return coll
   end
 
-  function unit:AddColliderFromProfile(name, profile, collider)
+  function unit:AddColliderFromProfile(name, profile, collider) -- luacheck: ignore unit
     if profile == nil then
       profile = name
       name = DoUniqueString("collider")
@@ -1213,48 +1211,48 @@ function Physics:Unit(unit)
     return coll
   end
 
-  function unit:GetMass()
+  function unit:GetMass() -- luacheck: ignore unit
     return unit.fMass
   end
 
-  function unit:SetMass(mass)
+  function unit:SetMass(mass) -- luacheck: ignore unit
     unit.fMass = mass
   end
 
-  function unit:GetNavGroundAngle()
+  function unit:GetNavGroundAngle() -- luacheck: ignore unit
     return math.acos(unit.fNavGroundAngle) * 180 / math.pi 
   end
 
-  function unit:SetNavGroundAngle(angle)
+  function unit:SetNavGroundAngle(angle) -- luacheck: ignore unit
     unit.fNavGroundAngle = math.cos(angle * math.pi / 180)
   end
 
-  function unit:CutTrees(cut)
+  function unit:CutTrees(cut) -- luacheck: ignore unit
     unit.bCutTrees = cut
   end
 
-  function unit:IsCutTrees()
+  function unit:IsCutTrees() -- luacheck: ignore unit
     return unit.bCutTrees
   end
 
-  function unit:IsInSimulation()
+  function unit:IsInSimulation() -- luacheck: ignore unit
     return unit.bStarted
   end
 
-  function unit:SetBoundOverride(bound)
+  function unit:SetBoundOverride(bound) -- luacheck: ignore unit
     unit.fBoundOverride = bound
   end
 
-  function unit:GetBoundOverride()
+  function unit:GetBoundOverride() -- luacheck: ignore unit
     return unit.fBoundOverride
   end
 
-  function unit:ClearStaticVelocity()
+  function unit:ClearStaticVelocity() -- luacheck: ignore unit
     unit.staticForces = {}
     unit.staticSum = Vector(0,0,0)
   end
 
-  function unit:SetStaticVelocity(name, velocity)
+  function unit:SetStaticVelocity(name, velocity) -- luacheck: ignore unit
     if unit.staticForces[name] ~= nil then
       unit.staticSum = unit.staticSum - unit.staticForces[name]
     end
@@ -1272,7 +1270,7 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:GetStaticVelocity(name)
+  function unit:GetStaticVelocity(name) -- luacheck: ignore unit
     if name == nil then
       return unit.staticSum
     else
@@ -1280,7 +1278,7 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:AddStaticVelocity(name, velocity)
+  function unit:AddStaticVelocity(name, velocity) -- luacheck: ignore unit
     if unit.staticForces[name] == nil then
       unit.staticForces[name] = velocity / 30
       unit.staticSum = unit.staticSum + unit.staticForces[name]
@@ -1301,11 +1299,11 @@ function Physics:Unit(unit)
     end
   end
 
-  function unit:SetPhysicsFlatFriction(flatFriction)
+  function unit:SetPhysicsFlatFriction(flatFriction) -- luacheck: ignore unit
     unit.fFlatFriction = flatFriction / 30
   end
 
-  function unit:GetPhysicsFlatFriction()
+  function unit:GetPhysicsFlatFriction() -- luacheck: ignore unit
     return unit.fFlatFriction
   end
 
@@ -1354,12 +1352,11 @@ function Physics:Unit(unit)
 
       local staticSum = unit.staticSum
       newVelocity = newVelocity + staticSum
-      newVelLength = newVelocity:Length()
-      local staticSumLength = staticSum:Length()
+      --local staticSumLength = staticSum:Length()
 
       local vel = unit.vVelocity + staticSum
-      local staticSumz = staticSum.z
-      local newVelz = newVelocity.z
+      --local staticSumz = staticSum.z
+      --local newVelz = newVelocity.z
       local dontSet = false
       local dontSetGround = false
 
@@ -1404,11 +1401,11 @@ function Physics:Unit(unit)
               local xynorm = Vector(minnormal.x, minnormal.y, 0)
               local xynormlen = xynorm:Length()
               if xynorm:Length() > .98 then
-                minnormal = xynorm / xynormlen                
+                minnormal = xynorm / xynormlen
                 --avgnormal = Vector(avgnormal.x, avgnormal.y, 0):Normalized()
               end
 
-              local velz = vel.z
+              --local velz = vel.z
               --newVelocity.z = 0
               --vel.z = 0
 
@@ -1418,9 +1415,9 @@ function Physics:Unit(unit)
                 newVelocity = newVelocity + newVelocity:Dot(-1 * minnormal)*1.01 * minnormal
                 staticSum = staticSum + staticSum:Dot(-1 * minnormal)*1.01 * minnormal
               end
-              
+
               newPos = position + vel
-              local nz = newPos.z
+              --local nz = newPos.z
               --DebugDrawCircle(newPos, Vector(0,255,0), 1, 15, true, 1.1)
               local gnorm = GetGroundPosition(newPos + minnormal * 50, unit)
               --DebugDrawCircle(gnorm, Vector(255,0,0), 1, 15, true, 1.1)
@@ -1478,7 +1475,7 @@ function Physics:Unit(unit)
             connect = position + vel * (div * index) + diff * bound
             treeConnect = (not GridNav:IsTraversable(connect) or GridNav:IsBlocked(connect)) and GridNav:IsNearbyTree(connect, 30, true)
             if treeConnect then
-              --DebugDrawCircle(connect, Vector(0,200,0), 100, 10, true, 1)
+              DebugDrawCircle(connect, Vector(0,200,0), 100, 10, true, 1)
             end
             index = index + 1
           end
@@ -1503,7 +1500,7 @@ function Physics:Unit(unit)
                 end
               else
                 local off = (Vector(position.x,position.y,vec.z) - vec):Normalized()
-                local normal = nil
+                local normal
                 if math.abs(off.x) > math.abs(off.y) then
                   normal = Vector(math.abs(off.x)/off.x, 0, 0)
                   local vec2 = vec + normal * 64
@@ -1564,7 +1561,7 @@ function Physics:Unit(unit)
           end
           
           local connect = position-- + diff * bound
-          local navConnect = not GridNav:IsTraversable(connect) or GridNav:IsBlocked(connect) 
+          local navConnect = not GridNav:IsTraversable(connect) or GridNav:IsBlocked(connect)
           local lookaheadNum = unit.nNavGridLookahead
           if unit.bAdaptiveNavGridLookahead then
             lookaheadNum = math.ceil(unit.vVelocity:Length() / 32)
@@ -1588,7 +1585,7 @@ function Physics:Unit(unit)
             local navY = GridNav:WorldToGridPosY(connect.y)
             local navPos = Vector(GridNav:GridPosToWorldCenterX(navX), GridNav:GridPosToWorldCenterY(navY), 0)
             --unit.nRebounceFrames = unit.nMaxRebounce
-            
+
             local normal = nil
             local anggrid = self.anggrid
             local offX = self.offsetX
@@ -1604,11 +1601,9 @@ function Physics:Unit(unit)
                 normal = -1 * RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
               end
             end
-            
+
             local dir = navPos - position
             if normal == nil then
-              --local face = navPos - position
-              --print("face: " .. tostring(face)) 
               dir.z = 0
               dir = dir:Normalized()
               if dir:Dot(Vector(1,0,0)) > .707 then
@@ -1712,7 +1707,7 @@ function Physics:Unit(unit)
 
             unit.nSkipSlide = 1
             newPos = navPos + Vector(scalar*ndir.x, scalar*ndir.y, newPos.z)
-            
+
             if unit.PhysicsOnSlide then
               local status, nextCall = pcall(unit.PhysicsOnSlide, unit, normal)
               if not status then
@@ -1724,27 +1719,23 @@ function Physics:Unit(unit)
             local navY = GridNav:WorldToGridPosY(connect.y)
             local navPos = Vector(GridNav:GridPosToWorldCenterX(navX), GridNav:GridPosToWorldCenterY(navY), 0)
             unit.nRebounceFrames = unit.nMaxRebounce
-            
+
             local normal = nil
             local anggrid = self.anggrid
             local offX = self.offsetX
             local offY = self.offsetY
             if anggrid then
-              local angSize = #anggrid
+              --local angSize = #anggrid
               local angX = navX + offX
               local angY = navY + offY
 
-              --print(offX .. ' -- ' .. angX .. ' == ' .. angY .. ' -- ' .. offY)
-              
               local angle = anggrid[angX][angY]
               if angle ~= -1 then
                 angle = angle
                 normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
-                --print(normal)
-                --print('----------')
               end
             end
-            
+
             if normal == nil then
               local dir = navPos - position
               dir.z = 0
@@ -1917,12 +1908,12 @@ function Physics:Unit(unit)
 
       if not dontSetGround then
         if unit.nLockToGround == PHYSICS_GROUND_LOCK then
-          local groundPos = GetGroundPosition(newPos, unit)
+          groundPos = GetGroundPosition(newPos, unit)
           newPos = groundPos
           newVelocity.z = 0
           staticSum.z = 0
         elseif unit.nLockToGround == PHYSICS_GROUND_ABOVE then
-          local groundPos = GetGroundPosition(newPos, unit)
+          groundPos = GetGroundPosition(newPos, unit)
           --print(groundPos.z .. ' -- ' .. newPos.z .. ' -- ' .. (groundPos - position):Normalized().z)
           if unit.nNavCollision == PHYSICS_NAV_GROUND and groundPos.z > position.z and (groundPos - position):Normalized().z > unit.fNavGroundAngle then
             newVelocity.z = math.max(0, newVelocity.z)
@@ -1932,7 +1923,7 @@ function Physics:Unit(unit)
               DebugDrawCircle(unit.lastGoodGround, Vector(255,255,255), 1, 15, true, 1.1)
               DebugDrawCircle(groundPos, Vector(255,0,0), 1, 15, true, 1.1)
               DebugDrawCircle(newPos, Vector(0,255,0), 1, 15, true, 1.1)
-              print ('LAST GROUND2') 
+              print ('LAST GROUND2')
               newPos.z = unit.lastGoodGround.z
               newVelocity.z = 0
               staticSum.z = 0
@@ -1948,18 +1939,18 @@ function Physics:Unit(unit)
       if not dontSet then
         unit:SetAbsOrigin(newPos)
       end
-      
+
       unit.nRebounceFrames = unit.nRebounceFrames - 1
       unit.vLastVelocity = unit.vVelocity
       unit.vVelocity = newVelocity - staticSum
-      
+
       if unit.PhysicsFrameCallback ~= nil then
         local status, nextCall = pcall(unit.PhysicsFrameCallback, unit)
         if not status then
           print('[PHYSICS] Failed FrameCallback: ' .. nextCall)
         end
       end
-      
+
       if unit.nNavCollision ~= PHYSICS_NAV_NOTHING and  unit.bAutoUnstuck and unit.nStuckFrames >= unit.nStuckTimeout then
         unit.nStuckFrames = 0
         unit.nSkipSlide = 1
@@ -1971,18 +1962,13 @@ function Physics:Unit(unit)
         local offX = self.offsetX
         local offY = self.offsetY
         if anggrid then
-          local angSize = #anggrid
+          --local angSize = #anggrid
           local angX = navX + offX
           local angY = navY + offY
 
-          --print(offX .. ' -- ' .. angX .. ' == ' .. angY .. ' -- ' .. offY)
-          
           local angle = anggrid[angX][angY]
           if angle ~= -1 then
             local normal = RotatePosition(Vector(0,0,0), QAngle(0,angle,0), Vector(1,0,0))
-            --print(normal)
-            --print('----------')
-
             unit:SetAbsOrigin(position + normal * 64)
           else
             unit:SetAbsOrigin(unit.vLastGoodPosition)
@@ -1991,11 +1977,11 @@ function Physics:Unit(unit)
           unit:SetAbsOrigin(unit.vLastGoodPosition)
         end
       end
-      
+
       return curTime
     end
   })
-  
+
   unit.PhysicsTimer = Physics.timers[unit.PhysicsTimerName]
   unit.vVelocity = Vector(0,0,0)
   unit.vLastVelocity = Vector(0,0,0)
@@ -2109,9 +2095,9 @@ function Physics:CreateBox(a, b, width, center)
   local az = Vector(a.x,a.y,0)
   local bz = Vector(b.x,b.y,0)
   local height = math.abs(b.z - a.z)
-  if height < 1 then 
-    b.z = b.z + width/2 
-    a.z = a.z - width/2
+  if height < 1 then
+    b.z = b.z + width / 2
+    a.z = a.z - width / 2
   end
 
   local dir = (bz-az):Normalized()
@@ -2205,7 +2191,7 @@ function Physics:PrecalculateAABox(box)
   box.zMin = math.min(box[1].z, box[2].z)
   box.zMax = math.max(box[1].z, box[2].z)
   box.center = Vector((box.xMin + box.xMax) / 2, (box.yMin + box.yMax) / 2, (box.zMin + box.zMax) / 2)
-  box.radius =(Vector(xMax, yMax, zMax) - box.center):Length()
+  box.radius =(Vector(box.xMax, box.yMax, box.zMax) - box.center):Length()
   box.middle = Vector(box.center.x, box.center.y, 0)
 
   box.xScale = box.xMax - box.middle.x
@@ -2220,7 +2206,7 @@ end
 
 if not Physics.timers then Physics:start() end
 
--- Physics:CreateColliderProfile("blocker", 
+-- Physics:CreateColliderProfile("blocker",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2241,7 +2227,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("delete", 
+-- Physics:CreateColliderProfile("delete",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2265,7 +2251,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("gravity", 
+-- Physics:CreateColliderProfile("gravity",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2303,7 +2289,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("repel", 
+-- Physics:CreateColliderProfile("repel",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2341,7 +2327,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("reflect", 
+-- Physics:CreateColliderProfile("reflect",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2378,7 +2364,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("momentum", 
+-- Physics:CreateColliderProfile("momentum",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2401,15 +2387,15 @@ if not Physics.timers then Physics:start() end
         -- local vMass = v:GetMass()
         -- --dir.z = 0
         -- dir = dir:Normalized()
-        
+
         -- local neg = -1 * dir
-        
+
         -- local dot = dir:Dot(unit:GetTotalVelocity())
         -- local dot2 = dir:Dot(v:GetTotalVelocity())
 
         -- local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
         -- local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
-        
+
         -- --if dot < 1 and dot2 < 1 then
           -- --return
         -- --end
@@ -2430,7 +2416,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("momentumFull", 
+-- Physics:CreateColliderProfile("momentumFull",
   -- {
     -- type = COLLIDER_SPHERE,
     -- radius = 100,
@@ -2455,13 +2441,13 @@ if not Physics.timers then Physics:start() end
         -- dir = dir:Normalized()
         
         -- local neg = -1 * dir
-        
+
         -- local dot = unit:GetTotalVelocity():Length()
         -- local dot2 = -1 * v:GetTotalVelocity():Length()
 
         -- local v1 = (self.elasticity * vMass * (dot2 - dot) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
         -- local v2 = (self.elasticity * mass * (dot - dot2) + (mass * dot) + (vMass * dot2)) / (mass + vMass)
-        
+
         -- --if dot < 1 and dot2 < 1 then
           -- --return
         -- --end
@@ -2482,7 +2468,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("boxblocker", 
+-- Physics:CreateColliderProfile("boxblocker",
   -- {
     -- type = COLLIDER_BOX,
     -- box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
@@ -2583,7 +2569,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("boxreflect", 
+-- Physics:CreateColliderProfile("boxreflect",
   -- {
     -- type = COLLIDER_BOX,
     -- box = {Vector(0,0,0), Vector(200,100,500), Vector(0,100,0)},
@@ -2689,7 +2675,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("aaboxblocker", 
+-- Physics:CreateColliderProfile("aaboxblocker",
   -- {
     -- type = COLLIDER_AABOX,
     -- box = {Vector(0,0,0), Vector(200,100,500)},
@@ -2791,7 +2777,7 @@ if not Physics.timers then Physics:start() end
     -- end
   -- })
 
--- Physics:CreateColliderProfile("aaboxreflect", 
+-- Physics:CreateColliderProfile("aaboxreflect",
   -- {
     -- type = COLLIDER_AABOX,
     -- box = {Vector(0,0,0), Vector(200,100,500)},
@@ -2895,6 +2881,6 @@ if not Physics.timers then Physics:start() end
         -- return
       -- end
 
-      -- unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)      
+      -- unit:SetPhysicsVelocity(((-2 * newVelocity:Dot(normal) * normal) + newVelocity) * self.multiplier * 30)
     -- end
   -- })

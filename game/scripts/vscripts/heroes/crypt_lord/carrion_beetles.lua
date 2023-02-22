@@ -220,7 +220,7 @@ if IsServer() then
       summon:SetBaseMoveSpeed(base_speed)
 
       table.insert(parent.beetles, summon)
-	  
+
 	  --ability:ApplyDataDrivenModifier(parent, summon, "modifier_carrion_beetle", {})
 
       -- Break the for loop if we reached the maximum

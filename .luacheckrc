@@ -38,6 +38,7 @@ read_globals = { -- these globals can only be accessed.
 "CreateUnitByName",
 "DebugDrawBox",
 "DebugDrawBoxDirection",
+"DebugDrawCircle",
 "DebugDrawSphere",
 "DeepPrintTable",
 "DoCleaveAttack",

@@ -4,7 +4,6 @@ end
 
 function DoomEnd( event )
 	local caster = event.caster
-	local ability = event.ability
 	local target = event.unit
 
 	local position = target:GetAbsOrigin()

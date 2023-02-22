@@ -11,7 +11,6 @@ end
 function ShadowStrikeSlowDecay(event)
     local caster = event.caster
     local target = event.target
-    local ability = event.ability
 
-    target:SetModifierStackCount("modifier_shadow_strike_slow_stack",caster,target:GetModifierStackCount("modifier_shadow_strike_slow_stack",caster)-2)
+    target:SetModifierStackCount("modifier_shadow_strike_slow_stack", caster, target:GetModifierStackCount("modifier_shadow_strike_slow_stack",caster)-2)
 end
