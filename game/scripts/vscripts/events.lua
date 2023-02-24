@@ -210,6 +210,7 @@ function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 		end
 
 		-- Add a skill point when a hero levels up
+		--[[
 		local levels_without_ability_point = {17, 19, 21, 22, 23, 24, 26}	-- on this levels you should get a skill point
 		for i = 1, #levels_without_ability_point do
 			if level == levels_without_ability_point[i] then
@@ -217,6 +218,7 @@ function ancient_battle_gamemode:OnPlayerLevelUp(keys)
 				hero:SetAbilityPoints(unspent_ability_points+1)
 			end
 		end
+		]]
 	end
 end
 
