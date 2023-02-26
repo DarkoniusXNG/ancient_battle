@@ -12,7 +12,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/bane/terror_blink.lua"
-    "AbilityTextureName"                                  "custom/bane_custom_night_terror"
+    "AbilityTextureName"                                  "custom/bane_custom_terror_blink"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
     

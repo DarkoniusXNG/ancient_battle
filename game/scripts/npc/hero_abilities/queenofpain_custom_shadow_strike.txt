@@ -11,7 +11,7 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "queenofpain_shadow_strike"  
+    "AbilityTextureName"                                  "custom/queenofpain_custom_shadow_strike"  
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

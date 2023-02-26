@@ -4,14 +4,14 @@
   // Silencer: Last Word (E) - New Spell; Passive + Active; Old Last Word Aura + Old Last Word Active with disarm
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 26.8.2019;
+  // Notes: OK; 2023;
   // TO_DO: Add INT steal
   //=================================================================================================================
   "silencer_custom_last_word"
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/silencer/last_word.lua"
-    "AbilityTextureName"                                  "silencer_last_word"
+    "AbilityTextureName"                                  "custom/silencer_custom_last_word"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

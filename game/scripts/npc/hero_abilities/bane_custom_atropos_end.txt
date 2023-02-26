@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Bane: Atropos End (F) - New Spell, Removes Nightmare, other debuffs and stuns from caster. Doesn't work while silenced or hexed;
   // Author: Darkonius
-  // Notes: OK; 14.10.2018; Magic Stick/Wand doesn't proc! (INTENTIONAL)
+  // Notes: OK; 2023; Magic Stick/Wand doesn't proc! (INTENTIONAL)
   // TO_DO: If needed add terror blink buff to dispel list
   //=================================================================================================================
   "bane_custom_atropos_end"
@@ -12,7 +12,8 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_datadriven"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-    "AbilityTextureName"                                  "bane_nightmare_end"
+    "AbilityTextureName"                                  "custom/bane_custom_atropos_end"
+
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
     

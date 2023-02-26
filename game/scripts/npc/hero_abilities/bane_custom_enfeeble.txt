@@ -4,7 +4,7 @@
   // Bane: Enfeeble (Q) - Reduces all of damage output of the enemy.
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 2022; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
+  // Notes: OK; 2023; Not dispellable by anything; Can be casted on spell immune; Uses damage filter;
   // Notes: DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS because of Roshan and other Ancients;
   // TO_DO:
   //=================================================================================================================
@@ -12,7 +12,7 @@
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/bane/enfeeble.lua"
-    "AbilityTextureName"                                  "bane_enfeeble"
+    "AbilityTextureName"                                  "custom/bane_custom_enfeeble"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

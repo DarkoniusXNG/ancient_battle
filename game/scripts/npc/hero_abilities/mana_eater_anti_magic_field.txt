@@ -3,13 +3,13 @@
   //=================================================================================================================
   // Mana Eater: Anti-Magic Field (W) - New Spell, Generates an anti magic field that grants magic immunity (not spell immunity!) to all heroes and buildings within and pseudo-silence to enemies.
   // Author: Darkonius
-  // Notes: OK; 2021; Uses Order Filter;
+  // Notes: OK; 2023; Uses Order Filter;
   // TO_DO: Rework to lua; datadriven thinkers don't get removed; special_bonus_unique_mana_eater_1
   //=================================================================================================================
   "mana_eater_anti_magic_field"
   {
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "arc_warden_magnetic_field"
+    "AbilityTextureName"                                  "custom/mana_eater_anti_magic_field"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_BOTH"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"

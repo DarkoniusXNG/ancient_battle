@@ -4,7 +4,7 @@
   // Fire Lord: Volcano (R) - New Spell, Summons a volcano that slows, damages and stuns nearby enemies
   // Author: Darkonius
   // Notes: OK; 2023; Number of waves is volcano_duration/wave_interval + 1
-  // TO_DO: Rewrite in lua: Pudge can hook the volcano, status resistance fix for slows
+  // TO_DO: Rewrite in lua: status resistance fix for slows
   //=================================================================================================================
   "firelord_volcano"
   {

@@ -5,11 +5,10 @@
 // Author: Noya
 // Description: Calls down waves of falling stars that damage nearby enemy units. Each wave deals 50 damage. The time between waves is 1.5 seconds.
 
-"potm_starfall"
-{
+  "potm_custom_starfall"
+  {
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "potm_starfall"
-    "MaxLevel"                                            "1"
+    "AbilityTextureName"                                  "custom/potm_custom_starfall"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -150,6 +149,5 @@
         "OverrideAnimation"                               "ACT_DOTA_CAST_ABILITY_1"
       }
     }   
-}
-
+  }
 }

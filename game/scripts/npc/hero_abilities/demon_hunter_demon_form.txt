@@ -5,11 +5,10 @@
 // Author: Noya
 // Description: Transforms the Demon Hunter into a powerful demon with a ranged attack (60 range) and 500 bonus hit points.
 
-"demon_hunter_demon_form"
-{
+  "demon_hunter_demon_form"
+  {
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "demon_hunter_demon_form"
-    "MaxLevel"                                            "1"
+    "AbilityTextureName"                                  "custom/demon_hunter_demon_form"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE" 
 
@@ -105,6 +104,5 @@
         }
       }
     }
-}
-
+  }
 }

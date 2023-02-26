@@ -9,7 +9,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/pudge/flesh_heap.lua"
-    "AbilityTextureName"                                  "pudge_flesh_heap"
+    "AbilityTextureName"                                  "custom/pudge_custom_flesh_heap"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special

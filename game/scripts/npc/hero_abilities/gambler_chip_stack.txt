@@ -4,7 +4,7 @@
   // Gambler: Chip Stack (F) - New Spell, Deals single target damage based on target's net worth
   // Author: Darkonius;
   // Linkens: Blocks;
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   // TO_DO: Rewrite in lua; If it's too strong put tracking projectile or damage cap.
   //=================================================================================================================
   "gambler_chip_stack"
@@ -12,7 +12,7 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "alchemist_goblins_greed"
+    "AbilityTextureName"                                  "custom/gambler_chip_stack"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"
