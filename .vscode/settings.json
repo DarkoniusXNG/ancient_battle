@@ -837,5 +837,7 @@
 		"max_line_length": "2000"
 	},
 	"Lua.format.enable": true,
-	"Lua.runtime.version": "LuaJIT"
+	"Lua.runtime.version": "LuaJIT",
+	"Lua.hint.semicolon": "Disable",
+	"Lua.diagnostics.workspaceEvent": "OnSave",
 }
