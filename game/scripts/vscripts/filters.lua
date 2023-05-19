@@ -11,13 +11,13 @@ function ancient_battle_gamemode:OrderFilter(filter_table)
 		local caster = EntIndexToHScript(units["0"])
 
 		if caster:HasModifier("modifier_anti_magic_field_debuff") and (not ability:IsItem()) then
-			ability:UseResources(true, false, true)
+			ability:UseResources(true, true, false, true)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
 
 		if caster:HasModifier("modifier_drunken_haze_fizzle") and (not ability:IsItem()) then
-			ability:UseResources(true,false,true)
+			ability:UseResources(true, true, false, true)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end

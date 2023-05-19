@@ -173,7 +173,7 @@ if IsServer() then
 			local player = attacker:GetPlayerOwner()
 			SendOverheadEventMessage(player, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, target, true_damage, player)
 
-			ability:UseResources(true, false, true)
+			ability:UseResources(true, false, false, true)
 
 			-- Remove weapon glow effect
 			attacker:RemoveModifierByName("modifier_holy_strike_passive_weapon_effect")

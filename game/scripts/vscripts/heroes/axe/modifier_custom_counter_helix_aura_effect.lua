@@ -96,7 +96,7 @@ if IsServer() then
 					end
 				end
 
-				ability:UseResources(false, false, true)
+				ability:UseResources(false, false, false, true)
 			end
 		end
 	end

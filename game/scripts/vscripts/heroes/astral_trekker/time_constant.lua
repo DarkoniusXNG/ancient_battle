@@ -90,6 +90,6 @@ function modifier_time_constant:OnIntervalThink()
 		ParticleManager:ReleaseParticleIndex(particle)
 
 		-- Go on the cooldown
-		ability:UseResources(false, false, true)
+		ability:UseResources(false, false, false, true)
 	end
 end
