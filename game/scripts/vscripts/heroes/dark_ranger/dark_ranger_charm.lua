@@ -1,6 +1,4 @@
-﻿if dark_ranger_charm == nil then
-	dark_ranger_charm = class({})
-end
+﻿dark_ranger_charm = dark_ranger_charm or class({})
 
 LinkLuaModifier("modifier_charmed_hero", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_charmed_general", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
@@ -134,9 +132,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_hero == nil then
-	modifier_charmed_hero = class({})
-end
+modifier_charmed_hero = modifier_charmed_hero or class({})
 
 function modifier_charmed_hero:IsHidden() -- needs tooltip (visible only on the target hero)
 	return false
@@ -217,9 +213,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_cloned_hero == nil then
-	modifier_charmed_cloned_hero = class({})
-end
+modifier_charmed_cloned_hero = modifier_charmed_cloned_hero or class({})
 
 function modifier_charmed_cloned_hero:IsHidden() -- needs tooltip (visible to everyone on the copy)
 	return false
@@ -348,9 +342,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_general == nil then
-	modifier_charmed_general = class({})
-end
+modifier_charmed_general = modifier_charmed_general or class({})
 
 function modifier_charmed_general:IsHidden() -- needs tooltip (visible to everyone on the creep)
 	return false
@@ -392,9 +384,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_removing == nil then
-	modifier_charmed_removing = class({})
-end
+modifier_charmed_removing = modifier_charmed_removing or class({})
 
 function modifier_charmed_removing:IsHidden()
 	return true

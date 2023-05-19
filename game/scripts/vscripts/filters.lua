@@ -300,7 +300,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Unable to calculate damage before reductions if damage after reductions is 0
 		return 0
 	end
-	if unit == nil then
+	if unit:IsNull() then
 		return
 	end
 	local original_damage = damage_after_reductions

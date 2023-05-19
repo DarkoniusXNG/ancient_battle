@@ -1,6 +1,4 @@
-if modifier_custom_unholy_aura_applier == nil then
-	modifier_custom_unholy_aura_applier = class({})
-end
+modifier_custom_unholy_aura_applier = class({})
 
 function modifier_custom_unholy_aura_applier:IsHidden()
 	return true

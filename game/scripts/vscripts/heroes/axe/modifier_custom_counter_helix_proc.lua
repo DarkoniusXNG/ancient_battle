@@ -1,6 +1,4 @@
-﻿if modifier_custom_counter_helix_proc == nil then
-	modifier_custom_counter_helix_proc = class({})
-end
+﻿modifier_custom_counter_helix_proc = class({})
 
 function modifier_custom_counter_helix_proc:IsHidden()
 	return true

@@ -147,11 +147,6 @@ function modifier_sohei_guard_reflect:OnCreated()
   if IsServer() then
     local parent = self:GetParent()
 
-    --if self.nPreviewFX == nil then
-      --self.nPreviewFX = ParticleManager:CreateParticle("particles/hero/sohei/reflection_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
-      --self.nPreviewFX = ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_spellshield_reflect.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, parent)
-    --end
-
     if parent.stored_reflected_spells == nil then
       parent.stored_reflected_spells = {}
     end
@@ -343,11 +338,6 @@ if IsServer() then
 	function modifier_sohei_guard_reflect:OnDestroy()
 		local parent = self:GetParent()
 		parent:EmitSound("Item.LotusOrb.Destroy")
-		-- if self.nPreviewFX then
-			-- ParticleManager:DestroyParticle(self.nPreviewFX, false)
-			-- ParticleManager:ReleaseParticleIndex(self.nPreviewFX)
-			-- self.nPreviewFX = nil
-		-- end
 		for k, ability in pairs(parent.stored_reflected_spells) do
 			if ability and not ability:IsNull() then
 				Timers:CreateTimer(8, function()

@@ -1,6 +1,4 @@
-if modifier_custom_curse_of_the_silent == nil then
-	modifier_custom_curse_of_the_silent = class({})
-end
+modifier_custom_curse_of_the_silent = class({})
 
 function modifier_custom_curse_of_the_silent:IsHidden()
 	return false

@@ -44,7 +44,7 @@ function ancient_battle_gamemode:OnNPCSpawned(keys)
 	end
 
 	-- OnHeroInGame
-	if npc:IsRealHero() and npc.bFirstSpawned == nil then
+	if npc:IsRealHero() and not npc.bFirstSpawned then
 		npc.bFirstSpawned = true
 		self:OnHeroInGame(npc)
 	end
@@ -287,7 +287,7 @@ function ancient_battle_gamemode:OnEntityKilled(keys)
       killer_unit = EntIndexToHScript(attacker_entity_index)
     end
 
-	if killed_unit == nil or killer_unit == nil then
+	if not killed_unit or not killer_unit then
       -- don't continue if killer or killed entity dont exist
       return
     end

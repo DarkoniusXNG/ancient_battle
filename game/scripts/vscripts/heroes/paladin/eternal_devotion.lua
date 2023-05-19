@@ -1,6 +1,4 @@
-if paladin_eternal_devotion == nil then
-	paladin_eternal_devotion = class({})
-end
+paladin_eternal_devotion = paladin_eternal_devotion or class({})
 
 LinkLuaModifier("modifier_paladin_eternal_devotion_passive", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_devotion_aura_effect", "heroes/paladin/eternal_devotion.lua", LUA_MODIFIER_MOTION_NONE) -- needs tooltip
@@ -16,9 +14,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_paladin_eternal_devotion_passive == nil then
-	modifier_paladin_eternal_devotion_passive = class({})
-end
+modifier_paladin_eternal_devotion_passive = modifier_paladin_eternal_devotion_passive or class({})
 
 function modifier_paladin_eternal_devotion_passive:IsHidden()
 	return true
@@ -198,9 +194,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_devotion_aura_effect == nil then
-	modifier_custom_devotion_aura_effect = class({})
-end
+modifier_custom_devotion_aura_effect = class({})
 
 function modifier_custom_devotion_aura_effect:IsHidden()
 	return false
@@ -249,9 +243,8 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_guardian_angel_buff == nil then
-	modifier_custom_guardian_angel_buff = class({})
-end
+
+modifier_custom_guardian_angel_buff = class({})
 
 function modifier_custom_guardian_angel_buff:IsHidden()
 	return false

@@ -1,6 +1,4 @@
-﻿if stealth_assassin_permanent_invisibility == nil then
-	stealth_assassin_permanent_invisibility = class({})
-end
+﻿stealth_assassin_permanent_invisibility = stealth_assassin_permanent_invisibility or class({})
 
 LinkLuaModifier("modifier_stealth_assassin_permanent_invisibility_buff", "heroes/ryu/permanent_invisibility.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_stealth_assassin_permanent_invisibility_disable", "heroes/ryu/permanent_invisibility.lua", LUA_MODIFIER_MOTION_NONE)

@@ -1,6 +1,4 @@
-﻿if stealth_assassin_desolate == nil then
-	stealth_assassin_desolate = class({})
-end
+﻿stealth_assassin_desolate = stealth_assassin_desolate or class({})
 
 LinkLuaModifier("modifier_stealth_assassin_desolate_passive", "heroes/ryu/desolate.lua", LUA_MODIFIER_MOTION_NONE)
 

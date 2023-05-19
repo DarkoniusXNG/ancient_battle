@@ -1,6 +1,4 @@
-﻿if death_knight_resurrection == nil then
-	death_knight_resurrection = class({})
-end
+﻿death_knight_resurrection = death_knight_resurrection or class({})
 
 LinkLuaModifier("modifier_custom_resurrected", "heroes/death_knight/resurrection.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -131,9 +129,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_resurrected == nil then
-	modifier_custom_resurrected = class({})
-end
+modifier_custom_resurrected = class({})
 
 function modifier_custom_resurrected:IsHidden()
 	return false

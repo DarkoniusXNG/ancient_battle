@@ -115,9 +115,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_drunken_haze_debuff == nil then
-	modifier_custom_drunken_haze_debuff = class({})
-end
+modifier_custom_drunken_haze_debuff = class({})
 
 function modifier_custom_drunken_haze_debuff:IsHidden() -- needs tooltip
 	return false
@@ -192,9 +190,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_drunken_haze_fizzle == nil then
-	modifier_drunken_haze_fizzle = class({})
-end
+modifier_drunken_haze_fizzle = modifier_drunken_haze_fizzle or class({})
 
 function modifier_drunken_haze_fizzle:IsHidden()
 	return true

@@ -1,6 +1,4 @@
-if modifier_custom_last_word_aura_applier == nil then
-	modifier_custom_last_word_aura_applier = class({})
-end
+modifier_custom_last_word_aura_applier = class({})
 
 function modifier_custom_last_word_aura_applier:IsHidden()
 	return true

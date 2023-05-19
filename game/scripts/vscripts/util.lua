@@ -578,7 +578,7 @@ function SuperStrongDispel(target, bRemoveAlmostAllDebuffs, bRemoveDispellableBu
 				"modifier_bane_nightmare_invulnerable",						-- invulnerable type
 				-- custom:
 				"modifier_custom_enfeeble_debuff",
-				"modifier_entrapment",										-- Astral Trekker Net
+				"modifier_astral_trekker_entrapment_debuff",				-- Astral Trekker Net
 				"modifier_purge_enemy_creep",
 				"modifier_purge_enemy_hero",
 				"modifier_stealth_assassin_ambush_mini_stun",

@@ -1,6 +1,4 @@
-if modifier_holy_strike_passive == nil then
-	modifier_holy_strike_passive = class({})
-end
+modifier_holy_strike_passive = modifier_holy_strike_passive or class({})
 
 function modifier_holy_strike_passive:IsHidden()
 	return true

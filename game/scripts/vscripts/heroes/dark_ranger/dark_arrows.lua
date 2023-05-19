@@ -1,6 +1,4 @@
-﻿if dark_ranger_dark_arrows == nil then
-	dark_ranger_dark_arrows = class({})
-end
+﻿dark_ranger_dark_arrows = dark_ranger_dark_arrows or class({})
 
 LinkLuaModifier("modifier_dark_arrow_passive", "heroes/dark_ranger/dark_arrows.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_dark_arrow_slow", "heroes/dark_ranger/dark_arrows.lua", LUA_MODIFIER_MOTION_NONE)

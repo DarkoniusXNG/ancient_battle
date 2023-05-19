@@ -1,6 +1,5 @@
-if custom_spawner == nil then
-	custom_spawner = class({})
-end
+-- Custom spawner library
+custom_spawner = class({})
 
 -- This function checks for number of players/heroes in the game and setting the difficulty accordingly
 function custom_spawner:DifficultyCheck()

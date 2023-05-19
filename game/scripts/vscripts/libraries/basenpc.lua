@@ -141,7 +141,7 @@ if CDOTA_BaseNPC then
       "modifier_bakedanuki_futatsuiwas_curse",
       "modifier_custom_enfeeble_debuff",
       "modifier_custom_rupture",
-      "modifier_entrapment",
+      "modifier_astral_trekker_entrapment_debuff",
       "modifier_incinerate_stack",
       "modifier_mana_transfer_leash_debuff",
       "modifier_purge_enemy_creep",

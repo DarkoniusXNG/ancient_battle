@@ -1,6 +1,4 @@
-if perun_ion_blast == nil then
-	perun_ion_blast = class({})
-end
+perun_ion_blast = perun_ion_blast or class({})
 
 function perun_ion_blast:GetCastRange(location, target)
 	local caster = self:GetCaster()

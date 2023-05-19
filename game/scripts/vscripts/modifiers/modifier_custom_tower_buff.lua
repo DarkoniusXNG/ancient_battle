@@ -2,9 +2,7 @@
 -Modifier to grant bonus health/damage
 Base health and damage is checked only on first application of modifier
 ]]
-if modifier_custom_tower_buff == nil then
-	modifier_custom_tower_buff = class({})
-end
+modifier_custom_tower_buff = class({})
 
 function modifier_custom_tower_buff:IsHidden()
     return true

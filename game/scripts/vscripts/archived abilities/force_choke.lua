@@ -10,8 +10,8 @@ function ChokeStart (event)
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_force_choked", {})
 		target:Interrupt()
 		-- Emitting Sounds
-		EmitSoundOn("Hero_Rubick.Telekinesis.Cast", caster)
-		EmitSoundOn("Hero_Rubick.Telekinesis.Target", target)
+		caster:EmitSound("Hero_Rubick.Telekinesis.Cast")
+		target:EmitSound("Hero_Rubick.Telekinesis.Target")
 	else
 		--print("Target have Spell Block")
 	end

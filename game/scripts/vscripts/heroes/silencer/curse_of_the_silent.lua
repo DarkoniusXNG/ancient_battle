@@ -1,6 +1,4 @@
-if silencer_custom_curse_of_the_silent == nil then
-	silencer_custom_curse_of_the_silent = class({})
-end
+silencer_custom_curse_of_the_silent = class({})
 
 LinkLuaModifier("modifier_custom_curse_of_the_silent", "heroes/silencer/modifier_custom_curse_of_the_silent.lua", LUA_MODIFIER_MOTION_NONE)
 
