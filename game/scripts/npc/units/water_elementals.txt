@@ -71,9 +71,6 @@
     "VisionNighttimeRange"                                "800"                  // 7.3.2016;
     
     "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
-    
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
 
     "Creature"
     {
@@ -158,9 +155,6 @@
     "VisionNighttimeRange"                                "800"                  // 7.3.2016;
 
     "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
-    
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
 
     "Creature"
     {
@@ -245,9 +239,6 @@
     "VisionNighttimeRange"                                "800"                  // 7.3.2016;
 
     "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
-    
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
 
     "Creature"
     {
@@ -332,9 +323,6 @@
     "VisionNighttimeRange"                                "800"                  // 7.3.2016;
     
     "VoiceFile"                                           "soundevents/voscripts/game_sounds_vo_morphling.vsndevts"
-    
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
 
     "Creature"
     {
