@@ -301,7 +301,7 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		return 0
 	end
 	if unit:IsNull() then
-		return
+		return 0
 	end
 	local original_damage = damage_after_reductions
 	-- Is the damage_type physical or magical?
