@@ -16,13 +16,11 @@ function ManaBreak( keys )
 	-- If the target is not magic immune then reduce the mana and deal damage
 	if not target:IsMagicImmune() then
 		-- Checking the mana of the target and calculating the damage
-		if(target:GetMana() >= manaBurn) then
-			damageTable.damage = manaBurn * manaDamage
-			target:ReduceMana(manaBurn)
-		else
-			damageTable.damage = target:GetMana() * manaDamage
-			target:ReduceMana(manaBurn)
-		end
+		local actual_mana_burn = math.min(target:GetMana(), manaBurn)
+		damageTable.damage = actual_mana_burn * manaDamage
+
+		-- Burn Mana
+		target:ReduceMana(actual_mana_burn, ability)
 
 		ApplyDamage(damageTable)
 	end
@@ -33,5 +31,6 @@ function ManaBreak( keys )
 		-- Plays the particle
 		local manaburn_fx = ParticleManager:CreateParticle("particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 		ParticleManager:SetParticleControl(manaburn_fx, 0, target:GetAbsOrigin() )
+		ParticleManager:ReleaseParticleIndex(manaburn_fx)
 	end
 end

@@ -110,8 +110,8 @@ function CBaseEntity:IsFountain()
 end
 
 -- This function checks if a given unit is Roshan, returns boolean value;
-function IsRoshan(unit)
-	return unit:IsRoshan()
+function IsRoshanCustom(unit)
+	return unit:IsRoshanCustom()
 end
 
 -- This function checks if this unit is a fountain or not; returns boolean value;

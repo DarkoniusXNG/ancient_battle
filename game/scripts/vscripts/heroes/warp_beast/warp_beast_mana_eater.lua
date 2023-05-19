@@ -104,7 +104,7 @@ if IsServer() then
 				end
 			end
 
-			--target:ReduceMana(drainAmount)
+			--target:ReduceMana(drainAmount, ability)
 
 			-- Don't give mana to illusions
 			if not parent:IsIllusion() then
@@ -144,40 +144,6 @@ if IsServer() then
 			end
 
 			caster:GiveMana(drainAmount)
-		end
-	end
-end
-
----------------------------------------------------------------------------------------------------
-
-modifier_mana_eater_bonus_mana_count = class({})
-
-function modifier_mana_eater_bonus_mana_count:IsHidden() return false end
-function modifier_mana_eater_bonus_mana_count:IsDebuff() return false end
-function modifier_mana_eater_bonus_mana_count:IsPurgable() return false end
-
-function modifier_mana_eater_bonus_mana_count:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_EXTRA_MANA_BONUS,
-		MODIFIER_EVENT_ON_SPENT_MANA
-	}
-end
-
-function modifier_mana_eater_bonus_mana_count:GetModifierExtraManaBonus()
-	return self:GetStackCount()
-end
-
-if IsServer() then
-	function modifier_mana_eater_bonus_mana_count:OnSpentMana(keys)
-		if keys.unit == self:GetParent() then
-			local manaCost = keys.cost
-			local restoreAmount = manaCost
-
-			if restoreAmount > self:GetStackCount() then
-				self:Destroy()
-			else
-				self:SetStackCount(self:GetStackCount() - restoreAmount)
-			end
 		end
 	end
 end

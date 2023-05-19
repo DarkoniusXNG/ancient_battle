@@ -116,8 +116,8 @@ function perun_ion_blast:OnProjectileHit(target, location)
 
 			-- Mana Removal
 			local current_mana = target:GetMana()
-			local mana_to_burn = math.min(current_mana, mana_burn)
-			target:ReduceMana(mana_to_burn)
+			local actual_mana_burn = math.min(current_mana, mana_burn)
+			target:ReduceMana(actual_mana_burn, self)
 
 			-- Giving vision around the target hit
 			--self:CreateVisibilityNode(location, vision_radius, vision_duration)

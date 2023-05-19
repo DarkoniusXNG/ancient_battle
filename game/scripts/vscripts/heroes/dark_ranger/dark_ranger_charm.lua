@@ -9,7 +9,7 @@ function dark_ranger_charm:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-	if target:IsRoshan() or target:IsCustomWardTypeUnit() or target:IsHeroDominatedCustom() then
+	if target:IsRoshanCustom() or target:IsCustomWardTypeUnit() or target:IsHeroDominatedCustom() then
 		return UF_FAIL_CUSTOM
 	elseif target:IsCourier() then
 		return UF_FAIL_COURIER
@@ -23,7 +23,7 @@ function dark_ranger_charm:CastFilterResultTarget(target)
 end
 
 function dark_ranger_charm:GetCustomCastErrorTarget(target)
-	if target:IsRoshan() then
+	if target:IsRoshanCustom() then
 		return "#dota_hud_error_cant_cast_on_roshan"
 	end
 	if target:IsCustomWardTypeUnit() then

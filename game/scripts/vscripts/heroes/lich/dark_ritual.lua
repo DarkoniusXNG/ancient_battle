@@ -4,7 +4,7 @@ function lich_custom_dark_ritual:CastFilterResultTarget(target)
   local caster = self:GetCaster()
   local caster_team = caster:GetTeamNumber()
 
-  if target:IsCustomWardTypeUnit() or target:IsRoshan() then
+  if target:IsCustomWardTypeUnit() or target:IsRoshanCustom() then
     return UF_FAIL_CUSTOM
   elseif target:IsCourier() then
     return UF_FAIL_COURIER
@@ -22,7 +22,7 @@ function lich_custom_dark_ritual:CastFilterResultTarget(target)
 end
 
 function lich_custom_dark_ritual:GetCustomCastErrorTarget(target)
-  if target:IsRoshan() then
+  if target:IsRoshanCustom() then
     return "#dota_hud_error_cant_cast_on_roshan"
   end
   if target:IsCustomWardTypeUnit() then

@@ -58,7 +58,7 @@ function death_knight_resurrection:OnSpellStart()
 	local number_of_resurrections = 0
 	for _, unit in pairs(units) do
 		if unit and not unit:IsNull() then
-			if not unit:IsAlive() and number_of_resurrections < resurrections_limit and not unit:IsRoshan() then
+			if not unit:IsAlive() and number_of_resurrections < resurrections_limit and not unit:IsRoshanCustom() then
 				if not unit:IsLaneCreepCustom() then
 					--print("Resurrecting non-lane creep.")
 					unit:SetTeam(caster_team)

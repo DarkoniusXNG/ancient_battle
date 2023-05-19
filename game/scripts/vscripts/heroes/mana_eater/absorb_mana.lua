@@ -23,7 +23,7 @@ function AbsorbMana(keys)
 					end
 				end
 				-- Transfering mana
-				target:ReduceMana(mana_to_transfer)
+				target:ReduceMana(mana_to_transfer, ability)
 				caster:GiveMana(mana_to_transfer)
 				-- Particles
 				ability:ApplyDataDrivenModifier(caster, caster, "modifier_absorb_mana_caster", {})
