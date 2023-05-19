@@ -378,15 +378,13 @@ function modifier_warp_effect:IsPurgable()
 end
 
 function modifier_warp_effect:CheckState()
-	local states = {
+	return {
 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true
 		-- [MODIFIER_STATE_FROZEN] = true
 	}
-
-	return states
 end
 
 ---------------------------------------------------------------------------------------------------

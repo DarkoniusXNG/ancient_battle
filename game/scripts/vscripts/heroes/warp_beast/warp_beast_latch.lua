@@ -240,10 +240,9 @@ function modifier_latch_target:RemoveOnDeath()
 end
 
 -- function modifier_latch_target:DeclareFunctions()
-	-- local funcs = {
+	-- return {
 		-- MODIFIER_EVENT_ON_ORDER
 	-- }
-	-- return funcs
 -- end
 
 -- -- Being able to use spells and items while latched

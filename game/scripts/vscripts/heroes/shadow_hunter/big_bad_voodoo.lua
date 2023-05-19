@@ -84,8 +84,31 @@ end
 
 modifier_big_bad_voodoo_invulnerability = class({})
 
+function modifier_big_bad_voodoo_invulnerability:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE,
+	}
+end
+
+function modifier_big_bad_voodoo_invulnerability:GetAbsoluteNoDamageMagical()
+	return 1
+end
+
+function modifier_big_bad_voodoo_invulnerability:GetAbsoluteNoDamagePhysical()
+	return 1
+end
+
+function modifier_big_bad_voodoo_invulnerability:GetAbsoluteNoDamagePure()
+	return 1
+end
+
 function modifier_big_bad_voodoo_invulnerability:CheckState()
-    return { [MODIFIER_STATE_INVULNERABLE] = true }
+    return {
+        [MODIFIER_STATE_INVULNERABLE] = true,
+        [MODIFIER_STATE_NO_HEALTH_BAR] = true,
+    }
 end
 
 function modifier_big_bad_voodoo_invulnerability:GetEffectName()

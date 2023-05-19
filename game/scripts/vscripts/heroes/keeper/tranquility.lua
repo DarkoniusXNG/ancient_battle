@@ -92,7 +92,9 @@ function modifier_tranquility_aura_effect:OnIntervalThink()
 end
 
 function modifier_tranquility_aura_effect:DeclareFunctions()
-    return { MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT }
+    return {
+        MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
+    }
 end
 
 function modifier_tranquility_aura_effect:GetModifierConstantHealthRegen()

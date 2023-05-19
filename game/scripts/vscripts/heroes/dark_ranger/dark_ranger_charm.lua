@@ -160,6 +160,10 @@ function modifier_charmed_hero:OnCreated()
 	-- HideAndCopyHero is a function that creates a copy of a hero and hides the original hero (inside util.lua)
 	local copy = HideAndCopyHero(parent, caster)
 
+	if not copy then
+		return
+	end
+
 	-- Apply the charmed debuff that makes the copy invulnerable and leashed
 	local mod = copy:AddNewModifier(caster, ability, "modifier_charmed_cloned_hero", {duration = duration})
 	mod.original = copy.original

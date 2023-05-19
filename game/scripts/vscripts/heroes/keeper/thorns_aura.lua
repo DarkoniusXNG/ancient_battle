@@ -68,7 +68,9 @@ end
 modifier_thorns_aura_buff = class({})
 
 function modifier_thorns_aura_buff:DeclareFunctions()
-    return { MODIFIER_EVENT_ON_ATTACKED }
+    return {
+        MODIFIER_EVENT_ON_ATTACKED
+    }
 end
 
 function modifier_thorns_aura_buff:OnAttacked(event)

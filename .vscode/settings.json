@@ -811,6 +811,7 @@
 		"FCVAR_CHEAT",
 		"EF_NODRAW",
 		"DOTA_LOADOUT_TYPE_WEAPON",
+		"MODIFIER_STATE_DEBUFF_IMMUNE"
 	],
 	"Lua.hint.await": true,
 	"Lua.semantic.annotation": false,

@@ -64,6 +64,7 @@
       "hp_regen_amp"                                      "20"
       "lifesteal_amp"                                     "20"
       "dmg_reduction_while_stunned"                       "20"
+      "active_duration"                                   "1"
     }
 
     "precache"

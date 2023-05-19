@@ -135,6 +135,11 @@ function HideAndCopyHero(target, caster)
 		-- Create a copy at the original's location
 		local copy = CopyHero(target, caster)
 
+		if not copy then
+			target:RemoveNoDraw()
+			return
+		end
+
 		-- Hide the original in the corner of the map
 		local corner
 		if GetMapName() == "two_vs_two" then
@@ -626,7 +631,7 @@ function FindUnitsinTrapezoid(team_number, vDirection, start_position, cache_uni
 	end
 	if not target_flags then
 		print("Invalid number of arguments for FindUnitsinTrapezoid!")
-		return
+		return {}
 	end
 	local circle = FindUnitsInRadius(team_number, start_position, cache_unit, distance+end_radius, target_team, target_type, target_flags, order, cache)
 	local direction = vDirection
