@@ -22,8 +22,8 @@
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.4"
-    "AbilityCastRange"                                    "1000" // original (600/700/800/900); Boundless Strike (1100);
-    "AbilityCastAnimation"                                "ACT_DOTA_ATTACK_STATUE"
+    "AbilityCastRange"                                    "1100" // original (600/700/800/900); Boundless Strike (1100);
+    "AbilityCastAnimation"                                "ACT_DOTA_ATTACK_EVENT"
 
     // Time
     //-------------------------------------------------------------------------------------------------------------

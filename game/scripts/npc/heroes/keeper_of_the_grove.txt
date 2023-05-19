@@ -14,16 +14,16 @@
     // Abilities
     //----------------------------------------------------------------
     "Ability1"                                            "keeper_entangling_roots"
-    //"Ability2"           "keeper_force_of_nature" // summon
-    "Ability3"                                            "keeper_thorns_aura" // improve code
-    "Ability4"                                            "keeper_tranquility" // non channel, heal towers, add living armor
-    "Ability5"                                            ""
-    "Ability6"                                            ""      
+    //"Ability2"           "keeper_force_of_nature" // TODO: summon
+    "Ability3"                                            "keeper_thorns_aura" // TODO: improve code
+    "Ability4"                                            "keeper_tranquility" // TODO: non channel, heal towers, add living armor
+    //"Ability5"                                            ""
+    //"Ability6"                                            ""      
     
     // Armor
     //----------------------------------------------------------------
-    "ArmorPhysical"                                       "2"
-    "MagicalResistance"                                   "30"
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -39,7 +39,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "17"
     "AttributeStrengthGain"                               "1.8"
     "AttributeBaseIntelligence"                           "18"
