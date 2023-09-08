@@ -4,8 +4,8 @@
   // Dark Ranger: Life Drain (T) - New Spell, like Pugna's Life Drain but cant target allies and no mana gain when full hp
   // Author: Darkonius
   // Linkens: Blocks;
-  // Notes: OK; 2023; Life Drain will not end if the target goes out of vision;
-  // TO_DO: aghs shard: Life Drain applies Dark Arrow debuff;
+  // Notes: OK; 2023; Life Drain will not end if the target goes out of vision; Has aghs shard
+  // TO_DO:
   //=================================================================================================================
   "dark_ranger_life_drain"
   {
