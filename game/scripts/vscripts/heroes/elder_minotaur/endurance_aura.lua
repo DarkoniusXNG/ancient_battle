@@ -60,7 +60,10 @@ end
 modifier_endurance_aura_buff = class({})
 
 function modifier_endurance_aura_buff:DeclareFunctions()
-    return { MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT, MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE }
+    return {
+        MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+    }
 end
 
 function modifier_endurance_aura_buff:GetModifierMoveSpeedBonus_Percentage()

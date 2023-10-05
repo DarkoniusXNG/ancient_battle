@@ -32,17 +32,13 @@ function MysticBoltHit(event)
 	local ability = event.ability
 
 	-- Find correct mana_at_that_time
-	local mana_at_that_time
+	local mana_at_that_time = 0
 	for i, mana in pairs(caster.mana_spent_at_cast_time) do
 		if mana then
 			mana_at_that_time = mana
 			caster.mana_spent_at_cast_time[i] = nil
 			break
 		end
-	end
-	-- if the 'for loop' doesn't work for some reason then define mana_at_that_time
-	if mana_at_that_time == nil then
-		mana_at_that_time = 0
 	end
 
 	-- Check for spell block and spell immunity (latter because of lotus)

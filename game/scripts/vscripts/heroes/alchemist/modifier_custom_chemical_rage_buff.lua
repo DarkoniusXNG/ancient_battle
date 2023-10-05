@@ -1,6 +1,4 @@
-﻿if modifier_custom_chemical_rage_buff == nil then
-	modifier_custom_chemical_rage_buff = class({})
-end
+﻿modifier_custom_chemical_rage_buff = class({})
 
 function modifier_custom_chemical_rage_buff:IsHidden()
 	return true

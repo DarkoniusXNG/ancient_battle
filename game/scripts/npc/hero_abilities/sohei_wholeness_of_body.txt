@@ -7,7 +7,7 @@
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/sohei/sohei_wholeness_of_body.lua"
-    "AbilityTextureName"                                  "custom/ronin_guard"
+    "AbilityTextureName"                                  "custom/sohei_wholeness_of_body"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

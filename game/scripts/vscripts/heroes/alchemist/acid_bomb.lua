@@ -115,9 +115,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_acid_bomb_stun == nil then
-	modifier_custom_acid_bomb_stun = class({})
-end
+modifier_custom_acid_bomb_stun = class({})
 
 function modifier_custom_acid_bomb_stun:IsHidden() -- needs tooltip
 	return false
@@ -161,9 +159,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_acid_bomb_debuff == nil then
-	modifier_custom_acid_bomb_debuff = class({})
-end
+modifier_custom_acid_bomb_debuff = class({})
 
 function modifier_custom_acid_bomb_debuff:IsHidden() -- needs tooltip
 	return false

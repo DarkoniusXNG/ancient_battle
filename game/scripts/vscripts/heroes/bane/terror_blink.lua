@@ -1,6 +1,4 @@
-﻿if bane_custom_terror_blink == nil then
-	bane_custom_terror_blink = class({})
-end
+﻿bane_custom_terror_blink = class({})
 
 LinkLuaModifier("modifier_custom_terror_buff", "heroes/bane/modifier_custom_terror_buff.lua", LUA_MODIFIER_MOTION_NONE)
 

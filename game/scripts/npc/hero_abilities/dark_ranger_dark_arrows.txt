@@ -19,7 +19,7 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-    "AbilityCastRange"                                    "500" // same as attack range, handled in lua
+    //"AbilityCastRange"                                    "500" // same as attack range, handled in lua
 
     "AbilityCooldown"                                     "0.0"
 

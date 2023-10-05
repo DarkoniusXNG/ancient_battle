@@ -1,3 +1,5 @@
+#base "heroes/base.txt"
+
 #base "heroes/alchemist.txt"
 #base "heroes/archmage.txt"
 #base "heroes/astral_trekker.txt"

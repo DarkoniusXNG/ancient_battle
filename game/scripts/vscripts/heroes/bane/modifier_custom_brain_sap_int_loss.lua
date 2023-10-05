@@ -1,6 +1,4 @@
-if modifier_custom_brain_sap_int_loss == nil then
-	modifier_custom_brain_sap_int_loss = class({})
-end
+modifier_custom_brain_sap_int_loss = class({})
 
 function modifier_custom_brain_sap_int_loss:IsHidden()
 	return true

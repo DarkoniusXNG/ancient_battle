@@ -1,6 +1,4 @@
-if paladin_holy_strike == nil then
-	paladin_holy_strike = class({})
-end
+paladin_holy_strike = paladin_holy_strike or class({})
 
 LinkLuaModifier("modifier_holy_strike_passive", "heroes/paladin/modifier_holy_strike_passive.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_holy_strike_passive_weapon_effect", "heroes/paladin/modifier_holy_strike_passive_weapon_effect.lua", LUA_MODIFIER_MOTION_NONE)

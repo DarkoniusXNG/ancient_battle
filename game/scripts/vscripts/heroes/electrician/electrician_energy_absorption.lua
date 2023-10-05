@@ -74,14 +74,12 @@ function electrician_energy_absorption:OnSpellStart()
         local target_current_mana = target:GetMana()
 
         -- Check if target has less mana
-        if target_current_mana < mana_to_remove then
-          mana_to_remove = target_current_mana
-        end
+        mana_to_remove = math.min(target_current_mana, mana_to_remove)
 
         -- Reduce/removed mana of the target (only if not an illusion)
         -- Don't remove mana from illusions to prevent weird interactions
         if not target:IsIllusion() then
-          target:ReduceMana(mana_to_remove)
+          target:ReduceMana(mana_to_remove, self)
           mana_absorbed = mana_absorbed + mana_to_remove
         end
 

@@ -11,13 +11,13 @@ function ancient_battle_gamemode:OrderFilter(filter_table)
 		local caster = EntIndexToHScript(units["0"])
 
 		if caster:HasModifier("modifier_anti_magic_field_debuff") and (not ability:IsItem()) then
-			ability:UseResources(true, false, true)
+			ability:UseResources(true, true, false, true)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
 
 		if caster:HasModifier("modifier_drunken_haze_fizzle") and (not ability:IsItem()) then
-			ability:UseResources(true,false,true)
+			ability:UseResources(true, true, false, true)
 			SendErrorMessage(playerID, "Used Spell has no effect!")
 			return false
 		end
@@ -300,8 +300,8 @@ function CalculateDamageBeforeReductions(unit, damage_after_reductions, damage_t
 		-- Unable to calculate damage before reductions if damage after reductions is 0
 		return 0
 	end
-	if unit == nil then
-		return
+	if unit:IsNull() then
+		return 0
 	end
 	local original_damage = damage_after_reductions
 	-- Is the damage_type physical or magical?

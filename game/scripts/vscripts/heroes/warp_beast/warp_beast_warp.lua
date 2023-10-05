@@ -194,7 +194,7 @@ if IsServer() then
 				end
 				local distance = (caster:GetAbsOrigin() - castPosition):Length2D()
 				if maxCastRange > 0 and maxCastRange < distance then
-					Timers.CreateTimer(0, function()
+					Timers:CreateTimer(0, function()
 						if order and self.checkRange then
 							if warpAbility:GetToggleState() and warpAbility:CanWarp(warpRange, castPosition, ability) then
 								self.checkRange = false
@@ -287,7 +287,7 @@ if IsServer() then
 				parent:GiveMana(drainAmount)
 			end
 
-			--target:ReduceMana(drainAmount)
+			--target:ReduceMana(drainAmount, ability)
 
 			target:EmitSound("Hero_Warp_Beast.ManaEater")
 
@@ -378,15 +378,13 @@ function modifier_warp_effect:IsPurgable()
 end
 
 function modifier_warp_effect:CheckState()
-	local states = {
+	return {
 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
 		[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true
 		-- [MODIFIER_STATE_FROZEN] = true
 	}
-
-	return states
 end
 
 ---------------------------------------------------------------------------------------------------

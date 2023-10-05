@@ -6,7 +6,7 @@
   //=================================================================================================================
   "npc_dota_hero_sona"
   {
-    "override_hero"                                       "npc_dota_hero_naga_siren"
+    "override_hero"                                       "npc_dota_hero_marci"
 
     "Ability1"                                            "sona_hymn_of_valor"
     "Ability2"                                            "sona_song_of_celerity"
@@ -17,5 +17,12 @@
     "Ability7"                                            "generic_hidden"          
     "Ability8"                                            "generic_hidden"
     "Ability9"                                            "generic_hidden"
+	
+    // Protection
+    //----------------------------------------------------------------
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "25"
+	
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
   }
 }

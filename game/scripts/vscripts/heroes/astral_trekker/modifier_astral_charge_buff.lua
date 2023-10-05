@@ -1,6 +1,4 @@
-if modifier_astral_charge_buff == nil then
-	modifier_astral_charge_buff = class({})
-end
+modifier_astral_charge_buff = modifier_astral_charge_buff or class({})
 
 function modifier_astral_charge_buff:IsHidden()
 	return false

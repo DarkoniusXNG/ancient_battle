@@ -87,7 +87,9 @@ end
 modifier_earthquake = class({})
 
 function modifier_earthquake:DeclareFunctions()
-    return { MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE }
+    return {
+        MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+    }
 end
 
 function modifier_earthquake:GetModifierMoveSpeedBonus_Percentage()

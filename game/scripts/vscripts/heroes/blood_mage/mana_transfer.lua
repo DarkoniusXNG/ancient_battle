@@ -207,14 +207,9 @@ function modifier_mana_transfer_enemy:OnIntervalThink()
 		local target_mana = target:GetMana()
 		local caster_mana = caster:GetMana()
 
-		local mana_transfer
-		if target_mana >= mana_per_interval then
-			mana_transfer = mana_per_interval
-		else
-			mana_transfer = target_mana
-		end
+		local mana_transfer = math.min(target_mana, mana_per_interval)
 
-		target:ReduceMana(mana_transfer)
+		target:ReduceMana(mana_transfer, ability)
 
 		-- Mana gained can go over the max mana
 		if caster_mana + mana_transfer > caster:GetMaxMana() then
@@ -353,14 +348,9 @@ function modifier_mana_transfer_ally:OnIntervalThink()
 		local target_mana = target:GetMana()
 		local caster_mana = caster:GetMana()
 
-		local mana_transfer
-		if caster_mana >= mana_per_interval then
-			mana_transfer = mana_per_interval
-		else
-			mana_transfer = caster_mana
-		end
+		local mana_transfer = math.min(caster_mana, mana_per_interval)
 
-		caster:ReduceMana(mana_transfer)
+		caster:ReduceMana(mana_transfer, ability)
 
 		-- Mana given can go over the max mana
 		if target_mana + mana_transfer > target:GetMaxMana() then

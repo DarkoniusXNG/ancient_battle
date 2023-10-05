@@ -17,14 +17,14 @@
     "Ability1"                                            "underlord_rain_of_fire" // fix particles
     "Ability2"                                            "underlord_howl_of_terror" // fix particles
     "Ability3"                                            "underlord_cleaving_attack"
-    //"Ability4"           "underlord_doom" // summon, make it work on heroes too
+    //"Ability4"           "underlord_doom" // TODO: summon, make it work on heroes too
     //"Ability5"          ""
     //"Ability6"          ""      
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -38,7 +38,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "30"
     "AttributeStrengthGain"                               "3"
     "AttributeBaseIntelligence"                           "20"

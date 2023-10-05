@@ -1,6 +1,4 @@
-if modifier_custom_blood_mirror_buff_caster_redirect == nil then
-	modifier_custom_blood_mirror_buff_caster_redirect = class({})
-end
+modifier_custom_blood_mirror_buff_caster_redirect = class({})
 
 function modifier_custom_blood_mirror_buff_caster_redirect:IsHidden()
 	return true

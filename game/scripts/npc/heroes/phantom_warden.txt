@@ -14,17 +14,17 @@
     // Abilities
     //----------------------------------------------------------------
     "AbilityLayout"                                       "6"
-    "Ability1"                                            "phantom_warden_fan_of_knives" // fix particles
-    "Ability2"                                            "phantom_warden_blink" // fix particles
-    "Ability3"                                            "phantom_warden_shadow_strike" // Poison Dagger, make it similar to QoP Shadow Strike, using PA dagger
+    "Ability1"                                            "phantom_warden_fan_of_knives" // TODO: fix particles
+    "Ability2"                                            "phantom_warden_blink" // TODO: fix particles
+    "Ability3"                                            "phantom_warden_shadow_strike" // TODO: Poison Dagger, make it similar to QoP Shadow Strike, using PA dagger
     //"Ability4"           ""
     //"Ability5"          ""
-    //"Ability6"          "phantom_warden_avatar_of_vengeance" // summons    
+    //"Ability6"          "phantom_warden_avatar_of_vengeance" // TODO: summons    
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -38,7 +38,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "18"
     "AttributeStrengthGain"                               "2.4"
     "AttributeBaseIntelligence"                           "15"

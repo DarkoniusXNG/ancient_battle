@@ -3,14 +3,14 @@
   //=================================================================================================================
   // Dark Ranger: Ranger Aura (E) - Percentage of Dark Ranger's agility is given as bonus damage to ranged allies in radius
   // Author: Darkonius;
-  // Notes: OK; 2022; Illusions don't bestow the aura;
-  // TO_DO:
+  // Notes: OK; 2023; Illusions don't bestow the aura;
+  // TO_DO: Global aura talent or shard
   //================================================================================================================= 
   "dark_ranger_ranger_aura"
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/dark_ranger/ranger_aura.lua"
-    "AbilityTextureName"                                  "drow_ranger_trueshot"
+    "AbilityTextureName"                                  "custom/dark_ranger_ranger_aura"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

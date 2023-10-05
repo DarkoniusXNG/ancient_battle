@@ -1,6 +1,4 @@
-﻿if mana_eater_mana_shell == nil then
-	mana_eater_mana_shell = class({})
-end
+﻿mana_eater_mana_shell = mana_eater_mana_shell or class({})
 
 LinkLuaModifier("modifier_mana_shell_passive", "heroes/mana_eater/mana_shell.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -24,9 +22,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_mana_shell_passive == nil then
-	modifier_mana_shell_passive = class({})
-end
+modifier_mana_shell_passive = modifier_mana_shell_passive or class({})
 
 function modifier_mana_shell_passive:IsHidden()
 	return true

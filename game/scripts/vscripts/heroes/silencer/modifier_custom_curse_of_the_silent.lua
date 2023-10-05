@@ -1,6 +1,4 @@
-if modifier_custom_curse_of_the_silent == nil then
-	modifier_custom_curse_of_the_silent = class({})
-end
+modifier_custom_curse_of_the_silent = class({})
 
 function modifier_custom_curse_of_the_silent:IsHidden()
 	return false
@@ -47,8 +45,9 @@ function modifier_custom_curse_of_the_silent:OnIntervalThink()
 	local mana_loss_per_interval = mana_loss_per_second*think_interval
 
 	-- Reduce mana if the unit (parent) has mana
-	if parent:GetMana() > 0 then
-		parent:ReduceMana(mana_loss_per_interval)
+	local mana_loss = math.min(parent:GetMana(), mana_loss_per_interval)
+	if parent.ReduceMana and parent:GetMana() > 0 then
+		parent:ReduceMana(mana_loss, ability)
 	end
 end
 

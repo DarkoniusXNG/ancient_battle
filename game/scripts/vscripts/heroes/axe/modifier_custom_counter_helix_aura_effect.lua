@@ -1,6 +1,4 @@
-﻿if modifier_custom_counter_helix_aura_effect == nil then
-	modifier_custom_counter_helix_aura_effect = class({})
-end
+﻿modifier_custom_counter_helix_aura_effect = class({})
 
 function modifier_custom_counter_helix_aura_effect:IsHidden()
 	return true
@@ -98,7 +96,7 @@ if IsServer() then
 					end
 				end
 
-				ability:UseResources(false, false, true)
+				ability:UseResources(false, false, false, true)
 			end
 		end
 	end

@@ -1,6 +1,4 @@
-if modifier_custom_blade_storm == nil then
-	modifier_custom_blade_storm = class({})
-end
+modifier_custom_blade_storm = class({})
 
 function modifier_custom_blade_storm:IsHidden()
 	return false

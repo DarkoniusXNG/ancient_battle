@@ -1,6 +1,4 @@
-﻿if modifier_custom_last_word_disarm == nil then
-	modifier_custom_last_word_disarm = class({})
-end
+﻿modifier_custom_last_word_disarm = class({})
 
 function modifier_custom_last_word_disarm:IsHidden()
 	return false

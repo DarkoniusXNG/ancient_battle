@@ -1,6 +1,4 @@
-if modifier_custom_blood_mirror_debuff_caster == nil then
-	modifier_custom_blood_mirror_debuff_caster = class({})
-end
+modifier_custom_blood_mirror_debuff_caster = class({})
 
 function modifier_custom_blood_mirror_debuff_caster:IsHidden()
 	return true

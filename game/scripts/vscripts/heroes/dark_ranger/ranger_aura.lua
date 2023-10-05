@@ -1,6 +1,4 @@
-﻿if dark_ranger_ranger_aura == nil then
-	dark_ranger_ranger_aura = class({})
-end
+﻿dark_ranger_ranger_aura = dark_ranger_ranger_aura or class({})
 
 LinkLuaModifier("modifier_custom_ranger_aura_effect", "heroes/dark_ranger/ranger_aura.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_ranger_aura_applier", "heroes/dark_ranger/ranger_aura.lua", LUA_MODIFIER_MOTION_NONE)
@@ -15,9 +13,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_ranger_aura_applier == nil then
-	modifier_custom_ranger_aura_applier = class({})
-end
+modifier_custom_ranger_aura_applier = class({})
 
 function modifier_custom_ranger_aura_applier:IsHidden()
 	return true
@@ -70,9 +66,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_ranger_aura_effect == nil then
-	modifier_custom_ranger_aura_effect = class({})
-end
+modifier_custom_ranger_aura_effect = class({})
 
 function modifier_custom_ranger_aura_effect:IsHidden()
 	return false

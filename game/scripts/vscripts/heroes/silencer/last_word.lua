@@ -1,6 +1,4 @@
-﻿if silencer_custom_last_word == nil then
-	silencer_custom_last_word = class({})
-end
+﻿silencer_custom_last_word = class({})
 
 LinkLuaModifier("modifier_custom_last_word_silence_passive", "heroes/silencer/modifier_custom_last_word_silence_passive.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_last_word_aura_effect", "heroes/silencer/modifier_custom_last_word_aura_effect.lua", LUA_MODIFIER_MOTION_NONE)

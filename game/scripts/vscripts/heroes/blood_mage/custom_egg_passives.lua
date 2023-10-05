@@ -1,6 +1,4 @@
-﻿if custom_egg_passives == nil then
-	custom_egg_passives = class({})
-end
+﻿custom_egg_passives = class({})
 
 LinkLuaModifier("modifier_custom_phoenix_egg_passives", "heroes/blood_mage/custom_egg_passives.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -14,9 +12,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_phoenix_egg_passives == nil then
-	modifier_custom_phoenix_egg_passives = class({})
-end
+modifier_custom_phoenix_egg_passives = class({})
 
 function modifier_custom_phoenix_egg_passives:IsHidden()
 	return true

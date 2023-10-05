@@ -1,6 +1,4 @@
-if modifier_custom_blood_mirror_debuff_enemy == nil then
-	modifier_custom_blood_mirror_debuff_enemy = class({})
-end
+modifier_custom_blood_mirror_debuff_enemy = class({})
 
 function modifier_custom_blood_mirror_debuff_enemy:IsHidden()
 	return false

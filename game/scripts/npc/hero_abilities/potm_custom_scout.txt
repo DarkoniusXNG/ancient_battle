@@ -1,0 +1,79 @@
+"DOTAAbilities"
+{
+
+// Priestess of the Moon Scout
+// Author: Noya
+// Description: Temporarily summons an Owl Scout, which can be used to scout the map. Can see invisible units.
+
+  "potm_custom_scout"
+  {
+    "BaseClass"                                           "ability_datadriven"
+    "AbilityTextureName"                                  "custom/potm_custom_scout"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+    "AbilityCastPoint"                                    "0.3"
+    "AbilityCooldown"                                     "20.0"
+
+    "AbilityManaCost"                                     "100 75 50"
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_mirana/mirana_starfall_moonray.vpcf"
+      "particle"                                          "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+      "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+      "model"                                             "models/items/courier/snowl/snowl_flying.vmdl"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "owl_duration"                                    "60 90 120"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "owl_vision"                                      "1000 1500 2200"
+      }
+      "03"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "owl_movespeed"                                   "270 350 450"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+        "EffectName"                                      "Hero_Mirana.Leap.Owlcat"
+        "Target"                                          "CASTER"
+      }
+
+      "RunScript"
+      {
+        "ScriptFile"                                      "heroes/potm/scout.lua"
+        "Function"                                        "SpawnScout"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_owl_scout"
+      {
+        "IsHidden"                                        "1"
+        
+        "States"
+        {
+          "MODIFIER_STATE_ATTACK_IMMUNE"                  "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_MAGIC_IMMUNE"                   "MODIFIER_STATE_VALUE_ENABLED"
+        }
+
+        "EffectName"                                      "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+        "EffectAttachType"                                "follow_overhead"
+      }
+    }
+  }
+}

@@ -226,15 +226,13 @@ function modifier_pudge_custom_rot_aura_effect:OnRefresh()
 end
 
 function modifier_pudge_custom_rot_aura_effect:DeclareFunctions()
-	local funcs = {
+	return {
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
 		MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
 	}
-
-	return funcs
 end
 
 function modifier_pudge_custom_rot_aura_effect:GetModifierMoveSpeedBonus_Percentage()

@@ -1,6 +1,4 @@
-﻿if stealth_assassin_death_ward == nil then
-	stealth_assassin_death_ward = class({})
-end
+﻿stealth_assassin_death_ward = stealth_assassin_death_ward or class({})
 
 LinkLuaModifier("modifier_custom_death_ward", "heroes/ryu/death_ward.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -138,9 +136,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_death_ward == nil then
-	modifier_custom_death_ward = class({})
-end
+modifier_custom_death_ward = class({})
 
 function modifier_custom_death_ward:IsHidden()
 	return true

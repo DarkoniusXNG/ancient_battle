@@ -3,12 +3,28 @@
 
 -- On Server:
 if CDOTA_BaseNPC then
-  function CDOTA_BaseNPC:GetAttackRange()
-    return self:Script_GetAttackRange()
+  if not CDOTA_BaseNPC.GetAttackRange then
+    function CDOTA_BaseNPC:GetAttackRange()
+      return self:Script_GetAttackRange()
+    end
+  end
+
+  if not CDOTA_BaseNPC.ReduceMana then
+    function CDOTA_BaseNPC:ReduceMana(amount, mana_burning_ability)
+      return self:Script_ReduceMana(amount, mana_burning_ability)
+    end
+  end
+
+  if not CDOTA_BaseNPC.GetMagicalArmorValue then
+    function CDOTA_BaseNPC:GetMagicalArmorValue()
+      local experimental_formula = false
+      local inflictor = nil
+      return self:Script_GetMagicalArmorValue(experimental_formula, inflictor)
+    end
   end
 
   function CDOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance") or self:IsRoshan()
+    return self:HasModifier("modifier_boss_resistance") or self:IsRoshanCustom()
   end
 
   function CDOTA_BaseNPC:HasShardCustom()
@@ -16,7 +32,7 @@ if CDOTA_BaseNPC then
   end
 
   function CDOTA_BaseNPC:IsStrongIllusionCustom()
-    return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
+    return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:IsStrongIllusion()
   end
 
   function CDOTA_BaseNPC:IsCloneCustom()
@@ -49,7 +65,7 @@ if CDOTA_BaseNPC then
     return false
   end
 
-  function CDOTA_BaseNPC:IsRoshan()
+  function CDOTA_BaseNPC:IsRoshanCustom()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
       return true
     end
@@ -141,7 +157,7 @@ if CDOTA_BaseNPC then
       "modifier_bakedanuki_futatsuiwas_curse",
       "modifier_custom_enfeeble_debuff",
       "modifier_custom_rupture",
-      "modifier_entrapment",
+      "modifier_astral_trekker_entrapment_debuff",
       "modifier_incinerate_stack",
       "modifier_mana_transfer_leash_debuff",
       "modifier_purge_enemy_creep",
@@ -305,12 +321,28 @@ end
 
 -- On Client:
 if C_DOTA_BaseNPC then
-  function C_DOTA_BaseNPC:GetAttackRange()
-    return self:Script_GetAttackRange()
+  if not C_DOTA_BaseNPC.GetAttackRange then
+    function C_DOTA_BaseNPC:GetAttackRange()
+      return self:Script_GetAttackRange()
+    end
+  end
+
+  if not C_DOTA_BaseNPC.ReduceMana then
+    function C_DOTA_BaseNPC:ReduceMana(amount, mana_burning_ability)
+      return self:Script_ReduceMana(amount, mana_burning_ability)
+    end
+  end
+
+  if not C_DOTA_BaseNPC.GetMagicalArmorValue then
+    function C_DOTA_BaseNPC:GetMagicalArmorValue()
+      local experimental_formula = false
+      local inflictor = nil
+      return self:Script_GetMagicalArmorValue(experimental_formula, inflictor)
+    end
   end
 
   function C_DOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance") or self:IsRoshan()
+    return self:HasModifier("modifier_boss_resistance") or self:IsRoshanCustom()
   end
 
   function C_DOTA_BaseNPC:HasShardCustom()
@@ -318,7 +350,7 @@ if C_DOTA_BaseNPC then
   end
 
   function C_DOTA_BaseNPC:IsStrongIllusionCustom()
-    return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:HasModifier("modifier_vengefulspirit_hybrid_special") or self:HasModifier("modifier_chaos_knight_phantasm_illusion_shard")
+    return self:HasModifier("modifier_chaos_knight_phantasm_illusion") or self:IsStrongIllusion()
   end
 
   --function C_DOTA_BaseNPC:IsCloneCustom()
@@ -351,7 +383,7 @@ if C_DOTA_BaseNPC then
     return false
   end
 
-  function C_DOTA_BaseNPC:IsRoshan()
+  function C_DOTA_BaseNPC:IsRoshanCustom()
     if self:IsAncient() and self:GetUnitName() == "npc_dota_roshan" then
       return true
     end

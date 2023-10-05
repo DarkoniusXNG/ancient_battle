@@ -3,14 +3,14 @@
   //=================================================================================================================
   // Bane: Brain Sap - custom, steals intelligence too
   // Author: Darkonius
-  // Notes: OK; 2022;
+  // Notes: OK; 2023;
   // TO_DO:
   //=================================================================================================================
   "bane_custom_brain_sap"
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/bane/brain_sap.lua"
-    "AbilityTextureName"                                  "bane_brain_sap"
+    "AbilityTextureName"                                  "custom/bane_custom_brain_sap"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

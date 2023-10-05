@@ -17,16 +17,16 @@
     "AbilityLayout"                                       "6"
 
     "Ability1"                                            "elder_minotaur_shockwave"
-    "Ability2"                                            "elder_minotaur_war_stomp" // fix the animation
-    "Ability3"                                            "elder_minotaur_endurance_aura" // improve the code
-    //"Ability4"           "elder_minotaur_reincarnation" // fix this mess
+    "Ability2"                                            "elder_minotaur_war_stomp" // TODO: fix the animation
+    "Ability3"                                            "elder_minotaur_endurance_aura" // TODO: improve the code
+    //"Ability4"           "elder_minotaur_reincarnation" // TODO: fix this mess
     //"Ability5"          ""
     //"Ability6"           ""   
     
     // Armor
     //----------------------------------------------------------------
-    "ArmorPhysical"                                       "1"
-    "MagicalResistance"                                   "30"
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -40,7 +40,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "25"
     "AttributeStrengthGain"                               "3.2"
     "AttributeBaseIntelligence"                           "14"

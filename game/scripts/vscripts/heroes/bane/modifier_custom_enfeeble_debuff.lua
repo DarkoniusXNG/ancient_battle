@@ -1,6 +1,4 @@
-if modifier_custom_enfeeble_debuff == nil then
-	modifier_custom_enfeeble_debuff = class({})
-end
+modifier_custom_enfeeble_debuff = class({})
 
 function modifier_custom_enfeeble_debuff:IsHidden()
 	return false

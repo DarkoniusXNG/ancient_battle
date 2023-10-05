@@ -9,7 +9,7 @@ function modifier_bakedanuki_frolic_aura:IsPurgable()
 end
 
 function modifier_bakedanuki_frolic_aura:IsAura()
-	return (not self:GetParent():PassivesDisabled())
+	return not self:GetParent():PassivesDisabled()
 end
 
 function modifier_bakedanuki_frolic_aura:GetModifierAura()

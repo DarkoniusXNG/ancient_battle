@@ -14,17 +14,17 @@
     // Abilities
     //----------------------------------------------------------------
     "AbilityLayout"                                       "6"
-    //"Ability1"           "beastmaster_summon_bear" // summon
-    //"Ability2"           "beastmaster_summon_quilbeast" // summon
-    //"Ability3"           "beastmaster_summon_hawk" // summon
-    "Ability4"                                            "beastmaster_stampede" // fix particles
+    //"Ability1"           "beastmaster_summon_bear" // TODO: summon
+    //"Ability2"           "beastmaster_summon_quilbeast" // TODO: summon
+    //"Ability3"           "beastmaster_summon_hawk" // TODO: summon
+    "Ability4"                                            "beastmaster_stampede" // TODO: fix particles
     //"Ability5"          ""
     //"Ability6"           ""      
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -38,7 +38,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "22"
     "AttributeStrengthGain"                               "2.9"
     "AttributeBaseIntelligence"                           "15"

@@ -1,6 +1,6 @@
 astral_trekker_entrapment = class({})
 
-LinkLuaModifier("modifier_entrapment", "heroes/astral_trekker/entrapment.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_astral_trekker_entrapment_debuff", "heroes/astral_trekker/entrapment.lua", LUA_MODIFIER_MOTION_NONE)
 
 function astral_trekker_entrapment:CastFilterResultTarget(target)
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
@@ -73,7 +73,7 @@ function astral_trekker_entrapment:OnProjectileHit(target, location)
 		duration = target:GetValueChangedByStatusResistance(duration)
 
 		-- Apply debuff
-		target:AddNewModifier(caster, self, "modifier_entrapment", {duration = duration})
+		target:AddNewModifier(caster, self, "modifier_astral_trekker_entrapment_debuff", {duration = duration})
 
 		-- Mini-stun
 		target:Interrupt()
@@ -88,23 +88,21 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_entrapment == nil then
-	modifier_entrapment = class({})
-end
+modifier_astral_trekker_entrapment_debuff = modifier_astral_trekker_entrapment_debuff or class({})
 
-function modifier_entrapment:IsHidden()
+function modifier_astral_trekker_entrapment_debuff:IsHidden()
 	return false
 end
 
-function modifier_entrapment:IsDebuff()
+function modifier_astral_trekker_entrapment_debuff:IsDebuff()
 	return true
 end
 
-function modifier_entrapment:IsPurgable()
+function modifier_astral_trekker_entrapment_debuff:IsPurgable()
 	return false
 end
 
-function modifier_entrapment:OnCreated()
+function modifier_astral_trekker_entrapment_debuff:OnCreated()
 	local caster = self:GetCaster()
 	local ability = self:GetAbility()
 
@@ -118,9 +116,9 @@ function modifier_entrapment:OnCreated()
 	end
 end
 
-modifier_entrapment.OnRefresh = modifier_entrapment.OnCreated
+modifier_astral_trekker_entrapment_debuff.OnRefresh = modifier_astral_trekker_entrapment_debuff.OnCreated
 
-function modifier_entrapment:DeclareFunctions()
+function modifier_astral_trekker_entrapment_debuff:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
 		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
@@ -129,23 +127,23 @@ function modifier_entrapment:DeclareFunctions()
 	}
 end
 
-function modifier_entrapment:GetModifierHPRegenAmplify_Percentage()
+function modifier_astral_trekker_entrapment_debuff:GetModifierHPRegenAmplify_Percentage()
 	return 0 - math.abs(self.heal_reduction)
 end
 
-function modifier_entrapment:GetModifierHealAmplify_PercentageTarget()
+function modifier_astral_trekker_entrapment_debuff:GetModifierHealAmplify_PercentageTarget()
 	return 0 - math.abs(self.heal_reduction)
 end
 
-function modifier_entrapment:GetModifierLifestealRegenAmplify_Percentage()
+function modifier_astral_trekker_entrapment_debuff:GetModifierLifestealRegenAmplify_Percentage()
 	return 0 - math.abs(self.heal_reduction)
 end
 
-function modifier_entrapment:GetModifierSpellLifestealRegenAmplify_Percentage()
+function modifier_astral_trekker_entrapment_debuff:GetModifierSpellLifestealRegenAmplify_Percentage()
 	return 0 - math.abs(self.heal_reduction)
 end
 
-function modifier_entrapment:CheckState()
+function modifier_astral_trekker_entrapment_debuff:CheckState()
 	local state = {
 		[MODIFIER_STATE_ROOTED] = true,
 		[MODIFIER_STATE_INVISIBLE] = false,
@@ -157,14 +155,14 @@ function modifier_entrapment:CheckState()
 	return state
 end
 
-function modifier_entrapment:GetPriority()
+function modifier_astral_trekker_entrapment_debuff:GetPriority()
 	return MODIFIER_PRIORITY_ULTRA
 end
 
-function modifier_entrapment:GetEffectName()
+function modifier_astral_trekker_entrapment_debuff:GetEffectName()
 	return "particles/units/heroes/hero_siren/siren_net.vpcf"
 end
 
-function modifier_entrapment:GetEffectAttachType()
+function modifier_astral_trekker_entrapment_debuff:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end

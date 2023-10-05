@@ -129,7 +129,7 @@ function BuyStart (event)
 					end
 				else
 					-- print("Target is an Ancient Creep or Roshan")
-					if IsRoshan(target) then
+					if IsRoshanCustom(target) then
 						-- print("Target is Roshan!")
 						if ( not target:TriggerSpellAbsorb( ability ) ) then
 							--print("Target doesn't have Spell Block.")

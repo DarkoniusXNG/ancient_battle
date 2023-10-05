@@ -14,17 +14,17 @@
     // Abilities
     //----------------------------------------------------------------
     "AbilityLayout"                                       "6"
-    //"Ability1"           "tinker_pocket_factory" // summons
-    "Ability2"                                            "tinker_cluster_rockets" // improve
-    "Ability3"                                            "tinker_engineering_upgrade" // idk if it works
-    //"Ability4"           "tinker_robo_goblin" // fix
-    "Ability5"                                            ""
-    //"Ability6"          "tinker_normal_form" // fix
+    //"Ability1"           "tinker_pocket_factory" // TODO: summons
+    "Ability2"                                            "tinker_cluster_rockets" // TODO: improve
+    "Ability3"                                            "tinker_engineering_upgrade" // TODO: make it work
+    //"Ability4"           "tinker_robo_goblin" // TODO: fix
+    //"Ability5"                                            "tinker_custom_march_of_the_machines" // TODO: ALL
+    //"Ability6"          "tinker_normal_form" // TODO: fix
 
     // Armor
     //----------------------------------------------------------------
-    "ArmorPhysical"                                       "2"
-    "MagicalResistance"                                   "30"
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -39,7 +39,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "20"
     "AttributeStrengthGain"                               "2.4"
     "AttributeBaseIntelligence"                           "20"

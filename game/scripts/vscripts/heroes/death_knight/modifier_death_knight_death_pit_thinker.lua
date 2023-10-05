@@ -1,6 +1,4 @@
-if modifier_death_knight_death_pit_thinker == nil then
-	modifier_death_knight_death_pit_thinker = class({})
-end
+modifier_death_knight_death_pit_thinker = modifier_death_knight_death_pit_thinker or class({})
 
 function modifier_death_knight_death_pit_thinker:IsHidden()
 	return true

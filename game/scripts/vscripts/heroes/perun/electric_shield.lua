@@ -1,6 +1,4 @@
-if perun_electric_shield == nil then
-	perun_electric_shield = class({})
-end
+perun_electric_shield = perun_electric_shield or class({})
 
 LinkLuaModifier("modifier_perun_electric_shield", "heroes/perun/electric_shield.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -52,9 +50,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_perun_electric_shield == nil then
-	modifier_perun_electric_shield = class({})
-end
+modifier_perun_electric_shield = modifier_perun_electric_shield or class({})
 
 function modifier_perun_electric_shield:IsHidden()
 	return false

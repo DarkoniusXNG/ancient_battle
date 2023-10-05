@@ -33,10 +33,7 @@ function perun_electric_trap:ProcsMagicStick()
 end
 
 -- Trap modifier -----------------------------------------------------------------------------------------------------
-
-if modifier_perun_electric_trap == nil then
-	modifier_perun_electric_trap = class({})
-end
+modifier_perun_electric_trap = modifier_perun_electric_trap or class({})
 
 function modifier_perun_electric_trap:IsHidden()
 	return true

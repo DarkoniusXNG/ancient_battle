@@ -108,7 +108,7 @@ function warp_beast_temporal_jump:SpendAbilityCharge()
 
 		if charges >= maxCharges then
 			chargeModifier:SetStackCount(maxCharges)
-			self:UseResources(false, false, true)
+			self:UseResources(false, false, false, true)
 			local newDuration = self:GetCooldownTimeRemaining()
 			chargeModifier:SetDuration(newDuration, true)
 		end
@@ -244,7 +244,7 @@ if IsServer() then
 				local newCharges = self:GetStackCount() + 1
 				self:SetStackCount(newCharges)
 				if newCharges < maxCharges then
-					ability:UseResources(false, false, true)
+					ability:UseResources(false, false, false, true)
 					local newDuration = ability:GetCooldownTimeRemaining()
 					ability:EndCooldown()
 					self:SetDuration(newDuration, true)

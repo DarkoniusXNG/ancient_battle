@@ -16,15 +16,15 @@
     //----------------------------------------------------------------
     //"Ability1"           "far_seer_far_sight" // fix this mess
     "Ability2"                                            "far_seer_chain_lightning"
-    //"Ability3"           "far_seer_feral_spirit" // summon
-    //"Ability4"           "far_seer_earthquake" // fix this mess
+    //"Ability3"           "far_seer_feral_spirit" // TODO: summon
+    //"Ability4"           "far_seer_earthquake" // TODO: fix this mess
     //"Ability5"          ""
     //"Ability6"          ""      
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -40,7 +40,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "15"
     "AttributeStrengthGain"                               "2"
     "AttributeBaseIntelligence"                           "19"

@@ -1,6 +1,4 @@
-if modifier_custom_brain_sap_int_loss_counter == nil then
-	modifier_custom_brain_sap_int_loss_counter = class({})
-end
+modifier_custom_brain_sap_int_loss_counter = class({})
 
 function modifier_custom_brain_sap_int_loss_counter:DeclareFunctions()
   return {

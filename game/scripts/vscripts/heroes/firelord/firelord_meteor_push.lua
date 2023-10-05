@@ -1,6 +1,4 @@
-if firelord_meteor_push == nil then
-	firelord_meteor_push = class({})
-end
+firelord_meteor_push = firelord_meteor_push or class({})
 
 LinkLuaModifier("modifier_firelord_meteor_burn_debuff", "heroes/firelord/firelord_meteor_push.lua", LUA_MODIFIER_MOTION_NONE )
 
@@ -157,9 +155,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_firelord_meteor_burn_debuff == nil then
-	modifier_firelord_meteor_burn_debuff = class({})
-end
+modifier_firelord_meteor_burn_debuff = modifier_firelord_meteor_burn_debuff or class({})
 
 function modifier_firelord_meteor_burn_debuff:IsHidden() -- needs tooltip
 	return false
