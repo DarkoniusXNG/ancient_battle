@@ -26,30 +26,17 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "100 150 200 250"
-        "LinkedSpecialBonus"                              "special_bonus_unique_axe_counter_helix_damage"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "275"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "trigger_chance"                                  "20"
-      }
-      "04" // not in tooltip; only here
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "trigger_radius"                                  "1800"
-      }
-    }
+    "AbilityValues"
+	{
+		"damage"
+		{
+			"value" "100 150 200 250"
+			"LinkedSpecialBonus" "special_bonus_unique_axe_counter_helix_damage"
+		}
+		"radius" "275"
+		"trigger_chance" "20"
+		"trigger_radius" "1800" // not in tooltip; only here
+	}
   }
 
   //=================================================================================================================
@@ -65,13 +52,9 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "250"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "250"
+        }
   }
 }

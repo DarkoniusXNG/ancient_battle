@@ -21,24 +21,12 @@
 
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "5"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "5"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "5"
-      }
-    }
+    "AbilityValues"
+        {
+            "bonus_str" "5"
+            "bonus_agi" "5"
+            "bonus_int" "5"
+        }
     
     "Modifiers"
     {

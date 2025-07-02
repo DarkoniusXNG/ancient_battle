@@ -24,25 +24,16 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // original: 7/14/21%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "evasion_chance"                                  "15 20 25 30"
-      }
-      "02" // original: 10%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_chance"                                     "10 15 20 25"
-      }
-      "03" // original: 200/300/400
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_damage"                                     "240 260 280 300"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "evasion_chance" "15 20 25 30" // original: 7/14/21%
+            "crit_chance" "10 15 20 25" // original: 10%
+            "crit_damage" // original: 200/300/400
+            {
+                "value" "240 260 280 300"
+                "CalculateSpellDamageTooltip" "0"
+            }
+        }
 
     "Modifiers"
     {

@@ -4,7 +4,7 @@
   // Dark Terminator: Chaos Brawler - new custom ability, bonus evasion and chance to deal bonus damage that ignores armor
   // Author: Darkonius
   // Notes: OK; 2023; Doesn't work on buildings; Pseudo-Random chance; It can miss; Works for illusions;
-  // TO_DO: 
+  // TO_DO:
   //=================================================================================================================
   "dark_terminator_terminator_skills"
   {
@@ -15,7 +15,7 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
+
     "AbilityCooldown"                                     "0.2"
 
     "precache"
@@ -23,35 +23,28 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_proc_chance"                              "17"
-        "LinkedSpecialBonus"                              "special_bonus_unique_dark_terminator_proc_chance"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_percent"                                  "15 20 25 30"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "03" // original: 7/14/21%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "evasion_chance"                                  "7 14 21 28"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_proc_cooldown"                            "0.2"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "damage_proc_chance"
+            {
+                "value" "17"
+                "LinkedSpecialBonus" "special_bonus_unique_dark_terminator_proc_chance"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "damage_percent"
+            {
+                "value" "15 20 25 30"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "evasion_chance" "7 14 21 28" // original: 7/14/21%
+            "damage_proc_cooldown"
+            {
+                "value" "0.2"
+                "CalculateSpellDamageTooltip" "0"
+            }
+        }
   }
-  
+
   //=================================================================================================================
   // Terminator Skills bonus proc chance
   //=================================================================================================================
@@ -62,16 +55,12 @@
     "BaseClass"                                           "special_bonus_undefined"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "25"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "25"
+        }
   }
 }

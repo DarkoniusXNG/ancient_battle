@@ -29,23 +29,11 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_move_speed"                                "15 20 25 30"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "fade_time"                                       "1.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "20"
+            "bonus_move_speed" "15 20 25 30"
+            "fade_time" "1.0"
+        }
   }
 }

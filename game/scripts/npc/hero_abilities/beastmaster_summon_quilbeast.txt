@@ -36,34 +36,14 @@
       "particle"                                          "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "70"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "boar_hp"                                         "425 515 600"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "boar_regen_tooltip"                              "0.5 1 1.5"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "boar_damage"                                     "14 28 42"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "boar_armor"                                      "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "70"
+            "boar_hp" "425 515 600"
+            "boar_regen_tooltip" "0.5 1 1.5"
+            "boar_damage" "14 28 42"
+            "boar_armor" "0"
+        }
 
     "OnSpellStart"
     {
@@ -100,7 +80,7 @@
         {
           "FireEffect"
           {
-            "Target"            
+            "Target"
             {
               "Center"                                    "UNIT"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
@@ -108,10 +88,10 @@
             "EffectName"                                  "particles/units/heroes/hero_lone_druid/lone_druid_spirit_bear_death.vpcf"
             "EffectAttachType"                            "follow_origin"
           }
-          
+
           "FireSound"
           {
-            "Target"            
+            "Target"
             {
               "Center"                                    "UNIT"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
@@ -137,24 +117,12 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_movement_speed"                            "25"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_attack_speed"                              "40"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "20"
+            "bonus_movement_speed" "25"
+            "bonus_attack_speed" "40"
+        }
 
     "OnSpellStart"
     {
@@ -173,7 +141,7 @@
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsDebuff"                                        "0"
-        
+
         "OnAttackStart"
         {
           "RunScript"
@@ -188,11 +156,11 @@
       {
         "EffectName"                                      "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_movement_speed" 
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_movement_speed"
         }
 
         "OnCreated"

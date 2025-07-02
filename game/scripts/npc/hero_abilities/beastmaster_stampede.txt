@@ -36,50 +36,18 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "lizard_damage"                                   "60"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "30"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "speed"                                           "600"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "distance"                                        "2000"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "collision_radius"                                "100"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "lizards_per_sec"                                 "20"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spawn_radius"                                    "1000"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "roar_interval"                                   "1.3"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "lizard_damage" "60"
+            "duration" "30"
+            "speed" "600"
+            "distance" "2000"
+            "collision_radius" "100"
+            "lizards_per_sec" "20"
+            "spawn_radius" "1000"
+            "roar_interval" "1.3"
+        }
 
     "OnSpellStart"
     {
@@ -196,7 +164,7 @@
       }
 
       "modifier_channeling"
-      {   
+      {
         "IsHidden"                                        "1"
         "OverrideAnimation"                               "ACT_DOTA_CAST_ABILITY_5"
       }

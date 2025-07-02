@@ -27,46 +27,24 @@
     
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "275"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "slow_duration_hero"                              "2.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "slow_duration_creep"                             "4.0"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_slow"                                 "-50"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-50"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "base_damage"                                     "70"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_percent_damage"                               "2"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "275"
+            "slow_duration_hero" "2.0"
+            "slow_duration_creep" "4.0"
+            "move_speed_slow" "-50"
+            "attack_speed_slow" "-50"
+            "base_damage"
+            {
+                "value" "70"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "hp_percent_damage"
+            {
+                "value" "2"
+                "CalculateSpellDamageTooltip" "0"
+            }
+        }
     
     "precache"
     {

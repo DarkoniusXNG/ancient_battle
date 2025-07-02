@@ -16,23 +16,11 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "1200"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "evasion_self"                                    "15.0 22.5 30.0 37.5"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "evasion_ally"                                    "6 9 12 15"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "1200"
+            "evasion_self" "15.0 22.5 30.0 37.5"
+            "evasion_ally" "6 9 12 15"
+        }
   }
 }

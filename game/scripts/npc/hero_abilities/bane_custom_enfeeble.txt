@@ -24,7 +24,7 @@
     "AbilityCastPoint"                                    "0.4"
     "AbilityCastAnimation"                                "ACT_DOTA_ENFEEBLE"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "15.0"            // dota Enfeeble: 8
     "AbilityManaCost"                                     "95 105 115 125"      // dota Enfeeble: 95
@@ -32,25 +32,19 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // reduces total attack damage by a percentage
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_damage_reduction"                         "-25 -30 -35 -40"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02" // reduces spell damage (but not item damage)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spell_damage_reduction"                          "15 20 25 30"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "8"
-      }
-    }
+    "AbilityValues"
+	{
+		"attack_damage_reduction" // reduces total attack damage by a percentage
+		{
+			"value" "-25 -30 -35 -40"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"spell_damage_reduction" // reduces spell damage (but not item damage)
+		{
+			"value" "15 20 25 30"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"duration" "8"
+	}
   }
 }

@@ -14,16 +14,16 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
-    
+
     "AbilityCastRange"                                    "600 700 800 900"
     "AbilityCastPoint"                                    "0.3"
-    
+
     "AbilityCooldown"                                     "15"
     "AbilityManaCost"                                     "100"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "AOERadius"                                           "%radius"
-    
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_launch.vpcf"
@@ -31,44 +31,31 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "base_damage"                                     "70 80 90 100"
-      }
-      "02" // like Morphling Adaptive Strike Max Bonus Damage Agility Multiplier
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bonus_damage_multiplier"                         "1.0 1.5 2.0 2.5"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "250"
-      }
-      "04" // like Phoenix Fire Spirits
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "projectile_speed"                                "900"
-      }
-      "05" // it should be roughly the same as radius
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "projectile_vision"                               "275"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "5 10 15 20"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"base_damage" "70 80 90 100"
+		"bonus_damage_multiplier" // like Morphling Adaptive Strike Max Bonus Damage Agility Multiplier
+		{
+			"value" "1.0 1.5 2.0 2.5"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"radius"
+		{
+			"value"							"250"
+			"affected_by_aoe_increase"	"1"
+		}
+		"projectile_speed" "900" // like Phoenix Fire Spirits
+		"projectile_vision" // it should be roughly the same as radius
+		{
+			"value"							"250"
+			"affected_by_aoe_increase"	"1"
+		}
+		"bonus_int" "5 10 15 20"
+	}
+
     "OnSpellStart"
     {
       "FireSound"
@@ -76,7 +63,7 @@
         "EffectName"                                      "Hero_WitchDoctor.Paralyzing_Cask_Cast"
         "Target"                                          "CASTER"
       }
-      
+
       "LinearProjectile"
       {
         "Target"                                          "POINT"
@@ -93,12 +80,12 @@
         "VisionRadius"                                    "%projectile_vision"
       }
     }
-    
+
     "OnProjectileHitUnit"
     {
       "DeleteOnHit"                                       "0"
     }
-    
+
     "OnProjectileFinish"
     {
       "FireEffect"
@@ -106,31 +93,31 @@
         "TargetPoint"                                     "POINT"
         "EffectName"                                      "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
         "EffectAttachType"                                "world_origin"
-        
+
         "ControlPoints"
         {
           "01"                                            "%radius 0 0"
         }
       }
-      
+
       "RunScript"
       {
         "ScriptFile"                                      "heroes/alchemist/philosopher_stone.lua"
         "Function"                                        "PhilosopherStoneSound"
         "Target"                                          "POINT"
       }
-      
+
       "ActOnTargets"
       {
         "Target"
         {
           "Center"                                        "POINT"
           "Radius"                                        "%radius"
-          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"                                         "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
         }
-        
+
         "Action"
         {
           "RunScript"
@@ -142,7 +129,7 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_philosophers_stone_passive_buff" // this modifier is hidden passive, doesn't need tooltip
@@ -151,9 +138,9 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"

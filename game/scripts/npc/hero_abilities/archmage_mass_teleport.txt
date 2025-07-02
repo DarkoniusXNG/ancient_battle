@@ -31,19 +31,15 @@
       "particle"                                          "particles/custom/mass_teleport_start.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "450"
-      }
-      "03" // should be same as AbilityChannelTime
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "channel_time"                                    "5 4 3"
-      }
-    }
+    "AbilityValues"
+	{
+		"radius"
+		{
+			"value"					"450"
+			"affected_by_aoe_increase"	"1"
+		}
+		"channel_time" "5 4 3" // should be same as AbilityChannelTime
+	}
 
     "OnSpellStart"
     {
@@ -85,7 +81,7 @@
       {
         "EffectName"                                      "Hero_KeeperOfTheLight.Recall.Fail"
         "Target"                                          "CASTER"
-      }  
+      }
 
       "RemoveModifier"
       {
@@ -98,7 +94,7 @@
         "ModifierName"                                    "modifier_mass_teleport_target_effect"
         "Target"                                          "TARGET"
       }
-    }  
+    }
 
     "OnChannelSucceeded"
     {
@@ -117,7 +113,7 @@
       "FireSound"
       {
         "EffectName"                                      "Hero_KeeperOfTheLight.Recall.End"
-        "Target"     
+        "Target"
         {
           "Center"                                        "TARGET"
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
@@ -129,7 +125,7 @@
         "ModifierName"                                    "modifier_mass_teleport_target_effect"
         "Target"                                          "TARGET"
       }
-    }  
+    }
 
     "Modifiers"
     {

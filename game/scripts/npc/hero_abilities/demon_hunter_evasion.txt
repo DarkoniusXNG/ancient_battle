@@ -12,15 +12,11 @@
     "MaxLevel"                                            "3"
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "evasion"                                         "10 20 30"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "evasion" "10 20 30"
+        }
 
     "Modifiers"
     {

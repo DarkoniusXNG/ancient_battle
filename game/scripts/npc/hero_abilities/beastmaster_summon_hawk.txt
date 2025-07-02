@@ -32,34 +32,14 @@
       "particle"                                          "particles/status_fx/status_effect_slark_shadow_dance.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "70"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bird_hp"                                         "300 450 650"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bird_regen"                                      "0.5 1 1.5"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bird_damage"                                     "0 23 52"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bird_armor"                                      "0 3 5"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "70"
+            "bird_hp" "300 450 650"
+            "bird_regen" "0.5 1 1.5"
+            "bird_damage" "0 23 52"
+            "bird_armor" "0 3 5"
+        }
 
     "OnSpellStart"
     {
@@ -96,7 +76,7 @@
         {
           "FireEffect"
           {
-            "Target"            
+            "Target"
             {
               "Center"                                    "UNIT"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
@@ -107,7 +87,7 @@
 
           "FireSound"
           {
-            "Target"            
+            "Target"
             {
               "Center"                                    "UNIT"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
@@ -129,14 +109,10 @@
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "motionless_time"                                 "4"
-      }
-    }
+    "AbilityValues"
+        {
+            "motionless_time" "4"
+        }
 
     "Modifiers"
     {
@@ -182,10 +158,10 @@
           {
             "ScriptFile"                                  "heroes/beastmaster/summon_hawk.lua"
             "Function"                                    "HawkInvisCheck"
-          }       
+          }
         }
       }
-    }   
+    }
 }
 
 }

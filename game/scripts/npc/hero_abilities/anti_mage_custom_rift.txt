@@ -59,13 +59,9 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "value"                                           "1.75" // silence duration
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "1.75" // silence duration
+        }
   }
 }

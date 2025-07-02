@@ -17,7 +17,7 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_ALL"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
-    
+
     "AbilityCastPoint"                                    "0.1"
     "AbilityCastAnimation"                                "ACT_DOTA_ATTACK"
     "AnimationPlaybackRate"                               "1"
@@ -28,39 +28,21 @@
     "AbilityManaCost"                                     "30 40 50 60"
     "AbilityCooldown"                                     "7.0 6.0 5.0 4.0"
     "AbilityProcsMagicStick"                              "1"
-    
-    "precache" 
+
+    "precache"
     {
       "particle"                                          "particles/custom/vengeful_wave_of_terror_recipient_reduction.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "375"
-      }          
 
-      "02"
-      { 
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "75 125 175 225"
-      }
-      "03"
-      { 
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_reduction"                                "-45 -50 -55 -60"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "6.0"
-      }
-      
-    }
-    
+    "AbilityValues"
+        {
+            "radius" "375"
+            "damage" "75 125 175 225"
+            "damage_reduction" "-45 -50 -55 -60"
+            "duration" "6.0"
+        }
+
     "OnSpellStart"
     {
       "FireSound"
@@ -68,7 +50,7 @@
         "EffectName"                                      "Hero_Silencer.Curse.Impact"
         "Target"                                          "CASTER"
       }
-      
+
       "Damage"
       {
         "Type"                                            "DAMAGE_TYPE_PHYSICAL"
@@ -96,7 +78,7 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_infinity_debuff"  // needs tooltip
@@ -104,7 +86,7 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "Duration"                                        "%duration"
 
         "OnCreated"
@@ -131,7 +113,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Infinity Darkemist: Dark Transmutation (T) - New Spell, Summons 2 creatures
   // Author: Darkonius
@@ -145,12 +127,12 @@
     "BaseClass"                                           "ability_datadriven"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityTextureName"                                  "dark_transmutation"
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.3"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "40.0 40.0 35.0 30.0"
 
@@ -161,44 +143,16 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "summoned_hp_tooltip"                             "200 250 350 450"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "summoned_damage_tooltip"                         "25 28 40 55"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "summoned_duration"                               "40 40 60 60"
-      }    
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "skeleton_warrior_count"                          "2 0 0 0"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "zombie_warrior_count"                            "0 2 0 0"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "destroyer_count"                                 "0 0 1 0"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "lich_warrior_count"                              "0 0 0 1"
-      }
-    }
+    "AbilityValues"
+        {
+            "summoned_hp_tooltip" "200 250 350 450"
+            "summoned_damage_tooltip" "25 28 40 55"
+            "summoned_duration" "40 40 60 60"
+            "skeleton_warrior_count" "2 0 0 0"
+            "zombie_warrior_count" "0 2 0 0"
+            "destroyer_count" "0 0 1 0"
+            "lich_warrior_count" "0 0 0 1"
+        }
 
     "precache"
     {
@@ -335,7 +289,7 @@
             "EffectAttachType"                            "follow_origin"
           }
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
@@ -343,7 +297,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Dark Transmutation : Zombie Warrior Death Lust - Passive Melee Slow;
   // Author: Darkonius
@@ -359,41 +313,17 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"                                  "undying_tombstone_zombie_deathstrike"
     "MaxLevel"                                            "1"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "creep_duration"                                  "2.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_duration"                                   "1.5"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_slow"                                 "-5"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-5"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_bonus"                              "50"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "buff_duration"                                   "2.0"
-      }
-    }
-    
+
+    "AbilityValues"
+        {
+            "creep_duration" "2.0"
+            "hero_duration" "1.5"
+            "move_speed_slow" "-5"
+            "attack_speed_slow" "-5"
+            "attack_speed_bonus" "50"
+            "buff_duration" "2.0"
+        }
+
     "Modifiers"
     {
       "modifier_dark_transmutation_warrior_death_lust_passive"  // doesn't need tooltip
@@ -402,7 +332,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnAttackLanded"
         {
           "ApplyModifier"
@@ -416,7 +346,7 @@
             }
             "Duration"                                    "%hero_duration"
           }
-          
+
           "ApplyModifier"
           {
             "ModifierName"                                "modifier_dark_transmutation_warrior_death_lust_slow"
@@ -428,13 +358,13 @@
             }
             "Duration"                                    "%creep_duration"
           }
-          
+
           "ApplyModifier"
           {
             "Target"                                      "CASTER"
             "ModifierName"                                "modifier_dark_transmutation_warrior_death_lust_buff"
             "Duration"                                    "%buff_duration"
-          }  
+          }
         }
       }
 
@@ -443,10 +373,10 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/neutral_fx/gnoll_poison_debuff.vpcf"
         "EffectAttachType"                                "attach_hitloc"
-        
+
         "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE"
 
         "Properties"
@@ -455,15 +385,15 @@
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
         }
       }
-      
+
       "modifier_dark_transmutation_warrior_death_lust_buff"  // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "EffectName"                                      "particles/items2_fx/mask_of_madness.vpcf"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_bonus"
@@ -471,7 +401,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Dark Transmutation : Headless Destroyer Poison - Passive Range Slow like Beastmaster's Boar Slow level 3
   // Author: Darkonius
@@ -487,30 +417,14 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"                                  "dark_transmutation_warrior_poison"
     "MaxLevel"                                            "1"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "creep_duration"                                  "3.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_duration"                                   "2.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_slow"                                 "-30"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-30"
-      }  
-    }
+
+    "AbilityValues"
+        {
+            "creep_duration" "3.0"
+            "hero_duration" "2.0"
+            "move_speed_slow" "-30"
+            "attack_speed_slow" "-30"
+        }
 
     "Modifiers"
     {
@@ -520,7 +434,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnAttackLanded"
         {
           "ApplyModifier"
@@ -534,7 +448,7 @@
             }
             "Duration"                                    "%hero_duration"
           }
-          
+
           "ApplyModifier"
           {
             "ModifierName"                                "modifier_dark_transmutation_warrior_poison_slow"
@@ -554,7 +468,7 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/neutral_fx/gnoll_poison_debuff.vpcf"
         "EffectAttachType"                                "attach_hitloc"
 
@@ -566,11 +480,11 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Gipsy Wisdom (W) - New Spell, Maelstrom passive that works on Illusions + intelligence bonus
   // Author: Darkonius
-  // Linkens: Doesn't Block (INTENTIONAL); 
+  // Linkens: Doesn't Block (INTENTIONAL);
   // Notes: Pseudo Random; Works on invisible units (indirect detection); 11.2.2016;
   // TO_DO:
   //=================================================================================================================
@@ -580,35 +494,19 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
     "AbilityTextureName"                                  "gipsy_wisdom"
-    
+
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
+
     "AbilityDamage"                                       "50 70 90 110"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "12 14 16 18"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "lightning_chance"                                "15 20 25 30"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "max_units"                                       "3 4 6 8"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "800"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "bonus_int" "12 14 16 18"
+            "lightning_chance" "15 20 25 30"
+            "max_units" "3 4 6 8"
+            "radius" "800"
+        }
     "precache"
     {
       "particle"                                          "particles/items_fx/chain_lightning.vpcf"
@@ -622,14 +520,14 @@
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
         "AllowIllusionDuplicate"                          "1"  // to work on illusions
-        
+
         "Properties"
-        { 
+        {
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
         }
         "OnAttackStart"
         {
-          // Remove the modifier on each attack start to disable people 
+          // Remove the modifier on each attack start to disable people
           // from cancelling attacks to get a guaranteed proc.
           "RemoveModifier"
           {
@@ -640,7 +538,7 @@
           {
             "Chance"                                      "%lightning_chance"
             "PseudoRandom"                                "DOTA_PSEUDO_RANDOM_ITEM_MAELSTROM"
-            
+
             "OnSuccess"
             {
               "ApplyModifier"
@@ -665,13 +563,13 @@
           "RemoveModifier"
           {
             "ModifierName"                                "modifier_lightning"
-            "Target"                                      "CASTER" 
+            "Target"                                      "CASTER"
           }
         }
       }
     }
   }
-  
+
   //=================================================================================================================
   // Emperor of Srem: Trolling Power (Q) - New Spell, Orb that works like Viper Poison, deals intelligence percent damage and reduces armor like desolator
   // Author: Darkonius
@@ -690,7 +588,7 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"                                  "emperor_trolling_power"
-    
+
     // Precache
     //-------------------------------------------------------------------------------------------------------------
     "precache"
@@ -700,56 +598,32 @@
       "particle"                                          "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_arcane_orb.vpcf"
       "particle"                                          "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
     }
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "625"
     "AbilityCastPoint"                                    "0.0"
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "0.0"
-    
+
     // Cost
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "100"
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "2.0"
-      }
-      "02" // think interval is the third of duration value, so damage values doesn't need change
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "10 16 22 28"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_movement_speed"                            "-10 -20 -30 -40"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_attack_speed"                              "-10 -20 -30 -40"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_armor"                                     "-1 -3 -5 -7"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "intellect_damage_pct"                            "30 50 70 90"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "duration" "2.0"
+            "damage" "10 16 22 28" // think interval is the third of duration value, so damage values doesn't need change
+            "bonus_movement_speed" "-10 -20 -30 -40"
+            "bonus_attack_speed" "-10 -20 -30 -40"
+            "bonus_armor" "-1 -3 -5 -7"
+            "intellect_damage_pct" "30 50 70 90"
+        }
+
     "Modifiers"
     {
       "modifier_emperor_attack_orb" // doesn't need tooltip
@@ -757,28 +631,28 @@
         "Passive"                                         "1"    // needed for applying when learned
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Orb"
         {
           "Priority"                                      "DOTA_ORB_PRIORITY_ABILITY"
           "ProjectileName"                                "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_arcane_orb.vpcf"
           "CastAttack"                                    "1"
         }
-        
+
         "OnOrbFire"
         {
           "SpendMana"
           {
             "Mana"                                        "%AbilityManaCost"
           }
-          
+
           "FireSound"
           {
             "EffectName"                                  "Hero_ObsidianDestroyer.ArcaneOrb"
             "Target"                                      "CASTER"
           }
         }
-        
+
         "OnOrbImpact"
         {
           "ApplyModifier"
@@ -786,7 +660,7 @@
             "ModifierName"                                "modifier_emperor_attack_debuff"
             "Target"                                      "TARGET"
           }
-          
+
           "FireSound"
           {
             "EffectName"                                  "Hero_Viper.PoisonAttack.Target"
@@ -800,18 +674,18 @@
           }
         }
       }
-      
+
       "modifier_emperor_attack_debuff" // needs tooltip
       {
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
         "Duration"                                        "%duration"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "ThinkInterval"                                   "1.0"
-        
+
         "OnIntervalThink"
         {
           "Damage"
@@ -821,7 +695,7 @@
             "Damage"                                      "%damage"
           }
         }
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
@@ -831,7 +705,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Emperor of Srem: Emperor's Wrath (W) - New Spell, Lifestealer Rage + AoE Sleep and short duration reveal
   // Author: Darkonius
@@ -862,50 +736,26 @@
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.6"
-    
-    // Time     
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "20"
-    
+
     // Cost
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "175 185 195 205"
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_bonus"                              "30 40 50 60"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "buff_duration"                                   "3.0 4.0 5.0 6.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "invulnerable_duration"                           "0.8"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "475"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "sleep_duration"                                  "2.0 3.0 4.0 5.0"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "wrath_damage"                                    "90 150 200 250"
-      }
-    }
+    "AbilityValues"
+        {
+            "attack_speed_bonus" "30 40 50 60"
+            "buff_duration" "3.0 4.0 5.0 6.0"
+            "invulnerable_duration" "0.8"
+            "radius" "475"
+            "sleep_duration" "2.0 3.0 4.0 5.0"
+            "wrath_damage" "90 150 200 250"
+        }
 
     "OnSpellStart"
     {
@@ -927,7 +777,7 @@
         "Target"                                          "CASTER"
         "Duration"                                        "%buff_duration"
       }
-      
+
       "Damage"
       {
         "Type"                                            "DAMAGE_TYPE_MAGICAL"
@@ -940,30 +790,30 @@
           "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
         }
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_wrath_sleep"
-        "Target"     
+        "Target"
         {
           "Center"                                        "CASTER"
           "Radius"                                        "%radius"
           "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        }  
+        }
         "Duration"                                        "%sleep_duration"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_wrath_invulnerable"
-        "Target"     
+        "Target"
         {
           "Center"                                        "CASTER"
           "Radius"                                        "%radius"
           "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        }  
+        }
         "Duration"                                        "%invulnerable_duration"
       }
     }
@@ -976,9 +826,9 @@
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
 
-        "StatusEffectName"                                "particles/status_fx/status_effect_life_stealer_rage.vpcf"        
+        "StatusEffectName"                                "particles/status_fx/status_effect_life_stealer_rage.vpcf"
         "StatusEffectPriority"                            "10"
-        
+
         "OnCreated"
         {
           "AttachEffect"
@@ -994,7 +844,7 @@
             }
           }
         }
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_bonus"
@@ -1005,18 +855,18 @@
           "MODIFIER_STATE_MAGIC_IMMUNE"                   "MODIFIER_STATE_VALUE_ENABLED"
         }
       }
-      
+
       "modifier_wrath_sleep" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/newplayer_fx/npx_sleeping.vpcf"
         "EffectAttachType"                                "follow_overhead"
-        
+
         "OverrideAnimation"                               "ACT_DOTA_DISABLED"
-        
+
         "Priority"                                        "MODIFIER_PRIORITY_ULTRA"
 
         "States"
@@ -1026,7 +876,7 @@
           "MODIFIER_STATE_LOW_ATTACK_PRIORITY"            "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"
         }
-        
+
         "OnTakeDamage"
         {
           "RemoveModifier"
@@ -1035,7 +885,7 @@
             "Target"                                      "UNIT"
           }
         }
-        
+
         "OnDestroy"
         {
           "FireSound"
@@ -1049,13 +899,13 @@
           }
         }
       }
-      
+
       "modifier_wrath_invulnerable" // doesn't need tooltip
       {
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
         "IsHidden"                                        "1"
-        
+
         "States"
         {
           "MODIFIER_STATE_INVULNERABLE"                   "MODIFIER_STATE_VALUE_ENABLED"
@@ -1065,7 +915,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Emperor of Srem: Back Off Peasants (R) - New Spell, Blinding Light + Damage around the caster
   // Author: Darkonius
@@ -1084,7 +934,7 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
+
     "AbilityDamage"                                       "290 390 490"
     "AbilityManaCost"                                     "400 450 500"
     "AbilityProcsMagicStick"                              "1"
@@ -1103,44 +953,16 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "475"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "miss_duration"                                   "5.0 6.0 7.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "miss_rate"                                       "60 70 80"
-      }
-      "04" // if you change this, you need to change the tooltip note
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "knockback_distance"                              "500"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "knockback_height"                                "50"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "knockback_duration"                              "0.4"
-      }
-      "07" // if you change this, you need to change the tooltip note
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tree_radius"                                     "150"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "475"
+            "miss_duration" "5.0 6.0 7.0"
+            "miss_rate" "60 70 80"
+            "knockback_distance" "500" // if you change this, you need to change the tooltip note
+            "knockback_height" "50"
+            "knockback_duration" "0.4"
+            "tree_radius" "150" // if you change this, you need to change the tooltip note
+        }
 
     "OnSpellStart"
     {
@@ -1149,7 +971,7 @@
         "EffectName"                                      "Hero_KeeperOfTheLight.BlindingLight"
         "Target"                                          "CASTER"
       }
-      
+
       "ActOnTargets"
       {
         "Target"
@@ -1159,8 +981,8 @@
           "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         }
-        
-        "Action"    
+
+        "Action"
         {
           "Knockback"
           {
@@ -1170,30 +992,30 @@
             "Duration"                                    "%knockback_duration"
             "Height"                                      "%knockback_height"
             "IsFixedDistance"                             "1"
-            "ShouldStun"                                  "1"  
+            "ShouldStun"                                  "1"
           }
-          
+
           "Damage"
           {
             "Type"                                        "DAMAGE_TYPE_PURE"
             "Damage"                                      "%AbilityDamage"
             "Target"                                      "TARGET"
           }
-          
+
           "DelayedAction"
           {
             "Delay"                                       "%knockback_duration"
-            "Action"    
+            "Action"
             {
               "DestroyTrees"
               {
-                "Target"                                  "TARGET"                 
+                "Target"                                  "TARGET"
                 "Radius"                                  "%tree_radius"
               }
-              
+
             }
-          }        
-          
+          }
+
           "ApplyModifier"
           {
             "ModifierName"                                "modifier_emperor_back_off"
@@ -1201,7 +1023,7 @@
             "Duration"                                    "%miss_duration"
           }
         }
-      }    
+      }
     }
 
     "Modifiers"
@@ -1211,18 +1033,18 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_debuff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "Properties"
         {
-          "MODIFIER_PROPERTY_MISS_PERCENTAGE"             "%miss_rate" 
-        }      
+          "MODIFIER_PROPERTY_MISS_PERCENTAGE"             "%miss_rate"
+        }
       }
-    }  
+    }
   }
-  
+
   //=================================================================================================================
   // Emperor of Srem: Emperor's Presence (T) - New Spell, Brilliance Aura that gives Intelligence to allies + Intelligence Gain when Enemies die near the Owner of the spell
   // Author: Darkonius
@@ -1237,37 +1059,17 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityTextureName"                                  "emperor_presence"
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "mana_regen"                                      "1.0 1.5 2.0 2.5"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ally_bonus_intellect"                            "3 6 9 12"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "int_gain"                                        "1"
-      }
-      "04" // aura is global
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "aura_radius"                                     "20000"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "int_gain_radius"                                 "900"
-      }
-    }
+    "AbilityValues"
+        {
+            "mana_regen" "1.0 1.5 2.0 2.5"
+            "ally_bonus_intellect" "3 6 9 12"
+            "int_gain" "1"
+            "aura_radius" "40000" // aura is global
+            "int_gain_radius" "900"
+        }
 
     "Modifiers"
     {
@@ -1277,16 +1079,16 @@
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
         "IsHidden"                                        "1"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Aura"                                            "emperor_presence_aura_effect"
         "Aura_Radius"                                     "%aura_radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
         "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO"
-        "Aura_ApplyToCaster"                              "1" 
+        "Aura_ApplyToCaster"                              "1"
       }
-      
+
       "emperor_presence_aura_effect" // needs tooltip
       {
         "Properties"
@@ -1295,14 +1097,14 @@
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%ally_bonus_intellect"
         }
       }
-      
+
       "modifier_int_gain_aura"    // needs tooltip
       {
         "Passive"                                         "1"
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "0"
 
         "OnCreated"
@@ -1331,7 +1133,7 @@
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%int_gain"
         }
       }
-      
+
       "modifier_int_gain_datadriven"  // doesn't need tooltip
       {
         "IsHidden"                                        "1"
@@ -1353,7 +1155,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Mimic: (Q) - New Spell, All INT to AGI, magical Damage to self and enemies while toggled. Also slows enemies.
   // Author: Darkonius
@@ -1369,8 +1171,8 @@
     "AbilityTextureName"                                  "mimic_int_to_agi"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "0.0"
     "AbilityManaCost"                                     "0"
@@ -1381,58 +1183,22 @@
       "particle"                                          "particles/units/heroes/hero_pudge/pudge_rot.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // maybe it will be needed in the future for balance issues
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_cost_per_second"                            "0"
-      }
-      "02" // needed for damage and delay of turning all INT to AGI
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tick_interval"                                   "0.2"
-      }
-      "03" // not in tooltip; needed for damage
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_tick"                                 "7 12 18 24"
-      }
-      "04" // needed for damage
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_radius"                                   "250"
-      }
-      "05" // needed for int gain
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "int_gain"                                        "2"
-      }
-      "06" // needed for int gain
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "int_gain_radius"                                 "1800"
-      }
-      "07" // needed for tooltip; dps = damage_per_tick/tick_interval
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second_tooltip"                       "35 60 90 120"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "slow"                                            "-27 -30 -33 -36"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "3 4 5 6"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "mana_cost_per_second" "0"
+            "tick_interval" "0.2" // needed for damage and delay of turning all INT to AGI
+            "damage_per_tick" "7 12 18 24" // not in tooltip; needed for damage
+            "damage_radius" "250"
+            "int_gain" "2"
+            "int_gain_radius" "1800"
+            "damage_per_second_tooltip" "35 60 90 120" // needed for tooltip; dps = damage_per_tick/tick_interval
+            "slow" "-27 -30 -33 -36"
+            "bonus_agi" "3 4 5 6"
+        }
+
     "OnToggleOn"
     {
       "RunScript"
@@ -1446,7 +1212,7 @@
         "Target"                                          "CASTER"
       }
     }
-    
+
     "OnToggleOff"
     {
       "RunScript"
@@ -1464,7 +1230,7 @@
         }
       }
     }
-    
+
     "OnOwnerDied"
     {
       "RunScript"
@@ -1473,7 +1239,7 @@
         "Function"                                        "elokvenciranost_on_owner_died"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_elokvenciranost_toggled_on"
@@ -1481,7 +1247,7 @@
         "IsHidden"                                        "0"
         "EffectName"                                      "particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "ThinkInterval"                                   "%tick_interval"
         "OnIntervalThink"
         {
@@ -1494,7 +1260,7 @@
           }
         }
       }
-      
+
       "modifier_elokvenciranost_damage"
       {
         "IsDebuff"                                        "1"
@@ -1518,7 +1284,7 @@
             {
               "Center"                                    "CASTER"
               "Radius"                                    "%damage_radius"
-              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+              "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
               "Types"                                     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
             }
 
@@ -1549,13 +1315,13 @@
             }
           }
         }
-        
+
         "Aura"                                            "modifier_elokvenciranost_slow"
         "Aura_Radius"                                     "%damage_radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
       }
-      
+
       "modifier_elokvenciranost_slow" // needs tooltip
       {
         "IsHidden"                                        "0"
@@ -1568,7 +1334,7 @@
           "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%slow"
         }
       }
-      
+
       "modifier_elokvenciranost_int_gain_aura"
       {
         "Passive"                                         "1"
@@ -1587,7 +1353,7 @@
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO"
         "Aura_Flags"                                      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        
+
         "AllowIllusionDuplicate"                          "0"
       }
 
@@ -1595,7 +1361,7 @@
       {
         "IsHidden"                                        "1"
         "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -1606,7 +1372,7 @@
           }
         }
       }
-      
+
       "modifier_elokvenciranost_int_gain_datadriven"
       {
         "IsHidden"                                        "1"
@@ -1627,16 +1393,16 @@
           }
         }
       }
-      
+
       "modifier_elokvenciranost_passive_bonus"
       {
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
@@ -1644,7 +1410,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Skeleton: Drink Milk (R) - New Spell, Caster gains Reflect buff (like Blademail + 100% damage reflect) and Milk Buff (STR Bonus and 100% reflect attack damage to range units); After delay caster is rooted and Acid Spray is around him.
   // Author: Darkonius
@@ -1661,8 +1427,8 @@
     "AbilityTextureName"                                  "skeleton_milk"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0"
     "AbilityCooldown"                                     "60.0 50.0 40.0"
@@ -1678,68 +1444,24 @@
       "particle"                                          "particles/units/heroes/hero_nyx_assassin/nyx_assassin_spiked_carapace.vpcf"
       "particle"                                          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // reflecting all damage (all instances)
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "reflect_duration"                                "2.25"
-      }
-      "02" // reflecting range attack projectiles
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "range_reflect_duration"                          "4.0 6.0 8.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_strength"                                  "13 26 40"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "flasha_delay"                                    "15"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "pish_delay"                                      "16"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "pish_radius"                                     "625"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "pish_duration"                                   "16.0"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "pish_damage"                                     "25 30 35"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "armor_reduction"                                 "-6 -7 -8"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tick_rate"                                       "1.0"
-      }
-      "11"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "rooted_duration"                                 "5.0"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"reflect_duration" "2.25" // reflecting all damage (all instances)
+		"range_reflect_duration" "4.0 6.0 8.0" // reflecting ranged attack projectiles
+		"bonus_strength" "13 26 40"
+		"flasha_delay" "15"
+		"pish_delay" "16"
+		"pish_radius" "625"
+		"pish_duration" "16.0"
+		"pish_damage" "25 30 35"
+		"armor_reduction" "-6 -7 -8"
+		"tick_rate" "1.0"
+		"rooted_duration" "5.0"
+	}
+
     "OnSpellStart"
     {
       "FireSound"
@@ -1747,28 +1469,28 @@
         "EffectName"                                      "Hero_Sven.GodsStrength"
         "Target"                                          "CASTER"
       }
-      
+
       "FireEffect"
       {
         "EffectName"                                      "particles/units/heroes/hero_sven/sven_spell_gods_strength.vpcf"
         "EffectAttachType"                                "follow_origin"
         "Target"                                          "CASTER"
       }
-      
+
       "ApplyModifier"
       {
         "Target"                                          "CASTER"
         "ModifierName"                                    "modifier_milk_beefed"
         "Duration"                                        "%range_reflect_duration"
       }
-      
+
       "ApplyModifier"
       {
         "Target"                                          "CASTER"
         "ModifierName"                                    "modifier_milk_reflect_buff"
         "Duration"                                        "%reflect_duration"
       }
-      
+
       "DelayedAction"
       {
         "Delay"                                           "%flasha_delay"
@@ -1780,7 +1502,7 @@
             "ModifierName"                                "modifier_pish_root"
             "Duration"                                    "%rooted_duration"
           }
-          
+
           "FireSound"
           {
             "EffectName"                                  "Hero_Alchemist.UnstableConcoction.Stun"
@@ -1788,7 +1510,7 @@
           }
         }
       }
-      
+
       "DelayedAction"
       {
         "Delay"                                           "%pish_delay"
@@ -1802,7 +1524,7 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_milk_beefed" // needs tooltip
@@ -1810,15 +1532,15 @@
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_strength"
         }
-        
+
         "OnAttacked"
         {
           "RunScript"
@@ -1829,15 +1551,15 @@
           }
         }
       }
-      
+
       "modifier_milk_reflect_buff" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_nyx_assassin/nyx_assassin_spiked_carapace.vpcf"
-        
+
         "OnTakeDamage"
         {
           "RunScript"
@@ -1848,12 +1570,12 @@
           }
         }
       }
-      
+
       "modifier_pish_thinker"
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Aura"                                            "modifier_pish"
         "Aura_Radius"                                     "%pish_radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1889,7 +1611,7 @@
       {
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "ThinkInterval"                                   "%tick_rate"
         "Properties"
         {
@@ -1918,13 +1640,13 @@
           }
         }
       }
-      
+
       "modifier_pish_root" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "States"
         {
           "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
@@ -1932,12 +1654,12 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Mimic: OET (E) - New Spell, AGI to INT, bonus INT and bonus magic resistance
   // Author: Darkonius
   // Notes: OK; 21.3.2016; Illusions of the fully morphed INT hero don't have the same stats.
-  // TO_DO: 
+  // TO_DO:
   //=================================================================================================================
   "mimic_agi_to_int"
   {
@@ -1946,11 +1668,11 @@
     "BaseClass"                                           "ability_datadriven"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
     "AbilityTextureName"                                  "mimic_agi_to_int"
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "0.0"
-    
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
@@ -1959,35 +1681,15 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_cost_per_second"                            "0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "points_per_tick"                                 "2"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "shift_rate"                                      "0.5 0.33 0.25 0.125"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "3 4 5 6"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_resistance"                                "26 34 42 50"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "mana_cost_per_second" "0"
+            "points_per_tick" "2"
+            "shift_rate" "0.5 0.33 0.25 0.125"
+            "bonus_int" "3 4 5 6"
+            "bonus_resistance" "26 34 42 50"
+        }
+
     "OnToggleOn"
     {
       "RunScript"
@@ -1996,7 +1698,7 @@
         "Function"                                        "revert_on_toggle_on"
       }
     }
-    
+
     "OnToggleOff"
     {
       "RunScript"
@@ -2005,7 +1707,7 @@
         "Function"                                        "revert_on_toggle_off"
       }
     }
-    
+
     "OnOwnerDied"
     {
       "RunScript"
@@ -2014,7 +1716,7 @@
         "Function"                                        "revert_on_owner_died"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_revert_passive_bonus" // this modifier is hidden passive, doesn't need tooltip
@@ -2023,22 +1725,22 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
           "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"    "%bonus_resistance"
         }
       }
-      
+
       "modifier_revert_toggled_on" // needs tooltip
       {
         "IsHidden"                                        "0"
         "EffectName"                                      "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "ThinkInterval"                                   "%shift_rate"
         "OnIntervalThink"
         {
@@ -2054,7 +1756,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Skeleton: Sarcasm (T) - New Spell, On Success Crit, Mana Break always (not on magic immune and those who doesn't have mana)
   // Author: Darkonius
@@ -2071,7 +1773,7 @@
     "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
+
     "precache"
     {
       "particle"                                          "particles/generic_gameplay/generic_manaburn.vpcf"
@@ -2080,29 +1782,13 @@
     }
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_bonus"                                      "200 300 400 500"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_chance"                                     "1"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_per_hit"                                    "28 40 52 64"
-      }
-      "04" // if you change this, you need to change the ability description tooltip
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_per_burn"                                 "0.6"
-      }
-    }
+    "AbilityValues"
+        {
+            "crit_bonus" "200 300 400 500"
+            "crit_chance" "1"
+            "mana_per_hit" "28 40 52 64"
+            "damage_per_burn" "0.6" // if you change this, you need to change the ability description tooltip
+        }
 
     "Modifiers"
     {
@@ -2111,14 +1797,14 @@
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Orb"
         {
           "Priority"                                      "DOTA_ORB_PRIORITY_ABILITY"
         }
-        
+
         "OnOrbImpact"
         {
           "RunScript"
@@ -2126,18 +1812,18 @@
             "ScriptFile"                                  "heroes/sarcasm.lua"
             "Function"                                    "ManaBreak"
             "Target"                                      "TARGET"
-          }    
+          }
         }
       }
-      
+
       "modifier_sarcasm_crit_part" // doesn't need tooltip
       {
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "OnAttackStart"
         {
           "RemoveModifier"
@@ -2162,7 +1848,7 @@
           }
         }
       }
-      
+
       "modifier_sarcasm_crit" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
@@ -2194,7 +1880,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Skeleton: Terrorize (W) - New Spell, Damage based on mana missing and difference of intelligence or agi of caster; Silence, Disarms only range units
   // Author: Darkonius
@@ -2213,64 +1899,40 @@
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.1"
     "AbilityCastRange"                                    "600 700 800 900"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "20.0"
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "110"  
+    "AbilityManaCost"                                     "110"
     "AbilityProcsMagicStick"                              "1"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_per_mana_missing"                         "0.1 0.2 0.3 0.4"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "silence_duration"                                "1.5 2.25 3.0 3.75"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "agi_multiplier"                                  "0.5 1.0 1.5 2.0"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "int_difference_multiplier"                       "2.5 3.0 3.5 4.0"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "range_disarm_duration"                           "2.0 2.5 3.0 3.5"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "base_damage"                                     "100 200 300 400"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "damage_per_mana_missing" "0.1 0.2 0.3 0.4"
+            "silence_duration" "1.5 2.25 3.0 3.75"
+            "agi_multiplier" "0.5 1.0 1.5 2.0"
+            "int_difference_multiplier" "2.5 3.0 3.5 4.0"
+            "range_disarm_duration" "2.0 2.5 3.0 3.5"
+            "base_damage" "100 200 300 400"
+        }
+
     // Precache
     //-------------------------------------------------------------------------------------------------------------
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
     }
-    
+
     "OnSpellStart"
     {
       "RunScript"
@@ -2279,7 +1941,7 @@
         "Function"                                        "Terrorize"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_terrified" // needs tooltip
@@ -2289,13 +1951,13 @@
 
         "EffectName"                                      "particles/generic_gameplay/generic_silenced.vpcf"
         "EffectAttachType"                                "follow_overhead"
-        
+
         "States"
         {
           "MODIFIER_STATE_SILENCED"                       "MODIFIER_STATE_VALUE_ENABLED"
         }
       }
-      
+
       "modifier_terror_disarmed" // needs tooltip
       {
         "IsDebuff"                                        "1"
@@ -2303,7 +1965,7 @@
 
         "EffectName"                                      "particles/generic_gameplay/generic_disarm.vpcf"
         "EffectAttachType"                                "follow_overhead"
-        
+
         "States"
         {
           "MODIFIER_STATE_DISARMED"                       "MODIFIER_STATE_VALUE_ENABLED"
@@ -2311,7 +1973,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Skeleton: Frictionless Speed (F) - New Spell, Invisibility, Free Pathing and Increased Speed. If damaged -> increased speed and free pathing is lost.
   // Author: Darkonius
@@ -2326,32 +1988,24 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "AbilityTextureName"                                  "clinkz_wind_walk"
     "RequiredLevel"                                       "3"              //ok
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "20.0"            //ok
     "AbilityCastPoint"                                    "0.0"
-    
+
     // Cost
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "100"            //ok
     "AbilityProcsMagicStick"                              "1"              //ok
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "20.0 25.0 30.0 35.0"  //ok
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_bonus_pct"                            "10 20 30 40"      //ok
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "20.0 25.0 30.0 35.0"
+            "move_speed_bonus_pct" "10 20 30 40"
+        }
 
     "precache"
     {
@@ -2380,14 +2034,14 @@
         "ModifierName"                                    "modifier_trenja_walk_invisible"
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "Target"                                          "CASTER"
         "ModifierName"                                    "modifier_trenja_walk_free_pathing"
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "Target"                                          "CASTER"
@@ -2402,7 +2056,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "1"
-        
+
         "OnAttackLanded"
         {
           "RemoveModifier"
@@ -2440,7 +2094,7 @@
             "ModifierName"                                "modifier_invisible"
           }
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_ENABLED"
@@ -2460,13 +2114,13 @@
           }
         }
       }
-      
+
       "modifier_trenja_walk_free_pathing" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "1"
-        
+
         "OnTakeDamage"
         {
           "RemoveModifier"
@@ -2489,7 +2143,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Che Monk: Che Energy (W) - New Spell, Charge Based, Skillshot
   // Author: Darkonius
@@ -2502,12 +2156,12 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"
     "AbilityTextureName"                                  "tinker_heat_seeking_missile"
-    
+
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
+
     "AbilityCastRange"                                    "3000"
     "AbilityCastPoint"                                    "0.01"
 
@@ -2520,49 +2174,17 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "rocket_speed"                                    "950.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "rocket_width"                                    "115"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "rocket_range"                                    "3000"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "rocket_stun"                                     "0.5"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "rocket_vision"                                   "450"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "rocket_boom_radius"                              "200"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "maximum_charges"                                 "3"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "charge_replenish_time"                           "17.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "rocket_speed" "950.0"
+            "rocket_width" "115"
+            "rocket_range" "3000"
+            "rocket_stun" "0.5"
+            "rocket_vision" "450"
+            "rocket_boom_radius" "200"
+            "maximum_charges" "3"
+            "charge_replenish_time" "17.0"
+        }
 
     "precache"
     {
@@ -2579,7 +2201,7 @@
         "Function"                                        "rocket_start_charge"
       }
     }
-    
+
     "OnSpellStart"
     {
       "RunScript"
@@ -2587,7 +2209,7 @@
         "ScriptFile"                                      "heroes/che/che_energy.lua"
         "Function"                                        "rocket_fire"
       }
-      
+
       "LinearProjectile"
       {
         "Target"                                          "POINT"
@@ -2604,14 +2226,14 @@
         "ProvidesVision"                                  "1"
         "VisionRadius"                                    "%rocket_vision"
       }
-      
+
       "FireSound"
       {
         "Target"                                          "CASTER"
         "EffectName"                                      "Hero_Tinker.Heat-Seeking_Missile"
       }
     }
-    
+
     "OnProjectileHitUnit"
     {
       "FireSound"
@@ -2626,17 +2248,17 @@
         "EffectName"                                      "particles/units/heroes/hero_tinker/tinker_missle_explosion.vpcf"
         "EffectAttachType"                                "start_at_origin"
       }
-      
+
       "ActOnTargets"
       {
         "Target"
         {
           "Center"                                        "POINT"
           "Radius"                                        "%rocket_boom_radius"
-          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+          "Teams"                                         "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"                                         "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
         }
-        
+
         "Action"
         {
           "Stun"
@@ -2644,7 +2266,7 @@
             "Duration"                                    "%rocket_stun"
             "Target"                                      "TARGET"
           }
-          
+
           "Damage"
           {
             "Target"                                      "TARGET"
@@ -2654,7 +2276,7 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_rocket_stack_counter" // needs tooltip
@@ -2666,7 +2288,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Che Monk: ZOOM ZOOM (T) - New Spell, Chance to do critical damage on any damage done
   // Author: Darkonius
@@ -2692,19 +2314,11 @@
       "particle"                                          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "crit_bonus"                                      "1.5 2.0 2.25 2.5"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_chance"                                     "10"
-      }
-    }
+    "AbilityValues"
+        {
+            "crit_bonus" "1.5 2.0 2.25 2.5"
+            "crit_chance" "10"
+        }
 
     "Modifiers"
     {
@@ -2714,7 +2328,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
 
         "OnDealDamage"
@@ -2732,7 +2346,7 @@
                 "Type"                                    "DAMAGE_TYPE_MAGICAL"
                 "Damage"                                  "%attack_damage * (%crit_bonus - 1)"
               }
-              
+
               "FireSound"
               {
                 "EffectName"                              "Hero_PhantomAssassin.CoupDeGrace"
@@ -2744,7 +2358,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Che Monk: Lupi Glupost (F) - New Spell - 50% Chance to Chaos Bolt without damage + Mana Steal
   // Author: Darkonius
@@ -2763,48 +2377,28 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"                                  "che_lupi_glupost"
-    
+
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
       "particle"                                          "particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
       "particle"                                          "particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf"
     }
-    
+
     "AbilityCastRange"                                    "700"
     "AbilityCastPoint"                                    "0.4"
     "AbilityCooldown"                                     "20.0 12.0 10.0 8.0"
     "AbilityManaCost"                                     "100"
     "AbilityProcsMagicStick"                              "1"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "glupost_speed"                                   "1000"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "stun_min"                                        "1 1 1 2"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "stun_max"                                        "2 3 4 4"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_burn"                                       "150 200 250 300"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "glupost_chance"                                  "50"
-      }
-    }
+    "AbilityValues"
+        {
+            "glupost_speed" "1000"
+            "stun_min" "1 1 1 2"
+            "stun_max" "2 3 4 4"
+            "mana_burn" "150 200 250 300"
+            "glupost_chance" "50"
+        }
 
     "OnSpellStart"
     {
@@ -2839,7 +2433,7 @@
       {
         "Chance"                                          "%glupost_chance"
         "PseudoRandom"                                    "DOTA_PSEUDO_RANDOM_SNIPER_HEADSHOT"
-        
+
         "OnSuccess"
         {
           "RunScript"
@@ -2847,13 +2441,13 @@
             "ScriptFile"                                  "heroes/che/che_glupost.lua"
             "Function"                                    "glupost"
             "glupost_particle"                            "particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf"
-          }      
+          }
         }
       }
-      
+
     }
   }
-  
+
   //=================================================================================================================
   // Che Monk: Summon Wireless Tramvaj (R) - New Spell, like Kunkka's Ghostship but heals instead of rum and grabs enemies on the way.
   // Author: Darkonius
@@ -2872,13 +2466,13 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"                                  "che_wireless_tramvaj"
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "1000"
     "AbilityCastPoint"                                    "0.3"
-    
-    // Time    
+
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "60.0 50.0 40.0"
 
@@ -2889,80 +2483,24 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // crash delay
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tooltip_delay"                                   "3.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spawn_distance"                                  "1000"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ghostship_width"                                 "250"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crash_damage"                                    "300 400 500"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "impact_damage"                                   "100"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "stun_duration"                                   "1.0 1.5 2.0" // kunkka's ship stun is 1.4 seconds
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ghostship_speed"                                 "650"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crash_distance"                                  "1000"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal_amount"                                     "200 300 400"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal_amount_scepter"                             "300 400 500"
-      }
-      "11"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ghostship_speed_scepter"                         "1000"
-      }
-      "12"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spawn_distance_scepter"                          "1500"
-      }
-      "13"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ghostship_width_scepter"                         "425"
-      }
-      "14"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crash_damage_scepter"                            "400 500 600"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"tooltip_delay" "3.0" // crash delay
+		"spawn_distance" "1000"
+		"ghostship_width" "250"
+		"crash_damage" "300 400 500"
+		"impact_damage" "100"
+		"stun_duration" "1.0 1.5 2.0"
+		"ghostship_speed" "650"
+		"crash_distance" "1000"
+		"heal_amount" "200 300 400"
+		"heal_amount_scepter" "300 400 500"
+		"ghostship_speed_scepter" "1000"
+		"spawn_distance_scepter" "1500"
+		"ghostship_width_scepter" "425"
+		"crash_damage_scepter" "400 500 600"
+	}
+
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_kunkka.vsndevts"
@@ -2970,7 +2508,7 @@
       "particle"                                          "particles/units/heroes/hero_kunkka/kunkka_ghost_ship.vpcf"
       "particle"                                          "particles/status_fx/status_effect_rum.vpcf"
     }
-    
+
     "OnSpellStart"
     {
       "FireSound"
@@ -2978,13 +2516,13 @@
         "Target"                                          "CASTER"
         "EffectName"                                      "Ability.Ghostship.bell"
       }
-      
+
       "FireSound"
       {
         "Target"                                          "CASTER"
         "EffectName"                                      "Ability.Ghostship"
       }
-      
+
       "RunScript"
       {
         "ScriptFile"                                      "heroes/che/che_wireless.lua"
@@ -2996,7 +2534,7 @@
         "crash_sound"                                     "Ability.Ghostship.crash"
       }
     }
-    
+
     "OnProjectileHitUnit"
     {
       "DeleteOnHit"                                       "0"
@@ -3010,19 +2548,19 @@
         "modifier_rum_scepter"                            "modifier_wireless_heal_scepter"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_wireless_heal"
       {
         "IsBuff"                                          "1"
         "IsHidden"                                        "1"
-        
+
         "Duration"                                        "1.0"
-        
+
         "StatusEffectName"                                "particles/status_fx/status_effect_rum.vpcf"
         "StatusEffectPriority"                            "10"
-        
+
         "OnCreated"
         {
           "Heal"
@@ -3037,12 +2575,12 @@
       {
         "IsBuff"                                          "1"
         "IsHidden"                                        "1"
-        
+
         "Duration"                                        "1.0"
-        
+
         "StatusEffectName"                                "particles/status_fx/status_effect_rum.vpcf"
         "StatusEffectPriority"                            "10"
-        
+
         "OnCreated"
         {
           "Heal"
@@ -3054,7 +2592,7 @@
       }
     }
   }
-  
+
   //====================================================================================================
   // Buy and Bribe (Q) - New Spell, Takes control of a target enemy unit for gold. Can be used on Heroes but has a duration.
   // Author: Darkonius
@@ -3066,85 +2604,37 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "buy_and_bribe"
-    
+
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
     "AbilityUnitTargetFlags"                              "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
-    
-    "AbilityCastRange"                                    "800"            
+
+    "AbilityCastRange"                                    "800"
     "AbilityCastPoint"                                    "0.3"
     "AbilityCooldown"                                     "30.0 27.0 25.0 20.0"    // similar to Chen Holy Persuasion
-    
+
     "AbilityManaCost"                                     "100 95 85 75"        // less than Chen Holy Persuasion
     "AbilityProcsMagicStick"                              "1"
-    
-    "AbilitySpecial"
-    {
-      "01" // should be same as AbilityCastRange
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cast_range"                                      "800"
-      }
-      "02" // this is not displayed in tooltip of the spell (this duration depends on the duration of the longest delayed damage spell)
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "clone_duration"                                  "50.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "max_creeps"                                      "1 2 2 3"
-      }
-      "04" // (needs level 3 of this ability in order to cast it on ancients)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "max_ancients"                                    "0 0 1 1"
-      }
-      "05" // only in tooltip (needs level 4 of this ability in order to cast it on heroes)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "max_heroes"                                      "0 0 0 1"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "gold_cost_lane_creep"                            "50"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "gold_cost_neutral_creep_base"                    "50"
-      }
-      "08"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "gold_cost_ancient_creep_base"                    "100"
-      }
-      "09"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "gold_cost_hero_base"                             "150"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_level_multiplier"                           "75.0"
-      }
-      "11"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hero_streak_multiplier"                          "100"
-      }
-      "12"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_duration"                                   "6.0"
-      }
-    }
-    
+
+    "AbilityValues"
+	{
+		"cast_range" "800"
+		"clone_duration" "50.0"
+		"max_creeps" "1 2 2 3"
+		"max_ancients" "0 0 1 1"
+		"max_heroes" "0 0 0 1"
+		"gold_cost_lane_creep" "50"
+		"gold_cost_neutral_creep_base" "50"
+		"gold_cost_ancient_creep_base" "100"
+		"gold_cost_hero_base" "150"
+		"hero_level_multiplier" "75.0"
+		"hero_streak_multiplier" "100"
+		"hero_duration" "6.0"
+	}
+
     "OnSpellStart"
     {
       "RunScript"
@@ -3153,7 +2643,7 @@
         "Function"                                        "BuyStart"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_bought_creep" // doesn't need tooltip
@@ -3161,7 +2651,7 @@
         "IsBuff"                                          "1"
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           // Buying a lane, neutral, ancient creep or illusion; Changing control, applying modifier_bought_general
@@ -3173,13 +2663,13 @@
           }
         }
       }
-      
+
       "modifier_bribed_hero" // needs tooltip (this modifier can only see the targeted hero)
       {
         "IsDebuff"                                        "1"
         "IsHidden"                                        "0"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           // Hide the Bribed hero and create a clone; Bribed hero should follow the clone while hidden
@@ -3190,14 +2680,14 @@
             "Function"                                    "BribeHero"
           }
         }
-        
+
         "Properties" // properties of the hidden hero
         {
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
         }
-        
+
         "States" // states of the hidden hero
         {
           "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
@@ -3213,13 +2703,13 @@
           "MODIFIER_STATE_COMMAND_RESTRICTED"             "MODIFIER_STATE_VALUE_ENABLED"  // new
         }
       }
-      
+
       "modifier_bribed_cloned_hero" // needs tooltip (this modifier is visible to everyone on a clone)
       {
         "IsBuff"                                          "1"
         "IsHidden"                                        "0"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "ApplyModifier"
@@ -3228,7 +2718,7 @@
             "Target"                                      "TARGET"
           }
         }
-        
+
         "OnDestroy"
         {
           // When clone dies or duration expires; Unhide the original and hide the clone; applying modifier_bribed_removing to the clone
@@ -3240,14 +2730,14 @@
           }
         }
       }
-      
+
       "modifier_bribed_removing" // doesn't need tooltip, this modifier is hidden, clone is hidden for clone_duration
       {
         "IsBuff"                                          "1"
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
         "Duration"                                        "%clone_duration"
-        
+
         "OnDestroy"
         {
           // Remove the clone forever when the duration expires
@@ -3258,14 +2748,14 @@
             "Function"                                    "BribeRemoveClone"
           }
         }
-        
+
         "Properties" // properties of the hidden hero
         {
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"  "1"
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"  "1"
           "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
         }
-        
+
         "States"  // states of the hidden clone hero
         {
           "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
@@ -3282,13 +2772,13 @@
           "MODIFIER_STATE_BLIND"                          "MODIFIER_STATE_VALUE_ENABLED"  // new
         }
       }
-      
+
       "modifier_bought_general" // needs tooltip (this modifier is visible to everyone)
       {
         "IsBuff"                                          "1"
         "IsHidden"                                        "0"
         "IsPurgable"                                      "1"
-        
+
         "OnCreated"
         {
           // This prevents getting stuck.
@@ -3298,7 +2788,7 @@
             "Target"                                      "TARGET"
           }
         }
-        
+
         "OnDestroy"
         {
           // When killed - removes from the table;
@@ -3310,20 +2800,20 @@
             "Function"                                    "RemoveFromTable"
           }
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_DOMINATED"                      "MODIFIER_STATE_VALUE_ENABLED"
         }
       }
-      
+
       "modifier_buy_phased"  // doesn't need tooltip (hidden no collision modifier)
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Duration"                                        "1.0"
-        
+
         "States"
         {
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
@@ -3331,7 +2821,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // I am the Night (W) - New Spell, invisibility, bonus night vision, bonus intelligence
   // Author: Darkonius
@@ -3342,57 +2832,33 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "i_am_batman"
-    
+
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
-    
+
     "AbilityCastPoint"                                    "0"
     "AbilityCooldown"                                     "20.0 19.0 18.0 17.0"
-    
+
     "AbilityManaCost"                                     "75"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+      "particle"                                          "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "15.0 20.0 25.0 30.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_damage"                                    "30 60 90 120"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_night_vision"                              "1000"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "3 6 9 12"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "passive_bonus_agi"                               "3 6 9 12"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "passive_bonus_evasion"                           "10 15 20 25"
-      }
-    }
-    
+
+    "AbilityValues"
+        {
+            "duration" "15.0 20.0 25.0 30.0"
+            "bonus_damage" "30 60 90 120"
+            "bonus_night_vision" "1000"
+            "bonus_int" "3 6 9 12"
+            "passive_bonus_agi" "3 6 9 12"
+            "passive_bonus_evasion" "10 15 20 25"
+        }
+
     "OnSpellStart"
     {
       "FireEffect"
@@ -3401,20 +2867,20 @@
         "EffectName"                                      "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
         "EffectAttachType"                                "attach_origin"
       }
-      
+
       "FireSound"
       {
         "Target"                                          "CASTER"
         "EffectName"                                      "Hero_BountyHunter.WindWalk"
       }
-      
+
       "ApplyModifier" // this modifier only applies transparency, not actual invisibility
       {
         "ModifierName"                                    "modifier_invisible"
         "Target"                                          "CASTER"
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_batman_form"
@@ -3422,7 +2888,7 @@
         "Duration"                                        "%duration"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_batman_passives" // doesn't need tooltip
@@ -3431,36 +2897,36 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%passive_bonus_agi"
           "MODIFIER_PROPERTY_EVASION_CONSTANT"            "%passive_bonus_evasion"
         }
       }
-      
+
       "modifier_batman_form" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "1"
         "Duration"                                        "%duration"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_BONUS_NIGHT_VISION"          "%bonus_night_vision"
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_CANNOT_MISS"                    "MODIFIER_STATE_VALUE_ENABLED"
         }
-        
+
         "OnAttackLanded"
         {
           "RemoveModifier"
@@ -3468,7 +2934,7 @@
             "ModifierName"                                "modifier_invisible"
             "Target"                                      "CASTER"
           }
-          
+
           "Damage"
           {
             "Target"
@@ -3479,13 +2945,13 @@
             "Type"                                        "DAMAGE_TYPE_PHYSICAL"
             "Damage"                                      "%bonus_damage"
           }
-          
+
           "RemoveModifier"
           {
             "ModifierName"                                "modifier_batman_form"
             "Target"                                      "CASTER"
           }
-          
+
           "FireEffect"
           {
             "EffectName"                                  "particles/msg_fx/msg_crit.vpcf"
@@ -3503,7 +2969,7 @@
             }
           }
         }
-        
+
         "OnAbilityExecuted"
         {
           "RemoveModifier"
@@ -3511,7 +2977,7 @@
             "ModifierName"                                "modifier_invisible"
             "Target"                                      "CASTER"
           }
-          
+
           "RemoveModifier"
           {
             "ModifierName"                                "modifier_batman_form"
@@ -3521,9 +2987,9 @@
       }
     }
   }
-  
+
   //====================================================================================================
-  // I am Iron Man (E) - New Spell, becomes ranged, has free pathing and bonus armor 
+  // I am Iron Man (E) - New Spell, becomes ranged, has free pathing and bonus armor
   // Author: Darkonius
   // Notes: OK; 19.4.2016; Illusions benefit from this spell.
   // TO_DO: Fix flying movement visual;
@@ -3532,46 +2998,26 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "i_am_iron_man"
-    
+
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-    
+
     "AbilityCastPoint"                                    "0.0"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_3"
-    
+
     "AbilityCooldown"                                     "50 40 30 20"    // like Winter Wyvern Arctic Burn, longer than Spectre Spectral Dagger, longer than Sven War Cry
-    
-    "AbilityManaCost"                                     "120"        // like Winter Wyvern Arctic Burn level 1  
+
+    "AbilityManaCost"                                     "120"        // like Winter Wyvern Arctic Burn level 1
     "AbilityProcsMagicStick"                              "1"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "6.0 7.0 8.0 9.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_armor"                                     "2 5 8 11"
-      }
-      "03" // only here; 128 + 472 = 600
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_range"                                     "472"
-      }
-      "04" // only in tooltip; 128 + 472 = 600
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "range_tooltip"                                   "600"
-      }
-      "05" // only here; like Winter Wyvern Arctic Burn, if you change this you need to change the value inside the tooltip note
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "tree_destroy_radius"                             "250"
-      }
-    }
-    
+
+    "AbilityValues"
+        {
+            "duration" "6.0 7.0 8.0 9.0"
+            "bonus_armor" "2 5 8 11"
+            "bonus_range" "472"
+            "range_tooltip" "600"
+            "tree_destroy_radius" "250"
+        }
+
     "precache" // needs precache only if base hero is not sven
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
@@ -3579,7 +3025,7 @@
       "particle"                                          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
       "particle"                                          "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
     }
-    
+
     "OnSpellStart"
     {
       "FireSound"
@@ -3587,21 +3033,21 @@
         "EffectName"                                      "Hero_Sven.WarCry"
         "Target"                                          "CASTER"
       }
-      
+
       "FireEffect"
       {
         "EffectName"                                      "particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
         "EffectAttachType"                                "follow_origin"
         "Target"                                          "CASTER"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_iron_man_form"
         "Target"                                          "CASTER"
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_iron_man_form_aura"
@@ -3609,7 +3055,7 @@
         "Duration"                                        "%duration"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_iron_man_form"  // needs tooltip
@@ -3617,24 +3063,24 @@
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "0"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"          "%bonus_range"
-          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"      
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_FLYING"                         "MODIFIER_STATE_VALUE_ENABLED"  // free pathing
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"  // no unit collision
         }
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -3644,7 +3090,7 @@
             "projectile_model"                            "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
           }
         }
-        
+
         "OnDestroy"
         {
           "DestroyTrees"
@@ -3652,7 +3098,7 @@
             "Target"                                      "TARGET"
             "Radius"                                      "%tree_destroy_radius"
           }
-          
+
           "RunScript"
           {
             "ScriptFile"                                  "heroes/iron_man.lua"
@@ -3660,14 +3106,14 @@
           }
         }
       }
-      
+
       "modifier_iron_man_form_aura" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "0"
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -3676,9 +3122,9 @@
             "Function"                                    "ChangeIllusionAttack"
           }
         }
-        
+
         "ThinkInterval"                                   "0.2"
-        
+
         "OnIntervalThink"
         {
           "RunScript"
@@ -3688,27 +3134,27 @@
           }
         }
       }
-      
+
       "modifier_iron_man_form_illusion" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
         "EffectAttachType"                                "follow_origin"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"          "%bonus_range"
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_FLYING"                         "MODIFIER_STATE_VALUE_ENABLED"  // free pathing
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"  // no unit collision
         }
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -3721,7 +3167,7 @@
       }
     }
   }
-  
+
   //====================================================================================================
   // Force Choke (T) - New Spell, telekinesis + damage + miss chance
   // Author: Darkonius
@@ -3743,7 +3189,7 @@
     "AbilityCastPoint"                                    "0.3"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "22"
 
@@ -3751,7 +3197,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "120"
     "AbilityProcsMagicStick"                              "1"
-    
+
     // Cast Range
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "550 575 600 625"
@@ -3762,48 +3208,20 @@
       "particle"                                          "particles/units/heroes/hero_rubick/rubick_telekinesis.vpcf"
       "particle"                                          "particles/units/heroes/hero_rubick/rubick_telekinesis_land.vpcf"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "1.5 1.75 2.0 2.25"
-      }
-      "02" // only in here, not in tooltip; thinkinterval is 0.1
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_interval"                             "7 9 10 12"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "100 150 200 250"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "miss_chance"                                     "35 45 55 65"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "325"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "miss_duration"                                   "6.0"
-      }
-      "07" // only in tooltip; should be same as AbilityCastRange
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cast_range"                                      "550 575 600 625"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "duration" "1.5 1.75 2.0 2.25"
+            "damage_per_interval" "7 9 10 12"
+            "damage" "100 150 200 250"
+            "miss_chance" "35 45 55 65"
+            "radius" "325"
+            "miss_duration" "6.0"
+            "cast_range" "550 575 600 625"
+        }
+
     "OnSpellStart"
     {
       "RunScript"
@@ -3812,7 +3230,7 @@
         "Function"                                        "ChokeStart"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_force_choked" // needs tooltip
@@ -3821,18 +3239,18 @@
         "IsDebuff"                                        "1"
         "IsStunDebuff"                                    "1"
         "IsPurgable"                                      "1"
-        
+
         "Duration"                                        "%duration"
-        
+
         "OverrideAnimation"                               "ACT_DOTA_FLAIL"
-        
+
         "States"
         {
           "MODIFIER_STATE_STUNNED"                        "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_FLYING"                         "MODIFIER_STATE_VALUE_ENABLED"
         }
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -3840,7 +3258,7 @@
             "ScriptFile"                                  "heroes/force_choke.lua"
             "Function"                                    "ChokeMain"
           }
-          
+
           "Damage"
           {
             "Target"                                      "TARGET"
@@ -3871,19 +3289,19 @@
               "01"                                        "%radius 0 %radius"
             }
           }
-          
+
           "RunScript"
           {
             "ScriptFile"                                  "heroes/force_choke.lua"
             "Function"                                    "ChokeEnd"
           }
-          
+
           "DestroyTrees"
           {
             "Target"                                      "TARGET"
             "Radius"                                      "%radius"
           }
-          
+
           "ApplyModifier"
           {
             "Target"
@@ -3903,7 +3321,7 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "1"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_MISS_PERCENTAGE"             "%miss_chance"
@@ -3911,12 +3329,12 @@
       }
     }
   }
-  
+
   //====================================================================================================
-  // Dead Pool Madness (F) - New Spell, Ursa Enrage + bonus dmg + bonus attack speed + bonus hp regen + he is uncontrollable 
+  // Dead Pool Madness (F) - New Spell, Ursa Enrage + bonus dmg + bonus attack speed + bonus hp regen + he is uncontrollable
   // Author: Darkonius
   // Notes: OK; 13.2.2016;
-  // TO_DO: 
+  // TO_DO:
   //====================================================================================================
   "deadpool_madness"
   {
@@ -3925,7 +3343,7 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
-    
+
     // Precache
     //-------------------------------------------------------------------------------------------------------------
     "precache"
@@ -3934,16 +3352,16 @@
       "particle"                                          "particles/units/heroes/hero_sven/sven_spell_gods_strength.vpcf"
       "particle"                                          "particles/status_fx/status_effect_gods_strength.vpcf"
     }
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.3"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "50.0"        // like duel
-    
+
     // Cost
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "75"        // like duel
@@ -3951,29 +3369,13 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_reduction"                                "-80"          // like Ursa Enrage
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed"                                    "300"          // better than Mask of Madness
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_regen"                                        "50"          // like Alchemist's Chemical Rage level 1
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "5.0"          // caster is not controllable for the duration
-      }
-    }
+    "AbilityValues"
+        {
+            "damage_reduction" "-80"
+            "attack_speed" "300"
+            "hp_regen" "50"
+            "duration" "5.0"
+        }
 
     "OnSpellStart"
     {
@@ -4018,7 +3420,7 @@
             "Function"                                    "Madness"
           }
         }
-        
+
         "OnDestroy"
         {
           "RunScript"
@@ -4027,7 +3429,7 @@
             "Function"                                    "MadnessEnd"
           }
         }
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed"
@@ -4035,31 +3437,31 @@
           "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"  "%damage_reduction"
           "MODIFIER_PROPERTY_DISABLE_AUTOATTACK"          "0"
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_EVADE_DISABLED"                 "MODIFIER_STATE_VALUE_ENABLED"
         }
       }
-      
+
       "modifier_madness_deniable"  // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "States"
         {
           "MODIFIER_STATE_SPECIALLY_DENIABLE"             "MODIFIER_STATE_VALUE_ENABLED"
         }
       }
-      
+
       "modifier_madness_revealed"  // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "RunScript"
@@ -4068,7 +3470,7 @@
             "Function"                                    "ProvideVision"
           }
         }
-        
+
         "ThinkInterval"                                   "0.5"
         "OnIntervalThink"
         {
@@ -4083,13 +3485,13 @@
           //"MODIFIER_STATE_PROVIDES_VISION"    "MODIFIER_STATE_VALUE_ENABLED"
         //}
       }
-      
+
       "modifier_madness_restricted" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "States"
         {
           "MODIFIER_STATE_COMMAND_RESTRICTED"             "MODIFIER_STATE_VALUE_ENABLED"

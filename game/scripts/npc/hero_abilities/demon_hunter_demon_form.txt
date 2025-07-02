@@ -10,44 +10,20 @@
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/demon_hunter_demon_form"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE" 
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
     "AbilityCooldown"                                     "180"
     "AbilityManaCost"                                     "150"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "60"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_health"                                    "500"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_health_regen"                              "3"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_range"                                     "422"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "range_tooltip"                                   "600"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "transformation_time"                             "0.8"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "60"
+            "bonus_health" "500"
+            "bonus_health_regen" "3"
+            "bonus_range" "422"
+            "range_tooltip" "600"
+            "transformation_time" "0.8"
+        }
 
     "precache"
     {

@@ -27,35 +27,22 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // original: 250; smaller than Acid Spray (475/525/575/625)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "400 450 500 550"
-      }
-      "02" // original: 3/4/5; Acid Spray: 16; Wisp Overcharge: 8
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "16"
-      }
-      "03" // original: 30/45/60;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal_per_wave"                                   "15 30 45 60"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "wave_interval"                                   "1"
-      }
-      "05" // like old Wisp Overcharge
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_decrease"                                 "-5 -10 -15 -20"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+	{
+		"radius" // original: 250; smaller than Acid Spray
+		{
+			"value"							"400 450 500 550"
+			"affected_by_aoe_increase"	"1"
+		}
+		"duration" "16" // original: 3/4/5; Acid Spray: 16; Wisp Overcharge: 8
+		"heal_per_wave" "15 30 45 60" // original: 30/45/60;
+		"wave_interval" "1"
+		"damage_decrease" // like old Wisp Overcharge
+		{
+			"value" "-5 -10 -15 -20"
+			"CalculateSpellDamageTooltip" "0"
+		}
+	}
 
     "OnSpellStart"
     {
@@ -139,6 +126,6 @@
           }
         }
       }
-    }              
+    }
   }
 }

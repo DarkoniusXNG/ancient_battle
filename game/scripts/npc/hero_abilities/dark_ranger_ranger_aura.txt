@@ -5,7 +5,7 @@
   // Author: Darkonius;
   // Notes: OK; 2023; Illusions don't bestow the aura;
   // TO_DO: Global aura talent or shard
-  //================================================================================================================= 
+  //=================================================================================================================
   "dark_ranger_ranger_aura"
   {
     "BaseClass"                                           "ability_lua"
@@ -16,29 +16,23 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "agility_to_ranged_damage"                        "10 20 30 40"
-        "LinkedSpecialBonus"                              "special_bonus_unique_dark_ranger_2"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "1200"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_attack_range"                              "0"
-        "LinkedSpecialBonus"                              "special_bonus_unique_dark_ranger_3"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "agility_to_ranged_damage"
+            {
+                "value" "10 20 30 40"
+                "LinkedSpecialBonus" "special_bonus_unique_dark_ranger_2"
+            }
+            "radius" "1200"
+            "bonus_attack_range"
+            {
+                "value" "0"
+                "LinkedSpecialBonus" "special_bonus_unique_dark_ranger_3"
+            }
+        }
   }
-  
+
   //=================================================================================================================
   // Ranger Aura talent - increases agility to ranged damage percentage
   //=================================================================================================================
@@ -52,16 +46,12 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "10"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "10"
+        }
   }
-  
+
   //=================================================================================================================
   // Ranger Aura talent - increases attack range of all allied units
   //=================================================================================================================
@@ -75,13 +65,9 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "100"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "100"
+        }
   }
 }

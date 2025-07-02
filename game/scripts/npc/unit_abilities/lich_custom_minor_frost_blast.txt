@@ -38,34 +38,14 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {      
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "200"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "slow_movement_speed"                             "-40"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "slow_attack_speed"                               "-40"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "aoe_damage"                                      "150"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "3.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "200"
+            "slow_movement_speed" "-40"
+            "slow_attack_speed" "-40"
+            "aoe_damage" "150"
+            "duration" "3.0"
+        }
 
     "precache"
     {

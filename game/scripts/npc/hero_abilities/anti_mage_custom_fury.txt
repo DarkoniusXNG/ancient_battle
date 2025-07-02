@@ -54,13 +54,9 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "60" // mana steal amount
-      }
-    }
+    "AbilityValues"
+	{
+		"value" "60" // mana steal amount
+	}
   }
 }

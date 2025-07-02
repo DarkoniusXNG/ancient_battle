@@ -13,15 +13,15 @@
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"                                            "1"
     "RequiredLevel"                                       "6"
-    
+
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_FORGE_SPIRIT"
     "AbilityCastPoint"                                    "0.2"
-    
+
     "AbilityCooldown"                                     "120"
-    
+
     "AbilityManaCost"                                     "200"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_phoenix/phoenix_ambient_glow.vpcf"
@@ -32,20 +32,12 @@
       "model"                                             "models/heroes/phoenix/phoenix_bird.vmdl"
       "model"                                             "models/heroes/phoenix/phoenix_egg.vmdl"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "phoenix_egg_duration"                            "6"
-      }
-      "02" // not in tooltip
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spawn_distance"                                  "250"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "phoenix_egg_duration" "6"
+            "spawn_distance" "250"
+        }
 
     "OnSpellStart"
     {
@@ -74,14 +66,14 @@
         "GrantsGold"                                      "1"
         "GrantsXP"                                        "1"
         "SpawnRadius"                                     "10"
-        
+
         "OnSpawn"
         {
           "RunScript"
           {
             "ScriptFile"                                  "heroes/blood_mage/summon_phoenix.lua"
             "Function"                                    "SetUnitsMoveForward"
-          }               
+          }
 
           "ApplyModifier"
           {
@@ -91,16 +83,16 @@
         }
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_custom_phoenix_phased" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Duration"                                        "0.3"
-        
+
         "States"
         {
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
