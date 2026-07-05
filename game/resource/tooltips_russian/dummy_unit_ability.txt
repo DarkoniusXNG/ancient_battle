@@ -1,3 +1,0 @@
-
-		"DOTA_Tooltip_ability_dummy_unit"                                       "Dummy Unit"
-		"DOTA_Tooltip_ability_dummy_unit_Description"                           "You are not supposed to see this ever."

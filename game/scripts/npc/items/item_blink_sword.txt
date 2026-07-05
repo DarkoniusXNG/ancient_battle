@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // 1266 - Recipe: Blink Sword
-  // Notes: OK; 2022;
+  // Recipe: Blink Sword
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_blink_sword"
   {
@@ -12,7 +12,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "1500"
+    "ItemCost"                                            "1750"
     "ItemShopTags"                                        ""
     
     // Recipe
@@ -21,13 +21,13 @@
     "ItemResult"                                          "item_blink_sword"
     "ItemRequirements"
     {
-      "01"                                                "item_blink;item_ultimate_orb;item_soul_gem"
+      "01"                                                "item_blink;item_ultimate_orb;item_soul_booster"
     }
   }
   
   //=================================================================================================================
-  // 1267 - Blink Sword - Blink Dagger (2250) + Soul Gem (1000) + Ultimate Orb (2050) + Recipe (1500) = 6800
-  // Notes: OK; 2022;
+  // Blink Sword
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_blink_sword"
   {
@@ -41,11 +41,11 @@
     "AbilitySharedCooldown"                               "blink"
     "AbilityManaCost"                                     "0"
     
-    "ItemCost"                                            "6800"
+    "ItemCost"                                            "9800" // 2250 + 2800 + 3000 + 1750
     "ItemShopTags"                                        "teleport;agi;int;str"
     "ItemQuality"                                         "rare"
     "ItemAliases"                                         "blink sword"
-    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
     "ItemSellable"                                        "1"
     "ItemDroppable"                                       "1"
     "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
@@ -53,29 +53,15 @@
     
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "15"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "15"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "15"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "blink_range"                                     "1400"
-      }
-    }
+    "AbilityValues"
+	{
+		"bonus_str"                                       "15"
+		"bonus_agi"                                       "15"
+		"bonus_int"                                       "15"
+		"bonus_health"                                    "425"
+		"bonus_mana"                                      "425"
+		"blink_range"                                     "1200"
+	}
     
     "OnSpellStart"
     {
@@ -109,6 +95,8 @@
           "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
           "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
+		  "MODIFIER_PROPERTY_HEALTH_BONUS"                "%bonus_health"
+		  "MODIFIER_PROPERTY_MANA_BONUS"                  "%bonus_mana"
         }
       }
     }

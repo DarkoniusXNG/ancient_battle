@@ -1,8 +1,0 @@
-
-		"DOTA_Tooltip_ability_item_recipe_custom_poor_mans_shield"                   "Recipe for Poor Man's Shield"
-		"DOTA_Tooltip_ability_item_recipe_custom_poor_mans_shield_Description"       ""
-
-		"DOTA_Tooltip_ability_item_custom_poor_mans_shield"                          "Poor Man's Shield"
-		"DOTA_Tooltip_ability_item_custom_poor_mans_shield_Description"              "<h1>Passive: Damage Block</h1>Gives a %block_chance%%% chance to block %damage_block_melee% damage from incoming attacks on melee heroes, and %damage_block_ranged% damage on ranged."
-		"DOTA_Tooltip_ability_item_custom_poor_mans_shield_Lore"                     "A busted old shield that seems to block more than it should."
-		"DOTA_Tooltip_ability_item_custom_poor_mans_shield_bonus_agility"            "+$agi"

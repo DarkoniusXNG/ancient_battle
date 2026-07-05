@@ -23,12 +23,12 @@
 
     "ItemRequirements"
     {
-      "01"                                                "item_platemail;item_helm_of_iron_will;item_chainmail;item_ring_of_protection"
+      "01"                                                "item_platemail;item_splintmail;item_helm_of_iron_will;item_chainmail;item_ring_of_protection"
     }
   }
 
   //=================================================================================================================
-  // Stoneskin Armor: Platemail (1400) + Helm of Iron Will (975) + Chain Mail (550) + Ring of Protection (175) + Recipe (100) = 3200
+  // Stoneskin Armor
   //=================================================================================================================
   "item_stoneskin"
   {
@@ -38,22 +38,23 @@
     "ScriptFile"                                          "items/stoneskin.lua"
     "AbilityTextureName"                                  "custom/stoneskin"
 
-    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
     // Stats
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastPoint"                                    "0.0"
-    "AbilityCastRange"                                    "1200"
-    "AbilityCooldown"                                     "16"
-    "AbilityManaCost"                                     "75"
+    "AbilityCooldown"                                     "20"
+    "AbilityManaCost"                                     "0"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "3200"
+    "ItemCost"                                            "4100" // 1400 + 950 + 975 + 500 + 175 + 100
     "ItemShopTags"                                        "armor;regen_health;hard_to_tag"
     "ItemQuality"                                         "epic"
     "ItemAliases"                                         "stoneskin;stoneskin armor"
-    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
@@ -65,20 +66,18 @@
 
     "AbilityValues"
     {
-      "bonus_armor"                                       "22" // sum of components
-      "bonus_health_regen"                                "5"  // Helm of Iron Will
-      "hp_regen_amp"                                      "22" // like SnY
-      "heal_amp"                                          "22"
-      "lifesteal_amp"                                     "22" // like SnY
-      "spell_lifesteal_amp"                               "22"
-      "aura_radius"                                       "1200"
+      "bonus_armor"                                       "25" // sum of components: 10 + 7 + 4 + 4
+      "bonus_health_regen"                                "4"  // Helm of Iron Will (4)
+	  "bonus_status_resist"                               "15"
+	  "health_restoration_amp"                            "15"
+      // Active stuff
       "stone_armor"                                       "100"
-      "stone_magic_resist"                                "0"
-      "stone_status_resist"                               "30"
-      "stone_deflect_chance"                              "30"
-      "stone_deflect_radius"                              "400"
-      "stone_move_speed"                                  "100"
-      "duration"                                          "6.0"
+	  "stone_magic_resist"                                "0"
+	  "stone_status_resist"                               "0"
+      "stone_deflect_chance"                              "25"
+      "knockback_resist"                                  "50" // higher values than this result in weird behavior on heroes that already have 50% knockback resistance
+      "stone_max_move_speed_bonus"                        "110" // Max move speed is base move speed + this
+      "duration"                                          "5.5"
     }
   }
 }

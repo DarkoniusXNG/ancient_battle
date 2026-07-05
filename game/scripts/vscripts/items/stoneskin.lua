@@ -1,7 +1,6 @@
 item_stoneskin = class({})
 
 LinkLuaModifier("modifier_item_stoneskin_passives", "items/stoneskin.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_item_stoneskin_aura_effect", "items/stoneskin.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_item_stoneskin_active", "items/stoneskin.lua", LUA_MODIFIER_MOTION_NONE)
 
 function item_stoneskin:GetIntrinsicModifierName()
@@ -10,49 +9,20 @@ end
 
 function item_stoneskin:OnSpellStart()
   local caster = self:GetCaster()
+  
+  local stoneskin_duration = self:GetSpecialValueFor("duration")
+
+  -- Buff Amp
+  local real_buff_duration = GetValueChangedByBuffAmplification(stoneskin_duration, caster, caster)
 
   -- Apply Stoneskin buff to caster
-  caster:AddNewModifier(caster, self, "modifier_item_stoneskin_active", {duration = self:GetSpecialValueFor("duration")})
+  caster:AddNewModifier(caster, self, "modifier_item_stoneskin_active", {duration = real_buff_duration})
+
+  -- Tough enchantment
+  caster:ApplyNonStackableBuff(caster, self, "modifier_item_enhancement_tough", real_buff_duration)
 
   -- Activation Sound
   caster:EmitSound("Hero_EarthSpirit.Petrify")
-end
-
--- OnProjectileHit_ExtraData doesn't work for items which is sad
-function item_stoneskin:OnProjectileHit(target, location)
-  if not target or not location then
-    return
-  end
-
-  if target:IsMagicImmune() or target:IsAttackImmune() then
-    return
-  end
-
-  local attacker
-  if self.deflect_attacker then
-    attacker = EntIndexToHScript(self.deflect_attacker)
-  end
-
-  if not attacker or attacker:IsNull() then
-    return
-  end
-
-  local damage = self.deflect_damage or 0
-
-  -- Initialize damage table
-  local damage_table = {
-    attacker = attacker,
-    damage = damage,
-    damage_type = DAMAGE_TYPE_PHYSICAL,
-    damage_flags = bit.bor(DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL),
-    ability = self,
-    victim = target,
-  }
-
-  -- Apply damage
-  ApplyDamage(damage_table)
-
-  return true
 end
 
 function item_stoneskin:ProcsMagicStick()
@@ -83,6 +53,8 @@ function modifier_item_stoneskin_passives:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
     MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+	MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING,
+	MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION,
   }
 end
 
@@ -94,85 +66,12 @@ function modifier_item_stoneskin_passives:GetModifierConstantHealthRegen()
   return self:GetAbility():GetSpecialValueFor("bonus_health_regen")
 end
 
-function modifier_item_stoneskin_passives:IsAura()
-  return true
+function modifier_item_stoneskin_passives:GetModifierStatusResistanceStacking()
+  return self:GetAbility():GetSpecialValueFor("bonus_status_resist")
 end
 
-function modifier_item_stoneskin_passives:GetModifierAura()
-  return "modifier_item_stoneskin_aura_effect"
-end
-
-function modifier_item_stoneskin_passives:GetAuraRadius()
-  return self:GetAbility():GetSpecialValueFor("aura_radius")
-end
-
-function modifier_item_stoneskin_passives:GetAuraSearchTeam()
-  return DOTA_UNIT_TARGET_TEAM_FRIENDLY
-end
-
-function modifier_item_stoneskin_passives:GetAuraSearchType()
-  return bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC)
-end
-
----------------------------------------------------------------------------------------------------
-
-modifier_item_stoneskin_aura_effect = class({})
-
-function modifier_item_stoneskin_aura_effect:IsHidden() -- needs tooltip
-  return false
-end
-
-function modifier_item_stoneskin_aura_effect:IsDebuff()
-  return false
-end
-
-function modifier_item_stoneskin_aura_effect:IsPurgable()
-  return false
-end
-
-function modifier_item_stoneskin_aura_effect:OnCreated()
-  local ability = self:GetAbility()
-  if ability and not ability:IsNull() then
-    self.hp_regen_amp = ability:GetSpecialValueFor("hp_regen_amp")
-    self.lifesteal_amp = ability:GetSpecialValueFor("lifesteal_amp")
-    self.heal_amp = ability:GetSpecialValueFor("heal_amp")
-    self.spell_lifesteal_amp = ability:GetSpecialValueFor("spell_lifesteal_amp")
-  end
-end
-
-function modifier_item_stoneskin_aura_effect:OnRefresh()
-  local ability = self:GetAbility()
-  if ability and not ability:IsNull() then
-    self.hp_regen_amp = ability:GetSpecialValueFor("hp_regen_amp")
-    self.lifesteal_amp = ability:GetSpecialValueFor("lifesteal_amp")
-    self.heal_amp = ability:GetSpecialValueFor("heal_amp")
-    self.spell_lifesteal_amp = ability:GetSpecialValueFor("spell_lifesteal_amp")
-  end
-end
-
-function modifier_item_stoneskin_aura_effect:DeclareFunctions()
-  return {
-    MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
-    MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
-    MODIFIER_PROPERTY_LIFESTEAL_AMPLIFY_PERCENTAGE,
-    MODIFIER_PROPERTY_SPELL_LIFESTEAL_AMPLIFY_PERCENTAGE,
-  }
-end
-
-function modifier_item_stoneskin_aura_effect:GetModifierHPRegenAmplify_Percentage()
-  return self.hp_regen_amp or self:GetAbility():GetSpecialValueFor("hp_regen_amp")
-end
-
-function modifier_item_stoneskin_aura_effect:GetModifierHealAmplify_PercentageTarget()
-  return self.heal_amp or self:GetAbility():GetSpecialValueFor("heal_amp")
-end
-
-function modifier_item_stoneskin_aura_effect:GetModifierLifestealRegenAmplify_Percentage()
-  return self.lifesteal_amp or self:GetAbility():GetSpecialValueFor("lifesteal_amp")
-end
-
-function modifier_item_stoneskin_aura_effect:GetModifierSpellLifestealRegenAmplify_Percentage()
-  return self.spell_lifesteal_amp or self:GetAbility():GetSpecialValueFor("spell_lifesteal_amp")
+function modifier_item_stoneskin_passives:GetModifierPropertyRestorationAmplification()
+  return self:GetAbility():GetSpecialValueFor("health_restoration_amp")
 end
 
 ------------------------------------------------------------------------
@@ -191,113 +90,124 @@ function modifier_item_stoneskin_active:IsPurgable()
   return false
 end
 
+function modifier_item_stoneskin_active:OnCreated()
+  self:OnRefresh()
+end
+
+function modifier_item_stoneskin_active:OnRefresh()
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+  if not ability or ability:IsNull() then
+    return
+  end
+
+  self.armor = ability:GetSpecialValueFor("stone_armor")
+  self.deflect_chance = ability:GetSpecialValueFor("stone_deflect_chance")
+  self.max_move_speed = parent:GetBaseMoveSpeed() + ability:GetSpecialValueFor("stone_max_move_speed_bonus")
+  --self.magic_resist = ability:GetSpecialValueFor("stone_magic_resist")
+  --self.min_move_speed = ability:GetSpecialValueFor("stone_min_move_speed")
+  --self.status_resist = ability:GetSpecialValueFor("stone_status_resist")
+end
+
+function modifier_item_stoneskin_active:OnDestroy()
+  if not IsServer() then
+    return
+  end
+  local parent = self:GetParent()
+  local ability = self:GetAbility()
+  local caster = self:GetCaster()
+  if not parent or parent:IsNull() then
+    return
+  end
+
+  local mods = parent:FindAllModifiersByName("modifier_item_enhancement_tough")
+  for _, mod in pairs(mods) do
+    if mod and not mod:IsNull() then
+      local mod_ability = mod:GetAbility()
+      local mod_caster = mod:GetCaster()
+      if mod_ability and mod_caster then
+        if mod_ability == ability and mod_caster == caster then
+          mod:Destroy()
+          break
+        end
+      end
+    end
+  end
+end
+
 function modifier_item_stoneskin_active:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-    MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
     MODIFIER_PROPERTY_AVOID_DAMAGE,
-    MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING,
-    MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE,
+    MODIFIER_PROPERTY_MOVESPEED_MAX_OVERRIDE,
+    --MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
+    --MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING,
+    --MODIFIER_PROPERTY_MOVESPEED_MIN_OVERRIDE,
   }
 end
 
 function modifier_item_stoneskin_active:GetModifierPhysicalArmorBonus()
-  if not self:GetAbility() then
-    if not self:IsNull() then
-      self:Destroy()
-    end
-    return 0
-  end
-  return self:GetAbility():GetSpecialValueFor("stone_armor")
+  return self.armor or self:GetAbility():GetSpecialValueFor("stone_armor")
 end
 
-function modifier_item_stoneskin_active:GetModifierMagicalResistanceBonus()
-  if not self:GetAbility() then
-    if not self:IsNull() then
-      self:Destroy()
-    end
-    return 0
-  end
-  return self:GetAbility():GetSpecialValueFor("stone_magic_resist")
-end
+--function modifier_item_stoneskin_active:GetModifierMagicalResistanceBonus()
+  --return self.magic_resist or self:GetAbility():GetSpecialValueFor("stone_magic_resist")
+--end
 
-function modifier_item_stoneskin_active:GetModifierAvoidDamage(event)
+--function modifier_item_stoneskin_active:GetModifierStatusResistanceStacking()
+  --return self.status_resist or self:GetAbility():GetSpecialValueFor("stone_status_resist")
+--end
+
+function modifier_item_stoneskin_active:GetModifierAvoidDamage(params)
+  if not IsServer() then
+    return
+  end
+
   local parent = self:GetParent()
-  local ability = self:GetAbility()
-  local chance = 30
-  local radius = 400
-  local seed = DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1
-  if ability and not ability:IsNull() then
-    chance = ability:GetSpecialValueFor("stone_deflect_chance")
-    radius = ability:GetSpecialValueFor("stone_deflect_radius")
-    seed = ability:GetEntityIndex()
-  end
-  if event.ranged_attack == true and event.damage_category == DOTA_DAMAGE_CATEGORY_ATTACK and RollPseudoRandomPercentage(chance, seed, parent) then
-    local units = FindUnitsInRadius(
-      parent:GetTeamNumber(),
-      parent:GetAbsOrigin(),
-      nil,
-      radius,
-      DOTA_UNIT_TARGET_TEAM_BOTH,
-      bit.bor(DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_BASIC),
-      DOTA_UNIT_TARGET_FLAG_NONE,
-      FIND_CLOSEST,
-      false
-    )
-    local closest
-    local attacker = event.attacker
-    for _, unit in ipairs(units) do
-      if unit ~= parent then
-        closest = unit
-        break
-      end
-    end
-    if closest and attacker then
-      local info = {
-        EffectName = attacker:GetRangedProjectileName(),
-        Ability = ability,
-        Source = parent,
-        vSourceLoc = parent:GetAbsOrigin(),
-        Target = closest,
-        iMoveSpeed = attacker:GetProjectileSpeed(),
-        bDodgeable = true,
-        bProvidesVision = true,
-        iVisionRadius = 250,
-        iVisionTeamNumber = attacker:GetTeamNumber(),
-        --bIsAttack = true,
-        --bReplaceExisting = false,
-        --bIgnoreObstructions = true,
-        iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
-        bDrawsOnMinimap = false,
-        bVisibleToEnemies = true,
-        -- ExtraData = {
-          -- attacker = attacker:GetEntityIndex(),
-          -- damage = math.max(event.original_damage, event.damage),
-        -- }
-      }
-      -- Create a tracking projectile
-      ProjectileManager:CreateTrackingProjectile(info)
+  local attacker = params.attacker
 
-      if ability then
-        ability.deflect_attacker = attacker:GetEntityIndex()
-        ability.deflect_damage = math.max(event.original_damage, event.damage)
-      end
+  if not attacker or attacker:IsNull() then
+    return 0
+  end
+
+  -- Do not deflect when attacking self
+  if attacker == parent then
+    return 0
+  end
+
+  -- Deflect only from ranged attackers
+  if not attacker:IsRangedAttacker() then
+    return 0
+  end
+
+  -- Deflect only attacks and dmg from attack based spells
+  if params.damage_category ~= DOTA_DAMAGE_CATEGORY_ATTACK then
+    local inflictor = params.inflictor
+    if not inflictor or inflictor:IsNull() then
+      return 0
     end
+    if not IsAttackAbilityCustom(inflictor) then
+      return 0
+    end
+  end
+
+  local chance = self.deflect_chance
+  local seed = DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1
+
+  if RollPseudoRandomPercentage(chance, seed, parent) then
     return 1
   end
 
   return 0
 end
 
-function modifier_item_stoneskin_active:GetModifierStatusResistanceStacking()
-  if not self:GetAbility() then
-    if not self:IsNull() then
-      self:Destroy()
-    end
-    return 0
-  end
-  return self:GetAbility():GetSpecialValueFor("stone_status_resist")
+function modifier_item_stoneskin_active:GetModifierMoveSpeed_MaxOverride()
+  return self.max_move_speed
 end
+
+--function modifier_item_stoneskin_active:GetModifierMoveSpeed_MinOverride()
+  --return self.min_move_speed or self:GetAbility():GetSpecialValueFor("stone_min_move_speed")
+--end
 
 function modifier_item_stoneskin_active:GetStatusEffectName()
   return "particles/status_fx/status_effect_earth_spirit_petrify.vpcf"
@@ -305,14 +215,4 @@ end
 
 function modifier_item_stoneskin_active:StatusEffectPriority()
   return MODIFIER_PRIORITY_ULTRA
-end
-
-function modifier_item_stoneskin_active:GetModifierMoveSpeed_Absolute()
-  if not self:GetAbility() then
-    if not self:IsNull() then
-      self:Destroy()
-    end
-    return
-  end
-  return self:GetAbility():GetSpecialValueFor("stone_move_speed")
 end

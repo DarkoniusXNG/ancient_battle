@@ -1,3 +1,0 @@
-		"addon_game_name"														"Ancient Battle"
-		"DOTA_GameMode_15"														"Ancient Battle"
-		"game_mode_15_desc"														"And now something different!"

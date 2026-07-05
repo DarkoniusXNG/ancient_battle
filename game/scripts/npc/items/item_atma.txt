@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // 1268 - Recipe: Atma
-  // Notes: OK; 25.12.2019;
+  // Recipe: Atma
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_atma"
   {
@@ -14,7 +14,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "ItemCost"                                            "0"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -25,19 +25,19 @@
       "01"                                                "item_gauntlets;item_slippers;item_mantle"
     }
   }
-  
+
   //=================================================================================================================
-  // 1269 - Atma - 3 x 140 = 420
-  // Notes: OK; 2022; Suggested/rejected names: Collar of Viceroy
+  // Atma
+  // Notes: OK; 2026; Suggested/rejected names: Collar of Viceroy
   //=================================================================================================================
   "item_atma"
   {
     "BaseClass"                                           "item_datadriven"
     "AbilityTextureName"                                  "custom/atma"
-    
+
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    
-    "ItemCost"                                            "420"
+
+    "ItemCost"                                            "420" // 3 x 140
     "ItemShopTags"                                        "damage;int;str;agi"
     "ItemQuality"                                         "common"
     "ItemAliases"                                         "atma"
@@ -47,43 +47,27 @@
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
     "ShouldBeInitiallySuggested"                          "1"
 
-    // Special  
+    // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "4"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "4"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "4"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_dmg"                                       "2"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"bonus_str" "4"
+		"bonus_agi" "4"
+		"bonus_int" "4"
+		"bonus_dmg" "2"
+	}
+
     "Modifiers"
     {
       "modifier_item_atma_passives" // doesn't need tooltip
       {
-        "Passive"                                         "1"  
+        "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"

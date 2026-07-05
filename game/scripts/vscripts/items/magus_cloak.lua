@@ -29,6 +29,7 @@ end
 function modifier_custom_magus_cloak_passives:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+		MODIFIER_PROPERTY_MANA_BONUS,
 		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
 		MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
@@ -40,6 +41,10 @@ end
 
 function modifier_custom_magus_cloak_passives:GetModifierPreAttack_BonusDamage()
 	return self:GetAbility():GetSpecialValueFor("bonus_damage")
+end
+
+function modifier_custom_magus_cloak_passives:GetModifierManaBonus()
+	return self:GetAbility():GetSpecialValueFor("bonus_mana")
 end
 
 function modifier_custom_magus_cloak_passives:GetModifierConstantManaRegen()

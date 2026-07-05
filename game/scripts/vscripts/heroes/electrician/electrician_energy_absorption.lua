@@ -83,7 +83,7 @@ function electrician_energy_absorption:OnSpellStart()
           mana_absorbed = mana_absorbed + mana_to_remove
         end
 
-        if target:IsRealHero() or target:IsCustomBoss() then
+        if target:IsRealHero() then
           speed_absorbed = speed_absorbed + speed_absorb_heroes
         else
           speed_absorbed = speed_absorbed + speed_absorb_creeps
@@ -251,7 +251,7 @@ function modifier_electrician_energy_absorption_debuff:OnCreated(event)
   end
 
   local stack_count = self:GetStackCount()
-  if parent:IsRealHero() or parent:IsCustomBoss() then
+  if parent:IsRealHero() then
     self.speed = -speed_absorb_heroes * stack_count
   else
     self.speed = -speed_absorb_creeps * stack_count

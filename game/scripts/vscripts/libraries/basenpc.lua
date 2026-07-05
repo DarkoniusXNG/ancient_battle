@@ -23,10 +23,6 @@ if CDOTA_BaseNPC then
     end
   end
 
-  function CDOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance") or self:IsRoshanCustom()
-  end
-
   function CDOTA_BaseNPC:HasShardCustom()
     return self:HasModifier("modifier_item_aghanims_shard")
   end
@@ -73,17 +69,110 @@ if CDOTA_BaseNPC then
     return false
   end
 
-  function CDOTA_BaseNPC:GetValueChangedByStatusResistance(value)
+  -- caster is needed for debuff amplification (bosses and creeps dont have that for now)
+  -- ability is needed to check if it's an item (because Nether Core does not affect items)
+  -- if it's a passive without a cooldown (because Nether Core does not affect those)
+  function CDOTA_BaseNPC:GetValueChangedByStatusResistance(value, caster, ability)
     if self and value then
-      local reduction = self:GetStatusResistance()
+      local status_resist = self:GetStatusResistance()
+      local other_debuff_duration_decrease = 0
+      local debuff_amplifications = 0
+      local isItem = false
+      local isPassive = false
+      local hasCooldown = true
+      if ability and not ability:IsNull() then
+        isItem = ability:IsItem()
+        isPassive = ability:IsPassive()
+        hasCooldown = ability:GetCooldown(-1) ~= 0
+      end
+      if caster and not caster:IsNull() then
+        local ursa_debuff_amp = caster:FindAbilityByName("ursa_bear_down")
+        local lion_debuff_amp = caster:HasModifier("modifier_lion_to_hell_and_back_buff")
+        local bristle_debuff_amp = caster:FindAbilityByName("bristleback_prickly")
+        local rubick_debuff_amp = caster:FindAbilityByName("rubick_curiosity")
+        local timeless_debuff_amp = caster:HasModifier("modifier_item_enhancement_timeless")
+        if ursa_debuff_amp and not ursa_debuff_amp:IsNull() then
+          if ursa_debuff_amp:GetLevel() > 0 then
+            local bear_down_debuff_amp = ursa_debuff_amp:GetSpecialValueFor("debuff_amp")
+            debuff_amplifications = (1 + debuff_amplifications) * (1 + bear_down_debuff_amp / 100) - 1
+          end
+        end
+        if lion_debuff_amp then
+          local to_hell_and_back_mod = caster:FindModifierByNameAndCaster("modifier_lion_to_hell_and_back_buff", caster)
+          if to_hell_and_back_mod then
+            local to_hell_and_back_ability = to_hell_and_back_mod:GetAbility()
+            if to_hell_and_back_ability and not to_hell_and_back_ability:IsNull() then
+              if to_hell_and_back_ability:GetLevel() > 0 then
+                local to_hell_and_back_debuff_amp = to_hell_and_back_ability:GetSpecialValueFor("debuff_amp")
+                debuff_amplifications = (1 + debuff_amplifications) * (1 + to_hell_and_back_debuff_amp / 100) - 1
+              end
+            end
+          end
+        end
+        if bristle_debuff_amp and not bristle_debuff_amp:IsNull() then
+          if bristle_debuff_amp:GetLevel() > 0 then
+            local prickly_debuff_amp = bristle_debuff_amp:GetSpecialValueFor("amp_pct")
+            local angle = bristle_debuff_amp:GetSpecialValueFor("angle")
+            -- The y value of the angles vector contains the angle we actually want: where units are directionally facing in the world.
+            local bristle_angle = caster:GetAnglesAsVector().y
+            local origin_difference = caster:GetAbsOrigin() - self:GetAbsOrigin()
+            -- Get the radian of the origin difference between the victim and Bristleback. We use this to figure out at what angle the victim is at relative to Bristleback.
+            local origin_difference_radian = math.atan2(origin_difference.y, origin_difference.x)
+            -- Convert the radian to degrees.
+            origin_difference_radian = origin_difference_radian * 180
+            local victim_angle = origin_difference_radian / math.pi
+            victim_angle = victim_angle + 180.0
+            -- Finally, get the angle at which Bristleback is facing the attacker.
+            local result_angle = victim_angle - bristle_angle
+            result_angle = math.abs(result_angle)
+            if result_angle >= (180 - (angle / 2)) and result_angle <= (180 + (angle / 2)) then
+              debuff_amplifications = (1 + debuff_amplifications) * (1 + prickly_debuff_amp / 100) - 1
+            end
+          end
+        end
+        if rubick_debuff_amp and not rubick_debuff_amp:IsNull() then
+          if rubick_debuff_amp:GetLevel() > 0 then
+            local base_curiosity_debuff_amp = rubick_debuff_amp:GetSpecialValueFor("curiosity_modifier_amp")
+            local curiosity_factor = rubick_debuff_amp:GetSpecialValueFor("curiosity_factor")
+            local hero_lvl = caster:GetLevel()
+            local curiosity_from_spell_casts = caster:FindModifierByName("modifier_rubick_curiosity")
+            local curiosity_from_kills = caster:FindModifierByName("modifier_rubick_curiosity_from_heroes_tracker")
+            local total_curiosity = hero_lvl
+            if curiosity_from_spell_casts then
+              total_curiosity = total_curiosity + curiosity_from_spell_casts:GetStackCount()
+            end
+            if curiosity_from_kills then
+              total_curiosity = total_curiosity + curiosity_from_kills:GetStackCount()
+            end
+            -- Calculating total curiosity debuff amp
+            local curiosity_debuff_amp
+            if curiosity_factor ~= 0 then
+              curiosity_debuff_amp = total_curiosity * base_curiosity_debuff_amp * curiosity_factor
+            else
+              curiosity_debuff_amp = total_curiosity * base_curiosity_debuff_amp
+            end
+            debuff_amplifications = (1 + debuff_amplifications) * (1 + curiosity_debuff_amp / 100) - 1
+          end
+        end
+        if timeless_debuff_amp then
+          local timeless_mod = caster:FindModifierByNameAndCaster("modifier_item_enhancement_timeless", caster)
+          if timeless_mod then
+            local timeless_item = timeless_mod:GetAbility()
+            if timeless_item and not timeless_item:IsNull() then
+              local timeless_amp = timeless_item:GetSpecialValueFor("debuff_amp")
+              debuff_amplifications = (1 + debuff_amplifications) * (1 + timeless_amp / 100) - 1
+            end
+          end
+        end
+      end
 
       -- Capping max status resistance
-      if reduction >= 1 then
+      local new_value = value * (1 - status_resist) * (1 - other_debuff_duration_decrease) * (1 + debuff_amplifications)
+      if new_value <= 0.01 or status_resist >= 1 or other_debuff_duration_decrease >= 1 or debuff_amplifications < 0 then
         return value*0.01
       end
 
-      -- It should work with Negative Status Resistance
-      return value*(1-reduction)
+      return new_value
     end
   end
 
@@ -250,32 +339,57 @@ if CDOTA_BaseNPC then
   end
 
   function CDOTA_BaseNPC:IsLeashedCustom()
-    local leashes = {
-      "modifier_slark_pounce_leash",
+    local normal_leashes = {
+      --"modifier_furion_sprout_tether",                            -- not in the game anymore
+      --"modifier_enigma_black_hole_pull",                          -- primarily a stun
+      --"modifier_faceless_void_chronosphere_freeze",               -- primarily a stun
       "modifier_grimstroke_soul_chain",
-      "modifier_furion_sprout_tether",
+      --"modifier_legion_commander_duel",                           -- primarily a taunt
       "modifier_puck_coiled",
+      "modifier_slark_pounce_leash",
+      "modifier_tidehunter_dead_in_the_water",
       -- custom leash modifiers:
       "modifier_custom_leash_debuff",
       "modifier_mana_transfer_leash_debuff",
     }
 
-    for _, v in pairs(leashes) do
+    -- Check for Leash immunities first (Sonic for example)
+    if self:HasModifier("modifier_item_sonic_active") then
+      return false
+    end
+
+    -- Debuff Immunity interactions
+    if self:IsDebuffImmune() then
+      -- Grimstroke ult always pierces debuff immunity
+      if self:HasModifier("modifier_grimstroke_soul_chain") then
+        return true
+      end
+
+      -- Puck Dream Coil pierce debuff immunity with the talent
+      local dream_coil_mod = self:FindModifierByName("modifier_puck_coiled")
+      if dream_coil_mod then
+        local dream_coil_ab = dream_coil_mod:GetAbility()
+        --local caster = dream_coil_mod:GetCaster()
+        if dream_coil_ab then
+          local pierce = dream_coil_ab:GetSpecialValueFor("pierces_debuff_immunity") == 1
+          --if caster then
+            --local talent = caster:FindAbilityByName("special_bonus_unique_puck_5")
+            --if talent and talent:GetLevel() > 0 then
+          if pierce then
+            return true
+          end
+        end
+      end
+
+      return false
+    end
+
+    for _, v in pairs(normal_leashes) do
       if self:HasModifier(v) then
         return true
       end
     end
 
-    local power_cogs = self:FindModifierByName("modifier_rattletrap_cog_marker")
-    if power_cogs then
-      local caster = power_cogs:GetCaster()
-      if caster then
-        local talent = caster:FindAbilityByName("special_bonus_unique_clockwerk_2")
-        if talent and talent:GetLevel() then
-          return true
-        end
-      end
-    end
     return false
   end
 
@@ -316,6 +430,109 @@ if CDOTA_BaseNPC then
 
     return false
   end
+
+  -- Apply a modifier only if it's not from the same source ability otherwise just refresh
+  function CDOTA_BaseNPC:ApplyNonStackableBuff(caster, ability, mod_name, duration)
+    if not ability then
+      return
+    end
+    local applied_by_this_ability = false
+    local ability_name = ability:GetAbilityName()
+    local mods = self:FindAllModifiersByName(mod_name)
+    for _, mod in pairs(mods) do
+      if mod and not mod:IsNull() then
+        local mod_ability = mod:GetAbility()
+        if mod_ability then
+          local mod_ability_name = mod_ability:GetAbilityName()
+          if string.find(mod_ability_name, string.sub(ability_name, 0, string.len(ability_name)-4)) then
+            applied_by_this_ability = true
+            mod:ForceRefresh()
+            break
+          end
+        end
+      end
+    end
+    if not applied_by_this_ability then
+      return self:AddNewModifier(caster, ability, mod_name, {duration = duration})
+    end
+  end
+
+  function GetValueChangedByBuffAmplification(value, victim, caster)
+    if victim and value then
+      local buff_amplifications = 0
+      if caster and not caster:IsNull() then
+        local largo_buff_amp = caster:FindAbilityByName("largo_encore")
+        local rubick_buff_amp = caster:FindAbilityByName("rubick_curiosity")
+        if largo_buff_amp and not largo_buff_amp:IsNull() then
+          if largo_buff_amp:GetLevel() > 0 then
+            local largo_encore_buff_amp = largo_buff_amp:GetSpecialValueFor("buff_amplification")
+              buff_amplifications = (1 + buff_amplifications) * (1 + largo_encore_buff_amp / 100) - 1
+            end
+          end
+        if rubick_buff_amp and not rubick_buff_amp:IsNull() then
+          if rubick_buff_amp:GetLevel() > 0 then
+            local base_curiosity_buff_amp = rubick_buff_amp:GetSpecialValueFor("curiosity_modifier_amp")
+            local curiosity_factor = rubick_buff_amp:GetSpecialValueFor("curiosity_factor")
+            local hero_lvl = caster:GetLevel()
+            local curiosity_from_spell_casts = caster:FindModifierByName("modifier_rubick_curiosity")
+            local curiosity_from_kills = caster:FindModifierByName("modifier_rubick_curiosity_from_heroes_tracker")
+            local total_curiosity = hero_lvl
+            if curiosity_from_spell_casts then
+              total_curiosity = total_curiosity + curiosity_from_spell_casts:GetStackCount()
+            end
+            if curiosity_from_kills then
+              total_curiosity = total_curiosity + curiosity_from_kills:GetStackCount()
+            end
+            -- Calculating total curiosity buff amp
+            local curiosity_buff_amp
+            if curiosity_factor ~= 0 then
+              curiosity_buff_amp = total_curiosity * base_curiosity_buff_amp * curiosity_factor
+            else
+              curiosity_buff_amp = total_curiosity * base_curiosity_buff_amp
+            end
+            buff_amplifications = (1 + buff_amplifications) * (1 + curiosity_buff_amp / 100) - 1
+          end
+        end
+      end
+
+      local new_value = value * (1 + buff_amplifications)
+      if buff_amplifications <= -1 then
+        return value
+      end
+
+      return new_value
+    end
+  end
+
+  function CDOTA_BaseNPC:GetValueChangedByKnockbackResistance(value)
+    if self and value then
+      local total_knockback_resistance = 0
+      local solid_core = self:FindAbilityByName("magnataur_solid_core")
+      local gyro_scope = self:FindAbilityByName("gyrocopter_innate_oaa")
+      local tough_mod = self:FindModifierByNameAndCaster("modifier_item_enhancement_tough", self)
+      if solid_core and not solid_core:IsNull() then
+        if solid_core:GetLevel() > 0 then
+          local knockback_resist = solid_core:GetSpecialValueFor("knockback_reduction")
+          total_knockback_resistance = 1 - (1 - knockback_resist / 100) * (1 - total_knockback_resistance)
+        end
+      end
+      if gyro_scope and not gyro_scope:IsNull() then
+        if gyro_scope:GetLevel() > 0 then
+          local knockback_resist = gyro_scope:GetSpecialValueFor("knockback_reduction")
+          total_knockback_resistance = 1 - (1 - knockback_resist / 100) * (1 - total_knockback_resistance)
+        end
+      end
+      if tough_mod and not tough_mod:IsNull() then
+        local tough_enchantment = tough_mod:GetAbility()
+        if tough_enchantment and not tough_enchantment:IsNull() then
+          local knockback_resist = tough_enchantment:GetSpecialValueFor("knockback_resist")
+          total_knockback_resistance = 1 - (1 - knockback_resist / 100) * (1 - total_knockback_resistance)
+        end
+      end
+      local new_value = value * (1 - total_knockback_resistance)
+      return new_value
+    end
+  end
 end
 
 -- On Client:
@@ -338,10 +555,6 @@ if C_DOTA_BaseNPC then
       local inflictor = nil
       return self:Script_GetMagicalArmorValue(experimental_formula, inflictor)
     end
-  end
-
-  function C_DOTA_BaseNPC:IsCustomBoss()
-    return self:HasModifier("modifier_boss_resistance") or self:IsRoshanCustom()
   end
 
   function C_DOTA_BaseNPC:HasShardCustom()
@@ -391,17 +604,38 @@ if C_DOTA_BaseNPC then
   end
 
   function C_DOTA_BaseNPC:IsLeashedCustom()
-    local leashes = {
-      "modifier_slark_pounce_leash",
+    local normal_leashes = {
+      --"modifier_furion_sprout_tether",                            -- not in the game anymore
+      --"modifier_enigma_black_hole_pull",                          -- primarily a stun
+      --"modifier_faceless_void_chronosphere_freeze",               -- primarily a stun
       "modifier_grimstroke_soul_chain",
-      "modifier_furion_sprout_tether",
+      --"modifier_legion_commander_duel",                           -- primarily a taunt
       "modifier_puck_coiled",
-	  -- custom leash modifiers:
+      "modifier_slark_pounce_leash",
+      "modifier_tidehunter_dead_in_the_water",
+      -- custom leash modifiers:
       "modifier_custom_leash_debuff",
       "modifier_mana_transfer_leash_debuff",
     }
 
-    for _, v in pairs(leashes) do
+    -- Check for Leash immunities first (Sonic for example)
+    if self:HasModifier("modifier_item_sonic_active") then
+      return false
+    end
+
+    -- Debuff Immunity interactions
+    if self:IsDebuffImmune() then
+      -- Grimstroke ult always pierces debuff immunity
+      if self:HasModifier("modifier_grimstroke_soul_chain") then
+        return true
+      end
+
+      -- FindModifierByName is not available on the client so can't check for other stuff
+
+      return false
+    end
+
+    for _, v in pairs(normal_leashes) do
       if self:HasModifier(v) then
         return true
       end
