@@ -219,7 +219,6 @@ if CDOTA_BaseNPC then
       "modifier_custom_marksmanship_buff",
       "modifier_custom_rage_buff",
       "modifier_drunken_fist_bonus",
-      "modifier_drunken_fist_knockback",
       "modifier_giant_growth_active",
       "modifier_mana_eater_mana_flare_buff_aura",
       "modifier_mass_haste_buff",

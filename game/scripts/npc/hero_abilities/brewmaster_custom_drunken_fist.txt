@@ -1,10 +1,10 @@
 "DOTAAbilities"
 {
   //====================================================================================================
-  // Brewmaster: Drunken Fist (F) - New Spell, Ultimate, Cleave + Knockback in front of the caster
+  // Brewmaster: Drunken Fist (F) - Active: Cleave + Knockback in front of the caster
   // Authors: Jastuchko + Darkonius
-  // Notes: OK; 2022; Cleave ignores armor;
-  // TO_DO: 
+  // Notes: OK; 2026?; Cleave ignores armor;
+  // TO_DO: test; knockback is not supposed to stun
   //====================================================================================================
   "brewmaster_custom_drunken_fist"
   {
@@ -24,7 +24,7 @@
 
     "AbilityCastPoint"                                    "0.0"
 
-    "AbilityCooldown"                                     "25.0 20.0 15.0"      // similar to Tiny Tree Grab
+    "AbilityCooldown"                                     "25.0 20.0 15.0"
 
     "AbilityManaCost"                                     "40 45 50"
     "AbilityProcsMagicStick"                              "1"
@@ -35,76 +35,46 @@
       "particle"                                          "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01" // ideal
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "8"
-      }
-      "02" // same as cleave
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "push_start_radius"                               "150"
-      }
-      "03" // same as cleave
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "push_distance"                                   "625"
-      }
-      "04" // same as cleave
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "push_end_radius"                                 "330"
-      }
-      "05" // Maximum allowed: 250; Minimum allowed: 150;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "knockback_distance"                              "150"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "knockback_duration"                              "0.5"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "knockback_height"                                "50"
-      }
-      "08"// Broodmother Insatiable Hunger: 60/100/140; Lone Druid Battle Cry: 70/100/130;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_damage"                                    "50 65 80"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "09" // percentage bonus movement speed
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_move_speed"                                "30"
-      }
-      "10"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cleave_damage"                                   "100"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "11"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cleave_start_radius"                             "150"
-      }
-      "12"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cleave_distance"                                 "625"
-      }
-      "13"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "cleave_end_radius"                               "330"
-      }
-    }
+    "AbilityValues"
+	{
+		"duration" "8"
+		"push_start_radius" "150" // same as cleave
+		"push_distance" // same as cleave
+		{
+			"value"			"625"
+			"affected_by_aoe_increase"	"1"
+		}
+		"push_end_radius" // same as cleave
+		{
+			"value"			"330"
+			"affected_by_aoe_increase"	"1"
+		}
+		"knockback_distance" "150" // Maximum allowed: 250; Minimum allowed: 150;
+		"knockback_duration" "0.5"
+		"knockback_height" "50"
+		"bonus_damage"
+		{
+			"value" "50 65 80"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"bonus_move_speed" "30" // percentage bonus movement speed
+		"cleave_damage" // Cleave ignores armor
+		{
+			"value" "80"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"cleave_start_radius" "150"
+		"cleave_distance"
+		{
+			"value"			"625"
+			"affected_by_aoe_increase"	"1"
+		}
+		"cleave_end_radius"
+		{
+			"value"			"330"
+			"affected_by_aoe_increase"	"1"
+		}
+	}
 
     "OnSpellStart"
     {
@@ -112,13 +82,6 @@
       {
         "EffectName"                                      "brewmaster_brew_attack_07"
         "Target"                                          "CASTER"
-      }
-
-      "ApplyModifier"
-      {
-        "ModifierName"                                    "modifier_drunken_fist_knockback"
-        "Target"                                          "CASTER"      
-        "Duration"                                        "%duration"
       }
 
       "ApplyModifier"
@@ -131,23 +94,6 @@
 
     "Modifiers"
     {
-      "modifier_drunken_fist_knockback"  // doesn't need tooltip
-      {
-        "IsHidden"                                        "1"
-        "IsBuff"                                          "1"
-        "IsPurgable"                                      "0"
-
-        "OnAttackLanded"
-        {
-          "RunScript"
-          {
-            "ScriptFile"                                  "heroes/brewmaster/drunken_fist.lua"
-            "Function"                                    "DrunkenFistCleave"
-            "DamageOnAttack"                              "%attack_damage"
-          }
-        }
-      }
-
       "modifier_drunken_fist_bonus" // needs tooltip
       {
         "IsHidden"                                        "0"
@@ -158,7 +104,17 @@
         {
           "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"      "%bonus_damage"
           "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed"
-        }           
+        }
+		
+		"OnAttackLanded"
+        {
+          "RunScript"
+          {
+            "ScriptFile"                                  "heroes/brewmaster/drunken_fist.lua"
+            "Function"                                    "DrunkenFistCleave"
+            "DamageOnAttack"                              "%attack_damage"
+          }
+        }
       }
     }
   }

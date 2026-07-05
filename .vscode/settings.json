@@ -825,8 +825,8 @@
 	"[markdown]": {
 		"editor.wordWrap": "off"
 	},
-	"workbench.colorTheme": "Default Dark Modern",
-	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+	"workbench.colorTheme": "Dark Modern",
+	"workbench.preferredDarkColorTheme": "Dark Modern",
 	"diffEditor.wordWrap": "off",
 	"Lua.format.defaultConfig": {
 		"align_call_args": "false",
