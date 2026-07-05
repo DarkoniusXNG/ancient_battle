@@ -12,7 +12,7 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/hero_name/custom_ability.lua"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"  // this is default; not needed unless overriding dota ability or its an ultimate or talent
-    //  DOTA_ABILITY_TYPE_ULTIMATE                      // needed for ultimates
+    //  ABILITY_TYPE_ULTIMATE                      // needed for ultimates
     //  DOTA_ABILITY_TYPE_ATTRIBUTES                    // needed for talents
     "AbilityTextureName"                                  "custom/custom_hero_custom_ability"    // icon for ability
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NONE"

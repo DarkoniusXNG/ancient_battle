@@ -9,7 +9,7 @@
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/demon_hunter_demon_form"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 
     "AbilityCooldown"                                     "180"

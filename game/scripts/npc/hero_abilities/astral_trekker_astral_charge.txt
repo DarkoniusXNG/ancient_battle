@@ -11,7 +11,7 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/astral_trekker/astral_charge.lua"
     "AbilityTextureName"                                  "custom/astral_trekker_astral_charge"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"

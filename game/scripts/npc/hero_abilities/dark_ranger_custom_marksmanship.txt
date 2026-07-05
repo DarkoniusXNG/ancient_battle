@@ -14,7 +14,7 @@
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/dark_ranger_custom_marksmanship"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------

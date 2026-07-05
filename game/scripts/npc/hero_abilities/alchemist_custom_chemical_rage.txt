@@ -11,7 +11,7 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/alchemist/custom_chemical_rage.lua"
     "AbilityTextureName"                                  "custom/alchemist_custom_chemical_rage"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 

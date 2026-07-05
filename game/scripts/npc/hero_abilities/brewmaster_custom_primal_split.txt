@@ -1,44 +1,34 @@
 "DOTAAbilities"
 {
   //====================================================================================================
-  // Brewmaster: Primal Split (R) - Ultimate, Datadriven Brewmaster's Primal Split with slight modifications
+  // Brewmaster: Primal Split (R) - Active: Datadriven Brewmaster's Primal Split with slight modifications
   // Author: Darkonius
-  // Notes: OK; 2023; Selecting and deselecting works (selection library).
-  // TO_DO: Ability UI is bugged after Primal Split end -> fix if you can; aghs shard: Void Spirit split
+  // Notes: OK; 2026?; Selecting and deselecting works (selection library).
+  // TO_DO: test; Ability UI is bugged after Primal Split end -> fix if you can;
   //====================================================================================================
   "brewmaster_custom_primal_split"
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/brewmaster_custom_primal_split"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
-
-    "MaxLevel"                                            "1"
 
     //"HasShardUpgrade"                                     "1"
 
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
     "AbilityCastPoint"                                    "0.65"
 
-    "AbilityCooldown"                                     "140.0"              // original: 180 seconds; dota: 140/130/120 seconds
+    "AbilityCooldown"                                     "140 130 120"              // original: 180 seconds; dota: 140/130/120 seconds
 
     "AbilityManaCost"                                     "150"              // original: 150
     "AbilityProcsMagicStick"                              "1"
 
-    "AbilitySpecial"
-    {
-      "01" // original: 60 seconds; dota: 16/18/20 seconds
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "spirit_duration"                                 "20"
-      }
-      "02" // same as dota Brewmaster
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "split_duration"                                  "0.6"
-      }
-    }
+    "AbilityValues"
+	{
+		"spirit_duration" "16 20 24"
+		"split_duration" "0.6"
+	}
 
     "precache"
     {
@@ -109,7 +99,7 @@
           "MODIFIER_STATE_COMMAND_RESTRICTED"             "MODIFIER_STATE_VALUE_ENABLED"
         }
 
-        "OnDestroy"      
+        "OnDestroy"
         {
           "FireSound"
           {
@@ -159,7 +149,7 @@
           {
             "ScriptFile"                                  "heroes/brewmaster/primal_split.lua"
             "Function"                                    "PrimalSplit"
-          }      
+          }
         }
 
         "ThinkInterval"                                   "0.2"
@@ -169,8 +159,8 @@
           {
             "ScriptFile"                                  "heroes/brewmaster/primal_split.lua"
             "Function"                                    "PrimalSplitAuraMove"
-          }        
-        }      
+          }
+        }
 
         "OnDestroy"
         {
@@ -184,8 +174,8 @@
           {
             "ScriptFile"                                  "heroes/brewmaster/primal_split.lua"
             "Function"                                    "PrimalSplitEnd"
-          }      
-        }  
+          }
+        }
       }
 
       "modifier_custom_primal_split_spirit_buff" // doesn't need tooltip
@@ -200,8 +190,8 @@
           {
             "ScriptFile"                                  "heroes/brewmaster/primal_split.lua"
             "Function"                                    "SpiritDied"
-          }        
-        }      
+          }
+        }
       }
     }
   }
