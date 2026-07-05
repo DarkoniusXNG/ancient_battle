@@ -1,12 +1,10 @@
 // Dota Abilities Override File
 "DOTAAbilities"
 {
-  "Version"                                               "1"
-  
   // -----------------------------------------------------------
   // - UNCOMMENT ANY ITEM YOU DON'T WANT TO APPEAR IN THE SHOP -
   // -----------------------------------------------------------
-  
+
   //"item_blink"      "REMOVE"
   //"item_blades_of_attack"     "REMOVE"
   //"item_broadsword"     "REMOVE"
@@ -220,49 +218,27 @@
   //"item_recipe_tranquil_boots"      "REMOVE"
   //"item_tranquil_boots"     "REMOVE"
   //"item_shadow_amulet"      "REMOVE"
-  
-  // "item_halloween_candy_corn"       "REMOVE"
-  // "item_mystery_hook"           "REMOVE"
-  // "item_mystery_arrow"          "REMOVE"
-  // "item_mystery_missile"          "REMOVE"
-  // "item_mystery_toss"           "REMOVE"
-  // "item_mystery_vacuum"         "REMOVE"
-  // "item_halloween_rapier"         "REMOVE"
-  // "item_greevil_whistle"          "REMOVE"
-  // "item_greevil_whistle_toggle"     "REMOVE"
-  // "item_present"              "REMOVE"
-  // "item_winter_stocking"          "REMOVE"
-  // "item_winter_skates"          "REMOVE"
-  // "item_winter_cake"            "REMOVE"
-  // "item_winter_cookie"          "REMOVE"
-  // "item_winter_coco"            "REMOVE"
-  // "item_winter_ham"           "REMOVE"
-  // "item_winter_kringle"         "REMOVE"
-  // "item_winter_mushroom"          "REMOVE"
-  // "item_winter_greevil_treat"       "REMOVE"
-  // "item_winter_greevil_garbage"     "REMOVE"
-  // "item_winter_greevil_chewy"       "REMOVE"
-  
+
   //"item_recipe_moon_shard"      "REMOVE"
-  //"item_moon_shard"     "REMOVE"  
-  //"item_enchanted_mango"      "REMOVE"  
-  //"item_recipe_travel_boots_2"      "REMOVE"  
-  //"item_travel_boots_2"     "REMOVE"  
-  //"item_recipe_lotus_orb"     "REMOVE"  
-  //"item_lotus_orb"      "REMOVE"  
-  //"item_recipe_crimson_guard"     "REMOVE"  
-  //"item_crimson_guard"      "REMOVE"  
-  //"item_recipe_silver_edge"     "REMOVE"  
-  //"item_silver_edge"      "REMOVE"  
-  //"item_recipe_octarine_core"     "REMOVE"  
-  //"item_octarine_core"      "REMOVE"  
-  //"item_recipe_solar_crest"     "REMOVE"  
-  //"item_solar_crest"      "REMOVE"  
-  //"item_recipe_guardian_greaves"      "REMOVE"  
-  //"item_guardian_greaves"     "REMOVE"  
-  //"item_recipe_glimmer_cape"      "REMOVE"  
+  //"item_moon_shard"     "REMOVE"
+  //"item_enchanted_mango"      "REMOVE"
+  //"item_recipe_travel_boots_2"      "REMOVE"
+  //"item_travel_boots_2"     "REMOVE"
+  //"item_recipe_lotus_orb"     "REMOVE"
+  //"item_lotus_orb"      "REMOVE"
+  //"item_recipe_crimson_guard"     "REMOVE"
+  //"item_crimson_guard"      "REMOVE"
+  //"item_recipe_silver_edge"     "REMOVE"
+  //"item_silver_edge"      "REMOVE"
+  //"item_recipe_octarine_core"     "REMOVE"
+  //"item_octarine_core"      "REMOVE"
+  //"item_recipe_solar_crest"     "REMOVE"
+  //"item_solar_crest"      "REMOVE"
+  //"item_recipe_guardian_greaves"      "REMOVE"
+  //"item_guardian_greaves"     "REMOVE"
+  //"item_recipe_glimmer_cape"      "REMOVE"
   //"item_glimmer_cape"     "REMOVE"
-  
+
   // "item_recipe_bloodthorn"      "REMOVE"
   // "item_bloodthorn"      "REMOVE"
   // "item_wind_lace"      "REMOVE"
@@ -273,7 +249,7 @@
   // "item_tome_of_knowledge"      "REMOVE"
   // "item_recipe_hurricane_pike"      "REMOVE"
   // "item_hurricane_pike"      "REMOVE"
-  "item_banana"                                           "REMOVE"
+
   // Neutral items
   //"item_keen_optic"               "REMOVE"
   //"item_royal_jelly"              "REMOVE"
@@ -358,40 +334,8 @@
   //=================================================================================================================
   "item_cheese"
   {
-    //"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    
-    // Stats  
-    //-------------------------------------------------------------------------------------------------------------
-    //"AbilityCooldown"        "40.0"
-    
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
     "ItemCost"                                            "2000"
-    //"ItemShopTags"              ""
-    //"ItemQuality"                "epic"
     "ItemPurchasable"                                     "1"
-    //"ItemStackable"              "1"
-    //"ItemShareability"            "ITEM_FULLY_SHAREABLE"
-    //"ItemPermanent"              "0"
-    //"ItemInitialCharges"            "1"
-    //"ItemDeclarations"            "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-    //"ItemContributesToNetWorthWhenDropped"  "0"
-
-    // Special  
-    //-------------------------------------------------------------------------------------------------------------
-    // "AbilitySpecial"
-    // {
-      // "01"
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "health_restore"    "2500"
-      // }
-      // "02"
-      // {
-        // "var_type"        "FIELD_INTEGER"
-        // "mana_restore"      "1000"
-      // }
-    // }
   }
 
   //=================================================================================================================
@@ -410,20 +354,32 @@
     "AbilitySharedCooldown"                               "reflection_items"
   }
 
+  "item_recipe_hood_of_defiance"
+  {
+	"IsObsolete"                                          "0"
+  }
+
   //=================================================================================================================
   // Hood of Defiance - Shares cooldown with Infused Robe
   //=================================================================================================================
   "item_hood_of_defiance"
   {
     "AbilitySharedCooldown"                               "hood_of_defiance"
+	"IsObsolete"                                          "0"
   }
-  
+
+  "item_recipe_eternal_shroud"
+  {
+    "IsObsolete"                                          "0"
+  }
+
   //=================================================================================================================
   // Eternal Shroud
   //=================================================================================================================
   "item_eternal_shroud"
   {
     "AbilitySharedCooldown"                               "hood_of_defiance"
+	"IsObsolete"                                          "0"
   }
 
   //=================================================================================================================
@@ -538,6 +494,7 @@
   "item_quarterstaff"
   {
     "SideShop"                                            "1"
+	"IsObsolete"                                          "0"
   }
 
   "item_energy_booster"
@@ -578,15 +535,11 @@
   //=================================================================================================================
   "item_recipe_wraith_band"
   {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "74"
-    
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "110"  
+    "ItemCost"                                            "110"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -602,15 +555,11 @@
   //=================================================================================================================
   "item_recipe_bracer"
   {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "72"
-    
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "110"  
+    "ItemCost"                                            "110"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -626,15 +575,11 @@
   //=================================================================================================================
   "item_recipe_null_talisman"
   {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "76"
-    
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "110"  
+    "ItemCost"                                            "110"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -650,14 +595,11 @@
   //=================================================================================================================
   "item_recipe_gungir"
   {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "1565"
     "Model"                                               "models/props_gameplay/recipe.vmdl"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "500"  
+    "ItemCost"                                            "650"
     "ItemShopTags"                                        ""
 
     // Recipe
@@ -666,7 +608,7 @@
     "ItemResult"                                          "item_gungir"
     "ItemRequirements"
     {
-      "01"                                                "item_maelstrom;item_ultimate_orb;item_crown;item_atma"
+      "01"                                                "item_staff_of_wizardry;item_vitality_booster;item_point_booster;item_chasm_stone"
     }
   }
 
@@ -677,14 +619,13 @@
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "124"
     "Model"                                               "models/props_gameplay/recipe.vmdl"
-    
+
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "0"  
+    "ItemCost"                                            "0"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -695,6 +636,21 @@
     }
   }
 
+  "item_recipe_wraith_pact"
+  {
+	"IsObsolete"                                          "0"
+  }
+
+  "item_wraith_pact"
+  {
+	"IsObsolete"                                          "0"
+  }
+
+  "item_cornucopia"
+  {
+	"IsObsolete"                                          "0"
+  }
+
   //=================================================================================================================
   // Filler buildings ability (Shrines)
   //=================================================================================================================
@@ -702,7 +658,6 @@
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
-    "ID"                                                  "6226"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "MaxLevel"                                            "1"
 
@@ -715,16 +670,16 @@
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
-        {
-            "hp_heal" "90"
-            "mp_heal" "50"
-            "hp_heal_growth" "0"
-            "mp_heal_growth" "0"
-            "hp_heal_pct" "2"
-            "mp_heal_pct" "2"
-            "duration" "5"
-            "radius" "500"
-            "initial_cooldown" "180"
-        }
+	{
+		"hp_heal" "90"
+		"mp_heal" "50"
+		"hp_heal_growth" "0"
+		"mp_heal_growth" "0"
+		"hp_heal_pct" "2"
+		"mp_heal_pct" "2"
+		"duration" "5"
+		"radius" "500"
+		"initial_cooldown" "180"
+	}
   }
 }

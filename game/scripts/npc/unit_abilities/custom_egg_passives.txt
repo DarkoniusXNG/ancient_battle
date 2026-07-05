@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Phoenix Egg: Passives
   // Author: Darkonius
-  // Notes: OK; 2023;
+  // Notes: OK; 2026;
   // TO_DO: Particles and sounds
   //=================================================================================================================
   "custom_egg_passives"
@@ -18,23 +18,11 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "melee_hero_hits_to_kill"                         "4"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "ranged_hero_hits_to_kill"                        "4"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "creep_hits_to_kill"                              "16"
-      }
-    }
+    "AbilityValues"
+	{
+		"melee_hero_hits_to_kill" "4"
+		"ranged_hero_hits_to_kill" "4"
+		"creep_hits_to_kill" "16"
+	}
   }
 }

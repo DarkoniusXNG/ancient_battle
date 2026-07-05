@@ -2,7 +2,7 @@
 {
   //=================================================================================================================
   // Recipe: Custom Rod of Atos
-  // Notes: OK; 2022;
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_custom_rod_of_atos"
   {
@@ -14,7 +14,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "330"  
+    "ItemCost"                                            "380"
     "ItemShopTags"                                        ""
 
     // Recipe
@@ -28,8 +28,8 @@
   }
 
   //=================================================================================================================
-  // Custom Rod of Atos - Staff of Wizardry (1000) + Soul Gem (1000) + Atma (420) + Recipe (330) = 2750
-  // Notes: OK; 2022;
+  // Custom Rod of Atos
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_custom_rod_of_atos"
   {
@@ -43,58 +43,35 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_PURE"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-    // Stats    
+    // Stats
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "18"
     "AbilitySharedCooldown"                               "atos"
-    "AbilityCastRange"                                    "1100"
+    "AbilityCastRange"                                    "750" // like Spirit Vessel
     "AbilityCastPoint"                                    "0.0"
+	"AbilityManaCost"                                     "100"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "50"
-    "ItemCost"                                            "2750"
+    "ItemCost"                                            "2800" // 1000 + 1000 + 420 + 380
     "ItemShopTags"                                        "int;agi;str"
     "ItemQuality"                                         "rare"
     "ItemAliases"                                         "rod of atos"
     "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
 
-    // Special  
+    // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {      
-      "01" // Soul Gem (5) + Atma (4) + Staff of Wizardry (10)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "10"
-      }
-      "03"
-      {      
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "10"
-      }
-      //"04"
-      //{
-        //"var_type"        "FIELD_INTEGER"
-        //"move_speed_slow"    "-60"
-      //}
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-120"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "3.0"
-      }
-    }
+    "AbilityValues"
+	{
+		"bonus_int" "20" // Soul Gem (5) + Atma (4) + Staff of Wizardry (10)
+		"bonus_agi" "10" // Soul Gem (5) + Atma (4)
+		"bonus_str" "10" // Soul Gem (5) + Atma (4)
+		"bonus_dmg" "2" // Atma (2)
+		"move_speed_slow"   "-100" // unused
+		"attack_speed_slow" "-100"
+		"duration" "2.0"
+	}
 
     "OnSpellStart"
     {
@@ -109,7 +86,7 @@
     {
       "modifier_item_custom_rod_of_atos_passives" // doesn't need tooltip
       {
-        "Passive"                                         "1"  
+        "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
@@ -121,6 +98,7 @@
           "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%bonus_int"
           "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"
           "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
+		  "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_dmg"
         }
       }
 
@@ -137,7 +115,7 @@
         "EffectName"                                      "particles/items2_fx/rod_of_atos.vpcf"
         "EffectAttachType"                                "follow_origin"
 
-        "States"  
+        "States"
         {
           "MODIFIER_STATE_ROOTED"                         "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_DISABLED"

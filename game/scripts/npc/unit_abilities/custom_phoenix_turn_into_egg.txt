@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Phoenix: Turn Into Egg After Death
   // Author: Darkonius
-  // Notes: OK; 2022;
-  // TO_DO: 
+  // Notes: OK; 2026;
+  // TO_DO: test
   //=================================================================================================================
   "custom_phoenix_turn_into_egg"
   {
@@ -14,14 +14,10 @@
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "egg_duration"                                    "6"
-      }
-    }
+    "AbilityValues"
+	{
+		"egg_duration" "6"
+	}
 
     "Modifiers"
     {
@@ -31,7 +27,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnDeath"
         {
           "RunScript"

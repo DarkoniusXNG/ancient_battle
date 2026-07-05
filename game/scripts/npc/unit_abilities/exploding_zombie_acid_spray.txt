@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Horde Exploding Zombie: Damage, Knockback + Acid Spray on Death
   // Author: Valve + Darkonius
-  // Notes: OK; 16.9.2018;
-  // TO_DO:
+  // Notes: OK; 2026;
+  // TO_DO: test
   //=================================================================================================================
   "exploding_zombie_acid_spray"
   {
@@ -16,40 +16,20 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
     "MaxLevel"                                            "1"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "250"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "16.0"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second"                               "150"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "armor_reduction"                                 "-6"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tick_rate"                                       "1.0"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_explode"                                  "1000"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"radius"
+		{
+			"value"			"250"
+			"affected_by_aoe_increase"	"1"
+		}
+		"duration" "16.0"
+		"damage_per_second" "50"
+		"armor_reduction" "-6"
+		"tick_rate" "1.0"
+		"damage_explode" "800"
+	}
+
     "OnOwnerDied"
     {
       "CreateThinker"
@@ -59,16 +39,16 @@
         {
           "Center"                                        "CASTER"
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_DEAD"
-        }      
+        }
       }
-      
+
       "FireEffect"
       {
         "Target"
         {
           "Center"                                        "CASTER"
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_DEAD"
-        }      
+        }
         "EffectName"                                      "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
         "EffectAttachType"                                "follow_origin"
         "EffectRadius"                                    "%radius"
@@ -77,7 +57,7 @@
         "EffectColorA"                                    "25 150 25"
         "EffectColorB"                                    "25 150 25"
       }
-      
+
       "Damage"
       {
         "Type"                                            "DAMAGE_TYPE_MAGICAL"
@@ -90,7 +70,7 @@
           "Types"                                         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         }
       }
-      
+
       "Knockback"
       {
         "Target"
@@ -104,7 +84,7 @@
         "Distance"                                        "275"
         "Height"                                          "175"
       }
-      
+
       "FireSound"
       {
         "EffectName"                                      "Ability.AcidSpray"
@@ -112,7 +92,7 @@
         {
           "Center"                                        "CASTER"
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_DEAD"
-        }      
+        }
       }
     }
 
@@ -122,15 +102,15 @@
       {
         "IsHidden"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "Duration"                                        "%duration"
-        
+
         "Aura"                                            "custom_acid_spray_armor_reduction_aura"
         "Aura_Radius"                                     "%radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "Aura_Flags"                                      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        
+
         "OnCreated"
         {
           "AttachEffect"
@@ -154,9 +134,9 @@
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "EffectName"                                      "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
-        
+
         "ThinkInterval"                                   "%tick_rate"
         "OnIntervalThink"
         {
@@ -173,14 +153,14 @@
           "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reduction"
         }
       }
-      
+
       "exploding_zombie_acid_spray_passive" // doesn't need tooltip
       {
         "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "AttachEffect"

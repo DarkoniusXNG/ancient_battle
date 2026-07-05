@@ -4,7 +4,6 @@
   // Item Name -
   // Notes: OK; Date;
   //=================================================================================================================
-  //"ID"                    "1280"    // anything above 1250 should be safe to use. // Essential
   //"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
   //"AbilityUnitTargetTeam"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
   //"AbilityUnitTargetType"       "DOTA_UNIT_TARGET_HERO"
@@ -19,7 +18,7 @@
   //"AbilityManaCost"           "100"
   //"ItemCost"                "750"                                  // Essential, Default is 0;
   //"ItemInitialCharges"       "1"   // How many charges should the item start with - Tango, Diffusal, Drums for example; Default is 0;
-  //"ItemDisplayCharges"       "1"   // Hide the charges of the item - Aegis 
+  //"ItemDisplayCharges"       "1"   // Hide the charges of the item - Aegis
   //"ItemRequiresCharges"     "1"   // The active ability needs charges to be used - Urn; Default is 0;
   //"ItemKillable"         "0"    // Default is 1; lets both allies and enemies destroy the dropped item by attacking it.
   //"ItemSellable"         "1"                                    // Essential, Default is 1;
@@ -29,15 +28,15 @@
   //"ItemDeclarations"          "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"    // Essential
   //"MaxUpgradeLevel"           "1"    // Dagon is 5;
   //"ItemBaseLevel"             "1"    // Default is 1; You'll need 5 different items, and change each accordingly
-  //"ItemStockMax"         "1" 
+  //"ItemStockMax"         "1"
   //"ItemStockTime"         "100"
   //"ItemStockInitial"       "3"
-  //"Model"                "models/props_gameplay/recipe.vmdl" 
+  //"Model"                "models/props_gameplay/recipe.vmdl"
   //"Effect"               "particles/generic_gameplay/dropped_item.vpcf"
   //"ItemQuality"          "artifact"                                // Essential, color of the dropped item
-  //"SideShop"             "1" 
+  //"SideShop"             "1"
   //"SecretShop"           "0"
-  //"ItemStackable"         "1"    // Default is 0;                                    
+  //"ItemStackable"         "1"    // Default is 0;
   //"ItemPermanent"         "1"    // Default is 1; charged items won't disappear when they hit 0 charges (Bottle, Urn, etc)
   //"ItemDisassembleRule"     "DOTA_ITEM_DISASSEMBLE_ALWAYS"                      // Essential
   //"ItemCombinable"        "1"    // Default is 1;
@@ -59,12 +58,12 @@
       // "IsHidden" "1"
       // "IsBuff"    "1"
       // "IsPurgable"  "0"
-      // "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"      // Essential for stacking stats from items  
-      
+      // "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"      // Essential for stacking stats from items
+
       // "Properties"
       // {
         // "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_stat"
       // }
-    // } 
+    // }
   // }
 }

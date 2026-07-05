@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // 1251 - Recipe: Slippers of Halcyon
-  // Notes: OK; 17.5.2018;
+  // Recipe: Slippers of Halcyon
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_custom_slippers_of_halcyon"
   {
@@ -10,12 +10,12 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "item_recipe_tranquil_boots"
     "AbilityTextureName"                                  "custom/custom_recipe"
-    
+
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "0"  
+    "ItemCost"                                            "900"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -25,10 +25,10 @@
       "01"                                                "item_tranquil_boots;item_vitality_booster"
     }
   }
-  
+
   //=================================================================================================================
-  // 1252 - Slippers of Halcyon - Tranquil Boots (1000) + Vitality Booster (1100) = 2100
-  // Notes: OK; 25.12.2019;
+  // Slippers of Halcyon
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_custom_slippers_of_halcyon"
   {
@@ -39,14 +39,14 @@
     "AbilityTextureName"                                  "custom/slippers_of_halcyon"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_1"
 
-    // Stats    
+    // Stats
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"                                     "50"
+    "AbilityCooldown"                                     "30"
+	"AbilityManaCost"                                     "50"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "50"
-    "ItemCost"                                            "2100"
+    "ItemCost"                                            "2800" // 900 + 1000 + 900
     "ItemShopTags"                                        "move_speed;regen_health"
     "ItemQuality"                                         "rare"
     "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
@@ -59,51 +59,23 @@
       "particle"                                          "particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf"
     }
 
-    // Special  
+    // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_movement"                                  "20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_hp"                                        "250"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bonus_hp_regen"                                  "3.0"
-      }
-      "04" // only here
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_per_tick"                                     "50"
-      }
-      "05" // only here
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "tick_rate"                                       "0.5"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "1200"
-      }
-      "07" // in tooltip only
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "4"
-      }
-      "08" // in tooltip only
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_per_second_tooltip"                           "100"
-      }
-    }
+    "AbilityValues"
+	{
+		"bonus_movement" "65"
+		"bonus_hp" "250"
+		"bonus_hp_regen" "14"
+		"hp_per_tick" "50" // only here
+		"tick_rate" "0.5" // only here
+		"radius"
+		{
+			"value"				"1200"
+			"affected_by_aoe_increase"	"1"
+		}
+		"duration" "4" // in tooltip only
+		"hp_per_second_tooltip" "100" // in tooltip only
+	}
 
     "OnSpellStart"
     {
@@ -137,7 +109,7 @@
 
         "Properties"
         {
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_movement"
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"      "%bonus_movement"
           "MODIFIER_PROPERTY_HEALTH_BONUS"                "%bonus_hp"
           "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%bonus_hp_regen"
         }
