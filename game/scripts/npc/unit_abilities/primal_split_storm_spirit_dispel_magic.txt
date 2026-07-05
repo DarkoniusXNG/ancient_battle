@@ -3,8 +3,8 @@
   //====================================================================================================
   // Primal Split Storm Spirit: Dispel Magic (Q) - Damages summoned units and applies basic dispel
   // Author: Darkonius
-  // Notes: OK; 24.8.2019;
-  // TO_DO:
+  // Notes: OK; 2026?;
+  // TO_DO: test
   //====================================================================================================
   "primal_split_storm_spirit_dispel_magic"
   {
@@ -25,20 +25,19 @@
     "AbilityManaCost"                                     "75"
     "AbilityProcsMagicStick"                              "1"
     
-    "AbilitySpecial"
-    {
-      "01" // original: 200; dota: 1000;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_to_summons"                               "1000"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02" // origina: 200; dota: 600;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "600"
-      }
-    }
+    "AbilityValues"
+	{
+		"damage_to_summons"
+		{
+			"value" "1000"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"radius"
+		{
+			"value"			"600"
+			"affected_by_aoe_increase"	"1"
+		}
+	}
     
     "OnSpellStart"
     {
