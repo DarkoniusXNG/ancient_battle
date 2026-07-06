@@ -38,7 +38,7 @@
 	IsTemplate = false
 	DefaultMap = "main"
 	Default_Keys = [  ]
-	DisableIK = false
+	DisableIK = true
 	EventGame = false
 	hero_picker = 
 	{
@@ -47,5 +47,5 @@
 	MinimalPrecache = true
 	MinPlayers = 1
 	MaxPlayers = 10
-	TeamCount = -1
+	TeamCount = 3
 }
