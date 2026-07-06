@@ -268,8 +268,8 @@ function modifier_item_custom_purged_enemy_hero:OnCreated()
 	if ability and not ability:IsNull() then
 		local movement_slow = ability:GetSpecialValueFor("move_speed_slow")
 		if IsServer() then
-			-- Slow is reduced with Status Resistance
-			self.slow = parent:GetValueChangedByStatusResistance(movement_slow)
+			-- Slow is reduced with Slow Resistance
+			self.slow = movement_slow --parent:GetValueChangedBySlowResistance(movement_slow)
 		else
 			self.slow = movement_slow
 		end

@@ -853,6 +853,7 @@ read_globals = { -- these globals can only be accessed.
 "DOTA_UNIT_ORDER_MOVE_RELATIVE",
 -- Pseudo Random enums
 "DOTA_PSEUDO_RANDOM_CUSTOM_GAME_1",
+"DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2",
 -- Convar flags
 "FCVAR_NONE",
 "FCVAR_CHEAT",

@@ -42,7 +42,7 @@
     // Stats
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "30"
-	"AbilityManaCost"                                     "50"
+    "AbilityManaCost"                                     "50"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@
     "ItemShopTags"                                        "move_speed;regen_health"
     "ItemQuality"                                         "rare"
     "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
-    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_ALWAYS"
+    "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
     "ItemAlertable"                                       "1"
     "ItemAliases"                                         "halcyon"
 
@@ -62,20 +62,20 @@
     // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
-	{
-		"bonus_movement" "65"
-		"bonus_hp" "250"
-		"bonus_hp_regen" "14"
-		"hp_per_tick" "50" // only here
-		"tick_rate" "0.5" // only here
-		"radius"
-		{
-			"value"				"1200"
-			"affected_by_aoe_increase"	"1"
-		}
-		"duration" "4" // in tooltip only
-		"hp_per_second_tooltip" "100" // in tooltip only
-	}
+    {
+      "bonus_movement" "65"
+      "bonus_hp" "250"
+      "bonus_hp_regen" "14"
+      "hp_per_tick" "50" // only here
+      "tick_rate" "0.5" // only here
+      "radius"
+      {
+        "value"				"1200"
+        "affected_by_aoe_increase"	"1"
+      }
+      "duration" "4" // in tooltip only
+      "hp_per_second_tooltip" "100" // in tooltip only
+    }
 
     "OnSpellStart"
     {

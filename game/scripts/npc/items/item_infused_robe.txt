@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // 1262 - Recipe: Infused Robe
-  // Notes: OK; 2022;
+  // Recipe: Infused Robe
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_infused_robe"
   {
@@ -12,7 +12,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "250"  
+    "ItemCost"                                            "100"
     "ItemShopTags"                                        ""
 
     // Recipe
@@ -24,11 +24,11 @@
       "01"                                                "item_hood_of_defiance;item_vanguard;item_infused_raindrop"
     }
   }
-  
+
   //=================================================================================================================
-  // 1263 - Infused Robe - Hood of Defiance (1500) + Vanilla Vanguard (1825) + Stout Shield (200) + Infused Raindrop (225) + Recipe (250) = 4000
-  // Notes: OK; 2022; Attack Damage block chance is Valve's Pseudo Random; Spell Damage block chance is custom Pseudo Random;
-  // TO_DO: 
+  // Infused Robe
+  // Notes: OK; 2026;
+  // TO_DO:
   //=================================================================================================================
   "item_infused_robe"
   {
@@ -41,9 +41,9 @@
     "AbilityCastPoint"                                    "0.0"
     "AbilityCooldown"                                     "30"
     "AbilitySharedCooldown"                               "hood_of_defiance"
-    "AbilityManaCost"                                     "100"
+    "AbilityManaCost"                                     "100" // 50 + ?
 
-    "ItemCost"                                            "4000"
+    "ItemCost"                                            "4000" // 1775 + 1700 + 200 + 225 + 100
     "ItemShopTags"                                        "regen_health;magic_resist;block;health_pool"
     "ItemQuality"                                         "epic"
     "ItemAliases"                                         "infused robe"
@@ -59,24 +59,24 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
     }
 
-    // Special  
+    // Special
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
       "bonus_hp"                                          "250" // like Vanguard
-      "bonus_hp_regen"                                    "15.5" // Hood (8.5) + Vanguard (7)
+      "bonus_hp_regen"                                    "13" // Hood (8.5) + Vanguard (4.5)
       "bonus_mana_regen"                                  "0.8" // like Raindrop
-      "bonus_magic_resist"                                "25" // Hood (18); Eternal Shroud (25)
+      "bonus_magic_resist"                                "20" // Hood (18);
 
-      "passive_attack_damage_block_melee"                 "65"
-      "passive_attack_damage_block_ranged"                "35"
+      "passive_attack_damage_block_melee"                 "55"
+      "passive_attack_damage_block_ranged"                "30"
       "passive_attack_damage_block_chance"                "60"
 
-      "passive_spell_damage_block"                        "35"
-      "passive_spell_damage_block_chance"                 "50"
+      "passive_spell_damage_block"                        "120" // like Raindrop
+      "passive_spell_damage_block_chance"                 "25"
 
-      "barrier_block"                                     "420" // Hood (350); Raindrop (120); Eternal Shroud (400);
-      "barrier_duration"                                  "12" // Hood (12); Aphotic Shield (15);
+      "barrier_block"                                     "420" // 350 + 50 + ?
+      "barrier_duration"                                  "12" // like Hood
     }
   }
 }

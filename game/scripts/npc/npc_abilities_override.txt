@@ -190,9 +190,9 @@
   "item_recipe_mask_of_madness"                           "REMOVE"
   "item_mask_of_madness"                                  "REMOVE"
   "item_recipe_diffusal_blade"                            "REMOVE"
-  "item_recipe_diffusal_blade_2"                          "REMOVE"
   "item_diffusal_blade"                                   "REMOVE"
-  "item_diffusal_blade_2"                                 "REMOVE"
+  "item_recipe_disperser"                                 "REMOVE"
+  "item_disperser"                                        "REMOVE"
   //"item_recipe_ethereal_blade"      "REMOVE"
   //"item_ethereal_blade"     "REMOVE"
   //"item_recipe_soul_ring"     "REMOVE"
@@ -324,7 +324,6 @@
   //=================================================================================================================
   "item_blink"
   {
-    "AbilitySharedCooldown"                               "blink"
     "SideShop"                                            "1"
   }
 
@@ -357,6 +356,11 @@
   "item_recipe_hood_of_defiance"
   {
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
+	"ItemRequirements"
+    {
+      "01"                                                "item_cloak;item_ring_of_health;item_ring_of_regen"
+    }
   }
 
   //=================================================================================================================
@@ -366,11 +370,15 @@
   {
     "AbilitySharedCooldown"                               "hood_of_defiance"
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
+    "ItemCost"                                            "1775" // 900 + 700 + 175
+	"ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_ALWAYS"
   }
 
   "item_recipe_eternal_shroud"
   {
     "IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   //=================================================================================================================
@@ -378,8 +386,8 @@
   //=================================================================================================================
   "item_eternal_shroud"
   {
-    "AbilitySharedCooldown"                               "hood_of_defiance"
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   //=================================================================================================================
@@ -495,6 +503,7 @@
   {
     "SideShop"                                            "1"
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   "item_energy_booster"
@@ -639,16 +648,19 @@
   "item_recipe_wraith_pact"
   {
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   "item_wraith_pact"
   {
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   "item_cornucopia"
   {
 	"IsObsolete"                                          "0"
+    "ItemPurchasable"                                     "1"
   }
 
   //=================================================================================================================
