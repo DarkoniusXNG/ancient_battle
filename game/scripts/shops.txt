@@ -220,7 +220,7 @@
 		"item"	  "item_custom_diffusal_blade"
 		//"item"    "item_heavens_halberd"
 		//"item"    "item_desolator"
-		"item"    "item_devastator"
+		"item"    "item_devastator_custom"
 		//"item"    "item_kaya_and_sange"
 		//"item"    "item_sange_and_yasha"
 		//"item"    "item_yasha_and_kaya"

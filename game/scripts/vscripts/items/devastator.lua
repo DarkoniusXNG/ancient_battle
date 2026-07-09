@@ -1,17 +1,15 @@
 LinkLuaModifier("modifier_item_devastator_passive", "items/devastator.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_item_devastator_corruption_armor", "items/devastator.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_item_devastator_reduce_armor", "items/devastator.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_item_devastator_slow_movespeed", "items/devastator.lua", LUA_MODIFIER_MOTION_NONE)
 
-item_devastator = class({})
+item_devastator_custom = class({})
 
-function item_devastator:OnSpellStart()
+function item_devastator_custom:OnSpellStart()
   local caster = self:GetCaster()
   self.devastator_speed = self:GetSpecialValueFor( "devastator_speed" )
   self.devastator_width_initial = self:GetSpecialValueFor( "devastator_width_initial" )
   self.devastator_width_end = self:GetSpecialValueFor( "devastator_width_end" )
   self.devastator_distance = self:GetSpecialValueFor( "devastator_distance" )
-  self.devastator_movespeed_reduction_duration = self:GetSpecialValueFor( "devastator_movespeed_reduction_duration" )
   self.devastator_armor_reduction_duration = self:GetSpecialValueFor( "devastator_armor_reduction_duration" )
 
   -- Sound
@@ -51,39 +49,19 @@ function item_devastator:OnSpellStart()
 end
 
 -- Impact of the projectile
-function item_devastator:OnProjectileHit( hTarget, vLocation )
+function item_devastator_custom:OnProjectileHit( hTarget, vLocation )
   if hTarget and ( not hTarget:IsInvulnerable() ) and ( not hTarget:IsAttackImmune() ) then
-    local armor_reduction_duration = hTarget:GetValueChangedByStatusResistance(self.devastator_armor_reduction_duration)
+    local caster = self:GetCaster()
 
-    -- Apply the slow debuff always
-    hTarget:AddNewModifier( hTarget, self, "modifier_item_devastator_slow_movespeed", { duration = self.devastator_movespeed_reduction_duration } )
+	local armor_reduction_duration = hTarget:GetValueChangedByStatusResistance(self.devastator_armor_reduction_duration)
 
-    -- Armor reduction values
-    local armor_reduction = self:GetSpecialValueFor( "devastator_armor_reduction" )
-    local corruption_armor = self:GetSpecialValueFor( "corruption_armor" )
+    -- Apply the Devastator active armor reduction debuff
+    hTarget:AddNewModifier(hTarget, self, "modifier_item_devastator_reduce_armor", {duration = armor_reduction_duration})
 
-    -- If the target has Desolator debuff then remove it
-    if hTarget:HasModifier("modifier_desolator_buff") then
-      hTarget:RemoveModifierByName("modifier_desolator_buff")
-    end
-
-    -- if the target has Devastator passive armor reduction debuff then check which armor reduction is better
-    if hTarget:HasModifier("modifier_item_devastator_corruption_armor") then
-      -- If active armor reduction is better than passive then remove Devastator passive armor reduction debuff
-      -- and apply Devastator active armor reduction debuff
-      if math.abs(armor_reduction) > math.abs(corruption_armor) then
-        hTarget:RemoveModifierByName("modifier_item_devastator_corruption_armor")
-        hTarget:AddNewModifier( hTarget, self, "modifier_item_devastator_reduce_armor", { duration = armor_reduction_duration } )
-      end
-    else
-      -- Apply the Devastator active armor reduction debuff if Devastator passive armor reduction debuff is not there
-      hTarget:AddNewModifier( hTarget, self, "modifier_item_devastator_reduce_armor", { duration = armor_reduction_duration } )
-    end
-
-    self:GetCaster():PerformAttack(hTarget, true, true, true, false, false, false, true)
+    caster:PerformAttack(hTarget, true, true, true, false, false, false, true)
 
     -- Particles
-    local vDirection = vLocation - self:GetCaster():GetOrigin()
+    local vDirection = vLocation - caster:GetOrigin()
     vDirection.z = 0.0
     vDirection = vDirection:Normalized()
     -- Replace with the particles for the item
@@ -95,7 +73,7 @@ function item_devastator:OnProjectileHit( hTarget, vLocation )
   return false
 end
 
-function item_devastator:GetIntrinsicModifierName()
+function item_devastator_custom:GetIntrinsicModifierName()
   return "modifier_item_devastator_passive"
 end
 
@@ -123,6 +101,7 @@ function modifier_item_devastator_passive:OnCreated()
   local ability = self:GetAbility()
   if ability and not ability:IsNull() then
     self.bonus_damage = ability:GetSpecialValueFor("bonus_damage")
+    self.agi = ability:GetSpecialValueFor("bonus_agility")
   end
 end
 
@@ -130,14 +109,19 @@ modifier_item_devastator_passive.OnRefresh = modifier_item_devastator_passive.On
 
 function modifier_item_devastator_passive:DeclareFunctions()
   return {
-    MODIFIER_EVENT_ON_ATTACK_LANDED,
     MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+    MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
     MODIFIER_PROPERTY_PROJECTILE_NAME,
+    MODIFIER_EVENT_ON_ATTACK_LANDED,
   }
 end
 
 function modifier_item_devastator_passive:GetModifierPreAttack_BonusDamage()
   return self.bonus_damage or self:GetAbility():GetSpecialValueFor("bonus_damage")
+end
+
+function modifier_item_devastator_passive:GetModifierBonusStats_Agility()
+  return self.agi or self:GetAbility():GetSpecialValueFor("bonus_agility")
 end
 
 function modifier_item_devastator_passive:GetModifierProjectileName()
@@ -201,17 +185,9 @@ if IsServer() then
       target:RemoveModifierByName("modifier_desolator_buff")
     end
 
-    local armor_reduction = ability:GetSpecialValueFor("devastator_armor_reduction")
-    local corruption_armor = ability:GetSpecialValueFor("corruption_armor")
-
-    -- If the target has Devastator active debuff
-    if target:HasModifier("modifier_item_devastator_reduce_armor") then
-      -- If devastator_armor_reduction (active armor reduction) is higher than corruption_armor (passive armor reduction) then do nothing
-      if math.abs(armor_reduction) > math.abs(corruption_armor) then
-        return
-      end
-      -- If devastator_armor_reduction is lower than corruption_armor then remove the Devastator active debuff
-      target:RemoveModifierByName("modifier_item_devastator_reduce_armor")
+    -- If the target has Orb of Corrosion debuff then remove it (to prevent stacking armor reductions)
+    if target:HasModifier("modifier_orb_of_corrosion_debuff") then
+      target:RemoveModifierByName("modifier_orb_of_corrosion_debuff")
     end
 
     -- Calculate duration of the debuff
@@ -244,29 +220,44 @@ function modifier_item_devastator_corruption_armor:OnCreated()
     self:StartIntervalThink(0.1)
   end
 
-  self.armor_reduction = self:GetAbility():GetSpecialValueFor("corruption_armor")
+  local ability = self:GetAbility()
+  if not ability or ability:IsNull() then
+    return
+  end
+
+  self.armor_reduction = ability:GetSpecialValueFor("corruption_armor")
+  self.slow = ability:GetSpecialValueFor("corruption_slow") --self:GetParent():GetValueChangedBySlowResistance(ability:GetSpecialValueFor("corruption_slow"))
+  self.heal_reduction = ability:GetSpecialValueFor("corruption_heal_reduction")
 end
 
 function modifier_item_devastator_corruption_armor:OnIntervalThink()
   local parent = self:GetParent()
-
   if parent:HasModifier("modifier_desolator_buff") then
     parent:RemoveModifierByName("modifier_desolator_buff")
+  end
+  if parent:HasModifier("modifier_orb_of_corrosion_debuff") then
+    parent:RemoveModifierByName("modifier_orb_of_corrosion_debuff")
   end
 end
 
 function modifier_item_devastator_corruption_armor:DeclareFunctions()
   return {
     MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+    MODIFIER_PROPERTY_RESTORATION_AMPLIFICATION,
   }
 end
 
 function modifier_item_devastator_corruption_armor:GetModifierPhysicalArmorBonus()
-  return self.armor_reduction
+  return 0 - math.abs(self.armor_reduction)
 end
 
-function modifier_item_devastator_corruption_armor:GetTexture()
-  return "item_desolator"
+function modifier_item_devastator_corruption_armor:GetModifierMoveSpeedBonus_Percentage()
+  return 0 - math.abs(self.slow)
+end
+
+function modifier_item_devastator_corruption_armor:GetModifierPropertyRestorationAmplification()
+  return 0 - math.abs(self.heal_reduction)
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -286,19 +277,7 @@ function modifier_item_devastator_reduce_armor:IsPurgable()
 end
 
 function modifier_item_devastator_reduce_armor:OnCreated()
-  if IsServer() then
-    self:StartIntervalThink(0.1)
-  end
   self.armor_reduction = self:GetAbility():GetSpecialValueFor("devastator_armor_reduction")
-end
-
-function modifier_item_devastator_reduce_armor:OnIntervalThink()
-  local parent = self:GetParent()
-  -- We assume that devastator active has a better armor reduction than the desolator armor reduction
-  -- Remove the desolator debuff to prevent stacking armor reductions
-  if parent:HasModifier("modifier_desolator_buff") then
-    parent:RemoveModifierByName("modifier_desolator_buff")
-  end
 end
 
 function modifier_item_devastator_reduce_armor:DeclareFunctions()
@@ -308,48 +287,5 @@ function modifier_item_devastator_reduce_armor:DeclareFunctions()
 end
 
 function modifier_item_devastator_reduce_armor:GetModifierPhysicalArmorBonus()
-  return self.armor_reduction
-end
-
----------------------------------------------------------------------------------------------------
-
-modifier_item_devastator_slow_movespeed = class({})
-
-function modifier_item_devastator_slow_movespeed:IsHidden() -- needs tooltip
-  return false
-end
-
-function modifier_item_devastator_slow_movespeed:IsDebuff()
-  return true
-end
-
-function modifier_item_devastator_slow_movespeed:IsPurgable()
-  return true
-end
-
-function modifier_item_devastator_slow_movespeed:OnCreated()
-  local parent = self:GetParent()
-  local ability = self:GetAbility()
-  local move_speed_slow = 0
-
-  if ability then
-    move_speed_slow = ability:GetSpecialValueFor("devastator_movespeed_reduction")
-  end
-  if IsServer() then
-    self.slow = parent:GetValueChangedByStatusResistance(move_speed_slow)
-  else
-    self.slow = move_speed_slow
-  end
-end
-
-modifier_item_devastator_slow_movespeed.OnRefresh = modifier_item_devastator_slow_movespeed.OnCreated
-
-function modifier_item_devastator_slow_movespeed:DeclareFunctions()
-  return {
-    MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
-  }
-end
-
-function modifier_item_devastator_slow_movespeed:GetModifierMoveSpeedBonus_Percentage()
-  return self.slow
+  return 0 - math.abs(self.armor_reduction)
 end
