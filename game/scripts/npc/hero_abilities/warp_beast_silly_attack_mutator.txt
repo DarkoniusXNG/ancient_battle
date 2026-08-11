@@ -1,0 +1,15 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Warp Beast - Silly Attack Mutator
+  // Plays Faceless Rex's death animation as an attack animation. Looks amazing!
+  //=================================================================================================================
+  "warp_beast_silly_attack_mutator"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/warp_beast/warp_beast_silly_attack_mutator.lua"
+    "AbilityTextureName"                                  "faceless_void_chronosphere"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  }
+}

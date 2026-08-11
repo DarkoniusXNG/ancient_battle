@@ -146,7 +146,8 @@ function modifier_item_sonic_active:DeclareFunctions()
     MODIFIER_PROPERTY_IGNORE_MOVESPEED_LIMIT,
     MODIFIER_PROPERTY_IGNORE_ATTACKSPEED_LIMIT,
     MODIFIER_PROPERTY_ATTACKSPEED_REDUCTION_PERCENTAGE,
-    --MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING
+    --MODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING,
+    MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
   }
 end
 
@@ -180,6 +181,10 @@ end
 --function modifier_item_sonic_active:GetModifierStatusResistanceStacking()
   --return self:GetAbility():GetSpecialValueFor("status_resist")
 --end
+
+function modifier_item_sonic_active:GetActivityTranslationModifiers()
+  return "haste"
+end
 
 function modifier_item_sonic_active:GetEffectName()
   return "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"

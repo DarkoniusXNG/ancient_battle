@@ -1,6 +1,4 @@
-if blood_mage_blood_mirror == nil then
-	blood_mage_blood_mirror = class({})
-end
+blood_mage_blood_mirror = blood_mage_blood_mirror or class({})
 
 -- Visible modifiers
 LinkLuaModifier("modifier_custom_blood_mirror_buff_ally_redirect", "heroes/blood_mage/modifier_custom_blood_mirror_buff_ally_redirect.lua", LUA_MODIFIER_MOTION_NONE)

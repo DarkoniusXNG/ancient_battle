@@ -1,6 +1,4 @@
-if modifier_holy_strike_passive == nil then
-	modifier_holy_strike_passive = class({})
-end
+modifier_holy_strike_passive = modifier_holy_strike_passive or class({})
 
 function modifier_holy_strike_passive:IsHidden()
 	return true
@@ -175,7 +173,7 @@ if IsServer() then
 			local player = attacker:GetPlayerOwner()
 			SendOverheadEventMessage(player, OVERHEAD_ALERT_BONUS_SPELL_DAMAGE, target, true_damage, player)
 
-			ability:UseResources(true, false, true)
+			ability:UseResources(true, false, false, true)
 
 			-- Remove weapon glow effect
 			attacker:RemoveModifierByName("modifier_holy_strike_passive_weapon_effect")

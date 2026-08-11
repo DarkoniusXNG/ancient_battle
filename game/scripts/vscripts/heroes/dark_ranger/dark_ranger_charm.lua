@@ -1,6 +1,4 @@
-﻿if dark_ranger_charm == nil then
-	dark_ranger_charm = class({})
-end
+﻿dark_ranger_charm = dark_ranger_charm or class({})
 
 LinkLuaModifier("modifier_charmed_hero", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_charmed_general", "heroes/dark_ranger/dark_ranger_charm.lua", LUA_MODIFIER_MOTION_NONE)
@@ -11,7 +9,7 @@ function dark_ranger_charm:CastFilterResultTarget(target)
 	local caster = self:GetCaster()
 	local default_result = self.BaseClass.CastFilterResultTarget(self, target)
 
-	if target:IsRoshan() or target:IsCustomWardTypeUnit() or target:IsHeroDominatedCustom() then
+	if target:IsRoshanCustom() or target:IsCustomWardTypeUnit() or target:IsHeroDominatedCustom() then
 		return UF_FAIL_CUSTOM
 	elseif target:IsCourier() then
 		return UF_FAIL_COURIER
@@ -25,7 +23,7 @@ function dark_ranger_charm:CastFilterResultTarget(target)
 end
 
 function dark_ranger_charm:GetCustomCastErrorTarget(target)
-	if target:IsRoshan() then
+	if target:IsRoshanCustom() then
 		return "#dota_hud_error_cant_cast_on_roshan"
 	end
 	if target:IsCustomWardTypeUnit() then
@@ -134,9 +132,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_hero == nil then
-	modifier_charmed_hero = class({})
-end
+modifier_charmed_hero = modifier_charmed_hero or class({})
 
 function modifier_charmed_hero:IsHidden() -- needs tooltip (visible only on the target hero)
 	return false
@@ -163,6 +159,10 @@ function modifier_charmed_hero:OnCreated()
 
 	-- HideAndCopyHero is a function that creates a copy of a hero and hides the original hero (inside util.lua)
 	local copy = HideAndCopyHero(parent, caster)
+
+	if not copy then
+		return
+	end
 
 	-- Apply the charmed debuff that makes the copy invulnerable and leashed
 	local mod = copy:AddNewModifier(caster, ability, "modifier_charmed_cloned_hero", {duration = duration})
@@ -217,9 +217,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_cloned_hero == nil then
-	modifier_charmed_cloned_hero = class({})
-end
+modifier_charmed_cloned_hero = modifier_charmed_cloned_hero or class({})
 
 function modifier_charmed_cloned_hero:IsHidden() -- needs tooltip (visible to everyone on the copy)
 	return false
@@ -348,9 +346,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_general == nil then
-	modifier_charmed_general = class({})
-end
+modifier_charmed_general = modifier_charmed_general or class({})
 
 function modifier_charmed_general:IsHidden() -- needs tooltip (visible to everyone on the creep)
 	return false
@@ -392,9 +388,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_charmed_removing == nil then
-	modifier_charmed_removing = class({})
-end
+modifier_charmed_removing = modifier_charmed_removing or class({})
 
 function modifier_charmed_removing:IsHidden()
 	return true

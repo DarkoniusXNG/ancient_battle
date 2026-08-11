@@ -39,19 +39,11 @@
     
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal"                                            "200"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "260"
-      }
-    }
+    "AbilityValues"
+        {
+            "heal" "200"
+            "radius" "260"
+        }
 
     "precache"
     {

@@ -1,10 +1,12 @@
 modifier_robot_form = class({})
 
 function modifier_robot_form:DeclareFunctions()
-    return { MODIFIER_PROPERTY_MODEL_CHANGE,
-             MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
-             MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-             MODIFIER_EVENT_ON_ATTACK_LANDED, }
+    return {
+        MODIFIER_PROPERTY_MODEL_CHANGE,
+        MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
+        MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+        MODIFIER_EVENT_ON_ATTACK_LANDED,
+    }
 end
 
 function modifier_robot_form:OnCreated()

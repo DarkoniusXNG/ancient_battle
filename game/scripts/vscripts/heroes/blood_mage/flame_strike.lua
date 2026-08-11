@@ -1,6 +1,4 @@
-﻿if blood_mage_flame_strike == nil then
-	blood_mage_flame_strike = class({})
-end
+﻿blood_mage_flame_strike = blood_mage_flame_strike or class({})
 
 LinkLuaModifier("modifier_flame_strike_thinker", "heroes/blood_mage/flame_strike.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -65,9 +63,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_flame_strike_thinker == nil then
-	modifier_flame_strike_thinker = class({})
-end
+modifier_flame_strike_thinker = modifier_flame_strike_thinker or class({})
 
 function modifier_flame_strike_thinker:IsHidden()
   return true

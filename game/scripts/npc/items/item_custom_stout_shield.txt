@@ -2,7 +2,7 @@
 {
   //=================================================================================================================
   // Custom Stout Shield
-  // Notes: OK; 19.12.2019;
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_custom_stout_shield"
   {
@@ -27,23 +27,11 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
+    "AbilityValues"
     {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_block_melee"                              "20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_block_ranged"                             "9"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "block_chance"                                    "50"
-      }
+      "damage_block_melee" "20"
+      "damage_block_ranged" "10"
+      "block_chance" "50"
     }
   }
 }

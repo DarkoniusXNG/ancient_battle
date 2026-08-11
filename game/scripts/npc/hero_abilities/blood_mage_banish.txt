@@ -22,59 +22,47 @@
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_DEAFENING_BLAST"
     "AbilityCastRange"                                    "800"
     "AbilityCastPoint"                                    "0.2"
-    
+
     "AbilityCooldown"                                     "15.0 12.0 9.0 6.0" // original (0);
-    
+
     "AbilityManaCost"                                     "75 70 65 60"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "particle"                                          "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // original: 66%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_spell_damage"                              "-30 -40 -50 -60"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02" // original: 66%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_spell_damage_allies"                       "-25"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "03" // original: 50%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "move_speed_slow"                                 "-30 -40 -50 -60"
-      }
-      "04" // original: 4/5/6
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "hero_duration"                                   "3.5"
-        "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_1"
-      }
-      "05" // original: 12/15/18
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "creep_duration"                                  "5.0"
-        "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_1"
-      }
-      "06" // original: 66%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal_amp_pct"                                    "75"
-      }
-    }
+    "AbilityValues"
+        {
+            "bonus_spell_damage" // original: 66%
+            {
+                "value" "-30 -40 -50 -60"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "bonus_spell_damage_allies" // original: 66%
+            {
+                "value" "-25"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "move_speed_slow" "-30 -40 -50 -60" // original: 50%
+            "hero_duration" // original: 4/5/6
+            {
+                "value" "3.5"
+                "LinkedSpecialBonus" "special_bonus_unique_blood_mage_1"
+            }
+            "creep_duration" // original: 12/15/18
+            {
+                "value" "5.0"
+                "LinkedSpecialBonus" "special_bonus_unique_blood_mage_1"
+            }
+            "heal_amp_pct" "75"  // original: 66%
+        }
   }
-  
+
   //=================================================================================================================
   // Banish bonus duration talent
   //=================================================================================================================
@@ -83,18 +71,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "value"                                           "1.5"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "1.5"
+        }
   }
 }

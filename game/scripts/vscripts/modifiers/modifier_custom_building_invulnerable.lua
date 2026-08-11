@@ -1,6 +1,4 @@
-if modifier_custom_building_invulnerable == nil then
-	modifier_custom_building_invulnerable = class({})
-end
+modifier_custom_building_invulnerable = class({})
 
 function modifier_custom_building_invulnerable:IsHidden()
     return true

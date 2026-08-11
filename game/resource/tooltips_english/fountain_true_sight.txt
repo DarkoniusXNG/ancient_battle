@@ -1,4 +1,0 @@
-		
-		"DOTA_Tooltip_ability_custom_fountain_true_sight"                     	"True Sight"
-		"DOTA_Tooltip_ability_custom_fountain_true_sight_Description"         	"Reveals enemy invisible units and wards."
-		"DOTA_Tooltip_ability_custom_fountain_true_sight_aura_radius"          	"RADIUS:"

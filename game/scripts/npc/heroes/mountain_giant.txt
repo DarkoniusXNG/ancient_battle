@@ -21,8 +21,8 @@
     
     // Armor
     //----------------------------------------------------------------
-    "ArmorPhysical"                                       "1"
-    "MagicalResistance"                                   "30"
+    "ArmorPhysical"                                       "0"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -36,7 +36,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "24"
     "AttributeStrengthGain"                               "3"
     "AttributeBaseIntelligence"                           "15"

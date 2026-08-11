@@ -1,6 +1,4 @@
-if blood_mage_banish == nil then
-	blood_mage_banish = class({})
-end
+blood_mage_banish = blood_mage_banish or class({})
 
 LinkLuaModifier("modifier_banished_enemy", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_banished_ally", "heroes/blood_mage/banish.lua", LUA_MODIFIER_MOTION_NONE)
@@ -68,9 +66,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_banished_ally == nil then
-	modifier_banished_ally = class({})
-end
+modifier_banished_ally = modifier_banished_ally or class({})
 
 function modifier_banished_ally:IsHidden() -- needs tooltip
 	return false
@@ -153,9 +149,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_banished_enemy == nil then
-	modifier_banished_enemy = class({})
-end
+modifier_banished_enemy = modifier_banished_enemy or class({})
 
 function modifier_banished_enemy:IsHidden() -- needs tooltip
 	return false

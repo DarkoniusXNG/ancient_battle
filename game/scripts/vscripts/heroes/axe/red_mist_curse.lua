@@ -48,9 +48,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_red_mist_curse_debuff == nil then
-	modifier_red_mist_curse_debuff = class({})
-end
+modifier_red_mist_curse_debuff = modifier_red_mist_curse_debuff or class({})
 
 function modifier_red_mist_curse_debuff:IsHidden() -- needs tooltip
 	return false

@@ -14,16 +14,16 @@
     // Abilities
     //----------------------------------------------------------------
     "Ability1"                                            "dread_lord_carrion_swarm"
-    "Ability2"                                            "dread_lord_sleep" // fix particles
-    "Ability3"                                            "dread_lord_vampiric_aura" // improve code
+    "Ability2"                                            "dread_lord_sleep" // TODO: fix particles
+    "Ability3"                                            "dread_lord_vampiric_aura" // TODO: improve code
     //"Ability4"           ""
     //"Ability5"          ""
-    //"Ability6"          "dread_lord_inferno" // summon
+    //"Ability6"          "dread_lord_inferno" // TODO: summon
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -37,7 +37,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "20"
     "AttributeStrengthGain"                               "2.5"
     "AttributeBaseIntelligence"                           "18"

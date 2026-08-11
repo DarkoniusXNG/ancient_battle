@@ -1,6 +1,4 @@
-if blademaster_blade_storm == nil then
-	blademaster_blade_storm = class({})
-end
+blademaster_blade_storm = blademaster_blade_storm or class({})
 
 LinkLuaModifier("modifier_custom_blade_storm", "heroes/blademaster/modifier_custom_blade_storm.lua", LUA_MODIFIER_MOTION_NONE)
 

@@ -28,49 +28,25 @@
 
     "AOERadius"                                           "%radius"
 
-    "AbilitySpecial"
-    {
-      "01" // Underlord Firestorm (400); Archmage original (200); Shrapnel (400); Ice Vortex (275);
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "450"
-      }
-      "02" // Underlord Firestorm (6); Archmage original (6/8/10/12); Shrapnel (10);
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "9"
-      }
-      "03" // Underlord Firestorm (25/40/55/70); Archmage original (30/40/50/60); Shrapnel (25/40/55/70);
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "25 40 55 70"
-      }
-      "04" // like original Archmage, Underlord Firestorm and Sniper Shrapnel
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "wave_interval"                                   "1"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "slow_duration"                                   "1"
-      }
-      "06" // like Ice Vortex and Shrapnel
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_slow"                                   "-15 -20 -25 -30"
-      }
-      "07"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-20 -25 -30 -35"
-      }
-      "08" // not in tooltip; only here;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "double_radius"                                   "850"
-      }
-    }
+    "AbilityValues"
+	{
+		"radius" // Archmage original (200); Similar spells: Underlord Firestorm, Shrapnel, Ice Vortex;
+		{
+			"value"					"450"
+			"affected_by_aoe_increase"	"1"		
+		}
+		"duration" "9" // Archmage original (6/8/10/12); Similar spells: Underlord Firestorm, Shrapnel;
+		"damage" "25 40 55 70" // Archmage original (30/40/50/60); Similar spells: Underlord Firestorm, Shrapnel;
+		"wave_interval" "1" // like original Archmage, Underlord Firestorm and Sniper Shrapnel
+		"slow_duration" "1"
+		"movement_slow" "-15 -20 -25 -30" // like Ice Vortex and Shrapnel
+		"attack_speed_slow" "-20 -25 -30 -35"
+		"double_radius" // not in tooltip; only here;
+		{
+			"value"					"850"
+			"affected_by_aoe_increase"	"1"		
+		}
+	}
 
     "precache"
     {

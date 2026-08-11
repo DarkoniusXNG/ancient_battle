@@ -1,6 +1,4 @@
-if astral_trekker_pulverize == nil then
-	astral_trekker_pulverize = class({})
-end
+astral_trekker_pulverize = astral_trekker_pulverize or class({})
 
 LinkLuaModifier("modifier_pulverize_cleave", "heroes/astral_trekker/modifier_pulverize_cleave.lua", LUA_MODIFIER_MOTION_NONE)
 

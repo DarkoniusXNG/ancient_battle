@@ -2,7 +2,7 @@
 {
   //=================================================================================================================
   // Hero: Ability Name - what it does
-  // Author: 
+  // Author:
   // Notes: OK; Date;
   // Linkens: Blocks;
   // TO_DO: ALL
@@ -12,8 +12,8 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/hero_name/custom_ability.lua"
     "AbilityType"                                         "DOTA_ABILITY_TYPE_BASIC"  // this is default; not needed unless overriding dota ability or its an ultimate or talent
-    //  DOTA_ABILITY_TYPE_ULTIMATE                      // needed for ultimates
-    //  DOTA_ABILITY_TYPE_ATTRIBUTES                    // needed for talents
+    //  ABILITY_TYPE_ULTIMATE                      // needed for ultimates
+    //  ABILITY_TYPE_ATTRIBUTES                    // needed for talents
     "AbilityTextureName"                                  "custom/custom_hero_custom_ability"    // icon for ability
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NONE"
     //  DOTA_ABILITY_BEHAVIOR_HIDDEN: This ability can be owned by a unit but can't be casted and wont show up on the HUD.
@@ -24,7 +24,7 @@
     //  DOTA_ABILITY_BEHAVIOR_AOE: This ability draws a radius where the ability will have effect. YOU STILL NEED A TARGETTING BEHAVIOR LIKE DOTA_ABILITY_BEHAVIOR_POINT FOR THIS TO WORK.
     //  DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE: This ability probably can be casted or have a casting scheme but cannot be learned (these are usually abilities that are temporary)
     //  DOTA_ABILITY_BEHAVIOR_CHANNELLED: This abillity is channelled. If the user moves or is silenced the ability is interrupted.
-    //  DOTA_ABILITY_BEHAVIOR_TOGGLE:  
+    //  DOTA_ABILITY_BEHAVIOR_TOGGLE:
     // "OnCastbar"            "1"                  // default: 1; doesn't do anything if 0 (use DOTA_ABILITY_BEHAVIOR_HIDDEN)
     // "OnLearnbar"            "1"                  // default: 1; doesn't do anything if 0 (use DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE)
 
@@ -35,7 +35,7 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"        // SPELL_IMMUNITY_ENEMIES_YES
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"          // SPELL_DISPELLABLE_YES; SPELL_DISPELLABLE_YES_STRONG;
     // "HasScepterUpgrade"        "0"                  // default: 0; 1 if its really upgradeable
-    
+
     "MaxLevel"                                            "4"
     "RequiredLevel"                                       "6"
 
@@ -56,20 +56,18 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_hero_name.vsndevts"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "health_drain"                                    "60 90 120 150"
-        "CalculateSpellDamageTooltip"                     "1"  // The spell amp tooltip is now done through this - still works automatically if your kv has "damage" in its name, so use these to enable/disable if inaccurate
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage_duration"                                 "20.0"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "health_drain"
+            {
+                "value" "60 90 120 150"
+                "CalculateSpellDamageTooltip" "1" // The spell amp tooltip is now done through this - still works automatically if your kv has "damage" in its name, so use these to enable/disable if inaccurate
+            }
+            "damage_duration"
+            {
+                "value" "20.0"
+                "CalculateSpellDamageTooltip" "0"
+            }
+        }
   }
 }

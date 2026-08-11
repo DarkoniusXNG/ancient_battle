@@ -81,9 +81,7 @@ end
 
 -- Mine modifier ----------------------------------------------------------------------------------
 
-if modifier_techies_custom_remote_mine == nil then
-	modifier_techies_custom_remote_mine = class({})
-end
+modifier_techies_custom_remote_mine = class({})
 
 function modifier_techies_custom_remote_mine:IsHidden()
 	return true

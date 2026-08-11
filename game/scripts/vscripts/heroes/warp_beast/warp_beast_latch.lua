@@ -99,7 +99,7 @@ function warp_beast_latch:GetLatchHeight(target)
 	if target:IsHero() then return 120 end
 	if target:IsBarracks() then return 250 end
 	if target:IsTower() then return 275 end
-	if target:IsRoshan() then return 300 end
+	if target:IsRoshanCustom() then return 300 end
 	if target:IsFort() then return 400 end
 	if target:GetUnitName() == "npc_dota_phoenix_sun" then return 340 end
 	-- Default height
@@ -240,10 +240,9 @@ function modifier_latch_target:RemoveOnDeath()
 end
 
 -- function modifier_latch_target:DeclareFunctions()
-	-- local funcs = {
+	-- return {
 		-- MODIFIER_EVENT_ON_ORDER
 	-- }
-	-- return funcs
 -- end
 
 -- -- Being able to use spells and items while latched

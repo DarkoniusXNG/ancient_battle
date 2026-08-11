@@ -1,7 +1,0 @@
-
-		"DOTA_Tooltip_ability_creature_fire_breath"                             "Fire Breath"
-		"DOTA_Tooltip_ability_creature_fire_breath_Description"                 ""
-		"DOTA_Tooltip_ability_creature_fire_breath_Note0"                       ""
-		"DOTA_Tooltip_ability_creature_fire_breath_Lore"                        ""
-		"DOTA_Tooltip_ability_creature_fire_breath_radius"                      "RADIUS:"
-		"DOTA_Tooltip_ability_creature_fire_breath_damage"                      "DAMAGE:"

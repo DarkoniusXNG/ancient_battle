@@ -1,6 +1,4 @@
-﻿if alchemist_custom_chemical_rage == nil then
-	alchemist_custom_chemical_rage = class({})
-end
+﻿alchemist_custom_chemical_rage = class({})
 
 LinkLuaModifier("modifier_custom_chemical_rage_buff", "heroes/alchemist/modifier_custom_chemical_rage_buff.lua", LUA_MODIFIER_MOTION_NONE)
 

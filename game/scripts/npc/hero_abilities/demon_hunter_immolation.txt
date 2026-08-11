@@ -5,12 +5,11 @@
 // Author: Noya
 // Description: Engulfs the Demon Hunter in flames, causing damage to nearby enemy land units. Drains mana until deactivated.
 
-"demon_hunter_immolation"
-{
+  "demon_hunter_immolation"
+  {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/demon_hunter/immolation.lua"
-    "AbilityTextureName"                                  "demon_hunter_immolation"
-    "MaxLevel"                                            "3"
+    "AbilityTextureName"                                  "custom/demon_hunter_immolation"
 
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -25,25 +24,12 @@
     {
       "particle"                                          "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second"                               "10 15 20"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_cost_per_second"                            "5"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "160"
-      }
-    }
-}
 
+    "AbilityValues"
+        {
+            "damage_per_second" "10 15 20"
+            "mana_cost_per_second" "5"
+            "radius" "160"
+        }
+  }
 }

@@ -17,29 +17,13 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "regen_radius"                                    "900"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_regen"                                        "6"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mp_regen"                                        "6"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "regen_stickyness"                                "3"
-      }
-    }
+    "AbilityValues"
+        {
+            "regen_radius" "900"
+            "hp_regen" "6"
+            "mp_regen" "6"
+            "regen_stickyness" "3"
+        }
 
     "Modifiers"
     {
@@ -71,7 +55,7 @@
         "Properties"
         {
           "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"     "%hp_regen"
-          "MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"  "%mp_regen" 
+          "MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"  "%mp_regen"
         }
       }
     }

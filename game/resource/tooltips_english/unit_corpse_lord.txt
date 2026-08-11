@@ -1,6 +1,0 @@
-
-		"DOTA_Tooltip_ability_corpse_lord_summon_undead"                        "Summon Undead"
-		"DOTA_Tooltip_ability_corpse_lord_summon_undead_Description"            "Corpse Lord often summons more Combies."
-		"DOTA_Tooltip_ability_corpse_lord_summon_undead_Note0"                  ""
-		"DOTA_Tooltip_ability_corpse_lord_summon_undead_Lore"                   ""
-		"DOTA_Tooltip_ability_corpse_lord_summon_undead_number_of_zombies"      "NUMBER OF COMBIES:"

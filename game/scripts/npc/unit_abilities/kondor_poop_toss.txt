@@ -26,31 +26,21 @@
     "AbilityManaCost"                                     "200"
     "AbilityProcsMagicStick"                              "1"
     
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "250"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "base_damage"                                     "150"
-        "CalculateSpellDamageTooltip"                     "0"
-      }       
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_percent_damage"                               "10"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "stun_duration"                                   "2.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "250"
+            "base_damage"
+            {
+                "value" "150"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "hp_percent_damage"
+            {
+                "value" "10"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "stun_duration" "2.0"
+        }
     
     "precache"
     {

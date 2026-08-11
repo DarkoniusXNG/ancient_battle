@@ -27,9 +27,8 @@
     "AbilityManaCost"                                     "0"
     "AbilityProcsMagicStick"                              "0"
 
-    "AbilitySpecial"
-    {
-      
-    }
+    "AbilityValues"
+        {
+        }
   }
 }

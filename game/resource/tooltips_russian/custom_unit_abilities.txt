@@ -1,7 +1,0 @@
-
-		"DOTA_Tooltip_ability_custom_unit_spell_immunity"                   	"Spell Immunity"
-		"DOTA_Tooltip_ability_custom_unit_spell_immunity_Description"       	"Это существо невосприимчиво к эффектам большинства заклинаний."
-		"DOTA_Tooltip_ability_custom_unit_spell_immunity_Lore"              	"Resistant skin."
-		
-		"DOTA_Tooltip_ability_custom_unit_splash_attack"						"Splash Attack"
-		"DOTA_Tooltip_ability_custom_unit_splash_attack_Description"			"Dealing 100%% attack damage in a radius around the attacked target."

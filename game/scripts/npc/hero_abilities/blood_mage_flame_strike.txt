@@ -41,7 +41,7 @@
       "radius"                                            "300" // Nether Blast (400); Sun Strike (175); Light Strike Array (225); original (200);
       "initial_damage" // original Pillar damage (120.15/213.6/293.7); // Nether Blast (100/180/260/340);
       {
-        "value"                                           "70 135 200 265" 
+        "value"                                           "70 135 200 265"
         "LinkedSpecialBonus"                              "special_bonus_unique_blood_mage_2"
       }
       "damage_per_second"                                 "30 45 60 75"
@@ -68,19 +68,15 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "250"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "250"
+        }
   }
 
   //=================================================================================================================
@@ -91,18 +87,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "5"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "5"
+        }
   }
 }

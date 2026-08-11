@@ -16,26 +16,20 @@
 
     "MaxLevel"                                            "1"
     
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius_damage_percent"                           "100"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "200"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_damage_to_buildings"                       "270"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius_damage_percent"
+            {
+                "value" "100"
+                "CalculateSpellDamageTooltip" "0"
+            }
+            "radius" "200"
+            "bonus_damage_to_buildings"
+            {
+                "value" "270"
+                "CalculateSpellDamageTooltip" "0"
+            }
+        }
     
     "Modifiers"
     {

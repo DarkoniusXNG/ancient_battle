@@ -110,8 +110,8 @@ function CBaseEntity:IsFountain()
 end
 
 -- This function checks if a given unit is Roshan, returns boolean value;
-function IsRoshan(unit)
-	return unit:IsRoshan()
+function IsRoshanCustom(unit)
+	return unit:IsRoshanCustom()
 end
 
 -- This function checks if this unit is a fountain or not; returns boolean value;
@@ -134,6 +134,11 @@ function HideAndCopyHero(target, caster)
 
 		-- Create a copy at the original's location
 		local copy = CopyHero(target, caster)
+
+		if not copy then
+			target:RemoveNoDraw()
+			return
+		end
 
 		-- Hide the original in the corner of the map
 		local corner
@@ -578,7 +583,7 @@ function SuperStrongDispel(target, bRemoveAlmostAllDebuffs, bRemoveDispellableBu
 				"modifier_bane_nightmare_invulnerable",						-- invulnerable type
 				-- custom:
 				"modifier_custom_enfeeble_debuff",
-				"modifier_entrapment",										-- Astral Trekker Net
+				"modifier_astral_trekker_entrapment_debuff",				-- Astral Trekker Net
 				"modifier_purge_enemy_creep",
 				"modifier_purge_enemy_hero",
 				"modifier_stealth_assassin_ambush_mini_stun",
@@ -626,7 +631,7 @@ function FindUnitsinTrapezoid(team_number, vDirection, start_position, cache_uni
 	end
 	if not target_flags then
 		print("Invalid number of arguments for FindUnitsinTrapezoid!")
-		return
+		return {}
 	end
 	local circle = FindUnitsInRadius(team_number, start_position, cache_unit, distance+end_radius, target_team, target_type, target_flags, order, cache)
 	local direction = vDirection
@@ -828,4 +833,38 @@ end
 
 function HasBit(flags, specific_flag)
 	return bit.band(flags, specific_flag) == specific_flag
+end
+
+function IsAttackAbilityCustom(ability)
+  local ability_name
+  if type(ability) == "string" then
+    ability_name = ability
+    if ability_name == "" then
+      return false
+    end
+  else
+    if not ability or ability:IsNull() then
+      print("IsAttackAbilityCustom: Passed parameter does not exist!")
+      return false
+    end
+    if not ability.GetAbilityName then
+      print("IsAttackAbilityCustom: Passed parameter is not an ability!")
+      return false
+    end
+    ability_name = ability:GetAbilityName()
+  end
+
+  local ability_data = GetAbilityKeyValuesByName(ability_name)
+  if not ability_data then
+    print("IsAttackAbilityCustom: Ability "..ability_name.." does not exist!")
+    return false
+  end
+
+  if ability_data.AbilityBehavior == nil then
+    return false
+  end
+
+  local b = tostring(ability_data.AbilityBehavior)
+
+  return string.find(b, "DOTA_ABILITY_BEHAVIOR_ATTACK")
 end

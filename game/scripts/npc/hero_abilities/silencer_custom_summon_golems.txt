@@ -3,18 +3,19 @@
   //=================================================================================================================
   // Silencer: Summon Infernal Golems (F) - Similar to Warlock's Rain of Chaos / Chaotic Offering
   // Author: Darkonius
-  // Notes: OK; 20.2.2017; Golems are not improving with leveling; No effect delay;
+  // Notes: OK; 2023; Golems are not improving with leveling; No effect delay;
   // TO_DO:
   //=================================================================================================================
   "silencer_custom_summon_golems"
   {
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "warlock_rain_of_chaos"
+    "AbilityTextureName"                                  "custom/silencer_custom_summon_golems"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES_STRONG"
+
     "MaxLevel"                                            "3"
     "RequiredLevel"                                       "6"
     "LevelsBetweenUpgrades"                               "5"

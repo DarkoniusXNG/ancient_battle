@@ -11,7 +11,7 @@
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/alchemist/custom_chemical_rage.lua"
     "AbilityTextureName"                                  "custom/alchemist_custom_chemical_rage"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
@@ -76,19 +76,15 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "value"                                           "-0.5"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "-0.5"
+        }
   }
 
   //=================================================================================================================
@@ -99,18 +95,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "1"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "1"
+        }
   }
 }

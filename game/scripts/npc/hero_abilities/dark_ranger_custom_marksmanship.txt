@@ -14,39 +14,19 @@
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "custom/dark_ranger_custom_marksmanship"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
-    
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agi"                                       "15 35 55"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_accuracy"                                  "25 35 45"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_attack_range"                              "100 150 200"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "chance_to_instant_kill"                          "15 25 35"
-      }
-      "05" // not in tooltip; only here
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "creep_damage"                                    "99999"
-      }
-    }
-    
+    "AbilityValues"
+        {
+            "bonus_agi" "15 35 55"
+            "bonus_accuracy" "25 35 45"
+            "bonus_attack_range" "100 150 200"
+            "chance_to_instant_kill" "15 25 35"
+            "creep_damage" "99999"
+        }
+
     "Modifiers"
     {
       "modifier_custom_marksmanship_passive" // doesn't need tooltip
@@ -55,13 +35,13 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%bonus_agi"
           "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"          "%bonus_attack_range"
         }
-        
+
         "OnAttackStart"
         {
           "RemoveModifier"
@@ -69,11 +49,11 @@
             "ModifierName"                                "modifier_custom_marksmanship_buff"
             "Target"                                      "CASTER"
           }
-          
+
           "Random"
           {
             "Chance"                                      "%bonus_accuracy"
-            
+
             "OnSuccess"
             {
               "ApplyModifier"
@@ -84,13 +64,13 @@
             }
           }
         }
-        
+
         "OnAttackLanded"
         {
           "Random"
           {
             "Chance"                                      "%chance_to_instant_kill"
-            
+
             "OnSuccess"
             {
               "DelayedAction"
@@ -115,13 +95,13 @@
           }
         }
       }
-      
+
       "modifier_custom_marksmanship_buff" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "States"
         {
           "MODIFIER_STATE_CANNOT_MISS"                    "MODIFIER_STATE_VALUE_ENABLED"
@@ -129,7 +109,7 @@
       }
     }
   }
-  
+
   //=================================================================================================================
   // Marksmanship talent - Split Shot
   //=================================================================================================================
@@ -138,18 +118,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "1"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "1"
+        }
   }
 }

@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Death Knight: Chilling Touch (F) - New Spell, When activated provides bonus magic damage to caster and his allies.
   // Author: Darkonius
-  // Notes: OK; 2021; 
+  // Notes: OK; 2023; 
   // Note 1: Buff can be placed on illusions too;
   // Note 2: Bonus Damage is dealt as a separate damage instance after attack damage is dealt, but relies on the attack to hit.
   // Note 3: Bonus Damage is working against buildings too;
@@ -12,7 +12,7 @@
   "death_knight_chilling_touch"
   {
     "BaseClass"                                           "ability_datadriven"
-    "AbilityTextureName"                                  "ancient_apparition_chilling_touch"
+    "AbilityTextureName"                                  "custom/death_knight_chilling_touch"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO"

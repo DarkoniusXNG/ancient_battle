@@ -3,8 +3,8 @@
   //====================================================================================================
   // Primal Split Storm Spirit: Storm Walk (E) - datadriven dota Primal Storm Split Wind Walk
   // Author: Darkonius
-  // Notes: OK; 24.8.2019; No fade time
-  // TO_DO:
+  // Notes: OK; 2026?; No fade time
+  // TO_DO: test
   //====================================================================================================
   "primal_split_storm_spirit_storm_walk"
   {
@@ -20,32 +20,20 @@
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
 
     "MaxLevel"                                            "1"
-    
+
     "AbilityCastPoint"                                    "0.0"
-    
+
     "AbilityCooldown"                                     "5.0"
     "AbilityManaCost"                                     "75"
     "AbilityProcsMagicStick"                              "1"
-    
-    "AbilitySpecial"
-    {
-      "01" // original: 50; dota: 100/160/220;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_damage"                                    "180"
-      }
-      "02" // percentage bonus movement speed
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_move_speed"                                "50"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "20"
-      }
-    }
-    
+
+    "AbilityValues"
+	{
+		"bonus_damage" "180"
+		"bonus_move_speed" "50"
+		"duration" "20"
+	}
+
     "OnSpellStart"
     {
       "FireEffect"
@@ -54,20 +42,20 @@
         "EffectName"                                      "particles/units/heroes/hero_brewmaster/brewmaster_windwalk.vpcf"
         "EffectAttachType"                                "attach_origin"
       }
-      
+
       "FireSound"
       {
         "Target"                                          "CASTER"
         "EffectName"                                      "Brewmaster_Storm.WindWalk"
       }
-      
+
       "ApplyModifier" // this modifier only applies transparency, not actual invisibility
       {
         "ModifierName"                                    "modifier_invisible"
         "Target"                                          "CASTER"
         "Duration"                                        "%duration"
       }
-      
+
       "ApplyModifier"
       {
         "ModifierName"                                    "modifier_storm_spirit_custom_storm_walk"
@@ -75,7 +63,7 @@
         "Duration"                                        "%duration"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_storm_spirit_custom_storm_walk" // needs tooltip
@@ -83,18 +71,18 @@
         "IsHidden"                                        "0"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed"
         }
-        
+
         "States"
         {
           "MODIFIER_STATE_INVISIBLE"                      "MODIFIER_STATE_VALUE_ENABLED"
           "MODIFIER_STATE_NO_UNIT_COLLISION"              "MODIFIER_STATE_VALUE_ENABLED"
         }
-        
+
         "OnAttack"
         {
           "RemoveModifier"
@@ -102,14 +90,14 @@
             "ModifierName"                                "modifier_storm_spirit_custom_storm_walk"
             "Target"                                      "CASTER"
           }
-          
+
           "ApplyModifier"
           {
             "ModifierName"                                "modifier_storm_spirit_custom_storm_walk_damage"
             "Target"                                      "CASTER"
           }
         }
-        
+
         "OnAbilityExecuted"
         {
           "RemoveModifier"
@@ -118,7 +106,7 @@
             "Target"                                      "CASTER"
           }
         }
-        
+
         "OnDestroy"
         {
           "RemoveModifier"
@@ -128,13 +116,13 @@
           }
         }
       }
-      
+
       "modifier_storm_spirit_custom_storm_walk_damage" // doesn't need tooltip
       {
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnAttackLanded"
         {
           "RemoveModifier"
@@ -142,7 +130,7 @@
             "ModifierName"                                "modifier_storm_spirit_custom_storm_walk_damage"
             "Target"                                      "CASTER"
           }
-          
+
           "Damage"
           {
             "Target"
@@ -153,7 +141,7 @@
             "Type"                                        "DAMAGE_TYPE_PHYSICAL"
             "Damage"                                      "%bonus_damage"
           }
-          
+
           "FireEffect"
           {
             "EffectName"                                  "particles/msg_fx/msg_crit.vpcf"

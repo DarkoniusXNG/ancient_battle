@@ -121,7 +121,3 @@ if IsServer() then
 		ParticleManager:ReleaseParticleIndex(particle)
 	end
 end
-
-function modifier_vampiric_aura:IsPurgable()
-    return false
-end

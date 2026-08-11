@@ -15,15 +15,15 @@
     //----------------------------------------------------------------
     "Ability1"                                            "crypt_lord_impale"
     "Ability2"                                            "crypt_lord_spiked_carapace"
-    //"Ability3"          "crypt_lord_carrion_beetles" // summon
-    //"Ability4"          "crypt_lord_locust_swarm" // summon + AI
+    //"Ability3"          "crypt_lord_carrion_beetles" // TODO: summon
+    //"Ability4"          "crypt_lord_locust_swarm" // TODO: summon + AI
     "Ability5"                                            ""
     "Ability6"                                            ""   
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -37,7 +37,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "26"
     "AttributeStrengthGain"                               "3.2"
     "AttributeBaseIntelligence"                           "14"

@@ -1,6 +1,4 @@
-if guardian_angel_immunity == nil then
-	guardian_angel_immunity = class({})
-end
+guardian_angel_immunity = guardian_angel_immunity or class({})
 
 LinkLuaModifier("modifier_custom_guardian_angel_summon", "heroes/paladin/guardian_angel_immunity.lua", LUA_MODIFIER_MOTION_NONE)
 

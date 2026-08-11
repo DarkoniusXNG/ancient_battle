@@ -1,5 +1,5 @@
 ﻿function Lightning( event )
-	if event.target.GetInvulnCount == nil and event.target:IsMechanical() == false then
+	if event.target.GetInvulnCount == nil then
 		-- event.target:IsTower() == false - with this condition only towers are affected, barracks and throne are not
 		
 		-- Basic variables
@@ -33,7 +33,7 @@
 		ApplyDamage({ victim = target, attacker = caster, damage = lightning_damage, damage_type = lightning_damage_type })
 		
 		-- Sound
-		EmitSoundOn("Hero_Zuus.ArcLightning.Target", target)
+		target:EmitSound("Hero_Zuus.ArcLightning.Target")
 		
 		-- Damaging other units and counting how many units we damaged
 		local units_hit = 1

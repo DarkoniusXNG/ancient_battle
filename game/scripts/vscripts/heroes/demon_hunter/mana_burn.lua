@@ -9,7 +9,7 @@ function ManaBurn( event )
 
     -- Set the new target mana
     mana_burn = math.min(mana_burn, target:GetMana())
-    target:ReduceMana(mana_burn)
+    target:ReduceMana(mana_burn, ability)
 
     -- Do the damage
     ApplyDamage({ victim = target, attacker = caster, damage = mana_burn*damage_per_mana, ability = ability, damage_type = abilityDamageType })

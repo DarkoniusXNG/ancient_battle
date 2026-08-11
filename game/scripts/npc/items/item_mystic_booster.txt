@@ -1,8 +1,8 @@
 "DOTAAbilities"
 {
   //=================================================================================================================
-  // 1270 - Recipe: Mystic Booster
-  // Notes: OK; 16.9.2018;
+  // Recipe: Mystic Booster
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_recipe_mystic_booster"
   {
@@ -14,7 +14,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "ItemCost"                                            "0"
     "ItemShopTags"                                        ""
-    
+
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
@@ -24,19 +24,19 @@
       "01"                                                "item_reaver;item_mystic_staff"
     }
   }
-  
+
   //=================================================================================================================
-  // 1271 - Mystic Booster - Reaver (3000) + Mystic Staff (2700) = 5700
-  // Notes: OK; 16.9.2018; Can be disassembled;
+  // Mystic Booster
+  // Notes: OK; 2026; Can be disassembled;
   //=================================================================================================================
   "item_mystic_booster"
   {
     "BaseClass"                                           "item_datadriven"
     "AbilityTextureName"                                  "custom/mystic_booster"
-    
+
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    
-    "ItemCost"                                            "5700"
+
+    "ItemCost"                                            "5600" // 2800 + 2800
     "ItemShopTags"                                        "damage;int;str;agi"
     "ItemQuality"                                         "epic"
     "ItemAliases"                                         "mystic booster"
@@ -45,38 +45,26 @@
     "ItemShareability"                                    "ITEM_NOT_SHAREABLE"
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_ALWAYS"
 
-    // Special  
+    // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_str"                                       "25"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_int"                                       "25"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_dmg"                                       "10"
-      }
-    }
-    
+    "AbilityValues"
+	{
+		"bonus_str" "25"
+		"bonus_int" "25"
+		"bonus_dmg" "10"
+	}
+
     "Modifiers"
     {
       "modifier_item_mystic_booster_passives" // doesn't need tooltip
       {
-        "Passive"                                         "1"  
+        "Passive"                                         "1"
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Attributes"                                      "MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%bonus_str"

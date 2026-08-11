@@ -9,7 +9,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/sohei/sohei_guard.lua"
-    "AbilityTextureName"                                  "custom/ronin_guard"
+    "AbilityTextureName"                                  "custom/sohei_guard"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 
     "HasShardUpgrade"                                     "1"
@@ -26,7 +26,7 @@
 
     // Cost
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"                                     "45 50 55 60" // AM Counterspell (45); Ursa Enrage (0);
+    "AbilityManaCost"                                     "45" // AM Counterspell (45); Ursa Enrage (0);
 
     // Precache
     //-------------------------------------------------------------------------------------------------------------

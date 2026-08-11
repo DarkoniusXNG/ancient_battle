@@ -1,6 +1,4 @@
-if paladin_storm_hammer == nil then
-	paladin_storm_hammer = class({})
-end
+paladin_storm_hammer = paladin_storm_hammer or class({})
 
 LinkLuaModifier("modifier_paladin_storm_hammer", "heroes/paladin/paladin_storm_hammer.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -149,9 +147,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_paladin_storm_hammer == nil then
-	modifier_paladin_storm_hammer = class({})
-end
+modifier_paladin_storm_hammer = modifier_paladin_storm_hammer or class({})
 
 function modifier_paladin_storm_hammer:IsHidden() -- needs tooltip
 	return false

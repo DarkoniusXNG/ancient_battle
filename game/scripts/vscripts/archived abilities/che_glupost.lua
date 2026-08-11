@@ -35,10 +35,10 @@ function glupost( keys )
 		target:AddNewModifier(caster, ability, "modifier_stunned", {duration = stun})
 
 		-- Mana Steal Calculation
-		local mana_steal = math.min( current_mana, mana_value )
+		local mana_steal = math.min(current_mana, mana_value)
 		-- Reducing Target's mana
-		target:ReduceMana( mana_steal )
+		target:ReduceMana(mana_steal, ability)
 		-- Increasing Caster's mana
-		caster:SetMana(caster:GetMana() + mana_steal)
+		caster:GiveMana(mana_steal)
 	end
 end

@@ -1,6 +1,4 @@
-﻿if stealth_assassin_smoke_screen == nil then
-	stealth_assassin_smoke_screen = class({})
-end
+﻿stealth_assassin_smoke_screen = stealth_assassin_smoke_screen or class({})
 
 LinkLuaModifier("modifier_stealth_assassin_smoke_screen_thinker", "heroes/ryu/smoke_screen.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_stealth_assassin_smoke_screen_debuff", "heroes/ryu/smoke_screen.lua", LUA_MODIFIER_MOTION_NONE)

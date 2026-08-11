@@ -28,25 +28,13 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
       "model"                                             "models/heroes/weaver/weaver_bug.vmdl"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "beetle_limit"                                    "5"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "beetle_damage"                                   "8 16 24"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "beetle_hp"                                       "140 275 410"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "beetle_limit" "5"
+            "beetle_damage" "8 16 24"
+            "beetle_hp" "140 275 410"
+        }
 
     "OnAbilityPhaseStart"
     {
@@ -54,9 +42,9 @@
       {
         "ScriptFile"                                      "heroes/crypt_lord/carrion_beetles.lua"
         "Function"                                        "CarrionBeetlesPrecast"
-      }   
+      }
     }
-    
+
     "OnSpellStart"
     {
       "RunScript"
@@ -70,13 +58,13 @@
         "EffectName"                                      "Hero_Weaver.SwarmCast"
         "Target"                                          "CASTER"
       }
-      
+
     }
 
     "Modifiers"
     {
       "modifier_carrion_beetle"
-      {   
+      {
         "OnCreated"
         {
           "FireEffect"
@@ -95,14 +83,14 @@
           {
             "ScriptFile"                                  "mechanics/corpses.lua"
             "Function"                                    "SetNoCorpse"
-          }               
+          }
         }
 
         "States"
         {
           "MODIFIER_STATE_DOMINATED"                      "MODIFIER_STATE_VALUE_ENABLED"
         }
-        
+
         "OnDeath"
         {
           "RunScript"
@@ -110,7 +98,7 @@
             "ScriptFile"                                  "heroes/crypt_lord/carrion_beetles.lua"
             "Function"                                    "RemoveDeadBeetle"
           }
-        }       
+        }
       }
     }
 }
@@ -127,16 +115,12 @@
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_2"
 
     "AbilityCastPoint"                                    "0.1"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hp_regen"                                        "2"
-      }
-    }
-    
+
+    "AbilityValues"
+        {
+            "hp_regen" "2"
+        }
+
     "OnToggleOn"
     {
       "RunScript"
@@ -156,7 +140,7 @@
       {
         "EffectName"                                      "Hero_Weaver.SwarmCast"
         "Target"                                          "CASTER"
-      }   
+      }
     }
 
     "OnToggleOff"
@@ -178,7 +162,7 @@
     "Modifiers"
     {
       "modifier_burrow"
-      {   
+      {
         "Properties"
         {
           "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"       "%hp_regen"
@@ -208,9 +192,9 @@
               "TARGET"                                    "attach_origin"
               "TARGET"                                    "attach_origin"
             }
-          }               
+          }
         }
-        
+
         "OnDestroy"
         {
           "FireEffect"
@@ -224,7 +208,7 @@
               "TARGET"                                    "attach_origin"
             }
           }
-        }       
+        }
       }
     }
 }

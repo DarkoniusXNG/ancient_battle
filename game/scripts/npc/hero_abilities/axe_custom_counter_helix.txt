@@ -10,7 +10,7 @@
   {
     "BaseClass"                                           "ability_lua"
     "ScriptFile"                                          "heroes/axe/counter_helix.lua"
-    "AbilityTextureName"                                  "axe_counter_helix"
+    "AbilityTextureName"                                  "custom/axe_custom_counter_helix"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -26,30 +26,17 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "100 150 200 250"
-        "LinkedSpecialBonus"                              "special_bonus_unique_axe_counter_helix_damage"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "275"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "trigger_chance"                                  "20"
-      }
-      "04" // not in tooltip; only here
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "trigger_radius"                                  "1800"
-      }
-    }
+    "AbilityValues"
+	{
+		"damage"
+		{
+			"value" "100 150 200 250"
+			"LinkedSpecialBonus" "special_bonus_unique_axe_counter_helix_damage"
+		}
+		"radius" "275"
+		"trigger_chance" "20"
+		"trigger_radius" "1800" // not in tooltip; only here
+	}
   }
 
   //=================================================================================================================
@@ -60,18 +47,14 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                                           "special_bonus_undefined"
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityType"                                         "ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "value"                                           "250"
-      }
-    }
+    "AbilityValues"
+        {
+            "value" "250"
+        }
   }
 }

@@ -1,6 +1,4 @@
-if modifier_holy_strike_passive_weapon_effect == nil then
-	modifier_holy_strike_passive_weapon_effect = class({})
-end
+modifier_holy_strike_passive_weapon_effect = class({})
 
 function modifier_holy_strike_passive_weapon_effect:IsHidden()
 	return true
@@ -20,11 +18,7 @@ end
 
 -- function modifier_holy_strike_passive_weapon_effect:OnCreated()
 	-- if IsServer() then
-		-- if self.weapon_pfx == nil then
-			-- local parent = self:GetParent()
-			-- local parent_loc = parent:GetAbsOrigin()
-			-- self.weapon_pfx =
-		-- end
+
 	-- end
 -- end
 

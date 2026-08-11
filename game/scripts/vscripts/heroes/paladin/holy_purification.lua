@@ -1,6 +1,4 @@
-if paladin_holy_purification == nil then
-	paladin_holy_purification = class({})
-end
+paladin_holy_purification = paladin_holy_purification or class({})
 
 function paladin_holy_purification:GetAOERadius()
 	local caster = self:GetCaster()
@@ -170,6 +168,4 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if guardian_angel_holy_purification == nil then
-	guardian_angel_holy_purification = paladin_holy_purification
-end
+guardian_angel_holy_purification = paladin_holy_purification

@@ -34,5 +34,32 @@
 
     "Ability16"                                           "special_bonus_cast_speed_30"    // lvl 25 talent; 
     "Ability17"                                           "special_bonus_attack_base_damage_100"    // lvl 25 talent;
+
+    // Protection
+    //-------------------------------------------------------------------------------------------------------------
+    "ArmorPhysical"                                       "-1"
+    "MagicalResistance"                                   "25"                  // Default
+
+	// Attack
+    //-------------------------------------------------------------------------------------------------------------
+    "AttackCapabilities"                                  "DOTA_UNIT_CAP_RANGED_ATTACK"
+    "AttackDamageMin"                                     "27"
+    "AttackDamageMax"                                     "35"
+    "AttackRate"                                          "1.5"
+    "BaseAttackSpeed"                                     "110"
+    "AttackAnimationPoint"                                "0.3"
+    "AttackAcquisitionRange"                              "800"
+    "AttackRange"                                         "475"
+    "ProjectileSpeed"                                     "1200"
+
+    // Attributes
+    //-------------------------------------------------------------------------------------------------------------
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributeBaseStrength"                               "20"
+    "AttributeStrengthGain"                               "2.0"
+    "AttributeBaseAgility"                                "18"
+    "AttributeAgilityGain"                                "1.6"
+    "AttributeBaseIntelligence"                           "21"
+    "AttributeIntelligenceGain"                           "3.5"
   }
 }

@@ -92,8 +92,6 @@
 
     // Combat
     //-------------------------------------------------------------------------------------------------------------
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"
     "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
 
     // Bounds

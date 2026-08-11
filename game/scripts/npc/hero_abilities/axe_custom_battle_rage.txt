@@ -18,13 +18,13 @@
     "AbilityCastAnimation"                                "ACT_DOTA_SPAWN"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ALLIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
+
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCastRange"                                    "750"
     "AbilityCastPoint"                                    "0.3"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "15.0"
 
@@ -32,32 +32,20 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityManaCost"                                     "75"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "particle"                                          "particles/custom/axe_custom_battle_hunger.vpcf"
     }
-    
+
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // Battle Hunger duration: 12
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "12"
-      }
-      "02" // octarine core spell lifesteal: 5% against creeps
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "heal_multiplier"                                 "5 10 15 20"
-      }
-      "03" // Battle Hunger bonus movement speed: 12%
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_move_speed"                                "12 15 18 21"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "12"
+            "heal_multiplier" "5 10 15 20" // it should be 5 times less against creeps
+            "bonus_move_speed" "12 15 18 21"
+        }
 
     "OnSpellStart"
     {
@@ -67,26 +55,26 @@
         "ModifierName"                                    "modifier_axe_battle_rage"
         "Duration"                                        "%duration"
       }
-      
+
       "FireSound"
       {
         "EffectName"                                      "Hero_Axe.Battle_Hunger"
         "Target"                                          "TARGET"
       }
     }
-    
+
     "Modifiers"
     {
       "modifier_axe_battle_rage" // needs tooltip
       {
         "IsBuff"                                          "1"
         "IsPurgable"                                      "1"
-        
+
         "Properties"
         {
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed" 
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_move_speed"
         }
-        
+
         "OnCreated"
         {
           "AttachEffect"
@@ -96,7 +84,7 @@
             "EffectAttachType"                            "follow_overhead"
           }
         }
-        
+
         "OnDealDamage"
         {
           "Lifesteal"

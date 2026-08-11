@@ -1,6 +1,4 @@
-if death_knight_death_pact == nil then
-	death_knight_death_pact = class({})
-end
+death_knight_death_pact = death_knight_death_pact or class({})
 
 LinkLuaModifier("modifier_custom_death_pact", "heroes/death_knight/death_pact.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -70,9 +68,7 @@ end
 
 --------------------------------------------------------------------------------
 
-if modifier_custom_death_pact == nil then
-	modifier_custom_death_pact = class({})
-end
+modifier_custom_death_pact = class({})
 
 function modifier_custom_death_pact:IsHidden()
 	return false

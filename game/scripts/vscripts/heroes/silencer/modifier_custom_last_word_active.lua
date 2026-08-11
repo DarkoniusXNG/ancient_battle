@@ -1,6 +1,4 @@
-﻿if modifier_custom_last_word_active == nil then
-	modifier_custom_last_word_active = class({})
-end
+﻿modifier_custom_last_word_active = class({})
 
 function modifier_custom_last_word_active:IsHidden()
 	return false

@@ -3,30 +3,26 @@
   //=================================================================================================================
   // Horde Corpse Lord: Summon Undead
   // Author: Valve + Darkonius
-  // Notes: OK; 16.9.2018;
-  // TO_DO:
+  // Notes: OK; 2026;
+  // TO_DO: test
   //=================================================================================================================
   "corpse_lord_summon_undead"
   {
     "BaseClass"                                           "ability_datadriven"
     "AbilityTextureName"                                  "undying_soul_rip"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-    
+
     "AbilityCastPoint"                                    "0.0"
     "AbilityChannelTime"                                  "2.5"
     "AbilityCastAnimation"                                "ACT_DOTA_VICTORY"
     "AbilityCooldown"                                     "10.0"
     "AbilityManaCost"                                     "100"
     "AbilityProcsMagicStick"                              "1"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "number_of_zombies"                               "5"
-      }
-    }
+
+    "AbilityValues"
+	{
+		"number_of_zombies" "5"
+	}
 
     "OnSpellStart"
     {
@@ -35,14 +31,14 @@
         "Target"                                          "CASTER"
         "ModifierName"                                    "corpse_lord_channel_started"
       }
-      
+
       "FireSound"
       {
         "EffectName"                                      "Ability.SummonUndead"
         "Target"                                          "CASTER"
       }
     }
-    
+
     "OnChannelSucceeded"
     {
       "SpawnUnit"
@@ -59,7 +55,7 @@
             "EffectName"                                  "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
             "EffectAttachType"                            "follow_origin"
             "Target"                                      "TARGET"
-            
+
             "ControlPoints"
             {
               "00"                                        "0 0 0"
@@ -70,13 +66,13 @@
               "05"                                        "0 0 0"
             }
           }
-          
+
           "FireSound"
           {
             "EffectName"                                  "Ability.SummonUndeadSuccess"
             "Target"                                      "CASTER"
           }
-          
+
           "RunScript"
           {
             "ScriptFile"                                  "spawns.lua"
@@ -85,7 +81,7 @@
         }
       }
     }
-    
+
     "OnChannelFinish"
     {
       "RemoveModifier"
@@ -94,7 +90,7 @@
         "ModifierName"                                    "corpse_lord_channel_started"
       }
     }
-    
+
     "Modifiers"
     {
       "corpse_lord_channel_started" // doesn't need tooltip
@@ -102,7 +98,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "AttachEffect"

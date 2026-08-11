@@ -3,8 +3,8 @@
   //=================================================================================================================
   // Horde Fire Roshling: Fire Breath - Channeling damage in a cone in front of a caster while changing direction
   // Author: Valve
-  // Notes: OK; 9.5.2018; Don't change the name of the ability or AbilitySpecials names and order!
-  // TO_DO:
+  // Notes: OK; 2026; Don't change the name of the ability or AbilityValues names!
+  // TO_DO: test
   //=================================================================================================================
   "creature_fire_breath"
   {
@@ -19,7 +19,7 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "MaxLevel"                                            "1"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "12.0"
     "AbilityChannelTime"                                  "2.3"
@@ -36,33 +36,17 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "radius"                                          "350.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "speed"                                           "1000"
-      }
-      "03" // was 320
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "damage"                                          "220.0"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "rotation_angle"                                  "90.0"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "projectile_count"                                "12"
-      }
-    }
+    "AbilityValues"
+	{
+		"radius"
+		{
+			"value"			"350"
+			"affected_by_aoe_increase"	"1"
+		}
+		"speed" "1000"
+		"damage" "220"
+		"rotation_angle" "90.0"
+		"projectile_count" "12"
+	}
   }
 }

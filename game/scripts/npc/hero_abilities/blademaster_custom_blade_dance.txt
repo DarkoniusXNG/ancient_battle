@@ -20,20 +20,12 @@
       "particle"                                          "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
       "particle"                                          "particles/units/heroes/hero_juggernaut/jugg_crit_blur_impact.vpcf"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_damage"                                     "200"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "crit_chance"                                     "15 20 25 30"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "crit_damage" "200"
+            "crit_chance" "15 20 25 30"
+        }
 
     "Modifiers"
     {
@@ -43,9 +35,9 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "AllowIllusionDuplicate"                          "1"
-        
+
         "OnAttackStart"
         {
           "RemoveModifier"
@@ -58,7 +50,7 @@
           {
             "Chance"                                      "%crit_chance"
             "PseudoRandom"                                "DOTA_PSEUDO_RANDOM_JUGG_CRIT"
-            
+
             "OnSuccess"
             {
               "FireSound"
@@ -77,8 +69,8 @@
               "ApplyModifier"
               {
                 "ModifierName"                            "modifier_custom_blade_dance_buff"
-                "Target"                                  "CASTER"    
-              }        
+                "Target"                                  "CASTER"
+              }
             }
           }
         }
@@ -89,7 +81,7 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Properties"
         {
           "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"    "%crit_damage"
@@ -103,11 +95,11 @@
             "EffectAttachType"                            "attach_hitloc"
             "Target"                                      "TARGET"
           }
-          
+
           "RemoveModifier"
           {
             "ModifierName"                                "modifier_custom_blade_dance_buff"
-            "Target"                                      "CASTER"    
+            "Target"                                      "CASTER"
           }
         }
       }

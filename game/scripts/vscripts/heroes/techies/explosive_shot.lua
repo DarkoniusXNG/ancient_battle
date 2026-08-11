@@ -1,6 +1,4 @@
-﻿if techies_custom_explosive_shot == nil then
-	techies_custom_explosive_shot = class({})
-end
+﻿techies_custom_explosive_shot = class({})
 
 LinkLuaModifier("modifier_techies_explosive_shot_passive", "heroes/techies/explosive_shot.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -25,9 +23,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_techies_explosive_shot_passive == nil then
-	modifier_techies_explosive_shot_passive = class({})
-end
+modifier_techies_explosive_shot_passive = modifier_techies_explosive_shot_passive or class({})
 
 function modifier_techies_explosive_shot_passive:IsHidden()
 	return true

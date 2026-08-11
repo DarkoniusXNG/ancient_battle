@@ -1,6 +1,4 @@
-if modifier_custom_terror_buff == nil then
-	modifier_custom_terror_buff = class({})
-end
+modifier_custom_terror_buff = class({})
 
 function modifier_custom_terror_buff:IsHidden()
 	return false

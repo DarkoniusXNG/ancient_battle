@@ -54,7 +54,7 @@
     "ItemAliases"                                         "bs;bloodstone"
     "ItemInitialCharges"                                  "10" // original: 5
     "ItemDisplayCharges"                                  "1"
-    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
     "AllowedInBackpack"                                   "0"
 
     // Special
@@ -70,17 +70,29 @@
       "mana_regen_amp"                                    "100"
 
       "charge_gain_per_kill"                              "1"
-      "charge_gain_radius"                                "1200" // original: 1000
+      "charge_gain_radius" // original: 1000
+      {
+        "value"                                           "1200"
+        "affected_by_aoe_increase"                        "1"
+      }
       "mana_regen_per_charge"                             "1"
       "health_regen_per_charge"                           "1"
       "respawn_time_reduction_per_charge"                 "1" // min respawn time is 1 second
       "charge_loss_on_death"                              "3" // original: 33% of total
 
-      "death_heal_radius"                                 "1200" // original: 1675
+      "death_heal_radius" // original: 1675
+      {
+        "value"                                           "1200"
+        "affected_by_aoe_increase"                        "1"
+      }
       "death_heal_base"                                   "400"
       "death_heal_per_charge"                             "30"
       "death_mana_restore"                                "400"
-      "death_vision_radius"                               "1200" // original: 1800
+      "death_vision_radius" // original: 1800
+      {
+        "value"                                           "1200"
+        "affected_by_aoe_increase"                        "1"
+      }
       "death_vision_duration"                             "30" // original: respawn time
     }
   }

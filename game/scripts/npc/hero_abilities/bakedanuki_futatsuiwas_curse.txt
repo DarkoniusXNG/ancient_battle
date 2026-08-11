@@ -11,7 +11,7 @@
 
     // Ability General
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "AbilityType"                                         "ABILITY_TYPE_ULTIMATE"
     "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_NO"
@@ -29,28 +29,12 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hex_base_speed"                                  "225"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "search_radius"                                   "180"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "search_range"                                    "150"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "hex_duration"                                    "4 5 6"
-      }
-    }
+    "AbilityValues"
+        {
+            "hex_base_speed" "225"
+            "search_radius" "180"
+            "search_range" "150"
+            "hex_duration" "4 5 6"
+        }
   }
 }

@@ -212,7 +212,7 @@ if IsServer() then
 		mana_burn = math.min(mana_burn, target_mana)
 
 		-- Burn mana
-		target:ReduceMana(mana_burn)
+		target:ReduceMana(mana_burn, ability)
 
 		-- Deal bonus damage
 		local dmg_per_burned_mana = ability:GetSpecialValueFor("damage_per_burned_mana")

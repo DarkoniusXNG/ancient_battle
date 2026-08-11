@@ -1,6 +1,4 @@
-if modifier_death_knight_death_pit_effect == nil then
-	modifier_death_knight_death_pit_effect = class({})
-end
+modifier_death_knight_death_pit_effect = modifier_death_knight_death_pit_effect or class({})
 
 function modifier_death_knight_death_pit_effect:IsHidden()
 	return false

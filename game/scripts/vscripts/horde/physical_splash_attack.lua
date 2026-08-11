@@ -1,6 +1,4 @@
-if custom_unit_splash_attack == nil then
-	custom_unit_splash_attack = class({})
-end
+custom_unit_splash_attack = class({})
 
 LinkLuaModifier("modifier_custom_unit_custom_splash_attack", "horde/physical_splash_attack.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -14,9 +12,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_custom_unit_custom_splash_attack == nil then
-	modifier_custom_unit_custom_splash_attack = class({})
-end
+modifier_custom_unit_custom_splash_attack = class({})
 
 function modifier_custom_unit_custom_splash_attack:IsHidden()
 	return true
@@ -140,6 +136,4 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if custom_phoenix_splash_attack == nil then
-	custom_phoenix_splash_attack = custom_unit_splash_attack
-end
+custom_phoenix_splash_attack = custom_unit_splash_attack

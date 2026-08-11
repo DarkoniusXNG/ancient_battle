@@ -1,6 +1,4 @@
-if bane_custom_brain_sap == nil then
-	bane_custom_brain_sap = class({})
-end
+bane_custom_brain_sap = class({})
 
 LinkLuaModifier("modifier_custom_brain_sap_int_loss", "heroes/bane/modifier_custom_brain_sap_int_loss.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_brain_sap_int_gain", "heroes/bane/modifier_custom_brain_sap_int_gain.lua", LUA_MODIFIER_MOTION_NONE)

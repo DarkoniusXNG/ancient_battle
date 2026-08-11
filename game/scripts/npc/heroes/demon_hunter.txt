@@ -14,16 +14,16 @@
     // Abilities
     //----------------------------------------------------------------
     "Ability1"                                            "demon_hunter_mana_burn"
-    "Ability2"                                            "demon_hunter_immolation" // fix particles
+    "Ability2"                                            "demon_hunter_immolation" // TODO: fix particles
     "Ability3"                                            "demon_hunter_evasion"
-    //"Ability4"           "demon_hunter_demon_form" // fix
+    //"Ability4"           "demon_hunter_demon_form" // TODO: fix
     //"Ability5"          ""
     //"Ability6"          ""      
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -38,7 +38,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "21"
     "AttributeStrengthGain"                               "2.4"
     "AttributeBaseIntelligence"                           "16"

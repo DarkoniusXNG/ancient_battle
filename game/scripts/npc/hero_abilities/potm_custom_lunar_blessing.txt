@@ -1,0 +1,31 @@
+"DOTAAbilities"
+{
+
+  //=================================================================================================================
+  // POTM: Lunar Blessing (F) - Passive, Shadow Meld + hp regen during night + True Shot aura
+  // Author: Darkonius
+  // Notes: OK; 2023;
+  // TO_DO: ALL
+  //=================================================================================================================
+  "potm_custom_lunar_blessing"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/potm/lunar_blessing.lua"
+    "AbilityTextureName"                                  "custom/potm_custom_lunar_blessing"
+
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitTargetTeam"                               "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+    "AbilityCastRange"                                    "1200"
+    
+    "AbilityValues"
+    {
+      "night_hp_regen"                                    "3"
+	  "night_fade_time"                                   "3"
+	  "night_bonus_attack_dmg_pct"                        "10 20 30 40"
+	  "day_bonus_attack_dmg_pct"                          "10 20 30 40"
+	  "bonus_night_vision"                                "200 400 600 800"
+      "aura_radius"                                       "1200"
+    }
+  }
+}

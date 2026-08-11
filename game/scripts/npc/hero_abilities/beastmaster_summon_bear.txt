@@ -32,40 +32,20 @@
       "model"                                             "models/heroes/lone_druid/spirit_bear.vmdl"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "70"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bear_hp"                                         "600 900 1200"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bear_regen_tooltip"                              "0.5 1 1.5"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bear_damage"                                     "20 29 39"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bear_armor"                                      "0 1 2"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration" "70"
+            "bear_hp" "600 900 1200"
+            "bear_regen_tooltip" "0.5 1 1.5"
+            "bear_damage" "20 29 39"
+            "bear_armor" "0 1 2"
+        }
 
     "OnSpellStart"
     {
       "FireSound"
       {
-        "EffectName"                                      "Hero_LoneDruid.SpiritBear.Cast" 
+        "EffectName"                                      "Hero_LoneDruid.SpiritBear.Cast"
         "Target"                                          "CASTER"
       }
 
@@ -99,7 +79,7 @@
         {
           "FireEffect"
           {
-            "Target"            
+            "Target"
             {
               "Center"                                    "UNIT"
               "Flags"                                     "DOTA_UNIT_TARGET_FLAG_DEAD"
@@ -131,24 +111,16 @@
       "particle"                                          "particles/status_fx/status_effect_faceless_chronosphere.vpcf"
       "particle"                                          "particles/generic_gameplay/generic_stunned.vpcf"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bash_chance"                                     "25"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "stun_duration"                                   "1.0"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "bash_chance" "25"
+            "stun_duration" "1.0"
+        }
 
     "Modifiers"
     {
-      "modifier_bash" 
+      "modifier_bash"
       {
         "Passive"                                         "1"
         "IsHidden"                                        "1"
@@ -163,8 +135,8 @@
               "Teams"                                     "DOTA_UNIT_TARGET_TEAM_ENEMY"
               "Types"                                     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
             }
-            
-            "Action"    
+
+            "Action"
             {
               "FireSound"
               {
@@ -176,7 +148,7 @@
               {
                 "ModifierName"                            "modifier_bash_stun"
                 "Target"                                  "TARGET"
-                "Duration"                                "%stun_duration"   
+                "Duration"                                "%stun_duration"
               }
 
               "Damage"
@@ -232,15 +204,11 @@
       "particle"                                          "particles/units/heroes/hero_lone_druid/lone_druid_bear_blink_start.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "blink_range"                                     "1000"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "blink_range" "1000"
+        }
 
     "OnSpellStart"
     {
@@ -262,7 +230,7 @@
         "ScriptFile"                                      "heroes/beastmaster/summon_bear.lua"
         "Function"                                        "Blink"
         "Target"                                          "POINT"
-      }       
+      }
 
       "FireSound"
       {

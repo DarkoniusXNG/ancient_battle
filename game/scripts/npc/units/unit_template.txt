@@ -88,8 +88,8 @@
     // Combat
     //----------------------------------------------------------------
     "TeamName"                                            "DOTA_TEAM_GOODGUYS"          // DOTA_TEAM_NEUTRALS; DOTA_TEAM_BADGUYS;
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"      // Attack Type; DOTA_COMBAT_CLASS_ATTACK_HERO; Deprecated: DOTA_COMBAT_CLASS_ATTACK_LIGHT; DOTA_COMBAT_CLASS_ATTACK_SIEGE; DOTA_COMBAT_CLASS_ATTACK_PIERCE; DOTA_COMBAT_CLASS_ATTACK_BASIC
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"      // Armor Type; DOTA_COMBAT_CLASS_DEFEND_HERO; Deprecated: DOTA_COMBAT_CLASS_DEFEND_STRONG; DOTA_COMBAT_CLASS_DEFEND_SOFT; DOTA_COMBAT_CLASS_DEFEND_BASIC; DOTA_COMBAT_CLASS_DEFEND_STRUCTURE;
+    //"CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"      // Attack Type; DOTA_COMBAT_CLASS_ATTACK_HERO; Deprecated: DOTA_COMBAT_CLASS_ATTACK_LIGHT; DOTA_COMBAT_CLASS_ATTACK_SIEGE; DOTA_COMBAT_CLASS_ATTACK_PIERCE; DOTA_COMBAT_CLASS_ATTACK_BASIC
+    //"CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"      // Armor Type; DOTA_COMBAT_CLASS_DEFEND_HERO; Deprecated: DOTA_COMBAT_CLASS_DEFEND_STRONG; DOTA_COMBAT_CLASS_DEFEND_SOFT; DOTA_COMBAT_CLASS_DEFEND_BASIC; DOTA_COMBAT_CLASS_DEFEND_STRUCTURE;
     "UnitRelationshipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"  // Attack Priority; DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT
     
     // Vision

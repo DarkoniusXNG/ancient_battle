@@ -16,7 +16,7 @@
     "AbilityCastRange"                                    "0" // GLOBAL
 
     "AbilityCastPoint"                                    "3.0"
-    
+
     "AbilityCastAnimation"                                "ACT_DOTA_VICTORY"
 
     "AbilityCooldown"                                     "60 50 40 30"
@@ -30,13 +30,9 @@
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "cast_point"                                      "3.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "cast_point" "3.0"
+        }
   }
 }

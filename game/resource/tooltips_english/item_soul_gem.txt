@@ -1,7 +1,0 @@
-
-		"DOTA_Tooltip_ability_item_soul_gem"                                   	"Soul Gem"
-		"DOTA_Tooltip_ability_item_soul_gem_Description"                        ""
-		"DOTA_Tooltip_ability_item_soul_gem_Lore"                               "Gem used for trapping innocent souls."
-		"DOTA_Tooltip_ability_item_soul_gem_bonus_str"                          "+$str"
-		"DOTA_Tooltip_ability_item_soul_gem_bonus_agi"                          "+$agi"
-		"DOTA_Tooltip_ability_item_soul_gem_bonus_int"                          "+$int"

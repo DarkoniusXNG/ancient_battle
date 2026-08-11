@@ -1,8 +1,6 @@
 LinkLuaModifier("modifier_breath_fire_haze_burn", "heroes/brewmaster/breath_of_fire.lua", LUA_MODIFIER_MOTION_NONE)
 
-if brewmaster_custom_breath_of_fire == nil then
-	brewmaster_custom_breath_of_fire = class({})
-end
+brewmaster_custom_breath_of_fire = class({})
 
 function brewmaster_custom_breath_of_fire:OnSpellStart()
 	local caster = self:GetCaster()
@@ -93,9 +91,7 @@ end
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-if modifier_breath_fire_haze_burn == nil then
-  modifier_breath_fire_haze_burn = class({})
-end
+modifier_breath_fire_haze_burn = modifier_breath_fire_haze_burn or class({})
 
 function modifier_breath_fire_haze_burn:IsHidden()
 	return false -- needs tooltip

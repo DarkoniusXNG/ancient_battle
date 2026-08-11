@@ -26,19 +26,11 @@
     "AbilityManaCost"                                     "150"
     "AbilityProcsMagicStick"                              "1"
     
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration_hero"                                   "6.0"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration_creeps"                                 "20.0"
-      }
-    }
+    "AbilityValues"
+        {
+            "duration_hero" "6.0"
+            "duration_creeps" "20.0"
+        }
     
     "OnSpellStart"
     {

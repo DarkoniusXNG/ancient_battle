@@ -29,7 +29,7 @@
     "AbilityCastRange"                                    "900"
     "AbilityCastPoint"                                    "0.25"
 
-    // Time    
+    // Time
     //-------------------------------------------------------------------------------------------------------------
     "AbilityCooldown"                                     "100"
 
@@ -40,43 +40,28 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "60"
-      }
-      "02" // not in tooltip
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "illusion_damage_out"                             "-30"
-      }
-      "03" // not in tooltip
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "illusion_damage_in"                              "0"
-      }
-      "04" // tooltip only (illusion_damage_out + 100)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "illusion_damage_dealt"                           "70"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "05" // tooltip only (illusion_damage_in + 100)
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "illusion_damage_taken"                           "100"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      
-    }
-    
+    "AbilityValues"
+	{
+		"duration" "60"
+		"illusion_damage_out" "-30"
+		"illusion_damage_in" "0"
+		"illusion_damage_dealt" // tooltip only (illusion_damage_out + 100)
+		{
+			"value" "70"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"illusion_damage_taken" // tooltip only (illusion_damage_in + 100)
+		{
+			"value" "100"
+			"CalculateSpellDamageTooltip" "0"
+		}
+	}
+
     "precache"
     {
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
     }
-    
+
     "OnSpellStart"
     {
       "FireSound"
@@ -88,7 +73,7 @@
           "Flags"                                         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
         }
       }
-      
+
       "RunScript"
       {
         "ScriptFile"                                      "heroes/archmage/conjure_image.lua"

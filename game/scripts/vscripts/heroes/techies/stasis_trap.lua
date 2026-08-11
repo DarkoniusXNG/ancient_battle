@@ -46,9 +46,7 @@ end
 
 -- Trap modifier ----------------------------------------------------------------------------------
 
-if modifier_techies_custom_stasis_trap == nil then
-	modifier_techies_custom_stasis_trap = class({})
-end
+modifier_techies_custom_stasis_trap = class({})
 
 function modifier_techies_custom_stasis_trap:IsHidden()
 	return true
@@ -229,9 +227,7 @@ end
 
 -- Stun modifier -----------------------------------------------------------------------------------------------------
 
-if modifier_techies_custom_stasis_trap_stun == nil then
-	modifier_techies_custom_stasis_trap_stun = class({})
-end
+modifier_techies_custom_stasis_trap_stun = class({})
 
 function modifier_techies_custom_stasis_trap_stun:IsHidden() -- needs tooltip
 	return false

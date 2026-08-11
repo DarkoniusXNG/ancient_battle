@@ -40,13 +40,10 @@ function ElectromagneticPulse(keys)
 						-- Calculating mana burn value
 						local unit_current_mana = unit:GetMana()
 						local unit_max_mana = unit:GetMaxMana()
-						local mana_to_burn_on_unit = unit_max_mana*mana_to_burn_percent*0.01
-						if mana_to_burn_on_unit > unit_current_mana then
-							mana_to_burn_on_unit = unit_current_mana
-						end
+						local mana_to_burn_on_unit = math.min(unit_current_mana, unit_max_mana*mana_to_burn_percent*0.01)
 
 						-- Burning Mana (Reducing mana) of the unit
-						unit:ReduceMana(mana_to_burn_on_unit)
+						unit:ReduceMana(mana_to_burn_on_unit, ability)
 
 						-- Calculating damage and applying damage to the unit
 						local damage_on_unit = damage_per_burned_mana_percent*mana_to_burn_on_unit

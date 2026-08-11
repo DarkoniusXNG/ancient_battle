@@ -18,34 +18,26 @@
     "AbilityUnitTargetType"                               "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
-    
+
     "AbilityCastRange"                                    "800"
     "AbilityCastPoint"                                    "0.3"
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ALACRITY"
-    
+
     "AbilityCooldown"                                     "23.0 20.0 17.0 14.0"
-    
+
     "AbilityManaCost"                                     "75 80 85 90"
     "AbilityProcsMagicStick"                              "1"
-    
+
     "precache"
     {
       "particle"                                          "particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_ground_eztzhok.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "redirected_damage"                               "40 45 50 55"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "duration"                                        "10.0"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "redirected_damage" "40 45 50 55"
+            "duration" "10.0"
+        }
   }
 }

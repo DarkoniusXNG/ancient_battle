@@ -14,17 +14,17 @@
     
     // Abilities
     //----------------------------------------------------------------
-    "Ability1"                                            "shadow_hunter_healing_wave" // fix particles
+    "Ability1"                                            "shadow_hunter_healing_wave" // TODO: fix particles
     //"Ability2"           "shadow_hunter_hex" // rework if needed otherwise use vanilla
-    //"Ability3"           "shadow_hunter_serpent_ward" // make it work
-    "Ability4"                                            "shadow_hunter_big_bad_voodoo" // fix particles
+    //"Ability3"           "shadow_hunter_serpent_ward" // TODO: make it work
+    "Ability4"                                            "shadow_hunter_big_bad_voodoo" // TODO: fix particles
     "Ability5"                                            ""
     "Ability6"                                            ""   
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -40,7 +40,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_AGILITY"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "15"
     "AttributeStrengthGain"                               "2"
     "AttributeBaseIntelligence"                           "18"

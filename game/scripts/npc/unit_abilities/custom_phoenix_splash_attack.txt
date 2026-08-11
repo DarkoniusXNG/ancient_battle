@@ -3,8 +3,8 @@
   //====================================================================================================
   // Phoenix: Splash Attack - passive, dealing 100% attack damage as magic damage in a radius around the attacked target;
   // Author: Darkonius
-  // Notes: OK; 2022;
-  // TO_DO:
+  // Notes: OK; 2026;
+  // TO_DO: test
   //====================================================================================================
   "custom_phoenix_splash_attack"
   {
@@ -25,18 +25,14 @@
       "particle"                                          "particles/items/powertreads_splash.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "400"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_percent"                                  "100"
-      }
-    }
+    "AbilityValues"
+	{
+		"radius"
+		{
+			"value"			"300"
+			"affected_by_aoe_increase"	"1"
+		}
+		"damage_percent" "100"
+	}
   }
 }

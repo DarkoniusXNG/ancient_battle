@@ -53,7 +53,7 @@ function bakedanuki_tomfoolery_blink:OnSpellStart()
 		return
 	end
 	if other_ability:GetLevel() > 0 then
-		other_ability:UseResources(false, false, true)
+		other_ability:UseResources(false, false, false, true)
 	end
 end
 
@@ -87,7 +87,7 @@ function bakedanuki_tomfoolery_summon:OnSpellStart()
 		return
 	end
 	if other_ability:GetLevel() > 0 then
-		other_ability:UseResources(false, false, true)
+		other_ability:UseResources(false, false, false, true)
 	end
 end
 

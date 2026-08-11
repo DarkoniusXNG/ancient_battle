@@ -11,10 +11,7 @@ function item_infused_robe:OnSpellStart()
   local caster = self:GetCaster()
 
   -- Apply barrier buff to the target
-  caster:AddNewModifier(caster, self, "modifier_infused_robe_damage_barrier", {
-    duration = self:GetSpecialValueFor("barrier_duration"),
-    barrierHP = self:GetSpecialValueFor("barrier_block"),
-  })
+  caster:AddNewModifier(caster, self, "modifier_infused_robe_damage_barrier", { duration = self:GetSpecialValueFor("barrier_duration")})
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -60,10 +57,6 @@ function modifier_item_infused_robe_passives:GetModifierPhysical_ConstantBlock(e
     return 0
   end
 
-  if parent:HasModifier("modifier_infused_robe_damage_barrier") then
-    return 0
-  end
-
   local attacker = event.attacker
   if not attacker or attacker:IsNull() then
     return 0
@@ -75,7 +68,7 @@ function modifier_item_infused_robe_passives:GetModifierPhysical_ConstantBlock(e
 
   local chance = ability:GetSpecialValueFor("passive_attack_damage_block_chance")
 
-  if RollPseudoRandomPercentage(chance, ability:GetEntityIndex(), parent) then
+  if RollPseudoRandomPercentage(chance, DOTA_PSEUDO_RANDOM_ITEM_VANGUARD, parent) then
     if parent:IsRangedAttacker() then
       return ability:GetSpecialValueFor("passive_attack_damage_block_ranged")
     else
@@ -113,13 +106,9 @@ function modifier_item_infused_robe_passives:GetModifierTotal_ConstantBlock(even
     return 0
   end
 
-  if parent:HasModifier("modifier_infused_robe_damage_barrier") then
-    return 0
-  end
-
   local chance = ability:GetSpecialValueFor("passive_spell_damage_block_chance")
 
-  if ability:PseudoRandom(chance) then
+  if RollPseudoRandomPercentage(chance, DOTA_PSEUDO_RANDOM_CUSTOM_GAME_2, parent) then
     -- Don't block more than the actual damage
     local block_amount = math.min(ability:GetSpecialValueFor("passive_spell_damage_block"), event.damage)
 
@@ -167,70 +156,71 @@ function modifier_infused_robe_damage_barrier:IsPurgable()
   return false
 end
 
-function modifier_infused_robe_damage_barrier:OnCreated(event)
-  local parent = self:GetParent()
+function modifier_infused_robe_damage_barrier:OnCreated()
+  local ability = self:GetAbility()
+  if ability and not ability:IsNull() then
+    self.max_shield_hp = ability:GetSpecialValueFor("barrier_block")
+  end
 
   if IsServer() then
-    if event.barrierHP then
-      self:SetStackCount(event.barrierHP)
-    end
-
+    local parent = self:GetParent()
     -- Sound
     parent:EmitSound("Hero_Abaddon.AphoticShield.Cast")
+    -- Starting value for shield
+    self:SetStackCount(self.max_shield_hp)
   end
 end
 
-function modifier_infused_robe_damage_barrier:OnRefresh(event)
-  self:OnCreated(event)
+function modifier_infused_robe_damage_barrier:OnRefresh()
+  self:OnCreated()
 end
 
 function modifier_infused_robe_damage_barrier:DeclareFunctions()
   return {
-    MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK,
+    MODIFIER_PROPERTY_INCOMING_DAMAGE_CONSTANT,
   }
 end
 
-function modifier_infused_robe_damage_barrier:GetModifierTotal_ConstantBlock(event)
-  if not IsServer() then
-    return
-  end
+function modifier_infused_robe_damage_barrier:GetModifierIncomingDamageConstant(event)
+  if IsClient() then
+    if event.report_max then
+      return self.max_shield_hp
+    else
+      return self:GetStackCount() -- current shield hp
+    end
+  else
+    local parent = self:GetParent()
+    local damage = event.damage
+    local barrier_hp = self:GetStackCount()
 
-  local parent = self:GetParent()
-  local block_amount = event.damage
-  local barrier_hp = self:GetStackCount()
-
-  -- Don't react to damage with HP removal flag
-  if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS then
-    return 0
-  end
-
-  -- Don't react on self damage
-  if event.attacker == parent then
-    return 0
-  end
-
-  -- Don't block more than remaining hp
-  block_amount = math.min(block_amount, barrier_hp)
-
-  -- Reduce barrier hp
-  self:SetStackCount(barrier_hp - block_amount)
-
-  if block_amount > 0 then
-    -- Visual effect
-    local alert_type = OVERHEAD_ALERT_MAGICAL_BLOCK
-    if event.damage_type == DAMAGE_TYPE_PHYSICAL then
-      alert_type = OVERHEAD_ALERT_BLOCK
+    -- Don't react to damage with HP removal flag
+    if bit.band(event.damage_flags, DOTA_DAMAGE_FLAG_HPLOSS) == DOTA_DAMAGE_FLAG_HPLOSS then
+      return 0
     end
 
-    SendOverheadEventMessage(nil, alert_type, parent, block_amount, nil)
-  end
+    -- Don't react on self damage
+    if event.attacker == parent then
+      return 0
+    end
 
-  -- Remove the barrier if hp is reduced to nothing
-  if self:GetStackCount() <= 0 then
-    self:Destroy()
-  end
+    -- Don't block more than remaining barrier hp
+    local block_amount = math.min(damage, barrier_hp)
 
-  return block_amount
+    -- Reduce barrier hp
+    self:SetStackCount(barrier_hp - block_amount)
+
+    if block_amount > 0 then
+      -- Visual effect
+      SendOverheadEventMessage(nil, OVERHEAD_ALERT_BLOCK, parent, block_amount, nil)
+    end
+
+    -- Destroy the modifier if barrier hp is reduced to 0
+    if self:GetStackCount() <= 0 then
+      self:Destroy()
+    end
+
+    return -block_amount
+  end
 end
 
 function modifier_infused_robe_damage_barrier:GetEffectName()

@@ -3,8 +3,8 @@
   //====================================================================================================
   // Primal Split Fire Spirit: Permanent Immolation (Q) - passive, like Radiance but smaller radius
   // Author: Darkonius
-  // Notes: OK; 26.10.2019;
-  // TO_DO:
+  // Notes: OK; 2026?;
+  // TO_DO: test
   //====================================================================================================
   "primal_split_fire_spirit_permanent_immolation"
   {
@@ -17,22 +17,21 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_NO"
 
     "MaxLevel"                                            "1"
-    
-    "AbilitySpecial"
-    {
-      "01" // dota: 20/40/60;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_second"                               "45"
-        "CalculateSpellDamageTooltip"                     "0"
-      }
-      "02" // dota: 220;
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "300"
-      }
-    }
-    
+
+    "AbilityValues"
+	{
+		"damage_per_second"
+		{
+			"value" "45"
+			"CalculateSpellDamageTooltip" "0"
+		}
+		"radius"
+		{
+			"value"			"300"
+			"affected_by_aoe_increase"	"1"
+		}
+	}
+
     "Modifiers"
     {
       "modifier_fire_spirit_custom_permanent_immolation_aura_applier" // doesn't need tooltip
@@ -41,22 +40,22 @@
         "IsHidden"                                        "1"
         "IsBuff"                                          "1"
         "IsPurgable"                                      "0"
-        
+
         "Aura"                                            "modifier_fire_spirit_custom_permanent_immolation_burn"
         "Aura_Radius"                                     "%radius"
         "Aura_Teams"                                      "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Aura_Types"                                      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        
+
         "EffectName"                                      "particles/items2_fx/radiance.vpcf"
         "EffectAttachType"                                "attach_hitloc"
       }
-      
+
       "modifier_fire_spirit_custom_permanent_immolation_burn" // needs tooltip
       {
         "IsHidden"                                        "0"
         "IsDebuff"                                        "1"
         "IsPurgable"                                      "0"
-        
+
         "OnCreated"
         {
           "Damage"
@@ -66,7 +65,7 @@
             "Target"                                      "TARGET"
           }
         }
-        
+
         "ThinkInterval"                                   "1.0"
         "OnIntervalThink"
         {

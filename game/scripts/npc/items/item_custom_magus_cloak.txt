@@ -12,7 +12,7 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "260"
+    "ItemCost"                                            "80"
     "ItemShopTags"                                        ""
 
     // Recipe
@@ -21,13 +21,13 @@
     "ItemResult"                                          "item_custom_magus_cloak"
     "ItemRequirements"
     {
-      "01"                                                "item_null_talisman_old;item_sobi_mask;item_faerie_fire"
+      "01"                                                "item_null_talisman_old;item_sobi_mask;item_wizard_hat"
     }
   }
-  
+
   //=================================================================================================================
-  // Magus Cloak - Old Null Talisman (395) + Sage Mask (175) + Faerie Fire (70) + Recipe (260) = 900
-  // Notes: OK; 2022;
+  // Magus Cloak
+  // Notes: OK; 2026;
   //=================================================================================================================
   "item_custom_magus_cloak"
   {
@@ -38,7 +38,7 @@
 
     "AbilityTextureName"                                  "custom/magus_cloak"
 
-    "ItemCost"                                            "900"
+    "ItemCost"                                            "900" // 395 + 175 + 250 + 80
     "ItemShopTags"                                        "damage;int;agi;str;regen_mana"
     "ItemSellable"                                        "1"
     "ItemPurchasable"                                     "1"
@@ -48,46 +48,19 @@
     "ItemQuality"                                         "rare"
     "ItemAliases"                                         "magus;magus cloak;mc"
     "ItemDisassembleRule"                                 "DOTA_ITEM_DISASSEMBLE_NEVER"
-    
-    // Special  
+
+    // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01" // better than Null Talisman
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_intellect"                                 "6"
-      }
-      "02" // better than Null Talisman
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_strength"                                  "3"
-      }
-      "03" // better than Null Talisman
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_agility"                                   "3"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_damage"                                    "2"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_spell_amp"                                 "3"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_FLOAT"
-        "bonus_mana_regen"                                "0.75"
-      }
-      "07" // it should stack with other magus cloaks
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "bonus_cast_range"                                "25"
-      }
-    }
+    "AbilityValues"
+	{
+		"bonus_intellect"                                 "6"
+		"bonus_strength"                                  "3"
+		"bonus_agility"                                   "3"
+		"bonus_damage"                                    "2"
+		"bonus_mana"                                      "125"
+		"bonus_mana_regen"                                "0.75"
+		"bonus_spell_amp"                                 "3"
+		"bonus_cast_range"                                "25" // it should stack with other magus cloaks
+	}
   }
 }

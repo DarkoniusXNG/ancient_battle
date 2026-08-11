@@ -17,7 +17,7 @@
     "AbilityUnitDamageType"                               "DAMAGE_TYPE_MAGICAL"
 
     "RequiresTargetMana"                                  "1"
-    
+
     "AbilityCastAnimation"                                "ACT_DOTA_CAST_ABILITY_4"
 
     "AbilityCastRange"                                    "300"
@@ -31,20 +31,12 @@
       "particle"                                          "particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
       "soundfile"                                         "soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "mana_burn"                                       "50 100 150"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage_per_mana"                                 "1"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "mana_burn" "50 100 150"
+            "damage_per_mana" "1"
+        }
 
     "OnSpellStart"
     {
@@ -53,7 +45,7 @@
         "EffectName"                                      "Hero_NyxAssassin.ManaBurn.Target"
         "Target"                                          "TARGET"
       }
-      
+
       "FireEffect"
       {
         "Target"                                          "TARGET"

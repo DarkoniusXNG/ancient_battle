@@ -21,20 +21,12 @@
       "particle"                                          "particles/units/heroes/hero_centaur/centaur_return.vpcf"
       "particle"                                          "particles/custom/creature_spiked_carapace.vpcf"
     }
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "melee_damage_return"                             "15 25 35"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "armor_bonus"                                     "3 5 7"
-      }
-    }
+
+    "AbilityValues"
+        {
+            "melee_damage_return" "15 25 35"
+            "armor_bonus" "3 5 7"
+        }
 
     "Modifiers"
     {

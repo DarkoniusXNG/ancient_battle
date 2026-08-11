@@ -64,7 +64,9 @@ end
 modifier_trueshot_aura_buff = class({})
 
 function modifier_trueshot_aura_buff:DeclareFunctions()
-    return { MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE }
+    return {
+        MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE
+    }
 end
 
 function modifier_trueshot_aura_buff:GetModifierBaseDamageOutgoing_Percentage()

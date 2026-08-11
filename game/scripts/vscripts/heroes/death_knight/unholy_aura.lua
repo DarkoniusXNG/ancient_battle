@@ -1,6 +1,4 @@
-if death_knight_unholy_aura == nil then
-	death_knight_unholy_aura = class({})
-end
+death_knight_unholy_aura = death_knight_unholy_aura or class({})
 
 LinkLuaModifier("modifier_custom_unholy_aura_effect", "heroes/death_knight/modifier_custom_unholy_aura_effect.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_unholy_aura_applier", "heroes/death_knight/modifier_custom_unholy_aura_applier.lua", LUA_MODIFIER_MOTION_NONE)

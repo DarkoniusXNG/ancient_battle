@@ -1,6 +1,4 @@
-if bane_custom_enfeeble == nil then
-	bane_custom_enfeeble = class({})
-end
+bane_custom_enfeeble = class({})
 
 LinkLuaModifier("modifier_custom_enfeeble_debuff", "heroes/bane/modifier_custom_enfeeble_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 

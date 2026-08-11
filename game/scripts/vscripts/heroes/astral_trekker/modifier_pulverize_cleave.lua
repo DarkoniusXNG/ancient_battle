@@ -1,6 +1,4 @@
-if modifier_pulverize_cleave == nil then
-	modifier_pulverize_cleave = class({})
-end
+modifier_pulverize_cleave = modifier_pulverize_cleave or class({})
 
 function modifier_pulverize_cleave:IsHidden()
 	return true

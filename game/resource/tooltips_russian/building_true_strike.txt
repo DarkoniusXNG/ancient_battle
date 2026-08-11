@@ -1,3 +1,0 @@
-		
-		"DOTA_Tooltip_ability_custom_building_true_strike"  					"True Strike"
-		"DOTA_Tooltip_ability_custom_building_true_strike_Description"      	"Не может промахнуться."

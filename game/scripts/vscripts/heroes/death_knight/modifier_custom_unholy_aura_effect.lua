@@ -1,6 +1,4 @@
-﻿if modifier_custom_unholy_aura_effect == nil then
-	modifier_custom_unholy_aura_effect = class({})
-end
+﻿modifier_custom_unholy_aura_effect = class({})
 
 function modifier_custom_unholy_aura_effect:IsHidden()
 	return false

@@ -1,6 +1,4 @@
-if perun_sky_wrath == nil then
-	perun_sky_wrath = class({})
-end
+perun_sky_wrath = perun_sky_wrath or class({})
 
 LinkLuaModifier("modifier_custom_sky_blinded", "heroes/perun/perun_sky_wrath.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_custom_sky_disabled", "heroes/perun/perun_sky_wrath.lua", LUA_MODIFIER_MOTION_NONE)

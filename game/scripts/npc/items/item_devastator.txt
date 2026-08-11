@@ -3,7 +3,7 @@
   //=================================================================================================================
   // Recipe: Devastator
   //=================================================================================================================
-  "item_recipe_devastator"
+  "item_recipe_devastator_custom"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -13,23 +13,23 @@
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "1600"
+    "ItemCost"                                            "2000"
     "ItemShopTags"                                        ""
 
     // Recipe
     //-------------------------------------------------------------------------------------------------------------
     "ItemRecipe"                                          "1"
-    "ItemResult"                                          "item_devastator"
+    "ItemResult"                                          "item_devastator_custom"
     "ItemRequirements"
     {
-      "01"                                                "item_desolator"
+      "01"                                                "item_desolator;item_orb_of_corrosion"
     }
   }
 
   //=================================================================================================================
-  // Devastator: Desolator (3500) + Recipe (1600) = 5100
+  // Devastator
   //=================================================================================================================
-  "item_devastator"
+  "item_devastator_custom"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -44,20 +44,20 @@
     "SpellImmunityType"                                   "SPELL_IMMUNITY_ENEMIES_YES"
     "SpellDispellableType"                                "SPELL_DISPELLABLE_YES"
 
-    // Stats    
+    // Stats
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastRange"                                    "800"
+    "AbilityCastRange"                                    "700"
     "AbilityCastPoint"                                    "0"
     "AbilityCooldown"                                     "12"
-    "AbilityManaCost"                                     "75"
+    "AbilityManaCost"                                     "125"
 
     // Item Info
     //-------------------------------------------------------------------------------------------------------------
-    "ItemCost"                                            "5100"
+    "ItemCost"                                            "6550" // 3500 + 1050 + 2000
     "ItemShopTags"                                        "damage;unique"
     "ItemQuality"                                         "artifact"
     "ItemAliases"                                         "devastator"
-    "ItemDeclarations"                                    "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+    "ItemDeclarations"                                    "DECLARE_PURCHASES_TO_SPECTATORS"
 
     "precache"
     {
@@ -69,16 +69,17 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilityValues"
     {
-      "bonus_damage"                                      "70"
-      "corruption_armor"                                  "-6"
+      "bonus_damage"                                      "85"
+	  "bonus_agility"                                     "7"
+      "corruption_armor"                                  "8"
       "corruption_duration"                               "7.0"
-      "devastator_speed"                                  "1200"
+	  "corruption_slow"                                   "16"
+	  "corruption_heal_reduction"                         "16"
+      "devastator_speed"                                  "700"
       "devastator_width_initial"                          "200"
       "devastator_width_end"                              "200"
-      "devastator_distance"                               "800"
-      "devastator_movespeed_reduction"                    "-10"
-      "devastator_movespeed_reduction_duration"           "12.0"
-      "devastator_armor_reduction"                        "-12"
+      "devastator_distance"                               "700"
+      "devastator_armor_reduction"                        "5"
       "devastator_armor_reduction_duration"               "7.0"
     }
   }

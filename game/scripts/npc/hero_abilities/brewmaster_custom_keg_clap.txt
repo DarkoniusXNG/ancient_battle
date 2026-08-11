@@ -24,39 +24,15 @@
     "AbilityManaCost"                                     "90 100 110 120"
     "AbilityProcsMagicStick"                              "1"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "radius"                                          "400"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration"                                        "4"
-      }
-      "03"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "duration_creeps"                                 "8"
-      }
-      "04"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "damage"                                          "90 160 230 300"
-      }
-      "05"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "movement_slow"                                   "-20 -30 -40 -50"
-      }
-      "06"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "attack_speed_slow"                               "-25 -35 -45 -55"
-      }
-    }
+    "AbilityValues"
+        {
+            "radius" "400"
+            "duration" "4"
+            "duration_creeps" "8"
+            "damage" "90 160 230 300"
+            "movement_slow" "-20 -30 -40 -50"
+            "attack_speed_slow" "-25 -35 -45 -55"
+        }
 
     "OnSpellStart"
     {

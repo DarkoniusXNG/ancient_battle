@@ -95,8 +95,6 @@
 
     // Combat
     //-------------------------------------------------------------------------------------------------------------
-    "CombatClassAttack"                                   "DOTA_COMBAT_CLASS_ATTACK_HERO"        // Default: DOTA_COMBAT_CLASS_ATTACK_HERO; DOTA_COMBAT_CLASS_ATTACK_SIEGE; DOTA_COMBAT_CLASS_ATTACK_PIERCE; DOTA_COMBAT_CLASS_ATTACK_BASIC
-    "CombatClassDefend"                                   "DOTA_COMBAT_CLASS_DEFEND_HERO"        // Default: DOTA_COMBAT_CLASS_DEFEND_HERO; DOTA_COMBAT_CLASS_DEFEND_BASIC; DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
     "UnitRelationShipClass"                               "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"    // Priority; Default for heroes: DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO; DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT (Same as creeps); DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD
 
     // Bounds

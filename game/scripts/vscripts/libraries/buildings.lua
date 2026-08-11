@@ -4,9 +4,9 @@
 -- Custom building must have "ConsideredHero" "1" in their kv file if you want them to be unaffected by most game-breaking spells.
 
 -- Modifiers mostly used for buildings
-LinkLuaModifier("modifier_building_construction", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_building_hide_on_minimap", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_building_health", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_custom_building_construction", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_custom_building_hide_on_minimap", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_custom_building_health", "libraries/buildings.lua", LUA_MODIFIER_MOTION_NONE)
 
 -- Returns bool; Is this unit a custom building?
 function CDOTA_BaseNPC:IsCustomBuilding()
@@ -27,8 +27,8 @@ function FindCustomBuildingsInRadius(position, radius)
 
 	local custom_buildings = {}
 
-	for _,creature in pairs(candidates) do
-		if creature:IsCustomBuilding() then
+	for _, creature in pairs(candidates) do
+		if creature and creature:IsCustomBuilding() then
 			table.insert(custom_buildings, creature)
 		end
 	end
@@ -62,27 +62,26 @@ function PreventGettingStuck(building, position)
 	end
 end
 
+---------------------------------------------------------------------------------------------------
 -- Modifier for handling construction
 -- Expects its parent ability to have "health", "construction_time", "sink_height", and "think_interval" special values
 -- Defaults to not making the building rise from the ground if no "sink_height" is set
 -- Defaults to "think_interval" of 0.1
-if modifier_building_construction == nil then
-	modifier_building_construction = class({})
-end
+modifier_custom_building_construction = class({})
 
-function modifier_building_construction:IsHidden()
+function modifier_custom_building_construction:IsHidden()
 	return true
 end
 
-function modifier_building_construction:IsPurgable()
+function modifier_custom_building_construction:IsPurgable()
 	return false
 end
 
 if IsServer() then
-	function modifier_building_construction:OnCreated()
+	function modifier_custom_building_construction:OnCreated()
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
-		parent:AddNewModifier(parent, ability, "modifier_building_health", {})
+		parent:AddNewModifier(parent, ability, "modifier_custom_building_health", {})
 		self.constructionTime = ability:GetSpecialValueFor("construction_time")
 		self.maxHealth = ability:GetSpecialValueFor("health")
 		self.initialSinkHeight = ability:GetSpecialValueFor("sink_height")
@@ -103,7 +102,7 @@ if IsServer() then
 		self:StartIntervalThink(self.thinkInterval)
 	end
 
-	function modifier_building_construction:OnIntervalThink()
+	function modifier_custom_building_construction:OnIntervalThink()
 		if self.ticksRemaining <= 0 then
 			self:StartIntervalThink(-1)
 			self:Destroy()
@@ -120,7 +119,7 @@ if IsServer() then
 	end
 end
 
-function modifier_building_construction:CheckState()
+function modifier_custom_building_construction:CheckState()
 	return {
 		[MODIFIER_STATE_DISARMED] = true,
 		[MODIFIER_STATE_BLIND] = true,
@@ -128,33 +127,32 @@ function modifier_building_construction:CheckState()
 	}
 end
 
-function modifier_building_construction:DeclareFunctions()
+function modifier_custom_building_construction:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 	}
 end
 
-function modifier_building_construction:GetModifierConstantHealthRegen()
+function modifier_custom_building_construction:GetModifierConstantHealthRegen()
 	if IsServer() then
 		return self.maxHealth * 0.99 / self.constructionTime
 	end
 end
 
+---------------------------------------------------------------------------------------------------
 -- Modifier for building health
-if modifier_building_health == nil then
-	modifier_building_health = class({})
-end
+modifier_custom_building_health = class({})
 
-function modifier_building_health:IsHidden()
+function modifier_custom_building_health:IsHidden()
 	return true
 end
 
-function modifier_building_health:IsPurgable()
+function modifier_custom_building_health:IsPurgable()
 	return false
 end
 
 if IsServer() then
-	function modifier_building_health:OnCreated()
+	function modifier_custom_building_health:OnCreated()
 		local parent = self:GetParent()
 		local ability = self:GetAbility()
 		self.initialMaxHealth = parent:GetMaxHealth()
@@ -162,13 +160,13 @@ if IsServer() then
 	end
 end
 
-function modifier_building_health:DeclareFunctions()
+function modifier_custom_building_health:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_EXTRA_HEALTH_BONUS
 	}
 end
 
-function modifier_building_health:GetModifierExtraHealthBonus()
+function modifier_custom_building_health:GetModifierExtraHealthBonus()
 	if self.maxHealth == 0 then
 		return 0
 	else
@@ -176,24 +174,23 @@ function modifier_building_health:GetModifierExtraHealthBonus()
 	end
 end
 
+---------------------------------------------------------------------------------------------------
 -- Modifier for hiding buildings on the minimap entirely (even from allies)
-if modifier_building_hide_on_minimap == nil then
-	modifier_building_hide_on_minimap = class({})
-end
+modifier_custom_building_hide_on_minimap = class({})
 
-function modifier_building_hide_on_minimap:IsHidden()
+function modifier_custom_building_hide_on_minimap:IsHidden()
 	return true
 end
 
-function modifier_building_hide_on_minimap:IsDebuff()
+function modifier_custom_building_hide_on_minimap:IsDebuff()
 	return false
 end
 
-function modifier_building_hide_on_minimap:IsPurgable()
+function modifier_custom_building_hide_on_minimap:IsPurgable()
 	return false
 end
 
-function modifier_building_hide_on_minimap:CheckState()
+function modifier_custom_building_hide_on_minimap:CheckState()
 	return {
 		[MODIFIER_STATE_NOT_ON_MINIMAP] = true,
 	}

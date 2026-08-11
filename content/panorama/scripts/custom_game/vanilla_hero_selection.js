@@ -5,18 +5,15 @@ function FindDotaHudElement (panel) {
 }
 
 function InitHeroSelection () {
-  // $.Msg(GridCategories.GetChildCount())
   let i = 0;
   const GridCategories = FindDotaHudElement('GridCategories');
 
   while (i < GridCategories.GetChildCount()) {
-    // $.Msg(GridCategories.GetChild(i))
-    // $.Msg(GridCategories.GetChild(i).FindChildTraverse("HeroList"))
-    // $.Msg(GridCategories.GetChild(i).FindChildTraverse("HeroList").GetChildCount())
+    let HeroListContainer = GridCategories.GetChild(i).FindChildTraverse('HeroList');
 
-    for (let j = 0; j < GridCategories.GetChild(i).FindChildTraverse('HeroList').GetChildCount(); j++) {
-      if (GridCategories.GetChild(i).FindChildTraverse('HeroList').GetChild(j)) {
-        const heroPanel = GridCategories.GetChild(i).FindChildTraverse('HeroList').GetChild(j).GetChild(0).GetChild(0);
+    for (let j = 0; j < HeroListContainer.GetChildCount(); j++) {
+      if (HeroListContainer.GetChild(j)) {
+        const heroPanel = HeroListContainer.GetChild(j).GetChild(0).GetChild(0);
         // $.Msg(heroPanel.GetParent())
         heroPanel.GetParent().AddClass('HeroCard');
         heroPanel.style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_' + heroPanel.heroname + '.png")';
@@ -36,60 +33,53 @@ function UpdateHeroSelectionImages () {
       if (playerInfo) {
         // $.Msg(playerInfo)
         if (playerInfo.player_selected_hero !== '') {
-          UpdatePortraitImage(playerInfo.player_selected_hero);
+          UpdatePortraitImage(playerInfo.player_selected_hero, false);
         } else if (playerInfo.possible_hero_selection !== '') {
-          UpdatePortraitImage(playerInfo.possible_hero_selection);
+          UpdatePortraitImage(playerInfo.possible_hero_selection, true);
         }
       }
     }
   }
 }
 
-function UpdatePortraitImage (heroname) {
+function UpdatePortraitImage (heroname, notPickedYet) {
   if (heroname === 'warp_beast' || heroname === 'sohei' || heroname === 'electrician') {
     // this works but it makes the portrait static
     const portrait = FindDotaHudElement('HeroInspectInfo').FindChildTraverse('HeroPortrait');
     portrait.style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_' + heroname + '.png")';
     portrait.style.backgroundSize = '100% 100%';
-    $.Schedule(0.1, UpdateTopBarImages);
+    $.Schedule(0.1, function() {
+		UpdateTopBarImages(notPickedYet);
+    });
   }
 }
 
-function UpdateTopBarImages () {
+function UpdateTopBarImages (notPickedYet) {
   const RadiantPlayers = FindDotaHudElement('RadiantTeamPlayers');
   const DirePlayers = FindDotaHudElement('DireTeamPlayers');
-  for (let j = 0; j < RadiantPlayers.GetChildCount(); j++) {
-    const heroImageContainer = RadiantPlayers.GetChild(j).FindChildTraverse('HeroImageContainer');
-    const topBarHeroImage = heroImageContainer.FindChildTraverse('HeroImage');
-    const heroname = topBarHeroImage.heroname;
-    if (heroname === 'warp_beast' || heroname === 'sohei' || heroname === 'electrician') {
-      // $.Msg(topBarHeroImage)
-      OverrideHeroImage(topBarHeroImage);
-    }
-  }
-  for (let j = 0; j < DirePlayers.GetChildCount(); j++) {
-    const heroImageContainer = DirePlayers.GetChild(j).FindChildTraverse('HeroImageContainer');
-    const topBarHeroImage = heroImageContainer.FindChildTraverse('HeroImage');
-    const heroname = topBarHeroImage.heroname;
-    if (heroname === 'warp_beast' || heroname === 'sohei' || heroname === 'electrician') {
-      // $.Msg(topBarHeroImage)
-      OverrideHeroImage(topBarHeroImage);
-    }
-  }
+  OverrideHeroImages(RadiantPlayers, notPickedYet);
+  OverrideHeroImages(DirePlayers, notPickedYet);
 }
 
-function OverrideHeroImage (panel) {
-  if (panel) {
-    const name = panel.heroname;
-    if (name === 'sohei' || name === 'electrician' || name === 'warp_beast') {
-      panel.style.backgroundImage = 'url("file://{images}/heroes/npc_dota_hero_' + name + '.png")';
-      panel.style.backgroundSize = '100% 100%';
+function OverrideHeroImages (playersPanel, notPickedYet) {
+  for (let j = 0; j < playersPanel.GetChildCount(); j++) {
+    const heroImageContainer = playersPanel.GetChild(j).FindChildTraverse('HeroImageContainer');
+    const topBarHeroImage = heroImageContainer.FindChildTraverse('HeroImage');
+    if (topBarHeroImage) {
+      const name = topBarHeroImage.heroname;
+      if (name === 'sohei' || name === 'electrician' || name === 'warp_beast') {
+        topBarHeroImage.style.backgroundImage = 'url("file://{images}/heroes/npc_dota_hero_' + name + '.png")';
+        topBarHeroImage.style.backgroundSize = '100% 100%';
+        if (notPickedYet) {
+          topBarHeroImage.style.backgroundImgOpacity = '0.5';
+        }
+      }
     }
   }
 }
 
 (function () {
-  const PreGame = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse('PreGame');
+  const PreGame = FindDotaHudElement('PreGame');
   PreGame.style.opacity = '1';
   PreGame.style.transitionDuration = '0.0s';
 

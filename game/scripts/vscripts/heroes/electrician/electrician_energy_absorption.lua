@@ -74,18 +74,16 @@ function electrician_energy_absorption:OnSpellStart()
         local target_current_mana = target:GetMana()
 
         -- Check if target has less mana
-        if target_current_mana < mana_to_remove then
-          mana_to_remove = target_current_mana
-        end
+        mana_to_remove = math.min(target_current_mana, mana_to_remove)
 
         -- Reduce/removed mana of the target (only if not an illusion)
         -- Don't remove mana from illusions to prevent weird interactions
         if not target:IsIllusion() then
-          target:ReduceMana(mana_to_remove)
+          target:ReduceMana(mana_to_remove, self)
           mana_absorbed = mana_absorbed + mana_to_remove
         end
 
-        if target:IsRealHero() or target:IsCustomBoss() then
+        if target:IsRealHero() then
           speed_absorbed = speed_absorbed + speed_absorb_heroes
         else
           speed_absorbed = speed_absorbed + speed_absorb_creeps
@@ -253,7 +251,7 @@ function modifier_electrician_energy_absorption_debuff:OnCreated(event)
   end
 
   local stack_count = self:GetStackCount()
-  if parent:IsRealHero() or parent:IsCustomBoss() then
+  if parent:IsRealHero() then
     self.speed = -speed_absorb_heroes * stack_count
   else
     self.speed = -speed_absorb_creeps * stack_count

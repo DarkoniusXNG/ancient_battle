@@ -1,6 +1,4 @@
-﻿if modifier_custom_last_word_silence_active == nil then
-	modifier_custom_last_word_silence_active = class({})
-end
+﻿modifier_custom_last_word_silence_active = class({})
 
 function modifier_custom_last_word_silence_active:IsHidden()
 	return false

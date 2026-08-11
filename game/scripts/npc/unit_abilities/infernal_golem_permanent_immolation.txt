@@ -19,18 +19,10 @@
     
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "aura_radius"                                     "300"
-      }
-      "02"
-      {
-        "var_type"                                        "FIELD_INTEGER"
-        "aura_damage"                                     "50"
-      }
-    }
+    "AbilityValues"
+        {
+            "aura_radius" "300"
+            "aura_damage" "50"
+        }
   }
 }

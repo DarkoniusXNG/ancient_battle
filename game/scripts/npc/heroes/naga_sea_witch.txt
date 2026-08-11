@@ -13,17 +13,17 @@
     
     // Abilities
     //----------------------------------------------------------------
-    "Ability1"                                            "naga_sea_witch_forked_lightning" // improve
-    "Ability2"                                            "naga_sea_witch_frost_arrows" // improve, allow attacking ethereal
-    "Ability3"                                            "naga_sea_witch_mana_shield" // fix
-    "Ability4"                                            "naga_sea_witch_tornado" // summon, make non-channel, make enemies flail and vulnerable
-    "Ability5"                                            ""
-    "Ability6"                                            ""      
+    "Ability1"                                            "naga_sea_witch_forked_lightning" // TODO: improve
+    "Ability2"                                            "naga_sea_witch_frost_arrows" // TODO: improve, allow attacking ethereal
+    "Ability3"                                            "naga_sea_witch_mana_shield" // TODO: fix
+    //"Ability4"                                            "naga_sea_witch_tornado" // TODO: summon, make non-channel, make enemies flail and vulnerable
+    //"Ability5"                                            ""
+    //"Ability6"                                            ""      
     
     // Armor
     //----------------------------------------------------------------
     "ArmorPhysical"                                       "0"
-    "MagicalResistance"                                   "30"
+    "MagicalResistance"                                   "25"
     
     // Attack
     //----------------------------------------------------------------
@@ -39,7 +39,7 @@
     
     // Attributes
     //----------------------------------------------------------------
-    "AttributePrimary"                                    "DOTA_ATTRIBUTE_INTELLECT"
+    "AttributePrimary"                                    "DOTA_ATTRIBUTE_ALL"
     "AttributeBaseStrength"                               "15"
     "AttributeStrengthGain"                               "2"
     "AttributeBaseIntelligence"                           "20"

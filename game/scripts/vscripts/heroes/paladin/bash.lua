@@ -1,6 +1,4 @@
-if guardian_angel_bash == nil then
-	guardian_angel_bash = class({})
-end
+guardian_angel_bash = guardian_angel_bash or class({})
 
 LinkLuaModifier("modifier_custom_guardian_angel_bash", "heroes/paladin/bash.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -17,9 +15,8 @@ function guardian_angel_bash:ShouldUseResources()
 end
 
 -------------------------------------------------------------------------------
-if modifier_custom_guardian_angel_bash == nil then
-	modifier_custom_guardian_angel_bash = class({})
-end
+
+modifier_custom_guardian_angel_bash = class({})
 
 function modifier_custom_guardian_angel_bash:IsHidden()
 	return true

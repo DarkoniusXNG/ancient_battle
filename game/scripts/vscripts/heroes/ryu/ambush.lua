@@ -1,6 +1,4 @@
-﻿if stealth_assassin_ambush == nil then
-	stealth_assassin_ambush = class({})
-end
+﻿stealth_assassin_ambush = stealth_assassin_ambush or class({})
 
 LinkLuaModifier("modifier_stealth_assassin_ambush_debuff", "heroes/ryu/ambush.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_stealth_assassin_ambush_mini_stun", "heroes/ryu/ambush.lua", LUA_MODIFIER_MOTION_NONE)

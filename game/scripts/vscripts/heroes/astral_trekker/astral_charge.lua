@@ -1,6 +1,4 @@
-if astral_trekker_astral_charge == nil then
-	astral_trekker_astral_charge = class({})
-end
+astral_trekker_astral_charge = class({})
 
 LinkLuaModifier("modifier_astral_charge_buff", "heroes/astral_trekker/modifier_astral_charge_buff.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_astral_charge_hit", "heroes/astral_trekker/astral_charge.lua", LUA_MODIFIER_MOTION_NONE)
@@ -71,6 +69,7 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	local caster = self:GetCaster()
 	local caster_position = caster:GetAbsOrigin()
 	local target = self.target_point
+	local astral_charge_ability = self
 
 	-- KV Variables
 	local speed = self:GetSpecialValueFor("move_speed")
@@ -153,8 +152,8 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), current_position, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 				for _, enemy in pairs(enemies) do
 					if not enemy:HasModifier("modifier_astral_charge_hit") then
-						enemy:AddNewModifier(caster, nil, "modifier_astral_charge_hit", {duration = 1.0})
-						ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = distance_damage, damage_type = DAMAGE_TYPE_MAGICAL})
+						enemy:AddNewModifier(caster, astral_charge_ability, "modifier_astral_charge_hit", {duration = 1.0})
+						ApplyDamage({victim = enemy, attacker = caster, ability = astral_charge_ability, damage = distance_damage, damage_type = DAMAGE_TYPE_MAGICAL})
 					end
 				end
 			end
@@ -170,7 +169,7 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 				-- Damage around destination
 				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, bit.bor(DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_HERO), DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 				for _, enemy in pairs(enemies) do
-					ApplyDamage({victim = enemy, attacker = caster, ability = self, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
+					ApplyDamage({victim = enemy, attacker = caster, ability = astral_charge_ability, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL})
 				end
 				return
 			else
@@ -191,9 +190,8 @@ function astral_trekker_astral_charge:astral_charge_traverse()
 	end
 end
 
-if modifier_astral_charge_hit == nil then
-	modifier_astral_charge_hit = class({})
-end
+---------------------------------------------------------------------------------------------------
+modifier_astral_charge_hit = class({})
 
 function modifier_astral_charge_hit:IsHidden()
 	return true

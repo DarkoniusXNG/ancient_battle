@@ -168,6 +168,6 @@ if IsServer() then
     self:SetStackCount(0)
 
     -- start momentum cooldown
-    ability:UseResources(true, true, true)
+    ability:UseResources(false, false, false, true)
   end
 end

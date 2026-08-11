@@ -46,9 +46,7 @@ end
 
 -- Mine modifier ----------------------------------------------------------------------------------
 
-if modifier_techies_custom_land_mine == nil then
-	modifier_techies_custom_land_mine = class({})
-end
+modifier_techies_custom_land_mine = class({})
 
 function modifier_techies_custom_land_mine:IsHidden()
 	return true

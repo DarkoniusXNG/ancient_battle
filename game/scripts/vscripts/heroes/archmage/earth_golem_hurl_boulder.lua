@@ -1,6 +1,4 @@
-if earth_golem_hurl_boulder == nil then
-	earth_golem_hurl_boulder = class({})
-end
+earth_golem_hurl_boulder = earth_golem_hurl_boulder or class({})
 
 LinkLuaModifier("modifier_earth_golem_hurl_boulder_stun", "heroes/archmage/earth_golem_hurl_boulder.lua", LUA_MODIFIER_MOTION_NONE)
 
@@ -102,9 +100,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if primal_split_earth_spirit_hurl_boulder == nil then
-	primal_split_earth_spirit_hurl_boulder = earth_golem_hurl_boulder
-end
+primal_split_earth_spirit_hurl_boulder = class(earth_golem_hurl_boulder)
 
 function primal_split_earth_spirit_hurl_boulder:Spawn()
 	-- Constants
@@ -115,9 +111,7 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
-if modifier_earth_golem_hurl_boulder_stun == nil then
-	modifier_earth_golem_hurl_boulder_stun = class({})
-end
+modifier_earth_golem_hurl_boulder_stun = modifier_earth_golem_hurl_boulder_stun or class({})
 
 function modifier_earth_golem_hurl_boulder_stun:IsHidden()
 	return false

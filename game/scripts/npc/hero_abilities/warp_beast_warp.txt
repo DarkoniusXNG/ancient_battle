@@ -1,0 +1,113 @@
+"DOTAAbilities"
+{
+  //=================================================================================================================
+  // Warp Beast - Warp
+  //=================================================================================================================
+  "warp_beast_warp"
+  {
+    "BaseClass"                                           "ability_lua"
+    "ScriptFile"                                          "heroes/warp_beast/warp_beast_warp.lua"
+    "AbilityTextureName"                                  "custom/warp_beast_warp"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "MaxLevel"                                            "3"
+
+    //"HasShardUpgrade"                                     "1"
+
+    "precache"
+    {
+      "particle"                                          "particles/units/heroes/hero_warp_beast/warp_beast_warp.vpcf"
+      "soundfile"                                         "soundevents/units/game_sounds_warp_beast.vsndevts"
+    }
+
+    "AbilitySpecial"
+    {
+      "01" // bonus cast range per mana; original (2.5);
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "distance_per_mana"                               "1.5 2.0 2.5"
+        "LinkedSpecialBonus"                              "special_bonus_unique_warp_beast_warp_mana_pool"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "warp_duration"                                   "0.4 0.3 0.2"
+      }
+      "03" // Anti-Mage's mana break (28/40/52/64); original (12/20/28/36);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "drain_amount"                                    "20 28 36"
+        "LinkedSpecialBonus"                              "special_bonus_unique_warp_beast_mana_eater"
+      }
+      "04"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_duration"                                  "30"
+      }
+      "05"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "bonus_mana_cap"                                  "300 400 500"
+      }
+      "06" // original (20%);
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "kill_drain_percentage"                           "10"
+      }
+    }
+  }
+
+  "special_bonus_unique_warp_beast_warp_mana_pool"
+  {
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value"                                           "1.5"
+      }
+    }
+  }
+
+  "special_bonus_unique_warp_beast_warp_silence"
+  {
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "value"                                           "3"
+      }
+      "02"
+      {
+        "var_type"                                        "FIELD_FLOAT"
+        "radius"                                          "600"
+      }
+    }
+  }
+
+  "special_bonus_unique_warp_beast_mana_eater"
+  {
+    "BaseClass"                                           "special_bonus_undefined"
+    "AbilityType"                                         "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"                                     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"                                        "FIELD_INTEGER"
+        "value"                                           "18"
+      }
+    }
+  }
+}
